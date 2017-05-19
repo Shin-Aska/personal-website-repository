@@ -42,7 +42,7 @@ var sky =  {
 		sky.scene = new THREE.Scene();
 		sky.geometry = new THREE.Geometry();
 
-		var texture = THREE.ImageUtils.loadTexture("https://personal-site-repository-shinaska109.c9users.io/images/clouds.png");
+		var texture = THREE.ImageUtils.loadTexture("http://personal-src-personal-site-openshift.7e14.starter-us-west-2.openshiftapps.com/images/clouds.png");
 		texture.magFilter = THREE.LinearMipMapLinearFilter;
 		texture.minFilter = THREE.LinearMipMapLinearFilter;
 
