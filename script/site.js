@@ -45,4 +45,5 @@ $( document ).ready(function() {
 	for (var i = 0; i < menus.length; i++) {
 		document.getElementById("menu").innerHTML += "<div class=\"menuButton\" onclick=\"javascript:window.location.href='" + menus[i].url +"'\">" + menus[i].name + "</div>"; 
 	}
+    document.getElementById("header").innerHTML = sky.header;
 });

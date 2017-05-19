@@ -14,24 +14,23 @@ var sky =  {
 	position: null,
 	windowHalfX: null,
 	windowHalfY: null,
+	header: '<div class="center themeContainer"><img class="themepicture" src="images/pen.png" alt="Logo"></div><p class="headingBase start">= Skies of the lost cause +</p><p class="headingBase middle">Personal website of Richard Orilla</p><br><div class="center lineContainer"><img class="linePNG" src="images/hr.png" alt="Logo"></div>',
 
 	stats: {
 		oldTime: null,
 		fps: 0,
 	},
 
+	fail: {
+		img: undefined
+	},
+
 	init: function() {
 
+		
 		var background = document.getElementById("background");
 		var bgContext = background.getContext("2d");
 		bgContext.rect(0, 0, background.width, background.height);
-		var grd = bgContext.createLinearGradient(0, 0, background.width, background.height);
-
-	    grd.addColorStop(0, '#8ED6FF');   
-
-	    grd.addColorStop(1, '#004CB3');
-	    bgContext.fillStyle = grd;
-	    bgContext.fill();
 
 		sky.startTime = new Date().getTime();
 		sky.canvas = document.getElementById("main");
@@ -42,7 +41,7 @@ var sky =  {
 		sky.scene = new THREE.Scene();
 		sky.geometry = new THREE.Geometry();
 
-		var texture = THREE.ImageUtils.loadTexture("http://personal-src-personal-site-openshift.7e14.starter-us-west-2.openshiftapps.com/images/clouds.png");
+		var texture = THREE.ImageUtils.loadTexture("images/clouds.png");
 		texture.magFilter = THREE.LinearMipMapLinearFilter;
 		texture.minFilter = THREE.LinearMipMapLinearFilter;
 
@@ -117,5 +116,29 @@ var sky =  {
 		}
 
 		sky.stats.oldTime = newTime;
+	},
+
+	failDraw: function() {
+
+		try {
+			var background = document.getElementById("background");
+			var bgContext = background.getContext("2d");
+			var canvas = bgContext.canvas;
+			bgContext.clearRect(0, 0, canvas.width, canvas.height);
+			canvas.width = window.innerWidth;
+			canvas.height = window.innerHeight;
+
+			var bg = new Image();
+			bg.src = "images/Tempholder.png";
+			bg.onload = function() {
+				bgContext.drawImage(bg, 0, 0, canvas.width, canvas.height);
+			};
+		}
+		catch (ex) {
+
+		}
+		
 	}
 }
+		
+		

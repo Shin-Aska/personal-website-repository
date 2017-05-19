@@ -12,11 +12,6 @@
 
 .themelogo {
 
-	filter: "progid:DXImageTransform.Microsoft.Dropshadow(OffX=0, OffY=12, Color='#444')";
-	filter: url(#drop-shadow);
-	-webkit-filter: drop-shadow(0px 12px 7px rgba(0,0,0,0.5));
-	filter: drop-shadow(0px 12px 7px rgba(0,0,0,0.5));
-	filter: invert(100%);
 	width: 16em;
 	height: 16em;
 
@@ -25,17 +20,38 @@
 	vertical-align:middle;
 }
 
+.themepicture {
+
+	width: 10em;
+	height: 10em;
+
+	display: block;
+	margin-top: 70px;
+	margin-bottom: 50px;
+
+	margin-left: 50%;
+	margin-right: auto;
+	vertical-align:middle;
+}
+
 .lineSVG {
 
-	filter: "progid:DXImageTransform.Microsoft.Dropshadow(OffX=0, OffY=12, Color='#444')";
-	filter: url(#drop-shadow);
-	-webkit-filter: drop-shadow(0px 12px 7px rgba(0,0,0,0.5));
-	filter: drop-shadow(0px 12px 7px rgba(0,0,0,0.5));
-	filter: invert(100%);
 
 	width: 45em;
 	height: 5em;
 
+	margin-left: auto;
+	margin-right: auto;
+	vertical-align:middle;
+}
+
+.linePNG {
+
+
+	width: 30em;
+	height: 5em;
+
+	display: block;
 	margin-left: auto;
 	margin-right: auto;
 	vertical-align:middle;
@@ -92,6 +108,8 @@
 
 	animation-name: grow;
     animation-duration: 1s;
+    -webkit-animation-name: grow;
+    -webkit-animation-duration: 1s;
 
 }
 
@@ -113,11 +131,44 @@
 .projectsTable {
 	width: 800px;
 	text-align: center;
+	background-color: rgba(52, 73, 94, 0.8);
+  	color: white;
+  	
+  	border-radius: 15px;
+  	border-collapse: collapse;
 }
 
 .projectsTable th {
 
-	background-color: rgba(255, 255, 255, 0.2);
+	font-size: 25pt;
+	color: #dd5;
+}
+
+.projectsTable td {
+
+	cursor:pointer;
+}
+
+.projectsTable tr {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+    height: 50px;
+}
+
+.projectsTable tr:last-child {
+	border: 0px;
+}
+
+.projectsTable tr:first-child:hover {
+	background-color: rgba(0, 0, 0, 0);
+}
+
+.projectsTable tr:hover {
+	background-color: rgba(52, 73, 94, 1);
+}
+
+.projectsTable a {
+
+	color: white;
 }
 
 .projectsTable * {
@@ -129,6 +180,11 @@
 	display: block;
 	height: 50%;
 	width: 50%;
+}
+
+.hideSection {
+
+	display: none;
 }
 
 /* Global Stuff */
@@ -145,6 +201,11 @@ hr {
 	border: 0px;
 	width: 80%;
 	border-bottom: 2px dashed black;
+}
+
+#header {
+
+	min-width: 800px;
 }
 
 #menu {
