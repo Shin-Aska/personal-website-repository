@@ -104,11 +104,6 @@
     user-select: none;
 }
 
-.menuButton:link, .menuButton:visited, .menuButton:active {
-	
-	color: black;
-}
-
 .menuButton:hover {
 
 	animation-name: grow;
@@ -194,6 +189,12 @@
 
 /* Global Stuff */
 
+.truncate {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
 .line_one {
 	background: rgba(0, 0, 0, 0) url("../images/hr.png") no-repeat center center;
 	background-size: cover;
@@ -209,9 +210,8 @@ hr {
 }
 
 #header {
-	width: 800px;
-	margin-left: auto;
-	margin-right: auto;
+
+	min-width: 800px;
 }
 
 .menu-container {
@@ -231,7 +231,7 @@ hr {
 	margin-top: 40px;
 	color: black;
 	font-family: ColorsOfAutumn;
-	width: 500px;
+	width: 800px;
 	transform: translate(-50%, -50%);
 }
 
@@ -268,11 +268,123 @@ h1, h2, h3, h4 {
 
 a {
 	color: rgb(100, 112, 200);	
+	transition:all 1s ease;
+	-webkit-transition-delay:all 1s ease;
+	-moz-transition-delay:all 1s ease;
+	-ms-transition-delay:all 1s ease;
+	-o-transition-delay:all 1s ease;
 	text-shadow: 2px 1px 12px white;
 	text-decoration: none;
 }
 
 a:hover {
-
 	color: orange;
+}
+
+@media (max-width: 900px) {
+	.menu-container {
+		width: 600px;
+	}
+
+	#menu {
+		width: 600px;
+		left: 63%;
+	}
+
+	.email-about {
+		width: 120px;
+		display: inline-block;
+	}
+
+	#content {
+		width: 600px;
+	}
+
+	.aboutTable {
+
+		width: 600px;
+	}
+
+	.start {
+		font-size: 3em;
+	}
+
+	.projectsTable {
+		width: 600px;
+	}
+
+	#header {
+		width: auto;
+		min-width: 600px;
+	}
+}
+
+@media (max-width: 600px) {
+	.menu-container {
+		width: 380px;
+	}
+
+	#menu {
+		width: 380px;
+		left: 63%;
+	}
+
+	.email-about {
+		width: 80px;
+		display: inline-block;
+	}
+
+	#content {
+		width: 320px;
+		font-size: 1em;
+	}
+
+	.aboutTable {
+
+		width: 380px;
+	}
+
+	.start {
+		font-size: 2em;
+	}
+
+	.projectsTable {
+		width: 380px;
+	}
+
+	#header {
+		width: auto;
+		min-width: 380px;
+	}
+
+	.menuButton {
+		font-size: 1.2em;
+	}
+
+	#content > h1 {
+		font-size: 1em;
+	}
+
+	.lineContainer {
+		width: auto;
+	}
+
+	.linePNG {
+		scale: 0.75;
+		width: 20em;
+	}
+
+	.aboutPic {
+		height: 110px;
+		width: 100px;
+		margin-bottom: 90px;
+	}
+
+	.aboutTable {
+		font-size: 16px;
+	}
+
+	.aboutTable > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) {
+		width: auto !important;
+	}
 }
