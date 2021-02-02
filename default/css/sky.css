@@ -233,6 +233,7 @@ hr {
 	font-family: ColorsOfAutumn;
 	width: 800px;
 	transform: translate(-50%, -50%);
+	box-sizing: border-box;
 }
 
 #content {
@@ -243,7 +244,8 @@ hr {
 	margin-right: auto;
 	padding: 10px;
     font-family: Philosopher;
-    font-size: 1.5em;
+	font-size: 1.5em;
+	box-sizing: border-box;
 }
 
 .center {
@@ -280,6 +282,11 @@ a {
 a:hover {
 	color: orange;
 }
+
+body {
+	overflow-x: hidden;
+}
+
 
 @media (max-width: 900px) {
 	.menu-container {
@@ -341,15 +348,15 @@ a:hover {
 
 	.aboutTable {
 
-		width: 380px;
+		width: 320px;
 	}
 
 	.start {
-		font-size: 2em;
+		font-size: 1.7em;
 	}
 
 	.projectsTable {
-		width: 380px;
+		width: 300px;
 	}
 
 	#header {
@@ -386,5 +393,36 @@ a:hover {
 
 	.aboutTable > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) {
 		width: auto !important;
+	}
+}
+
+@media (max-width: 420px) {
+	#menu {
+		left: 59%;
+	}
+}
+
+@media (max-width: 380px) {
+	body {
+		overflow-x: auto;
+	}
+
+	#menu {
+		width: 300px;
+		left: 59%;
+	}
+
+	.themepicture {
+		width: 8em;
+		height: 8em;
+		margin-left: 45%;
+	}
+
+	.start {
+		font-size: 1.4em;
+	}
+
+	.middle {
+		font-size: 1.2em;
 	}
 }
