@@ -87,7 +87,7 @@
       the best emulator that you can use if you have an SNES
       game that doesn't work properly on your daily emulator.
       However such feat comes with a cost, specifically it requires
-      a very powerful machine inorder to run the games on this 
+      a powerful machine inorder to run the games on this 
       emulator at a 60hz speeds.
     </p>
     <p>
@@ -104,14 +104,84 @@
       you can probably return it to the manufacturer)</i>
     </p>
 
-    <h2>The setup</h2>
+    <h2>Making sense of things</h2>
     <p>
       BSNES at it default settings can run on a decent mid-range
       computer now. Originally it needs a CPU that has 3ghz speed
       but with the optimizations made throughout time, it can run
       on something like a Macbook Air (2015). Although you have to 
       understand that when using this emulator, it is expected that 
-      it will hog all of your CPU cores.
+      it will hog all of your CPU cores (which will guarantee that
+      your CPU will be always at 95%-ish). The only exception for this
+      is if you're using the retroarch bsnes core performance version.
+    </p>
+    <a href="images/bsnes-sample.jpeg" target="_blank"><img class="preview center" src="images/bsnes-sample.jpeg"></a>
+    <p>
+      When playing any game in BSNES, it is designed that it will consume
+      all of your CPU cores regardless of the game. BSNES does offer
+      additional things that other emulators cannot do such as HD Mode 7
+      but thing here is you do not even need it for it to consume 95%-ish
+      of your CPU cores. It will consume it at that much amount regardless.
+    </p>
+    <p>
+      To not go into full detail, this is because BSNES is designed to be cycle 
+      accurate emulator. Where every SNES component was emulated to match exactly
+      how it responds, how many seconds it takes to process an input and etc.
+      Side effect of this is it requires a rather strong machine although these days
+      modern computers can handle these emulators that wasn't possible a decade ago. 
+    </p>
+    <p>
+      In other words, it consuming 95%-ish CPU cores while its running is a side-effect
+      of it being accurate. This is because the emulator wants the whole machine to dedicate
+      itself to the emulator for the sake of fast context switching responses (Afterall the
+      more processes running, the more the Operating system has to divide its attention to
+      accomodate the other programs) and other bits.
+    </p>
+    <h2>The Setup</h2>
+    <p>
+      Since we now understand why BSNES acts the way it does and in a way it makes sense
+      without digging to much into the technical details. We will now go with what we will
+      be having to do CPU stress test upon.
+    </p>
+    <p>
+      I said that a Macbook Air (2015) can run BSNES fine and this is absolutely true. Running
+      games in there can go as 95% as average. But we will not be going to that route. Instead
+      I will be using my main PC that has a Intel core i9 9900k @ 3.6GHZ. On this test I capped
+      turbo boost to be only until 4Ghz because for temperature control reasons.
+    </p>
+    <p>
+      For the emulator ROMs, I have an SNES Mini, so I <a href="https://github.com/TeamShinkansen/Hakchi2-CE">decided to get my ROMS from there</a> but
+      you can just search over the internet for Free SNES ROMs dumps and that should work fine
+      as well too.
+    </p>
+    <p>
+      Now that I have the games set, I will be stress testing my unit for an hour. With that in mind
+      I will be playing the following games.
+      <ol>
+        <li>Super Mario Kart (With Mode 7 support it, there's no problem)</li>
+        <li>Super Mario World</li>
+        <li>Super Mario World 2: Yoshi's Island</li>
+        <li>Donkey-kong Country</li>
+      </ol>
+    </p>
+    <h2>The results and practical use</h2>
+    <p>
+      Unfortunately, I ended up way more than an hour for test due to being too much entertained to care.
+      No problems where found and the system was infact very stable running at 63c during its peak CPU usage.
+      That being said its not really suprising since I have built this main PC for quite some time now so
+      it should've passed already the test (and not to mention, it has been stressed test before too)
+    </p>
+    <p>
+      Now the question comes in mind that why would I ever use this when there is SNES9X or Retroarch BSNES
+      performance core? I'll throw that question back by asking the opposite. "Why not"? Any unused CPU core
+      is to be honest a waste. It's not also like that you're overclocking the system for it to decrease its lifespan.
+      You're just using your computer at its best for the sake of emulation accuracy.
+    </p>
+    <p>
+      Practically speaking, you may want to use this knowledge and bring yourself a set of ROMs and BSNES packed in a USB drive
+      and probably a USB gamepad (I recommend 8Bitdo SF30) when buying a new prebuilt computer or laptop and ask if you can test 
+      the machine. Ofcourse a harmless SNES emulator shouldn't really cause a flag on them and it is always nice to see the defect 
+      while you're on the store rather than bringing it home and doing this only to find out something is wrong with it.
     </p>
     <h3>~ End ~</h3>
     <h4>
