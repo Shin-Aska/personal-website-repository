@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="Richard Orilla" />
+  <meta http-equiv="content-language" content="en-us" />
+  <meta http-equiv="cache-control" content="no-cache" />
+  <meta http-equiv="pragma" content="no-cache" />
+  <meta name="robots" content="index" />
+  <meta name="keywords" content="richard orilla, free games, resume" />
+  <script src="script/data/menu.json" type="text/javascript"></script>
+  <script src="script/ThreeWebGL.js" type="text/javascript"></script>
+  <script src="script/ThreeCanvas.js" type="text/javascript"></script>
+  <script src="script/ThreeExtras.js" type="text/javascript"></script>
+  <script src="script/jquery.js" type="text/javascript"></script>
+  <script src="script/stats.js" type="text/javascript"></script>
+  <script src="script/sky.js"></script>
+  <script src="script/site.js" type="text/javascript"></script>
+
+  <link href="css/animation.css" rel="stylesheet" type="text/css" />
+  <link href="css/fonts.css" rel="stylesheet" type="text/css" />
+  <link href="css/site.css" rel="stylesheet" type="text/css" />
+  <link href="css/sky.css" rel="stylesheet" type="text/css" />
+  <link href="css/reset.css" rel="stylesheet" type="text/css" />
+
+  <!-- @@@ -->
+  <title>Skies of the Lost Cause - Blogs: State of Linux Gaming 2021</title>
+</head>
+
+<body>
+  <canvas id="main">
+    <p>
+      Hi, it seems that the browser you're using is not compatible with my
+      site. Either because it's too old or you're using one of the following
+      browsers:
+    </p>
+    <ul>
+      <li>
+        Brow.sh - Terminal based browser that attempts to render a modern web
+        using ssh
+      </li>
+      <li>
+        Lynx - Text based browser. The oldest browser that is still active in
+        development!
+      </li>
+      <li>w3m - Text based browser. Quite popular too</li>
+    </ul>
+  </canvas>
+
+  <canvas id="background">
+    <p>
+      More importantly, I got you :-), Here is a backwards compatible version
+      that is designed to work on older browsers
+      <a href="http://classic.richardorilla.website">classic.richardorilla.website</a>
+    </p>
+  </canvas>
+
+  <div id="header">
+    <div class="center themeContainer">
+      <object class="themelogo" type="image/svg+xml" data="images/pen.svg" align="middle">
+        Your browser does not support SVG
+      </object>
+    </div>
+
+    <p class="headingBase start">= Skies of the lost cause +</p>
+    <p class="headingBase middle">Personal website of Richard Orilla</p>
+    <br />
+    <div class="center lineContainer">
+      <object class="lineSVG" type="image/svg+xml" data="images/hr.svg" align="middle">
+        Your browser does not support SVG
+      </object>
+    </div>
+  </div>
+
+  <div class="menu-container">
+    <div id="menu"></div>
+  </div>
+
+  <div id="content">
+    <h1 id="headingBlog">State of Linux Gaming in 2021</h1>
+    <h2>Introduction</h2>
+    <p>
+      Gaming in Linux has been a really interesting topic on the Linux circle lately
+      due to the immense progress that has been made for the past couple of years. 
+    </p>
+    <p>
+      A decade ago, there where only a handful of native Linux triple A games such as
+      Amnesia, Valve games such as Half Life and portal and hundreds of indie native 
+      Linux games such as Frogatto, Tux games (SuperTux and Tuxcart) and Wine was still
+      at its infancy but very promising (so much so that it can even run Starcraft 2!)
+    </p>
+    <p>
+      Now jump back to present, alot of things happened. OpenGL was always a bit inferior
+      compare to DirectX in terms of performance. Then AMD invested in FOSS laying their
+      Mantle API to the FOSS community and Vulkan was born. Not to mention AMD opensourced
+      their drivers too.
+    </p>
+    <p>
+      Vulkan made alot of things possible. Such as DXVK and VKD3D. Originally Wine had
+      great compatibility with DirectX9 and lower games. However since newer games where
+      using DirectX10, DirectX11 and DirectX12. It was thought to be difficult for Wine
+      to catch up with the newer iterations of DirectX. With DXVK, DirectX10 and DirectX11
+      games became a reality and VKD3D became the solution for the new DirectX12.
+    </p>
+    <p>
+      In addition Vulkan allowed more room for native Linux game because it was cross-platform
+      specification in constrast to DirectX which was Windows only.
+    </p>
+    <p>
+      We already knew for quite awhile now that Valve went all in on Linux. This started first
+      with their games but they even created Proton which is a Wine compatibility layer for 
+      Steam to allow to play Windows games on Linux! Because of this move, Valve opened alot
+      of games to Linux users. (Case in point; I was able to even play Resident Evil 3 and 
+      Trials of Mana on Day 1!)
+    </p>
+    <p>
+      Because of Proton as well, we started to have a flood of Wine forks aiming to be compatible
+      to a specific software/game which is always a great news to Linux fans.
+    </p>
+    <p>
+      Now with such a very long introduction, the question now is. How good is Linux gaming? Are we
+      there yet? In the next section I will discuss what we have, the challenges we have and what
+      we may never get.
+    </p>
+    <h2>State of DXVK</h2>
+    <p>
+      Despite Microsoft pushing everyone to DirectX12 and DirectX12 becoming the norm for newer games.
+      Alot of developers are still using DirectX11. DXVK is still at its infancy stages. For sure there 
+      are alot of games already DXVK supports such as the ones I mentioned earlier, Resident Evil 3, 
+      Trials of Mana, in addition, Control and Death Stranding. Should be mentioned that these games are 
+      not even a year old yet!
+    </p>
+    <p>
+      Very promising as it may be, it still has alot of stuff that needs fixing. For example only just
+      recently (DXVK 1.8) where was it possible to play Megaman Legacy Collection 2. Originally you had
+      rendering problems/issues as seen below.
+    </p>
+    <p>
+      Basically this means that not all games will run properly yet but eventually it will.
+    </p>
+    <h2>Mediaplatform support</h2>
+    <p>
+      
+    </p>
+    <h3>~ End ~</h3>
+    <h4>
+      <a href="#headingBlog">Go back to top</a>
+    </h4>
+    <h4>
+      <a href="blog.html">Go back to list of articles</a>
+    </h4>
+  </div>
+</body>
+
+</html>
