@@ -82,67 +82,151 @@
     <h1 id="headingBlog">State of Linux Gaming in 2021</h1>
     <h2>Introduction</h2>
     <p>
-      Gaming in Linux has been a really interesting topic on the Linux circle lately
-      due to the immense progress that has been made for the past couple of years. 
+      Gaming in Linux has been a really interesting topic on the Linux circle lately due to the immense progress that has been made for the past couple of years.
     </p>
     <p>
-      A decade ago, there where only a handful of native Linux triple A games such as
-      Amnesia, Valve games such as Half Life and portal and hundreds of indie native 
-      Linux games such as Frogatto, Tux games (SuperTux and Tuxcart) and Wine was still
-      at its infancy but very promising (so much so that it can even run Starcraft 2!)
+      A decade ago, only a handful of native Linux AAA games supports Linux natively. The only native AAA game that I can remember back then was Amnesia, and the rest were indie games such as Frogatto and SuperTux. Wine was still in its infancy but very promising (it can run Starcraft 2!)
     </p>
     <p>
-      Now jump back to present, alot of things happened. OpenGL was always a bit inferior
-      compare to DirectX in terms of performance. Then AMD invested in FOSS laying their
-      Mantle API to the FOSS community and Vulkan was born. Not to mention AMD opensourced
-      their drivers too.
+      Now jump back to the present; a lot of things happened. OpenGL was always a bit inferior compare to DirectX in terms of performance. Then AMD invested in FOSS, laying their Mantle API to the FOSS community, and Vulkan was born. Not to mention AMD open-sourced their drivers too.
     </p>
     <p>
-      Vulkan made alot of things possible. Such as DXVK and VKD3D. Originally Wine had
-      great compatibility with DirectX9 and lower games. However since newer games where
-      using DirectX10, DirectX11 and DirectX12. It was thought to be difficult for Wine
-      to catch up with the newer iterations of DirectX. With DXVK, DirectX10 and DirectX11
-      games became a reality and VKD3D became the solution for the new DirectX12.
+      Vulkan made a lot of things possible. Such as DXVK and VKD3D. Originally Wine had great compatibility with DirectX9 and lower games. However, since newer games were using DirectX10, DirectX11 and DirectX12, many thought that it would be difficult for Wine to catch up with the more recent iterations of DirectX. With DXVK, DirectX10 and DirectX11 games became a reality and VKD3D became the solution for the new DirectX12.
     </p>
     <p>
-      In addition Vulkan allowed more room for native Linux game because it was cross-platform
-      specification in constrast to DirectX which was Windows only.
+      In addition, Vulkan allowed more room for native Linux games because it is a cross-platform specification in contrast to DirectX, locked down to Windows only.
     </p>
     <p>
-      We already knew for quite awhile now that Valve went all in on Linux. This started first
-      with their games but they even created Proton which is a Wine compatibility layer for 
-      Steam to allow to play Windows games on Linux! Because of this move, Valve opened alot
-      of games to Linux users. (Case in point; I was able to even play Resident Evil 3 and 
-      Trials of Mana on Day 1!)
+      We already knew for quite a while now that Valve went all-in on Linux. This started first with their games, but they even created Proton, a compatibility layer for Steam to play Windows games on Linux! Because of this move, Valve opened a lot of games to Linux users. (Case in point; I was able to even play Resident Evil 3 and Trials of Mana on Day 1!)
+    </p>
+    <a href="images/re3_1_wine.jpg" target="_blank"><img class="preview center" src="images/re3_1_wine.jpg"></a>
+    <p>
+      Because of Proton, we started to have a flood of Wine forks (because Proton is a Wine fork) aiming to be compatible with a specific software/game, which is always great news for Linux fans.
     </p>
     <p>
-      Because of Proton as well, we started to have a flood of Wine forks aiming to be compatible
-      to a specific software/game which is always a great news to Linux fans.
+      Now with such a very long introduction, the question is. How good is Linux gaming? Are we there yet? In the next section, I will discuss what we have, the challenges we have, and what we may never get.
+    </p>
+    <h2>Overall State of Wine</h2>
+    <h3>State of DXVK</h3>
+    <p>
+      Despite the fact that Microsoft is pushing everyone to DirectX12 and DirectX12 becoming the norm for newer games. A lot of developers are still using DirectX11. DXVK is still in its infancy stages. Certainly, there are many games already DXVK supports, such as the ones I mentioned earlier, Resident Evil 3, Trials of Mana, and Control and Death Stranding. These games are not even a year old yet!
     </p>
     <p>
-      Now with such a very long introduction, the question now is. How good is Linux gaming? Are we
-      there yet? In the next section I will discuss what we have, the challenges we have and what
-      we may never get.
+      Very promising as it may be, it still has a lot of stuff that needs fixing. For example, only recently (DXVK 1.8) was it possible to play Megaman Legacy Collection 2. Originally you had rendering problems/issues as seen below.
     </p>
-    <h2>State of DXVK</h2>
+    <a href="images/rendering_issue_megaman_2.jpg" target="_blank"><img class="preview center" src="images/rendering_issue_megaman_2.jpg"></a>
     <p>
-      Despite Microsoft pushing everyone to DirectX12 and DirectX12 becoming the norm for newer games.
-      Alot of developers are still using DirectX11. DXVK is still at its infancy stages. For sure there 
-      are alot of games already DXVK supports such as the ones I mentioned earlier, Resident Evil 3, 
-      Trials of Mana, in addition, Control and Death Stranding. Should be mentioned that these games are 
-      not even a year old yet!
+      Basically, this means that not all games will run properly yet but eventually, they will.
+    </p>
+    <h3>Mediaplatform support</h3>
+    <p>
+      Media Foundation/DirectShow/Media Platform are APIs provided by Microsoft to be able to embed rich user media such as videos (for cutscenes), audio in a variety of formats, including those under encryption via DRM.
     </p>
     <p>
-      Very promising as it may be, it still has alot of stuff that needs fixing. For example only just
-      recently (DXVK 1.8) where was it possible to play Megaman Legacy Collection 2. Originally you had
-      rendering problems/issues as seen below.
+      Originally the potential fix for this is to install Mediaplatform (Mfplat) on your targetted Wine prefix, and it might work (Since there is still software that refuses to run even with this type of hack). Not to mention we are treding a thin-ice/grey area here because of the implicated legality in Microsoft's EULA, it is not legal to provide this level of support out of the box and the user is left on their own to apply this 
     </p>
     <p>
-      Basically this means that not all games will run properly yet but eventually it will.
+      Starting in Wine 6.0, we now have decent Mediaplatform support out of the box using clean-room reverse engineering efforts. This is great because that means there are alot of games that will work out of the box (including cutscenes)
     </p>
-    <h2>Mediaplatform support</h2>
+    <h3>DRM Support and Anticheat</h3>
     <p>
-      
+      These are some of the real problems that Wine is facing right now. Many software, especially under the AAA game section, have DRMs and anti-cheats that are incompatible with Wine. This is a problem because certain DRMs and Anticheats directly use the NT Kernel instead of interacting with the Win32API.
+    </p>
+    <p>
+      Since Wine is a translation layer of Win32API calls to GNU/Linux calls, now when software running on Wine will attempt to do a system call on the NT Kernel, Wine will let the software communicate with the Linux Kernel. Since the Linux kernel does not understand what the system call does, it will provide back an incorrect response or respond at all causing the DRM module or Anticheat to fail.
+    </p>
+    <p>
+      Of course, there are many ways to fix this; currently, Wine developers will translate the NT Kernel calls without sending a system call directly to the kernel. This is not necessarily bad, but custom Wine forks started to appear to make a specific game and DRM compatible with Linux.
+    </p>
+    <p>
+      With Linux Kernel 5.11, there is now syscall_user_dispatch which basically lets the kernel send back unsupported system calls back to userspace which will help alot standardizing this effort. This is not the silver bullet but it should help make things manageable now without having thousands and thousands of forks popping in.
+    </p>
+    <p>
+      Valve is making efforts to provide better Proton support for DRMs, especially for single-player games by nature. However, for Anticheat/Multiplayer games, we are still out of luck. So if you are playing a multiplayer game using Easy Anticheat, such as Fall guys, where the game was playable on Day 1 but became incompatible because the Easy Anticheat integration caused it to fail on Linux users.s.
+    </p>
+    <h3>Overall Compatibility</h3>
+    <a href="images/teso_1_wine.jpg" target="_blank"><img class="preview center" src="images/teso_1_wine.jpg"></a>
+    <p>
+      Naturally, one will think that the latest version is always the better one. But because of updates that happen on each version in an effort to fix existing issues or increase software compatibility, it is also natural that it will break existing application compatibility. This is why certain applications/games are recommended to be ran on a specific Wine version.
+    </p>
+    <p>
+      Thankfully it is possible to have multiple versions of Wine installed in a user's system. Thanks to launchers such as Lutris and Play on Linux, they have existing configurations that allows you to run/install applications with minimal effort in the user's end.
+    </p>
+    <p>
+      Not to mention Steam also allows you to run and configure to use specific versions of Proton (including Custom Proton forks such as Proton-TKG and Proton-GE) in a per game basis.
+    </p>
+    <p>
+      So to sum it all up, Wine compatibility has been doing great. But it is not yet on the level of super user friendliness yet. Even with Valve's proton, one may end up applying hacks or installing custom Proton builds in order to make a game run. With WineHQ and ProtonDB, there is a global database of what runs and what does not and what hacks are needed for a program to run properly. But if you do not like this type of setting, I'm afraid Linux is not for you yet.
+    </p>
+    <a href="images/pte_1_wine.jpg" target="_blank"><img class="preview center" src="images/pte_1_wine.jpg"></a>
+    <p>
+      Honestly, for me, I do admit it can be a hassle, but it is much better since I have more control over what is happening to my computer compare to Windows 10, where there have been changes hidden from us (via Windows update) and mysterious Windows services acting up causing overall system slowdown. Using Linux is much worth it this way.
+    </p>
+    <h2>State of Native games</h2>
+    <a href="images/eve_1_wine.jpg" target="_blank"><img class="preview center" src="images/eve_1_wine.jpg"></a>
+    <p>
+      Despite Wine being the main spotlight in Linux gaming lately (due to its opening a lot of games from Windows), there has been increasing traction of Linux compatibility, especially on the Indie section. Not to mention that have been online games too that slowly added native Linux support.
+    </p>
+    <p>
+      Examples are Valheim and Skul the hero slayer; both are popular games right now.
+    </p>
+    <p>
+      Aside from an increased number of games, there has been significant development in the technology side too in Linux that attracted application in general. Here are the following:
+    </p>
+    <h3>The rise popularity of AppImages</h3>
+    <p>
+      If Windows has static linked executables, MacOS has standalone executables, Linux has AppImages. AppImages are like standalone executables. You don't have to install it on the system; you can just run it after downloading it. All the necessary files are pack in a single container. No need to install dependencies; it just works.
+    </p>
+    <p>
+      I have been seeing a lot of companies supporting it lately, such as Artix Games using AppImages on their Game Launcher, OnlyOffice distributing AppImages. This is great because developers do not want to adopt Linux due to its fragmented ecosystem, and now AppImage is one of the solutions for that.
+    </p>
+    <h4>Flatpak and Snap, the other answers</h4>
+    <p>
+      These are other answers of software distribution. Flatpak and Snap are somewhat similar, although they differ in technicalities. Both of them provide a software storefront and deploy images in an isolated sandbox including all the needed dependencies similar to AppImage.
+    </p>
+    <p>
+      The key difference between Flatpak and Snap is what sandboxing protocol it is using. Flatpak uses Namespaces while Snap uses AppArmor. Redhat mainly develops Flatpak while Snap is Canonical.
+    </p>
+    <p>
+      Snap has the most hosted applications among the three, but some applications are not hosted in Snap but are available in others such as Flatpak or AppImage.
+    </p>
+    <a href="images/frogatto.jpeg" target="_blank"><img class="preview center" src="images/frogatto.jpeg"></a>
+    <h4>To summarize</h4>
+    <p>
+      That being said, AppImages, Flatpak, and Snap are just means for developers to effectively distribute their applications outside of using package files that may end up different per Linux distribution due to dependency conflict issues. For example, I am using Ubuntu 18.04.5 and will be staying here until 2023, but the glibc library I am using is far lower compared to what 20.04 offers, which will be alot of trouble on applications that require a higher version of glibc.
+    </p>
+    <p>
+      With the said methods above, I do not need to worry about it anymore. I do not need to worry about breaking old software compatibility since I do not need to force myself to customize my Ubuntu 18.04.5 even further to use a newer version of glibc!r to use a newer version of glibc!
+    </p>
+    <p>
+      Currently, there are a lot of applications already distributed using either of the three. Snap has been the most common one, and Flatpak being the second. AppImages vary since there is no consolidated storage or front for it (I know AppImageHub exists) thus, it is left to the developer to distribute their app using AppImage.
+    </p>
+    <h2>Can I game on Linux</h2>
+    <p>
+      Yes, you absolutely can. I have completely switched to Linux since last 2019. Some games are only playable on Windows or MacOS (Such as League of Legends [Can't be played on Wine because of Anticheat]). There were a lot of games that I could play instead(Dota 2 and Vainglory). Not to mention League now has a mobile version which very much took care of the problem itself.
+    </p>
+    <p>
+      Years ago, you can play only a few games on Linux, and it was a hit and miss. Wine is already spectacular back then (for being able to play Blizzard games; and back then when Blizzard was still great), but the options back then were super limited compared now.
+    </p>
+    <h2>Should I make the switch?</h2>
+    <p>
+      Now the real question. Should you? If your current setup is working fine, then I do not see the purpose that you should. For me, I made the switch because of two things
+    </p>
+    <ol>
+      <li>Windows 10 Forced Updates and Bloat</li>
+      <li>Death of my Main computer and had to build a new one</li>
+    </ol>
+    <p>
+      Because the changes were drastic for me, it gave me a situation where I had the incentive to change. Also, since Windows 10 requires a new license on a new computer anyway, might as well try out to go full Linux (No Dualboot) and check if it is great (to which it is)
+    </p>
+    <p>
+      So if you do not need to go Linux that badly, you do not have to switch. If it is work-related, mostly it can be covered by WSL (Windows Subsystem for Linux) or Virtual Machines unless you are working with software that is low level by nature or requires native performance.
+    </p>
+    <p>
+      Of course, nobody is stopping you if you want the freedom that Linux provides. One of the great things that I experienced with Linux is that if I made a hardware change, I do not need to recheck the drivers as it works out of the box.
+    </p>
+    <p>
+      Temporarily using Nvidia GT1030 and then swapping it to 1660 GTX did not require me to reinstall drivers as the currently installed one worked great. Aside from that is the less resource overhead compare to Windows 10 because all of the telemetry and other background services are required to run by default.
     </p>
     <h3>~ End ~</h3>
     <h4>
