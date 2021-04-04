@@ -72,10 +72,18 @@
       Gaming in Linux has been a really interesting topic on the Linux circle lately due to the immense progress that has been made for the past couple of years.
     </p>
     <p>
-      A decade ago, only a handful of native Linux AAA games supports Linux natively. The only native AAA game that I can remember back then was Amnesia, and the rest were indie games such as Frogatto and SuperTux. Wine was still in its infancy but very promising (it can run Starcraft 2!)
+      A decade ago, only a handful of native Linux AAA games supports Linux natively. The only native AAA game that I can remember back then was Amnesia, and the 
+      rest were indie games such as Frogatto and SuperTux. Wine was still in its infancy but very promising (it can run Starcraft 2!)
     </p>
     <p>
-      Now jump back to the present; a lot of things happened. OpenGL was always a bit inferior compare to DirectX in terms of performance. Then AMD invested in FOSS, laying their Mantle API to the FOSS community, and Vulkan was born. Not to mention AMD open-sourced their drivers too.
+      Now jump back to the present; a lot of things happened. OpenGL was always a bit inferior compare to DirectX in terms of performance (<a href="https://msoos.wordpress.com/2009/10/09/opengl-vs-directx/">atleast thats how Microsoft marketed it back then<sup>[1]</sup></a>). Then AMD invested in FOSS, 
+      laying their Mantle API to the FOSS community, and Vulkan was born. Actually Vulkan was supposed to be the next OpenGL version but because of the 
+      drastic changes in the API. They prompt for a name change instead.
+    </p>
+    <p>
+      Aside from that OpenGL was always having poor performance back in the day, this may not be true for Nvidia but because of poor driver support. OpenGL
+      always had the bad impression of being the inferior API. With <a href="https://github.com/GPUOpen-Drivers/AMDVLK">AMD move of providing a FOSS equivalent of 
+      drivers<sup>[2]</sup></a>, OpenGL support became better than ever.
     </p>
     <p>
       Vulkan made a lot of things possible. Such as DXVK and VKD3D. Originally Wine had great compatibility with DirectX9 and lower games. However, since newer games were using DirectX10, DirectX11 and DirectX12, many thought that it would be difficult for Wine to catch up with the more recent iterations of DirectX. With DXVK, DirectX10 and DirectX11 games became a reality and VKD3D became the solution for the new DirectX12.
@@ -86,7 +94,12 @@
     <p>
       We already knew for quite a while now that Valve went all-in on Linux. This started first with their games, but they even created Proton, a compatibility layer for Steam to play Windows games on Linux! Because of this move, Valve opened a lot of games to Linux users. (Case in point; I was able to even play Resident Evil 3 and Trials of Mana on Day 1!)
     </p>
-    <a href="images/re3_1_wine.jpg" target="_blank"><img class="preview center" src="images/re3_1_wine_tmb.jpg"></a>
+    
+    <figure>
+      <a href="images/re3_1_wine.jpg" target="_blank"><img class="preview center" src="images/re3_1_wine_tmb.jpg"></a>
+      <figcaption>Figure 1. Resident Evil 3, playable on release via Proton</figcaption>
+    </figure>
+    
     <p>
       Because of Proton, we started to have a flood of Wine forks (because Proton is a Wine fork) aiming to be compatible with a specific software/game, which is always great news for Linux fans.
     </p>
@@ -101,7 +114,12 @@
     <p>
       Very promising as it may be, it still has a lot of stuff that needs fixing. For example, only recently (DXVK 1.8) was it possible to play Megaman Legacy Collection 2. Originally you had rendering problems/issues as seen below.
     </p>
-    <a href="images/rendering_issue_megaman_2.jpg" target="_blank"><img class="preview center" src="images/rendering_issue_megaman_2_tmb.jpg"></a>
+    
+    <figure>
+      <a href="images/rendering_issue_megaman_2.jpg" target="_blank"><img class="preview center" src="images/rendering_issue_megaman_2_tmb.jpg"></a>
+      <figcaption>Figure 2. Rendering issue for Megaman Legacy Collection 2 due to DXVK incorrect translation</figcaption>
+    </figure>
+    
     <p>
       Basically, this means that not all games will run properly yet but eventually, they will.
     </p>
@@ -132,7 +150,12 @@
       Valve is making efforts to provide better Proton support for DRMs, especially for single-player games by nature. However, for Anticheat/Multiplayer games, we are still out of luck. So if you are playing a multiplayer game using Easy Anticheat, such as Fall guys, where the game was playable on Day 1 but became incompatible because the Easy Anticheat integration caused it to fail on Linux users.s.
     </p>
     <h3>Overall Compatibility</h3>
-    <a href="images/teso_1_wine.jpg" target="_blank"><img class="preview center" src="images/teso_1_wine_tmb.jpg"></a>
+    
+    <figure>
+      <a href="images/teso_1_wine.jpg" target="_blank"><img class="preview center" src="images/teso_1_wine_tmb.jpg"></a>
+      <figcaption>Figure 3. Elder Scrolls Online, a playable MMORPG on Proton despite being a Windows only game on Steam.</figcaption>
+    </figure>
+    
     <p>
       Naturally, one will think that the latest version is always the better one. But because of updates that happen on each version in an effort to fix existing issues or increase software compatibility, it is also natural that it will break existing application compatibility. This is why certain applications/games are recommended to be ran on a specific Wine version.
     </p>
@@ -145,12 +168,19 @@
     <p>
       So to sum it all up, Wine compatibility has been doing great. But it is not yet on the level of super user friendliness yet. Even with Valve's proton, one may end up applying hacks or installing custom Proton builds in order to make a game run. With WineHQ and ProtonDB, there is a global database of what runs and what does not and what hacks are needed for a program to run properly. But if you do not like this type of setting, I'm afraid Linux is not for you yet.
     </p>
-    <a href="images/pte_1_wine.jpg" target="_blank"><img class="preview center" src="images/pte_1_wine_tmb.jpg"></a>
+    <figure>
+      <a href="images/pte_1_wine.jpg" target="_blank"><img class="preview center" src="images/pte_1_wine_tmb.jpg"></a>
+      <figcaption>Figure 4. A Plague Tale - Innocence: Another triple-A game playable via Proton</figcaption>
+    </figure>
+    
     <p>
       Honestly, for me, I do admit it can be a hassle, but it is much better since I have more control over what is happening to my computer compare to Windows 10, where there have been changes hidden from us (via Windows update) and mysterious Windows services acting up causing overall system slowdown. Using Linux is much worth it this way.
     </p>
     <h2>State of Native games</h2>
-    <a href="images/eve_1_wine.jpg" target="_blank"><img class="preview center" src="images/eve_1_wine_tmb.jpg"></a>
+    <figure>
+      <a href="images/eve_1_wine.jpg" target="_blank"><img class="preview center" src="images/eve_1_wine_tmb.jpg"></a>
+      <figcaption>Figure 5. EverSpace - One of the games that has a native Linux port</figcaption>
+    </figure>
     <p>
       Despite Wine being the main spotlight in Linux gaming lately (due to its opening a lot of games from Windows), there has been increasing traction of Linux compatibility, especially on the Indie section. Not to mention that have been online games too that slowly added native Linux support.
     </p>
@@ -177,7 +207,10 @@
     <p>
       Snap has the most hosted applications among the three, but some applications are not hosted in Snap but are available in others such as Flatpak or AppImage.
     </p>
-    <a href="images/frogatto.jpeg" target="_blank"><img class="preview center" src="images/frogatto.jpeg"></a>
+    <figure>
+      <a href="images/frogatto.jpeg" target="_blank"><img class="preview center" src="images/frogatto.jpeg"></a>
+      <figcaption>Figure 6. Frogatto - One of the indie games available on several Linux distro repositories for free</figcaption>
+    </figure>
     <h4>To summarize</h4>
     <p>
       That being said, AppImages, Flatpak, and Snap are just means for developers to effectively distribute their applications outside of using package files that may end up different per Linux distribution due to dependency conflict issues. For example, I am using Ubuntu 18.04.5 and will be staying here until 2023, but the glibc library I am using is far lower compared to what 20.04 offers, which will be alot of trouble on applications that require a higher version of glibc.
