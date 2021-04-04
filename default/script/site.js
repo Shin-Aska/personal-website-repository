@@ -46,4 +46,6 @@ $( document ).ready(function() {
 		document.getElementById("menu").innerHTML += "<div class=\"menuButton\" onclick=\"javascript:window.location.href='" + menus[i].url +"'\">" + menus[i].name + "</div>"; 
 	}
     document.getElementById("header").innerHTML = sky.header;
+	document.getElementById("mainLabel").style.display = "none";
+	document.getElementById("backgroundLabel").style.display = "none";
 });
