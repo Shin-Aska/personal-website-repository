@@ -1,84 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta name="author" content="Richard Orilla">
-		<meta http-equiv="content-language" content="en-us">
-		<meta http-equiv="cache-control" content="no-cache">
-		<meta http-equiv="pragma" content="no-cache">
-		<meta name="robots" content="noindex">
-		<meta name="keywords" content="richard orilla, free games, resume">
-		<script src="script/data/menu.json" type="text/javascript"></script>
-		<script src="script/ThreeWebGL.js" type="text/javascript"></script>
-		<script src="script/ThreeCanvas.js" type="text/javascript"></script>
-		<script src="script/ThreeExtras.js" type="text/javascript"></script>
-		<script src="script/jquery.js" type="text/javascript"></script>
-		<script src="script/stats.js" type="text/javascript"></script>
-		<script src="script/sky.js" type="text/javascript"></script>
-		<script src="script/site.js" type="text/javascript"></script>
-		<script src="gallery.js" type="text/javascript"></script>
 
-		<link href="css/animation.css" rel="stylesheet" type="text/css">
-		<link href="css/fonts.css" rel="stylesheet" type="text/css">
-		<link href="css/site.css" rel="stylesheet" type="text/css">
-		<link href="css/sky.css" rel="stylesheet" type="text/css">
-		<link href="css/reset.css" rel="stylesheet" type="text/css">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="author" content="Richard Orilla">
+	<meta http-equiv="content-language" content="en-us">
+	<meta http-equiv="cache-control" content="no-cache">
+	<meta http-equiv="pragma" content="no-cache">
+	<meta name="robots" content="noindex">
+	<meta name="keywords" content="richard orilla, free games, resume">
+	<script src="script/data/menu.json" type="text/javascript"></script>
+	<script src="script/ThreeWebGL.js" type="text/javascript"></script>
+	<script src="script/ThreeCanvas.js" type="text/javascript"></script>
+	<script src="script/ThreeExtras.js" type="text/javascript"></script>
+	<script src="script/jquery.js" type="text/javascript"></script>
+	<script src="script/stats.js" type="text/javascript"></script>
+	<script src="script/sky.js" type="text/javascript"></script>
+	<script src="script/site.js" type="text/javascript"></script>
+	<script src="gallery.js" type="text/javascript"></script>
 
-		<!-- @@@ -->
-		<title>Skies of the Lost Cause - Gallery</title>
+	<link href="css/animation.css" rel="stylesheet" type="text/css">
+	<link href="css/fonts.css" rel="stylesheet" type="text/css">
+	<link href="css/site.css" rel="stylesheet" type="text/css">
+	<link href="css/sky.css" rel="stylesheet" type="text/css">
+	<link href="css/reset.css" rel="stylesheet" type="text/css">
+	<link href="css/slideshow.css" rel="stylesheet" type="text/css">
+
+	<!-- @@@ -->
+	<title>Skies of the Lost Cause - Gallery</title>
 
 
-	</head>
-	<body>
+</head>
 
-		<canvas id="main"></canvas>
-		<canvas id="background"></canvas>
-		<div id="mainLabel">
-			<p>Hi, it seems that the browser you're using is not compatible with my site. Either because it's too old or you're using one of the following browsers:</p>
-			<ul>
-				<li>Brow.sh - Terminal based browser that attempts to render a modern web using ssh</li>
-				<li>Lynx - Text based browser. The oldest browser that is still active in development!</li>
-				<li>w3m - Text based browser. Quite popular too</li>
-			</ul>
-		</div>
-		<div id="backgroundLabel">
-			<p>More importantly, I got you :-), Here is a backwards compatible version that is designed to work on older or no-javascript browsers <a href="http://classic.richardorilla.website">classic.richardorilla.website</a></p>
-		</div>
-		
-		<div id="header">
-			<div class="center themeContainer">
-				<object class="themelogo" type="image/svg+xml" data="images/pen.svg" align="middle">Your browser does not support SVG</object>
-			</div>
-			
-			<p class="headingBase start">= Skies of the lost cause +</p>
-			<p class="headingBase middle">Personal website of Richard Orilla</p>
-			<br>
-			<div class="center lineContainer">
-				<object class="lineSVG" type="image/svg+xml" data="images/hr.svg" align="middle">Your browser does not support SVG</object>
-			</div>
+<body>
+
+	<canvas id="main"></canvas>
+	<canvas id="background"></canvas>
+	<div id="mainLabel">
+		<p>Hi, it seems that the browser you're using is not compatible with my site. Either because it's too old or
+			you're using one of the following browsers:</p>
+		<ul>
+			<li>Brow.sh - Terminal based browser that attempts to render a modern web using ssh</li>
+			<li>Lynx - Text based browser. The oldest browser that is still active in development!</li>
+			<li>w3m - Text based browser. Quite popular too</li>
+		</ul>
+	</div>
+	<div id="backgroundLabel">
+		<p>More importantly, I got you :-), Here is a backwards compatible version that is designed to work on older or
+			no-javascript browsers <a href="http://classic.richardorilla.website">classic.richardorilla.website</a></p>
+	</div>
+
+	<div id="header">
+		<div class="center themeContainer">
+			<object class="themelogo" type="image/svg+xml" data="images/pen.svg" align="middle">Your browser does not
+				support SVG</object>
 		</div>
 
-		<div class="menu-container">
-			<div id="menu"></div>
+		<p class="headingBase start">= Skies of the lost cause +</p>
+		<p class="headingBase middle">Personal website of Richard Orilla</p>
+		<br>
+		<div class="center lineContainer">
+			<object class="lineSVG" type="image/svg+xml" data="images/hr.svg" align="middle">Your browser does not
+				support SVG</object>
 		</div>
+	</div>
 
-		<div id="content">
-			<h3>Welcome to my gallery</h3>
-			<p>
-				It is in here where I post personal images that I wish to share everyone
-				in the public. Since I barely use Facebook and I dislike their idea of 
-				processing our uploaded images to enhance their artificial intelligence
-				systems, I instead went with the self-host route.
-			</p>
-			<style>
+	<div class="menu-container">
+		<div id="menu"></div>
+	</div>
+
+	<div id="content">
+		<h3>Welcome to my gallery</h3>
+		<p>
+			It is in here where I post personal images that I wish to share everyone
+			in the public. Since I barely use Facebook and I dislike their idea of
+			processing our uploaded images to enhance their artificial intelligence
+			systems, I instead went with the self-host route.
+		</p>
+		<p>
+			Please understand that although I fully allow these images to be shared,
+			reused and edited for your personal and commercial means. I do NOT ALLOW 
+			using these images as part of your neural network data.
+		</p>
+		<div class="container pictureContainer">
+
+			<!-- Full-width images with number text -->
+			<div id="slideContainer">
 				
-			</style>
-			<canvas class="pictureContainer">
-				<image src="gallery/personal/personal_1.jpg"></image>
-				<image src="gallery/personal/personal_2.jpg"></image>
-			</canvas>
-		</div>
+			</div>
 
-	</body>
+			<!-- Next and previous buttons -->
+			<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+			<a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+			<!-- Image text -->
+			<div class="caption-container">
+				<p id="caption"></p>
+			</div>
+
+			<!-- Thumbnail images -->
+			<div class="row" id="thumbnailContainer">
+				
+			</div>
+		</div>
+		<br>
+		<h2>List of albums available in the gallery</h2>
+		<div id="albums"></div>
+		<br>
+		<p>
+			Please choose an album in the selection above. Choosing an album will change
+			the set of images shown in the slideshow. I categorized it this way to make it
+			easier for the viewer.
+		</p>
+		<p>
+			If you need to see the image on a new window, you can click the image itself.
+			You can navigate by pressing the navigation buttons or clicking directly on
+			the thumbnails which you can find in the bottom of the main image.
+		</p>
+		<script src="script/slideshow.js" type="text/javascript"></script>
+	</div>
+</body>
+
 </html>
