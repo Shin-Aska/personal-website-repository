@@ -22,6 +22,8 @@ if __name__ == "__main__":
         }
         files = scan(folder.path)
         for file in files:
+            if file.name == ".directory":
+                continue
             result[folder.name]["files"].append({
                 "name": file.name,
                 "path": file.path
