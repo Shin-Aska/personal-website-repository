@@ -64,8 +64,17 @@
 		</div>
 
 		<div id="content">
+			<h2 id="tableContents">Table of Contents</h2>
+			<ul>
+				<li><a href="#introduction">Introduction</a></li>
+				<li><a href="#type1_and_2_hypervisors">Type 1 and Type 2 Hypervisors</a></li>
+				<li><a href="#foss_type_2_hypervisors">FOSS Type 2 Hypervisors</a></li>
+				<li><a href="how_good_is_the_performance_for_it_on_gaming">How good is the performance for it on gaming</a></li>
+				<li><a href="what_about_wine">What about Wine</a></li>
+				<li><a href="conclusions">Conclusions</a></li>
+			</ul>
 			<h1 id="headingBlog">The viability of gaming in virtual machines on 2021</h1>
-    		<h2>Introduction</h2>
+    		<h2 id="introduction">Introduction</h2>
 			<p>
 				Windows is the de-facto choice for gamers playing on the PC. This is because
 				most games are available only on Windows. As of September 1st 2021, Steam has
@@ -88,7 +97,7 @@
 				next following section, we will discuss in great detail the possibility, viability, and pros & cons of 
 				playing games in a virtual machine.
 			</p>
-			<h2>Type 1 and Type 2 Hypervisors</h2>
+			<h2 id="type1_and_2_hypervisors">Type 1 and Type 2 Hypervisors</h2>
 			<p>
 				Type 1 and Type 2 Hypervisors have one key difference. One runs bare-metal (the former), the other runs on 
 				an existing operating system (the latter). Type 1 has less overhead than type 2 which is why most prefer 
@@ -137,7 +146,7 @@
 				Parallels might be a cheaper option for most (99$ per year), but it is not a one-time purchase, it is a subscription so if you are using it for 
 				2 years, it is the same price as Fusion Pro.
 			</p>
-			<h2>FOSS Type 2 Hypervisors</h2>
+			<h2 id="foss_type_2_hypervisors">FOSS Type 2 Hypervisors</h2>
 			<p>
 				Parallels and VMWare are commercial products and to some, it is hard to afford. However what about Virtualbox or KVM. Are they good for gaming?
 				Although these two type 2 hypervisors are free, Virtualbox is terrible with games. Its virtualized 3D hardware performs poorly. KVM is the go-to choice
@@ -145,7 +154,7 @@
 				currently only works on Linux guests. As of this writing VMWare's 3D virtualized GPU is the state of the art however it only supports OpenGL 4.1 and DirectX11.
 				The second one is Parallels but although it supports DirectX11, it only supports upto OpenGL 3.3
 			</p>
-			<h2>How good is the performance for it on gaming</h2>
+			<h2 id="how_good_is_the_performance_for_it_on_gaming">How good is the performance for it on gaming</h2>
 			<p>
 				With GPU Passthrough via KVM. It almost feel as if you're not running a virtual machine. This make sense as the only real overhead is the CPU emulation and it is not
 				really that felt because of IOMMU (Intel Vt-x / AMD-Vi). With a virtualized GPU, the performance is significantly slower. For example a GTX1050Ti can perform  
@@ -193,12 +202,12 @@
 				<a href="images/mc_sildurs_problem.png" target="_blank"><img class="preview center" src="images/mc_sildurs_problem_tmb.png"></a>
 				<figcaption>Figure 8. Minecraft with Sildurs Shaders on Virtual machine. Notice that it has plenty of suns? This problem doesn't happen on real hardware.</figcaption>
 			</figure><br>
-			<h2>What about Wine</h2>
+			<h2 id="what_about_wine">What about Wine</h2>
 			<p>
 				If the game or software runs properly on Wine, I suggest you stick with Wine as it has less performance overhead and can offer near native or 
 				even faster performance (assuming the Windows native implementation sucks and the translation layer produces a better performing code). But if it doesn't work because of DRM or Anticheat then Virtualization is a good alternative assuming that the game or software you are using uses APIs that the virtualized GPU supports.
 			</p>
-			<h2>Conclusions</h2>
+			<h2 id="conclusions">Conclusions</h2>
 			<p>
 				If you are just planning to relive your childhood and play older games or play indie games that do not aim to go for realistic physics, ray-tracing and all that state of the art features, then gaming via virtualization is a decent alternative. Since these games do not need powerful GPUs.
 			</p>
