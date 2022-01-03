@@ -6,8 +6,17 @@ albumContainer.innerHTML = "";
 var albums = Object.keys(pictures);
 for (var i = 0; i < albums.length; i++) {
 	var album = albums[i];
-	var html = '<h3 class="albumEntry" onclick="chooseAlbum(\'' + album.trim() + '\')">' + album[0].toUpperCase() + album.slice(1).toLowerCase() + '</h3>';
+	var html = '<h3 class="albumEntry" id=\'ALBUMENTRY@' + album.trim() + '\'>' + album[0].toUpperCase() + album.slice(1).toLowerCase() + '</h3>';
+	console.log(html)
 	albumContainer.innerHTML += html;
+}
+
+for (var i = 0; i < albums.length; i++) {
+	var album = albums[i];
+	document.getElementById("ALBUMENTRY@" + album.trim()).onclick = function(elem) {
+		var alb = elem.target.id.split("@")[1];
+		chooseAlbum(alb);
+	}
 }
 
 function chooseAlbum(album) {
@@ -34,10 +43,17 @@ function render() {
 		'</div>';
 
 		var thumbnail = 
-		'<div class="column" ><img class="demo cursor" src="' + pictures[chosenGallery].files[i].path + '" onclick="currentSlide(' + (i+1) + ')"></div>';
+		'<div class="column" ><img class="demo cursor" src="' + pictures[chosenGallery].files[i].path + '" id="slideImage_' + (i+1) + '""></div>';
 
 		slideContainer.innerHTML += slide;
 		thumbnailContainer.innerHTML += thumbnail;
+	}
+
+	for (var i = 0; i < pictures[chosenGallery].files.length; i++) {
+		document.getElementById("slideImage_" + (i+1)).onclick = function(elem) {
+			var chosenId = elem.target.id.split("_")[1];
+			currentSlide(chosenId);
+		}
 	}
 }
 
@@ -71,4 +87,12 @@ function showSlides(n) {
 	slides[slideIndex - 1].style.display = "block";
 	dots[slideIndex - 1].className += " active";
 	//captionText.innerHTML = dots[slideIndex - 1].alt;
+}
+
+document.getElementById("nextBtn").onclick = function() {
+	plusSlides(1);
+}
+
+document.getElementById("prevBtn").onclick = function() {
+	plusSlides(-1);
 }
