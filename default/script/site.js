@@ -41,11 +41,19 @@ $( document ).ready(function() {
 		window.location = window.location.href.replace(window.location.hostname, "classic.richardorilla.website");
 	}
 	
-
+	window.siteMenuURLs = {}
 	for (var i = 0; i < menus.length; i++) {
-		document.getElementById("menu").innerHTML += "<div class=\"menuButton\" onclick=\"javascript:window.location.href='" + menus[i].url +"'\">" + menus[i].name + "</div>"; 
+		//document.getElementById("menu").innerHTML += "<div class=\"menuButton\" onclick=\"javascript:window.location.href='" + menus[i].url +"'\">" + menus[i].name + "</div>";
+		document.getElementById("menu").innerHTML += "<div id=\"siteMenu_entry_" + (i+1) + "\" class=\"menuButton\">" + menus[i].name + "</div>"; 
+		window.siteMenuURLs["siteMenu_entry_" + (i+1)] = menus[i].url;
 	}
     document.getElementById("header").innerHTML = sky.header;
 	document.getElementById("mainLabel").style.display = "none";
 	document.getElementById("backgroundLabel").style.display = "none";
+
+	for (var i = 0; i < menus.length; i++) {
+		document.getElementById("siteMenu_entry_" + (i+1)).onclick = function(elem) {
+			window.location.href = window.siteMenuURLs[elem.target.id];
+		}
+	}
 });
