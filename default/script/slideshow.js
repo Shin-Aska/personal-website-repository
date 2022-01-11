@@ -52,7 +52,7 @@ function render() {
 	for (var i = 0; i < pictures[chosenGallery].files.length; i++) {
 		document.getElementById("slideImage_" + (i+1)).onclick = function(elem) {
 			var chosenId = elem.target.id.split("_")[1];
-			currentSlide(chosenId);
+			currentSlide(parseInt(chosenId));
 		}
 	}
 }
