@@ -19,6 +19,34 @@
 
 	<!-- @@@ -->
 	<title>Skies of the Lost Cause - Projects</title>
+	<style>
+		.tableReqs {
+		  border: 3px solid black;
+		  margin-left: auto;
+		  margin-right: auto;
+		  font-size: 12pt;
+		  background-color: white;
+		  width: 600px;
+		}
+	
+		.tableReqs > tbody > tr > td {
+		  border: 1px solid black;
+		}
+	
+		@media (max-width: 900px) {
+		  .tableReqs {
+			font-size: 10pt;
+			width: 400px;
+		  }
+		}
+	
+		@media (max-width: 600px) {
+		  .tableReqs {
+			font-size: 8pt;
+			width: 220px;
+		  }
+		}
+	</style>
 </head>
 
 <body>
@@ -45,145 +73,281 @@
 
 		<div id="content">
 			<h2 id="tableContents">Table of Contents</h2>
-		    <ul>
-		      <li><a href="#introduction">Introduction</a></li>
-		      <li><a href="#difference_between_chromeos_and_chromeos_flex">Difference between ChromeOS and ChromeOS Flex</a></li>
-		      <li><a href="#chromeos_is_lightweight">ChromeOS is lightweight and intended for people who mainly use the web.</a></li>
-		      <li><a href="#losing_the_lightweight_magic">Losing the lightweight magic</a></li>
-		      <li><a href="#compared_to_installing_gnu_linux_environment">Compared to installing GNU Linux environment</a></li>
-		      <li><a href="#chromeos_web_apps">ChromeOS Web apps</a></li>
-		      <li><a href="#conclusion">Conclusion</a></li>
-		    </ul>
-		    <h1 id="headingBlog">My opinions about Chrome OS Flex</h1>
-		    <h2 id="introduction">Introduction</h2>
-
-		    <figure>
-			  <a href="images/chromeos.png" target="_blank"><img class="preview center" src="images/chromeos_tmb.png"></a>
-			  <figcaption>Figure 1. How Chrome OS desktop looks like</figcaption>
+			<ul>
+				<li><a href="#introduction">Introduction</a></li>
+				<li><a href="#difference_between_chromeos_and_chromeos_flex">Difference between ChromeOS and ChromeOS
+						Flex</a></li>
+				<li><a href="#chromeos_is_lightweight">ChromeOS is lightweight and intended for people who mainly use the
+						web.</a></li>
+				<li><a href="#losing_the_lightweight_magic">Losing the lightweight magic</a></li>
+				<li><a href="#compared_to_installing_gnu_linux_environment">Compared to installing GNU Linux environment</a>
+				</li>
+				<li><a href="#chromeos_web_apps">ChromeOS Web apps</a></li>
+				<li><a href="#conclusion">Conclusion</a></li>
+			</ul>
+			<h1 id="headingBlog">My opinions about Chrome OS Flex</h1>
+			<h2 id="introduction">Introduction</h2>
+	
+			<figure>
+				<a href="images/chromeos.png" target="_blank"><img class="preview center" src="images/chromeos_tmb.png"></a>
+				<figcaption>Figure 1. How Chrome OS desktop looks like</figcaption>
 			</figure>
-			<p>Chrome OS is a Linux-based operating system that primarily revolves around Chrome. From the user interface down to its core, it is mainly built using the Chrome ecosystem technology stack, which takes a different route to the typical Linux distro that revolves around the GNU ecosystem.</p>
-
-			<p>Initially started as an operating system designed mainly to rely on internet technologies (cloud-first operating system). It grew to have a set of features that made it worthwhile to use; this includes built-in Android emulation runtime (to allow running Android apps on the system) to enable the running of Linux apps.</p>
-
-			<p>These features, although are nice, are only supported on later iterations of the Chromebook; thus, older versions are left hanging, outdated, and a security risk.</p>
-
-			<p>In addition to that, ChromeOS is not an easy to access operating system compared to other Linux distros. This is because, officially, you can only install ChromeOS on Chromebook devices.</p>
-
-			<p>There are <a href="https://github.com/sebanc/brunch">some ways to install ChromeOS on non-Chromebooks<sup>[1]</sup></a>, but it is not straightforward and requires tinkering before working properly and not to mention requires a specific set of hardware</p>
-
-			<p>However, Google is planning to change that with ChromeOS Flex. Google's intentions are to make ChromeOS more dominant and accessible to non-Chromebook devices and a means for old Chromebooks to get the latest versions of Chrome that it deserves.</p>
-
+			<p>Chrome OS is a Linux-based operating system that primarily revolves around Chrome. From the user interface
+				down to its core, it is mainly built using the Chrome ecosystem technology stack, which takes a different
+				route to the typical Linux distro that revolves around the GNU ecosystem.</p>
+	
+			<p>Initially started as an operating system designed mainly to rely on internet technologies (cloud-first
+				operating system). It grew to have a set of features that made it worthwhile to use; this includes built-in
+				Android emulation runtime (to allow running Android apps on the system) to enable the running of Linux apps.
+			</p>
+	
+			<p>These features, although are nice, are only supported on later iterations of the Chromebook; thus, older
+				versions are left hanging, outdated, and a security risk.</p>
+	
+			<p>In addition to that, ChromeOS is not an easy to access operating system compared to other Linux distros. This
+				is because, officially, you can only install ChromeOS on Chromebook devices.</p>
+	
+			<p>There are <a href="https://github.com/sebanc/brunch">some ways to install ChromeOS on
+					non-Chromebooks<sup>[1]</sup></a>, but it is not straightforward and requires tinkering before working
+				properly and not to mention requires a specific set of hardware</p>
+	
+			<p>However, Google is planning to change that with ChromeOS Flex. Google's intentions are to make ChromeOS more
+				dominant and accessible to non-Chromebook devices and a means for old Chromebooks to get the latest versions
+				of Chrome that it deserves.</p>
+	
 			<h2 id="difference_between_chromeos_and_chromeos_flex">Difference between ChromeOS and ChromeOS Flex</h2>
-
-			<p>ChromeOS flex and ChromeOS share the same technology stack. The only difference between the two is the ability to run Android apps. Chrome OS Flex does not support running Android apps at this writing.</p>
-
-
+	
+			<p>ChromeOS flex and ChromeOS share the same technology stack. The only difference between the two is the
+				ability to run Android apps. Chrome OS Flex does not support running Android apps at this writing.</p>
+	
+	
 			<h2 id="chromeos_is_lightweight">ChromeOS is lightweight and intended for people who mainly use the web.</h2>
-
+	
 			<figure>
-			  <a href="images/chromeos_task_manager.png" target="_blank"><img class="preview center" src="images/chromeos_task_manager_tmb.png"></a>
-			  <figcaption>Figure 2. Chrome OS task manager</figcaption>
+				<a href="images/chromeos_task_manager.png" target="_blank"><img class="preview center"
+						src="images/chromeos_task_manager_tmb.png"></a>
+				<figcaption>Figure 2. Chrome OS task manager</figcaption>
 			</figure>
-
-			<p>ChromeOS is catered towards internet heavy oriented activities, including the Flex version. With ChromeOS, your computer isn't really doing anything aside from running Chrome, and since by design, from user interface down to its core, it's all Chrome, no system processes are competing with Chrome.</p>
-
-			<p>So your computer can all focus its power on just one thing, and that is ensuring Chrome runs at its best. This is the reason why even computers with low RAM runs Chrome smoothly. Since ChromeOS will use all of the RAM by default for Chrome. If you have 8GB of RAM on your device, it will utilize all 8GB of that RAM solely for Chrome.</p>
-
+	
+			<p>ChromeOS is catered towards internet heavy oriented activities, including the Flex version. With ChromeOS,
+				your computer isn't really doing anything aside from running Chrome, and since by design, from user
+				interface down to its core, it's all Chrome, no system processes are competing with Chrome.</p>
+	
+			<p>So your computer can all focus its power on just one thing, and that is ensuring Chrome runs at its best.
+				This is the reason why even computers with low RAM runs Chrome smoothly. Since ChromeOS will use all of the
+				RAM by default for Chrome. If you have 8GB of RAM on your device, it will utilize all 8GB of that RAM solely
+				for Chrome.</p>
+	
 			<h2 id="losing_the_lightweight_magic">Losing the lightweight magic</h2>
-
-			<p>If you decide to install any Android application or even the Linux runtime, ChromeOS will split that RAM usage accordingly. If the Android game running on Chrome OS will require 3GB of RAM to run, ChromeOS will adjust accordingly.</p>
-
-			<p>It is all good as long as it has enough resources to handle it, but if the use-case applies to low-end hardware, then you are not gonna have a good time. There are scenarios where ChromeOS runs Android or Linux apps poorly on devices with small RAM (2Gb devices) as there is not enough memory for everything.</p>
-
-			<p>Security perspective this is really great, because each app ecosystem are containerize on their own sandbox. However my point here is that ChromeOS (including Flex) is not really lightweight. It feels that way on certain usecases because it is cheating by embedding the most commonly used application as part of its core.</p>
-			
-			<p>It is no different than Internet Explorer back in the day consuming less resources than other browser simply because Internet explorer is using Windows core components instead of using a third party one that needs to be initialized.</p>
-
+	
+			<p>If you decide to install any Android application or even the Linux runtime, ChromeOS will split that RAM
+				usage accordingly. If the Android game running on Chrome OS will require 3GB of RAM to run, ChromeOS will
+				adjust accordingly.</p>
+	
+			<p>It is all good as long as it has enough resources to handle it, but if the use-case applies to low-end
+				hardware, then you are not gonna have a good time. There are scenarios where ChromeOS runs Android or Linux
+				apps poorly on devices with small RAM (2Gb devices) as there is not enough memory for everything.</p>
+	
+			<p>Security perspective this is really great, because each app ecosystem are containerize on their own sandbox.
+				However my point here is that ChromeOS (including Flex) is not really lightweight. It feels that way on
+				certain usecases because it is cheating by embedding the most commonly used application as part of its core.
+			</p>
+	
+			<p>It is no different than Internet Explorer back in the day consuming less resources than other browser simply
+				because Internet explorer is using Windows core components instead of using a third party one that needs to
+				be initialized.</p>
+	
 			<h2 id="compared_to_installing_gnu_linux_environment">Compared to installing GNU Linux environment</h2>
-
-			<p>Most Linux distros (Ubuntu 21.10, KDE Neon, Fedora 34, ElementaryOS) have idle usages of more than 1GB, as seen in the figure below. This is not good for low-end devices.</p>
-
+	
+			<p>Most Linux distros (Ubuntu 21.10, KDE Neon, Fedora 34, ElementaryOS) have idle usages of more than 1GB, as
+				seen in the figure below. This is not good for low-end devices.</p>
+	
 			<figure>
-			  <a href="images/ubuntu.png" target="_blank"><img class="preview center" src="images/ubuntu_tmb.png"></a>
-			  <figcaption>Figure 4. Ubuntu 21.20 resource consumption</figcaption>
+				<table class="tableReqs">
+					<colgroup span="4" width="90"></colgroup>
+					<tr>
+						<td>Linux distribution name</font>
+						</td>
+						<td>Idle RAM consumption</font>
+						</td>
+						<td>Cached data</font>
+						</td>
+						<td>Actual used (Idle - Cached)</font>
+						</td>
+					</tr>
+	
+					<tr>
+						<td>Ubuntu 21.10</font>
+						</td>
+						<td>1.7GB</font>
+						</td>
+						<td>1.3GB</font>
+						</td>
+						<td>400MB</font>
+						</td>
+					</tr>
+	
+					<tr>
+						<td>Fedora 34</font>
+						</td>
+						<td>2.2GB</font>
+						</td>
+						<td>1.6GB</font>
+						</td>
+						<td>600MB</font>
+						</td>
+					</tr>
+	
+					<tr>
+						<td>Elementary OS Jólnire</font>
+						</td>
+						<td>1.3GB</font>
+						</td>
+						<td>700MB</font>
+						</td>
+						<td>600MB</font>
+						</td>
+					</tr>
+	
+					<tr>
+						<td>KDE Neon 5.24</font>
+						</td>
+						<td>1.7GB</font>
+						</td>
+						<td>1.1GB</font>
+						</td>
+						<td>600MB</font>
+						</td>
+					</tr>
+	
+					<tr>
+						<td>Tinycore Linux</font>
+						</td>
+						<td>25MB</font>
+						</td>
+						<td>N/A</font>
+						</td>
+						<td>N/A</font>
+						</td>
+					</tr>
+				</table>
+				<figcaption>Figure 3. Resource Usage comparison</figcaption>
 			</figure>
-
+	
 			<figure>
-			  <a href="images/fedora.png" target="_blank"><img class="preview center" src="images/fedora_tmb.png"></a>
-			  <figcaption>Figure 5. Fedora 34 resource consumption</figcaption>
+				<a href="images/ubuntu.png" target="_blank"><img class="preview center" src="images/ubuntu_tmb.png"></a>
+				<figcaption>Figure 4. Ubuntu 21.20 resource consumption</figcaption>
 			</figure>
-
+	
 			<figure>
-			  <a href="images/elementary.png" target="_blank"><img class="preview center" src="images/elementary_tmb.png"></a>
-			  <figcaption>Figure 6. Elementary OS Jólnir resource consumption</figcaption>
+				<a href="images/fedora.png" target="_blank"><img class="preview center" src="images/fedora_tmb.png"></a>
+				<figcaption>Figure 5. Fedora 34 resource consumption</figcaption>
 			</figure>
-
+	
 			<figure>
-			  <a href="images/kde_neon.png" target="_blank"><img class="preview center" src="images/kde_neon_tmb.png"></a>
-			  <figcaption>Figure 7. KDE Neon 5.24 resource consumption</figcaption>
+				<a href="images/elementary.png" target="_blank"><img class="preview center"
+						src="images/elementary_tmb.png"></a>
+				<figcaption>Figure 6. Elementary OS Jólnir resource consumption</figcaption>
 			</figure>
-
-			<p>However, there are distros out there catered towards these low-end devices. For example, the figure below shows TinyCore Linux running Chromium on a 768MB RAM machine.</p>
-
+	
 			<figure>
-			  <a href="images/tinycore.png" target="_blank"><img class="preview center" src="images/tinycore_tmb.png"></a>
-			  <figcaption>Figure 8. Tinycore Linux resource consumption</figcaption>
+				<a href="images/kde_neon.png" target="_blank"><img class="preview center" src="images/kde_neon_tmb.png"></a>
+				<figcaption>Figure 7. KDE Neon 5.24 resource consumption</figcaption>
 			</figure>
-
-			<p>Admittedly, TinyCore Linux is not for your casual Linux users and is on the extreme edge case; however, there are other Linux distros such as <a href="https://puppylinux.com/download.html">PuppyLinux<sup>[2]</sup></a>, <a href="https://trisquel.info/en/download">Trisquel Mini<sup>[3]</sup></a>, <a href="https://www.absolutelinux.org/download.html">Absolute Linux<sup>[4]</sup></a> and <a href="https://www.bodhilinux.com/">Bodhi Linux<sup>[5]</sup></a>.</p>
-
-			<p>The beauty of installing GNU Linux instead of ChromeOS is that no intermediator decides how much RAM a specific environment requires. Chrome, your native Office application, and games can all be running in harmony.</p>
-
-			<p>Although if all you want is a glorified Chrome device, then nothing can beat ChromeOS. That also implies that your device is good as useless when there is no internet connection since your options are limited as it is on a low-end device.</p>
-
+	
+			<p>However, there are distros out there catered towards these low-end devices. For example, the figure below
+				shows TinyCore Linux running Chromium on a 768MB RAM machine.</p>
+	
+			<figure>
+				<a href="images/tinycore.png" target="_blank"><img class="preview center" src="images/tinycore_tmb.png"></a>
+				<figcaption>Figure 8. Tinycore Linux resource consumption</figcaption>
+			</figure>
+	
+			<p>Admittedly, TinyCore Linux is not for your casual Linux users and is on the extreme edge case; however, there
+				are other Linux distros such as <a href="https://puppylinux.com/download.html">PuppyLinux<sup>[2]</sup></a>,
+				<a href="https://trisquel.info/en/download">Trisquel Mini<sup>[3]</sup></a>, <a
+					href="https://www.absolutelinux.org/download.html">Absolute Linux<sup>[4]</sup></a> and <a
+					href="https://www.bodhilinux.com/">Bodhi Linux<sup>[5]</sup></a>.</p>
+	
+			<p>The beauty of installing GNU Linux instead of ChromeOS is that no intermediator decides how much RAM a
+				specific environment requires. Chrome, your native Office application, and games can all be running in
+				harmony.</p>
+	
+			<p>Although if all you want is a glorified Chrome device, then nothing can beat ChromeOS. That also implies that
+				your device is good as useless when there is no internet connection since your options are limited as it is
+				on a low-end device.</p>
+	
 			<h2 id="chromeos_web_apps">ChromeOS Web apps</h2>
-
-			<p>ChromeOS Web apps are the staple of ChromeOS. Before having Android and Linux runtimes, ChromeOS early versions initially shipped with just web apps alone, similar to the earlier version of iPhone, trying to bet on the web app ecosystem.</p>
-
+	
+			<p>ChromeOS Web apps are the staple of ChromeOS. Before having Android and Linux runtimes, ChromeOS early
+				versions initially shipped with just web apps alone, similar to the earlier version of iPhone, trying to bet
+				on the web app ecosystem.</p>
+	
 			<figure>
-			  <a href="images/chromeos_gaming1.png" target="_blank"><img class="preview center" src="images/chromeos_gaming1_tmb.png"></a>
-			  <figcaption>Figure 9. Gaming on ChromeOS</figcaption>
+				<a href="images/chromeos_gaming1.png" target="_blank"><img class="preview center"
+						src="images/chromeos_gaming1_tmb.png"></a>
+				<figcaption>Figure 9. Gaming on ChromeOS</figcaption>
 			</figure>
-
-			<p>They do work, and most work great, and most can even work offline. As you can see here, where I was running three games, a SNES emulator running Super Mario Brothers All-Stars, Cut the Rope, and Swoop are all running while there is no wifi connection available.</p>
-
+	
+			<p>They do work, and most work great, and most can even work offline. As you can see here, where I was running
+				three games, a SNES emulator running Super Mario Brothers All-Stars, Cut the Rope, and Swoop are all running
+				while there is no wifi connection available.</p>
+	
 			<figure>
-			  <a href="images/chromeos_book_offline.png" target="_blank"><img class="preview center" src="images/chromeos_book_offline.png"></a>
-			  <figcaption>Figure 10. ChromeOS Google books</figcaption>
+				<a href="images/chromeos_book_offline.png" target="_blank"><img class="preview center"
+						src="images/chromeos_book_offline.png"></a>
+				<figcaption>Figure 10. ChromeOS Google books</figcaption>
 			</figure>
-
-			<p>However, some do not work at all. Like there is no offline mode for Google books (which is like a bummer), there is also a challenge trying to make files available for offline use (it is not on by default).</p>
-
-			<p>Opening word, excel, and PowerPoint files (.docx, .xlsx, .pptx) is a challenge since you cannot run it from Google docs if it wasn't uploaded first to google drive and made available for offline use.</p>
-
-			<p>In terms of entertainment, you can, in fact, download VLC on it (there is an official Chrome web app version of it), but the ChromeOS version is lacking in a lot of aspects, but it can play videos fine <a href="https://support.google.com/chromebook/answer/183093?hl=en">(as long as it is under the supported format)<sup>[6]</sup></a>.</p>
-
+	
+			<p>However, some do not work at all. Like there is no offline mode for Google books (which is like a bummer),
+				there is also a challenge trying to make files available for offline use (it is not on by default).</p>
+	
+			<p>Opening word, excel, and PowerPoint files (.docx, .xlsx, .pptx) is a challenge since you cannot run it from
+				Google docs if it wasn't uploaded first to google drive and made available for offline use.</p>
+	
+			<p>In terms of entertainment, you can, in fact, download VLC on it (there is an official Chrome web app version
+				of it), but the ChromeOS version is lacking in a lot of aspects, but it can play videos fine <a
+					href="https://support.google.com/chromebook/answer/183093?hl=en">(as long as it is under the supported
+					format)<sup>[6]</sup></a>.</p>
+	
 			<h2 id="app_ecosystem">App Ecosystem</h2>
-			
-			<p>Window's dominance is mainly because of its humongous app ecosystem. Apple has a few killer apps here and there, Linux mainly is a preference of some because of its extreme customizability due to most apps </p>
-
+	
+			<p>Window's dominance is mainly because of its humongous app ecosystem. Apple has a few killer apps here and
+				there, Linux mainly is a preference of some because of its extreme customizability due to most apps </p>
+	
 			<h2 id="conclusion">Conclusion</h2>
-
-			<p>In my opinion, installing ChromeOS Flex isn't worth it in general, even if Google adds the Android subsystem for ChromeOS. For me, it is much better to just install a GNU Linux distro as you get more out of it (performance-wise). While yes, it is true that you can install Linux for ChromeOS and run your Linux apps in it, ChromeOS now has to split its resource between itself and the Linux. It is just not fun when you are under Google's walled garden now.</p>
-
+	
+			<p>In my opinion, installing ChromeOS Flex isn't worth it in general, even if Google adds the Android subsystem
+				for ChromeOS. For me, it is much better to just install a GNU Linux distro as you get more out of it
+				(performance-wise). While yes, it is true that you can install Linux for ChromeOS and run your Linux apps in
+				it, ChromeOS now has to split its resource between itself and the Linux. It is just not fun when you are
+				under Google's walled garden now.</p>
+	
 			<figure>
-			  <a href="images/chromeos_streaming.png" target="_blank"><img class="preview center" src="images/chromeos_streaming_tmb.png"></a>
-			  <figcaption>Figure 11. ChromeOS streaming</figcaption>
+				<a href="images/chromeos_streaming.png" target="_blank"><img class="preview center"
+						src="images/chromeos_streaming_tmb.png"></a>
+				<figcaption>Figure 11. ChromeOS streaming</figcaption>
 			</figure>
-
-			<p>There is nothing unique given to the web experience as well. My experience with ChromeOS is similar to how I was browsing the web with Chrome running on Linux.</p>
-
-			<p>For example, Prime video still is not happy that I am using a browser and operating system that doesn't use the "better" DRM, thus serving me 720p videos at best.</p>
-
-			<p>But I can understand the appeal, so even though I do not think it is worth it in general, if all you want to do is just browse the web in general, then you should give ChromeOS a try, although one problem here is that its hardware support is not as profound as GNU/Linux does, like there is no support for Nvidia cards so it will not boot at all, requiring a little bit of experimentation if your hardware is compatible with the operating system itself.</p>
-
-		    <h3>~ End ~</h3>
-		    <h4>
-		      <a href="#headingBlog">Go back to top</a>
-		    </h4>
-		    <h4>
-		      <a href="blog.html">Go back to list of articles</a>
-		    </h4>
+	
+			<p>There is nothing unique given to the web experience as well. My experience with ChromeOS is similar to how I
+				was browsing the web with Chrome running on Linux.</p>
+	
+			<p>For example, Prime video still is not happy that I am using a browser and operating system that doesn't use
+				the "better" DRM, thus serving me 720p videos at best.</p>
+	
+			<p>But I can understand the appeal, so even though I do not think it is worth it in general, if all you want to
+				do is just browse the web in general, then you should give ChromeOS a try, although one problem here is that
+				its hardware support is not as profound as GNU/Linux does, like there is no support for Nvidia cards so it
+				will not boot at all, requiring a little bit of experimentation if your hardware is compatible with the
+				operating system itself.</p>
+	
+			<h3>~ End ~</h3>
+			<h4>
+				<a href="#headingBlog">Go back to top</a>
+			</h4>
+			<h4>
+				<a href="blog.html">Go back to list of articles</a>
+			</h4>
 		</div>
 	</center>
 </body>
