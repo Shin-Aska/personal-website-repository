@@ -239,7 +239,20 @@
       $(document).ready(function () {
         $("#blog-articles").DataTable({
           paging: true,
-          order: [[0, "desc"]]
+          order: [[0, "desc"]],
+          colReorder: true,
+          responsive: true,
+          "rowCallback": function (row, data, index) {
+            var that = row;
+            if(!$(row).attr('role') || $(row).attr('role') != 'row' || $(row).hasClass('parent')){
+              return;
+            }
+            $(row).addClass('parent');
+          },
+          "columnDefs": [
+            { "width": "20%", "targets": 0 },
+            { "className": "cs-text-center", "targets": 1}
+          ]
         });
       });
     </script>
