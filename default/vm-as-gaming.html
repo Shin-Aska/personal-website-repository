@@ -72,6 +72,7 @@
 				<li><a href="#how_good_is_the_performance_for_it_on_gaming">How good is the performance for it on gaming</a></li>
 				<li><a href="#what_about_wine">What about Wine</a></li>
 				<li><a href="#conclusions">Conclusions</a></li>
+				<li><a href="#update_june_23_2022">Update: June 23, 2022</a></li>
 			</ul>
 			<h1 id="headingBlog">The viability of gaming in virtual machines on 2021</h1>
     		<h2 id="introduction">Introduction</h2>
@@ -223,9 +224,29 @@
 			<p>
 				Anything else, if Wine can not help you, then you're out of luck. Just do a dual boot. Playing something like Resident Evil 3 on a virtualized GPU will not be a fun experience because the performance penalty will be huge enough (because its a 77% penalty, roughly you only get 1/4th of the power that your hardware can produce if it was running natively) that it will probably be at 10-20fps at best, even with a very high end hardware.
 			</p>
-			<p>
 
+			<h2 id="update_june_23_2022">Update: June 23, 2022</h2>
+			<figure>
+				<a href="images/diablo_immortal.png" target="_blank"><img class="preview center" src="images/diablo_immortal_tmb.png"></a>
+				<figcaption>Figure 10. Playing Diablo Immortal on very-high settings on VMware 16 on a Linux host and Windows 11 guest</figcaption>
+			</figure><br>
+			<p>
+				A friend of mine asked me if I could play Diablo Immortal with him earlier last week. I initially tried first on Wine with DXVK and everything, it seems that playing Immortal on Wine doesn't work yet. 
 			</p>
+			<p>
+				I have managed to install the game successfully but whenever it runs, it crashes/closes a few seconds later. Tried using Wine builds with modifications from Glorius eggroll (Wine-GE) to no avail.
+			</p>
+			<p>
+				Perhaps there is an anticheat at play that prevents it from working on Wine. I investigated the system requirements and found out that the game can run on a low-end GPU along with DirectX 11 rendering.
+			</p>
+			<p>
+				Seeing the checklist, I gave it a go on VMware and it worked with acceptable performance. Although it does run on very-high settings, I do notice that it drops down to 20-30fps so I tone it down to low so that I can get
+				around 40-60fps performance, give-or-take.
+			</p>
+			<p>
+				I manage to get to level 30 (10 levels higher than the screenshot) for like 4 hours of straight play. So I can say that yes, playing on a virtual machine is still viable in 2022 given that the game you are playing is not demanding enough that the performance penalty will prevent the game from becoming playable at all.
+			</p>
+
 			<h3>~ End ~</h3>
 			<h4>
 				<a href="#headingBlog">Go back to top</a>
