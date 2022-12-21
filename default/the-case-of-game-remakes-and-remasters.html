@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="author" content="Richard Orilla">
+		<meta http-equiv="content-language" content="en-us">
+		<meta http-equiv="cache-control" content="no-cache">
+		<meta http-equiv="pragma" content="no-cache">
+		<meta name="robots" content="index"> 
+		<meta name="keywords" content="richard orilla, free games, resume">
+		<noscript><meta http-equiv="refresh" content="0; url=https://classic.richardorilla.website/template.html" /></noscript>
+		<script nonce="ddfGh134" src="script/data/menu.json" type="text/javascript"></script>
+		<script nonce="ddfGh134" src="script/ThreeWebGL.js" type="text/javascript"></script>
+		<script nonce="ddfGh134" src="script/ThreeCanvas.js" type="text/javascript"></script>
+		<script nonce="ddfGh134" src="script/ThreeExtras.js" type="text/javascript"></script>
+		<script nonce="ddfGh134" src="script/jquery.js" type="text/javascript"></script>
+		<script nonce="ddfGh134" src="script/stats.js" type="text/javascript"></script>
+		<script nonce="ddfGh134" src="script/sky.js"></script>
+		<script nonce="ddfGh134" src="script/site.js" type="text/javascript"></script>
+
+		<link href="css/animation.css" rel="stylesheet" type="text/css">
+		<link href="css/fonts.css" rel="stylesheet" type="text/css">
+		<link href="css/site.css" rel="stylesheet" type="text/css">
+		<link href="css/sky.css" rel="stylesheet" type="text/css">
+		<link href="css/reset.css" rel="stylesheet" type="text/css">
+
+		<!-- @@@ -->
+		<title>Skies of the Lost Cause - The case of game remasters and remakes</title>
+        <link href="css/comparison.css" rel="stylesheet" type="text/css">
+		<script nonce="ddfGh134" src="script/comparison.js" type="text/javascript"></script>
+
+	</head>
+	<body>
+
+		<canvas id="main"></canvas>
+		<canvas id="background"></canvas>
+		<div id="mainLabel">
+			<p>Hi, it seems that the browser you're using is not compatible with my site. Either because it's too old or you're using one of the following browsers:</p>
+			<ul>
+				<li>Brow.sh - Terminal based browser that attempts to render a modern web using ssh</li>
+				<li>Lynx - Text based browser. The oldest browser that is still active in development!</li>
+				<li>w3m - Text based browser. Quite popular too</li>
+			</ul>
+		</div>
+		<div id="backgroundLabel">
+			<p>More importantly, I got you :-), Here is a backwards compatible version that is designed to work on older or no-javascript browsers <a href="http://classic.richardorilla.website">classic.richardorilla.website</a></p>
+		</div>
+		
+		<div id="header">
+			<div class="center themeContainer">
+				<object class="themelogo" type="image/svg+xml" data="images/pen.svg" align="middle">Your browser does not support SVG</object>
+			</div>
+			
+			<p class="headingBase start">= Skies of the lost cause +</p>
+			<p class="headingBase middle">Personal website of Richard Orilla</p>
+			<br>
+			<div class="center lineContainer">
+				<object class="lineSVG" type="image/svg+xml" data="images/hr.svg" align="middle">Your browser does not support SVG</object>
+			</div>
+		</div>
+
+		<div class="menu-container">
+			<div id="menu"></div>
+		</div>
+
+		<div id="content">
+
+			<h2 id="tableContents">Table of Contents</h2>
+		    <ul>
+		      <li><a href="#introduction">Introduction</a></li>
+			  <li><a href="#new_life">Brings new life to a classic</a></li>
+			  <li><a href="#new_perspective">A way to replay the game in a fresh paint and/or perspective</a></li>
+			  <li><a href="#not_perfect">Not everything is perfect</a></li>
+			  <li><a href="#conclusion">Conclusion</a></li>
+		    </ul>
+		    <h1 id="headingBlog">Why video game remasters and remakes are awesome</h1>
+		    <h2 id="introduction">Introduction</h2>
+			<p>
+				There is a popular trend going on around right now on the video game industry where old games
+				(either a previous iteration or a stale series/franchise) are picked up once again and become modernized
+				in sorts of ways. Currently, the approach is categorized into two techniques:
+			</p>
+			<p>
+				The remake approach where the old game obtains updated mechanics to be in-line with the more recent titles 
+				along with updated visuals and sounds. For example, Resident Evil 2 and 3 remakes has now adopted to be 3rd person
+				shooter, a mechanic that was introduced in Resident Evil 4. Originally Resident Evil had fixed camera, and tank controls.
+			</p>
+
+			<p>
+				Fixed camera, as the name suggests, the camera angle of a specific area is already predetermined and cannot be moved. While
+				tank controls is a type of design in player control where players control movement relative to the character's position rather
+				than the perspective of the camera. These design patterns were used before as a means to deliver a game out of a system limitation.
+			</p>
+			
+			<p>
+				Although clever approach to solve a hardware problem at the time, one must admit that for newer players, there is a certain degree of 
+				learning curve one must learn to be able to play the game under this design in-contrast with the 3rd person perspective.
+			</p>
+
+			<p>
+				Some fans hate
+				the 3rd person and wants the game to go back to its roots while some prefer to embrace the new change, eitherway, its a matter of perspective
+				preferences. Where I personally prefer the 3rd person perspective over the other.
+			</p>
+
+			<p style="text-align: center;">
+                <i>
+                    Resident Evil 3 Remake on the left and the original on the right
+                </i>
+            </p>
+
+			<div class="img-comp-container">
+				<div class="img-comp-img">
+				  <img src="images/re3o.webp" width="711" height="400">
+				</div>
+				<div class="img-comp-img img-comp-overlay">
+				  <img src="images/re3.webp" width="711" height="400">
+				</div>
+			</div>
+			<p>
+				The other one is the remastered approach, where the old game still retains its core gameplay mechanic while obtaining
+				a set of enhancements. Mostly done to make the game run on newer hardware but some added quality of life improvements 
+				while some also gets updated visuals and sounds too.
+			</p>
+			<p>
+				For example, Diablo 2 Resurrected is essentially the Diablo II and
+				Lord of Destruction expansion combined into one. For more part is the same game aside from the updated visuals and sounds
+				and now some improvements such as crossplay, gamepad support and shared storages where items can be shared to other characters compare 
+				to the original where mules (throwaway characters) are used to share items across different characters.
+			</p>
+
+			<p style="text-align: center;">
+                <i>
+                    Diablo 2 Resurrected on the left, original on the right
+                </i>
+            </p>
+
+            <div class="img-comp-container" style="height: 500px">
+				<div class="img-comp-img">
+					<img src="images/d2-old.png" width="711" height="500">
+				</div>
+				<div class="img-comp-img img-comp-overlay">
+					<img src="images/d2-new.png" width="711" height="500">
+				</div>
+            </div>
+
+			<p>
+				Resident Evil and Diablo are not the only franchises that received this treatment. Other examples include: Crash Bandicoot,
+				Spyro, Mana series (Trials of Mana is a remake of a Japan exclusive while Secret of Mana is a 3d remake while Legend of Mana is a remaster),
+				Other Blizzard games (Starcraft 1 and Warcraft 3) and etc.
+			</p>
+
+			<p>
+				Essentially, both remakes and remasters are an enhanced form of re-releases for older game projects. Although it became more popular these recent
+				times, remakes and remasters are nothing new. Infact it has been a practice since the early 80s and 90s, Example include Super Mario Allstars from the SNES
+				where older Super Mario games (Mario 1, 2 and 3) are remastered with updated visual and sounds to showcase SNES capabilities, and Dragon Quest V: Hand of the Heavenly Bride
+				a PS2 game that is a 3d remake of Dragon Quest V from the SNES.
+			</p>
+
+			<p>
+				So why do video game companies do it, why do gamers pick it and why do fans love it? Let us discuss below:
+			</p>
+
+			<h2 id="new_life">Brings new life to a classic</h2>
+
+			<p>
+				Unlike a re-release, where it is the same game just running on a more modern or newer hardware. Remasters and remakes help bring life and gain traction to new players 
+				alike with the quality of life improvements, updated visuals and sound and or story parity/retcon to align with the newer iteration of a franchise.
+			</p>
+			<p> 
+				For example I have a friend who I wanted to invite to play Diablo II with me ever since but cannot because he is not interested with the old pixelated graphics. When resurrected 
+				came out, I was able to easily convince him to play Diablo II with me because of the updated visuals.
+			</p>
+
+			<p>
+				Including me, I have a few friends dedicated on playing in Diablo II for all these years that tried Resurrected and can no longer go back because they got so used to
+				the remastered graphics. Same case as well with a few of my Starcraft I friends. This is because the graphics are like higher detailed versions of the original and going back
+				is just a disservice to them, like, trying to watch a 1080p video and then rewatch the same video in 480p
+			</p>
+
+			<h2 id="new_perspective">A way to replay the game in a fresh paint and/or perspective</h2>
+
+			<p>
+				For fans of the original, its a way to revisit the game with a different experience in mind. For example, when I first played Trials of Mana, I was super excited
+				because for the longest time, the only way to play the game was via emulation and unofficial translated ROMs but then I thanks to the remake, I was able to enjoy the same
+				story with an update, fun yet modern mechanics of platforming and combat.
+			</p>
+
+			<p style="text-align: center;">
+                <i>
+                    Trials of Mana remake on the left, the original on the right
+                </i>
+            </p>
+
+            <div class="img-comp-container" style="height: 400px">
+				<div class="img-comp-img">
+					<img src="images/trials_of_mana_org.png" width="711" height="400">
+				</div>
+				<div class="img-comp-img img-comp-overlay">
+					<img src="images/trials_of_mana.jpg" width="711" height="400">
+				</div>
+            </div>
+
+			<p>
+				When I tried the remastered version of Duck Tales, even though I already know most of the secrets, 
+				it made me feel like how I felt when I was a kid playing the game that was base on the cartoon. But this time it feels more authentic because the graphics really does 
+				look onpar with the cartoons which is awesome.
+			</p>
+
+			<p style="text-align: center;">
+                <i>
+                  Ducktales remastered on the left, the original on the right
+                </i>
+            </p>
+
+            <div class="img-comp-container" style="height: 400px">
+				<div class="img-comp-img">
+					<img src="images/ducktales-old.png" width="711" height="400">
+				</div>
+				<div class="img-comp-img img-comp-overlay">
+					<img src="images/ducktales-new.jpg" width="711" height="400">
+				</div>
+            </div>
+
+			<p>
+				So yes, being able to replay these games in a new experience yet being familiar is something that is englamouring
+				for many gamers. There is just something to it that kinda feels magical in a way where it brings out that joy that
+				you had when you first played and enjoyed the game yet it being a modern rendition of an old stuff you once enjoy.
+			</p>
+
+			<h2 id="not_perfect">Not everything is perfect</h2>
+
+			<p>
+				A proper remaster or remake can bring up the joy that old fans once have but not every remaster or remake can pull it
+				off properly. For example, I had played Fable Anniversary before and although the remastered visuals do look great compare 
+				to the original, there is just something off/odd about it that I cannot get off. Although honestly it is still a great remaster
+			</p>
+
+			<p>
+				Another one, and this one is a better example, is XIII. Incase you are not aware, XIII was one of those quirky games back 
+				on the PS2 era known for its comic-styled cutscenes and timeless cell shaded graphics. Unfortunately the 2021 version (remastered)
+				is a failure of sorts.
+			</p>
+
+			<p>
+				For starters, they replace the comic-styled cutscenes with generic looking cutscenes. The models of the remastered
+				are certainly better but the cell-shaded style is mostly gone, which is crazy, considering that was one of the things 
+				the fans loved about the game. In other words, the game lost its identity. Then the final nail on the coffin are the performance issues
+			</p>
+
+			<p>
+				There are plenty of other examples, like the botched Warcraft 3 Reforged and Silent Hill HD Collection. So no, it does not mean that 
+				Game remakes/remasters = safe success. If the teams working on it does not understand what made the game successful, then it is bound to fail.
+			</p>
+
+			<h2 id="conclusion">Conclusion</h2>
+
+			<p>
+				The reason why game remasters and remakes are awesome is because it has the potential to revive (either out of sheer nostalgia or updates)
+				the interest that a fan has which is a completely different feeling with trying out and loving a new game that just came out or tried.
+			</p>
+
+			<p>
+				It is like falling in love again with something that you already fell in love for and I am sure I am not the only one with this sentiment.
+				Millions of gamers across the globe that have enjoyed the remakes and remasters will probably say the same thing.
+			</p>
+
+		    <h3>~ End ~</h3>
+		    <h4>
+		      <a href="#headingBlog">Go back to top</a>
+		    </h4>
+		    <h4>
+		      <a href="blog.html">Go back to list of articles</a>
+		    </h4>
+		</div>
+        <script>
+			initComparisons();
+		</script>
+	</body>
+</html>
