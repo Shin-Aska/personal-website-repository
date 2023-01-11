@@ -72,7 +72,7 @@
 		    <h1 id="headingBlog">KeepassXC Guide [Windows]</h1>
 		    <h2 id="introduction">Downloading</h2>
 			<p>
-				KeepassXC can be downloaded <a href="https://keepassxc.org/download/#windows">here<sup>[1]</sup></a>. Once clicking on this page, you will be
+				There are several ways you can download KeepassXC. The download page can be found <a href="https://keepassxc.org/download/#windows">here<sup>[1]</sup></a>. Once clicking on this page, you will be
 				greeted by a series of options which one to download. There is no correct version to choose from as each of them has their own purpose. I will
 				explain these options further:
 				<ol>
@@ -87,16 +87,102 @@
 				then run the application (For those the use the installer, you can find the application on the Start menu; Whereas the portable one is on the decompressed zip file)
 			</p>
 			<p>
-				If in any case you encounter any problems with the Installer and Portable 64bit, please <a href="https://aka.ms/vs/17/release/vc_redist.x64.exe">download and run this installer<sup>[2]</sup></a>.
+				Alternatively, you can download KeepassXC in the Microsoft store. Opening the Microsoft Store and searching for KeepassXC is enough but you can also visit this <a href="https://apps.microsoft.com/store/detail/keepassxc/XP8K2L36VP0QMB">link<sup>[2]</sup></a> below and it should automatically
+				open Microsoft store and redirect you to the KeepassXC entry. This is my recommended way of installing KeepassXC on Windows as it offers autoupdates and Windows store is available on Windows by default
+			</p>
+			<p>
+				If in any case you encounter any problems with the Installer and Portable 64bit, please <a href="https://aka.ms/vs/17/release/vc_redist.x64.exe">download and run this installer<sup>[3]</sup></a>.
 			</p>
 			<h2 id="getting_started">Getting Started</h2>
 			<p>
 				Now that you have finished installing KeepassXC and you are already running the application as instructed earlier, now you must need to learn a couple of things about this password manager.
 			</p>
+			<figure>
+				<a href="images/keepass-main-win.png" target="_blank"><img class="preview center" src="images/keepass-main-win.png"></a>
+				<figcaption>Figure 1. KeepassXC Main Window on Windows
+				</figcaption>
+			</figure>
 			<p>
-				Before you are able to begin, you must first create a KeepassXC password/database file. This file will contain all your passwords including TOTP and other metadata however rest assured that it will 
-				be encrypted.
+				Before you are able to begin, you must first create a KeepassXC password/database file. This file is where everything is stored. So if you are aiming to make your passwords synced across different
+				computers, saving this file to a cloud drive or synced folder is a must.
 			</p>
+			<p>
+				Clicking on the [Create new database] will prompt you to a new window asking for what will be the name of your database and description.
+				I often leave those entry by default but feel free to adjust.
+			</p>
+			<figure>
+				<a href="images/keepass-create-db-win.png" target="_blank"><img class="preview center" src="images/keepass-create-db-win.png"></a>
+				<figcaption>Figure 2. Create a new database, naming your database and description
+				</figcaption>
+			</figure>
+			<p>
+				Once after that, you will be greeted with a slider asking for a decryption time and database format. I recommend adjusting to the highest decryption time for more security but
+				if you want my settings, I recommend going to the advance settings and filling up these values
+			</p>
+			<figure>
+				<a href="images/keepass-create-advance-win.png" target="_blank"><img class="preview center" src="images/keepass-create-advance-win.png"></a>
+				<figcaption>Figure 3. My recommended advance settings
+				</figcaption>
+			</figure>
+			<p>
+				Reason why I recommend ChaCha20 over AES256 is because it is more resilient to key-based attacks (which is I consider part of my threat model), then I adjust to 256mb memory usage
+				as I consider this as an overkill value (Note: That Transform rounds and Memory usage are there to prevent bruteforce GPU key attacks, which is also what is adjusted on the Simple setting slider).
+			</p>
+			<p>
+				Lastly, I intentionally left the Transform rounds empty because this part will be hardware dependent. To determine the value for your hardware, press the [Benchmark 1.0s delay] button and multiply the value
+				by either 9 or 10. So for example when I click the [Benchmark 1.0s delay], it fills in the Transform rounds textbox with 6. 6x9 = 54. Therefore my Transform rounds value is 54.
+			</p>
+			<p>
+				The [Benchmark 1.0s delay] is highly dependend on the Memory Usage and Encryption algorithm set before the button is pressed. So make sure you set the encryption algorithm to ChaCha20 and Memory Usage to 256mb
+				first before pressing the button.
+			</p>
+			<figure>
+				<a href="images/keepass-create-masterpassword-p1-win.png" target="_blank"><img class="preview center" src="images/keepass-create-masterpassword-p1-win.png"></a>
+				<figcaption>Figure 4. Create Master Password
+				</figcaption>
+			</figure>
+			<p>
+				Once done, click on continue and you should be greeted with another window asking for your database's master password. This is important as this is the one that will be the one use as base for the encryption
+				algorithm.
+			</p>
+			<p>
+				A strong master password is necessary however you do not need to go far as memorizing a randomized 20+ random character that is mixed with upper, lower, special and numeric characters. I recommend
+				a password phrase instead such as "CorrectHorseBatteryStaple"
+			</p>
+			<p>
+				Master password alone is not enough, I recommend pressing the [Add Additional Protection] button as it allows you to add a Key file (which you can generate) and a challenge response if you own a hardware
+				authentication device such as a Yubikey.
+			</p>
+			<figure>
+				<a href="images/keepass-create-masterpassword-p2-win.png" target="_blank"><img class="preview center" src="images/keepass-create-masterpassword-p2-win.png"></a>
+				<figcaption>Figure 5. Create Master Password - Additional Protection
+				</figcaption>
+			</figure>
+			<p>
+				Adding a key file is easy, once you press the [Add Key File] button, an extended groupbox appears, just press the [Generate] button and that is pretty much it
+			</p>
+			<figure>
+				<a href="images/keepass-create-keyfile-win.png" target="_blank"><img class="preview center" src="images/keepass-create-keyfile-win.png"></a>
+				<figcaption>Figure 6. Create Master Password - Additional Protection
+				</figcaption>
+			</figure>
+			<p>
+				Do not forget that the key file is now an important piece when unlocking your database password. Consider it as a secondary password but you do not need to enter it, you just need KeepassXC to direct it to read
+				the key file.
+			</p>
+			<p>
+				As for the challenge response, just simply insert your FIDO authentication device such as Yubikey and select that device in the dropdown. Usually a master password and a keyfile is good enough in most cases but 
+				if you are able to, also consider adding a challenge response for added security benefit.
+			</p>
+			<p>
+				Once done, click on the [Done] button and congratulations, you are now halfway finish in setting up KeepassXC!
+			</p>
+			<figure>
+				<a href="images/keepass-main-db-win.png" target="_blank"><img class="preview center" src="images/keepass-main-db-win.png"></a>
+				<figcaption>Figure 7. Empty KeyPassXC Database
+				</figcaption>
+			</figure>
+
 		    <h3>~ End ~</h3>
 		    <h4>
 		    	<a href="#headingBlog">Go back to top</a>
