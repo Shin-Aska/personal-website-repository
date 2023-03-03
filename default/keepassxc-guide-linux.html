@@ -26,7 +26,7 @@
 		<link href="css/reset.css" rel="stylesheet" type="text/css">
 
 		<!-- @@@ -->
-		<title>Skies of the Lost Cause - KeepassXC Setup Guide for Windows</title>
+		<title>Skies of the Lost Cause - KeepassXC Setup Guide for Linux</title>
 
 
 	</head>
@@ -74,29 +74,32 @@
 			  <li><a href="#browser_integration">Browser Integration</a></li>
 			  <li><a href="#some_final_stuff">Closing words</a></li>
 		    </ul>
-		    <h1 id="headingBlog">KeepassXC Guide [Windows]</h1>
+		    <h1 id="headingBlog">KeepassXC Guide [Linux]</h1>
 		    <h2 id="introduction">Downloading</h2>
 			<p>
-				There are several ways you can download KeepassXC. The download page can be found <a href="https://keepassxc.org/download/#windows">here<sup>[1]</sup></a>. Once clicking on this page, you will be
+				There are several ways you can download KeepassXC on Linux. The download page can be found <a href="https://keepassxc.org/download/#linux">here<sup>[1]</sup></a>. Once clicking on this page, you will be
 				greeted by a series of options which one to download. There is no correct version to choose from as each of them has their own purpose. I will
 				explain these options further:
 				<ol>
-					<li>Official Packages: Installer 64 bit - This is for Windows 10 and 11 64bit users</li>
-					<li>Official Packages: Portable 64 bit - This is for Windows 10 and 11 64bit users that wants to store the app itself on a USB storage or other portable solution</li>
-					<li>Official Packages: Legacy 64 bit - This is for older Windows versions such as 8 and 8.1</li>
-					<li>Official Packages: Legacy 32 bit - Use this when using a 32bit Windows regardless of version</li>
-					<li>3rd-Party Distributions: Chocolatey - Use this if you are using Chocolatey and want to enjoy automatic updates</li>
-					<li>3rd-Party Distributions: Winget - Use this if you are using Winget and want to enjoy automatic updates</li>
+					<li>Appimage package - This is a portable binary, similar to App bundles (.App files)</li>
+					<li>Flatpak package - This is for those that wish to install this app via Flatpak package manager</li>
+					<li>Snap package - This is for those that wish to install this app via Snap package manager</li>
+					<li>Distribution-specific - This is for those that wish to install it natively via the distro's package manager, this is my recommended choice</li>
 				</ol>
-				For most users, installer 64bit is the common option. This guide will also be using the installer 64bit as well. Once you are done downloading, run the installer (skip this option for portable users)
-				then run the application (For those the use the installer, you can find the application on the Start menu; Whereas the portable one is on the decompressed zip file)
 			</p>
 			<p>
-				Alternatively, you can download KeepassXC in the Microsoft store. Opening the Microsoft Store and searching for KeepassXC is enough but you can also visit this <a href="https://apps.microsoft.com/store/detail/keepassxc/XP8K2L36VP0QMB">link<sup>[2]</sup></a> below and it should automatically
-				open Microsoft store and redirect you to the KeepassXC entry. This is my recommended way of installing KeepassXC on Windows as it offers autoupdates and Windows store is available on Windows by default
+				If you encounter issues in integration later, it should be noted that the reason why I recommend distribution specific installs is because KeepassXC integration has issues
+				with Snap and Flatpak browsers.
 			</p>
 			<p>
-				If in any case you encounter any problems with the Installer and Portable 64bit, please <a href="https://aka.ms/vs/17/release/vc_redist.x64.exe">download and run this installer<sup>[3]</sup></a>.
+				So if you encounter a problem, make sure that your browser is not Flatpak or Snap installed as the way how these browsers are setup on these environments might interfere with the KeepassXC integration.
+				Distribution specific installed Browser and KeepassXC is the easiest way to make things work.
+			</p>
+			<p>
+				Also Ubuntu 22.04 installs Firefox as snap by default, I would recommend following this <a href="https://www.omgubuntu.co.uk/2022/04/how-to-install-firefox-deb-apt-ubuntu-22-04">guide<sup>[2]</sup></a>.
+			</p>
+			<p>
+				If you wish to make both KeepassXC and your browser to work in Flatpak or Snap (because of additional sandbox protection), I heard that it is possible, but may require additional setup so be warned!
 			</p>
 			<h2 id="getting_started">Getting Started</h2>
 			<p>
@@ -194,7 +197,7 @@
 				the browser's built-in password manager from conflicting with KeepassXC.
 			</p>
 			<p>
-				You can follow these guides to disable password saving for the following browsers: <a href="https://support.mozilla.org/en-US/kb/disable-password-saving-firefox">Firefox<sup>[5]</sup></a>, <a href="https://support.microsoft.com/en-us/microsoft-edge/save-or-forget-passwords-in-microsoft-edge-b4beecb0-f2a8-1ca0-f26f-9ec247a3f336">Edge<sup>[6]</sup></a> and <a href="https://support.google.com/chrome/answer/95606?hl=en&co=GENIE.Platform%3DDesktop#zippy=%2Cstart-or-stop-saving-passwords">Chrome<sup>[7]</sup></a>.
+				You can follow these guides to disable password saving for the following browsers: <a href="https://support.mozilla.org/en-US/kb/disable-password-saving-firefox">Firefox<sup>[3]</sup></a>, <a href="https://support.microsoft.com/en-us/microsoft-edge/save-or-forget-passwords-in-microsoft-edge-b4beecb0-f2a8-1ca0-f26f-9ec247a3f336">Edge<sup>[4]</sup></a> and <a href="https://support.google.com/chrome/answer/95606?hl=en&co=GENIE.Platform%3DDesktop#zippy=%2Cstart-or-stop-saving-passwords">Chrome<sup>[5]</sup></a>.
 				Note: If your browser is not on the list, feel free to consult your browser's manual, or ask assistance on your browser's communication channel.
 			</p>
 			<figure>
@@ -203,7 +206,7 @@
 				</figcaption>
 			</figure>
 			<p>
-				Once done, you then need to install an add-on named KeepassXC-Browser. You can download the plugin from these links on the following browsers <a href="https://addons.mozilla.org/en-US/firefox/addon/keepassxc-browser/">Firefox<sup>[8]</sup></a>, <a href="https://microsoftedge.microsoft.com/addons/detail/keepassxcbrowser/pdffhmdngciaglkoonimfcmckehcpafo">Edge<sup>[9]</sup></a> and <a href="https://chrome.google.com/webstore/detail/keepassxc-browser/oboonakemofpalcgghocfoadofidjkkk?hl=en">Chrome<sup>[10]</sup></a>.
+				Once done, you then need to install an add-on named KeepassXC-Browser. You can download the plugin from these links on the following browsers <a href="https://addons.mozilla.org/en-US/firefox/addon/keepassxc-browser/">Firefox<sup>[6]</sup></a>, <a href="https://microsoftedge.microsoft.com/addons/detail/keepassxcbrowser/pdffhmdngciaglkoonimfcmckehcpafo">Edge<sup>[7]</sup></a> and <a href="https://chrome.google.com/webstore/detail/keepassxc-browser/oboonakemofpalcgghocfoadofidjkkk?hl=en">Chrome<sup>[8]</sup></a>.
 			</p>
 			<figure>
 				<a href="images/keepassxc-browser.png" target="_blank"><img class="preview center" src="images/keepassxc-browser.png"></a>

@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="author" content="Richard Orilla">
+		<meta http-equiv="content-language" content="en-us">
+		<meta http-equiv="cache-control" content="no-cache">
+		<meta http-equiv="pragma" content="no-cache">
+		<meta name="robots" content="index"> 
+		<meta name="keywords" content="richard orilla, free games, resume">
+		<noscript><meta http-equiv="refresh" content="0; url=https://classic.richardorilla.website/template.html" /></noscript>
+		<script nonce="ddfGh134" src="script/data/menu.json" type="text/javascript"></script>
+		<script nonce="ddfGh134" src="script/ThreeWebGL.js" type="text/javascript"></script>
+		<script nonce="ddfGh134" src="script/ThreeCanvas.js" type="text/javascript"></script>
+		<script nonce="ddfGh134" src="script/ThreeExtras.js" type="text/javascript"></script>
+		<script nonce="ddfGh134" src="script/jquery.js" type="text/javascript"></script>
+		<script nonce="ddfGh134" src="script/stats.js" type="text/javascript"></script>
+		<script nonce="ddfGh134" src="script/sky.js"></script>
+		<script nonce="ddfGh134" src="script/site.js" type="text/javascript"></script>
+
+		<link href="css/animation.css" rel="stylesheet" type="text/css">
+		<link href="css/fonts.css" rel="stylesheet" type="text/css">
+		<link href="css/site.css" rel="stylesheet" type="text/css">
+		<link href="css/sky.css" rel="stylesheet" type="text/css">
+		<link href="css/reset.css" rel="stylesheet" type="text/css">
+
+		<!-- @@@ -->
+		<title>Skies of the Lost Cause - Browser-based games in the modern internet</title>
+
+
+	</head>
+	<body>
+
+		<canvas id="main"></canvas>
+		<canvas id="background"></canvas>
+		<div id="mainLabel">
+			<p>Hi, it seems that the browser you're using is not compatible with my site. Either because it's too old or you're using one of the following browsers:</p>
+			<ul>
+				<li>Brow.sh - Terminal based browser that attempts to render a modern web using ssh</li>
+				<li>Lynx - Text based browser. The oldest browser that is still active in development!</li>
+				<li>w3m - Text based browser. Quite popular too</li>
+			</ul>
+		</div>
+		<div id="backgroundLabel">
+			<p>More importantly, I got you :-), Here is a backwards compatible version that is designed to work on older or no-javascript browsers <a href="http://classic.richardorilla.website">classic.richardorilla.website</a></p>
+		</div>
+		
+		<div id="header">
+			<div class="center themeContainer">
+				<object class="themelogo" type="image/svg+xml" data="images/pen.svg" align="middle">Your browser does not support SVG</object>
+			</div>
+			
+			<p class="headingBase start">= Skies of the lost cause +</p>
+			<p class="headingBase middle">Personal website of Richard Orilla</p>
+			<br>
+			<div class="center lineContainer">
+				<object class="lineSVG" type="image/svg+xml" data="images/hr.svg" align="middle">Your browser does not support SVG</object>
+			</div>
+		</div>
+
+		<div class="menu-container">
+			<div id="menu"></div>
+		</div>
+
+		<div id="content">
+
+			<h2 id="tableContents">Table of Contents</h2>
+		    <ul>
+		      <li><a href="#introduction">Introduction</a></li>
+			  <li><a href="#death_of_flash">Death of Flash</a></li>
+			  <li><a href="#new_era">The new era of browser games</a></li>
+			  <li><a href="#list_of_recommended_games">List of my recommended browser based games</a></li>
+			  <li><a href="#finale">Ending notes</a></li>
+		    </ul>
+		    <h1 id="headingBlog">Browser-based games in the modern internet</h1>
+		    <h2 id="introduction">Introduction</h2>
+			<p>
+				Browser-based games had such a unique evolution. Started out as games where there was no
+				visual update on the game world, where if you wish to get updates on what is happening on
+				the game, you have to manually refresh the page or interact within the game so that the page
+				refreshes on some sort.
+			</p>
+
+			<figure>
+				<a href="images/basic-browser-horz.png" target="_blank"><img class="preview center" src="images/basic-browser-horz_tmb.png"></a>
+				<figcaption>Figure 1. Sigmastore and Kingdom of Loathing. Browser based games that follows the old browser formula.</figcaption>
+			</figure>
+
+			<p>
+				Examples of these design are still present on a couple of modern browser games, such as Kingdom of 
+				Loathing and Sigmastorm as seen in the figures above. In Kingdom of Loathing, it shows iframes to
+				seperate different UI elements and you essentially interact with game elements using hyperlinks where
+				each link corresponds a user action (Ofcourse they are neatly hidden in images to make it presentable).
+			</p>
+
+			<p>
+				Once interaction is made, the page refreshes. This is also similar to Sigmastorm but instead of having game
+				elements being interacted via hyperlinks, user actions are instead being done in hyperlinks. The game is represented
+				in a grid, If you want to move, you click on the arrows in the map, if you want to interact with what that current
+				tile has to offer, you click on the links that are available in the location details.
+			</p>
+
+			<p>
+				Each action will refresh the page in some way shape or form. Sometimes it does not have to be the entire page,
+				just like in Kingdom of Loathing's case where iframes are instead updated. It is a pretty interesting trick but
+				such designs are limiting for game designers.
+			</p>
+
+			<p>
+				Since in contrast, non-browser games are usually detailed and offers
+				live visual updates on what is happening on the game world with no user-interaction necessary. The closest 
+				one you can have with such design is to install an auto page-refresher on your browser.
+			</p>
+
+			<p>
+				Then here comes browser-plugins such as Flash player, Shockwave, Java applets and etc. These plugins offered something
+				that normally browsers do not. It extended the features of what the browser can do with the requirement that these plugins
+				are needed to be installed to make these pages work.
+			</p>
+
+			<p>
+				Shortly, games like Club penguin, Habbo Hotel, Runescape, Drakensang and etc started popping out of nowhere, offering the same
+				same experience that downloaded MMOs have but right in front of your browser. Ofcourse they are not as detailed as their downloaded
+				counterparts because of space and internet bandwidth issues but the fact that they can be accessed as long as the plugin is installed
+				was good enough to spread gaming to the masses.
+			</p>
+
+			<figure>
+				<a href="images/aqw.png" target="_blank"><img class="preview center" src="images/aqw_tmb.png"></a>
+				<figcaption>Figure 2. Adventure Quest Worlds - One of the popular browser MMORPGs out there powered by Flash player</figcaption>
+			</figure>
+
+			<p>
+				However a paradigm shift away from browser plugins started around 2013-2014. Initially the movement started when Steve Jobs outright rejected
+				Flash player on iPhone back in 2011, the tech sector has been working aggressively after that to replace Flash player with something more 
+				native and built-in within the browser.
+			</p>
+
+			<p>
+				As browser-plugin applications started to die out in-favor of the native ones available within a browser, so did the browser-plugins themselves.
+				But browser games were mainly still developed in Flash as it was the most dominant platform to create games until the death of Flash was finally
+				settled around January 12, 2021 where most browsers completely stopped using plugins.
+			</p>
+
+			<p>
+				Now with such a long introduction, the question now is. With the evolution of browser-games from native to plugin back to native. How far has it
+				become? Did the shift away from plugins do good for browser-based gaming? Or did it cause a significant hit to the browser-based ecosystem. Let us
+				discuss.
+			</p>
+
+			<h2 id="death_of_flash">Death of Flash player</h2>
+
+			<p>
+				The death of flash was long announced. Heck before its announcement, as everyone in the tech sector has witnessed the evolution of HTML as it
+				slowly replace and acquire the features that was unique to these browser plugins. It was already speculated that sooner or later plugins support will cease
+				to exist for the browsers and thus it was discourage to create applications relying on the browser plugins.
+			</p>
+
+			<p>
+				Browser-based applications that relied on those plugins has already planned to move out from them in favor
+				of either utilizing HTML's current new features or become a downloadable application. In the former's case, one example is Habbo Hotel which offered both a downloadable
+				client and HTML5 client while the latter is Runescape where it went into a standalone client.
+			</p>
+
+			<p>
+				Other good examples of games that transitioned away from Flash player to HTML5 are Facebook games such as Candycrush, TetrisBattle and Farmville. Initially these versions
+				use to be powered by Flash player but slowly transitioned to HTML5.
+			</p>
+
+			<h2 id="new_era">The new era of browser games</h2>
+
+			<p>
+				Now that HTML5 is the only way moving forward to play browser games. It did pave way to things that were not imagined before. Such as Web assembly. Web assembly
+				introduced speeds on web-based applications that was not available there before. A good example are two MMORPG browser based MMORPGs, Flyff Universe and Genfanad.
+			</p>
+
+			<figure>
+				<a href="images/flyffuniverse.png" target="_blank"><img class="preview center" src="images/flyffuniverse_tmb.png"></a>
+				<figcaption>Figure 3. Flyff Universe - an HTML5 port of the same MMO game released in 2004</figcaption>
+			</figure>
+
+			<p>
+				Flyff Universe is an HTML5 port of an old MMORPG named Flyff. But this one, it was ported via web assembly and assets are downloaded and cached on the fly. Flyff
+				Universe is basically an improved version over the original. It even introduces graphical techniques that was not there in the original such as Render-scaling, advanced
+				shader effects and longer render distance.
+			</p>
+
+			<p>
+				The performance off Flyff Universe is very impressive. Even an 2015 Macbook Air can play this game with little to no issues.
+			</p>
+
+			<figure>
+				<a href="images/genfanad.png" target="_blank"><img class="preview center" src="images/genfanad_tmb.png"></a>
+				<figcaption>Figure 4. Genfanad - a new browser based game from an indie company</figcaption>
+			</figure>
+
+			<p>
+				On the other hand is Genfanad. It is a new browser MMORPG inspired heavily by the first version of Runescape, Runescape Classic. It features 2d sprites for characters and NPCs
+				and a 3d environment. A hybrid 2d and 3d. This one is written purely using JavaScript.
+			</p>
+
+			<p>
+				Although the graphics is not as complex as Flyff, the same Macbook Air struggles to play the game in even 20fps. I only get 15 fps even in a non crowded area. 
+				This goes to show how great web assembly is in terms of performance. Game developers wishing to create complex scenery can rely on web assembly to speed up their process.
+			</p>
+
+			<p>
+				What is great with web assembly is you do not need to learn web assembly. You can use an existing language such as C/C++ or Rust and use their compiler to compile it to
+				wasm code. Thanks to this, HTML5 ports of games such as SuperTux2, FreeCiv, Doom and even Ragnarok Online is possible with minimal effort (no need to rewrite an engine from scratch).
+			</p>
+
+			<p>
+				Actually you don't even have to go that far. Unreal engine and Unity for example are both capable outputting game projects to wasm. The former relying
+				on plugins while the latter is built-in.
+			</p>
+
+			<figure>
+				<a href="images/speed_racing_pro.png" target="_blank"><img class="preview center" src="images/speed_racing_pro_tmb.png"></a>
+				<figcaption>Figure 5. Speed Racing Pro - a HTML5 racing game that was developed in Unity and exported to Unity Web</figcaption>
+			</figure>
+
+			<p>
+				As seen in the figure above, game developers are able to develop in graphically sophisticated games from a well known game engine and export it easily to HTML. Really
+				impressive how far we have come in game development. Allowing us to deliver games in variety of platforms.
+			</p>
+
+			<h2 id="list_of_recommended_games">List of my recommended browser based games</h2>
+
+			<p>
+				There are a tons of browser based games out there. So take this list as my recommended picks instead of being like the absolute best browser games out there. Mind you
+				that I mainly play downloaded games with a few notable exceptions. So I may have missed some great browser games that I am not aware of that exists.
+			</p>
+
+			<p>
+				Additionally, these list are mainly multiplayer ones. So if you are looking for a single player browser-based game, then this list is not for you. Mind you some of these games
+				may have an offline/play with AI feature but they're mainly multiplayer games.
+			</p>
+
+			<p>
+				I am also omitting out browser-based games that are not officially ported or endorsed by their intellectual property owner.
+			</p>
+
+			<h3>MMORPG List</h3>
+			
+			<p>
+				These two games that I have previously mentioned are the ones I recommend when wanting to play an MMORPG.
+			</p>
+
+			<ul>
+				<li>Flyff Universe - An HTML5 port of Flyff 2004:<br><a href="images/flyffuniverse.png" target="_blank"><img class="preview center" src="images/flyffuniverse_tmb.png" style="height: 200px; width: 355px"></a> <a class="preview center" href="https://universe.flyff.com/">https://universe.flyff.com</a></li>
+				<li>Genfanad - MMORPG game inspired by Runescape Classic:<br><a href="images/genfanad.png" target="_blank"><img class="preview center" src="images/genfanad_tmb.png" style="height: 200px; width: 355px"></a> <a class="preview center" href="https://genfanad.com/">https://genfanad.com</a></li>
+			</ul>
+
+			<h3>Casual List</h3>
+
+			<p>
+				These games are meant for casual audiences.
+			</p>
+
+			<ul>
+				<li>Tetr.io - Free-to-win stacker game in the same genre as tetris:<br><a href="images/tetr_io.png" target="_blank"><img class="preview center" src="images/tetr_io_tmb.png" style="height: 200px; width: 355px"></a> <a class="preview center" href="https://tetr.io/">https://tetr.io</a></li>
+				<li>Bemuse - Online web based rhythm game:<br><a href="images/bemuse.png" target="_blank"><img class="preview center" src="images/bemuse_tmb.png" style="height: 200px; width: 355px"></a> <a class="preview center" href="https://bemuse.ninja/">https://bemuse.ninja</a></li>
+			</ul>
+
+			<h3>Shooter List</h3>
+
+			<p>
+				If you want to play shooter games, these are the two I recommend
+			</p>
+
+			<ul>
+				<li>Forward Assault - A popular FPS game known for its 3d graphics:<br><a href="images/forward_assault_crazygames.png" target="_blank"><img class="preview center" src="images/forward_assault_crazygames_tmb.png" style="height: 200px; width: 355px"></a> <a class="preview center" href="https://www.crazygames.com/game/forward-assault">https://www.crazygames.com/game/forward-assault</a></li>
+				<li>Battle dudes - Fast paced 2d multiplayer shooter game:<br><a href="images/battle_dudes.png" target="_blank"><img class="preview center" src="images/battle_dudes_tmb.png" style="height: 200px; width: 355px"></a> <a class="preview center" href="https://battledudes.io/">https://battledudes.io/</a></li>
+			</ul>
+
+			<h3>Strategy</h3>
+
+			<p>
+				If you want to battle your brains out, then these games are for you
+			</p>
+
+			<ul>
+				<li>Tzared - A medieval strategy game<br><a href="images/tza_red.png" target="_blank"><img class="preview center" src="images/tza_red_tmb.png" style="height: 200px; width: 355px"></a> <a class="preview center" href="https://tza.red/">https://tza.red</a></li>
+				<li>Lichess - Free open source server ran by a non-profit organization<br><a href="images/lichess.png"><img class="preview center" src="images/lichess_tmb.png" style="height: 200px; width: 355px"></a> <a class="preview center" href="https://lichess.org/">https://lichess.org</a></li>
+			</ul>
+
+			<h2 id="finale">Ending notes</h2>
+
+			<p>
+				As you can see, you can get yourselves entertained even on the new era of browser-based games. Certainly the shift of these games away from plugins pave way to unique
+				implementations that was not possible before. For example, Flash may have been a dominant platform to develop browser based games on, it was limited on what it can do.
+				Although later in Flash's life it was capable of rendering in 3D. It was not the best platform to create 3D games on.
+			</p>
+
+			<p>
+				I remember that even if Flash was able to do 3D rendering, the hardware acceleration aspect was not available across all operating systems. Which means certain games are
+				not playable when played on Mac or Linux. Not to mention the availability of the plugin it needs as well.
+			</p>
+
+			<p>
+				Ofcourse it was not only Flash that was there but also Adobe Shockwave and Oracle Java. Shockwave being the superior choice in 3D games but was not as well known because of management decisions. Frankly it was true that Shockwave games were mostly slow to load because it packed more assets for players back then to download, 
+				but it was able to push more stuff than what Flash can.
+			</p>
+
+			<p>
+				Java applets on the other hand was on the same league of competition as Shockwave, but more popular. and by I mean the same league, was able to pack sophisticated 3d graphics right in your browser.
+				Part of the reason people do not remember Shockwave is because of poor leadership reasons, however base on experience, Shockwave was far more popular than Java applets for games.
+			</p>
+
+			<p>
+				So imagine, if you want to play a couple of browser games back then, you not only have to install flash player, but also possible shockwave and java too. Not to mention these plugins 
+				had limitations. Like Flash player being limited in what it can do with 3d, or Shockwave being locked down to Windows only or Java being difficult to program games with in general because 
+				if you want to appeal a larger set of userbase, you have to optimize the game. Which is why, Runescape originally had to load in regions, where when a player reaches the edge of a region,
+				it loads the next closest region and unloads the currently loaded one.
+			</p>
+			
+			<p>
+				The creation WebGL and Webassembly paved way to possibilities that was not there before. Being able to port full pledge games right in front of your browser.
+				Which is an interesting thing to consider on as these technologies allow the distribution of games regardless of Operating System.
+			</p>
+
+			<p>
+				So what can I say? the shift away from plugins certainly did good for browser-gaming in general. Although it was sad to see a-lot of these great games go. There have been <a href="https://bluemaxima.org/flashpoint/">archiving
+				projects <sup>[1]</sup></a> that aims to restore these plugin based games at a playable state, and to that I am grateful.
+			</p>
+
+			<p>
+				Especially some of these games that was restored have had their micro-transaction shop revived with everything free in it. Which I find very very cool.
+			</p>
+
+		    <h3>~ End ~</h3>
+		    <h4>
+		      <a href="#headingBlog">Go back to top</a>
+		    </h4>
+		    <h4>
+		      <a href="blog.html">Go back to list of articles</a>
+		    </h4>
+		</div>
+
+	</body>
+</html>
