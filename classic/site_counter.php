@@ -14,6 +14,8 @@
             $ip = $_SERVER['REMOTE_ADDR'];
         }
 
+        $ip = "$ip@$pageName";
+
         $count = 0;
         $update = false;
         $mysqli = new mysqli(site_host, site_username, site_password, site_database);

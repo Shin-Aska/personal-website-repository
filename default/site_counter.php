@@ -3,7 +3,7 @@
     define("site_username", "");
     define("site_password", "");
     define("site_database", "");
-
+    
     function get_page_count($pageName) {
 
         if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
@@ -13,6 +13,8 @@
         } else {
             $ip = $_SERVER['REMOTE_ADDR'];
         }
+
+        $ip = "$ip@$pageName";
 
         $count = 0;
         $update = false;
