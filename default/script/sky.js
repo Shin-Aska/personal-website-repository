@@ -137,10 +137,33 @@ var sky =  {
 			};
 		}
 		catch (ex) {
-
+			window.sky.redirectToClassic();
 		}
 		
+	},
+
+	redirectToClassic: function() {
+		window.location.href = window.location.href.replace("default", "classic").replace("www.", "classic.");
 	}
 }
+
+window.sky_fps_holder = [];
+window.sky_fps_average = 0;
+window.sky_fps_iteration_count = 0;
+window.sky_timeout = setInterval(async function() {
+	window.sky_fps_holder.push(window.sky.stats.fps);
+	if (window.sky_fps_holder.length >= 5) {
+		var total = window.sky_fps_holder.slice(-10).reduce((acc, c) => acc + c, 0);
+		window.sky_fps_average = total / window.sky_fps_holder.slice(-10).length;
+		if (window.sky_fps_average <= 5) {
+			window.sky_fps_iteration_count += 1;
+			if (window.sky_fps_iteration_count >= 15) {
+				window.sky.redirectToClassic();
+			}
+		}
 		
-		
+		if (window.sky_fps_holder.length > 125) {
+			clearInterval(window.sky_timeout);
+		}
+	}
+}, 500);
