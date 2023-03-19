@@ -24,31 +24,57 @@
         }
 
         $mysqli->query("DELETE FROM ip_log WHERE time_interacted <= NOW() - INTERVAL 7 DAY");
-        if ($result = $mysqli->query("SELECT id, ip_address, time_interacted FROM ip_log WHERE ip_address = '$ip'")) {
+        $stmt = $mysqli->prepare("SELECT id, ip_address, time_interacted FROM ip_log WHERE ip_address = ?");
+        $stmt->bind_param("s", $ip_address);
+        $ip_address = $ip;
+        $stmt->execute();
+        if ($result = $stmt->get_result()) {
             if ($result->num_rows == 0) {
                 $update = true;
-                $mysqli->query("INSERT INTO ip_log(ip_address) VALUES('$ip')");
+                $stmt = $mysqli->prepare("INSERT INTO ip_log(ip_address) VALUES(?)");
+                $stmt->bind_param("s", $ip_address);
+                $ip_address = $ip;
+                $stmt->execute();
+                
             }
             $result->free_result();
         }
 
-        if ($result = $mysqli->query("SELECT id, ip_address, time_interacted FROM ip_log WHERE ip_address = '$ip' AND time_interacted >= NOW() - INTERVAL 1 DAY")) {
+        $stmt = $mysqli->prepare("SELECT id, ip_address, time_interacted FROM ip_log WHERE ip_address = ? AND time_interacted >= NOW() - INTERVAL 1 DAY");
+        $stmt->bind_param("s", $ip_address);
+        $ip_address = $ip;
+        $stmt->execute();
+        if ($result = $stmt->get_result()) {
             if ($result->num_rows == 0) {
                 $update = true;
             }
-            $mysqli->query("UPDATE ip_log SET time_interacted = NOW() WHERE ip_address = '$ip'");
+            $stmt = $mysqli->prepare("UPDATE ip_log SET time_interacted = NOW() WHERE ip_address = ?");
+            $stmt->bind_param("s", $ip_address);
+            $ip_address = $ip;
+            $stmt->execute();
             $result->free_result();
         }
         
-        if ($result = $mysqli->query("SELECT id, page, count FROM site_counter WHERE page = '$pageName'")) {
+        $stmt = $mysqli->prepare("SELECT id, page, count FROM site_counter WHERE page = ?");
+        $stmt->bind_param("s", $page_name);
+        $page_name = $pageName;
+        $stmt->execute();
+        if ($result = $stmt->get_result()) {
             if ($result->num_rows == 0) {
-                $mysqli->query("INSERT INTO site_counter(page, count) VALUES('$pageName', 0)");
+                $stmt = $mysqli->prepare("INSERT INTO site_counter(page, count) VALUES(?, ?)");
+                $stmt->bind_param("si", $page, $visit_count);
+                $page = $pageName;
+                $visit_count = 0;
+                $stmt->execute();
             }
             $result->free_result();
         }
 
-              
-        if ($result = $mysqli->query("SELECT id, page, count FROM site_counter WHERE page = '$pageName'")) {
+        $stmt = $mysqli->prepare("SELECT id, page, count FROM site_counter WHERE page = ?");
+        $stmt->bind_param("s", $page_name);
+        $page_name = $pageName;
+        $stmt->execute();
+        if ($result = $stmt->get_result()) {
             $chosen_id = -1;
             while($obj = $result->fetch_object()){
                 $count = $obj->count;
@@ -57,7 +83,10 @@
             $result->free_result();
             if ($update) {  
                 if ($chosen_id != -1) {
-                    $mysqli->query("UPDATE site_counter SET count = count + 1 WHERE id = " . $chosen_id);
+                    $stmt = $mysqli->prepare("UPDATE site_counter SET count = count + 1 WHERE id = ?");
+                    $stmt->bind_param("i", $counter_id);
+                    $counter_id = $chosen_id;
+                    $stmt->execute();
                 }
                 $count = $count + 1;
             }
