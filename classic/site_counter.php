@@ -91,11 +91,11 @@
                         $stmt->execute();
                     }
                     $count = $count + 1;
-                    $cached_info = fopen($pageName . ".txt", "w");
-                    fwrite($cached_info, $count);
-                    fclose($cached_info);
                 }
             }
+            $cached_info = fopen($pageName . ".txt", "w");
+            fwrite($cached_info, $count);
+            fclose($cached_info);
         }
         catch(Exception $ex) {
             try {
