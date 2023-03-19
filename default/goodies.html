@@ -231,14 +231,53 @@
 			</div>
 		</div>
 		<script nonce="ddfGh134">
+			window.sky.tab1 = false;
+			window.sky.tab2 = false;
+			window.sky.panel_activate = function(selector) {
+				window.sky.selector = selector;
+				setTimeout(() => {
+					if (window.sky.selector == "#tabs-1" && !window.sky.tab1) {
+						window.sky.tab1 = true;
+						$('#games-list').DataTable({
+							"paging":         true,
+							order: [[1, "asc"]],
+							colReorder: true,
+							responsive: true,
+							"rowCallback": function (row, data, index) {
+								var that = row;
+								if(!$(row).attr('role') || $(row).attr('role') != 'row' || $(row).hasClass('parent')){
+									return;
+								}
+								$(row).addClass('parent');
+							}
+						});
+					}
+					else if (window.sky.selector == "#tabs-2" && !window.sky.tab2) {
+						window.sky.tab2 = true;
+						$('#utility-list').DataTable({
+							"paging":         true,
+							order: [[1, "asc"]],
+							colReorder: true,
+							responsive: true,
+							"rowCallback": function (row, data, index) {
+								var that = row;
+								if(!$(row).attr('role') || $(row).attr('role') != 'row' || $(row).hasClass('parent')){
+									return;
+								}
+								$(row).addClass('parent');
+							}
+						});
+					}
+				}, 500);
+			}
+
 			$(document).ready( function () {
-				$('#games-list').DataTable({
-                    "paging":         true
+				window.sky.panel_activate("#tabs-1");
+				$( "#tabs" ).tabs({
+					activate: function(event, ui) { 
+						window.sky.panel_activate(ui.newPanel.selector);
+					}
 				});
-				$('#utility-list').DataTable({
-                    "paging":         true
-				});
-				$( "#tabs" ).tabs();
 			});
 			
 		</script>
