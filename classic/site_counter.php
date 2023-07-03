@@ -1,8 +1,8 @@
 <?php
-    define("site_host", "");
-    define("site_username", "");
-    define("site_password", "");
-    define("site_database", "");
+    define("site_host", getenv("SQL_HOST"));
+    define("site_username", getenv("SQL_USER"));
+    define("site_password", getenv("SQL_PASS"));
+    define("site_database", getenv("SQL_DB"));
     
     function get_page_count($pageName) {
 
