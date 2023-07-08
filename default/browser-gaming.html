@@ -352,7 +352,7 @@
                     lines, etc. It does not offer any sort of story, just your typical Tetris game.
                 </p>
                 <a href="images/tetr_io.png" target="_blank">
-                    <img class="preview center" src="images/tetr_io_tmb.png" style="height: 200px; width: 355px">
+                    <img class="preview2 center" src="images/tetr_io_tmb.png" style="height: 200px; width: 355px">
                 </a>
             </td>
         </tr>
@@ -370,7 +370,7 @@
                     dope.
                 </p>
                 <a href="images/bemuse.png" target="_blank">
-                    <img class="preview center" src="images/bemuse_tmb.png" style="height: 200px; width: 355px">
+                    <img class="preview2 center" src="images/bemuse_tmb.png" style="height: 200px; width: 355px">
                 </a>
             </td>
         </tr>
@@ -391,7 +391,7 @@
                     lobbies
                 </p>
                 <a href="images/forward_assault_crazygames.png" target="_blank">
-                    <img class="preview center" src="images/forward_assault_crazygames_tmb.png"
+                    <img class="preview2 center" src="images/forward_assault_crazygames_tmb.png"
                          style="height: 200px; width: 355px">
                 </a>
             </td>
@@ -413,7 +413,7 @@
                     access to bazooka launchers, vehicles, and tanks.
                 </p>
                 <a href="images/battle_dudes.png" target="_blank">
-                    <img class="preview center" src="images/battle_dudes_tmb.png" style="height: 200px; width: 355px">
+                    <img class="preview2 center" src="images/battle_dudes_tmb.png" style="height: 200px; width: 355px">
                 </a>
             </td>
         </tr>
@@ -434,7 +434,7 @@
                     If you wish to play the campaigns, then you have to buy the game from GoG or Steam.
                 </p>
                 <a href="images/tza_red.png" target="_blank">
-                    <img class="preview center" src="images/tza_red_tmb.png" style="height: 200px; width: 355px">
+                    <img class="preview2 center" src="images/tza_red_tmb.png" style="height: 200px; width: 355px">
                 </a>
             </td>
         </tr>
@@ -458,7 +458,7 @@
                     tutorials, puzzles and even a free chess engine analysis. All for free
                 </p>
                 <a href="images/lichess.png">
-                    <img class="preview center" src="images/lichess_tmb.png" style="height: 200px; width: 355px">
+                    <img class="preview2 center" src="images/lichess_tmb.png" style="height: 200px; width: 355px">
                 </a>
             </td>
         </tr>
@@ -556,6 +556,25 @@
                 $(row).addClass('parent');
             }
         });
+
+        var images = $("img.preview.center");
+        for (var i = 0; i < images.length; i++) {
+            let element = images[i];
+            element.onmouseover = () => {
+                element.oldsrc = element.src;
+                element.src = element.src.replace("_tmb", "");
+                element.parentElement.style.height = element.height + "px";
+                element.parentElement.style.width = element.width + "px";
+                element.parentElement.style.display = "block";
+            }
+
+            element.onmouseout = () => {
+                element.src = element.oldsrc;
+                element.parentElement.style.height = "";
+                element.parentElement.style.width = "";
+                element.parentElement.style.display = "";
+            }
+        }
     });
 </script>
 </body>
