@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="author" content="Richard Orilla">
+	<meta http-equiv="content-language" content="en-us">
+	<meta http-equiv="cache-control" content="no-cache">
+	<meta http-equiv="pragma" content="no-cache">
+	<meta name="robots" content="index">
+	<meta content="richard orilla, free games, resume, macbook2015 running on linux, winapps, microsoft office on linux, vmware winapps guide"
+          name="keywords">
+
+	<link href="css/animation.css" rel="stylesheet" type="text/css">
+	<link href="css/fonts.css" rel="stylesheet" type="text/css">
+	<link href="css/site.css" rel="stylesheet" type="text/css">
+	<link href="css/sky.css" rel="stylesheet" type="text/css">
+	<link href="css/reset.css" rel="stylesheet" type="text/css">
+
+	<!-- @@@ -->
+	<title>Skies of the Lost Cause - Template</title>
+</head>
+
+<body>
+	<center>
+		<div id="header">
+			<div class="center themeContainer">
+			  <img class="themepicture" src="images/penj.png" alt="Logo">
+			</div>
+			<p class="headingBase start">~ Skies of the lost cause ~</p>
+			<p class="headingBase middle">Personal website of Richard Orilla</p>
+			<div class="center lineContainer"><img class="linePNG" src="images/hrj.png" alt="Logo"></div>
+			<br>
+		</div>
+
+		<div class="menu-container">
+			<div id="menu">
+				<a class="menuButton" href=about.html>About</a>
+				<a class="menuButton" href=project.html>Projects</a>
+				<a class="menuButton" href=goodies.html>Goodies</a>
+				<a class="menuButton" href=blog.html>Blog</a>
+				<a class="menuButton" href=gallery.html>Gallery</a>
+			</div>
+		</div>
+
+		<div id="content">
+			<h2 id="tableContents">Table of Contents</h2>
+			<ul>
+				<li><a href="#introduction">Introduction</a></li>
+				<li><a href="#wine">Using Wine to run her software</a></li>
+				<li><a href="#virtualmachines">Virtual Machines</a></li>
+				<li><a href="#seamlessintegration">Seamless Integration</a></li>
+				<li><a href="#conclusion">Conclusions</a></li>
+			</ul>
+			<h1 id="headingBlog">Switching someone to Linux</h1>
+			<h2 id="introduction">Introduction</h2>
+			<p>
+				Recently, my mother encountered a problem with her Surface Go, where the tablet's battery became bloated. While
+				it's not overly significant yet, I suggested she stop using it immediately and offered her my spare, unused 2015
+				MacBook Air as an alternative. However, as I tried to reset the MacBook Air, I encountered an issue.
+			</p>
+			<p>
+				For some reason, the installer consistently fails, displaying an error message, and I have to keep clicking
+				"retry." I suspect there might be an issue with the drive, but to be certain, I decided to install Linux on it.
+			</p>
+			<p>
+				I successfully installed Ubuntu 22.04 on the machine, and now I'm faced with a decision. One option is to continue
+				trying to figure out where the macOS installer went wrong, or I can stick with Linux and find a suitable workflow
+				for my mother to use.
+			</p>
+			<p>
+				A crucial requirement for her is the ability to use Microsoft Office. Unfortunately, I can't install Windows on
+				this machine because it's challenging to get Windows 11 on a 2015 device. While Windows 10 is an option, I
+				believe it might be too bloated for such an old machine, and it could struggle to perform well.
+			</p>
+			<p>
+				Additionally, she relies on statistical software such as Minitab, IBM SPSS, and Jamovi. Luckily, Jamovi has a
+				Linux version available. However, Minitab is only compatible with Windows (specifically Vista and 7), so I had
+				to set up VirtualBox on her Surface Go with a customized Windows Vista to ensure she could use Minitab securely.
+				As for IBM SPSS, they recently dropped Linux support, and her license only allows for the latest version.
+			</p>
+			<figure>
+			  <a href="images/macbook_2015_running_winapps.jpg" target="_blank"><img class="preview center" src="images/macbook_2015_running_winapps_tmb.jpg"></a>
+			  <figcaption>Figure 1 Macbook 2015 running Ubuntu 22.04 with Microsoft Office via Winapps
+			  </figcaption>
+			</figure>
+			<p>
+				I've considered various options, including using Wine, Winapps, or a type 2 hypervisor like VMWare. Let's
+				discuss these options further below.
+			</p>
+			<h2 id="wine">Using Wine to run her software</h2>
+			<p>
+				Wine has made significant advancements in recent years, particularly concerning gaming. However, when it comes
+				to non-gaming software, the progress is somewhat hit or miss. While most of the reports on WineHQ regarding IBM
+				SPSS and Minitab may be outdated, the real issue lies with Microsoft Office.
+			</p>
+			<p>
+				The problem arises from her Office 365 Business license, as installing it can be a real pain (PITA). Even if you
+				manage to get it to work, there's a risk that it might break in the future. So, while there's a possibility that
+				IBM SPSS and Minitab could function with Linux via Wine, the compatibility roadblock for Microsoft Office 365
+				pushes me to explore other options.
+			</p>
+			<h2 id="virtualmachines">Virtual Machines</h2>
+			<p>
+				Running Microsoft Office on Linux via virtual machines has been one of the most hardcore solutions that one can
+				ever face. It is guaranteed to work but is the most expensive option because it requires decent hardware and an
+				extra license.
+			</p>
+			<p>
+				In my case, the extra license is not a problem because I already have extra licenses. However, the hardware is a
+				bit of a different story.
+			</p>
+			<p>
+				This is because the hardware of the MacBook Air 2015 model is not decent enough to run Windows 10 virtualized
+				(which is why I did not bother just installing Windows 10). BUT the existence of minimized Windows 10 and 11
+				images has been found on the web.
+			</p>
+			<p>
+				Although these images, such as Tiny11 and ReviOS, are questionable to be used in an actual hardware setting
+				because of stability concerns, they might even have bundled malware.
+			</p>
+			<p>
+				If they are run on a virtual machine with snapshots enabled and completely cut off internet access, the risks
+				are lowered significantly.
+			</p>
+			<p>
+				So running on a virtual machine with a minimal Windows image is a viable option; the only problem is the
+				learning curve of managing the VMs.
+			</p>
+			<h2 id="seamlessintegration">Seamless Integration</h2>
+			<p>The last one is an idea I had when theorizing the second option. With the use of Virtual machines running minimal
+				version of Windows, how can I make it seamless in such a way that it does the following:</p>
+			<ol>
+				<li>Run the VM automatically after the machine boots</li>
+				<li>Make the software available on Ubuntu's application (without interacting with VMWare Workstation at all)
+				</li>
+				<li>Make the VM suspend before shutting down</li>
+			</ol>
+			<p>Concerns 1 and 3 are doable via Systemd. For concern #1, there is a systemd template for starting virtual
+				machines on Vmware (<a href="https://github.com/shovon8/vmware-autostart">Github - VMware Autostart <sup>
+					[1]
+				</sup></a>),
+				and for concern #3, we create a root-level systemd script that interacts with vmrun (vmrun suspend /path/to/virtual_machine_file.vmx).</p>
+			<p>For concern #2, I know that VMWare has dropped seamless mode support for non-Windows guests. However, the other
+				alternative is Winapps (<a href="https://github.com/Fmstrat/winapps">Github - Winapps <sup>[2]</sup></a>).
+				Using Winapps, I could allow streaming the Windows application to the Linux host and make it look seamless as
+				seen below:</p>
+
+			<figure>
+			  <a href="images/ubuntu_winapps_linux_office.png" target="_blank"><img class="preview center" src="images/ubuntu_winapps_linux_office_tmb.png"></a>
+			  <figcaption>Figure 2. The successful Winapps setup
+			  </figcaption>
+			</figure>
+
+			<h2 id="conclusion">Conclusions</h2>
+
+			<p>
+				Only problem is, at the moment, Winapps is buggy and awkward to use. So, I ended up training my mother on how to
+				use VMWare properly while also setting up post-shutdown scripts to suspend the Virtual machine in case she
+				forgets about suspending it.
+			</p>
+
+			<p>
+				That being said, making someone switch to Linux requires a two-way effort. It involves you making an effort to
+				create a workflow that works for the end-user, and it also requires the end-user to make an effort to learn
+				the new workflow.
+			</p>
+			<p>
+				Having a universal workflow on a Linux desktop is unfortunately difficult due to the various options available
+				to end-users. For example, someone setting up a workflow for you might prefer something different than my setup,
+				which could result in different steps. While those steps might work for that specific user, they might not work
+				as well for others who would need to invest time in learning the different workflow setup.
+			</p>
+			<p>
+				If we want Linux to succeed in the desktop space we need to solve that problem. Fortunately the other problems
+				such as lack of apps and sources where to install these apps are becoming less and less of a problem because of
+				the existence of Snap, Flatpak, Appimages and more.
+			</p>
+			<p>
+				That being said, that was a problem in the past and I am sure someone will invent a way to solve the workflow
+				problem that Linux has right now.
+			</p>
+			<p>
+				Finally, it has been 2 weeks now as of this writing and she is happy with her current setup. That until she has
+				enough  spare money to buy another Surface device (the reason why she badly wants Surface is the Windows ink
+				support which she uses alot) and unfortunately Pen support is limited on Linux (and in MacOS) and the spare
+				hardware for her is not capable of supporting such feature.
+			</p>
+			<p>
+				<b>PS:</b> I have only limited screenshots to provide with the setup because I never had the time to took more
+				and I cannot access the device now because she is using it on a day to day basis.
+			</p>
+			<h3>~ End ~</h3>
+			<h4>
+				<a href="#headingBlog">Go back to top</a>
+			</h4>
+			<h4>
+				<a href="blog.html">Go back to list of articles</a>
+			</h4>
+		</div>
+	</center>
+</body>
+
+</html>
