@@ -9,7 +9,7 @@
 		<meta http-equiv="cache-control" content="no-cache">
 		<meta http-equiv="pragma" content="no-cache">
 		<meta name="robots" content="index"> 
-		<meta name="keywords" content="richard orilla, free games, resume">
+		<meta name="keywords" content="richard orilla, free games, resume, virtual machine gaming, vmware gaming, vmware, vmware performance games">
 		<noscript><meta http-equiv="refresh" content="0; url=https://classic.richardorilla.website/vm-as-gaming.html" /></noscript>
 		<script nonce="<?php echo $token; ?>" src="script/data/menu.json" type="text/javascript"></script>
 		<script nonce="<?php echo $token; ?>" src="script/ThreeWebGL.js" type="text/javascript"></script>
@@ -265,4 +265,26 @@
 			</h4>
 		</div>
 	</body>
+	<script nonce="<?php echo $token; ?>">
+		$(document).ready(function () {
+			var images = $("img.preview.center");
+			for (var i = 0; i < images.length; i++) {
+				let element = images[i];
+				element.onmouseover = () => {
+					element.oldsrc = element.src;
+					element.src = element.src.replace("_tmb", "");
+					element.parentElement.style.height = element.height + "px";
+					element.parentElement.style.width = element.width + "px";
+					element.parentElement.style.display = "block";
+				}
+	
+				element.onmouseout = () => {
+					element.src = element.oldsrc;
+					element.parentElement.style.height = "";
+					element.parentElement.style.width = "";
+					element.parentElement.style.display = "";
+				}
+			}
+		});
+	</script>
 </html>

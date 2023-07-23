@@ -10,7 +10,7 @@
   <meta http-equiv="cache-control" content="no-cache" />
   <meta http-equiv="pragma" content="no-cache" />
   <meta name="robots" content="index" />
-  <meta name="keywords" content="richard orilla, free games, resume" />
+  <meta name="keywords" content="richard orilla, free games, resume, linux gaming, state of linux gaming, wine gaming, wine compatibility, wine games" />
   <noscript>
     <meta http-equiv="refresh" content="0; url=https://classic.richardorilla.website/state-of-linux-gaming.html" />
   </noscript>
@@ -517,6 +517,27 @@
       <a href="blog.html">Go back to list of articles</a>
     </h4>
   </div>
+  <script nonce="<?php echo $token; ?>">
+		$(document).ready(function () {
+			var images = $("img.preview.center");
+			for (var i = 0; i < images.length; i++) {
+				let element = images[i];
+				element.onmouseover = () => {
+					element.oldsrc = element.src;
+					element.src = element.src.replace("_tmb", "");
+					element.parentElement.style.height = element.height + "px";
+					element.parentElement.style.width = element.width + "px";
+					element.parentElement.style.display = "block";
+				}
+	
+				element.onmouseout = () => {
+					element.src = element.oldsrc;
+					element.parentElement.style.height = "";
+					element.parentElement.style.width = "";
+					element.parentElement.style.display = "";
+				}
+			}
+		});
+	</script>
 </body>
-
 </html>
