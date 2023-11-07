@@ -228,19 +228,19 @@
     <h3>DRM Support and Anticheat</h3>
     <p>
       These are some of the real problems that Wine is facing right now. Many software, especially under the AAA game
-      section, have DRMs and anti-cheats incompatible with Wine. Since most of the DRMs and Anticheats directly use the
+      section, have DRMs and anti-cheats incompatible with Wine because most of the DRMs and Anticheats directly use the
       NT Kernel instead of interacting with the Win32API.
     </p>
     <p>
-      Since Wine is a translation layer of Win32API calls to GNU/Linux calls, now when software running on Wine will
-      attempt to do a system call on the NT Kernel, Wine will let the software communicate with the Linux Kernel. Since
-      the Linux kernel does not understand what the system call does, it will provide an incorrect response or not
-      respond, causing the DRM module or Anticheat to fail.
+      Since Wine is a translation layer of Win32API calls to GNU/Linux calls, when software running on Wine will
+      attempt to do a system call on the NT Kernel, Wine will communicate with the Linux Kernel instead and since
+      the Linux kernel does not understand what the NT kernel system call does, it will provide an incorrect response
+      causing the DRM module or Anticheat to fail.
     </p>
     <p>
       Of course, there are many ways to fix this; currently, Wine developers will translate the NT Kernel calls without
-      sending a system call directly to the kernel. Quite a hacky approach to solving the problem, which caused a
-      massive influx of custom Wine forks that aim to be compatible with a specific game or DRM.
+      sending a system call directly to the kernel. Quite a hacky approach on solving the problem, This is also one of
+      the reasons why there is massive influx of custom Wine forks that aim to be compatible with a specific game or DRM.
     </p>
     <p>
       With Linux Kernel 5.11, there is now syscall_user_dispatch that lets the kernel send back unsupported system calls
