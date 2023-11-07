@@ -116,7 +116,7 @@
     </figure>
 
     <p>
-      Then Wine is finally started catching up. It can now run a huge amount of Windows applications that it can run
+      Then Wine started to catch up. It can now run a huge amount of Windows applications that it can run
       than ever before. A lot more developers have started contributing to the project, which made it possible for newly
       released Windows applications to begin working on Wine. Not to mention that all of these projects are under FOSS,
       which in turn allows extraordinary efforts such as porting these projects to other operating systems, which is a
@@ -166,14 +166,17 @@
     <p>
       To make it possible for DirectX games to run on Wine. A translation layer is needed as DirectX is exclusive to
       Windows only. For example, Wine translates Direct3D calls to OpenGL calls. This translation is not the best
-      approach as Direct3D and OpenGL are fundamentally different. Performance overheads are possible because not all
-      DirectX calls have a 1-to-1 equivalent with OpenGL. The same case can be said to DirectDraw, but Wine translates
-      DirectDraw calls to Xlib calls. However, translating Direct3D to OpenGL is more complex than translating
-      DirectDraw to Xlib calls.
+      approach as Direct3D and OpenGL have different fundamental concepts and because of this, performance overheads are
+      inenvitable because not all DirectX calls have a 1-to-1 equivalent with OpenGL.
     </p>
     <p>
-      As OpenGL specifications improve over time, the performance penalty should reduce as newer features are on par
-      with the required Direct3D features. However, two translation layers have changed Linux gaming for good.
+      As OpenGL specifications improve over time, the performance penalty should improve as the newer features that each
+      new iterations introduce could help even the gap of the conceptual differences between OpenGL and Direct3D.
+    </p>
+    <p>
+      However, no matter how much you look at it, OpenGL may be simpler to code but it has been shown time and time again
+      how Direct3D outperforms OpenGL because Direct3D allows finer lower level control in comparison to OpenGL. This may seem
+      a hindrance to Wine's compatibility progress but two translation layers appeared and changed Linux gaming for good.
     </p>
     <p>
       These are Gallium9 and DXVK. Gallium9 is a native implementation of D3D via Mesa. The native implementation of
