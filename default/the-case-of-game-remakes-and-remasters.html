@@ -259,16 +259,10 @@
 					element.onmouseover = () => {
 						element.oldsrc = element.src;
 						element.src = element.src.replace("_tmb", "");
-						element.parentElement.style.height = element.height + "px";
-						element.parentElement.style.width = element.width + "px";
-						element.parentElement.style.display = "block";
 					}
 		
 					element.onmouseout = () => {
 						element.src = element.oldsrc;
-						element.parentElement.style.height = "";
-						element.parentElement.style.width = "";
-						element.parentElement.style.display = "";
 					}
 				}
 			});
