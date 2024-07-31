@@ -153,20 +153,26 @@ window.sky_fps_iteration_count = 0;
 window.sky_timeout = setInterval(async function() {
 	if (window.sky.tabFocus) {
 		window.sky_fps_holder.push(window.sky.stats.fps);
-		if (window.sky_fps_holder.length >= 5) {
-			var total = window.sky_fps_holder.slice(-10).reduce((acc, c) => acc + c, 0);
-			window.sky_fps_average = total / window.sky_fps_holder.slice(-10).length;
-			if (window.sky_fps_average <= 5) {
-				window.sky_fps_iteration_count += 1;
-				if (window.sky_fps_iteration_count >= 15) {
-					window.sky.redirectToClassic();
+		if (window.sky_fps_holder.length >= 50) {
+			const threshold = 15;
+			const totalElements = window.sky_fps_holder.length;
+			const requiredCount = Math.ceil((2 / 3) * totalElements);
+			
+			let count = 0;
+			for (let i = 0; i < totalElements; i++) {
+
+				if (window.sky_fps_holder[i] >= threshold) {
+					count++;
+				}
+
+				if (count >= requiredCount) {
+					clearInterval(window.sky_timeout);
+					break;
 				}
 			}
-			
-			if (window.sky_fps_holder.length > 50) {
-				clearInterval(window.sky_timeout);
-			}
-		}
+			console.log(`count: ${count}, requiredCount: ${requiredCount}`);
+		  }
+		  
 	}
 }, 500);
 
