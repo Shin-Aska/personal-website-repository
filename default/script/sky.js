@@ -153,7 +153,7 @@ window.sky_fps_iteration_count = 0;
 window.sky_timeout = setInterval(async function() {
 	if (window.sky.tabFocus) {
 		window.sky_fps_holder.push(window.sky.stats.fps);
-		if (window.sky_fps_holder.length >= 50) {
+		if (window.sky_fps_holder.length >= 20) {
 			const threshold = 15;
 			const totalElements = window.sky_fps_holder.length;
 			const requiredCount = Math.ceil((2 / 3) * totalElements);
