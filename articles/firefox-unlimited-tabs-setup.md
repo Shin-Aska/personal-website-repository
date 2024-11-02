@@ -1,103 +1,65 @@
 # Handling unlimited number of tabs with Firefox
 
+
 ## Introduction
 
+One of the most common problems that I see with my colleagues from time to time is tab management. Specifically, the majority of them love to open a lot of tabs and keep them open for a long time.
 
- One of the most common problems that I see with my colleagues from time to time is tab management.
- Specifically, the majority of them love to open a lot of tabs and keep them open for a long time.
- 
+Tabs where introduced originally to organize the browsing experience and to make it easier to switch between different pages because originally browsers only supported one page per windows making it hard to switch between different pages when it is shared with other open applications
 
+However, the problem is that most browsers are not designed to handle a large number of tabs. Not really the technology per se but the user interface. The user interface is designed to show a limited number of tabs and when the number of tabs exceeds the limit, the browser will start to shrink the tabs to fit the screen. This is a problem because the user will not be able to see the title of the tabs and will not be able to switch between tabs easily.
 
- Tabs where introduced originally to organize the browsing experience and to make it easier to switch
- between different pages because originally browsers only supported one page per windows making it hard
- to switch between different pages when it is shared with other open applications
- 
+They end up either scrolling through the tabs just to figure out which tab they want to switch to. Thankfully major browsers have a feature now to easily list the open tabs and search between through them. For example in Firefox, we have now Firefox view allowing us to peruse through the tabs easily but also allow us to see our recent activities and such.
 
-
- However, the problem is that most browsers are not designed to handle a large number of tabs. Not really
- the technology per se but the user interface. The user interface is designed to show a limited number of
- tabs and when the number of tabs exceeds the limit, the browser will start to shrink the tabs to fit the
- screen. This is a problem because the user will not be able to see the title of the tabs and will not be
- able to switch between tabs easily.
- 
-
-
- They end up either scrolling through the tabs just to figure out which tab they want to switch to. Thankfully
- major browsers have a feature now to easily list the open tabs and search between through them. For example in
- Firefox, we have now Firefox view allowing us to peruse through the tabs easily but also allow us to see
- our recent activities and such.
- 
-
-
-[![](images/ff-tab-picker.png)](images/ff-tab-picker.png)
-
-
-Figure 1\. Firefox View
- 
+- [ ] [![](images/ff-tab-picker.png)](images/ff-tab-picker.png)
+- [ ] Figure 1\. Firefox View
 
 
 
- Now what if we expand this concept of Firefox view, list down all the tabs and allow us to search through them instead
- of the default tab setup. This is what we are going to do in this article.
- 
+
+Now what if we expand this concept of Firefox view, list down all the tabs and allow us to search through them instead of the default tab setup. This is what we are going to do in this article.
+
 
 ## Firefox Extension \- Sidebery
 
 
-[Sidebery](https://addons.mozilla.org/en-US/firefox/addon/sidebery/) is a Firefox extension that
- allows you to list down all the tabs that you have open and search through them. You can also group the tabs
- and save them for later. This is a great extension for those who love to open a lot of tabs and keep them
- open for a long time.
- 
+[Sidebery<sup>[1]</sup>](https://addons.mozilla.org/en-US/firefox/addon/sidebery/) is a Firefox extension that allows you to list down all the tabs that you have open and search through them. You can also group the tabs and save them for later. This is a great extension for those who love to open a lot of tabs and keep them open for a long time.
 
 
- We will use Sidebery to essentially blur the lines between the tabs and the bookmarks. There is also another
- one called Tree Style Tab but Sidebery is more flexible and has more features.
- 
+
+We will use Sidebery to essentially blur the lines between the tabs and the bookmarks. There is also another one called Tree Style Tab but Sidebery is more flexible and has more features.
 
 
- Once you have installed Sidebery, you will notice that it will appear on the left side of the browser. You can also
- notice that the default tab bar is still there making it redundant. We will hide it later as the last step.
- 
+
+Once you have installed Sidebery, you will notice that it will appear on the left side of the browser. You can also notice that the default tab bar is still there making it redundant. We will hide it later as the last step.
+
 
 ## Auto Tab Discard
 
 
- Another problem with having a lot of tabs open is that it consumes a lot of memory. This is because each tab
- is essentially a separate process and each process consumes memory.
- This is where [Auto Tab Discard](https://addons.mozilla.org/en-US/firefox/addon/auto-tab-discard/) comes in.
- 
+Another problem with having a lot of tabs open is that it consumes a lot of memory. This is because each tab is essentially a separate process and each process consumes memory. This is where [Auto Tab Discard<sup>[2]</sup>](https://addons.mozilla.org/en-US/firefox/addon/auto-tab-discard/) comes in.
 
 
- Auto Tab Discard is a Firefox extension that automatically discards tabs that you have not used for a certain
- amount of time. This will be a key extension to use in conjunction with Sidebery as it will help us manage an unlimited
- number of tabs without consuming too much memory.
- 
+
+Auto Tab Discard is a Firefox extension that automatically discards tabs that you have not used for a certain amount of time. This will be a key extension to use in conjunction with Sidebery as it will help us manage an unlimited number of tabs without consuming too much memory.
+
 
 ## Remove the default tab bar
 
 
- Now that we have Sidebery and Auto Tab Discard installed, we can now remove the default tab bar. This is because
- the default tab bar is redundant, and we will not be using it anymore. To do this we will be using a userChrome.css
- 
-
-
- To do this, open the Firefox profile folder by typing <about:profiles> in the address bar.
- Find the part that says "This is the profile in use and it cannot be deleted." and then click on the
- "Open Folder" button under the "Root Directory" section. This will open the profile folder in your file manager.
- 
-
-
-[![](images/ff-about-profiles.png)](images/ff-about-profiles.png)
-
-
-Figure 2\. Firefox Profile Folders
+Now that we have Sidebery and Auto Tab Discard installed, we can now remove the default tab bar. This is because the default tab bar is redundant, and we will not be using it anymore. To do this we will be using a userChrome.css
 
 
 
- Inside the profile folder, create a folder called "chrome" if it does not exist. Inside the "chrome" folder, create a file
- called "userChrome.css" and then open it with a text editor. Add the following code to the file:
- 
+To do this, open the Firefox profile folder by typing **\<about:profiles>** in the address bar. Find the part that says "This is the profile in use and it cannot be deleted." and then click on the "Open Folder" button under the "Root Directory" section. This will open the profile folder in your file manager.
+
+
+
+- [ ] [![](images/ff-about-profiles.png)](images/ff-about-profiles.png)
+- [ ] Figure 2\. Firefox Profile Folders
+
+Inside the profile folder, create a folder called "chrome" if it does not exist. Inside the "chrome" folder, create a file called "userChrome.css" and then open it with a text editor. Add the following code to the file:
+
 
 
 ```css
@@ -148,36 +110,20 @@ Figure 2\. Firefox Profile Folders
 			
 ```
 
- After adding the code, save the file and then restart Firefox. The default tab bar should now be hidden and you should
- only see Sidebery on the left side of the browser. Similar to the image below:
- 
+After adding the code, save the file and then restart Firefox. The default tab bar should now be hidden and you should only see Sidebery on the left side of the browser. Similar to the image below:
 
-
-[![](images/ff-unlimited.png)](images/ff-unlimited.png)
-
-
-Figure 3\. My Firefox Setup
+- [ ] [![](images/ff-unlimited.png)](images/ff-unlimited.png)
+- [ ] Figure 3\. My Firefox Setup
 
 
 ## Conclusion
 
 
- There you have it. You can now handle an unlimited number of tabs with Firefox. You can now list down all the tabs
- that you have open and search through them. You can also group the tabs and save them for later. In addition, one
- of the key features of Sidebery is that it allows you to group tabs in a panel. In addition, you can program Sidebery
- to automatically move tabs to a particular panel base on their domain.
- 
+There you have it. You can now handle an unlimited number of tabs with Firefox. You can now list down all the tabs that you have open and search through them. You can also group the tabs and save them for later. In addition, one of the key features of Sidebery is that it allows you to group tabs in a panel. In addition, you can program Sidebery to automatically move tabs to a particular panel base on their domain.
 
+If you can see in the screenshot above, I have roughly around 50 tabs open (not counting the PWA apps; I use Firefox PWA) and all in all it consumes around 4GB of memory/ Which is not bad considering that I have a lot of tabs open, alot of extensions installed (15\+), and I am also running a lot of PWA apps, which is counted in the 4GB memory usage.
 
- If you can see in the screenshot above, I have roughly around 50 tabs open (not counting the PWA apps; I use Firefox PWA)
- and all in all it consumes around 4GB of memory/ Which is not bad considering that I have a lot of tabs open, alot of
- extensions installed (15\+), and I am also running a lot of PWA apps, which is counted in the 4GB memory usage.
- 
+Feel free to explore both Sidebery and Auto Tab Discard. They have alot of customization options. Such as with Auto Tab Discard, you can program it to not discard pinned tabs or tabs that are playing audio for example. There is plenty of room to customize both extensions to your liking. Even then the default settings are already good enough.
 
-
- Feel free to explore both Sidebery and Auto Tab Discard. They have alot of customization options. Such as with Auto Tab Discard,
- you can program it to not discard pinned tabs or tabs that are playing audio for example. There is plenty of room to customize
- both extensions to your liking. Even then the default settings are already good enough.
- 
 
 

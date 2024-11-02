@@ -52,23 +52,16 @@ It should be noted that I did not include the use\-cases related to businesses, 
 
 ### Maximize OOXML compatibility
 
-
-[![](images/docx_reading_tmb.png)](images/docx_reading.png)
-
-
-Figure 1\. WPSOffice the only one supporting text\-outline effect so far.
+- [ ] [![](images/docx_reading_tmb.png)](images/docx_reading.png)
+- [ ] Figure 1\. WPSOffice the only one supporting text\-outline effect so far.
 
 
 If you are a Linux user who mainly works with people who use Microsoft Office and do not want to do something drastic like installing a Windows virtual machine or you tried Wine \+ Office365, it didn't work out for you.
 
 Then I suggest you give WPS Office a try as, among the three, WPS Office has the best compatibility with OOXML files (DOCX, XLSX, and PPTX). 
 
-
-[![](images/flatseal.png)](images/flatseal.png)
-
-
-Figure 2\. Disabling networking on WPS Office via Flatseal
-
+- [ ] [![](images/flatseal.png)](images/flatseal.png)
+- [ ] Figure 2\. Disabling networking on WPS Office via Flatseal
 
 For those who are paranoid about WPS Office being a Chinese spyware, there is a Flatpak version of WPS. You can use that version instead and use Flatseal to modify the configurations and restrict WPS Office from any network connectivity.
 
@@ -76,12 +69,8 @@ The only real downside with WPS Office is its lack of support outside Microsoft 
 
 ### Consistent User Experience
 
-
-[![](images/onlyoffice_personal_tmb.png)](images/onlyoffice_personal.png)
-
-
-Figure 3\. OnlyOffice cloud personal running on Firefox
-
+- [ ] [![](images/onlyoffice_personal_tmb.png)](images/onlyoffice_personal.png)
+- [ ] Figure 3\. OnlyOffice cloud personal running on Firefox
 
 If you wish to have decent OOXML support and want a consistent user\-interface experience regardless of whether you are running the cloud version (either self\-hosted or using an external service provider) or the desktop version.
 
@@ -89,11 +78,8 @@ Then OnlyOffice is the only one among the three built from the ground up to be a
 
 What makes OnlyOffice a decent choice is that it is one of the few that provides an AppImage file as its distribution medium, which you can just download, store in a USB Flash storage and just run it from there without installing the said application.
 
-
-[![](images/spreadsheet_usage_tmb.png)](images/spreadsheet_usage.png)
-
-
-Figure 4\. Opening an 8MB Excel (XLSX) file, Onlyoffice (DesktopEditors \+ editors\_helper) consumes the most memory 558\.8MB of ram, while LibreOffice (oosplash \+ SOffice.bin) is around 440\.6MB while WPS (wpsoffice \+ et) 247\.7 MB of ram
+- [ ] [![](images/spreadsheet_usage_tmb.png)](images/spreadsheet_usage.png)
+- [ ] Figure 4\. Opening an 8MB Excel (XLSX) file, Onlyoffice (DesktopEditors \+ editors\_helper) consumes the most memory 558\.8MB of ram, while LibreOffice (oosplash \+ SOffice.bin) is around 440\.6MB while WPS (wpsoffice \+ et) 247\.7 MB of ram
 
 
 The only downside of OnlyOffice is that it is powered by Electron. Thus it is heavier than its counterparts, but hey, at least among the three, it is the most portable one.
@@ -102,12 +88,8 @@ The only downside of OnlyOffice is that it is powered by Electron. Thus it is he
 
 Most casual users want to just use the software that has already been preinstalled on their machine. Since most Linux distributions bundle LibreOffice by default, these users have grown accustomed to what LibreOffice offers.
 
-
-[![](images/libre_office_tmb.png)](images/libre_office.png)
-
-
-Figure 5\. Default LibreOffice interface on KDE Neon
-
+- [ ] [![](images/libre_office_tmb.png)](images/libre_office.png)
+- [ ] Figure 5\. Default LibreOffice interface on KDE Neon
 
 LibreOffice is by far not a bad choice to use as it supports a variety of file formats (from OOXML to OpenDocument); it also has a variety of offline templates and clipart preinstalled.
 
@@ -115,12 +97,8 @@ It does great on what it does: to provide the basic functionalities of an office
 
 The default user can never go wrong with LibreOffice (or whatever is preinstalled on their machine). Yes, this also implies that the three are mature projects that you can use.
 
-
-[![](images/presentation_tmb.png)](images/presentation.png)
-
-
-Figure 6\. Side\-by\-side using LibreOffice Impress and WPS Presentation
-
+- [ ] [![](images/presentation_tmb.png)](images/presentation.png)
+- [ ] Figure 6\. Side\-by\-side using LibreOffice Impress and WPS Presentation
 
 ## My thoughts, opinions, and conclusions
 
@@ -146,32 +124,21 @@ Microsoft developed the R1C1 in the past to address referencing issues across sh
 
 That being said, it can easily be set back to A1 reference by opening an empty spreadsheet, click on Menu, then Options. Once it opens the Options Window, go to the General and Save section and uncheck the R1C1 reference style
 
-
-[![](images/excel_r1c1_tmb.png)](images/excel_r1c1.png)
-
-
-Figure 7\. WPS Spreadsheet R1C1 option
+- [ ] [![](images/excel_r1c1_tmb.png)](images/excel_r1c1.png)
+- [ ] Figure 7\. WPS Spreadsheet R1C1 option
 
 
 ## December 20 Update: What about Softmaker Office
 
 A week back, a friend of mine claimed that Softmaker Office is probably the best alternative outside of Microsoft Office as it has the most compatibility with Microsoft Documents
 
-
-[![](images/softmaker_textmaker_tmb.png)](images/softmaker_textmaker.png)
-
-
-Figure 8\. Softmaker Office rendering
-
+- [ ] [![](images/softmaker_textmaker_tmb.png)](images/softmaker_textmaker.png)
+- [ ] Figure 8\. Softmaker Office rendering
 
 Although I am very impressed with Softmaker Office in general and I actually would recommend it as being the best office suite with regards to trying to be compatible with both Microsoft Office standard and Open Document format
 
-
-[![](images/kingsoft_tmb.png)](images/kingsoft.png)
-
-
-Figure 9\. WPS Windows ink rendering
-
+- [ ] [![](images/kingsoft_tmb.png)](images/kingsoft.png)
+- [ ] Figure 9\. WPS Windows ink rendering
 
 Unfortunately I will have to keep my recommendation to WPS still as I went ahead and modified my sample document to have a Microsoft Ink signature and only WPS got it correctly while Softmaker Textmaker got it, but it is rendered incorrectly
 
@@ -180,18 +147,12 @@ That being said, I may update this article in the future to include FreeOffice /
 ## June 11 2023 Update: Softmaker update
 
 
- After my December 20 update, I ultimately decided to purchase Softmaker 2021 to give it a fairer evaluation.
- 
+After my December 20 update, I ultimately decided to purchase Softmaker 2021 to give it a fairer evaluation.
 
+I ended up using Softmaker Office from January to June and base on my 5 months experience with the software, I could therefore say it is decent but in terms of rankings with Microsoft Office alternatives it is below if not equal to LibreOffice.
 
- I ended up using Softmaker Office from January to June and base on my 5 months experience with the software,
- I could therefore say it is decent but in terms of rankings with Microsoft Office alternatives
- it is below if not equal to LibreOffice.
- 
+Here are the list of "deal\-breakers" for me with regards to the Softmaker Office.
 
-
- Here are the list of "deal\-breakers" for me with regards to the Softmaker Office.
- 
 
 #### General (Applies to all)
 
@@ -209,27 +170,12 @@ That being said, I may update this article in the future to include FreeOffice /
 * Math type formulas do not appear properly on Microsoft Office
 
 
- As you can see, these deal breakers are not necessarily a bad thing as there are work arounds for these
- issues and you can definitely live with it
- 
+As you can see, these deal breakers are not necessarily a bad thing as there are work arounds for these issues and you can definitely live with it
 
+Especially for me where I use Equations, importing of Data and projecting graphs and tables on presentations
 
- Especially for me where I use Equations, importing of Data
- and projecting graphs and tables on presentations
- 
+I will however go back to Microsoft Office on Windows but will retain to Softmaker Office on Linux for the forseeable future.
 
+Although I have alot of gripes with Softmaker I do like the User Interface alot which is enough for me to keep on using it
 
- I will however go back to Microsoft Office on Windows but will retain to Softmaker Office on Linux for
- the forseeable future.
- 
-
-
- Although I have alot of gripes with Softmaker I do like the User Interface alot which is enough for me
- to keep on using it
- 
-
-
- To set the record straight, overall, I am a happy customer on purchasing Softmaker Office
- 
-
-
+To set the record straight, overall, I am a happy customer on purchasing Softmaker Office
