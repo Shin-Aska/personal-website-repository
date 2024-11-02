@@ -71,8 +71,3 @@ There are plenty of other examples, like the botched Warcraft 3 Reforged and Sil
 The reason game remasters, and remakes are awesome is because it has the potential to revive (either out of sheer nostalgia or updates) the fan's interest, which is a completely different feeling from trying out and loving a new game that just came out.
 
 It is like falling in love again with something you already fell in love with. I am sure I am not the only one with this sentiment. Millions of gamers across the globe that have enjoyed the remakes and remasters will probably say the same thing.
-
-* **Resident Evil 3 Remake on the left and the original on the right**
-* **Diablo 2 Resurrected on the left, original on the right**
-* **Trials of Mana remake on the left, the original on the right**
-* **Ducktales remastered on the left, the original on the right**
