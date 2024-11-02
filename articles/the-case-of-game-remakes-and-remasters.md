@@ -1,7 +1,5 @@
 # Why video game remasters and remakes are awesome
 
-##### This article contains an image comparison slider that is interactable with the  icon. Dragging the  icon will move the slider to the left or right direction relative to your mouse movement.
-
 ## Introduction
 
 There is a popular trend in the video game industry where old games (either a previous iteration or a stale series/franchise) are picked up once again and modernized in various ways. Currently, there are two approaches to the modernization of video games:
