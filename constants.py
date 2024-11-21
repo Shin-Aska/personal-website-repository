@@ -1,0 +1,38 @@
+from enum import StrEnum
+
+
+class MarkdownElementType(StrEnum):
+    h1 = "heading1"
+    h2 = "heading2"
+    h3 = "heading3"
+    h4 = "heading4"
+    h5 = "heading5"
+    h6 = "heading6"
+    p = "paragraph"
+    ul = "unordered_list"
+    ol = "ordered_list"
+    checkbox = "checkbox"
+    image = "image"
+    codeblock = "codeblock"
+
+ElementTypeMapping: dict[str, MarkdownElementType] = {
+    '######': MarkdownElementType.h6,
+    '#####': MarkdownElementType.h5,
+    '####': MarkdownElementType.h4,
+    '###': MarkdownElementType.h3,
+    '##': MarkdownElementType.h2,
+    '#': MarkdownElementType.h1,
+    '- [ ]': MarkdownElementType.checkbox,
+    '-': MarkdownElementType.ul,
+    '1.': MarkdownElementType.ol,
+    '![': MarkdownElementType.image,
+    '```': MarkdownElementType.codeblock
+}
+
+MultiContentMarkdownElementType: list[MarkdownElementType] = [
+    MarkdownElementType.ul,
+    MarkdownElementType.ol,
+    MarkdownElementType.checkbox,
+    MarkdownElementType.image,
+    MarkdownElementType.codeblock
+]
