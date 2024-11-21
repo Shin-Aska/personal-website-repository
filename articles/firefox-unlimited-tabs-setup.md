@@ -115,6 +115,17 @@ After adding the code, save the file and then restart Firefox. The default tab b
 - [ ] [![](images/ff-unlimited.png)](images/ff-unlimited.png)
 - [ ] Figure 3\. My Firefox Setup
 
+## November 21, 2024 Update: UserChromeCSS no longer necessary
+
+
+There is no longer need to use the step above. This is because the new upcoming vertical tabs on Firefox is already available on Firefox stable but is hidden in a about:config setting
+
+In your Firefox about:config, type sidebar. (yes with the dot) and enable or set to true sidebar.revamp, sidebar.verticalTabs to true. This way you can hide the tabs from the top and just either use the default vertical tabs that will be available on the public in the future or just use sideberry along with it.
+
+Additionally if you wish to hide the tabs and just use sideberry as before, you may opt to hide the sidebar then click sideberry. To do this, either go to customize sidebar and choose **Show and hide sidebar** instead of **Expand and collpase sidebar** then click sidebar so the sidebar remains hidden, the click Sideberry so it becomes visible.
+
+- [ ] [![](images/ff-new-vertical.png)](images/ff-new-vertical.png)
+- [ ] Figure 4\. The new Sidebar setup (Notice lesser padding and more space)
 
 ## Conclusion
 
