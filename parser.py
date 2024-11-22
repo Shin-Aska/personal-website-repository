@@ -1,28 +1,67 @@
 from typing import Optional
 
-from constants import MarkdownElementType, MultiContentMarkdownElementType, ElementTypeMapping
+from constants import MarkdownElementType, multi_content_markdown_element_type, element_type_mapping
 
 
 class MarkdownElement:
     element_type: MarkdownElementType = None
     content: str | list[str] = None
-    extra: dict = {}
+    extra: dict = None
 
     def __init__(self, element_type: MarkdownElementType, content: str | list[str]):
         self.element_type = element_type
         self.content = content
+        self.extra: dict = {}
 
     def is_multi_content(self) -> bool:
-        return self.element_type in MultiContentMarkdownElementType
+        return self.element_type in multi_content_markdown_element_type
 
 
 class MarkdownParser:
+
     @staticmethod
-    def parse(markdown_file_contents: list[str]) -> list[MarkdownElement]:
+    def _generate_non_multi_content_markdown_element(element_type: MarkdownElementType, line: str, value: str) -> MarkdownElement:
+        element: Optional[MarkdownElement] = None
+        if element_type == MarkdownElementType.link or element_type == MarkdownElementType.image:
+            square_bracket_open_index: int = -1
+            square_bracket_close_index: int  = -1
+            square_bracket_open_counter: int  = 0
+
+            for square_bracket_index, char in enumerate(line):
+                if char == '[':
+                    if square_bracket_open_counter == 0:
+                        square_bracket_open_index = square_bracket_index
+                    square_bracket_open_counter += 1
+                elif char == ']':
+                    square_bracket_open_counter -= 1
+                    if square_bracket_open_counter == 0:
+                        square_bracket_close_index = square_bracket_index
+                        break
+
+            if square_bracket_open_index != -1 and square_bracket_close_index != -1:
+                value = line[square_bracket_open_index + 1:square_bracket_close_index]
+                link = line[square_bracket_close_index + 2:-1]
+
+                if element_type == MarkdownElementType.link:
+                    element = MarkdownElement(element_type, value)
+                    element.extra['link'] = link
+                elif element_type == MarkdownElementType.image:
+                    element = MarkdownElement(element_type, link)
+                    element.extra['alt'] = value
+        else:
+            element = MarkdownElement(element_type, value)
+        return element
+
+    @staticmethod
+    def parse(markdown_file_contents: list[str], debug = False) -> list[MarkdownElement]:
         elements = []
         element_type: Optional[MarkdownElementType] = None
         code_block_flag: bool = False
         element: Optional[MarkdownElement] = None
+
+        if debug:
+            import pdb
+            pdb.set_trace()
 
         for idx, line in enumerate(markdown_file_contents):
 
@@ -32,7 +71,7 @@ class MarkdownParser:
             if line.strip().rstrip() == '':
                 continue
 
-            for e_prefix, e_type in ElementTypeMapping.items():
+            for e_prefix, e_type in element_type_mapping.items():
                 if line.startswith(e_prefix):
                     element_type = e_type
                     prefix = e_prefix
@@ -42,20 +81,15 @@ class MarkdownParser:
                  element_type = MarkdownElementType.p
 
             # print(["#", idx, line, element_type, code_block_flag, element, element.element_type if element else None, element.element_type not in MultiContentMarkdownElementType if element else None])
-            value: str = line.replace(prefix, '').strip().rstrip()
-
-            # if idx == 64:
-            #     import pdb
-            #     pdb.set_trace()
+            value: str = line.replace(prefix, '').strip().rstrip().replace('\\', '')
 
             if element_type == MarkdownElementType.codeblock:
-                if element and element.element_type != MarkdownElementType.codeblock or not element:
+                if (element and element.element_type != MarkdownElementType.codeblock) or not element:
                     code_block_flag = True
                     element = MarkdownElement(element_type, [])
                     element.extra['language'] = value
                 else:
                     code_block_flag = False
-
 
             if not code_block_flag:
                 # The idea is simple, normally we can map the prefix to the element type and is usually a single line element
@@ -67,8 +101,8 @@ class MarkdownParser:
                 if not element:
                     # The only difference between a single content element and a multi content element is the content
                     # If the element is not a multi content element then the content is a string, otherwise it is a list
-                    if element_type not in MultiContentMarkdownElementType:
-                        element = MarkdownElement(element_type, value)
+                    if element_type not in multi_content_markdown_element_type:
+                        element = MarkdownParser._generate_non_multi_content_markdown_element(element_type, line, value)
                         elements.append(element)
                         element = None
                     else:
@@ -82,8 +116,8 @@ class MarkdownParser:
                         element.content.append(value)
                     else:
                         elements.append(element)
-                        if element_type not in MultiContentMarkdownElementType:
-                            element = MarkdownElement(element_type, value)
+                        if element_type not in multi_content_markdown_element_type:
+                            element = MarkdownParser._generate_non_multi_content_markdown_element(element_type, line, value)
                             elements.append(element)
                             element = None
                         else:
