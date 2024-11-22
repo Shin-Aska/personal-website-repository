@@ -38,9 +38,10 @@ class Publisher(ABC):
     base_padding: int = 3
 
     @abstractmethod
-    def __init__(self, template: TextIO, article: TextIO):
+    def __init__(self, template: TextIO, article: TextIO, file_id: str):
         self.template = template
         self.markdown = article
+        self.file_id = file_id
         self.article = MarkdownParser.parse(self._fetch_content(self.markdown))
         self.images = []
 
@@ -87,8 +88,8 @@ class Publisher(ABC):
 
 class DefaultThemePublisher(Publisher):
 
-    def __init__(self, template: TextIO, article: TextIO):
-        super().__init__(template, article)
+    def __init__(self, template: TextIO, article: TextIO, file_id: str):
+        super().__init__(template, article, file_id)
 
     def _generate_content(self) -> str:
         # Read each line of the markdown file
@@ -149,10 +150,21 @@ class DefaultThemePublisher(Publisher):
                 html_content = self._push_to_html_content(html_content, '</code>', 1)
                 html_content = self._push_to_html_content(html_content, '</pre>')
 
+        html_content = self._push_to_html_content(html_content, '<h3>~ End ~</h3>')
+        html_content = self._push_to_html_content(html_content, '<h4>')
+        html_content = self._push_to_html_content(html_content, 'There are', 1)
+        html_content = self._push_to_html_content(html_content, '<?php', 1)
+        html_content = self._push_to_html_content(html_content, 'include "site_counter.php";', 2)
+        html_content = self._push_to_html_content(html_content, f'echo get_page_count("{self.file_id}");', 2)
+        html_content = self._push_to_html_content(html_content, '?>', 1)
+        html_content = self._push_to_html_content(html_content, 'visitors to this site.', 1)
+        html_content = self._push_to_html_content(html_content, '</h4>')
+
         table_of_contents = self._push_to_html_content(table_of_contents, '<h2 id="tableContents">Table of Contents</h2>')
         table_of_contents = self._push_to_html_content(table_of_contents, '<ul>')
         for content in table_contents:
-            table_of_contents = self._push_to_html_content(table_of_contents, f'<li><a href="#{content.heading_id}">{content.heading_value}</a></li>', 1)
+            if content.heading_id != 'headingBlog':
+                table_of_contents = self._push_to_html_content(table_of_contents, f'<li><a href="#{content.heading_id}">{content.heading_value}</a></li>', 1)
         table_of_contents = self._push_to_html_content(table_of_contents, '</ul>')
 
 
@@ -176,8 +188,8 @@ class PublisherFactory:
     }
 
     @staticmethod
-    def get_publisher(filename: str, t_file: TextIO, m_file: TextIO) -> Publisher:
-        return PublisherFactory.lookup[filename](t_file, m_file)
+    def get_publisher(filename: str, t_file: TextIO, m_file: TextIO, file_id: str) -> Publisher:
+        return PublisherFactory.lookup[filename](t_file, m_file, file_id)
 
 
 if __name__ == '__main__':
@@ -206,7 +218,7 @@ if __name__ == '__main__':
         print('File not found for either template or markdown file')
         exit()
 
-    publisher = PublisherFactory.get_publisher(options.template.split('/')[-1], template_file, markdown_file)
+    publisher = PublisherFactory.get_publisher(options.template.split('/')[-1], template_file, markdown_file, options.file.split('/')[-1].split('.')[0])
     publisher.publish(options.output)
 
     # Check if the images under publisher.images exists on the {{template}} directory
