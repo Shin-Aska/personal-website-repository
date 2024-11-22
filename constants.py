@@ -14,8 +14,9 @@ class MarkdownElementType(StrEnum):
     checkbox = "checkbox"
     image = "image"
     codeblock = "codeblock"
+    link = "link"
 
-ElementTypeMapping: dict[str, MarkdownElementType] = {
+element_type_mapping: dict[str, MarkdownElementType] = {
     '######': MarkdownElementType.h6,
     '#####': MarkdownElementType.h5,
     '####': MarkdownElementType.h4,
@@ -26,13 +27,33 @@ ElementTypeMapping: dict[str, MarkdownElementType] = {
     '-': MarkdownElementType.ul,
     '1.': MarkdownElementType.ol,
     '![': MarkdownElementType.image,
-    '```': MarkdownElementType.codeblock
+    '```': MarkdownElementType.codeblock,
+    '[': MarkdownElementType.link
 }
 
-MultiContentMarkdownElementType: list[MarkdownElementType] = [
+multi_content_markdown_element_type: list[MarkdownElementType] = [
     MarkdownElementType.ul,
     MarkdownElementType.ol,
     MarkdownElementType.checkbox,
-    MarkdownElementType.image,
     MarkdownElementType.codeblock
 ]
+
+heading_markdown_element_type: list[MarkdownElementType] = [
+    MarkdownElementType.h1,
+    MarkdownElementType.h2,
+    MarkdownElementType.h3,
+    MarkdownElementType.h4,
+    MarkdownElementType.h5,
+    MarkdownElementType.h6
+]
+
+heading_markdown_element_type_mapping: dict[MarkdownElementType, str] = {
+    MarkdownElementType.h1: 'h1',
+    MarkdownElementType.h2: 'h2',
+    MarkdownElementType.h3: 'h3',
+    MarkdownElementType.h4: 'h4',
+    MarkdownElementType.h5: 'h5',
+    MarkdownElementType.h6: 'h6'
+}
+
+publisher_heading_characters_ignore_for_heading_tag: list[str] = [' ', '(', ')', '?', '!', '.', ':', ',', '-']
