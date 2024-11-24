@@ -124,6 +124,10 @@ class MarkdownParser:
                             content: list[str] = [value]
                             element = MarkdownElement(element_type, content)
             else:
-                element.content.append(line)
+                # If line contains ``` and a language after that, then we will not append the line to the content
+                if not (line.strip().startswith('```') and len(line.strip()) > 3):
+                    element.content.append(line)
+                else:
+                    element.content.append('\n')
 
         return elements
