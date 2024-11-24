@@ -1,20 +1,7 @@
 from typing import Optional
 
-from constants import MarkdownElementType, multi_content_markdown_element_type, element_type_mapping
-
-
-class MarkdownElement:
-    element_type: MarkdownElementType = None
-    content: str | list[str] = None
-    extra: dict = None
-
-    def __init__(self, element_type: MarkdownElementType, content: str | list[str]):
-        self.element_type = element_type
-        self.content = content
-        self.extra: dict = {}
-
-    def is_multi_content(self) -> bool:
-        return self.element_type in multi_content_markdown_element_type
+from parsers.markdown.constants import MarkdownElementType, element_type_mapping, multi_content_markdown_element_type
+from parsers.markdown.models import MarkdownElement
 
 
 class MarkdownParser:
