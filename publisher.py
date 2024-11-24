@@ -54,10 +54,10 @@ class Publisher(ABC):
         raise NotImplementedError
 
     @staticmethod
-    def _push_to_html_content(content: str, value: str, tab_padding: int = 0) -> str:
+    def _push_to_html_content(content: str, value: str, tab_padding: int = 0, add_new_line_per_join: bool = True) -> str:
         if content == '':
             return f"{'\t' * tab_padding}{value}"
-        return f"{content}\n{'\t' * (Publisher.base_padding + tab_padding)}{value}"
+        return f"{content}{"\n" if add_new_line_per_join else ''}{'\t' * (Publisher.base_padding + tab_padding)}{value}"
 
     @staticmethod
     def _fetch_content(textio: TextIO) -> list[str]:
@@ -146,7 +146,7 @@ class DefaultThemePublisher(Publisher):
                 html_content = self._push_to_html_content(html_content, '<pre>')
                 html_content = self._push_to_html_content(html_content, f'<code class="{element.extra["language"]}">', 1)
                 for line in element.content:
-                    html_content = self._push_to_html_content(html_content, line, Publisher.base_padding * -1)
+                    html_content = self._push_to_html_content(html_content, line, Publisher.base_padding * -1, add_new_line_per_join=False)
                 html_content = self._push_to_html_content(html_content, '</code>', 1)
                 html_content = self._push_to_html_content(html_content, '</pre>')
 
