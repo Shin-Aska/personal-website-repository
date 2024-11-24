@@ -115,7 +115,7 @@ After adding the code, save the file and then restart Firefox. The default tab b
 - [ ] [![](images/ff-unlimited.png)](images/ff-unlimited.png)
 - [ ] Figure 3\. My Firefox Setup
 
-## November 21, 2024 Update: UserChromeCSS no longer necessary
+## November 24, 2024 Update: UserChromeCSS no longer necessary
 
 
 There is no longer need to use the step above. This is because the new upcoming vertical tabs on Firefox is already available on Firefox stable but is hidden in a about:config setting
