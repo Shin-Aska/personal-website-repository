@@ -33,7 +33,7 @@ class Publisher(ABC):
             if element.element_type in heading_markdown_element_type:
                 html_content = self._generate_heading_content(html_content, element.content, element, table_contents)
             elif element.element_type == MarkdownElementType.p:
-                html_content = self._push_to_html_content(html_content, f'<p>{element.content}</p>')
+                html_content = self._push_to_html_content(html_content, f'<p>{element.content}</p>', convert_markdown_markers_to_html=True)
             elif element.element_type == MarkdownElementType.ul:
                 print([element.element_type, element.content])
             elif element.element_type == MarkdownElementType.ol:
@@ -72,7 +72,39 @@ class Publisher(ABC):
         return title
 
     @staticmethod
-    def _push_to_html_content(content: str, value: str, tab_padding: int = 0, add_new_line_per_join: bool = True) -> str:
+    def _process_italic_and_bold_markers(value: str) -> str:
+        result = []
+        i = 0
+        while i < len(value):
+            if value[i:i + 2] == '**':  # Detect double asterisks for bold
+                i += 2
+                bold_content = []
+                while i < len(value) and value[i:i + 2] != '**':
+                    bold_content.append(value[i])
+                    i += 1
+                i += 2  # Skip the closing **
+                result.append(f"<b>{''.join(bold_content)}</b>")
+            elif value[i] == '*':  # Detect single asterisk for italic
+                i += 1
+                italic_content = []
+                while i < len(value) and value[i] != '*':
+                    italic_content.append(value[i])
+                    i += 1
+                i += 1  # Skip the closing *
+                result.append(f"<i>{''.join(italic_content)}</i>")
+            else:
+                result.append(value[i])
+                i += 1
+        return ''.join(result)
+
+    @staticmethod
+    def _convert_markdown_markers_to_html(value: str) -> str:
+        new_value: str = Publisher._process_italic_and_bold_markers(value)
+        return new_value
+
+    @staticmethod
+    def _push_to_html_content(content: str, value: str, tab_padding: int = 0, add_new_line_per_join: bool = True, convert_markdown_markers_to_html = False) -> str:
+        value = Publisher._convert_markdown_markers_to_html(value) if convert_markdown_markers_to_html else value
         if content == '':
             return f"{'\t' * tab_padding}{value}"
         return f"{content}{"\n" if add_new_line_per_join else ''}{'\t' * (Publisher.base_padding + tab_padding)}{value}"
