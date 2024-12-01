@@ -51,6 +51,7 @@
 				<li><a href="#auto_tab_discard">Auto Tab Discard</a></li>
 				<li><a href="#remove_the_default_tab_bar">Remove the default tab bar</a></li>
 				<li><a href="#november_24_2024_update_user_chrome_c_s_s_no_longer_necessary">November 24, 2024 Update: UserChromeCSS no longer necessary</a></li>
+				<li><a href="#december_1_2024_update_firefox_133_update_user_chrome_c_s_s_is_once_again_necessary">December 1, 2024 Update: Firefox 133 update - UserChromeCSS is once again necessary</a></li>
 				<li><a href="#conclusion">Conclusion</a></li>
 			</ul>
 			<h1 id="headingBlog">Handling unlimited number of tabs with Firefox</h1>
@@ -123,19 +124,81 @@
 
 				</code>
 			</pre>
-			<p>After adding the code, save the file and then restart Firefox. The default tab bar should now be hidden and you should only see Sidebery on the left side of the browser. Similar to the image below:</p>
+			<p>After adding the code, save the file. Then next is to go to <b>about:config</b> (to access this page, follow the same step as about:profiles), click on "Accept the risks and continue" blue button and then there will be a search bar at the top, type <b>toolkit.legacyUserProfileCustomizations.stylesheets</b> and make sure it is enabled to true as seen in the figure below:</p>
+			<figure>
+				<a href="images/ff-unlimited.png" target="_blank"><img class="preview center" src="images/ff_enable_toolkit.png"></a>
+				<figcaption>Figure 3. Enable <b>toolkit.legacyUserProfileCustomizations.stylesheets</b></figcaption>
+			</figure>
+			<p>Restart Firefox and the default tab bar should now be hidden and you should only see Sidebery on the left side of the browser. Similar to the image below:</p>
 			<figure>
 				<a href="images/ff-unlimited.png" target="_blank"><img class="preview center" src="images/ff-unlimited.png"></a>
-				<figcaption>Figure 3. My Firefox Setup</figcaption>
+				<figcaption>Figure 4. My Firefox Setup</figcaption>
 			</figure>
 			<h2 id="november_24_2024_update_user_chrome_c_s_s_no_longer_necessary">November 24, 2024 Update: UserChromeCSS no longer necessary</h2>
-			<p>There is no longer need to use the step above. This is because the new upcoming vertical tabs on Firefox is already available on Firefox stable but is hidden in a about:config setting</p>
-			<p>In your Firefox about:config, type sidebar. (yes with the dot) and enable or set to true sidebar.revamp, sidebar.verticalTabs to true. This way you can hide the tabs from the top and just either use the default vertical tabs that will be available on the public in the future or just use sideberry along with it.</p>
-			<p>Additionally if you wish to hide the tabs and just use sideberry as before, you may opt to hide the sidebar then click sideberry. To do this, either go to customize sidebar and choose <b>Show and hide sidebar</b> instead of <b>Expand and collpase sidebar</b> then click sidebar so the sidebar remains hidden, the click Sideberry so it becomes visible.</p>
+			<p>There is no longer need to use the step above. This is because the new upcoming vertical tabs on Firefox is already available on Firefox stable but is hidden in the <b>about:config</b> setting (type about:config in the browser's address bar)</p>
+			<p>Then inside the <b>about:config</b>, type <b>sidebar</b>. (yes with the dot) and enable or set <b>sidebar.revamp</b>, <b>sidebar.verticalTabs</b> to <u>true</u>. This way you can hide the tabs from the top and just either use the default vertical tabs that will be available on the public in the future or just use Sidebery along with it.</p>
+			<p>Additionally if you wish to hide the tabs and just use Sidebery as before, you may opt to hide the sidebar then click Sidebery. To do this, either go to customize sidebar and choose <b>Show and hide sidebar</b> instead of <b>Expand and collapse sidebar</b> then click sidebar so the sidebar remains hidden, the click Sidebery so it becomes visible.</p>
 			<figure>
 				<a href="images/ff-new-vertical.png" target="_blank"><img class="preview center" src="images/ff-new-vertical.png"></a>
-				<figcaption>Figure 4. The new Sidebar setup (Notice lesser padding and more space)</figcaption>
+				<figcaption>Figure 5. The new Sidebar setup (Notice lesser padding and more space)</figcaption>
 			</figure>
+			<h2 id="december_1_2024_update_firefox_133_update_user_chrome_c_s_s_is_once_again_necessary">December 1, 2024 Update: Firefox 133 update - UserChromeCSS is once again necessary</h2>
+			<p>The Firefox 133 update has made the sidebar required to show if a sidebar panel is visible. This becomes a problem because the sidebar items kinda consumes space and can be bothersome to look at.</p>
+			<p>To fix this, either you disable the new sidebar for now and follow the old guide or you re-enable userChrome.css (if you happened to disable it after the November 24  article update) and then replace the contents of the userChrome.css to this snippet</p>
+			<pre style="text-align: left !important;">
+				<code language="css">
+/* Source file https://github.com/MrOtherGuy/firefox-csshacks/tree/master/chrome/hide_tabs_toolbar_v2.css made available under Mozilla Public License v. 2.0
+See the above repository for updates as well as full license text. */
+/* This requires Firefox 133+ to work */
+@media (-moz-bool-pref: "sidebar.verticalTabs"){
+    #sidebar-main{
+      visibility: collapse;
+    }
+  }
+  @media (-moz-bool-pref: "userchrome.force-window-controls-on-left.enabled"){
+    #nav-bar > .titlebar-buttonbox-container{
+      order: -1 !important;
+      > .titlebar-buttonbox{
+        flex-direction: row-reverse;
+      }
+    }
+  }
+  @media not (-moz-bool-pref: "sidebar.verticalTabs"){
+    #TabsToolbar{
+      visibility: collapse;
+    }
+    :root[sizemode="fullscreen"] #nav-bar > .titlebar-buttonbox-container{
+      display: flex !important;
+    }
+    :root[tabsintitlebar] #toolbar-menubar:not([autohide="false"]) ~ #nav-bar{
+      > .titlebar-buttonbox-container{
+        display: flex !important;
+      }
+      :root[sizemode="normal"] & {
+        > .titlebar-spacer{
+          display: flex !important;
+        }
+      }
+      :root[sizemode="maximized"] & {
+        > .titlebar-spacer[type="post-tabs"]{
+          display: flex !important;
+        }
+        @media (-moz-bool-pref: "userchrome.force-window-controls-on-left.enabled"),
+          (-moz-gtk-csd-reversed-placement),
+          (-moz-platform: macos){
+          > .titlebar-spacer[type="post-tabs"]{
+            display: none !important;
+          }
+          > .titlebar-spacer[type="pre-tabs"]{
+            display: flex !important;
+          }
+        }
+      }
+    }
+  }
+
+				</code>
+			</pre>
 			<h2 id="conclusion">Conclusion</h2>
 			<p>There you have it. You can now handle an unlimited number of tabs with Firefox. You can now list down all the tabs that you have open and search through them. You can also group the tabs and save them for later. In addition, one of the key features of Sidebery is that it allows you to group tabs in a panel. In addition, you can program Sidebery to automatically move tabs to a particular panel base on their domain.</p>
 			<p>If you can see in the screenshot above, I have roughly around 50 tabs open (not counting the PWA apps; I use Firefox PWA) and all in all it consumes around 4GB of memory/ Which is not bad considering that I have a lot of tabs open, alot of extensions installed (15+), and I am also running a lot of PWA apps, which is counted in the 4GB memory usage.</p>

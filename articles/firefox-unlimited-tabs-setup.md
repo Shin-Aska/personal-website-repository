@@ -110,22 +110,91 @@ Inside the profile folder, create a folder called "chrome" if it does not exist.
 			
 ```
 
-After adding the code, save the file and then restart Firefox. The default tab bar should now be hidden and you should only see Sidebery on the left side of the browser. Similar to the image below:
+After adding the code, save the file. Then next is to go to **about:config** (to access this page, follow the same step as about:profiles), click on "Accept the risks and continue" blue button and then there will be a search bar at the top, type **toolkit.legacyUserProfileCustomizations.stylesheets** and make sure it is enabled to true as seen in the figure below:
+
+- [ ] [![](images/ff_enable_toolkit.png)](images/ff-unlimited.png)
+- [ ] Figure 3. Enable **toolkit.legacyUserProfileCustomizations.stylesheets**
+
+
+
+Restart Firefox and the default tab bar should now be hidden and you should only see Sidebery on the left side of the browser. Similar to the image below:
 
 - [ ] [![](images/ff-unlimited.png)](images/ff-unlimited.png)
-- [ ] Figure 3\. My Firefox Setup
+- [ ] Figure 4\. My Firefox Setup
 
 ## November 24, 2024 Update: UserChromeCSS no longer necessary
 
 
-There is no longer need to use the step above. This is because the new upcoming vertical tabs on Firefox is already available on Firefox stable but is hidden in a about:config setting
+There is no longer need to use the step above. This is because the new upcoming vertical tabs on Firefox is already available on Firefox stable but is hidden in the **about:config** setting (type about:config in the browser's address bar)
 
-In your Firefox about:config, type sidebar. (yes with the dot) and enable or set to true sidebar.revamp, sidebar.verticalTabs to true. This way you can hide the tabs from the top and just either use the default vertical tabs that will be available on the public in the future or just use sideberry along with it.
+Then inside the **about:config**, type **sidebar**. (yes with the dot) and enable or set **sidebar.revamp**, **sidebar.verticalTabs** to <u>true</u>. This way you can hide the tabs from the top and just either use the default vertical tabs that will be available on the public in the future or just use Sidebery along with it.
 
-Additionally if you wish to hide the tabs and just use sideberry as before, you may opt to hide the sidebar then click sideberry. To do this, either go to customize sidebar and choose **Show and hide sidebar** instead of **Expand and collpase sidebar** then click sidebar so the sidebar remains hidden, the click Sideberry so it becomes visible.
+Additionally if you wish to hide the tabs and just use Sidebery as before, you may opt to hide the sidebar then click Sidebery. To do this, either go to customize sidebar and choose **Show and hide sidebar** instead of **Expand and collapse sidebar** then click sidebar so the sidebar remains hidden, the click Sidebery so it becomes visible.
 
 - [ ] [![](images/ff-new-vertical.png)](images/ff-new-vertical.png)
-- [ ] Figure 4\. The new Sidebar setup (Notice lesser padding and more space)
+- [ ] Figure 5\. The new Sidebar setup (Notice lesser padding and more space)
+
+## December 1, 2024 Update: Firefox 133 update - UserChromeCSS is once again necessary
+
+The Firefox 133 update has made the sidebar required to show if a sidebar panel is visible. This becomes a problem because the sidebar items kinda consumes space and can be bothersome to look at.
+
+To fix this, either you disable the new sidebar for now and follow the old guide or you re-enable userChrome.css (if you happened to disable it after the November 24  article update) and then replace the contents of the userChrome.css to this snippet
+
+```css
+/* Source file https://github.com/MrOtherGuy/firefox-csshacks/tree/master/chrome/hide_tabs_toolbar_v2.css made available under Mozilla Public License v. 2.0
+See the above repository for updates as well as full license text. */
+
+/* This requires Firefox 133+ to work */
+
+@media (-moz-bool-pref: "sidebar.verticalTabs"){
+    #sidebar-main{
+      visibility: collapse;
+    }
+  }
+  @media (-moz-bool-pref: "userchrome.force-window-controls-on-left.enabled"){
+    #nav-bar > .titlebar-buttonbox-container{
+      order: -1 !important;
+      > .titlebar-buttonbox{
+        flex-direction: row-reverse;
+      }
+    }
+  }
+  @media not (-moz-bool-pref: "sidebar.verticalTabs"){
+    #TabsToolbar{
+      visibility: collapse;
+    }
+    :root[sizemode="fullscreen"] #nav-bar > .titlebar-buttonbox-container{
+      display: flex !important;
+    }
+    :root[tabsintitlebar] #toolbar-menubar:not([autohide="false"]) ~ #nav-bar{
+      > .titlebar-buttonbox-container{
+        display: flex !important;
+      }
+      :root[sizemode="normal"] & {
+        > .titlebar-spacer{
+          display: flex !important;
+        }
+      }
+      :root[sizemode="maximized"] & {
+        > .titlebar-spacer[type="post-tabs"]{
+          display: flex !important;
+        }
+        @media (-moz-bool-pref: "userchrome.force-window-controls-on-left.enabled"),
+          (-moz-gtk-csd-reversed-placement),
+          (-moz-platform: macos){
+          > .titlebar-spacer[type="post-tabs"]{
+            display: none !important;
+          }
+          > .titlebar-spacer[type="pre-tabs"]{
+            display: flex !important;
+          }
+        }
+      }
+    }
+  }
+```
+
+
 
 ## Conclusion
 
