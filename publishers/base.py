@@ -2,7 +2,8 @@ from abc import ABC
 from typing import TextIO
 
 from parsers.markdown.constants import heading_markdown_element_type, MarkdownElementType, \
-    publisher_heading_characters_ignore_for_heading_tag, heading_markdown_element_type_mapping
+    publisher_heading_characters_ignore_for_heading_tag, heading_markdown_element_type_mapping, \
+    heading_with_ids_upon_publishing
 from parsers.markdown.models import MarkdownElement, HeadingContent
 from parsers.markdown.parser import MarkdownParser
 
@@ -196,9 +197,12 @@ class Publisher(ABC):
                 new_heading_id += char
             heading_id = new_heading_id
 
-        table_contents.append(HeadingContent(heading_id, element.content))
         heading_tag = heading_markdown_element_type_mapping[element.element_type]
-        html_content = self._push_to_html_content(html_content, f'<{heading_tag} id="{heading_id}">{element.content}</{heading_tag}>')
+        if element.element_type in heading_with_ids_upon_publishing:
+            table_contents.append(HeadingContent(heading_id, element.content))
+            html_content = self._push_to_html_content(html_content, f'<{heading_tag} id="{heading_id}">{element.content}</{heading_tag}>')
+        else:
+            html_content = self._push_to_html_content(html_content, f'<{heading_tag}>{element.content}</{heading_tag}>')
         return html_content
 
     def _generate_list_content(self, html_content: str, element: MarkdownElement) -> str:

@@ -47,6 +47,12 @@ heading_markdown_element_type: list[MarkdownElementType] = [
     MarkdownElementType.h6
 ]
 
+heading_with_ids_upon_publishing: list[MarkdownElementType] = [
+    MarkdownElementType.h1,
+    MarkdownElementType.h2,
+    MarkdownElementType.h3
+]
+
 heading_markdown_element_type_mapping: dict[MarkdownElementType, str] = {
     MarkdownElementType.h1: 'h1',
     MarkdownElementType.h2: 'h2',
