@@ -86,14 +86,15 @@
 			</figure>
 			<p>Now what if we expand this concept of Firefox view, list down all the tabs and allow us to search through them instead of the default tab setup. This is what we are going to do in this article.</p>
 			<h2 id="firefox_extension_sidebery">Firefox Extension - Sidebery</h2>
+			<p><a href="https://addons.mozilla.org/en-US/firefox/addon/sidebery/">Sidebery<sup>[1]</sup></a> is a Firefox extension that allows you to list down all the tabs that you have open and search through them. You can also group the tabs and save them for later. This is a great extension for those who love to open a lot of tabs and keep them open for a long time.</p>
 			<p>We will use Sidebery to essentially blur the lines between the tabs and the bookmarks. There is also another one called Tree Style Tab but Sidebery is more flexible and has more features.</p>
 			<p>Once you have installed Sidebery, you will notice that it will appear on the left side of the browser. You can also notice that the default tab bar is still there making it redundant. We will hide it later as the last step.</p>
 			<h2 id="auto_tab_discard">Auto Tab Discard</h2>
-			<p>Another problem with having a lot of tabs open is that it consumes a lot of memory. This is because each tab is essentially a separate process and each process consumes memory. This is where [Auto Tab Discard<sup>[2]</sup>](https://addons.mozilla.org/en-US/firefox/addon/auto-tab-discard/) comes in.</p>
+			<p>Another problem with having a lot of tabs open is that it consumes a lot of memory. This is because each tab is essentially a separate process and each process consumes memory. This is where <a href="https://addons.mozilla.org/en-US/firefox/addon/auto-tab-discard/">Auto Tab Discard<sup>[2]</sup></a> comes in.</p>
 			<p>Auto Tab Discard is a Firefox extension that automatically discards tabs that you have not used for a certain amount of time. This will be a key extension to use in conjunction with Sidebery as it will help us manage an unlimited number of tabs without consuming too much memory.</p>
 			<h2 id="remove_the_default_tab_bar">Remove the default tab bar</h2>
 			<p>Now that we have Sidebery and Auto Tab Discard installed, we can now remove the default tab bar. This is because the default tab bar is redundant, and we will not be using it anymore. To do this we will be using a userChrome.css</p>
-			<p>To do this, open the Firefox profile folder by typing **<about:profiles>** in the address bar. Find the part that says "This is the profile in use and it cannot be deleted." and then click on the "Open Folder" button under the "Root Directory" section. This will open the profile folder in your file manager.</p>
+			<p>To do this, open the Firefox profile folder by typing <b><about:profiles></b> in the address bar. Find the part that says "This is the profile in use and it cannot be deleted." and then click on the "Open Folder" button under the "Root Directory" section. This will open the profile folder in your file manager.</p>
 			<figure>
 				<a href="images/ff-about-profiles.png" target="_blank"><img class="preview center" src="images/ff-about-profiles.png"></a>
 				<figcaption>Figure 2. Firefox Profile Folders</figcaption>
@@ -151,7 +152,7 @@
 			<h2 id="november_24_2024_update_user_chrome_c_s_s_no_longer_necessary">November 24, 2024 Update: UserChromeCSS no longer necessary</h2>
 			<p>There is no longer need to use the step above. This is because the new upcoming vertical tabs on Firefox is already available on Firefox stable but is hidden in a about:config setting</p>
 			<p>In your Firefox about:config, type sidebar. (yes with the dot) and enable or set to true sidebar.revamp, sidebar.verticalTabs to true. This way you can hide the tabs from the top and just either use the default vertical tabs that will be available on the public in the future or just use sideberry along with it.</p>
-			<p>Additionally if you wish to hide the tabs and just use sideberry as before, you may opt to hide the sidebar then click sideberry. To do this, either go to customize sidebar and choose **Show and hide sidebar** instead of **Expand and collpase sidebar** then click sidebar so the sidebar remains hidden, the click Sideberry so it becomes visible.</p>
+			<p>Additionally if you wish to hide the tabs and just use sideberry as before, you may opt to hide the sidebar then click sideberry. To do this, either go to customize sidebar and choose <b>Show and hide sidebar</b> instead of <b>Expand and collpase sidebar</b> then click sidebar so the sidebar remains hidden, the click Sideberry so it becomes visible.</p>
 			<figure>
 				<a href="images/ff-new-vertical.png" target="_blank"><img class="preview center" src="images/ff-new-vertical.png"></a>
 				<figcaption>Figure 4. The new Sidebar setup (Notice lesser padding and more space)</figcaption>
