@@ -40,6 +40,28 @@ class MarkdownParser:
         return element
 
     @staticmethod
+    def _check_if_valid_link(line: str) -> bool:
+        square_bracket_open_index: int = -1
+        square_bracket_close_index: int  = -1
+        square_bracket_open_counter: int  = 0
+
+        for square_bracket_index, char in enumerate(line):
+            if char == '[':
+                if square_bracket_open_counter == 0:
+                    square_bracket_open_index = square_bracket_index
+                square_bracket_open_counter += 1
+            elif char == ']':
+                square_bracket_open_counter -= 1
+                if square_bracket_open_counter == 0:
+                    square_bracket_close_index = square_bracket_index
+                    break
+
+        if square_bracket_open_index != -1 and square_bracket_close_index != -1:
+            if line[-1] == ')' and line[square_bracket_close_index + 1] == '(':
+                return True
+        return False
+
+    @staticmethod
     def parse(markdown_file_contents: list[str], debug = False) -> list[MarkdownElement]:
         elements = []
         element_type: Optional[MarkdownElementType] = None
@@ -65,7 +87,11 @@ class MarkdownParser:
                     break
 
             if element_type is None:
-                 element_type = MarkdownElementType.p
+                element_type = MarkdownElementType.p
+            elif element_type == MarkdownElementType.link:
+                if not MarkdownParser._check_if_valid_link(line):
+                    element_type = MarkdownElementType.p
+                    prefix = ''
 
             # print(["#", idx, line, element_type, code_block_flag, element, element.element_type if element else None, element.element_type not in MultiContentMarkdownElementType if element else None])
             value: str = line.replace(prefix, '').strip().rstrip().replace('\\', '')

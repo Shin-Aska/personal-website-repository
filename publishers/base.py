@@ -33,7 +33,7 @@ class Publisher(ABC):
             if element.element_type in heading_markdown_element_type:
                 html_content = self._generate_heading_content(html_content, element.content, element, table_contents)
             elif element.element_type == MarkdownElementType.p:
-                html_content = self._push_to_html_content(html_content, f'<p>{element.content}</p>', convert_markdown_markers_to_html=True)
+                html_content = self._push_to_html_content(html_content, f'<p>{element.content}</p>', convert_markdown_markers_to_html=True, convert_link_markers_to_html=True)
             elif element.element_type == MarkdownElementType.ul:
                 print([element.element_type, element.content])
             elif element.element_type == MarkdownElementType.ol:
@@ -98,13 +98,62 @@ class Publisher(ABC):
         return ''.join(result)
 
     @staticmethod
+    def _process_link_markers(value: str) -> str:
+        new_value: str = value
+        while '[' in new_value and '](' in new_value:
+            # Find the text inside brackets []
+            start_text: int = -1
+            end_text: int = -1
+            open_square_bracket_counter: int = 0
+
+            for idx, char in enumerate(new_value):
+                if char == '[':
+                    if open_square_bracket_counter == 0:
+                        start_text = idx
+                    open_square_bracket_counter += 1
+                elif char == ']':
+                    open_square_bracket_counter -= 1
+                    if open_square_bracket_counter == 0:
+                        end_text = idx
+                        break
+
+            # Ensure brackets are correctly paired
+            if start_text == -1 or end_text == -1 or end_text < start_text:
+                break
+
+            # Extract the link text
+            link_text: str = new_value[start_text + 1:end_text]
+
+            # Find the URL inside parentheses ()
+            start_url: int = new_value.find('](', end_text) + 2
+            end_url: int = new_value.find(')', start_url)
+
+            # Ensure parentheses are correctly paired
+            if start_url == 1 or end_url == -1 or end_url < start_url:
+                break
+
+            # Extract the URL
+            url: str = new_value[start_url:end_url]
+
+            # Ensure the URL and text are not empty
+            if not link_text.strip() or not url.strip():
+                break
+
+            # Replace the Markdown link with the HTML link
+            html_link = f'<a href="{url}">{link_text}</a>'
+            new_value = new_value[:start_text] + html_link + new_value[end_url + 1:]
+
+        return new_value
+
+    @staticmethod
     def _convert_markdown_markers_to_html(value: str) -> str:
         new_value: str = Publisher._process_italic_and_bold_markers(value)
         return new_value
 
     @staticmethod
-    def _push_to_html_content(content: str, value: str, tab_padding: int = 0, add_new_line_per_join: bool = True, convert_markdown_markers_to_html = False) -> str:
+    def _push_to_html_content(content: str, value: str, tab_padding: int = 0, add_new_line_per_join: bool = True, convert_markdown_markers_to_html = False, convert_link_markers_to_html = False) -> str:
         value = Publisher._convert_markdown_markers_to_html(value) if convert_markdown_markers_to_html else value
+        value = Publisher._process_link_markers(value) if convert_link_markers_to_html else value
         if content == '':
             return f"{'\t' * tab_padding}{value}"
         return f"{content}{"\n" if add_new_line_per_join else ''}{'\t' * (Publisher.base_padding + tab_padding)}{value}"
