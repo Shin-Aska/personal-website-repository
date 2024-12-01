@@ -34,13 +34,10 @@ class Publisher(ABC):
                 html_content = self._generate_heading_content(html_content, element.content, element, table_contents)
             elif element.element_type == MarkdownElementType.p:
                 html_content = self._push_to_html_content(html_content, f'<p>{element.content}</p>', convert_formatting_markers_to_html=True, convert_link_markers_to_html=True)
-            elif element.element_type == MarkdownElementType.ul:
-                print([element.element_type, element.content])
-            elif element.element_type == MarkdownElementType.ol:
-                print([element.element_type, element.content])
+            elif element.element_type == MarkdownElementType.ul or element.element_type == MarkdownElementType.ol:
+                html_content = self._generate_list_content(html_content, element)
             elif element.element_type == MarkdownElementType.checkbox:
                 html_content = self._generate_checkbox_content(html_content, element.content, element)
-
             elif element.element_type == MarkdownElementType.image:
                 print([element.element_type, element.content])
             elif element.element_type == MarkdownElementType.codeblock:
@@ -202,6 +199,14 @@ class Publisher(ABC):
         table_contents.append(HeadingContent(heading_id, element.content))
         heading_tag = heading_markdown_element_type_mapping[element.element_type]
         html_content = self._push_to_html_content(html_content, f'<{heading_tag} id="{heading_id}">{element.content}</{heading_tag}>')
+        return html_content
+
+    def _generate_list_content(self, html_content: str, element: MarkdownElement) -> str:
+        html_tag: str = 'ol' if element.element_type == MarkdownElementType.ol else 'ul'
+        html_content = self._push_to_html_content(html_content, f'<{html_tag}>')
+        for line in element.content:
+            html_content = self._push_to_html_content(html_content, f'<li>{line}</li>', 1)
+        html_content = self._push_to_html_content(html_content, f'</{html_tag}>')
         return html_content
 
     def _generate_checkbox_content(self, html_content: str, line: str, element: MarkdownElement) -> str:
