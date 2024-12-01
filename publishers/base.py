@@ -33,7 +33,7 @@ class Publisher(ABC):
             if element.element_type in heading_markdown_element_type:
                 html_content = self._generate_heading_content(html_content, element.content, element, table_contents)
             elif element.element_type == MarkdownElementType.p:
-                html_content = self._push_to_html_content(html_content, f'<p>{element.content}</p>', convert_markdown_markers_to_html=True, convert_link_markers_to_html=True)
+                html_content = self._push_to_html_content(html_content, f'<p>{element.content}</p>', convert_formatting_markers_to_html=True, convert_link_markers_to_html=True)
             elif element.element_type == MarkdownElementType.ul:
                 print([element.element_type, element.content])
             elif element.element_type == MarkdownElementType.ol:
@@ -151,8 +151,8 @@ class Publisher(ABC):
         return new_value
 
     @staticmethod
-    def _push_to_html_content(content: str, value: str, tab_padding: int = 0, add_new_line_per_join: bool = True, convert_markdown_markers_to_html = False, convert_link_markers_to_html = False) -> str:
-        value = Publisher._convert_markdown_markers_to_html(value) if convert_markdown_markers_to_html else value
+    def _push_to_html_content(content: str, value: str, tab_padding: int = 0, add_new_line_per_join: bool = True, convert_formatting_markers_to_html = False, convert_link_markers_to_html = False) -> str:
+        value = Publisher._convert_markdown_markers_to_html(value) if convert_formatting_markers_to_html else value
         value = Publisher._process_link_markers(value) if convert_link_markers_to_html else value
         if content == '':
             return f"{'\t' * tab_padding}{value}"
@@ -217,7 +217,7 @@ class Publisher(ABC):
             if is_image_with_figure:
                 html_content = self._push_to_html_content(html_content, '<figure>')
                 html_content = self._push_to_html_content(html_content, f'<a href="{markdown_elements[0].extra["link"]}" target="_blank"><img class="preview center" src="{link_content[0].content}"></a>', 1)
-                html_content = self._push_to_html_content(html_content, f'<figcaption>{markdown_elements[1].content}</figcaption>', 1)
+                html_content = self._push_to_html_content(html_content, f'<figcaption>{markdown_elements[1].content}</figcaption>', 1, convert_formatting_markers_to_html=True)
                 html_content = self._push_to_html_content(html_content, '</figure>')
                 self.images.append('articles/' + link_content[0].content)
 
