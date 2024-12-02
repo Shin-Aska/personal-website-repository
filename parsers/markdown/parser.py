@@ -67,6 +67,7 @@ class MarkdownParser:
         element_type: Optional[MarkdownElementType] = None
         code_block_flag: bool = False
         element: Optional[MarkdownElement] = None
+        last_line_was_empty: bool = False
 
         if debug:
             import pdb
@@ -78,10 +79,24 @@ class MarkdownParser:
             element_type = None
 
             if line.strip().rstrip() == '':
+                last_line_was_empty = True
                 continue
 
             for e_prefix, e_type in element_type_mapping.items():
-                if line.startswith(e_prefix):
+                if e_prefix.__contains__('{num}'):
+                    starts_with_digit = False
+                    is_done_accessing_number = False
+                    for idy, char in enumerate(line):
+                        if char.isdigit():
+                            starts_with_digit = True
+                        elif char == '.' and starts_with_digit and line[idy - 1].isdigit() and idy < len(line) - 1 and line[idy + 1] == ' ':
+                            element_type = e_type
+                            prefix = line[:idy + 1]
+                            is_done_accessing_number = True
+                            break
+                    if is_done_accessing_number:
+                        break
+                elif line.startswith(e_prefix):
                     element_type = e_type
                     prefix = e_prefix
                     break
@@ -93,7 +108,6 @@ class MarkdownParser:
                     element_type = MarkdownElementType.p
                     prefix = ''
 
-            # print(["#", idx, line, element_type, code_block_flag, element, element.element_type if element else None, element.element_type not in MultiContentMarkdownElementType if element else None])
             value: str = line.replace(prefix, '').strip().rstrip().replace('\\', '')
 
             if element_type == MarkdownElementType.codeblock:
@@ -121,12 +135,32 @@ class MarkdownParser:
                     else:
                         content: list[str] = [value]
                         element = MarkdownElement(element_type, content)
+                        if idx == len(markdown_file_contents) - 1:
+                            elements.append(element)
+                            element = None
                 # If we are holding an element. it means we are in a multi content element
                 # If this is the case we will just append the content to the element as long as the element type is the same
                 # If the element type is different, we will append the element to the elements list and create a new element
                 else:
-                    if element.element_type == element_type:
+                    if element.element_type == element_type and element.element_type == MarkdownElementType.ul and last_line_was_empty:
+                        elements.append(element)
+                        element = None
+                        if element_type not in multi_content_markdown_element_type:
+                            element = MarkdownParser._generate_non_multi_content_markdown_element(element_type, line, value)
+                            elements.append(element)
+                            element = None
+                        else:
+                            content: list[str] = [value]
+                            element = MarkdownElement(element_type, content)
+                            if idx == len(markdown_file_contents) - 1:
+                                elements.append(element)
+                                element = None
+
+                    elif element.element_type == element_type:
                         element.content.append(value)
+                        if idx == len(markdown_file_contents) - 1:
+                            elements.append(element)
+                            element = None
                     else:
                         elements.append(element)
                         if element_type not in multi_content_markdown_element_type:
@@ -136,11 +170,15 @@ class MarkdownParser:
                         else:
                             content: list[str] = [value]
                             element = MarkdownElement(element_type, content)
+                            if idx == len(markdown_file_contents) - 1:
+                                elements.append(element)
+                                element = None
             else:
                 # If line contains ``` and a language after that, then we will not append the line to the content
                 if not (line.strip().startswith('```') and len(line.strip()) > 3):
                     element.content.append(line)
                 else:
                     element.content.append('\n')
+            last_line_was_empty = False
 
         return elements
