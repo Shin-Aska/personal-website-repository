@@ -72,24 +72,36 @@ class Publisher(ABC):
     @staticmethod
     def _process_italic_and_bold_markers(value: str) -> str:
         result = []
-        i = 0
+        i: int = 0
+        starting_i: int = i
         while i < len(value):
             if value[i:i + 2] == '**':  # Detect double asterisks for bold
+                starting_i = i
                 i += 2
                 bold_content = []
                 while i < len(value) and value[i:i + 2] != '**':
                     bold_content.append(value[i])
                     i += 1
-                i += 2  # Skip the closing **
-                result.append(f"<b>{''.join(bold_content)}</b>")
+                if i < len(value) and value[i:i + 2] == '**':
+                    i += 2
+                    result.append(f"<b>{''.join(bold_content)}</b>")
+                else:
+                    for x in range(starting_i, i):
+                        result.append(value[x])
             elif value[i] == '*':  # Detect single asterisk for italic
+                starting_i = i
                 i += 1
                 italic_content = []
                 while i < len(value) and value[i] != '*':
                     italic_content.append(value[i])
                     i += 1
-                i += 1  # Skip the closing *
-                result.append(f"<i>{''.join(italic_content)}</i>")
+                if i < len(value) and value[i] == '*':
+                    i += 1  # Skip the closing *
+                    result.append(f"<i>{''.join(italic_content)}</i>")
+                else:
+                    for x in range(starting_i, i):
+                        result.append(value[x])
+
             else:
                 result.append(value[i])
                 i += 1
@@ -209,6 +221,8 @@ class Publisher(ABC):
         html_tag: str = 'ol' if element.element_type == MarkdownElementType.ol else 'ul'
         html_content = self._push_to_html_content(html_content, f'<{html_tag}>')
         for line in element.content:
+            line = self._convert_markdown_markers_to_html(line)
+            line = self._process_link_markers(line)
             html_content = self._push_to_html_content(html_content, f'<li>{line}</li>', 1)
         html_content = self._push_to_html_content(html_content, f'</{html_tag}>')
         return html_content
