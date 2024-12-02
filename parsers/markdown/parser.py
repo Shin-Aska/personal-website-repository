@@ -87,8 +87,11 @@ class MarkdownParser:
                     starts_with_digit = False
                     is_done_accessing_number = False
                     for idy, char in enumerate(line):
-                        if char.isdigit():
-                            starts_with_digit = True
+                        if idy == 0:
+                            if char.isdigit():
+                                starts_with_digit = True
+                            else:
+                                break
                         elif char == '.' and starts_with_digit and line[idy - 1].isdigit() and idy < len(line) - 1 and line[idy + 1] == ' ':
                             element_type = e_type
                             prefix = line[:idy + 1]
