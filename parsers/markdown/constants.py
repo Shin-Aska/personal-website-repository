@@ -24,8 +24,10 @@ element_type_mapping: dict[str, MarkdownElementType] = {
     '##': MarkdownElementType.h2,
     '#': MarkdownElementType.h1,
     '- [ ]': MarkdownElementType.checkbox,
-    '-': MarkdownElementType.ul,
-    '1.': MarkdownElementType.ol,
+    '- ': MarkdownElementType.ul,
+    '+ ': MarkdownElementType.ul,
+    '* ': MarkdownElementType.ul,
+    '{num}.': MarkdownElementType.ol,
     '![': MarkdownElementType.image,
     '```': MarkdownElementType.codeblock,
     '[': MarkdownElementType.link
