@@ -27,3 +27,14 @@ Contribution
 This repository is not open for contribution. However, if you find any issues, and you really 
 wish to do something about it, feel free to contact me at mailto:richardorilla@pm.me. 
 Alternatively you could also open an issue here on Github
+
+External Libraries
+=============
+Although majority of the code is written by me, I have used some external libraries to make my life easier. Here are some of them:
+
+1. Highlight.js - For syntax highlighting
+2. Three.js - For 3D animations
+3. Jquery - For DOM manipulation (Although I am trying to get away with this)
+4. DataTables - For interactive tables
+
+As you can see, all of them are in Javascript. These are not use on the non-javascript version of the website.
