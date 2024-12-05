@@ -19,12 +19,14 @@
 		<script nonce="<?php echo $token; ?>" src="script/stats.js" type="text/javascript"></script>
 		<script nonce="<?php echo $token; ?>" src="script/sky.js"></script>
 		<script nonce="<?php echo $token; ?>" src="script/site.js" type="text/javascript"></script>
+		<script nonce="<?php echo $token; ?>" src="script/highlight.js" type="text/javascript"></script>
 
 		<link href="css/animation.css" rel="stylesheet" type="text/css">
 		<link href="css/fonts.css" rel="stylesheet" type="text/css">
 		<link href="css/site.css" rel="stylesheet" type="text/css">
 		<link href="css/sky.css" rel="stylesheet" type="text/css">
 		<link href="css/reset.css" rel="stylesheet" type="text/css">
+		<link href="css/tomorrow-night-blue.css" rel="stylesheet" type="text/css">
 
 		<!-- @@@ -->
 		<title>Skies of the Lost Cause - {{Title}}</title>
@@ -82,6 +84,7 @@
 					element.src = element.oldsrc;
 				}
 			}
+			hljs.highlightAll();
 		});
 	</script>
 </html>
