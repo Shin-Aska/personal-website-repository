@@ -63,8 +63,6 @@ Inside the profile folder, create a folder called "chrome" if it does not exist.
 
 
 ```css
-
-				
 #tabbrowser-tabs {
 	visibility: collapse;
 }
@@ -106,8 +104,6 @@ Inside the profile folder, create a folder called "chrome" if it does not exist.
 #TabsToolbar .toolbar-items {
   display: none;
 }
-				
-			
 ```
 
 After adding the code, save the file. Then next is to go to **about:config** (to access this page, follow the same step as about:profiles), click on "Accept the risks and continue" blue button and then there will be a search bar at the top, type **toolkit.legacyUserProfileCustomizations.stylesheets** and make sure it is enabled to true as seen in the figure below:
@@ -146,58 +142,64 @@ See the above repository for updates as well as full license text. */
 
 /* This requires Firefox 133+ to work */
 
-@media (-moz-bool-pref: "sidebar.verticalTabs"){
-    #sidebar-main{
-      visibility: collapse;
+@media (-moz-bool-pref: "sidebar.verticalTabs") {
+  #sidebar-main {
+    visibility: collapse;
+  }
+}
+
+@media (-moz-bool-pref: "userchrome.force-window-controls-on-left.enabled") {
+  #nav-bar>.titlebar-buttonbox-container {
+    order: -1 !important;
+
+    >.titlebar-buttonbox {
+      flex-direction: row-reverse;
     }
   }
-  @media (-moz-bool-pref: "userchrome.force-window-controls-on-left.enabled"){
-    #nav-bar > .titlebar-buttonbox-container{
-      order: -1 !important;
-      > .titlebar-buttonbox{
-        flex-direction: row-reverse;
-      }
-    }
+}
+
+@media not (-moz-bool-pref: "sidebar.verticalTabs") {
+  #TabsToolbar {
+    visibility: collapse;
   }
-  @media not (-moz-bool-pref: "sidebar.verticalTabs"){
-    #TabsToolbar{
-      visibility: collapse;
-    }
-    :root[sizemode="fullscreen"] #nav-bar > .titlebar-buttonbox-container{
+
+  :root[sizemode="fullscreen"] #nav-bar>.titlebar-buttonbox-container {
+    display: flex !important;
+  }
+
+  :root[tabsintitlebar] #toolbar-menubar:not([autohide="false"])~#nav-bar {
+    >.titlebar-buttonbox-container {
       display: flex !important;
     }
-    :root[tabsintitlebar] #toolbar-menubar:not([autohide="false"]) ~ #nav-bar{
-      > .titlebar-buttonbox-container{
+
+    :root[sizemode="normal"] & {
+      >.titlebar-spacer {
         display: flex !important;
       }
-      :root[sizemode="normal"] & {
-        > .titlebar-spacer{
-          display: flex !important;
-        }
+    }
+
+    :root[sizemode="maximized"] & {
+      >.titlebar-spacer[type="post-tabs"] {
+        display: flex !important;
       }
-      :root[sizemode="maximized"] & {
-        > .titlebar-spacer[type="post-tabs"]{
-          display: flex !important;
+
+      @media (-moz-bool-pref: "userchrome.force-window-controls-on-left.enabled"),
+      (-moz-gtk-csd-reversed-placement),
+      (-moz-platform: macos) {
+        >.titlebar-spacer[type="post-tabs"] {
+          display: none !important;
         }
-        @media (-moz-bool-pref: "userchrome.force-window-controls-on-left.enabled"),
-          (-moz-gtk-csd-reversed-placement),
-          (-moz-platform: macos){
-          > .titlebar-spacer[type="post-tabs"]{
-            display: none !important;
-          }
-          > .titlebar-spacer[type="pre-tabs"]{
-            display: flex !important;
-          }
+
+        >.titlebar-spacer[type="pre-tabs"] {
+          display: flex !important;
         }
       }
     }
   }
+}
 ```
 
-
-
 ## Conclusion
-
 
 There you have it. You can now handle an unlimited number of tabs with Firefox. You can now list down all the tabs that you have open and search through them. You can also group the tabs and save them for later. In addition, one of the key features of Sidebery is that it allows you to group tabs in a panel. In addition, you can program Sidebery to automatically move tabs to a particular panel base on their domain.
 
