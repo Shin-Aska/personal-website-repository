@@ -1,26 +1,11 @@
-1. Help
-2. Those
-3. Who
-4. Are
+# Handling unlimited number of tabs with Firefox
 
-1. There
-2. Are
-3. Those
-4. Who
 
-abc
+## Introduction
 
-- Test
-- This
-- Wonderful
-- Life
+This is a [Test<sup>[1]</sup>](https://addons.mozilla.org/en-US/firefox/addon/auto-tab-discard/) link containing multiple URLS [Auto Tab Discard<sup>[2]</sup>](https://addons.mozilla.org/en-US/firefox/addon/auto-tab-discard/) that should display properly [Auto Tab Discard<sup>[3]</sup>](https://addons.mozilla.org/en-US/firefox/addon/auto-tab-discard/)
 
-+ E
-+ F
-+ G
-+ H
 
-* Beautiful
-* Day
-* Kamsa
-* *Mida
+## Firefox Extension \- Sidebery
+
+This is a [Test<sup>[1]</sup>](https://addons.mozilla.org/en-US/firefox/addon/auto-tab-discard/) link containing multiple URLS [Auto Tab Discard<sup>[2]</sup>](https://addons.mozilla.org/en-US/firefox/addon/auto-tab-discard/) that should display properly [Auto Tab Discard<sup>[3]</sup>](https://addons.mozilla.org/en-US/firefox/addon/auto-tab-discard/)

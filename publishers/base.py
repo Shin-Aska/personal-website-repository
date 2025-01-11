@@ -1,5 +1,5 @@
 from abc import ABC
-from typing import TextIO
+from typing import TextIO, Optional
 
 from parsers.markdown.constants import heading_markdown_element_type, MarkdownElementType, \
     publisher_heading_characters_ignore_for_heading_tag, heading_markdown_element_type_mapping, \
@@ -28,6 +28,9 @@ class Publisher(ABC):
         html_content: str = ''
         table_of_contents: str = ''
         elements: list[MarkdownElement] = self.article
+
+        print(elements)
+
         table_contents: list[HeadingContent] = []
 
         for element in elements:
@@ -109,50 +112,54 @@ class Publisher(ABC):
 
     @staticmethod
     def _process_link_markers(value: str) -> str:
-        new_value: str = value
-        while '[' in new_value and '](' in new_value:
-            # Find the text inside brackets []
-            start_text: int = -1
-            end_text: int = -1
-            open_square_bracket_counter: int = 0
+        new_value: str = ''
 
-            for idx, char in enumerate(new_value):
-                if char == '[':
-                    if open_square_bracket_counter == 0:
-                        start_text = idx
-                    open_square_bracket_counter += 1
-                elif char == ']':
-                    open_square_bracket_counter -= 1
-                    if open_square_bracket_counter == 0:
-                        end_text = idx
-                        break
+        # Important variables during loop
 
-            # Ensure brackets are correctly paired
-            if start_text == -1 or end_text == -1 or end_text < start_text:
-                break
+        # Current Index
+        index: int = 0
 
-            # Extract the link text
-            link_text: str = new_value[start_text + 1:end_text]
+        # Square bracket counter
+        square_bracket_counter: int = 0
+        square_bracket_index: int = 0
+        link_text: Optional[str] = None
+        link_url: Optional[str] = None
 
-            # Find the URL inside parentheses ()
-            start_url: int = new_value.find('](', end_text) + 2
-            end_url: int = new_value.find(')', start_url)
+        # Parenthesis counter
+        parenthesis_counter: int = 0
+        parenthesis_bracket_index: int = 0
 
-            # Ensure parentheses are correctly paired
-            if start_url == 1 or end_url == -1 or end_url < start_url:
-                break
-
-            # Extract the URL
-            url: str = new_value[start_url:end_url]
-
-            # Ensure the URL and text are not empty
-            if not link_text.strip() or not url.strip():
-                break
-
-            # Replace the Markdown link with the HTML link
-            html_link = f'<a href="{url}">{link_text}</a>'
-            new_value = new_value[:start_text] + html_link + new_value[end_url + 1:]
-
+        # The algorithm is simple, we traverse the whole string, everytime it encounters the square or parenthesis bracket
+        # It keeps track of their respective indexes and then that will be used to determine the link text and link url
+        # Which will then be converted to an anchor tag
+        while index < len(value):
+            if value[index] not in ['[', '(', ')', ']'] and (square_bracket_counter == 0 and parenthesis_counter == 0):
+                new_value += value[index]
+            elif value[index] in ['(', ')'] and square_bracket_counter != 0:
+                pass
+            elif value[index] in ['[', ']'] and parenthesis_counter != 0:
+                pass
+            elif value[index] == '[':
+                if square_bracket_counter == 0:
+                    square_bracket_index = index
+                square_bracket_counter += 1
+            elif value[index] == '(':
+                if parenthesis_counter == 0:
+                    parenthesis_bracket_index = index
+                parenthesis_counter += 1
+            elif value[index] == ']':
+                square_bracket_counter -= 1
+                # Get substring from the square bracket index to the current index
+                if square_bracket_counter == 0:
+                    link_text = value[square_bracket_index + 1:index]
+            elif value[index] == ')':
+                parenthesis_counter -= 1
+                # Get substring from the parenthesis bracket index to the current index
+                if parenthesis_counter == 0:
+                    link_url: str = value[parenthesis_bracket_index + 1:index]
+                    new_value += f'<a href="{link_url}">{link_text}</a>'
+                    link_text = None
+            index += 1
         return new_value
 
     @staticmethod
