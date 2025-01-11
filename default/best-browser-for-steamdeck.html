@@ -1,0 +1,203 @@
+<?php include "header.php" ?>
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="author" content="Richard Orilla">
+		<meta http-equiv="content-language" content="en-us">
+		<meta http-equiv="cache-control" content="no-cache">
+		<meta http-equiv="pragma" content="no-cache">
+		<meta name="robots" content="index" /><meta name="theme-color" content="#003eaa" /> 
+		<meta name="keywords" content="richard orilla, free games, resume">
+		<noscript><meta http-equiv="refresh" content="0; url=https://classic.richardorilla.website/template.html" /></noscript>
+		<script nonce="<?php echo $token; ?>" src="script/data/menu.json" type="text/javascript"></script>
+		<script nonce="<?php echo $token; ?>" src="script/ThreeWebGL.js" type="text/javascript"></script>
+		<script nonce="<?php echo $token; ?>" src="script/ThreeCanvas.js" type="text/javascript"></script>
+		<script nonce="<?php echo $token; ?>" src="script/ThreeExtras.js" type="text/javascript"></script>
+		<script nonce="<?php echo $token; ?>" src="script/jquery.js" type="text/javascript"></script>
+		<script nonce="<?php echo $token; ?>" src="script/stats.js" type="text/javascript"></script>
+		<script nonce="<?php echo $token; ?>" src="script/sky.js"></script>
+		<script nonce="<?php echo $token; ?>" src="script/site.js" type="text/javascript"></script>
+		<script nonce="<?php echo $token; ?>" src="script/highlight.js" type="text/javascript"></script>
+
+		<link href="css/animation.css" rel="stylesheet" type="text/css">
+		<link href="css/fonts.css" rel="stylesheet" type="text/css">
+		<link href="css/site.css" rel="stylesheet" type="text/css">
+		<link href="css/sky.css" rel="stylesheet" type="text/css">
+		<link href="css/reset.css" rel="stylesheet" type="text/css">
+		<link href="css/tomorrow-night-blue.css" rel="stylesheet" type="text/css">
+
+		<!-- @@@ -->
+		<title>Skies of the Lost Cause - The Best Browser for Linux</title>
+
+
+	</head>
+	<body>
+
+		<canvas id="main"></canvas>
+		<canvas id="background"></canvas>
+		<div id="mainLabel">
+			<p>Hi, it seems that the browser you're using is not compatible with my site. Either because it's too old or you're using one of the following browsers:</p>
+			<ul>
+				<li>Brow.sh - Terminal based browser that attempts to render a modern web using ssh</li>
+				<li>Lynx - Text based browser. The oldest browser that is still active in development!</li>
+				<li>w3m - Text based browser. Quite popular too</li>
+			</ul>
+		</div>
+		<div id="backgroundLabel">
+			<p>More importantly, I got you :-), Here is a backwards compatible version that is designed to work on older or no-javascript browsers <a href="http://classic.richardorilla.website">classic.richardorilla.website</a></p>
+		</div>
+		
+		<div id="header">
+			<div class="center themeContainer">
+				<object class="themelogo" type="image/svg+xml" data="images/pen.svg" align="middle">Your browser does not support SVG</object>
+			</div>
+			
+			<p class="headingBase start">= Skies of the lost cause +</p>
+			<p class="headingBase middle">Personal website of Richard Orilla</p>
+			<br>
+			<div class="center lineContainer">
+				<object class="lineSVG" type="image/svg+xml" data="images/hr.svg" align="middle">Your browser does not support SVG</object>
+			</div>
+		</div>
+
+		<div class="menu-container">
+			<div id="menu"></div>
+		</div>
+
+		<div id="content">
+			<h2 id="tableContents">Table of Contents</h2>
+			<ul>
+				<li><a href="#introduction">Introduction</a></li>
+				<li><a href="#challenges">Challenges</a></li>
+				<li><a href="#no_native_autocorrect_or_spelling_suggestions">No Native Autocorrect or Spelling Suggestions</a></li>
+				<li><a href="#limited_voice_typing_support">Limited Voice Typing Support</a></li>
+				<li><a href="#extensions_to_address_these_gaps">Extensions to address these gaps</a></li>
+				<li><a href="#browser_engines">Browser Engines</a></li>
+				<li><a href="#web_kit_and_its_derivatives_chromium/_blink">WebKit and Its Derivatives (Chromium/Blink)</a></li>
+				<li><a href="#quantum">Quantum</a></li>
+				<li><a href="#recommendations">Recommendations</a></li>
+				<li><a href="#webkit_and_derivatives_based_browsers">Webkit and derivatives based browsers</a></li>
+				<li><a href="#quantum_based_browsers">Quantum based browsers</a></li>
+				<li><a href="#decky_browser_plugin">Decky Browser plugin</a></li>
+				<li><a href="#my_top_pick">My top pick</a></li>
+				<li><a href="#why_vivaldi_works_best">Why Vivaldi Works Best</a></li>
+				<li><a href="#feature_rich_interface">Feature-Rich Interface</a></li>
+				<li><a href="#reading_list_for_light_reading">Reading List for Light Reading</a></li>
+				<li><a href="#performance_with_browser_games">Performance with Browser Games</a></li>
+				<li><a href="#additional_handy_features">Additional Handy Features</a></li>
+				<li><a href="#closing_thoughts">Closing Thoughts</a></li>
+			</ul>
+			<h1 id="headingBlog">The Best Browser for Linux</h1>
+			<h2 id="introduction">Introduction</h2>
+			<p>One of the most common questions from new Steam Deck users is, <i>"How do you browse the internet with this thing?"</i> While the Steam Deck comes with Firefox preinstalled, it's not accessible in Gaming Mode—the default interface. To use Firefox, you have to manually add it as a non-Steam game in Desktop Mode.</p>
+			<p>Fortunately, there are <a href="https://gitlab.com/finewolf-projects/steamos-helpers/-/tree/master/firefox-in-gamemode">scripts<sup>[1]</sup></a> that enable Firefox, installed via Flatpak, to function within Gaming Mode. These scripts utilize KWin on top of Gamescope (Gaming Mode's Wayland compositor), allowing users to enjoy tab switching and other browser conveniences.</p>
+			<p>However, beyond configuring Firefox, there are many browsers available on Linux. Considering the unique form factor of the Steam Deck, its hardware constraints, and the limitations of its operating system, let's answer the question: <b>Which browser is the best fit for the Steam Deck?</b></p>
+			<h2 id="challenges">Challenges</h2>
+			<p>The Steam Deck's operating system, SteamOS, and its hardware present unique challenges for browsing. For instance:</p>
+			<h3 id="no_native_autocorrect_or_spelling_suggestions">No Native Autocorrect or Spelling Suggestions</h3>
+			<p>While the OS includes an on-screen keyboard, it lacks key features like autocorrect and spelling suggestions.</p>
+			<h3 id="limited_voice_typing_support">Limited Voice Typing Support</h3>
+			<p>Though the device has built-in microphones, SteamOS doesn’t natively support voice typing.</p>
+			<p>Typing on the Steam Deck often involves using the trackpads to mimic left and right mouse clicks, which works but can be cumbersome for prolonged sessions.</p>
+			<h3 id="extensions_to_address_these_gaps">Extensions to address these gaps</h3>
+			<p>Luckily, some browsers and extensions address these gaps:</p>
+			<ul>
+				<li><b>Voice Typing</b>: Extensions like Dictanote's <a href="https://dictanote.co/voicein/">Voice-in</a><sup></sup> enable voice-to-text functionality, albeit with occasional quirks.</li>
+				<li><b>Spell Checking</b>: Most browsers include built-in spell checkers, which, while not a replacement for autocorrect, help with typos and spelling errors.</li>
+			</ul>
+			<p>There are plenty of more, you just have to make an effort to visit your browser's extension store.</p>
+			<h2 id="browser_engines">Browser Engines</h2>
+			<p>Modern browsers are built on two primary engines:</p>
+			<h3 id="web_kit_and_its_derivatives_chromium/_blink">WebKit and Its Derivatives (Chromium/Blink)</h3>
+			<p>Powers popular browsers like Chrome, Edge, and Safari.</p>
+			<h3 id="quantum">Quantum</h3>
+			<p>Powers Firefox and other Firefox-based browsers such as but not limited to: Florp, Zen, Waterfox and Tor.</p>
+			<p>For technical users, the choice of browser often hinges on the strengths and weaknesses of these engines. For non-technical users, the focus is more on features and usability rather than the underlying technology.</p>
+			<h2 id="recommendations">Recommendations</h2>
+			<p>I have split the recommendation to two. Two browsers per engine, this is because although I recommend Quantum based browsers by default (mainly because of extended support for manifest v2 extensions such as ublock origin), there are use-cases where Webkit is better such as playing browser games.</p>
+			<p>Additionally, I do disregard if the browser is either proprietary or not. Given that most people who use the Deck do not care about it anyways (considering that Steam is proprietary) so there will be proprietary browsers in the list</p>
+			<p>Here are the browsers I recommend:</p>
+			<h3 id="webkit_and_derivatives_based_browsers">Webkit and derivatives based browsers</h3>
+			<figure>
+				<a href="images/steamdeck.png" target="_blank"><img class="preview center" src="images/steamdeck.png"></a>
+				<figcaption>Figure 1. Customized Vivaldi running on Steam deck</figcaption>
+			</figure>
+			<ol>
+				<li><a href="https://flathub.org/apps/com.vivaldi.Vivaldi">Vivaldi</a> - My top pick if you are looking for a chromium based browser. This is because Vivaldi packs alot of features to boot and some of its features are better suited for the Deck such as Built in clock in the user interface, Notes and Reading List with sync and Adjustable user interface</li>
+				<li><a href="https://flathub.org/apps/com.microsoft.Edge">Edge</a> - Unsurprisingly, Edge is also a good pick if you are looking for a chromium based browser. Although it does not contain the features Vivaldi has that I have listed above, it does have features better suited for a browser user such as Built in coupon finder and Built in image editor</li>
+			</ol>
+			<figure>
+				<a href="images/steamdeck_edge_highlight.png" target="_blank"><img class="preview center" src="images/steamdeck_edge_highlight.png"></a>
+				<figcaption>Figure 2. Edge running on Steam deck</figcaption>
+			</figure>
+			<p>It should be noted that these two browsers offer alot more than what I listed but for me these are the features that I find killer for them. Some of the features that I did not list is a way to group tabs, split view, other sort of syncing (sending files from different devices), etc.</p>
+			<h3 id="quantum_based_browsers">Quantum based browsers</h3>
+			<figure>
+				<a href="images/steamdeck_firefox_highlight.png" target="_blank"><img class="preview center" src="images/steamdeck_firefox_highlight.png"></a>
+				<figcaption>Figure 3. Firefox running on Steam deck</figcaption>
+			</figure>
+			<ol>
+				<li><a href="https://flathub.org/apps/org.mozilla.firefox">Firefox</a> - The one best and most customizable browser. You can adjust Firefox's user interface via userChrome.css (same approach covered in the [Opening unlimited tabs with Firefox article<sup>[3]</sup>](https://www.richardorilla.website/firefox-unlimited-tabs-setup.html)(same approach covered in the [Opening unlimited tabs with Firefox article<sup>[3]</sup>](https://www.richardorilla.website/firefox-unlimited-tabs-setup.html) last month). There is even a <a href="https://trickypr.github.io/FirefoxCSS-Store.github.io/">listing of popular userChrome CSS themes<sup>[4]</sup></a> themes but if you prefer other hacks such as tabs on bottom and alike, there is a <a href="https://github.com/MrOtherGuy/firefox-csshacks/tree/master/chrome">popular github repository<sup>[5]</sup></a> for that as well.</li>
+				<li><a href="https://flathub.org/apps/io.github.zen_browser.zen">Zen</a> - You may not enjoy the same customizability level compare to Firefox because this browser is heavily modified from the ground up. The user interface is easier to customize and offering plethora of options. It has most of my favorite extensions preinstalled (or offers something similar to) such as auto tab discard and containers. Take note that this browser is still in the beta stages as I am writing this article, so you may encounter bugs here and there. For example, the GPU acceleration does not work on my Surface device for some reason</li>
+			</ol>
+			<figure>
+				<a href="images/steamdeck_zen_highlight.png" target="_blank"><img class="preview center" src="images/steamdeck_zen_highlight.png"></a>
+				<figcaption>Figure 4. Zen running on Steam deck</figcaption>
+			</figure>
+			<p>It should be noted that the links are already provided in the browser name, but to be more specific, these are flatpak links. Since I do encourage that flatpaks are used to ensure minimal interruptions during any SteamOS version upgrades.</p>
+			<h2 id="decky_browser_plugin">Decky Browser plugin</h2>
+			<p>I am quite aware of the Decky Browser plugin but I highly discourage it being used because aside from the security concerns it highlights, it lacks extension support, sync and quite frankly crashes from time to time causing the whole gaming mode to break.</p>
+			<figure>
+				<a href="images/decky_browser_plugin_warning.png" target="_blank"><img class="preview center" src="images/decky_browser_plugin_warning.png"></a>
+				<figcaption>Figure 5. Decky Browser plugin warning</figcaption>
+			</figure>
+			<h2 id="my_top_pick">My top pick</h2>
+			<p>For me, my recommended browser is Vivaldi. Vivaldi just hits the right spot when browsing on the Steam Deck. It’s packed with features that cater to both casual browsing and more specific use cases, making it an ideal choice for the Deck's unique form factor and operating environment.</p>
+			<h2 id="why_vivaldi_works_best">Why Vivaldi Works Best</h2>
+			<h3 id="feature_rich_interface">Feature-Rich Interface</h3>
+			<p>Vivaldi’s customizable user interface allows for optimal usability on the Steam Deck. For instance, you can place tabs at the bottom alongside the address bar, which pairs perfectly with Steam’s on-screen keyboard appearing at the top. This design prevents the keyboard from obstructing your view.</p>
+			<h3 id="reading_list_for_light_reading">Reading List for Light Reading</h3>
+			<p>I often do light reading on the Deck, and the built-in Reading List feature is incredibly convenient. Unlike relying on third-party services or extensions, Vivaldi’s native Reading List syncs across devices, ensuring seamless access to articles and content without additional setup.</p>
+			<h3 id="performance_with_browser_games">Performance with Browser Games</h3>
+			<p>Some browser games perform noticeably better on WebKit-based browsers like Vivaldi compared to Quantum-based alternatives. Whether it’s the rendering speed or compatibility with certain web technologies, Vivaldi handles these games with ease, making it my go-to choice for this use case.</p>
+			<h3 id="additional_handy_features">Additional Handy Features</h3>
+			<p>Vivaldi includes tools like a built-in clock, notes, and syncing capabilities for bookmarks and settings. These features enhance productivity and browsing convenience without relying on external tools.</p>
+			<h2 id="closing_thoughts">Closing Thoughts</h2>
+			<p>While other browsers excel in certain areas, Vivaldi strikes the perfect balance for Steam Deck users. Its combination of customizability, native features, and performance makes it stand out among the competition. Whether I’m reading, playing browser games, or simply navigating the web, Vivaldi consistently delivers a superior experience.</p>
+			<h3>~ End ~</h3>
+			<h4>
+				There are
+				<?php
+					include "site_counter.php";
+					echo get_page_count("the-best-browser-for-steamdeck");
+				?>
+				viewers that have read this page.
+			</h4>
+			<h4>
+				<a href="#headingBlog">Go back to top</a>
+			</h4>
+			<h4>
+				<a href="blog.html">Go back to list of articles</a>
+			</h4>
+		</div>
+	</body>
+	<script nonce="<?php echo $token; ?>">
+		$(document).ready(function () {
+			var images = $("img.preview.center");
+			for (var i = 0; i < images.length; i++) {
+				let element = images[i];
+				element.onmouseover = () => {
+					element.oldsrc = element.src;
+					element.src = element.src.replace("_tmb", "");
+				}
+	
+				element.onmouseout = () => {
+					element.src = element.oldsrc;
+				}
+			}
+			hljs.highlightAll();
+		});
+	</script>
+</html>
