@@ -19,3 +19,10 @@ def test_multiple_link_markers():
     expected_output: str = 'This is a <a href="https://addons.mozilla.org/en-US/firefox/addon/auto-tab-discard/">Test<sup>[1]</sup></a> link containing multiple URLS <a href="https://addons.mozilla.org/en-US/firefox/addon/auto-tab-discard/">Auto Tab Discard<sup>[2]</sup></a> that should display properly <a href="https://addons.mozilla.org/en-US/firefox/addon/auto-tab-discard/">Auto Tab Discard<sup>[3]</sup></a>'
     result: str = publisher._process_link_markers(test_input)
     assert result == expected_output
+
+def test_if_ignore_parenthesis():
+    publisher = StubPublisher()
+    test_input: str = '(This should not be converted)'
+    expected_output: str = '(This should not be converted)'
+    result: str = publisher._process_link_markers(test_input)
+    assert result == expected_output

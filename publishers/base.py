@@ -155,10 +155,12 @@ class Publisher(ABC):
             elif value[index] == ')':
                 parenthesis_counter -= 1
                 # Get substring from the parenthesis bracket index to the current index
-                if parenthesis_counter == 0:
+                if parenthesis_counter == 0 and link_text is not None:
                     link_url: str = value[parenthesis_bracket_index + 1:index]
                     new_value += f'<a href="{link_url}">{link_text}</a>'
                     link_text = None
+                else:
+                    new_value += value[parenthesis_bracket_index:index + 1]
             index += 1
         return new_value
 
