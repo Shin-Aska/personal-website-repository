@@ -33,6 +33,8 @@ There are plenty of more, you just have to make an effort to visit your browser'
 
 ## Browser Engines
 
+For technical users, the choice of browser often hinges on the strengths and weaknesses of these engines. For non-technical users, the focus is more on features and usability rather than the underlying technology.
+
 Modern browsers are built on two primary engines:
 
 ### WebKit and Its Derivatives (Chromium/Blink)
@@ -42,8 +44,6 @@ Powers popular browsers like Chrome, Edge, and Safari.
 ### Quantum
 
 Powers Firefox and other Firefox-based browsers such as but not limited to: Florp, Zen, Waterfox and Tor.
-
-For technical users, the choice of browser often hinges on the strengths and weaknesses of these engines. For non-technical users, the focus is more on features and usability rather than the underlying technology.
 
 ## Recommendations
 
@@ -58,9 +58,9 @@ Here are the browsers I recommend:
 - [ ] [![](images/steamdeck.png)](images/steamdeck.png)
 - [ ] Figure 1. Customized Vivaldi running on Steam deck
 
-1. [Vivaldi](https://flathub.org/apps/com.vivaldi.Vivaldi) - My top pick if you are looking for a chromium based browser. This is because Vivaldi packs alot of features to boot and some of its features are better suited for the Deck such as Built in clock in the user interface, Notes and Reading List with sync and Adjustable user interface
+1. [Vivaldi](https://flathub.org/apps/com.vivaldi.Vivaldi) - Vivaldi packs alot of features to boot and some of its features are better suited for the Deck such as Built in toolbar clock, sync with notes and reading list and easy to customize user interface
    
-2. [Edge](https://flathub.org/apps/com.microsoft.Edge) - Unsurprisingly, Edge is also a good pick if you are looking for a chromium based browser. Although it does not contain the features Vivaldi has that I have listed above, it does have features better suited for a browser user such as Built in coupon finder and Built in image editor
+2. [Edge](https://flathub.org/apps/com.microsoft.Edge) - Edge is a good choice if you are looking for a chromium based browser. Although it does not contain the features Vivaldi has that I have listed above, it does however have features better suited for a browser user such as Built in coupon finder and Built in image editor
 
 - [ ] [![](images/steamdeck_edge_highlight.png)](images/steamdeck_edge_highlight.png)
 - [ ] Figure 2. Edge running on Steam deck
@@ -72,7 +72,7 @@ It should be noted that these two browsers offer alot more than what I listed bu
 - [ ] [![](images/steamdeck_firefox_highlight.png)](images/steamdeck_firefox_highlight.png)
 - [ ] Figure 3. Firefox running on Steam deck
 
-1. [Firefox](https://flathub.org/apps/org.mozilla.firefox) - The one best and most customizable browser. You can adjust Firefox's user interface via userChrome.css (same approach covered in the [Opening unlimited tabs with Firefox article<sup>[3]</sup>](https://www.richardorilla.website/firefox-unlimited-tabs-setup.html) last month). There is even a [listing of popular userChrome CSS themes<sup>[4]</sup>](https://trickypr.github.io/FirefoxCSS-Store.github.io/) themes but if you prefer other hacks such as tabs on bottom and alike, there is a [popular github repository<sup>[5]</sup>](https://github.com/MrOtherGuy/firefox-csshacks/tree/master/chrome) for that as well.
+1. [Firefox](https://flathub.org/apps/org.mozilla.firefox) - The one best and most customizable browser. You can adjust Firefox's user interface via userChrome.css (same approach covered in the [Opening unlimited tabs with Firefox article<sup>[3]</sup>](https://www.richardorilla.website/firefox-unlimited-tabs-setup.html) last month). There is even a [listing of popular userChrome CSS themes<sup>[4]</sup>](https://trickypr.github.io/FirefoxCSS-Store.github.io/) themes but if you prefer other hacks such as tabs on bottom and alike, there is a [popular github repository<sup>[5]</sup>](https://github.com/MrOtherGuy/firefox-csshacks/tree/master/chrome) for that as well (Note that this is just one of the repositories containing Firefox UI hacks).
 
 2. [Zen](https://flathub.org/apps/io.github.zen_browser.zen) - You may not enjoy the same customizability level compare to Firefox because this browser is heavily modified from the ground up. The user interface is easier to customize and offering plethora of options. It has most of my favorite extensions preinstalled (or offers something similar to) such as auto tab discard and containers. Take note that this browser is still in the beta stages as I am writing this article, so you may encounter bugs here and there. For example, the GPU acceleration does not work on my Surface device for some reason
 
@@ -90,26 +90,22 @@ I am quite aware of the Decky Browser plugin but I highly discourage it being us
 
 ## My top pick
 
-For me, my recommended browser is Vivaldi. Vivaldi just hits the right spot when browsing on the Steam Deck. It’s packed with features that cater to both casual browsing and more specific use cases, making it an ideal choice for the Deck's unique form factor and operating environment.
+My recommended browser is Vivaldi. Mainly because its easy customizable user interface. I mean sure I can do the things on Firefox using userChrome.css hacks but the fact Vivaldi put huge effort to have these customization in the browser settings is just fantastic for casual users.
 
-## Why Vivaldi Works Best
+Then some of its features like their clock toolbar (which initially I found redundant when I use on Desktop) I find perfect on the deck because of how the Steam deck gaming mode user interface operates (accessing the time for example, I have to press Quick Access Menu)
 
-### Feature-Rich Interface
+Finally if you do play browser games, Webkit based browers are often times better than Quantum based browsers in terms of performance because of its better implementation to WebGL and WebGPU (Probably thanks to patents no doubt)
 
-Vivaldi’s customizable user interface allows for optimal usability on the Steam Deck. For instance, you can place tabs at the bottom alongside the address bar, which pairs perfectly with Steam’s on-screen keyboard appearing at the top. This design prevents the keyboard from obstructing your view.
+Some of the games I have observed where Webkit performs better are Flyff Universe, Hordes.io and Stumble guys (although they have a dedicated Steam app that is playable on Proton anyways).
 
-### Reading List for Light Reading
-
-I often do light reading on the Deck, and the built-in Reading List feature is incredibly convenient. Unlike relying on third-party services or extensions, Vivaldi’s native Reading List syncs across devices, ensuring seamless access to articles and content without additional setup.
-
-### Performance with Browser Games
-
-Some browser games perform noticeably better on WebKit-based browsers like Vivaldi compared to Quantum-based alternatives. Whether it’s the rendering speed or compatibility with certain web technologies, Vivaldi handles these games with ease, making it my go-to choice for this use case.
-
-### Additional Handy Features
-
-Vivaldi includes tools like a built-in clock, notes, and syncing capabilities for bookmarks and settings. These features enhance productivity and browsing convenience without relying on external tools.
+Of course I will say that with Manifest V2 extinction happening soon, Quantum based browsers will no doubt end up having superior extensions for better browsing experience. I mean Vivaldi may have a built-in adblock but it performs subpar to ublock origin.
 
 ## Closing Thoughts
 
-While other browsers excel in certain areas, Vivaldi strikes the perfect balance for Steam Deck users. Its combination of customizability, native features, and performance makes it stand out among the competition. Whether I’m reading, playing browser games, or simply navigating the web, Vivaldi consistently delivers a superior experience.
+There is nothing stopping you from using other browsers not on the list (such as Chrome). Although challenges may arise if the browser is not in flatpak because SteamOS is atomic Operating System.
+
+Furthermore, I have written modifications out of finewolf's bash script  for launching Firefox for Edge, Vivaldi and Zen. They can be downloaded [here](browser-bash-scripts.zip). Feel free to use this as your base or use it as it is preconfigured.
+
+## Update: January 29, 2025
+
+I have revised some of the content here, removing some of the sections of the article in an effort to make the article more straight forward.
