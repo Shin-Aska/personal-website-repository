@@ -49,7 +49,7 @@ Powers Firefox and other Firefox-based browsers such as but not limited to: Flor
 
 I have split the recommendation to two. Two browsers per engine, this is because although I recommend Quantum based browsers by default (mainly because of extended support for manifest v2 extensions such as ublock origin), there are use-cases where Webkit is better such as playing browser games.
 
-Additionally, I do disregard if the browser is either proprietary or not. Given that most people who use the Deck do not care about it anyways (considering that Steam is proprietary) so there will be proprietary browsers in the list
+Additionally, I do disregard if the browser is either proprietary or not. Given that most people who use the Deck do not care about it anyways (considering that Steam is proprietary) so there will be proprietary browsers in the list.
 
 Here are the browsers I recommend:
 
@@ -58,9 +58,9 @@ Here are the browsers I recommend:
 - [ ] [![](images/steamdeck.png)](images/steamdeck.png)
 - [ ] Figure 1. Customized Vivaldi running on Steam deck
 
-1. [Vivaldi](https://flathub.org/apps/com.vivaldi.Vivaldi) - Vivaldi packs alot of features to boot and some of its features are better suited for the Deck such as Built in toolbar clock, sync with notes and reading list and easy to customize user interface
+1. [Vivaldi](https://flathub.org/apps/com.vivaldi.Vivaldi) - Vivaldi packs alot of features to boot and some of its features are better suited for the Deck such as Built in toolbar clock, sync with notes and reading list and easy to customize user interface.
    
-2. [Edge](https://flathub.org/apps/com.microsoft.Edge) - Edge is a good choice if you are looking for a chromium based browser. Although it does not contain the features Vivaldi has that I have listed above, it does however have features better suited for a browser user such as Built in coupon finder and Built in image editor
+2. [Edge](https://flathub.org/apps/com.microsoft.Edge) - Edge is a good choice if you are looking for a chromium based browser. Although it does not contain the features Vivaldi has that I have listed above, it does however have features better suited for a browser user such as Built in coupon finder and Built in image editor.
 
 - [ ] [![](images/steamdeck_edge_highlight.png)](images/steamdeck_edge_highlight.png)
 - [ ] Figure 2. Edge running on Steam deck
@@ -74,7 +74,7 @@ It should be noted that these two browsers offer alot more than what I listed bu
 
 1. [Firefox](https://flathub.org/apps/org.mozilla.firefox) - The one best and most customizable browser. You can adjust Firefox's user interface via userChrome.css (same approach covered in the [Opening unlimited tabs with Firefox article<sup>[3]</sup>](https://www.richardorilla.website/firefox-unlimited-tabs-setup.html) last month). There is even a [listing of popular userChrome CSS themes<sup>[4]</sup>](https://trickypr.github.io/FirefoxCSS-Store.github.io/) themes but if you prefer other hacks such as tabs on bottom and alike, there is a [popular github repository<sup>[5]</sup>](https://github.com/MrOtherGuy/firefox-csshacks/tree/master/chrome) for that as well (Note that this is just one of the repositories containing Firefox UI hacks).
 
-2. [Zen](https://flathub.org/apps/io.github.zen_browser.zen) - You may not enjoy the same customizability level compare to Firefox because this browser is heavily modified from the ground up. The user interface is easier to customize and offering plethora of options. It has most of my favorite extensions preinstalled (or offers something similar to) such as auto tab discard and containers. Take note that this browser is still in the beta stages as I am writing this article, so you may encounter bugs here and there. For example, the GPU acceleration does not work on my Surface device for some reason
+2. [Zen](https://flathub.org/apps/io.github.zen_browser.zen) - You may not enjoy the same customizability level compare to Firefox because this browser is heavily modified from the ground up. The user interface is easier to customize and offering plethora of options. It has most of my favorite extensions preinstalled (or offers something similar to) such as auto tab discard and containers. Take note that this browser is still in the beta stages as I am writing this article, so you may encounter bugs here and there. For example, the GPU acceleration does not work on my Surface device for some reason.
 
 - [ ] [![](images/steamdeck_zen_highlight.png)](images/steamdeck_zen_highlight.png)
 - [ ] Figure 4. Zen running on Steam deck
@@ -88,17 +88,17 @@ I am quite aware of the Decky Browser plugin but I highly discourage it being us
 - [ ] [![](images/decky_browser_plugin_warning.png)](images/decky_browser_plugin_warning.png)
 - [ ] Figure 5. Decky Browser plugin warning
 
-## My top pick
+## My recommendation
 
-My recommended browser is Vivaldi. Mainly because its easy customizable user interface. I mean sure I can do the things on Firefox using userChrome.css hacks but the fact Vivaldi put huge effort to have these customization in the browser settings is just fantastic for casual users.
+For a casual user (that may have some light or heavy browser gaming). I recommend Vivaldi. Mainly due to its' customizable user interface. I mean sure I can do the things on Firefox using userChrome.css hacks but the fact Vivaldi put huge effort to have these customization in the browser settings is just fantastic for casual users.
 
-Then some of its features like their clock toolbar (which initially I found redundant when I use on Desktop) I find perfect on the deck because of how the Steam deck gaming mode user interface operates (accessing the time for example, I have to press Quick Access Menu)
+Then some of its features like their clock toolbar (which initially I found redundant when I use on Desktop) I find perfect on the deck because of how the Steam deck gaming mode user interface operates (accessing the time for example, I have to press Quick Access Menu).
 
-Finally if you do play browser games, Webkit based browers are often times better than Quantum based browsers in terms of performance because of its better implementation to WebGL and WebGPU (Probably thanks to patents no doubt)
+Finally if you do play browser games, Webkit based browers are often times better than Quantum based browsers in terms of performance because of its better implementation to WebGL and WebGPU (Probably thanks to patents no doubt).
 
 Some of the games I have observed where Webkit performs better are Flyff Universe, Hordes.io and Stumble guys (although they have a dedicated Steam app that is playable on Proton anyways).
 
-Of course I will say that with Manifest V2 extinction happening soon, Quantum based browsers will no doubt end up having superior extensions for better browsing experience. I mean Vivaldi may have a built-in adblock but it performs subpar to ublock origin.
+Of course I will say that with Manifest V2 extinction happening soon, Quantum based browsers will no doubt end up having superior extensions for better browsing experience. I mean Edge and Vivaldi may have built-in adblock but it performs subpar to ublock origin.
 
 ## Closing Thoughts
 
