@@ -26,7 +26,7 @@ Typing on the Steam Deck often involves using the trackpads to mimic left and ri
 
 Luckily, some browsers and extensions address these gaps:
 
-- **Voice Typing**: Extensions like Dictanote's [Voice-in](https://dictanote.co/voicein/)<sup>[2]</sup> enable voice-to-text functionality, albeit with occasional quirks.
+- **Voice Typing**: Extensions like Dictanote's [Voice-in<sup>[2]</sup>](https://dictanote.co/voicein/) enable voice-to-text functionality, albeit with occasional quirks.
 - **Spell Checking**: Most browsers include built-in spell checkers, which, while not a replacement for autocorrect, help with typos and spelling errors.
 
 There are plenty of more, you just have to make an effort to visit your browser's extension store.
@@ -72,14 +72,13 @@ It should be noted that these two browsers offer alot more than what I listed bu
 - [ ] [![](images/steamdeck_firefox_highlight.png)](images/steamdeck_firefox_highlight.png)
 - [ ] Figure 3. Firefox running on Steam deck
 
-1. [Firefox](https://flathub.org/apps/org.mozilla.firefox) - The one best and most customizable browser. You can adjust Firefox's user interface via userChrome.css (same approach covered in the [Opening unlimited tabs with Firefox article<sup>[3]</sup>](https://www.richardorilla.website/firefox-unlimited-tabs-setup.html) last month). There is even a [listing of popular userChrome CSS themes<sup>[4]</sup>](https://trickypr.github.io/FirefoxCSS-Store.github.io/) themes but if you prefer other hacks such as tabs on bottom and alike, there is a [popular github repository<sup>[5]</sup>](https://github.com/MrOtherGuy/firefox-csshacks/tree/master/chrome) for that as well (Note that this is just one of the repositories containing Firefox UI hacks).
-
-2. [Zen](https://flathub.org/apps/io.github.zen_browser.zen) - You may not enjoy the same customizability level compare to Firefox because this browser is heavily modified from the ground up. The user interface is easier to customize and offering plethora of options. It has most of my favorite extensions preinstalled (or offers something similar to) such as auto tab discard and containers. Take note that this browser is still in the beta stages as I am writing this article, so you may encounter bugs here and there. For example, the GPU acceleration does not work on my Surface device for some reason.
+1. [Firefox](https://flathub.org/apps/org.mozilla.firefox) - One of the best and most customizable browsers. You can modify its user interface using **userChrome.css**, as explained in [Opening Unlimited Tabs with Firefox article<sup>[3]</sup>](https://www.richardorilla.website/firefox-unlimited-tabs-setup.html) . There is a [list of popular userChrome.css themes<sup>[4]</sup>](https://trickypr.github.io/FirefoxCSS-Store.github.io/) available, and if one wishes to customize it even further such as having tabs on the bottom, a [popular GitHub repository<sup>[5]</sup>](https://github.com/MrOtherGuy/firefox-csshacks/tree/master/chrome) offers various Firefox UI hacks. It should be noted that this is just one of many repositories with customization options.
+3. [Zen](https://flathub.org/apps/io.github.zen_browser.zen) - While not as customizable as Firefox, Zen is built from the ground up with an easier-to-tweak interface and a wide range of options. It comes with many of my favorite extensions preinstalled (or alternatives), like auto tab discard and containers. However, since the browser is still in beta at the time of writing, expect some bugs. For instance, GPU acceleration doesn’t work on my Surface device.
 
 - [ ] [![](images/steamdeck_zen_highlight.png)](images/steamdeck_zen_highlight.png)
 - [ ] Figure 4. Zen running on Steam deck
 
-It should be noted that the links are already provided in the browser name, but to be more specific, these are flatpak links. Since I do encourage that flatpaks are used to ensure minimal interruptions during any SteamOS version upgrades.
+The links are already included in the browser names, but to clarify, they point to the Flatpak versions. I recommend using Flatpaks to minimize disruptions during SteamOS upgrades.
 
 ## Decky Browser plugin
 
@@ -92,11 +91,13 @@ I am quite aware of the Decky Browser plugin but I highly discourage it being us
 
 For a casual user (that may have some light or heavy browser gaming). I recommend Vivaldi. Mainly due to its' customizable user interface. I mean sure I can do the things on Firefox using userChrome.css hacks but the fact Vivaldi put huge effort to have these customization in the browser settings is just fantastic for casual users.
 
-Then some of its features like their clock toolbar (which initially I found redundant when I use on Desktop) I find perfect on the deck because of how the Steam deck gaming mode user interface operates (accessing the time for example, I have to press Quick Access Menu).
+Some features, like the clock in the toolbar **which initially felt redundant on a desktop** turned out to be perfect on the Deck. Given how Steam Deck’s gaming mode UI works (where checking the time requires opening the Quick Access Menu), having the clock always visible is a great convenience.
 
 Finally if you do play browser games, Webkit based browers are often times better than Quantum based browsers in terms of performance because of its better implementation to WebGL and WebGPU (Probably thanks to patents no doubt).
 
 Some of the games I have observed where Webkit performs better are Flyff Universe, Hordes.io and Stumble guys (although they have a dedicated Steam app that is playable on Proton anyways).
+
+Although as of this writing *February 22, 2025*, Firefox is closing the gaps on these performance issues. I have noticed that the current version of Firefox 135 performs very close to Chromium on Flyff Universe. Hordes.io and Stumble guys do still have performance problems/
 
 Of course I will say that with Manifest V2 extinction happening soon, Quantum based browsers will no doubt end up having superior extensions for better browsing experience. I mean Edge and Vivaldi may have built-in adblock but it performs subpar to ublock origin.
 
@@ -109,3 +110,9 @@ Furthermore, I have written modifications out of finewolf's bash script  for lau
 ## Update: January 29, 2025
 
 I have revised some of the content here, removing some of the sections of the article in an effort to make the article more straight forward.
+
+## Update: February 22, 2025
+
+I made some fixes in the recommended browser section for Firefox. Currently, my script that converts Markdown to HTML has a bug with links inside parenthesis, which I may fix soon. For the meantime, I just rewrote that part without using parenthesis. 
+
+I also updated my recommendations to include a new finding regarding Firefox’s gaming performance.
