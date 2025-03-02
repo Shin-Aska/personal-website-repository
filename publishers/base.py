@@ -29,7 +29,10 @@ class Publisher(ABC):
         table_of_contents: str = ''
         elements: list[MarkdownElement] = self.article
 
-        print(elements)
+        print('[', end='')
+        for element in elements:
+            print(element.element_type, end=', ')
+        print(']')
 
         table_contents: list[HeadingContent] = []
 

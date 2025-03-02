@@ -79,8 +79,14 @@ class MarkdownParser:
             element_type = None
 
             if line.strip().rstrip() == '':
-                last_line_was_empty = True
-                continue
+                if idx == len(markdown_file_contents) - 1:
+                    if element.element_type in multi_content_markdown_element_type:
+                        elements.append(element)
+                        element = None
+                    break
+                else:
+                    last_line_was_empty = True
+                    continue
 
             for e_prefix, e_type in element_type_mapping.items():
                 if e_prefix.__contains__('{num}'):
