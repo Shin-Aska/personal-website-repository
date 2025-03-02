@@ -12,7 +12,7 @@ I'll break down the technical pros and cons of each method based on my experienc
 
 ## Static Website Building
 
-If you're building a personal site, going the static website route is a solid and often more affordable choice compared to online website builders like [Wix<sup>[2]</sup>](https://www.wix.com/) or [Squarespace<sup>[3]</sup>](https://www.squarespace.com/). This is because not only that it requires a less powerful server (often times a CDN doing the heavy work) but requires less from you such as no need for a SQL server to host your data. (Mind you there are free static website hosting services such as [Neocities<sup>[4]</sup>](https://neocities.org/) or even via [Github<sup>[5]</sup>](https://pages.github.com/))
+If you're building a personal site, going the static website route is a solid and often more affordable choice compared to online website builders like [Wix<sup>[2]</sup>](https://www.wix.com/) or [Squarespace<sup>[3]</sup>](https://www.squarespace.com/). This is because not only that it requires a less powerful server (often times a CDN doing the heavy work) but requires less from you such as no need for a SQL server to host your data. Mind you there are free static website hosting services such as [Neocities<sup>[4]</sup>](https://neocities.org/) or even via [Github<sup>[5]</sup>](https://pages.github.com/)
 
 Many people assume that building a static website is a cumbersome process. The idea of having to plan the layout from scratch, code CSS by hand, and ensure responsiveness can seem daunting. While these concerns are valid (I built this website from scratch, after all), there are plenty of tools and frameworks available that make the process much easier.
 
@@ -50,14 +50,14 @@ WordPress is the most popular CMS and for good reason. It offers one of the most
 
 Of course, WordPress also allows you to develop and install your own themes and plugins manually, but the built-in store makes customization incredibly convenient. Many developers have even turned this into a business model, selling premium plugins and themes through WordPress.org while offering free versions to attract users.
 
-- [ ] ![](images/wordpress_store.png)
-- [ ] **Figure 1\.** How the WordPress third party store Looks like
+- [ ] [![](images/wordpress_store.png)](images/wordpress_store.png)
+- [ ] Figure 1. How the WordPress third party store Looks like
 
 This ease of customization makes WordPress an especially attractive option for non-technical users. If someone lacks the coding skills to build a feature from scratch, chances are they can find a plugin that does exactly what they need with just a few clicks.
 
 Granted that it does not beat the same customizability as an online website builder having a WYSIWYG editor but extensions such as [Elementor<sup>[14]</sup>](https://elementor.com/) and [Otter Blocks<sup>[15]</sup>](https://wordpress.org/plugins/otter-blocks/) exists to help even the gap.
 
-I remember back in **2013** when having an online image gallery on a website was considered a big deal. Personally, I never really understood the hype since you could build one using plain JavaScript. I even created my own version back then:  [First attempt (archive)<sup>[16]</sup>](http://archive.richardorilla.website/gallery.html)  and then an [Updated version (current site)<sup>[17]</sup>](https://www.richardorilla.website/gallery.html) . Of course such features are available on your typical WYSIWYG editor (including Elementor).
+I remember back in **2013** when having an online image gallery on a website was considered a big deal. Personally, I never really understood the hype since you could build one using plain JavaScript. I even created my own version back then:  [First attempt **-archive-**<sup>[16]</sup>](http://archive.richardorilla.website/gallery.html)  and then an [Updated version **-current site-**<sup>[17]</sup>](https://www.richardorilla.website/gallery.html) . Of course such features are available on your typical WYSIWYG editor (including Elementor).
 
 This time around, I prefer my approach because I managed to build the gallery without relying on a server-side preprocessor like **ASP or PHP**, and it supports both JavaScript and **no-JavaScript** environments.
 
@@ -67,8 +67,8 @@ Finally if you are interested in the output of my Wordpress experiment, you can 
 
 When someone talks about a **WordPress alternative** in a forum of freelance web developers, **Joomla** is almost always mentioned. Often considered the **second-best CMS option**, Joomla offers similar functionality to WordPress, including an **extension store** where you can install third-party plugins or even develop and manually install your own.
 
-- ![](images/joomla_store.png)  
-  **Figure 2.** Joomla third-party extension store interface.
+- [ ] [![](images/joomla_store.png)](images/joomla_store.png) 
+- [ ] Figure 2. Joomla third-party extension store interface.
 
 Despite its strengths, Joomla is often a second choice because, while it provides **strong backend features** out of the box such as **passkey authentication** and **multilanguage support** I found its customization process to be more complex compared to WordPress.
 
