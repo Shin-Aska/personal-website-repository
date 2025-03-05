@@ -80,7 +80,7 @@ class MarkdownParser:
 
             if line.strip().rstrip() == '':
                 if idx == len(markdown_file_contents) - 1:
-                    if element.element_type in multi_content_markdown_element_type:
+                    if element and element.element_type in multi_content_markdown_element_type:
                         elements.append(element)
                         element = None
                     break
