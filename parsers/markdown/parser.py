@@ -1,10 +1,11 @@
 from typing import Optional
 
+from parsers.base import Parser
 from parsers.markdown.constants import MarkdownElementType, element_type_mapping, multi_content_markdown_element_type
 from parsers.markdown.models import MarkdownElement
 
 
-class MarkdownParser:
+class MarkdownParser(Parser):
 
     @staticmethod
     def _generate_non_multi_content_markdown_element(element_type: MarkdownElementType, line: str, value: str) -> MarkdownElement:
@@ -62,7 +63,7 @@ class MarkdownParser:
         return False
 
     @staticmethod
-    def parse(markdown_file_contents: list[str], debug = False) -> list[MarkdownElement]:
+    def parse(contents: list[str], debug = False) -> list[MarkdownElement]:
         elements = []
         element_type: Optional[MarkdownElementType] = None
         code_block_flag: bool = False
@@ -73,13 +74,13 @@ class MarkdownParser:
             import pdb
             pdb.set_trace()
 
-        for idx, line in enumerate(markdown_file_contents):
+        for idx, line in enumerate(contents):
 
             prefix: str = ''
             element_type = None
 
             if line.strip().rstrip() == '':
-                if idx == len(markdown_file_contents) - 1:
+                if idx == len(contents) - 1:
                     if element and element.element_type in multi_content_markdown_element_type:
                         elements.append(element)
                         element = None
@@ -144,7 +145,7 @@ class MarkdownParser:
                     else:
                         content: list[str] = [value]
                         element = MarkdownElement(element_type, content)
-                        if idx == len(markdown_file_contents) - 1:
+                        if idx == len(contents) - 1:
                             elements.append(element)
                             element = None
                 # If we are holding an element. it means we are in a multi content element
@@ -161,13 +162,13 @@ class MarkdownParser:
                         else:
                             content: list[str] = [value]
                             element = MarkdownElement(element_type, content)
-                            if idx == len(markdown_file_contents) - 1:
+                            if idx == len(contents) - 1:
                                 elements.append(element)
                                 element = None
 
                     elif element.element_type == element_type:
                         element.content.append(value)
-                        if idx == len(markdown_file_contents) - 1:
+                        if idx == len(contents) - 1:
                             elements.append(element)
                             element = None
                     else:
@@ -179,7 +180,7 @@ class MarkdownParser:
                         else:
                             content: list[str] = [value]
                             element = MarkdownElement(element_type, content)
-                            if idx == len(markdown_file_contents) - 1:
+                            if idx == len(contents) - 1:
                                 elements.append(element)
                                 element = None
             else:

@@ -1,3 +1,4 @@
+from parsers.base import Element
 from parsers.markdown.constants import MarkdownElementType, multi_content_markdown_element_type
 
 
@@ -10,14 +11,13 @@ class HeadingContent:
         self.heading_value = heading_value
 
 
-class MarkdownElement:
+class MarkdownElement(Element):
     element_type: MarkdownElementType = None
     content: str | list[str] = None
     extra: dict = None
 
     def __init__(self, element_type: MarkdownElementType, content: str | list[str]):
-        self.element_type = element_type
-        self.content = content
+        super().__init__(element_type, content)
         self.extra: dict = {}
 
     def is_multi_content(self) -> bool:
