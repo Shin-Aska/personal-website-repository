@@ -179,3 +179,13 @@ I will however go back to Microsoft Office on Windows but will retain to Softmak
 Although I have alot of gripes with Softmaker I do like the User Interface alot which is enough for me to keep on using it
 
 To set the record straight, overall, I am a happy customer on purchasing Softmaker Office
+
+## March 3 2025 Update: My experience in my Office suite hopping
+
+Back on June 11, 2023, I mentioned that I had returned to using Microsoft Office on Windows while still keeping SoftMaker Office for a couple of months. In reality, I ended up using SoftMaker for over a year long enough to purchase the SoftMaker Professional 2024 license. However, by August last year, I decided to move away from it and returned to WPS Office for various reasons, including those I previously outlined in my last update.
+
+One major issue I encountered was when SoftMaker completely ruined a presentation file I was helping a friend with. It was heavily using morph transitions which currently only WPS supports. That was a turning point. Looking at the bigger picture, I realized that I was collaborating more and more with Microsoft Office users, making it a logical decision to switch back to WPS Office instead.
+
+Lately, I've been tempted to use Microsoft Office 2016 via Wine or go all-in with Microsoft Office 365 using WinApps to fully integrate it into my workflow. But for now, WPS meets my needs without requiring me to take any drastic measures.
+
+I'm also trying to avoid running Wine directly on my system, as I prefer it to be sandboxed either through Bottles or indirectly via Lutris + Flatpak. Unfortunately, that also complicates Microsoft Office integration via Wine since it would require a direct installation on my end, something I'm not particularly keen on doing right now for security concerns.
