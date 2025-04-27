@@ -52,6 +52,7 @@
 				<li><a href="#remove_the_default_tab_bar">Remove the default tab bar</a></li>
 				<li><a href="#november_24_2024_update_user_chrome_c_s_s_no_longer_necessary">November 24, 2024 Update: UserChromeCSS no longer necessary</a></li>
 				<li><a href="#december_1_2024_update_firefox_133_update_user_chrome_c_s_s_is_once_again_necessary">December 1, 2024 Update: Firefox 133 update - UserChromeCSS is once again necessary</a></li>
+				<li><a href="#march_21_2025_update_we_are_back_again_from_not_needing_user_chrome_c_s_s">March 21, 2025 Update: We are back again from not needing UserChromeCSS</a></li>
 				<li><a href="#conclusion">Conclusion</a></li>
 			</ul>
 			<h1 id="headingBlog">Handling unlimited number of tabs with Firefox</h1>
@@ -150,59 +151,67 @@
 /* Source file https://github.com/MrOtherGuy/firefox-csshacks/tree/master/chrome/hide_tabs_toolbar_v2.css made available under Mozilla Public License v. 2.0
 See the above repository for updates as well as full license text. */
 /* This requires Firefox 133+ to work */
-@media (-moz-bool-pref: "sidebar.verticalTabs"){
-    #sidebar-main{
-      visibility: collapse;
+@media (-moz-bool-pref: "sidebar.verticalTabs") {
+  #sidebar-main {
+    visibility: collapse;
+  }
+}
+@media (-moz-bool-pref: "userchrome.force-window-controls-on-left.enabled") {
+  #nav-bar>.titlebar-buttonbox-container {
+    order: -1 !important;
+    >.titlebar-buttonbox {
+      flex-direction: row-reverse;
     }
   }
-  @media (-moz-bool-pref: "userchrome.force-window-controls-on-left.enabled"){
-    #nav-bar > .titlebar-buttonbox-container{
-      order: -1 !important;
-      > .titlebar-buttonbox{
-        flex-direction: row-reverse;
-      }
-    }
+}
+@media not (-moz-bool-pref: "sidebar.verticalTabs") {
+  #TabsToolbar {
+    visibility: collapse;
   }
-  @media not (-moz-bool-pref: "sidebar.verticalTabs"){
-    #TabsToolbar{
-      visibility: collapse;
-    }
-    :root[sizemode="fullscreen"] #nav-bar > .titlebar-buttonbox-container{
+  :root[sizemode="fullscreen"] #nav-bar>.titlebar-buttonbox-container {
+    display: flex !important;
+  }
+  :root[tabsintitlebar] #toolbar-menubar:not([autohide="false"])~#nav-bar {
+    >.titlebar-buttonbox-container {
       display: flex !important;
     }
-    :root[tabsintitlebar] #toolbar-menubar:not([autohide="false"]) ~ #nav-bar{
-      > .titlebar-buttonbox-container{
+    :root[sizemode="normal"] & {
+      >.titlebar-spacer {
         display: flex !important;
       }
-      :root[sizemode="normal"] & {
-        > .titlebar-spacer{
-          display: flex !important;
-        }
+    }
+    :root[sizemode="maximized"] & {
+      >.titlebar-spacer[type="post-tabs"] {
+        display: flex !important;
       }
-      :root[sizemode="maximized"] & {
-        > .titlebar-spacer[type="post-tabs"]{
-          display: flex !important;
+      @media (-moz-bool-pref: "userchrome.force-window-controls-on-left.enabled"),
+      (-moz-gtk-csd-reversed-placement),
+      (-moz-platform: macos) {
+        >.titlebar-spacer[type="post-tabs"] {
+          display: none !important;
         }
-        @media (-moz-bool-pref: "userchrome.force-window-controls-on-left.enabled"),
-          (-moz-gtk-csd-reversed-placement),
-          (-moz-platform: macos){
-          > .titlebar-spacer[type="post-tabs"]{
-            display: none !important;
-          }
-          > .titlebar-spacer[type="pre-tabs"]{
-            display: flex !important;
-          }
+        >.titlebar-spacer[type="pre-tabs"] {
+          display: flex !important;
         }
       }
     }
   }
+}
 
 				</code>
 			</pre>
+			<h2 id="march_21_2025_update_we_are_back_again_from_not_needing_user_chrome_c_s_s">March 21, 2025 Update: We are back again from not needing UserChromeCSS</h2>
+			<p>With the 136.02 update, the vertical tab bar is now resizable. When opening a sidebar item, you have the option now to resize the vertical space and it is saved until you close the vertical sidebar and reopen it again (by either opening it via Sidebery or the dedicated button for opening and closing vertical tabs).</p>
+			<figure>
+				<a href="images/resizable-vertical-tabs.webp" target="_blank"><img class="preview center" src="images/resizable-vertical-tabs.webp"></a>
+				<figcaption>Figure 6. Resizing of the vertical tab bar in Firefox</figcaption>
+			</figure>
+			<p>The recent CSS hack still works but for those that do not want to tweak Firefox aside from its supported methods (or just do not want to deal with any code) will now be pleased that they have such options.</p>
 			<h2 id="conclusion">Conclusion</h2>
 			<p>There you have it. You can now handle an unlimited number of tabs with Firefox. You can now list down all the tabs that you have open and search through them. You can also group the tabs and save them for later. In addition, one of the key features of Sidebery is that it allows you to group tabs in a panel. In addition, you can program Sidebery to automatically move tabs to a particular panel base on their domain.</p>
 			<p>If you can see in the screenshot above, I have roughly around 50 tabs open (not counting the PWA apps; I use Firefox PWA) and all in all it consumes around 4GB of memory/ Which is not bad considering that I have a lot of tabs open, alot of extensions installed (15+), and I am also running a lot of PWA apps, which is counted in the 4GB memory usage.</p>
 			<p>Feel free to explore both Sidebery and Auto Tab Discard. They have alot of customization options. Such as with Auto Tab Discard, you can program it to not discard pinned tabs or tabs that are playing audio for example. There is plenty of room to customize both extensions to your liking. Even then the default settings are already good enough.</p>
+			<p>I should note that I recommend that you enable Snapshots in Sidebery. Setting snapshots enabled you to recover your tabs and your tab arrangements in the event that you encounter any issues. I normally set my snapshots to an interval of an hour with a snapshot limit of 10 days.</p>
 			<h3>~ End ~</h3>
 			<h4>
 				There are

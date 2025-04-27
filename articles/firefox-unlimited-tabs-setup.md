@@ -199,6 +199,15 @@ See the above repository for updates as well as full license text. */
 }
 ```
 
+## March 21, 2025 Update: We are back again from not needing UserChromeCSS
+
+With the 136.02 update, the vertical tab bar is now resizable. When opening a sidebar item, you have the option now to resize the vertical space and it is saved until you close the vertical sidebar and reopen it again (by either opening it via Sidebery or the dedicated button for opening and closing vertical tabs).
+
+- [ ] [![](images/resizable-vertical-tabs.webp)](images/resizable-vertical-tabs.webp)
+- [ ] Figure 6\. Resizing of the vertical tab bar in Firefox
+
+The recent CSS hack still works but for those that do not want to tweak Firefox aside from its supported methods (or just do not want to deal with any code) will now be pleased that they have such options.
+
 ## Conclusion
 
 There you have it. You can now handle an unlimited number of tabs with Firefox. You can now list down all the tabs that you have open and search through them. You can also group the tabs and save them for later. In addition, one of the key features of Sidebery is that it allows you to group tabs in a panel. In addition, you can program Sidebery to automatically move tabs to a particular panel base on their domain.
@@ -207,5 +216,4 @@ If you can see in the screenshot above, I have roughly around 50 tabs open (not 
 
 Feel free to explore both Sidebery and Auto Tab Discard. They have alot of customization options. Such as with Auto Tab Discard, you can program it to not discard pinned tabs or tabs that are playing audio for example. There is plenty of room to customize both extensions to your liking. Even then the default settings are already good enough.
 
-
-
+I should note that I recommend that you enable Snapshots in Sidebery. Setting snapshots enabled you to recover your tabs and your tab arrangements in the event that you encounter any issues. I normally set my snapshots to an interval of an hour with a snapshot limit of 10 days.
