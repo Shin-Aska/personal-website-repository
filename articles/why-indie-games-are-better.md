@@ -30,15 +30,15 @@ Another, from the Souls-like genre, is *AI Limit*, an anime-style game that foll
 - [ ] [![](images/ai_id_tmb.jpeg)](images/ai_id.jpeg)
 - [ ] Figure 4. AI Limit showcasing impressive anime visuals
 
-I could go on and on, and these are just on the premium side of the indie spectrum. There are also those that help define entire genres, like [Vampire Survivors<sup>[4]</sup>](https://store.steampowered.com/app/1794680/Vampire_Survivors/), [Hades<sup>[5]</sup>](https://store.steampowered.com/app/1145360/Hades/), and even a card game like [Balatro<sup>[6]</sup>](https://store.steampowered.com/app/2379780/Balatro/).
+I could go on and on, and these are just on the premium side of the indie spectrum. There are also those that help define entire genres, like [Vampire Survivors<sup>[4]</sup>](https://store.steampowered.com/app/1794680/Vampire_Survivors/), [Hades<sup>[5]</sup>](https://store.steampowered.com/app/1145360/Hades/)
 
 - [ ] [![](images/vs_id_tmb.jpeg)](images/vs_id.jpeg)
 - [ ] Figure 5. Vampire Survivors gameplay
 
+What is my point here? The point is that even though there are notable AAA games, if we look back over the last decade, the indie scene is where the real innovation is happening.
+
 - [ ] [![](images/bltr_id_tmb.jpeg)](images/bltr_id.jpeg)
 - [ ] Figure 6. Balatro gameplay
-
-What is my point here? The point is that even though there are notable AAA games, if we look back over the last decade, the indie scene is where the real innovation is happening.
 
 ## The Rise of Indie Games
 
@@ -46,18 +46,22 @@ Indie games are not a new phenomenon. They have been around for decades, always 
 
 Flash games are a perfect example of how indie games rose to prominence, reaching millions of players worldwide and proving that anyone with creativity and a keyboard could make an impact.
 
-For example, tower defense games originally emerged as custom maps in RTS titles like [*Starcraft*<sup>[7]</sup>](https://starcraft.blizzard.com/en-us/) and [*Warcraft III*<sup>[8]</sup>](https://warcraft3.blizzard.com/en-us/).
+For example, tower defense games originally emerged as custom maps in RTS titles like [*Starcraft*<sup>[7]</sup>](https://starcraft.blizzard.com/en-us/).
 
 - [ ] [![](images/sctw_id_tmb.jpg)](images/sctw_id.jpg)
 - [ ] Figure 7. StarCraft Defense of the Galaxy tower defense, a bundled UMS (Use multiplayer settings) map
 
+Then with the expanded map editor in [*Warcraft III*<sup>[8]</sup>](https://warcraft3.blizzard.com/en-us/), have even expanded the mechanics in the tower defense mechanic later.
+
 - [ ] [![](images/w3td_id_tmb.jpg)](images/w3td_id.jpg)
 - [ ] Figure 8. Warcraft III The Frozen Throne - The crossing bonus/secret campaign, adding a tower defense twist in this RTS game
 
-However, Flash games such as [*GemCraft*<sup>[9]</sup>](https://armorgames.com/play/1716/gemcraft), [*Bloons*<sup>[10]</sup>](https://armorgames.com/play/795/bloons-tower-defense), and many others took the genre to a whole new level, making it more accessible, casual, and addicting for a global audience.
+However, the tower defense genre, was only considered as a sort of mini-game.
 
 - [ ] [![](images/gemcraft_td_tmb.jpg)](images/gemcraft_td.jpg)
 - [ ] Figure 9. Gemcraft - One of the first games that streamlined a dedicated tower defense formula
+
+Flash games such as [*GemCraft*<sup>[9]</sup>](https://armorgames.com/play/1716/gemcraft), [*Bloons*<sup>[10]</sup>](https://armorgames.com/play/795/bloons-tower-defense), and many others took the genre to a whole new level, making it more accessible, casual, and addicting for a global audience.
 
 - [ ] [![](images/bloonstd_id_tmb.jpg)](images/bloonstd_id.jpg)
 - [ ] Figure 10. Bloonds TD - Another ogames that streamlined a dedicated tower defense formula
