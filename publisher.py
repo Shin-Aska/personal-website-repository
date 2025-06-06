@@ -54,4 +54,8 @@ if __name__ == '__main__':
 
         if not os.path.exists(f'{folder}/images/{tail}'):
             print(f'Copying {image} to {folder}/images/{tail}')
-            shutil.copy(image, f'{folder}/images/{tail}')
+            if os.path.exists(image):
+                print(f'Source image exists: {image}')
+                shutil.copy(image, f'{folder}/images/{tail}')
+            else:
+                print(f'Source image does not exist: {image}')
