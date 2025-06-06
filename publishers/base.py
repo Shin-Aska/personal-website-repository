@@ -46,7 +46,18 @@ class Publisher(ABC):
             elif element.element_type == MarkdownElementType.checkbox:
                 html_content = self._generate_checkbox_content(html_content, element.content, element)
             elif element.element_type == MarkdownElementType.image:
-                print([element.element_type, element.content])
+                # Remove dangling ) in element.content if it exists, just a minor hack for now because
+                # my fucking parser sucks donkey balls
+                if element.content[-1] == ')':
+                    element.content = element.content[:-1]
+                print([element.element_type, element.content, element.extra])
+                html_content = self._push_to_html_content(html_content, '<figure>')
+                html_content = self._push_to_html_content(html_content, f'<img class="preview center" src="{element.content}">')
+                if element.extra.get('caption'):
+                    html_content = self._push_to_html_content(html_content, f'<figcaption>{element.extra["caption"]}</figcaption>', 1, convert_formatting_markers_to_html=True)
+                html_content = self._push_to_html_content(html_content, '</figure>')
+                self.images.append('articles/' + element.content)
+
             elif element.element_type == MarkdownElementType.codeblock:
                 html_content = self._generate_codeblock_content(html_content, element.content, element)
 
@@ -259,8 +270,12 @@ class Publisher(ABC):
         return html_content
 
     def _generate_codeblock_content(self, html_content: str, line: str, element: MarkdownElement) -> str:
+        language: str = element.extra.get('language', 'text')
+        # TODO: Perhaps scan the languages folder and check if the language is supported, otherwise default to text
+        if language == 'mermaid':
+            language = 'text'
         html_content = self._push_to_html_content(html_content, '<pre>')
-        html_content = self._push_to_html_content(html_content, f'<code language="{element.extra["language"]}">', 1)
+        html_content = self._push_to_html_content(html_content, f'<code language="{language}">', 1)
         for line in element.content:
             html_content = self._push_to_html_content(html_content, line, Publisher.base_padding * -1, add_new_line_per_join=False)
         html_content = self._push_to_html_content(html_content, '</code>', 1)
