@@ -15,6 +15,9 @@ class MarkdownElementType(StrEnum):
     image = "image"
     codeblock = "codeblock"
     link = "link"
+    superscript = "superscript"
+    text = "text"
+    new_line = "\n"
 
 element_type_mapping: dict[str, MarkdownElementType] = {
     '######': MarkdownElementType.h6,
