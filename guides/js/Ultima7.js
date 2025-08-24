@@ -83,9 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Gemini API Integration ---
     async function callGemini(prompt, maxRetries = 3) {
-        const apiKey = ""; // Provided by the environment
-        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
-        
+        const apiUrl = '/php/llm.php'; // local PHP proxy
         const payload = { contents: [{ role: "user", parts: [{ text: prompt }] }] };
 
         let delay = 1000;
@@ -98,10 +96,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
 
                 if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-
                 const result = await response.json();
-                
-                if (result.candidates && result.candidates[0]?.content?.parts?.[0]?.text) {
+
+                if (result.candidates?.[0]?.content?.parts?.[0]?.text) {
                     return result.candidates[0].content.parts[0].text;
                 } else {
                     throw new Error("Invalid response structure from Gemini API");
@@ -109,7 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
             } catch (error) {
                 console.warn(`API call attempt ${i + 1} failed. Retrying in ${delay}ms...`, error);
                 if (i < maxRetries - 1) {
-                    await new Promise(resolve => setTimeout(resolve, delay));
+                    await new Promise(r => setTimeout(r, delay));
                     delay *= 2;
                 } else {
                     return "My apologies, adventurer. My connection to the ethereal plane is weak. Please try again shortly.";
@@ -215,16 +212,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
             `;
             document.getElementById('generate-backstory-btn').addEventListener('click', () => handleGenerateBackstory(id));
-            
+
             const ctx = document.getElementById('companion-chart').getContext('2d');
             if (companionChart) companionChart.destroy();
             const chartOptions = {
                 responsive: true, maintainAspectRatio: false,
-                scales: { 
-                    y: { 
-                        beginAtZero: true, max: 30, 
-                        grid: { color: '#4a5568' }, 
-                        ticks: { color: '#a0aec0' } 
+                scales: {
+                    y: {
+                        beginAtZero: true, max: 30,
+                        grid: { color: '#4a5568' },
+                        ticks: { color: '#a0aec0' }
                     },
                     x: {
                         grid: { color: '#4a5568' },
@@ -300,24 +297,24 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         const ctx = document.getElementById('reagent-chart').getContext('2d');
-        
+
         function updateReagentChart(reagent) {
-             const chartOptions = {
+            const chartOptions = {
                 responsive: true, maintainAspectRatio: false,
-                scales: { 
-                    y: { 
+                scales: {
+                    y: {
                         beginAtZero: true,
-                        grid: { color: '#4a5568' }, 
-                        ticks: { color: '#a0aec0' } 
+                        grid: { color: '#4a5568' },
+                        ticks: { color: '#a0aec0' }
                     },
                     x: {
                         grid: { color: '#4a5568' },
                         ticks: { color: '#a0aec0' }
                     }
                 },
-                plugins: { 
-                    legend: { display: false }, 
-                    title: { display: true, text: `${reagent} Prices`, color: '#f6e05e' } 
+                plugins: {
+                    legend: { display: false },
+                    title: { display: true, text: `${reagent} Prices`, color: '#f6e05e' }
                 }
             };
             const chartData = {
@@ -330,7 +327,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     borderWidth: 1
                 }]
             };
-            
+
             if (reagentChart) {
                 reagentChart.data = chartData;
                 reagentChart.options.plugins.title.text = `${reagent} Prices`;
@@ -339,11 +336,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 reagentChart = new Chart(ctx, { type: 'bar', data: chartData, options: chartOptions });
             }
         }
-        
+
         selector.addEventListener('change', (e) => updateReagentChart(e.target.value));
         updateReagentChart(selector.value);
     }
-    
+
     async function handleGetQuestHint(quest) {
         showAiModal();
         const prompt = `I am playing the classic RPG Ultima VII. For the quest named '${quest.title || quest.name}', which is described as: '${quest.content || quest.walkthrough}', provide a single, non-spoilery hint for what I should do next. Frame it as advice from a seasoned adventurer. Keep it concise.`;
@@ -390,7 +387,7 @@ document.addEventListener('DOMContentLoaded', () => {
             `;
             mainQuestAccordion.appendChild(item);
         });
-        
+
         mainQuestAccordion.addEventListener('click', (e) => {
             if (e.target.classList.contains('get-main-quest-hint')) {
                 const index = e.target.dataset.questIndex;
@@ -419,7 +416,7 @@ document.addEventListener('DOMContentLoaded', () => {
         function renderSideQuests(location = 'all') {
             sideQuestList.innerHTML = '';
             const filteredQuests = (location === 'all') ? DB.sideQuests : DB.sideQuests.filter(q => q.location === location);
-            
+
             filteredQuests.forEach((quest, index) => {
                 const card = document.createElement('div');
                 card.className = 'section-bg p-4 rounded-lg shadow';
@@ -433,15 +430,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 sideQuestList.appendChild(card);
             });
         }
-        
+
         sideQuestList.addEventListener('click', e => {
-            if(e.target.classList.contains('get-side-quest-hint')) {
+            if (e.target.classList.contains('get-side-quest-hint')) {
                 const questName = e.target.dataset.questName;
                 const quest = DB.sideQuests.find(q => q.name === questName);
                 if (quest) handleGetQuestHint(quest);
             }
         });
-        
+
         locationFilter.addEventListener('change', (e) => renderSideQuests(e.target.value));
         renderSideQuests();
     }
@@ -450,6 +447,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initArmory();
     initMagic();
     initQuests();
-    
+
     switchTab('party');
 });

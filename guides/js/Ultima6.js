@@ -51,15 +51,15 @@ function showTab(tabId) {
     document.querySelectorAll('.tab-content').forEach(tab => {
         tab.classList.remove('active');
     });
-    
+
     // Deactivate all tab buttons
     document.querySelectorAll('.tab-button').forEach(button => {
         button.classList.remove('active');
     });
-    
+
     // Show the selected tab content
     document.getElementById(`${tabId}-tab`).classList.add('active');
-    
+
     // Activate the clicked tab button
     event.target.classList.add('active');
 }
@@ -70,15 +70,15 @@ function showAlmanacTab(tabId) {
     document.querySelectorAll('.almanac-content').forEach(tab => {
         tab.classList.remove('active');
     });
-    
+
     // Deactivate all almanac tab buttons
     document.querySelectorAll('.almanac-tab-button').forEach(button => {
         button.classList.remove('active');
     });
-    
+
     // Show the selected almanac tab content
     document.getElementById(`almanac-${tabId}`).classList.add('active');
-    
+
     // Activate the clicked almanac tab button
     event.target.classList.add('active');
 }
@@ -112,7 +112,7 @@ function setupEventListeners() {
         header.addEventListener('click', () => {
             const content = header.nextElementSibling;
             const isOpen = header.getAttribute('aria-expanded') === 'true';
-            
+
             // Toggle the content
             if (isOpen) {
                 content.style.maxHeight = '0';
@@ -146,7 +146,7 @@ let sortDirection = {};
 function renderCompanionTable(data) {
     const tbody = document.getElementById('companion-table-body');
     if (!tbody) return;
-    
+
     tbody.innerHTML = data.map(companion => `
         <tr class="hover:bg-amber-50">
             <td class="p-3 border-b border-amber-100">${companion.name}</td>
@@ -173,33 +173,36 @@ function sortTable(key) {
 }
 
 // Call the Gemini API
-async function callGeminiAPI(prompt, outputElement) {
-    const apiKey = 'YOUR_GEMINI_API_KEY'; // Replace with actual API key
-    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${apiKey}`;
-    
-    try {
-        outputElement.innerHTML = '<div class="loader"></div>';
-        
-        const response = await fetch(url, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                contents: [{
-                    parts: [{
-                        text: prompt
-                    }]
-                }]
-            })
-        });
-        
-        const data = await response.json();
-        const generatedText = data.candidates[0].content.parts[0].text;
-        outputElement.innerHTML = `<div class="p-4 bg-white rounded-lg shadow">${generatedText}</div>`;
-    } catch (error) {
-        console.error('Error calling Gemini API:', error);
-        outputElement.innerHTML = '<div class="text-red-600">Error generating response. Please try again later.</div>';
+async function callGemini(prompt, maxRetries = 3) {
+    const apiUrl = '/php/llm.php'; // local PHP proxy
+    const payload = { contents: [{ role: "user", parts: [{ text: prompt }] }] };
+
+    let delay = 1000;
+    for (let i = 0; i < maxRetries; i++) {
+        try {
+            const response = await fetch(apiUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+
+            if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+            const result = await response.json();
+
+            if (result.candidates?.[0]?.content?.parts?.[0]?.text) {
+                return result.candidates[0].content.parts[0].text;
+            } else {
+                throw new Error("Invalid response structure from Gemini API");
+            }
+        } catch (error) {
+            console.warn(`API call attempt ${i + 1} failed. Retrying in ${delay}ms...`, error);
+            if (i < maxRetries - 1) {
+                await new Promise(r => setTimeout(r, delay));
+                delay *= 2;
+            } else {
+                return "My apologies, adventurer. My connection to the ethereal plane is weak. Please try again shortly.";
+            }
+        }
     }
 }
 
@@ -207,14 +210,14 @@ async function callGeminiAPI(prompt, outputElement) {
 function generateChronicle() {
     const virtueSelect = document.getElementById('virtue-select');
     const outputDiv = document.getElementById('chronicle-output');
-    
+
     if (!virtueSelect || !outputDiv) return;
-    
+
     const selectedVirtue = virtueSelect.value;
     const prompt = `Create a 2-3 paragraph backstory for an Avatar in Ultima VI who embodies the virtue of ${selectedVirtue}. ` +
-                  `Include their origin, personality traits, and how they came to be chosen as the Avatar. ` +
-                  `Write in a medieval fantasy style.`;
-    
+        `Include their origin, personality traits, and how they came to be chosen as the Avatar. ` +
+        `Write in a medieval fantasy style.`;
+
     callGeminiAPI(prompt, outputDiv);
 }
 
@@ -222,18 +225,18 @@ function generateChronicle() {
 function askTheSage() {
     const questionInput = document.getElementById('sage-question');
     const outputDiv = document.getElementById('sage-answer');
-    
+
     if (!questionInput || !outputDiv) return;
-    
+
     const question = questionInput.value.trim();
     if (!question) {
         outputDiv.innerHTML = '<div class="text-red-600">Please enter a question first.</div>';
         return;
     }
-    
+
     const prompt = `You are a wise sage in the world of Ultima VI. Answer this question with helpful, in-universe advice: "${question}" ` +
-                  `Provide a 2-3 paragraph response with practical guidance.`;
-    
+        `Provide a 2-3 paragraph response with practical guidance.`;
+
     callGeminiAPI(prompt, outputDiv);
 }
 
@@ -241,12 +244,12 @@ function askTheSage() {
 function setupVirtueChart() {
     const ctx = document.getElementById('virtue-chart');
     if (!ctx) return;
-    
+
     const labels = virtues.map(v => v.name);
     const strengthData = virtues.map(v => v.str);
     const dexterityData = virtues.map(v => v.dex);
     const intelligenceData = virtues.map(v => v.int);
-    
+
     new Chart(ctx, {
         type: 'bar',
         data: {
@@ -310,7 +313,7 @@ function setupVirtueChart() {
 function renderPassageList(data) {
     const container = document.getElementById('passage-list');
     if (!container) return;
-    
+
     container.innerHTML = data.map(item => `
         <div class="mb-4 p-4 bg-white rounded-lg shadow">
             <div class="font-bold text-lg text-amber-900">${item.word}</div>
