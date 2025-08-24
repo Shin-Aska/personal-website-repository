@@ -46,7 +46,18 @@ class Publisher(ABC):
             elif element.element_type == MarkdownElementType.checkbox:
                 html_content = self._generate_checkbox_content(html_content, element.content, element)
             elif element.element_type == MarkdownElementType.image:
-                print([element.element_type, element.content])
+                # Remove dangling ) in element.content if it exists, just a minor hack for now because
+                # my fucking parser sucks donkey balls
+                if element.content[-1] == ')':
+                    element.content = element.content[:-1]
+                print([element.element_type, element.content, element.extra])
+                html_content = self._push_to_html_content(html_content, '<figure>')
+                html_content = self._push_to_html_content(html_content, f'<img class="preview center" src="{element.content}">')
+                if element.extra.get('caption'):
+                    html_content = self._push_to_html_content(html_content, f'<figcaption>{element.extra["caption"]}</figcaption>', 1, convert_formatting_markers_to_html=True)
+                html_content = self._push_to_html_content(html_content, '</figure>')
+                self.images.append('articles/' + element.content)
+
             elif element.element_type == MarkdownElementType.codeblock:
                 html_content = self._generate_codeblock_content(html_content, element.content, element)
 
@@ -116,55 +127,66 @@ class Publisher(ABC):
     @staticmethod
     def _process_link_markers(value: str) -> str:
         new_value: str = ''
-
-        # Important variables during loop
-
-        # Current Index
         index: int = 0
-
-        # Square bracket counter
-        square_bracket_counter: int = 0
-        square_bracket_index: int = 0
-        link_text: Optional[str] = None
-        link_url: Optional[str] = None
-
-        # Parenthesis counter
-        parenthesis_counter: int = 0
-        parenthesis_bracket_index: int = 0
-
-        # The algorithm is simple, we traverse the whole string, everytime it encounters the square or parenthesis bracket
-        # It keeps track of their respective indexes and then that will be used to determine the link text and link url
-        # Which will then be converted to an anchor tag
+        
         while index < len(value):
-            if value[index] not in ['[', '(', ')', ']'] and (square_bracket_counter == 0 and parenthesis_counter == 0):
-                new_value += value[index]
-            elif value[index] in ['(', ')'] and square_bracket_counter != 0:
-                pass
-            elif value[index] in ['[', ']'] and parenthesis_counter != 0:
-                pass
-            elif value[index] == '[':
-                if square_bracket_counter == 0:
-                    square_bracket_index = index
-                square_bracket_counter += 1
-            elif value[index] == '(':
-                if parenthesis_counter == 0:
-                    parenthesis_bracket_index = index
-                parenthesis_counter += 1
-            elif value[index] == ']':
-                square_bracket_counter -= 1
-                # Get substring from the square bracket index to the current index
-                if square_bracket_counter == 0:
-                    link_text = value[square_bracket_index + 1:index]
-            elif value[index] == ')':
-                parenthesis_counter -= 1
-                # Get substring from the parenthesis bracket index to the current index
-                if parenthesis_counter == 0 and link_text is not None:
-                    link_url: str = value[parenthesis_bracket_index + 1:index]
-                    new_value += f'<a href="{link_url}">{link_text}</a>'
-                    link_text = None
+            if value[index] == '[':
+                # Find the closing bracket
+                bracket_start = index
+                bracket_end = -1
+                bracket_count = 1
+                i = index + 1
+                
+                while i < len(value) and bracket_count > 0:
+                    if value[i] == '[':
+                        bracket_count += 1
+                    elif value[i] == ']':
+                        bracket_count -= 1
+                        if bracket_count == 0:
+                            bracket_end = i
+                            break
+                    i += 1
+                
+                if bracket_end != -1:
+                    # Find the opening parenthesis
+                    paren_start = -1
+                    paren_end = -1
+                    paren_count = 0
+                    i = bracket_end + 1
+                    
+                    while i < len(value):
+                        if value[i] == '(':
+                            if paren_count == 0:
+                                paren_start = i
+                            paren_count += 1
+                        elif value[i] == ')':
+                            paren_count -= 1
+                            if paren_count == 0:
+                                paren_end = i
+                                break
+                        i += 1
+                    
+                    if paren_start != -1 and paren_end != -1:
+                        # Extract link text and URL
+                        link_text = value[bracket_start + 1:bracket_end]
+                        link_url = value[paren_start + 1:paren_end]
+                        
+                        # Add the HTML link
+                        new_value += f'<a href="{link_url}">{link_text}</a>'
+                        
+                        # Skip to after the closing parenthesis
+                        index = paren_end
+                    else:
+                        # No valid parenthesis found, add the original text
+                        new_value += value[index]
                 else:
-                    new_value += value[parenthesis_bracket_index:index + 1]
+                    # No closing bracket found, add the original text
+                    new_value += value[index]
+            else:
+                new_value += value[index]
+            
             index += 1
+        
         return new_value
 
     @staticmethod
@@ -259,8 +281,12 @@ class Publisher(ABC):
         return html_content
 
     def _generate_codeblock_content(self, html_content: str, line: str, element: MarkdownElement) -> str:
+        language: str = element.extra.get('language', 'text')
+        # TODO: Perhaps scan the languages folder and check if the language is supported, otherwise default to text
+        if language == 'mermaid':
+            language = 'text'
         html_content = self._push_to_html_content(html_content, '<pre>')
-        html_content = self._push_to_html_content(html_content, f'<code language="{element.extra["language"]}">', 1)
+        html_content = self._push_to_html_content(html_content, f'<code language="{language}">', 1)
         for line in element.content:
             html_content = self._push_to_html_content(html_content, line, Publisher.base_padding * -1, add_new_line_per_join=False)
         html_content = self._push_to_html_content(html_content, '</code>', 1)
