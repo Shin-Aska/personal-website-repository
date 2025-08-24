@@ -13,13 +13,18 @@
         - Character Virtues: Report Info -> Starting attribute bonuses. Goal -> Allow players to plan their character build. Viz/Method -> Interactive bar chart (Chart.js). Interaction -> Hovering over bars shows precise stat bonuses. Justification -> A chart is more engaging and easier to compare than a static table.
         - Companion Roster: Report Info -> Companion stats and roles. Goal -> Help players build their ideal party. Viz/Method -> A filterable and sortable HTML table. Interaction -> Users can sort by STR, DEX, INT, or Level. Justification -> An interactive table is superior to a static list for comparing multiple attributes.
         - Quest Walkthrough: Report Info -> Linear steps for major quests. Goal -> Guide players through the game's narrative. Viz/Method -> Accordion-style collapsible sections. Interaction -> Clicking a quest title expands to show the detailed steps. Justification -> Prevents overwhelming the user with a wall of text.
-        - ✨ AI Backstory Generator (Gemini): Goal -> Enhance roleplaying immersion. Viz/Method -> Button-triggered text generation. Interaction -> User selects virtues and clicks a button. Justification -> Creates personalized, creative content that connects the player to their character.
-        - ✨ AI Strategic Advisor (Gemini): Goal -> Provide dynamic, on-demand help. Viz/Method -> Text input and response display. Interaction -> User types a question and receives a detailed, contextual answer. Justification -> Offers a more interactive and flexible help system than a static FAQ or walkthrough.
+        - AI Backstory Generator (Gemini): Goal -> Enhance roleplaying immersion. Viz/Method -> Button-triggered text generation. Interaction -> User selects virtues and clicks a button. Justification -> Creates personalized, creative content that connects the player to their character.
+        - AI Strategic Advisor (Gemini): Goal -> Provide dynamic, on-demand help. Viz/Method -> Text input and response display. Interaction -> User types a question and receives a detailed, contextual answer. Justification -> Offers a more interactive and flexible help system than a static FAQ or walkthrough.
     -->
     <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
     <link rel="stylesheet" href="css/Ultima6.css">
 </head>
 <body class="antialiased">
+    <div class="w-full bg-gray-100 text-gray-700">
+      <div class="container mx-auto px-4 py-2">
+        <a href="index.html" class="inline-flex items-center gap-2 hover:underline"><span aria-hidden="true">←</span> Back to Guides</a>
+      </div>
+    </div>
 
     <div class="container mx-auto p-4 sm:p-6 md:p-8">
         <header class="text-center mb-8">
@@ -431,35 +436,36 @@
         renderCompanionTable(sortedData);
     }
 
-    async function callGeminiAPI(prompt, outputElement) {
-        outputElement.innerHTML = '<div class="flex justify-center"><div class="loader"></div></div>';
-        let chatHistory = [{ role: "user", parts: [{ text: prompt }] }];
-        const payload = { contents: chatHistory };
-        const apiKey = "AIzaSyA4xcdDtUwF5rEgRjH6jF3kwE8EzsG-nwA";
-        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+    async function callGeminiAPI(prompt, maxRetries = 3) {
+        const apiUrl = '/php/llm.php'; // local PHP proxy
+        const payload = { contents: [{ role: "user", parts: [{ text: prompt }] }] };
 
-        try {
-            let response = await fetch(apiUrl, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(payload)
-            });
+        let delay = 1000;
+        for (let i = 0; i < maxRetries; i++) {
+            try {
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
 
-            if (!response.ok) {
-                throw new Error(`API call failed with status: ${response.status}`);
+                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                const result = await response.json();
+
+                if (result.candidates?.[0]?.content?.parts?.[0]?.text) {
+                    return result.candidates[0].content.parts[0].text;
+                } else {
+                    throw new Error("Invalid response structure from Gemini API");
+                }
+            } catch (error) {
+                console.warn(`API call attempt ${i + 1} failed. Retrying in ${delay}ms...`, error);
+                if (i < maxRetries - 1) {
+                    await new Promise(r => setTimeout(r, delay));
+                    delay *= 2;
+                } else {
+                    return "My apologies, adventurer. My connection to the ethereal plane is weak. Please try again shortly.";
+                }
             }
-
-            const result = await response.json();
-            
-            if (result.candidates && result.candidates.length > 0 && result.candidates[0].content.parts.length > 0) {
-                const text = result.candidates[0].content.parts[0].text;
-                outputElement.innerHTML = `<div class="gemini-response">${text}</div>`;
-            } else {
-                throw new Error("Invalid response structure from API.");
-            }
-        } catch (error) {
-            console.error("Error calling Gemini API:", error);
-            outputElement.innerHTML = `<div class="gemini-response text-red-800">The ethereal winds are turbulent. The sage's voice cannot be heard at this time. Please try again later.</div>`;
         }
     }
 
