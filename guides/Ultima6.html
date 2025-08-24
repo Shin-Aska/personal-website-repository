@@ -436,36 +436,34 @@
         renderCompanionTable(sortedData);
     }
 
-    async function callGeminiAPI(prompt, maxRetries = 3) {
-        const apiUrl = '/php/llm.php'; // local PHP proxy
-        const payload = { contents: [{ role: "user", parts: [{ text: prompt }] }] };
+    async function callGeminiAPI(prompt, outputElement) {
+        outputElement.innerHTML = '<div class="flex justify-center"><div class="loader"></div></div>';
+        let chatHistory = [{ role: "user", parts: [{ text: prompt }] }];
+        const payload = { contents: chatHistory };
+        const apiUrl = '/php/llm.php';
 
-        let delay = 1000;
-        for (let i = 0; i < maxRetries; i++) {
-            try {
-                const response = await fetch(apiUrl, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
+        try {
+            let response = await fetch(apiUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
 
-                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-                const result = await response.json();
-
-                if (result.candidates?.[0]?.content?.parts?.[0]?.text) {
-                    return result.candidates[0].content.parts[0].text;
-                } else {
-                    throw new Error("Invalid response structure from Gemini API");
-                }
-            } catch (error) {
-                console.warn(`API call attempt ${i + 1} failed. Retrying in ${delay}ms...`, error);
-                if (i < maxRetries - 1) {
-                    await new Promise(r => setTimeout(r, delay));
-                    delay *= 2;
-                } else {
-                    return "My apologies, adventurer. My connection to the ethereal plane is weak. Please try again shortly.";
-                }
+            if (!response.ok) {
+                throw new Error(`API call failed with status: ${response.status}`);
             }
+
+            const result = await response.json();
+            
+            if (result.candidates && result.candidates.length > 0 && result.candidates[0].content.parts.length > 0) {
+                const text = result.candidates[0].content.parts[0].text;
+                outputElement.innerHTML = `<div class="gemini-response">${text}</div>`;
+            } else {
+                throw new Error("Invalid response structure from API.");
+            }
+        } catch (error) {
+            console.error("Error calling Gemini API:", error);
+            outputElement.innerHTML = `<div class="gemini-response text-red-800">The ethereal winds are turbulent. The sage's voice cannot be heard at this time. Please try again later.</div>`;
         }
     }
 
