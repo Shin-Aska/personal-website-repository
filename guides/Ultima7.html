@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Guide for Ultima VII: The Black Gate</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Guardian's Shadow -->
+    <!-- Application Structure Plan: A task-oriented, dashboard-style SPA. The structure prioritizes quick information retrieval over the linear format of the source document. A fixed top navigation bar allows users to instantly jump between four key sections: 'Party Builder', 'Armory & Bestiary', 'Spellbook', and 'Quest Log'. This non-linear design is optimal for a game guide, as players typically need to look up specific, disconnected pieces of information during gameplay (e.g., "Who should I recruit next?" or "Where is the best sword?"). Each section is designed as an interactive tool (e.g., a companion comparator, a searchable equipment table, a quest filter) to directly support player decision-making. -->
+    <!-- Visualization & Content Choices: 
+        - Companion Stats Comparison: Report Info -> Companion attribute table. Goal -> Compare potential party members visually. Viz -> Interactive Bar Chart (Chart.js). Interaction -> Chart updates on companion selection. Justification -> Faster than reading a table for comparative analysis. Library -> Chart.js.
+        - Reagent Price Finder: Report Info -> Reagent price table. Goal -> Find the cheapest vendor for each reagent. Viz -> Interactive Bar Chart (Chart.js). Interaction -> Dropdown selects a reagent, chart updates with vendor prices. Justification -> Instantly highlights the most economical choice, a primary user goal. Library -> Chart.js.
+        - Equipment & Quests Lookup: Report Info -> Large data tables. Goal -> Organize and enable quick filtering/searching. Viz -> Interactive HTML tables/lists. Interaction -> Dropdown filters by location/type. Justification -> Standard, effective UI for large datasets. Library -> Vanilla JS.
+        - Main Quest Walkthrough: Report Info -> Linear text walkthrough. Goal -> Provide guidance without spoilers. Viz -> Collapsible accordion UI. Interaction -> Click to expand steps. Justification -> Prevents accidental spoilers, crucial for narrative games. Library -> Vanilla JS.
+        - AI-Powered Features: Report Info -> Character & Quest data. Goal -> Provide dynamic, creative content. Viz -> Modal window with text. Interaction -> Button click triggers Gemini API call. Justification -> Adds engaging, context-aware content (backstories, hints, strategy, lore) that goes beyond static data. Library -> Vanilla JS Fetch API.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <link rel="stylesheet" href="css/Ultima7.css">
+</head>
+<body class="antialiased">
+
+    <header class="header-bg shadow-md sticky top-0 z-50 py-3">
+        <div class="container mx-auto px-4 flex flex-col sm:flex-row justify-between items-center">
+            <h1 class="text-2xl font-bold">Ultima VII Interactive Guide</h1>
+            <nav id="main-nav" class="flex flex-wrap justify-center gap-2 mt-2 sm:mt-0">
+                <button data-target="party" class="nav-button active px-4 py-2 rounded-lg font-semibold">Party Builder</button>
+                <button data-target="armory" class="nav-button px-4 py-2 rounded-lg font-semibold">Armory & Bestiary</button>
+                <button data-target="magic" class="nav-button px-4 py-2 rounded-lg font-semibold">Spellbook</button>
+                <button data-target="quests" class="nav-button px-4 py-2 rounded-lg font-semibold">Quest Log</button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container mx-auto p-4 md:p-8">
+
+        <!-- Party Builder Section -->
+        <section id="party" class="content-section active">
+            <div class="text-center mb-8">
+                <h2 class="text-4xl font-bold mb-2">The Party Builder</h2>
+                <p class="text-lg max-w-3xl mx-auto text-secondary">Assemble your ideal fellowship. Click on a companion to view their stats and learn the most effective ways to train your party for the trials ahead. A well-balanced team is the first step to victory.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div class="lg-col-span-1">
+                    <h3 class="text-2xl font-bold mb-4">Choose Your Companions</h3>
+                    <div id="companion-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-2 gap-4">
+                    </div>
+                     <button id="get-party-strategy-btn" class="ai-button mt-4 w-full font-bold py-2 px-4 rounded-lg">✨ Get Party Strategy</button>
+                </div>
+                <div id="companion-details" class="lg:col-span-2 section-bg p-6 rounded-xl shadow-lg">
+                </div>
+            </div>
+            
+            <div class="mt-12 section-bg p-6 rounded-xl shadow-lg">
+                <h3 class="text-2xl font-bold mb-4 text-center">Character Progression Strategy</h3>
+                <div class="grid md:grid-cols-2 gap-6 text-sm">
+                    <div>
+                        <h4 class="font-bold text-lg mb-2 accent-text">The Training System</h4>
+                        <p class="mb-2">Upon leveling up, characters gain 3 training points. Spend these at trainers to increase attributes. The key is the "rubber-band effect": training a secondary skill (Combat, Magic) yields huge gains if it's far below its primary attribute (Dexterity, Intelligence).</p>
+                        <ul class="list-disc list-inside space-y-1">
+                            <li><b>For Fighters:</b> Train Combat until it's 1 point higher than Dexterity. Then, train only Dexterity. This raises both stats efficiently.</li>
+                            <li><b>For the Avatar (Mage):</b> Raise Intelligence first to create a large gap with the Magic skill. Then train Magic for massive mana pool increases.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-lg mb-2 accent-text">Economic Exploits</h4>
+                        <p class="mb-2">Training costs gold, but Britannia's economy is easily broken. Use these methods to fund your party's rapid advancement.</p>
+                        <ul class="list-disc list-inside space-y-1">
+                            <li><b>Infinite XP (Britain):</b> Repeatedly accept Batlin's quest to deliver a package to Minoc without taking the second package.</li>
+                            <li><b>Infinite XP (Buccaneer's Den):</b> Reconcile the feuding pirates Mole and Blacktooth over and over.</li>
+                            <li><b>Infinite Gold:</b> Hunt green drakes in Dungeon Destard. They frequently drop diamonds, which sell for a high price to the Britain jeweler.</li>
+                            <li><b>Free Training:</b> Sentri in Britain offers free Dexterity training, which also boosts Combat. He is the most valuable trainer in the early game.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Armory & Bestiary Section -->
+        <section id="armory" class="content-section">
+            <div class="text-center mb-8">
+                <h2 class="text-4xl font-bold mb-2">Armory & Bestiary</h2>
+                <p class="text-lg max-w-3xl mx-auto text-secondary">Success in combat is determined by preparation. Browse the realm's most powerful equipment and learn the tactics required to defeat Britannia's most dangerous creatures.</p>
+            </div>
+            
+            <div class="section-bg p-6 rounded-xl shadow-lg mb-8">
+                <h3 class="text-2xl font-bold mb-4">Top-Tier Equipment</h3>
+                <p class="mb-4">Systematically acquiring the best gear is the primary path to power. Here are the locations of the game's most essential and powerful items.</p>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm text-left">
+                        <thead class="bg-[#1c2331] text-xs uppercase">
+                            <tr>
+                                <th class="px-4 py-2">Item Name</th>
+                                <th class="px-4 py-2">Type</th>
+                                <th class="px-4 py-2">Effect / Stats</th>
+                                <th class="px-4 py-2">Location</th>
+                                <th class="px-4 py-2 text-center">Lore</th>
+                            </tr>
+                        </thead>
+                        <tbody id="equipment-table">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="section-bg p-6 rounded-xl shadow-lg">
+                <h3 class="text-2xl font-bold mb-4">Strategic Bestiary</h3>
+                <p class="mb-4">Brute force isn't always enough. Know your enemy's weakness to ensure a swift victory.</p>
+                <div id="bestiary-grid" class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                </div>
+            </div>
+        </section>
+
+        <!-- Spellbook Section -->
+        <section id="magic" class="content-section">
+            <div class="text-center mb-8">
+                <h2 class="text-4xl font-bold mb-2">The Spellbook</h2>
+                <p class="text-lg max-w-3xl mx-auto text-secondary">Master the arcane arts. While destructive spells are plentiful, utility magic is often the key to survival and progress. Plan your spell acquisitions and manage your reagents wisely.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="section-bg p-6 rounded-xl shadow-lg">
+                    <h3 class="text-2xl font-bold mb-4">Essential Spells</h3>
+                    <p class="mb-4">Prioritize acquiring this suite of utility spells. They are more reliable than offensive magic in chaotic combat and many are required to complete the main quest.</p>
+                    <div class="space-y-4">
+                        <div>
+                            <h4 class="font-bold text-lg accent-text">Quest-Critical Spells</h4>
+                            <ul class="list-disc list-inside">
+                                <li><b>Seance:</b> Mandatory to communicate with the spirits of Skara Brae.</li>
+                                <li><b>Destroy Trap:</b> Needed to access the Tetrahedron Generator.</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg accent-text">Top-Tier Utility Spells</h4>
+                            <ul class="list-disc list-inside">
+                                <li><b>Mark & Recall:</b> Invaluable for setting a teleport point and returning instantly.</li>
+                                <li><b>Unlock Magic:</b> Opens magically sealed chests and doors.</li>
+                                <li><b>Heal & Cure:</b> Fundamental for party survival.</li>
+                                <li><b>Mass Might:</b> Buffs the entire party's strength.</li>
+                            </ul>
+                        </div>
+                         <div>
+                            <h4 class="font-bold text-lg accent-text">The Ultimate Spell</h4>
+                            <ul class="list-disc list-inside">
+                                <li><b>Armageddon:</b> An 8th Circle spell that kills nearly every NPC in Britannia. It will break most quests but unlocks unique, grim dialogue from key characters. Use with extreme caution.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-bg p-6 rounded-xl shadow-lg">
+                    <h3 class="text-2xl font-bold mb-4">Reagent Economics</h3>
+                    <p class="mb-4">Reagent costs vary wildly between vendors. Select a reagent below to find the most economical place to shop and save thousands of gold.</p>
+                    <select id="reagent-selector" class="w-full p-2 rounded-md bg-[#4a5568] border border-color mb-4">
+                    </select>
+                    <div class="chart-container">
+                        <canvas id="reagent-chart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Quest Log Section -->
+        <section id="quests" class="content-section">
+            <div class="text-center mb-8">
+                <h2 class="text-4xl font-bold mb-2">The Quest Log</h2>
+                <p class="text-lg max-w-3xl mx-auto text-secondary">Navigate the epic main story, the essential Forge of Virtue expansion, and the many side quests of Britannia. This log is designed to provide guidance without spoilers.</p>
+            </div>
+
+            <div class="flex justify-center mb-6 border-b-2 border-color">
+                <button data-quest-tab="main" class="quest-tab-button active px-6 py-2 font-bold text-lg border-b-4 border-[#c53030]">Main Quest</button>
+                <button data-quest-tab="virtue" class="quest-tab-button px-6 py-2 font-bold text-lg border-b-4 border-transparent text-gray-500">Forge of Virtue</button>
+                <button data-quest-tab="side" class="quest-tab-button px-6 py-2 font-bold text-lg border-b-4 border-transparent text-gray-500">Side Quests</button>
+            </div>
+
+            <div id="main-quest-content" class="quest-content active">
+                <div id="main-quest-accordion" class="space-y-2">
+                </div>
+            </div>
+
+            <div id="virtue-quest-content" class="quest-content hidden section-bg p-6 rounded-xl shadow-lg">
+                 <h3 class="text-2xl font-bold mb-4 text-center">Forge of Virtue: The Test of Principles</h3>
+                 <p class="mb-4 text-center font-semibold accent-text">This expansion is essential. Completing it raises the Avatar's core stats to their maximum value, trivializing most combat. It should be a top priority.</p>
+                 <p class="mb-4">To begin, speak to Lord British about the "rumble" felt at the start of the game. He will direct you to the newly risen Isle of Fire to undertake the three tests.</p>
+                 <div class="space-y-4">
+                    <div>
+                        <h4 class="font-bold text-lg">1. The Test of Truth</h4>
+                        <p>This test, located in its own dungeon on the Isle of Fire, challenges your perception and ability to see beyond illusions.</p>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-lg">2. The Test of Love</h4>
+                        <p>This test requires empathy and understanding to resolve a conflict within its dungeon.</p>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-lg">3. The Test of Courage</h4>
+                        <p>The final and most combat-heavy test. You must be well-equipped and prepared to face a powerful dragon at its conclusion.</p>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-lg accent-text">The Reward</h4>
+                        <p>Upon completing all three tests, you will forge the mighty Black Sword. More importantly, Lord British will reward you by raising your Strength, Dexterity, and Intelligence to 30 (or even 60 in some versions). This is the single largest power boost in the game.</p>
+                    </div>
+                 </div>
+            </div>
+
+            <div id="side-quest-content" class="quest-content hidden">
+                <div class="flex justify-center mb-4">
+                    <select id="side-quest-location-filter" class="p-2 rounded-md bg-[#4a5568] border border-color">
+                        <option value="all">All Locations</option>
+                    </select>
+                </div>
+                <div id="side-quest-list" class="space-y-4">
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- AI Response Modal -->
+    <div id="ai-modal" class="fixed inset-0 bg-black bg-opacity-75 flex justify-center items-center z-50 hidden">
+        <div class="bg-[#2d3748] p-6 rounded-xl shadow-2xl max-w-lg w-11/12 relative border-2 border-color">
+            <button id="close-ai-modal" class="absolute top-2 right-3 text-2xl font-bold">&times;</button>
+            <h3 id="ai-modal-title" class="text-2xl font-bold mb-4 accent-text">✨ AI Assistant</h3>
+            <div id="ai-modal-content">
+                <div id="ai-loader" class="flex justify-center items-center py-8">
+                    <div class="animate-spin rounded-full h-16 w-16 border-b-4 border-[#c53030]"></div>
+                </div>
+                <p id="ai-response-text" class="text-md whitespace-pre-wrap"></p>
+            </div>
+        </div>
+    </div>
+
+<script src="js/Ultima7.js"></script>
+</body>
+</html>

@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Avatar's Interactive Guide to Britannia</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Marcellus&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Parchment & Ink -->
+    <!-- Application Structure Plan: The application is structured as a tabbed interface to mirror a player's typical progression and information-seeking behavior. It's divided into five main sections: 'The Avatar's Path' (character setup), 'The Grand Quest' (walkthrough), 'Britannian Almanac' (data reference), 'World Atlas' (dungeons), and 'Sage's Counsel' (AI-powered help). This non-linear structure allows users to either follow the quest chronologically or quickly look up specific information. Interactive charts, filterable tables, and two new Gemini API features—an AI backstory generator and a strategic advisor—provide dynamic, personalized content. -->
+    <!-- Visualization & Content Choices: 
+        - Character Virtues: Report Info -> Starting attribute bonuses. Goal -> Allow players to plan their character build. Viz/Method -> Interactive bar chart (Chart.js). Interaction -> Hovering over bars shows precise stat bonuses. Justification -> A chart is more engaging and easier to compare than a static table.
+        - Companion Roster: Report Info -> Companion stats and roles. Goal -> Help players build their ideal party. Viz/Method -> A filterable and sortable HTML table. Interaction -> Users can sort by STR, DEX, INT, or Level. Justification -> An interactive table is superior to a static list for comparing multiple attributes.
+        - Quest Walkthrough: Report Info -> Linear steps for major quests. Goal -> Guide players through the game's narrative. Viz/Method -> Accordion-style collapsible sections. Interaction -> Clicking a quest title expands to show the detailed steps. Justification -> Prevents overwhelming the user with a wall of text.
+        - ✨ AI Backstory Generator (Gemini): Goal -> Enhance roleplaying immersion. Viz/Method -> Button-triggered text generation. Interaction -> User selects virtues and clicks a button. Justification -> Creates personalized, creative content that connects the player to their character.
+        - ✨ AI Strategic Advisor (Gemini): Goal -> Provide dynamic, on-demand help. Viz/Method -> Text input and response display. Interaction -> User types a question and receives a detailed, contextual answer. Justification -> Offers a more interactive and flexible help system than a static FAQ or walkthrough.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <link rel="stylesheet" href="css/Ultima6.css">
+</head>
+<body class="antialiased">
+
+    <div class="container mx-auto p-4 sm:p-6 md:p-8">
+        <header class="text-center mb-8">
+            <h1 class="text-4xl md:text-6xl font-bold text-amber-900">The Avatar's Guide to Britannia</h1>
+            <p class="text-lg text-amber-800 mt-2">An Interactive Walkthrough of Ultima VI: The False Prophet</p>
+        </header>
+
+        <nav class="flex flex-wrap justify-center border-b-2 border-amber-800/20 mb-8">
+            <button class="tab-button active text-sm sm:text-lg p-4" onclick="showTab('avatar')">The Avatar's Path</button>
+            <button class="tab-button text-sm sm:text-lg p-4" onclick="showTab('quest')">The Grand Quest</button>
+            <button class="tab-button text-sm sm:text-lg p-4" onclick="showTab('almanac')">Britannian Almanac</button>
+            <button class="tab-button text-sm sm:text-lg p-4" onclick="showTab('atlas')">World Atlas</button>
+            <button class="tab-button text-sm sm:text-lg p-4" onclick="showTab('passage')">Words of Passage</button>
+            <button class="tab-button text-sm sm:text-lg p-4" onclick="showTab('counsel')">Sage's Counsel</button>
+        </nav>
+
+        <main>
+            <section id="avatar" class="tab-content active">
+                <div class="bg-amber-50/50 p-6 rounded-lg shadow-md">
+                    <h2 class="text-3xl font-bold mb-4 text-amber-900">Character Creation & Development</h2>
+                    <p class="mb-6 text-amber-900/80">Your journey begins not with a sword, but with a choice. The gypsy's questions and your meditations at the shrines forge the hero you will become. This section provides the tools to understand and master your Avatar's growth.</p>
+                    
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div>
+                            <h3 class="text-2xl font-semibold mb-3 text-amber-900">The Gypsy's Prophecy</h3>
+                            <p class="mb-4">The seven questions posed by the gypsy determine your starting attributes. The chart below visualizes the total potential bonus for each attribute based on the virtues you favor.</p>
+                            <div class="chart-container">
+                                <canvas id="virtueChart"></canvas>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-semibold mb-3 text-amber-900">Path to Enlightenment</h3>
+                            <p class="mb-4">Experience points alone do not grant power. You must meditate at a cleansed Shrine of Virtue to level up. Each shrine grants a unique, permanent bonus to your attributes.</p>
+                            <ul id="shrine-list" class="space-y-2"></ul>
+                        </div>
+                    </div>
+                    <div class="mt-8 pt-8 border-t border-amber-800/20">
+                        <h3 class="text-2xl font-semibold mb-3 text-amber-900">The Avatar's Chronicle</h3>
+                        <p class="mb-4">Your virtues define not only your abilities but your story. Select up to three virtues that best represent your Avatar, and let the bards of Britannia compose your chronicle.</p>
+                        <div id="virtue-selection" class="flex flex-wrap gap-4 mb-4"></div>
+                        <button id="generate-chronicle" class="bg-amber-800 hover:bg-amber-900 text-white font-bold py-2 px-4 rounded transition-colors duration-300">
+                            ✨ Generate My Avatar's Chronicle
+                        </button>
+                        <div id="chronicle-output" class="mt-4"></div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="quest" class="tab-content">
+                 <div class="bg-amber-50/50 p-6 rounded-lg shadow-md">
+                    <h2 class="text-3xl font-bold mb-4 text-amber-900">The Grand Quest Walkthrough</h2>
+                    <p class="mb-6 text-amber-900/80">The path to peace is fraught with peril, prophecy, and pirates. This walkthrough is divided into the major acts of the story. Click on any title to expand its section and reveal the necessary steps to proceed on your noble quest.</p>
+                    <div id="quest-accordion" class="space-y-2"></div>
+                </div>
+            </section>
+
+            <section id="almanac" class="tab-content">
+                <div class="bg-amber-50/50 p-6 rounded-lg shadow-md">
+                    <h2 class="text-3xl font-bold mb-4 text-amber-900">Britannian Almanac</h2>
+                    <p class="mb-6 text-amber-900/80">A successful Avatar relies on loyal companions, powerful equipment, and mastery of the arcane. This almanac serves as your quick reference to the essential resources available throughout the realm.</p>
+                    <div class="border-b border-amber-800/20 mb-4">
+                        <nav class="-mb-px flex space-x-6" aria-label="Tabs">
+                            <button class="almanac-tab-button active" onclick="showAlmanacTab('companions')">Companions</button>
+                            <button class="almanac-tab-button" onclick="showAlmanacTab('equipment')">Equipment</button>
+                            <button class="almanac-tab-button" onclick="showAlmanacTab('magic')">Magic</button>
+                        </nav>
+                    </div>
+
+                    <div id="companions" class="almanac-tab-content active">
+                        <h3 class="text-2xl font-semibold mb-3 text-amber-900">The Fellowship</h3>
+                        <p class="mb-4">You may recruit up to eight members to your party. Click on the table headers to sort companions by their strengths and find the perfect allies for your quest.</p>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left border-collapse">
+                                <thead id="companion-table-head"></thead>
+                                <tbody id="companion-table-body"></tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div id="equipment" class="almanac-tab-content">
+                        <h3 class="text-2xl font-semibold mb-3 text-amber-900">The Armory of Britannia</h3>
+                        <p class="mb-4">The finest arms and armor are often hidden away in the deepest dungeons. Here lies a catalog of the most potent equipment in the realm.</p>
+                        <div id="equipment-list" class="grid md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+                    </div>
+
+                    <div id="magic" class="almanac-tab-content">
+                         <h3 class="text-2xl font-semibold mb-3 text-amber-900">The Eight Circles of Magic</h3>
+                        <p class="mb-4">Magic is an indispensable tool. This grimoire lists the most essential spells for survival and exploration.</p>
+                        <div id="spells-list" class="grid md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="atlas" class="tab-content">
+                <div class="bg-amber-50/50 p-6 rounded-lg shadow-md">
+                    <h2 class="text-3xl font-bold mb-4 text-amber-900">World Atlas: Dungeons of Britannia</h2>
+                    <p class="mb-6 text-amber-900/80">The depths of Britannia hold both great treasure and great peril. This guide provides an overview of the key dungeons you must brave to complete your quest.</p>
+                    <div id="dungeon-list" class="space-y-4"></div>
+                </div>
+            </section>
+            
+            <section id="counsel" class="tab-content">
+                <div class="bg-amber-50/50 p-6 rounded-lg shadow-md">
+                    <h2 class="text-3xl font-bold mb-4 text-amber-900">✨ Sage's Counsel</h2>
+                    <p class="mb-6 text-amber-900/80">The path of the Avatar is not always clear. If you find yourself lost, perplexed by a puzzle, or seeking strategic wisdom, pose your query to the sage. The ethereal winds will carry your question and return with guidance.</p>
+                    <div class="w-full">
+                        <label for="sage-query" class="block text-lg font-semibold text-amber-900 mb-2">What guidance do you seek?</label>
+                        <textarea id="sage-query" rows="4" class="w-full p-2 border border-amber-300 rounded-md bg-white/70 focus:ring-amber-500 focus:border-amber-500" placeholder="e.g., How can I defeat the dragons in Destard? or Where can I find the plans for the hot-air balloon?"></textarea>
+                        <button id="ask-sage" class="mt-4 bg-amber-800 hover:bg-amber-900 text-white font-bold py-2 px-4 rounded transition-colors duration-300">
+                            Ask the Sage
+                        </button>
+                    </div>
+                    <div id="sage-response" class="mt-6"></div>
+                </div>
+            </section>
+
+            <section id="passage" class="tab-content">
+                <div class="bg-amber-50/50 p-6 rounded-lg shadow-md">
+                    <h2 class="text-3xl font-bold mb-4 text-amber-900">Words of Passage: Copy Protection</h2>
+                    <p class="mb-6 text-amber-900/80">Certain individuals in Britannia will test your knowledge to verify your identity. Use this searchable archive to find the answers you seek. Simply type a keyword from the question (e.g., "Trolls" or "Jux") into the box below.</p>
+                    <input type="text" id="passage-search" class="w-full p-2 mb-6 border border-amber-300 rounded-md bg-white/70 focus:ring-amber-500 focus:border-amber-500" placeholder="Search for a question...">
+                    <div id="passage-list" class="space-y-4"></div>
+                </div>
+            </section>
+        </main>
+
+    </div>
+
+    <script>
+        const gameData = {
+            shrines: [
+                { virtue: "Valor", bonus: "+3 Strength" },
+                { virtue: "Compassion", bonus: "+3 Dexterity" },
+                { virtue: "Honesty", bonus: "+3 Intelligence" },
+                { virtue: "Spirituality", bonus: "+1 Str, +1 Dex, +1 Int" },
+                { virtue: "Sacrifice", bonus: "+1 Strength, +1 Dexterity" },
+                { virtue: "Honor", bonus: "+1 Strength, +1 Intelligence" },
+                { virtue: "Justice", bonus: "+1 Dexterity, +1 Intelligence" },
+                { virtue: "Humility", bonus: "No bonus" },
+            ],
+            quests: [
+                { 
+                    title: "Act I: Liberating the Shrines",
+                    content: `
+                        <p class="mb-4">Your first mandate from Lord British is to reclaim the eight Shrines of Virtue from the Gargoyles. This requires finding each city's corresponding Rune and cleansing its shrine.</p>
+                        <h4 class="font-semibold text-lg mb-2">The Quest for the Runes:</h4>
+                        <ul class="list-disc list-inside space-y-2 mb-4">
+                            <li><b>Honesty (Moonglow):</b> Obtain the key to Beyvin's tomb from Manrel.</li>
+                            <li><b>Compassion (Britain):</b> Get permission from Anya to receive the rune from her daughter, Ariana.</li>
+                            <li><b>Valor (Jhelom):</b> Recruit Sherry the mouse with cheese from Castle British to retrieve the rune from a mouse hole.</li>
+                            <li><b>Justice (Yew):</b> Learn the rune's location under a plant from the prisoner Boskin.</li>
+                            <li><b>Sacrifice (Minoc):</b> Craft panpipes and learn the song "Stones" to trade for the rune.</li>
+                            <li><b>Honor (Trinsic):</b> Ask Mayor Whitsaber for permission to borrow the rune.</li>
+                            <li><b>Spirituality (Skara Brae):</b> Find the rune in Marney's Hope Chest.</li>
+                            <li><b>Humility (New Magincia):</b> Solve Mayor Antonio's riddle; the answer is Conor the fisherman.</li>
+                        </ul>
+                        <h4 class="font-semibold text-lg mb-2">Cleansing the Shrines:</h4>
+                        <p>With a rune, go to its shrine. Use the rune, speak the mantra (e.g., AHM for Honesty), and take the Moonstone.</p>
+                    `
+                },
+                {
+                    title: "Act II: The Prophecy and the Pirates",
+                    content: `
+                        <p class="mb-4">To understand the Gargoyles, you must translate a book. This leads you into the criminal underworld to find Captain Hawkins' lost treasure.</p>
+                        <h4 class="font-semibold text-lg mb-2">The Silver Tablet:</h4>
+                        <ul class="list-disc list-inside space-y-2 mb-4">
+                            <li>Take the Gargish tome to Mariah at the Lycaeum. She needs the other half of a silver tablet.</li>
+                            <li>Find the gypsies near Trinsic, who point you to Homer.</li>
+                            <li>Join the Thieves' Guild in Buccaneer's Den by stealing a belt from Phoenix in the castle sewers (use Invisibility).</li>
+                        </ul>
+                        <h4 class="font-semibold text-lg mb-2">Assembling the Map:</h4>
+                        <p>Homer reveals the map to the treasure is in nine pieces, scattered across Britannia. You must find all pieces from various pirates, dungeons (Shame, Wrong), and quest givers (Sandy in Trinsic).</p>
+                        <h4 class="font-semibold text-lg mb-2">The Pirate's Cave:</h4>
+                        <p>Once the map is assembled, find the cave on a remote island. Use a Powder Keg to blast open the final door and retrieve the silver tablet, a Storm Cloak, and the Magic Fan.</p>
+                    `
+                },
+                {
+                    title: "Act III: The Realm of the Gargoyles",
+                    content: `
+                        <p class="mb-4">The translated book reveals the Gargoyles are refugees, and the Avatar is their prophesied doom. You must now travel to their realm to forge peace.</p>
+                        <h4 class="font-semibold text-lg mb-2">The Path to Peace:</h4>
+                        <ul class="list-disc list-inside space-y-2 mb-4">
+                            <li><b>DO NOT</b> use the Orb of the Moons. Travel through the dungeon Hythloth on the Isle of the Avatar.</li>
+                            <li>On the lowest level of Hythloth, find Captain Johne to learn the Gargish language.</li>
+                            <li>Upon exiting, immediately recruit the gargoyle Beh Lem. He is essential for diplomacy.</li>
+                            <li>Meet King Draxinusom and agree to wear the Amulet of Submission to prove your peaceful intent.</li>
+                        </ul>
+                        <h4 class="font-semibold text-lg mb-2">The Sacred Quest:</h4>
+                        <p>To return the stolen Codex of Ultimate Wisdom, you must embark on a "sacred quest." This requires building a hot-air balloon to reach the Temple of Singularity and chanting the Gargish mantra of virtue: UN-OR-US.</p>
+                    `
+                },
+                {
+                    title: "The Final Ritual",
+                    content: `
+                        <p class="mb-4">To end the conflict, you must perform a ritual to return the Codex to the Ethereal Void, making its wisdom accessible to both humans and gargoyles.</p>
+                        <h4 class="font-semibold text-lg mb-2">Gathering the Artifacts:</h4>
+                        <ul class="list-disc list-inside space-y-2 mb-4">
+                            <li><b>The Vortex Cube:</b> Found in the dungeon beneath Stonegate. Befriend the cyclops guard with a fish to enter.</li>
+                            <li><b>The Gargoyle Lens:</b> Take the broken lens from the Hall of Knowledge to Lor-wis-lem for repairs.</li>
+                            <li><b>The Britannian Lens:</b> Give a glass sword to the astronomer Ephemerides, who will craft the human lens.</li>
+                        </ul>
+                        <h4 class="font-semibold text-lg mb-2">Returning the Codex:</h4>
+                        <p>At the Shrine of the Codex, place all eight Moonstones in the Vortex Cube. Set the cube down, place one lens on each of the two flames, and use the cube. This triggers the final cinematic, forging a lasting peace.</p>
+                    `
+                }
+            ],
+            companions: [
+                { name: "Iolo", class: "Bard", location: "Permanent", str: 20, dex: 26, int: 17, level: 3, role: "Core ranged damage dealer." },
+                { name: "Shamino", class: "Ranger", location: "Permanent", str: 18, dex: 21, int: 19, level: 3, role: "Versatile fighter/mage hybrid." },
+                { name: "Dupre", class: "Fighter", location: "Permanent", str: 26, dex: 20, int: 17, level: 3, role: "Primary frontline tank." },
+                { name: "Jaana", class: "Druid", location: "Yew", str: 16, dex: 21, int: 19, level: 4, role: "Excellent dedicated spellcaster." },
+                { name: "Julia", class: "Tinker", location: "Minoc", str: 21, dex: 18, int: 17, level: 2, role: "Solid secondary fighter." },
+                { name: "Gwenno", class: "Bard", location: "Minoc", str: 18, dex: 21, int: 17, level: 2, role: "A good alternative to Iolo." },
+                { name: "Katrina", class: "Farmer", location: "New Magincia", str: 19, dex: 16, int: 16, level: 5, role: "Strong starting level." },
+                { name: "Seggallion", class: "Fighter", location: "Serpent's Hold", str: 28, dex: 21, int: 20, level: 5, role: "The strongest pure fighter." },
+                { name: "Sentri", class: "Fighter", location: "Serpent's Hold", str: 26, dex: 21, int: 16, level: 3, role: "A reliable alternative to Dupre." },
+                { name: "Beh Lem", class: "Gargoyle", location: "Gargoyle Realm", str: 23, dex: 24, int: 26, level: 2, role: "Essential for the final act." },
+                { name: "Sherry", class: "Mouse", location: "Castle Britannia", str: 1, dex: 27, int: 12, level: 1, role: "Quest-specific utility." },
+            ],
+            equipment: [
+                { name: "Enilno", type: "2H Sword", stat: "130 Dmg", acq: "Found on level 3 of Hythloth." },
+                { name: "Mystic Sword", type: "1H Sword", stat: "24-30 Dmg", acq: "Found in the Avatar's chamber at the Lycaeum." },
+                { name: "Magic Armour", type: "Chest", stat: "+10 Armor", acq: "Sold in Trinsic; found in Destard." },
+                { name: "Triple Crossbow", type: "Missile", stat: "30 Dmg", acq: "Crafted by Gwenneth at Iolo's Bows." },
+                { name: "Storm Cloak", type: "Cloak", stat: "Disables Magic", acq: "Found in the Pirate Cave and Swamp Cave." },
+                { name: "Glass Sword", type: "1H Sword", stat: "255 Dmg (1 use)", acq: "Crafted in Minoc; found in dungeons." },
+                { name: "Magic Helm", type: "Helmet", stat: "+5 Armor", acq: "Sold in Trinsic; found in Pirate Cave." },
+                { name: "Swamp Boots", type: "Boots", stat: "+2 Armor (Negates Poison)", acq: "Sold by Utomo in Yew." },
+            ],
+            spells: [
+                { name: "Heal / Great Heal", circle: "1 / 4", effect: "Restores HP to a single target." },
+                { name: "Cure", circle: "1", effect: "Cures poison on a single target." },
+                { name: "Unlock Magic", circle: "2", effect: "Opens magically locked doors/chests." },
+                { name: "Dispel Field", circle: "3", effect: "Removes magical fields." },
+                { name: "Telekinesis", circle: "2", effect: "Manipulates distant objects." },
+                { name: "Great Light", circle: "3", effect: "Illuminates dark dungeons." },
+                { name: "Invisibility All", circle: "7", effect: "Renders the entire party invisible." },
+                { name: "Kill", circle: "7", effect: "Instantly kills a single non-immune enemy." },
+                { name: "Death Wind", circle: "8", effect: "Kills multiple enemies in a large area." },
+            ],
+            dungeons: [
+                 { name: "Dungeon Destard (Dragon's Den)", location: "Northwest of Trinsic", objective: "Retrieve a dragon's egg from the fourth level for Sandy's quest. Invisibility is highly recommended." },
+                { name: "Dungeon Shame", location: "West of Britannia", objective: "Find the pirate Old Ybarra on the fourth level and trade food for his map piece." },
+                { name: "Dungeon Wrong/Covetous", location: "Interconnected", objective: "Find a map piece on the third level after solving a complex lever puzzle on the second." },
+                { name: "The Ant Mound", location: "Drylands, south of Shrine of Sacrifice", objective: "Find the body of Ol' Hawknose and his map piece on the bottom floor." },
+                { name: "Sutek's Castle", location: "East of Serpent's Hold", objective: "Use a Powder Keg to enter. Find the Balloon Plans in the fourth basement level." },
+                { name: "Dungeon Hythloth", location: "Isle of the Avatar", objective: "The main path to the Gargoyle realm. Find Captain Johne on the lowest level to learn Gargish." },
+            ],
+            passage: [
+                { question: "What doth Trolls Lack?", answer: "Endurance", keywords: "trolls, lack", source: "Lord British" },
+                { question: "What part of the tangle vine doth put one to sleep?", answer: "Pods", keywords: "tangle, vine, sleep", source: "Lord British" },
+                { question: "How wert the headlesses produced?", answer: "Wizard", keywords: "headlesses, produced", source: "Lord British" },
+                { question: "What valued item canst one find near the spawning grounds of Hydras?", answer: "Nightshade", keywords: "hydras, nightshade", source: "Lord British" },
+                { question: "How canst one fend off Rotworms?", answer: "Torch", keywords: "rotworms, fend, torch", source: "Lord British" },
+                { question: "How doth Sea Serpents attack?", answer: "Fireballs", keywords: "sea, serpents, attack", source: "Lord British" },
+                { question: "What creature art Wisps oft mistaken for?", answer: "Firefly", keywords: "wisps, mistaken", source: "Lord British" },
+                { question: "How doth Giant Squids crush their prey?", answer: "Beak", keywords: "squids, crush, prey", source: "Lord British" },
+                { question: "Where hath images of the Silver Serpent been seen?", answer: "Tomb walls", keywords: "silver, serpent, tomb", source: "Lord British" },
+                { question: "What art Reapers remnants of?", answer: "Enchanted Forest", keywords: "reapers, remnants", source: "Lord British" },
+                { question: "What does the magic syllable 'Zu' mean?", answer: "Sleep", keywords: "zu, mean", source: "Mariah" },
+                { question: "What does the magic syllable 'Quas' mean?", answer: "Illusion", keywords: "quas, mean", source: "Mariah" },
+                { question: "What does the magic syllable 'Hur' mean?", answer: "Wind", keywords: "hur, mean", source: "Mariah" },
+                { question: "What does the magic syllable 'Jux' mean?", answer: "Danger/Trap/Harm", keywords: "jux, mean", source: "Mariah" },
+                { question: "What does the magic syllable 'Ort' mean?", answer: "Magic", keywords: "ort, mean", source: "Mariah" },
+                { question: "What kind of fork should Mandrake Roots be prepared with?", answer: "Silver", keywords: "mandrake, fork", source: "Selganor" },
+                { question: "What part of the Nightshade mushroom is used in spellcasting?", answer: "Cap", keywords: "nightshade, mushroom, part", source: "Selganor" },
+                { question: "Where does Sulfurous Ash come from?", answer: "Volcanic Eruptions", keywords: "sulfurous, ash, from", source: "Selganor" },
+                { question: "What are the Black Pearls used for?", answer: "Kinetic propellant", keywords: "black, pearls, used", source: "Selganor" },
+            ]
+        };
+
+        function showTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.tab-button').forEach(button => button.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            document.querySelector(`.tab-button[onclick="showTab('${tabId}')"]`).classList.add('active');
+        }
+
+        function showAlmanacTab(tabId) {
+            document.querySelectorAll('.almanac-tab-content').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.almanac-tab-button').forEach(button => {
+                button.classList.remove('active', 'text-amber-700', 'border-amber-700');
+                button.classList.add('text-gray-500', 'hover:text-gray-700', 'hover:border-gray-300', 'border-transparent');
+            });
+            document.getElementById(tabId).classList.add('active');
+            const activeButton = document.querySelector(`.almanac-tab-button[onclick="showAlmanacTab('${tabId}')"]`);
+            activeButton.classList.add('active', 'text-amber-700', 'border-amber-700');
+            activeButton.classList.remove('text-gray-500', 'hover:text-gray-700', 'hover:border-gray-300', 'border-transparent');
+        }
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            populateStaticData();
+            setupEventListeners();
+            setupVirtueChart();
+            renderPassageList(gameData.passage);
+            document.getElementById('passage-search').addEventListener('input', (e) => {
+                const searchTerm = e.target.value.toLowerCase();
+                const filteredPassage = gameData.passage.filter(p => 
+                    p.question.toLowerCase().includes(searchTerm) || 
+                    p.answer.toLowerCase().includes(searchTerm) ||
+                    p.source.toLowerCase().includes(searchTerm)
+                );
+                renderPassageList(filteredPassage);
+            });
+        });
+        
+        function populateStaticData() {
+            const shrineList = document.getElementById('shrine-list');
+            gameData.shrines.forEach(shrine => {
+                const li = document.createElement('li');
+                li.className = "p-3 bg-white/50 rounded-md border border-amber-200";
+                li.innerHTML = `<span class="font-semibold text-amber-900">${shrine.virtue}:</span> <span class="text-amber-800">${shrine.bonus}</span>`;
+                shrineList.appendChild(li);
+            });
+
+            const questAccordion = document.getElementById('quest-accordion');
+            gameData.quests.forEach((quest) => {
+                const div = document.createElement('div');
+                div.className = "border border-amber-200 rounded-lg bg-white/50";
+                div.innerHTML = `
+                    <button class="accordion-toggle w-full text-left p-4 font-semibold text-xl text-amber-900 flex justify-between items-center">
+                        ${quest.title}
+                        <span class="transform transition-transform duration-300 text-amber-700">&#9662;</span>
+                    </button>
+                    <div class="accordion-content px-4 pb-4 text-amber-900/80">${quest.content}</div>`;
+                questAccordion.appendChild(div);
+            });
+
+        const equipmentList = document.getElementById('equipment-list');
+        gameData.equipment.forEach(item => {
+            const div = document.createElement('div');
+            div.className = "p-4 bg-white/50 rounded-md border border-amber-200";
+            div.innerHTML = `<h4 class="font-bold text-lg text-amber-900">${item.name}</h4><p class="text-sm text-amber-800">${item.type} - <span class="font-semibold">${item.stat}</span></p><p class="text-xs text-amber-700/80 mt-1">${item.acq}</p>`;
+            equipmentList.appendChild(div);
+        });
+
+        const spellsList = document.getElementById('spells-list');
+        gameData.spells.forEach(spell => {
+            const div = document.createElement('div');
+            div.className = "p-4 bg-white/50 rounded-md border border-amber-200";
+            div.innerHTML = `<h4 class="font-bold text-lg text-amber-900">${spell.name}</h4><p class="text-sm text-amber-800">Circle ${spell.circle}</p><p class="text-xs text-amber-700/80 mt-1">${spell.effect}</p>`;
+            spellsList.appendChild(div);
+        });
+        
+        const dungeonList = document.getElementById('dungeon-list');
+        gameData.dungeons.forEach(dungeon => {
+            const div = document.createElement('div');
+            div.className = "p-4 bg-white/50 rounded-md border border-amber-200";
+            div.innerHTML = `<h4 class="font-bold text-lg text-amber-900">${dungeon.name}</h4><p class="text-sm text-amber-800 italic">${dungeon.location}</p><p class="text-amber-900/90 mt-2">${dungeon.objective}</p>`;
+            dungeonList.appendChild(div);
+        });
+        
+        const virtueSelection = document.getElementById('virtue-selection');
+        gameData.shrines.map(s => s.virtue).filter(v => v !== "Humility").forEach(virtue => {
+            const label = document.createElement('label');
+            label.className = "flex items-center space-x-2 cursor-pointer";
+            label.innerHTML = `<input type="checkbox" name="virtue" value="${virtue}" class="form-checkbox h-5 w-5 rounded text-amber-600 focus:ring-amber-500 border-amber-300"><span>${virtue}</span>`;
+            virtueSelection.appendChild(label);
+        });
+
+        renderCompanionTable(gameData.companions);
+    }
+
+    function setupEventListeners() {
+        document.querySelectorAll('.accordion-toggle').forEach(button => {
+            button.addEventListener('click', () => {
+                const content = button.nextElementSibling;
+                const icon = button.querySelector('span');
+                const isOpening = !content.style.maxHeight;
+                
+                button.closest('#quest-accordion').querySelectorAll('.accordion-content').forEach(item => {
+                    item.style.maxHeight = null;
+                    item.previousElementSibling.querySelector('span').style.transform = 'rotate(0deg)';
+                });
+
+                if (isOpening) {
+                    content.style.maxHeight = content.scrollHeight + "px";
+                    icon.style.transform = 'rotate(180deg)';
+                }
+            });
+        });
+
+        document.getElementById('generate-chronicle').addEventListener('click', generateChronicle);
+        document.getElementById('ask-sage').addEventListener('click', askTheSage);
+    }
+
+    let sortDirection = {};
+    function renderCompanionTable(data) {
+        const tableHead = document.getElementById('companion-table-head');
+        const tableBody = document.getElementById('companion-table-body');
+        tableHead.innerHTML = `<tr class="bg-amber-100/50"><th class="p-3 cursor-pointer" onclick="sortTable('name')">Name</th><th class="p-3 cursor-pointer" onclick="sortTable('class')">Class</th><th class="p-3 cursor-pointer" onclick="sortTable('str')">STR</th><th class="p-3 cursor-pointer" onclick="sortTable('dex')">DEX</th><th class="p-3 cursor-pointer" onclick="sortTable('int')">INT</th><th class="p-3 cursor-pointer" onclick="sortTable('level')">Level</th></tr>`;
+        tableBody.innerHTML = '';
+        data.forEach(c => {
+            const row = document.createElement('tr');
+            row.className = 'border-b border-amber-200/50 hover:bg-amber-100/30';
+            row.innerHTML = `<td class="p-3 font-semibold">${c.name}</td><td class="p-3">${c.class}</td><td class="p-3 text-center">${c.str}</td><td class="p-3 text-center">${c.dex}</td><td class="p-3 text-center">${c.int}</td><td class="p-3 text-center">${c.level}</td>`;
+            tableBody.appendChild(row);
+        });
+    }
+
+    function sortTable(key) {
+        const isAsc = sortDirection[key] === 'asc';
+        sortDirection = { [key]: isAsc ? 'desc' : 'asc' };
+        const sortedData = [...gameData.companions].sort((a, b) => {
+            if (a[key] < b[key]) return isAsc ? -1 : 1;
+            if (a[key] > b[key]) return isAsc ? 1 : -1;
+            return 0;
+        });
+        renderCompanionTable(sortedData);
+    }
+
+    async function callGeminiAPI(prompt, outputElement) {
+        outputElement.innerHTML = '<div class="flex justify-center"><div class="loader"></div></div>';
+        let chatHistory = [{ role: "user", parts: [{ text: prompt }] }];
+        const payload = { contents: chatHistory };
+        const apiKey = "AIzaSyA4xcdDtUwF5rEgRjH6jF3kwE8EzsG-nwA";
+        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+
+        try {
+            let response = await fetch(apiUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+
+            if (!response.ok) {
+                throw new Error(`API call failed with status: ${response.status}`);
+            }
+
+            const result = await response.json();
+            
+            if (result.candidates && result.candidates.length > 0 && result.candidates[0].content.parts.length > 0) {
+                const text = result.candidates[0].content.parts[0].text;
+                outputElement.innerHTML = `<div class="gemini-response">${text}</div>`;
+            } else {
+                throw new Error("Invalid response structure from API.");
+            }
+        } catch (error) {
+            console.error("Error calling Gemini API:", error);
+            outputElement.innerHTML = `<div class="gemini-response text-red-800">The ethereal winds are turbulent. The sage's voice cannot be heard at this time. Please try again later.</div>`;
+        }
+    }
+
+    function generateChronicle() {
+        const selectedVirtues = Array.from(document.querySelectorAll('input[name="virtue"]:checked')).map(cb => cb.value);
+        if (selectedVirtues.length === 0) {
+            alert("Please select at least one virtue to generate your chronicle.");
+            return;
+        }
+        const prompt = `Write a short, epic backstory for a heroic Avatar in the fantasy world of Britannia from the game Ultima VI. The story should be about 150 words and written in the style of a classic fantasy novel. The Avatar's character is defined by these core virtues: ${selectedVirtues.join(', ')}. Explain how their past experiences led them to embody these specific virtues.`;
+        const outputElement = document.getElementById('chronicle-output');
+        callGeminiAPI(prompt, outputElement);
+    }
+
+    function askTheSage() {
+        const query = document.getElementById('sage-query').value;
+        if (!query.trim()) {
+            alert("You must first pose a question to the sage.");
+            return;
+        }
+        const prompt = `You are a wise, ancient sage from the fantasy world of Ultima VI. A player has asked you for guidance. Your task is to provide a helpful, in-character, and thematic response. Do not break character. Provide actionable advice, hints, or lore that will help them, but avoid simply giving away the direct answer unless it's a simple factual question (like an item location). Ground your answer in the world of Britannia. The player's question is: "${query}"`;
+        const outputElement = document.getElementById('sage-response');
+        callGeminiAPI(prompt, outputElement);
+    }
+
+    function setupVirtueChart() {
+        const ctx = document.getElementById('virtueChart').getContext('2d');
+        const virtueData = { 'Valor': { str: 9, dex: 0, int: 0 }, 'Compassion': { str: 0, dex: 9, int: 0 }, 'Honesty': { str: 0, dex: 0, int: 9 }, 'Spirituality': { str: 3, dex: 3, int: 3 }, 'Sacrifice': { str: 3, dex: 3, int: 0 }, 'Honor': { str: 3, dex: 0, int: 3 }, 'Justice': { str: 0, dex: 3, int: 3 }, };
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: Object.keys(virtueData),
+                datasets: [
+                    { label: 'Strength Bonus', data: Object.values(virtueData).map(v => v.str), backgroundColor: 'rgba(180, 83, 9, 0.6)', borderColor: 'rgba(180, 83, 9, 1)', borderWidth: 1 },
+                    { label: 'Dexterity Bonus', data: Object.values(virtueData).map(v => v.dex), backgroundColor: 'rgba(202, 138, 4, 0.6)', borderColor: 'rgba(202, 138, 4, 1)', borderWidth: 1 },
+                    { label: 'Intelligence Bonus', data: Object.values(virtueData).map(v => v.int), backgroundColor: 'rgba(120, 53, 15, 0.6)', borderColor: 'rgba(120, 53, 15, 1)', borderWidth: 1 }
+                ]
+            },
+            options: {
+                responsive: true, maintainAspectRatio: false,
+                scales: { x: { stacked: true, ticks: { color: '#382D24' }, grid: { display: false } }, y: { stacked: true, beginAtZero: true, ticks: { color: '#382D24' }, grid: { color: '#D2B48C' } } },
+                plugins: {
+                    title: { display: true, text: 'Maximum Potential Stat Bonuses from Virtues', color: '#382D24', font: { size: 16, family: "'IM Fell English', serif" } },
+                    tooltip: { mode: 'index', intersect: false }
+                }
+            }
+        });
+    }
+
+    function renderPassageList(data) {
+        const passageList = document.getElementById('passage-list');
+        passageList.innerHTML = '';
+        if (data.length === 0) {
+            passageList.innerHTML = `<p class="text-amber-800/70">No matching entries found.</p>`;
+            return;
+        }
+        data.forEach(p => {
+            const div = document.createElement('div');
+            div.className = "p-4 bg-white/50 rounded-md border border-amber-200";
+            div.innerHTML = `
+                <p class="text-sm text-amber-700/80">Asked by: ${p.source}</p>
+                <p class="font-semibold text-amber-900 mt-1">Q: ${p.question}</p>
+                <p class="text-lg font-bold text-amber-800 mt-1">A: ${p.answer}</p>
+            `;
+            passageList.appendChild(div);
+        });
+    }
+</script>
+<link rel="stylesheet" href="styles.css">
+<script src="js/Ultima6.js"></script>
+</body>
+</html>

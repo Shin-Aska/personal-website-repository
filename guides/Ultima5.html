@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ultima V: Interactive Guide</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Chosen Palette: Warm Neutrals -->
+    <!-- Application Structure Plan: A task-oriented SPA with side navigation was chosen to provide players with rapid, non-linear access to specific game information. The structure is divided into logical sections a player would need during a playthrough: 'Party Builder' for team composition, 'Survival Kit' for essential tips, a 'Quest Log' with nested tabs for the main story acts, and a 'Reference' section for quick data lookups. This architecture prioritizes usability and quick information retrieval over the original report's linear narrative flow. Key interactions include a filterable bar chart for companion stats, searchable/sortable data tables, and a tabbed interface to break down complex quests into manageable steps. -->
+    <!-- Visualization & Content Choices: Companion Stats -> Goal: Compare -> Viz: Interactive Bar Chart (Chart.js) -> Interaction: Filter by STR/INT/DEX -> Justification: Visual comparison is faster than reading a table for identifying top-tier characters. Quest Walkthroughs -> Goal: Inform/Organize -> Presentation: Tabbed/Card-based HTML/CSS layout -> Interaction: Click to reveal steps -> Justification: Breaks down dense text into a clear, step-by-step process, reducing cognitive load. Reference Tables (Spells/Words) -> Goal: Inform/Organize -> Presentation: HTML Table -> Interaction: Search/Filter (JS) -> Justification: Allows for immediate lookup of specific data points without manual scrolling. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <link rel="stylesheet" href="css/Ultima5.css">
+</head>
+<body class="bg-amber-50 text-stone-800">
+
+    <div id="app" class="min-h-screen flex flex-col">
+        <header class="bg-yellow-800 text-amber-50 p-4 shadow-lg sticky top-0 z-20">
+            <div class="container mx-auto flex justify-between items-center">
+                <h1 class="text-2xl md:text-3xl font-bold tracking-wider">Ultima V: Warriors of Destiny</h1>
+                <button id="mobile-menu-button" class="md:hidden p-2 rounded-md hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-amber-50">
+                    <i data-lucide="menu" class="h-6 w-6"></i>
+                </button>
+            </div>
+        </header>
+
+        <div class="container mx-auto flex-grow flex flex-col md:flex-row">
+            <nav id="main-nav" class="w-full md:w-64 bg-yellow-100 p-4 md:p-6 shadow-md flex-shrink-0 hidden md:block">
+                <ul class="space-y-2">
+                    <li><a href="#overview" class="nav-link flex items-center gap-3 p-3 rounded-lg hover:bg-amber-200 active"><i data-lucide="scroll-text" class="h-5 w-5"></i> <span class="font-medium">Overview</span></a></li>
+                    <li><a href="#party" class="nav-link flex items-center gap-3 p-3 rounded-lg hover:bg-amber-200"><i data-lucide="users" class="h-5 w-5"></i> <span class="font-medium">Party Builder</span></a></li>
+                    <li><a href="#survival" class="nav-link flex items-center gap-3 p-3 rounded-lg hover:bg-amber-200"><i data-lucide="shield-check" class="h-5 w-5"></i> <span class="font-medium">Survival Kit</span></a></li>
+                    <li><a href="#quests" class="nav-link flex items-center gap-3 p-3 rounded-lg hover:bg-amber-200"><i data-lucide="map" class="h-5 w-5"></i> <span class="font-medium">Quest Log</span></a></li>
+                    <li><a href="#reference" class="nav-link flex items-center gap-3 p-3 rounded-lg hover:bg-amber-200"><i data-lucide="book-open" class="h-5 w-5"></i> <span class="font-medium">Reference</span></a></li>
+                </ul>
+            </nav>
+
+            <main class="flex-grow p-4 md:p-8 overflow-y-auto">
+                
+                <section id="overview" class="content-section active">
+                    <h2 class="text-3xl font-bold text-yellow-900 mb-4 border-b-2 border-yellow-800 pb-2">The Tyranny of Virtue</h2>
+                    <div class="space-y-4 text-lg leading-relaxed bg-white p-6 rounded-lg shadow">
+                        <p>Welcome back to Britannia, Avatar. The land you once saved has fallen under a dark shadow. Lord British is lost in the Underworld, and his regent, Lord Blackthorn, enforces the Virtues with an iron fist, twisted by the influence of the three malevolent Shadowlords.</p>
+                        <p>This interactive guide is your companion in the struggle to liberate Britannia. It's designed to provide quick, accessible information when you need it most. Use the navigation to explore potential party members, learn survival essentials, track your progress through the main quests, and reference critical information like spells and mantras. Your goal is not just to rescue a king, but to restore the very soul of Britannia—the principle that true virtue must be a choice, not a law.</p>
+                    </div>
+                </section>
+
+                <section id="party" class="content-section">
+                    <h2 class="text-3xl font-bold text-yellow-900 mb-6">Building the Warriors of Destiny</h2>
+                     <p class="mb-6 text-lg bg-white p-4 rounded-lg shadow">This section is your headquarters for assembling the perfect team to challenge Blackthorn. Here you can visually compare the core attributes of all potential companions to find the strongest fighters or most brilliant mages. Below the chart, a detailed, sortable roster provides strategic notes on every character you can recruit.</p>
+                    <div class="bg-white p-6 rounded-lg shadow mb-8">
+                        <h3 class="text-2xl font-semibold mb-4 text-yellow-800">Companion Stat Comparison</h3>
+                        <p class="mb-4">A successful resistance needs a balanced team. While the tables below provide detailed stats, this chart offers a quick visual comparison to help you identify the strongest, smartest, or most agile companions for your party. Use the buttons to switch between attributes.</p>
+                        <div class="flex justify-center space-x-2 mb-4">
+                            <button class="stat-filter-btn bg-yellow-600 text-white px-4 py-2 rounded-md hover:bg-yellow-700 transition active" data-stat="STR">Strength</button>
+                            <button class="stat-filter-btn bg-yellow-600 text-white px-4 py-2 rounded-md hover:bg-yellow-700 transition" data-stat="INT">Intelligence</button>
+                            <button class="stat-filter-btn bg-yellow-600 text-white px-4 py-2 rounded-md hover:bg-yellow-700 transition" data-stat="DEX">Dexterity</button>
+                        </div>
+                        <div class="chart-container relative w-full max-w-4xl mx-auto h-96 md:h-[500px]">
+                            <canvas id="companionChart"></canvas>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-6 rounded-lg shadow">
+                        <h3 class="text-2xl font-semibold mb-4 text-yellow-800">Potential Companions</h3>
+                        <p class="mb-4">Britannia is home to many who would join your cause, but choose wisely. A smaller, well-equipped party can be more efficient. Mages are invaluable, but some potential recruits may have ulterior motives. Use the search bar to find a specific companion or click the table headers to sort.</p>
+                        <input type="text" id="companion-search" placeholder="Search for a companion..." class="w-full p-2 border border-gray-300 rounded-md mb-4 focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500">
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left table-sortable" id="companion-table">
+                                <thead class="bg-yellow-200 text-yellow-900">
+                                    <tr>
+                                        <th class="p-3" data-sort="Name">Name <i data-lucide="arrow-up-down" class="inline-block h-4 w-4 sort-icon"></i></th>
+                                        <th class="p-3" data-sort="Class">Class <i data-lucide="arrow-up-down" class="inline-block h-4 w-4 sort-icon"></i></th>
+                                        <th class="p-3 text-center" data-sort="Level">Lvl <i data-lucide="arrow-up-down" class="inline-block h-4 w-4 sort-icon"></i></th>
+                                        <th class="p-3 text-center" data-sort="STR">STR <i data-lucide="arrow-up-down" class="inline-block h-4 w-4 sort-icon"></i></th>
+                                        <th class="p-3 text-center" data-sort="INT">INT <i data-lucide="arrow-up-down" class="inline-block h-4 w-4 sort-icon"></i></th>
+                                        <th class="p-3 text-center" data-sort="DEX">DEX <i data-lucide="arrow-up-down" class="inline-block h-4 w-4 sort-icon"></i></th>
+                                        <th class="p-3" data-sort="Location">Location <i data-lucide="arrow-up-down" class="inline-block h-4 w-4 sort-icon"></i></th>
+                                    </tr>
+                                </thead>
+                                <tbody id="companion-table-body">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="survival" class="content-section">
+                    <h2 class="text-3xl font-bold text-yellow-900 mb-6">The Resistance Survival Kit</h2>
+                    <p class="mb-6 text-lg bg-white p-4 rounded-lg shadow">Success in *Ultima V* is about more than just combat prowess; it's about preparation and resourcefulness. This section provides a quick reference for the core principles of survival in Blackthorn's Britannia, strategies for funding your resistance, and a checklist of the most essential gear you'll need to find to complete your quest.</p>
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                        <div class="bg-white p-6 rounded-lg shadow space-y-4">
+                            <h3 class="text-2xl font-semibold text-yellow-800 flex items-center gap-2"><i data-lucide="gem" class="h-6 w-6"></i> Essential Gear</h3>
+                            <div class="border-t pt-4">
+                                <h4 class="font-bold">Magic Carpet</h4>
+                                <p>Found in Lord British's chambers. Allows flight over shallow water, swamps, and hills. Essential for traversing Stonegate.</p>
+                            </div>
+                            <div class="border-t pt-4">
+                                <h4 class="font-bold">Skull Keys</h4>
+                                <p>An infinite supply can be found daily in a tree in Minoc's northwest corner. Opens any magically locked door.</p>
+                            </div>
+                            <div class="border-t pt-4">
+                                <h4 class="font-bold">Grappling Hook</h4>
+                                <p>Given by Lord Michael in Empath Abbey. Necessary for climbing mountains and accessing key areas.</p>
+                            </div>
+                            <div class="border-t pt-4">
+                                <h4 class="font-bold">Magic Axes</h4>
+                                <p>The best ranged weapon. Found in Lord British's treasury or purchased in Yew. They return after being thrown.</p>
+                            </div>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg shadow space-y-4">
+                            <h3 class="text-2xl font-semibold text-yellow-800 flex items-center gap-2"><i data-lucide="coins" class="h-6 w-6"></i> Funding & Survival</h3>
+                             <div class="border-t pt-4">
+                                <h4 class="font-bold">Core Tenets</h4>
+                                <ul class="list-disc list-inside space-y-1">
+                                    <li><b>Save constantly:</b> Avoid losing hours of progress.</li>
+                                    <li><b>Avoid death:</b> Resurrection causes permanent XP loss.</li>
+                                    <li><b>Manage resources:</b> Food is consumed with every step.</li>
+                                </ul>
+                            </div>
+                            <div class="border-t pt-4">
+                                <h4 class="font-bold">Economic Strategy</h4>
+                                <p>The most lucrative way to fund the resistance is by repeatedly looting Lord British's castle treasury. Use Skull Keys to enter the basement, take everything, exit the castle, and re-enter. The treasury will be restocked. Be aware this will lower your Karma.</p>
+                            </div>
+                            <div class="border-t pt-4">
+                                <h4 class="font-bold">Navigation</h4>
+                                <p>Horses provide faster overland travel. A frigate, won from pirates, is needed for sea voyages. Moongates offer magical transport at night, with destinations determined by the two moons.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <section id="quests" class="content-section">
+                    <h2 class="text-3xl font-bold text-yellow-900 mb-6">The Path to Liberation</h2>
+                    <p class="mb-6 text-lg bg-white p-4 rounded-lg shadow">Your journey to free Britannia is long and perilous. It involves dismantling Blackthorn's regime, rescuing the true king, and restoring the meaning of Virtue. This quest log is divided into the major acts of your adventure. Begin by restoring the Shrines, then shatter the Shadowlords' influence, recover the king's regalia, and finally, prepare for the descent into Doom.</p>
+                    <div class="flex flex-wrap border-b border-gray-200">
+                        <button class="quest-tab-button tab-button py-2 px-4 font-semibold border-b-2 border-transparent hover:bg-yellow-100 active" data-tab="shrines">The Shrine Quests</button>
+                        <button class="quest-tab-button tab-button py-2 px-4 font-semibold border-b-2 border-transparent hover:bg-yellow-100" data-tab="shadowlords">Shatter the Shadows</button>
+                        <button class="quest-tab-button tab-button py-2 px-4 font-semibold border-b-2 border-transparent hover:bg-yellow-100" data-tab="regalia">Recover the Regalia</button>
+                        <button class="quest-tab-button tab-button py-2 px-4 font-semibold border-b-2 border-transparent hover:bg-yellow-100" data-tab="doom">Descent into Doom</button>
+                    </div>
+
+                    <div id="shrines" class="quest-tab-content active mt-6 space-y-4">
+                        <h3 class="text-2xl font-semibold text-yellow-800">The Path of Virtue</h3>
+                        <p>Restoring the Shrines of the Eight Virtues is the primary way to increase your party's attributes and is required to learn the final Word of Power. Each shrine follows a four-step process.</p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                            <div class="bg-white p-4 rounded-lg shadow"><span class="font-bold text-yellow-700">1. Learn the Mantra:</span> Converse with townsfolk in the virtue's associated city.</div>
+                            <div class="bg-white p-4 rounded-lg shadow"><span class="font-bold text-yellow-700">2. Meditate at the Shrine:</span> Use the mantra to meditate for three cycles to begin the quest.</div>
+                            <div class="bg-white p-4 rounded-lg shadow"><span class="font-bold text-yellow-700">3. Journey to the Codex:</span> Travel to the Isle of the Avatar to receive wisdom.</div>
+                            <div class="bg-white p-4 rounded-lg shadow"><span class="font-bold text-yellow-700">4. Attain Enlightenment:</span> Return to the shrine and meditate again to complete the quest and gain an attribute increase.</div>
+                        </div>
+                        <p class="pt-4">Completing all eight quests will grant you the Word of Power for Dungeon Doom: <strong>VERAMOCOR</strong>.</p>
+                    </div>
+
+                    <div id="shadowlords" class="quest-tab-content mt-6 space-y-4">
+                        <h3 class="text-2xl font-semibold text-yellow-800">Act I: Shatter the Shadows</h3>
+                        <p>The three Shadowlords must be destroyed before Lord British can be rescued. They cannot be defeated in normal combat. Their destruction requires a precise ritual.</p>
+                        <div class="space-y-6">
+                            <div>
+                                <h4 class="text-xl font-semibold text-yellow-900 mb-2">Step 1: Learn Their True Names</h4>
+                                <ul class="list-disc list-inside bg-white p-4 rounded-lg shadow">
+                                    <li><strong>Faulinei (Falsehood):</strong> Speak to the twin sisters in Cove.</li>
+                                    <li><strong>Astaroth (Hatred):</strong> Learn from the gargoyle Sin'Vraal in the eastern desert.</li>
+                                    <li><strong>Nosfentor (Cowardice):</strong> Revealed by various knowledgeable NPCs.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-semibold text-yellow-900 mb-2">Step 2: Retrieve Their Shards from the Underworld</h4>
+                                <p>Enter the dungeons using the correct Words of Power to find the shards from which the Shadowlords were born.</p>
+                                <ul class="list-disc list-inside bg-white p-4 rounded-lg shadow">
+                                    <li><strong>Shard of Falsehood:</strong> Beneath Dungeon Deceit (Word: FALLAX). Requires Grappling Hook and Magic Carpet.</li>
+                                    <li><strong>Shard of Hatred:</strong> Beneath Dungeons Wrong/Covetous (Words: MALUM/AVIDUS). Requires Grappling Hook.</li>
+                                    <li><strong>Shard of Cowardice:</strong> Beneath Dungeon Hythloth (Word: IGNAVUS). Requires Magic Carpet and the 'In Por' (Blink) spell.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-semibold text-yellow-900 mb-2">Step 3: Perform the Ritual of Banishment</h4>
+                                <p>At the keep corresponding to the principle they oppose, summon the Shadowlord by shouting its name near the sacred flame. When it steps onto the flame, use its shard on the flame to destroy it forever.</p>
+                                <ul class="list-disc list-inside bg-white p-4 rounded-lg shadow">
+                                    <li><strong>Faulinei (Falsehood)</strong> &rarr; Destroyed at the <strong>Lyceum (Truth)</strong>.</li>
+                                    <li><strong>Astaroth (Hatred)</strong> &rarr; Destroyed at <strong>Empath Abbey (Love)</strong>.</li>
+                                    <li><strong>Nosfentor (Cowardice)</strong> &rarr; Destroyed at <strong>Serpent's Hold (Courage)</strong>.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="regalia" class="quest-tab-content mt-6 space-y-4">
+                        <h3 class="text-2xl font-semibold text-yellow-800">Act II: Recover the Regalia</h3>
+                        <p>With the Shadowlords gone, you must find Lord British's four royal artifacts. These are essential for surviving the final dungeon.</p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="bg-white p-4 rounded-lg shadow">
+                                <h4 class="font-bold text-xl mb-2 text-yellow-900">The Sceptre</h4>
+                                <p><strong>Location:</strong> Stonegate. <br><strong>Function:</strong> Dispels magical fields. <br><strong>Requirement:</strong> Magic Carpet to bypass deadly floor traps.</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg shadow">
+                                <h4 class="font-bold text-xl mb-2 text-yellow-900">The Crown</h4>
+                                <p><strong>Location:</strong> Rooftop of Blackthorn's Palace. <br><strong>Function:</strong> Negates enemy magic. <br><strong>Requirement:</strong> Skull Keys and the Black Badge to move freely.</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg shadow">
+                                <h4 class="font-bold text-xl mb-2 text-yellow-900">The Amulet</h4>
+                                <p><strong>Location:</strong> Deep in the Underworld, where the king's knights fell (accessible via Dungeon Destard or Spiritwood waterfall). <br><strong>Function:</strong> Reveals the hidden entrance to Dungeon Doom.</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg shadow">
+                                <h4 class="font-bold text-xl mb-2 text-yellow-900">The Sandalwood Box</h4>
+                                <p><strong>Location:</strong> Lord British's private study. <br><strong>Function:</strong> Proves your identity to the king. <br><strong>Requirement:</strong> Play the tune "Stones" (6-7-8-9-8-7-8-7-6-7-6-5-3) on the castle harpsichord.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="doom" class="quest-tab-content mt-6 space-y-4">
+                        <h3 class="text-2xl font-semibold text-yellow-800">Act III: The Final Descent into Doom</h3>
+                        <p>The final challenge. This is a one-way trip, so make a permanent save before you enter. Ensure you have all four royal artifacts and the Sandalwood Box, and that the Shadowlords are defeated.</p>
+                        <div class="space-y-6">
+                            <div>
+                                <h4 class="text-xl font-semibold text-yellow-900 mb-2">Final Preparations</h4>
+                                <ul class="list-disc list-inside bg-white p-4 rounded-lg shadow">
+                                    <li>All 3 Shadowlords must be destroyed.</li>
+                                    <li>Possess the Sceptre, Crown, Amulet, and Sandalwood Box.</li>
+                                    <li>The Avatar must be at least Level 8.</li>
+                                    <li>Stockpile healing potions and resurrection spells.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-semibold text-yellow-900 mb-2">The Rescue</h4>
+                                <p>The entrance to Doom is in the central Underworld, hidden in darkness (use the Amulet). Speak the Word of Power <strong>VERAMOCOR</strong> to enter.</p>
+                                <ol class="list-decimal list-inside bg-white p-4 rounded-lg shadow space-y-2">
+                                    <li>Use the <strong>Sceptre</strong> to dispel the ethereal walls at the entrance.</li>
+                                    <li>Navigate the labyrinthine levels, using the <strong>Crown</strong> to survive rooms filled with powerful magic-using monsters.</li>
+                                    <li>On the final level, find the hidden pit leading to Lord British's prison.</li>
+                                    <li>Lord British is trapped in a mirror. Step through and give him the <strong>Sandalwood Box</strong> to free him.</li>
+                                    <li>Use the Orb of the Moons he gives you to escape the collapsing dungeon.</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="reference" class="content-section">
+                    <h2 class="text-3xl font-bold text-yellow-900 mb-6">Britannian Archives</h2>
+                    <p class="mb-6 text-lg bg-white p-4 rounded-lg shadow">This section serves as your complete in-game encyclopedia. Use the tabs to switch between a searchable spellbook, complete with reagent lists and strategic notes, and a directory of all the vital Mantras and Words of Power you will need to unlock Britannia's secrets.</p>
+                     <div class="flex flex-wrap border-b border-gray-200">
+                        <button class="ref-tab-button tab-button py-2 px-4 font-semibold border-b-2 border-transparent hover:bg-yellow-100 active" data-tab="spells">Grimoire</button>
+                        <button class="ref-tab-button tab-button py-2 px-4 font-semibold border-b-2 border-transparent hover:bg-yellow-100" data-tab="words">Words & Mantras</button>
+                    </div>
+
+                    <div id="spells" class="ref-tab-content active mt-6">
+                        <div class="bg-white p-6 rounded-lg shadow">
+                            <h3 class="text-2xl font-semibold mb-4 text-yellow-800">Complete Spellbook</h3>
+                            <p class="mb-4">Magic is cast from prepared reagents and consumes Magic Points. A character's level determines the highest circle of spells they can cast. Use the search to quickly find a spell.</p>
+                            <input type="text" id="spell-search" placeholder="Search for a spell by name or effect..." class="w-full p-2 border border-gray-300 rounded-md mb-4 focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500">
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-left" id="spell-table">
+                                    <thead class="bg-yellow-200 text-yellow-900">
+                                        <tr>
+                                            <th class="p-3">Spell Name</th>
+                                            <th class="p-3 text-center">Circle</th>
+                                            <th class="p-3">Effect</th>
+                                            <th class="p-3">Reagents</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="spell-table-body"></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="words" class="ref-tab-content mt-6">
+                        <div class="bg-white p-6 rounded-lg shadow">
+                            <h3 class="text-2xl font-semibold mb-4 text-yellow-800">Mantras & Words of Power</h3>
+                            <p class="mb-4">These "passwords" are essential for progressing through the game. Mantras are used at the Shrines of Virtue, while Words of Power unlock the dungeons.</p>
+                             <input type="text" id="word-search" placeholder="Search by Virtue, Dungeon, Mantra..." class="w-full p-2 border border-gray-300 rounded-md mb-4 focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500">
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-left" id="word-table">
+                                    <thead class="bg-yellow-200 text-yellow-900">
+                                        <tr>
+                                            <th class="p-3">Virtue</th>
+                                            <th class="p-3">Mantra</th>
+                                            <th class="p-3">Dungeon</th>
+                                            <th class="p-3">Word of Power</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="word-table-body"></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </main>
+        </div>
+    </div>
+
+    <script src="js/Ultima5.js"></script>
+</body>
+</html>
