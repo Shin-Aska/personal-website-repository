@@ -2,11 +2,8 @@
 
 ## Introduction
 
-- [ ] 
-  [![](images/chromeos_tmb.png)](images/chromeos.png)
-
-- [ ] 
-  Figure 1\. How Chrome OS desktop looks like
+- [ ] [![](images/chromeos_tmb.png)](images/chromeos.png)
+- [ ] Figure 1\. How Chrome OS desktop looks like
 
 
 Chrome OS is a Linux\-based operating system that primarily revolves around Chrome. From the user interface down to its core, it is mainly built using the Chrome ecosystem technology stack, which takes a different route to the typical Linux distro that revolves around the GNU ecosystem.
@@ -40,10 +37,8 @@ It should be noted that most of my sentiments in here are for when using ChromeO
 ### ChromeOS is lightweight and intended for people who mainly use the web.
 
 
-[![](images/chromeos_task_manager_tmb.png)](images/chromeos_task_manager.png)
-
-
-Figure 2\. Chrome OS task manager
+- [ ] [![](images/chromeos_task_manager_tmb.png)](images/chromeos_task_manager.png)
+- [ ] Figure 2\. Chrome OS task manager
 
 
 ChromeOS is catered towards internet heavy oriented activities. Your computer isn't really doing anything aside from running Chrome, and since by design, from user interface down to its core, it's all Chrome, no system processes are competing with Chrome.
@@ -83,44 +78,38 @@ Most Linux distros (Ubuntu 21\.10, KDE Neon, Fedora 34, ElementaryOS) have idle 
 
 
 - [ ] [![](images/ubuntu_tmb.png)](images/ubuntu.png)
-- [ ] 
-  Figure 4\. Ubuntu 21\.20 resource consumption
+- [ ] Figure 4\. Ubuntu 21\.20 resource consumption
 
 
 
 
 - [ ] [![](images/fedora_tmb.png)](images/fedora.png)
-- [ ] 
-  Figure 5\. Fedora 34 resource consumption
+- [ ] Figure 5\. Fedora 34 resource consumption
 
 
 
 
 - [ ] [![](images/elementary_tmb.png)](images/elementary.png)
-- [ ] 
-  Figure 6\. Elementary OS Jólnir resource consumption
+- [ ] Figure 6\. Elementary OS Jólnir resource consumption
 
 
 
 
 - [ ] [![](images/kde_neon_tmb.png)](images/kde_neon.png)
-- [ ] 
-  Figure 7\. KDE Neon 5\.24 resource consumption
+- [ ] Figure 7\. KDE Neon 5\.24 resource consumption
 
 
 
 However, there are distros out there catered towards these low\-end devices. For example, the figure below shows TinyCore Linux running Chromium on a 768MB RAM machine.
 
 - [ ] [![](images/tinycore_tmb.png)](images/tinycore.png)
-- [ ] 
-  Figure 8\. Tinycore Linux resource consumption
+- [ ] Figure 8\. Tinycore Linux resource consumption
 
 
 
 
 - [ ] [![](images/trisequel_tmb.png)](images/trisequel.png)
-- [ ] 
-  Figure 9\. Trisquel Mini Linux resource consumption
+- [ ] Figure 9\. Trisquel Mini Linux resource consumption
 
 
 
@@ -136,16 +125,14 @@ Although if all you want is a glorified Chrome device, then nothing can beat Chr
 ChromeOS Web apps are the staple of ChromeOS. Before having Android and Linux runtimes, ChromeOS early versions initially shipped with just web apps alone, similar to the earlier version of iPhone, trying to bet on HTML5 apps.
 
 - [ ] [![](images/chromeos_gaming1_tmb.png)](images/chromeos_gaming1.png)
-- [ ] 
-  Figure 10\. Gaming on ChromeOS
+- [ ] Figure 10\. Gaming on ChromeOS
 
 
 
 They do work, and most work great, and most can even work offline. As you can see here, where I was running three games, a SNES emulator running Super Mario Brothers All\-Stars, Cut the Rope, and Swoop are all running while there is no wifi connection available.
 
 - [ ] [![](images/chromeos_book_offline.png)](images/chromeos_book_offline.png)
-- [ ] 
-  Figure 11\. ChromeOS Google books
+- [ ] Figure 11\. ChromeOS Google books
 
 
 
@@ -177,8 +164,7 @@ Google drive too is also part of the problem because it is the only online stora
 In my opinion, installing ChromeOS Flex isn't worth it in general, even if Google adds the Android subsystem for ChromeOS. For me, it is much better to just install a GNU Linux distro as you get more out of it (performance\-wise). While yes, it is true that you can install Linux for ChromeOS and run your Linux apps in it, ChromeOS now has to split its resource between itself and the Linux. It is just not fun when you are under Google's walled garden now.
 
 - [ ] [![](images/chromeos_streaming_tmb.png)](images/chromeos_streaming.png)
-- [ ] 
-  Figure 12\. ChromeOS streaming
+- [ ] Figure 12\. ChromeOS streaming
 
 
 
@@ -188,3 +174,62 @@ For example, Prime video still is not happy that I am using a browser and operat
 
 But I can understand the appeal, so even though I do not think it is worth it in general, if all you want to do is just browse the web in general, then you should give ChromeOS a try, although one problem here is that its hardware support is not as profound as GNU/Linux does, like there is no support for Nvidia cards so it will not boot at all, requiring a little bit of experimentation if your hardware is compatible with the operating system itself.
 
+## Update: August 25, 2025
+
+A month ago, I once again had access to my Macbook, the same Macbook mentioned on my [(Switching someone to Linux article)<sup>\[7]</sup>](virtualmachines-vs-wine-vs-seamless-integration.html) after giving my mother a 2021 iPad I won from a raffle.
+
+This in turn gave me opportunity to experiment once again with ChromeOS since I know that in the past 3 years, there have been significant progress made for this operating system.
+
+The first one is a widespread of ChromeOS forks. I first heard of Bliss OS and Prime OS back in 2023 which are android builds specifically designed for x86 to play Android games on the PC without the need of an emulation layer. Then later I heard of FydeOS, which is a ChromeOS fork that gave access to Android subsystem without the need of having a ChromeOS hardware.
+
+I gave FydeOS a shot, which gave me mixed impressions. The first one is that the wifi module on this Macbook doesn't work with FydeOS, so I had to resort to using a usb wifi dongle. Then I had notice that the Chrome version shipped and maintained by this fork is not up to date with the latest Chrome, which made me worry about the security implications.
+
+Although the Android layer works quite well, so much so that I could just use an Android browser and not use the bundled ChromeOS, so there is a workaround that we can go for. But for me, having to use a USB wifi dongle is a turn off so I decided to switch to another OS, which lead me back to ChromeOS flex.
+
+Back in 2022, ChromeOS flex was a bit primitive, but now I have a change of mind. The PWA ecosystems has far matured now compare before but more importantly I can use Linux apps on here using LaCRos (Linux and ChromeOS).
+
+Although your experience may vary. The Linux bundled on ChromeOS flex is bare minimum such as it only have the basic linux utilities installed (it uses debian's packagement system so you have access to both apt and dpkg).
+
+For example, I had to work my ass off to make Jetbrains IDEs work properly on ChromeOS Flex. For starters I installed Liberica's JDK to gain access to Java 21, then download Pycharm's tar file, then do the following commands:
+
+```bash
+sudo tar -xvf WebStorm-2025.1.3.tar.gz -C /opt/
+cd /opt
+sudo chmod -R a+rwX pycharm-2025.1.3.1/
+```
+
+The last command is especially important as what it does is allow everyone to write on that directory, effectively allowing Pycharm to auto update. Then from there run the application via the terminal:
+
+```bash
+cd pycharm-2025.1.3.1/bin/
+./pycharm
+```
+
+Then from there while Pycharm (or any other Jetbrain's IDEs for that matter) is running, go to the tools section and execute **tools > Create Command Line Launcher** and **tools > Create Desktop entry**:
+
+- [ ] [![](images/chrome_os_pycharm.png)](images/chrome_os_pycharm.png)
+- [ ] Figure 13\. Installing Pycharm to ChromeOS's launcher
+
+What this would do is it will install Pycharm to the ChromeOS Flex's launcher:
+
+- [ ] [![](images/chrome_os_linux_apps_on_launcher.png)](images/chrome_os_linux_apps_on_launcher.png)
+- [ ] Figure 13\. Installing Pycharm to ChromeOS's launcher
+
+Not all Linux apps have to be done like this. KeepassXC was pretty straight-forward (thanks to it being available on LaCRos's PPA), on Steam, I had to download the [Steam's .deb package<sup>\[8]</sup>](https://cdn.akamai.steamstatic.com/client/installer/steam.deb) file from Steam's website and perform the following in the command line:
+
+```bash
+sudo dpkg --add-architecture i386
+sudo apt-get update
+sudo dpkg -i steam_latest.deb
+sudo apt-get install -y libgl1-mesa-dri:i386 libgl1-mesa-glx:i386
+sudo apt install libegl1:i386 libgbm1:i386 steam-libs-amd64:amd64 steam-libs-i386:i386
+```
+
+But the rewards are worth it. As you can see on this screenshot, I am playing a Chained Echoes on Steam (unfortunately Steam for ChromeOS has ended, but it never supported ChromeOS flex anyways), doing some light coding (via Pycharm), have Microsoft Teams open and Obsidian while editing this article and another article I am working on regarding my experience with Nvidia Geforce Now.
+
+- [ ] [![](images/chromeos_new.png)](images/chromeos_new.png)
+- [ ] Figure 13\. Installing Pycharm to ChromeOS's launcher
+
+Aside from that, ChromeOS flex now has support for both Microsoft Office 365 and Onedrive, which is good. I mean I don't use them aside from work, nor do I login my work account on my personal devices, but is a good thing google listened.
+
+I am glad to say that now I have a change of mind and can now recommend ChromeOS flex as a decent alternative to Windows.
