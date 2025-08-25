@@ -6,6 +6,7 @@ from parsers.markdown.constants import heading_markdown_element_type, MarkdownEl
     heading_with_ids_upon_publishing
 from parsers.markdown.models import MarkdownElement, HeadingContent
 from parsers.markdown.parser import MarkdownParser
+from publishers.constants import TAB_CHARACTER, NEWLINE_CHARACTER
 
 
 class Publisher(ABC):
@@ -199,8 +200,8 @@ class Publisher(ABC):
         value = Publisher._convert_markdown_markers_to_html(value) if convert_formatting_markers_to_html else value
         value = Publisher._process_link_markers(value) if convert_link_markers_to_html else value
         if content == '':
-            return f"{'\t' * tab_padding}{value}"
-        return f"{content}{"\n" if add_new_line_per_join else ''}{'\t' * (Publisher.base_padding + tab_padding)}{value}"
+            return f"{TAB_CHARACTER * tab_padding}{value}"
+        return f"{content}{NEWLINE_CHARACTER if add_new_line_per_join else ''}{TAB_CHARACTER * (Publisher.base_padding + tab_padding)}{value}"
 
     @staticmethod
     def _fetch_content(textio: TextIO) -> list[str]:

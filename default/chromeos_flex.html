@@ -22,12 +22,14 @@
 	<script nonce="<?php echo $token; ?>" src="script/stats.js" type="text/javascript"></script>
 	<script nonce="<?php echo $token; ?>" src="script/sky.js"></script>
 	<script nonce="<?php echo $token; ?>" src="script/site.js" type="text/javascript"></script>
+    <script nonce="<?php echo $token; ?>" src="script/highlight.js" type="text/javascript"></script>
 
 	<link href="css/animation.css" rel="stylesheet" type="text/css">
 	<link href="css/fonts.css" rel="stylesheet" type="text/css">
 	<link href="css/site.css" rel="stylesheet" type="text/css">
 	<link href="css/sky.css" rel="stylesheet" type="text/css">
 	<link href="css/reset.css" rel="stylesheet" type="text/css">
+    <link href="css/tomorrow-night-blue.css" rel="stylesheet" type="text/css">
 
 	<!-- @@@ -->
 	<title>Skies of the Lost Cause - Blogs: My opinions about Chrome OS Flex  </title>
@@ -118,6 +120,7 @@
 					<li><a href="#chromeos_web_apps">ChromeOS Web apps</a></li>
 					<li><a href="#app_ecosystem">Abysmal App Ecosystem</a></li>
 					<li><a href="#overall_reliance_google_ecosystem">Overall reliance of the Google ecosystem</a></li>
+                    <li><a href="#update_august_25_2025">Update: August 25, 2025</a></li>
 				</ul>
 			</li>
 			<li><a href="#conclusion">Conclusion</a></li>
@@ -461,7 +464,60 @@
 			will not boot at all, requiring a little bit of experimentation if your hardware is compatible with the
 			operating system itself.</p>
 
-		<h3>~ End ~</h3>
+		<h2 id="update_august_25_2025">Update: August 25, 2025</h2>
+			<p>A month ago, I once again had access to my Macbook, the same Macbook mentioned on my <a href="virtualmachines-vs-wine-vs-seamless-integration.html">(Switching someone to Linux article)<sup>[7]</sup></a> after giving my mother a 2021 iPad I won from a raffle.</p>
+			<p>This in turn gave me opportunity to experiment once again with ChromeOS since I know that in the past 3 years, there have been significant progress made for this operating system.</p>
+			<p>The first one is a widespread of ChromeOS forks. I first heard of Bliss OS and Prime OS back in 2023 which are android builds specifically designed for x86 to play Android games on the PC without the need of an emulation layer. Then later I heard of FydeOS, which is a ChromeOS fork that gave access to Android subsystem without the need of having a ChromeOS hardware.</p>
+			<p>I gave FydeOS a shot, which gave me mixed impressions. The first one is that the wifi module on this Macbook doesn't work with FydeOS, so I had to resort to using a usb wifi dongle. Then I had notice that the Chrome version shipped and maintained by this fork is not up to date with the latest Chrome, which made me worry about the security implications.</p>
+			<p>Although the Android layer works quite well, so much so that I could just use an Android browser and not use the bundled ChromeOS, so there is a workaround that we can go for. But for me, having to use a USB wifi dongle is a turn off so I decided to switch to another OS, which lead me back to ChromeOS flex.</p>
+			<p>Back in 2022, ChromeOS flex was a bit primitive, but now I have a change of mind. The PWA ecosystems has far matured now compare before but more importantly I can use Linux apps on here using LaCRos (Linux and ChromeOS).</p>
+			<p>Although your experience may vary. The Linux bundled on ChromeOS flex is bare minimum such as it only have the basic linux utilities installed (it uses debian's packagement system so you have access to both apt and dpkg).</p>
+			<p>For example, I had to work my ass off to make Jetbrains IDEs work properly on ChromeOS Flex. For starters I installed Liberica's JDK to gain access to Java 21, then download Pycharm's tar file, then do the following commands:</p>
+			<pre>
+				<code class="language-bash">
+sudo tar -xvf WebStorm-2025.1.3.tar.gz -C /opt/
+cd /opt
+sudo chmod -R a+rwX pycharm-2025.1.3.1/
+
+				</code>
+			</pre>
+			<p>The last command is especially important as what it does is allow everyone to write on that directory, effectively allowing Pycharm to auto update. Then from there run the application via the terminal:</p>
+			<pre>
+				<code class="language-bash">
+cd pycharm-2025.1.3.1/bin/
+./pycharm
+
+				</code>
+			</pre>
+			<p>Then from there while Pycharm (or any other Jetbrain's IDEs for that matter) is running, go to the tools section and execute <b>tools > Create Command Line Launcher</b> and <b>tools > Create Desktop entry</b>:</p>
+			<figure>
+				<a href="images/chrome_os_pycharm.png" target="_blank"><img class="preview center" src="images/chrome_os_pycharm.png"></a>
+				<figcaption>Figure 13. Installing Pycharm to ChromeOS's launcher</figcaption>
+			</figure>
+			<p>What this would do is it will install Pycharm to the ChromeOS Flex's launcher:</p>
+			<figure>
+				<a href="images/chrome_os_linux_apps_on_launcher.png" target="_blank"><img class="preview center" src="images/chrome_os_linux_apps_on_launcher.png"></a>
+				<figcaption>Figure 13. Installing Pycharm to ChromeOS's launcher</figcaption>
+			</figure>
+			<p>Not all Linux apps have to be done like this. KeepassXC was pretty straight-forward (thanks to it being available on LaCRos's PPA), on Steam, I had to download the <a href="https://cdn.akamai.steamstatic.com/client/installer/steam.deb">Steam's .deb package<sup>[8]</sup></a> file from Steam's website and perform the following in the command line:</p>
+			<pre>
+				<code class="language-bash">
+sudo dpkg --add-architecture i386
+sudo apt-get update
+sudo dpkg -i steam_latest.deb
+sudo apt-get install -y libgl1-mesa-dri:i386 libgl1-mesa-glx:i386
+sudo apt install libegl1:i386 libgbm1:i386 steam-libs-amd64:amd64 steam-libs-i386:i386
+
+				</code>
+			</pre>
+			<p>But the rewards are worth it. As you can see on this screenshot, I am playing a Chained Echoes on Steam (unfortunately Steam for ChromeOS has ended, but it never supported ChromeOS flex anyways), doing some light coding (via Pycharm), have Microsoft Teams open and Obsidian while editing this article and another article I am working on regarding my experience with Nvidia Geforce Now.</p>
+			<figure>
+				<a href="images/chromeos_new.png" target="_blank"><img class="preview center" src="images/chromeos_new.png"></a>
+				<figcaption>Figure 13. Installing Pycharm to ChromeOS's launcher</figcaption>
+			</figure>
+			<p>Aside from that, ChromeOS flex now has support for both Microsoft Office 365 and Onedrive, which is good. I mean I don't use them aside from work, nor do I login my work account on my personal devices, but is a good thing google listened.</p>
+			<p>I am glad to say that now I have a change of mind and can now recommend ChromeOS flex as a decent alternative to Windows.</p>
+			<h3>~ End ~</h3>
 		<h4>
 			There are 
 			<?php
@@ -491,6 +547,7 @@
 					element.src = element.oldsrc;
 				}
 			}
+            hljs.highlightAll();
 		});
 	</script>
 </body>
