@@ -1,32 +1,10 @@
-:root {
-    /* Light theme (default) */
-    --bg-color: #c1c1c1;
-    --text-color: black;
-    --accent-color: #004cb3;
-    --header-bg: #ffffff;
-    --card-bg: #ffffff;
-    --border-color: #c1c1c1;
-    --link-color: rgb(45, 1, 104);
-    --link-hover: rgb(159, 100, 255);
-}
-
-@media (prefers-color-scheme: dark) {
-    :root {
-        --bg-color: #1a1a1a;
-        --text-color: #f0f0f0;
-        --accent-color: #4d9eff;
-        --header-bg: #2d2d2d;
-        --card-bg: #2d2d2d;
-        --border-color: rgba(0, 0, 0, 0);
-        --link-color: #66b3ff;
-        --link-hover: #99ccff;
-    }
-}
-
-
 body {
-    background-color: var(--bg-color);
-    color: var(--text-color);
+
+	/*background: rgba(0, 0, 0, 0) url("../images/Tempholder.png") no-repeat fixed top;*/
+
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#8ed6ff+0,004cb3+100 */
+    background: #c1c1c1; /* Old browsers */
+    /* IE9 SVG, needs conditional override of 'filter' to 'none' */
     background-size: cover;
     background-position: fixed;
     -webkit-background-size: cover;
@@ -37,76 +15,50 @@ ul {
     text-align: left;
 }
 
-#main,
-#threejsmain {
-    position: fixed;
-    top: 0px;
-    left: 0px;
-    z-index: -9998;
-    background-size: 100% 100%;
+#main, #threejsmain {
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	z-index: -9998;
+	background-size: 100% 100%;
     width: 100%;
     height: 100%;
     height: auto !important;
-    min-height: 100%;
+    min-height:100%;
     min-width: 1000px;
     padding-left: 0;
     padding-right: 0;
     margin-left: auto;
     margin-right: auto;
     display: block;
-    background-color: var(--bg-color);
-    transition: background-color 0.3s ease;
 }
 
 #background {
-    position: fixed;
-    top: 0px;
-    left: 0px;
-    z-index: -9999;
-    background-size: 100% 100%;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	z-index: -9999;
+	background-size: 100% 100%;
     width: 100%;
     height: 100%;
     height: auto !important;
-    min-height: 100%;
+    min-height:100%;
     min-width: 1000px;
     padding-left: 0;
     padding-right: 0;
     margin-left: auto;
     margin-right: auto;
     display: block;
-    background-color: var(--bg-color);
-    transition: background-color 0.3s ease;
-    opacity: 0.9;
 }
 
 #menu {
-    min-height: 70px;
+	min-height: 70px;
 }
 
 .aboutTable {
     width: 100%;
-    color: var(--text-color);
-    border-collapse: collapse;
 }
 
-.aboutTable th,
-.aboutTable td {
-    padding: 10px;
-    border: 1px solid var(--border-color);
-}
-
-#games-list,
-#utility-list {
+#games-list, #utility-list {
     width: 100%;
-    background-color: var(--card-bg);
-    border: 1px solid var(--border-color);
-    border-radius: 5px;
-    padding: 15px;
-    margin: 10px 0;
-    transition: background-color 0.3s ease, border-color 0.3s ease;
-}
-
-/* Add smooth transitions for theme changes */
-* {
-    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
