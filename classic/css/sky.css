@@ -1,11 +1,43 @@
+:root {
+  /* Light theme colors (default) */
+  --text-color: #000000;
+  --background-color: #ffffff;
+  --heading-color: #000000;
+  --menu-bg: #f0f0f0;
+  --menu-hover: #e0e0e0;
+  --menu-text: #333333;
+  --menu-hover-text: #000000;
+}
+
+/* Dark theme colors */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text-color: #e0e0e0;
+    --background-color: #121212;
+    --heading-color: #ffffff;
+    --menu-bg: #1e1e1e;
+    --menu-hover: #333333;
+    --menu-text: #bbbbbb;
+    --menu-hover-text: #ffffff;
+  }
+}
+
+/* Base styles */
+body {
+  color: var(--text-color);
+  background-color: var(--background-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
 figcaption {
   text-align: center;
+  color: var(--text-color);
 }
 
 .headingBase {
   margin-left: auto;
   margin-right: auto;
-  color: black;
+  color: var(--heading-color);
   font-family: CFJackStory;
   font-weight: bold;
   min-width: 20px;
@@ -82,22 +114,27 @@ figcaption {
 }
 
 /* Menu */
-
 .menuButton {
   display: inline-block;
   padding: 8px;
   cursor: pointer;
   font-size: 2em;
   margin-right: 25px;
+  color: var(--menu-text);
+  background-color: transparent;
+  border: none;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  transition: color 0.3s ease, background-color 0.3s ease;
 }
 
 .menuButton:hover {
+  color: var(--menu-hover-text);
+  background-color: var(--menu-hover);
   animation-name: grow;
   animation-duration: 1s;
   -webkit-animation-name: grow;
@@ -105,11 +142,13 @@ figcaption {
 }
 
 /* About */
-
 .aboutPic {
   height: 220px;
   width: 230px;
   border-radius: 150px;
+  border: 3px solid var(--menu-hover);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .aboutTable {
@@ -121,16 +160,20 @@ figcaption {
 .projectsTable {
   width: 800px;
   text-align: center;
-  background-color: rgba(52, 73, 94, 0.8);
-  color: white;
-
+  background-color: var(--menu-bg);
+  color: var(--text-color);
   border-radius: 15px;
   border-collapse: collapse;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .projectsTable th {
   font-size: 25pt;
-  color: #dd5;
+  color: var(--heading-color);
+  background-color: var(--menu-hover);
+  padding: 10px;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .projectsTable td {
@@ -151,11 +194,19 @@ figcaption {
 }
 
 .projectsTable tr:hover {
-  background-color: rgba(52, 73, 94, 1);
+  background-color: var(--menu-hover);
+  transition: background-color 0.2s ease;
 }
 
 .projectsTable a {
-  color: white;
+  color: var(--text-color);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.projectsTable a:hover {
+  color: var(--menu-hover-text);
+  text-decoration: underline;
 }
 
 .projectsTable * {
