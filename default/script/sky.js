@@ -27,9 +27,39 @@ var sky =  {
 		img: undefined
 	},
 
-	init: function() {
+	loadTexture: function() {
+		// Dispose of the old texture if it exists
 
+		var texturePath = "images/clouds.png";
+		if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+			texturePath = "images/clouds-inverted.png";
+		}
+
+		var texture = THREE.ImageUtils.loadTexture(texturePath);
+		texture.magFilter = THREE.LinearMipMapLinearFilter;
+		texture.minFilter = THREE.LinearMipMapLinearFilter;
 		
+		return texture;
+	},
+
+	setupColorSchemeListener: function() {
+		const colorSchemeQuery = window.matchMedia('(prefers-color-scheme: dark)');
+		const handleColorSchemeChange = (e) => {
+			const newTexture = sky.loadTexture();
+			sky.meshMaterial.uniforms.map.texture = newTexture;
+			sky.meshMaterial.needsUpdate = true;
+		};
+
+		// Add listener for color scheme changes
+		if (colorSchemeQuery.addEventListener) {
+			colorSchemeQuery.addEventListener('change', handleColorSchemeChange);
+		} else {
+			// For older browsers
+			colorSchemeQuery.addListener(handleColorSchemeChange);
+		}
+	},
+
+	init: function() {
 		var background = document.getElementById("background");
 		var bgContext = background.getContext("2d");
 		bgContext.rect(0, 0, background.width, background.height);
@@ -43,25 +73,23 @@ var sky =  {
 		sky.scene = new THREE.Scene();
 		sky.geometry = new THREE.Geometry();
 
-		var texture = THREE.ImageUtils.loadTexture("images/clouds.png");
-		texture.magFilter = THREE.LinearMipMapLinearFilter;
-		texture.minFilter = THREE.LinearMipMapLinearFilter;
-
 		var fog = new THREE.Fog(0x251d32, -100, 5000);
+		var texture = sky.loadTexture();
 
 		sky.meshMaterial = new THREE.ShaderMaterial({
-
 			uniforms: {
 				'map': {type: 't', value: 2, texture: texture},
 				'fogColor': {type: 'c', value: fog.color},
 				'fogNear': {type: 'f', value: fog.near},
 				'fogFar': {type: 'f', value: fog.far},
 			},
-
 			vertexShader: sky.vertexShaderContext,
 			fragmentShader: sky.fragmentShaderContext,
 			depthTest: false,
 		});
+
+		// Set up color scheme change listener
+		sky.setupColorSchemeListener();
 
 		var planeMesh = new THREE.Mesh(new THREE.PlaneGeometry(64, 64));
 		for (var i = 0; i < 10000; i++) {

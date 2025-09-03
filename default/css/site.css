@@ -1,11 +1,84 @@
+:root {
+  --bg-color: #8ed6ff;
+  --bg-color-gradient: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjOGVkNmZmIiBzdG9wLW9wYWNpdHk9IjEiLz4KICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzAwNGNiMyIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgPC9saW5lYXJHcmFkaWVudD4KICA8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2dyYWQtdWNnZy1nZW5lcmF0ZWQpIiAvPgo8L3N2Zz4=);
+  --text-color: black;
+  --link-color: rgb(45, 1, 104);
+  --link-color-hover: rgb(159, 100, 255);
+  --link-text-shadow-color: rgb(168, 4, 100);
+  --tbl-child-hover: aliceblue;
+  --tbl-row-odd: lavender;
+  --tbl-row-even: gainsboro;
+}
+
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-color: #0a192f;
+    --bg-color-gradient: linear-gradient(135deg, #0a192f 0%, #172a45 100%);
+    --text-color: #e6f1ff;
+    --link-color: #64ffda;
+    --link-color-hover: #cfcc06;
+    --link-text-shadow-color: #64ffda80;
+    --tbl-child-hover: #172a45;
+    --tbl-row-odd: #172a45;
+    --tbl-row-even: #172a45;
+  }
+
+  .themepicture {
+    filter: invert(100%);
+  }
+
+  .linePNG {
+    filter: invert(100%);
+  }
+
+  .pictureContainer {
+    border-image: url("../images/div-custom-frame-inverted.png") 34 round !important;
+  }
+
+  .ui-tabs {
+    color: white;
+  }
+
+  .ui-tabs-anchor {
+    color: var(--link-color) !important;
+  }
+
+  .ui-tabs-anchor:hover {
+    color: var(--link-color-hover) !important;
+  }
+
+  .ui-tabs .ui-tabs-nav li.ui-tabs-active .ui-tabs-anchor, .ui-tabs .ui-tabs-nav li.ui-state-disabled .ui-tabs-anchor, .ui-tabs .ui-tabs-nav li.ui-tabs-loading .ui-tabs-anchor {
+    color: white !important;
+  }
+
+  .ui-tabs-panel {
+    background-color: #122c53 !important;
+    color: white !important;
+  }
+
+  .ui-tabs-panel a {
+    color: var(--link-color) !important;
+  }
+  
+  .ui-state-default {
+    color: white !important;
+    background: var(--bg-color) !important;
+  }
+
+  table.dataTable tbody tr {
+    background-color: var(--bg-color) !important;
+  }
+  
+}
+
 body {
   /*background: rgba(0, 0, 0, 0) url("../images/Tempholder.png") no-repeat fixed top;*/
 
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#8ed6ff+0,004cb3+100 */
-  background: #8ed6ff; /* Old browsers */
+  background: var(--bg-color); /* Old browsers */
   /* IE9 SVG, needs conditional override of 'filter' to 'none' */
-  background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjOGVkNmZmIiBzdG9wLW9wYWNpdHk9IjEiLz4KICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzAwNGNiMyIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgPC9saW5lYXJHcmFkaWVudD4KICA8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2dyYWQtdWNnZy1nZW5lcmF0ZWQpIiAvPgo8L3N2Zz4=);
-
+  background: var(--bg-color-gradient);
   background-size: cover;
   background-position: fixed;
   -webkit-background-size: cover;
