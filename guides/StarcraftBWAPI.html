@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Starcraft: Brood War AI Development Guide</title>
+    <title>Starcraft: Brood War - Challenging AI Guide</title>
     <script src="js/tailwind.js"></script>
     <script src="js/chart.js"></script>
     <script src="js/lucide.js"></script>
@@ -15,41 +16,52 @@
             --secondary: #e6b422;
             --accent: #cc3333;
         }
+
         body {
             background-color: #f0f4f8;
             color: #2d3748;
         }
+
         .bg-primary {
             background-color: var(--primary);
         }
+
         .bg-primary-dark {
             background-color: var(--primary-dark);
         }
+
         .text-primary {
             color: var(--primary);
         }
+
         .border-primary {
             border-color: var(--primary);
         }
+
         .bg-secondary {
             background-color: var(--secondary);
         }
+
         .bg-accent {
             background-color: var(--accent);
         }
+
         .nav-link.active {
             background-color: rgba(230, 180, 34, 0.2);
             border-left: 4px solid var(--secondary);
         }
+
         .nav-link:hover {
             background-color: rgba(230, 180, 34, 0.1);
         }
     </style>
 </head>
+
 <body class="bg-gray-100 text-gray-800">
     <div class="w-full bg-gray-200 text-gray-700">
         <div class="container mx-auto px-4 py-2">
-            <a href="index.html" class="inline-flex items-center gap-2 hover:underline"><span aria-hidden="true">←</span> Back to Guides</a>
+            <a href="index.html" class="inline-flex items-center gap-2 hover:underline"><span
+                    aria-hidden="true">←</span> Back to Guides</a>
         </div>
     </div>
 
@@ -57,7 +69,8 @@
         <header class="bg-primary text-white p-4 shadow-lg sticky top-0 z-20">
             <div class="container mx-auto flex justify-between items-center">
                 <h1 class="text-2xl md:text-3xl font-bold tracking-wider">Starcraft: Brood War AI Development</h1>
-                <button id="mobile-menu-button" class="md:hidden p-2 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-white">
+                <button id="mobile-menu-button"
+                    class="md:hidden p-2 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-white">
                     <i data-lucide="menu" class="h-6 w-6"></i>
                 </button>
             </div>
@@ -66,29 +79,45 @@
         <div class="container mx-auto flex-grow flex flex-col md:flex-row">
             <nav id="main-nav" class="w-full md:w-64 bg-blue-50 p-4 md:p-6 shadow-md flex-shrink-0 hidden md:block">
                 <ul class="space-y-2">
-                    <li><a href="#overview" class="nav-link flex items-center gap-3 p-3 rounded-lg active"><i data-lucide="info" class="h-5 w-5"></i> <span class="font-medium">Overview</span></a></li>
-                    <li><a href="#getting-started" class="nav-link flex items-center gap-3 p-3 rounded-lg"><i data-lucide="download" class="h-5 w-5"></i> <span class="font-medium">Getting Started</span></a></li>
-                    <li><a href="#setup" class="nav-link flex items-center gap-3 p-3 rounded-lg"><i data-lucide="settings" class="h-5 w-5"></i> <span class="font-medium">Setup Guide</span></a></li>
-                    <li><a href="#troubleshooting" class="nav-link flex items-center gap-3 p-3 rounded-lg"><i data-lucide="help-circle" class="h-5 w-5"></i> <span class="font-medium">Troubleshooting</span></a></li>
-                    <li><a href="#resources" class="nav-link flex items-center gap-3 p-3 rounded-lg"><i data-lucide="book" class="h-5 w-5"></i> <span class="font-medium">Resources</span></a></li>
+                    <li><a href="#overview" class="nav-link flex items-center gap-3 p-3 rounded-lg active"><i
+                                data-lucide="info" class="h-5 w-5"></i> <span class="font-medium">Overview</span></a>
+                    </li>
+                    <li><a href="#getting-started" class="nav-link flex items-center gap-3 p-3 rounded-lg"><i
+                                data-lucide="download" class="h-5 w-5"></i> <span class="font-medium">Getting
+                                Started</span></a></li>
+                    <li><a href="#setup" class="nav-link flex items-center gap-3 p-3 rounded-lg"><i
+                                data-lucide="settings" class="h-5 w-5"></i> <span class="font-medium">Setup
+                                Guide</span></a></li>
+                    <li><a href="#troubleshooting" class="nav-link flex items-center gap-3 p-3 rounded-lg"><i
+                                data-lucide="help-circle" class="h-5 w-5"></i> <span
+                                class="font-medium">Troubleshooting</span></a></li>
+                    <li><a href="#resources" class="nav-link flex items-center gap-3 p-3 rounded-lg"><i
+                                data-lucide="book" class="h-5 w-5"></i> <span class="font-medium">Resources</span></a>
+                    </li>
                 </ul>
             </nav>
 
             <main class="flex-grow p-4 md:p-8 overflow-y-auto">
                 <section id="overview" class="content-section active">
-                    <h2 class="text-3xl font-bold text-primary mb-4 border-b-2 border-primary pb-2">Starcraft: Brood War AI Development</h2>
+                    <h2 class="text-3xl font-bold text-primary mb-4 border-b-2 border-primary pb-2">Starcraft: Brood War
+                        - Challenging AI</h2>
                     <div class="space-y-6">
                         <div class="bg-white p-6 rounded-lg shadow-lg">
                             <div class="flex flex-col md:flex-row gap-6 items-center">
                                 <div class="md:w-1/3">
-                                    <img src="images/Starcraftbox.jpg" alt="Starcraft: Brood War Box Art" class="rounded-lg shadow-md w-full h-auto">
+                                    <img src="images/Starcraftbox.jpg" alt="Starcraft: Brood War Box Art"
+                                        class="rounded-lg shadow-md w-full h-auto">
                                 </div>
                                 <div class="md:w-2/3">
                                     <p class="text-lg leading-relaxed mb-4">
-                                        Welcome to the world of Starcraft: Brood War AI development! This guide will help you set up and start developing AI agents for one of the most iconic real-time strategy games of all time using BWAPI (Brood War Application Programming Interface).
+                                        Welcome to the ultimate guide for Starcraft: Brood War players looking for a
+                                        more challenging AI opponent! This guide will help you set up and configure
+                                        advanced AI opponents that will test your skills beyond the standard game AI.
                                     </p>
                                     <p class="text-lg leading-relaxed mb-4">
-                                        Whether you're interested in competitive AI development, machine learning applications, or just want to experiment with game AI, this guide will provide you with all the necessary steps to get started.
+                                        Whether you're a seasoned veteran looking for a tougher challenge or a player
+                                        who wants to practice specific strategies, this guide will show you how to set
+                                        up and customize AI opponents that will push your skills to the limit.
                                     </p>
                                 </div>
                             </div>
@@ -97,215 +126,404 @@
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
                             <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
                                 <div class="text-blue-600 mb-3">
-                                    <i data-lucide="code" class="h-8 w-8"></i>
+                                    <i data-lucide="cpu" class="h-8 w-8"></i>
                                 </div>
-                                <h3 class="text-xl font-semibold mb-2">BWAPI</h3>
-                                <p class="text-gray-600">The official API for Starcraft: Brood War that allows you to create custom AI agents.</p>
+                                <h3 class="text-xl font-semibold mb-2">Advanced AI</h3>
+                                <p class="text-gray-600">Experience AI opponents that challenge even veteran players
+                                    with better micro and strategy.</p>
                             </div>
                             <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
                                 <div class="text-yellow-600 mb-3">
-                                    <i data-lucide="cpu" class="h-8 w-8"></i>
+                                    <i data-lucide="zap" class="h-8 w-8"></i>
                                 </div>
-                                <h3 class="text-xl font-semibold mb-2">AI Development</h3>
-                                <p class="text-gray-600">Learn to develop sophisticated AI strategies and behaviors for your agents.</p>
+                                <h3 class="text-xl font-semibold mb-2">Adaptive Difficulty</h3>
+                                <p class="text-gray-600">AI that adapts to your playstyle and improves over time.</p>
                             </div>
                             <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
                                 <div class="text-red-600 mb-3">
                                     <i data-lucide="users" class="h-8 w-8"></i>
                                 </div>
                                 <h3 class="text-xl font-semibold mb-2">Community</h3>
-                                <p class="text-gray-600">Join a vibrant community of AI developers and Starcraft enthusiasts.</p>
+                                <p class="text-gray-600">Join a vibrant community of AI developers and Starcraft
+                                    enthusiasts.</p>
                             </div>
                         </div>
                     </div>
                 </section>
 
                 <section id="getting-started" class="content-section hidden">
-                    <h2 class="text-3xl font-bold text-primary mb-6">Getting Started with BWAPI</h2>
-                    <div class="space-y-6">
+                    <h2 class="text-3xl font-bold text-primary mb-6">AI Solution Comparison</h2>
+                    <div class="bg-white p-6 rounded-lg shadow-lg mb-8">
+                        <h3 class="text-2xl font-semibold mb-4 text-primary">Choose Your AI Solution</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="border border-gray-200 rounded-lg p-4 hover:shadow-md">
+                                <h4 class="font-semibold text-lg mb-2">SCHNAIL</h4>
+                                <div class="pros-cons mb-3">
+                                    <p class="font-medium text-green-600">Pros:</p>
+                                    <ul class="list-disc pl-5 mb-3">
+                                        <li>More realistic AI behavior</li>
+                                        <li>Better micro and macro management</li>
+                                        <li>Seamless integration with the game</li>
+                                        <li>Active community and regular updates</li>
+                                    </ul>
+                                    <p class="font-medium text-red-600">Cons:</p>
+                                    <ul class="list-disc pl-5">
+                                        <li>Requires internet connection for initial login</li>
+                                        <li>AI plays over local network after login</li>
+                                    </ul>
+                                </div>
+                                <div class="mt-4">
+                                    <a href="#setup"
+                                        onclick="document.querySelector('[href=\'#setup\']').click(); document.querySelector('#schnail-setup').scrollIntoView({ behavior: 'smooth' }); return false;"
+                                        class="inline-flex items-center px-3 py-1.5 border border-transparent text-sm font-medium rounded-md text-blue-700 bg-blue-100 hover:bg-blue-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                                        View Setup Guide
+                                        <i data-lucide="arrow-right" class="ml-1 h-4 w-4"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="border border-gray-200 rounded-lg p-4 hover:shadow-md">
+                                <h4 class="font-semibold text-lg mb-2">BWAILauncher</h4>
+                                <div class="pros-cons mb-3">
+                                    <p class="font-medium text-green-600">Pros:</p>
+                                    <ul class="list-disc pl-5 mb-3">
+                                        <li>No internet connection required</li>
+                                        <li>Replaces standard single-player AI</li>
+                                        <li>Easier to set up initially</li>
+                                        <li>Good for offline play</li>
+                                    </ul>
+                                    <p class="font-medium text-red-600">Cons:</p>
+                                    <ul class="list-disc pl-5">
+                                        <li>Less realistic AI behavior</li>
+                                        <li>Uses standard AI micro which can be cheesed</li>
+                                        <li>Limited strategic depth compared to SCHNAIL</li>
+                                    </ul>
+                                </div>
+                                <div class="mt-4">
+                                    <a href="#setup"
+                                        onclick="document.querySelector('[href=\'#setup\']').click(); document.querySelector('#bwai-setup').scrollIntoView({ behavior: 'smooth' }); return false;"
+                                        class="inline-flex items-center px-3 py-1.5 border border-transparent text-sm font-medium rounded-md text-blue-700 bg-blue-100 hover:bg-blue-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                                        View Setup Guide
+                                        <i data-lucide="arrow-right" class="ml-1 h-4 w-4"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h2 class="text-3xl font-bold text-primary mb-6">Getting Started with Advanced AI</h2>
+                    <div class="space-y-8">
+                        <!-- SCHNAIL Prerequisites -->
                         <div class="bg-white p-6 rounded-lg shadow-lg">
-                            <h3 class="text-2xl font-semibold mb-4 text-primary">Prerequisites</h3>
+                            <h3 class="text-2xl font-semibold mb-4 text-primary">SCHNAIL Prerequisites</h3>
                             <ol class="list-decimal pl-6 space-y-3">
                                 <li class="flex items-start">
                                     <span class="mr-2">1.</span>
                                     <div>
-                                        <span class="font-medium">Register an account</span> at 
-                                        <a href="https://www.schnail.com" target="_blank" class="text-blue-600 hover:underline">SCHNAIL (Starcraft Human and AI League)</a>
+                                        <span class="font-medium">Register an account</span> at
+                                        <a href="https://www.schnail.com" target="_blank"
+                                            class="text-blue-600 hover:underline">SCHNAIL (Starcraft Human and AI
+                                            League)</a>
                                     </div>
                                 </li>
                                 <li class="flex items-start">
                                     <span class="mr-2">2.</span>
                                     <div>
-                                        <span class="font-medium">Download the latest release</span> of SCHNAIL from 
-                                        <a href="https://www.schnail.com/#/downloads" target="_blank" class="text-blue-600 hover:underline">their downloads page</a>
+                                        <span class="font-medium">Download the latest release</span> of SCHNAIL from
+                                        <a href="https://www.schnail.com/#/downloads" target="_blank"
+                                            class="text-blue-600 hover:underline">their downloads page</a>
                                     </div>
                                 </li>
                                 <li class="flex items-start">
                                     <span class="mr-2">3.</span>
                                     <div>
-                                        <span class="font-medium">Install Java JRE</span> (Recommended: Liberica Java releases from 
-                                        <a href="https://bell-sw.com/pages/downloads/#jdk-21-lts" target="_blank" class="text-blue-600 hover:underline">bell-sw.com</a>)
+                                        <span class="font-medium">Install Java JRE</span> (Recommended: Liberica Java
+                                        releases from
+                                        <a href="https://bell-sw.com/pages/downloads/#jdk-21-lts" target="_blank"
+                                            class="text-blue-600 hover:underline">bell-sw.com</a>)
                                     </div>
                                 </li>
                             </ol>
                         </div>
 
+                        <!-- BWAILauncher Prerequisites -->
                         <div class="bg-white p-6 rounded-lg shadow-lg">
-                            <h3 class="text-2xl font-semibold mb-4 text-primary">Installation Steps</h3>
+                            <h3 class="text-2xl font-semibold mb-4 text-primary">BWAILauncher Prerequisites</h3>
                             <ol class="list-decimal pl-6 space-y-3">
-                                <li>Install the downloaded SCHNAIL client</li>
-                                <li>Note: Your antivirus may flag the SCHNAIL client - make sure to allow it to run</li>
-                                <li>Launch the SCHNAIL client and log in with your credentials</li>
+                                <li class="flex items-start">
+                                    <span class="mr-2">1.</span>
+                                    <div>
+                                        <span class="font-medium">Install Starcraft: Brood War</span> (original or
+                                        remastered)
+                                    </div>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="mr-2">2.</span>
+                                    <div>
+                                        <span class="font-medium">Update to version 1.16.1</span> (required for
+                                        BWAILauncher compatibility)
+                                    </div>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="mr-2">3.</span>
+                                    <div>
+                                        <span class="font-medium">Download BWAILauncher</span> from
+                                        <a href="https://github.com/poiuyqwert/BWAILauncher/tree/main" target="_blank"
+                                            class="text-blue-600 hover:underline">GitHub</a>
+                                    </div>
+                                </li>
                             </ol>
                         </div>
+                    </div>
 
-                        <div class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded-r">
-                            <div class="flex">
-                                <div class="flex-shrink-0">
-                                    <i data-lucide="alert-triangle" class="h-5 w-5 text-blue-500"></i>
-                                </div>
-                                <div class="ml-3">
-                                    <p class="text-sm text-blue-700">
-                                        <strong>Note:</strong> The first launch might take some time as it downloads necessary game files.
-                                    </p>
-                                </div>
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <h3 class="text-2xl font-semibold mb-4 text-primary">Installation Steps</h3>
+                        <ol class="list-decimal pl-6 space-y-3">
+                            <li>Install the downloaded SCHNAIL client</li>
+                            <li>Note: Your antivirus may flag the SCHNAIL client - make sure to allow it to run</li>
+                            <li>Launch the SCHNAIL client and log in with your credentials</li>
+                        </ol>
+                    </div>
+
+                    <div class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded-r">
+                        <div class="flex">
+                            <div class="flex-shrink-0">
+                                <i data-lucide="alert-triangle" class="h-5 w-5 text-blue-500"></i>
+                            </div>
+                            <div class="ml-3">
+                                <p class="text-sm text-blue-700">
+                                    <strong>Note:</strong> The first launch might take some time as it downloads
+                                    necessary game files.
+                                </p>
                             </div>
                         </div>
                     </div>
                 </section>
 
                 <section id="setup" class="content-section hidden">
-                    <h2 class="text-3xl font-bold text-primary mb-6">Setup Guide</h2>
-                    <div class="space-y-6">
-                        <div class="bg-white p-6 rounded-lg shadow-lg">
-                            <h3 class="text-2xl font-semibold mb-4 text-primary">Initial Configuration</h3>
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <div>
-                                    <h4 class="font-semibold mb-2">SCHNAIL Client</h4>
-                                    <p class="text-gray-700 mb-4">After installation, the SCHNAIL client will guide you through the initial setup process:</p>
-                                    <ul class="list-disc pl-5 space-y-2">
-                                        <li>Select your preferred Starcraft: Brood War installation directory</li>
-                                        <li>Choose your preferred resolution and graphics settings</li>
-                                        <li>Configure your control preferences</li>
-                                    </ul>
+
+                    <h2 class="text-3xl font-bold text-primary mb-8 border-b-2 border-primary pb-2">Setup Guides</h2>
+
+                    <div id="ai-setup" class="bg-white p-6 rounded-lg shadow-lg mb-8">
+                        <div id="schnai-setup" class="bg-white p-6 rounded-lg shadow-lg">
+                            <h3 class="text-2xl font-semibold mb-4 text-primary">SCHNAIL Setup Guide</h3>
+                            <div class="space-y-6">
+                                <div class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded-r mb-6">
+                                    <div class="flex">
+                                        <div class="flex-shrink-0">
+                                            <i data-lucide="info" class="h-5 w-5 text-blue-500"></i>
+                                        </div>
+                                        <div class="ml-3">
+                                            <p class="text-sm text-blue-700">
+                                                <strong>Note:</strong> SCHNAIL includes its own version of Starcraft: Brood
+                                                War, so
+                                                you don't need to install the game separately.
+                                            </p>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div>
-                                    <h4 class="font-semibold mb-2">First Launch</h4>
-                                    <p class="text-gray-700 mb-4">When you first launch the game through SCHNAIL:</p>
-                                    <ul class="list-disc pl-5 space-y-2">
-                                        <li>Create a profile for your AI development</li>
-                                        <li>Select your race preference (though your AI can be race-agnostic)</li>
-                                        <li>Familiarize yourself with the interface</li>
-                                    </ul>
+
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div>
+                                        <h4 class="font-semibold mb-2">Installation Steps</h4>
+                                        <ol class="list-decimal pl-5 space-y-2">
+                                            <li>Download and install the SCHNAIL client</li>
+                                            <li>Launch the client and log in with your account</li>
+                                            <li>The client will automatically download and set up the game files</li>
+                                            <li>Configure your preferred resolution and graphics settings</li>
+                                            <li>Start playing against the AI</li>
+                                        </ol>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold mb-2">Key Features</h4>
+                                        <ul class="list-disc pl-5 space-y-2">
+                                            <li>No separate Starcraft installation required</li>
+                                            <li>Automatic updates for both client and game</li>
+                                            <li>Integrated matchmaking system</li>
+                                            <li>Active community and regular AI improvements</li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="bg-white p-6 rounded-lg shadow-lg">
-                            <h3 class="text-2xl font-semibold mb-4 text-primary">BWAPI Integration</h3>
-                            <div class="space-y-4">
-                                <p>To start developing your own AI, you'll need to set up BWAPI:</p>
-                                <ol class="list-decimal pl-6 space-y-3">
-                                    <li>Download the latest BWAPI release from the official repository</li>
-                                    <li>Set up your development environment (Visual Studio, CMake, etc.)</li>
-                                    <li>Configure the build system to link with BWAPI libraries</li>
-                                    <li>Start with a simple bot that can play the game at a basic level</li>
-                                </ol>
-                                <div class="mt-4">
-                                    <a href="https://bwapi.github.io/" target="_blank" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                                        <i data-lucide="external-link" class="mr-2 h-4 w-4"></i>
-                                        BWAPI Documentation
-                                    </a>
+                        <!-- BWAILauncher Setup Guide -->
+                        <div id="bwai-setup" class="bg-white p-6 rounded-lg shadow-lg mt-8">
+                            <h3 class="text-2xl font-semibold mb-4 text-primary">BWAILauncher Setup Guide</h3>
+                            <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded-r mb-6">
+                                <div class="flex">
+                                    <div class="flex-shrink-0">
+                                        <i data-lucide="alert-triangle" class="h-5 w-5 text-yellow-400"></i>
+                                    </div>
+                                    <div class="ml-3">
+                                        <p class="text-sm text-yellow-700">
+                                            <strong>Important:</strong> Unlike SCHNAIL, BWAILauncher requires a separate
+                                            installation of Starcraft: Brood War patched to version 1.16.1.
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
+
+                            <h4 class="font-semibold text-lg mb-3">Installation Steps</h4>
+                            <ol class="list-decimal pl-6 space-y-3">
+                                <li>Ensure you have Starcraft: Brood War installed and updated to version 1.16.1</li>
+                                <li>Download the latest BWAILauncher release from <a
+                                        href="https://github.com/poiuyqwert/BWAILauncher/tree/main" target="_blank"
+                                        class="text-blue-600 hover:underline">GitHub</a></li>
+                                <li>Extract the downloaded ZIP file to your Starcraft: Brood War installation directory
+                                </li>
+                                <li>Run <code class="bg-gray-100 px-1 rounded">BWAILauncher.exe</code></li>
+                                <li>If BWAILauncher doesn't detect your Starcraft installation automatically:
+                                    <ul class="list-disc pl-5 mt-2 space-y-1">
+                                        <li>Click on the settings/configuration button in the launcher</li>
+                                        <li>Navigate to the "Game" or "Paths" section</li>
+                                        <li>Browse to and select your <code
+                                                class="bg-gray-100 px-1 rounded">Starcraft.exe</code> file</li>
+                                        <li>Save the settings and restart the launcher</li>
+                                    </ul>
+                                </li>
+                                <li>Configure your preferred game settings through the launcher interface</li>
+                                <li>Launch the game through BWAILauncher</li>
+                            </ol>
+
+                            <h4 class="font-semibold mt-6 mb-2">Portable Installation</h4>
+                            <p class="mb-3">BWAILauncher works well with portable Starcraft installations. If you're
+                                using a
+                                portable version:</p>
+                            <ul class="list-disc pl-5 space-y-2 mb-4">
+                                <li>Extract BWAILauncher to your portable Starcraft directory</li>
+                                <li>When prompted, point BWAILauncher to the <code
+                                        class="bg-gray-100 px-1 rounded">Starcraft.exe</code> in the same directory</li>
+                                <li>All settings will be saved in the same folder, making it fully portable</li>
+                            </ul>
+
+                            <h4 class="font-semibold mt-6 mb-2">Tips for BWAILauncher</h4>
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li>BWAILauncher replaces the standard AI, so you can use it in single-player mode</li>
+                                <li>The AI is more challenging than the default but has some limitations in
+                                    micro-management
+                                </li>
+                                <li>Try different difficulty settings to find the right challenge level</li>
+                                <li>Check the <a href="https://github.com/poiuyqwert/BWAILauncher/tree/main"
+                                        target="_blank" class="text-blue-600 hover:underline">GitHub repository</a> for
+                                    updates and community
+                                    support</li>
+                            </ul>
                         </div>
-                    </div>
                 </section>
 
                 <section id="troubleshooting" class="content-section hidden">
-                    <h2 class="text-3xl font-bold text-primary mb-6">Troubleshooting Common Issues</h2>
-                    <div class="space-y-6">
-                        <div class="bg-white p-6 rounded-lg shadow-lg">
-                            <h3 class="text-2xl font-semibold mb-4 text-primary">Common Problems and Solutions</h3>
-                            
-                            <div class="space-y-4">
-                                <div class="border-b border-gray-200 pb-4">
-                                    <h4 class="font-semibold text-lg">Antivirus Blocking SCHNAIL</h4>
-                                    <p class="text-gray-700 mt-1">If your antivirus is blocking SCHNAIL:</p>
-                                    <ol class="list-decimal pl-5 mt-2 space-y-1">
-                                        <li>Check your antivirus quarantine for the SCHNAIL executable</li>
-                                        <li>Add an exception for the SCHNAIL installation directory</li>
-                                        <li>If needed, temporarily disable your antivirus during installation</li>
-                                    </ol>
-                                </div>
 
-                                <div class="border-b border-gray-200 pb-4">
-                                    <h4 class="font-semibold text-lg">Game Crashes on Launch</h4>
-                                    <p class="text-gray-700 mt-1">If the game crashes when starting:</p>
-                                    <ul class="list-disc pl-5 mt-2 space-y-1">
-                                        <li>Ensure you have the latest graphics drivers installed</li>
-                                        <li>Try running the game in compatibility mode</li>
-                                        <li>Verify that your system meets the minimum requirements</li>
-                                        <li>Check the SCHNAIL forums for known issues</li>
-                                    </ul>
-                                </div>
+                    <h2 class="text-3xl font-bold text-primary mb-8 border-b-2 border-primary pb-2">Troubleshooting
+                        Common
+                        Issues</h2>
 
-                                <div>
-                                    <h4 class="font-semibold text-lg">BWAPI Not Loading</h4>
-                                    <p class="text-gray-700 mt-1">If BWAPI isn't loading with the game:</p>
-                                    <ul class="list-disc pl-5 mt-2 space-y-1">
-                                        <li>Make sure you're using a compatible version of BWAPI with your Starcraft version</li>
-                                        <li>Check that all BWAPI files are in the correct directories</li>
-                                        <li>Look for error messages in the game's console output</li>
-                                        <li>Consult the BWAPI documentation for version-specific instructions</li>
-                                    </ul>
+                    <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded-r mb-6">
+                        <div class="flex">
+                            <div class="flex-shrink-0">
+                                <i data-lucide="alert-triangle" class="h-5 w-5 text-yellow-400"></i>
+                            </div>
+                            <div class="ml-3">
+                                <p class="text-sm text-yellow-700">
+                                    <strong>Note about SCHNAIL:</strong> An internet connection is only required for the
+                                    initial
+                                    client login. All gameplay after login happens on your local network, ensuring
+                                    minimal
+                                    latency and no ongoing internet requirement during play.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="space-y-6">
+                            <div class="bg-white p-6 rounded-lg shadow-lg">
+                                <h3 class="text-2xl font-semibold mb-4 text-primary">Common Problems and Solutions</h3>
+
+                                <div class="space-y-4">
+                                    <div class="border-b border-gray-200 pb-4">
+                                        <h4 class="font-semibold text-lg">Antivirus Blocking SCHNAIL</h4>
+                                        <p class="text-gray-700 mt-1">If your antivirus is blocking SCHNAIL:</p>
+                                        <ol class="list-decimal pl-5 mt-2 space-y-1">
+                                            <li>Check your antivirus quarantine for the SCHNAIL executable</li>
+                                            <li>Add an exception for the SCHNAIL installation directory</li>
+                                            <li>If needed, temporarily disable your antivirus during installation</li>
+                                        </ol>
+                                    </div>
+
+                                    <div class="border-b border-gray-200 pb-4">
+                                        <h4 class="font-semibold text-lg">Game Crashes on Launch</h4>
+                                        <p class="text-gray-700 mt-1">If the game crashes when starting:</p>
+                                        <ul class="list-disc pl-5 mt-2 space-y-1">
+                                            <li>Ensure you have the latest graphics drivers installed</li>
+                                            <li>Try running the game in compatibility mode</li>
+                                            <li>Verify that your system meets the minimum requirements</li>
+                                            <li>Check the SCHNAIL forums for known issues</li>
+                                        </ul>
+                                    </div>
+
+                                    <div>
+                                        <h4 class="font-semibold text-lg">BWAPI Not Loading</h4>
+                                        <p class="text-gray-700 mt-1">If BWAPI isn't loading with the game:</p>
+                                        <ul class="list-disc pl-5 mt-2 space-y-1">
+                                            <li>Make sure you're using a compatible version of BWAPI with your Starcraft
+                                                version
+                                            </li>
+                                            <li>Check that all BWAPI files are in the correct directories</li>
+                                            <li>Look for error messages in the game's console output</li>
+                                            <li>Consult the BWAPI documentation for version-specific instructions</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded-r">
+                                <div class="flex">
+                                    <div class="flex-shrink-0">
+                                        <i data-lucide="life-buoy" class="h-5 w-5 text-blue-500"></i>
+                                    </div>
+                                    <div class="ml-3">
+                                        <p class="text-sm text-blue-700">
+                                            <strong>Need more help?</strong> Visit the
+                                            <a href="https://www.schnail.com/forums" target="_blank"
+                                                class="font-medium underline">SCHNAIL Forums</a>
+                                            or the
+                                            <a href="https://github.com/bwapi/bwapi/discussions" target="_blank"
+                                                class="font-medium underline">BWAPI GitHub Discussions</a>
+                                            for community support.
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-
-                        <div class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded-r">
-                            <div class="flex">
-                                <div class="flex-shrink-0">
-                                    <i data-lucide="life-buoy" class="h-5 w-5 text-blue-500"></i>
-                                </div>
-                                <div class="ml-3">
-                                    <p class="text-sm text-blue-700">
-                                        <strong>Need more help?</strong> Visit the 
-                                        <a href="https://www.schnail.com/forums" target="_blank" class="font-medium underline">SCHNAIL Forums</a> 
-                                        or the 
-                                        <a href="https://github.com/bwapi/bwapi/discussions" target="_blank" class="font-medium underline">BWAPI GitHub Discussions</a> 
-                                        for community support.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </section>
 
+
                 <section id="resources" class="content-section hidden">
-                    <h2 class="text-3xl font-bold text-primary mb-6">Additional Resources</h2>
-                    <div class="space-y-6">
+
+                    <h2 class="text-3xl font-bold text-primary mb-8 border-b-2 border-primary pb-2">Additional Resources
+                    </h2>
+                    <div class="space-y-8">
                         <div class="bg-white p-6 rounded-lg shadow-lg">
                             <h3 class="text-2xl font-semibold mb-4 text-primary">Learning Resources</h3>
-                            
+
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div>
                                     <h4 class="font-semibold text-lg mb-2">Documentation</h4>
                                     <ul class="space-y-2">
                                         <li>
-                                            <a href="https://bwapi.github.io/" target="_blank" class="text-blue-600 hover:underline flex items-center">
+                                            <a href="https://bwapi.github.io/" target="_blank"
+                                                class="text-blue-600 hover:underline flex items-center">
                                                 <i data-lucide="book-open" class="mr-2 h-4 w-4"></i>
                                                 BWAPI Official Documentation
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="https://github.com/bwapi/bwapi/wiki" target="_blank" class="text-blue-600 hover:underline flex items-center">
+                                            <a href="https://github.com/bwapi/bwapi/wiki" target="_blank"
+                                                class="text-blue-600 hover:underline flex items-center">
                                                 <i data-lucide="book" class="mr-2 h-4 w-4"></i>
                                                 BWAPI Wiki
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="https://www.schnail.com/docs" target="_blank" class="text-blue-600 hover:underline flex items-center">
+                                            <a href="https://www.schnail.com/docs" target="_blank"
+                                                class="text-blue-600 hover:underline flex items-center">
                                                 <i data-lucide="file-text" class="mr-2 h-4 w-4"></i>
                                                 SCHNAIL Documentation
                                             </a>
@@ -317,19 +535,22 @@
                                     <h4 class="font-semibold text-lg mb-2">Community</h4>
                                     <ul class="space-y-2">
                                         <li>
-                                            <a href="https://github.com/bwapi/bwapi/discussions" target="_blank" class="text-blue-600 hover:underline flex items-center">
+                                            <a href="https://github.com/bwapi/bwapi/discussions" target="_blank"
+                                                class="text-blue-600 hover:underline flex items-center">
                                                 <i data-lucide="message-square" class="mr-2 h-4 w-4"></i>
                                                 BWAPI GitHub Discussions
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="https://www.reddit.com/r/broodwar/" target="_blank" class="text-blue-600 hover:underline flex items-center">
+                                            <a href="https://www.reddit.com/r/broodwar/" target="_blank"
+                                                class="text-blue-600 hover:underline flex items-center">
                                                 <i data-lucide="users" class="mr-2 h-4 w-4"></i>
                                                 r/broodwar Subreddit
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="https://discord.gg/0YegJgJ8R6k6Qnre" target="_blank" class="text-blue-600 hover:underline flex items-center">
+                                            <a href="https://discord.gg/0YegJgJ8R6k6Qnre" target="_blank"
+                                                class="text-blue-600 hover:underline flex items-center">
                                                 <i data-lucide="message-circle" class="mr-2 h-4 w-4"></i>
                                                 Starcraft AI Discord
                                             </a>
@@ -342,12 +563,15 @@
                         <div class="bg-white p-6 rounded-lg shadow-lg">
                             <h3 class="text-2xl font-semibold mb-4 text-primary">Example Bots</h3>
                             <p class="mb-4">Learn from these open-source bot implementations:</p>
-                            
+
                             <div class="space-y-4">
                                 <div class="border border-gray-200 rounded-lg p-4 hover:bg-gray-50">
                                     <h4 class="font-semibold">Steamhammer</h4>
-                                    <p class="text-sm text-gray-600 mb-2">A strong open-source Starcraft: Brood War AI by Dave Churchill</p>
-                                    <a href="https://github.com/davechurchill/Steamhammer" target="_blank" class="text-sm text-blue-600 hover:underline flex items-center">
+                                    <p class="text-sm text-gray-600 mb-2">A strong open-source Starcraft: Brood War AI
+                                        by Dave
+                                        Churchill</p>
+                                    <a href="https://github.com/davechurchill/Steamhammer" target="_blank"
+                                        class="text-sm text-blue-600 hover:underline flex items-center">
                                         <i data-lucide="github" class="mr-1 h-4 w-4"></i>
                                         View on GitHub
                                     </a>
@@ -355,23 +579,28 @@
 
                                 <div class="border border-gray-200 rounded-lg p-4 hover:bg-gray-50">
                                     <h4 class="font-semibold">UAlbertaBot</h4>
-                                    <p class="text-sm text-gray-600 mb-2">A Starcraft AI development framework by Dave Churchill and Steve Gelly</p>
-                                    <a href="https://github.com/davechurchill/ualbertabot" target="_blank" class="text-sm text-blue-600 hover:underline flex items-center">
+                                    <p class="text-sm text-gray-600 mb-2">A Starcraft AI development framework by Dave
+                                        Churchill
+                                        and Steve Gelly</p>
+                                    <a href="https://github.com/davechurchill/ualbertabot" target="_blank"
+                                        class="text-sm text-blue-600 hover:underline flex items-center">
                                         <i data-lucide="github" class="mr-1 h-4 w-4"></i>
                                         View on GitHub
                                     </a>
                                 </div>
                             </div>
                         </div>
-                    </div>
+
                 </section>
-            </main>
         </div>
+
+        </main>
+    </div>
     </div>
 
     <script>
         // Mobile menu toggle
-        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+        document.getElementById('mobile-menu-button').addEventListener('click', function () {
             const nav = document.getElementById('main-nav');
             nav.classList.toggle('hidden');
             nav.classList.toggle('block');
@@ -379,26 +608,26 @@
 
         // Tab functionality
         document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', function(e) {
+            link.addEventListener('click', function (e) {
                 e.preventDefault();
-                
+
                 // Hide all content sections
                 document.querySelectorAll('.content-section').forEach(section => {
                     section.classList.add('hidden');
                 });
-                
+
                 // Remove active class from all nav links
                 document.querySelectorAll('.nav-link').forEach(link => {
                     link.classList.remove('active');
                 });
-                
+
                 // Show the selected content section
                 const targetId = this.getAttribute('href');
                 document.querySelector(targetId).classList.remove('hidden');
-                
+
                 // Add active class to clicked nav link
                 this.classList.add('active');
-                
+
                 // Close mobile menu if open
                 if (window.innerWidth < 768) {
                     document.getElementById('main-nav').classList.add('hidden');
@@ -407,10 +636,11 @@
         });
 
         // Show the first section by default
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             document.querySelector('.content-section').classList.remove('hidden');
             document.querySelector('.nav-link').classList.add('active');
         });
     </script>
 </body>
+
 </html>
