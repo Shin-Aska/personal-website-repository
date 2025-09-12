@@ -189,13 +189,8 @@ function setupEventListeners() {
                 section.classList.remove('active');
             });
             document.getElementById(targetId).classList.add('active');
-            
-            // Close mobile menu if open
-            const mobileMenu = document.getElementById('mobile-menu');
-            if (mobileMenu && mobileMenu.classList.contains('block')) {
-                mobileMenu.classList.remove('block');
-                mobileMenu.classList.add('hidden');
-            }
+
+            // Keep mobile menu persistent; do not auto-hide after click
         });
     });
     
@@ -319,10 +314,10 @@ function setupEventListeners() {
     const mobileMenuButton = document.getElementById('mobile-menu-button');
     if (mobileMenuButton) {
         mobileMenuButton.addEventListener('click', function() {
-            const mobileMenu = document.getElementById('mobile-menu');
-            if (mobileMenu) {
-                mobileMenu.classList.toggle('hidden');
-                mobileMenu.classList.toggle('block');
+            const nav = document.getElementById('main-nav');
+            if (nav) {
+                nav.classList.toggle('hidden');
+                nav.classList.toggle('block');
             }
         });
     }
