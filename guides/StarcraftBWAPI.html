@@ -11,15 +11,16 @@
     <link rel="stylesheet" href="css/Starcraft.css">
     <style>
         :root {
-            --primary: #1a4b8c;
-            --primary-dark: #0d2b4e;
-            --secondary: #e6b422;
-            --accent: #cc3333;
+            /* Align utility variables with StarCraft theme */
+            --primary: #1fb4ff;      /* neon cyan */
+            --primary-dark: #0a223d; /* header gradient start */
+            --secondary: #f59e0b;    /* protoss gold */
+            --accent: #ef4444;       /* zerg red */
         }
 
         body {
-            background-color: #f0f4f8;
-            color: #2d3748;
+            background-color: #0b1020;
+            color: #e2e8f0;
         }
 
         .bg-primary {
@@ -47,17 +48,17 @@
         }
 
         .nav-link.active {
-            background-color: rgba(230, 180, 34, 0.2);
+            background-color: rgba(31, 180, 255, 0.12);
             border-left: 4px solid var(--secondary);
         }
 
         .nav-link:hover {
-            background-color: rgba(230, 180, 34, 0.1);
+            background-color: rgba(31, 180, 255, 0.06);
         }
     </style>
 </head>
 
-<body class="bg-gray-100 text-gray-800">
+<body class="sc-theme">
     <div class="w-full bg-gray-200 text-gray-700">
         <div class="container mx-auto px-4 py-2">
             <a href="index.html" class="inline-flex items-center gap-2 hover:underline"><span
@@ -66,7 +67,7 @@
     </div>
 
     <div id="app" class="min-h-screen flex flex-col">
-        <header class="bg-primary text-white p-4 shadow-lg sticky top-0 z-20">
+        <header class="bg-primary text-white p-4 shadow-lg sticky top-0 z-20 mb-[30px]">
             <div class="container mx-auto flex justify-between items-center">
                 <h1 class="text-2xl md:text-3xl font-bold tracking-wider">Playing against advanced AIs in Starcraft: Brood War</h1>
                 <button id="mobile-menu-button"
@@ -668,10 +669,13 @@
             });
         });
 
-        // Show the first section by default
+        // Show the first section by default and initialize icons
         document.addEventListener('DOMContentLoaded', function () {
             document.querySelector('.content-section').classList.remove('hidden');
             document.querySelector('.nav-link').classList.add('active');
+            if (window.lucide && typeof window.lucide.createIcons === 'function') {
+                window.lucide.createIcons();
+            }
         });
     </script>
 </body>
