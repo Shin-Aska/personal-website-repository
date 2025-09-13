@@ -94,6 +94,19 @@ const OFFLINE_HINTS = {
     "Tory's Baby": "• Search the Shrine of Honour (around 142S, 9W).\n• Harpies may be present—clear them out.\n• Return the baby to Tory in the Keep."
 };
 
+// Hardcoded, non‑AI companion backstories
+const BACKSTORIES = {
+    "Iolo": "Strings hum beneath my fingers as I travel once more with the Avatar. Britain changes, but a good bow and a good song never fail. If danger comes, I’ll whistle before the arrow flies—and jest after. A merry heart steadies the hand.",
+    "Shamino": "The Deep Forest remembers those who walk it with care. I have been a ranger, a lord, and a friend—titles fall like leaves, but duty remains. I scout the wild paths ahead so the others may sleep without fear.",
+    "Dupre": "Ale can warm a night, but honor warms the soul. Steel polished, tabard straight—I’ll stand in the door and take the blow meant for another. If courage is tested, let it be mine first.",
+    "Spark": "I keep my sling close and my promise closer. Christopher’s gone, but I won’t let what happened to him happen to anyone else. If I can help the Avatar, then I’ll grow up faster than the world expects.",
+    "Sentri": "Discipline is a road, not a destination. I drill until the blade feels like an extra finger and the footwork a familiar song. If the Avatar asks, I’ll train the others too—dexterity first, then the hand that wields it.",
+    "Tseramed": "Bees teach patience. You move slowly, breathe slowly, and the world moves with you. Tracks tell stories the tongue forgets. I follow them and watch the horizon for the party’s sake.",
+    "Jaana": "Cove’s quiet taught me that healing is more than poultices and prayer. A word can knit a wound the needle cannot. I’ll tend the fallen, soothe the frightened, and if need be, call on the old druidry.",
+    "Katrina": "Once a shepherd, always a guardian. Flocks, friends, or strangers—it makes no difference. New Magincia bred humility in me, but humility is not weakness. I will stand when standing is all that’s left.",
+    "Julia": "Gears don’t lie. Measure twice, cut once, and keep your tools sharp—truth follows. Where others see a lock, I see tolerances; where they see a problem, I see a diagram. With the Avatar, the design is simple: fix what’s broken."
+};
+
 document.addEventListener('DOMContentLoaded', () => {
     const mainNav = document.getElementById('main-nav');
     const sections = document.querySelectorAll('.content-section');
@@ -188,7 +201,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function initPartyBuilder() {
         const grid = document.getElementById('companion-grid');
         const details = document.getElementById('companion-details');
-        document.getElementById('get-party-strategy-btn').addEventListener('click', handleGetPartyStrategy);
+        // Removed party strategy button binding per request
 
         grid.innerHTML = '';
         DB.companions.forEach((c, index) => {
@@ -208,20 +221,14 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        async function handleGenerateBackstory(id) {
+        function handleGenerateBackstory(id) {
             const c = DB.companions[id];
+            const backstory = BACKSTORIES[c.name] || 'No backstory available.';
             showAiModal();
-            const prompt = `You are a creative writer for the classic RPG Ultima VII. Write a short, flavorful journal entry from the perspective of the character ${c.name}, the ${c.role}. Keep it under 100 words and capture their personality based on what is known about them in the game.`;
-            const backstory = await callGemini(prompt);
-            displayAiResponse(backstory, `✨ ${c.name}'s Journal`);
+            displayAiResponse(backstory, `📑 ${c.name}'s Journal`);
         }
 
-        async function handleGetPartyStrategy() {
-            showAiModal();
-            const prompt = `You are an expert player of Ultima VII: The Black Gate. For a classic party consisting of the Avatar (as a mage), Iolo, Shamino, and Dupre, provide a concise strategic guide. Include: 1. A primary combat role for each. 2. A top training priority for each character. 3. A key piece of equipment they should acquire early. Keep the entire response under 150 words and format it clearly.`;
-            const strategy = await callGemini(prompt);
-            displayAiResponse(strategy, `✨ Classic Party Strategy`);
-        }
+        // Get Party Strategy feature removed per request
 
         function displayCompanionDetails(id) {
             const c = DB.companions[id];
@@ -232,7 +239,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <p class="text-lg text-secondary">${c.role}</p>
                         <p class="mt-4"><span class="font-semibold">Location:</span> ${c.location}</p>
                         <p class="mt-2 bg-[#1a202c] p-3 rounded-md"><span class="font-semibold">Notes:</span> ${c.notes || 'No special notes.'}</p>
-                        <button id="generate-backstory-btn" class="ai-button mt-4 w-full font-bold py-2 px-4 rounded-lg">✨ Generate Backstory</button>
+                        <button id="generate-backstory-btn" class="ai-button mt-4 w-full font-bold py-2 px-4 rounded-lg">Backstory</button>
                     </div>
                     <div class="w-full md:w-1/2 flex-shrink-0">
                          <div class="chart-container !h-[250px] !max-h-[250px]">
@@ -279,12 +286,7 @@ document.addEventListener('DOMContentLoaded', () => {
         grid.querySelector('.companion-card').classList.add('selected');
     }
 
-    async function handleGetItemLore(itemName) {
-        showAiModal();
-        const prompt = `You are a loremaster in the world of Britannia from the game Ultima VII. Write a short, evocative piece of lore (under 75 words) for the legendary item known as the '${itemName}'. Describe its origin or a famous deed associated with it.`;
-        const lore = await callGemini(prompt);
-        displayAiResponse(lore, `✨ The Lore of ${itemName}`);
-    }
+    // Equipment lore feature removed per request
 
     function initArmory() {
         const tableBody = document.getElementById('equipment-table');
@@ -297,17 +299,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 <td class="px-4 py-3">${item.type}</td>
                 <td class="px-4 py-3">${item.effect}</td>
                 <td class="px-4 py-3">${item.location}</td>
-                <td class="px-4 py-3 text-center">
-                    <button data-item-name="${item.name}" class="get-item-lore-btn ai-button font-bold py-1 px-2 rounded-lg text-xs">✨</button>
-                </td>
             `;
         });
 
-        tableBody.addEventListener('click', (e) => {
-            if (e.target.classList.contains('get-item-lore-btn')) {
-                handleGetItemLore(e.target.dataset.itemName);
-            }
-        });
+        // Removed lore button event listener per request
 
         const bestiaryGrid = document.getElementById('bestiary-grid');
         bestiaryGrid.innerHTML = '';
@@ -413,7 +408,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
                 <div class="accordion-content px-4 pb-4 text-sm">
                     <p>${quest.content}</p>
-                    <button data-quest-index="${index}" class="get-main-quest-hint ai-button mt-3 w-full font-bold py-1 px-3 rounded-lg text-xs">✨ Get AI Hint</button>
+                    <button data-quest-index="${index}" class="get-main-quest-hint ai-button mt-3 w-full font-bold py-1 px-3 rounded-lg text-xs">✨ Hint</button>
                 </div>
             `;
             mainQuestAccordion.appendChild(item);
@@ -456,7 +451,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <p class="text-sm mt-1"><span class="font-semibold">Giver:</span> ${quest.giver}</p>
                     <p class="text-sm"><span class="font-semibold">Reward:</span> ${quest.reward}</p>
                     <p class="text-sm mt-2 bg-[#1a202c] p-2 rounded">${quest.walkthrough}</p>
-                    <button data-quest-name="${quest.name}" class="get-side-quest-hint ai-button mt-3 w-full font-bold py-1 px-3 rounded-lg text-xs">✨ Get AI Hint</button>
+                    <button data-quest-name="${quest.name}" class="get-side-quest-hint ai-button mt-3 w-full font-bold py-1 px-3 rounded-lg text-xs">✨ Hint</button>
                 `;
                 sideQuestList.appendChild(card);
             });
@@ -498,7 +493,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function openQuestChatInModal(key, quest) {
-        const badge = "<span class='ml-2 align-middle text-[10px] px-2 py-0.5 rounded bg-yellow-200/20 text-yellow-100 border border-yellow-300/40'>non‑spoiler</span>";
+        const badge = "<span class='ml-2 align-middle text-[10px] px-2 py-0.5 rounded bg-yellow-200/20 text-yellow-100 border border-yellow-300/40'>AI powered</span>";
         aiModalTitle.innerHTML = `✨ ${key} ${badge}`;
 
         const offlineHint = OFFLINE_HINTS[key] || 'No offline hint available.';
@@ -506,20 +501,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Tabs: General Hints | Advice
         aiResponseText.innerHTML = `
-            <div class="flex flex-col max-h-[75vh]">
+            <div class="flex flex-col max-h-[75vh] min-h-0">
                 <div id="modal-tabbar" class="flex gap-2 border-b border-color mb-3">
                     <button id="modal-tab-hints" class="px-3 py-1 rounded-t bg-[#1a202c] text-sm font-semibold border border-color border-b-0 text-[#f6e05e]">General Hints</button>
                     <button id="modal-tab-advice" class="px-3 py-1 rounded-t text-sm font-semibold border border-transparent hover:border-color text-gray-400">Advice</button>
                 </div>
                 
-                <section id="tab-hints" class="h-full overflow-auto">
+                <section id="tab-hints" class="h-full overflow-auto min-h-0">
                     <div class="rounded bg-[#102a43]/40 p-3 border border-color text-[13px] whitespace-pre-wrap">${offlineHint.replace(/</g,'&lt;')}</div>
-                    <div class="mt-3 rounded bg-[#0f1720]/60 p-2 border border-color text-[12px]">Tip: For more help, switch to the Advice tab and ask an apprentice of Nystul for guidance.</div>
+                    <div class="mt-3 rounded bg-[#0f1720]/60 p-2 border border-color text-[12px]">Tip: For more help, switch to the Advice tab and ask the Sage for guidance.</div>
                 </section>
-                <section id="tab-advice" class="hidden h-full flex flex-col">
+                <section id="tab-advice" class="hidden h-full flex flex-col min-h-0 overflow-hidden">
                     <div id="modal-quest-chat-messages" class="flex-1 min-h-40 overflow-y-auto bg-[#0f1720] border border-color rounded p-3 text-sm space-y-2"></div>
                     <div class="flex gap-2 mt-3">
-                        <input id="modal-quest-chat-input" class="flex-1 bg-[#1a202c] border border-color rounded px-3 py-2 text-sm" placeholder="How may I help you Avatar?" />
+                        <input id="modal-quest-chat-input" class="flex-1 bg-[#1a202c] border border-color rounded px-3 py-2 text-sm" placeholder="Ask the Sage for advice…" />
                         <button id="modal-quest-chat-send" class="ai-button font-bold px-4 py-2 rounded">Send</button>
                     </div>
                 </section>
@@ -560,10 +555,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const sendBtn= document.getElementById('modal-quest-chat-send');
 
         // Greet user in chat panel
-        appendChat(msgEl, 'assistant', `How can I help you with "${key}"?`);
+        appendChat(msgEl, 'assistant', `How can I help you with "${key}", Avatar?`);
 
         function send() {
-            sendQuestChatMessageForKey(key, inputEl, msgEl);
+            sendQuestChatMessageForKey(key, inputEl, msgEl, sendBtn);
             // auto-switch to Advice tab when sending from Hints (in case user clicks Enter there later)
             switchModalTab('advice');
         }
@@ -575,31 +570,49 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    async function sendQuestChatMessageForKey(key, inputEl, msgEl) {
+    async function sendQuestChatMessageForKey(key, inputEl, msgEl, sendBtn) {
         const userMsg = inputEl.value.trim();
         if (!userMsg) return;
         appendChat(msgEl, 'user', userMsg);
         inputEl.value = '';
 
+        // Disable input and show typing indicator
+        if (sendBtn) { sendBtn.disabled = true; sendBtn.classList.add('opacity-50','cursor-not-allowed'); }
+        inputEl.disabled = true;
+        inputEl.classList.add('opacity-75');
+        const thinkingEl = document.createElement('div');
+        thinkingEl.id = 'modal-typing-indicator';
+        thinkingEl.className = 'text-xs text-gray-400 italic';
+        thinkingEl.textContent = 'Sage is thinking…';
+        msgEl.appendChild(thinkingEl);
+        msgEl.scrollTop = msgEl.scrollHeight;
+
         let template = QUEST_PROMPTS[key] || defaultQuestTemplate(key);
         const hist = questChatHistory[key] || [];
         const transcript = hist.map(h => `${h.role === 'user' ? 'User' : 'Assistant'}: ${h.text}`).join('\n');
         const mergedQuery = (transcript ? `Prior transcript (most recent last):\n${transcript}\n\n` : '') + `User: ${userMsg}`;
-        const finalPrompt = template.replace(/<query>[\s\S]*?<\/query>/i, `<query>\n${mergedQuery}\n</query>`);
+        const finalPrompt = template.replace(/<query>[\s\S]*?<\/query>/i, `<query>\n${mergedQuery}\n<\/query>`);
 
         // Call LLM and append
         const reply = await callGemini(finalPrompt);
+        if (thinkingEl && thinkingEl.parentNode) thinkingEl.remove();
         appendChat(msgEl, 'assistant', reply);
 
         hist.push({ role: 'user', text: userMsg });
         hist.push({ role: 'assistant', text: reply });
         questChatHistory[key] = hist.slice(-10);
+
+        // Re-enable input and send button
+        inputEl.disabled = false;
+        inputEl.classList.remove('opacity-75');
+        if (sendBtn) { sendBtn.disabled = false; sendBtn.classList.remove('opacity-50','cursor-not-allowed'); }
+        inputEl.focus();
     }
 
     function appendChat(container, role, text) {
         const bubble = document.createElement('div');
         bubble.className = role === 'user' ? 'bg-[#1a202c] p-2 rounded self-end' : 'bg-[#102a43] p-2 rounded';
-        bubble.textContent = (role === 'user' ? 'You: ' : 'Nystul\'s Apprentice: ') + text;
+        bubble.textContent = (role === 'user' ? 'You: ' : 'Sage: ') + text;
         container.appendChild(bubble);
         container.scrollTop = container.scrollHeight;
     }
