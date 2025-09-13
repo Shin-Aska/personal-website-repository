@@ -41,32 +41,57 @@ const DB = {
         }
     },
     mainQuest: [
-        { title: "The Trinsic Murders", content: "Investigate the ritualistic murder in the stables. Examine the crime scene for a key. Interview Spark, Gilberto, and Gargan to identify the suspect (man with a hook) and his escape vessel (the Crown Jewel). Report to Mayor Finnigan and pass his copy protection quiz with these answers:<br><br><b class='text-yellow-300'>Spektran latitude:</b> 120<br><b class='text-yellow-300'>Buccaneer's Den longitude:</b> 60<br><b class='text-yellow-300'>Terfin longitude:</b> 120<br><b class='text-yellow-300'>Dagger Isle latitude:</b> 0<br><b class='text-yellow-300'>Skara Brae latitude:</b> 30<br><b class='text-yellow-300'>Deep Forest latitude:</b> 60<br><b class='text-yellow-300'>Buccaneer's Den latitude:</b> 60<br><b class='text-yellow-300'>Skara Brae longitude:</b> 60<br><br>He will then give you the password 'Blackbird' to leave the city." },
-        { title: "Infiltrating the Fellowship", content: "In Britain, meet Batlin and feign interest in joining the Fellowship. Deliver a package to Elynor in Minoc. Return to Batlin and complete his test in Dungeon Destard (just find the empty chest). Attend the evening service and answer the questions from the Book of Fellowship to gain membership." },
+        { title: "The Trinsic Murders", content: "Investigate the ritualistic murder in the stables. Examine the crime scene for a key. Interview Spark, Gilberto, and Klog to identify the suspect (man with a hook) and his escape vessel (the Crown Jewel). Report to Mayor Finnigan and pass his copy protection quiz with these answers:<br><br><b class='text-yellow-300'>Spektran latitude:</b> 120<br><b class='text-yellow-300'>Terfin longitude:</b> 120<br><b class='text-yellow-300'>Dagger Isle latitude:</b> 0<br><b class='text-yellow-300'>Skara Brae latitude:</b> 30<br><b class='text-yellow-300'>Deep Forest latitude:</b> 60<br><b class='text-yellow-300'>Buccaneer's Den latitude:</b> 60<br><b class='text-yellow-300'>Skara Brae longitude:</b> 60<br><br>He will then give you the password 'Blackbird' to leave the city." },
+        { title: "Infiltrating the Fellowship", content: "In Britain, meet Batlin and feign interest in joining the Fellowship. Deliver a sealed package to Elynor in Minoc. When you return, Batlin assigns you to fetch 'funds' from Dungeon Destard — it's a trap, so be cautious. Attend the 9 PM service and answer questions from the Book of Fellowship to progress your membership." },
         { title: "The Quest for the Time Lord", content: "Follow the gypsy's advice. Go to the Deep Forest and find the silent wisp. Get honey from the Bee Cave to bribe the emps. Negotiate with the emps to get a wisp whistle. Use the whistle to communicate with the wisp, who demands Alagner's notebook from New Magincia in exchange for information." },
         { title: "The Answers to Life and Death", content: "In New Magincia, Alagner asks you to learn the answers to life and death from Skara Brae. Use the Seance spell to travel to the haunted island. Help the spirits by defeating the liche Horance. This involves brewing a potion, forging a Soul Cage, and destroying the Well of Souls. Caine will then reveal the 'answers'. Return to Alagner to get his notebook." },
-        { title: "Destroying the Guardian's Generators", content: "Give the notebook to the wisp to contact the Time Lord. He reveals the Guardian's plot and the three generators that must be destroyed. <br><b>1. Tetrahedron (Deceit):</b> Get blackrock for Penumbra, acquire the Ethereal Ring from Spektran, have it enchanted, and destroy the prism. <br><b>2. Sphere (Despise):</b> Get the Hourglass of Nicodemus, have it enchanted (after the Tetrahedron is down), and navigate the red/blue moongate puzzle (red, blue, blue, red) to destroy the prism. <br><b>3. Cube (Meditation Retreat):</b> Get Caddellite ore from Ambrosia, have Zorn forge helmets, and wear them to safely destroy the final generator." },
-        { title: "The Isle of the Avatar and Final Battle", content: "Use the prism from the Cube generator to interrogate Fellowship members and uncover the murderers. Go to Buccaneer's Den, find Hook, and get the Black Gate key. Travel to the Isle of the Avatar, enter Dungeon Hythloth, and defeat Batlin and his disciples. Place the three prisms on the pedestals to disable the gate's power beam. Finally, use Rudyom's Wand on the Black Gate to destroy it and save Britannia." }
+        { title: "Destroying the Guardian's Generators", content: "Give the notebook to the wisp to contact the Time Lord. He reveals the Guardian's plot and the three generators that must be destroyed. <br><b>1. Tetrahedron (Deceit):</b> Get blackrock for Penumbra, acquire the Ethereal Ring from Lord Draxinusom in Terfin, have it enchanted, and destroy the prism. <br><b>2. Sphere (Despise):</b> Get the Hourglass of Nicodemus, have it enchanted (after the Tetrahedron is down), and navigate the moongate puzzle (down, up, down, down, up) to destroy the prism. <br><b>3. Cube (Meditation Retreat):</b> Find Caddellite from meteorites in the northeast seas, have Zorn in Minoc forge helmets, and wear them to safely destroy the final generator." },
+        { title: "The Isle of the Avatar and Final Battle", content: "Use the Cube prism to reveal the Fellowship's lies and identify the conspirators. In Buccaneer's Den, track down Hook and recover the key you need. Travel to the Isle of the Avatar and descend into Hythloth. Place the three generator prisms on their pedestals to disable the Black Gate's power beam. Finally, use Rudyom's Wand on the Black Gate to destroy it and save Britannia." }
     ],
     sideQuests: [
         { name: "Free Weston!", location: "Paws", giver: "Weston", reward: "20 XP", walkthrough: "Weston is jailed in Lord British's castle for stealing an apple. Plead his case to Lord British for his release." },
         { name: "Who Stole the Poison?", location: "Paws", giver: "Morfin", reward: "150 XP", walkthrough: "Investigate a family feud. The stolen poison vial is in Garritt's chest. Confront him for a confession." },
         { name: "Where Does Patterson go at Night?", location: "Britain", giver: "Judith", reward: "60 XP", walkthrough: "Follow Patterson after a Fellowship meeting to Candice's house. Confront him about his affair." },
-        { name: "Miranda's Law", location: "Britain", giver: "Miranda", reward: "20 XP", walkthrough: "Take Miranda's bill to clean up Locke Lake to Mayor Heather in Cove for a signature, then return it." },
+        { name: "Miranda's Law", location: "Britain", giver: "Miranda", reward: "20 XP", walkthrough: "Take Miranda's bill to clean up Lock Lake to Lord Heather in Cove for a signature, then return it." },
         { name: "Nastassia's Father", location: "Cove", giver: "Nastassia", reward: "50 XP", walkthrough: "Ask the Emp Trellek in the Deep Forest about Julius. He will reveal Julius was a hero. Report this back to Nastassia." },
         { name: "Owen the Shipwright, Hero or Fraud?", location: "Minoc", giver: "Various", reward: "100 XP", walkthrough: "Get the original ship plans from the hermit Karl. Show them to Julia the tinker, who confirms the design is flawed. Present the evidence to Mayor Burnside." },
-        { name: "The Honor Flag", location: "Jhelom", giver: "Sprellic", reward: "100 XP / Sword Storm Amulet", walkthrough: "Either fight three duels for Sprellic or, more cleverly, have the armorer Kliftin make a replica of the stolen flag and give it to the fighters." },
+        { name: "The Honor Flag", location: "Jhelom", giver: "Sprellic", reward: "100 XP", walkthrough: "Either fight three duels for Sprellic, or more cleverly, have the armorer Kliftin weave a replica of the stolen flag and give it to the fighters." },
         { name: "Blorn's Accusations", location: "Vesper", giver: "Blorn", reward: "50 XP", walkthrough: "Speak to the accused gargoyle, Lap-Lem. He was the victim. Confront Blorn to get Lap-Lem's stolen amulet back and return it." },
         { name: "Where does Catherine Go?", location: "Vesper", giver: "Yvella", reward: "50 XP", walkthrough: "Follow Catherine to the gargoyle side of town. She listens to stories from an elder gargoyle. Keeping this secret is the peaceful option." },
         { name: "Balayna's Doubts", location: "Moonglow", giver: "Balayna", reward: "50 XP", walkthrough: "A quest highlighting the Fellowship's sinister nature. Reporting Balayna's doubts to Rankin leads to her death or disappearance." },
-        { name: "Brion's Orrery", location: "Moonglow", giver: "Brion", reward: "Orrery (Item)", walkthrough: "Buy a special crystal from the mage Addom for 20 gold and give it to Brion to complete his portable orrery." },
-        { name: "Who wants to destroy the Shrine?", location: "Terfin", giver: "Teregus", reward: "100 XP / Flame Armour", walkthrough: "Investigate Sarpling's home to find a scroll implicating a Fellowship member in a plot. Confronting them reveals the plot and leads to a fight." },
+        { name: "Brion's Orrery", location: "Moonglow", giver: "Brion", reward: "Brion activates the orrery", walkthrough: "Buy a special crystal from the adventurer Addon for 20 gold and give it to Brion so he can power the observatory's orrery." },
+        { name: "Who wants to destroy the Shrine?", location: "Terfin", giver: "Teregus", reward: "100 XP", walkthrough: "Investigate Sarpling's home to find a note implicating Runeb in a plot against the Altars. Confront Runeb to resolve the threat." },
         { name: "Mysterious Monk", location: "Yew", giver: "Kreg", reward: "100 XP", walkthrough: "Kreg is a criminal in hiding. Research court records to discover his identity and confront him, which will provoke an attack." },
-        { name: "Who Defaced Lord British?", location: "Serpent's Hold", giver: "Lord John-Paul", reward: "100 XP / Magical Armor", walkthrough: "A lengthy investigation reveals the knight Pendaran is the vandal. Report this to Lord John-Paul." },
+        { name: "Who Defaced Lord British?", location: "Serpent's Hold", giver: "Lord John-Paul", reward: "100 XP", walkthrough: "A lengthy investigation reveals the knight Pendaran is the vandal. Report this to Lord John-Paul for judgment." },
         { name: "Tory's Baby", location: "Serpent's Hold", giver: "Tory", reward: "100 XP", walkthrough: "The baby, Riky, is at the Shrine of Honor (151S, 9W). Defeat the harpies and return him to his mother." },
-        { name: "Three Pirates and a Locket", location: "New Magincia", giver: "Henry", reward: "150 XP", walkthrough: "Unravel a complex plot involving a stolen locket and a kidnapping scheme. Retrieve the locket and expose the pirate Robin." },
-        { name: "The Pirate Friends", location: "Buccaneer's Den", giver: "Mole", reward: "20 XP (Repeatable)", walkthrough: "Act as an intermediary between the feuding pirates Mole and Blacktooth to reconcile them. Can be repeated for infinite XP." },
     ]
+};
+
+// Helpful, spoiler-light offline hints to ensure useful guidance without relying entirely on the AI
+const OFFLINE_HINTS = {
+    "The Trinsic Murders": "• Check the stables for a golden key and speak with Spark about what he saw.\n• Question Gilberto at the healer and note the ship 'Crown Jewel'.\n• Pass Mayor Finnigan’s quiz to get the password 'Blackbird' to leave Trinsic.",
+    "Infiltrating the Fellowship": "• Deliver Batlin’s sealed package to Elynor in Minoc first.\n• Return at 9 PM for the service, then accept the 'funds' errand to Destard (it’s a trap).\n• Bring supplies—Destard isn’t deserted.",
+    "The Quest for the Time Lord": "• Bring honey from the Bee Cave to befriend the emps.\n• Ask Trellek for help and get a wisp whistle.\n• Use the whistle near the Deep Forest wisp and prepare to fetch Alagner’s notebook.",
+    "The Answers to Life and Death": "• Reach Skara Brae (Séance helps) and speak to Mordra the necromancer.\n• Free Rowena from Horance’s influence, then craft a Soul Cage and resolve the Well of Souls.\n• Caine will share what Alagner needs.",
+    "Destroying the Guardian's Generators": "• Order matters: Tetrahedron (Deceit) → Sphere (Despise) → Cube (Meditation Retreat).\n• You’ll need: blackrock for Penumbra, the Ethereal Ring (Terfin/Spektran), Nicodemus’s Hourglass, and Caddellite helms (Zorn in Minoc).\n• Mark & Recall save lots of time.",
+    "The Isle of the Avatar and Final Battle": "• Use the Cube prism to unmask conspirators, then recover the needed key in Buccaneer’s Den.\n• On the Isle, place all three prisms on their pedestals to disable the beam.\n• Use Rudyom’s Wand on the Black Gate—no big battle needed there.",
+
+    // Side quests
+    "Free Weston!": "• Visit the jail in Castle British and speak with Weston.\n• Bring his case to Lord British directly for judgment.\n• You don’t need to sneak anything—just ask for clemency.",
+    "Who Stole the Poison?": "• Talk to Morfin in Paws to start.\n• Search Morfin’s house for a key, then check the Shelter’s locked chest.\n• Confront the boy who seems nervous; return the vial to Morfin.",
+    "Where Does Patterson go at Night?": "• Attend the 9 PM Fellowship meeting in Britain.\n• After it ends, quietly follow Patterson.\n• Confront him at his destination and hear him out.",
+    "Miranda's Law": "• Get Miranda’s bill signed by Lord Heather in Cove.\n• He’s often at the healer’s.\n• Return the signed bill to Miranda in Britain.",
+    "Nastassia's Father": "• In Cove, agree to seek news for Nastassia.\n• Ask the Emps in the Deep Forest, starting with Trellek.\n• Bring the answer back to her.",
+    "Owen the Shipwright, Hero or Fraud?": "• In Minoc, look for plans/evidence about Owen’s ships.\n• Show them to a skilled tinker for an expert opinion.\n• Present the findings to Mayor Burnside.",
+    "The Honor Flag": "• Talk to Sprellic in Jhelom and hear his story.\n• Either duel as his champion or ask Kliftin about making a replacement.\n• Resolve it peacefully if you can.",
+    "Blorn's Accusations": "• Hear Blorn out in Vesper.\n• Speak to Lap-Lem to get the other side of the story.\n• Confront Blorn about the missing amulet and return it.",
+    "Where does Catherine Go?": "• Watch Yvella’s daughter around noon.\n• Follow her to the gargoyle quarter—observe quietly.\n• Keeping her trust is the kindest outcome.",
+    "Balayna's Doubts": "• Balayna confides concerns about Rankin in Moonglow.\n• Consider the consequences before reporting anything.\n• Sometimes discretion is the safer path.",
+    "Brion's Orrery": "• Ask Brion at the Observatory about his missing part.\n• Buy the crystal from Addon at the tavern (20 gold).\n• Deliver it back so he can power the orrery.",
+    "Who wants to destroy the Shrine?": "• In Terfin, speak with Teregus.\n• Search Sarpling’s quarters for a note.\n• Confront Runeb with the evidence and be ready for a fight.",
+    "Mysterious Monk": "• At Empath Abbey, a monk named Kreg asks about invisibility.\n• Check records in Yew to confirm identities.\n• Prepare for a confrontation once you expose him.",
+    "Who Defaced Lord British?": "• In Serpent’s Hold, gather forensics (stone chips, blood).\n• Consult Lady Leigh and Lady Tory for leads.\n• Report your findings to Lord John‑Paul.",
+    "Tory's Baby": "• Search the Shrine of Honour (around 151S, 9W).\n• Harpies may be present—clear them out.\n• Return the baby to Tory in the Keep."
 };
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -343,9 +368,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
     async function handleGetQuestHint(quest) {
         showAiModal();
-        const prompt = `I am playing the classic RPG Ultima VII. For the quest named '${quest.title || quest.name}', which is described as: '${quest.content || quest.walkthrough}', provide a single, non-spoilery hint for what I should do next. Frame it as advice from a seasoned adventurer. Keep it concise.`;
+        const key = quest.title || quest.name;
+
+        // Prefer reliable, spoiler-light local hints when available
+        if (OFFLINE_HINTS[key]) {
+            displayAiResponse(OFFLINE_HINTS[key], `✨ Hint for ${key}`);
+            return;
+        }
+
+        // Otherwise, ask the AI with guardrails for practical, non-spoilery guidance
+        const prompt = `You are a veteran guide writer for Ultima VII: The Black Gate.
+Return exactly 3 short bullet points for the quest "${key}".
+Use this description as context: "${(quest.content || quest.walkthrough || "").slice(0, 500)}".
+Requirements:
+1) Be non-spoilery and focus on the next actionable step (where to go, who to talk to, and why).
+2) Include one useful landmark or coordinate if it helps (e.g., town name, notable building, or a sextant coordinate), but keep it brief.
+3) Do NOT invent items, spells, or NPCs not in Black Gate. If unsure, suggest a safe lead (e.g., talk to the mayor/priest/mage in [city]).
+Keep it under 80 words total.`;
+
         const hint = await callGemini(prompt);
-        displayAiResponse(hint, `✨ Hint for ${quest.title || quest.name}`);
+        displayAiResponse(hint, `✨ Hint for ${key}`);
     }
 
     function initQuests() {
