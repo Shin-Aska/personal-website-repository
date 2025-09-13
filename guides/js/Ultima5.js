@@ -48,6 +48,41 @@ const wordData = [
     { Virtue: "Humility", Town: "New Magincia", Mantra: "Lum", Word: "—", Dungeon: "—" }
 ];
 
+// Shared reference data (single source of truth) for Tips and Moongate Phases
+const commonTips = [
+    'Final descent (Act IV/Doom): Pre\u200a-mix <code>AN TYM</code> (Stop Time; reagents C\u2011E\u2011H = Ginseng, Blood Moss, Mandrake). It\'s extremely strong for nasty rooms; also stock <code>VAS MANI</code> and <code>IN VAS GRAV CORP</code>.',
+    'Removing charm/possession: Cast <code>AN XEN EX</code> (Charm; reagents D\u2011F\u2011G = Spider Silk, Black Pearl, Nightshade) to cure a charmed ally or to charm problematic foes. Alternatively, <code>IN ZU</code> (Sleep) can neutralize a charmed companion. Wearing the <strong>Crown</strong> helps prevent enemy spell effects (charm/fear).',
+    'HMS Cape plans: In East Brittany (The Oaken Oar), jimmy the locked double doors to get the HMS Cape plans; they double frigate speed.',
+    'Free reagents: Nightshade grows in the center of Spiritwood (east of Skara Brae); Mandrake in the Bloody Plains (SE of Minoc). With just Nightshade+Mandrake you can cast <code>IN WIS</code>, <code>QUAS AN WIS</code>, and <code>IN QUAS WIS</code>.',
+    'Sextant & Spyglass: Ask David at Greyhaven (lighthouse south of Trinsic) for a free sextant (coords). Seggallion at Farthing grants a spyglass; Zachariah explains it if you\'re in the Resistance.',
+    'Moonstones: You can dig up and rebury moonstones to relocate moongates. Consider clustering near Spiritwood/Bloody Plains for reagent runs, and keep one on you as an emergency escape gate.',
+    'Get a frigate: Wait near open water (e.g., Jhelom/New Magincia) without resting; pirate ships often spawn at dawn\u2014board and capture.',
+    'Safe haven: The Brittany villages aren\'t visited by Shadowlords\u2014use them to lay low when a city is afflicted.',
+    'Combat edges: Set the active player (1\u20136) to funnel XP. Halberds can strike through doors/walls in rooms; Magic Axes are infinite\u2011range and return.',
+    'Power spikes: Glass swords from the Serpent\'s Spine cache can be multiplied by readying one after each find; save them for dragons/balrons.',
+    'Early gold/XP: Farm bridge trolls (refuse the toll); save often between fights. Covetous is lucrative later once you\'re stronger.',
+    'Free meals: Ask Cory at Empath Abbey\'s kitchen for squid/shark to get free food (slow, but infinite).',
+    'Easy karma: Speak to Fenelon (Minoc), donate to Ava, free prisoners in Yew/Blackthorn\u2014higher karma lowers shop prices.',
+    'Gems for mapping: Buy gems from the guild in Buccaneers\' Den; or cast <code>IN QUAS WIS</code> (Nightshade+Mandrake) to mimic a peer gem.',
+    'Shadowlord days: A random city can be under a Shadowlord\'s influence each day\u2014NPCs turn hostile. Save around 11:30 PM to scout tomorrow\'s affliction and plan routes.',
+    'Jhelom after dark: To exit when gates are closed, use the tower route\u2014SW\u2192NW\u2192NE towers and push barrels into the NW corner to reach the outside door.',
+    'Skull keys fast: Minoc is open at night. Around 11 PM, enter, search Shenstone\'s stump for 5 keys, exit/re\u2011enter to refresh and repeat.',
+    'Free healer: Minoc has a free healer\u2014use while waiting on moon phases.',
+    'Handy spells early: <code>IN LOR</code> is cheaper than torches. <code>AN SANCT</code> reduces incoming damage and cures downtime early on.',
+    'Travel magic: <code>VAS REL POR</code> (Gate Travel) turns moongates into fast\u2011travel\u2014memorize preferred phases and use a pocket watch to time arrivals.'
+];
+
+const moongatePhaseData = [
+    { phase: 1, destination: 'Moonglow' },
+    { phase: 2, destination: 'Britain' },
+    { phase: 3, destination: 'Jhelom' },
+    { phase: 4, destination: 'Yew' },
+    { phase: 5, destination: 'Minoc' },
+    { phase: 6, destination: 'Trinsic' },
+    { phase: 7, destination: 'Skara Brae' },
+    { phase: 8, destination: 'New Magincia' }
+];
+
 // Initialize the application
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize Lucide icons
@@ -65,6 +100,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // Populate word table
     populateWordTable();
     
+    // Populate reference tabs from shared data
+    populateTipsList();
+    populateMoongateTable();
+
     // Set up event listeners
     setupEventListeners();
 });
@@ -167,6 +206,34 @@ function populateWordTable() {
             <td class="p-3 border-b border-amber-100 font-mono">${word.Word}</td>
         `;
         tbody.appendChild(row);
+    });
+}
+
+// Populate Tips list from shared data
+function populateTipsList() {
+    const ul = document.getElementById('tips-list');
+    if (!ul) return;
+    ul.innerHTML = '';
+    commonTips.forEach(item => {
+        const li = document.createElement('li');
+        // allow inline HTML like <code>, <em>
+        li.innerHTML = item;
+        ul.appendChild(li);
+    });
+}
+
+// Populate Moongate Phases table from shared data
+function populateMoongateTable() {
+    const tbody = document.getElementById('moongate-table-body');
+    if (!tbody) return;
+    tbody.innerHTML = '';
+    moongatePhaseData.forEach(entry => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+            <td class="p-3 border-b border-amber-100">${entry.phase}</td>
+            <td class="p-3 border-b border-amber-100">${entry.destination}</td>
+        `;
+        tbody.appendChild(tr);
     });
 }
 
@@ -442,6 +509,9 @@ function askTheSeer() {
         return;
     }
 
+    // Build common tips section from shared data
+    const tipsSection = commonTips.map(t => `  • ${t.replaceAll('\n', ' ')}`).join('\n');
+
     const prompt = `You are a seer in Ultima V: Warriors of Destiny. Provide precise, practical guidance grounded in Ultima V mechanics and quest flow. Use the following context as background knowledge; use it to inform your answer without restating it verbatim.
 
 - Shrines & VERAMOCOR: Each shrine loop is: learn mantra → meditate 3x → visit Codex (Underworld) → return and meditate to complete. Completing all eight reveals VERAMOCOR for Dungeon Doom.
@@ -452,6 +522,11 @@ function askTheSeer() {
 - Key Tools: Grapple from Lord Michael (Empath Abbey). Skull keys from Shenstone’s stump in Minoc (refill daily by re-entering). Magic Carpet from Lord British’s private chambers. Magic Axe is top-tier (find one in Jhelom’s stump; buy more in Yew).
 - Underworld tips: Use IN POR (Blink), especially around Hythloth’s shard area; use the Magic Carpet to cross swamps/shallow water/low hills.
 - Doom: Use the Amulet to pierce the darkness, Sceptre to remove ethereal walls, keep the Crown ready. Speak VERAMOCOR to enter and rescue Lord British.
+
+- Controls & UI (from the manual): Move with keypad 8/2/6/4 (N/S/E/W). Diagonals are for aiming in combat only. In 3D dungeons, tap Enter/Period to turn around. Core commands: A Attack (then direction), B Board, C Cast (type spell syllables), E Enter, G Get (dir), H Hole up (camp/rest), I Ignite torch, J Jimmy lock, K Klimb, L Look (dir), M Mix reagents, N New Order (swap party), O Open, P Push, Q Quit & Save, R Ready (equip), S Search (dir), T Talk, U Use, V View (bird’s‑eye, needs item), X X‑it, Y Yell (sails/say text), Z Z‑Stats (E/W pages; N/S scroll).
+- Lore & conversation: Ask residents about NAME/JOB and relevant keywords; some info requires prior references (e.g., Resistance password DAWN). Talk to people more than once; attitudes can change.
+
+ - Common player tips:\n${tipsSection}
 
 Answer in 2–3 short paragraphs, in-character and actionable, with clear hints and options (avoid unnecessary spoilers). Player’s question: "${query}"`;
 

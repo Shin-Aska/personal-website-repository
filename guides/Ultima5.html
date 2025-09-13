@@ -301,6 +301,8 @@
                      <div class="flex flex-wrap border-b border-gray-200">
                         <button class="ref-tab-button tab-button py-2 px-4 font-semibold border-b-2 border-transparent hover:bg-yellow-100 active" data-tab="spells">Grimoire</button>
                         <button class="ref-tab-button tab-button py-2 px-4 font-semibold border-b-2 border-transparent hover:bg-yellow-100" data-tab="words">Words & Mantras</button>
+                        <button class="ref-tab-button tab-button py-2 px-4 font-semibold border-b-2 border-transparent hover:bg-yellow-100" data-tab="moongates">Moongate Phases</button>
+                        <button class="ref-tab-button tab-button py-2 px-4 font-semibold border-b-2 border-transparent hover:bg-yellow-100" data-tab="tips">Tips</button>
                     </div>
 
                     <div id="spells" class="ref-tab-content active mt-6">
@@ -342,6 +344,32 @@
                                     <tbody id="word-table-body"></tbody>
                                 </table>
                             </div>
+                        </div>
+                    </div>
+
+                    <div id="tips" class="ref-tab-content mt-6">
+                        <div class="bg-white p-6 rounded-lg shadow">
+                            <h3 class="text-2xl font-semibold mb-4 text-yellow-800">Common Player Tips</h3>
+                            <ul id="tips-list" class="list-disc list-inside space-y-2"></ul>
+                        </div>
+                    </div>
+
+                    <div id="moongates" class="ref-tab-content mt-6">
+                        <div class="bg-white p-6 rounded-lg shadow">
+                            <h3 class="text-2xl font-semibold mb-4 text-yellow-800">Moongate Phases (Gate Travel)</h3>
+                            <p class="mb-4">Casting <code>VAS REL POR</code> opens a gate to any moongate based on the current moon phase. Use a pocket watch to time your arrival.</p>
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-left">
+                                    <thead class="bg-yellow-200 text-yellow-900">
+                                        <tr>
+                                            <th class="p-3">Phase</th>
+                                            <th class="p-3">Destination</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="moongate-table-body"></tbody>
+                                </table>
+                            </div>
+                            <p class="mt-3 text-sm text-stone-600">Notes: Based on Ultima V moongate order seen in-game and the walkthrough’s examples (e.g., Phase 1 → Moonglow, Phase 2 → Britain, Phase 4 → Yew, Phase 5 → Minoc, Phase 6 → Trinsic, Phase 8 → New Magincia).</p>
                         </div>
                     </div>
                 </section>
