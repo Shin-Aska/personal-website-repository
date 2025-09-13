@@ -38,7 +38,7 @@
             <button class="tab-button text-sm sm:text-lg p-4" onclick="showTab('almanac')">Britannian Almanac</button>
             <button class="tab-button text-sm sm:text-lg p-4" onclick="showTab('atlas')">World Atlas</button>
             <button class="tab-button text-sm sm:text-lg p-4" onclick="showTab('passage')">Words of Passage</button>
-            <button class="tab-button text-sm sm:text-lg p-4" onclick="showTab('counsel')">Sage's Counsel</button>
+            <button class="tab-button text-sm sm:text-lg p-4" onclick="showTab('counsel')">Consult with the Seer</button>
         </nav>
 
         <main>
@@ -128,16 +128,16 @@
             
             <section id="counsel" class="tab-content">
                 <div class="bg-amber-50/50 p-6 rounded-lg shadow-md">
-                    <h2 class="text-3xl font-bold mb-4 text-amber-900">✨ Sage's Counsel</h2>
-                    <p class="mb-6 text-amber-900/80">The path of the Avatar is not always clear. If you find yourself lost, perplexed by a puzzle, or seeking strategic wisdom, pose your query to the sage. The ethereal winds will carry your question and return with guidance.</p>
+                    <h2 class="text-3xl font-bold mb-4 text-amber-900">✨ Consult with the Seer</h2>
+                    <p class="mb-6 text-amber-900/80">The path of the Avatar is not always clear. If you find yourself lost, perplexed by a puzzle, or seeking strategic wisdom, pose your query to the seer. The ethereal winds will carry your question and return with guidance.</p>
                     <div class="w-full">
-                        <label for="sage-query" class="block text-lg font-semibold text-amber-900 mb-2">What guidance do you seek?</label>
-                        <textarea id="sage-query" rows="4" class="w-full p-2 border border-amber-300 rounded-md bg-white/70 focus:ring-amber-500 focus:border-amber-500" placeholder="e.g., How can I defeat the dragons in Destard? or Where can I find the plans for the hot-air balloon?"></textarea>
-                        <button id="ask-sage" class="mt-4 bg-amber-800 hover:bg-amber-900 text-white font-bold py-2 px-4 rounded transition-colors duration-300">
-                            Ask the Sage
+                        <label for="seer-query" class="block text-lg font-semibold text-amber-900 mb-2">What guidance do you seek?</label>
+                        <textarea id="seer-query" rows="4" class="w-full p-2 border border-amber-300 rounded-md bg-white/70 focus:ring-amber-500 focus:border-amber-500" placeholder="e.g., How can I defeat the dragons in Destard? or Where can I find the plans for the hot-air balloon?"></textarea>
+                        <button id="ask-seer" class="mt-4 bg-amber-800 hover:bg-amber-900 text-white font-bold py-2 px-4 rounded transition-colors duration-300">
+                            Ask the Seer
                         </button>
                     </div>
-                    <div id="sage-response" class="mt-6"></div>
+                    <div id="seer-response" class="mt-6"></div>
                 </div>
             </section>
 
@@ -172,14 +172,14 @@
                         <p class="mb-4">Your first mandate from Lord British is to reclaim the eight Shrines of Virtue from the Gargoyles. This requires finding each city's corresponding Rune and cleansing its shrine.</p>
                         <h4 class="font-semibold text-lg mb-2">The Quest for the Runes:</h4>
                         <ul class="list-disc list-inside space-y-2 mb-4">
-                            <li><b>Honesty (Moonglow):</b> Obtain the key to Beyvin's tomb from Manrel.</li>
-                            <li><b>Compassion (Britain):</b> Get permission from Anya to receive the rune from her daughter, Ariana.</li>
-                            <li><b>Valor (Jhelom):</b> Recruit Sherry the mouse with cheese from Castle British to retrieve the rune from a mouse hole.</li>
-                            <li><b>Justice (Yew):</b> Learn the rune's location under a plant from the prisoner Boskin.</li>
-                            <li><b>Sacrifice (Minoc):</b> Craft panpipes and learn the song "Stones" to trade for the rune.</li>
-                            <li><b>Honor (Trinsic):</b> Ask Mayor Whitsaber for permission to borrow the rune.</li>
-                            <li><b>Spirituality (Skara Brae):</b> Find the rune in Marney's Hope Chest.</li>
-                            <li><b>Humility (New Magincia):</b> Solve Mayor Antonio's riddle; the answer is Conor the fisherman.</li>
+                            <li><b>Honesty (Moonglow):</b> Obtain the key to Beyvin's tomb from Manrel (south of the Blue Bottle Inn), then unlock the tomb in the catacombs.</li>
+                            <li><b>Compassion (Britain):</b> Get permission from Ariana's mother, the barmaid at the Blue Boar, to receive the rune from Ariana.</li>
+                            <li><b>Valor (Jhelom):</b> Recruit Sherry the mouse with cheese from Castle British to retrieve the rune through a mouse hole in the Jhelom tavern.</li>
+                            <li><b>Justice (Yew):</b> Learn from the prisoner Boskin that the rune is hidden under a plant in Yew's tavern.</li>
+                            <li><b>Sacrifice (Minoc):</b> Craft panpipes from a yew log and recite "Stones" (6789878767653) for Selganor to receive the rune.</li>
+                            <li><b>Honor (Trinsic):</b> Borrow the rune from its pedestal and return it after use.</li>
+                            <li><b>Spirituality (Skara Brae):</b> Find the rune in Marney's hope chest.</li>
+                            <li><b>Humility (New Magincia):</b> Solve the mayor's riddle; the answer is Conor the fisherman.</li>
                         </ul>
                         <h4 class="font-semibold text-lg mb-2">Cleansing the Shrines:</h4>
                         <p>With a rune, go to its shrine. Use the rune, speak the mantra (e.g., AHM for Honesty), and take the Moonstone.</p>
@@ -192,13 +192,24 @@
                         <h4 class="font-semibold text-lg mb-2">The Silver Tablet:</h4>
                         <ul class="list-disc list-inside space-y-2 mb-4">
                             <li>Take the Gargish tome to Mariah at the Lycaeum. She needs the other half of a silver tablet.</li>
-                            <li>Find the gypsies near Trinsic, who point you to Homer.</li>
-                            <li>Join the Thieves' Guild in Buccaneer's Den by stealing a belt from Phoenix in the castle sewers (use Invisibility).</li>
+                            <li>Find the gypsies near Trinsic, who point you to Homer in Buccaneer's Den.</li>
+                            <li>Join the Thieves' Guild in Buccaneer's Den by wearing a guild belt (steal one from Phoenix in the castle sewers—Invisibility helps).</li>
                         </ul>
                         <h4 class="font-semibold text-lg mb-2">Assembling the Map:</h4>
-                        <p>Homer reveals the map to the treasure is in nine pieces, scattered across Britannia. You must find all pieces from various pirates, dungeons (Shame, Wrong), and quest givers (Sandy in Trinsic).</p>
+                        <p class="mb-2">Homer reveals the map to the treasure is in nine pieces, scattered across Britannia. Track them down in these places:</p>
+                        <ul class="list-disc list-inside space-y-1 mb-4">
+                            <li>Dungeon Shame: Old Ybarra will trade a piece for food.</li>
+                            <li>Dungeon Wrong/Covetous: Solve a lever puzzle, then find a piece on the third level.</li>
+                            <li>The Ant Mound: On the bottom floor, on a corpse deep near the queen.</li>
+                            <li>Shipwreck: On the reefs at approximately 71S, 15E.</li>
+                            <li>Serpent's Hold: Morchella east of the Hold will trade for a Magic Shield.</li>
+                            <li>Dagger Isle: In a hermit's cellar—move the harpsichord.</li>
+                            <li>Gypsies north of Paws: Buy a piece from Arturos (or pickpocket).</li>
+                            <li>Trinsic: Confront the mayor with his alias "Gordon" to obtain a piece.</li>
+                            <li>Homer has one piece; return once you have eight and he will provide the last and the digging instructions.</li>
+                        </ul>
                         <h4 class="font-semibold text-lg mb-2">The Pirate's Cave:</h4>
-                        <p>Once the map is assembled, find the cave on a remote island. Use a Powder Keg to blast open the final door and retrieve the silver tablet, a Storm Cloak, and the Magic Fan.</p>
+                        <p>Once the map is assembled, sail to the small island southeast of Buccaneer's Den. Follow the misleading signs (go opposite the first "This Way," then follow the next), pass the Maze of Death, and reach the cache. Claim the silver tablet, the Storm Cloak, and the Magic Fan. Return the Storm Cloak to Homer to keep your virtue untarnished.</p>
                     `
                 },
                 {
@@ -207,13 +218,12 @@
                         <p class="mb-4">The translated book reveals the Gargoyles are refugees, and the Avatar is their prophesied doom. You must now travel to their realm to forge peace.</p>
                         <h4 class="font-semibold text-lg mb-2">The Path to Peace:</h4>
                         <ul class="list-disc list-inside space-y-2 mb-4">
-                            <li><b>DO NOT</b> use the Orb of the Moons. Travel through the dungeon Hythloth on the Isle of the Avatar.</li>
-                            <li>On the lowest level of Hythloth, find Captain Johne to learn the Gargish language.</li>
-                            <li>Upon exiting, immediately recruit the gargoyle Beh Lem. He is essential for diplomacy.</li>
-                            <li>Meet King Draxinusom and agree to wear the Amulet of Submission to prove your peaceful intent.</li>
+                            <li>Travel through the dungeon Hythloth on the Isle of the Avatar (recommended). On the lowest level, find Captain Johne to learn the Gargish language. (The Orb of the Moons can also reach the gargoyle realm once you understand its use.)</li>
+                            <li>Upon exiting into the gargoyle world, recruit the gargoyle Beh Lem near the Hythloth entrance. He is essential for diplomacy.</li>
+                            <li>Meet <b>Lord Draxinusom</b> and agree to wear the Amulet of Submission to prove your peaceful intent.</li>
                         </ul>
                         <h4 class="font-semibold text-lg mb-2">The Sacred Quest:</h4>
-                        <p>To return the stolen Codex of Ultimate Wisdom, you must embark on a "sacred quest." This requires building a hot-air balloon to reach the Temple of Singularity and chanting the Gargish mantra of virtue: UN-OR-US.</p>
+                        <p>Build a hot-air balloon (plans beneath Sutek's Castle; basket in Minoc; silk and sewing in Paws; cloth in New Magincia). Use it to float over the mountains to the <b>Shrine of Singularity</b>. Then visit the catacombs of <i>Control</i>, <i>Passion</i>, and <i>Diligence</i> and speak with each altar to learn their mantras (UN, OR, US). Return to the Shrine of Singularity and chant <b>UNORUS</b> to be placed on the sacred quest and gain access to the Codex.</p>
                     `
                 },
                 {
@@ -222,12 +232,12 @@
                         <p class="mb-4">To end the conflict, you must perform a ritual to return the Codex to the Ethereal Void, making its wisdom accessible to both humans and gargoyles.</p>
                         <h4 class="font-semibold text-lg mb-2">Gathering the Artifacts:</h4>
                         <ul class="list-disc list-inside space-y-2 mb-4">
-                            <li><b>The Vortex Cube:</b> Found in the dungeon beneath Stonegate. Befriend the cyclops guard with a fish to enter.</li>
-                            <li><b>The Gargoyle Lens:</b> Take the broken lens from the Hall of Knowledge to Lor-wis-lem for repairs.</li>
-                            <li><b>The Britannian Lens:</b> Give a glass sword to the astronomer Ephemerides, who will craft the human lens.</li>
+                            <li><b>The Vortex Cube:</b> Beneath Stonegate. Catch a fish for the cyclops patriarch to earn a key, then navigate the secret passages to the cube.</li>
+                            <li><b>The Gargoyle Lens:</b> Take the broken lens from the Hall of Knowledge to the gargoyle lens maker (northeast of the Seer's home) for repairs.</li>
+                            <li><b>The Britannian Lens:</b> Give a glass sword to the astronomer Ephemerides in Moonglow, who will craft the human lens.</li>
                         </ul>
                         <h4 class="font-semibold text-lg mb-2">Returning the Codex:</h4>
-                        <p>At the Shrine of the Codex, place all eight Moonstones in the Vortex Cube. Set the cube down, place one lens on each of the two flames, and use the cube. This triggers the final cinematic, forging a lasting peace.</p>
+                        <p>At the Shrine of the Codex, place the <i>Britannian</i> lens halfway between the left flame and the Codex, and the <i>Gargoyle</i> lens halfway between the right flame and the Codex (you will see rays of light if placed correctly). Set the Vortex Cube before the Codex, drop all eight Moonstones into the cube, then <b>use</b> the cube to complete the ritual.</p>
                     `
                 }
             ],
@@ -408,7 +418,7 @@
         });
 
         document.getElementById('generate-chronicle').addEventListener('click', generateChronicle);
-        document.getElementById('ask-sage').addEventListener('click', askTheSage);
+        document.getElementById('ask-seer').addEventListener('click', askTheSeer);
     }
 
     let sortDirection = {};
@@ -463,7 +473,7 @@
             }
         } catch (error) {
             console.error("Error calling Gemini API:", error);
-            outputElement.innerHTML = `<div class="gemini-response text-red-800">The ethereal winds are turbulent. The sage's voice cannot be heard at this time. Please try again later.</div>`;
+            outputElement.innerHTML = `<div class="gemini-response text-red-800">The ethereal winds are turbulent. The seer's voice cannot be heard at this time. Please try again later.</div>`;
         }
     }
 
@@ -478,14 +488,21 @@
         callGeminiAPI(prompt, outputElement);
     }
 
-    function askTheSage() {
-        const query = document.getElementById('sage-query').value;
+    function askTheSeer() {
+        const query = document.getElementById('seer-query').value;
         if (!query.trim()) {
-            alert("You must first pose a question to the sage.");
+            alert("You must first pose a question to the seer.");
             return;
         }
-        const prompt = `You are a wise, ancient sage from the fantasy world of Ultima VI. A player has asked you for guidance. Your task is to provide a helpful, in-character, and thematic response. Do not break character. Provide actionable advice, hints, or lore that will help them, but avoid simply giving away the direct answer unless it's a simple factual question (like an item location). Ground your answer in the world of Britannia. The player's question is: "${query}"`;
-        const outputElement = document.getElementById('sage-response');
+        const prompt = `You are a far-seeing seer in Ultima VI: The False Prophet. Ground your guidance in this quest context (use it to inform your answer; do not just restate it):
+
+- Act I — Liberate the Shrines: find each Rune and mantra, cleanse the eight shrines, and collect the Moonstones.
+- Act II — Prophecy & Pirates: take the Gargish book to Mariah; assemble Captain Hawkins’s nine map pieces (Shame, Wrong/Covetous, Ant Mound, shipwreck at ~71S 15E, Serpent’s Hold trade for a Magic Shield, Dagger Isle hermit, gypsies north of Paws, Trinsic mayor “Gordon”, plus Homer) to reach the Pirate Cave and recover the silver tablet; return the Storm Cloak to Homer.
+- Act III — Gargoyle Realm: through Hythloth meet Captain Johne, recruit Beh Lem, wear the Amulet of Submission before Lord Draxinusom; build the balloon to reach the Shrine of Singularity, learn UN, OR, US and chant UNORUS.
+- Final Ritual: recover the Vortex Cube at Stonegate; repair the Gargoyle lens and obtain the Britannian lens (glass sword → Ephemerides); at the Codex, set each lens halfway between its flame and the Codex, load all eight Moonstones into the Cube, then use it.
+
+Answer in 2–3 short paragraphs, in-character and practical, giving clear hints and options (avoid unnecessary spoilers). Player’s question: "${query}"`;
+        const outputElement = document.getElementById('seer-response');
         callGeminiAPI(prompt, outputElement);
     }
 

@@ -135,7 +135,7 @@ function setupEventListeners() {
     // Ask the sage button
     const askSageBtn = document.getElementById('ask-sage');
     if (askSageBtn) {
-        askSageBtn.addEventListener('click', askTheSage);
+        askSageBtn.addEventListener('click', askTheSeer);
     }
 }
 
@@ -221,8 +221,8 @@ function generateChronicle() {
     callGeminiAPI(prompt, outputDiv);
 }
 
-// Ask the sage for advice
-function askTheSage() {
+// Ask the seer for advice
+function askTheSeer() {
     const questionInput = document.getElementById('sage-question');
     const outputDiv = document.getElementById('sage-answer');
 
@@ -234,8 +234,7 @@ function askTheSage() {
         return;
     }
 
-    const prompt = `You are a wise sage in the world of Ultima VI. Answer this question with helpful, in-universe advice: "${question}" ` +
-        `Provide a 2-3 paragraph response with practical guidance.`;
+    const prompt = `You are a far-seeing seer in Ultima VI: The False Prophet. Ground your guidance in this quest context (use it to inform your answer; do not just restate it):\n\n- Act I — Liberate the Shrines: find each Rune and mantra, cleanse the eight shrines, and collect the Moonstones.\n- Act II — Prophecy & Pirates: take the Gargish book to Mariah; assemble Captain Hawkins’s nine map pieces (Shame, Wrong/Covetous, Ant Mound, shipwreck at ~71S 15E, Serpent’s Hold trade for a Magic Shield, Dagger Isle hermit, gypsies north of Paws, Trinsic mayor “Gordon”, plus Homer) to reach the Pirate Cave and recover the silver tablet; return the Storm Cloak to Homer.\n- Act III — Gargoyle Realm: through Hythloth meet Captain Johne, recruit Beh Lem, wear the Amulet of Submission before Lord Draxinusom; build the balloon to reach the Shrine of Singularity, learn UN, OR, US and chant UNORUS.\n- Final Ritual: recover the Vortex Cube at Stonegate; repair the Gargoyle lens and obtain the Britannian lens (glass sword → Ephemerides); at the Codex, set each lens halfway between its flame and the Codex, load all eight Moonstones into the Cube, then use it.\n\nAnswer in 2–3 short paragraphs, in-character and practical, giving clear hints and options (avoid unnecessary spoilers). Player’s question: "${question}"`;
 
     callGeminiAPI(prompt, outputDiv);
 }
