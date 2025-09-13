@@ -63,7 +63,7 @@ const DB = {
         { name: "Who wants to destroy the Shrine?", location: "Terfin", giver: "Teregus", reward: "100 XP", walkthrough: "Investigate Sarpling's home to find a note implicating Runeb in a plot against the Altars. Confront Runeb to resolve the threat." },
         { name: "Mysterious Monk", location: "Yew", giver: "Kreg", reward: "100 XP", walkthrough: "Kreg is a criminal in hiding. Research court records to discover his identity and confront him, which will provoke an attack." },
         { name: "Who Defaced Lord British?", location: "Serpent's Hold", giver: "Lord John-Paul", reward: "100 XP", walkthrough: "A lengthy investigation reveals the knight Pendaran is the vandal. Report this to Lord John-Paul for judgment." },
-        { name: "Tory's Baby", location: "Serpent's Hold", giver: "Tory", reward: "100 XP", walkthrough: "The baby, Riky, is at the Shrine of Honor (151S, 9W). Defeat the harpies and return him to his mother." },
+        { name: "Tory's Baby", location: "Serpent's Hold", giver: "Tory", reward: "100 XP", walkthrough: "The baby, Riky, is at the Shrine of Honour (142S, 9W). Defeat the harpies and return him to his mother." },
     ]
 };
 
@@ -73,7 +73,7 @@ const OFFLINE_HINTS = {
     "Infiltrating the Fellowship": "• Deliver Batlin’s sealed package to Elynor in Minoc first.\n• Return at 9 PM for the service, then accept the 'funds' errand to Destard (it’s a trap).\n• Bring supplies—Destard isn’t deserted.",
     "The Quest for the Time Lord": "• Bring honey from the Bee Cave to befriend the emps.\n• Ask Trellek for help and get a wisp whistle.\n• Use the whistle near the Deep Forest wisp and prepare to fetch Alagner’s notebook.",
     "The Answers to Life and Death": "• Reach Skara Brae (Séance helps) and speak to Mordra the necromancer.\n• Free Rowena from Horance’s influence, then craft a Soul Cage and resolve the Well of Souls.\n• Caine will share what Alagner needs.",
-    "Destroying the Guardian's Generators": "• Order matters: Tetrahedron (Deceit) → Sphere (Despise) → Cube (Meditation Retreat).\n• You’ll need: blackrock for Penumbra, the Ethereal Ring (Terfin/Spektran), Nicodemus’s Hourglass, and Caddellite helms (Zorn in Minoc).\n• Mark & Recall save lots of time.",
+    "Destroying the Guardian's Generators": "• Order matters: Tetrahedron (Deceit) → Sphere (Despise) → Cube (Meditation Retreat).\n• You’ll need: blackrock for Penumbra, the Ethereal Ring (from Lord Draxinusom in Terfin), Nicodemus’s Hourglass, and Caddellite helms (Zorn in Minoc).\n• Mark & Recall save lots of time.",
     "The Isle of the Avatar and Final Battle": "• Use the Cube prism to unmask conspirators, then recover the needed key in Buccaneer’s Den.\n• On the Isle, place all three prisms on their pedestals to disable the beam.\n• Use Rudyom’s Wand on the Black Gate—no big battle needed there.",
 
     // Side quests
@@ -91,7 +91,7 @@ const OFFLINE_HINTS = {
     "Who wants to destroy the Shrine?": "• In Terfin, speak with Teregus.\n• Search Sarpling’s quarters for a note.\n• Confront Runeb with the evidence and be ready for a fight.",
     "Mysterious Monk": "• At Empath Abbey, a monk named Kreg asks about invisibility.\n• Check records in Yew to confirm identities.\n• Prepare for a confrontation once you expose him.",
     "Who Defaced Lord British?": "• In Serpent’s Hold, gather forensics (stone chips, blood).\n• Consult Lady Leigh and Lady Tory for leads.\n• Report your findings to Lord John‑Paul.",
-    "Tory's Baby": "• Search the Shrine of Honour (around 151S, 9W).\n• Harpies may be present—clear them out.\n• Return the baby to Tory in the Keep."
+    "Tory's Baby": "• Search the Shrine of Honour (around 142S, 9W).\n• Harpies may be present—clear them out.\n• Return the baby to Tory in the Keep."
 };
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -151,7 +151,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function displayAiResponse(text, title = '✨ AI Assistant') {
-        aiModalTitle.textContent = title;
+        // Allow a small badge in the title (e.g., non‑spoiler)
+        aiModalTitle.innerHTML = title;
         aiResponseText.textContent = text;
         aiLoader.style.display = 'none';
     }
@@ -372,7 +373,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Prefer reliable, spoiler-light local hints when available
         if (OFFLINE_HINTS[key]) {
-            displayAiResponse(OFFLINE_HINTS[key], `✨ Hint for ${key}`);
+            const badge = "<span class='ml-2 align-middle text-[10px] px-2 py-0.5 rounded bg-yellow-200/20 text-yellow-100 border border-yellow-300/40'>non‑spoiler</span>";
+            displayAiResponse(OFFLINE_HINTS[key], `✨ Hint for ${key} ${badge}`);
             return;
         }
 
@@ -387,7 +389,8 @@ Requirements:
 Keep it under 80 words total.`;
 
         const hint = await callGemini(prompt);
-        displayAiResponse(hint, `✨ Hint for ${key}`);
+        const badge = "<span class='ml-2 align-middle text-[10px] px-2 py-0.5 rounded bg-yellow-200/20 text-yellow-100 border border-yellow-300/40'>non‑spoiler</span>";
+        displayAiResponse(hint, `✨ Hint for ${key} ${badge}`);
     }
 
     function initQuests() {
