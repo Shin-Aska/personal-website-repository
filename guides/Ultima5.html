@@ -38,6 +38,7 @@
                     <li><a href="#survival" class="nav-link flex items-center gap-3 p-3 rounded-lg hover:bg-amber-200"><i data-lucide="shield-check" class="h-5 w-5"></i> <span class="font-medium">Survival Kit</span></a></li>
                     <li><a href="#quests" class="nav-link flex items-center gap-3 p-3 rounded-lg hover:bg-amber-200"><i data-lucide="map" class="h-5 w-5"></i> <span class="font-medium">Quest Log</span></a></li>
                     <li><a href="#reference" class="nav-link flex items-center gap-3 p-3 rounded-lg hover:bg-amber-200"><i data-lucide="book-open" class="h-5 w-5"></i> <span class="font-medium">Reference</span></a></li>
+                    <li><a href="#counsel" class="nav-link flex items-center gap-3 p-3 rounded-lg hover:bg-amber-200"><i data-lucide="message-circle" class="h-5 w-5"></i> <span class="font-medium">Consult with the Seer</span></a></li>
                 </ul>
             </nav>
 
@@ -46,12 +47,23 @@
                 <section id="overview" class="content-section active">
                     <h2 class="text-3xl font-bold text-yellow-900 mb-4 border-b-2 border-yellow-800 pb-2">The Tyranny of Virtue</h2>
                     <div class="space-y-4 text-lg leading-relaxed bg-white p-6 rounded-lg shadow">
-                        <p>Welcome back to Britannia, Avatar. The land you once saved has fallen under a dark shadow. Lord British is lost in the Underworld, and his regent, Lord Blackthorn, enforces the Virtues with an iron fist, twisted by the influence of the three malevolent Shadowlords.</p>
-                        <p>This interactive guide is your companion in the struggle to liberate Britannia. It's designed to provide quick, accessible information when you need it most. Use the navigation to explore potential party members, learn survival essentials, track your progress through the main quests, and reference critical information like spells and mantras. Your goal is not just to rescue a king, but to restore the very soul of Britannia—the principle that true virtue must be a choice, not a law.</p>
                         <p class="bg-yellow-100 border border-yellow-300 text-yellow-900 p-4 rounded-md">
                             Tooling tip: <strong>Ultimapper 5</strong> is a Windows tool for Ultima V that overlays a HUD above the game and shows a live map of your current location in a separate window. It works great with the GOG version (and typically with other DOSBox-based versions).
                             See my setup guide: <a class="underline font-medium" href="https://www.richardorilla.website/best_way_to_play_ultima5.html" target="_blank" rel="noopener noreferrer">Best way to play Ultima 5</a>.
                         </p>
+                        <p>Welcome back to Britannia, Avatar. The land you once saved has fallen under a dark shadow. Lord British is lost in the Underworld, and his regent, Lord Blackthorn, enforces the Virtues with an iron fist, twisted by the influence of the three malevolent Shadowlords.</p>
+                        <p>This interactive guide is your companion in the struggle to liberate Britannia. It's designed to provide quick, accessible information when you need it most. Use the navigation to explore potential party members, learn survival essentials, track your progress through the main quests, and reference critical information like spells and mantras. Your goal is not just to rescue a king, but to restore the very soul of Britannia—the principle that true virtue must be a choice, not a law.</p>
+                    </div>
+                </section>
+
+                <section id="counsel" class="content-section">
+                    <h2 class="text-3xl font-bold text-yellow-900 mb-6">✨ Consult with the Seer</h2>
+                    <div class="bg-white p-6 rounded-lg shadow">
+                        <p class="mb-6">Lost in the Underworld, stumped by a puzzle, or unsure which quest to tackle next? Ask the seer for practical guidance grounded in Ultima V’s mechanics and quest flow.</p>
+                        <label for="seer-query" class="block text-lg font-semibold text-yellow-900 mb-2">What guidance do you seek?</label>
+                        <textarea id="seer-query" rows="4" class="w-full p-2 border border-amber-300 rounded-md bg-white focus:ring-amber-500 focus:border-amber-500" placeholder="e.g., Fastest route to Stonegate? Best way to get skull keys? Where do I find the Amulet?"></textarea>
+                        <button id="ask-seer" class="mt-4 bg-yellow-800 hover:bg-yellow-900 text-white font-bold py-2 px-4 rounded transition-colors duration-300">Ask the Seer</button>
+                        <div id="seer-response" class="mt-6"></div>
                     </div>
                 </section>
 

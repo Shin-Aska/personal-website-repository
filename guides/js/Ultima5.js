@@ -321,6 +321,12 @@ function setupEventListeners() {
             }
         });
     }
+
+    // Seer AI: bind ask button if present
+    const askSeerBtn = document.getElementById('ask-seer');
+    if (askSeerBtn) {
+        askSeerBtn.addEventListener('click', askTheSeer);
+    }
 }
 
 // Update chart based on selected stat
@@ -398,3 +404,53 @@ function initializeTableSorting() {
 
 // Call this after the DOM is loaded
 document.addEventListener('DOMContentLoaded', initializeTableSorting);
+
+// --- AI Seer (Gemini) Integration ---
+async function callGeminiAPI(prompt, outputElement) {
+    if (!outputElement) return;
+    outputElement.innerHTML = '<div class="flex justify-center"><div class="loader"></div></div>';
+
+    const payload = { contents: [{ role: 'user', parts: [{ text: prompt }] }] };
+    const apiUrl = '/php/llm.php';
+
+    try {
+        const response = await fetch(apiUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+        });
+        if (!response.ok) {
+            throw new Error(`API call failed with status: ${response.status}`);
+        }
+        const result = await response.json();
+        const text = result?.candidates?.[0]?.content?.parts?.[0]?.text;
+        if (!text) throw new Error('Invalid response structure from API.');
+        outputElement.innerHTML = `<div class="gemini-response">${text}</div>`;
+    } catch (err) {
+        console.error('Gemini API error:', err);
+        outputElement.innerHTML = `<div class="gemini-response text-red-700">The seer is silent for now. Please try again shortly.</div>`;
+    }
+}
+
+function askTheSeer() {
+    const textarea = document.getElementById('seer-query');
+    const outputElement = document.getElementById('seer-response');
+    if (!textarea || !outputElement) return;
+    const query = textarea.value.trim();
+    if (!query) {
+        alert('Please enter a question for the seer.');
+        return;
+    }
+
+    const prompt = `You are a seer in Ultima V: Warriors of Destiny. Provide precise, practical guidance grounded in Ultima V mechanics and quest flow. Use the following context as background knowledge; use it to inform your answer without restating it verbatim.
+
+- Shrines & VERAMOCOR: Meditate at all eight shrines with the correct mantras; each pilgrimage includes a vision at the Shrine of the Codex in the Underworld. Completing all eight reveals the word VERAMOCOR for Dungeon Doom.
+- Shadowlords: Learn their names (Faulinei, Astaroth, Nosfentor). Recover shards in the Underworld (via Deceit, Wrong/Covetous, Hythloth). Banish each at the corresponding stronghold (Lycaeum, Empath Abbey, Serpent's Hold) by luring them onto the flame and using the shard.
+- Crown Jewels: Sceptre (Stonegate; ethereal walls), Crown (Blackthorn’s Palace; Black Badge helps), Amulet (Underworld below Destard or via Spiritwood waterfall), Sandalwood Box (Castle Britannia harpsichord: 6-7-8-9-8-7-8-7-6-7-6-5-3).
+- Key Tools: Grapple from Lord Michael (Empath Abbey); Skull keys from Shenstone’s stump in Minoc; Magic Axes from Yew (and world pickups); Blink needed in the Underworld (esp. Hythloth area); Magic Carpet for swamps/shallow water/low hills.
+- Doom: Use the Amulet to pierce the darkness, Sceptre to remove ethereal walls, keep the Crown ready. Speak VERAMOCOR to enter and rescue Lord British.
+
+Answer in 2–3 short paragraphs, in-character and actionable, with clear hints and options (avoid unnecessary spoilers). Player’s question: "${query}"`;
+
+    callGeminiAPI(prompt, outputElement);
+}
