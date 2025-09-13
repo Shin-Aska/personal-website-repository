@@ -156,52 +156,81 @@
                     <h2 class="text-3xl font-bold text-yellow-900 mb-6">The Path to Liberation</h2>
                     <p class="mb-6 text-lg bg-white p-4 rounded-lg shadow">Your journey to free Britannia is long and perilous. It involves dismantling Blackthorn's regime, rescuing the true king, and restoring the meaning of Virtue. This quest log is divided into the major acts of your adventure. Begin by restoring the Shrines, then shatter the Shadowlords' influence, recover the king's regalia, and finally, prepare for the descent into Doom.</p>
                     <div class="flex flex-wrap border-b border-gray-200">
-                        <button class="quest-tab-button tab-button py-2 px-4 font-semibold border-b-2 border-transparent hover:bg-yellow-100 active" data-tab="shrines">The Shrine Quests</button>
-                        <button class="quest-tab-button tab-button py-2 px-4 font-semibold border-b-2 border-transparent hover:bg-yellow-100" data-tab="shadowlords">Shatter the Shadows</button>
-                        <button class="quest-tab-button tab-button py-2 px-4 font-semibold border-b-2 border-transparent hover:bg-yellow-100" data-tab="regalia">Recover the Regalia</button>
-                        <button class="quest-tab-button tab-button py-2 px-4 font-semibold border-b-2 border-transparent hover:bg-yellow-100" data-tab="doom">Descent into Doom</button>
+                        <button class="quest-tab-button tab-button py-2 px-4 font-semibold border-b-2 border-transparent hover:bg-yellow-100 active" data-tab="shrines">1. The Shrine Quests</button>
+                        <button class="quest-tab-button tab-button py-2 px-4 font-semibold border-b-2 border-transparent hover:bg-yellow-100" data-tab="shadowlords">2. Shatter the Shadows</button>
+                        <button class="quest-tab-button tab-button py-2 px-4 font-semibold border-b-2 border-transparent hover:bg-yellow-100" data-tab="regalia">3. Recover the Regalia</button>
+                        <button class="quest-tab-button tab-button py-2 px-4 font-semibold border-b-2 border-transparent hover:bg-yellow-100" data-tab="doom">4. Descent into Doom</button>
                     </div>
 
                     <div id="shrines" class="quest-tab-content active mt-6 space-y-4">
                         <h3 class="text-2xl font-semibold text-yellow-800">The Path of Virtue</h3>
-                        <p>Restoring the Shrines of the Eight Virtues is the primary way to increase your party's attributes and is required to learn the final Word of Power. Each shrine follows a four-step process.</p>
+                        <p>Restoring the Shrines of the Eight Virtues is the primary way to increase your party's attributes and is required to learn the final Word of Power. Every shrine uses the same simple loop:</p>
                         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                            <div class="bg-white p-4 rounded-lg shadow"><span class="font-bold text-yellow-700">1. Learn the Mantra:</span> Converse with townsfolk in the virtue's associated city.</div>
-                            <div class="bg-white p-4 rounded-lg shadow"><span class="font-bold text-yellow-700">2. Meditate at the Shrine:</span> Use the mantra to meditate for three cycles to begin the quest.</div>
-                            <div class="bg-white p-4 rounded-lg shadow"><span class="font-bold text-yellow-700">3. Journey to the Codex:</span> Receive wisdom at the <strong>Shrine of the Codex</strong> in the Underworld.</div>
-                            <div class="bg-white p-4 rounded-lg shadow"><span class="font-bold text-yellow-700">4. Attain Enlightenment:</span> Return to the shrine and meditate again to complete the quest and gain an attribute increase.</div>
+                            <div class="bg-white p-4 rounded-lg shadow"><span class="font-bold text-yellow-700">1) Learn the Mantra</span> from NPCs in the virtue's city.</div>
+                            <div class="bg-white p-4 rounded-lg shadow"><span class="font-bold text-yellow-700">2) Meditate</span> at the shrine using the mantra for three cycles.</div>
+                            <div class="bg-white p-4 rounded-lg shadow"><span class="font-bold text-yellow-700">3) Visit the Codex</span> on the Isle of the Avatar (Underworld) to receive guidance.</div>
+                            <div class="bg-white p-4 rounded-lg shadow"><span class="font-bold text-yellow-700">4) Return & Complete</span> by meditating again to gain stats.</div>
                         </div>
-                        <p class="pt-4">Completing all eight quests will grant you the Word of Power for Dungeon Doom: <strong>VERAMOCOR</strong>.</p>
+                        <div class="bg-white p-4 rounded-lg shadow">
+                            <h4 class="text-xl font-semibold text-yellow-900 mb-2">Who to talk to for each Mantra</h4>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="border rounded p-3"><span class="font-bold">Honesty (Moonglow)</span>: Speak to <strong>Malifora</strong> → mantra <code>AHM</code>.</div>
+                                <div class="border rounded p-3"><span class="font-bold">Compassion (Britain)</span>: <strong>Greyson</strong> (at the inn). Say BRITISH is the rightful ruler, then ask for the mantra of Compassion → <code>MU</code>.</div>
+                                <div class="border rounded p-3"><span class="font-bold">Valor (Jhelom)</span>: <strong>Trian</strong> points you to <strong>Thorne</strong> → <code>RA</code>.</div>
+                                <div class="border rounded p-3"><span class="font-bold">Justice (Yew)</span>: Give <strong>Jeremy</strong> money, then ask for info. He directs you to <strong>Chamfort</strong> (Resistance; password <code>DAWN</code>) → <code>BEH</code>.</div>
+                                <div class="border rounded p-3"><span class="font-bold">Sacrifice (Minoc/East Brittany)</span>: <strong>Rew</strong> (East Brittany) sings the mantra → <code>CAH</code>.</div>
+                                <div class="border rounded p-3"><span class="font-bold">Honor (Trinsic)</span>: <strong>Gruman</strong> shares it directly → <code>SUMM</code>.</div>
+                                <div class="border rounded p-3"><span class="font-bold">Spirituality (Skara Brae)</span>: <strong>Saul</strong> sends you to <strong>Kindor</strong>. Ask Kindor about <em>SHRINE</em> and answer Y → <code>OM</code>.</div>
+                                <div class="border rounded p-3"><span class="font-bold">Humility (New Magincia)</span>: <strong>Shirita</strong> sends you to <strong>Wartow</strong>. Answer his questions: BRITISH, N, N, N, Y → <code>LUM</code>.</div>
+                            </div>
+                            <p class="mt-3 text-sm text-stone-600">Tip: Ask NPCs about <em>MANTRA</em> unless noted; some steps require the Resistance password <code>DAWN</code>.</p>
+                        </div>
+                        <p class="pt-4">Completing all eight shrine quests grants the Word of Power for Doom: <strong>VERAMOCOR</strong>.</p>
                     </div>
 
                     <div id="shadowlords" class="quest-tab-content mt-6 space-y-4">
                         <h3 class="text-2xl font-semibold text-yellow-800">Act I: Shatter the Shadows</h3>
-                        <p>The three Shadowlords must be destroyed before Lord British can be rescued. They cannot be defeated in normal combat. Their destruction requires a precise ritual.</p>
+                        <p>The three Shadowlords cannot be beaten in normal combat. You must recover their shards from the Underworld and perform a banishment ritual at the castles of Truth, Love, and Courage.</p>
                         <div class="space-y-6">
                             <div>
-                                <h4 class="text-xl font-semibold text-yellow-900 mb-2">Step 1: Learn Their True Names</h4>
+                                <h4 class="text-xl font-semibold text-yellow-900 mb-2">Step 1: Unlock the dungeons (Words of Power)</h4>
                                 <ul class="list-disc list-inside bg-white p-4 rounded-lg shadow">
-                                    <li><strong>Faulinei (Falsehood):</strong> Speak to the twin sisters in Cove.</li>
-                                    <li><strong>Astaroth (Hatred):</strong> Learn from the gargoyle Sin'Vraal in the eastern desert.</li>
-                                    <li><strong>Nosfentor (Cowardice):</strong> Revealed by various knowledgeable NPCs.</li>
+                                    <li><strong>Deceit</strong> → <strong>Malik</strong> (Moonglow) → <strong>Malifora</strong> → <code>FALLAX</code>.</li>
+                                    <li><strong>Wrong</strong> → <strong>Terrence</strong> (Britain) → join the Resistance (password <code>DAWN</code>) → ask <strong>Felespar</strong> (Yew) → <code>MALUM</code>.</li>
+                                    <li><strong>Covetous</strong> → <strong>Rew</strong> (East Brittany) → <strong>Fiona</strong> (Minoc; Resistance password again) → <code>AVIDUS</code>.</li>
+                                    <li><strong>Hythloth</strong> → <strong>Kaiko</strong> (New Magincia) → <strong>Hassad</strong> (Blackthorn's dungeon; use Kaiko as reference) → <code>IGNAVUS</code>.</li>
+                                    <li><strong>Destard</strong> → <strong>Zachariah</strong> (Britain) → <strong>Goeth</strong> (Jhelom; ask for "DROW") → <code>INOPIA</code>.</li>
+                                    <li><strong>Despise</strong> → <strong>Annon</strong> (Britain) → <code>VILIS</code>.</li>
+                                    <li><strong>Shame</strong> → <strong>Woolfe</strong> (Trinsic) → <strong>Sindar</strong> (sleepwalking mage) → <code>INFAMA</code>.</li>
+                                    <li><strong>Doom</strong> → Complete all eight shrine quests, then say <code>VERAMOCOR</code> at the entrance.</li>
+                                </ul>
+                                <p class="mt-2 text-sm text-stone-600">For the Shadowlord quests you need Deceit, one of Wrong/Covetous, and Hythloth. Others are helpful for the Amulet and the finale.</p>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-semibold text-yellow-900 mb-2">Step 2: Learn their true names</h4>
+                                <ul class="list-disc list-inside bg-white p-4 rounded-lg shadow">
+                                    <li><strong>Faulinei</strong> (Falsehood)</li>
+                                    <li><strong>Astaroth</strong> (Hatred)</li>
+                                    <li><strong>Nosfentor</strong> (Cowardice)</li>
+                                </ul>
+                                <p class="mt-2 text-sm text-stone-600">You will shout these names at the appropriate sacred flames during the banishment ritual (see Step 3).</p>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-semibold text-yellow-900 mb-2">Step 3: Retrieve the three shards</h4>
+                                <p>Enter the dungeons using the Words of Power. Descend to the Underworld and reach each shard as noted:</p>
+                                <ul class="list-disc list-inside bg-white p-4 rounded-lg shadow">
+                                    <li><strong>Shard of Falsehood</strong> → Beneath <strong>Deceit</strong> (<code>FALLAX</code>). Underworld route trends west to a central isle across water; bring the <strong>Grappling Hook</strong> and <strong>Magic Carpet</strong>. <span class="text-sm">(You can VAS REL POR out.)</span></li>
+                                    <li><strong>Shard of Hatred</strong> → Beneath <strong>Wrong/Covetous</strong> (<code>MALUM</code>/<code>AVIDUS</code>). Use the <strong>Sceptre</strong> to dispel fields, and the <strong>Crown</strong> in heavy-magic rooms. The Underworld access from either dungeon leads to a winding southwest labyrinth.</li>
+                                    <li><strong>Shard of Cowardice</strong> → Beneath <strong>Hythloth</strong> (<code>IGNAVUS</code>). Blink across mountain "rooms" with <strong>IN POR</strong> and use the <strong>Magic Carpet</strong> over swamps; the shard lies in a northeast clearing.</li>
                                 </ul>
                             </div>
                             <div>
-                                <h4 class="text-xl font-semibold text-yellow-900 mb-2">Step 2: Retrieve Their Shards from the Underworld</h4>
-                                <p>Enter the dungeons using the correct Words of Power to find the shards from which the Shadowlords were born.</p>
+                                <h4 class="text-xl font-semibold text-yellow-900 mb-2">Step 4: Perform the banishment</h4>
+                                <p>Stand one tile south of the sacred flame, shout the Shadowlord's name, wait one turn, then use the corresponding shard as it stands on the flame:</p>
                                 <ul class="list-disc list-inside bg-white p-4 rounded-lg shadow">
-                                    <li><strong>Shard of Falsehood:</strong> Beneath Dungeon Deceit (Word: FALLAX). Requires Grappling Hook and Magic Carpet.</li>
-                                    <li><strong>Shard of Hatred:</strong> Beneath Dungeons Wrong/Covetous (Words: MALUM/AVIDUS). Requires Grappling Hook.</li>
-                                    <li><strong>Shard of Cowardice:</strong> Beneath Dungeon Hythloth (Word: IGNAVUS). Requires Magic Carpet and the 'In Por' (Blink) spell.</li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h4 class="text-xl font-semibold text-yellow-900 mb-2">Step 3: Perform the Ritual of Banishment</h4>
-                                <p>At the keep corresponding to the principle they oppose, summon the Shadowlord by shouting its name near the sacred flame. When it steps onto the flame, use its shard on the flame to destroy it forever.</p>
-                                <ul class="list-disc list-inside bg-white p-4 rounded-lg shadow">
-                                    <li><strong>Faulinei (Falsehood)</strong> &rarr; Destroyed at the <strong>Lycaeum (Truth)</strong>.</li>
-                                    <li><strong>Astaroth (Hatred)</strong> &rarr; Destroyed at <strong>Empath Abbey (Love)</strong>.</li>
-                                    <li><strong>Nosfentor (Cowardice)</strong> &rarr; Destroyed at <strong>Serpent's Hold (Courage)</strong>.</li>
+                                    <li><strong>Faulinei (Falsehood)</strong> → <strong>Lycaeum</strong> (Truth)</li>
+                                    <li><strong>Astaroth (Hatred)</strong> → <strong>Empath Abbey</strong> (Love)</li>
+                                    <li><strong>Nosfentor (Cowardice)</strong> → <strong>Serpent's Hold</strong> (Courage)</li>
                                 </ul>
                             </div>
                         </div>
@@ -209,23 +238,31 @@
 
                     <div id="regalia" class="quest-tab-content mt-6 space-y-4">
                         <h3 class="text-2xl font-semibold text-yellow-800">Act II: Recover the Regalia</h3>
-                        <p>With the Shadowlords gone, you must find Lord British's four royal artifacts. These are essential for surviving the final dungeon.</p>
+                        <p>With the Shadowlords gone, recover Lord British's artifacts. These make the Underworld and Doom manageable.</p>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div class="bg-white p-4 rounded-lg shadow">
                                 <h4 class="font-bold text-xl mb-2 text-yellow-900">The Sceptre</h4>
-                                <p><strong>Location:</strong> Stonegate. <br><strong>Function:</strong> Dispels magical fields. <br><strong>Requirement:</strong> Magic Carpet to bypass deadly floor traps.</p>
+                                <p><strong>Location:</strong> <span class="font-medium">Stonegate</span> (north of the east edge of Lock Lake / south of Minoc).<br>
+                                <strong>How:</strong> Requires <em>Grappling Hook</em>, <em>Skull Keys</em>, and the <em>Magic Carpet</em>. Use a skull key on the center door, answer the demon's riddle (<code>WELL</code>), then outrun the Shadowlords on the carpet to grab the Sceptre and exit. Beware the fire pits.</p>
+                                <p class="text-sm text-stone-600">Function: Dispels magical fields.</p>
                             </div>
                             <div class="bg-white p-4 rounded-lg shadow">
                                 <h4 class="font-bold text-xl mb-2 text-yellow-900">The Crown</h4>
-                                <p><strong>Location:</strong> Rooftop of Blackthorn's Palace. <br><strong>Function:</strong> Negates enemy magic. <br><strong>Requirement:</strong> Skull Keys and the Black Badge to move freely.</p>
+                                <p><strong>Location:</strong> Rooftop of <span class="font-medium">Blackthorn's Castle</span>.<br>
+                                <strong>How:</strong> From the entrance, ride the Magic Carpet and outrun the guards. Go up to L2 → L3 → rooftop, then skull key the center room, take the Crown, and fly off the roof to escape. <strong>Save frequently:</strong> being captured here can permanently erase a companion.</p>
+                                <p class="text-sm text-stone-600">Function: Negates enemy magic.</p>
                             </div>
                             <div class="bg-white p-4 rounded-lg shadow">
                                 <h4 class="font-bold text-xl mb-2 text-yellow-900">The Amulet</h4>
-                                <p><strong>Location:</strong> Deep in the Underworld, where the king's knights fell (accessible via Dungeon Destard or Spiritwood waterfall). <br><strong>Function:</strong> Reveals the hidden entrance to Dungeon Doom.</p>
+                                <p><strong>Location:</strong> Underworld burial ground of Lord British's fallen knights.<br>
+                                <strong>Quick route:</strong> Drop through the <span class="font-medium">waterfall east of Skara Brae</span> on the Magic Carpet, follow the river junctions (Down → Left → Down), circle the lake, go southeast through the swamp and mountain pass to the burial ground, and take the Amulet. <strong>Exit:</strong> cast <code>VAS REL POR</code> or intentionally die to return to the castle.</p>
+                                <p class="text-sm text-stone-600">Function: Reveals the hidden entrance to Doom.</p>
                             </div>
                             <div class="bg-white p-4 rounded-lg shadow">
                                 <h4 class="font-bold text-xl mb-2 text-yellow-900">The Sandalwood Box</h4>
-                                <p><strong>Location:</strong> Lord British's private study. <br><strong>Function:</strong> Proves your identity to the king. <br><strong>Requirement:</strong> Play the tune "Stones" (6-7-8-9-8-7-8-7-6-7-6-5-3) on the castle harpsichord.</p>
+                                <p><strong>Location:</strong> Lord British's private study.<br>
+                                <strong>How:</strong> Play "Stones" on the harpsichord (6-7-8-9-8-7-8-7-6-7-6-5-3) to reveal the secret room and claim the Box.</p>
+                                <p class="text-sm text-stone-600">Function: Proves your identity to the king.</p>
                             </div>
                         </div>
                     </div>
