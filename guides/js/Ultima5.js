@@ -23,7 +23,7 @@ const spellData = [
     { Name: "`Grav Por`", Circle: 1, Effect: "Minor energy bolt", Reagents: "Sulfurous Ash, Black Pearl" },
     { Name: "`In Lor`", Circle: 1, Effect: "Creates light", Reagents: "Sulfurous Ash" },
     { Name: "`In Wis`", Circle: 2, Effect: "Reveals party's coordinates", Reagents: "Nightshade" },
-    { Name: "`An Sanct`", Circle: 2, Effect: "Opens trapped chests safely", Reagents: "Sulfurous Ash, Blood Moss" },
+    { Name: "`An Sanct`", Circle: 2, Effect: "Unlocks doors (like a key)", Reagents: "Sulfurous Ash, Blood Moss" },
     { Name: "`In Por`", Circle: 3, Effect: "Short-range teleport (Blink)", Reagents: "Spider Silk, Blood Moss" },
     { Name: "`Vas Lor`", Circle: 3, Effect: "Creates a powerful, long-lasting light", Reagents: "Sulfurous Ash, Mandrake Root" },
     { Name: "`An Grav`", Circle: 4, Effect: "Dispels magical fields", Reagents: "Sulfurous Ash, Black Pearl" },
@@ -45,7 +45,7 @@ const wordData = [
     { Virtue: "Sacrifice", Town: "Minoc", Mantra: "Cah", Word: "Avidus", Dungeon: "Covetous" },
     { Virtue: "Honor", Town: "Trinsic", Mantra: "Summ", Word: "Infama", Dungeon: "Shame" },
     { Virtue: "Spirituality", Town: "Skara Brae", Mantra: "Om", Word: "Ignavus", Dungeon: "Hythloth" },
-    { Virtue: "Humility", Town: "New Magincia", Mantra: "Lum", Word: "Existo", Dungeon: "Shame" }
+    { Virtue: "Humility", Town: "New Magincia", Mantra: "Lum", Word: "—", Dungeon: "—" }
 ];
 
 // Initialize the application
