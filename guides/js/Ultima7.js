@@ -105,6 +105,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let companionChart = null;
     let reagentChart = null;
+    // Handcrafted prompts loaded from prompts/ultima7_prompts.json
+    let QUEST_PROMPTS = {};
+    // Simple in-memory chat history keyed by quest title/name
+    const questChatHistory = {};
 
     // --- Gemini API Integration ---
     async function callGemini(prompt, maxRetries = 3) {
@@ -486,6 +490,147 @@ Keep it under 80 words total.`;
 
         locationFilter.addEventListener('change', (e) => renderSideQuests(e.target.value));
         renderSideQuests();
+
+        // Load handcrafted prompts then build the chat UI under the quest log
+        loadQuestPrompts().then(prompts => {
+            QUEST_PROMPTS = prompts || {};
+            buildQuestChatUI();
+        });
+    }
+
+    async function loadQuestPrompts() {
+        try {
+            const res = await fetch('prompts/ultima7_prompts.json', { cache: 'no-store' });
+            if (!res.ok) throw new Error(`Failed to load prompts: ${res.status}`);
+            return await res.json();
+        } catch (e) {
+            console.warn('[prompts] Load failed, falling back to dynamic context.', e);
+            return {};
+        }
+    }
+
+    function buildQuestChatUI() {
+        const mainQuestAccordion = document.getElementById('main-quest-accordion');
+        if (!mainQuestAccordion) return;
+
+        // Host container
+        let host = document.getElementById('quest-chat');
+        if (!host) {
+            host = document.createElement('div');
+            host.id = 'quest-chat';
+            host.className = 'section-bg p-4 rounded-lg shadow mt-6';
+            mainQuestAccordion.parentElement.appendChild(host);
+        }
+
+        // Build selector options from main + side quests
+        const questOptions = [
+            ...DB.mainQuest.map(q => ({ key: q.title, label: `Main · ${q.title}` })),
+            ...DB.sideQuests.map(q => ({ key: q.name, label: `Side · ${q.name}` })),
+        ];
+
+        host.innerHTML = `
+            <h3 class="text-xl font-bold">Quest Chat</h3>
+            <p class="text-sm text-secondary mt-1">Chat with the AI using handcrafted, quest-specific context.</p>
+            <div class="flex flex-col md:flex-row gap-2 mt-3">
+                <select id="quest-chat-selector" class="flex-1 bg-[#1a202c] border border-color rounded px-2 py-1 text-sm">
+                    <option value="">Select a quest…</option>
+                    ${questOptions.map(o => `<option value="${o.key.replace(/"/g, '&quot;')}">${o.label}</option>`).join('')}
+                </select>
+                <button id="quest-chat-show-context" class="px-3 py-1 text-xs rounded border border-yellow-300/40 bg-yellow-200/10 text-yellow-100">Show Context</button>
+            </div>
+            <div id="quest-chat-context" class="mt-2 hidden bg-[#1a202c] border border-color rounded p-3 text-xs whitespace-pre-wrap"></div>
+            <div id="quest-chat-messages" class="mt-3 h-56 overflow-y-auto bg-[#0f1720] border border-color rounded p-3 text-sm space-y-2"></div>
+            <div class="flex gap-2 mt-3">
+                <input id="quest-chat-input" class="flex-1 bg-[#1a202c] border border-color rounded px-3 py-2 text-sm" placeholder="Ask something about the selected quest…" />
+                <button id="quest-chat-send" class="ai-button font-bold px-4 py-2 rounded">Send</button>
+            </div>
+        `;
+
+        const sel = document.getElementById('quest-chat-selector');
+        const ctxEl = document.getElementById('quest-chat-context');
+        const msgEl = document.getElementById('quest-chat-messages');
+        const inputEl = document.getElementById('quest-chat-input');
+        const sendBtn = document.getElementById('quest-chat-send');
+        const showCtxBtn = document.getElementById('quest-chat-show-context');
+
+        showCtxBtn.addEventListener('click', () => {
+            const key = sel.value;
+            if (!key) {
+                ctxEl.textContent = 'Please select a quest to view its context.';
+                ctxEl.classList.remove('hidden');
+                return;
+            }
+            const template = QUEST_PROMPTS[key] || defaultQuestTemplate(key);
+            const contextOnly = extractContext(template);
+            ctxEl.textContent = contextOnly;
+            ctxEl.classList.toggle('hidden');
+        });
+
+        sel.addEventListener('change', () => {
+            // Reset messages when switching quests
+            msgEl.innerHTML = '';
+            inputEl.value = '';
+        });
+
+        sendBtn.addEventListener('click', () => sendQuestChatMessage(sel, inputEl, msgEl));
+        inputEl.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                sendQuestChatMessage(sel, inputEl, msgEl);
+            }
+        });
+    }
+
+    function extractContext(template) {
+        const match = template.match(/<context>[\s\S]*?<\/context>/i);
+        return match ? match[0] : template;
+    }
+
+    function defaultQuestTemplate(key) {
+        const offline = OFFLINE_HINTS[key] || 'No offline hint available.';
+        const synthesizedContext = `Handcrafted context for "${key}":\n\n- Offline hint:\n${offline}\n\n- Notes:\nFollow in-game clues and avoid spoilers. Use sextant coordinates when necessary.`;
+        return `<context>\n${synthesizedContext}\n</context>\n<query>\nUser's question here\n</query>`;
+    }
+
+    async function sendQuestChatMessage(sel, inputEl, msgEl) {
+        const key = sel.value;
+        const userMsg = inputEl.value.trim();
+        if (!key) { appendChat(msgEl, 'system', 'Please select a quest first.'); return; }
+        if (!userMsg) { return; }
+
+        // Display user's message
+        appendChat(msgEl, 'user', userMsg);
+        inputEl.value = '';
+
+        // Prepare prompt from handcrafted template
+        let template = QUEST_PROMPTS[key] || defaultQuestTemplate(key);
+
+        // Build short transcript to carry context across messages
+        const hist = questChatHistory[key] || [];
+        const transcript = hist.map(h => `${h.role === 'user' ? 'User' : 'Assistant'}: ${h.text}`).join('\n');
+        const mergedQuery = (transcript ? `Prior transcript (most recent last):\n${transcript}\n\n` : '') + `User: ${userMsg}`;
+
+        // Replace the <query> ... </query> block while preserving context
+        const finalPrompt = template.replace(/<query>[\s\S]*?<\/query>/i, `<query>\n${mergedQuery}\n</query>`);
+
+        // Call LLM
+        showAiModal();
+        const reply = await callGemini(finalPrompt);
+        hideAiModal();
+        appendChat(msgEl, 'assistant', reply);
+
+        // Save to history
+        hist.push({ role: 'user', text: userMsg });
+        hist.push({ role: 'assistant', text: reply });
+        questChatHistory[key] = hist.slice(-10); // keep last 10 entries
+    }
+
+    function appendChat(container, role, text) {
+        const bubble = document.createElement('div');
+        bubble.className = role === 'user' ? 'bg-[#1a202c] p-2 rounded self-end' : 'bg-[#102a43] p-2 rounded';
+        bubble.textContent = (role === 'user' ? 'You: ' : 'AI: ') + text;
+        container.appendChild(bubble);
+        container.scrollTop = container.scrollHeight;
     }
 
     initPartyBuilder();
