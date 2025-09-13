@@ -372,29 +372,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     async function handleGetQuestHint(quest) {
+        // Open modal and show quest-specific chat inside it
         showAiModal();
         const key = quest.title || quest.name;
-
-        // Prefer reliable, spoiler-light local hints when available
-        if (OFFLINE_HINTS[key]) {
-            const badge = "<span class='ml-2 align-middle text-[10px] px-2 py-0.5 rounded bg-yellow-200/20 text-yellow-100 border border-yellow-300/40'>non‑spoiler</span>";
-            displayAiResponse(OFFLINE_HINTS[key], `✨ Hint for ${key} ${badge}`);
-            return;
-        }
-
-        // Otherwise, ask the AI with guardrails for practical, non-spoilery guidance
-        const prompt = `You are a veteran guide writer for Ultima VII: The Black Gate.
-Return exactly 3 short bullet points for the quest "${key}".
-Use this description as context: "${(quest.content || quest.walkthrough || "").slice(0, 500)}".
-Requirements:
-1) Be non-spoilery and focus on the next actionable step (where to go, who to talk to, and why).
-2) Include one useful landmark or coordinate if it helps (e.g., town name, notable building, or a sextant coordinate), but keep it brief.
-3) Do NOT invent items, spells, or NPCs not in Black Gate. If unsure, suggest a safe lead (e.g., talk to the mayor/priest/mage in [city]).
-Keep it under 80 words total.`;
-
-        const hint = await callGemini(prompt);
-        const badge = "<span class='ml-2 align-middle text-[10px] px-2 py-0.5 rounded bg-yellow-200/20 text-yellow-100 border border-yellow-300/40'>non‑spoiler</span>";
-        displayAiResponse(hint, `✨ Hint for ${key} ${badge}`);
+        await ensurePromptsLoaded();
+        openQuestChatInModal(key, quest);
     }
 
     function initQuests() {
@@ -491,11 +473,7 @@ Keep it under 80 words total.`;
         locationFilter.addEventListener('change', (e) => renderSideQuests(e.target.value));
         renderSideQuests();
 
-        // Load handcrafted prompts then build the chat UI under the quest log
-        loadQuestPrompts().then(prompts => {
-            QUEST_PROMPTS = prompts || {};
-            buildQuestChatUI();
-        });
+        // (Modal chat now handles prompt loading on demand)
     }
 
     async function loadQuestPrompts() {
@@ -509,120 +487,86 @@ Keep it under 80 words total.`;
         }
     }
 
-    function buildQuestChatUI() {
-        const mainQuestAccordion = document.getElementById('main-quest-accordion');
-        if (!mainQuestAccordion) return;
-
-        // Host container
-        let host = document.getElementById('quest-chat');
-        if (!host) {
-            host = document.createElement('div');
-            host.id = 'quest-chat';
-            host.className = 'section-bg p-4 rounded-lg shadow mt-6';
-            mainQuestAccordion.parentElement.appendChild(host);
-        }
-
-        // Build selector options from main + side quests
-        const questOptions = [
-            ...DB.mainQuest.map(q => ({ key: q.title, label: `Main · ${q.title}` })),
-            ...DB.sideQuests.map(q => ({ key: q.name, label: `Side · ${q.name}` })),
-        ];
-
-        host.innerHTML = `
-            <h3 class="text-xl font-bold">Quest Chat</h3>
-            <p class="text-sm text-secondary mt-1">Chat with the AI using handcrafted, quest-specific context.</p>
-            <div class="flex flex-col md:flex-row gap-2 mt-3">
-                <select id="quest-chat-selector" class="flex-1 bg-[#1a202c] border border-color rounded px-2 py-1 text-sm">
-                    <option value="">Select a quest…</option>
-                    ${questOptions.map(o => `<option value="${o.key.replace(/"/g, '&quot;')}">${o.label}</option>`).join('')}
-                </select>
-                <button id="quest-chat-show-context" class="px-3 py-1 text-xs rounded border border-yellow-300/40 bg-yellow-200/10 text-yellow-100">Show Context</button>
-            </div>
-            <div id="quest-chat-context" class="mt-2 hidden bg-[#1a202c] border border-color rounded p-3 text-xs whitespace-pre-wrap"></div>
-            <div id="quest-chat-messages" class="mt-3 h-56 overflow-y-auto bg-[#0f1720] border border-color rounded p-3 text-sm space-y-2"></div>
-            <div class="flex gap-2 mt-3">
-                <input id="quest-chat-input" class="flex-1 bg-[#1a202c] border border-color rounded px-3 py-2 text-sm" placeholder="Ask something about the selected quest…" />
-                <button id="quest-chat-send" class="ai-button font-bold px-4 py-2 rounded">Send</button>
-            </div>
-        `;
-
-        const sel = document.getElementById('quest-chat-selector');
-        const ctxEl = document.getElementById('quest-chat-context');
-        const msgEl = document.getElementById('quest-chat-messages');
-        const inputEl = document.getElementById('quest-chat-input');
-        const sendBtn = document.getElementById('quest-chat-send');
-        const showCtxBtn = document.getElementById('quest-chat-show-context');
-
-        showCtxBtn.addEventListener('click', () => {
-            const key = sel.value;
-            if (!key) {
-                ctxEl.textContent = 'Please select a quest to view its context.';
-                ctxEl.classList.remove('hidden');
-                return;
-            }
-            const template = QUEST_PROMPTS[key] || defaultQuestTemplate(key);
-            const contextOnly = extractContext(template);
-            ctxEl.textContent = contextOnly;
-            ctxEl.classList.toggle('hidden');
-        });
-
-        sel.addEventListener('change', () => {
-            // Reset messages when switching quests
-            msgEl.innerHTML = '';
-            inputEl.value = '';
-        });
-
-        sendBtn.addEventListener('click', () => sendQuestChatMessage(sel, inputEl, msgEl));
-        inputEl.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter' && !e.shiftKey) {
-                e.preventDefault();
-                sendQuestChatMessage(sel, inputEl, msgEl);
-            }
-        });
-    }
-
     function extractContext(template) {
         const match = template.match(/<context>[\s\S]*?<\/context>/i);
         return match ? match[0] : template;
     }
 
-    function defaultQuestTemplate(key) {
-        const offline = OFFLINE_HINTS[key] || 'No offline hint available.';
-        const synthesizedContext = `Handcrafted context for "${key}":\n\n- Offline hint:\n${offline}\n\n- Notes:\nFollow in-game clues and avoid spoilers. Use sextant coordinates when necessary.`;
-        return `<context>\n${synthesizedContext}\n</context>\n<query>\nUser's question here\n</query>`;
+    async function ensurePromptsLoaded() {
+        if (Object.keys(QUEST_PROMPTS || {}).length > 0) return;
+        QUEST_PROMPTS = await loadQuestPrompts();
     }
 
-    async function sendQuestChatMessage(sel, inputEl, msgEl) {
-        const key = sel.value;
-        const userMsg = inputEl.value.trim();
-        if (!key) { appendChat(msgEl, 'system', 'Please select a quest first.'); return; }
-        if (!userMsg) { return; }
+    function openQuestChatInModal(key, quest) {
+        const badge = "<span class='ml-2 align-middle text-[10px] px-2 py-0.5 rounded bg-yellow-200/20 text-yellow-100 border border-yellow-300/40'>non‑spoiler</span>";
+        aiModalTitle.innerHTML = `✨ Hint & Chat for ${key} ${badge}`;
 
-        // Display user's message
+        const offlineHint = OFFLINE_HINTS[key] || 'No offline hint available.';
+        const template = QUEST_PROMPTS[key] || defaultQuestTemplate(key);
+        const contextOnly = extractContext(template);
+
+        // Build chat UI inside modal
+        aiResponseText.innerHTML = `
+            <div class=\"text-xs text-secondary\">You can ask follow-up questions below. Context is handcrafted per quest.</div>
+            <div class=\"mt-2 border border-color rounded bg-[#102a43]/40 p-2\">
+                <div class=\"text-[11px] font-semibold text-yellow-200 mb-1\">Starter Hint (non‑spoiler)</div>
+                <pre class=\"whitespace-pre-wrap text-[12px]\">${offlineHint.replace(/</g,'&lt;')}</pre>
+            </div>
+            <button id=\"modal-quest-chat-toggle-context\" class=\"mt-2 px-3 py-1 text-xs rounded border border-yellow-300/40 bg-yellow-200/10 text-yellow-100\">Show Context</button>
+            <div id=\"modal-quest-chat-context\" class=\"mt-2 hidden bg-[#1a202c] border border-color rounded p-3 text-xs whitespace-pre-wrap\">
+                ${contextOnly.replace(/</g,'&lt;')}
+            </div>
+            <div id=\"modal-quest-chat-messages\" class=\"mt-3 h-56 overflow-y-auto bg-[#0f1720] border border-color rounded p-3 text-sm space-y-2\"></div>
+            <div class=\"flex gap-2 mt-3\">
+                <input id=\"modal-quest-chat-input\" class=\"flex-1 bg-[#1a202c] border border-color rounded px-3 py-2 text-sm\" placeholder=\"Ask something about this quest…\" />
+                <button id=\"modal-quest-chat-send\" class=\"ai-button font-bold px-4 py-2 rounded\">Send</button>
+            </div>
+        `;
+        aiLoader.style.display = 'none';
+
+        // Wire handlers
+        const ctxBtn = document.getElementById('modal-quest-chat-toggle-context');
+        const ctxEl  = document.getElementById('modal-quest-chat-context');
+        const msgEl  = document.getElementById('modal-quest-chat-messages');
+        const inputEl= document.getElementById('modal-quest-chat-input');
+        const sendBtn= document.getElementById('modal-quest-chat-send');
+
+        ctxBtn.addEventListener('click', () => {
+            ctxEl.classList.toggle('hidden');
+            ctxBtn.textContent = ctxEl.classList.contains('hidden') ? 'Show Context' : 'Hide Context';
+        });
+
+        // Greet user
+        appendChat(msgEl, 'assistant', `How can I help you with \"${key}\"?`);
+
+        function send() {
+            sendQuestChatMessageForKey(key, inputEl, msgEl);
+        }
+        sendBtn.addEventListener('click', send);
+        inputEl.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); send(); }
+        });
+    }
+
+    async function sendQuestChatMessageForKey(key, inputEl, msgEl) {
+        const userMsg = inputEl.value.trim();
+        if (!userMsg) return;
         appendChat(msgEl, 'user', userMsg);
         inputEl.value = '';
 
-        // Prepare prompt from handcrafted template
         let template = QUEST_PROMPTS[key] || defaultQuestTemplate(key);
-
-        // Build short transcript to carry context across messages
         const hist = questChatHistory[key] || [];
         const transcript = hist.map(h => `${h.role === 'user' ? 'User' : 'Assistant'}: ${h.text}`).join('\n');
         const mergedQuery = (transcript ? `Prior transcript (most recent last):\n${transcript}\n\n` : '') + `User: ${userMsg}`;
-
-        // Replace the <query> ... </query> block while preserving context
         const finalPrompt = template.replace(/<query>[\s\S]*?<\/query>/i, `<query>\n${mergedQuery}\n</query>`);
 
-        // Call LLM
-        showAiModal();
+        // Call LLM and append
         const reply = await callGemini(finalPrompt);
-        hideAiModal();
         appendChat(msgEl, 'assistant', reply);
 
-        // Save to history
         hist.push({ role: 'user', text: userMsg });
         hist.push({ role: 'assistant', text: reply });
-        questChatHistory[key] = hist.slice(-10); // keep last 10 entries
+        questChatHistory[key] = hist.slice(-10);
     }
 
     function appendChat(container, role, text) {
@@ -632,6 +576,8 @@ Keep it under 80 words total.`;
         container.appendChild(bubble);
         container.scrollTop = container.scrollHeight;
     }
+
+    // (Modal chat now handles prompt loading on demand)
 
     initPartyBuilder();
     initArmory();
