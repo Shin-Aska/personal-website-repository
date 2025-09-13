@@ -1,5 +1,11 @@
 body {
     font-family: 'Inter', sans-serif;
+    /* Paper texture background similar to Ultima VI */
+    background-color: #FDF6E3; /* Parchment fallback */
+    background-image: linear-gradient(#FDF6E3, #FDF6E3), url('../images/paper-texture2.jpg');
+    background-repeat: repeat;
+    background-size: 240px; /* tile scale to reduce seams */
+    background-blend-mode: multiply;
 }
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
 .nav-link {
@@ -49,4 +55,31 @@ body {
 }
 .quest-tab-content.active {
     display: block;
+}
+
+/* --- AI Seer visual helpers (match Ultima VI styling) --- */
+.gemini-response {
+    white-space: pre-wrap;
+    background-color: #FBF1D3;
+    border-left: 4px solid #D97706;
+    padding: 1rem;
+    border-radius: 0.25rem;
+    margin-top: 1rem;
+}
+
+.loader {
+    width: 48px;
+    height: 48px;
+    border: 5px solid #854D0E;
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+    margin: 1rem auto;
+}
+
+@keyframes rotation {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
