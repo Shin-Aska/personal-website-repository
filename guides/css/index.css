@@ -10,7 +10,7 @@
   --ring: rgba(250, 204, 21, 0.25);
 }
 * { box-sizing: border-box; }
-html, body { height: 100%; }
+html, body { min-height: 100%; }
 body {
   margin: 0;
   font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
@@ -54,6 +54,7 @@ h1 {
   grid-template-columns: repeat(3, 1fr);
 }
 @media (max-width: 900px) {
+  body { align-items: flex-start; }
   .grid { grid-template-columns: 1fr; }
 }
 .card {
