@@ -138,7 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     await new Promise(r => setTimeout(r, delay));
                     delay *= 2;
                 } else {
-                    return "My apologies, adventurer. My connection to the ethereal plane is weak. Please try again shortly.";
+                    return "My apologies, Avatar. My connection to the ethereal plane is weak. Please try again shortly.";
                 }
             }
         }
@@ -508,21 +508,21 @@ document.addEventListener('DOMContentLoaded', () => {
         aiResponseText.innerHTML = `
             <div class="flex flex-col max-h-[75vh]">
                 <div id="modal-tabbar" class="flex gap-2 border-b border-color mb-3">
-                    <button id="modal-tab-hints" class="px-3 py-1 rounded-t bg-[#1a202c] text-sm font-semibold border border-color border-b-0">General Hints</button>
-                    <button id="modal-tab-advice" class="px-3 py-1 rounded-t text-sm font-semibold border border-transparent hover:border-color">Advice</button>
+                    <button id="modal-tab-hints" class="px-3 py-1 rounded-t bg-[#1a202c] text-sm font-semibold border border-color border-b-0 text-[#f6e05e]">General Hints</button>
+                    <button id="modal-tab-advice" class="px-3 py-1 rounded-t text-sm font-semibold border border-transparent hover:border-color text-gray-400">Advice</button>
                 </div>
-                <div class="flex-1 overflow-hidden">
-                    <section id="tab-hints" class="h-full overflow-auto">
-                        <div class="rounded bg-[#102a43]/40 p-3 border border-color text-[13px] whitespace-pre-wrap">${offlineHint.replace(/</g,'&lt;')}</div>
-                    </section>
-                    <section id="tab-advice" class="hidden h-full flex flex-col">
-                        <div id="modal-quest-chat-messages" class="flex-1 min-h-40 overflow-y-auto bg-[#0f1720] border border-color rounded p-3 text-sm space-y-2"></div>
-                        <div class="flex gap-2 mt-3">
-                            <input id="modal-quest-chat-input" class="flex-1 bg-[#1a202c] border border-color rounded px-3 py-2 text-sm" placeholder="Ask the Sage for advice…" />
-                            <button id="modal-quest-chat-send" class="ai-button font-bold px-4 py-2 rounded">Send</button>
-                        </div>
-                    </section>
-                </div>
+                
+                <section id="tab-hints" class="h-full overflow-auto">
+                    <div class="rounded bg-[#102a43]/40 p-3 border border-color text-[13px] whitespace-pre-wrap">${offlineHint.replace(/</g,'&lt;')}</div>
+                    <div class="mt-3 rounded bg-[#0f1720]/60 p-2 border border-color text-[12px]">Tip: For more help, switch to the Advice tab and ask an apprentice of Nystul for guidance.</div>
+                </section>
+                <section id="tab-advice" class="hidden h-full flex flex-col">
+                    <div id="modal-quest-chat-messages" class="flex-1 min-h-40 overflow-y-auto bg-[#0f1720] border border-color rounded p-3 text-sm space-y-2"></div>
+                    <div class="flex gap-2 mt-3">
+                        <input id="modal-quest-chat-input" class="flex-1 bg-[#1a202c] border border-color rounded px-3 py-2 text-sm" placeholder="How may I help you Avatar?" />
+                        <button id="modal-quest-chat-send" class="ai-button font-bold px-4 py-2 rounded">Send</button>
+                    </div>
+                </section>
             </div>
         `;
         aiLoader.style.display = 'none';
@@ -534,20 +534,20 @@ document.addEventListener('DOMContentLoaded', () => {
         const tabAdvice = document.getElementById('tab-advice');
 
         function switchModalTab(which) {
-            const active = ['bg-[#1a202c]','border','border-color','border-b-0'];
-            const inactive = ['bg-transparent','border','border-transparent'];
+            const active = ['bg-[#1a202c]','border','border-color','border-b-0','text-[#f6e05e]'];
+            const inactive = ['bg-transparent','border','border-transparent','text-gray-400'];
+            const setActive = (btn) => { btn.classList.add(...active); btn.classList.remove(...inactive); };
+            const setInactive = (btn) => { btn.classList.remove(...active); btn.classList.add(...inactive); };
             if (which === 'hints') {
                 tabHints.classList.remove('hidden');
                 tabAdvice.classList.add('hidden');
-                tabHintsBtn.classList.add(...active);
-                tabAdviceBtn.classList.remove(...active);
-                tabAdviceBtn.classList.add(...inactive);
+                setActive(tabHintsBtn);
+                setInactive(tabAdviceBtn);
             } else {
                 tabAdvice.classList.remove('hidden');
                 tabHints.classList.add('hidden');
-                tabAdviceBtn.classList.add(...active);
-                tabHintsBtn.classList.remove(...active);
-                tabHintsBtn.classList.add(...inactive);
+                setActive(tabAdviceBtn);
+                setInactive(tabHintsBtn);
             }
         }
         tabHintsBtn.addEventListener('click', () => switchModalTab('hints'));
@@ -599,7 +599,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function appendChat(container, role, text) {
         const bubble = document.createElement('div');
         bubble.className = role === 'user' ? 'bg-[#1a202c] p-2 rounded self-end' : 'bg-[#102a43] p-2 rounded';
-        bubble.textContent = (role === 'user' ? 'You: ' : 'AI: ') + text;
+        bubble.textContent = (role === 'user' ? 'You: ' : 'Nystul\'s Apprentice: ') + text;
         container.appendChild(bubble);
         container.scrollTop = container.scrollHeight;
     }
