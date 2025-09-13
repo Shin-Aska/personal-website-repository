@@ -499,53 +499,80 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function openQuestChatInModal(key, quest) {
         const badge = "<span class='ml-2 align-middle text-[10px] px-2 py-0.5 rounded bg-yellow-200/20 text-yellow-100 border border-yellow-300/40'>non‑spoiler</span>";
-        aiModalTitle.innerHTML = `✨ Hint & Chat for ${key} ${badge}`;
+        aiModalTitle.innerHTML = `✨ ${key} ${badge}`;
 
         const offlineHint = OFFLINE_HINTS[key] || 'No offline hint available.';
         const template = QUEST_PROMPTS[key] || defaultQuestTemplate(key);
-        const contextOnly = extractContext(template);
 
-        // Build chat UI inside modal
+        // Tabs: General Hints | Advice
         aiResponseText.innerHTML = `
-            <div class=\"text-xs text-secondary\">You can ask follow-up questions below. Context is handcrafted per quest.</div>
-            <div class=\"mt-2 border border-color rounded bg-[#102a43]/40 p-2\">
-                <div class=\"text-[11px] font-semibold text-yellow-200 mb-1\">Starter Hint (non‑spoiler)</div>
-                <pre class=\"whitespace-pre-wrap text-[12px]\">${offlineHint.replace(/</g,'&lt;')}</pre>
-            </div>
-            <button id=\"modal-quest-chat-toggle-context\" class=\"mt-2 px-3 py-1 text-xs rounded border border-yellow-300/40 bg-yellow-200/10 text-yellow-100\">Show Context</button>
-            <div id=\"modal-quest-chat-context\" class=\"mt-2 hidden bg-[#1a202c] border border-color rounded p-3 text-xs whitespace-pre-wrap\">
-                ${contextOnly.replace(/</g,'&lt;')}
-            </div>
-            <div id=\"modal-quest-chat-messages\" class=\"mt-3 h-56 overflow-y-auto bg-[#0f1720] border border-color rounded p-3 text-sm space-y-2\"></div>
-            <div class=\"flex gap-2 mt-3\">
-                <input id=\"modal-quest-chat-input\" class=\"flex-1 bg-[#1a202c] border border-color rounded px-3 py-2 text-sm\" placeholder=\"Ask something about this quest…\" />
-                <button id=\"modal-quest-chat-send\" class=\"ai-button font-bold px-4 py-2 rounded\">Send</button>
+            <div class="flex flex-col max-h-[75vh]">
+                <div id="modal-tabbar" class="flex gap-2 border-b border-color mb-3">
+                    <button id="modal-tab-hints" class="px-3 py-1 rounded-t bg-[#1a202c] text-sm font-semibold border border-color border-b-0">General Hints</button>
+                    <button id="modal-tab-advice" class="px-3 py-1 rounded-t text-sm font-semibold border border-transparent hover:border-color">Advice</button>
+                </div>
+                <div class="flex-1 overflow-hidden">
+                    <section id="tab-hints" class="h-full overflow-auto">
+                        <div class="rounded bg-[#102a43]/40 p-3 border border-color text-[13px] whitespace-pre-wrap">${offlineHint.replace(/</g,'&lt;')}</div>
+                    </section>
+                    <section id="tab-advice" class="hidden h-full flex flex-col">
+                        <div id="modal-quest-chat-messages" class="flex-1 min-h-40 overflow-y-auto bg-[#0f1720] border border-color rounded p-3 text-sm space-y-2"></div>
+                        <div class="flex gap-2 mt-3">
+                            <input id="modal-quest-chat-input" class="flex-1 bg-[#1a202c] border border-color rounded px-3 py-2 text-sm" placeholder="Ask the Sage for advice…" />
+                            <button id="modal-quest-chat-send" class="ai-button font-bold px-4 py-2 rounded">Send</button>
+                        </div>
+                    </section>
+                </div>
             </div>
         `;
         aiLoader.style.display = 'none';
 
-        // Wire handlers
-        const ctxBtn = document.getElementById('modal-quest-chat-toggle-context');
-        const ctxEl  = document.getElementById('modal-quest-chat-context');
+        // Wire tab handlers
+        const tabHintsBtn = document.getElementById('modal-tab-hints');
+        const tabAdviceBtn = document.getElementById('modal-tab-advice');
+        const tabHints = document.getElementById('tab-hints');
+        const tabAdvice = document.getElementById('tab-advice');
+
+        function switchModalTab(which) {
+            const active = ['bg-[#1a202c]','border','border-color','border-b-0'];
+            const inactive = ['bg-transparent','border','border-transparent'];
+            if (which === 'hints') {
+                tabHints.classList.remove('hidden');
+                tabAdvice.classList.add('hidden');
+                tabHintsBtn.classList.add(...active);
+                tabAdviceBtn.classList.remove(...active);
+                tabAdviceBtn.classList.add(...inactive);
+            } else {
+                tabAdvice.classList.remove('hidden');
+                tabHints.classList.add('hidden');
+                tabAdviceBtn.classList.add(...active);
+                tabHintsBtn.classList.remove(...active);
+                tabHintsBtn.classList.add(...inactive);
+            }
+        }
+        tabHintsBtn.addEventListener('click', () => switchModalTab('hints'));
+        tabAdviceBtn.addEventListener('click', () => switchModalTab('advice'));
+        switchModalTab('hints');
+
+        // Chat wiring
         const msgEl  = document.getElementById('modal-quest-chat-messages');
         const inputEl= document.getElementById('modal-quest-chat-input');
         const sendBtn= document.getElementById('modal-quest-chat-send');
 
-        ctxBtn.addEventListener('click', () => {
-            ctxEl.classList.toggle('hidden');
-            ctxBtn.textContent = ctxEl.classList.contains('hidden') ? 'Show Context' : 'Hide Context';
-        });
-
-        // Greet user
-        appendChat(msgEl, 'assistant', `How can I help you with \"${key}\"?`);
+        // Greet user in chat panel
+        appendChat(msgEl, 'assistant', `How can I help you with "${key}"?`);
 
         function send() {
             sendQuestChatMessageForKey(key, inputEl, msgEl);
+            // auto-switch to Advice tab when sending from Hints (in case user clicks Enter there later)
+            switchModalTab('advice');
         }
         sendBtn.addEventListener('click', send);
-        inputEl.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); send(); }
-        });
+        if (inputEl) {
+            inputEl.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); send(); }
+            });
+        }
     }
 
     async function sendQuestChatMessageForKey(key, inputEl, msgEl) {
