@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Generate sitemaps for the 'default' and 'classic' site variants.
+Generate sitemaps for the 'default', 'classic', and 'guides' site variants.
 
 - Scans only top-level .html files in each webroot (no subdirectories)
 - Excludes error/test/template files (401/403/404/test/template)
@@ -32,6 +32,12 @@ SITES = [
         "name": "classic",
         "dir": "classic",
         "base_url": "https://classic.richardorilla.website/",
+        "output": "sitemap.xml",
+    },
+    {
+        "name": "guides",
+        "dir": "guides",
+        "base_url": "https://guides.richardorilla.website/",
         "output": "sitemap.xml",
     },
 ]
