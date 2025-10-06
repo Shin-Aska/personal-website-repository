@@ -10,79 +10,335 @@ const gameData = {
                 { virtue: "Humility", bonus: "No bonus" },
             ],
             quests: [
-                { 
+                {
                     title: "Act I: Liberating the Shrines",
-                    content: `
-                        <p class="mb-4">Your first mandate from Lord British is to reclaim the eight Shrines of Virtue from the Gargoyles. This requires finding each city's corresponding Rune and cleansing its shrine.</p>
-                        <h4 class="font-semibold text-lg mb-2">The Quest for the Runes:</h4>
-                        <ul class="list-disc list-inside space-y-2 mb-4">
-                            <li><b>Honesty (Moonglow):</b> Obtain the key to Beyvin's tomb from Manrel (south of the Blue Bottle Inn), then unlock the tomb in the catacombs.</li>
-                            <li><b>Compassion (Britain):</b> Get permission from Ariana's mother, the barmaid at the Blue Boar, to receive the rune from Ariana.</li>
-                            <li><b>Valor (Jhelom):</b> Recruit Sherry the mouse with cheese from Castle British to retrieve the rune through a mouse hole in the Jhelom tavern.</li>
-                            <li><b>Justice (Yew):</b> Learn from the prisoner Boskin that the rune is hidden under a plant in Yew's tavern.</li>
-                            <li><b>Sacrifice (Minoc):</b> Craft panpipes from a yew log and recite "Stones" (6789878767653) for Selganor to receive the rune.</li>
-                            <li><b>Honor (Trinsic):</b> Borrow the rune from its pedestal and return it after use.</li>
-                            <li><b>Spirituality (Skara Brae):</b> Find the rune in Marney's hope chest.</li>
-                            <li><b>Humility (New Magincia):</b> Solve the mayor's riddle; the answer is Conor the fisherman.</li>
-                        </ul>
-                        <h4 class="font-semibold text-lg mb-2">Cleansing the Shrines:</h4>
-                        <p>With a rune, go to its shrine. Use the rune, speak the mantra (e.g., AHM for Honesty), and take the Moonstone.</p>
-                    `
+                    intro: "Lord British tasks you with reclaiming the eight runes, freeing every shrine, and restoring virtue to Britannia.",
+                    sections: [
+                        {
+                            heading: "Compassion — Britain",
+                            summary: "Earn Ariana's trust by securing her mother's blessing before borrowing the rune.",
+                            steps: [
+                                "Meet Ariana at the Conservatory and ask for the `RUNE`. She needs her mother Anya's permission.",
+                                "Visit Anya at the Blue Boar Tavern, mention `RUNE` or `PERMISSION`, and answer `YES` when asked.",
+                                "Return to Ariana, confirm permission, and receive the Rune of Compassion.",
+                                "Cleanse the southern shrine using the rune, chant `MU`, take the Moonstone, and meditate."
+                            ],
+                            keywords: [
+                                {
+                                    label: "Ariana & Anya",
+                                    helper: `<strong>Ariana:</strong> say <code>RUNE</code> → needs consent.<br><strong>Anya:</strong> say <code>RUNE</code>/<code>PERMISSION</code> → reply <code>YES</code>.<br><strong>Ariana:</strong> say <code>PERMISSION</code> → answer <code>YES</code> to claim the rune.`
+                                }
+                            ]
+                        },
+                        {
+                            heading: "Honesty — Moonglow",
+                            summary: "Honor your promise to Manrel while retrieving Beyvin's key and rune.",
+                            steps: [
+                                "Find Manrel south of the Blue Bottle Inn; ask for the `KEY` and vow to place flowers on Beyvin's coffin.",
+                                "Search the inn storeroom wall for the secret door into the catacombs.",
+                                "Unlock Beyvin's tomb with Manrel's key, take the rune, and leave flowers before departing.",
+                                "Use the rune at the Shrine of Honesty on Verity Isle, chant `AHM`, and recover the Moonstone."
+                            ],
+                            keywords: [
+                                {
+                                    label: "Manrel & Catacombs",
+                                    helper: `<strong>Manrel:</strong> say <code>KEY</code> → promise to honour him.<br><strong>Catacombs:</strong> hidden door in Blue Bottle storeroom.<br><strong>Shrine:</strong> rune + mantra <code>AHM</code>.`
+                                }
+                            ]
+                        },
+                        {
+                            heading: "Valor — Jhelom",
+                            summary: "Recruit Sherry the mouse to slip behind the tavern walls and retrieve the rune.",
+                            steps: [
+                                "In Castle Britannia's kitchen, pick up cheese, offer it to Sherry, and invite her to `JOIN`.",
+                                "Travel to the Sword and Keg in Jhelom, position Sherry at the mouse hole, and switch control to her.",
+                                "Enter the mouse hole as Sherry to grab the rune, then regroup with the party.",
+                                "Cleanse the Shrine of Valor atop the Serpent's Spine by chanting `RA` and taking the Moonstone."
+                            ],
+                            keywords: [
+                                {
+                                    label: "Sherry & Valor",
+                                    helper: `<strong>Sherry:</strong> give cheese → say <code>JOIN</code>.<br><strong>Mouse hole:</strong> solo-control Sherry to retrieve the rune.<br><strong>Virtue:</strong> dismiss Sherry later at Castle Britannia to avoid karma loss.`
+                                }
+                            ]
+                        },
+                        {
+                            heading: "Justice — Yew",
+                            summary: "Expose Boskin's lie and recover the rune hidden in the tavern plant.",
+                            steps: [
+                                "Ask Mayor Lenora for `PERMISSION` to interrogate Boskin.",
+                                "Collect the jail key from Pridgarm, then question Boskin about the `RUNE` and his `KIDS`.",
+                                "Verify with Lenora; she reveals the story is false. Confront Boskin with `TRUTH` to learn the hiding place.",
+                                "Retrieve the rune beneath the Slaughtered Lamb plant, chant `BEH` at the shrine, and return the jail key."
+                            ],
+                            keywords: [
+                                {
+                                    label: "Boskin's Lie",
+                                    helper: `<strong>Lenora:</strong> say <code>PERMISSION</code>.<br><strong>Boskin:</strong> <code>RUNE</code> → <code>KIDS</code>.<br><strong>Lenora:</strong> ask <code>KIDS</code> to expose him.<br><strong>Boskin:</strong> confront with <code>TRUTH</code> to reveal the plant.`
+                                }
+                            ]
+                        },
+                        {
+                            heading: "Sacrifice — Minoc",
+                            summary: "Craft panpipes and perform Stones for Selganor to earn the rune.",
+                            steps: [
+                                "Buy a yew log from Ben west of Yew, cut it into a board, and ask Julia to craft `PANPIPES`.",
+                                "Ask Gwenno about the song `STONES` to learn the numeric tune 6789878767653.",
+                                "Perform the tune for Selganor inside the Artisan Guild to receive the rune.",
+                                "Cleanse the desert shrine with mantra `CAH`, gather the Moonstone, and meditate."
+                            ],
+                            keywords: [
+                                {
+                                    label: "Artisan's Trial",
+                                    helper: `<strong>Julia:</strong> give board → panpipes.<br><strong>Gwenno:</strong> say <code>STONES</code> for tune.<br><strong>Selganor:</strong> enter 6789878767653 when prompted.`
+                                }
+                            ]
+                        },
+                        {
+                            heading: "Honor — Trinsic",
+                            summary: "Borrow the rune on trust and return it after the shrine is freed.",
+                            steps: [
+                                "Speak with Mayor Whitsaber about the `RUNE`; he lends it to you.",
+                                "Take the rune from the central pedestal and promise to return it soon.",
+                                "Cleanse the shrine north of Trinsic with mantra `SUMM`, recover the Moonstone, then return the rune to the pedestal.",
+                                "Report back to Whitsaber for a virtue boost."
+                            ],
+                            keywords: [
+                                {
+                                    label: "Whitsaber's Trust",
+                                    helper: `<strong>Whitsaber:</strong> say <code>RUNE</code> to borrow.<br><strong>Reminder:</strong> replace rune after shrine to preserve karma.`
+                                }
+                            ]
+                        },
+                        {
+                            heading: "Spirituality — Skara Brae",
+                            summary: "Follow Marney's poem to her family's hidden hope chest.",
+                            steps: [
+                                "Talk to Marney near the docks about the `RUNE`.",
+                                "Use follow-up keywords `POEM` and `BASKET` to jog her memory.",
+                                "Search the hope chest in Marney's house to obtain the rune.",
+                                "Cleanse the Shrine of Spirituality via moongate access, chanting `OM`."
+                            ],
+                            keywords: [
+                                {
+                                    label: "Marney's Basket",
+                                    helper: `<strong>Marney:</strong> <code>RUNE</code> → <code>POEM</code> → <code>BASKET</code>.<br><strong>House:</strong> hope chest in northern bedroom.`
+                                }
+                            ]
+                        },
+                        {
+                            heading: "Humility — New Magincia",
+                            summary: "Question every villager to discover the most humble soul.",
+                            steps: [
+                                "Ask Mayor Antonio about `HUMILITY`; he poses a riddle.",
+                                "Question each villager with keyword `HUMILITY` until Conor is identified.",
+                                "Answer `CONOR` when returning to Antonio to gain the rune.",
+                                "Cleanse the Isle of the Avatar shrine by chanting `LUM`."
+                            ],
+                            keywords: [
+                                {
+                                    label: "Antonio's Riddle",
+                                    helper: `<strong>Antonio:</strong> say <code>HUMILITY</code>.<br><strong>Villagers:</strong> keep asking <code>HUMILITY</code>.<br><strong>Answer:</strong> respond <code>CONOR</code> for the rune.`
+                                }
+                            ]
+                        }
+                    ],
+                    recap: "For each shrine: arrive with the rune and mantra, use the rune on the altar, chant three times, secure the Moonstone, and meditate to lock in the virtue."
                 },
                 {
-                    title: "Act II: The Prophecy and the Pirates",
-                    content: `
-                        <p class="mb-4">To understand the Gargoyles, you must translate a book. This leads you into the criminal underworld to find Captain Hawkins' lost treasure.</p>
-                        <h4 class="font-semibold text-lg mb-2">The Silver Tablet:</h4>
-                        <ul class="list-disc list-inside space-y-2 mb-4">
-                            <li>Take the Gargish tome to Mariah at the Lycaeum. She needs the other half of a silver tablet.</li>
-                            <li>Find the gypsies near Trinsic, who point you to Homer in Buccaneer's Den.</li>
-                            <li>Join the Thieves' Guild in Buccaneer's Den by wearing a guild belt (steal one from Phoenix in the castle sewers—Invisibility helps).</li>
-                        </ul>
-                        <h4 class="font-semibold text-lg mb-2">Assembling the Map:</h4>
-                        <p class="mb-2">Homer reveals the map to the treasure is in nine pieces, scattered across Britannia. Track them down in these places:</p>
-                        <ul class="list-disc list-inside space-y-1 mb-4">
-                            <li>Dungeon Shame: Old Ybarra will trade a piece for food.</li>
-                            <li>Dungeon Wrong/Covetous: Solve a lever puzzle, then find a piece on the third level.</li>
-                            <li>The Ant Mound: On the bottom floor, on a corpse deep near the queen.</li>
-                            <li>Shipwreck: On the reefs at approximately 71S, 15E.</li>
-                            <li>Serpent's Hold: Morchella east of the Hold will trade for a Magic Shield.</li>
-                            <li>Dagger Isle: In a hermit's cellar—move the harpsichord.</li>
-                            <li>Gypsies north of Paws: Buy a piece from Arturos (or pickpocket).</li>
-                            <li>Trinsic: Confront the mayor with his alias "Gordon" to obtain a piece.</li>
-                            <li>Homer has one piece; return once you have eight and he will provide the last and the digging instructions.</li>
-                        </ul>
-                        <h4 class="font-semibold text-lg mb-2">The Pirate's Cave:</h4>
-                        <p>Once the map is assembled, sail to the small island southeast of Buccaneer's Den. Follow the misleading signs (go opposite the first "This Way," then follow the next), pass the Maze of Death, and reach the cache. Claim the silver tablet, the Storm Cloak, and the Magic Fan. Return the Storm Cloak to Homer to keep your virtue untarnished.</p>
-                    `
+                    title: "Act II: Prophecy & Pirates",
+                    intro: "Assist Mariah with the silver tablet, join Buccaneer's Den's guild, and assemble Captain Hawkins's map pieces to reach the Pirate Cave.",
+                    sections: [
+                        {
+                            heading: "Translate the Gargish Tome",
+                            summary: "Deliver the book to Mariah and follow the gypsy lead to Homer.",
+                            steps: [
+                                "Present the Gargish book to Mariah at the Lycaeum using keyword `BOOK`.",
+                                "She reveals her half of the silver tablet and sends you to the gypsies near Trinsic.",
+                                "Ask the gypsy leader about the `TABLET`; they direct you to Homer in Buccaneer's Den."
+                            ],
+                            keywords: [
+                                {
+                                    label: "Mariah & Gypsies",
+                                    helper: `<strong>Mariah:</strong> say <code>BOOK</code> → needs other half.<br><strong>Zoltan:</strong> say <code>TABLET</code> for Homer lead.`
+                                }
+                            ]
+                        },
+                        {
+                            heading: "Join the Thieves' Guild",
+                            summary: "Earn Budo's trust without staining your virtue.",
+                            steps: [
+                                "Speak with Homer about `HAWKINS`; he insists you join the guild.",
+                                "Ask Budo about the `GUILD`; he requests Phoenix's belt from Castle Britannia's sewers.",
+                                "Cast `INVISIBILITY` and `PICKPOCKET` Phoenix to steal the belt humanely.",
+                                "Return the belt to Budo to receive the guild password for Homer."
+                            ],
+                            keywords: [
+                                {
+                                    label: "Guild Initiation",
+                                    helper: `<strong>Homer:</strong> say <code>HAWKINS</code>.<br><strong>Budo:</strong> use <code>GUILD</code> → fetch belt.<br><strong>Phoenix:</strong> <code>PICKPOCKET</code> while invisible to avoid combat.`
+                                }
+                            ]
+                        },
+                        {
+                            heading: "Assemble Hawkins's Map",
+                            summary: "Hunt the nine fragments scattered across Britannia.",
+                            steps: [
+                                "Trade food to Ybarra in Dungeon Shame for his map piece.",
+                                "Solve the Wrong/Covetous lever puzzle and search level three for another fragment.",
+                                "Plunder the Ant Mound queen's chamber for Hawknose's body and map scrap.",
+                                "Dive the shipwreck at 71S 15E, defeat the ghosts, and secure the stern piece.",
+                                "Trade Morchella east of Serpent's Hold a `MAGIC SHIELD` for her shard.",
+                                "Move Bonn's harpsichord on Dagger Isle to reveal a cellar ladder and fragment.",
+                                "Purchase (or steal) Arturos's locket north of Paws for the enclosed piece.",
+                                "Expose Mayor Whitsaber's alias `GORDON` in Trinsic to obtain his portion.",
+                                "Return to Homer with eight fragments; he gives the final piece and digging instructions."
+                            ],
+                            keywords: [
+                                {
+                                    label: "Map Piece Shortcuts",
+                                    helper: `<strong>Shame:</strong> trade <code>FOOD</code>.<br><strong>Wrong:</strong> flip levers in order 4-1-2-3.<br><strong>Trinsic:</strong> say <code>GORDON</code> to Whitsaber.<br><strong>Arturos:</strong> haggle down to 50 gold or pickpocket.`
+                                }
+                            ]
+                        },
+                        {
+                            heading: "Plunder the Pirate Cave",
+                            summary: "Navigate traps and moral choices to seize the silver tablet half.",
+                            steps: [
+                                "Sail to Hawkins's island southeast of Buccaneer's Den using Homer's directions.",
+                                "Ignore the first \"THIS WAY\" sign (go opposite), then follow later signs accurately.",
+                                "Survive the Maze of Death by hugging the right wall, disarming traps, and conserving powder kegs.",
+                                "Collect the silver tablet, Storm Cloak, Magic Fan, and treasure. Return the Storm Cloak to Homer for a virtue reward."
+                            ],
+                            keywords: [
+                                {
+                                    label: "Pirate Cave Tips",
+                                    helper: `<strong>Signs:</strong> take the opposite path of the first <code>THIS WAY</code>.<br><strong>Maze:</strong> use <code>WIZARD EYE</code> or <code>DISPEL FIELD</code>.<br><strong>Storm Cloak:</strong> gift it back to Homer for karma.`
+                                }
+                            ]
+                        }
+                    ],
+                    recap: "Deliver the complete tablet to Mariah so she can translate the Gargish prophecy and open the path to the gargoyle realm."
                 },
                 {
-                    title: "Act III: The Realm of the Gargoyles",
-                    content: `
-                        <p class="mb-4">The translated book reveals the Gargoyles are refugees, and the Avatar is their prophesied doom. You must now travel to their realm to forge peace.</p>
-                        <h4 class="font-semibold text-lg mb-2">The Path to Peace:</h4>
-                        <ul class="list-disc list-inside space-y-2 mb-4">
-                            <li>Travel through the dungeon Hythloth on the Isle of the Avatar (recommended). On the lowest level, find Captain Johne to learn the Gargish language. (The Orb of the Moons can also reach the gargoyle realm once you understand its use.)</li>
-                            <li>Upon exiting into the gargoyle world, recruit the gargoyle Beh Lem near the Hythloth entrance. He is essential for diplomacy.</li>
-                            <li>Meet <b>Lord Draxinusom</b> and agree to wear the Amulet of Submission to prove your peaceful intent.</li>
-                        </ul>
-                        <h4 class="font-semibold text-lg mb-2">The Sacred Quest:</h4>
-                        <p>Build a hot-air balloon (plans beneath Sutek's Castle; basket in Minoc; silk and sewing in Paws; cloth in New Magincia). Use it to float over the mountains to the <b>Shrine of Singularity</b>. Then visit the catacombs of <i>Control</i>, <i>Passion</i>, and <i>Diligence</i> and speak with each altar to learn their mantras (UN, OR, US). Return to the Shrine of Singularity and chant <b>UNORUS</b> to be placed on the sacred quest and gain access to the Codex.</p>
-                    `
+                    title: "Act III: Realm of the Gargoyles",
+                    intro: "Travel beyond Hythloth, earn the gargoyles' trust, and pursue the Sacred Quest of Singularity.",
+                    sections: [
+                        {
+                            heading: "Reach the Gargoyle Realm",
+                            summary: "Descend Hythloth and learn to speak Gargish.",
+                            steps: [
+                                "Enter Hythloth via the Shrine of Humility or powder-keg the sealed door on the Isle of the Avatar.",
+                                "Descend to level 4, using `PROTECTION` spells and powder kegs for blocked tunnels.",
+                                "Locate Captain Johne's home, discuss `GARGISH`, and accept his vocabulary scroll.",
+                                "Immediately `USE` the scroll to gain fluency before exiting into the gargoyle realm."
+                            ],
+                            keywords: [
+                                {
+                                    label: "Captain Johne",
+                                    helper: `<strong>Johne:</strong> say <code>GARGISH</code>/<code>LANGUAGE</code> for the scroll.<br><strong>Scroll:</strong> <code>USE</code> it at once to speak Gargish.`
+                                }
+                            ]
+                        },
+                        {
+                            heading: "Secure Diplomatic Access",
+                            summary: "Recruit Beh Lem and accept Draxinusom's terms.",
+                            steps: [
+                                "Outside Hythloth, speak with Beh Lem and ask him to `JOIN` to guarantee safe passage.",
+                                "Enter the city, request an audience with Lord Draxinusom, and agree to `SURRENDER`.",
+                                "Wear the Amulet of Submission to move freely and earn gargoyle trust."
+                            ],
+                            keywords: [
+                                {
+                                    label: "Beh Lem & Draxinusom",
+                                    helper: `<strong>Beh Lem:</strong> say <code>JOIN</code>.<br><strong>Draxinusom:</strong> accept with <code>SURRENDER</code> to receive the amulet.`
+                                }
+                            ]
+                        },
+                        {
+                            heading: "Build the Hot-Air Balloon",
+                            summary: "Collect every component needed to reach the Shrine of Singularity.",
+                            steps: [
+                                "Recover the balloon plans from Sutek's catacombs at 65S 52E.",
+                                "Gather 40 spidersilk, have Arbeth in Paws spin thread, and Charlotte in New Magincia weave cloth.",
+                                "Ask Marissa in Paws to sew the silk bag, and buy a wicker basket from Michelle in Minoc.",
+                                "Collect rope and a large pot for the burner, then `USE` the plans once all parts are in your inventory."
+                            ],
+                            keywords: [
+                                {
+                                    label: "Balloon Crafting",
+                                    helper: `<strong>Paws:</strong> Arbeth spins silk → Marissa sews bag.<br><strong>New Magincia:</strong> Charlotte weaves cloth.<br><strong>Minoc:</strong> Michelle sells the basket.`
+                                }
+                            ]
+                        },
+                        {
+                            heading: "Embrace Singularity",
+                            summary: "Learn the mantras of Principle and align with gargoyle philosophy.",
+                            steps: [
+                                "Visit the shrines of Control, Passion, and Diligence to obtain mantras `UN`, `OR`, and `US` from Mondain, Minax, and Exodus.",
+                                "Use the balloon to reach the plateaued Shrine of Singularity.",
+                                "Chant `UNORUS` at the shrine to accept the Sacred Quest."
+                            ],
+                            keywords: [
+                                {
+                                    label: "Mantra Checklist",
+                                    helper: `<strong>Control:</strong> mantra <code>UN</code>.<br><strong>Passion:</strong> mantra <code>OR</code>.<br><strong>Diligence:</strong> mantra <code>US</code>.`
+                                }
+                            ]
+                        }
+                    ],
+                    recap: "With Beh Lem allied and the Sacred Quest accepted, you are ready to gather the artifacts needed to save both cultures."
                 },
                 {
-                    title: "The Final Ritual",
-                    content: `
-                        <p class="mb-4">To end the conflict, you must perform a ritual to return the Codex to the Ethereal Void, making its wisdom accessible to both humans and gargoyles.</p>
-                        <h4 class="font-semibold text-lg mb-2">Gathering the Artifacts:</h4>
-                        <ul class="list-disc list-inside space-y-2 mb-4">
-                            <li><b>The Vortex Cube:</b> Beneath Stonegate. Catch a fish for the cyclops patriarch to earn a key, then navigate the secret passages to the cube.</li>
-                            <li><b>The Gargoyle Lens:</b> Take the broken lens from the Hall of Knowledge to the gargoyle lens maker (northeast of the Seer's home) for repairs.</li>
-                            <li><b>The Britannian Lens:</b> Give a glass sword to the astronomer Ephemerides in Moonglow, who will craft the human lens.</li>
-                        </ul>
-                        <h4 class="font-semibold text-lg mb-2">Returning the Codex:</h4>
-                        <p>At the Shrine of the Codex, place the <i>Britannian</i> lens halfway between the left flame and the Codex, and the <i>Gargoyle</i> lens halfway between the right flame and the Codex (you will see rays of light if placed correctly). Set the Vortex Cube before the Codex, drop all eight Moonstones into the cube, then <b>use</b> the cube to complete the ritual.</p>
-                    `
+                    title: "Final Ritual",
+                    intro: "Recover the Vortex Cube, forge twin lenses, and present them correctly at the Codex of Ultimate Wisdom.",
+                    sections: [
+                        {
+                            heading: "Recover the Vortex Cube",
+                            summary: "Negotiate with the cyclopes of Stonegate to access their hidden vault.",
+                            steps: [
+                                "Travel to Stonegate (10N 37E) and greet the patriarch peacefully.",
+                                "Catch a fresh fish nearby and present it when discussing `HELP` to earn the vault key.",
+                                "Navigate secret passages on the lower floors to reach the cube chamber."
+                            ],
+                            keywords: [
+                                {
+                                    label: "Stonegate Diplomacy",
+                                    helper: `<strong>Patriarch:</strong> say <code>HELP</code>/<code>FISH</code> with fresh catch.<br><strong>Vault:</strong> hidden door on B2 north wall.`
+                                }
+                            ]
+                        },
+                        {
+                            heading: "Forge the Twin Lenses",
+                            summary: "Repair the gargoyle lens and commission a human counterpart.",
+                            steps: [
+                                "Retrieve the broken red lens from the Hall of Knowledge and deliver it to Lor-wis-lem the lens grinder.",
+                                "Take a glass sword to Ephemerides in Moonglow, discuss `LENS` and `SWORD`, and receive the blue Britannian lens."
+                            ],
+                            keywords: [
+                                {
+                                    label: "Lens Makers",
+                                    helper: `<strong>Lor-wis-lem:</strong> say <code>LENS</code> for repairs.<br><strong>Ephemerides:</strong> present glass sword, say <code>SWORD</code> to trade.`
+                                }
+                            ]
+                        },
+                        {
+                            heading: "Prepare the Codex Shrine",
+                            summary: "Load the Vortex Cube and align the lenses for the finale.",
+                            steps: [
+                                "Place all eight Moonstones into the Vortex Cube before arriving at the Codex.",
+                                "Set the Britannian lens between the left flame and the Codex, and the gargoyle lens between the right flame and the Codex.",
+                                "Position the charged cube in front of the Codex, ensure both beams cross the cube, then `USE` it to complete the ritual."
+                            ],
+                            keywords: [
+                                {
+                                    label: "Ritual Checklist",
+                                    helper: `<strong>Moonstones:</strong> load into cube ahead of time.<br><strong>Lenses:</strong> place midway between flames and Codex.<br><strong>Finale:</strong> <code>USE</code> the cube once beams align.`
+                                }
+                            ]
+                        }
+                    ],
+                    recap: "When both lenses are aligned and the Vortex Cube is charged, the Codex returns to the Ethereal Void and peace is restored."
                 }
             ],
             companions: [
@@ -193,6 +449,22 @@ const gameData = {
             });
         });
         
+        function generateQuestContent(quest) {
+            const introHtml = quest.intro ? `<p class="mb-4 text-amber-900/85">${quest.intro}</p>` : '';
+            const sectionsHtml = (quest.sections || []).map(section => {
+                const summaryHtml = section.summary ? `<p class="mb-2 text-amber-900/80">${section.summary}</p>` : '';
+                const stepsHtml = (section.steps && section.steps.length)
+                    ? `<ol class="list-decimal list-inside space-y-1 text-amber-900/90">${section.steps.map(step => `<li>${step}</li>`).join('')}</ol>`
+                    : '';
+                const keywordsHtml = (section.keywords && section.keywords.length)
+                    ? `<div class="flex flex-wrap gap-2 mt-3">${section.keywords.map(keyword => `<button type="button" class="keyword-hint inline-flex items-center gap-1 px-3 py-1 text-sm font-medium text-amber-900 bg-amber-100/70 border border-amber-300 rounded hover:bg-amber-100 transition" data-helper="${encodeURIComponent(keyword.helper)}">${keyword.label}</button>`).join('')}</div>`
+                    : '';
+                return `<article class="quest-subsection p-4 bg-amber-50/60 rounded-lg border border-amber-200"><h4 class="font-semibold text-lg text-amber-900 mb-1">${section.heading}</h4>${summaryHtml}${stepsHtml}${keywordsHtml}</article>`;
+            }).join('');
+            const recapHtml = quest.recap ? `<div class="mt-6 p-4 bg-amber-100/60 border-l-4 border-amber-500 rounded text-amber-900/90">${quest.recap}</div>` : '';
+            return `${introHtml}<div class="space-y-4">${sectionsHtml}</div>${recapHtml}`;
+        }
+
         function populateStaticData() {
             const shrineList = document.getElementById('shrine-list');
             gameData.shrines.forEach(shrine => {
@@ -206,12 +478,13 @@ const gameData = {
             gameData.quests.forEach((quest) => {
                 const div = document.createElement('div');
                 div.className = "border border-amber-200 rounded-lg bg-white/50";
+                const questContent = generateQuestContent(quest);
                 div.innerHTML = `
                     <button class="accordion-toggle w-full text-left p-4 font-semibold text-xl text-amber-900 flex justify-between items-center">
                         ${quest.title}
                         <span class="transform transition-transform duration-300 text-amber-700">&#9662;</span>
                     </button>
-                    <div class="accordion-content px-4 pb-4 text-amber-900/80">${quest.content}</div>`;
+                    <div class="accordion-content px-4 pb-4 text-amber-900/80">${questContent}</div>`;
                 questAccordion.appendChild(div);
             });
 
@@ -271,6 +544,33 @@ const gameData = {
 
         document.getElementById('generate-chronicle').addEventListener('click', generateChronicle);
         document.getElementById('ask-seer').addEventListener('click', askTheSeer);
+
+        setupKeywordHintButtons();
+    }
+
+    function setupKeywordHintButtons() {
+        const helperPanel = document.getElementById('keyword-helper');
+        const helperText = document.getElementById('keyword-helper-text');
+        if (!helperPanel || !helperText) {
+            return;
+        }
+
+        const hintButtons = document.querySelectorAll('.keyword-hint');
+        if (!hintButtons.length) {
+            helperPanel.classList.add('hidden');
+            helperText.innerHTML = '';
+            return;
+        }
+
+        hintButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                hintButtons.forEach(btn => btn.classList.remove('bg-amber-200', 'border-amber-500', 'text-amber-950'));
+                const helperHtml = decodeURIComponent(button.dataset.helper || '');
+                helperText.innerHTML = helperHtml;
+                helperPanel.classList.remove('hidden');
+                button.classList.add('bg-amber-200', 'border-amber-500', 'text-amber-950');
+            });
+        });
     }
 
     let sortDirection = {};

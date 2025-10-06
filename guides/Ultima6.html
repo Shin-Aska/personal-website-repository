@@ -38,6 +38,7 @@
             <button class="tab-button text-sm sm:text-lg p-4" onclick="showTab('almanac')">Britannian Almanac</button>
             <button class="tab-button text-sm sm:text-lg p-4" onclick="showTab('atlas')">World Atlas</button>
             <button class="tab-button text-sm sm:text-lg p-4" onclick="showTab('passage')">Words of Passage</button>
+            <button class="tab-button text-sm sm:text-lg p-4" onclick="showTab('cheats')">Cheat Codex</button>
             <button class="tab-button text-sm sm:text-lg p-4" onclick="showTab('counsel')">Consult with the Seer</button>
         </nav>
 
@@ -76,8 +77,13 @@
             <section id="quest" class="tab-content">
                  <div class="bg-amber-50/50 p-6 rounded-lg shadow-md">
                     <h2 class="text-3xl font-bold mb-4 text-amber-900">The Grand Quest Walkthrough</h2>
-                    <p class="mb-6 text-amber-900/80">The path to peace is fraught with peril, prophecy, and pirates. This walkthrough is divided into the major acts of the story. Click on any title to expand its section and reveal the necessary steps to proceed on your noble quest.</p>
+                    <p class="mb-4 text-amber-900/80">The path to peace is fraught with peril, prophecy, and pirates. This walkthrough is divided into the major acts of the story. Click on any title to expand its section and reveal layered guidance, including dialogue keywords, puzzle solutions, and virtue-friendly alternatives.</p>
+                    <p class="mb-6 text-sm text-amber-800/80">Tip: Look for the <span class="keyword-hint inline-block px-2 py-1">Dialogue Keywords</span> badges inside each act. Clicking one will add the exact conversation flow to the helper panel below for easy reference.</p>
                     <div id="quest-accordion" class="space-y-2"></div>
+                    <div id="keyword-helper" class="keyword-helper hidden mt-6">
+                        <h3 class="text-xl font-semibold text-amber-900 mb-2 flex items-center gap-2">Dialogue Cheat Sheet <span aria-hidden="true">🗣️</span></h3>
+                        <p id="keyword-helper-text" class="text-amber-900/80"></p>
+                    </div>
                 </div>
             </section>
 
@@ -123,6 +129,13 @@
                     <h2 class="text-3xl font-bold mb-4 text-amber-900">World Atlas: Dungeons of Britannia</h2>
                     <p class="mb-6 text-amber-900/80">The depths of Britannia hold both great treasure and great peril. This guide provides an overview of the key dungeons you must brave to complete your quest.</p>
                     <div id="dungeon-list" class="space-y-4"></div>
+                    <div class="atlas-map mt-8">
+                        <h3 class="text-2xl font-semibold mb-3 text-amber-900">High-Resolution Britannia Map</h3>
+                        <p class="text-amber-900/80 mb-4">Study every moongate, dungeon entrance, and coastline in a single glance. Click or tap to open the full-size parchment in a new tab.</p>
+                        <a href="images/U6PWorldMap.jpg" target="_blank" rel="noopener" class="block group">
+                            <img src="images/U6PWorldMap.jpg" alt="Ultima VI: The False Prophet world map" class="rounded-lg shadow-md border border-amber-200 group-hover:shadow-xl transition-shadow duration-300" loading="lazy">
+                        </a>
+                    </div>
                 </div>
             </section>
             
@@ -130,14 +143,35 @@
                 <div class="bg-amber-50/50 p-6 rounded-lg shadow-md">
                     <h2 class="text-3xl font-bold mb-4 text-amber-900">✨ Consult with the Seer</h2>
                     <p class="mb-6 text-amber-900/80">The path of the Avatar is not always clear. If you find yourself lost, perplexed by a puzzle, or seeking strategic wisdom, pose your query to the seer. The ethereal winds will carry your question and return with guidance.</p>
-                    <div class="w-full">
-                        <label for="seer-query" class="block text-lg font-semibold text-amber-900 mb-2">What guidance do you seek?</label>
-                        <textarea id="seer-query" rows="4" class="w-full p-2 border border-amber-300 rounded-md bg-white/70 focus:ring-amber-500 focus:border-amber-500" placeholder="e.g., How can I defeat the dragons in Destard? or Where can I find the plans for the hot-air balloon?"></textarea>
-                        <button id="ask-seer" class="mt-4 bg-amber-800 hover:bg-amber-900 text-white font-bold py-2 px-4 rounded transition-colors duration-300">
+                    <div class="w-full space-y-6">
+                        <div>
+                            <label for="seer-query" class="block text-lg font-semibold text-amber-900 mb-2">What guidance do you seek?</label>
+                            <textarea id="seer-query" rows="4" class="w-full p-2 border border-amber-300 rounded-md bg-white/70 focus:ring-amber-500 focus:border-amber-500" placeholder="e.g., How can I defeat the dragons in Destard? or Where can I find the plans for the hot-air balloon?"></textarea>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold text-amber-900 mb-2">Focus the Seer's Sight</h3>
+                            <p class="text-sm text-amber-800/80 mb-3">Select up to three lore packets to include in your request. The seer will weave these notes directly into the answer.</p>
+                            <div id="seer-context-options" class="grid sm:grid-cols-2 gap-3"></div>
+                        </div>
+                        <div>
+                            <label for="seer-shortcuts" class="block text-sm font-semibold text-amber-900 mb-2">Need a quick prompt?</label>
+                            <select id="seer-shortcuts" class="w-full p-2 border border-amber-300 rounded-md bg-white/70 focus:ring-amber-500 focus:border-amber-500">
+                                <option value="">Choose a prepared question…</option>
+                            </select>
+                        </div>
+                        <button id="ask-seer" class="bg-amber-800 hover:bg-amber-900 text-white font-bold py-2 px-4 rounded transition-colors duration-300">
                             Ask the Seer
                         </button>
                     </div>
                     <div id="seer-response" class="mt-6"></div>
+                </div>
+            </section>
+
+            <section id="cheats" class="tab-content">
+                <div class="bg-amber-50/50 p-6 rounded-lg shadow-md">
+                    <h2 class="text-3xl font-bold mb-4 text-amber-900">Cheat Codex &amp; Exploits</h2>
+                    <p class="mb-6 text-amber-900/80">Sometimes the forces of Britannia require a helping hand (or a little humbug). These sanctioned notes document the secret menus, exploits, and platform-specific tricks gathered from veteran Avatars. Use them wisely if virtue permits.</p>
+                    <div id="cheat-list" class="space-y-4"></div>
                 </div>
             </section>
 
