@@ -403,6 +403,127 @@ const gameData = {
                 { question: "What part of the Nightshade mushroom is used in spellcasting?", answer: "Cap", keywords: "nightshade, mushroom, part", source: "Selganor" },
                 { question: "Where does Sulfurous Ash come from?", answer: "Volcanic Eruptions", keywords: "sulfurous, ash, from", source: "Selganor" },
                 { question: "What are the Black Pearls used for?", answer: "Kinetic propellant", keywords: "black, pearls, used", source: "Selganor" },
+            ],
+            seerContext: [
+                {
+                    id: "cheat-menu",
+                    title: "Secret Cheaters Menu",
+                    summary: "Unlock Ultima VI's hidden debug interface.",
+                    details: `Talk to Iolo and enter <code>spam</code> three times followed by <code>humbug</code> to reveal the cheat menu. Options include Get Items, Set Flags, View NPCs, Edit Party, and Edit Player.`
+                },
+                {
+                    id: "teleport-coordinates",
+                    title: "Coordinate Teleport",
+                    summary: "Developer hotkey for instant travel.",
+                    details: `Hold <kbd>ALT</kbd> and press <kbd>2</kbd>-<kbd>1</kbd>-<kbd>4</kbd> to enter three hex coordinates (X, Y, Z) and warp anywhere in Britannia, its dungeons, or the gargoyle realm.`
+                },
+                {
+                    id: "overhead-radar",
+                    title: "Overhead Radar View",
+                    summary: "Gem-style overview plus HUD readout.",
+                    details: `Hold <kbd>ALT</kbd> and press <kbd>2</kbd>-<kbd>1</kbd>-<kbd>3</kbd> to toggle a bird's-eye view alongside karma, time, and coordinate readouts.`
+                },
+                {
+                    id: "karma-farm",
+                    title: "Endless Karma Farm",
+                    summary: "Serpent's Hold cook exploit for infinite virtue.",
+                    details: `Deliver a dragon egg to the cook in Serpent's Hold. A bug prevents the egg from being consumed, enabling limitless karma gains.`
+                },
+                {
+                    id: "animate-clone",
+                    title: "Animate-Clone Duplication",
+                    summary: "Magic trick to duplicate rare items.",
+                    details: `Drop an item, cast <code>Animate</code> on it, then <code>Clone</code>. Slay the animated copy to keep the duplicate without karma loss.`
+                }
+            ],
+            seerShortcuts: [
+                { label: "How do I open the cheat menu?", prompt: "Remind me how to activate Ultima VI's Secret Cheaters Menu and what options it offers." },
+                { label: "Need teleport coordinates", prompt: "Explain the ALT-2-1-4 coordinate teleport trick, including valid ranges and caveats." },
+                { label: "Show me the debug HUD", prompt: "How do I access the ALT-2-1-3 overhead radar and what info does it display?" },
+                { label: "Farm karma fast", prompt: "Describe the Serpent's Hold dragon egg exploit to gain infinite karma." },
+                { label: "Duplicate rare gear", prompt: "Walk me through the animate-clone duplication exploit in Ultima VI." }
+            ],
+            cheats: [
+                {
+                    title: "Secret Cheaters Menu",
+                    platform: "All Platforms",
+                    description: "Enter the spam/humbug code with Iolo to unlock the developer menu.",
+                    steps: [
+                        "Talk to Iolo and type `spam` (press Enter) three times, then `humbug`.",
+                        "Choose **Get Items** to spawn equipment by ID, quality, and quantity.",
+                        "Use **Edit Party** and **Edit Player** to adjust stats, karma, or companions."
+                    ]
+                },
+                {
+                    title: "Coordinate Teleport",
+                    platform: "All Platforms",
+                    description: "Warp anywhere instantly with the ALT-2-1-4 hotkey.",
+                    steps: [
+                        "Hold ALT and press 2, 1, 4 in sequence to open the Gargish prompt.",
+                        "Enter three hexadecimal numbers: X position, Y position, Z level (0 = surface, 1–4 = dungeon, 5 = gargoyle realm).",
+                        "Confirm to teleport; avoid invalid coordinates to prevent soft locks."
+                    ]
+                },
+                {
+                    title: "Overhead Radar & Coordinates",
+                    platform: "All Platforms",
+                    description: "Toggle a gem-style overview with the ALT-2-1-3 combination.",
+                    steps: [
+                        "Hold ALT and press 2, 1, 3.",
+                        "Note the overlay displays karma, in-game time, and exact coordinates.",
+                        "Use in tandem with coordinate teleporting for precision routing."
+                    ]
+                },
+                {
+                    title: "Infinite Karma Loop",
+                    platform: "All Platforms",
+                    description: "Exploit the Serpent's Hold cook to boost virtue indefinitely.",
+                    steps: [
+                        "Bring a dragon egg to the cook in Serpent's Hold.",
+                        "Gift the egg repeatedly; it never leaves your inventory due to a bug.",
+                        "Use to offset future karma losses from theft or quest shortcuts."
+                    ]
+                },
+                {
+                    title: "Animate-Clone Duplication",
+                    platform: "All Platforms",
+                    description: "Use magic to create extra copies of valuable gear.",
+                    steps: [
+                        "Drop the desired item on the ground.",
+                        "Cast Animate on it, then immediately cast Clone.",
+                        "Defeat the animated duplicate to pick up an extra copy with no karma hit."
+                    ]
+                },
+                {
+                    title: "Cheat Stone Network",
+                    platform: "All Platforms",
+                    description: "Enable cheat stones to set up instant teleports.",
+                    steps: [
+                        "Press CTRL+F1 (or platform equivalent) at a shrine to toggle cheat stones.",
+                        "Drop stones anywhere in Britannia; interacting with them warps you back instantly.",
+                        "Combine with spawned supplies from the cheat menu for rapid dungeon runs."
+                    ]
+                },
+                {
+                    title: "Pirate Gold Refill",
+                    platform: "All Platforms",
+                    description: "Farm treasure in Hawkins's cave without virtue loss.",
+                    steps: [
+                        "Clear the Pirate Cave and collect all gold and loot.",
+                        "Exit the dungeon and rest for eight in-game hours.",
+                        "Return to find the treasure respawned; repeat as necessary."
+                    ]
+                },
+                {
+                    title: "C64 Cheat Menu & POKEs",
+                    platform: "Commodore 64",
+                    description: "Platform-specific menu and memory patches for maximum stats.",
+                    steps: [
+                        "Talk to yourself and say `I`, `want to`, `cheat` to open the C64 menu.",
+                        "Press Commodore+1 for coordinate readouts; RUN/STOP + F7 for hex teleport.",
+                        "Use Action Replay or emulator POKEs (e.g., POKE 22504,255) to max HP and mana."
+                    ]
+                }
             ]
         };
 
@@ -519,6 +640,64 @@ const gameData = {
             label.innerHTML = `<input type="checkbox" name="virtue" value="${virtue}" class="form-checkbox h-5 w-5 rounded text-amber-600 focus:ring-amber-500 border-amber-300"><span>${virtue}</span>`;
             virtueSelection.appendChild(label);
         });
+
+        const seerContextContainer = document.getElementById('seer-context-options');
+        if (seerContextContainer) {
+            gameData.seerContext.forEach(packet => {
+                const div = document.createElement('div');
+                div.className = "p-4 bg-white/60 border border-amber-200 rounded-md shadow-sm hover:border-amber-400 transition";
+                div.innerHTML = `
+                    <label class="flex flex-col gap-2 cursor-pointer">
+                        <div class="flex items-center gap-2">
+                            <input type="checkbox" name="seer-context" value="${packet.id}" class="seer-context-checkbox h-4 w-4 text-amber-600 rounded border-amber-300 focus:ring-amber-500">
+                            <span class="font-semibold text-amber-900">${packet.title}</span>
+                        </div>
+                        <p class="text-sm text-amber-800/80">${packet.summary}</p>
+                        <p class="text-xs text-amber-700/80 hidden lg:block">${packet.details}</p>
+                    </label>`;
+                seerContextContainer.appendChild(div);
+            });
+        }
+
+        const seerShortcutsSelect = document.getElementById('seer-shortcuts');
+        if (seerShortcutsSelect) {
+            gameData.seerShortcuts.forEach(shortcut => {
+                const option = document.createElement('option');
+                option.value = shortcut.prompt;
+                option.textContent = shortcut.label;
+                seerShortcutsSelect.appendChild(option);
+            });
+            seerShortcutsSelect.addEventListener('change', (event) => {
+                const prompt = event.target.value;
+                if (prompt) {
+                    const queryField = document.getElementById('seer-query');
+                    if (queryField) {
+                        queryField.value = prompt;
+                    }
+                }
+            });
+        }
+
+        const cheatList = document.getElementById('cheat-list');
+        if (cheatList) {
+            gameData.cheats.forEach(cheat => {
+                const article = document.createElement('article');
+                article.className = "p-4 bg-white/60 border border-amber-200 rounded-md shadow-sm";
+                const stepsHtml = cheat.steps && cheat.steps.length
+                    ? `<ol class="list-decimal list-inside space-y-1 text-sm text-amber-900/90 mt-2">${cheat.steps.map(step => `<li>${step}</li>`).join('')}</ol>`
+                    : '';
+                article.innerHTML = `
+                    <header class="flex justify-between items-start gap-3">
+                        <div>
+                            <h3 class="text-lg font-semibold text-amber-900">${cheat.title}</h3>
+                            <p class="text-xs uppercase tracking-wide text-amber-700/80">${cheat.platform}</p>
+                        </div>
+                    </header>
+                    <p class="text-sm text-amber-800/90 mt-3">${cheat.description}</p>
+                    ${stepsHtml}`;
+                cheatList.appendChild(article);
+            });
+        }
 
         renderCompanionTable(gameData.companions);
     }
