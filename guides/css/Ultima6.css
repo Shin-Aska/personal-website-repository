@@ -51,10 +51,34 @@ h1, h2, h3, h4 {
     white-space: pre-wrap;
     background-color: #FBF1D3;
     border-left: 4px solid #D97706;
-    padding: 1rem;
     border-radius: 0.25rem;
     margin-top: 1rem;
     font-family: 'Marcellus', serif;
+}
+
+.keyword-helper {
+    position: absolute;
+    max-width: 24rem;
+    background: #FBF1D3;
+    border: 1px solid #D97706;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    box-shadow: 0 12px 24px rgba(56, 45, 36, 0.25);
+    z-index: 30;
+    pointer-events: none;
+    transition: opacity 0.15s ease, transform 0.15s ease;
+    opacity: 0;
+    transform: translate(-50%, -0.5rem);
+}
+
+.keyword-helper.visible {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%, 0);
+}
+
+.keyword-helper h3 {
+    margin-top: 0;
 }
 
 .loader {

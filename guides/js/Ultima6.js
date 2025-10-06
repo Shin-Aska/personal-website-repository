@@ -562,15 +562,51 @@ const gameData = {
             return;
         }
 
+        let hideTimeout;
+
+        const clearHighlights = () => {
+            hintButtons.forEach(btn => btn.classList.remove('bg-amber-200', 'border-amber-500', 'text-amber-950'));
+        };
+
+        const showHelper = (button) => {
+            clearTimeout(hideTimeout);
+            clearHighlights();
+            const helperHtml = decodeURIComponent(button.dataset.helper || '');
+            helperText.innerHTML = helperHtml;
+            const rect = button.getBoundingClientRect();
+            const scrollY = window.scrollY || document.documentElement.scrollTop;
+            const scrollX = window.scrollX || document.documentElement.scrollLeft;
+            helperPanel.style.left = `${rect.left + rect.width / 2 + scrollX}px`;
+            helperPanel.style.top = `${rect.top + scrollY - 12}px`;
+            helperPanel.classList.remove('hidden');
+            helperPanel.classList.add('visible');
+            helperPanel.setAttribute('aria-hidden', 'false');
+            button.classList.add('bg-amber-200', 'border-amber-500', 'text-amber-950');
+        };
+
+        const scheduleHide = () => {
+            clearTimeout(hideTimeout);
+            hideTimeout = setTimeout(() => {
+                clearHighlights();
+                helperPanel.classList.remove('visible');
+                helperPanel.classList.add('hidden');
+                helperPanel.setAttribute('aria-hidden', 'true');
+                helperText.innerHTML = '';
+            }, 150);
+        };
+
         hintButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                hintButtons.forEach(btn => btn.classList.remove('bg-amber-200', 'border-amber-500', 'text-amber-950'));
-                const helperHtml = decodeURIComponent(button.dataset.helper || '');
-                helperText.innerHTML = helperHtml;
-                helperPanel.classList.remove('hidden');
-                button.classList.add('bg-amber-200', 'border-amber-500', 'text-amber-950');
-            });
+            button.addEventListener('mouseenter', () => showHelper(button));
+            button.addEventListener('mouseleave', scheduleHide);
+            button.addEventListener('focus', () => showHelper(button));
+            button.addEventListener('blur', scheduleHide);
         });
+
+        helperPanel.addEventListener('mouseenter', () => {
+            clearTimeout(hideTimeout);
+        });
+
+        helperPanel.addEventListener('mouseleave', scheduleHide);
     }
 
     let sortDirection = {};
