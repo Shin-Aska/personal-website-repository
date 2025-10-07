@@ -1456,6 +1456,8 @@ Answer in 2–3 short paragraphs, in-character and practical, giving clear hints
         const imageUrl = config.imageUrl;
         const imageSize = Array.isArray(config.imageSize) ? config.imageSize : null;
         const markers = Array.isArray(config.markers) ? config.markers : [];
+        const xRange = Array.isArray(config.xRange) && config.xRange.length === 2 ? config.xRange : [0, 100];
+        const yRange = Array.isArray(config.yRange) && config.yRange.length === 2 ? config.yRange : [0, 100];
 
         if (!imageUrl || !imageSize || imageSize.length !== 2) {
             container.innerHTML = '<p class="text-sm text-amber-800/80">Interactive map configuration is incomplete.</p>';
@@ -1463,6 +1465,14 @@ Answer in 2–3 short paragraphs, in-character and practical, giving clear hints
         }
 
         const [width, height] = imageSize;
+        const [minX, maxX] = xRange;
+        const [minY, maxY] = yRange;
+        const spanX = maxX - minX;
+        const spanY = maxY - minY;
+        if (!spanX || !spanY) {
+            container.innerHTML = '<p class="text-sm text-amber-800/80">Interactive map coordinate ranges are invalid.</p>';
+            return;
+        }
         const bounds = [[0, 0], [height, width]];
 
         // Clear any existing Leaflet instance that might be cached when switching tabs.
@@ -1472,16 +1482,16 @@ Answer in 2–3 short paragraphs, in-character and practical, giving clear hints
 
         const map = L.map(container, {
             crs: L.CRS.Simple,
-            minZoom: -2,
+            minZoom: -2.5,
             maxZoom: 4,
-            zoomSnap: 0.25,
+            zoomSnap: 0.10,
             wheelPxPerZoomLevel: 90,
-            attributionControl: false
+            attributionControl: true
         });
 
         const overlay = L.imageOverlay(imageUrl, bounds, {
             alt: 'Ultima VI: The False Prophet world map',
-            interactive: false
+            interactive: true
         });
         overlay.addTo(map);
 
@@ -1495,19 +1505,22 @@ Answer in 2–3 short paragraphs, in-character and practical, giving clear hints
             }
             const name = marker.name || 'Point of interest';
             const description = marker.description || '';
-            const xPercent = Math.min(Math.max(position.x, 0), 100);
-            const yPercent = Math.min(Math.max(position.y, 0), 100);
-            const xCoord = (xPercent / 100) * width;
-            const yCoord = (yPercent / 100) * height;
+            const xPercent = Math.min(Math.max((position.x - minX) / spanX, 0), 1);
+            const yPercent = Math.min(Math.max((position.y - minY) / spanY, 0), 1);
+            const xCoord = xPercent * width;
+            const yCoord = yPercent * height;
             const leafletPosition = [yCoord, xCoord];
             const popupHtml = `
                 <article class="space-y-1">
                     <h4 class="font-semibold text-base">${name}</h4>
                     ${description ? `<p class="text-sm leading-snug">${description}</p>` : ''}
-                    <p class="text-xs text-amber-700/80">Approx. coordinates: ${xPercent.toFixed(1)}°E, ${yPercent.toFixed(1)}°S</p>
+                    <p class="text-xs text-amber-700/80">Approx. coordinates: ${position.x}°E, ${position.y}°S</p>
                 </article>
             `;
-            L.marker(leafletPosition, { title: name }).addTo(map).bindPopup(popupHtml);
+            L.marker(leafletPosition, { title: name }).addTo(map).bindPopup(popupHtml, {
+                autoPan: true,
+                autoPanPadding: L.point(24, 24)
+            });
         });
     }
 
