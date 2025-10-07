@@ -24,7 +24,7 @@ function parsePcItemList(raw) {
 
 function buildPcItemTable(items) {
     if (!Array.isArray(items) || !items.length) {
-        return '';
+        return `<p class="text-sm text-amber-800/80">No items to display.</p>`;
     }
     const rows = [];
     for (let i = 0; i < items.length; i += 2) {
@@ -1129,15 +1129,79 @@ const gameData = {
 
         const cheatList = document.getElementById('cheat-list');
         if (cheatList) {
+            const pcItemState = {
+                page: 1,
+                perPage: 40,
+                query: ''
+            };
+
+            const renderPcItemsSection = (container) => {
+                const startIndex = (pcItemState.page - 1) * pcItemState.perPage;
+                const filtered = gameData.pcItemList.filter(entry => {
+                    if (!pcItemState.query) {
+                        return true;
+                    }
+                    const target = `${entry.id} ${entry.name}`.toLowerCase();
+                    return target.includes(pcItemState.query.toLowerCase());
+                });
+                const totalPages = Math.max(1, Math.ceil(filtered.length / pcItemState.perPage));
+                pcItemState.page = Math.min(pcItemState.page, totalPages);
+                const pagedItems = filtered.slice(startIndex, startIndex + pcItemState.perPage);
+                const tableMarkup = buildPcItemTable(pagedItems);
+                const paginationControls = `
+                    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-2 mt-3">
+                        <p class="text-xs text-amber-700/80">Showing ${pagedItems.length ? startIndex + 1 : 0}-${Math.min(startIndex + pcItemState.perPage, filtered.length)} of ${filtered.length}</p>
+                        <div class="flex items-center gap-2">
+                            <button type="button" class="pc-items-prev px-3 py-1 text-sm border border-amber-300 rounded ${pcItemState.page === 1 ? 'opacity-40 cursor-not-allowed' : 'hover:bg-amber-100'}">Prev</button>
+                            <span class="text-sm text-amber-800/90">Page ${pcItemState.page} / ${totalPages}</span>
+                            <button type="button" class="pc-items-next px-3 py-1 text-sm border border-amber-300 rounded ${pcItemState.page === totalPages ? 'opacity-40 cursor-not-allowed' : 'hover:bg-amber-100'}">Next</button>
+                        </div>
+                    </div>
+                `;
+                container.innerHTML = `${tableMarkup}${paginationControls}`;
+
+                const prevBtn = container.querySelector('.pc-items-prev');
+                const nextBtn = container.querySelector('.pc-items-next');
+                if (prevBtn) {
+                    prevBtn.addEventListener('click', () => {
+                        if (pcItemState.page > 1) {
+                            pcItemState.page -= 1;
+                            renderPcItemsSection(container);
+                        }
+                    });
+                }
+                if (nextBtn) {
+                    nextBtn.addEventListener('click', () => {
+                        if (pcItemState.page < totalPages) {
+                            pcItemState.page += 1;
+                            renderPcItemsSection(container);
+                        }
+                    });
+                }
+            };
+
             gameData.cheats.forEach(cheat => {
                 const article = document.createElement('article');
                 article.className = "p-4 bg-white/60 border border-amber-200 rounded-md shadow-sm";
                 const stepsHtml = cheat.steps && cheat.steps.length
                     ? `<ol class="list-decimal list-inside space-y-1 text-sm text-amber-900/90 mt-2">${cheat.steps.map(step => `<li>${step}</li>`).join('')}</ol>`
                     : '';
-                const tableHtml = cheat.usePcItemList
-                    ? buildPcItemTable(gameData.pcItemList)
-                    : '';
+                const needsPcList = cheat.usePcItemList;
+                const searchControls = needsPcList ? `
+                    <div class="mt-4 flex flex-col sm:flex-row sm:items-center gap-3">
+                        <input type="search" class="pc-items-search flex-1 px-3 py-2 border border-amber-300 rounded focus:ring-amber-500 focus:border-amber-500" placeholder="Search by ID or item name...">
+                        <label class="flex items-center gap-2 text-sm text-amber-800/80">
+                            <span>Items per page</span>
+                            <select class="pc-items-size border border-amber-300 rounded px-2 py-1 focus:ring-amber-500 focus:border-amber-500">
+                                <option value="20">20</option>
+                                <option value="40" selected>40</option>
+                                <option value="80">80</option>
+                                <option value="160">160</option>
+                            </select>
+                        </label>
+                    </div>
+                ` : '';
+
                 article.innerHTML = `
                     <header class="flex justify-between items-start gap-3">
                         <div>
@@ -1147,7 +1211,33 @@ const gameData = {
                     </header>
                     <p class="text-sm text-amber-800/90 mt-3">${cheat.description}</p>
                     ${stepsHtml}
-                    ${tableHtml}`;
+                    ${searchControls}
+                    <div class="pc-items-table"></div>`;
+
+                if (needsPcList) {
+                    const searchInput = article.querySelector('.pc-items-search');
+                    const sizeSelect = article.querySelector('.pc-items-size');
+                    const tableContainer = article.querySelector('.pc-items-table');
+
+                    if (searchInput) {
+                        searchInput.addEventListener('input', (event) => {
+                            pcItemState.query = event.target.value.trim();
+                            pcItemState.page = 1;
+                            renderPcItemsSection(tableContainer);
+                        });
+                    }
+
+                    if (sizeSelect) {
+                        sizeSelect.addEventListener('change', (event) => {
+                            pcItemState.perPage = Number(event.target.value) || 40;
+                            pcItemState.page = 1;
+                            renderPcItemsSection(tableContainer);
+                        });
+                    }
+
+                    renderPcItemsSection(tableContainer);
+                }
+
                 cheatList.appendChild(article);
             });
         }
