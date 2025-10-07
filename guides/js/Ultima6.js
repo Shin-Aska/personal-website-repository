@@ -1,3 +1,60 @@
+function parsePcItemList(raw) {
+    const entries = [];
+    const seen = new Set();
+    raw.split("\n").forEach(line => {
+        line.split('|').forEach(segment => {
+            const clean = segment.trim();
+            if (!clean) {
+                return;
+            }
+            const match = clean.match(/^(\d+)\s*-\s*(.+)$/);
+            if (!match) {
+                return;
+            }
+            const [_, id, name] = match;
+            if (seen.has(id)) {
+                return;
+            }
+            seen.add(id);
+            entries.push({ id, name: name.trim() });
+        });
+    });
+    return entries.sort((a, b) => Number(a.id) - Number(b.id));
+}
+
+function buildPcItemTable(items) {
+    if (!Array.isArray(items) || !items.length) {
+        return '';
+    }
+    const rows = [];
+    for (let i = 0; i < items.length; i += 2) {
+        const left = items[i];
+        const right = items[i + 1];
+        rows.push(`
+            <tr>
+                <td class="py-1 pr-3 font-mono text-sm text-amber-900/90">${left.id}</td>
+                <td class="py-1 pr-4 text-sm text-amber-900/90">${left.name}</td>
+                ${right ? `<td class="py-1 pr-3 font-mono text-sm text-amber-900/90">${right.id}</td><td class="py-1 text-sm text-amber-900/90">${right.name}</td>` : '<td></td><td></td>'}
+            </tr>
+        `);
+    }
+    return `
+        <div class="mt-4 overflow-x-auto border border-amber-200 rounded-lg">
+            <table class="w-full text-left border-collapse min-w-max">
+                <thead class="bg-amber-100/70 text-amber-900 text-sm uppercase tracking-wide">
+                    <tr>
+                        <th class="py-2 pr-3">ID</th>
+                        <th class="py-2 pr-4">Item</th>
+                        <th class="py-2 pr-3">ID</th>
+                        <th class="py-2">Item</th>
+                    </tr>
+                </thead>
+                <tbody>${rows.join('')}</tbody>
+            </table>
+        </div>
+    `;
+}
+
 const gameData = {
             shrines: [
                 { virtue: "Valor", bonus: "+3 Strength" },
@@ -443,6 +500,395 @@ const gameData = {
                 { label: "Farm karma fast", prompt: "Describe the Serpent's Hold dragon egg exploit to gain infinite karma." },
                 { label: "Duplicate rare gear", prompt: "Walk me through the animate-clone duplication exploit in Ultima VI." }
             ],
+            pcItemListRaw: `
+1  - Leather Helm            | 62  - Vortex Cube
+2  - Chain Coif              | 63  - Lockpick
+3  - Iron Helm               | 64  - Key*2
+4  - Spiked Helm             | 65  - Black Pearl*3
+5  - Winged Helm             | 66  - Blood Moss*3
+6  - Brass Helm              | 67  - Garlic*3
+7  - Gargoyle Helm           | 68  - Ginseng*3
+8  - Magic Helm              | 69  - Mandrake*3
+9  - Wooden Shield           | 70  - Nightshade*3
+10 - Curved Heater           | 71  - Spidersilk*3
+11 - Winged Helm             | 72  - Ash*3
+12 - Kite Shield             | 73  - Moonstone (new moon)
+13 - Spiked Shield           | 74  - Ankh Amulet
+14 - Black Shield            | 75  - Snake Amulet
+15 - Door Shield             | 76  - Amulet of Submission
+16 - Magic Shield            | 77  - Gem
+17 - Cloth Armor             | 78  - Staff
+18 - Leather Armor           | 79  - Lightning Wand
+19 - Ring Mail               | 80  - Fire Wand
+20 - Scale Mail              | 81  - Storm Cloak
+21 - Chain Mail              | 82  - Ring
+22 - Plate Mail              | 83  - Flask of Oil
+23 - Magic Armor             | 84  - Red Gate
+24 - Spiked Collar           | 85  - Moongate
+25 - Guild Belt              | 86  - Gavel
+26 - Gargoyle Belt           | 87  - Orb of the Moons
+27 - Leather Boots           | 88  - Gold
+28 - Swamp Boots             | 89  - Gold Nugget
+29 - Earth (Dirt)            | 90  - Torch
+30 - Floor (Wood)            | 91  - Zu Ylem
+31 - Floor (Brick)           | 92  - Silver Snake Venom
+32 - Floor (Tile)            | 93  - Sextant
+33 - Sling                   | 94  - Spinning Wheel
+34 - Club                    | 95  - Bunch of Grapes
+35 - Main Gauche             | 96  - Butter
+36 - Spear                   | 97  - Gargish Vocabulary
+37 - Throwing Axe            | 98  - Open Chest
+38 - Dagger                  | 99  - Backpack
+39 - Mace                    | 100 - Scythe
+40 - Morning Star            | 101 - Pitchfork
+41 - Bow                     | 102 - Rake
+42 - Crossbow                | 103 - Pick
+43 - Sword                   | 104 - Shovel
+44 - 2-handed Hammer         | 105 - Hoe
+45 - 2-handed Axe            | 106 - Wooden Ladder
+46 - 2-handed Sword          | 107 - Yoke
+47 - Halberd                 | 108 - Oven Spatula
+48 - Glass Sword             | 109 - Rolling Pin
+49 - Boomerang               | 110 - Spatula
+50 - Triple Crossbow         | 111 - Ladle
+51 - Force Field             | 112 - Cooking Sheet
+52 - Wizard's Eye            | 113 - Cleaver
+53 - Web                     | 114 - Knife
+54 - Magic Bow               | 115 - Wine
+55 - Arrow                   | 116 - Mead
+56 - Bolt                    | 117 - Ale
+57 - Spellbook               | 118 - Wineglass
+58 - Spell*1                 | 119 - Plate
+59 - Codex                   | 120 - Mug
+60 - Book of Prophecies      | 121 - Silverware
+61 - Book of Circles         | 122 - Candle
+123 - Mirror                 | 184 - Jar of Honey
+124 - Tunic                  | 185 - Cloth
+125 - Hanger                 | 186 - Open Barrel
+126 - Dress                  | 187 - Jug
+127 - Skillet                | 188 - Bag
+128 - Loaf of Bread          | 189 - Cask
+129 - Portion of Meat        | 190 - Bale of Wool
+130 - Rolls                  | 191 - Basket
+131 - Cake                   | 192 - Open Crate
+132 - Cheese                 | 193 - Small Jug
+133 - Ham                    | 194 - Milk Bottle
+134 - Horse's Carcass        | 195 - Wheat
+135 - Horse Chops (yum!<G>)  | 196 - Vat
+136 - Skewer                 | 197 - Wine Cask
+137 - Pants                  | 198 - Cutting Table
+138 - Plant                  | 199 - Loom
+139 - Flowers                | 200 - Hood (for forge)
+140 - Wall Mount             | 201 - Fire (from forge)
+141 - Decorative Sword       | 202 - Horseshoes
+142 - Decorative Shield      | 203 - Pliers
+143 - Picture                | 204 - Hammer
+144 - Tapestry               | 205 - Water Trough
+145 - Candelabra             | 206 - Brazier
+146 - Person Sleeping        | 207 - Rod
+147 - Cauldron               | 208 - Hook
+148 - Cauldron (filled)      | 209 - Meat (Rib type)
+149 - Ship Deep              | 210 - Ribs
+150 - Inkwell                | 211 - Dead Animal
+151 - Book                   | 212 - Fan
+152 - Note                   | 213 - Mouse Hole
+153 - Panpipes               | 214 - Wine Press
+154 - Telescope              | 215 - Stable
+155 - Crystal Ball           | 216 - Bookshelf
+156 - Harpsichord            | 217 - Anvil
+157 - Harp                   | 218 - Bellows
+158 - Lute                   | 219 - Oven
+159 - Clock                  | 220 - Flag
+160 - Endtable               | 221 - Cannon
+161 - Water Vase             | 222 - Cannon Balls
+162 - Stove                  | 223 - Powder Keg
+163 - Bed                    | 224 - Foot Rail
+164 - Fireplace              | 225 - Spool of Thread
+165 - Stalagmite             | 226 - Spool of Silk
+166 - Sack of Grain          | 227 - Pennant
+167 - Sack of Flour          | 228 - Table (square corner)
+168 - Remains                | 229 - Shadow
+169 - Rubber Ducky<G>        | 230 - Table (round corner)
+170 - Urn of Ashes           | 231 - Shadow
+171 - Fumarole               | 232 - Spittoon
+172 - Spikes                 | 233 - Well
+173 - Trap                   | 234 - Fountain
+174 - Switch                 | 235 - Sundial
+175 - Electric Field         | 236 - Bell
+176 - Chest of Drawers       | 237 - Table (middle)
+177 - Desk                   | 238 - Shadow
+178 - Bucket                 | 239 - Table (round corner)
+179 - Bucket of Water        | 240 - Shadow
+180 - Bucket of Milk         | 241 - Silk Cloth
+181 - Churn                  | 242 - Rune of Honesty
+182 - Beehive                | 243 - Rune of Compassion
+183 - Honey Jar              | 244 - Rune of Valor
+184 - Jar of Honey           | 245 - Rune of Justice
+185 - Cloth                  | 246 - Rune of Sacrifice
+186 - Open Barrel            | 247 - Rune of Honor
+187 - Jug                    | 248 - Rune of Spirituality
+188 - Bag                    | 249 - Rune of Humility
+189 - Cask                   | 250 - Table (square corner)
+190 - Bale of Wool           | 251 - Shadow
+191 - Basket                 | 252 - Chair
+192 - Open Crate             | 253 - Campfire
+193 - Small Jug              | 254 - Cross
+194 - Milk Bottle            | 255 - Tombstone
+195 - Wheat                  | 256 - Protection Ring
+196 - Vat                    | 257 - Regeneration Ring
+197 - Wine Cask              | 258 - Invisibility Ring
+198 - Cutting Table          | 259 - Table Leg
+199 - Loom                   | 260 - Shadow
+200 - Hood (for forge)       | 261 - Table Leg
+201 - Fire (from forge)      | 262 - Shadow
+202 - Horseshoes             | 263 - Stocks
+203 - Pliers                 | 264 - Fishing Pole
+204 - Hammer                 | 265 - Fish
+205 - Water Trough           | 266 - Grave
+206 - Brazier                | 267 - Guillotine
+207 - Rod                    | 268 - Lever
+208 - Hook                   | 269 - Drawbridge
+209 - Meat (Rib type)        | 270 - Balloon Plans
+210 - Ribs                   | 271 - Doorsill
+211 - Dead Animal            | 272 - Steps
+212 - Fan                    | 273 - Tile
+213 - Mouse Hole             | 274 - Yew Log
+214 - Wine Press             | 275 - Blue Potion
+215 - Stable                 | 276 - Steps
+216 - Bookshelf              | 277 - Yew Board
+217 - Anvil                  | 278 - Passthrough
+218 - Bellows                | 279 - Table
+219 - Oven                   | 280 - Passthrough
+220 - Flag                   | 281 - Fence
+221 - Cannon                 | 282 - Bars
+222 - Cannon Balls           | 283 - Anchor
+223 - Powder Keg             | 284 - Rope
+224 - Foot Rail              | 285 - Pole
+225 - Spool of Thread        | 286 - Walkway
+226 - Spool of Silk          | 287 - Water Wheel
+227 - Pennant                | 288 - Crank
+228 - Table (square corner)  | 289 - Log Saw
+229 - Shadow                 | 290 - Millstone
+230 - Table (round corner)   | 291 - Shaft
+231 - Shadow                 | 292 - Gearwork
+232 - Spittoon               | 293 - Chain
+233 - Well                   | 294 - Lightsource
+234 - Fountain               | 295 - Heatsource
+235 - Sundial                | 296 - Xylophone
+236 - Bell                   | 297 - Oaken Door
+237 - Table (middle)         | 298 - Windowed Door
+238 - Shadow                 | 299 - Cedar Door
+239 - Table (round corner)   | 300 - Steel Door
+240 - Shadow                 | 301 - Doorway
+241 - Silk Cloth             | 302 - Archway
+242 - Rune of Honesty        | 303 - Carpet
+243 - Rune of Compassion     | 304 - Cook Fire
+244 - Rune of Valor          | 305 - Ladder
+245 - Rune of Justice        | 306 - Trellis
+246 - Rune of Sacrifice      | 307 - Volcano
+247 - Rune of Honor          | 308 - Hole
+248 - Rune of Spirituality   | 309 - Bones (archway)
+249 - Rune of Humility       | 310 - Portcullis
+250 - Table (square corner)  | 311 - Stone Table
+251 - Shadow                 | 312 - Stone Lion
+252 - Chair                  | 313 - Silver Horn
+253 - Campfire               | 314 - Floor (stone)
+254 - Cross                  | 315 - Stone
+255 - Tombstone              | 316 - Lamppost
+256 - Protection Ring        | 317 - Fire Field
+257 - Regeneration Ring      | 318 - Poison Field
+258 - Invisibility Ring      | 319 - Protection Field
+259 - Table Leg              | 320 - Sleep Field
+260 - Shadow                 | 321 - Statue
+261 - Table Leg              | 322 - Pool
+262 - Shadow                 | 323 - Monolith
+263 - Stocks                 | 324 - Pillar
+264 - Fishing Pole           | 325 - Bookstand
+265 - Fish                   | 326 - Mine Shaft
+266 - Grave                  | 327 - Throne
+267 - Guillotine             | 328 - Altar
+268 - Lever                  | 329 - Altar of Spirituality
+269 - Drawbridge             | 330 - Mat
+270 - Balloon Plans          | 331 - Government Sign
+271 - Doorsill               | 332 - Sign
+272 - Steps                  | 333 - Gargoyle Sign
+273 - Tile                   | 334 - Secret Door
+274 - Yew Log                | 335 - Egg
+275 - Blue Potion            | 336 - Charge
+276 - Steps                  | 337 - Effect
+277 - Yew Board              | 338 - Blood
+278 - Passthrough            | 339 - Dead Body
+279 - Table                  | 340 - Dead Cyclops
+280 - Passthrough            | 341 - Dead Gargoyle
+281 - Fence                  | 342 - Giant Rat
+282 - Bars                   | 343 - Insects
+283 - Anchor                 | 344 - Giant Bat
+284 - Rope                   | 345 - Giant Squid
+285 - Pole                   | 346 - Sea Serpent
+286 - Walkway                | 347 - Reaper
+287 - Water Wheel            | 348 - Sheep
+288 - Crank                  | 349 - Dog
+289 - Log Saw                | 350 - Deer
+290 - Millstone              | 351 - Wolf
+291 - Shaft                  | 352 - Ghost
+292 - Gearwork               | 353 - Gremlin
+293 - Chain                  | 354 - Mouse
+294 - Lightsource            | 355 - Gazer
+295 - Heatsource             | 356 - Bird
+296 - Xylophone              | 357 - Corpser
+297 - Oaken Door             | 358 - Snake
+298 - Windowed Door          | 359 - Rabbit
+299 - Cedar Door             | 360 - Rot Worms
+300 - Steel Door             | 361 - Giant Spider
+301 - Doorway                | 362 - Winged Gargoyle
+302 - Archway                | 363 - Gargoyle
+303 - Carpet                 | 364 - Acid Slug
+304 - Cook Fire              | 365 - Tangle Vine (pod)
+305 - Ladder                 | 366 - Tangle Vine (vine)
+306 - Trellis                | 367 - Daemon
+307 - Volcano                | 368 - Skeleton
+308 - Hole                   | 369 - Drake
+309 - Bones (archway)        | 370 - Headless
+310 - Portcullis             | 371 - Troll
+311 - Stone Table            | 372 - Mongbat
+312 - Stone Lion             | 373 - Wisp
+313 - Silver Horn            | 374 - Hydra
+314 - Floor (stone)          | 375 - Slime
+315 - Stone                  | 376 - Fighter
+316 - Lamppost               | 377 - Swashbuckler
+317 - Fire Field             | 378 - Mage
+318 - Poison Field           | 379 - Villager
+319 - Protection Field       | 380 - Merchant
+320 - Sleep Field            | 381 - Child
+321 - Statue                 | 382 - Guard
+322 - Pool                   | 383 - Jester
+323 - Monolith               | 384 - Peasant
+324 - Pillar                 | 385 - Farmer
+325 - Bookstand              | 386 - Musician (long cape)
+326 - Mine Shaft             | 387 - Woman
+327 - Throne                 | 388 - Cat
+328 - Altar                  | 389 - Silver Tablet
+329 - Altar of Spirituality  | 390 - Silver Fragment
+330 - Mat                    | 391 - Farmer
+331 - Government Sign        | 392 - Musician (short cape)
+332 - Sign                   | 393 - Shrine
+333 - Gargoyle Sign          | 394 - Britannia Lens (blue)
+334 - Secret Door            | 395 - Broken Lens (violet)
+335 - Egg                    | 396 - Gargoyle Lens (violet)
+336 - Charge                 | 397 - Statue of Mondain
+337 - Effect                 | 398 - Statue of Minax
+338 - Blood                  | 399 - Statue of Exodus
+339 - Dead Body              | 400 - Map Part one
+340 - Dead Cyclops           | 401 - Map Part two
+341 - Dead Gargoyle          | 402 - Map Part three
+342 - Giant Rat              | 403 - Map Part four
+343 - Insects                | 404 - Map Part five
+344 - Giant Bat              | 405 - Map Part six
+345 - Giant Squid            | 406 - Map Part seven
+346 - Sea Serpent            | 407 - Map Part eight
+347 - Reaper                 | 408 - Map Part nine
+348 - Sheep                  | 409 - Lord British
+349 - Dog                    | 410 - Avatar
+350 - Deer                   | 411 - Dragon
+351 - Wolf                   | 412 - Ship
+352 - Ghost                  | 413 - Silver Serpent
+353 - Gremlin                | 414 - Skiff
+354 - Mouse                  | 415 - Raft
+355 - Gazer                  | 416 - Nothing (REALLY!)
+356 - Bird                   | 417 - Dragon Egg
+357 - Corpser                | 418 - Hatched Dragon Egg
+358 - Snake                  | 419 - Pull Chain
+359 - Rabbit                 | 420 - Balloon (deflated)
+360 - Rot Worms              | 421 - Mammoth Silk Bag
+361 - Giant Spider           | 422 - Balloon Basket
+362 - Winged Gargoyle        | 423 - Balloon (inflated)
+363 - Gargoyle               | 424 - Cyclops
+364 - Acid Slug              | 425 - Hydra
+365 - Tangle Vine (pod)      | 426 - Giant Scorpion
+366 - Tangle Vine (vine)     | 427 - Giant Ant 
+367 - Daemon                 | 428 - Cow 
+368 - Skeleton               | 429 - Alligator
+369 - Drake                  | 430 - Horse
+370 - Headless               | 1097 - Moonstone (cres.wax.)
+371 - Troll                  | 1105 - Storm Ring*4
+372 - Mongbat                | 1299 - Red Potion
+373 - Wisp                   | 2121 - Moonstone (1rst 1/4)
+374 - Hydra                  | 2128 - Fire Ring*4
+375 - Slime                  | 2135 - Nugget of the Moons*4
+376 - Fighter                | 2323 - Yellow Potion
+377 - Swashbuckler           | 3145 - Moonstone (gibb.wax.)
+378 - Mage                   | 3151 - Lightning Ring*4
+379 - Villager               | 3347 - Green Potion
+380 - Merchant               | 4169 - Moonstone (full moon)
+381 - Child                  | 4371 - Orange Potion
+382 - Guard                  | 5193 - Moonstone (gibb.wan.)
+383 - Jester                 | 5395 - Purple Potion
+384 - Peasant                | 6217 - Moonstone (last 1/4)
+385 - Farmer                 | 6419 - Black Potion
+386 - Musician (long cape)   | 7241 - Moonstone (cres.wan.)
+387 - Woman                  | 7443 - White Potion
+388 - Cat                    |  
+389 - Silver Tablet          |  
+390 - Silver Fragment        |  
+391 - Farmer                 |  
+392 - Musician (short cape)  |  
+393 - Shrine                 |  
+394 - Britannia Lens (blue)  |  
+395 - Broken Lens (violet)   |  
+396 - Gargoyle Lens (violet) |  
+397 - Statue of Mondain      |  
+398 - Statue of Minax        |  
+399 - Statue of Exodus       |  
+400 - Map Part one           |  
+401 - Map Part two           |  
+402 - Map Part three         |  
+403 - Map Part four          |  
+404 - Map Part five          |  
+405 - Map Part six           |  
+406 - Map Part seven         |  
+407 - Map Part eight         |  
+408 - Map Part nine          |  
+409 - Lord British           |  
+410 - Avatar                 |  
+411 - Dragon                 |  
+412 - Ship                   |  
+413 - Silver Serpent         |  
+414 - Skiff                  |  
+415 - Raft                   |  
+416 - Nothing (REALLY!)      |  
+417 - Dragon Egg             |  
+418 - Hatched Dragon Egg     |  
+419 - Pull Chain             |  
+420 - Balloon (deflated)     |  
+421 - Mammoth Silk Bag       |  
+422 - Balloon Basket         |  
+423 - Balloon (inflated)     |  
+424 - Cyclops                |  
+425 - Hydra                  |  
+426 - Giant Scorpion         |  
+427 - Giant Ant              |  
+428 - Cow                    |  
+429 - Alligator              |  
+430 - Horse                  |  
+431 - Moonstone (cres.wax.)  |  
+432 - Storm Ring*4           |  
+433 - Red Potion             |  
+434 - Moonstone (1rst 1/4)   |  
+435 - Fire Ring*4            |  
+436 - Nugget of the Moons*4  |  
+437 - Yellow Potion          |  
+438 - Moonstone (gibb.wax.)  |  
+439 - Lightning Ring*4       |  
+440 - Green Potion           |  
+441 - Moonstone (full moon)  |  
+442 - Orange Potion          |  
+443 - Moonstone (gibb.wan.)  |  
+444 - Purple Potion          |  
+445 - Moonstone (last 1/4)   |  
+446 - Black Potion           |  
+447 - Moonstone (cres.wan.)  |  
+448 - White Potion           |  
+`,
             cheats: [
                 {
                     title: "Secret Cheaters Menu",
@@ -452,7 +898,8 @@ const gameData = {
                         "Talk to Iolo and type `spam` (press Enter) three times, then `humbug`.",
                         "Choose **Get Items** to spawn equipment by ID, quality, and quantity.",
                         "Use **Edit Party** and **Edit Player** to adjust stats, karma, or companions."
-                    ]
+                    ],
+                    usePcItemList: true
                 },
                 {
                     title: "Coordinate Teleport",
@@ -526,6 +973,8 @@ const gameData = {
                 }
             ]
         };
+
+        gameData.pcItemList = parsePcItemList(gameData.pcItemListRaw || "");
 
         function showTab(tabId) {
             document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
@@ -686,6 +1135,9 @@ const gameData = {
                 const stepsHtml = cheat.steps && cheat.steps.length
                     ? `<ol class="list-decimal list-inside space-y-1 text-sm text-amber-900/90 mt-2">${cheat.steps.map(step => `<li>${step}</li>`).join('')}</ol>`
                     : '';
+                const tableHtml = cheat.usePcItemList
+                    ? buildPcItemTable(gameData.pcItemList)
+                    : '';
                 article.innerHTML = `
                     <header class="flex justify-between items-start gap-3">
                         <div>
@@ -694,7 +1146,8 @@ const gameData = {
                         </div>
                     </header>
                     <p class="text-sm text-amber-800/90 mt-3">${cheat.description}</p>
-                    ${stepsHtml}`;
+                    ${stepsHtml}
+                    ${tableHtml}`;
                 cheatList.appendChild(article);
             });
         }
