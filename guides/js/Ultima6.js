@@ -1484,6 +1484,7 @@ Answer in 2–3 short paragraphs, in-character and practical, giving clear hints
         const markers = Array.isArray(config.markers) ? config.markers : [];
         const xRange = Array.isArray(config.xRange) && config.xRange.length === 2 ? config.xRange : [0, 100];
         const yRange = Array.isArray(config.yRange) && config.yRange.length === 2 ? config.yRange : [0, 100];
+        const editorEnabled = Boolean(config.editorEnabled);
 
         if (!imageUrl || !imageSize || imageSize.length !== 2) {
             container.innerHTML = '<p class="text-sm text-amber-800/80">Interactive map configuration is incomplete.</p>';
@@ -1501,8 +1502,40 @@ Answer in 2–3 short paragraphs, in-character and practical, giving clear hints
         }
         const bounds = [[0, 0], [height, width]];
 
+        const buildPopupHtml = (markerData) => {
+            const safeDescription = markerData.description ? `<p class="text-sm leading-snug">${markerData.description}</p>` : '';
+            const position = markerData.position || {};
+            return `
+                <article class="space-y-1">
+                    <h4 class="font-semibold text-base">${markerData.name || 'Point of interest'}</h4>
+                    ${safeDescription}
+                    <p class="text-xs text-amber-700/80">Approx. coordinates: ${typeof position.x === 'number' ? position.x.toFixed(2) : '?'}°E, ${typeof position.y === 'number' ? position.y.toFixed(2) : '?'}°S</p>
+                </article>
+            `;
+        };
+
+        const toMarkerPosition = (latlng) => {
+            const pixelX = latlng.lng;
+            const pixelY = latlng.lat;
+            const xCoord = minX + (pixelX / width) * spanX;
+            const yCoord = minY + (pixelY / height) * spanY;
+            return {
+                x: Number(xCoord.toFixed(2)),
+                y: Number(yCoord.toFixed(2)),
+            };
+        };
+
+        const toLatLng = (position) => {
+            const xPercent = Math.min(Math.max((position.x - minX) / spanX, 0), 1);
+            const yPercent = Math.min(Math.max((position.y - minY) / spanY, 0), 1);
+            const xCoord = xPercent * width;
+            const yCoord = yPercent * height;
+            return { lat: yCoord, lng: xCoord };
+        };
+
         // Clear any existing Leaflet instance that might be cached when switching tabs.
         if (container._leaflet_id) {
+            britanniaMapInstance = null;
             container._leaflet_id = null;
         }
 
@@ -1541,22 +1574,34 @@ Answer in 2–3 short paragraphs, in-character and practical, giving clear hints
             }
             const name = marker.name || 'Point of interest';
             const description = marker.description || '';
-            const xPercent = Math.min(Math.max((position.x - minX) / spanX, 0), 1);
-            const yPercent = Math.min(Math.max((position.y - minY) / spanY, 0), 1);
-            const xCoord = xPercent * width;
-            const yCoord = yPercent * height;
-            const leafletPosition = [yCoord, xCoord];
-            const popupHtml = `
-                <article class="space-y-1">
-                    <h4 class="font-semibold text-base">${name}</h4>
-                    ${description ? `<p class="text-sm leading-snug">${description}</p>` : ''}
-                    <p class="text-xs text-amber-700/80">Approx. coordinates: ${position.x}°E, ${position.y}°S</p>
-                </article>
-            `;
-            L.marker(leafletPosition, { title: name }).addTo(map).bindPopup(popupHtml, {
+            const latLng = toLatLng(position);
+            const leafletPosition = [latLng.lat, latLng.lng];
+            const popupHtml = buildPopupHtml(marker);
+            const leafletMarker = L.marker(leafletPosition, {
+                title: name,
+                draggable: editorEnabled
+            }).addTo(map);
+
+            leafletMarker.bindPopup(popupHtml, {
                 autoPan: true,
                 autoPanPadding: L.point(24, 24)
             });
+
+            if (description) {
+                leafletMarker.options.markerDescription = description;
+            }
+
+            if (editorEnabled) {
+                leafletMarker.on('dragend', () => {
+                    const latlng = leafletMarker.getLatLng();
+                    const updatedPosition = toMarkerPosition(latlng);
+                    marker.position = updatedPosition;
+                    const updatedHtml = buildPopupHtml(marker);
+                    leafletMarker.setPopupContent(updatedHtml);
+                    leafletMarker.openPopup();
+                    console.info(`[Britannia Map] ${marker.name || 'Point'} updated position -> { x: ${updatedPosition.x}, y: ${updatedPosition.y} }`);
+                });
+            }
         });
     }
 

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,11 +21,13 @@
     <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
     <link rel="stylesheet" href="css/Ultima6.css">
 </head>
+
 <body class="antialiased">
     <div class="w-full bg-gray-100 text-gray-700">
-      <div class="container mx-auto px-4 py-2">
-        <a href="index.html" class="inline-flex items-center gap-2 hover:underline"><span aria-hidden="true">←</span> Back to Guides</a>
-      </div>
+        <div class="container mx-auto px-4 py-2">
+            <a href="index.html" class="inline-flex items-center gap-2 hover:underline"><span
+                    aria-hidden="true">←</span> Back to Guides</a>
+        </div>
     </div>
 
     <div class="container mx-auto p-4 sm:p-6 md:p-8">
@@ -34,40 +37,51 @@
         </header>
 
         <nav class="flex flex-wrap justify-center border-b-2 border-amber-800/20 mb-8">
-            <button class="tab-button active text-sm sm:text-lg p-4" onclick="showTab('avatar')">The Avatar's Path</button>
+            <button class="tab-button active text-sm sm:text-lg p-4" onclick="showTab('avatar')">The Avatar's
+                Path</button>
             <button class="tab-button text-sm sm:text-lg p-4" onclick="showTab('quest')">The Grand Quest</button>
             <button class="tab-button text-sm sm:text-lg p-4" onclick="showTab('almanac')">Britannian Almanac</button>
             <button class="tab-button text-sm sm:text-lg p-4" onclick="showTab('atlas')">World Atlas</button>
             <button class="tab-button text-sm sm:text-lg p-4" onclick="showTab('passage')">Words of Passage</button>
             <button class="tab-button text-sm sm:text-lg p-4" onclick="showTab('cheats')">Cheat Codex</button>
-            <button class="tab-button text-sm sm:text-lg p-4" onclick="showTab('counsel')">Consult with the Seer</button>
+            <button class="tab-button text-sm sm:text-lg p-4" onclick="showTab('counsel')">Consult with the
+                Seer</button>
         </nav>
 
         <main>
             <section id="avatar" class="tab-content active">
                 <div class="bg-amber-50/50 p-6 rounded-lg shadow-md">
                     <h2 class="text-3xl font-bold mb-4 text-amber-900">Character Creation & Development</h2>
-                    <p class="mb-6 text-amber-900/80">Your journey begins not with a sword, but with a choice. The gypsy's questions and your meditations at the shrines forge the hero you will become. This section provides the tools to understand and master your Avatar's growth.</p>
-                    
+                    <p class="mb-6 text-amber-900/80">Your journey begins not with a sword, but with a choice. The
+                        gypsy's questions and your meditations at the shrines forge the hero you will become. This
+                        section provides the tools to understand and master your Avatar's growth.</p>
+
                     <div class="grid md:grid-cols-2 gap-8">
                         <div>
                             <h3 class="text-2xl font-semibold mb-3 text-amber-900">The Gypsy's Prophecy</h3>
-                            <p class="mb-4">The seven questions posed by the gypsy determine your starting attributes. The chart below visualizes the total potential bonus for each attribute based on the virtues you favor.</p>
+                            <p class="mb-4">The seven questions posed by the gypsy determine your starting attributes.
+                                The chart below visualizes the total potential bonus for each attribute based on the
+                                virtues you favor.</p>
                             <div class="chart-container">
                                 <canvas id="virtueChart"></canvas>
                             </div>
                         </div>
                         <div>
                             <h3 class="text-2xl font-semibold mb-3 text-amber-900">Path to Enlightenment</h3>
-                            <p class="mb-4">Experience points alone do not grant power. You must meditate at a cleansed Shrine of Virtue to level up. Each shrine grants a unique, permanent bonus to your attributes.</p>
+                            <p class="mb-4">Experience points alone do not grant power. You must meditate at a cleansed
+                                Shrine of Virtue to level up. Each shrine grants a unique, permanent bonus to your
+                                attributes.</p>
                             <ul id="shrine-list" class="space-y-2"></ul>
                         </div>
                     </div>
                     <div class="mt-8 pt-8 border-t border-amber-800/20">
                         <h3 class="text-2xl font-semibold mb-3 text-amber-900">The Avatar's Chronicle</h3>
-                        <p class="mb-4">Your virtues define not only your abilities but your story. Select up to three virtues that best represent your Avatar, and let the bards of Britannia compose your chronicle.</p>
+                        <p class="mb-4">Your virtues define not only your abilities but your story. Select up to three
+                            virtues that best represent your Avatar, and let the bards of Britannia compose your
+                            chronicle.</p>
                         <div id="virtue-selection" class="flex flex-wrap gap-4 mb-4"></div>
-                        <button id="generate-chronicle" class="bg-amber-800 hover:bg-amber-900 text-white font-bold py-2 px-4 rounded transition-colors duration-300">
+                        <button id="generate-chronicle"
+                            class="bg-amber-800 hover:bg-amber-900 text-white font-bold py-2 px-4 rounded transition-colors duration-300">
                             ✨ Generate My Avatar's Chronicle
                         </button>
                         <div id="chronicle-output" class="mt-4"></div>
@@ -76,13 +90,19 @@
             </section>
 
             <section id="quest" class="tab-content">
-                 <div class="bg-amber-50/50 p-6 rounded-lg shadow-md">
+                <div class="bg-amber-50/50 p-6 rounded-lg shadow-md">
                     <h2 class="text-3xl font-bold mb-4 text-amber-900">The Grand Quest Walkthrough</h2>
-                    <p class="mb-4 text-amber-900/80">The path to peace is fraught with peril, prophecy, and pirates. This walkthrough is divided into the major acts of the story. Click on any title to expand its section and reveal layered guidance, including dialogue keywords, puzzle solutions, and virtue-friendly alternatives.</p>
-                    <p class="mb-6 text-sm text-amber-800/80">Tip: Look for the <span class="inline-block px-2 py-1">Dialogue Keywords</span> badges inside each act. Hover or focus on a badge to summon a floating cheat sheet right beside it.</p>
+                    <p class="mb-4 text-amber-900/80">The path to peace is fraught with peril, prophecy, and pirates.
+                        This walkthrough is divided into the major acts of the story. Click on any title to expand its
+                        section and reveal layered guidance, including dialogue keywords, puzzle solutions, and
+                        virtue-friendly alternatives.</p>
+                    <p class="mb-6 text-sm text-amber-800/80">Tip: Look for the <span
+                            class="inline-block px-2 py-1">Dialogue Keywords</span> badges inside each act. Hover or
+                        focus on a badge to summon a floating cheat sheet right beside it.</p>
                     <div id="quest-accordion" class="space-y-2"></div>
                     <div id="keyword-helper" class="keyword-helper hidden" role="tooltip" aria-hidden="true">
-                        <h3 class="text-xl font-semibold text-amber-900 mb-2 flex items-center gap-2">Quick Guide <span aria-hidden="true">🗣️</span></h3>
+                        <h3 class="text-xl font-semibold text-amber-900 mb-2 flex items-center gap-2">Quick Guide <span
+                                aria-hidden="true">🗣️</span></h3>
                         <p id="keyword-helper-text" class="text-amber-900/80"></p>
                     </div>
                 </div>
@@ -91,10 +111,13 @@
             <section id="almanac" class="tab-content">
                 <div class="bg-amber-50/50 p-6 rounded-lg shadow-md">
                     <h2 class="text-3xl font-bold mb-4 text-amber-900">Britannian Almanac</h2>
-                    <p class="mb-6 text-amber-900/80">A successful Avatar relies on loyal companions, powerful equipment, and mastery of the arcane. This almanac serves as your quick reference to the essential resources available throughout the realm.</p>
+                    <p class="mb-6 text-amber-900/80">A successful Avatar relies on loyal companions, powerful
+                        equipment, and mastery of the arcane. This almanac serves as your quick reference to the
+                        essential resources available throughout the realm.</p>
                     <div class="border-b border-amber-800/20 mb-4">
                         <nav class="-mb-px flex space-x-6" aria-label="Tabs">
-                            <button class="almanac-tab-button active" onclick="showAlmanacTab('companions')">Companions</button>
+                            <button class="almanac-tab-button active"
+                                onclick="showAlmanacTab('companions')">Companions</button>
                             <button class="almanac-tab-button" onclick="showAlmanacTab('equipment')">Equipment</button>
                             <button class="almanac-tab-button" onclick="showAlmanacTab('magic')">Magic</button>
                         </nav>
@@ -102,7 +125,8 @@
 
                     <div id="companions" class="almanac-tab-content active">
                         <h3 class="text-2xl font-semibold mb-3 text-amber-900">The Fellowship</h3>
-                        <p class="mb-4">You may recruit up to eight members to your party. Click on the table headers to sort companions by their strengths and find the perfect allies for your quest.</p>
+                        <p class="mb-4">You may recruit up to eight members to your party. Click on the table headers to
+                            sort companions by their strengths and find the perfect allies for your quest.</p>
                         <div class="overflow-x-auto">
                             <table class="w-full text-left border-collapse">
                                 <thead id="companion-table-head"></thead>
@@ -113,13 +137,15 @@
 
                     <div id="equipment" class="almanac-tab-content hidden">
                         <h3 class="text-2xl font-semibold mb-3 text-amber-900">The Armory of Britannia</h3>
-                        <p class="mb-4">The finest arms and armor are often hidden away in the deepest dungeons. Here lies a catalog of the most potent equipment in the realm.</p>
+                        <p class="mb-4">The finest arms and armor are often hidden away in the deepest dungeons. Here
+                            lies a catalog of the most potent equipment in the realm.</p>
                         <div id="equipment-list" class="grid md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
                     </div>
 
                     <div id="magic" class="almanac-tab-content hidden">
-                         <h3 class="text-2xl font-semibold mb-3 text-amber-900">The Eight Circles of Magic</h3>
-                        <p class="mb-4">Magic is an indispensable tool. This grimoire lists the most essential spells for survival and exploration.</p>
+                        <h3 class="text-2xl font-semibold mb-3 text-amber-900">The Eight Circles of Magic</h3>
+                        <p class="mb-4">Magic is an indispensable tool. This grimoire lists the most essential spells
+                            for survival and exploration.</p>
                         <div id="spells-list" class="grid md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
                     </div>
                 </div>
@@ -128,43 +154,58 @@
             <section id="atlas" class="tab-content">
                 <div class="bg-amber-50/50 p-6 rounded-lg shadow-md">
                     <h2 class="text-3xl font-bold mb-4 text-amber-900">World Atlas: Dungeons of Britannia</h2>
-                    <p class="mb-6 text-amber-900/80">The depths of Britannia hold both great treasure and great peril. This guide provides an overview of the key dungeons you must brave to complete your quest.</p>
+                    <p class="mb-6 text-amber-900/80">The depths of Britannia hold both great treasure and great peril.
+                        This guide provides an overview of the key dungeons you must brave to complete your quest.</p>
                     <div class="atlas-map mb-8">
                         <h3 class="text-2xl font-semibold mb-3 text-amber-900">Interactive Britannia Atlas</h3>
-                        <p class="text-amber-900/80 mb-4">Drag to explore, scroll or pinch to zoom, and tap the markers to focus on notable dungeons across Britannia.</p>
-                        <div id="britannia-map" class="britannia-map" role="application" aria-label="Interactive map of Ultima VI Britannia"></div>
+                        <p class="text-amber-900/80 mb-4">Drag to explore, scroll or pinch to zoom, and tap the markers
+                            to focus on notable dungeons across Britannia.</p>
+                        <div id="britannia-map" class="britannia-map" role="application"
+                            aria-label="Interactive map of Ultima VI Britannia"></div>
                         <p class="map-instructions text-sm text-amber-800/80 mt-3">
-                            Prefer the parchment? <a href="images/U6PWorldMap.jpg" target="_blank" rel="noopener" class="underline">Open the full-size map in a new tab</a>.
+                            Prefer the parchment? <a href="images/U6PWorldMap.jpg" target="_blank" rel="noopener"
+                                class="underline">Open the full-size map in a new tab</a>.
                         </p>
                         <noscript>
-                            <p class="text-sm text-amber-800/80 mt-3">JavaScript is required for the interactive atlas. You can still <a href="images/U6PWorldMap.jpg" target="_blank" rel="noopener" class="underline">view the full map here</a>.</p>
+                            <p class="text-sm text-amber-800/80 mt-3">JavaScript is required for the interactive atlas.
+                                You can still <a href="images/U6PWorldMap.jpg" target="_blank" rel="noopener"
+                                    class="underline">view the full map here</a>.</p>
                         </noscript>
                     </div>
                     <div id="dungeon-list" class="space-y-4"></div>
                 </div>
             </section>
-            
+
             <section id="counsel" class="tab-content">
                 <div class="bg-amber-50/50 p-6 rounded-lg shadow-md">
                     <h2 class="text-3xl font-bold mb-4 text-amber-900">✨ Consult with the Seer</h2>
-                    <p class="mb-6 text-amber-900/80">The path of the Avatar is not always clear. If you find yourself lost, perplexed by a puzzle, or seeking strategic wisdom, pose your query to the seer. The ethereal winds will carry your question and return with guidance.</p>
+                    <p class="mb-6 text-amber-900/80">The path of the Avatar is not always clear. If you find yourself
+                        lost, perplexed by a puzzle, or seeking strategic wisdom, pose your query to the seer. The
+                        ethereal winds will carry your question and return with guidance.</p>
                     <div class="w-full space-y-6">
                         <div>
-                            <label for="seer-query" class="block text-lg font-semibold text-amber-900 mb-2">What guidance do you seek?</label>
-                            <textarea id="seer-query" rows="4" class="w-full p-2 border border-amber-300 rounded-md bg-white/70 focus:ring-amber-500 focus:border-amber-500" placeholder="e.g., How can I defeat the dragons in Destard? or Where can I find the plans for the hot-air balloon?"></textarea>
+                            <label for="seer-query" class="block text-lg font-semibold text-amber-900 mb-2">What
+                                guidance do you seek?</label>
+                            <textarea id="seer-query" rows="4"
+                                class="w-full p-2 border border-amber-300 rounded-md bg-white/70 focus:ring-amber-500 focus:border-amber-500"
+                                placeholder="e.g., How can I defeat the dragons in Destard? or Where can I find the plans for the hot-air balloon?"></textarea>
                         </div>
                         <div>
                             <h3 class="text-xl font-semibold text-amber-900 mb-2">Focus the Seer's Sight</h3>
-                            <p class="text-sm text-amber-800/80 mb-3">Select up to three lore packets to include in your request. The seer will weave these notes directly into the answer.</p>
+                            <p class="text-sm text-amber-800/80 mb-3">Select up to three lore packets to include in your
+                                request. The seer will weave these notes directly into the answer.</p>
                             <div id="seer-context-options" class="grid sm:grid-cols-2 gap-3"></div>
                         </div>
                         <div>
-                            <label for="seer-shortcuts" class="block text-sm font-semibold text-amber-900 mb-2">Need a quick prompt?</label>
-                            <select id="seer-shortcuts" class="w-full p-2 border border-amber-300 rounded-md bg-white/70 focus:ring-amber-500 focus:border-amber-500">
+                            <label for="seer-shortcuts" class="block text-sm font-semibold text-amber-900 mb-2">Need a
+                                quick prompt?</label>
+                            <select id="seer-shortcuts"
+                                class="w-full p-2 border border-amber-300 rounded-md bg-white/70 focus:ring-amber-500 focus:border-amber-500">
                                 <option value="">Choose a prepared question…</option>
                             </select>
                         </div>
-                        <button id="ask-seer" class="bg-amber-800 hover:bg-amber-900 text-white font-bold py-2 px-4 rounded transition-colors duration-300">
+                        <button id="ask-seer"
+                            class="bg-amber-800 hover:bg-amber-900 text-white font-bold py-2 px-4 rounded transition-colors duration-300">
                             Ask the Seer
                         </button>
                     </div>
@@ -175,7 +216,9 @@
             <section id="cheats" class="tab-content">
                 <div class="bg-amber-50/50 p-6 rounded-lg shadow-md">
                     <h2 class="text-3xl font-bold mb-4 text-amber-900">Cheat Codex &amp; Exploits</h2>
-                    <p class="mb-6 text-amber-900/80">Sometimes the forces of Britannia require a helping hand (or a little humbug). These sanctioned notes document the secret menus, exploits, and platform-specific tricks gathered from veteran Avatars. Use them wisely if virtue permits.</p>
+                    <p class="mb-6 text-amber-900/80">Sometimes the forces of Britannia require a helping hand (or a
+                        little humbug). These sanctioned notes document the secret menus, exploits, and
+                        platform-specific tricks gathered from veteran Avatars. Use them wisely if virtue permits.</p>
                     <div id="cheat-list" class="space-y-4"></div>
                 </div>
             </section>
@@ -183,8 +226,12 @@
             <section id="passage" class="tab-content">
                 <div class="bg-amber-50/50 p-6 rounded-lg shadow-md">
                     <h2 class="text-3xl font-bold mb-4 text-amber-900">Words of Passage: Copy Protection</h2>
-                    <p class="mb-6 text-amber-900/80">Certain individuals in Britannia will test your knowledge to verify your identity. Use this searchable archive to find the answers you seek. Simply type a keyword from the question (e.g., "Trolls" or "Jux") into the box below.</p>
-                    <input type="text" id="passage-search" class="w-full p-2 mb-6 border border-amber-300 rounded-md bg-white/70 focus:ring-amber-500 focus:border-amber-500" placeholder="Search for a question...">
+                    <p class="mb-6 text-amber-900/80">Certain individuals in Britannia will test your knowledge to
+                        verify your identity. Use this searchable archive to find the answers you seek. Simply type a
+                        keyword from the question (e.g., "Trolls" or "Jux") into the box below.</p>
+                    <input type="text" id="passage-search"
+                        class="w-full p-2 mb-6 border border-amber-300 rounded-md bg-white/70 focus:ring-amber-500 focus:border-amber-500"
+                        placeholder="Search for a question...">
                     <div id="passage-list" class="space-y-4"></div>
                 </div>
             </section>
@@ -193,257 +240,325 @@
     </div>
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-<script>
-    window.BRITANNIA_MAP_CONFIG = {
-        imageUrl: 'images/U6PWorldMap.jpg',
-        imageSize: [7917, 7917],
-        xRange: [-40, 95],
-        yRange: [-45, 95],
-        markers: [
-            {
-                name: 'Bonn\'s Hut',
-                type: 'quest',
-                description: "On Dagger Isle, move the harpsichord to uncover the map piece stashed below.",
-                position: { x: 80, y: -10 }
-            },
-            {
-                name: 'Britain',
-                type: 'city',
-                description: "Capital of Compassion; earn Ariana's permission for the rune and scour the sewers for balloon parts.",
-                position: { x: 15, y: 15 }
-            },
-            {
-                name: 'Buccaneer\'s Den',
-                type: 'site',
-                description: "Join Homer and Budo's Thieves Guild to advance the Hawkins treasure hunt.",
-                position: { x: 25, y: 21 }
-            },
-            {
-                name: 'Cove',
-                type: 'city',
-                description: "Quiet retreat of Rudyom the mage; harvest reagents and seek wisdom near the Shrine of Compassion.",
-                position: { x: 30, y: 0 }
-            },
-            {
-                name: 'Cyclops Cave',
-                type: 'dungeon',
-                description: "Treacherous cavern south of Empath Abbey patrolled by cyclopes.",
-                position: { x: -30, y: 5 }
-            },
-            {
-                name: 'Dungeon Covetous',
-                type: 'dungeon',
-                description: "Enter north of Minoc to face the depths of greed and reach its link to Wrong.",
-                position: { x: 38, y: -30 }
-            },
-            {
-                name: 'Dungeon Deceit',
-                type: 'dungeon',
-                description: "Dagger Isle labyrinth brimming with traps, glass swords, and powerful magic.",
-                position: { x: 85, y: -5 }
-            },
-            {
-                name: 'Dungeon Despise',
-                type: 'dungeon',
-                description: "Eastern dungeon of contempt bordering the Britannian heartland.",
-                position: { x: 25, y: -20 }
-            },
-            {
-                name: 'Dungeon Destard',
-                type: 'dungeon',
-                description: "Retrieve a dragon's egg from the depths to aid Sandy's culinary quest.",
-                position: { x: -15, y: 63 }
-            },
-            {
-                name: 'Dungeon Hythloth',
-                type: 'dungeon',
-                description: "Isle of the Avatar gateway to the gargoyle realm and Captain Johne's refuge.",
-                position: { x: 92, y: 85 }
-            },
-            {
-                name: 'Dungeon Shame',
-                type: 'dungeon',
-                description: "Trade food with Old Ybarra on level four to secure his Hawkins map piece.",
-                position: { x: -27, y: 47 }
-            },
-            {
-                name: 'Dungeon Wrong',
-                type: 'dungeon',
-                description: "Injustice incarnate; recover Heftimus McPry's map scrap hidden deep within.",
-                position: { x: 56, y: -40 }
-            },
-            {
-                name: 'Empath Abbey',
-                type: 'castle',
-                description: "Sanctuary of Love west of Yew; nearby Sylaina holds clues to Hawkins's hoard.",
-                position: { x: -21, y: -15 }
-            },
-            {
-                name: 'Jhelom',
-                type: 'city',
-                description: "Valorian Isle stronghold of Valor; enlist Sherry the mouse to reclaim the rune.",
-                position: { x: -20, y: 55 }
-            },
-            {
-                name: 'Lord British\'s Castle',
-                type: 'castle',
-                description: "Seat of Britannia; collect your spellbook and scour the sewers for hidden passages.",
-                position: { x: 15, y: 10 }
-            },
-            {
-                name: 'Minoc',
-                type: 'city',
-                description: "Artisan hub of Sacrifice; craft panpipes and gather balloon components.",
-                position: { x: 38, y: 18 }
-            },
-            {
-                name: 'Moonglow',
-                type: 'city',
-                description: "Verity Isle of Honesty; delve into Beyvin's tomb and consult Ephemerides.",
-                position: { x: 80, y: 15 }
-            },
-            {
-                name: 'New Magincia',
-                type: 'city',
-                description: "Island of Humility; identify Conor and commission Charlotte's silk weaving.",
-                position: { x: 45, y: 45 }
-            },
-            {
-                name: 'Paws',
-                type: 'city',
-                description: "Riverside village supplying spinner Arbeth and seamstress Marissa for the balloon.",
-                position: { x: 8, y: 27 }
-            },
-            {
-                name: 'Pirate Cave',
-                type: 'dungeon',
-                description: "Hidden cache east of New Magincia stocked with contraband and secrets.",
-                position: { x: 65, y: 75 }
-            },
-            {
-                name: 'Serpent\'s Hold',
-                type: 'castle',
-                description: "Fortress of courage where Gherick forges the shield needed for Morchella's trade.",
-                position: { x: 25, y: 85 }
-            },
-            {
-                name: 'Shipwreck',
-                type: 'quest',
-                description: "Cape of Heroes wreckage hiding the first fragment of Hawkins's map.",
-                position: { x: 15, y: 71 }
-            },
-            {
-                name: 'Shrine of Compassion',
-                type: 'shrine',
-                description: "Mantra MU; meditate here to restore Dexterity and safeguard the rune.",
-                position: { x: 15, y: 25 }
-            },
-            {
-                name: 'Shrine of Honesty',
-                type: 'shrine',
-                description: "Mantra AHM; follow Moonglow's catacombs to reclaim this sanctum.",
-                position: { x: 90, y: -10 }
-            },
-            {
-                name: 'Shrine of Honor',
-                type: 'shrine',
-                description: "Mantra SUMM; honor Whitsaber's trust by returning the rune after cleansing.",
-                position: { x: 5, y: 65 }
-            },
-            {
-                name: 'Shrine of Humility',
-                type: 'shrine',
-                description: "Mantra LUM; an austere shrine granting enlightenment without attribute gain.",
-                position: { x: 65, y: 60 }
-            },
-            {
-                name: 'Shrine of Justice',
-                type: 'shrine',
-                description: "Mantra BEH; expose Boskin's lies before meditating amid the Deep Forest.",
-                position: { x: -5, y: -15 }
-            },
-            {
-                name: 'Shrine of Sacrifice',
-                type: 'shrine',
-                description: "Mantra CAH; desert sands test your resolve before granting Dexterity and Strength.",
-                position: { x: 45, y: -5 }
-            },
-            {
-                name: 'Shrine of Spirituality',
-                type: 'shrine',
-                description: "Mantra OM; moongate access leads to a shrine boosting every virtue.",
-                position: { x: -10, y: 35 }
-            },
-            {
-                name: 'Shrine of the Codex',
-                type: 'quest',
-                description: "Isle of the Avatar dais where the final ritual with the Vortex Cube unfolds.",
-                position: { x: 85, y: 75 }
-            },
-            {
-                name: 'Shrine of Valor',
-                type: 'shrine',
-                description: "Mantra RA; summit the Serpent's Spine to restore Strength and reclaim the rune.",
-                position: { x: -25, y: 70 }
-            },
-            {
-                name: 'Skara Brae',
-                type: 'city',
-                description: "Haunted isle of Spirituality; recover Marney's hope chest rune and soothe lost souls.",
-                position: { x: -27, y: 32 }
-            },
-            {
-                name: 'Spider Cave',
-                type: 'dungeon',
-                description: "Web-choked nest northwest of Empath Abbey, rich in spidersilk.",
-                position: { x: -35, y: -15 }
-            },
-            {
-                name: 'Stonegate',
-                type: 'quest',
-                description: "Storm-wracked keep guarding the Vortex Cube needed for the finale.",
-                position: { x: 30, y: -45 }
-            },
-            {
-                name: "Sutek's Castle",
-                type: 'fortress',
-                description: "Blast through the sealed halls to steal the balloon plans on the fourth basement level.",
-                position: { x: 65, y: 82 }
-            },
-            {
-                name: 'Swamp Cave',
-                type: 'dungeon',
-                description: "Miasmic cavern south of Cove concealing a corpse with a coveted storm cloak.",
-                position: { x: 45, y: 5 }
-            },
-            {
-                name: 'The Ant Mound',
-                type: 'dungeon',
-                description: "Seek Ol' Hawknose's remains deep below the Drylands to obtain another map piece.",
-                position: { x: 82, y: -15 }
-            },
-            {
-                name: 'Treasure Island',
-                type: 'quest',
-                description: "Follow Homer's pacing instructions to unearth Hawkins's buried trove and the silver tablet.",
-                position: { x: 50, y: 95 }
-            },
-            {
-                name: 'Trinsic',
-                type: 'city',
-                description: "City of Honor; borrow the rune with Whitsaber's blessing and learn of Hawkins's alias.",
-                position: { x: 5, y: 55 }
-            },
-            {
-                name: 'Yew',
-                type: 'city',
-                description: "Deep Forest village of Justice where Boskin's deceit hides the rune beneath a tavern plant.",
-                position: { x: -15, y: -5 }
-            }
-        ]
-    };
-</script>
-<link rel="stylesheet" href="styles.css">
-<script src="js/Ultima6.js"></script>
+    <script>
+        window.BRITANNIA_MAP_CONFIG = {
+            imageUrl: 'images/U6PWorldMap.jpg',
+            imageSize: [7917, 7917],
+            xRange: [-40, 95],
+            yRange: [-45, 95],
+            editorEnabled: false,
+            markers: [
+                {
+                    "name": "Bonn's Hut",
+                    "type": "quest",
+                    "description": "On Dagger Isle, move the harpsichord to uncover the map piece stashed below.",
+                    "position": {
+                        "x": 69.1,
+                        "y": 62.64
+                    }
+                },
+                {
+                    "name": "Britain",
+                    "type": "city",
+                    "description": "Capital of Compassion; earn Ariana's permission for the rune and scour the sewers for balloon parts.",
+                    "position": {
+                        "x": 0.24,
+                        "y": 41.43
+                    }
+                },
+                {
+                    "name": "Buccaneer's Den",
+                    "type": "site",
+                    "description": "Join Homer and Budo's Thieves Guild to advance the Hawkins treasure hunt.",
+                    "position": {
+                        "x": 25,
+                        "y": 21
+                    }
+                },
+                {
+                    "name": "Cove",
+                    "type": "city",
+                    "description": "Quiet retreat of Rudyom the mage; harvest reagents and seek wisdom near the Shrine of Compassion.",
+                    "position": {
+                        "x": 26.17,
+                        "y": 49.03
+                    }
+                },
+                {
+                    "name": "Cyclops Cave",
+                    "type": "dungeon",
+                    "description": "Treacherous cavern south of Empath Abbey patrolled by cyclopes.",
+                    "position": {
+                        "x": -19.74,
+                        "y": 43.13
+                    }
+                },
+                {
+                    "name": "Dungeon Covetous",
+                    "type": "dungeon",
+                    "description": "Enter north of Minoc to face the depths of greed and reach its link to Wrong.",
+                    "position": {
+                        "x": 33.21,
+                        "y": 75.14
+                    }
+                },
+                {
+                    "name": "Dungeon Deceit",
+                    "type": "dungeon",
+                    "description": "Dagger Isle labyrinth brimming with traps, glass swords, and powerful magic.",
+                    "position": {
+                        "x": 70.83,
+                        "y": 53.03
+                    }
+                },
+                {
+                    "name": "Dungeon Despise",
+                    "type": "dungeon",
+                    "description": "Eastern dungeon of contempt bordering the Britannian heartland.",
+                    "position": {
+                        "x": 4.76,
+                        "y": 55.43
+                    }
+                },
+                {
+                    "name": "Dungeon Destard",
+                    "type": "dungeon",
+                    "description": "Retrieve a dragon's egg from the depths to aid Sandy's culinary quest.",
+                    "position": {
+                        "x": -2.09,
+                        "y": 4.52
+                    }
+                },
+                {
+                    "name": "Dungeon Hythloth",
+                    "type": "dungeon",
+                    "description": "Isle of the Avatar gateway to the gargoyle realm and Captain Johne's refuge.",
+                    "position": {
+                        "x": 69.48,
+                        "y": -19.39
+                    }
+                },
+                {
+                    "name": "Dungeon Shame",
+                    "type": "dungeon",
+                    "description": "Trade food with Old Ybarra on level four to secure his Hawkins map piece.",
+                    "position": {
+                        "x": -8.26,
+                        "y": 37.93
+                    }
+                },
+                {
+                    "name": "Dungeon Wrong",
+                    "type": "dungeon",
+                    "description": "Injustice incarnate; recover Heftimus McPry's map scrap hidden deep within.",
+                    "position": {
+                        "x": 20.48,
+                        "y": 77.44
+                    }
+                },
+                {
+                    "name": "Empath Abbey",
+                    "type": "castle",
+                    "description": "Sanctuary of Love west of Yew; nearby Sylaina holds clues to Hawkins's hoard.",
+                    "position": {
+                        "x": -22.15,
+                        "y": 63.54
+                    }
+                },
+                {
+                    "name": "Jhelom",
+                    "type": "city",
+                    "description": "Valorian Isle stronghold of Valor; enlist Sherry the mouse to reclaim the rune.",
+                    "position": {
+                        "x": -17.52,
+                        "y": -11.29
+                    }
+                },
+                {
+                    "name": "Lord British's Castle",
+                    "type": "castle",
+                    "description": "Seat of Britannia; collect your spellbook and scour the sewers for hidden passages.",
+                    "position": {
+                        "x": -1.03,
+                        "y": 47.33
+                    }
+                },
+                {
+                    "name": "Minoc",
+                    "type": "city",
+                    "description": "Artisan hub of Sacrifice; craft panpipes and gather balloon components.",
+                    "position": {
+                        "x": 32.54,
+                        "y": 80.74
+                    }
+                },
+                {
+                    "name": "Moonglow",
+                    "type": "city",
+                    "description": "Verity Isle of Honesty; delve into Beyvin's tomb and consult Ephemerides.",
+                    "position": {
+                        "x": 68.32,
+                        "y": 29.42
+                    }
+                },
+                {
+                    "name": "New Magincia",
+                    "type": "city",
+                    "description": "Island of Humility; identify Conor and commission Charlotte's silk weaving.",
+                    "position": {
+                        "x": 46.81,
+                        "y": 14.02
+                    }
+                },
+                {
+                    "name": "Paws",
+                    "type": "city",
+                    "description": "Riverside village supplying spinner Arbeth and seamstress Marissa for the balloon.",
+                    "position": {
+                        "x": 8,
+                        "y": 27
+                    }
+                },
+                {
+                    "name": "Pirate Cave",
+                    "type": "dungeon",
+                    "description": "Hidden cache east of New Magincia stocked with contraband and secrets.",
+                    "position": {
+                        "x": 41.32,
+                        "y": -5.19
+                    }
+                },
+                {
+                    "name": "Serpent's Hold",
+                    "type": "castle",
+                    "description": "Fortress of courage where Gherick forges the shield needed for Morchella's trade.",
+                    "position": {
+                        "x": 28.87,
+                        "y": -18.39
+                    }
+                },
+                {
+                    "name": "Shipwreck",
+                    "type": "quest",
+                    "description": "Cape of Heroes wreckage hiding the first fragment of Hawkins's map.",
+                    "position": {
+                        "x": 17.3,
+                        "y": 7.42
+                    }
+                },
+                {
+                    "name": "Shrine of Compassion",
+                    "type": "shrine",
+                    "description": "Mantra MU; meditate here to restore Dexterity and safeguard the rune.",
+                    "position": {
+                        "x": 19.61,
+                        "y": 45.93
+                    }
+                },
+                {
+                    "name": "Shrine of Honesty",
+                    "type": "shrine",
+                    "description": "Mantra AHM; follow Moonglow's catacombs to reclaim this sanctum.",
+                    "position": {
+                        "x": 67.26,
+                        "y": 58.53
+                    }
+                },
+                {
+                    "name": "Shrine of Honor",
+                    "type": "shrine",
+                    "description": "Mantra SUMM; honor Whitsaber's trust by returning the rune after cleansing.",
+                    "position": {
+                        "x": 4.18,
+                        "y": -4.19
+                    }
+                },
+                {
+                    "name": "Shrine of Humility",
+                    "type": "shrine",
+                    "description": "Mantra LUM; an austere shrine granting enlightenment without attribute gain.",
+                    "position": {
+                        "x": 65.82,
+                        "y": -6.59
+                    }
+                },
+                {
+                    "name": "Shrine of Justice",
+                    "type": "shrine",
+                    "description": "Mantra BEH; expose Boskin's lies before meditating amid the Deep Forest.",
+                    "position": {
+                        "x": -1.42,
+                        "y": 78.94
+                    }
+                },
+                {
+                    "name": "Shrine of Sacrifice",
+                    "type": "shrine",
+                    "description": "Mantra CAH; desert sands test your resolve before granting Dexterity and Strength.",
+                    "position": {
+                        "x": 57.42,
+                        "y": 66.44
+                    }
+                },
+                {
+                    "name": "Sutek's Castle",
+                    "type": "castle",
+                    "description": "Castle of a very powerful mage",
+                    "position": {
+                        "x": 49.61,
+                        "y": -21.69
+                    }
+                },
+                {
+                    "name": "Shrine of the Codex",
+                    "type": "quest",
+                    "description": "Isle of the Avatar dais where the final ritual with the Vortex Cube unfolds.",
+                    "position": {
+                        "x": 65.33,
+                        "y": -15.59
+                    }
+                },
+                {
+                    "name": "Shrine of Valor",
+                    "type": "shrine",
+                    "description": "Mantra RA; summit the Serpent's Spine to restore Strength and reclaim the rune.",
+                    "position": {
+                        "x": -13.38,
+                        "y": -22.19
+                    }
+                },
+                {
+                    "name": "Skara Brae",
+                    "type": "city",
+                    "description": "Haunted isle of Spirituality; recover Marney's hope chest rune and soothe lost souls.",
+                    "position": {
+                        "x": -26.98,
+                        "y": 31.02
+                    }
+                },
+                {
+                    "name": "Trinsic",
+                    "type": "city",
+                    "description": "City of Honor; borrow the rune with Whitsaber's blessing and learn of Hawkins's alias.",
+                    "position": {
+                        "x": 9.48,
+                        "y": 6.42
+                    }
+                },
+                {
+                    "name": "Yew",
+                    "type": "city",
+                    "description": "Deep Forest village of Justice where Boskin's deceit hides the rune beneath a tavern plant.",
+                    "position": {
+                        "x": -5.85,
+                        "y": 68.54
+                    }
+                }
+            ]
+        };
+    </script>
+    <link rel="stylesheet" href="styles.css">
+    <script src="js/Ultima6.js"></script>
 </body>
+
 </html>
