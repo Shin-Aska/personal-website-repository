@@ -1616,21 +1616,66 @@ Answer in 2–3 short paragraphs, in-character and practical, giving clear hints
         });
 
         const legendEntries = new Map();
+        let legendControl = null;
+        let legendControlContainer = null;
 
-        markers.forEach(marker => {
-            const position = marker && marker.position;
-            if (!position || typeof position.x !== 'number' || typeof position.y !== 'number') {
+        const ensureLegendControl = () => {
+            if (!legendControl) {
+                legendControl = L.control({ position: 'topright' });
+                legendControl.onAdd = () => {
+                    legendControlContainer = L.DomUtil.create('div', 'britannia-legend bg-white/90 rounded shadow p-3 text-sm space-y-2');
+                    return legendControlContainer;
+                };
+                legendControl.addTo(map);
+                legendControlContainer = legendControl.getContainer();
+            }
+            return legendControlContainer;
+        };
+
+        const renderLegend = () => {
+            if (legendEntries.size === 0) {
+                if (legendControlContainer) {
+                    legendControlContainer.innerHTML = '';
+                }
                 return;
             }
-            const name = marker.name || 'Point of interest';
-            const description = marker.description || '';
+            const container = ensureLegendControl();
+            container.innerHTML = '';
+            const header = L.DomUtil.create('h4', 'font-semibold text-amber-900 mb-2', container);
+            header.textContent = 'Marker Types';
+            legendEntries.forEach((color, label) => {
+                const item = L.DomUtil.create('div', 'flex items-center gap-2', container);
+                item.innerHTML = `
+                    <span style="
+                        display:inline-block;
+                        width:0.85rem;
+                        height:0.85rem;
+                        border-radius:9999px;
+                        background:${color};
+                        border:1px solid rgba(0,0,0,0.25);
+                    "></span>
+                    <span>${label}</span>
+                `;
+            });
+        };
+
+        const createLeafletMarker = (markerData, options = {}) => {
+            if (!markerData || !markerData.position) {
+                return null;
+            }
+            const position = markerData.position;
+            if (typeof position.x !== 'number' || typeof position.y !== 'number') {
+                return null;
+            }
+
             const latLng = toLatLng(position);
             const leafletPosition = [latLng.lat, latLng.lng];
-            const popupHtml = buildPopupHtml(marker);
-            const style = resolveMarkerStyle(marker);
-            if (!legendEntries.has(style.label)) {
-                legendEntries.set(style.label, style.color);
-            }
+            const style = resolveMarkerStyle(markerData);
+            const name = markerData.name || 'Point of interest';
+            const description = markerData.description || '';
+
+            legendEntries.set(style.label, style.color);
+
             const leafletMarker = L.marker(leafletPosition, {
                 title: name,
                 draggable: editorEnabled,
@@ -1660,6 +1705,7 @@ Answer in 2–3 short paragraphs, in-character and practical, giving clear hints
                 })
             }).addTo(map);
 
+            const popupHtml = buildPopupHtml(markerData);
             leafletMarker.bindPopup(popupHtml, {
                 autoPan: true,
                 autoPanPadding: L.point(24, 24)
@@ -1671,41 +1717,104 @@ Answer in 2–3 short paragraphs, in-character and practical, giving clear hints
 
             if (editorEnabled) {
                 leafletMarker.on('dragend', () => {
-                    const latlng = leafletMarker.getLatLng();
-                    const updatedPosition = toMarkerPosition(latlng);
-                    marker.position = updatedPosition;
-                    const updatedHtml = buildPopupHtml(marker);
-                    leafletMarker.setPopupContent(updatedHtml);
+                    const updatedPosition = toMarkerPosition(leafletMarker.getLatLng());
+                    markerData.position = updatedPosition;
+                    leafletMarker.setPopupContent(buildPopupHtml(markerData));
                     leafletMarker.openPopup();
-                    console.info(`[Britannia Map] ${marker.name || 'Point'} updated position -> { x: ${updatedPosition.x}, y: ${updatedPosition.y} }`);
+                    console.info(`[Britannia Map] ${markerData.name || 'Point'} updated position -> { x: ${updatedPosition.x}, y: ${updatedPosition.y} }`);
                 });
             }
+
+            if (options.openPopup) {
+                leafletMarker.openPopup();
+            }
+
+            renderLegend();
+            return leafletMarker;
+        };
+
+        markers.forEach(marker => {
+            createLeafletMarker(marker);
         });
 
-        if (legendEntries.size > 0) {
-            const legendControl = L.control({ position: 'topright' });
-            legendControl.onAdd = () => {
-                const div = L.DomUtil.create('div', 'britannia-legend bg-white/90 rounded shadow p-3 text-sm space-y-2');
-                div.innerHTML = '<h4 class="font-semibold text-amber-900 mb-2">Marker Types</h4>';
-                legendEntries.forEach((color, label) => {
-                    const item = document.createElement('div');
-                    item.className = 'flex items-center gap-2';
-                    item.innerHTML = `
-                        <span style="
-                            display:inline-block;
-                            width:0.85rem;
-                            height:0.85rem;
-                            border-radius:9999px;
-                            background:${color};
-                            border:1px solid rgba(0,0,0,0.25);
-                        "></span>
-                        <span>${label}</span>
-                    `;
-                    div.appendChild(item);
-                });
-                return div;
+        if (editorEnabled) {
+            let addMarkerMode = false;
+            let addMarkerButton = null;
+
+            const setAddMarkerMode = (enabled) => {
+                addMarkerMode = enabled;
+                if (addMarkerButton) {
+                    addMarkerButton.classList.toggle('active', addMarkerMode);
+                    addMarkerButton.setAttribute('aria-pressed', String(addMarkerMode));
+                    addMarkerButton.textContent = addMarkerMode ? 'Click map…' : 'Add Marker';
+                    addMarkerButton.title = addMarkerMode ? 'Click the map to place the new marker' : 'Add a new marker';
+                }
+                map.getContainer().classList.toggle('britannia-map--adding', addMarkerMode);
             };
-            legendControl.addTo(map);
+
+            const addMarkerControl = L.control({ position: 'topleft' });
+            addMarkerControl.onAdd = () => {
+                const container = L.DomUtil.create('div', 'leaflet-bar britannia-add-marker-control');
+                const button = L.DomUtil.create('button', 'britannia-add-marker-btn', container);
+                button.type = 'button';
+                button.textContent = 'Add Marker';
+                button.title = 'Add a new marker';
+                button.setAttribute('aria-pressed', 'false');
+                addMarkerButton = button;
+                L.DomEvent.on(button, 'click', (event) => {
+                    L.DomEvent.stopPropagation(event);
+                    L.DomEvent.preventDefault(event);
+                    setAddMarkerMode(!addMarkerMode);
+                    if (addMarkerMode) {
+                        console.info('[Britannia Map] Add-marker mode enabled. Click the map to place a new marker. Press Escape to cancel.');
+                    }
+                });
+                return container;
+            };
+            addMarkerControl.addTo(map);
+
+            const cancelAddMarkerMode = () => {
+                if (addMarkerMode) {
+                    setAddMarkerMode(false);
+                    console.info('[Britannia Map] Add-marker mode cancelled.');
+                }
+            };
+
+            L.DomEvent.on(map.getContainer(), 'keydown', (event) => {
+                if (event.key === 'Escape') {
+                    cancelAddMarkerMode();
+                }
+            });
+
+            map.on('click', (event) => {
+                if (!addMarkerMode) {
+                    return;
+                }
+                setAddMarkerMode(false);
+
+                const nameInput = window.prompt('Marker name?');
+                if (!nameInput) {
+                    console.info('[Britannia Map] Marker creation cancelled (no name provided).');
+                    return;
+                }
+
+                const typeInput = window.prompt('Marker type (city, dungeon, shrine, quest, castle, fortress, site, questline)?', 'site') || '';
+                const descriptionInput = window.prompt('Marker description?', '') || '';
+
+                const normalizedType = typeInput.trim().toLowerCase() || 'site';
+                const newPosition = toMarkerPosition(event.latlng);
+                const newMarker = {
+                    name: nameInput.trim(),
+                    type: normalizedType,
+                    description: descriptionInput.trim(),
+                    position: newPosition
+                };
+
+                markers.push(newMarker);
+                createLeafletMarker(newMarker, { openPopup: true });
+                console.info(`[Britannia Map] Added marker "${newMarker.name}" -> { x: ${newPosition.x}, y: ${newPosition.y} }`);
+                console.info('[Britannia Map] Remember to copy this marker into your configuration file to make it permanent.');
+            });
         }
     }
 

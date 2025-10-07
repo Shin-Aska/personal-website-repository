@@ -40,6 +40,42 @@ body {
     margin: 0.5rem 0;
 }
 
+.britannia-add-marker-control {
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: 0 6px 16px rgba(56, 45, 36, 0.28);
+}
+
+.britannia-add-marker-control button {
+    display: block;
+    border: none;
+    background: linear-gradient(135deg, #fbbf24, #d97706);
+    color: #1f2937;
+    font-family: 'Marcellus', serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 0.6rem 0.75rem;
+    cursor: pointer;
+    min-width: 7.5rem;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.britannia-add-marker-control button:hover,
+.britannia-add-marker-control button:focus {
+    background: linear-gradient(135deg, #f59e0b, #b45309);
+    color: #111827;
+}
+
+.britannia-add-marker-control button.active,
+.britannia-add-marker-control button[aria-pressed="true"] {
+    background: linear-gradient(135deg, #10b981, #047857);
+    color: #fdf6e3;
+}
+
+.britannia-map--adding {
+    cursor: crosshair !important;
+}
+
 h1, h2, h3, h4 {
     font-family: 'IM Fell English', serif;
 }
