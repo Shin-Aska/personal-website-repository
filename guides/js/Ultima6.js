@@ -976,11 +976,29 @@ const gameData = {
 
         gameData.pcItemList = parsePcItemList(gameData.pcItemListRaw || "");
 
+        let britanniaMapInstance = null;
+        let britanniaMapBounds = null;
+        let britanniaMapCenter = null;
+        let britanniaMapZoom = null;
+
         function showTab(tabId) {
             document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
             document.querySelectorAll('.tab-button').forEach(button => button.classList.remove('active'));
             document.getElementById(tabId).classList.add('active');
             document.querySelector(`.tab-button[onclick="showTab('${tabId}')"]`).classList.add('active');
+
+            if (tabId === 'atlas') {
+                requestAnimationFrame(() => {
+                    if (britanniaMapInstance) {
+                        britanniaMapInstance.invalidateSize();
+                        if (britanniaMapCenter !== null) {
+                            britanniaMapInstance.setView(britanniaMapCenter, britanniaMapZoom, { animate: false });
+                        }
+                    } else {
+                        setupBritanniaMap();
+                    }
+                });
+            }
         }
 
         function showAlmanacTab(tabId) {
@@ -1452,6 +1470,14 @@ Answer in 2–3 short paragraphs, in-character and practical, giving clear hints
             return;
         }
 
+        if (britanniaMapInstance) {
+            britanniaMapInstance.invalidateSize();
+            if (britanniaMapCenter !== null) {
+                britanniaMapInstance.setView(britanniaMapCenter, britanniaMapZoom, { animate: false });
+            }
+            return;
+        }
+
         const config = window.BRITANNIA_MAP_CONFIG || {};
         const imageUrl = config.imageUrl;
         const imageSize = Array.isArray(config.imageSize) ? config.imageSize : null;
@@ -1497,6 +1523,16 @@ Answer in 2–3 short paragraphs, in-character and practical, giving clear hints
 
         map.fitBounds(bounds);
         map.setMaxBounds(bounds);
+
+        britanniaMapInstance = map;
+        britanniaMapBounds = bounds;
+        britanniaMapCenter = map.getCenter();
+        britanniaMapZoom = map.getZoom();
+
+        map.on('moveend', () => {
+            britanniaMapCenter = map.getCenter();
+            britanniaMapZoom = map.getZoom();
+        });
 
         markers.forEach(marker => {
             const position = marker && marker.position;
