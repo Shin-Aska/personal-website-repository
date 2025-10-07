@@ -197,36 +197,248 @@
     window.BRITANNIA_MAP_CONFIG = {
         imageUrl: 'images/U6PWorldMap.jpg',
         imageSize: [7917, 7917],
+        xRange: [-40, 95],
+        yRange: [-45, 95],
         markers: [
             {
+                name: 'Bonn\'s Hut',
+                type: 'quest',
+                description: "On Dagger Isle, move the harpsichord to uncover the map piece stashed below.",
+                position: { x: 80, y: -10 }
+            },
+            {
+                name: 'Britain',
+                type: 'city',
+                description: "Capital of Compassion; earn Ariana's permission for the rune and scour the sewers for balloon parts.",
+                position: { x: 15, y: 15 }
+            },
+            {
+                name: 'Buccaneer\'s Den',
+                type: 'site',
+                description: "Join Homer and Budo's Thieves Guild to advance the Hawkins treasure hunt.",
+                position: { x: 33, y: 33 }
+            },
+            {
+                name: 'Cove',
+                type: 'city',
+                description: "Quiet retreat of Rudyom the mage; harvest reagents and seek wisdom near the Shrine of Compassion.",
+                position: { x: 30, y: 0 }
+            },
+            {
+                name: 'Cyclops Cave',
+                type: 'dungeon',
+                description: "Treacherous cavern south of Empath Abbey patrolled by cyclopes.",
+                position: { x: -30, y: 5 }
+            },
+            {
+                name: 'Dungeon Covetous',
+                type: 'dungeon',
+                description: "Enter north of Minoc to face the depths of greed and reach its link to Wrong.",
+                position: { x: 38, y: -30 }
+            },
+            {
+                name: 'Dungeon Deceit',
+                type: 'dungeon',
+                description: "Dagger Isle labyrinth brimming with traps, glass swords, and powerful magic.",
+                position: { x: 85, y: -5 }
+            },
+            {
+                name: 'Dungeon Despise',
+                type: 'dungeon',
+                description: "Eastern dungeon of contempt bordering the Britannian heartland.",
+                position: { x: 25, y: -20 }
+            },
+            {
                 name: 'Dungeon Destard',
-                description: "Retrieve a dragon's egg from the fourth level for Sandy's quest. Invisibility is highly recommended.",
-                position: { x: 45, y: 63 }
-            },
-            {
-                name: 'Dungeon Shame',
-                description: "Find the pirate Old Ybarra on the fourth level and trade food for his map piece.",
-                position: { x: 33, y: 47 }
-            },
-            {
-                name: 'Dungeon Wrong / Covetous',
-                description: "Solve a lever puzzle, descend to level three, and secure Hawkins's map fragment.",
-                position: { x: 56, y: 40 }
-            },
-            {
-                name: 'The Ant Mound',
-                description: "Seek Ol' Hawknose's remains deep below the Drylands to obtain another map piece.",
-                position: { x: 48, y: 70 }
-            },
-            {
-                name: "Sutek's Castle",
-                description: "Blast your way in with powder kegs and recover the balloon plans on the fourth basement level.",
-                position: { x: 65, y: 72 }
+                type: 'dungeon',
+                description: "Retrieve a dragon's egg from the depths to aid Sandy's culinary quest.",
+                position: { x: -15, y: 63 }
             },
             {
                 name: 'Dungeon Hythloth',
-                description: "Descend to the gargoyle realm via the Isle of the Avatar and meet Captain Johne.",
-                position: { x: 73, y: 82 }
+                type: 'dungeon',
+                description: "Isle of the Avatar gateway to the gargoyle realm and Captain Johne's refuge.",
+                position: { x: 92, y: 85 }
+            },
+            {
+                name: 'Dungeon Shame',
+                type: 'dungeon',
+                description: "Trade food with Old Ybarra on level four to secure his Hawkins map piece.",
+                position: { x: -27, y: 47 }
+            },
+            {
+                name: 'Dungeon Wrong',
+                type: 'dungeon',
+                description: "Injustice incarnate; recover Heftimus McPry's map scrap hidden deep within.",
+                position: { x: 56, y: -40 }
+            },
+            {
+                name: 'Empath Abbey',
+                type: 'castle',
+                description: "Sanctuary of Love west of Yew; nearby Sylaina holds clues to Hawkins's hoard.",
+                position: { x: -21, y: -15 }
+            },
+            {
+                name: 'Jhelom',
+                type: 'city',
+                description: "Valorian Isle stronghold of Valor; enlist Sherry the mouse to reclaim the rune.",
+                position: { x: -20, y: 55 }
+            },
+            {
+                name: 'Lord British\'s Castle',
+                type: 'castle',
+                description: "Seat of Britannia; collect your spellbook and scour the sewers for hidden passages.",
+                position: { x: 15, y: 10 }
+            },
+            {
+                name: 'Minoc',
+                type: 'city',
+                description: "Artisan hub of Sacrifice; craft panpipes and gather balloon components.",
+                position: { x: 38, y: 18 }
+            },
+            {
+                name: 'Moonglow',
+                type: 'city',
+                description: "Verity Isle of Honesty; delve into Beyvin's tomb and consult Ephemerides.",
+                position: { x: 80, y: 15 }
+            },
+            {
+                name: 'New Magincia',
+                type: 'city',
+                description: "Island of Humility; identify Conor and commission Charlotte's silk weaving.",
+                position: { x: 45, y: 45 }
+            },
+            {
+                name: 'Paws',
+                type: 'city',
+                description: "Riverside village supplying spinner Arbeth and seamstress Marissa for the balloon.",
+                position: { x: 8, y: 33 }
+            },
+            {
+                name: 'Pirate Cave',
+                type: 'dungeon',
+                description: "Hidden cache east of New Magincia stocked with contraband and secrets.",
+                position: { x: 65, y: 75 }
+            },
+            {
+                name: 'Serpent\'s Hold',
+                type: 'castle',
+                description: "Fortress of courage where Gherick forges the shield needed for Morchella's trade.",
+                position: { x: 25, y: 85 }
+            },
+            {
+                name: 'Shipwreck',
+                type: 'quest',
+                description: "Cape of Heroes wreckage hiding the first fragment of Hawkins's map.",
+                position: { x: 15, y: 71 }
+            },
+            {
+                name: 'Shrine of Compassion',
+                type: 'shrine',
+                description: "Mantra MU; meditate here to restore Dexterity and safeguard the rune.",
+                position: { x: 15, y: 25 }
+            },
+            {
+                name: 'Shrine of Honesty',
+                type: 'shrine',
+                description: "Mantra AHM; follow Moonglow's catacombs to reclaim this sanctum.",
+                position: { x: 90, y: -10 }
+            },
+            {
+                name: 'Shrine of Honor',
+                type: 'shrine',
+                description: "Mantra SUMM; honor Whitsaber's trust by returning the rune after cleansing.",
+                position: { x: 5, y: 65 }
+            },
+            {
+                name: 'Shrine of Humility',
+                type: 'shrine',
+                description: "Mantra LUM; an austere shrine granting enlightenment without attribute gain.",
+                position: { x: 65, y: 60 }
+            },
+            {
+                name: 'Shrine of Justice',
+                type: 'shrine',
+                description: "Mantra BEH; expose Boskin's lies before meditating amid the Deep Forest.",
+                position: { x: -5, y: -15 }
+            },
+            {
+                name: 'Shrine of Sacrifice',
+                type: 'shrine',
+                description: "Mantra CAH; desert sands test your resolve before granting Dexterity and Strength.",
+                position: { x: 45, y: -5 }
+            },
+            {
+                name: 'Shrine of Spirituality',
+                type: 'shrine',
+                description: "Mantra OM; moongate access leads to a shrine boosting every virtue.",
+                position: { x: -10, y: 35 }
+            },
+            {
+                name: 'Shrine of the Codex',
+                type: 'quest',
+                description: "Isle of the Avatar dais where the final ritual with the Vortex Cube unfolds.",
+                position: { x: 85, y: 75 }
+            },
+            {
+                name: 'Shrine of Valor',
+                type: 'shrine',
+                description: "Mantra RA; summit the Serpent's Spine to restore Strength and reclaim the rune.",
+                position: { x: -25, y: 70 }
+            },
+            {
+                name: 'Skara Brae',
+                type: 'city',
+                description: "Haunted isle of Spirituality; recover Marney's hope chest rune and soothe lost souls.",
+                position: { x: -30, y: 25 }
+            },
+            {
+                name: 'Spider Cave',
+                type: 'dungeon',
+                description: "Web-choked nest northwest of Empath Abbey, rich in spidersilk.",
+                position: { x: -35, y: -15 }
+            },
+            {
+                name: 'Stonegate',
+                type: 'quest',
+                description: "Storm-wracked keep guarding the Vortex Cube needed for the finale.",
+                position: { x: 30, y: -45 }
+            },
+            {
+                name: "Sutek's Castle",
+                type: 'fortress',
+                description: "Blast through the sealed halls to steal the balloon plans on the fourth basement level.",
+                position: { x: 65, y: 82 }
+            },
+            {
+                name: 'Swamp Cave',
+                type: 'dungeon',
+                description: "Miasmic cavern south of Cove concealing a corpse with a coveted storm cloak.",
+                position: { x: 45, y: 5 }
+            },
+            {
+                name: 'The Ant Mound',
+                type: 'dungeon',
+                description: "Seek Ol' Hawknose's remains deep below the Drylands to obtain another map piece.",
+                position: { x: 82, y: -15 }
+            },
+            {
+                name: 'Treasure Island',
+                type: 'quest',
+                description: "Follow Homer's pacing instructions to unearth Hawkins's buried trove and the silver tablet.",
+                position: { x: 50, y: 95 }
+            },
+            {
+                name: 'Trinsic',
+                type: 'city',
+                description: "City of Honor; borrow the rune with Whitsaber's blessing and learn of Hawkins's alias.",
+                position: { x: 5, y: 55 }
+            },
+            {
+                name: 'Yew',
+                type: 'city',
+                description: "Deep Forest village of Justice where Boskin's deceit hides the rune beneath a tavern plant.",
+                position: { x: -15, y: -5 }
             }
         ]
     };
