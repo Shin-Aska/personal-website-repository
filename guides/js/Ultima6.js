@@ -1659,6 +1659,38 @@ Answer in 2–3 short paragraphs, in-character and practical, giving clear hints
             });
         };
 
+        const buildMarkerIcon = (markerData, { highlight = false } = {}) => {
+            const style = resolveMarkerStyle(markerData);
+            const initial = markerData.name ? markerData.name.charAt(0).toUpperCase() : '?';
+            const highlightStyles = highlight
+                ? 'transform: scale(1.12); box-shadow: 0 0 0 3px rgba(254, 243, 199, 0.95), 0 8px 18px rgba(0, 0, 0, 0.35);'
+                : 'box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);';
+            return L.divIcon({
+                className: 'britannia-marker',
+                html: `
+                    <span style="
+                        display:inline-flex;
+                        align-items:center;
+                        justify-content:center;
+                        width:1.75rem;
+                        height:1.75rem;
+                        border-radius:9999px;
+                        background:${style.color};
+                        color:white;
+                        font-size:0.75rem;
+                        font-weight:700;
+                        border:2px solid rgba(0,0,0,0.3);
+                        ${highlightStyles}
+                    ">
+                        ${initial}
+                    </span>
+                `,
+                iconSize: [28, 28],
+                iconAnchor: [14, 28],
+                popupAnchor: [0, -24]
+            });
+        };
+
         const createLeafletMarker = (markerData, options = {}) => {
             if (!markerData || !markerData.position) {
                 return null;
@@ -1679,30 +1711,7 @@ Answer in 2–3 short paragraphs, in-character and practical, giving clear hints
             const leafletMarker = L.marker(leafletPosition, {
                 title: name,
                 draggable: editorEnabled,
-                icon: L.divIcon({
-                    className: 'britannia-marker',
-                    html: `
-                        <span style="
-                            display:inline-flex;
-                            align-items:center;
-                            justify-content:center;
-                            width:1.75rem;
-                            height:1.75rem;
-                            border-radius:9999px;
-                            background:${style.color};
-                            color:white;
-                            font-size:0.75rem;
-                            font-weight:700;
-                            border:2px solid rgba(0,0,0,0.3);
-                            box-shadow:0 1px 4px rgba(0,0,0,0.2);
-                        ">
-                            ${name ? name.charAt(0).toUpperCase() : '?'}
-                        </span>
-                    `,
-                    iconSize: [28, 28],
-                    iconAnchor: [14, 28],
-                    popupAnchor: [0, -24]
-                })
+                icon: buildMarkerIcon(markerData)
             }).addTo(map);
 
             const popupHtml = buildPopupHtml(markerData);
@@ -1733,9 +1742,134 @@ Answer in 2–3 short paragraphs, in-character and practical, giving clear hints
             return leafletMarker;
         };
 
+        const markerInstances = [];
+
         markers.forEach(marker => {
-            createLeafletMarker(marker);
+            const instance = createLeafletMarker(marker);
+            if (instance) {
+                markerInstances.push({ markerData: marker, leafletMarker: instance });
+            }
         });
+
+        const searchInput = document.getElementById('britannia-map-search');
+        const clearSearchButton = document.getElementById('britannia-map-search-clear');
+
+        if (searchInput) {
+            let currentMatches = [];
+            let currentIndex = -1;
+            let activeEntry = null;
+
+            const normalize = (value) => (typeof value === 'string' ? value.toLowerCase() : '');
+
+            const removeHighlight = () => {
+                if (activeEntry) {
+                    activeEntry.leafletMarker.setIcon(buildMarkerIcon(activeEntry.markerData));
+                    activeEntry.leafletMarker.closePopup();
+                    activeEntry = null;
+                }
+            };
+
+            const focusEntry = (entry, announce = true) => {
+                if (!entry) {
+                    return;
+                }
+                if (activeEntry !== entry) {
+                    removeHighlight();
+                }
+                entry.leafletMarker.setIcon(buildMarkerIcon(entry.markerData, { highlight: true }));
+                const latLng = entry.leafletMarker.getLatLng();
+                const targetZoom = Math.max(map.getZoom(), 0);
+                map.flyTo(latLng, targetZoom, { animate: true, duration: 0.6 });
+                entry.leafletMarker.openPopup();
+                activeEntry = entry;
+                if (announce) {
+                    console.info(`[Britannia Map] Focused "${entry.markerData.name}" (${currentIndex + 1} of ${currentMatches.length}).`);
+                }
+            };
+
+            const findMatches = (term) => {
+                const query = term.trim().toLowerCase();
+                if (!query) {
+                    return [];
+                }
+                return markerInstances.filter(({ markerData }) => {
+                    const haystack = [
+                        markerData.name,
+                        markerData.type,
+                        markerData.description
+                    ].map(normalize);
+                    return haystack.some(value => value.includes(query));
+                });
+            };
+
+            const refreshMatches = () => {
+                const term = searchInput.value;
+                const trimmed = term.trim();
+                if (!trimmed) {
+                    removeHighlight();
+                    if (currentMatches.length) {
+                        console.info('[Britannia Map] Map search cleared.');
+                    }
+                    currentMatches = [];
+                    currentIndex = -1;
+                    return;
+                }
+                const matches = findMatches(term);
+                if (!matches.length) {
+                    removeHighlight();
+                    currentMatches = [];
+                    currentIndex = -1;
+                    console.info(`[Britannia Map] No markers found for "${trimmed}".`);
+                    return;
+                }
+                currentMatches = matches;
+                currentIndex = Math.min(currentIndex >= 0 ? currentIndex : 0, currentMatches.length - 1);
+                focusEntry(currentMatches[currentIndex], false);
+                console.info(`[Britannia Map] Found ${currentMatches.length} match(es) for "${trimmed}". Press Enter to cycle.`);
+            };
+
+            const cycleMatch = () => {
+                if (!searchInput.value.trim()) {
+                    return;
+                }
+                if (!currentMatches.length) {
+                    refreshMatches();
+                    return;
+                }
+                currentIndex = (currentIndex + 1) % currentMatches.length;
+                focusEntry(currentMatches[currentIndex]);
+            };
+
+            const clearSearch = (focusField = true) => {
+                if (!searchInput.value && !currentMatches.length) {
+                    return;
+                }
+                searchInput.value = '';
+                removeHighlight();
+                currentMatches = [];
+                currentIndex = -1;
+                console.info('[Britannia Map] Map search cleared.');
+                if (focusField) {
+                    searchInput.focus();
+                }
+            };
+
+            searchInput.addEventListener('input', refreshMatches);
+
+            searchInput.addEventListener('keydown', (event) => {
+                if (event.key === 'Enter') {
+                    event.preventDefault();
+                    cycleMatch();
+                } else if (event.key === 'Escape') {
+                    event.preventDefault();
+                    clearSearch();
+                }
+            });
+
+            if (clearSearchButton) {
+                clearSearchButton.addEventListener('click', () => clearSearch());
+            }
+        }
 
         if (editorEnabled) {
             let addMarkerMode = false;

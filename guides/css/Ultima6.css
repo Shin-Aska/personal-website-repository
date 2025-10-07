@@ -164,3 +164,65 @@ h1, h2, h3, h4 {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
+
+
+.britannia-map-toolbar {
+    display: grid;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    background: rgba(251, 242, 213, 0.8);
+    border: 1px solid rgba(180, 140, 80, 0.4);
+    border-radius: 0.75rem;
+    padding: 0.75rem 1rem;
+    box-shadow: inset 0 1px 2px rgba(56, 45, 36, 0.08);
+}
+
+.britannia-map-toolbar__label {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #92400e;
+}
+
+.britannia-map-toolbar__controls {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.britannia-map-toolbar__input {
+    flex: 1;
+    border: 1px solid rgba(180, 140, 80, 0.6);
+    border-radius: 0.5rem;
+    padding: 0.55rem 0.75rem;
+    background: rgba(255, 255, 255, 0.92);
+    color: #382d24;
+    font-family: 'Marcellus', serif;
+}
+
+.britannia-map-toolbar__input:focus {
+    outline: none;
+    border-color: #d97706;
+    box-shadow: 0 0 0 2px rgba(217, 119, 6, 0.25);
+}
+
+.britannia-map-toolbar__clear {
+    border: none;
+    border-radius: 0.5rem;
+    background: linear-gradient(135deg, #fbbf24, #d97706);
+    color: #1f2937;
+    padding: 0.55rem 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.britannia-map-toolbar__clear:hover,
+.britannia-map-toolbar__clear:focus {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 12px rgba(217, 119, 6, 0.25);
+}
+
+.britannia-map-toolbar__hint {
+    font-size: 0.75rem;
+    color: rgba(146, 64, 14, 0.75);
+}
