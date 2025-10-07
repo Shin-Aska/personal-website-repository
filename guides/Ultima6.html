@@ -7,6 +7,7 @@
     <script src="js/tailwind.js"></script>
     <script src="js/chart.js"></script>
     <link rel="stylesheet" href="css/fonts.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
     <!-- Chosen Palette: Parchment & Ink -->
     <!-- Application Structure Plan: The application is structured as a tabbed interface to mirror a player's typical progression and information-seeking behavior. It's divided into five main sections: 'The Avatar's Path' (character setup), 'The Grand Quest' (walkthrough), 'Britannian Almanac' (data reference), 'World Atlas' (dungeons), and 'Sage's Counsel' (AI-powered help). This non-linear structure allows users to either follow the quest chronologically or quickly look up specific information. Interactive charts, filterable tables, and two new Gemini API features—an AI backstory generator and a strategic advisor—provide dynamic, personalized content. -->
     <!-- Visualization & Content Choices: 
@@ -129,11 +130,15 @@
                     <h2 class="text-3xl font-bold mb-4 text-amber-900">World Atlas: Dungeons of Britannia</h2>
                     <p class="mb-6 text-amber-900/80">The depths of Britannia hold both great treasure and great peril. This guide provides an overview of the key dungeons you must brave to complete your quest.</p>
                     <div class="atlas-map mb-8">
-                        <h3 class="text-2xl font-semibold mb-3 text-amber-900">High-Resolution Britannia Map</h3>
-                        <p class="text-amber-900/80 mb-4">Study every moongate, dungeon entrance, and coastline in a single glance. Click or tap to open the full-size parchment in a new tab.</p>
-                        <a href="images/U6PWorldMap.jpg" target="_blank" rel="noopener" class="block group">
-                            <img src="images/U6PWorldMap.jpg" alt="Ultima VI: The False Prophet world map" class="rounded-lg shadow-md border border-amber-200 group-hover:shadow-xl transition-shadow duration-300" loading="lazy">
-                        </a>
+                        <h3 class="text-2xl font-semibold mb-3 text-amber-900">Interactive Britannia Atlas</h3>
+                        <p class="text-amber-900/80 mb-4">Drag to explore, scroll or pinch to zoom, and tap the markers to focus on notable dungeons across Britannia.</p>
+                        <div id="britannia-map" class="britannia-map" role="application" aria-label="Interactive map of Ultima VI Britannia"></div>
+                        <p class="map-instructions text-sm text-amber-800/80 mt-3">
+                            Prefer the parchment? <a href="images/U6PWorldMap.jpg" target="_blank" rel="noopener" class="underline">Open the full-size map in a new tab</a>.
+                        </p>
+                        <noscript>
+                            <p class="text-sm text-amber-800/80 mt-3">JavaScript is required for the interactive atlas. You can still <a href="images/U6PWorldMap.jpg" target="_blank" rel="noopener" class="underline">view the full map here</a>.</p>
+                        </noscript>
                     </div>
                     <div id="dungeon-list" class="space-y-4"></div>
                 </div>
@@ -187,8 +192,44 @@
 
     </div>
 
-    <script>
-
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+    window.BRITANNIA_MAP_CONFIG = {
+        imageUrl: 'images/U6PWorldMap.jpg',
+        imageSize: [7917, 7917],
+        markers: [
+            {
+                name: 'Dungeon Destard',
+                description: "Retrieve a dragon's egg from the fourth level for Sandy's quest. Invisibility is highly recommended.",
+                position: { x: 45, y: 63 }
+            },
+            {
+                name: 'Dungeon Shame',
+                description: "Find the pirate Old Ybarra on the fourth level and trade food for his map piece.",
+                position: { x: 33, y: 47 }
+            },
+            {
+                name: 'Dungeon Wrong / Covetous',
+                description: "Solve a lever puzzle, descend to level three, and secure Hawkins's map fragment.",
+                position: { x: 56, y: 40 }
+            },
+            {
+                name: 'The Ant Mound',
+                description: "Seek Ol' Hawknose's remains deep below the Drylands to obtain another map piece.",
+                position: { x: 48, y: 70 }
+            },
+            {
+                name: "Sutek's Castle",
+                description: "Blast your way in with powder kegs and recover the balloon plans on the fourth basement level.",
+                position: { x: 65, y: 72 }
+            },
+            {
+                name: 'Dungeon Hythloth',
+                description: "Descend to the gargoyle realm via the Isle of the Avatar and meet Captain Johne.",
+                position: { x: 73, y: 82 }
+            }
+        ]
+    };
 </script>
 <link rel="stylesheet" href="styles.css">
 <script src="js/Ultima6.js"></script>

@@ -1008,6 +1008,7 @@ const gameData = {
             setupEventListeners();
             setupVirtueChart();
             renderPassageList(gameData.passage);
+            setupBritanniaMap();
             document.getElementById('passage-search').addEventListener('input', (e) => {
                 const searchTerm = e.target.value.toLowerCase();
                 const filteredPassage = gameData.passage.filter(p => 
@@ -1437,6 +1438,76 @@ Answer in 2–3 short paragraphs, in-character and practical, giving clear hints
                     tooltip: { mode: 'index', intersect: false }
                 }
             }
+        });
+    }
+
+    function setupBritanniaMap() {
+        const container = document.getElementById('britannia-map');
+        if (!container) {
+            return;
+        }
+
+        if (typeof L === 'undefined') {
+            container.innerHTML = '<p class="text-sm text-amber-800/80">Interactive map failed to load because Leaflet is unavailable.</p>';
+            return;
+        }
+
+        const config = window.BRITANNIA_MAP_CONFIG || {};
+        const imageUrl = config.imageUrl;
+        const imageSize = Array.isArray(config.imageSize) ? config.imageSize : null;
+        const markers = Array.isArray(config.markers) ? config.markers : [];
+
+        if (!imageUrl || !imageSize || imageSize.length !== 2) {
+            container.innerHTML = '<p class="text-sm text-amber-800/80">Interactive map configuration is incomplete.</p>';
+            return;
+        }
+
+        const [width, height] = imageSize;
+        const bounds = [[0, 0], [height, width]];
+
+        // Clear any existing Leaflet instance that might be cached when switching tabs.
+        if (container._leaflet_id) {
+            container._leaflet_id = null;
+        }
+
+        const map = L.map(container, {
+            crs: L.CRS.Simple,
+            minZoom: -2,
+            maxZoom: 4,
+            zoomSnap: 0.25,
+            wheelPxPerZoomLevel: 90,
+            attributionControl: false
+        });
+
+        const overlay = L.imageOverlay(imageUrl, bounds, {
+            alt: 'Ultima VI: The False Prophet world map',
+            interactive: false
+        });
+        overlay.addTo(map);
+
+        map.fitBounds(bounds);
+        map.setMaxBounds(bounds);
+
+        markers.forEach(marker => {
+            const position = marker && marker.position;
+            if (!position || typeof position.x !== 'number' || typeof position.y !== 'number') {
+                return;
+            }
+            const name = marker.name || 'Point of interest';
+            const description = marker.description || '';
+            const xPercent = Math.min(Math.max(position.x, 0), 100);
+            const yPercent = Math.min(Math.max(position.y, 0), 100);
+            const xCoord = (xPercent / 100) * width;
+            const yCoord = (yPercent / 100) * height;
+            const leafletPosition = [yCoord, xCoord];
+            const popupHtml = `
+                <article class="space-y-1">
+                    <h4 class="font-semibold text-base">${name}</h4>
+                    ${description ? `<p class="text-sm leading-snug">${description}</p>` : ''}
+                    <p class="text-xs text-amber-700/80">Approx. coordinates: ${xPercent.toFixed(1)}°E, ${yPercent.toFixed(1)}°S</p>
+                </article>
+            `;
+            L.marker(leafletPosition, { title: name }).addTo(map).bindPopup(popupHtml);
         });
     }
 
