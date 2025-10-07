@@ -1502,13 +1502,61 @@ Answer in 2–3 short paragraphs, in-character and practical, giving clear hints
         }
         const bounds = [[0, 0], [height, width]];
 
+        const markerStyle = {
+            city: {
+                color: '#2563eb',
+                label: 'City'
+            },
+            dungeon: {
+                color: '#dc2626',
+                label: 'Dungeon'
+            },
+            shrine: {
+                color: '#FEC200',
+                label: 'Shrine'
+            },
+            quest: {
+                color: '#d97706',
+                label: 'Quest Site'
+            },
+            castle: {
+                color: '#7c3aed',
+                label: 'Castle or Keep'
+            },
+            fortress: {
+                color: '#7c3aed',
+                label: 'Fortress'
+            },
+            site: {
+                color: '#0891b2',
+                label: 'Site of Interest'
+            },
+            questline: {
+                color: '#0ea5e9',
+                label: 'Questline Marker'
+            },
+            default: {
+                color: '#6b7280',
+                label: 'Point of interest'
+            }
+        };
+
+        const resolveMarkerStyle = (markerData) => {
+            if (!markerData || !markerData.type) {
+                return markerStyle.default;
+            }
+            return markerStyle[markerData.type] || markerStyle.default;
+        };
+
         const buildPopupHtml = (markerData) => {
             const safeDescription = markerData.description ? `<p class="text-sm leading-snug">${markerData.description}</p>` : '';
             const position = markerData.position || {};
+            const style = resolveMarkerStyle(markerData);
             return `
                 <article class="space-y-1">
                     <h4 class="font-semibold text-base">${markerData.name || 'Point of interest'}</h4>
                     ${safeDescription}
+                    <p class="text-xs text-amber-700/80">Category: ${style.label}</p>
                     <p class="text-xs text-amber-700/80">Approx. coordinates: ${typeof position.x === 'number' ? position.x.toFixed(2) : '?'}°E, ${typeof position.y === 'number' ? position.y.toFixed(2) : '?'}°S</p>
                 </article>
             `;
@@ -1567,6 +1615,8 @@ Answer in 2–3 short paragraphs, in-character and practical, giving clear hints
             britanniaMapZoom = map.getZoom();
         });
 
+        const legendEntries = new Map();
+
         markers.forEach(marker => {
             const position = marker && marker.position;
             if (!position || typeof position.x !== 'number' || typeof position.y !== 'number') {
@@ -1577,9 +1627,37 @@ Answer in 2–3 short paragraphs, in-character and practical, giving clear hints
             const latLng = toLatLng(position);
             const leafletPosition = [latLng.lat, latLng.lng];
             const popupHtml = buildPopupHtml(marker);
+            const style = resolveMarkerStyle(marker);
+            if (!legendEntries.has(style.label)) {
+                legendEntries.set(style.label, style.color);
+            }
             const leafletMarker = L.marker(leafletPosition, {
                 title: name,
-                draggable: editorEnabled
+                draggable: editorEnabled,
+                icon: L.divIcon({
+                    className: 'britannia-marker',
+                    html: `
+                        <span style="
+                            display:inline-flex;
+                            align-items:center;
+                            justify-content:center;
+                            width:1.75rem;
+                            height:1.75rem;
+                            border-radius:9999px;
+                            background:${style.color};
+                            color:white;
+                            font-size:0.75rem;
+                            font-weight:700;
+                            border:2px solid rgba(0,0,0,0.3);
+                            box-shadow:0 1px 4px rgba(0,0,0,0.2);
+                        ">
+                            ${name ? name.charAt(0).toUpperCase() : '?'}
+                        </span>
+                    `,
+                    iconSize: [28, 28],
+                    iconAnchor: [14, 28],
+                    popupAnchor: [0, -24]
+                })
             }).addTo(map);
 
             leafletMarker.bindPopup(popupHtml, {
@@ -1603,6 +1681,32 @@ Answer in 2–3 short paragraphs, in-character and practical, giving clear hints
                 });
             }
         });
+
+        if (legendEntries.size > 0) {
+            const legendControl = L.control({ position: 'topright' });
+            legendControl.onAdd = () => {
+                const div = L.DomUtil.create('div', 'britannia-legend bg-white/90 rounded shadow p-3 text-sm space-y-2');
+                div.innerHTML = '<h4 class="font-semibold text-amber-900 mb-2">Marker Types</h4>';
+                legendEntries.forEach((color, label) => {
+                    const item = document.createElement('div');
+                    item.className = 'flex items-center gap-2';
+                    item.innerHTML = `
+                        <span style="
+                            display:inline-block;
+                            width:0.85rem;
+                            height:0.85rem;
+                            border-radius:9999px;
+                            background:${color};
+                            border:1px solid rgba(0,0,0,0.25);
+                        "></span>
+                        <span>${label}</span>
+                    `;
+                    div.appendChild(item);
+                });
+                return div;
+            };
+            legendControl.addTo(map);
+        }
     }
 
     function renderPassageList(data) {
