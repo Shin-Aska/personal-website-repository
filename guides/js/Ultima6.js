@@ -1093,11 +1093,9 @@ const gameData = {
             document.querySelectorAll('.seer-tone-option').forEach(button => {
                 const isTarget = button.dataset.tone === tone;
                 button.setAttribute('aria-pressed', isTarget ? 'true' : 'false');
-                button.classList.toggle('bg-amber-800', isTarget);
-                button.classList.toggle('text-white', isTarget);
-                button.classList.toggle('border-amber-800', isTarget);
+                button.classList.toggle('seer-option-selected', isTarget);
                 if (!isTarget) {
-                    button.classList.remove('bg-amber-800', 'text-white', 'border-amber-800');
+                    button.classList.remove('seer-option-selected');
                 }
             });
         }
@@ -1107,11 +1105,9 @@ const gameData = {
             document.querySelectorAll('.seer-spoiler-option').forEach(button => {
                 const isTarget = button.dataset.spoiler === spoiler;
                 button.setAttribute('aria-pressed', isTarget ? 'true' : 'false');
-                button.classList.toggle('bg-amber-800', isTarget);
-                button.classList.toggle('text-white', isTarget);
-                button.classList.toggle('border-amber-800', isTarget);
+                button.classList.toggle('seer-option-selected', isTarget);
                 if (!isTarget) {
-                    button.classList.remove('bg-amber-800', 'text-white', 'border-amber-800');
+                    button.classList.remove('seer-option-selected');
                 }
             });
         }
