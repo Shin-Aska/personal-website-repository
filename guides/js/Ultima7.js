@@ -67,6 +67,356 @@ const DB = {
     ]
 };
 
+const ULTIMA7_MARKER_STYLE = {
+    city: { color: '#38bdf8', label: 'City or Town' },
+    dungeon: { color: '#f87171', label: 'Dungeon' },
+    quest: { color: '#fbbf24', label: 'Quest Objective' },
+    site: { color: '#34d399', label: 'Site of Interest' },
+    keep: { color: '#c084fc', label: 'Keep or Fortress' },
+    default: { color: '#94a3b8', label: 'Point of Interest' }
+};
+
+let ultima7MapInstance = null;
+let ultima7MapCenter = null;
+let ultima7MapZoom = null;
+let ultima7MarkerEntries = [];
+let ultima7LegendControl = null;
+
+const ultima7SearchState = {
+    bound: false,
+    matches: [],
+    index: -1,
+    activeEntry: null
+};
+
+function resolveUltima7MarkerStyle(markerData) {
+    if (!markerData || !markerData.type) {
+        return ULTIMA7_MARKER_STYLE.default;
+    }
+    return ULTIMA7_MARKER_STYLE[markerData.type] || ULTIMA7_MARKER_STYLE.default;
+}
+
+function buildUltima7MarkerIcon(markerData, { highlight = false } = {}) {
+    const style = resolveUltima7MarkerStyle(markerData);
+    const initial = markerData.name ? markerData.name.charAt(0).toUpperCase() : '?';
+    const highlightStyles = highlight
+        ? 'transform: scale(1.12); box-shadow: 0 0 0 3px rgba(236, 252, 203, 0.95), 0 10px 20px rgba(0, 0, 0, 0.45);'
+        : 'box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);';
+    return L.divIcon({
+        className: 'ultima7-marker',
+        html: `
+            <span style="
+                display:inline-flex;
+                align-items:center;
+                justify-content:center;
+                width:1.8rem;
+                height:1.8rem;
+                border-radius:9999px;
+                background:${style.color};
+                color:#0f172a;
+                font-size:0.85rem;
+                font-weight:700;
+                border:2px solid rgba(15, 23, 42, 0.45);
+                ${highlightStyles}
+            ">
+                ${initial}
+            </span>
+        `,
+        iconSize: [30, 30],
+        iconAnchor: [15, 30],
+        popupAnchor: [0, -24]
+    });
+}
+
+function buildUltima7PopupContent(markerData) {
+    const style = resolveUltima7MarkerStyle(markerData);
+    const description = markerData.description ? `<p class="text-sm leading-snug">${markerData.description}</p>` : '';
+    const coords = markerData.position || {};
+    return `
+        <article class="space-y-1">
+            <h4 class="font-semibold text-base">${markerData.name || 'Point of interest'}</h4>
+            ${description}
+            <p class="text-xs text-slate-300/80">Category: ${style.label}</p>
+            <p class="text-xs text-slate-300/80">Approx. coordinates: ${typeof coords.x === 'number' ? coords.x.toFixed(1) : '?'}°E, ${typeof coords.y === 'number' ? coords.y.toFixed(1) : '?'}°S</p>
+        </article>
+    `;
+}
+
+function ultima7ToLatLng(position, boundsConfig) {
+    const { width, height, minX, maxX, minY, maxY } = boundsConfig;
+    const spanX = maxX - minX;
+    const spanY = maxY - minY;
+    const xPercent = Math.min(Math.max((position.x - minX) / spanX, 0), 1);
+    const yPercent = Math.min(Math.max((position.y - minY) / spanY, 0), 1);
+    return {
+        lat: yPercent * height,
+        lng: xPercent * width
+    };
+}
+
+function createUltima7Marker(markerData, map, boundsConfig) {
+    if (!markerData || !markerData.position) {
+        return null;
+    }
+    const { position } = markerData;
+    if (typeof position.x !== 'number' || typeof position.y !== 'number') {
+        return null;
+    }
+    const latLng = ultima7ToLatLng(position, boundsConfig);
+    const leafletMarker = L.marker([latLng.lat, latLng.lng], {
+        title: markerData.name || 'Point of interest',
+        icon: buildUltima7MarkerIcon(markerData)
+    }).addTo(map);
+    leafletMarker.bindPopup(buildUltima7PopupContent(markerData), {
+        autoPan: true,
+        autoPanPadding: L.point(24, 24)
+    });
+    return { markerData, leafletMarker };
+}
+
+function renderUltima7Legend(map) {
+    if (ultima7LegendControl) {
+        ultima7LegendControl.remove();
+        ultima7LegendControl = null;
+    }
+    if (!ultima7MarkerEntries.length) {
+        return;
+    }
+    const legendEntries = new Map();
+    ultima7MarkerEntries.forEach(({ markerData }) => {
+        const style = resolveUltima7MarkerStyle(markerData);
+        legendEntries.set(style.label, style.color);
+    });
+    ultima7LegendControl = L.control({ position: 'topright' });
+    ultima7LegendControl.onAdd = () => {
+        const container = L.DomUtil.create('div', 'ultima7-legend');
+        const header = L.DomUtil.create('h4', 'ultima7-legend__title', container);
+        header.textContent = 'Legend';
+        legendEntries.forEach((color, label) => {
+            const item = L.DomUtil.create('div', 'ultima7-legend__item', container);
+            item.innerHTML = `
+                <span style="
+                    display:inline-block;
+                    width:0.85rem;
+                    height:0.85rem;
+                    border-radius:9999px;
+                    background:${color};
+                    border:1px solid rgba(15, 23, 42, 0.6);
+                "></span>
+                <span>${label}</span>
+            `;
+        });
+        return container;
+    };
+    ultima7LegendControl.addTo(map);
+}
+
+function clearUltima7SearchHighlight() {
+    if (ultima7SearchState.activeEntry) {
+        ultima7SearchState.activeEntry.leafletMarker.setIcon(
+            buildUltima7MarkerIcon(ultima7SearchState.activeEntry.markerData)
+        );
+        ultima7SearchState.activeEntry.leafletMarker.closePopup();
+        ultima7SearchState.activeEntry = null;
+    }
+}
+
+function focusUltima7Entry(entry, { announce = true } = {}) {
+    if (!entry || !ultima7MapInstance) {
+        return;
+    }
+    if (ultima7SearchState.activeEntry && ultima7SearchState.activeEntry !== entry) {
+        ultima7SearchState.activeEntry.leafletMarker.setIcon(
+            buildUltima7MarkerIcon(ultima7SearchState.activeEntry.markerData)
+        );
+        ultima7SearchState.activeEntry.leafletMarker.closePopup();
+    }
+    entry.leafletMarker.setIcon(buildUltima7MarkerIcon(entry.markerData, { highlight: true }));
+    const latLng = entry.leafletMarker.getLatLng();
+    const targetZoom = Math.max(ultima7MapInstance.getZoom(), 0);
+    ultima7MapInstance.flyTo(latLng, targetZoom, { animate: true, duration: 0.6 });
+    entry.leafletMarker.openPopup();
+    ultima7SearchState.activeEntry = entry;
+    if (announce) {
+        console.info(`[Ultima VII Atlas] Focused "${entry.markerData.name}" (${ultima7SearchState.index + 1} of ${ultima7SearchState.matches.length}).`);
+    }
+}
+
+function setupUltima7SearchHandlers() {
+    if (ultima7SearchState.bound) {
+        return;
+    }
+    const searchInput = document.getElementById('ultima7-map-search');
+    if (!searchInput) {
+        return;
+    }
+    ultima7SearchState.bound = true;
+    const clearButton = document.getElementById('ultima7-map-search-clear');
+
+    const performSearch = () => {
+        const term = searchInput.value.trim().toLowerCase();
+        if (!term) {
+            clearUltima7SearchHighlight();
+            ultima7SearchState.matches = [];
+            ultima7SearchState.index = -1;
+            return;
+        }
+        const matches = ultima7MarkerEntries.filter(({ markerData }) => {
+            return [markerData.name, markerData.type, markerData.description]
+                .filter(Boolean)
+                .some(value => value.toLowerCase().includes(term));
+        });
+        if (!matches.length) {
+            clearUltima7SearchHighlight();
+            ultima7SearchState.matches = [];
+            ultima7SearchState.index = -1;
+            console.info(`[Ultima VII Atlas] No markers match "${term}".`);
+            return;
+        }
+        ultima7SearchState.matches = matches;
+        ultima7SearchState.index = 0;
+        focusUltima7Entry(matches[0], { announce: false });
+        console.info(`[Ultima VII Atlas] Found ${matches.length} marker(s) for "${term}". Press Enter to cycle results.`);
+    };
+
+    const cycleMatch = () => {
+        if (!ultima7SearchState.matches.length) {
+            performSearch();
+            return;
+        }
+        ultima7SearchState.index = (ultima7SearchState.index + 1) % ultima7SearchState.matches.length;
+        focusUltima7Entry(ultima7SearchState.matches[ultima7SearchState.index]);
+    };
+
+    const clearSearch = (focusField = true) => {
+        if (!searchInput.value && !ultima7SearchState.matches.length) {
+            return;
+        }
+        searchInput.value = '';
+        ultima7SearchState.matches = [];
+        ultima7SearchState.index = -1;
+        clearUltima7SearchHighlight();
+        if (focusField) {
+            searchInput.focus();
+        }
+        console.info('[Ultima VII Atlas] Map search cleared.');
+    };
+
+    searchInput.addEventListener('input', performSearch);
+    searchInput.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            cycleMatch();
+        } else if (event.key === 'Escape') {
+            event.preventDefault();
+            clearSearch();
+        }
+    });
+
+    if (clearButton) {
+        clearButton.addEventListener('click', () => clearSearch(true));
+    }
+}
+
+function ensureUltima7Map() {
+    const container = document.getElementById('ultima7-map');
+    if (!container || typeof L === 'undefined') {
+        return;
+    }
+
+    const config = window.ULTIMA7_MAP_CONFIG || {};
+    const imageUrl = config.imageUrl;
+    const imageSize = Array.isArray(config.imageSize) ? config.imageSize : null;
+    const xRange = Array.isArray(config.xRange) && config.xRange.length === 2 ? config.xRange : [0, 100];
+    const yRange = Array.isArray(config.yRange) && config.yRange.length === 2 ? config.yRange : [0, 100];
+
+    if (!imageUrl || !imageSize || imageSize.length !== 2) {
+        container.innerHTML = '<p class="text-sm text-secondary">Interactive map configuration is incomplete.</p>';
+        return;
+    }
+
+    if (ultima7MapInstance) {
+        setTimeout(() => ultima7MapInstance.invalidateSize(), 50);
+        if (ultima7MapCenter) {
+            ultima7MapInstance.setView(ultima7MapCenter, ultima7MapZoom || ultima7MapInstance.getZoom(), { animate: false });
+        }
+        setupUltima7SearchHandlers();
+        return;
+    }
+
+    const bounds = [[0, 0], [imageSize[1], imageSize[0]]];
+    const boundsConfig = {
+        width: imageSize[0],
+        height: imageSize[1],
+        minX: xRange[0],
+        maxX: xRange[1],
+        minY: yRange[0],
+        maxY: yRange[1]
+    };
+
+    const map = L.map(container, {
+        crs: L.CRS.Simple,
+        minZoom: -2.5,
+        maxZoom: 4,
+        zoomSnap: 0.1,
+        wheelPxPerZoomLevel: 90,
+        attributionControl: false
+    });
+
+    L.imageOverlay(imageUrl, bounds, {
+        alt: 'Ultima VII world map',
+        interactive: true
+    }).addTo(map);
+
+    map.fitBounds(bounds);
+    map.setMaxBounds(bounds);
+
+    ultima7MapInstance = map;
+    ultima7MapCenter = map.getCenter();
+    ultima7MapZoom = map.getZoom();
+
+    map.on('moveend', () => {
+        ultima7MapCenter = map.getCenter();
+        ultima7MapZoom = map.getZoom();
+    });
+
+    ultima7MarkerEntries = [];
+    (config.markers || []).forEach(markerData => {
+        const entry = createUltima7Marker(markerData, map, boundsConfig);
+        if (entry) {
+            ultima7MarkerEntries.push(entry);
+        }
+    });
+
+    renderUltima7Legend(map);
+    setupUltima7SearchHandlers();
+
+    setTimeout(() => map.invalidateSize(), 75);
+}
+
+window.ULTIMA7_MAP_CONFIG = {
+    imageUrl: 'images/U7PWorldMap.jpg',
+    imageSize: [6144, 6144],
+    xRange: [0, 100],
+    yRange: [0, 100],
+    editorEnabled: false,
+    markers: [
+        { name: 'Britain', type: 'city', description: 'Capital of Britannia, home to Lord British and the Fellowship headquarters.', position: { x: 52, y: 48 } },
+        { name: 'Trinsic', type: 'city', description: 'Opening murders and Spark\'s recruitment quest begin here.', position: { x: 58, y: 70 } },
+        { name: 'Moonglow', type: 'city', description: 'Hub for the Tetrahedron generator and reagent economy.', position: { x: 78, y: 30 } },
+        { name: 'Buccaneer\'s Den', type: 'city', description: 'Pirate haven tied to Hook, Batlin, and the Cube Generator plot.', position: { x: 72, y: 80 } },
+        { name: 'Minoc', type: 'city', description: 'Artisan guild quests and high-tier equipment sourcing.', position: { x: 60, y: 18 } },
+        { name: 'Skara Brae', type: 'city', description: 'Haunted island needed to learn the answers to life and death.', position: { x: 18, y: 52 } },
+        { name: 'Isle of Fire', type: 'quest', description: 'Forge of Virtue tests raise the Avatar\'s core attributes.', position: { x: 45, y: 92 } },
+        { name: 'Isle of the Avatar', type: 'site', description: 'Descend through Hythloth to confront the Black Gate finale.', position: { x: 60, y: 95 } },
+        { name: 'Dungeon Destard', type: 'dungeon', description: 'Dragon lair hiding the Fellowship\'s trap mission and diamond loot.', position: { x: 40, y: 68 } },
+        { name: 'Tetrahedron Generator', type: 'quest', description: 'Dispel Penumbra\'s stasis and destroy the magic generator on Dagger Isle.', position: { x: 88, y: 34 } },
+        { name: 'Sphere Generator', type: 'quest', description: 'Deep in Dungeon Despise; navigate the moongate puzzle to shatter it.', position: { x: 54, y: 32 } },
+        { name: 'Cube Generator', type: 'quest', description: 'Meditation Retreat operation—wear Caddellite helms before entry.', position: { x: 38, y: 46 } },
+        { name: 'Fellowship Meditation Retreat', type: 'site', description: 'Expose the Guardian\'s sermons and the inner circle here.', position: { x: 68, y: 60 } }
+    ]
+};
+
 // Helpful, spoiler-light offline hints to ensure useful guidance without relying entirely on the AI
 const OFFLINE_HINTS = {
     "The Trinsic Murders": "• Check the stables for a golden key and speak with Spark about what he saw.\n• Question Gilberto at the healer and note the ship 'Crown Jewel'.\n• Pass Mayor Finnigan’s quiz to get the password 'Blackbird' to leave Trinsic.",
@@ -190,6 +540,9 @@ document.addEventListener('DOMContentLoaded', () => {
             section.classList.toggle('active', section.id === targetId);
             section.classList.toggle('hidden', section.id !== targetId);
         });
+        if (targetId === 'atlas') {
+            ensureUltima7Map();
+        }
     }
 
     mainNav.addEventListener('click', (e) => {
@@ -623,6 +976,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initArmory();
     initMagic();
     initQuests();
+    ensureUltima7Map();
 
     switchTab('party');
 });

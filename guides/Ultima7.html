@@ -10,6 +10,7 @@
     <script src="js/tailwind.js"></script>
     <script src="js/chart.js"></script>
     <link rel="stylesheet" href="css/fonts.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
     <!-- Chosen Palette: Guardian's Shadow -->
     <!-- Application Structure Plan: A task-oriented, dashboard-style SPA. The structure prioritizes quick information retrieval over the linear format of the source document. A fixed top navigation bar allows users to instantly jump between four key sections: 'Party Builder', 'Armory & Bestiary', 'Spellbook', and 'Quest Log'. This non-linear design is optimal for a game guide, as players typically need to look up specific, disconnected pieces of information during gameplay (e.g., "Who should I recruit next?" or "Where is the best sword?"). Each section is designed as an interactive tool (e.g., a companion comparator, a searchable equipment table, a quest filter) to directly support player decision-making. -->
     <!-- Visualization & Content Choices: 
@@ -37,6 +38,7 @@
                 <button data-target="armory" class="nav-button px-4 py-2 rounded-lg font-semibold">Armory & Bestiary</button>
                 <button data-target="magic" class="nav-button px-4 py-2 rounded-lg font-semibold">Spellbook</button>
                 <button data-target="quests" class="nav-button px-4 py-2 rounded-lg font-semibold">Quest Log</button>
+                <button data-target="atlas" class="nav-button px-4 py-2 rounded-lg font-semibold">World Atlas</button>
             </nav>
         </div>
     </header>
@@ -221,6 +223,33 @@
             </div>
         </section>
 
+        <!-- World Atlas Section -->
+        <section id="atlas" class="content-section">
+            <div class="text-center mb-8">
+                <h2 class="text-4xl font-bold mb-2">World Atlas</h2>
+                <p class="text-lg max-w-3xl mx-auto text-secondary">Survey Britannia at a glance. Drag to explore, scroll to zoom, and tap the markers to uncover high-value destinations across Ultima VII.</p>
+            </div>
+
+            <div class="section-bg p-6 rounded-xl shadow-lg">
+                <div class="britannia-map-toolbar">
+                    <label for="ultima7-map-search" class="britannia-map-toolbar__label">Search Britannia</label>
+                    <div class="britannia-map-toolbar__controls">
+                        <input id="ultima7-map-search" type="search" autocomplete="off" class="britannia-map-toolbar__input" placeholder="Find a city, dungeon, or landmark…">
+                        <button type="button" id="ultima7-map-search-clear" class="britannia-map-toolbar__clear" aria-label="Clear map search">Clear</button>
+                    </div>
+                    <p class="britannia-map-toolbar__hint">Press Enter to jump between matches. Escape clears the search.</p>
+                </div>
+
+                <div id="ultima7-map" class="britannia-map" role="application" aria-label="Interactive map of Ultima VII Britannia"></div>
+                <p class="map-instructions text-sm text-secondary mt-3">
+                    Prefer parchment? <a href="images/U7PWorldMap.jpg" target="_blank" rel="noopener" class="underline">Open the full-size map in a new tab</a>.
+                </p>
+                <noscript>
+                    <p class="text-sm text-secondary mt-3">JavaScript is required for the interactive atlas. You can still <a href="images/U7PWorldMap.jpg" target="_blank" rel="noopener" class="underline">view the full map here</a>.</p>
+                </noscript>
+            </div>
+        </section>
+
     </main>
 
     <!-- AI Response Modal -->
@@ -236,7 +265,7 @@
             </div>
         </div>
     </div>
-
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="js/Ultima7.js"></script>
 </body>
 </html>

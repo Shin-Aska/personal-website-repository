@@ -73,3 +73,125 @@ h1, h2, h3, h4 {
 .border-color {
     border-color: #4a5568;
 }
+
+.britannia-map {
+    width: 100%;
+    min-height: 320px;
+    height: clamp(320px, 60vw, 640px);
+    border: 1px solid rgba(148, 163, 184, 0.5);
+    border-radius: 0.75rem;
+    overflow: hidden;
+    box-shadow: inset 0 1px 4px rgba(15, 23, 42, 0.35);
+}
+
+.map-instructions a {
+    color: #f6e05e;
+}
+
+.britannia-map-toolbar {
+    display: grid;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    background: rgba(45, 55, 72, 0.85);
+    border: 1px solid rgba(148, 163, 184, 0.4);
+    border-radius: 0.75rem;
+    padding: 0.75rem 1rem;
+    box-shadow: inset 0 1px 2px rgba(15, 23, 42, 0.4);
+}
+
+.britannia-map-toolbar__label {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #f6e05e;
+}
+
+.britannia-map-toolbar__controls {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.britannia-map-toolbar__input {
+    flex: 1;
+    border: 1px solid rgba(148, 163, 184, 0.6);
+    border-radius: 0.5rem;
+    padding: 0.55rem 0.75rem;
+    background: rgba(26, 32, 44, 0.92);
+    color: #e2e8f0;
+}
+
+.britannia-map-toolbar__input:focus {
+    outline: none;
+    border-color: #63b3ed;
+    box-shadow: 0 0 0 2px rgba(99, 179, 237, 0.25);
+}
+
+.britannia-map-toolbar__clear {
+    border: none;
+    border-radius: 0.5rem;
+    background: linear-gradient(135deg, #63b3ed, #3182ce);
+    color: #0f172a;
+    padding: 0.55rem 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.britannia-map-toolbar__clear:hover,
+.britannia-map-toolbar__clear:focus {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 12px rgba(49, 130, 206, 0.4);
+}
+
+.britannia-map-toolbar__hint {
+    font-size: 0.75rem;
+    color: rgba(226, 232, 240, 0.6);
+}
+
+.leaflet-container {
+    background: #111827;
+}
+
+.leaflet-popup-content-wrapper {
+    background: rgba(30, 41, 59, 0.95);
+    border-radius: 0.5rem;
+    border: 1px solid rgba(148, 163, 184, 0.4);
+    color: #e2e8f0;
+}
+
+.leaflet-popup-tip {
+    background: rgba(30, 41, 59, 0.95);
+    border: 1px solid rgba(148, 163, 184, 0.4);
+}
+
+.leaflet-popup-content {
+    margin: 0.5rem 0;
+}
+
+.britannia-map--adding {
+    cursor: crosshair !important;
+}
+
+.ultima7-legend {
+    background: rgba(30, 41, 59, 0.92);
+    border: 1px solid rgba(148, 163, 184, 0.45);
+    border-radius: 0.75rem;
+    padding: 0.75rem 0.9rem;
+    color: #e2e8f0;
+    min-width: 12rem;
+    box-shadow: 0 12px 24px rgba(15, 23, 42, 0.35);
+    font-size: 0.85rem;
+}
+
+.ultima7-legend__title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.ultima7-legend__item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    line-height: 1.4;
+}
