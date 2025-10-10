@@ -187,35 +187,54 @@
             <section id="counsel" class="tab-content">
                 <div class="bg-amber-50/50 p-6 rounded-lg shadow-md">
                     <h2 class="text-3xl font-bold mb-4 text-amber-900">✨ Consult with the Seer</h2>
-                    <p class="mb-6 text-amber-900/80">The path of the Avatar is not always clear. If you find yourself
-                        lost, perplexed by a puzzle, or seeking strategic wisdom, pose your query to the seer. The
-                        ethereal winds will carry your question and return with guidance.</p>
-                    <div class="w-full space-y-6">
-                        <div>
-                            <label for="seer-query" class="block text-lg font-semibold text-amber-900 mb-2">What
-                                guidance do you seek?</label>
-                            <textarea id="seer-query" rows="4"
-                                class="w-full p-2 border border-amber-300 rounded-md bg-white/70 focus:ring-amber-500 focus:border-amber-500"
-                                placeholder="e.g., How can I defeat the dragons in Destard? or Where can I find the plans for the hot-air balloon?"></textarea>
+                    <p class="mb-6 text-amber-900/80">The seer no longer demands checklists and scrolls. Instead, attune the
+                        lenses, whisper your question, and let a handful of runes colour the response. The counsel that returns will
+                        flow in the voice and spoiler veil you choose.</p>
+                    <div class="grid lg:grid-cols-2 gap-6">
+                        <div class="space-y-6">
+                            <div class="bg-white/75 border border-amber-200/70 rounded-lg p-4 shadow-sm">
+                                <label for="seer-query" class="block text-lg font-semibold text-amber-900 mb-2">Whisper your dilemma</label>
+                                <textarea id="seer-query" rows="5"
+                                    class="w-full p-3 border border-amber-300 rounded-md bg-white/80 focus:ring-amber-500 focus:border-amber-500"
+                                    placeholder="e.g., How can I defeat the dragons in Destard? or Where can I find the plans for the hot-air balloon?"></textarea>
+                                <div class="mt-4">
+                                    <h3 class="text-sm font-semibold text-amber-900 mb-2">Shortcut sparks</h3>
+                                    <div id="seer-shortcut-grid" class="grid sm:grid-cols-2 gap-2"></div>
+                                </div>
+                            </div>
+                            <div class="bg-white/75 border border-amber-200/70 rounded-lg p-4 shadow-sm space-y-4">
+                                <div>
+                                    <h3 class="text-sm font-semibold text-amber-900 mb-2">Tune the seer's voice</h3>
+                                    <div class="flex flex-wrap gap-2" id="seer-tone-options">
+                                        <button type="button" class="seer-tone-option px-3 py-2 rounded-md border border-amber-300 bg-white/70 text-sm font-medium text-amber-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500" data-tone="pragmatic" data-default="true">Pragmatic counsel</button>
+                                        <button type="button" class="seer-tone-option px-3 py-2 rounded-md border border-amber-300 bg-white/70 text-sm font-medium text-amber-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500" data-tone="visionary">Visionary prophecy</button>
+                                        <button type="button" class="seer-tone-option px-3 py-2 rounded-md border border-amber-300 bg-white/70 text-sm font-medium text-amber-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500" data-tone="cryptic">Cryptic riddles</button>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h3 class="text-sm font-semibold text-amber-900 mb-2">Spoiler veil</h3>
+                                    <div class="flex flex-wrap gap-2" id="seer-spoiler-options">
+                                        <button type="button" class="seer-spoiler-option px-3 py-2 rounded-md border border-amber-300 bg-white/70 text-sm font-medium text-amber-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500" data-spoiler="light" data-default="true">Gentle nudges</button>
+                                        <button type="button" class="seer-spoiler-option px-3 py-2 rounded-md border border-amber-300 bg-white/70 text-sm font-medium text-amber-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500" data-spoiler="balanced">Balanced guidance</button>
+                                        <button type="button" class="seer-spoiler-option px-3 py-2 rounded-md border border-amber-300 bg-white/70 text-sm font-medium text-amber-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500" data-spoiler="direct">Full disclosure</button>
+                                    </div>
+                                </div>
+                                <button id="ask-seer"
+                                    class="w-full bg-amber-800 hover:bg-amber-900 text-white font-bold py-3 px-4 rounded transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500">Ask the Seer</button>
+                            </div>
                         </div>
-                        <div>
-                            <h3 class="text-xl font-semibold text-amber-900 mb-2">Focus the Seer's Sight</h3>
-                            <p class="text-sm text-amber-800/80 mb-3">Select up to three lore packets to include in your
-                                request. The seer will weave these notes directly into the answer.</p>
-                            <div id="seer-context-options" class="grid sm:grid-cols-2 gap-3"></div>
+                        <div class="space-y-4">
+                            <div class="bg-white/75 border border-amber-200/70 rounded-lg p-4 shadow-sm">
+                                <h3 class="text-lg font-semibold text-amber-900 mb-2">Infuse lore runes</h3>
+                                <p class="text-sm text-amber-800/80 mb-3">Tap up to three runes to seed the response with specific context. Each rune adds flavour, not a script.</p>
+                                <div id="seer-context-deck" class="flex flex-wrap gap-3"></div>
+                                <p id="seer-context-limit" class="mt-3 text-xs text-amber-700/80 hidden">Only three runes may be infused at once.</p>
+                            </div>
+                            <div class="bg-white/75 border border-amber-200/70 rounded-lg p-4 shadow-inner">
+                                <h4 class="text-sm font-semibold text-amber-900 mb-2">Active infusions</h4>
+                                <div id="seer-context-infusions" class="text-sm text-amber-800/80 italic">No runes selected—answers will be purely intuitive.</div>
+                            </div>
                         </div>
-                        <div>
-                            <label for="seer-shortcuts" class="block text-sm font-semibold text-amber-900 mb-2">Need a
-                                quick prompt?</label>
-                            <select id="seer-shortcuts"
-                                class="w-full p-2 border border-amber-300 rounded-md bg-white/70 focus:ring-amber-500 focus:border-amber-500">
-                                <option value="">Choose a prepared question…</option>
-                            </select>
-                        </div>
-                        <button id="ask-seer"
-                            class="bg-amber-800 hover:bg-amber-900 text-white font-bold py-2 px-4 rounded transition-colors duration-300">
-                            Ask the Seer
-                        </button>
                     </div>
                     <div id="seer-response" class="mt-6"></div>
                 </div>

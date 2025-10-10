@@ -974,6 +974,116 @@ const gameData = {
             ]
         };
 
+        const seerState = {
+            tone: "pragmatic",
+            spoiler: "light",
+            runes: []
+        };
+
+        const seerToneDirectives = {
+            pragmatic: "Respond like a seasoned Britannian tactician: grounded, specific, and focused on actionable steps.",
+            visionary: "Speak with lyrical foresight, weaving thematic connections and encouragement while still giving useful direction.",
+            cryptic: "Answer in enigmatic hints and allegory while keeping guidance decipherable with careful thought."
+        };
+
+        const seerSpoilerDirectives = {
+            light: "Offer gentle nudges only; reveal no explicit solutions unless absolutely necessary.",
+            balanced: "Provide a blend of hints and clear answers; reveal solutions when vital to progress.",
+            direct: "State solutions plainly and walk the player through the necessary steps."
+        };
+
+        const seerRuneButtons = new Map();
+        let seerLimitTimeout = null;
+
+        function updateSeerInfusionsDisplay() {
+            const container = document.getElementById('seer-context-infusions');
+            if (!container) {
+                return;
+            }
+            if (!seerState.runes.length) {
+                container.classList.add('italic');
+                container.innerHTML = "No runes selected—answers will be purely intuitive.";
+                return;
+            }
+            container.classList.remove('italic');
+            const fragments = seerState.runes.map(id => {
+                const packet = gameData.seerContext.find(entry => entry.id === id);
+                if (!packet) {
+                    return '';
+                }
+                return `<div class="px-3 py-2 bg-amber-100/70 border border-amber-300 rounded-md text-amber-900"><strong>${packet.title}:</strong> ${packet.summary}</div>`;
+            }).filter(Boolean);
+            container.innerHTML = `<div class="flex flex-col gap-2">${fragments.join('')}</div>`;
+        }
+
+        function setSeerTone(tone) {
+            seerState.tone = tone;
+            document.querySelectorAll('.seer-tone-option').forEach(button => {
+                const isTarget = button.dataset.tone === tone;
+                button.setAttribute('aria-pressed', isTarget ? 'true' : 'false');
+                button.classList.toggle('bg-amber-800', isTarget);
+                button.classList.toggle('text-white', isTarget);
+                button.classList.toggle('border-amber-800', isTarget);
+                if (!isTarget) {
+                    button.classList.remove('bg-amber-800', 'text-white', 'border-amber-800');
+                }
+            });
+        }
+
+        function setSeerSpoiler(spoiler) {
+            seerState.spoiler = spoiler;
+            document.querySelectorAll('.seer-spoiler-option').forEach(button => {
+                const isTarget = button.dataset.spoiler === spoiler;
+                button.setAttribute('aria-pressed', isTarget ? 'true' : 'false');
+                button.classList.toggle('bg-amber-800', isTarget);
+                button.classList.toggle('text-white', isTarget);
+                button.classList.toggle('border-amber-800', isTarget);
+                if (!isTarget) {
+                    button.classList.remove('bg-amber-800', 'text-white', 'border-amber-800');
+                }
+            });
+        }
+
+        function toggleSeerRune(runeId) {
+            const limitNotice = document.getElementById('seer-context-limit');
+            const currentIndex = seerState.runes.indexOf(runeId);
+            if (currentIndex >= 0) {
+                seerState.runes.splice(currentIndex, 1);
+                const button = seerRuneButtons.get(runeId);
+                if (button) {
+                    button.classList.remove('bg-amber-100/80', 'border-amber-500', 'shadow-md');
+                    button.classList.add('bg-white/70', 'border-amber-200/90');
+                    button.setAttribute('aria-pressed', 'false');
+                }
+                if (limitNotice) {
+                    limitNotice.classList.add('hidden');
+                }
+                updateSeerInfusionsDisplay();
+                return;
+            }
+
+            if (seerState.runes.length >= 3) {
+                if (limitNotice) {
+                    limitNotice.classList.remove('hidden');
+                    clearTimeout(seerLimitTimeout);
+                    seerLimitTimeout = setTimeout(() => limitNotice.classList.add('hidden'), 1800);
+                }
+                return;
+            }
+
+            seerState.runes.push(runeId);
+            const button = seerRuneButtons.get(runeId);
+            if (button) {
+                button.classList.remove('bg-white/70', 'border-amber-200/90');
+                button.classList.add('bg-amber-100/80', 'border-amber-500', 'shadow-md');
+                button.setAttribute('aria-pressed', 'true');
+            }
+            if (limitNotice && seerState.runes.length < 3) {
+                limitNotice.classList.add('hidden');
+            }
+            updateSeerInfusionsDisplay();
+        }
+
         gameData.pcItemList = parsePcItemList(gameData.pcItemListRaw || "");
 
         let britanniaMapInstance = null;
@@ -1109,42 +1219,41 @@ const gameData = {
             virtueSelection.appendChild(label);
         });
 
-        const seerContextContainer = document.getElementById('seer-context-options');
-        if (seerContextContainer) {
-            gameData.seerContext.forEach(packet => {
-                const div = document.createElement('div');
-                div.className = "p-4 bg-white/60 border border-amber-200 rounded-md shadow-sm hover:border-amber-400 transition";
-                div.innerHTML = `
-                    <label class="flex flex-col gap-2 cursor-pointer">
-                        <div class="flex items-center gap-2">
-                            <input type="checkbox" name="seer-context" value="${packet.id}" class="seer-context-checkbox h-4 w-4 text-amber-600 rounded border-amber-300 focus:ring-amber-500">
-                            <span class="font-semibold text-amber-900">${packet.title}</span>
-                        </div>
-                        <p class="text-sm text-amber-800/80">${packet.summary}</p>
-                        <p class="text-xs text-amber-700/80 hidden lg:block">${packet.details}</p>
-                    </label>`;
-                seerContextContainer.appendChild(div);
+        const seerShortcutGrid = document.getElementById('seer-shortcut-grid');
+        if (seerShortcutGrid) {
+            gameData.seerShortcuts.forEach(shortcut => {
+                const button = document.createElement('button');
+                button.type = 'button';
+                button.className = "seer-shortcut-btn px-3 py-2 text-sm font-medium text-amber-900 border border-amber-300 rounded-md bg-white/70 hover:bg-amber-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500";
+                button.dataset.prompt = shortcut.prompt;
+                button.textContent = shortcut.label;
+                button.addEventListener('click', () => {
+                    const queryField = document.getElementById('seer-query');
+                    if (queryField) {
+                        queryField.value = shortcut.prompt;
+                        queryField.focus();
+                    }
+                });
+                seerShortcutGrid.appendChild(button);
             });
         }
 
-        const seerShortcutsSelect = document.getElementById('seer-shortcuts');
-        if (seerShortcutsSelect) {
-            gameData.seerShortcuts.forEach(shortcut => {
-                const option = document.createElement('option');
-                option.value = shortcut.prompt;
-                option.textContent = shortcut.label;
-                seerShortcutsSelect.appendChild(option);
-            });
-            seerShortcutsSelect.addEventListener('change', (event) => {
-                const prompt = event.target.value;
-                if (prompt) {
-                    const queryField = document.getElementById('seer-query');
-                    if (queryField) {
-                        queryField.value = prompt;
-                    }
-                }
+        const seerDeck = document.getElementById('seer-context-deck');
+        if (seerDeck) {
+            gameData.seerContext.forEach(packet => {
+                const button = document.createElement('button');
+                button.type = 'button';
+                button.className = "seer-context-card flex-1 min-w-[160px] px-4 py-3 text-left border border-amber-200/90 rounded-lg bg-white/70 shadow-sm transition hover:border-amber-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500";
+                button.innerHTML = `<span class="block text-sm font-semibold text-amber-900">${packet.title}</span><span class="block text-xs text-amber-700/80 mt-1">${packet.summary}</span>`;
+                button.dataset.runeId = packet.id;
+                button.setAttribute('aria-pressed', 'false');
+                button.addEventListener('click', () => toggleSeerRune(packet.id));
+                seerDeck.appendChild(button);
+                seerRuneButtons.set(packet.id, button);
             });
         }
+
+        updateSeerInfusionsDisplay();
 
         const cheatList = document.getElementById('cheat-list');
         if (cheatList) {
@@ -1286,6 +1395,25 @@ const gameData = {
         document.getElementById('generate-chronicle').addEventListener('click', generateChronicle);
         document.getElementById('ask-seer').addEventListener('click', askTheSeer);
 
+        const toneButtons = document.querySelectorAll('.seer-tone-option');
+        const spoilerButtons = document.querySelectorAll('.seer-spoiler-option');
+
+        const defaultTone = Array.from(toneButtons).find(button => button.dataset.default === 'true');
+        if (defaultTone) {
+            setSeerTone(defaultTone.dataset.tone);
+        }
+        toneButtons.forEach(button => {
+            button.addEventListener('click', () => setSeerTone(button.dataset.tone));
+        });
+
+        const defaultSpoiler = Array.from(spoilerButtons).find(button => button.dataset.default === 'true');
+        if (defaultSpoiler) {
+            setSeerSpoiler(defaultSpoiler.dataset.spoiler);
+        }
+        spoilerButtons.forEach(button => {
+            button.addEventListener('click', () => setSeerSpoiler(button.dataset.spoiler));
+        });
+
         setupKeywordHintButtons();
     }
 
@@ -1423,6 +1551,13 @@ const gameData = {
             alert("You must first pose a question to the seer.");
             return;
         }
+        const chosenRunes = seerState.runes.map(id => {
+            const packet = gameData.seerContext.find(entry => entry.id === id);
+            return packet ? `- ${packet.title}: ${packet.details}` : null;
+        }).filter(Boolean);
+        const runeContext = chosenRunes.length ? `Lore Infusions:\n${chosenRunes.join('\n')}` : "Lore Infusions: None; rely on general knowledge.";
+        const toneDirective = seerToneDirectives[seerState.tone] || seerToneDirectives.pragmatic;
+        const spoilerDirective = seerSpoilerDirectives[seerState.spoiler] || seerSpoilerDirectives.light;
         const prompt = `You are a far-seeing seer in Ultima VI: The False Prophet. Ground your guidance in this quest context (use it to inform your answer; do not just restate it):
 
 - Act I — Liberate the Shrines: find each Rune and mantra, cleanse the eight shrines, and collect the Moonstones.
@@ -1430,7 +1565,14 @@ const gameData = {
 - Act III — Gargoyle Realm: through Hythloth meet Captain Johne, recruit Beh Lem, wear the Amulet of Submission before Lord Draxinusom; build the balloon to reach the Shrine of Singularity, learn UN, OR, US and chant UNORUS.
 - Final Ritual: recover the Vortex Cube at Stonegate; repair the Gargoyle lens and obtain the Britannian lens (glass sword → Ephemerides); at the Codex, set each lens halfway between its flame and the Codex, load all eight Moonstones into the Cube, then use it.
 
-Answer in 2–3 short paragraphs, in-character and practical, giving clear hints and options (avoid unnecessary spoilers). Player’s question: "${query}"`;
+${runeContext}
+
+Tone directive: ${toneDirective}
+Spoiler directive: ${spoilerDirective}
+
+Answer in 2–3 short paragraphs, stay in-character, and keep language vivid yet concise. Offer optional alternatives when helpful.
+
+Player’s question: "${query}"`;
         const outputElement = document.getElementById('seer-response');
         callGeminiAPI(prompt, outputElement);
     }
