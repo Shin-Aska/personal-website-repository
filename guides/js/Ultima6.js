@@ -463,6 +463,78 @@ const gameData = {
             ],
             seerContext: [
                 {
+                    id: "summons-britannia",
+                    title: "Summons to Britannia",
+                    summary: "Opening ambush, first Gargoyle clash, and Lord British's briefing.",
+                    details: `Step through the red moongate, survive the sacrificial rescue, loot gargoyle gear, then speak to Lord British using <code>GARGOYLES</code>, <code>SHRINES</code>, and <code>STONE</code>. Follow up with Nystul about the <code>BOOK</code> to deliver the Gargish tome to Mariah.`
+                },
+                {
+                    id: "shrine-liberation",
+                    title: "Liberate the Shrines",
+                    summary: "Rune hunts across the eight virtue cities." ,
+                    details: `Track Ariana, Manrel, Sherry, Boskin, Selganor, Whitsaber, Marney, and Antonio to reclaim each Rune. Pair every rune with its mantra (MU, AHM, RA, BEH, CAH, SUMM, OM, LUM) before cleansing the shrines and recovering Moonstones.`
+                },
+                {
+                    id: "thieves-guild",
+                    title: "Shadowed Initiation",
+                    summary: "Join Buccaneer's Den guild to chase Hawkins's map pieces.",
+                    details: `Meet Homer about <code>HAWKINS</code>, accept Budo's task, infiltrate Castle Britannia's sewers, and pickpocket Phoenix's guild belt with <code>INVISIBILITY</code> + <code>PICKPOCKET</code>. Use the membership to start the nine-piece treasure hunt.`
+                },
+                {
+                    id: "sacred-quest",
+                    title: "Sacred Quest Assembly",
+                    summary: "Craft the hot-air balloon and gather ritual artifacts.",
+                    details: `Loot Sutek's catacombs for balloon plans, spin 40 spider silk via Arbeth, weave cloth with Charlotte, sew the bag with Marissa, buy Michelle's wicker basket, then collect rope and a cauldron before <code>USE</code>-assembling the balloon. Parallel tasks repair the Gargoyle lens and forge Ephemerides's Britannian lens.`
+                },
+                {
+                    id: "castle-preparations",
+                    title: "Castle Preparations",
+                    summary: "Secure spellbook, reagents, and early gear inside Castle Britannia.",
+                    details: `After Lord British's briefing, raid the southwest study for the spellbook and reagents, sweep kitchens and barracks for food, torches, and armor, and note owned items to avoid karma loss. Locate Sherry near the throne room for future Valor plans.`
+                },
+                {
+                    id: "gargoyle-diplomacy",
+                    title: "Gargoyle Diplomacy",
+                    summary: "Navigate Hythloth, recruit Beh Lem, and earn Draxinusom's trust.",
+                    details: `Descend Hythloth with Protection magic, learn Gargish from Captain Johne's scroll, exit to enlist Beh Lem (<code>JOIN</code>), then accept Draxinusom's <code>SURRENDER</code> trial to wear the Amulet of Submission and move freely in the Gargoyle city.`
+                },
+                {
+                    id: "silver-tablet",
+                    title: "Silver Tablet Trail",
+                    summary: "Hand Mariah the Gargish book and chase leads to Hawkins's crew.",
+                    details: `Deliver the <code>BOOK</code> to Mariah at the Lycaeum, learn about the missing tablet half, question Zoltan's gypsies with <code>TABLET</code>, and follow the clues toward Captain Hawkins and Buccaneer's Den.`
+                },
+                {
+                    id: "pirate-map",
+                    title: "Hawkins Map Fragments",
+                    summary: "Track all nine treasure scraps across Britannia.",
+                    details: `Dive the shipwreck at 71N 15E, trade food to Ybarra in Shame, solve Wrong's lever maze, scour the Ant Mound hoard, expose Whitsaber with <code>GORDON</code>, move Bonn's harpsichord, bargain with Arturos's gypsies, barter Morchella a magic shield, then return to Homer for the final piece.`
+                },
+                {
+                    id: "stonegate-vortex",
+                    title: "Stonegate Diplomacy",
+                    summary: "Peacefully retrieve the Vortex Cube from cyclops guardians.",
+                    details: `Approach Stonegate at 10N 37E, befriend the patriarch with a freshly caught fish, navigate the lower levels via secret doors, and secure the Vortex Cube without bloodshed.`
+                },
+                {
+                    id: "gargoyle-principles",
+                    title: "Gargoyle Principles",
+                    summary: "Earn recognition at Control, Passion, and Diligence shrines.",
+                    details: `Visit each Gargish shrine, commune with Mondain, Minax, and Exodus to learn <code>UN</code>, <code>OR</code>, and <code>US</code>, then combine them at the Shrine of Singularity to formalize the Sacred Quest.`
+                },
+                {
+                    id: "codex-guardians",
+                    title: "Codex Guardians",
+                    summary: "Pass the Ethereal guardians and prepare the final ritual site.",
+                    details: `After attaining Sacred Quest status, return to the Isle of the Avatar, let the guardians part, and position the lenses and Vortex Cube precisely between the Flames of Infinity and Singularity before activating the cube.`
+                },
+                {
+                    id: "codex-ritual",
+                    title: "Ritual of Balance",
+                    summary: "Final Codex placement puzzle with lenses and Vortex Cube.",
+                    details: `Load all eight Moonstones into the Vortex Cube, position the Britannian lens between the Codex and Flame of Singularity, the Gargoyle lens between the Codex and Flame of Infinity, set the charged cube before the Codex, then <code>USE</code> it to return the tome to the Ethereal Void.`
+                },
+                {
                     id: "cheat-menu",
                     title: "Secret Cheaters Menu",
                     summary: "Unlock Ultima VI's hidden debug interface.",
