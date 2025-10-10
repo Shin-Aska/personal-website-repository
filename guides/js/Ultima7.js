@@ -73,6 +73,14 @@ const ULTIMA7_MARKER_STYLE = {
     quest: { color: '#fbbf24', label: 'Quest Objective' },
     site: { color: '#34d399', label: 'Site of Interest' },
     keep: { color: '#c084fc', label: 'Keep or Fortress' },
+    castle: { color: '#c084fc', label: 'Castle or Keep' },
+    region: { color: '#0ea5e9', label: 'Region' },
+    npc: { color: '#fde68a', label: 'Notable NPC' },
+    companion: { color: '#f472b6', label: 'Companion' },
+    creature: { color: '#4ade80', label: 'Friendly Creature' },
+    monster: { color: '#ef4444', label: 'Hostile Creature' },
+    enemy: { color: '#b91c1c', label: 'Enemy Faction' },
+    treasure: { color: '#facc15', label: 'Treasure' },
     default: { color: '#94a3b8', label: 'Point of Interest' }
 };
 
@@ -399,22 +407,8 @@ window.ULTIMA7_MAP_CONFIG = {
     imageSize: [6144, 6144],
     xRange: [0, 100],
     yRange: [0, 100],
-    editorEnabled: false,
-    markers: [
-        { name: 'Britain', type: 'city', description: 'Capital of Britannia, home to Lord British and the Fellowship headquarters.', position: { x: 52, y: 48 } },
-        { name: 'Trinsic', type: 'city', description: 'Opening murders and Spark\'s recruitment quest begin here.', position: { x: 58, y: 70 } },
-        { name: 'Moonglow', type: 'city', description: 'Hub for the Tetrahedron generator and reagent economy.', position: { x: 78, y: 30 } },
-        { name: 'Buccaneer\'s Den', type: 'city', description: 'Pirate haven tied to Hook, Batlin, and the Cube Generator plot.', position: { x: 72, y: 80 } },
-        { name: 'Minoc', type: 'city', description: 'Artisan guild quests and high-tier equipment sourcing.', position: { x: 60, y: 18 } },
-        { name: 'Skara Brae', type: 'city', description: 'Haunted island needed to learn the answers to life and death.', position: { x: 18, y: 52 } },
-        { name: 'Isle of Fire', type: 'quest', description: 'Forge of Virtue tests raise the Avatar\'s core attributes.', position: { x: 45, y: 92 } },
-        { name: 'Isle of the Avatar', type: 'site', description: 'Descend through Hythloth to confront the Black Gate finale.', position: { x: 60, y: 95 } },
-        { name: 'Dungeon Destard', type: 'dungeon', description: 'Dragon lair hiding the Fellowship\'s trap mission and diamond loot.', position: { x: 40, y: 68 } },
-        { name: 'Tetrahedron Generator', type: 'quest', description: 'Dispel Penumbra\'s stasis and destroy the magic generator on Dagger Isle.', position: { x: 88, y: 34 } },
-        { name: 'Sphere Generator', type: 'quest', description: 'Deep in Dungeon Despise; navigate the moongate puzzle to shatter it.', position: { x: 54, y: 32 } },
-        { name: 'Cube Generator', type: 'quest', description: 'Meditation Retreat operation—wear Caddellite helms before entry.', position: { x: 38, y: 46 } },
-        { name: 'Fellowship Meditation Retreat', type: 'site', description: 'Expose the Guardian\'s sermons and the inner circle here.', position: { x: 68, y: 60 } }
-    ]
+    editorEnabled: true,
+    markers: Array.isArray(window.ULTIMA7_MARKERS) ? window.ULTIMA7_MARKERS : []
 };
 
 // Helpful, spoiler-light offline hints to ensure useful guidance without relying entirely on the AI
