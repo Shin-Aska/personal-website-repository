@@ -30,8 +30,8 @@ window.ULTIMA7_MARKERS_DATA = {
             "type": "region",
             "description": "Ambrosia More information",
             "position": {
-                "x": 96.0612,
-                "y": 5.8757
+                "x": 91.33,
+                "y": 88.2
             }
         },
         {
@@ -120,8 +120,8 @@ window.ULTIMA7_MARKERS_DATA = {
             "type": "region",
             "description": "High Steppes More information",
             "position": {
-                "x": 37.3739,
-                "y": 9.7502
+                "x": 38.51,
+                "y": 85.79
             }
         },
         {
@@ -156,8 +156,8 @@ window.ULTIMA7_MARKERS_DATA = {
             "type": "region",
             "description": "Lost Hope Bay More information",
             "position": {
-                "x": 41.1511,
-                "y": 7.0871
+                "x": 41.69,
+                "y": 86.32
             }
         },
         {
@@ -273,8 +273,8 @@ window.ULTIMA7_MARKERS_DATA = {
             "type": "city",
             "description": "Minoc \"This town is mine\" More information",
             "position": {
-                "x": 49.7213,
-                "y": 8.0575
+                "x": 49.16,
+                "y": 86.82
             }
         },
         {
@@ -363,8 +363,8 @@ window.ULTIMA7_MARKERS_DATA = {
             "type": "site",
             "description": "",
             "position": {
-                "x": 99.1053,
-                "y": 6.3209
+                "x": 58.28,
+                "y": 48.61
             }
         },
         {
@@ -723,8 +723,8 @@ window.ULTIMA7_MARKERS_DATA = {
             "type": "site",
             "description": "Blacksmith Serpent's Hold",
             "position": {
-                "x": 45.9576,
-                "y": 99.1123
+                "x": 44.8,
+                "y": 96.97
             }
         },
         {
@@ -831,8 +831,8 @@ window.ULTIMA7_MARKERS_DATA = {
             "type": "site",
             "description": "Artisan Guild",
             "position": {
-                "x": 51.1284,
-                "y": 6.6995
+                "x": 50.68,
+                "y": 88.1
             }
         },
         {
@@ -840,8 +840,8 @@ window.ULTIMA7_MARKERS_DATA = {
             "type": "site",
             "description": "Blacksmith Minoc",
             "position": {
-                "x": 47.6258,
-                "y": 11.7208
+                "x": 47.47,
+                "y": 84.6
             }
         },
         {
@@ -849,8 +849,8 @@ window.ULTIMA7_MARKERS_DATA = {
             "type": "site",
             "description": "The Checquered Cork Tavern. More information",
             "position": {
-                "x": 50.099,
-                "y": 9.2647
+                "x": 49.7,
+                "y": 85.95
             }
         },
         {
@@ -858,8 +858,8 @@ window.ULTIMA7_MARKERS_DATA = {
             "type": "site",
             "description": "Fellowship Hall Minoc",
             "position": {
-                "x": 48.2238,
-                "y": 6.68
+                "x": 48.22,
+                "y": 88.06
             }
         },
         {
@@ -867,8 +867,8 @@ window.ULTIMA7_MARKERS_DATA = {
             "type": "site",
             "description": "Gypsy Camp",
             "position": {
-                "x": 59.0781,
-                "y": 13.1087
+                "x": 58.07,
+                "y": 83.25
             }
         },
         {
@@ -876,8 +876,8 @@ window.ULTIMA7_MARKERS_DATA = {
             "type": "site",
             "description": "",
             "position": {
-                "x": 54.5683,
-                "y": 6.0618
+                "x": 58.1,
+                "y": 51.01
             }
         },
         {
@@ -894,8 +894,8 @@ window.ULTIMA7_MARKERS_DATA = {
             "type": "site",
             "description": "Britannian Mining Company Minoc More information",
             "position": {
-                "x": 57.3829,
-                "y": 13.4844
+                "x": 49.17,
+                "y": 84.71
             }
         },
         {
@@ -903,8 +903,8 @@ window.ULTIMA7_MARKERS_DATA = {
             "type": "site",
             "description": "",
             "position": {
-                "x": 47.5313,
-                "y": 9.894
+                "x": 58,
+                "y": 49.35
             }
         },
         {
@@ -912,8 +912,8 @@ window.ULTIMA7_MARKERS_DATA = {
             "type": "site",
             "description": "Sawmill",
             "position": {
-                "x": 54.883,
-                "y": 12.1355
+                "x": 54.26,
+                "y": 84.27
             }
         },
         {
@@ -921,8 +921,8 @@ window.ULTIMA7_MARKERS_DATA = {
             "type": "site",
             "description": "Shipwright Minoc",
             "position": {
-                "x": 45.8631,
-                "y": 13.4615
+                "x": 46.04,
+                "y": 82.7
             }
         },
         {
@@ -930,8 +930,8 @@ window.ULTIMA7_MARKERS_DATA = {
             "type": "site",
             "description": "Trainer Minoc",
             "position": {
-                "x": 53.9433,
-                "y": 4.242
+                "x": 53.32,
+                "y": 90.05
             }
         },
         {
@@ -939,8 +939,8 @@ window.ULTIMA7_MARKERS_DATA = {
             "type": "site",
             "description": "Town Hall Minoc",
             "position": {
-                "x": 51.1329,
-                "y": 3.6842
+                "x": 50.74,
+                "y": 90.51
             }
         },
         {
@@ -1632,8 +1632,8 @@ window.ULTIMA7_MARKERS_DATA = {
             "type": "dungeon",
             "description": "Covetous More information",
             "position": {
-                "x": 48.9928,
-                "y": 14.045
+                "x": 48.93,
+                "y": 82.46
             }
         },
         {
@@ -1749,8 +1749,8 @@ window.ULTIMA7_MARKERS_DATA = {
             "type": "dungeon",
             "description": "Minoc Caves",
             "position": {
-                "x": 50.7285,
-                "y": 1.9796
+                "x": 50.36,
+                "y": 92.19
             }
         },
         {
@@ -1758,8 +1758,8 @@ window.ULTIMA7_MARKERS_DATA = {
             "type": "dungeon",
             "description": "Minoc Pass",
             "position": {
-                "x": 59.7661,
-                "y": 11.4208
+                "x": 58.63,
+                "y": 84.37
             }
         },
         {
@@ -1767,8 +1767,8 @@ window.ULTIMA7_MARKERS_DATA = {
             "type": "dungeon",
             "description": "Minoc Pass",
             "position": {
-                "x": 59.7571,
-                "y": 9.2647
+                "x": 58.53,
+                "y": 86.03
             }
         },
         {
@@ -2532,8 +2532,8 @@ window.ULTIMA7_MARKERS_DATA = {
             "type": "npc",
             "description": "Lady Tory Empathic noblewoman. More information",
             "position": {
-                "x": 44.16,
-                "y": 95.72
+                "x": 42.68,
+                "y": 96.52
             }
         },
         {
@@ -2568,8 +2568,8 @@ window.ULTIMA7_MARKERS_DATA = {
             "type": "npc",
             "description": "Sir Richter Blacksmith and second-in-command. More information",
             "position": {
-                "x": 44.75,
-                "y": 94.39
+                "x": 42.71,
+                "y": 97.34
             }
         },
         {
@@ -2667,8 +2667,8 @@ window.ULTIMA7_MARKERS_DATA = {
             "type": "npc",
             "description": "Burnside Mayor of Minoc. More information",
             "position": {
-                "x": 51.1419,
-                "y": 4.3142
+                "x": 50.74,
+                "y": 90.25
             }
         },
         {
@@ -2676,8 +2676,8 @@ window.ULTIMA7_MARKERS_DATA = {
             "type": "npc",
             "description": "Elynor Leader of the Fellowship branch. More information",
             "position": {
-                "x": 48.7816,
-                "y": 6.6703
+                "x": 48.69,
+                "y": 88.06
             }
         },
         {
@@ -2685,8 +2685,8 @@ window.ULTIMA7_MARKERS_DATA = {
             "type": "npc",
             "description": "Gladstone Member of the Guild. More information",
             "position": {
-                "x": 52.3472,
-                "y": 6.9586
+                "x": 51.77,
+                "y": 87.79
             }
         },
         {
@@ -2694,8 +2694,8 @@ window.ULTIMA7_MARKERS_DATA = {
             "type": "npc",
             "description": "Gregor Mining master. More information",
             "position": {
-                "x": 57.9992,
-                "y": 13.5428
+                "x": 56.98,
+                "y": 82.83
             }
         },
         {
@@ -2703,8 +2703,8 @@ window.ULTIMA7_MARKERS_DATA = {
             "type": "npc",
             "description": "Jakher Training. More information",
             "position": {
-                "x": 53.7543,
-                "y": 4.3594
+                "x": 53.23,
+                "y": 90.24
             }
         },
         {
@@ -2712,8 +2712,8 @@ window.ULTIMA7_MARKERS_DATA = {
             "type": "npc",
             "description": "Jergi King of the gypsies; brother of Frederico. More information",
             "position": {
-                "x": 59.6089,
-                "y": 13.092
+                "x": 58.06,
+                "y": 83.07
             }
         },
         {
@@ -2721,8 +2721,8 @@ window.ULTIMA7_MARKERS_DATA = {
             "type": "npc",
             "description": "Karenna Trainer. More information",
             "position": {
-                "x": 53.6106,
-                "y": 4.1656
+                "x": 53.29,
+                "y": 89.81
             }
         },
         {
@@ -2748,8 +2748,8 @@ window.ULTIMA7_MARKERS_DATA = {
             "type": "npc",
             "description": "Margareta Gypsy fortune teller; wife of Jergi. More information",
             "position": {
-                "x": 59.0781,
-                "y": 13.3281
+                "x": 58.3,
+                "y": 83.1
             }
         },
         {
@@ -2766,8 +2766,8 @@ window.ULTIMA7_MARKERS_DATA = {
             "type": "npc",
             "description": "Owen Shipwright. More information",
             "position": {
-                "x": 45.8541,
-                "y": 12.851
+                "x": 46.06,
+                "y": 83.19
             }
         },
         {
@@ -2784,8 +2784,8 @@ window.ULTIMA7_MARKERS_DATA = {
             "type": "npc",
             "description": "Rutherford Tavernkeeper. More information",
             "position": {
-                "x": 50.5799,
-                "y": 9.2383
+                "x": 50.21,
+                "y": 85.94
             }
         },
         {
@@ -2793,8 +2793,8 @@ window.ULTIMA7_MARKERS_DATA = {
             "type": "npc",
             "description": "Sasha Gypsy; son of Frederico and Tania. More information",
             "position": {
-                "x": 58.9299,
-                "y": 13.3455
+                "x": 57.9,
+                "y": 83.07
             }
         },
         {
@@ -2802,8 +2802,8 @@ window.ULTIMA7_MARKERS_DATA = {
             "type": "npc",
             "description": "Seara Member of the Guild. More information",
             "position": {
-                "x": 51.5061,
-                "y": 5.4277
+                "x": 51.08,
+                "y": 89.11
             }
         },
         {
@@ -2811,8 +2811,8 @@ window.ULTIMA7_MARKERS_DATA = {
             "type": "npc",
             "description": "William Sawmill master. More information",
             "position": {
-                "x": 54.6583,
-                "y": 11.2936
+                "x": 54,
+                "y": 84.33
             }
         },
         {
@@ -2820,8 +2820,8 @@ window.ULTIMA7_MARKERS_DATA = {
             "type": "npc",
             "description": "Xanthia Member of the Guild. More information",
             "position": {
-                "x": 51.3355,
-                "y": 7.7998
+                "x": 51.15,
+                "y": 87.1
             }
         },
         {
@@ -2829,8 +2829,8 @@ window.ULTIMA7_MARKERS_DATA = {
             "type": "npc",
             "description": "Zorn Blacksmith. More information",
             "position": {
-                "x": 47.3696,
-                "y": 11.327
+                "x": 47.62,
+                "y": 84.12
             }
         },
         {
@@ -3684,8 +3684,8 @@ window.ULTIMA7_MARKERS_DATA = {
             "type": "companion",
             "description": "Julia Companion of the Avatar. More information",
             "position": {
-                "x": 53.9929,
-                "y": 6.0236
+                "x": 53.33,
+                "y": 88.6
             }
         },
         {
@@ -3711,8 +3711,8 @@ window.ULTIMA7_MARKERS_DATA = {
             "type": "npc",
             "description": "Frederico Former leader of the gypsies; brother of Jergi.",
             "position": {
-                "x": 54.9731,
-                "y": 11.443
+                "x": 54.42,
+                "y": 83.97
             }
         },
         {
@@ -3720,8 +3720,8 @@ window.ULTIMA7_MARKERS_DATA = {
             "type": "npc",
             "description": "Tania Wife of Frederico.",
             "position": {
-                "x": 54.9461,
-                "y": 11.9
+                "x": 54.21,
+                "y": 84.16
             }
         },
         {
@@ -3756,8 +3756,8 @@ window.ULTIMA7_MARKERS_DATA = {
             "type": "creature",
             "description": "Kissme Kissme More information",
             "position": {
-                "x": 96.0567,
-                "y": 1.5274
+                "x": 91.89,
+                "y": 91.43
             }
         },
         {
@@ -4134,8 +4134,8 @@ window.ULTIMA7_MARKERS_DATA = {
             "type": "monster",
             "description": "Trolls Covetous. More information",
             "position": {
-                "x": 49.2175,
-                "y": 13.4962
+                "x": 49.02,
+                "y": 83.01
             }
         },
         {
@@ -4143,8 +4143,8 @@ window.ULTIMA7_MARKERS_DATA = {
             "type": "monster",
             "description": "Trolls Covetous. More information",
             "position": {
-                "x": 56.304,
-                "y": 0.1611
+                "x": 55.37,
+                "y": 93.82
             }
         },
         {
@@ -4197,8 +4197,8 @@ window.ULTIMA7_MARKERS_DATA = {
             "type": "monster",
             "description": "Cyclops Minoc cave. More information",
             "position": {
-                "x": 50.9217,
-                "y": 0
+                "x": 57.22,
+                "y": 87.32
             }
         },
         {
@@ -4206,8 +4206,8 @@ window.ULTIMA7_MARKERS_DATA = {
             "type": "monster",
             "description": "Cyclops Minoc cave. More information",
             "position": {
-                "x": 61.695,
-                "y": 16.1309
+                "x": 60.2,
+                "y": 80.91
             }
         },
         {
@@ -4278,8 +4278,8 @@ window.ULTIMA7_MARKERS_DATA = {
             "type": "monster",
             "description": "Headless More information",
             "position": {
-                "x": 48.0531,
-                "y": 1.5156
+                "x": 47.81,
+                "y": 92.67
             }
         },
         {
@@ -4395,8 +4395,8 @@ window.ULTIMA7_MARKERS_DATA = {
             "type": "monster",
             "description": "Corpsers More information",
             "position": {
-                "x": 58.8669,
-                "y": 5.6298
+                "x": 57.62,
+                "y": 88.63
             }
         },
         {
@@ -4404,8 +4404,8 @@ window.ULTIMA7_MARKERS_DATA = {
             "type": "monster",
             "description": "Corpsers More information",
             "position": {
-                "x": 58.0082,
-                "y": 6.8065
+                "x": 50.6,
+                "y": 94.24
             }
         },
         {
@@ -4413,8 +4413,8 @@ window.ULTIMA7_MARKERS_DATA = {
             "type": "monster",
             "description": "Spiders More information",
             "position": {
-                "x": 56.4972,
-                "y": 2.5839
+                "x": 55.64,
+                "y": 91.45
             }
         },
         {
@@ -4431,8 +4431,8 @@ window.ULTIMA7_MARKERS_DATA = {
             "type": "monster",
             "description": "Slimes More information",
             "position": {
-                "x": 61.4793,
-                "y": 12.3557
+                "x": 60.11,
+                "y": 83.64
             }
         },
         {
