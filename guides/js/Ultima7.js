@@ -162,7 +162,7 @@ function ultima7ToLatLng(position, boundsConfig) {
     };
 }
 
-function createUltima7Marker(markerData, map, boundsConfig) {
+function createUltima7Marker(markerData, map, boundsConfig, { editorEnabled = false } = {}) {
     if (!markerData || !markerData.position) {
         return null;
     }
@@ -173,13 +173,36 @@ function createUltima7Marker(markerData, map, boundsConfig) {
     const latLng = ultima7ToLatLng(position, boundsConfig);
     const leafletMarker = L.marker([latLng.lat, latLng.lng], {
         title: markerData.name || 'Point of interest',
+        draggable: Boolean(editorEnabled),
         icon: buildUltima7MarkerIcon(markerData)
     }).addTo(map);
     leafletMarker.bindPopup(buildUltima7PopupContent(markerData), {
         autoPan: true,
         autoPanPadding: L.point(24, 24)
     });
+    if (editorEnabled) {
+        leafletMarker.on('dragend', () => {
+            const updatedLatLng = leafletMarker.getLatLng();
+            const updatedPosition = ultima7ToMarkerPosition(updatedLatLng, boundsConfig);
+            markerData.position = updatedPosition;
+            leafletMarker.setPopupContent(buildUltima7PopupContent(markerData));
+            leafletMarker.openPopup();
+            console.info(`[Ultima VII Atlas] Updated "${markerData.name || 'Point'}" to { x: ${updatedPosition.x.toFixed(2)}, y: ${updatedPosition.y.toFixed(2)} }`);
+        });
+    }
     return { markerData, leafletMarker };
+}
+
+function ultima7ToMarkerPosition(latLng, boundsConfig) {
+    const { width, height, minX, maxX, minY, maxY } = boundsConfig;
+    const spanX = maxX - minX;
+    const spanY = maxY - minY;
+    const xCoord = minX + (latLng.lng / width) * spanX;
+    const yCoord = minY + (latLng.lat / height) * spanY;
+    return {
+        x: Number(xCoord.toFixed(2)),
+        y: Number(yCoord.toFixed(2))
+    };
 }
 
 function renderUltima7Legend(map) {
@@ -337,6 +360,7 @@ function ensureUltima7Map() {
     const imageSize = Array.isArray(config.imageSize) ? config.imageSize : null;
     const xRange = Array.isArray(config.xRange) && config.xRange.length === 2 ? config.xRange : [0, 100];
     const yRange = Array.isArray(config.yRange) && config.yRange.length === 2 ? config.yRange : [0, 100];
+    const editorEnabled = Boolean(config.editorEnabled);
 
     if (!imageUrl || !imageSize || imageSize.length !== 2) {
         container.innerHTML = '<p class="text-sm text-secondary">Interactive map configuration is incomplete.</p>';
@@ -389,17 +413,112 @@ function ensureUltima7Map() {
     });
 
     ultima7MarkerEntries = [];
+    const markerEntries = [];
     (config.markers || []).forEach(markerData => {
-        const entry = createUltima7Marker(markerData, map, boundsConfig);
+        const entry = createUltima7Marker(markerData, map, boundsConfig, { editorEnabled });
         if (entry) {
-            ultima7MarkerEntries.push(entry);
+            markerEntries.push(entry);
         }
     });
+    ultima7MarkerEntries = markerEntries;
 
     renderUltima7Legend(map);
     setupUltima7SearchHandlers();
 
+    if (editorEnabled) {
+        setupUltima7Editor(map, boundsConfig);
+    }
+
     setTimeout(() => map.invalidateSize(), 75);
+}
+
+function setupUltima7Editor(map, boundsConfig) {
+    let addMarkerMode = false;
+    let addMarkerButton = null;
+
+    const setAddMarkerMode = (nextState) => {
+        addMarkerMode = Boolean(nextState);
+        if (addMarkerButton) {
+            addMarkerButton.classList.toggle('active', addMarkerMode);
+            addMarkerButton.setAttribute('aria-pressed', String(addMarkerMode));
+            addMarkerButton.textContent = addMarkerMode ? 'Click map…' : 'Add Marker';
+            addMarkerButton.title = addMarkerMode ? 'Click the map to place the new marker' : 'Add a new marker';
+        }
+        map.getContainer().classList.toggle('ultima7-map--adding', addMarkerMode);
+    };
+
+    const addMarkerControl = L.control({ position: 'topleft' });
+    addMarkerControl.onAdd = () => {
+        const control = L.DomUtil.create('div', 'leaflet-bar ultima7-add-marker-control');
+        const button = L.DomUtil.create('button', 'ultima7-add-marker-btn', control);
+        button.type = 'button';
+        button.textContent = 'Add Marker';
+        button.title = 'Add a new marker';
+        button.setAttribute('aria-pressed', 'false');
+        addMarkerButton = button;
+        L.DomEvent.on(button, 'click', (event) => {
+            L.DomEvent.stopPropagation(event);
+            L.DomEvent.preventDefault(event);
+            setAddMarkerMode(!addMarkerMode);
+            if (addMarkerMode) {
+                console.info('[Ultima VII Atlas] Add-marker mode enabled. Click the map to place a new marker. Press Escape to cancel.');
+            }
+        });
+        return control;
+    };
+    addMarkerControl.addTo(map);
+
+    const cancelAddMarkerMode = () => {
+        if (addMarkerMode) {
+            setAddMarkerMode(false);
+            console.info('[Ultima VII Atlas] Add-marker mode cancelled.');
+        }
+    };
+
+    L.DomEvent.on(map.getContainer(), 'keydown', (event) => {
+        if (event.key === 'Escape') {
+            cancelAddMarkerMode();
+        }
+    });
+
+    map.on('click', (event) => {
+        if (!addMarkerMode) {
+            return;
+        }
+        setAddMarkerMode(false);
+
+        const nameInput = window.prompt('Marker name?');
+        if (!nameInput) {
+            console.info('[Ultima VII Atlas] Marker creation cancelled (no name provided).');
+            return;
+        }
+
+        const typeInput = window.prompt('Marker type (city, dungeon, quest, site, region, npc, companion, creature, monster, enemy, treasure)?', 'site') || '';
+        const descriptionInput = window.prompt('Marker description?', '') || '';
+
+        const normalizedType = typeInput.trim().toLowerCase() || 'site';
+        const newPosition = ultima7ToMarkerPosition(event.latlng, boundsConfig);
+        const newMarker = {
+            name: nameInput.trim(),
+            type: normalizedType,
+            description: descriptionInput.trim(),
+            position: newPosition
+        };
+
+        const config = window.ULTIMA7_MAP_CONFIG;
+        if (Array.isArray(config.markers)) {
+            config.markers.push(newMarker);
+        }
+
+        const entry = createUltima7Marker(newMarker, map, boundsConfig, { editorEnabled: true });
+        if (entry) {
+            ultima7MarkerEntries.push(entry);
+            renderUltima7Legend(map);
+            entry.leafletMarker.openPopup();
+            console.info(`[Ultima VII Atlas] Added marker "${newMarker.name}" -> { x: ${newPosition.x.toFixed(2)}, y: ${newPosition.y.toFixed(2)} }`);
+            console.info('[Ultima VII Atlas] Remember to persist this marker back into your configuration source.');
+        }
+    });
 }
 
 window.ULTIMA7_MAP_CONFIG = {
