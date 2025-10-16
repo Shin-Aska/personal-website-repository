@@ -953,9 +953,9 @@ window.ULTIMA7_MARKERS_DATA = {
       }
     },
     {
-      "name": "Cemetary",
+      "name": "Cemetery",
       "type": "site",
-      "description": "Cemetary Skara Brae.",
+      "description": "Cemetery Skara Brae.",
       "position": {
         "x": 10.36,
         "y": 46.21
@@ -1774,7 +1774,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Blacktooth",
       "type": "npc",
-      "description": "Blacktooth Tetired pirate.",
+      "description": "Blacktooth Retired pirate.",
       "position": {
         "x": 53.36,
         "y": 32.87
@@ -2314,7 +2314,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Jakher",
       "type": "npc",
-      "description": "Jakher Training.",
+      "description": "Jakher Trainer.",
       "position": {
         "x": 53.23,
         "y": 90.24
@@ -2555,9 +2555,9 @@ window.ULTIMA7_MARKERS_DATA = {
       }
     },
     {
-      "name": "Prenumbra",
+      "name": "Penumbra",
       "type": "npc",
-      "description": "Prenumbra Mage.",
+      "description": "Penumbra Mage.",
       "position": {
         "x": 88.73,
         "y": 54.76
@@ -2566,7 +2566,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Phearcy",
       "type": "npc",
-      "description": "Phearcy Travernkeeper.",
+      "description": "Phearcy Tavernkeeper.",
       "position": {
         "x": 92.5,
         "y": 46.06
@@ -2575,7 +2575,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Rankin",
       "type": "npc",
-      "description": "Rankin Fellowship treasure branch.",
+      "description": "Rankin Fellowship treasurer.",
       "position": {
         "x": 89.8,
         "y": 51.23
@@ -2737,7 +2737,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Fenn",
       "type": "npc",
-      "description": "Fenn Begger.",
+      "description": "Fenn Beggar.",
       "position": {
         "x": 30.71,
         "y": 42.9
@@ -2764,7 +2764,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Komor",
       "type": "npc",
-      "description": "Komor Begger.",
+      "description": "Komor Beggar.",
       "position": {
         "x": 30.28,
         "y": 42.92
@@ -2773,7 +2773,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Merrick",
       "type": "npc",
-      "description": "Merrick Former begger.",
+      "description": "Merrick Former beggar.",
       "position": {
         "x": 27.27,
         "y": 43.77
@@ -3115,7 +3115,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Penni",
       "type": "npc",
-      "description": "Penni Trainer,",
+      "description": "Penni Trainer.",
       "position": {
         "x": 17.84,
         "y": 78.24
@@ -4555,7 +4555,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Clue - Isle of Deeds",
       "type": "clue",
-      "description": "There maybe something hidden under these clothes",
+      "description": "There may be something hidden under these clothes",
       "position": {
         "x": 46.19,
         "y": 10.05
