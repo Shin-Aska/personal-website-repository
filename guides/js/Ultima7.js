@@ -48,6 +48,16 @@ const DB = {
         { title: "Destroying the Guardian's Generators", content: "Give the notebook to the wisp to contact the Time Lord. He reveals the Guardian's plot and the three generators that must be destroyed. <br><b>1. Tetrahedron (Deceit):</b> Get blackrock for Penumbra, acquire the Ethereal Ring from Lord Draxinusom in Terfin, have it enchanted, and destroy the prism. <br><b>2. Sphere (Despise):</b> Get the Hourglass of Nicodemus, have it enchanted (after the Tetrahedron is down), and navigate the moongate puzzle (down, up, down, down, up) to destroy the prism. <br><b>3. Cube (Meditation Retreat):</b> Find Caddellite from meteorites in the northeast seas, have Zorn in Minoc forge helmets, and wear them to safely destroy the final generator." },
         { title: "The Isle of the Avatar and Final Battle", content: "Use the Cube prism to reveal the Fellowship's lies and identify the conspirators. In Buccaneer's Den, track down Hook and recover the key you need. Travel to the Isle of the Avatar and descend into Hythloth. Place the three generator prisms on their pedestals to disable the Black Gate's power beam. Finally, use Rudyom's Wand on the Black Gate to destroy it and save Britannia." }
     ],
+    virtueQuests: [
+        { title: "How to get to the Isle of Fire", content: "Speak to Lord British about the tremors at the start. He grants the deed to the ship Golden Ankh and a magic crystal. Sail from Vesper to the newly risen Isle of Fire and beach at the northern cove." },
+        { title: "Doors are broken?", content: "If the Castle of Fire's main doors won't open, you likely triggered a known bug by flying over the Isle of the Avatar with the carpet. Reload an earlier save. As a last resort, enable Cheat Mode and use the Hack Mover to slide the doors aside." },
+        { title: "Castle of Fire", content: "Meet Erethian (west wing) for background on the Tests and the Shrine of Principles. The statues initiate each Test. Love's Moongate is behind a secret wall in Erethian's room. Courage's Moongate is to the right. Truth teleports you directly." },
+        { title: "Test of Truth", content: "A maze of deception involving false lockets. The solution lies before the labyrinth: find the 'hood' and move north through a secret wall to reach the true locket. Optional puzzles offer dangerous but valuable loot." },
+        { title: "Test of Love", content: "Aid Bollux and Adjhar using the Stone of Castambre ritual. Perform it twice—first to revive Adjhar, then again to give Bollux a heart. Receive the Talisman of Love when done." },
+        { title: "Test of Courage", content: "Fight through mages, golems, and dragons. Use sleep potions on dragons, search bodies for magic armor, solve the helmet pedestal puzzle, defeat Dracothraxus for the Ether Gem, then return—this test continues later." },
+        { title: "Forging the Black Sword", content: "Ask Erethian about the artifact of power. Free Arcadion into the Ether Gem via the mirror. Heat and hammer the blade at the forge until it's sharp, then bind the daemon to forge the Black Sword." },
+        { title: "Finale", content: "Return to Dracothraxus and invoke the Black Sword's power to finish the test. Assemble the two museum lenses and the Talismans of Principle on the Dark Core per instructions, then report to Lord British for his reward." }
+    ],
     sideQuests: [
         { name: "Free Weston!", location: "Paws", giver: "Weston", reward: "20 XP", walkthrough: "Weston is jailed in Lord British's castle for stealing an apple. Plead his case to Lord British for his release." },
         { name: "Who Stole the Poison?", location: "Paws", giver: "Morfin", reward: "150 XP", walkthrough: "Investigate a family feud. The stolen poison vial is in Garritt's chest. Confront him for a confession." },
@@ -558,7 +568,16 @@ const OFFLINE_HINTS = {
     "Who wants to destroy the Shrine?": "• In Terfin, speak with Teregus.\n• Search Sarpling’s quarters for a note.\n• Confront Runeb with the evidence and be ready for a fight.",
     "Mysterious Monk": "• At Empath Abbey, a monk named Kreg asks about invisibility.\n• Check records in Yew to confirm identities.\n• Prepare for a confrontation once you expose him.",
     "Who Defaced Lord British?": "• In Serpent’s Hold, gather forensics (stone chips, blood).\n• Consult Lady Leigh and Lady Tory for leads.\n• Report your findings to Lord John‑Paul.",
-    "Tory's Baby": "• Search the Shrine of Honour (around 142S, 9W).\n• Harpies may be present—clear them out.\n• Return the baby to Tory in the Keep."
+    "Tory's Baby": "• Search the Shrine of Honour (around 142S, 9W).\n• Harpies may be present—clear them out.\n• Return the baby to Tory in the Keep.",
+
+    "How to get to the Isle of Fire": "• Talk to Lord British about the tremors.\n• He grants the Golden Ankh ship (anchored at Vesper) and a crystal.\n• Sail south from Vesper; circle the largest unstable isle; enter the northern cove and land.",
+    "Doors are broken?": "• If Castle of Fire doors won't open, it's a known bug (flying over the Isle of the Avatar triggers it).\n• Workaround: reload an earlier save or use Cheat Mode's Hack Mover to slide the doors.",
+    "Castle of Fire": "• Meet Erethian (west rooms) for lore on Tests and the Shrine.\n• Love: secret wall in Erethian's room to a Moongate.\n• Courage: right-side Moongate. Truth statue teleports you.",
+    "Test of Truth": "• 'Only appearances are deceptive' → look for a hood.\n• 'North is the way'—walk through a hidden passage to the true locket.\n• Optional: Keys to Truth area has loot (Glass Sword, Ring), beware traps.",
+    "Test of Love": "• Read Bollux's book; collect the scroll.\n• Use well bucket + pickaxe at the Stone of Castambre to get 'blood'.\n• Perform the ritual, place heart, repeat to aid both golems, receive Talisman.",
+    "Test of Courage": "• In main hall: avoid the lich by interrupting the summoner or using indirect spells.\n• Sleep potions on dragons; gather magic armor; solve helmet swap puzzle; defeat Dracothraxus for the Ether Gem.",
+    "Forging the Black Sword": "• Ask Erethian about the artifact; approach Arcadion with Ether Gem at the mirror.\n• Heat the blade (bright red), hammer until sharp, then bind the daemon to complete the sword.",
+    "Finale": "• Return to Dracothraxus and use the Black Sword's power.\n• Assemble two lenses and Talismans of Principle on the Dark Core (pie-like order).\n• Report to Lord British for the stat reward."
 };
 
 // Hardcoded, non‑AI companion backstories
@@ -897,6 +916,45 @@ document.addEventListener('DOMContentLoaded', () => {
                 const isOpen = content.style.maxHeight;
                 document.querySelectorAll('.accordion-content').forEach(c => c.style.maxHeight = null);
                 document.querySelectorAll('.quest-item span').forEach(i => i.style.transform = 'rotate(0deg)');
+                if (!isOpen) {
+                    content.style.maxHeight = content.scrollHeight + "px";
+                    icon.style.transform = 'rotate(180deg)';
+                }
+            }
+        });
+
+        const virtueQuestAccordion = document.getElementById('virtue-quest-accordion');
+        DB.virtueQuests.forEach((quest, index) => {
+            const item = document.createElement('div');
+            item.className = 'section-bg rounded-lg shadow';
+            item.innerHTML = `
+                <div class="quest-item p-4">
+                    <div class="flex justify-between items-center">
+                        <h3 class="text-xl font-bold">${index + 1}. ${quest.title}</h3>
+                        <span class="text-2xl transform transition-transform duration-300">&#9662;</span>
+                    </div>
+                </div>
+                <div class="accordion-content px-4 pb-4 text-sm">
+                    <p>${quest.content}</p>
+                    <button data-quest-index="${index}" class="get-virtue-quest-hint ai-button mt-3 w-full font-bold py-1 px-3 rounded-lg text-xs">✨ Hint</button>
+                </div>
+            `;
+            virtueQuestAccordion.appendChild(item);
+        });
+
+        virtueQuestAccordion.addEventListener('click', (e) => {
+            if (e.target.classList.contains('get-virtue-quest-hint')) {
+                const index = e.target.dataset.questIndex;
+                handleGetQuestHint(DB.virtueQuests[index]);
+                return;
+            }
+            const item = e.target.closest('.quest-item');
+            if (item) {
+                const content = item.nextElementSibling;
+                const icon = item.querySelector('span');
+                const isOpen = content.style.maxHeight;
+                document.querySelectorAll('#virtue-quest-accordion .accordion-content').forEach(c => c.style.maxHeight = null);
+                document.querySelectorAll('#virtue-quest-accordion .quest-item span').forEach(i => i.style.transform = 'rotate(0deg)');
                 if (!isOpen) {
                     content.style.maxHeight = content.scrollHeight + "px";
                     icon.style.transform = 'rotate(180deg)';
