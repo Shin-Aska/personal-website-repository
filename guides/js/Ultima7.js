@@ -81,6 +81,10 @@ const ULTIMA7_MARKER_STYLE = {
     monster: { color: '#ef4444', label: 'Hostile Creature' },
     enemy: { color: '#b91c1c', label: 'Enemy Faction' },
     treasure: { color: '#facc15', label: 'Treasure' },
+    shrine: { color: '#ffffff', label: 'Shrine' },
+    moongate: { color: '#9467bd', label: 'Moongate' },
+    interest: { color: '#ffff00', label: 'Point of Interest' },
+    clue: { color: '#ffa500', label: 'Clue' },
     default: { color: '#94a3b8', label: 'Point of Interest' }
 };
 
@@ -526,7 +530,7 @@ window.ULTIMA7_MAP_CONFIG = {
     imageSize: [6144, 6144],
     xRange: [0, 100],
     yRange: [0, 100],
-    editorEnabled: true,
+    editorEnabled: false,
     markers: Array.isArray(window.ULTIMA7_MARKERS) ? window.ULTIMA7_MARKERS : []
 };
 

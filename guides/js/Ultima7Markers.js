@@ -17,18 +17,9 @@ window.ULTIMA7_MARKERS_DATA = {
   },
   "markers": [
     {
-      "name": "Unknown",
-      "type": "quest",
-      "description": "",
-      "position": {
-        "x": 59.29,
-        "y": 50.55
-      }
-    },
-    {
       "name": "Ambrosia",
       "type": "region",
-      "description": "Ambrosia More information",
+      "description": "Ambrosia",
       "position": {
         "x": 91.33,
         "y": 88.2
@@ -37,7 +28,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Bloody Plains",
       "type": "region",
-      "description": "Bloody Plains More information",
+      "description": "Bloody Plains",
       "position": {
         "x": 20.96,
         "y": 79.51
@@ -46,7 +37,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Britanny Gay",
       "type": "region",
-      "description": "Britanny Bay More information",
+      "description": "Britanny Bay",
       "position": {
         "x": 35.52,
         "y": 51.19
@@ -55,7 +46,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Cape of Heroes",
       "type": "region",
-      "description": "Cape of Heroes More information",
+      "description": "Cape of Heroes",
       "position": {
         "x": 36.57,
         "y": 10.02
@@ -64,7 +55,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Dagger Isle",
       "type": "region",
-      "description": "Dagger Isle More information",
+      "description": "Dagger Isle",
       "position": {
         "x": 86.04,
         "y": 62.23
@@ -73,7 +64,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Deep Forest",
       "type": "region",
-      "description": "Deep Forest More information",
+      "description": "Deep Forest",
       "position": {
         "x": 21.32,
         "y": 79.13
@@ -82,7 +73,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Dry Lands",
       "type": "region",
-      "description": "Dry Lands More information",
+      "description": "Dry Lands",
       "position": {
         "x": 75.5,
         "y": 71.1
@@ -91,7 +82,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Valorian Isles",
       "type": "region",
-      "description": "Valorian Isles More information",
+      "description": "Valorian Isles",
       "position": {
         "x": 4.36,
         "y": 8.51
@@ -109,7 +100,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Fens of the Dead",
       "type": "region",
-      "description": "Fens of the Dead More information",
+      "description": "Fens of the Dead",
       "position": {
         "x": 35.08,
         "y": 46.73
@@ -118,7 +109,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "High Steppes",
       "type": "region",
-      "description": "High Steppes More information",
+      "description": "High Steppes",
       "position": {
         "x": 38.51,
         "y": 85.79
@@ -127,7 +118,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Isle of the Avatar",
       "type": "region",
-      "description": "Isle of the Avatar More information",
+      "description": "Isle of the Avatar",
       "position": {
         "x": 89.21,
         "y": 12.78
@@ -136,7 +127,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Lake Generosity",
       "type": "region",
-      "description": "Lake Generosity More information",
+      "description": "Lake Generosity",
       "position": {
         "x": 75.57,
         "y": 66.76
@@ -145,7 +136,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Lock Lake",
       "type": "region",
-      "description": "Lock Lake More information",
+      "description": "Lock Lake",
       "position": {
         "x": 47.78,
         "y": 61.71
@@ -154,7 +145,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Lost Hope Bay",
       "type": "region",
-      "description": "Lost Hope Bay More information",
+      "description": "Lost Hope Bay",
       "position": {
         "x": 41.69,
         "y": 86.32
@@ -163,7 +154,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Lost Lake",
       "type": "region",
-      "description": "Lost Lake More information",
+      "description": "Lost Lake",
       "position": {
         "x": 20.18,
         "y": 63.8
@@ -172,7 +163,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Misty Channel",
       "type": "region",
-      "description": "Misty Channel More information",
+      "description": "Misty Channel",
       "position": {
         "x": 14.97,
         "y": 48.66
@@ -181,34 +172,16 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Spiritwood",
       "type": "region",
-      "description": "Spiritwood More information",
+      "description": "Spiritwood",
       "position": {
         "x": 12.43,
         "y": 55.61
       }
     },
     {
-      "name": "Unknown",
-      "type": "region",
-      "description": "",
-      "position": {
-        "x": 57.33,
-        "y": 49.09
-      }
-    },
-    {
-      "name": "Unknown",
-      "type": "region",
-      "description": "",
-      "position": {
-        "x": 60.08,
-        "y": 53.86
-      }
-    },
-    {
       "name": "Skara Brae",
       "type": "region",
-      "description": "Skara Brae More information",
+      "description": "Skara Brae",
       "position": {
         "x": 8.51,
         "y": 47.22
@@ -217,7 +190,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Spektran",
       "type": "region",
-      "description": "Spektran More information",
+      "description": "Spektran",
       "position": {
         "x": 60.48,
         "y": 17.7
@@ -226,7 +199,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Verity Isle",
       "type": "region",
-      "description": "Verity Isle More information",
+      "description": "Verity Isle",
       "position": {
         "x": 91.29,
         "y": 42.33
@@ -235,25 +208,16 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Britain",
       "type": "city",
-      "description": "Britain The City of Everything ... and Nothing. More information",
+      "description": "Britain The City of Everything ... and Nothing.",
       "position": {
         "x": 27.87,
         "y": 55.84
       }
     },
     {
-      "name": "Unknown",
-      "type": "city",
-      "description": "",
-      "position": {
-        "x": 57.32,
-        "y": 53.15
-      }
-    },
-    {
       "name": "Cove",
       "type": "city",
-      "description": "Cove \"It's gotta be love.\" More information",
+      "description": "Cove \"It's gotta be love.\"",
       "position": {
         "x": 51.6,
         "y": 57.29
@@ -262,7 +226,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Jhelom",
       "type": "city",
-      "description": "Jhelom \"Allow us to blast thee to smithereens\" More information",
+      "description": "Jhelom \"Allow us to blast thee to smithereens\"",
       "position": {
         "x": 14.22,
         "y": 16.73
@@ -271,7 +235,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Minoc",
       "type": "city",
-      "description": "Minoc \"This town is mine\" More information",
+      "description": "Minoc \"This town is mine\"",
       "position": {
         "x": 49.16,
         "y": 86.82
@@ -280,7 +244,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Moonglow",
       "type": "city",
-      "description": "Moonglow \"We are like, magicians, or something.\" More information",
+      "description": "Moonglow \"We are like, magicians, or something.\"",
       "position": {
         "x": 91.56,
         "y": 49.82
@@ -289,7 +253,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "New Magincia",
       "type": "city",
-      "description": "New Magincia \"No snaketalk for ages\" More information",
+      "description": "New Magincia \"No snaketalk for ages\"",
       "position": {
         "x": 68.98,
         "y": 27.89
@@ -298,7 +262,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Paws",
       "type": "city",
-      "description": "Paws \"Wait 'til you see the guard dog!\" More information",
+      "description": "Paws \"Wait 'til you see the guard dog!\"",
       "position": {
         "x": 28.23,
         "y": 43.11
@@ -307,7 +271,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Terfin",
       "type": "city",
-      "description": "Terfin \"The friendly gargoyle isle\" More information",
+      "description": "Terfin \"The friendly gargoyle isle\"",
       "position": {
         "x": 69.09,
         "y": 5.85
@@ -316,7 +280,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Trinsic",
       "type": "city",
-      "description": "Trinsic \"Our honor is as strong as our walls\" More information",
+      "description": "Trinsic \"Our honor is as strong as our walls\"",
       "position": {
         "x": 33.81,
         "y": 26.72
@@ -325,7 +289,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Vesper",
       "type": "city",
-      "description": "Vesper \"So remote a place that it'll be evening before you get here\" More information",
+      "description": "Vesper \"So remote a place that it'll be evening before you get here\"",
       "position": {
         "x": 67.93,
         "y": 62.76
@@ -334,7 +298,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Yew",
       "type": "city",
-      "description": "Yew \"Sounds like a tree, looks like a tree, hmm... I think I figured out the secret formula\" More information",
+      "description": "Yew \"Sounds like a tree, looks like a tree, hmm... I think I figured out the secret formula\"",
       "position": {
         "x": 10.09,
         "y": 87.17
@@ -343,7 +307,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Yew",
       "type": "city",
-      "description": "Yew \"Sounds like a tree, looks like a tree, hmm... I think I figured out the secret formula\" More information",
+      "description": "Yew \"Sounds like a tree, looks like a tree, hmm... I think I figured out the secret formula\"",
       "position": {
         "x": 16.34,
         "y": 77.1
@@ -352,19 +316,10 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Emp Village",
       "type": "city",
-      "description": "Emp Village More information",
+      "description": "Emp Village",
       "position": {
         "x": 33.2,
         "y": 81.35
-      }
-    },
-    {
-      "name": "Unknown",
-      "type": "site",
-      "description": "",
-      "position": {
-        "x": 58.28,
-        "y": 48.61
       }
     },
     {
@@ -379,7 +334,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Apothecary",
       "type": "site",
-      "description": "Apothecary More information",
+      "description": "Apothecary",
       "position": {
         "x": 27.27,
         "y": 52.66
@@ -413,15 +368,6 @@ window.ULTIMA7_MARKERS_DATA = {
       }
     },
     {
-      "name": "Unknown",
-      "type": "site",
-      "description": "",
-      "position": {
-        "x": 60.5,
-        "y": 54.89
-      }
-    },
-    {
       "name": "City Hall",
       "type": "site",
       "description": "City Hall Britain",
@@ -451,7 +397,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Hall of Bards",
       "type": "site",
-      "description": "Hall of Bards More information",
+      "description": "Hall of Bards",
       "position": {
         "x": 29.1,
         "y": 58.18
@@ -464,15 +410,6 @@ window.ULTIMA7_MARKERS_DATA = {
       "position": {
         "x": 26.23,
         "y": 52.67
-      }
-    },
-    {
-      "name": "Unknown",
-      "type": "site",
-      "description": "",
-      "position": {
-        "x": 28.36,
-        "y": 52.81
       }
     },
     {
@@ -491,15 +428,6 @@ window.ULTIMA7_MARKERS_DATA = {
       "position": {
         "x": 28.36,
         "y": 51.79
-      }
-    },
-    {
-      "name": "Unknown",
-      "type": "site",
-      "description": "",
-      "position": {
-        "x": 59.23,
-        "y": 55.15
       }
     },
     {
@@ -523,7 +451,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Royal Mint",
       "type": "site",
-      "description": "Royal Mint More information",
+      "description": "Royal Mint",
       "position": {
         "x": 31.94,
         "y": 57.96
@@ -532,7 +460,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Royal Museum",
       "type": "site",
-      "description": "Royal Museum More information",
+      "description": "Royal Museum",
       "position": {
         "x": 29.38,
         "y": 56.37
@@ -541,7 +469,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Royal Theatre",
       "type": "site",
-      "description": "Royal Theatre More information",
+      "description": "Royal Theatre",
       "position": {
         "x": 26.73,
         "y": 57.83
@@ -593,15 +521,6 @@ window.ULTIMA7_MARKERS_DATA = {
       }
     },
     {
-      "name": "Unknown",
-      "type": "site",
-      "description": "",
-      "position": {
-        "x": 58.59,
-        "y": 51.2
-      }
-    },
-    {
       "name": "Fellowship Hall",
       "type": "site",
       "description": "Fellowship Hall Buccaneer's Den",
@@ -620,15 +539,6 @@ window.ULTIMA7_MARKERS_DATA = {
       }
     },
     {
-      "name": "Unknown",
-      "type": "site",
-      "description": "",
-      "position": {
-        "x": 58.07,
-        "y": 51.72
-      }
-    },
-    {
       "name": "House of Baths",
       "type": "site",
       "description": "House of Baths",
@@ -640,7 +550,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "House of Games",
       "type": "site",
-      "description": "House of Games More information",
+      "description": "House of Games",
       "position": {
         "x": 49.72,
         "y": 35.75
@@ -674,27 +584,9 @@ window.ULTIMA7_MARKERS_DATA = {
       }
     },
     {
-      "name": "Unknown",
-      "type": "site",
-      "description": "",
-      "position": {
-        "x": 58.33,
-        "y": 52.88
-      }
-    },
-    {
-      "name": "Unknown",
-      "type": "site",
-      "description": "",
-      "position": {
-        "x": 58.57,
-        "y": 54.03
-      }
-    },
-    {
       "name": "The Emerald",
       "type": "site",
-      "description": "The Emerald Tavern. More information",
+      "description": "The Emerald Tavern.",
       "position": {
         "x": 50.43,
         "y": 58.05
@@ -728,15 +620,6 @@ window.ULTIMA7_MARKERS_DATA = {
       }
     },
     {
-      "name": "Unknown",
-      "type": "site",
-      "description": "",
-      "position": {
-        "x": 54.6,
-        "y": 47.23
-      }
-    },
-    {
       "name": "Meditation Retreat",
       "type": "site",
       "description": "Meditation Retreat More information",
@@ -752,15 +635,6 @@ window.ULTIMA7_MARKERS_DATA = {
       "position": {
         "x": 46.54,
         "y": 7.38
-      }
-    },
-    {
-      "name": "Unknown",
-      "type": "site",
-      "description": "",
-      "position": {
-        "x": 59.79,
-        "y": 54.02
       }
     },
     {
@@ -847,7 +721,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "The Checquered Cork",
       "type": "site",
-      "description": "The Checquered Cork Tavern. More information",
+      "description": "The Checquered Cork Tavern.",
       "position": {
         "x": 49.7,
         "y": 85.95
@@ -872,39 +746,12 @@ window.ULTIMA7_MARKERS_DATA = {
       }
     },
     {
-      "name": "Unknown",
-      "type": "site",
-      "description": "",
-      "position": {
-        "x": 58.1,
-        "y": 51.01
-      }
-    },
-    {
-      "name": "Unknown",
-      "type": "site",
-      "description": "",
-      "position": {
-        "x": 56.78,
-        "y": 51.46
-      }
-    },
-    {
       "name": "Britannian Mining Company",
       "type": "site",
-      "description": "Britannian Mining Company Minoc More information",
+      "description": "Britannian Mining Company Minoc",
       "position": {
         "x": 49.17,
         "y": 84.71
-      }
-    },
-    {
-      "name": "Unknown",
-      "type": "site",
-      "description": "",
-      "position": {
-        "x": 58,
-        "y": 49.35
       }
     },
     {
@@ -944,24 +791,6 @@ window.ULTIMA7_MARKERS_DATA = {
       }
     },
     {
-      "name": "Unknown",
-      "type": "site",
-      "description": "",
-      "position": {
-        "x": 60.5,
-        "y": 55.73
-      }
-    },
-    {
-      "name": "Unknown",
-      "type": "site",
-      "description": "",
-      "position": {
-        "x": 61.3,
-        "y": 54.57
-      }
-    },
-    {
       "name": "Clothier",
       "type": "site",
       "description": "Clothier Moonglow.",
@@ -991,25 +820,16 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Orrery",
       "type": "site",
-      "description": "Orrery More information",
+      "description": "Orrery",
       "position": {
         "x": 94.15,
         "y": 53.49
       }
     },
     {
-      "name": "Unknown",
-      "type": "site",
-      "description": "",
-      "position": {
-        "x": 62.21,
-        "y": 56.03
-      }
-    },
-    {
       "name": "The Friendly Knave",
       "type": "site",
-      "description": "The Friendly Knave More information",
+      "description": "The Friendly Knave",
       "position": {
         "x": 92.44,
         "y": 46.44
@@ -1022,24 +842,6 @@ window.ULTIMA7_MARKERS_DATA = {
       "position": {
         "x": 88.84,
         "y": 39.86
-      }
-    },
-    {
-      "name": "Unknown",
-      "type": "site",
-      "description": "",
-      "position": {
-        "x": 59.87,
-        "y": 54.58
-      }
-    },
-    {
-      "name": "Unknown",
-      "type": "site",
-      "description": "",
-      "position": {
-        "x": 58.35,
-        "y": 52.42
       }
     },
     {
@@ -1088,15 +890,6 @@ window.ULTIMA7_MARKERS_DATA = {
       }
     },
     {
-      "name": "Unknown",
-      "type": "site",
-      "description": "",
-      "position": {
-        "x": 60.13,
-        "y": 52.66
-      }
-    },
-    {
       "name": "Flour Mill",
       "type": "site",
       "description": "Flour Mill",
@@ -1128,8 +921,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "site",
       "description": "Slaughterhouse",
       "position": {
-        "x": 30.37,
-        "y": 40.71
+        "x": 30.4,
+        "y": 40.85
       }
     },
     {
@@ -1160,15 +953,6 @@ window.ULTIMA7_MARKERS_DATA = {
       }
     },
     {
-      "name": "Unknown",
-      "type": "site",
-      "description": "",
-      "position": {
-        "x": 57.73,
-        "y": 53.63
-      }
-    },
-    {
       "name": "Cemetary",
       "type": "site",
       "description": "Cemetary Skara Brae.",
@@ -1180,7 +964,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Dark Tower",
       "type": "site",
-      "description": "Dark Tower More information",
+      "description": "Dark Tower",
       "position": {
         "x": 5.37,
         "y": 54.84
@@ -1202,33 +986,6 @@ window.ULTIMA7_MARKERS_DATA = {
       "position": {
         "x": 14.69,
         "y": 46.59
-      }
-    },
-    {
-      "name": "Unknown",
-      "type": "site",
-      "description": "",
-      "position": {
-        "x": 60.91,
-        "y": 57.73
-      }
-    },
-    {
-      "name": "Unknown",
-      "type": "site",
-      "description": "",
-      "position": {
-        "x": 60.31,
-        "y": 57.5
-      }
-    },
-    {
-      "name": "Unknown",
-      "type": "site",
-      "description": "",
-      "position": {
-        "x": 61,
-        "y": 58.33
       }
     },
     {
@@ -1268,18 +1025,9 @@ window.ULTIMA7_MARKERS_DATA = {
       }
     },
     {
-      "name": "Unknown",
-      "type": "site",
-      "description": "",
-      "position": {
-        "x": 58.1,
-        "y": 54.41
-      }
-    },
-    {
       "name": "Shrines of the Principles",
       "type": "site",
-      "description": "Shrines of the Principles More information",
+      "description": "Shrines of the Principles",
       "position": {
         "x": 68.96,
         "y": 9.98
@@ -1288,7 +1036,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Hall of Refreshment",
       "type": "site",
-      "description": "Hall of Refreshment Tavern. More information",
+      "description": "Hall of Refreshment Tavern.",
       "position": {
         "x": 69.95,
         "y": 4.19
@@ -1349,15 +1097,6 @@ window.ULTIMA7_MARKERS_DATA = {
       }
     },
     {
-      "name": "Unknown",
-      "type": "site",
-      "description": "",
-      "position": {
-        "x": 59.86,
-        "y": 53.67
-      }
-    },
-    {
       "name": "Stables",
       "type": "site",
       "description": "Stables Trinsic.",
@@ -1394,18 +1133,9 @@ window.ULTIMA7_MARKERS_DATA = {
       }
     },
     {
-      "name": "Unknown",
-      "type": "site",
-      "description": "",
-      "position": {
-        "x": 60.32,
-        "y": 51.77
-      }
-    },
-    {
       "name": "Britannian Mining Company",
       "type": "site",
-      "description": "Britannian Mining Company Vesper branch. More information",
+      "description": "Britannian Mining Company Vesper branch.",
       "position": {
         "x": 69.94,
         "y": 64.67
@@ -1466,24 +1196,6 @@ window.ULTIMA7_MARKERS_DATA = {
       }
     },
     {
-      "name": "Unknown",
-      "type": "site",
-      "description": "",
-      "position": {
-        "x": 56.22,
-        "y": 48.97
-      }
-    },
-    {
-      "name": "Unknown",
-      "type": "site",
-      "description": "",
-      "position": {
-        "x": 58.32,
-        "y": 46.25
-      }
-    },
-    {
       "name": "Cemetery",
       "type": "site",
       "description": "Cemetery",
@@ -1502,15 +1214,6 @@ window.ULTIMA7_MARKERS_DATA = {
       }
     },
     {
-      "name": "Unknown",
-      "type": "site",
-      "description": "",
-      "position": {
-        "x": 58.66,
-        "y": 45.62
-      }
-    },
-    {
       "name": "Healer",
       "type": "site",
       "description": "Healer Yew.",
@@ -1520,48 +1223,12 @@ window.ULTIMA7_MARKERS_DATA = {
       }
     },
     {
-      "name": "Unknown",
-      "type": "site",
-      "description": "",
-      "position": {
-        "x": 56.9,
-        "y": 48.43
-      }
-    },
-    {
-      "name": "Unknown",
-      "type": "site",
-      "description": "",
-      "position": {
-        "x": 53.84,
-        "y": 47.55
-      }
-    },
-    {
       "name": "Prison",
       "type": "site",
       "description": "Prison",
       "position": {
         "x": 13.69,
         "y": 90.35
-      }
-    },
-    {
-      "name": "Unknown",
-      "type": "site",
-      "description": "",
-      "position": {
-        "x": 56.26,
-        "y": 46.4
-      }
-    },
-    {
-      "name": "Unknown",
-      "type": "site",
-      "description": "",
-      "position": {
-        "x": 58.42,
-        "y": 49.3
       }
     },
     {
@@ -1583,54 +1250,18 @@ window.ULTIMA7_MARKERS_DATA = {
       }
     },
     {
-      "name": "Unknown",
-      "type": "site",
-      "description": "",
-      "position": {
-        "x": 55.43,
-        "y": 46.96
-      }
-    },
-    {
-      "name": "Unknown",
-      "type": "site",
-      "description": "",
-      "position": {
-        "x": 54.92,
-        "y": 48.23
-      }
-    },
-    {
-      "name": "Unknown",
-      "type": "site",
-      "description": "",
-      "position": {
-        "x": 58.74,
-        "y": 51.56
-      }
-    },
-    {
       "name": "Bee Cave",
       "type": "dungeon",
-      "description": "Bee Cave \"Bees everywhere! They're ripping my flesh off!\" More information",
+      "description": "Bee Cave \"Bees everywhere! They're ripping my flesh off!\"",
       "position": {
         "x": 12.76,
         "y": 81.54
       }
     },
     {
-      "name": "Unknown",
-      "type": "dungeon",
-      "description": "",
-      "position": {
-        "x": 59.88,
-        "y": 52.75
-      }
-    },
-    {
       "name": "Covetous",
       "type": "dungeon",
-      "description": "Covetous More information",
+      "description": "Covetous",
       "position": {
         "x": 48.93,
         "y": 82.46
@@ -1648,7 +1279,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Cyclops Cave",
       "type": "dungeon",
-      "description": "Cyclops Cave More information",
+      "description": "Cyclops Cave",
       "position": {
         "x": 52.33,
         "y": 63.39
@@ -1657,7 +1288,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Deceit",
       "type": "dungeon",
-      "description": "Deceit More information",
+      "description": "Deceit",
       "position": {
         "x": 88.2,
         "y": 63.3
@@ -1675,7 +1306,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Destard",
       "type": "dungeon",
-      "description": "Destard More information",
+      "description": "Destard",
       "position": {
         "x": 22.66,
         "y": 39.62
@@ -1684,10 +1315,10 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Despise",
       "type": "dungeon",
-      "description": "Despise More information",
+      "description": "Despise",
       "position": {
-        "x": 17.9495,
-        "y": 42.9226
+        "x": 20.26,
+        "y": 65.43
       }
     },
     {
@@ -1720,7 +1351,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Heftimus Cave",
       "type": "dungeon",
-      "description": "Heftimus Cave More information",
+      "description": "Heftimus Cave",
       "position": {
         "x": 13.64,
         "y": 8.28
@@ -1729,19 +1360,10 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Hythloth",
       "type": "dungeon",
-      "description": "Hythloth More information",
+      "description": "Hythloth",
       "position": {
         "x": 86.36,
         "y": 8.26
-      }
-    },
-    {
-      "name": "Unknown",
-      "type": "dungeon",
-      "description": "",
-      "position": {
-        "x": 60.15,
-        "y": 56.8
       }
     },
     {
@@ -1774,7 +1396,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Shame",
       "type": "dungeon",
-      "description": "Shame More information",
+      "description": "Shame",
       "position": {
         "x": 29,
         "y": 72.55
@@ -1783,7 +1405,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Spirit Tunnels",
       "type": "dungeon",
-      "description": "Spirit Tunnels More information",
+      "description": "Spirit Tunnels",
       "position": {
         "x": 19.92,
         "y": 46.39
@@ -1801,7 +1423,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Vesper Mines",
       "type": "dungeon",
-      "description": "Vesper Mines More information",
+      "description": "Vesper Mines",
       "position": {
         "x": 70.09,
         "y": 69.35
@@ -1810,19 +1432,10 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Castle Britannia",
       "type": "castle",
-      "description": "Castle Britannia More information",
+      "description": "Castle Britannia",
       "position": {
         "x": 30.47,
         "y": 61.58
-      }
-    },
-    {
-      "name": "Unknown",
-      "type": "castle",
-      "description": "",
-      "position": {
-        "x": 58.28,
-        "y": 50.27
       }
     },
     {
@@ -1837,7 +1450,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Lycaeum",
       "type": "castle",
-      "description": "Lycaeum More information",
+      "description": "Lycaeum",
       "position": {
         "x": 87.61,
         "y": 49.1
@@ -1846,7 +1459,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Empath Abbey",
       "type": "castle",
-      "description": "Empath Abbey More information",
+      "description": "Empath Abbey",
       "position": {
         "x": 10.94,
         "y": 88.9
@@ -1855,7 +1468,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Amber",
       "type": "npc",
-      "description": "Amber Actress and Shimino's girlfriend. More information",
+      "description": "Amber Actress and Shimino's girlfriend.",
       "position": {
         "x": 27,
         "y": 57.76
@@ -1864,7 +1477,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Batlin",
       "type": "npc",
-      "description": "Batlin Leader of the Fellowship - Britain. More information",
+      "description": "Batlin Leader of the Fellowship - Britain.",
       "position": {
         "x": 26.82,
         "y": 56.36
@@ -1873,7 +1486,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Brownie",
       "type": "npc",
-      "description": "Brownie Pumpkin farmer. More information",
+      "description": "Brownie Pumpkin farmer.",
       "position": {
         "x": 35.25,
         "y": 60.17
@@ -1882,7 +1495,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Candice",
       "type": "npc",
-      "description": "Candice Curator of the Royal Museum. More information",
+      "description": "Candice Curator of the Royal Museum.",
       "position": {
         "x": 29.14,
         "y": 56.54
@@ -1891,7 +1504,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Carrocio",
       "type": "npc",
-      "description": "Carrocio Overseer of the playground. More information",
+      "description": "Carrocio Overseer of the playground.",
       "position": {
         "x": 27.64,
         "y": 59.18
@@ -1900,7 +1513,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Clint",
       "type": "npc",
-      "description": "Clint Shipwright. More information",
+      "description": "Clint Shipwright.",
       "position": {
         "x": 30.49,
         "y": 52.11
@@ -1909,7 +1522,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Csil",
       "type": "npc",
-      "description": "Csil Healer - Britain. More information",
+      "description": "Csil Healer - Britain.",
       "position": {
         "x": 26.27,
         "y": 52.78
@@ -1918,7 +1531,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Cynthia",
       "type": "npc",
-      "description": "Cynthia Director of the Royal Mint. More information",
+      "description": "Cynthia Director of the Royal Mint.",
       "position": {
         "x": 31.5,
         "y": 57.96
@@ -1927,7 +1540,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Coop",
       "type": "npc",
-      "description": "Coop Shopkepper at Iolo' Bows. More information",
+      "description": "Coop Shopkepper at Iolo' Bows.",
       "position": {
         "x": 28.86,
         "y": 52.8
@@ -1936,7 +1549,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Diane",
       "type": "npc",
-      "description": "Diane Keeper of the stables. More information",
+      "description": "Diane Keeper of the stables.",
       "position": {
         "x": 28.39,
         "y": 50.15
@@ -1945,7 +1558,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Figg",
       "type": "npc",
-      "description": "Figg Keeper of the apple orchard. More information",
+      "description": "Figg Keeper of the apple orchard.",
       "position": {
         "x": 25.68,
         "y": 60.18
@@ -1954,7 +1567,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Fred",
       "type": "npc",
-      "description": "Fred Meat seller. More information",
+      "description": "Fred Meat seller.",
       "position": {
         "x": 26.35,
         "y": 50.83
@@ -1963,7 +1576,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Gaye",
       "type": "npc",
-      "description": "Gaye Clothier. More information",
+      "description": "Gaye Clothier.",
       "position": {
         "x": 28.83,
         "y": 53.3
@@ -1972,7 +1585,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Gordon",
       "type": "npc",
-      "description": "Gordon Sells Fish n' Chips. More information",
+      "description": "Gordon Sells Fish n' Chips.",
       "position": {
         "x": 27.14,
         "y": 51.21
@@ -1981,7 +1594,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Grayson",
       "type": "npc",
-      "description": "Grayson Arms seller. More information",
+      "description": "Grayson Arms seller.",
       "position": {
         "x": 28.85,
         "y": 52.29
@@ -1990,7 +1603,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Greg",
       "type": "npc",
-      "description": "Greg Owner of the tool shop. More information",
+      "description": "Greg Owner of the tool shop.",
       "position": {
         "x": 26.73,
         "y": 52.75
@@ -1999,7 +1612,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "James",
       "type": "npc",
-      "description": "James Innkeeper - Britain. More information",
+      "description": "James Innkeeper - Britain.",
       "position": {
         "x": 26.7,
         "y": 54.77
@@ -2008,7 +1621,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Jeanette",
       "type": "npc",
-      "description": "Jeanette Barmaid. More information",
+      "description": "Jeanette Barmaid.",
       "position": {
         "x": 29.88,
         "y": 55.25
@@ -2017,7 +1630,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Jesse",
       "type": "npc",
-      "description": "Jesse Actor. More information",
+      "description": "Jesse Actor.",
       "position": {
         "x": 26.86,
         "y": 58.13
@@ -2026,7 +1639,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Judith",
       "type": "npc",
-      "description": "Judith Director of the Hall of Bards. More information",
+      "description": "Judith Director of the Hall of Bards.",
       "position": {
         "x": 29.43,
         "y": 57.9
@@ -2035,7 +1648,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Kessler",
       "type": "npc",
-      "description": "Kessler Owner of the Apothecary. More information",
+      "description": "Kessler Owner of the Apothecary.",
       "position": {
         "x": 27.3,
         "y": 52.76
@@ -2044,7 +1657,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Kelly",
       "type": "npc",
-      "description": "Kelly Wife of Fred. More information",
+      "description": "Kelly Wife of Fred.",
       "position": {
         "x": 26.54,
         "y": 50.58
@@ -2053,7 +1666,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Lucy",
       "type": "npc",
-      "description": "Lucy Barmaid. More information",
+      "description": "Lucy Barmaid.",
       "position": {
         "x": 29.2,
         "y": 55.27
@@ -2062,7 +1675,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Mack",
       "type": "npc",
-      "description": "Mack Farmer. More information",
+      "description": "Mack Farmer.",
       "position": {
         "x": 38.25,
         "y": 54.69
@@ -2071,7 +1684,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Millie",
       "type": "npc",
-      "description": "Millie Recruiter for the Fellowship. More information",
+      "description": "Millie Recruiter for the Fellowship.",
       "position": {
         "x": 27.42,
         "y": 56.36
@@ -2080,7 +1693,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Neno",
       "type": "npc",
-      "description": "Neno Musician. More information",
+      "description": "Neno Musician.",
       "position": {
         "x": 28.78,
         "y": 57.89
@@ -2089,7 +1702,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Patterson",
       "type": "npc",
-      "description": "Patterson Mayor of Britain. More information",
+      "description": "Patterson Mayor of Britain.",
       "position": {
         "x": 31.48,
         "y": 56.38
@@ -2098,7 +1711,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Raymundo",
       "type": "npc",
-      "description": "Raymundo Director of the Royal Theatre. More information",
+      "description": "Raymundo Director of the Royal Theatre.",
       "position": {
         "x": 26.49,
         "y": 57.69
@@ -2107,7 +1720,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Sean",
       "type": "npc",
-      "description": "Sean Jeweler. More information",
+      "description": "Sean Jeweler.",
       "position": {
         "x": 28.85,
         "y": 51.76
@@ -2116,7 +1729,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Snaz",
       "type": "npc",
-      "description": "Snaz Beggar. More information",
+      "description": "Snaz Beggar.",
       "position": {
         "x": 27.63,
         "y": 57.85
@@ -2125,7 +1738,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Stuart",
       "type": "npc",
-      "description": "Stuart Actor. More information",
+      "description": "Stuart Actor.",
       "position": {
         "x": 26.56,
         "y": 58.06
@@ -2134,7 +1747,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Willy",
       "type": "npc",
-      "description": "Willy Baker. More information",
+      "description": "Trolls Covetous.",
       "position": {
         "x": 28.88,
         "y": 53.8
@@ -2143,16 +1756,16 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Zella",
       "type": "npc",
-      "description": "Zella Trainer - Britain. More information",
+      "description": "Zella Trainer - Britain.",
       "position": {
-        "x": 41.25,
-        "y": 51.84
+        "x": 24.31,
+        "y": 56.29
       }
     },
     {
       "name": "Anton",
       "type": "npc",
-      "description": "Anton Imprisoned scholar. More information",
+      "description": "Anton Imprisoned scholar.",
       "position": {
         "x": 51.38,
         "y": 42.43
@@ -2161,7 +1774,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Blacktooth",
       "type": "npc",
-      "description": "Blacktooth Tetired pirate. More information",
+      "description": "Blacktooth Tetired pirate.",
       "position": {
         "x": 53.36,
         "y": 32.87
@@ -2170,7 +1783,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Budo",
       "type": "npc",
-      "description": "Budo Provisioner - Buccaneer's Den. More information",
+      "description": "Budo Provisioner - Buccaneer's Den.",
       "position": {
         "x": 50.28,
         "y": 35.92
@@ -2179,7 +1792,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Danag",
       "type": "npc",
-      "description": "Danag Fellowship interim branch leader - Buccaneer's Den. More information",
+      "description": "Danag Fellowship interim branch leader - Buccaneer's Den.",
       "position": {
         "x": 47.17,
         "y": 36.54
@@ -2188,7 +1801,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Glenno",
       "type": "npc",
-      "description": "Glenno Master of the baths (a pimp). More information",
+      "description": "Glenno Master of the baths (a pimp).",
       "position": {
         "x": 50.78,
         "y": 37.14
@@ -2197,7 +1810,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Gordy",
       "type": "npc",
-      "description": "Gordy Overseer of the House of Games. More information",
+      "description": "Gordy Overseer of the House of Games.",
       "position": {
         "x": 49.73,
         "y": 35.42
@@ -2206,7 +1819,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Lucky",
       "type": "npc",
-      "description": "Lucky Trainer - Buccaneer's Den. More information",
+      "description": "Lucky Trainer - Buccaneer's Den.",
       "position": {
         "x": 53.32,
         "y": 36.05
@@ -2215,7 +1828,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Mandy",
       "type": "npc",
-      "description": "Mandy Tavernkeeper - Buccaneer's Den. More information",
+      "description": "Mandy Tavernkeeper - Buccaneer's Den.",
       "position": {
         "x": 52.72,
         "y": 40.13
@@ -2224,7 +1837,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Martine",
       "type": "npc",
-      "description": "Martine Prostitute. More information",
+      "description": "Martine Prostitute.",
       "position": {
         "x": 51.15,
         "y": 36.99
@@ -2233,7 +1846,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Mole",
       "type": "npc",
-      "description": "Mole Pirate. More information",
+      "description": "Mole Pirate.",
       "position": {
         "x": 52.4,
         "y": 39.73
@@ -2242,7 +1855,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Roberto",
       "type": "npc",
-      "description": "Roberto Gigolo. More information",
+      "description": "Roberto Gigolo.",
       "position": {
         "x": 50.24,
         "y": 37.04
@@ -2251,7 +1864,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Smithy",
       "type": "npc",
-      "description": "Smithy Croupier at the House of Games. More information",
+      "description": "Smithy Croupier at the House of Games.",
       "position": {
         "x": 49.66,
         "y": 36.14
@@ -2260,7 +1873,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Sullivan",
       "type": "npc",
-      "description": "Sullivan Imprisoned con artist. More information",
+      "description": "Sullivan Imprisoned con artist.",
       "position": {
         "x": 50.88,
         "y": 42.43
@@ -2269,7 +1882,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Sintag",
       "type": "npc",
-      "description": "Sintag Guard at the House of Games. More information",
+      "description": "Sintag Guard at the House of Games.",
       "position": {
         "x": 49.25,
         "y": 35.97
@@ -2287,7 +1900,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Boots",
       "type": "npc",
-      "description": "Benny Cook. More information",
+      "description": "Benny Cook.",
       "position": {
         "x": 31.52,
         "y": 62.67
@@ -2296,7 +1909,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Charles",
       "type": "npc",
-      "description": "Charles Servant. More information",
+      "description": "Charles Servant.",
       "position": {
         "x": 31.59,
         "y": 61.69
@@ -2305,7 +1918,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Chuckles",
       "type": "npc",
-      "description": "Chuckles Court jester. More information",
+      "description": "Chuckles Court jester.",
       "position": {
         "x": 30.39,
         "y": 60.6
@@ -2314,7 +1927,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Geoffrey",
       "type": "npc",
-      "description": "Geoffrey Captain of the guard. More information",
+      "description": "Geoffrey Captain of the guard.",
       "position": {
         "x": 31.58,
         "y": 60.57
@@ -2323,7 +1936,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Kristy",
       "type": "npc",
-      "description": "Kristy Child. More information",
+      "description": "Kristy Child.",
       "position": {
         "x": 31.07,
         "y": 62.21
@@ -2332,7 +1945,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Miranda",
       "type": "npc",
-      "description": "Miranda Member of the Great CouncilMore information",
+      "description": "Miranda Member of the Great Council",
       "position": {
         "x": 31.53,
         "y": 61.04
@@ -2341,7 +1954,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Nanna",
       "type": "npc",
-      "description": "Nanna Child maid. More information",
+      "description": "Nanna Child maid.",
       "position": {
         "x": 30.84,
         "y": 62.19
@@ -2350,7 +1963,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Nell",
       "type": "npc",
-      "description": "Nell Room maid. More information",
+      "description": "Nell Room maid.",
       "position": {
         "x": 31.58,
         "y": 62.18
@@ -2359,7 +1972,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Nicholas",
       "type": "npc",
-      "description": "Nicholas Child. More information",
+      "description": "Nicholas Child.",
       "position": {
         "x": 31.31,
         "y": 62.24
@@ -2368,7 +1981,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Nystul",
       "type": "npc",
-      "description": "Nystul Royal magician. More information",
+      "description": "Nystul Royal magician.",
       "position": {
         "x": 31.09,
         "y": 62.73
@@ -2377,7 +1990,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Weston",
       "type": "npc",
-      "description": "Weston Prisoner on 2nd floor. More information",
+      "description": "Weston Prisoner on 2nd floor.",
       "position": {
         "x": 28.84,
         "y": 60.11
@@ -2386,7 +1999,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "De Maria",
       "type": "npc",
-      "description": "De Maria Bard - Cove. More information",
+      "description": "De Maria Bard - Cove.",
       "position": {
         "x": 49.97,
         "y": 57.84
@@ -2395,7 +2008,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Jaana",
       "type": "npc",
-      "description": "Jaana Healer - Cove. More information",
+      "description": "Jaana Healer - Cove.",
       "position": {
         "x": 50.73,
         "y": 55.88
@@ -2404,7 +2017,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Lord Heather",
       "type": "npc",
-      "description": "Lord Heather Mayor of Cove. More information",
+      "description": "Lord Heather Mayor of Cove.",
       "position": {
         "x": 52.84,
         "y": 57.91
@@ -2413,16 +2026,16 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Nastassia",
       "type": "npc",
-      "description": "Nastassia Shrine keeper. More information",
+      "description": "Nastassia Shrine keeper.",
       "position": {
-        "x": 47.35,
-        "y": 54.1
+        "x": 47.5,
+        "y": 54.78
       }
     },
     {
       "name": "Pamela",
       "type": "npc",
-      "description": "Pamela Innkeeper - Cove. More information",
+      "description": "Pamela Innkeeper - Cove.",
       "position": {
         "x": 53.13,
         "y": 55.81
@@ -2431,7 +2044,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Raybert",
       "type": "npc",
-      "description": "Raybert Trainer - Cove. More information",
+      "description": "Raybert Trainer - Cove.",
       "position": {
         "x": 51.26,
         "y": 59.51
@@ -2440,7 +2053,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Rudyom",
       "type": "npc",
-      "description": "Rudyom Mage and provisioner. More information",
+      "description": "Rudyom Mage and provisioner.",
       "position": {
         "x": 52.86,
         "y": 58.96
@@ -2449,7 +2062,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Zinaida",
       "type": "npc",
-      "description": "Zinaida Tavernkeeper - Cove. More information",
+      "description": "Zinaida Tavernkeeper - Cove.",
       "position": {
         "x": 50.81,
         "y": 57.84
@@ -2458,7 +2071,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Gorn",
       "type": "npc",
-      "description": "Gorn Confused fighter. More information",
+      "description": "Gorn Confused fighter.",
       "position": {
         "x": 56.18,
         "y": 5.96
@@ -2467,7 +2080,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Jan",
       "type": "npc",
-      "description": "Jan Groundskeeper. More information",
+      "description": "Jan Groundskeeper.",
       "position": {
         "x": 58.07,
         "y": 5.73
@@ -2476,7 +2089,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Iriale Silvermist",
       "type": "npc",
-      "description": "Iriale Silvermist Guard. More information",
+      "description": "Iriale Silvermist Guard.",
       "position": {
         "x": 56.43,
         "y": 8.37
@@ -2485,7 +2098,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Ian",
       "type": "npc",
-      "description": "Ian Director of the Retreat. More information",
+      "description": "Ian Director of the Retreat.",
       "position": {
         "x": 57.57,
         "y": 4.62
@@ -2494,7 +2107,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Denton",
       "type": "npc",
-      "description": "Denton Tavernkeeper - Serpent's Isle. More information",
+      "description": "Denton Tavernkeeper - Serpent's Isle.",
       "position": {
         "x": 47.72,
         "y": 9.84
@@ -2503,7 +2116,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Jordan",
       "type": "npc",
-      "description": "Jordan Shopkeeper at Iolo's Bows South. More information",
+      "description": "Jordan Shopkeeper at Iolo's Bows South.",
       "position": {
         "x": 46.61,
         "y": 7.93
@@ -2512,7 +2125,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Lady Jehanne",
       "type": "npc",
-      "description": "Lady Jehanne Provisioner - Serpent's Isle. More information",
+      "description": "Lady Jehanne Provisioner - Serpent's Isle.",
       "position": {
         "x": 49.12,
         "y": 10.92
@@ -2521,7 +2134,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Lady Leigh",
       "type": "npc",
-      "description": "Lady Leigh Healer - Serpent's Isle. More information",
+      "description": "Lady Leigh Healer - Serpent's Isle.",
       "position": {
         "x": 46.12,
         "y": 10.97
@@ -2530,7 +2143,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Lady Tory",
       "type": "npc",
-      "description": "Lady Tory Empathic noblewoman. More information",
+      "description": "Lady Tory Empathic noblewoman.",
       "position": {
         "x": 48.65,
         "y": 10.94
@@ -2539,7 +2152,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Menion",
       "type": "npc",
-      "description": "Menion Trainer - Serpent's Isle. More information",
+      "description": "Menion Trainer - Serpent's Isle.",
       "position": {
         "x": 46.05,
         "y": 7.4
@@ -2548,7 +2161,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Sir John Paul",
       "type": "npc",
-      "description": "Sir John Paul Lord of the keep. More information",
+      "description": "Sir John Paul Lord of the keep.",
       "position": {
         "x": 47.55,
         "y": 10.36
@@ -2557,7 +2170,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Sir Pendaran",
       "type": "npc",
-      "description": "Sir Pendaran A knight. More information",
+      "description": "Sir Pendaran A knight.",
       "position": {
         "x": 47.62,
         "y": 8.93
@@ -2566,7 +2179,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Sir Richter",
       "type": "npc",
-      "description": "Sir Richter Blacksmith and second-in-command. More information",
+      "description": "Sir Richter Blacksmith and second-in-command.",
       "position": {
         "x": 47.12,
         "y": 11.47
@@ -2575,7 +2188,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Erethian",
       "type": "npc",
-      "description": "Erethian Scholar. More information",
+      "description": "Erethian Scholar.",
       "position": {
         "x": 70.54,
         "y": 50.48
@@ -2584,7 +2197,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Daphne",
       "type": "npc",
-      "description": "Daphne Barmaid. More information",
+      "description": "Daphne Barmaid.",
       "position": {
         "x": 7.83,
         "y": 15.37
@@ -2593,7 +2206,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "De Snel",
       "type": "npc",
-      "description": "De Snel Master of the Library of Scars. More information",
+      "description": "De Snel Master of the Library of Scars.",
       "position": {
         "x": 14.79,
         "y": 17.91
@@ -2602,7 +2215,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Joseph",
       "type": "npc",
-      "description": "Joseph Mayor of Jhelom. More information",
+      "description": "Joseph Mayor of Jhelom.",
       "position": {
         "x": 16.4,
         "y": 18.87
@@ -2611,7 +2224,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Kliftin",
       "type": "npc",
-      "description": "Kliftin Provisioner. More information",
+      "description": "Kliftin Provisioner.",
       "position": {
         "x": 12.68,
         "y": 17.31
@@ -2620,7 +2233,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Ophelia",
       "type": "npc",
-      "description": "Ophelia Barmaid. More information",
+      "description": "Ophelia Barmaid.",
       "position": {
         "x": 7.57,
         "y": 15.26
@@ -2629,7 +2242,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Sprellic",
       "type": "npc",
-      "description": "Sprellic Tavernkeeper. More information",
+      "description": "Sprellic Tavernkeeper.",
       "position": {
         "x": 8.59,
         "y": 15.32
@@ -2638,7 +2251,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Syria",
       "type": "npc",
-      "description": "Syria Fighter. More information",
+      "description": "Syria Fighter.",
       "position": {
         "x": 12.87,
         "y": 16.77
@@ -2647,7 +2260,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Timmons",
       "type": "npc",
-      "description": "Timmons Fighter. More information",
+      "description": "Timmons Fighter.",
       "position": {
         "x": 13.24,
         "y": 17.19
@@ -2656,7 +2269,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Vokes",
       "type": "npc",
-      "description": "Vokes Fighter. More information",
+      "description": "Vokes Fighter.",
       "position": {
         "x": 13.21,
         "y": 16.79
@@ -2665,7 +2278,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Burnside",
       "type": "npc",
-      "description": "Burnside Mayor of Minoc. More information",
+      "description": "Finnigan Mayor of Trinsic.",
       "position": {
         "x": 50.74,
         "y": 90.25
@@ -2674,7 +2287,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Elynor",
       "type": "npc",
-      "description": "Elynor Leader of the Fellowship branch. More information",
+      "description": "Elynor Leader of the Fellowship branch.",
       "position": {
         "x": 48.69,
         "y": 88.06
@@ -2683,7 +2296,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Gladstone",
       "type": "npc",
-      "description": "Gladstone Member of the Guild. More information",
+      "description": "Gladstone Member of the Guild.",
       "position": {
         "x": 51.77,
         "y": 87.79
@@ -2692,7 +2305,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Gregor",
       "type": "npc",
-      "description": "Gregor Mining master. More information",
+      "description": "Gregor Mining master.",
       "position": {
         "x": 56.98,
         "y": 82.83
@@ -2701,7 +2314,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Jakher",
       "type": "npc",
-      "description": "Jakher Training. More information",
+      "description": "Jakher Training.",
       "position": {
         "x": 53.23,
         "y": 90.24
@@ -2710,7 +2323,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Jergi",
       "type": "npc",
-      "description": "Jergi King of the gypsies; brother of Frederico. More information",
+      "description": "Jergi King of the gypsies; brother of Frederico.",
       "position": {
         "x": 58.06,
         "y": 83.07
@@ -2719,7 +2332,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Karenna",
       "type": "npc",
-      "description": "Karenna Trainer. More information",
+      "description": "Karenna Trainer.",
       "position": {
         "x": 53.29,
         "y": 89.81
@@ -2728,7 +2341,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Karl",
       "type": "npc",
-      "description": "Karl A bitter man. More information",
+      "description": "Karl A bitter man.",
       "position": {
         "x": 59.61,
         "y": 78.16
@@ -2737,7 +2350,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Malloy",
       "type": "npc",
-      "description": "Malloy Mining engineer. More information",
+      "description": "Malloy Mining engineer.",
       "position": {
         "x": 49.68,
         "y": 76.22
@@ -2746,7 +2359,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Margareta",
       "type": "npc",
-      "description": "Margareta Gypsy fortune teller; wife of Jergi. More information",
+      "description": "Margareta Gypsy fortune teller; wife of Jergi.",
       "position": {
         "x": 58.3,
         "y": 83.1
@@ -2755,7 +2368,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Mikos",
       "type": "npc",
-      "description": "Mikos foreman of the Covetous mine. More information",
+      "description": "Mikos foreman of the Covetous mine.",
       "position": {
         "x": 51.75,
         "y": 81.4
@@ -2764,7 +2377,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Owen",
       "type": "npc",
-      "description": "Owen Shipwright. More information",
+      "description": "Owen Shipwright.",
       "position": {
         "x": 46.06,
         "y": 83.19
@@ -2773,7 +2386,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Owings",
       "type": "npc",
-      "description": "Owings Mining engineer. More information",
+      "description": "Owings Mining engineer.",
       "position": {
         "x": 49.63,
         "y": 77.19
@@ -2782,7 +2395,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Rutherford",
       "type": "npc",
-      "description": "Rutherford Tavernkeeper. More information",
+      "description": "Rutherford Tavernkeeper.",
       "position": {
         "x": 50.21,
         "y": 85.94
@@ -2791,7 +2404,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Sasha",
       "type": "npc",
-      "description": "Sasha Gypsy; son of Frederico and Tania. More information",
+      "description": "Sasha Gypsy; son of Frederico and Tania.",
       "position": {
         "x": 57.9,
         "y": 83.07
@@ -2800,7 +2413,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Seara",
       "type": "npc",
-      "description": "Seara Member of the Guild. More information",
+      "description": "Seara Member of the Guild.",
       "position": {
         "x": 51.08,
         "y": 89.11
@@ -2809,7 +2422,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "William",
       "type": "npc",
-      "description": "William Sawmill master. More information",
+      "description": "William Sawmill master.",
       "position": {
         "x": 54,
         "y": 84.33
@@ -2818,7 +2431,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Xanthia",
       "type": "npc",
-      "description": "Xanthia Member of the Guild. More information",
+      "description": "Xanthia Member of the Guild.",
       "position": {
         "x": 51.15,
         "y": 87.1
@@ -2827,7 +2440,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Zorn",
       "type": "npc",
-      "description": "Zorn Blacksmith. More information",
+      "description": "Zorn Blacksmith.",
       "position": {
         "x": 47.62,
         "y": 84.12
@@ -2836,7 +2449,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Addom",
       "type": "npc",
-      "description": "Addom Traveler. More information",
+      "description": "Addom Traveler.",
       "position": {
         "x": 92.89,
         "y": 46
@@ -2845,7 +2458,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Balayna",
       "type": "npc",
-      "description": "Balayna Fellowship treasure keeper. More information",
+      "description": "Balayna Fellowship treasure keeper.",
       "position": {
         "x": 90.86,
         "y": 51.18
@@ -2854,7 +2467,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Brion",
       "type": "npc",
-      "description": "Brion Orrery keeper. More information",
+      "description": "Brion Orrery keeper.",
       "position": {
         "x": 93.84,
         "y": 53.17
@@ -2863,7 +2476,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Carlyn",
       "type": "npc",
-      "description": "Carlyn Weaver. More information",
+      "description": "Carlyn Weaver.",
       "position": {
         "x": 87.17,
         "y": 50.67
@@ -2872,7 +2485,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Chad",
       "type": "npc",
-      "description": "Chad Trainer. More information",
+      "description": "Chad Trainer.",
       "position": {
         "x": 89.19,
         "y": 40.09
@@ -2881,7 +2494,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Cubolt",
       "type": "npc",
-      "description": "Cubolt Farmer. More information",
+      "description": "Cubolt Farmer.",
       "position": {
         "x": 88.23,
         "y": 42.86
@@ -2890,7 +2503,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Effrem",
       "type": "npc",
-      "description": "Effrem Inhabitant. More information",
+      "description": "Effrem Inhabitant.",
       "position": {
         "x": 86.66,
         "y": 51.73
@@ -2899,7 +2512,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Elad",
       "type": "npc",
-      "description": "Elad Healer. More information",
+      "description": "Elad Healer.",
       "position": {
         "x": 89.31,
         "y": 47
@@ -2908,7 +2521,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Jillian",
       "type": "npc",
-      "description": "Jillian Lycaeum scholar. More information",
+      "description": "Jillian Lycaeum scholar.",
       "position": {
         "x": 87.23,
         "y": 48.71
@@ -2917,7 +2530,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Mariah",
       "type": "npc",
-      "description": "Mariah Lycaeum maid. More information",
+      "description": "Mariah Lycaeum maid.",
       "position": {
         "x": 87.24,
         "y": 49.41
@@ -2926,7 +2539,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Morz",
       "type": "npc",
-      "description": "Morz farmer. More information",
+      "description": "Morz farmer.",
       "position": {
         "x": 89.46,
         "y": 42.85
@@ -2935,7 +2548,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Nelson",
       "type": "npc",
-      "description": "Nelson head of the Lycaeum. More information",
+      "description": "Nelson head of the Lycaeum.",
       "position": {
         "x": 88.08,
         "y": 48.63
@@ -2944,7 +2557,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Prenumbra",
       "type": "npc",
-      "description": "Prenumbra Mage. More information",
+      "description": "Prenumbra Mage.",
       "position": {
         "x": 88.73,
         "y": 54.76
@@ -2953,7 +2566,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Phearcy",
       "type": "npc",
-      "description": "Phearcy Travernkeeper. More information",
+      "description": "Phearcy Travernkeeper.",
       "position": {
         "x": 92.5,
         "y": 46.06
@@ -2962,7 +2575,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Rankin",
       "type": "npc",
-      "description": "Rankin Fellowship treasure branch. More information",
+      "description": "Rankin Fellowship treasure branch.",
       "position": {
         "x": 89.8,
         "y": 51.23
@@ -2971,7 +2584,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Tolemak",
       "type": "npc",
-      "description": "Tolemak Farmer. More information",
+      "description": "Tolemak Farmer.",
       "position": {
         "x": 88.22,
         "y": 43.37
@@ -2980,7 +2593,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Zelda",
       "type": "npc",
-      "description": "Zelda Nelson's assistant. More information",
+      "description": "Zelda Nelson's assistant.",
       "position": {
         "x": 88.11,
         "y": 49.45
@@ -2989,7 +2602,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Alagnar",
       "type": "npc",
-      "description": "Alagnar Scholar. More information",
+      "description": "Alagnar Scholar.",
       "position": {
         "x": 73.04,
         "y": 37.61
@@ -2998,7 +2611,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Battles",
       "type": "npc",
-      "description": "Battles Pirate in New Magincia. More information",
+      "description": "Battles Pirate in New Magincia.",
       "position": {
         "x": 70.54,
         "y": 25.09
@@ -3007,7 +2620,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Boris",
       "type": "npc",
-      "description": "Boris Tavernkeeper in New Magincia. More information",
+      "description": "Boris Tavernkeeper in New Magincia.",
       "position": {
         "x": 66.37,
         "y": 28.73
@@ -3016,7 +2629,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Constance",
       "type": "npc",
-      "description": "Constance Wellkeeper. More information",
+      "description": "Constance Wellkeeper.",
       "position": {
         "x": 69.51,
         "y": 26.69
@@ -3025,7 +2638,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Henry",
       "type": "npc",
-      "description": "Henry Shepherd. More information",
+      "description": "Henry Shepherd.",
       "position": {
         "x": 70,
         "y": 27.71
@@ -3034,7 +2647,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Leavell",
       "type": "npc",
-      "description": "Leavell Pirate in New Magincia. More information",
+      "description": "Leavell Pirate in New Magincia.",
       "position": {
         "x": 70.73,
         "y": 28.09
@@ -3043,7 +2656,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Magenta",
       "type": "npc",
-      "description": "Magenta Mayor of New Magincia. More information",
+      "description": "Magenta Mayor of New Magincia.",
       "position": {
         "x": 69.5,
         "y": 28.75
@@ -3052,7 +2665,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Robin",
       "type": "npc",
-      "description": "Robin Pirate in New Magincia. More information",
+      "description": "Robin Pirate in New Magincia.",
       "position": {
         "x": 72.61,
         "y": 39.15
@@ -3061,7 +2674,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Russell",
       "type": "npc",
-      "description": "Russell Shipwright in New Magincia. More information",
+      "description": "Russell Shipwright in New Magincia.",
       "position": {
         "x": 70.23,
         "y": 28.62
@@ -3070,7 +2683,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Sam",
       "type": "npc",
-      "description": "Sam Flower Seller in New Magincia. More information",
+      "description": "Sam Flower Seller in New Magincia.",
       "position": {
         "x": 73.64,
         "y": 21.42
@@ -3079,7 +2692,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Alina",
       "type": "npc",
-      "description": "Alina Concerned mother. More information",
+      "description": "Alina Concerned mother.",
       "position": {
         "x": 27.03,
         "y": 44.31
@@ -3088,7 +2701,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Andrew",
       "type": "npc",
-      "description": "Andrew Milk seller. More information",
+      "description": "Andrew Milk seller.",
       "position": {
         "x": 27.79,
         "y": 41.78
@@ -3097,7 +2710,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Beverlea",
       "type": "npc",
-      "description": "Beverlea Shop owner. More information",
+      "description": "Beverlea Shop owner.",
       "position": {
         "x": 30.4,
         "y": 42.23
@@ -3106,7 +2719,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Britta",
       "type": "npc",
-      "description": "Britta Wife of Feridwyn. More information",
+      "description": "Britta Wife of Feridwyn.",
       "position": {
         "x": 26.87,
         "y": 43.37
@@ -3115,7 +2728,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Camille",
       "type": "npc",
-      "description": "Camille Farmer. More information",
+      "description": "Camille Farmer.",
       "position": {
         "x": 26.79,
         "y": 45.39
@@ -3124,7 +2737,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Fenn",
       "type": "npc",
-      "description": "Fenn Begger. More information",
+      "description": "Fenn Begger.",
       "position": {
         "x": 30.71,
         "y": 42.9
@@ -3133,7 +2746,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Feridwyn",
       "type": "npc",
-      "description": "Feridwyn Homeless shelter leader. More information",
+      "description": "Feridwyn Homeless shelter leader.",
       "position": {
         "x": 26.81,
         "y": 43.47
@@ -3142,7 +2755,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Garritt",
       "type": "npc",
-      "description": "Garritt Child. More information",
+      "description": "Garritt Child.",
       "position": {
         "x": 26.76,
         "y": 43.8
@@ -3151,7 +2764,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Komor",
       "type": "npc",
-      "description": "Komor Begger. More information",
+      "description": "Komor Begger.",
       "position": {
         "x": 30.28,
         "y": 42.92
@@ -3160,7 +2773,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Merrick",
       "type": "npc",
-      "description": "Merrick Former begger. More information",
+      "description": "Merrick Former begger.",
       "position": {
         "x": 27.27,
         "y": 43.77
@@ -3169,16 +2782,16 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Morfin",
       "type": "npc",
-      "description": "Morfin Slaughterer. More information",
+      "description": "Morfin Slaughterer.",
       "position": {
-        "x": 29.96,
-        "y": 40.68
+        "x": 30.08,
+        "y": 40.85
       }
     },
     {
       "name": "Polly",
       "type": "npc",
-      "description": "Polly Tavern owner. More information",
+      "description": "Polly Tavern owner.",
       "position": {
         "x": 32.45,
         "y": 40.2
@@ -3187,7 +2800,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Thurston",
       "type": "npc",
-      "description": "Thurston Flour mill owner. More information",
+      "description": "Thurston Flour mill owner.",
       "position": {
         "x": 29.4,
         "y": 43.33
@@ -3196,7 +2809,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Tobias",
       "type": "npc",
-      "description": "Tobias Farmer child. Son of Camille. More information",
+      "description": "Tobias Farmer child. Son of Camille.",
       "position": {
         "x": 27.26,
         "y": 45.39
@@ -3205,7 +2818,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Martingo",
       "type": "npc",
-      "description": "Martingo Sultan of Spektran. More information",
+      "description": "Martingo Sultan of Spektran.",
       "position": {
         "x": 59.62,
         "y": 16.45
@@ -3214,7 +2827,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Apollonia",
       "type": "npc",
-      "description": "Apollonia Tavernkeeper. More information",
+      "description": "Apollonia Tavernkeeper.",
       "position": {
         "x": 34.9,
         "y": 26.65
@@ -3223,7 +2836,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Chantu",
       "type": "npc",
-      "description": "Chantu Healer. More information",
+      "description": "Chantu Healer.",
       "position": {
         "x": 30.97,
         "y": 26.16
@@ -3232,16 +2845,16 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Dell",
       "type": "npc",
-      "description": "Dell Provisioner. More information",
+      "description": "Dell Provisioner.",
       "position": {
-        "x": 30.9,
-        "y": 28.69
+        "x": 30.96,
+        "y": 28.53
       }
     },
     {
       "name": "Ellen",
       "type": "npc",
-      "description": "Ellen Wife of Klog. More information",
+      "description": "Ellen Wife of Klog.",
       "position": {
         "x": 33.5,
         "y": 27.13
@@ -3250,7 +2863,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Finnigan",
       "type": "npc",
-      "description": "Finnigan Mayor of Trinsic. More information",
+      "description": "Finnigan Mayor of Trinsic.",
       "position": {
         "x": 31.91,
         "y": 27.28
@@ -3259,7 +2872,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Gargan",
       "type": "npc",
-      "description": "Gargan Shipwright. More information",
+      "description": "Gargan Shipwright.",
       "position": {
         "x": 34.06,
         "y": 29.27
@@ -3268,7 +2881,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Gilberto",
       "type": "npc",
-      "description": "Gilberto East Gate night shift guard. More information",
+      "description": "Gilberto East Gate night shift guard.",
       "position": {
         "x": 30.95,
         "y": 26.41
@@ -3277,7 +2890,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Johnson",
       "type": "npc",
-      "description": "Johnson East Gate day shift guard. More information",
+      "description": "Johnson East Gate day shift guard.",
       "position": {
         "x": 35.56,
         "y": 27.7
@@ -3286,7 +2899,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Klog",
       "type": "npc",
-      "description": "Klog Leader of Fellowship branch. More information",
+      "description": "Klog Leader of Fellowship branch.",
       "position": {
         "x": 32.99,
         "y": 27.69
@@ -3295,7 +2908,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Markus",
       "type": "npc",
-      "description": "Markus Trainer. More information",
+      "description": "Markus Trainer.",
       "position": {
         "x": 32.48,
         "y": 29.86
@@ -3304,7 +2917,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Petre",
       "type": "npc",
-      "description": "Petre Stablekeeper. More information",
+      "description": "Petre Stablekeeper.",
       "position": {
         "x": 35.28,
         "y": 29.16
@@ -3313,7 +2926,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Spark",
       "type": "npc",
-      "description": "Spark Christopher's son. More information",
+      "description": "Spark Christopher's son.",
       "position": {
         "x": 31.56,
         "y": 30.39
@@ -3322,7 +2935,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Auston",
       "type": "npc",
-      "description": "Auston Mayor of Vesper. More information",
+      "description": "Auston Mayor of Vesper.",
       "position": {
         "x": 70.58,
         "y": 62.6
@@ -3331,7 +2944,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Blorn",
       "type": "npc",
-      "description": "Blorn Troublemaker. More information",
+      "description": "Blorn Troublemaker.",
       "position": {
         "x": 70.5,
         "y": 61.02
@@ -3340,7 +2953,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Cador",
       "type": "npc",
-      "description": "Cador Mine supervisor. More information",
+      "description": "Cador Mine supervisor.",
       "position": {
         "x": 70.9,
         "y": 65.31
@@ -3349,7 +2962,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Catherine",
       "type": "npc",
-      "description": "Catherine Cador and Yvella's daughter. More information",
+      "description": "Catherine Cador and Yvella's daughter.",
       "position": {
         "x": 71.22,
         "y": 64.49
@@ -3358,7 +2971,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Eldroth",
       "type": "npc",
-      "description": "Eldroth Provisioner. More information",
+      "description": "Eldroth Provisioner.",
       "position": {
         "x": 72.1,
         "y": 63.62
@@ -3367,7 +2980,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Liana",
       "type": "npc",
-      "description": "Liana Secretary. More information",
+      "description": "Liana Secretary.",
       "position": {
         "x": 71.06,
         "y": 62.08
@@ -3376,7 +2989,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Mara",
       "type": "npc",
-      "description": "Mara Miner. More information",
+      "description": "Mara Miner.",
       "position": {
         "x": 72.1,
         "y": 65.2
@@ -3385,7 +2998,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Yongi",
       "type": "npc",
-      "description": "Yongi Tavernkeeper. More information",
+      "description": "Yongi Tavernkeeper.",
       "position": {
         "x": 70.58,
         "y": 59.02
@@ -3394,7 +3007,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Yvella",
       "type": "npc",
-      "description": "Yvella Wife of Cador. More information",
+      "description": "Yvella Wife of Cador.",
       "position": {
         "x": 71.1,
         "y": 65.1
@@ -3403,7 +3016,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Zaksam",
       "type": "npc",
-      "description": "Zaksam Trainer. More information",
+      "description": "Zaksam Trainer.",
       "position": {
         "x": 71.67,
         "y": 61.02
@@ -3412,7 +3025,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Aimi",
       "type": "npc",
-      "description": "Aimi Monk. More information",
+      "description": "Aimi Monk.",
       "position": {
         "x": 10.67,
         "y": 86.98
@@ -3421,7 +3034,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Ben",
       "type": "npc",
-      "description": "Ben Woodcutter. More information",
+      "description": "Ben Woodcutter.",
       "position": {
         "x": 14.79,
         "y": 77.15
@@ -3430,25 +3043,16 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Bradman",
       "type": "npc",
-      "description": "Bradman Trainer. More information",
+      "description": "Bradman Trainer.",
       "position": {
         "x": 18.42,
         "y": 76.11
       }
     },
     {
-      "name": "Unknown",
-      "type": "npc",
-      "description": "",
-      "position": {
-        "x": 55.24,
-        "y": 46.86
-      }
-    },
-    {
       "name": "Gharl",
       "type": "npc",
-      "description": "Gharl Prisoner. More information",
+      "description": "Gharl Prisoner.",
       "position": {
         "x": 12.62,
         "y": 90.44
@@ -3457,7 +3061,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Goth",
       "type": "npc",
-      "description": "Goth Prison guard. More information",
+      "description": "Goth Prison guard.",
       "position": {
         "x": 13.3,
         "y": 90.25
@@ -3466,7 +3070,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Kreg",
       "type": "npc",
-      "description": "Kreg Monk. More information",
+      "description": "Kreg Monk.",
       "position": {
         "x": 11,
         "y": 89.16
@@ -3475,7 +3079,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Myrtle",
       "type": "npc",
-      "description": "Myrtle Nudist cave dweller, aka Mama. More information",
+      "description": "Myrtle Nudist cave dweller, aka Mama.",
       "position": {
         "x": 13.69,
         "y": 83.62
@@ -3484,7 +3088,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Nicodemus",
       "type": "npc",
-      "description": "Nicodemus More information",
+      "description": "Nicodemus",
       "position": {
         "x": 12.18,
         "y": 85.05
@@ -3493,7 +3097,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Murray",
       "type": "npc",
-      "description": "Murray Nudist cave dweller, aka Papa. More information",
+      "description": "Murray Nudist cave dweller, aka Papa.",
       "position": {
         "x": 13.57,
         "y": 83.92
@@ -3502,7 +3106,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Perrin",
       "type": "npc",
-      "description": "Perrin Scholar, author and trainer. More information",
+      "description": "Perrin Scholar, author and trainer.",
       "position": {
         "x": 8.05,
         "y": 89.66
@@ -3511,7 +3115,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Penni",
       "type": "npc",
-      "description": "Penni Trainer, More information",
+      "description": "Penni Trainer,",
       "position": {
         "x": 17.84,
         "y": 78.24
@@ -3520,7 +3124,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Reyna",
       "type": "npc",
-      "description": "Reyna Healer. More information",
+      "description": "Reyna Healer.",
       "position": {
         "x": 8.53,
         "y": 86.61
@@ -3529,7 +3133,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Sir Jeff",
       "type": "npc",
-      "description": "Sir Jeff High Court judge. More information",
+      "description": "Sir Jeff High Court judge.",
       "position": {
         "x": 12.61,
         "y": 89.89
@@ -3538,7 +3142,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Tiery",
       "type": "npc",
-      "description": "Tiery Undertaker. More information",
+      "description": "Tiery Undertaker.",
       "position": {
         "x": 7.72,
         "y": 90.98
@@ -3547,7 +3151,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Taylor",
       "type": "npc",
-      "description": "Taylor Monk. More information",
+      "description": "Taylor Monk.",
       "position": {
         "x": 11.32,
         "y": 89.87
@@ -3556,7 +3160,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Thad",
       "type": "npc",
-      "description": "Thad Masked man. More information",
+      "description": "Thad Masked man.",
       "position": {
         "x": 21.53,
         "y": 74.54
@@ -3565,7 +3169,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Tseramed",
       "type": "npc",
-      "description": "Tseramed Ranger (can join your group). More information",
+      "description": "Tseramed Ranger (can join your group).",
       "position": {
         "x": 12.98,
         "y": 80.79
@@ -3574,7 +3178,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Dustin",
       "type": "npc",
-      "description": "Dustin Actor. More information",
+      "description": "Dustin Actor.",
       "position": {
         "x": 32.89,
         "y": 34.42
@@ -3583,7 +3187,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Meryl",
       "type": "npc",
-      "description": "Meryl Actress. More information",
+      "description": "Meryl Actress.",
       "position": {
         "x": 33.04,
         "y": 34.43
@@ -3592,7 +3196,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Paul",
       "type": "npc",
-      "description": "Paul Director of \"Passion Play\". More information",
+      "description": "Paul Director of \"Passion Play\".",
       "position": {
         "x": 33.2,
         "y": 34.42
@@ -3601,7 +3205,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Cairbre",
       "type": "npc",
-      "description": "Cairbre More information",
+      "description": "Cairbre",
       "position": {
         "x": 21.03,
         "y": 39.04
@@ -3610,7 +3214,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Cosmo",
       "type": "npc",
-      "description": "Cosmo More information",
+      "description": "Cosmo",
       "position": {
         "x": 21.03,
         "y": 38.66
@@ -3619,16 +3223,16 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Time Lord",
       "type": "npc",
-      "description": "Time Lord More information",
+      "description": "Time Lord",
       "position": {
-        "x": 95.06,
-        "y": 20.92
+        "x": 95.01,
+        "y": 21.35
       }
     },
     {
       "name": "Brother Wayne",
       "type": "npc",
-      "description": "Brother Wayne More information",
+      "description": "Brother Wayne",
       "position": {
         "x": 15.1034,
         "y": 37.2164
@@ -3637,7 +3241,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Eiko",
       "type": "npc",
-      "description": "Eiko More information",
+      "description": "Eiko",
       "position": {
         "x": 85.13,
         "y": 63.39
@@ -3646,7 +3250,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Amanda",
       "type": "npc",
-      "description": "Amanda More information",
+      "description": "Amanda",
       "position": {
         "x": 85.1,
         "y": 64.12
@@ -3655,7 +3259,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Sentri",
       "type": "companion",
-      "description": "Sentri Trainer and companion of the Avatar. More information",
+      "description": "Sentri Trainer and companion of the Avatar.",
       "position": {
         "x": 24.63,
         "y": 54.88
@@ -3664,7 +3268,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Shamino",
       "type": "companion",
-      "description": "Shamino Companion of the Avatar. More information",
+      "description": "Shamino Companion of the Avatar.",
       "position": {
         "x": 29.06,
         "y": 54.81
@@ -3673,7 +3277,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Dupre",
       "type": "companion",
-      "description": "Dupre Companion of the Avatar. More information",
+      "description": "Dupre Companion of the Avatar.",
       "position": {
         "x": 9.02,
         "y": 15.23
@@ -3682,7 +3286,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Julia",
       "type": "companion",
-      "description": "Julia Companion of the Avatar. More information",
+      "description": "Julia Companion of the Avatar.",
       "position": {
         "x": 53.33,
         "y": 88.6
@@ -3691,7 +3295,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Katrina",
       "type": "companion",
-      "description": "Katrina Companion of the AvatarMore information",
+      "description": "Katrina Companion of the Avatar",
       "position": {
         "x": 65.85,
         "y": 28.73
@@ -3700,7 +3304,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Iolo",
       "type": "companion",
-      "description": "Iolo Companion of the Avatar. More information",
+      "description": "Iolo Companion of the Avatar.",
       "position": {
         "x": 34.87,
         "y": 27.67
@@ -3727,7 +3331,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Christopher",
       "type": "npc",
-      "description": "Christopher Blacksmith More information",
+      "description": "Christopher Blacksmith",
       "position": {
         "x": 35.05,
         "y": 28.11
@@ -3736,7 +3340,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Inamo",
       "type": "npc",
-      "description": "Inamo Gargoyle immigrant. More information",
+      "description": "Inamo Gargoyle immigrant.",
       "position": {
         "x": 34.6,
         "y": 28.71
@@ -3745,7 +3349,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Lord British",
       "type": "castle",
-      "description": "Lord British The king. More information",
+      "description": "Lord British The king.",
       "position": {
         "x": 30.43,
         "y": 62.82
@@ -3754,7 +3358,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Kissme Kissme",
       "type": "creature",
-      "description": "Kissme Kissme More information",
+      "description": "Kissme Kissme",
       "position": {
         "x": 91.89,
         "y": 91.43
@@ -3763,7 +3367,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Dracothraxus",
       "type": "creature",
-      "description": "Dracothraxus Friendly and aggressive. More information",
+      "description": "Dracothraxus Friendly and aggressive.",
       "position": {
         "x": 75.2,
         "y": 50.85
@@ -3772,7 +3376,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Adjhar",
       "type": "creature",
-      "description": "Adjhar More information",
+      "description": "Adjhar",
       "position": {
         "x": 81.31,
         "y": 43.22
@@ -3781,7 +3385,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Bollux",
       "type": "creature",
-      "description": "Bollux More information",
+      "description": "Bollux",
       "position": {
         "x": 80.55,
         "y": 43.22
@@ -3790,7 +3394,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Wislem",
       "type": "npc",
-      "description": "Wislem Royal Advisor. More information",
+      "description": "Wislem Royal Advisor.",
       "position": {
         "x": 30.62,
         "y": 61.72
@@ -3799,7 +3403,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Inwisloklem",
       "type": "npc",
-      "description": "Inwisloklem Member of the Great Council. More information",
+      "description": "Inwisloklem Member of the Great Council.",
       "position": {
         "x": 31.54,
         "y": 61.24
@@ -3808,7 +3412,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Sir Horffe",
       "type": "npc",
-      "description": "Sir Horffe Captain of the guard. More information",
+      "description": "Sir Horffe Captain of the guard.",
       "position": {
         "x": 46.51,
         "y": 10.53
@@ -3817,7 +3421,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Fodus",
       "type": "npc",
-      "description": "Fodus Gargoyle mine worker. More information",
+      "description": "Fodus Gargoyle mine worker.",
       "position": {
         "x": 51.77,
         "y": 80.33
@@ -3826,7 +3430,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Betra",
       "type": "npc",
-      "description": "Betra Provisioner. More information",
+      "description": "Betra Provisioner.",
       "position": {
         "x": 68.4,
         "y": 3.69
@@ -3835,7 +3439,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Forbrak",
       "type": "npc",
-      "description": "Forbrak Tavernkeeper. More information",
+      "description": "Forbrak Tavernkeeper.",
       "position": {
         "x": 69.54,
         "y": 4.75
@@ -3844,7 +3448,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "In For-Lem",
       "type": "npc",
-      "description": "In For-Lem Trainer. More information",
+      "description": "In For-Lem Trainer.",
       "position": {
         "x": 68.48,
         "y": 5.33
@@ -3853,7 +3457,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Inmanilem",
       "type": "npc",
-      "description": "Inmanilem Healer. More information",
+      "description": "Inmanilem Healer.",
       "position": {
         "x": 66.85,
         "y": 6.4
@@ -3862,7 +3466,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Lord Draxinusom",
       "type": "npc",
-      "description": "Lord Draxinusom King of the gargoyles. More information",
+      "description": "Lord Draxinusom King of the gargoyles.",
       "position": {
         "x": 67.4,
         "y": 8.43
@@ -3871,7 +3475,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Quaeven",
       "type": "npc",
-      "description": "Quaeven Gargoyles. More information",
+      "description": "Quaeven Gargoyles.",
       "position": {
         "x": 68.43,
         "y": 7.47
@@ -3880,7 +3484,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Quan",
       "type": "npc",
-      "description": "Quan Fellowship branch leader. More information",
+      "description": "Quan Fellowship branch leader.",
       "position": {
         "x": 69.47,
         "y": 7.43
@@ -3889,7 +3493,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Runeb",
       "type": "npc",
-      "description": "Runeb Quan's assistant. More information",
+      "description": "Runeb Quan's assistant.",
       "position": {
         "x": 70.01,
         "y": 6.9
@@ -3898,7 +3502,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Sarpling",
       "type": "npc",
-      "description": "Sarpling Jewel and reagent seller. More information",
+      "description": "Sarpling Jewel and reagent seller.",
       "position": {
         "x": 71.18,
         "y": 6.35
@@ -3907,7 +3511,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Silamo",
       "type": "npc",
-      "description": "Silamo Gardener. More information",
+      "description": "Silamo Gardener.",
       "position": {
         "x": 75.73,
         "y": 8.43
@@ -3916,7 +3520,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Teregus",
       "type": "npc",
-      "description": "Teregus Shrinekeeper. More information",
+      "description": "Teregus Shrinekeeper.",
       "position": {
         "x": 68.98,
         "y": 9.48
@@ -3925,7 +3529,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Ansikart",
       "type": "npc",
-      "description": "Ansikart Tavernkeeper. More information",
+      "description": "Ansikart Tavernkeeper.",
       "position": {
         "x": 66.29,
         "y": 62.61
@@ -3934,7 +3538,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Aurvidlem",
       "type": "npc",
-      "description": "Aurvidlem Provisioner. More information",
+      "description": "Aurvidlem Provisioner.",
       "position": {
         "x": 64.73,
         "y": 61.59
@@ -3943,7 +3547,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "For-Lem",
       "type": "npc",
-      "description": "For-Lem Storyteller. More information",
+      "description": "For-Lem Storyteller.",
       "position": {
         "x": 66.27,
         "y": 61.18
@@ -3952,7 +3556,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Lap-Lem",
       "type": "npc",
-      "description": "Lap-Lem Miner. More information",
+      "description": "Lap-Lem Miner.",
       "position": {
         "x": 67.9,
         "y": 62.17
@@ -3961,7 +3565,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Wis Sur",
       "type": "npc",
-      "description": "Wis Sur Mage. More information",
+      "description": "Wis Sur Mage.",
       "position": {
         "x": 65.36,
         "y": 60.56
@@ -3970,7 +3574,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Kallibrus",
       "type": "npc",
-      "description": "Kallibrus More information",
+      "description": "Kallibrus",
       "position": {
         "x": 21.46,
         "y": 38.65
@@ -3979,7 +3583,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Sherry the Mouse",
       "type": "creature",
-      "description": "Sherry the Mouse More information",
+      "description": "Sherry the Mouse",
       "position": {
         "x": 31.11,
         "y": 62.37
@@ -3997,7 +3601,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Smith the Horse",
       "type": "creature",
-      "description": "Smith the Horse This horse can be a real pain. More information",
+      "description": "Smith the Horse This horse can be a real pain.",
       "position": {
         "x": 17.36,
         "y": 80.81
@@ -4006,7 +3610,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Lasher the Unicorn",
       "type": "creature",
-      "description": "Lasher the Unicorn More information",
+      "description": "Lasher the Unicorn",
       "position": {
         "x": 27.03,
         "y": 27.76
@@ -4015,7 +3619,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Caine",
       "type": "npc",
-      "description": "Caine Alchemist and tortured one. More information",
+      "description": "Caine Alchemist and tortured one.",
       "position": {
         "x": 9.6,
         "y": 51.66
@@ -4024,7 +3628,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Ferryman",
       "type": "npc",
-      "description": "Ferryman Keeper of the Ferry Station. More information",
+      "description": "Ferryman Keeper of the Ferry Station.",
       "position": {
         "x": 16.23,
         "y": 47.06
@@ -4033,7 +3637,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Forsythe",
       "type": "npc",
-      "description": "Forsythe Mayor of Skara Brae. More information",
+      "description": "Forsythe Mayor of Skara Brae.",
       "position": {
         "x": 9.54,
         "y": 48.08
@@ -4042,7 +3646,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Horace",
       "type": "npc",
-      "description": "Horace A powerful one. More information",
+      "description": "Horace A powerful one.",
       "position": {
         "x": 5.39,
         "y": 55.31
@@ -4051,7 +3655,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Markham",
       "type": "npc",
-      "description": "Markham Tavern owner. More information",
+      "description": "Markham Tavern owner.",
       "position": {
         "x": 12.55,
         "y": 46.41
@@ -4060,7 +3664,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Mordra",
       "type": "npc",
-      "description": "Mordra Healer. More information",
+      "description": "Mordra Healer.",
       "position": {
         "x": 9.56,
         "y": 47.03
@@ -4069,7 +3673,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Paulette",
       "type": "npc",
-      "description": "Paulette Tavern maid. More information",
+      "description": "Paulette Tavern maid.",
       "position": {
         "x": 12.85,
         "y": 46.54
@@ -4078,7 +3682,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Quenton",
       "type": "npc",
-      "description": "Quenton Long-time ghost. More information",
+      "description": "Quenton Long-time ghost.",
       "position": {
         "x": 12.57,
         "y": 45.97
@@ -4087,7 +3691,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Rowena",
       "type": "npc",
-      "description": "Rowena Wife of Trent. More information",
+      "description": "Rowena Wife of Trent.",
       "position": {
         "x": 5.87,
         "y": 54.85
@@ -4096,7 +3700,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Trent",
       "type": "npc",
-      "description": "Trent Blacksmith More information",
+      "description": "Trent Blacksmith",
       "position": {
         "x": 7.57,
         "y": 48.08
@@ -4105,7 +3709,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Many Wisps",
       "type": "creature",
-      "description": "Wisp More information",
+      "description": "Wisp",
       "position": {
         "x": 19.59,
         "y": 73.71
@@ -4114,7 +3718,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Iskander",
       "type": "monster",
-      "description": "Iskander More information",
+      "description": "Iskander",
       "position": {
         "x": 87.44,
         "y": 67.58
@@ -4123,7 +3727,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Grod",
       "type": "monster",
-      "description": "Grod Troll jailer and torturer. More information",
+      "description": "Grod Troll jailer and torturer.",
       "position": {
         "x": 50.24,
         "y": 42.08
@@ -4132,7 +3736,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Trolls",
       "type": "monster",
-      "description": "Trolls Covetous. More information",
+      "description": "Trolls Covetous.",
       "position": {
         "x": 49.02,
         "y": 83.01
@@ -4141,7 +3745,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Trolls",
       "type": "monster",
-      "description": "Trolls Covetous. More information",
+      "description": "Trolls Covetous.",
       "position": {
         "x": 55.37,
         "y": 93.82
@@ -4150,7 +3754,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Trolls",
       "type": "monster",
-      "description": "Trolls Covetous. More information",
+      "description": "Trolls Covetous.",
       "position": {
         "x": 14.86,
         "y": 73.18
@@ -4211,27 +3815,9 @@ window.ULTIMA7_MARKERS_DATA = {
       }
     },
     {
-      "name": "Unknown",
-      "type": "monster",
-      "description": "",
-      "position": {
-        "x": 56.96,
-        "y": 45.68
-      }
-    },
-    {
-      "name": "Unknown",
-      "type": "monster",
-      "description": "",
-      "position": {
-        "x": 59.45,
-        "y": 56.87
-      }
-    },
-    {
       "name": "Drakes",
       "type": "monster",
-      "description": "Drakes Random spawn; drops gems. More information",
+      "description": "Drakes Random spawn; drops gems.",
       "position": {
         "x": 28.42,
         "y": 77.59
@@ -4240,7 +3826,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Headless",
       "type": "monster",
-      "description": "Headless More information",
+      "description": "Headless",
       "position": {
         "x": 24.14,
         "y": 31.2
@@ -4249,7 +3835,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Headless",
       "type": "monster",
-      "description": "Headless More information",
+      "description": "Headless",
       "position": {
         "x": 23.76,
         "y": 33.47
@@ -4258,7 +3844,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Headless",
       "type": "monster",
-      "description": "Headless More information",
+      "description": "Headless",
       "position": {
         "x": 29.16,
         "y": 82.3
@@ -4267,7 +3853,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Headless",
       "type": "monster",
-      "description": "Headless More information",
+      "description": "Headless",
       "position": {
         "x": 24.19,
         "y": 35.47
@@ -4276,7 +3862,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Headless",
       "type": "monster",
-      "description": "Headless More information",
+      "description": "Headless",
       "position": {
         "x": 47.81,
         "y": 92.67
@@ -4285,7 +3871,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Headless",
       "type": "monster",
-      "description": "Headless More information",
+      "description": "Headless",
       "position": {
         "x": 63.48,
         "y": 65.72
@@ -4348,7 +3934,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Wolves",
       "type": "enemy",
-      "description": "Wolves More information",
+      "description": "Wolves",
       "position": {
         "x": 19.78,
         "y": 81.18
@@ -4357,7 +3943,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Saralek",
       "type": "creature",
-      "description": "Saralek Trellek's mate. More information",
+      "description": "Saralek Trellek's mate.",
       "position": {
         "x": 33.03,
         "y": 81.66
@@ -4366,7 +3952,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Salamon",
       "type": "creature",
-      "description": "Salamon More information",
+      "description": "Salamon",
       "position": {
         "x": 33.61,
         "y": 82.25
@@ -4375,7 +3961,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Trellek",
       "type": "creature",
-      "description": "Trellek Saralek's mate. More information",
+      "description": "Trellek Saralek's mate.",
       "position": {
         "x": 33.99,
         "y": 81.2
@@ -4384,7 +3970,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Tavenor",
       "type": "creature",
-      "description": "Tavenor More information",
+      "description": "Tavenor",
       "position": {
         "x": 32.83,
         "y": 80.38
@@ -4393,7 +3979,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Corpsers",
       "type": "monster",
-      "description": "Corpsers More information",
+      "description": "Corpsers",
       "position": {
         "x": 57.62,
         "y": 88.63
@@ -4402,7 +3988,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Corpsers",
       "type": "monster",
-      "description": "Corpsers More information",
+      "description": "Corpsers",
       "position": {
         "x": 50.6,
         "y": 94.24
@@ -4411,7 +3997,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Spiders",
       "type": "monster",
-      "description": "Spiders More information",
+      "description": "Spiders",
       "position": {
         "x": 55.64,
         "y": 91.45
@@ -4420,7 +4006,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Acid Slug",
       "type": "monster",
-      "description": "Acid Slug More information",
+      "description": "Acid Slug",
       "position": {
         "x": 51.51,
         "y": 72.27
@@ -4429,7 +4015,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Slimes",
       "type": "monster",
-      "description": "Slimes More information",
+      "description": "Slimes",
       "position": {
         "x": 60.11,
         "y": 83.64
@@ -4438,7 +4024,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Reaper",
       "type": "creature",
-      "description": "Reaper More information",
+      "description": "Reaper",
       "position": {
         "x": 53.55,
         "y": 75.1
@@ -4447,7 +4033,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Stone Harpy",
       "type": "monster",
-      "description": "Stone Harpy More information",
+      "description": "Stone Harpy",
       "position": {
         "x": 59.59,
         "y": 17.04
@@ -4474,7 +4060,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Asterrelon's House",
       "type": "site",
-      "description": "Fill by AI",
+      "description": "The secluded home of the powerful mage, Asterrelon.",
       "position": {
         "x": 79.37,
         "y": 43.83
@@ -4483,7 +4069,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Dragon's Nest",
       "type": "enemy",
-      "description": "Fill by AI",
+      "description": "A dangerous lair inhabited by a fire-breathing dragon. Approach with extreme caution.",
       "position": {
         "x": 25.46,
         "y": 36.49
@@ -4492,10 +4078,532 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Dragon's Nest",
       "type": "enemy",
-      "description": "Fill by AI",
+      "description": "A dangerous lair inhabited by a fire-breathing dragon. Approach with extreme caution.",
       "position": {
         "x": 27.21,
         "y": 30.35
+      }
+    },
+    {
+      "name": "Shrine of the Codex",
+      "type": "shrine",
+      "description": "fill by ai",
+      "position": {
+        "x": 88.47,
+        "y": 8.41
+      }
+    },
+    {
+      "name": "Shrine of Humility",
+      "type": "shrine",
+      "description": "fill by ai",
+      "position": {
+        "x": 92.45,
+        "y": 17.36
+      }
+    },
+    {
+      "name": "Shrine of the spirit",
+      "type": "shrine",
+      "description": "fill by ai",
+      "position": {
+        "x": 95,
+        "y": 21.61
+      }
+    },
+    {
+      "name": "Shrine of honesty",
+      "type": "shrine",
+      "description": "fill by ai",
+      "position": {
+        "x": 87.22,
+        "y": 62.01
+      }
+    },
+    {
+      "name": "Ruffians camp",
+      "type": "interest",
+      "description": "fill by ai",
+      "position": {
+        "x": 94.09,
+        "y": 87.22
+      }
+    },
+    {
+      "name": "Serpent's Mark",
+      "type": "interest",
+      "description": "fill by ai",
+      "position": {
+        "x": 94.82,
+        "y": 91.02
+      }
+    },
+    {
+      "name": "Desert dungeon",
+      "type": "dungeon",
+      "description": "fill by ai",
+      "position": {
+        "x": 68.75,
+        "y": 77.24
+      }
+    },
+    {
+      "name": "Clue - Dry lands",
+      "type": "clue",
+      "description": "fill by ai",
+      "position": {
+        "x": 75.21,
+        "y": 78.72
+      }
+    },
+    {
+      "name": "Moongate",
+      "type": "moongate",
+      "description": "fill by ai",
+      "position": {
+        "x": 60.41,
+        "y": 86.68
+      }
+    },
+    {
+      "name": "Shrine of Justice",
+      "type": "shrine",
+      "description": "fill by ai",
+      "position": {
+        "x": 23.69,
+        "y": 95.85
+      }
+    },
+    {
+      "name": "Brother Wayne",
+      "type": "npc",
+      "description": "fill by ai",
+      "position": {
+        "x": 18.3,
+        "y": 68.77
+      }
+    },
+    {
+      "name": "Selwyn's Tower",
+      "type": "interest",
+      "description": "fill by ai",
+      "position": {
+        "x": 13.78,
+        "y": 65.08
+      }
+    },
+    {
+      "name": "Nightshade",
+      "type": "reagents",
+      "description": "fill by ai",
+      "position": {
+        "x": 10.2,
+        "y": 78.27
+      }
+    },
+    {
+      "name": "Spider Silks",
+      "type": "reagents",
+      "description": "fill by ai",
+      "position": {
+        "x": 6.74,
+        "y": 79.34
+      }
+    },
+    {
+      "name": "Ring of invisibility",
+      "type": "interest",
+      "description": "fill by ai",
+      "position": {
+        "x": 8.97,
+        "y": 82.92
+      }
+    },
+    {
+      "name": "Stonegate",
+      "type": "interest",
+      "description": "fill by ai",
+      "position": {
+        "x": 42.76,
+        "y": 68.12
+      }
+    },
+    {
+      "name": "Shrine of Compassion",
+      "type": "shrne",
+      "description": "fill by ai",
+      "position": {
+        "x": 47.1,
+        "y": 54.91
+      }
+    },
+    {
+      "name": "Lover's walk",
+      "type": "interest",
+      "description": "fill by ai",
+      "position": {
+        "x": 48.72,
+        "y": 55.98
+      }
+    },
+    {
+      "name": "Hoe of Destruction",
+      "type": "interest",
+      "description": "fill by ai",
+      "position": {
+        "x": 38.77,
+        "y": 55.92
+      }
+    },
+    {
+      "name": "Alien ship",
+      "type": "interest",
+      "description": "fill by ai",
+      "position": {
+        "x": 37.7,
+        "y": 57.58
+      }
+    },
+    {
+      "name": "Clue - Paws",
+      "type": "clue",
+      "description": "fill by ai",
+      "position": {
+        "x": 31.08,
+        "y": 44.22
+      }
+    },
+    {
+      "name": "Clue - Paws",
+      "type": "clue",
+      "description": "There is an object hidden in this plant",
+      "position": {
+        "x": 30.79,
+        "y": 43.84
+      }
+    },
+    {
+      "name": "Clue - Paws",
+      "type": "clue",
+      "description": "This locked chest contains evidence that can incriminate someone",
+      "position": {
+        "x": 30.44,
+        "y": 41.58
+      }
+    },
+    {
+      "name": "Clue - Paws",
+      "type": "clue",
+      "description": "There is something hidden near this bucket of blood",
+      "position": {
+        "x": 29.8,
+        "y": 40.9
+      }
+    },
+    {
+      "name": "Magic Gauntlets",
+      "type": "interest",
+      "description": "fill by ai",
+      "position": {
+        "x": 27.67,
+        "y": 38.65
+      }
+    },
+    {
+      "name": "Moongate",
+      "type": "moongate",
+      "description": "moongate",
+      "position": {
+        "x": 18.48,
+        "y": 47.73
+      }
+    },
+    {
+      "name": "Hidden treasure key",
+      "type": "clue",
+      "description": "fill by ai",
+      "position": {
+        "x": 29.72,
+        "y": 20.75
+      }
+    },
+    {
+      "name": "Moongate",
+      "type": "moongate",
+      "description": "moongate",
+      "position": {
+        "x": 33.28,
+        "y": 20.7
+      }
+    },
+    {
+      "name": "Shrine of Honor",
+      "type": "shrine",
+      "description": "fill by ai",
+      "position": {
+        "x": 27.21,
+        "y": 16.79
+      }
+    },
+    {
+      "name": "Clue - Riky",
+      "type": "clue",
+      "description": "Baby belongs to Lady Tory in Serpent's Hold",
+      "position": {
+        "x": 27.53,
+        "y": 16.85
+      }
+    },
+    {
+      "name": "Shrine of Valor",
+      "type": "shrine",
+      "description": "fill by ai",
+      "position": {
+        "x": 15.89,
+        "y": 12.29
+      }
+    },
+    {
+      "name": "Moongate",
+      "type": "moongate",
+      "description": "moongate",
+      "position": {
+        "x": 8.46,
+        "y": 7.9
+      }
+    },
+    {
+      "name": "Pirate cave",
+      "type": "interest",
+      "description": "fill by ai",
+      "position": {
+        "x": 39.48,
+        "y": 8.12
+      }
+    },
+    {
+      "name": "Pirate house",
+      "type": "interest",
+      "description": "fill by ai",
+      "position": {
+        "x": 33.06,
+        "y": 10.35
+      }
+    },
+    {
+      "name": "Skeleton Key",
+      "type": "interest",
+      "description": "fill by ai",
+      "position": {
+        "x": 21.49,
+        "y": 27.24
+      }
+    },
+    {
+      "name": "Lasher's Cave",
+      "type": "dungeon",
+      "description": "fill by ai",
+      "position": {
+        "x": 26.83,
+        "y": 26.34
+      }
+    },
+    {
+      "name": "Test of Truth",
+      "type": "interest",
+      "description": "fill by ai",
+      "position": {
+        "x": 70.52,
+        "y": 46.46
+      }
+    },
+    {
+      "name": "Test of Courage",
+      "type": "fill by ai",
+      "description": "fill by ai",
+      "position": {
+        "x": 72.08,
+        "y": 46.46
+      }
+    },
+    {
+      "name": "Moongate",
+      "type": "moongate",
+      "description": "moongate",
+      "position": {
+        "x": 72.59,
+        "y": 48.54
+      }
+    },
+    {
+      "name": "Arcadion",
+      "type": "interest",
+      "description": "fill by ai",
+      "position": {
+        "x": 72.02,
+        "y": 50.69
+      }
+    },
+    {
+      "name": "Lady of Love statue",
+      "type": "interest",
+      "description": "fill by ai",
+      "position": {
+        "x": 70.98,
+        "y": 51.59
+      }
+    },
+    {
+      "name": "Elder of Truth Statue",
+      "type": "interest",
+      "description": "fill by ai",
+      "position": {
+        "x": 71.26,
+        "y": 51.88
+      }
+    },
+    {
+      "name": "Warrior of Courage statue",
+      "type": "interest",
+      "description": "fill by ai",
+      "position": {
+        "x": 71.59,
+        "y": 51.6
+      }
+    },
+    {
+      "name": "Stone of Castambre",
+      "type": "interest",
+      "description": "fill by ai",
+      "position": {
+        "x": 79.08,
+        "y": 49.09
+      }
+    },
+    {
+      "name": "Test of Love",
+      "type": "interest",
+      "description": "fill by ai",
+      "position": {
+        "x": 80.13,
+        "y": 45.41
+      }
+    },
+    {
+      "name": "The Golden Ankh",
+      "type": "interest",
+      "description": "fill by ai",
+      "position": {
+        "x": 71.23,
+        "y": 57.42
+      }
+    },
+    {
+      "name": "The subway",
+      "type": "interest",
+      "description": "fill by ai",
+      "position": {
+        "x": 59.88,
+        "y": 62.24
+      }
+    },
+    {
+      "name": "Clue - Cove",
+      "type": "clue",
+      "description": "There is a surprise inside the cat's corpse",
+      "position": {
+        "x": 50.32,
+        "y": 60.02
+      }
+    },
+    {
+      "name": "Clue - Minoc",
+      "type": "clue",
+      "description": "This wall doesn't look solid.",
+      "position": {
+        "x": 48.69,
+        "y": 74.66
+      }
+    },
+    {
+      "name": "Trinsic Hidden Treasure Room",
+      "type": "interest",
+      "description": "fill by ai",
+      "position": {
+        "x": 5.43,
+        "y": 20.72
+      }
+    },
+    {
+      "name": "Teleport to the Subway",
+      "type": "interest",
+      "description": "fill by ai",
+      "position": {
+        "x": 5.42,
+        "y": 21.17
+      }
+    },
+    {
+      "name": "Clue - Isle of Deeds",
+      "type": "clue",
+      "description": "Observe the pattern of the fishes",
+      "position": {
+        "x": 47.65,
+        "y": 10.62
+      }
+    },
+    {
+      "name": "Clue - Isle of Deeds",
+      "type": "clue",
+      "description": "There maybe something hidden under these clothes",
+      "position": {
+        "x": 46.19,
+        "y": 10.05
+      }
+    },
+    {
+      "name": "Clue - British Castle",
+      "type": "clue",
+      "description": "This cabinet contains the key to the storage room",
+      "position": {
+        "x": 29.23,
+        "y": 61.89
+      }
+    },
+    {
+      "name": "Clue - British Castle",
+      "type": "clue",
+      "description": "There are levers in here that will grant you access to the 2nd floor",
+      "position": {
+        "x": 29.44,
+        "y": 62.93
+      }
+    },
+    {
+      "name": "Moongate",
+      "type": "moongate",
+      "description": "moongate",
+      "position": {
+        "x": 16.93,
+        "y": 83.76
+      }
+    },
+    {
+      "name": "Shrine of Sacrifice",
+      "type": "shrine",
+      "description": "fill by ai",
+      "position": {
+        "x": 75.72,
+        "y": 68.39
+      }
+    },
+    {
+      "name": "Clue - Trinsic",
+      "type": "clue",
+      "description": "There is a secret in here that may lead to a cheat",
+      "position": {
+        "x": 31.61,
+        "y": 25.25
       }
     }
   ]
