@@ -66,8 +66,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "region",
       "description": "Dagger Isle More information",
       "position": {
-        "x": 89.9998,
-        "y": 49.031
+        "x": 86.04,
+        "y": 62.23
       }
     },
     {
@@ -84,8 +84,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "region",
       "description": "Dry Lands More information",
       "position": {
-        "x": 78.8488,
-        "y": 31.9548
+        "x": 75.5,
+        "y": 71.1
       }
     },
     {
@@ -129,8 +129,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "region",
       "description": "Isle of the Avatar More information",
       "position": {
-        "x": 93.3812,
-        "y": 97.7814
+        "x": 89.21,
+        "y": 12.78
       }
     },
     {
@@ -138,8 +138,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "region",
       "description": "Lake Generosity More information",
       "position": {
-        "x": 78.8488,
-        "y": 40.4047
+        "x": 75.57,
+        "y": 66.76
       }
     },
     {
@@ -228,8 +228,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "region",
       "description": "Verity Isle More information",
       "position": {
-        "x": 94.5321,
-        "y": 79.673
+        "x": 91.29,
+        "y": 42.33
       }
     },
     {
@@ -282,8 +282,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "city",
       "description": "Moonglow \"We are like, magicians, or something.\" More information",
       "position": {
-        "x": 95.2156,
-        "y": 70.4583
+        "x": 91.56,
+        "y": 49.82
       }
     },
     {
@@ -291,8 +291,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "city",
       "description": "New Magincia \"No snaketalk for ages\" More information",
       "position": {
-        "x": 70.2246,
-        "y": 91.3368
+        "x": 68.98,
+        "y": 27.89
       }
     },
     {
@@ -309,8 +309,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "city",
       "description": "Terfin \"The friendly gargoyle isle\" More information",
       "position": {
-        "x": 71.64,
-        "y": 96.81
+        "x": 69.09,
+        "y": 5.85
       }
     },
     {
@@ -327,8 +327,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "city",
       "description": "Vesper \"So remote a place that it'll be evening before you get here\" More information",
       "position": {
-        "x": 71.0882,
-        "y": 48.4448
+        "x": 67.93,
+        "y": 62.76
       }
     },
     {
@@ -759,8 +759,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "site",
       "description": "",
       "position": {
-        "x": 82.8237,
-        "y": 77.7163
+        "x": 59.79,
+        "y": 54.02
       }
     },
     {
@@ -948,8 +948,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "site",
       "description": "",
       "position": {
-        "x": 98.8397,
-        "y": 67.261
+        "x": 60.5,
+        "y": 55.73
       }
     },
     {
@@ -957,8 +957,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "site",
       "description": "",
       "position": {
-        "x": 92.1403,
-        "y": 78.9464
+        "x": 61.3,
+        "y": 54.57
       }
     },
     {
@@ -966,8 +966,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "site",
       "description": "Clothier Moonglow.",
       "position": {
-        "x": 90.8229,
-        "y": 68.9538
+        "x": 86.75,
+        "y": 50.66
       }
     },
     {
@@ -975,8 +975,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "site",
       "description": "Fellowship Hall Moonglow.",
       "position": {
-        "x": 94.8694,
-        "y": 68.048
+        "x": 90.31,
+        "y": 51.23
       }
     },
     {
@@ -984,8 +984,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "site",
       "description": "Healer Moonglow.",
       "position": {
-        "x": 93.1701,
-        "y": 73.9397
+        "x": 88.76,
+        "y": 47.04
       }
     },
     {
@@ -993,8 +993,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "site",
       "description": "Orrery More information",
       "position": {
-        "x": 99.0288,
-        "y": 64.4069
+        "x": 94.15,
+        "y": 53.49
       }
     },
     {
@@ -1002,8 +1002,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "site",
       "description": "",
       "position": {
-        "x": 93.1566,
-        "y": 63.4435
+        "x": 62.21,
+        "y": 56.03
       }
     },
     {
@@ -1011,8 +1011,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "site",
       "description": "The Friendly Knave More information",
       "position": {
-        "x": 97.194,
-        "y": 74.817
+        "x": 92.44,
+        "y": 46.44
       }
     },
     {
@@ -1020,8 +1020,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "site",
       "description": "Trainer Moonglow.",
       "position": {
-        "x": 93.3948,
-        "y": 81.9388
+        "x": 88.84,
+        "y": 39.86
       }
     },
     {
@@ -1029,8 +1029,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "site",
       "description": "",
       "position": {
-        "x": 75.2157,
-        "y": 84.0928
+        "x": 59.87,
+        "y": 54.58
       }
     },
     {
@@ -1038,8 +1038,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "site",
       "description": "",
       "position": {
-        "x": 74.0558,
-        "y": 85.5688
+        "x": 58.35,
+        "y": 52.42
       }
     },
     {
@@ -1047,8 +1047,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "site",
       "description": "Flower Shop and Greenhouse The Greenhouse is the only one in all of Britannia.",
       "position": {
-        "x": 76.9559,
-        "y": 94.6515
+        "x": 74.18,
+        "y": 21.46
       }
     },
     {
@@ -1056,8 +1056,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "site",
       "description": "Refugee Camp",
       "position": {
-        "x": 75.5079,
-        "y": 93.6791
+        "x": 72.82,
+        "y": 23.62
       }
     },
     {
@@ -1065,8 +1065,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "site",
       "description": "Shipwright New Magincia",
       "position": {
-        "x": 75.8181,
-        "y": 82.6945
+        "x": 73.15,
+        "y": 39.2
       }
     },
     {
@@ -1074,8 +1074,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "site",
       "description": "Tavern New Magincia",
       "position": {
-        "x": 67.8013,
-        "y": 90.5262
+        "x": 65.86,
+        "y": 29.27
       }
     },
     {
@@ -1083,8 +1083,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "site",
       "description": "Town Hall New Magincia",
       "position": {
-        "x": 71.8388,
-        "y": 90.529
+        "x": 69.46,
+        "y": 29.24
       }
     },
     {
@@ -1245,8 +1245,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "site",
       "description": "Fellowship Hall Terfin.",
       "position": {
-        "x": 70.04,
-        "y": 95.07
+        "x": 70.03,
+        "y": 7.42
       }
     },
     {
@@ -1254,8 +1254,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "site",
       "description": "Healer Terfin.",
       "position": {
-        "x": 68.3993,
-        "y": 99.3867
+        "x": 66.42,
+        "y": 6.89
       }
     },
     {
@@ -1263,8 +1263,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "site",
       "description": "Provisioner Terfin.",
       "position": {
-        "x": 70.135,
-        "y": 99.9965
+        "x": 67.91,
+        "y": 3.81
       }
     },
     {
@@ -1272,8 +1272,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "site",
       "description": "",
       "position": {
-        "x": 74.0828,
-        "y": 99.4568
+        "x": 58.1,
+        "y": 54.41
       }
     },
     {
@@ -1281,8 +1281,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "site",
       "description": "Shrines of the Principles More information",
       "position": {
-        "x": 69.7,
-        "y": 94.68
+        "x": 68.96,
+        "y": 9.98
       }
     },
     {
@@ -1290,8 +1290,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "site",
       "description": "Hall of Refreshment Tavern. More information",
       "position": {
-        "x": 72.4101,
-        "y": 99.9917
+        "x": 69.95,
+        "y": 4.19
       }
     },
     {
@@ -1299,8 +1299,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "site",
       "description": "Trainer Terfin.",
       "position": {
-        "x": 70.7014,
-        "y": 99.5964
+        "x": 68.43,
+        "y": 5.86
       }
     },
     {
@@ -1398,8 +1398,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "site",
       "description": "",
       "position": {
-        "x": 70.126,
-        "y": 50.4209
+        "x": 60.32,
+        "y": 51.77
       }
     },
     {
@@ -1407,8 +1407,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "site",
       "description": "Britannian Mining Company Vesper branch. More information",
       "position": {
-        "x": 72.1134,
-        "y": 44.6446
+        "x": 69.94,
+        "y": 64.67
       }
     },
     {
@@ -1416,8 +1416,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "site",
       "description": "Provisioner Vesper.",
       "position": {
-        "x": 74.7123,
-        "y": 47.7821
+        "x": 72.14,
+        "y": 63.14
       }
     },
     {
@@ -1425,8 +1425,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "site",
       "description": "Provisioner Vesper",
       "position": {
-        "x": 68.0935,
-        "y": 49.5402
+        "x": 66.02,
+        "y": 62.11
       }
     },
     {
@@ -1434,8 +1434,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "site",
       "description": "Town Hall Vesper",
       "position": {
-        "x": 73.534,
-        "y": 48.881
+        "x": 71.03,
+        "y": 62.61
       }
     },
     {
@@ -1443,8 +1443,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "site",
       "description": "Trainer Vesper.",
       "position": {
-        "x": 74.6493,
-        "y": 51.6816
+        "x": 72.05,
+        "y": 61.04
       }
     },
     {
@@ -1452,8 +1452,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "site",
       "description": "Gilded Lizard Vesper tavern.",
       "position": {
-        "x": 73.534,
-        "y": 55.3992
+        "x": 71.05,
+        "y": 58.99
       }
     },
     {
@@ -1461,8 +1461,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "site",
       "description": "Tavern Vesper.",
       "position": {
-        "x": 66.6365,
-        "y": 51.5045
+        "x": 64.74,
+        "y": 61.12
       }
     },
     {
@@ -1659,8 +1659,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "dungeon",
       "description": "Deceit More information",
       "position": {
-        "x": 92.6077,
-        "y": 46.9368
+        "x": 88.2,
+        "y": 63.3
       }
     },
     {
@@ -1668,8 +1668,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "dungeon",
       "description": "Desert Dungeon Two entrances/exits.",
       "position": {
-        "x": 71.2273,
-        "y": 22.3963
+        "x": 63.46,
+        "y": 21.73
       }
     },
     {
@@ -1731,8 +1731,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "dungeon",
       "description": "Hythloth More information",
       "position": {
-        "x": 90.2515,
-        "y": 98.8754
+        "x": 86.36,
+        "y": 8.26
       }
     },
     {
@@ -1794,8 +1794,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "dungeon",
       "description": "Terfin Mines",
       "position": {
-        "x": 75.8812,
-        "y": 99.1151
+        "x": 73.25,
+        "y": 7.77
       }
     },
     {
@@ -1803,8 +1803,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "dungeon",
       "description": "Vesper Mines More information",
       "position": {
-        "x": 72.6168,
-        "y": 36.0356
+        "x": 70.09,
+        "y": 69.35
       }
     },
     {
@@ -1830,8 +1830,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "castle",
       "description": "Castle of Fire",
       "position": {
-        "x": 73.8937,
-        "y": 69.7436
+        "x": 71.35,
+        "y": 49.86
       }
     },
     {
@@ -1839,8 +1839,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "castle",
       "description": "Lycaeum More information",
       "position": {
-        "x": 91.8927,
-        "y": 71.1105
+        "x": 87.61,
+        "y": 49.1
       }
     },
     {
@@ -2577,8 +2577,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "npc",
       "description": "Erethian Scholar. More information",
       "position": {
-        "x": 73.1517,
-        "y": 68.7878
+        "x": 70.54,
+        "y": 50.48
       }
     },
     {
@@ -2838,8 +2838,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "npc",
       "description": "Addom Traveler. More information",
       "position": {
-        "x": 97.6573,
-        "y": 75.2094
+        "x": 92.89,
+        "y": 46
       }
     },
     {
@@ -2847,8 +2847,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "npc",
       "description": "Balayna Fellowship treasure keeper. More information",
       "position": {
-        "x": 95.4047,
-        "y": 68.0543
+        "x": 90.86,
+        "y": 51.18
       }
     },
     {
@@ -2856,8 +2856,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "npc",
       "description": "Brion Orrery keeper. More information",
       "position": {
-        "x": 98.7051,
-        "y": 64.7965
+        "x": 93.84,
+        "y": 53.17
       }
     },
     {
@@ -2865,8 +2865,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "npc",
       "description": "Carlyn Weaver. More information",
       "position": {
-        "x": 91.3848,
-        "y": 68.8947
+        "x": 87.17,
+        "y": 50.67
       }
     },
     {
@@ -2874,8 +2874,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "npc",
       "description": "Chad Trainer. More information",
       "position": {
-        "x": 93.6465,
-        "y": 81.7443
+        "x": 89.19,
+        "y": 40.09
       }
     },
     {
@@ -2883,8 +2883,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "npc",
       "description": "Cubolt Farmer. More information",
       "position": {
-        "x": 92.5807,
-        "y": 78.8742
+        "x": 88.23,
+        "y": 42.86
       }
     },
     {
@@ -2892,8 +2892,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "npc",
       "description": "Effrem Inhabitant. More information",
       "position": {
-        "x": 90.7824,
-        "y": 67.2853
+        "x": 86.66,
+        "y": 51.73
       }
     },
     {
@@ -2901,8 +2901,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "npc",
       "description": "Elad Healer. More information",
       "position": {
-        "x": 93.6555,
-        "y": 73.9501
+        "x": 89.31,
+        "y": 47
       }
     },
     {
@@ -2910,8 +2910,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "npc",
       "description": "Jillian Lycaeum scholar. More information",
       "position": {
-        "x": 91.4118,
-        "y": 71.4863
+        "x": 87.23,
+        "y": 48.71
       }
     },
     {
@@ -2919,8 +2919,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "npc",
       "description": "Mariah Lycaeum maid. More information",
       "position": {
-        "x": 91.4388,
-        "y": 70.6917
+        "x": 87.24,
+        "y": 49.41
       }
     },
     {
@@ -2928,8 +2928,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "npc",
       "description": "Morz farmer. More information",
       "position": {
-        "x": 93.7905,
-        "y": 78.9152
+        "x": 89.46,
+        "y": 42.85
       }
     },
     {
@@ -2937,8 +2937,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "npc",
       "description": "Nelson head of the Lycaeum. More information",
       "position": {
-        "x": 92.3515,
-        "y": 71.7531
+        "x": 88.08,
+        "y": 48.63
       }
     },
     {
@@ -2946,8 +2946,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "npc",
       "description": "Prenumbra Mage. More information",
       "position": {
-        "x": 93.1566,
-        "y": 62.4925
+        "x": 88.73,
+        "y": 54.76
       }
     },
     {
@@ -2955,8 +2955,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "npc",
       "description": "Phearcy Travernkeeper. More information",
       "position": {
-        "x": 97.2435,
-        "y": 75.199
+        "x": 92.5,
+        "y": 46.06
       }
     },
     {
@@ -2964,8 +2964,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "npc",
       "description": "Rankin Fellowship treasure branch. More information",
       "position": {
-        "x": 94.3074,
-        "y": 68.0966
+        "x": 89.8,
+        "y": 51.23
       }
     },
     {
@@ -2973,8 +2973,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "npc",
       "description": "Tolemak Farmer. More information",
       "position": {
-        "x": 92.5537,
-        "y": 78.3768
+        "x": 88.22,
+        "y": 43.37
       }
     },
     {
@@ -2982,8 +2982,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "npc",
       "description": "Zelda Nelson's assistant. More information",
       "position": {
-        "x": 92.311,
-        "y": 70.5153
+        "x": 88.11,
+        "y": 49.45
       }
     },
     {
@@ -2991,8 +2991,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "npc",
       "description": "Alagnar Scholar. More information",
       "position": {
-        "x": 75.8091,
-        "y": 84.1775
+        "x": 73.04,
+        "y": 37.61
       }
     },
     {
@@ -3000,8 +3000,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "npc",
       "description": "Battles Pirate in New Magincia. More information",
       "position": {
-        "x": 72.9766,
-        "y": 92.8969
+        "x": 70.54,
+        "y": 25.09
       }
     },
     {
@@ -3009,8 +3009,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "npc",
       "description": "Boris Tavernkeeper in New Magincia. More information",
       "position": {
-        "x": 68.3002,
-        "y": 90.7846
+        "x": 66.37,
+        "y": 28.73
       }
     },
     {
@@ -3018,8 +3018,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "npc",
       "description": "Constance Wellkeeper. More information",
       "position": {
-        "x": 71.9063,
-        "y": 92.0363
+        "x": 69.51,
+        "y": 26.69
       }
     },
     {
@@ -3027,8 +3027,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "npc",
       "description": "Henry Shepherd. More information",
       "position": {
-        "x": 72.4371,
-        "y": 91.4376
+        "x": 70,
+        "y": 27.71
       }
     },
     {
@@ -3036,8 +3036,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "npc",
       "description": "Leavell Pirate in New Magincia. More information",
       "position": {
-        "x": 73.4173,
-        "y": 91.1569
+        "x": 70.73,
+        "y": 28.09
       }
     },
     {
@@ -3045,8 +3045,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "npc",
       "description": "Magenta Mayor of New Magincia. More information",
       "position": {
-        "x": 71.8433,
-        "y": 90.7999
+        "x": 69.5,
+        "y": 28.75
       }
     },
     {
@@ -3054,8 +3054,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "npc",
       "description": "Robin Pirate in New Magincia. More information",
       "position": {
-        "x": 72.6528,
-        "y": 90.9347
+        "x": 72.61,
+        "y": 39.15
       }
     },
     {
@@ -3063,8 +3063,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "npc",
       "description": "Russell Shipwright in New Magincia. More information",
       "position": {
-        "x": 75.2877,
-        "y": 82.6987
+        "x": 70.23,
+        "y": 28.62
       }
     },
     {
@@ -3072,8 +3072,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "npc",
       "description": "Sam Flower Seller in New Magincia. More information",
       "position": {
-        "x": 76.4656,
-        "y": 94.664
+        "x": 73.64,
+        "y": 21.42
       }
     },
     {
@@ -3324,8 +3324,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "npc",
       "description": "Auston Mayor of Vesper. More information",
       "position": {
-        "x": 72.9991,
-        "y": 48.9859
+        "x": 70.58,
+        "y": 62.6
       }
     },
     {
@@ -3333,8 +3333,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "npc",
       "description": "Blorn Troublemaker. More information",
       "position": {
-        "x": 72.9585,
-        "y": 51.7185
+        "x": 70.5,
+        "y": 61.02
       }
     },
     {
@@ -3342,8 +3342,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "npc",
       "description": "Cador Mine supervisor. More information",
       "position": {
-        "x": 73.5295,
-        "y": 44.0208
+        "x": 70.9,
+        "y": 65.31
       }
     },
     {
@@ -3351,8 +3351,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "npc",
       "description": "Catherine Cador and Yvella's daughter. More information",
       "position": {
-        "x": 73.7771,
-        "y": 44.9266
+        "x": 71.22,
+        "y": 64.49
       }
     },
     {
@@ -3360,8 +3360,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "npc",
       "description": "Eldroth Provisioner. More information",
       "position": {
-        "x": 74.7033,
-        "y": 46.9666
+        "x": 72.1,
+        "y": 63.62
       }
     },
     {
@@ -3369,8 +3369,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "npc",
       "description": "Liana Secretary. More information",
       "position": {
-        "x": 73.5655,
-        "y": 49.809
+        "x": 71.06,
+        "y": 62.08
       }
     },
     {
@@ -3378,8 +3378,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "npc",
       "description": "Mara Miner. More information",
       "position": {
-        "x": 74.7303,
-        "y": 44.0437
+        "x": 72.1,
+        "y": 65.2
       }
     },
     {
@@ -3387,8 +3387,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "npc",
       "description": "Yongi Tavernkeeper. More information",
       "position": {
-        "x": 73.1562,
-        "y": 55.2985
+        "x": 70.58,
+        "y": 59.02
       }
     },
     {
@@ -3396,8 +3396,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "npc",
       "description": "Yvella Wife of Cador. More information",
       "position": {
-        "x": 73.6871,
-        "y": 44.1882
+        "x": 71.1,
+        "y": 65.1
       }
     },
     {
@@ -3405,8 +3405,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "npc",
       "description": "Zaksam Trainer. More information",
       "position": {
-        "x": 74.1995,
-        "y": 51.7185
+        "x": 71.67,
+        "y": 61.02
       }
     },
     {
@@ -3621,8 +3621,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "npc",
       "description": "Time Lord More information",
       "position": {
-        "x": 100,
-        "y": 94.6314
+        "x": 95.06,
+        "y": 20.92
       }
     },
     {
@@ -3639,8 +3639,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "npc",
       "description": "Eiko More information",
       "position": {
-        "x": 89.0872,
-        "y": 45.2989
+        "x": 85.13,
+        "y": 63.39
       }
     },
     {
@@ -3648,8 +3648,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "npc",
       "description": "Amanda More information",
       "position": {
-        "x": 89.0962,
-        "y": 46.0352
+        "x": 85.1,
+        "y": 64.12
       }
     },
     {
@@ -3693,8 +3693,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "companion",
       "description": "Katrina Companion of the AvatarMore information",
       "position": {
-        "x": 67.8688,
-        "y": 90.8402
+        "x": 65.85,
+        "y": 28.73
       }
     },
     {
@@ -3765,8 +3765,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "creature",
       "description": "Dracothraxus Friendly and aggressive. More information",
       "position": {
-        "x": 78.1878,
-        "y": 68.3536
+        "x": 75.2,
+        "y": 50.85
       }
     },
     {
@@ -3774,8 +3774,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "creature",
       "description": "Adjhar More information",
       "position": {
-        "x": 84.658,
-        "y": 78.2476
+        "x": 81.31,
+        "y": 43.22
       }
     },
     {
@@ -3783,8 +3783,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "creature",
       "description": "Bollux More information",
       "position": {
-        "x": 84.4648,
-        "y": 78.2476
+        "x": 80.55,
+        "y": 43.22
       }
     },
     {
@@ -3828,8 +3828,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "npc",
       "description": "Betra Provisioner. More information",
       "position": {
-        "x": 70.6834,
-        "y": 100
+        "x": 68.4,
+        "y": 3.69
       }
     },
     {
@@ -3837,8 +3837,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "npc",
       "description": "Forbrak Tavernkeeper. More information",
       "position": {
-        "x": 70.84,
-        "y": 95.97
+        "x": 69.54,
+        "y": 4.75
       }
     },
     {
@@ -3846,8 +3846,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "npc",
       "description": "In For-Lem Trainer. More information",
       "position": {
-        "x": 70.6654,
-        "y": 99.684
+        "x": 68.48,
+        "y": 5.33
       }
     },
     {
@@ -3855,8 +3855,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "npc",
       "description": "Inmanilem Healer. More information",
       "position": {
-        "x": 68.822,
-        "y": 99.4533
+        "x": 66.85,
+        "y": 6.4
       }
     },
     {
@@ -3864,8 +3864,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "npc",
       "description": "Lord Draxinusom King of the gargoyles. More information",
       "position": {
-        "x": 69.5411,
-        "y": 98.9831
+        "x": 67.4,
+        "y": 8.43
       }
     },
     {
@@ -3873,8 +3873,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "npc",
       "description": "Quaeven Gargoyles. More information",
       "position": {
-        "x": 70.6654,
-        "y": 99.2088
+        "x": 68.43,
+        "y": 7.47
       }
     },
     {
@@ -3882,8 +3882,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "npc",
       "description": "Quan Fellowship branch leader. More information",
       "position": {
-        "x": 69.55,
-        "y": 95.31
+        "x": 69.47,
+        "y": 7.43
       }
     },
     {
@@ -3891,8 +3891,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "npc",
       "description": "Runeb Quan's assistant. More information",
       "position": {
-        "x": 70.6,
-        "y": 95.35
+        "x": 70.01,
+        "y": 6.9
       }
     },
     {
@@ -3900,8 +3900,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "npc",
       "description": "Sarpling Jewel and reagent seller. More information",
       "position": {
-        "x": 71.25,
-        "y": 94.75
+        "x": 71.18,
+        "y": 6.35
       }
     },
     {
@@ -3909,8 +3909,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "npc",
       "description": "Silamo Gardener. More information",
       "position": {
-        "x": 78.7141,
-        "y": 98.9789
+        "x": 75.73,
+        "y": 8.43
       }
     },
     {
@@ -3918,8 +3918,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "npc",
       "description": "Teregus Shrinekeeper. More information",
       "position": {
-        "x": 69.19,
-        "y": 94.73
+        "x": 68.98,
+        "y": 9.48
       }
     },
     {
@@ -3927,8 +3927,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "npc",
       "description": "Ansikart Tavernkeeper. More information",
       "position": {
-        "x": 68.3993,
-        "y": 48.9407
+        "x": 66.29,
+        "y": 62.61
       }
     },
     {
@@ -3936,8 +3936,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "npc",
       "description": "Aurvidlem Provisioner. More information",
       "position": {
-        "x": 66.6365,
-        "y": 50.8891
+        "x": 64.73,
+        "y": 61.59
       }
     },
     {
@@ -3945,8 +3945,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "npc",
       "description": "For-Lem Storyteller. More information",
       "position": {
-        "x": 68.5208,
-        "y": 51.5559
+        "x": 66.27,
+        "y": 61.18
       }
     },
     {
@@ -3954,8 +3954,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "npc",
       "description": "Lap-Lem Miner. More information",
       "position": {
-        "x": 70.1035,
-        "y": 49.7347
+        "x": 67.9,
+        "y": 62.17
       }
     },
     {
@@ -3963,8 +3963,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "npc",
       "description": "Wis Sur Mage. More information",
       "position": {
-        "x": 67.2435,
-        "y": 52.6909
+        "x": 65.36,
+        "y": 60.56
       }
     },
     {
@@ -3990,8 +3990,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "creature",
       "description": "Elad",
       "position": {
-        "x": 93.5744,
-        "y": 71.1383
+        "x": 89.23,
+        "y": 49.11
       }
     },
     {
@@ -4116,8 +4116,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "monster",
       "description": "Iskander More information",
       "position": {
-        "x": 91.7716,
-        "y": 40.6874
+        "x": 87.44,
+        "y": 67.58
       }
     },
     {
@@ -4242,8 +4242,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "monster",
       "description": "Headless More information",
       "position": {
-        "x": 21.7356,
-        "y": 89.1447
+        "x": 24.14,
+        "y": 31.2
       }
     },
     {
@@ -4251,8 +4251,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "monster",
       "description": "Headless More information",
       "position": {
-        "x": 21.4434,
-        "y": 87.5908
+        "x": 23.76,
+        "y": 33.47
       }
     },
     {
@@ -4269,8 +4269,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "monster",
       "description": "Headless More information",
       "position": {
-        "x": 27.4548,
-        "y": 13.8574
+        "x": 24.19,
+        "y": 35.47
       }
     },
     {
@@ -4287,8 +4287,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "monster",
       "description": "Headless More information",
       "position": {
-        "x": 65.2384,
-        "y": 43.0372
+        "x": 63.48,
+        "y": 65.72
       }
     },
     {
@@ -4296,8 +4296,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "enemy",
       "description": "Mages",
       "position": {
-        "x": 20.88,
-        "y": 83.13
+        "x": 21.42,
+        "y": 82.89
       }
     },
     {
@@ -4458,8 +4458,8 @@ window.ULTIMA7_MARKERS_DATA = {
       "type": "treasure",
       "description": "Hidden Treasure start your adventure off with style!",
       "position": {
-        "x": 27.3022,
-        "y": 94.8085
+        "x": 29.27,
+        "y": 21.14
       }
     },
     {
@@ -4469,6 +4469,33 @@ window.ULTIMA7_MARKERS_DATA = {
       "position": {
         "x": 47.32,
         "y": 10.02
+      }
+    },
+    {
+      "name": "Asterrelon's House",
+      "type": "site",
+      "description": "Fill by AI",
+      "position": {
+        "x": 79.37,
+        "y": 43.83
+      }
+    },
+    {
+      "name": "Dragon's Nest",
+      "type": "enemy",
+      "description": "Fill by AI",
+      "position": {
+        "x": 25.46,
+        "y": 36.49
+      }
+    },
+    {
+      "name": "Dragon's Nest",
+      "type": "enemy",
+      "description": "Fill by AI",
+      "position": {
+        "x": 27.21,
+        "y": 30.35
       }
     }
   ]
