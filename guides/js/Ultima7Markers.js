@@ -35,7 +35,7 @@ window.ULTIMA7_MARKERS_DATA = {
       }
     },
     {
-      "name": "Britanny Gay",
+      "name": "Britanny Bay",
       "type": "region",
       "description": "Britanny Bay",
       "position": {
@@ -91,7 +91,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Meditation Retreat",
       "type": "region",
-      "description": "Meditation Retreat More information",
+      "description": "Meditation Retreat A Fellowship-run retreat; not all is as it seems.",
       "position": {
         "x": 59.73,
         "y": 5.67
@@ -622,7 +622,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Meditation Retreat",
       "type": "site",
-      "description": "Meditation Retreat More information",
+      "description": "A Fellowship wellness retreat promising 'self-improvement'—appearances can deceive.",
       "position": {
         "x": 58.07,
         "y": 5.29
@@ -973,7 +973,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Ferry Station",
       "type": "site",
-      "description": "Ferry Station More information",
+      "description": "The spectral ferry to and from Skara Brae.",
       "position": {
         "x": 16.78,
         "y": 47.1
@@ -982,7 +982,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Ferry Station",
       "type": "site",
-      "description": "Ferry Station More information",
+      "description": "The spectral ferry landing for Skara Brae.",
       "position": {
         "x": 14.69,
         "y": 46.59
@@ -1243,7 +1243,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Trainer",
       "type": "site",
-      "description": "Trianer Yes",
+      "description": "Trainer Yew",
       "position": {
         "x": 8.55,
         "y": 89.7
@@ -1324,7 +1324,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Hate",
       "type": "dungeon",
-      "description": "Hate More information",
+      "description": "A minor cave named for the anti-virtue; small foes and light loot.",
       "position": {
         "x": 37.74,
         "y": 82.45
@@ -1333,7 +1333,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Hate",
       "type": "dungeon",
-      "description": "Hate More information",
+      "description": "A minor cave named for the anti-virtue; small foes and light loot.",
       "position": {
         "x": 34.69,
         "y": 89.5
@@ -1342,7 +1342,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Hate",
       "type": "dungeon",
-      "description": "Hate More information",
+      "description": "A minor cave named for the anti-virtue; small foes and light loot.",
       "position": {
         "x": 40.61,
         "y": 75.49
@@ -3232,7 +3232,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Brother Wayne",
       "type": "npc",
-      "description": "Brother Wayne",
+      "description": "A monk of Empath Abbey on pilgrimage.",
       "position": {
         "x": 15.1034,
         "y": 37.2164
@@ -3763,7 +3763,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Cyclops",
       "type": "monster",
-      "description": "Cyclops Cyclops cave. More information",
+      "description": "Cyclops Cyclops Cave.",
       "position": {
         "x": 48.76,
         "y": 52.91
@@ -3772,7 +3772,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Cyclops",
       "type": "monster",
-      "description": "Cyclops Cyclops cave. More information",
+      "description": "Cyclops Cyclops Cave.",
       "position": {
         "x": 52.4,
         "y": 62.88
@@ -3781,7 +3781,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Cyclops",
       "type": "monster",
-      "description": "Cyclops Cyclops cave. More information",
+      "description": "Cyclops Cyclops Cave.",
       "position": {
         "x": 51.37,
         "y": 52.22
@@ -3790,7 +3790,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Cyclops",
       "type": "monster",
-      "description": "Cyclops Cyclops cave. More information",
+      "description": "Cyclops Cyclops Cave.",
       "position": {
         "x": 53.25,
         "y": 66.79
@@ -3799,7 +3799,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Cyclops",
       "type": "monster",
-      "description": "Cyclops Minoc cave. More information",
+      "description": "Cyclops Minoc Cave.",
       "position": {
         "x": 57.22,
         "y": 87.32
@@ -3808,7 +3808,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Cyclops",
       "type": "monster",
-      "description": "Cyclops Minoc cave. More information",
+      "description": "Cyclops Minoc Cave.",
       "position": {
         "x": 60.2,
         "y": 80.91
@@ -4087,7 +4087,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Shrine of the Codex",
       "type": "shrine",
-      "description": "fill by ai",
+      "description": "The Codex of Ultimate Wisdom resides here on the Isle of the Avatar. Meditate to seek guidance.",
       "position": {
         "x": 88.47,
         "y": 8.41
@@ -4096,34 +4096,34 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Shrine of Humility",
       "type": "shrine",
-      "description": "fill by ai",
+      "description": "Virtue shrine on the Isle of the Avatar. Mantra: LUM.",
       "position": {
         "x": 92.45,
         "y": 17.36
       }
     },
     {
-      "name": "Shrine of the spirit",
+      "name": "Shrine of Spirituality",
       "type": "shrine",
-      "description": "fill by ai",
+      "description": "Virtue shrine on a remote isle. Mantra: OM.",
       "position": {
         "x": 95,
         "y": 21.61
       }
     },
     {
-      "name": "Shrine of honesty",
+      "name": "Shrine of Honesty",
       "type": "shrine",
-      "description": "fill by ai",
+      "description": "Virtue shrine on Verity Isle near Moonglow. Mantra: AHM.",
       "position": {
         "x": 87.22,
         "y": 62.01
       }
     },
     {
-      "name": "Ruffians camp",
+      "name": "Ruffians' Camp",
       "type": "interest",
-      "description": "fill by ai",
+      "description": "Bandit encampment; minor loot and a few hostile encounters.",
       "position": {
         "x": 94.09,
         "y": 87.22
@@ -4132,7 +4132,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Serpent's Mark",
       "type": "interest",
-      "description": "fill by ai",
+      "description": "Ancient glyph tied to Serpent magic—primarily a lore easter egg.",
       "position": {
         "x": 94.82,
         "y": 91.02
@@ -4141,7 +4141,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Desert dungeon",
       "type": "dungeon",
-      "description": "fill by ai",
+      "description": "Hidden cave in the Dry Lands with minor foes and scattered loot.",
       "position": {
         "x": 68.75,
         "y": 77.24
@@ -4150,7 +4150,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Clue - Dry lands",
       "type": "clue",
-      "description": "fill by ai",
+      "description": "A half-buried obelisk marks a small cache nearby.",
       "position": {
         "x": 75.21,
         "y": 78.72
@@ -4159,7 +4159,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Moongate",
       "type": "moongate",
-      "description": "fill by ai",
+      "description": "A phase-shifting moongate site—may open only during specific events.",
       "position": {
         "x": 60.41,
         "y": 86.68
@@ -4168,7 +4168,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Shrine of Justice",
       "type": "shrine",
-      "description": "fill by ai",
+      "description": "Virtue shrine under the Yew canopy. Mantra: BEH.",
       "position": {
         "x": 23.69,
         "y": 95.85
@@ -4177,7 +4177,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Brother Wayne",
       "type": "npc",
-      "description": "fill by ai",
+      "description": "A monk of Empath Abbey on pilgrimage.",
       "position": {
         "x": 18.3,
         "y": 68.77
@@ -4186,7 +4186,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Selwyn's Tower",
       "type": "interest",
-      "description": "fill by ai",
+      "description": "Wizard Selwyn's secluded tower—expect scrolls and reagents.",
       "position": {
         "x": 13.78,
         "y": 65.08
@@ -4195,7 +4195,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Nightshade",
       "type": "reagents",
-      "description": "fill by ai",
+      "description": "Reagent that blooms at midnight—harvest under cover of darkness.",
       "position": {
         "x": 10.2,
         "y": 78.27
@@ -4204,16 +4204,16 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Spider Silks",
       "type": "reagents",
-      "description": "fill by ai",
+      "description": "Reagent gathered from spider webs and lairs.",
       "position": {
         "x": 6.74,
         "y": 79.34
       }
     },
     {
-      "name": "Ring of invisibility",
+      "name": "Ring of Invisibility",
       "type": "interest",
-      "description": "fill by ai",
+      "description": "Makes the wearer unseen for a short time—hidden cache nearby.",
       "position": {
         "x": 8.97,
         "y": 82.92
@@ -4222,7 +4222,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Stonegate",
       "type": "interest",
-      "description": "fill by ai",
+      "description": "A crumbling keep with traps and secret teleports; historically significant.",
       "position": {
         "x": 42.76,
         "y": 68.12
@@ -4230,8 +4230,8 @@ window.ULTIMA7_MARKERS_DATA = {
     },
     {
       "name": "Shrine of Compassion",
-      "type": "shrne",
-      "description": "fill by ai",
+      "type": "shrine",
+      "description": "Virtue shrine near Cove east of Britain. Mantra: MU.",
       "position": {
         "x": 47.1,
         "y": 54.91
@@ -4240,7 +4240,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Lover's walk",
       "type": "interest",
-      "description": "fill by ai",
+      "description": "A quiet scenic path in Cove—popular with lovers.",
       "position": {
         "x": 48.72,
         "y": 55.98
@@ -4249,7 +4249,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Hoe of Destruction",
       "type": "interest",
-      "description": "fill by ai",
+      "description": "Legendary hoe hidden near Britain—an in-joke weapon of great power.",
       "position": {
         "x": 38.77,
         "y": 55.92
@@ -4258,7 +4258,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Alien ship",
       "type": "interest",
-      "description": "fill by ai",
+      "description": "Crashed Kilrathi ship easter egg—a nod to Wing Commander.",
       "position": {
         "x": 37.7,
         "y": 57.58
@@ -4267,7 +4267,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Clue - Paws",
       "type": "clue",
-      "description": "fill by ai",
+      "description": "Something is hidden beneath loose floorboards in this house.",
       "position": {
         "x": 31.08,
         "y": 44.22
@@ -4303,7 +4303,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Magic Gauntlets",
       "type": "interest",
-      "description": "fill by ai",
+      "description": "Gloves that boost Strength—stashed behind a secret wall.",
       "position": {
         "x": 27.67,
         "y": 38.65
@@ -4321,7 +4321,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Hidden treasure key",
       "type": "clue",
-      "description": "fill by ai",
+      "description": "Key for the waterfall stash on the Cape of Heroes.",
       "position": {
         "x": 29.72,
         "y": 20.75
@@ -4339,7 +4339,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Shrine of Honor",
       "type": "shrine",
-      "description": "fill by ai",
+      "description": "Virtue shrine on a small island off Trinsic. Mantra: SUMM.",
       "position": {
         "x": 27.21,
         "y": 16.79
@@ -4357,7 +4357,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Shrine of Valor",
       "type": "shrine",
-      "description": "fill by ai",
+      "description": "Virtue shrine west of Jhelom on a tiny isle. Mantra: RA.",
       "position": {
         "x": 15.89,
         "y": 12.29
@@ -4373,18 +4373,18 @@ window.ULTIMA7_MARKERS_DATA = {
       }
     },
     {
-      "name": "Pirate cave",
+      "name": "Pirate Cave",
       "type": "interest",
-      "description": "fill by ai",
+      "description": "Secluded cove used by buccaneers—expect a small stash and rum.",
       "position": {
         "x": 39.48,
         "y": 8.12
       }
     },
     {
-      "name": "Pirate house",
+      "name": "Pirate House",
       "type": "interest",
-      "description": "fill by ai",
+      "description": "Home of a retired pirate—clues point toward Buccaneer's Den.",
       "position": {
         "x": 33.06,
         "y": 10.35
@@ -4393,7 +4393,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Skeleton Key",
       "type": "interest",
-      "description": "fill by ai",
+      "description": "A master key said to open many chests and doors.",
       "position": {
         "x": 21.49,
         "y": 27.24
@@ -4402,7 +4402,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Lasher's Cave",
       "type": "dungeon",
-      "description": "fill by ai",
+      "description": "The unicorn's grotto—peaceful and secluded.",
       "position": {
         "x": 26.83,
         "y": 26.34
@@ -4411,7 +4411,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Test of Truth",
       "type": "interest",
-      "description": "fill by ai",
+      "description": "Isle of Fire trial for the Forge of Virtue—solve riddles of knowledge.",
       "position": {
         "x": 70.52,
         "y": 46.46
@@ -4419,8 +4419,8 @@ window.ULTIMA7_MARKERS_DATA = {
     },
     {
       "name": "Test of Courage",
-      "type": "fill by ai",
-      "description": "fill by ai",
+      "type": "interest",
+      "description": "Isle of Fire trial—face fear and monsters to prove Courage.",
       "position": {
         "x": 72.08,
         "y": 46.46
@@ -4438,16 +4438,16 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Arcadion",
       "type": "interest",
-      "description": "fill by ai",
+      "description": "The bound daemon of the Blackrock Sword—central to the Forge of Virtue.",
       "position": {
         "x": 72.02,
         "y": 50.69
       }
     },
     {
-      "name": "Lady of Love statue",
+      "name": "Lady of Love Statue",
       "type": "interest",
-      "description": "fill by ai",
+      "description": "Statue representing Love—part of the Isle of Fire trials.",
       "position": {
         "x": 70.98,
         "y": 51.59
@@ -4456,16 +4456,16 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Elder of Truth Statue",
       "type": "interest",
-      "description": "fill by ai",
+      "description": "Statue representing Truth—part of the Isle of Fire trials.",
       "position": {
         "x": 71.26,
         "y": 51.88
       }
     },
     {
-      "name": "Warrior of Courage statue",
+      "name": "Warrior of Courage Statue",
       "type": "interest",
-      "description": "fill by ai",
+      "description": "Statue representing Courage—part of the Isle of Fire trials.",
       "position": {
         "x": 71.59,
         "y": 51.6
@@ -4474,7 +4474,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Stone of Castambre",
       "type": "interest",
-      "description": "fill by ai",
+      "description": "Ancient focusing stone used during the Tests.",
       "position": {
         "x": 79.08,
         "y": 49.09
@@ -4483,7 +4483,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Test of Love",
       "type": "interest",
-      "description": "fill by ai",
+      "description": "Isle of Fire trial—restore compassion and balance.",
       "position": {
         "x": 80.13,
         "y": 45.41
@@ -4492,16 +4492,16 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "The Golden Ankh",
       "type": "interest",
-      "description": "fill by ai",
+      "description": "A sacred ankh used in the Test of Love.",
       "position": {
         "x": 71.23,
         "y": 57.42
       }
     },
     {
-      "name": "The subway",
+      "name": "The Subway",
       "type": "interest",
-      "description": "fill by ai",
+      "description": "Ancient underworld transit linking hidden sites.",
       "position": {
         "x": 59.88,
         "y": 62.24
@@ -4528,7 +4528,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Trinsic Hidden Treasure Room",
       "type": "interest",
-      "description": "fill by ai",
+      "description": "Secret developer treasure room beneath Trinsic.",
       "position": {
         "x": 5.43,
         "y": 20.72
@@ -4537,7 +4537,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Teleport to the Subway",
       "type": "interest",
-      "description": "fill by ai",
+      "description": "One-way teleporter into the Subway network.",
       "position": {
         "x": 5.42,
         "y": 21.17
@@ -4591,7 +4591,7 @@ window.ULTIMA7_MARKERS_DATA = {
     {
       "name": "Shrine of Sacrifice",
       "type": "shrine",
-      "description": "fill by ai",
+      "description": "Virtue shrine east of Minoc in the Deep Forest. Mantra: CAH.",
       "position": {
         "x": 75.72,
         "y": 68.39
