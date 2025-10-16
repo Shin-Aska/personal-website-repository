@@ -1020,6 +1020,17 @@ document.addEventListener('DOMContentLoaded', () => {
         QUEST_PROMPTS = await loadQuestPrompts();
     }
 
+    function defaultQuestTemplate(key) {
+        return `
+        <context>
+        You are a helpful guide for Ultima VII: The Black Gate. The player is currently on quest: ${key}
+        Try to research the quest and provide a helpful and if possible detailed hints.
+        </context>
+        <query>
+        User's question here
+        </query>`;
+    }
+
     function openQuestChatInModal(key, quest) {
         const badge = "<span class='ml-2 align-middle text-[10px] px-2 py-0.5 rounded bg-yellow-200/20 text-yellow-100 border border-yellow-300/40'>AI powered</span>";
         aiModalTitle.innerHTML = `✨ ${key} ${badge}`;
