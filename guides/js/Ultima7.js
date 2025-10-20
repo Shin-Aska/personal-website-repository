@@ -84,6 +84,10 @@ const ALIAS_SEARCH = {
     'Crown Jewel': 'Shipwright'
 };
 
+const ALIAS_MARKER = {
+    'Riky': 'Clue - Riky'
+};
+
 function escapeRegExp(s) {
     return String(s).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
@@ -111,7 +115,7 @@ function linkifyQuestContent(title, html) {
     const slug = slugify(title || '');
     const custom = QUEST_LINKS[slug] || [];
     const markers = Array.isArray(window.ULTIMA7_MARKERS) ? window.ULTIMA7_MARKERS : [];
-    const autoTypes = new Set(['npc', 'city', 'site', 'dungeon', 'moongate', 'castle', 'keep', 'shrine', 'region', 'treasure', 'interest']);
+    const autoTypes = new Set(['npc', 'creature', 'clue', 'city', 'site', 'dungeon', 'moongate', 'castle', 'keep', 'shrine', 'region', 'treasure', 'interest']);
     const names = [];
     const seen = new Set();
     markers.forEach(m => {
@@ -132,6 +136,14 @@ function linkifyQuestContent(title, html) {
             autoLinks.push({ text: name, marker: name });
         }
     });
+    // Alias to direct marker name (e.g., Riky → Clue - Riky)
+    Object.keys(ALIAS_MARKER).forEach(alias => {
+        const re = new RegExp(`(^|[^A-Za-z0-9_])(${escapeRegExp(alias)})(?=($|[^A-Za-z0-9_]))(?![^<]*>)`);
+        if (re.test(textContent)) {
+            autoLinks.push({ text: alias, marker: ALIAS_MARKER[alias] });
+        }
+    });
+
     // Alias-based fallbacks (e.g., Crown Jewel → Shipwright near quest's default city)
     Object.keys(ALIAS_SEARCH).forEach(alias => {
         const re = new RegExp(`(^|[^A-Za-z0-9_])(${escapeRegExp(alias)})(?=($|[^A-Za-z0-9_]))(?![^<]*>)`);
