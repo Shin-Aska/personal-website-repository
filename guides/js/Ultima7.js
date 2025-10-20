@@ -157,6 +157,43 @@ function linkifyQuestContent(title, html) {
     return renderLinkedContent(html, merged);
 }
 
+function findQuestsForName(name, limit = 4) {
+    const out = [];
+    const term = String(name || '').trim();
+    if (!term) return out;
+    const re = new RegExp(`(^|[^A-Za-z0-9_])(${escapeRegExp(term)})(?=($|[^A-Za-z0-9_]))`, 'i');
+    if (Array.isArray(DB.mainQuest)) {
+        for (let i = 0; i < DB.mainQuest.length; i++) {
+            const q = DB.mainQuest[i];
+            if (q && typeof q.content === 'string' && re.test(q.content)) {
+                out.push({ tab: 'main', quest: q.title, label: q.title });
+                if (out.length >= limit) return out;
+            }
+        }
+    }
+    if (Array.isArray(DB.virtueQuests)) {
+        for (let i = 0; i < DB.virtueQuests.length; i++) {
+            const q = DB.virtueQuests[i];
+            if (q && typeof q.content === 'string' && re.test(q.content)) {
+                out.push({ tab: 'virtue', quest: q.title, label: q.title });
+                if (out.length >= limit) return out;
+            }
+        }
+    }
+    if (Array.isArray(DB.sideQuests)) {
+        for (let i = 0; i < DB.sideQuests.length; i++) {
+            const q = DB.sideQuests[i];
+            const text = typeof q.walkthrough === 'string' ? q.walkthrough : '';
+            const giver = typeof q.giver === 'string' ? q.giver : '';
+            if ((text && re.test(text)) || (giver && re.test(giver))) {
+                out.push({ tab: 'side', quest: q.name, label: q.name });
+                if (out.length >= limit) return out;
+            }
+        }
+    }
+    return out;
+}
+
 const ULTIMA7_MARKER_STYLE = {
     city: { color: '#38bdf8', label: 'City or Town' },
     dungeon: { color: '#f87171', label: 'Dungeon' },
@@ -261,14 +298,23 @@ function buildUltima7PopupContent(markerData) {
     const description = markerData.description ? `<p class="text-sm leading-snug">${markerData.description}</p>` : '';
     const coords = markerData.position || {};
     const explicitLinks = Array.isArray(markerData.links) ? markerData.links : null;
-    const quests = explicitLinks || ((typeof MARKER_TO_QUESTS !== 'undefined' && MARKER_TO_QUESTS[markerData.name]) ? MARKER_TO_QUESTS[markerData.name] : []);
+    const toScan = (markerData && typeof markerData.name === 'string') ? markerData.name : '';
+    const mentionName = toScan.startsWith('Clue - ') ? toScan.slice(7).trim() : toScan;
+    const dynamicLinks = findQuestsForName(mentionName, 4);
+    const fallbackLinks = (typeof MARKER_TO_QUESTS !== 'undefined' && MARKER_TO_QUESTS[markerData.name]) ? MARKER_TO_QUESTS[markerData.name] : [];
+    const quests = explicitLinks || (dynamicLinks.length ? dynamicLinks : fallbackLinks);
     const questLinks = Array.isArray(quests) && quests.length
-        ? `<div class="text-xs mt-1">${quests.map(q => {
-                const tab = encodeURIComponent((q && q.tab) || 'main');
-                const key = slugify((q && (q.quest || q.name)) || '');
-                const label = (q && (q.label || q.quest || q.name)) || 'Open quest';
-                return `<a href="#quests:tab=${tab}&quest=${encodeURIComponent(key)}" class="underline text-yellow-300">${label}</a>`;
-            }).join(' ')}</div>`
+        ? `<div class="text-xs mt-2">
+                <div class="font-semibold mb-1">Involved quests:</div>
+                <ul class="list-disc list-inside space-y-0.5">
+                    ${quests.map(q => {
+                        const tab = encodeURIComponent((q && q.tab) || 'main');
+                        const key = slugify((q && (q.quest || q.name)) || '');
+                        const label = (q && (q.label || q.quest || q.name)) || 'Open quest';
+                        return `<li><a href=\"#quests:tab=${tab}&quest=${encodeURIComponent(key)}\" class=\"underline text-yellow-300\">${label}</a></li>`;
+                    }).join('')}
+                </ul>
+            </div>`
         : '';
     return `
         <article class="space-y-1">
