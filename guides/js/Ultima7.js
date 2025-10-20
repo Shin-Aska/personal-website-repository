@@ -77,6 +77,74 @@ const DB = {
     ]
 };
 
+const QUEST_LINKS = {
+};
+
+const ALIAS_SEARCH = {
+    'Crown Jewel': 'Shipwright'
+};
+
+function escapeRegExp(s) {
+    return String(s).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+function renderLinkedContent(html, links) {
+    if (!links || !Array.isArray(links) || !links.length) return html;
+    let out = String(html || '');
+    links.forEach(link => {
+        const text = (link && link.text) || '';
+        const marker = (link && link.marker) || '';
+        const search = (link && link.search) || '';
+        const near = (link && link.near) || '';
+        if (!text || (!marker && !search)) return;
+        const re = new RegExp(`(^|[^A-Za-z0-9_])(${escapeRegExp(text)})(?=($|[^A-Za-z0-9_]))(?![^<]*>)`, 'g');
+        const href = marker
+            ? `#atlas:marker=${encodeURIComponent(marker)}`
+            : `#atlas:search=${encodeURIComponent(search)}${near ? `&near=${encodeURIComponent(near)}` : ''}`;
+        const replacement = `$1<a href="${href}" class="underline text-yellow-300">$2</a>`;
+        out = out.replace(re, replacement);
+    });
+    return out;
+}
+
+function linkifyQuestContent(title, html) {
+    const slug = slugify(title || '');
+    const custom = QUEST_LINKS[slug] || [];
+    const markers = Array.isArray(window.ULTIMA7_MARKERS) ? window.ULTIMA7_MARKERS : [];
+    const autoTypes = new Set(['npc', 'city', 'site', 'dungeon', 'moongate', 'castle', 'keep', 'shrine', 'region', 'treasure', 'interest']);
+    const names = [];
+    const seen = new Set();
+    markers.forEach(m => {
+        if (!m || !m.name || !m.type) return;
+        if (!autoTypes.has(m.type)) return;
+        if (m.name.length < 3) return;
+        if (seen.has(m.name)) return;
+        seen.add(m.name);
+        names.push(m.name);
+    });
+    // Sort by length desc to avoid partial matches overshadowing longer names
+    names.sort((a, b) => b.length - a.length);
+    const autoLinks = [];
+    const textContent = String(html || '');
+    names.forEach(name => {
+        const re = new RegExp(`(^|[^A-Za-z0-9_])(${escapeRegExp(name)})(?=($|[^A-Za-z0-9_]))(?![^<]*>)`);
+        if (re.test(textContent)) {
+            autoLinks.push({ text: name, marker: name });
+        }
+    });
+    // Alias-based fallbacks (e.g., Crown Jewel → Shipwright near quest's default city)
+    Object.keys(ALIAS_SEARCH).forEach(alias => {
+        const re = new RegExp(`(^|[^A-Za-z0-9_])(${escapeRegExp(alias)})(?=($|[^A-Za-z0-9_]))(?![^<]*>)`);
+        if (re.test(textContent)) {
+            const nearCfg = QUEST_TO_ATLAS[slug];
+            const near = nearCfg && nearCfg.marker ? nearCfg.marker : '';
+            autoLinks.push({ text: alias, search: ALIAS_SEARCH[alias], near });
+        }
+    });
+    const merged = [...custom, ...autoLinks];
+    return renderLinkedContent(html, merged);
+}
+
 const ULTIMA7_MARKER_STYLE = {
     city: { color: '#38bdf8', label: 'City or Town' },
     dungeon: { color: '#f87171', label: 'Dungeon' },
@@ -96,6 +164,32 @@ const ULTIMA7_MARKER_STYLE = {
     interest: { color: '#ffff00', label: 'Point of Interest' },
     clue: { color: '#ffa500', label: 'Clue' },
     default: { color: '#94a3b8', label: 'Point of Interest' }
+};
+
+function slugify(s) {
+    return String(s || '')
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/(^-|-$)/g, '');
+}
+
+const QUEST_TO_ATLAS = {
+    [slugify('The Trinsic Murders')]: { marker: 'Trinsic' },
+    [slugify('Infiltrating the Fellowship')]: { search: 'Fellowship Hall' },
+    [slugify('The Quest for the Time Lord')]: { search: 'Emp Village' },
+    [slugify('The Answers to Life and Death')]: { marker: 'Skara Brae' },
+    [slugify("Destroying the Guardian's Generators")]: { marker: 'Deceit' },
+    [slugify('The Isle of the Avatar and Final Battle')]: { marker: 'Isle of the Avatar' }
+};
+
+const MARKER_TO_QUESTS = {
+    'Trinsic': [{ quest: 'The Trinsic Murders', tab: 'main' }],
+    'Fellowship Hall': [{ quest: 'Infiltrating the Fellowship', tab: 'main' }],
+    'Emp Village': [{ quest: 'The Quest for the Time Lord', tab: 'main' }],
+    'Skara Brae': [{ quest: 'The Answers to Life and Death', tab: 'main' }],
+    'Deceit': [{ quest: "Destroying the Guardian's Generators", tab: 'main' }],
+    'Isle of the Avatar': [{ quest: 'The Isle of the Avatar and Final Battle', tab: 'main' }],
+    'Meditation Retreat': [{ quest: "Destroying the Guardian's Generators", tab: 'main' }]
 };
 
 let ultima7MapInstance = null;
@@ -154,12 +248,23 @@ function buildUltima7PopupContent(markerData) {
     const style = resolveUltima7MarkerStyle(markerData);
     const description = markerData.description ? `<p class="text-sm leading-snug">${markerData.description}</p>` : '';
     const coords = markerData.position || {};
+    const explicitLinks = Array.isArray(markerData.links) ? markerData.links : null;
+    const quests = explicitLinks || ((typeof MARKER_TO_QUESTS !== 'undefined' && MARKER_TO_QUESTS[markerData.name]) ? MARKER_TO_QUESTS[markerData.name] : []);
+    const questLinks = Array.isArray(quests) && quests.length
+        ? `<div class="text-xs mt-1">${quests.map(q => {
+                const tab = encodeURIComponent((q && q.tab) || 'main');
+                const key = slugify((q && (q.quest || q.name)) || '');
+                const label = (q && (q.label || q.quest || q.name)) || 'Open quest';
+                return `<a href="#quests:tab=${tab}&quest=${encodeURIComponent(key)}" class="underline text-yellow-300">${label}</a>`;
+            }).join(' ')}</div>`
+        : '';
     return `
         <article class="space-y-1">
             <h4 class="font-semibold text-base">${markerData.name || 'Point of interest'}</h4>
             ${description}
             <p class="text-xs text-slate-300/80">Category: ${style.label}</p>
             <p class="text-xs text-slate-300/80">Approx. coordinates: ${typeof coords.x === 'number' ? coords.x.toFixed(1) : '?'}°E, ${typeof coords.y === 'number' ? coords.y.toFixed(1) : '?'}°S</p>
+            ${questLinks}
         </article>
     `;
 }
@@ -687,6 +792,110 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    function parseHashQuery(qs) {
+        const obj = {};
+        (qs || '').split('&').forEach(p => {
+            if (!p) return;
+            const [k, v] = p.split('=');
+            if (k) obj[k] = decodeURIComponent(v || '');
+        });
+        return obj;
+    }
+
+    function openAtlasMarker(name) {
+        switchTab('atlas');
+        ensureUltima7Map();
+        const entry = (ultima7MarkerEntries || []).find(({ markerData }) => (markerData.name || '') === name);
+        if (entry) {
+            focusUltima7Entry(entry);
+        } else {
+            openAtlasSearch(name);
+        }
+    }
+
+    function openAtlasSearch(term) {
+        switchTab('atlas');
+        ensureUltima7Map();
+        const input = document.getElementById('ultima7-map-search');
+        if (input) {
+            input.value = term || '';
+            input.dispatchEvent(new Event('input', { bubbles: true }));
+        }
+    }
+
+    function openQuestBySlug(slug, tab = 'main') {
+        switchTab('quests');
+        const btn = document.querySelector(`.quest-tab-button[data-quest-tab="${tab}"]`);
+        if (btn) btn.click();
+        setTimeout(() => {
+            const containerSelector = tab === 'virtue' ? '#virtue-quest-accordion' : (tab === 'side' ? '#side-quest-list' : '#main-quest-accordion');
+            const container = document.querySelector(containerSelector);
+            if (!container) return;
+            const el = container.querySelector(`[data-quest-key="${slug}"]`);
+            if (!el) return;
+            if (!el.classList.contains('active') && el.querySelector && el.querySelector('.accordion-content')) {
+                const content = el.querySelector('.accordion-content');
+                const icon = el.querySelector('.quest-item span');
+                document.querySelectorAll(`${containerSelector} .accordion-content`).forEach(c => c.style.maxHeight = null);
+                document.querySelectorAll(`${containerSelector} .quest-item span`).forEach(i => i.style.transform = 'rotate(0deg)');
+                if (content) content.style.maxHeight = content.scrollHeight + 'px';
+                if (icon) icon.style.transform = 'rotate(180deg)';
+            }
+            el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }, 60);
+    }
+
+    function applyDeepLink() {
+        const raw = (location.hash || '').slice(1);
+        if (!raw) return;
+        const [route, qs] = raw.split(':');
+        if (route === 'atlas' && qs) {
+            const params = parseHashQuery(qs);
+            if (params.marker) return openAtlasMarker(params.marker);
+            if (params.search) {
+                switchTab('atlas');
+                ensureUltima7Map();
+                const term = params.search;
+                const nearName = params.near || '';
+                const input = document.getElementById('ultima7-map-search');
+                if (input) {
+                    input.value = term || '';
+                    input.dispatchEvent(new Event('input', { bubbles: true }));
+                }
+                if (nearName && Array.isArray(ultima7MarkerEntries) && ultima7MarkerEntries.length) {
+                    const nearEntry = ultima7MarkerEntries.find(e => (e.markerData && e.markerData.name) === nearName);
+                    const lcTerm = term.toLowerCase();
+                    const matches = ultima7MarkerEntries.filter(e => {
+                        const md = e.markerData || {};
+                        return [md.name, md.type, md.description]
+                            .filter(Boolean)
+                            .some(v => String(v).toLowerCase().includes(lcTerm));
+                    });
+                    if (nearEntry && matches.length) {
+                        const nearLatLng = nearEntry.leafletMarker.getLatLng();
+                        let best = matches[0];
+                        let bestD = Infinity;
+                        matches.forEach(m => {
+                            const ll = m.leafletMarker.getLatLng();
+                            const dx = ll.lat - nearLatLng.lat;
+                            const dy = ll.lng - nearLatLng.lng;
+                            const d2 = dx*dx + dy*dy;
+                            if (d2 < bestD) { bestD = d2; best = m; }
+                        });
+                        focusUltima7Entry(best);
+                        return;
+                    }
+                }
+                return;
+            }
+        } else if (route === 'quests' && qs) {
+            const params = parseHashQuery(qs);
+            const tab = params.tab || 'main';
+            const slug = params.quest || '';
+            return openQuestBySlug(slug, tab);
+        }
+    }
+
     function initPartyBuilder() {
         const grid = document.getElementById('companion-grid');
         const details = document.getElementById('companion-details');
@@ -888,6 +1097,9 @@ document.addEventListener('DOMContentLoaded', () => {
         DB.mainQuest.forEach((quest, index) => {
             const item = document.createElement('div');
             item.className = 'section-bg rounded-lg shadow';
+            const keySlug = slugify(quest.title);
+            item.setAttribute('data-quest-key', keySlug);
+            const contentHtml = linkifyQuestContent(quest.title, quest.content);
             item.innerHTML = `
                 <div class="quest-item p-4">
                     <div class="flex justify-between items-center">
@@ -896,7 +1108,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 </div>
                 <div class="accordion-content px-4 pb-4 text-sm">
-                    <p>${quest.content}</p>
+                    <p>${contentHtml}</p>
                     <button data-quest-index="${index}" class="get-main-quest-hint ai-button mt-3 w-full font-bold py-1 px-3 rounded-lg text-xs">✨ Hint</button>
                 </div>
             `;
@@ -927,6 +1139,9 @@ document.addEventListener('DOMContentLoaded', () => {
         DB.virtueQuests.forEach((quest, index) => {
             const item = document.createElement('div');
             item.className = 'section-bg rounded-lg shadow';
+            const keySlug = slugify(quest.title);
+            item.setAttribute('data-quest-key', keySlug);
+            const contentHtml = linkifyQuestContent(quest.title, quest.content);
             item.innerHTML = `
                 <div class="quest-item p-4">
                     <div class="flex justify-between items-center">
@@ -935,7 +1150,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 </div>
                 <div class="accordion-content px-4 pb-4 text-sm">
-                    <p>${quest.content}</p>
+                    <p>${contentHtml}</p>
                     <button data-quest-index="${index}" class="get-virtue-quest-hint ai-button mt-3 w-full font-bold py-1 px-3 rounded-lg text-xs">✨ Hint</button>
                 </div>
             `;
@@ -974,11 +1189,14 @@ document.addEventListener('DOMContentLoaded', () => {
             filteredQuests.forEach((quest, index) => {
                 const card = document.createElement('div');
                 card.className = 'section-bg p-4 rounded-lg shadow';
+                const keySlug = slugify(quest.name);
+                card.setAttribute('data-quest-key', keySlug);
+                const contentHtml = linkifyQuestContent(quest.name, quest.walkthrough);
                 card.innerHTML = `
                     <h4 class="text-lg font-bold">${quest.name} <span class="text-sm font-normal text-secondary">(${quest.location})</span></h4>
                     <p class="text-sm mt-1"><span class="font-semibold">Giver:</span> ${quest.giver}</p>
                     <p class="text-sm"><span class="font-semibold">Reward:</span> ${quest.reward}</p>
-                    <p class="text-sm mt-2 bg-[#1a202c] p-2 rounded">${quest.walkthrough}</p>
+                    <p class="text-sm mt-2 bg-[#1a202c] p-2 rounded">${contentHtml}</p>
                     <button data-quest-name="${quest.name}" class="get-side-quest-hint ai-button mt-3 w-full font-bold py-1 px-3 rounded-lg text-xs">✨ Hint</button>
                 `;
                 sideQuestList.appendChild(card);
@@ -1165,4 +1383,7 @@ document.addEventListener('DOMContentLoaded', () => {
     ensureUltima7Map();
 
     switchTab('party');
+
+    window.addEventListener('hashchange', applyDeepLink);
+    applyDeepLink();
 });
