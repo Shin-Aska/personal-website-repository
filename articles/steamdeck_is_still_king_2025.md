@@ -34,7 +34,7 @@ Granted, some of these handhelds have community Linux support, like distros such
 
 We're at a point where more power in integrated graphics doesn't help much for handhelds.
 
-The Steam Deck's AMD APU nails efficiency—great performance at 15W. Newer chips like AMD's RDNA 3.5 are stronger, but only at 25-30W+.
+The Steam Deck's AMD APU nails efficiency. Great performance at 15W. Newer chips like AMD's RDNA 3.5 are stronger, but only at 25-30W+.
 
 Then battery life tanks. They need plugs or big batteries for anything. For most games, indie or older AAA, the Deck is fine. New titles? It plays well with battery in mind. The others look a tad better but die fast. Bad trade for portable.
 

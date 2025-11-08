@@ -226,7 +226,7 @@ class Publisher(ABC):
         # Fill the template with the content and meta title
         output = self._fill_template(content, meta_title)
         # Write the HTML string to the output file
-        with open(filepath, 'w') as file:
+        with open(filepath, 'w', encoding='utf-8') as file:
             file.write(output)
 
     def _generate_heading_content(self, html_content: str, line: str, element: MarkdownElement, table_contents: list[HeadingContent]) -> str:

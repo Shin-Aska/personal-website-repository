@@ -1,4 +1,4 @@
-# Building vs. Buying: Why Steam’s "Monopoly" Isn't the Problem
+# Building vs. Buying: Why Steam's "Monopoly" Isn't the Problem
 
 ## Intro
 
@@ -14,7 +14,7 @@ Let's be clear: Steam owns a huge chunk of the PC games market. But how? Did the
 
 Nope. They built something so good, for so long, that users stuck around. Loyalty and features made it the go-to.
 
-The monopoly talk is misleading. It doesn't separate companies that dominate by building better stuff from those that hurt the market to block competition. The real deal isn't Steam's share—it's the strategy difference.
+The monopoly talk is misleading. It doesn't separate companies that dominate by building better stuff from those that hurt the market to block competition. The real deal isn't Steam's share, it's the strategy difference.
 
 ## Valve's Strategy: Competing by Building
 
@@ -22,7 +22,7 @@ Valve's philosophy shines in their Linux work. Instead of locking things down, t
 
 Think about it. A "monopoly" spends millions to open their library on a rival OS they don't control.
 
-Then they made the Steam Deck, which relies on that open-source stuff. Valve expands the market—handhelds, Linux and adds value for everyone, even non-Steam users.
+Then they made the Steam Deck, which relies on that open-source stuff. Valve expands the market, handhelds, Linux and adds value for everyone, even non-Steam users.
 
 They're growing the pie for all.
 
