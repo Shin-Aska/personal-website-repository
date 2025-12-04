@@ -49,10 +49,11 @@
 				<li><a href="#introduction">Introduction</a></li>
 				<li><a href="#the_problem_with_the_docker_daemon">The Problem with the Docker Daemon</a></li>
 				<li><a href="#the_podman_difference_native_linux_architecture">The Podman Difference: Native Linux Architecture</a></li>
-				<li><a href="#podman_on_windows_escaping_the_"_docker_tax"">Podman on Windows: Escaping the "Docker Tax"</a></li>
+				<li><a href="#podman_on_windows_escaping_the_heavy_desktop">Podman on Windows: Escaping the Heavy Desktop</a></li>
 				<li><a href="#simplified_management_the_power_of_auto_update">Simplified Management: The Power of Auto-Update</a></li>
 				<li><a href="#security_by_design">Security by Design</a></li>
 				<li><a href="#how_it_works_under_the_hood">How it Works Under the Hood</a></li>
+				<li><a href="#when_docker_is_still_the_right_tool_caveats">When Docker Is Still the Right Tool (Caveats)</a></li>
 				<li><a href="#conclusion">Conclusion</a></li>
 			</ul>
 			<h1 id="headingBlog">Why I Switched to Podman (And Why You Should Too)</h1>
@@ -67,23 +68,25 @@
 			<p>If the Docker daemon crashes or corrupts, every container it manages goes down with it. It felt fragile.</p>
 			<h2 id="the_podman_difference_native_linux_architecture">The Podman Difference: Native Linux Architecture</h2>
 			<p>This led me to seriously investigate Podman. The immediate "lifesaver" feature was its <b>daemonless architecture</b>.</p>
-			<p>Unlike Docker, which uses a client-server model (the CLI talks to a long-running Daemon), Podman works like a traditional Linux command (fork/exec). When you run `podman build`, it is just a process running under your user.</p>
+			<p>Unlike Docker, which uses a client–server model (the CLI talks to a long-running daemon), Podman works like a traditional Linux command (fork/exec). When you run `podman build`, it is just a process running under your user.</p>
 			<ul>
 				<li><b>Stability:</b> If a Podman build crashes due to a full disk, only that specific build process dies. My other running containers are unaffected.</li>
 				<li><b>Safety:</b> There is no central daemon to corrupt. If the build fails, the cleanup is usually immediate and isolated.</li>
 			</ul>
 			<p>In a native Linux environment, this performance is raw and direct. There is no middleman. Podman interacts directly with the kernel's <b>cgroups</b> and <b>namespaces</b>, making it incredibly efficient for system resources.</p>
-			<h2 id="podman_on_windows_escaping_the_"_docker_tax"">Podman on Windows: Escaping the "Docker Tax"</h2>
+			<h2 id="podman_on_windows_escaping_the_heavy_desktop">Podman on Windows: Escaping the Heavy Desktop</h2>
 			<p>You might be thinking, "This sounds great for Linux, but I use Windows."</p>
 			<p>While both Docker and Podman utilize <b>WSL2 (Windows Subsystem for Linux 2)</b> to run containers on Windows, the way they package this experience is vastly different.</p>
 			<p>Docker Desktop on Windows bundles the WSL2 backend inside a heavy, commercialized application. It runs a resource-intensive GUI and background services that can eat up significant RAM even when idle.</p>
 			<p>Podman, on the other hand, offers a cleaner approach for Windows developers:</p>
 			<ol>
-				<li><b>No Licensing Headaches:</b> This is the most critical difference. <b>Docker Desktop</b> requires a paid subscription for larger organizations (companies with over 250 employees or $10M in revenue). Podman is strictly open source (Apache 2.0). You can deploy it across your entire engineering team without worrying about compliance audits or procurement costs.</li>
+				<li><b>Same Workflow as Linux:</b> Podman on Windows runs through WSL2 with the same CLI and behavior you get on a Linux machine. If you develop on Linux servers and use a Windows laptop locally, your commands and scripts stay identical.</li>
 				<li><b>Lightweight Integration:</b> Because Podman doesn't force a heavy UI layer (unless you explicitly install Podman Desktop), it often feels lighter on system resources. It leverages the Fedora-based WSL2 backend strictly for the engine, keeping your development environment snappy.</li>
+				<li><b>You Control When It Runs:</b> There is no always-on “big desktop app” in the background. You start what you need (e.g., a Podman machine) when you need it, and shut it down when you’re done.</li>
 			</ol>
+			<p>The end result: Windows stops feeling like a second-class citizen for containers, and your setup is much closer to a “real Linux dev box” with fewer moving parts.</p>
 			<h2 id="simplified_management_the_power_of_auto_update">Simplified Management: The Power of Auto-Update</h2>
-			<p>One of my favorite use cases for containers is hosting <b>Neko</b>, a virtual browser running inside a container. It’s excellent for testing web applications or browsing potentially unsafe sites in an isolated environment.</p>
+			<p>One of my favorite use cases for containers is hosting <a href="https://github.com/m1k1o/neko"><b>Neko</b><sup>[1]</sup></a>, a virtual browser running inside a container. It’s excellent for testing web applications or browsing potentially unsafe sites in an isolated environment.</p>
 			<p>In the Docker world, updating Neko was a chore:</p>
 			<ol>
 				<li>Stop the container.</li>
@@ -100,19 +103,43 @@ podman auto-update
 				</code>
 			</pre>
 			<p>Podman checks if a new image is available, pulls it, restarts the container, and even supports <b>automatic rollback</b> if the new container fails to start. It turns a 10-minute maintenance task into a background process I don't even have to think about.</p>
+			<p>This approach scales beautifully: from “my one Neko container” up to a host running multiple services that all keep themselves up to date with minimal manual intervention.</p>
 			<h2 id="security_by_design">Security by Design</h2>
-			<p>Finally, we must talk about security. Docker has historically suffered from vulnerabilities related to its root-privileged daemon. For example, <a href="https://www.cve.news/cve-2025-3224/">CVE-2025-3224</a> was a vulnerability where an attacker could potentially execute code with root privileges because the Docker daemon runs as root.</p>
-			<p>Podman mitigates this entirely through two mechanisms:</p>
+			<p>Finally, we must talk about security. Docker has historically suffered from vulnerabilities related to its root-privileged daemon.</p>
+			<p>One illustrative example is <a href="https://nvd.nist.gov/vuln/detail/CVE-2018-15664">CVE-2018-15664<sup>[2]</sup></a>. In affected versions of Docker, the API endpoints behind the `docker cp` command were vulnerable to a symlink race condition. A malicious process inside a container could:</p>
+			<ul>
+				<li>Prepare a sneaky symlink setup.</li>
+				<li>Wait for an administrator to run `docker cp` to copy files in or out.</li>
+				<li>Trick the <b>root-running Docker daemon</b> into reading or writing arbitrary paths on the host filesystem.</li>
+			</ul>
+			<p>In other words: the daemon was doing filesystem operations on the host <i>on behalf of</i> a container, with full root privileges. That’s exactly the kind of risk you accept when a central, highly-privileged daemon sits in the middle of everything.</p>
+			<p>Podman drastically reduces this category of risk through two mechanisms:</p>
 			<ol>
-				<li><b>Daemonless:</b> There is no persistent root process waiting to be exploited.</li>
-				<li><b>Rootless by Default:</b> Podman is designed to run containers as a non-root user.</li>
+				<li><b>Daemonless:</b> There is no persistent root process waiting to be exploited in the same way. Each operation is a short-lived process, not a central authority holding open doors.</li>
+				<li><b>Rootless by Default:</b> Podman is designed to run containers as a non-root user. The default mental model is “my user runs this process,” not “some root daemon runs things for me.”</li>
 			</ol>
-			<p>While Docker now supports "Rootless Mode," it is often difficult to configure. Podman works rootless out of the box.</p>
+			<p>While Docker now supports "Rootless Mode," it is often more complex to configure and not how most existing Docker installations are set up. Podman works rootless out of the box, which encourages safer defaults, especially on multi-user systems.</p>
 			<h3 id="how_it_works_under_the_hood">How it Works Under the Hood</h3>
-			<p>Technically, Podman interfaces directly with the Linux kernel's <b>cgroups</b> and <b>namespaces</b>. This adheres strictly to OCI (Open Container Initiative) standards, making it highly secure, compliant, and lightweight.</p>
+			<p>Technically, Podman interfaces directly with the Linux kernel's <b>cgroups</b> and <b>namespaces</b>, adhering strictly to OCI (Open Container Initiative) standards. It uses the same low-level container runtimes (like `runc`) under the hood that Docker does, but without inserting a long-lived daemon into the middle.</p>
+			<p>The result is a tool that is:</p>
+			<ul>
+				<li><b>Secure:</b> Less privileged glue code running all the time.</li>
+				<li><b>Compliant:</b> Built on open standards that play well in the broader container ecosystem.</li>
+				<li><b>Lightweight:</b> Doing only what it needs to, when it needs to, as normal user processes.</li>
+			</ul>
+			<h2 id="when_docker_is_still_the_right_tool_caveats">When Docker Is Still the Right Tool (Caveats)</h2>
+			<p>I didn’t throw Docker out overnight, and you probably shouldn’t either. There are still situations where Docker makes sense:</p>
+			<ul>
+				<li><b>Existing Team Workflows:</b> If your whole team is standardized on Docker, with dozens of scripts, CI pipelines, and docs written around `docker` and Docker Desktop, a migration has a real cost. Podman is mostly compatible but “mostly” still means testing and tweaks.</li>
+				<li><b>Tooling Ecosystem:</b> A lot of third-party tools, tutorials, and examples still assume Docker. Podman’s compatibility (`alias docker=podman`) helps, but some edge cases (especially around Docker Desktop–specific features) may not translate perfectly.</li>
+				<li><b>Mac-Centric Teams:</b> On macOS, Docker Desktop is still the “default” experience many developers know. Podman has solutions (e.g., Podman Machine), but if your org is heavily Mac-based and fully comfortable with Docker, the switching cost might outweigh the benefits right now.</li>
+				<li><b>You Haven’t Felt the Pain Yet:</b> If you’re not hitting daemon corruption issues, not running multi-user hosts, and your threat model is relatively relaxed, Docker might be “good enough” for your current needs.</li>
+			</ul>
+			<p>The point isn’t that Docker is unusable, it’s that, once you’ve seen what a daemonless, rootless-first model feels like, it’s hard to go back.</p>
 			<h2 id="conclusion">Conclusion</h2>
 			<p>I didn't switch to Podman just to be a contrarian. I switched because it treats containers the way they were meant to be treated: as standard Linux processes, not as children of a monolithic server.</p>
-			<p>We are past the era where we need a daemon to hold our hands. If you value stability, security, and open-source freedom, the question isn't "Why switch to Podman?" it is "Why are you still paying for Docker?"</p>
+			<p>We are past the era where we need a daemon to hold our hands. If you value stability, security, and open-source freedom, the question isn't "Why switch to Podman?" it is <b>"Why are you still tying your containers to a fragile, root-privileged daemon?"</b>.</p>
+			<p>At the very least, Podman deserves a spot in your toolbox. In my case, it replaced the toolbox entirely.</p>
 			<h3>~ End ~</h3>
 			<h4>
 				There are
