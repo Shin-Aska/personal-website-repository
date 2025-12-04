@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="author" content="Richard Orilla">
+	<meta http-equiv="content-language" content="en-us">
+	<meta http-equiv="cache-control" content="no-cache">
+	<meta http-equiv="pragma" content="no-cache">
+	<meta name="robots" content="index">
+	<meta name="keywords" content="richard orilla, free games, resume">
+
+	<link href="css/animation.css" rel="stylesheet" type="text/css">
+	<link href="css/fonts.css" rel="stylesheet" type="text/css">
+	<link href="css/site.css" rel="stylesheet" type="text/css">
+	<link href="css/sky.css" rel="stylesheet" type="text/css">
+	<link href="css/reset.css" rel="stylesheet" type="text/css">
+
+	<!-- @@@ -->
+	<title>Skies of the Lost Cause - Why I Switched to Podman (And Why You Should Too)</title>
+</head>
+
+<body>
+	<center>
+		<div id="header">
+			<div class="center themeContainer">
+			  <img class="themepicture" src="images/penj.png" alt="Logo">
+			</div>
+			<p class="headingBase start">~ Skies of the lost cause ~</p>
+			<p class="headingBase middle">Personal website of Richard Orilla</p>
+			<div class="center lineContainer"><img class="linePNG" src="images/hrj.png" alt="Logo"></div>
+			<br>
+		</div>
+
+		<div class="menu-container">
+			<div id="menu">
+				<a class="menuButton" href=about.html>About</a>
+				<a class="menuButton" href=project.html>Projects</a>
+				<a class="menuButton" href=goodies.html>Goodies</a>
+				<a class="menuButton" href=blog.html>Blog</a>
+				<a class="menuButton" href=gallery.html>Gallery</a>
+			</div>
+		</div>
+
+		<div id="content">
+			<h2 id="tableContents">Table of Contents</h2>
+			<ul>
+				<li><a href="#introduction">Introduction</a></li>
+				<li><a href="#the_problem_with_the_docker_daemon">The Problem with the Docker Daemon</a></li>
+				<li><a href="#the_podman_difference_native_linux_architecture">The Podman Difference: Native Linux Architecture</a></li>
+				<li><a href="#podman_on_windows_escaping_the_"_docker_tax"">Podman on Windows: Escaping the "Docker Tax"</a></li>
+				<li><a href="#simplified_management_the_power_of_auto_update">Simplified Management: The Power of Auto-Update</a></li>
+				<li><a href="#security_by_design">Security by Design</a></li>
+				<li><a href="#how_it_works_under_the_hood">How it Works Under the Hood</a></li>
+				<li><a href="#conclusion">Conclusion</a></li>
+			</ul>
+			<h1 id="headingBlog">Why I Switched to Podman (And Why You Should Too)</h1>
+			<h2 id="introduction">Introduction</h2>
+			<p>I first discovered Podman back in 2022. It was listed as one of the supported engines for <b>Distrobox</b>, a tool I was experimenting with at the time. Back then, I was a dedicated Docker user. While I was vaguely intrigued by Podman's "daemonless" nature, I didn't feel a pressing need to switch.</p>
+			<p>I subscribe to the philosophy: <i>"If it works, don't fix it."</i> Docker was working for me or so I thought.</p>
+			<p>My perspective changed when I moved from building simple, small container images to complex, multi-layered ones. I began hitting friction points that turned my workflow into a headache, eventually forcing me to look for a better alternative. That alternative was Podman.</p>
+			<h2 id="the_problem_with_the_docker_daemon">The Problem with the Docker Daemon</h2>
+			<p>The cracks in my Docker workflow appeared during heavy build processes. I encountered a situation where a build failed because my disk reached capacity. In a perfect world, this should just stop the build.</p>
+			<p>However, with Docker, this triggered an unrecoverable state in the storage driver. Because Docker relies on a central daemon (a background process that manages everything), when that daemon struggles to write layers to a full disk, it can corrupt the state of the engine. I wasn't just left with a failed build; I was left with a corrupted installation that required me to completely purge my Docker data and rebuild everything from scratch.</p>
+			<p>This highlighted a critical architectural flaw: <b>The Single Point of Failure.</b></p>
+			<p>If the Docker daemon crashes or corrupts, every container it manages goes down with it. It felt fragile.</p>
+			<h2 id="the_podman_difference_native_linux_architecture">The Podman Difference: Native Linux Architecture</h2>
+			<p>This led me to seriously investigate Podman. The immediate "lifesaver" feature was its <b>daemonless architecture</b>.</p>
+			<p>Unlike Docker, which uses a client-server model (the CLI talks to a long-running Daemon), Podman works like a traditional Linux command (fork/exec). When you run `podman build`, it is just a process running under your user.</p>
+			<ul>
+				<li><b>Stability:</b> If a Podman build crashes due to a full disk, only that specific build process dies. My other running containers are unaffected.</li>
+				<li><b>Safety:</b> There is no central daemon to corrupt. If the build fails, the cleanup is usually immediate and isolated.</li>
+			</ul>
+			<p>In a native Linux environment, this performance is raw and direct. There is no middleman. Podman interacts directly with the kernel's <b>cgroups</b> and <b>namespaces</b>, making it incredibly efficient for system resources.</p>
+			<h2 id="podman_on_windows_escaping_the_"_docker_tax"">Podman on Windows: Escaping the "Docker Tax"</h2>
+			<p>You might be thinking, "This sounds great for Linux, but I use Windows."</p>
+			<p>While both Docker and Podman utilize <b>WSL2 (Windows Subsystem for Linux 2)</b> to run containers on Windows, the way they package this experience is vastly different.</p>
+			<p>Docker Desktop on Windows bundles the WSL2 backend inside a heavy, commercialized application. It runs a resource-intensive GUI and background services that can eat up significant RAM even when idle.</p>
+			<p>Podman, on the other hand, offers a cleaner approach for Windows developers:</p>
+			<ol>
+				<li><b>No Licensing Headaches:</b> This is the most critical difference. <b>Docker Desktop</b> requires a paid subscription for larger organizations (companies with over 250 employees or $10M in revenue). Podman is strictly open source (Apache 2.0). You can deploy it across your entire engineering team without worrying about compliance audits or procurement costs.</li>
+				<li><b>Lightweight Integration:</b> Because Podman doesn't force a heavy UI layer (unless you explicitly install Podman Desktop), it often feels lighter on system resources. It leverages the Fedora-based WSL2 backend strictly for the engine, keeping your development environment snappy.</li>
+			</ol>
+			<h2 id="simplified_management_the_power_of_auto_update">Simplified Management: The Power of Auto-Update</h2>
+			<p>One of my favorite use cases for containers is hosting <b>Neko</b>, a virtual browser running inside a container. It’s excellent for testing web applications or browsing potentially unsafe sites in an isolated environment.</p>
+			<p>In the Docker world, updating Neko was a chore:</p>
+			<ol>
+				<li>Stop the container.</li>
+				<li>Remove the container.</li>
+				<li>Pull the new image.</li>
+				<li>Re-run the container with the exact same flags as before.</li>
+			</ol>
+			<p>If you manage a fleet of services, this becomes tedious very quickly.</p>
+			<p>Podman introduces a game-changer called <b>Auto-Update</b>. By integrating with `systemd`, I can simply run:</p>
+			<pre style="text-align: left !important;">
+				<code language="bash">
+podman auto-update
+
+				</code>
+			</pre>
+			<p>Podman checks if a new image is available, pulls it, restarts the container, and even supports <b>automatic rollback</b> if the new container fails to start. It turns a 10-minute maintenance task into a background process I don't even have to think about.</p>
+			<h2 id="security_by_design">Security by Design</h2>
+			<p>Finally, we must talk about security. Docker has historically suffered from vulnerabilities related to its root-privileged daemon. For example, <a href="https://www.cve.news/cve-2025-3224/">CVE-2025-3224</a> was a vulnerability where an attacker could potentially execute code with root privileges because the Docker daemon runs as root.</p>
+			<p>Podman mitigates this entirely through two mechanisms:</p>
+			<ol>
+				<li><b>Daemonless:</b> There is no persistent root process waiting to be exploited.</li>
+				<li><b>Rootless by Default:</b> Podman is designed to run containers as a non-root user.</li>
+			</ol>
+			<p>While Docker now supports "Rootless Mode," it is often difficult to configure. Podman works rootless out of the box.</p>
+			<h3 id="how_it_works_under_the_hood">How it Works Under the Hood</h3>
+			<p>Technically, Podman interfaces directly with the Linux kernel's <b>cgroups</b> and <b>namespaces</b>. This adheres strictly to OCI (Open Container Initiative) standards, making it highly secure, compliant, and lightweight.</p>
+			<h2 id="conclusion">Conclusion</h2>
+			<p>I didn't switch to Podman just to be a contrarian. I switched because it treats containers the way they were meant to be treated: as standard Linux processes, not as children of a monolithic server.</p>
+			<p>We are past the era where we need a daemon to hold our hands. If you value stability, security, and open-source freedom, the question isn't "Why switch to Podman?" it is "Why are you still paying for Docker?"</p>
+			<h3>~ End ~</h3>
+			<h4>
+				There are
+				<?php
+					include "site_counter.php";
+					echo get_page_count("whypodman");
+				?>
+				viewers that have read this page.
+			</h4>
+			<h4>
+				<a href="#headingBlog">Go back to top</a>
+			</h4>
+			<h4>
+				<a href="blog.html">Go back to list of articles</a>
+			</h4>
+		</div>
+	</center>
+</body>
+
+</html>
