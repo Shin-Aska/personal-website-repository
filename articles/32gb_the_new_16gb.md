@@ -32,7 +32,7 @@ Gaming, however, is a different story. The demand for RAM is real. Not only do w
 
 The industry often seems to rely on hardware to cover for software shortcomings. Take *Borderlands 4*. It struggles even on solid mid-tier setups. When performance issues come up, responses from folks like Gearbox CEO Randy Pitchford often suggest players just accept their hardware limits rather than expect better optimization.
 
-There’s a heated debate about Unreal Engine 5. Is the engine itself unoptimized, or are developers not using it properly? I lean toward developers bearing a lot of the responsibility. Look at *Armored Core 6*, built on Unreal Engine 4—it runs beautifully even on a GTX 1050Ti, showing that optimization is a choice.
+There’s a heated debate about Unreal Engine 5. Is the engine itself unoptimized, or are developers not using it properly? I lean toward developers bearing a lot of the responsibility. Look at *Armored Core 6*, built on Unreal Engine 4. it runs beautifully even on a GTX 1050Ti, showing that optimization is a choice.
 
 On the other hand, Larian Studios did a fantastic job with *Baldur’s Gate 3*, optimizing a demanding game for the Steam Deck. Yet, these well-optimized titles are becoming outliers. As AAA games increasingly list 16GB as a *minimum*, 32GB is starting to feel like the safe bet for serious gaming.
 
@@ -40,7 +40,7 @@ On the other hand, Larian Studios did a fantastic job with *Baldur’s Gate 3*, 
 
 For casual users, not much has shifted. Despite software bloat, 16GB is still adequate for browsing, streaming, and light office tasks. I don’t see an urgent push for everyday folks to jump to 32GB yet.
 
-But for power users managing 20+ tabs alongside creative or development tools, 8GB is outdated, and 16GB is starting to feel restrictive. If memory is a constraint, there are workarounds—take a look at my guide on the [Firefox Unlimited Tabs Setup](firefox-unlimited-tabs-setup.html) for tips on stretching browser resources.
+But for power users managing 20+ tabs alongside creative or development tools, 8GB is outdated, and 16GB is starting to feel restrictive. If memory is a constraint, there are workarounds. take a look at my guide on the [Firefox Unlimited Tabs Setup](firefox-unlimited-tabs-setup.html) for tips on stretching browser resources.
 
 ## Conclusion
 
