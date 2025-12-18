@@ -45,11 +45,15 @@ function get_mastodon_comments($post_id, $host = 'mastodon.social', $user = 'you
             if (is_array($json)) {
                 $desc = $json['descendants'] ?? [];
                 if (is_array($desc)) {
-                    $data = $desc;
+                    $data = mastodon_comments_latest($desc, 50);
                     @file_put_contents($cacheFile, json_encode($data));
                 }
             }
         }
+    }
+
+    if (is_array($data)) {
+        $data = mastodon_comments_latest($data, 50);
     }
 
     if (!is_array($data) || count($data) === 0) {
@@ -188,6 +192,32 @@ function mastodon_comments_sanitize_html($html) {
     $clean = preg_replace('/href\s*=\s*("|\')\s*javascript:[^"\']*("|\')/i', 'href="#"', $clean);
 
     return $clean;
+}
+
+function mastodon_comments_latest($comments, $limit) {
+    if (!is_array($comments)) {
+        return [];
+    }
+
+    $items = [];
+    foreach ($comments as $c) {
+        if (is_array($c)) {
+            $items[] = $c;
+        }
+    }
+
+    usort($items, function ($a, $b) {
+        $ta = strtotime((string)($a['created_at'] ?? '')) ?: 0;
+        $tb = strtotime((string)($b['created_at'] ?? '')) ?: 0;
+        return $ta <=> $tb;
+    });
+
+    $limit = (int)$limit;
+    if ($limit > 0 && count($items) > $limit) {
+        return array_slice($items, -$limit);
+    }
+
+    return $items;
 }
 
 ?>
