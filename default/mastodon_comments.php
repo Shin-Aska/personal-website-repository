@@ -87,6 +87,10 @@ function get_mastodon_comments($post_id, $host = 'mastodon.social', $user = 'you
         $dateText = $timestamp ? date('M j, Y', $timestamp) : '';
         $dateTextEsc = htmlspecialchars($dateText, ENT_QUOTES, 'UTF-8');
 
+        $boostsCount = (int)($comment['reblogs_count'] ?? 0);
+        $favesCount = (int)($comment['favourites_count'] ?? 0);
+        $reactionsTextEsc = htmlspecialchars('Boosts: ' . $boostsCount . ' · Faves: ' . $favesCount, ENT_QUOTES, 'UTF-8');
+
         $content = (string)($comment['content'] ?? '');
         $cleanContent = mastodon_comments_sanitize_html($content);
 
@@ -101,9 +105,9 @@ function get_mastodon_comments($post_id, $host = 'mastodon.social', $user = 'you
         $html .= "<strong>" . $displayName . "</strong> <small>@" . $username . "</small><br>";
 
         if ($url !== '' && $dateTextEsc !== '') {
-            $html .= "<small><a href='" . $url . "' target='_blank' rel='noopener' style='color: #888;'>" . $dateTextEsc . "</a></small>";
+            $html .= "<small><a href='" . $url . "' target='_blank' rel='noopener' style='color: #888;'>" . $dateTextEsc . "</a> <span class='mastodon-reactions' style='color: #888;'>" . $reactionsTextEsc . "</span></small>";
         } elseif ($dateTextEsc !== '') {
-            $html .= "<small style='color: #888;'>" . $dateTextEsc . "</small>";
+            $html .= "<small style='color: #888;'>" . $dateTextEsc . " <span class='mastodon-reactions' style='color: #888;'>" . $reactionsTextEsc . "</span></small>";
         }
 
         $html .= "</div>";
