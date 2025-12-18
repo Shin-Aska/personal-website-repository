@@ -57,11 +57,20 @@ function get_mastodon_comments($post_id, $host = 'mastodon.social', $user = 'you
     }
 
     if (!is_array($data) || count($data) === 0) {
+        $postReactions = mastodon_comments_post_reactions($host, $post_id, $cacheDir, $safePostId, $cacheTtlSeconds);
+        $postBoostCount = (int)($postReactions['boosts'] ?? 0);
+        $postFavoriteCount = (int)($postReactions['favorites'] ?? 0);
         $replyUrl = mastodon_comments_reply_url($host, $post_id, $user);
-        return "<div class='mastodon-nocomments'><p>No comments yet. <a href='" . htmlspecialchars($replyUrl) . "' target='_blank' rel='noopener'>Reply on Mastodon</a> to join the discussion.</p></div>";
+        return "<div class='mastodon-nocomments'><h4>This post has " . $postBoostCount . " boosts and " . $postFavoriteCount . " favorites</h4><p>No comments yet. <a href='" . htmlspecialchars($replyUrl) . "' target='_blank' rel='noopener'>Reply on Mastodon</a> to join the discussion.</p></div>";
     }
 
     $html = "<div class='mastodon-comments-list'>";
+
+    $postReactions = mastodon_comments_post_reactions($host, $post_id, $cacheDir, $safePostId, $cacheTtlSeconds);
+    $postBoostCount = (int)($postReactions['boosts'] ?? 0);
+    $postFavoriteCount = (int)($postReactions['favorites'] ?? 0);
+
+    $html .= "<h4>This post has " . $postBoostCount . " boosts and " . $postFavoriteCount . " favorites</h4>";
     $html .= "<h3>Comments from the Fediverse</h3>";
 
     foreach ($data as $comment) {
@@ -135,6 +144,49 @@ function mastodon_comments_reply_url($host, $post_id, $user) {
     }
 
     return 'https://' . $host . '/web/statuses/' . rawurlencode($post_id);
+}
+
+function mastodon_comments_post_reactions($host, $post_id, $cacheDir, $safePostId, $cacheTtlSeconds) {
+    $postBoostCount = 0;
+    $postFavoriteCount = 0;
+
+    $postCacheFile = $cacheDir . DIRECTORY_SEPARATOR . 'post_' . $safePostId . '.json';
+
+    $postData = null;
+    if (is_file($postCacheFile)) {
+        $mtime = filemtime($postCacheFile);
+        if ($mtime !== false && (time() - $mtime) < $cacheTtlSeconds) {
+            $raw = @file_get_contents($postCacheFile);
+            if ($raw !== false) {
+                $decoded = json_decode($raw, true);
+                if (is_array($decoded)) {
+                    $postData = $decoded;
+                }
+            }
+        }
+    }
+
+    if ($postData === null) {
+        $postApiUrl = 'https://' . $host . '/api/v1/statuses/' . rawurlencode($post_id);
+        $response = mastodon_comments_http_get($postApiUrl);
+        if (is_string($response) && $response !== '') {
+            $json = json_decode($response, true);
+            if (is_array($json)) {
+                $postData = $json;
+                @file_put_contents($postCacheFile, json_encode($postData));
+            }
+        }
+    }
+
+    if (is_array($postData)) {
+        $postBoostCount = (int)($postData['reblogs_count'] ?? 0);
+        $postFavoriteCount = (int)($postData['favourites_count'] ?? 0);
+    }
+
+    return [
+        'boosts' => $postBoostCount,
+        'favorites' => $postFavoriteCount,
+    ];
 }
 
 function mastodon_comments_http_get($url) {
