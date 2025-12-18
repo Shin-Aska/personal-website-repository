@@ -298,6 +298,64 @@ a:hover {
   color: var(--link-color-hover);
 }
 
+#comments {
+  margin-top: 25px;
+  margin-bottom: 25px;
+  padding: 16px 18px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.65);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.25);
+  box-sizing: border-box;
+}
+
+@media (prefers-color-scheme: dark) {
+  #comments {
+    background: rgba(10, 25, 47, 0.65);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.55);
+  }
+}
+
+#comments .mastodon-comments-list {
+  font-size: 1rem;
+  line-height: 1.55;
+}
+
+#comments .mastodon-comments-list h3 {
+  margin: 0 0 12px 0;
+  font-size: 1.2em;
+}
+
+#comments .mastodon-comments-list a {
+  text-shadow: none;
+  word-break: break-word;
+}
+
+#comments .comment-body {
+  text-align: left;
+}
+
+#comments .comment-body p {
+  text-align: left;
+  text-justify: auto;
+}
+
+#comments small {
+  opacity: 0.75;
+}
+
+#comments a.button {
+  display: inline-block;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--link-color);
+  text-shadow: none;
+}
+
+#comments a.button:hover {
+  background: var(--link-color);
+  color: var(--bg-color);
+}
+
 body {
   overflow-x: hidden;
 }
