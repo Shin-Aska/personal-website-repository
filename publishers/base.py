@@ -17,10 +17,21 @@ class Publisher(ABC):
     images: list[str] = None
     base_padding: int = 3
 
-    def __init__(self, template: TextIO, article: TextIO, file_id: str):
+    def __init__(
+        self,
+        template: TextIO,
+        article: TextIO,
+        file_id: str,
+        mastodon_post_id: Optional[str] = None,
+        mastodon_instance: Optional[str] = None,
+        mastodon_user_handle: Optional[str] = None,
+    ):
         self.template = template
         self.markdown = article
         self.file_id = file_id
+        self.mastodon_post_id = mastodon_post_id
+        self.mastodon_instance = mastodon_instance
+        self.mastodon_user_handle = mastodon_user_handle
         self.article = MarkdownParser.parse(self._fetch_content(self.markdown))
         self.images = []
 
@@ -196,6 +207,10 @@ class Publisher(ABC):
         return new_value
 
     @staticmethod
+    def _escape_php_double_quoted_string(value: str) -> str:
+        return value.replace('\\', '\\\\').replace('"', '\\"')
+
+    @staticmethod
     def _push_to_html_content(content: str, value: str, tab_padding: int = 0, add_new_line_per_join: bool = True, convert_formatting_markers_to_html = False, convert_link_markers_to_html = False) -> str:
         value = Publisher._convert_markdown_markers_to_html(value) if convert_formatting_markers_to_html else value
         value = Publisher._process_link_markers(value) if convert_link_markers_to_html else value
@@ -304,6 +319,34 @@ class Publisher(ABC):
         html_content = self._push_to_html_content(html_content, '?>', 1)
         html_content = self._push_to_html_content(html_content, 'viewers that have read this page.', 1)
         html_content = self._push_to_html_content(html_content, '</h4>')
+
+        if self.mastodon_post_id:
+            mastodon_post_id = self._escape_php_double_quoted_string(self.mastodon_post_id)
+            mastodon_instance = (
+                self._escape_php_double_quoted_string(self.mastodon_instance)
+                if self.mastodon_instance
+                else None
+            )
+            mastodon_user_handle = (
+                self._escape_php_double_quoted_string(self.mastodon_user_handle)
+                if self.mastodon_user_handle
+                else None
+            )
+            html_content = self._push_to_html_content(html_content, '<section id="comments">')
+            html_content = self._push_to_html_content(html_content, '<?php', 1)
+            html_content = self._push_to_html_content(html_content, 'require_once "mastodon_comments.php";', 2)
+
+            if mastodon_instance and mastodon_user_handle:
+                mastodon_call = f'echo get_mastodon_comments("{mastodon_post_id}", "{mastodon_instance}", "{mastodon_user_handle}");'
+            elif mastodon_instance:
+                mastodon_call = f'echo get_mastodon_comments("{mastodon_post_id}", "{mastodon_instance}");'
+            else:
+                mastodon_call = f'echo get_mastodon_comments("{mastodon_post_id}");'
+
+            html_content = self._push_to_html_content(html_content, mastodon_call, 2)
+            html_content = self._push_to_html_content(html_content, '?>', 1)
+            html_content = self._push_to_html_content(html_content, '</section>')
+
         html_content = self._push_to_html_content(html_content, '<h4>')
         html_content = self._push_to_html_content(html_content, '<a href="#headingBlog">Go back to top</a>', 1)
         html_content = self._push_to_html_content(html_content, '</h4>')

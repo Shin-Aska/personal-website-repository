@@ -52,6 +52,9 @@ class PublisherApp:
 
         self.source_var = tk.StringVar()
         self.slug_var = tk.StringVar()
+        self.mastodon_post_id_var = tk.StringVar()
+        self.mastodon_instance_var = tk.StringVar()
+        self.mastodon_user_handle_var = tk.StringVar()
 
         # Layout: label + entry + choose button on first row
         choose_frame = tk.Frame(master, padx=20, pady=15)
@@ -99,6 +102,56 @@ class PublisherApp:
         slug_entry.grid(row=0, column=1, padx=(10, 0), pady=5, sticky="we")
         slug_entry.bind("<FocusOut>", lambda _event: self.slug_var.set(self.slug_var.get().strip()))
         slug_frame.columnconfigure(1, weight=1)
+
+        comments_frame = tk.Frame(master, padx=20)
+        comments_frame.pack(fill="x", pady=(10, 0))
+
+        comments_label = tk.Label(comments_frame, text="Mastodon Comments (Optional)", font=("Segoe UI", 11, "bold"))
+        comments_label.grid(row=0, column=0, columnspan=2, sticky="w", pady=(0, 5))
+
+        post_id_label = tk.Label(comments_frame, text="Post ID:", font=("Segoe UI", 10))
+        post_id_label.grid(row=1, column=0, sticky="w")
+        post_id_entry = tk.Entry(
+            comments_frame,
+            textvariable=self.mastodon_post_id_var,
+            width=40,
+            font=("Segoe UI", 10),
+        )
+        post_id_entry.grid(row=1, column=1, padx=(10, 0), pady=3, sticky="we")
+        post_id_entry.bind(
+            "<FocusOut>",
+            lambda _event: self.mastodon_post_id_var.set(self.mastodon_post_id_var.get().strip()),
+        )
+
+        instance_label = tk.Label(comments_frame, text="Instance:", font=("Segoe UI", 10))
+        instance_label.grid(row=2, column=0, sticky="w")
+        instance_entry = tk.Entry(
+            comments_frame,
+            textvariable=self.mastodon_instance_var,
+            width=40,
+            font=("Segoe UI", 10),
+        )
+        instance_entry.grid(row=2, column=1, padx=(10, 0), pady=3, sticky="we")
+        instance_entry.bind(
+            "<FocusOut>",
+            lambda _event: self.mastodon_instance_var.set(self.mastodon_instance_var.get().strip()),
+        )
+
+        handle_label = tk.Label(comments_frame, text="User Handle:", font=("Segoe UI", 10))
+        handle_label.grid(row=3, column=0, sticky="w")
+        handle_entry = tk.Entry(
+            comments_frame,
+            textvariable=self.mastodon_user_handle_var,
+            width=40,
+            font=("Segoe UI", 10),
+        )
+        handle_entry.grid(row=3, column=1, padx=(10, 0), pady=3, sticky="we")
+        handle_entry.bind(
+            "<FocusOut>",
+            lambda _event: self.mastodon_user_handle_var.set(self.mastodon_user_handle_var.get().strip()),
+        )
+
+        comments_frame.columnconfigure(1, weight=1)
 
         # Convert button styled broadly like provided mockup
         convert_btn = tk.Button(
@@ -161,12 +214,30 @@ class PublisherApp:
         default_output = DEFAULT_OUTPUT_DIR / final_name
         classic_output = CLASSIC_OUTPUT_DIR / final_name
 
+        mastodon_post_id = self.mastodon_post_id_var.get().strip() or None
+        mastodon_instance = self.mastodon_instance_var.get().strip() or None
+        mastodon_user_handle = self.mastodon_user_handle_var.get().strip() or None
+
         try:
             self.status_var.set("Publishing...")
             self.master.update_idletasks()
 
-            publish_article(str(DEFAULT_TEMPLATE), markdown_path, str(default_output))
-            publish_article(str(CLASSIC_TEMPLATE), markdown_path, str(classic_output))
+            publish_article(
+                str(DEFAULT_TEMPLATE),
+                markdown_path,
+                str(default_output),
+                mastodon_post_id=mastodon_post_id,
+                mastodon_instance=mastodon_instance,
+                mastodon_user_handle=mastodon_user_handle,
+            )
+            publish_article(
+                str(CLASSIC_TEMPLATE),
+                markdown_path,
+                str(classic_output),
+                mastodon_post_id=mastodon_post_id,
+                mastodon_instance=mastodon_instance,
+                mastodon_user_handle=mastodon_user_handle,
+            )
 
             result = generate_sitemaps.main(["generate_sitemaps.py"])
             if result != 0:
