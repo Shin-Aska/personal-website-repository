@@ -186,3 +186,15 @@ That being said, it aligns with my conclusion. If you are fine with Windows. Sti
 This year started with heck of releases. We had Persona 3 reloaded and Grand Blue Fantasy: relink released in the first week of February. Both games are playable on Linux via Proton. I have not seen any issues while I was playing these games using Proton GE.
 
 Tekken 8 on the other hand runs fine but has connection issues on the online multiplayer. I have not seen any issues beyond that and to be fair, the Wine community already has a fix after a week of the game's release.
+
+## Update: December 26, 2025
+
+- [ ] [![](images/marvel_rivals_tmb.jpg)](images/marvel_rivals.jpg)
+- [ ] Figure 15\. Marvel Rivals \- A popular hero shooter game that runs smoothly on Linux via Proton GE
+
+This year, despite being completely busy with different side-projects, I still managed to play games on Linux. Mainly I still play single player games but I did try out online games that have been released last year. To much of my surprise, I see Marvel Rivals and Where Winds Meet fully playable on Linux via Proton GE.
+
+- [ ] [![](images/where_winds_meet_tmb.jpg)](images/where_winds_meet.jpg)
+- [ ] Figure 16\. Where Winds Meet \- An open-world MMORPG that is fully playable on Linux via Proton GE
+
+I just installed this on my development SSD partition mainly to test local LLMs and is using Linux Mint. Although I did experience issues with Mint in general (mind you, Mint does not fully support Wayland yet), being able to play Where Winds Meet and Marvel Rivals with little configuration was a sight to behold.
