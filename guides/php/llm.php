@@ -105,7 +105,7 @@ if (json_last_error() !== JSON_ERROR_NONE) {
 
 // --- Target Gemini endpoint ---
 $base = 'https://generativelanguage.googleapis.com/v1beta/models';
-$model = 'gemini-2.5-flash-preview-05-20:generateContent';
+$model = 'gemini-3-flash-preview:generateContent';
 $url   = $base . '/' . $model . '?key=' . urlencode($apiKey);
 
 // --- Retry logic (exponential backoff) ---
