@@ -24,6 +24,7 @@ def publish_article(
     mastodon_post_id: Optional[str] = None,
     mastodon_instance: Optional[str] = None,
     mastodon_user_handle: Optional[str] = None,
+    bluesky_post_url: Optional[str] = None,
 ) -> None:
     """Publish a markdown file using the provided template to the given output path."""
     template_path = os.path.normpath(template_path)
@@ -42,6 +43,7 @@ def publish_article(
                 mastodon_post_id=mastodon_post_id,
                 mastodon_instance=mastodon_instance,
                 mastodon_user_handle=mastodon_user_handle,
+                bluesky_post_url=bluesky_post_url,
             )
             publisher.publish(output_path)
             images = list(publisher.images)
@@ -74,6 +76,8 @@ def main() -> None:
     parser.add_option('--mastodon-post-id', dest='mastodon_post_id', help='Mastodon post id for comments section')
     parser.add_option('--mastodon-instance', dest='mastodon_instance', help='Mastodon instance/domain for comments section')
     parser.add_option('--mastodon-user-handle', dest='mastodon_user_handle', help='Mastodon user handle for comments section')
+    parser.add_option('--bluesky-post-url', dest='bluesky_post_url', help='Bluesky post url for comments section')
+
 
     (options, _args) = parser.parse_args()
 
@@ -89,6 +93,7 @@ def main() -> None:
             mastodon_post_id=options.mastodon_post_id,
             mastodon_instance=options.mastodon_instance,
             mastodon_user_handle=options.mastodon_user_handle,
+            bluesky_post_url=options.bluesky_post_url,
         )
     except FileNotFoundError as exc:
         print(str(exc))

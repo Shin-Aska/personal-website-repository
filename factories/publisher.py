@@ -16,6 +16,7 @@ class PublisherFactory:
         mastodon_post_id: Optional[str] = None,
         mastodon_instance: Optional[str] = None,
         mastodon_user_handle: Optional[str] = None,
+        bluesky_post_url: Optional[str] = None,
     ) -> Publisher:
         return PublisherFactory.lookup[filename](
             t_file,
@@ -24,4 +25,5 @@ class PublisherFactory:
             mastodon_post_id=mastodon_post_id,
             mastodon_instance=mastodon_instance,
             mastodon_user_handle=mastodon_user_handle,
+            bluesky_post_url=bluesky_post_url,
         )
