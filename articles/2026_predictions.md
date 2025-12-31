@@ -17,13 +17,18 @@ Let me dive into each of these insights in detail.
 
 I predict that the current "artificial" RAM shortages will intensify over the next few months unless big tech companies face government regulation to prevent monopolistic behavior and maintain fair access to memory resources.
 
+Since 2022, the semiconductor industry has already been struggling with capacity limits for High Bandwidth Memory (HBM) and DRAM, driven by the explosive demand from data centers and AI accelerators. Production ramps for newer 3nm nodes are still catching up, creating a "tight-rope" scenario where supply barely meets the voracious demand of AI models.
+
 That being said, I think Google completing its vertical alignment with AI is a massive advantage. Unlike its competitors, Google relies on **TPUs (Tensor Processing Units)** rather than the standard NVIDIA GPUs. Their approach is proving to be more efficient and sustainable for long-term AI development, which allows them to sidestep some of the supply chain bottlenecks we are seeing elsewhere.
 
 Of course, Nvidia, Microsoft, OpenAI, and Anthropic are not happy with Google's position. Currently, Google is the only major player not fully participating in the "cannibalistic" bidding wars for hardware that are inflating share prices across the industry.
 
-I believe there is a bubble—similar to what Michael Burry predicts—but it may not reach the catastrophic levels of the 2008 crash. Unlike 2008, where every bank was exposed, this bubble is concentrated among a few key tech players.
+I believe there is a bubble—similar to what Michael Burry predicts—but it may not reach the catastrophic levels of the 2008 crash. Unlike 2008, where every bank was exposed, this bubble is concentrated among a few key tech players. While valuations of AI-related chip makers have surged, the broader market dynamics will determine if the correction is severe or just a market adjustment.
 
 If the bubble pops, the market will undoubtedly be in disarray for a bit. I am not certain if diversified giants like Microsoft will be heavily damaged, but I am certain that AI companies *without* full vertical integration (those renting their chips) will struggle to survive.
+
+- [ ]  [![](images/ram_crisis.png)](images/ram_crisis.png)
+- [ ] Figure 1. The hypothetical hardware bubble in the AI industry
 
 The fact remains that even if the financial bubble pops, the technology itself is here to stay. AI models will continue to improve because they are proven to be useful. In my own field of software development, despite being transferred to different departments several times, I still deliver at an impressive pace specifically because of AI acceleration.
 
@@ -35,7 +40,12 @@ I recently did a coding challenge where I implemented Dijkstra's algorithm in mo
 
 I expect these workflow systems will mature significantly in 2026, leading to widespread adoption of **Autonomous AI Agents**. These won't just chat; they will handle complex, multi-step tasks like "plan this project" or "debug this module" without constant human hand-holding.
 
+We are already seeing this trend with platforms like **n8n**, **Zapier**, and **LangChain** gaining traction in enterprise pilots. These tools are moving beyond simple automation to becoming "orchestrators" that can decide *how* to execute a task, not just follow a pre-defined script. However, true autonomy still faces reliability and safety hurdles. For 2026, "human-in-the-loop" systems will remain the standard for critical workflows to ensure governance and accuracy.
+
 This evolution will blur the lines between traditional software development and AI-driven automation, creating new opportunities for developers who can orchestrate these agents rather than just writing code from scratch.
+
+- [ ]  [![](images/n8n.png)](images/n8n.png)
+- [ ] Figure 2. n8n - An example of a workflow automation tool being used for agentic AI tasks
 
 ## Invisible Augmented Reality
 
@@ -43,7 +53,12 @@ Augmented Reality (AR) is currently in its early stages, but I expect it to beco
 
 We are seeing this with devices using **Directional Audio** technology (like the Ray-Ban Meta glasses). These glasses have built-in speakers that fire sound directly into your ear canal so only you can hear it—no earphones required.
 
+However, mass adoption faces technical hurdles. Battery life, heat dissipation, and display brightness are significant challenges that engineers are still solving. Until we have batteries that can power a high-resolution AR overly for a full day without overheating, premium models will remain a niche product for early adopters and professionals.
+
 As innovation continues, I expect these invisible AR devices to become more sophisticated. We will move away from bulky headsets toward frames that look like normal eyewear but revolutionize how we interact with digital information.
+
+- [ ]  [![](images/invisible_ar_glasses.png)](images/invisible_ar_glasses.png)
+- [ ] Figure 3. Modern smart glasses that look indistinguishable from regular eyewear
 
 Unfortunately, I think the premium models will remain expensive for the time being, so mass adoption may not happen as quickly as I’d hope. However, the trajectory is clear: I am looking forward to having less "monitor junk" and LCD screens cluttering my desk because virtual screens can finally take their place—a win for both productivity and the environment.
 
@@ -51,21 +66,27 @@ I know that in VR we can already spawn infinite virtual monitors, but 2026 will 
 
 ## AI Scams
 
-As generative AI improves at cloning images and audio, I expect scams to become significantly more sophisticated. Thankfully, most LLM providers have ethical checks to prevent malicious use, but bad actors are finding ways around them or using open-source models with no safety filters.
+As generative AI improves at cloning images and audio, I expect scams to become significantly more sophisticated. Tools like **Runway's Gen-2** and **Adobe Firefly** have already demonstrated photorealistic capabilities, and open-source models (like Stable Diffusion) can be fine-tuned by bad actors to bypass safety filters.
 
 We’ve already seen issues on Kickstarter, where plenty of projects were created using AI-generated content that later turned out to be fraudulent vaporware.
 
 There have also been reports of delivery scams where drivers use generative AI to create "fake proof of delivery" photos—placing a food bag on a virtual porch using Google Street View data to fool the refund system.
 
+- [ ]  [![](images/fake_delivery_scam.png)](images/fake_delivery_scam.png)
+- [ ] Figure 4. An AI-generated 'proof of delivery' photo used in refund scams
+
 In 2026, we will see new scams that leverage this tech to create increasingly convincing fake content, making it nearly impossible for people to distinguish between real and artificial proof.
 
-We need better digital literacy and verification tools to combat these threats, along with stronger regulations to hold platforms accountable. But realistically, next year will be a game of "cat and mouse." Critical thinking is highly encouraged.
+We need better digital literacy and verification tools to combat these threats, along with stronger regulations to hold platforms accountable. Detection technologies are advancing, but it remains an arms race. Realistically, next year will be a game of "cat and mouse." Critical thinking is highly encouraged.
 
 ## The Blue Collar Boom
 
 Here in the Philippines, AI adoption won't happen overnight, but we will see a gradual increase in AI-assisted tools for blue-collar workers, particularly in manufacturing, construction, and service industries.
 
-The types of AI systems I expect blue-collar workers will utilize are smart assistants for logistics, AI-assisted information retrieval (repair guides), and decision support tools.
+The types of AI systems I expect blue-collar workers will utilize are smart assistants for logistics, AI-assisted information retrieval (repair guides), and decision support tools. Imagine a mechanic using a tablet to instantly pull up a specific engine schematic or an electrician using AR to visualize wiring behind a wall. This isn't replacement; it's **augmentation**.
+
+- [ ]  [![](images/blue_collar_worker_ai.png)](images/blue_collar_worker_ai.png)
+- [ ] Figure 5. A construction worker utilizing AI-powered schematics on a rugged tablet
 
 However, I do **not** believe blue-collar jobs will be replaced. Even if big tech companies solve their energy problems, the cost of operating AI per request is simply too high to replace human labor in physical tasks.
 
