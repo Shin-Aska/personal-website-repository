@@ -150,8 +150,10 @@ By hiding the messy stuff behind proxies and a factory pattern, the system feels
 
 If you’re curious about the specifics of my implementation, you can check out the code on GitHub:
 
-- [Comment Factory](https://github.com/Shin-Aska/personal-website-repository/blob/master/default/comment-factory.php) - Combines multiple comment “bundles” into one feed, sorts by timestamp, and renders the unified comment stream.
-- [Bluesky Comments](https://github.com/Shin-Aska/personal-website-repository/blob/master/default/bluesky_comments.php) - Parses the Bluesky post URL, resolves handle -> DID, fetches the thread, flattens replies, and normalizes them into the bundle format.
-- [Bluesky Image Proxy](https://github.com/Shin-Aska/personal-website-repository/blob/master/default/bluesky_image_proxy.php) - Server-side image fetch + cache with basic SSRF protection, used for avatars.
-- [Mastodon Comments](https://github.com/Shin-Aska/personal-website-repository/blob/master/default/mastodon_comments.php) - Fetches the Mastodon context thread, filters/normalizes replies, and produces the bundle + HTML.
-- [Mastodon Image Proxy](https://github.com/Shin-Aska/personal-website-repository/blob/master/default/mastodon_image_proxy.php) - Same proxy idea as Bluesky, but for Mastodon avatar URLs.
+- [Comment Factory](https://github.com/Shin-Aska/personal-website-repository/blob/master/default/CommentFactory.php) - Combines multiple comment “bundles” into one feed, sorts by timestamp, and renders the unified comment stream.
+- [Bluesky Comments](https://github.com/Shin-Aska/personal-website-repository/blob/master/default/BlueskyCommentProvider.php) - Parses the Bluesky post URL, resolves handle -> DID, fetches the thread, flattens replies, and normalizes them into the bundle format.
+- [Bluesky Image Proxy](https://github.com/Shin-Aska/personal-website-repository/blob/master/default/BlueskyImageProxy.php) - Server-side image fetch + cache with basic SSRF protection, used for avatars.
+- [Mastodon Comments](https://github.com/Shin-Aska/personal-website-repository/blob/master/default/MastodonCommentProvider.php) - Fetches the Mastodon context thread, filters/normalizes replies, and produces the bundle + HTML.
+- [Mastodon Image Proxy](https://github.com/Shin-Aska/personal-website-repository/blob/master/default/MastodonImageProxy.php) - Same proxy idea as Bluesky, but for Mastodon avatar URLs.
+- [Base Comment Provider](https://github.com/Shin-Aska/personal-website-repository/blob/master/default/CommentProvider.php) - The abstract base class that handles common logic like caching and HTTP requests.
+- [Base Image Proxy Provider](https://github.com/Shin-Aska/personal-website-repository/blob/master/default/ImageProxyProvider.php) - The base class for image proxying logic.
