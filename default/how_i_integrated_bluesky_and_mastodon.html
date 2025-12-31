@@ -84,7 +84,7 @@
 			<h2 id="introduction">Introduction</h2>
 			<p>As 2025 comes to a close, I want to share one of my personal commitments this year, which has been to unite my website with Mastodon and Bluesky. Originally, I didn’t add a comment backend to my site because I didn’t want the hassle of maintaining it.</p>
 			<p>I’ve noticed that typical comment engines on websites are often targeted by spammers boosting their SEO. I’m at a disadvantage here since I don’t want to implement something like an AI-based automated review system, which would be expensive to run.</p>
-			<p>Then I stumbled upon an idea from Daniel Pecos’s article titled <a href="https://danielpecos.com/2022/12/25/mastodon-as-comment-system-for-your-static-blog/">Mastodon as Comment System for Your Static Blog</a>. I thought it was brilliant and decided to implement it on my website.</p>
+			<p>Then I stumbled upon an idea from Daniel Pecos’s article titled <a href="https://danielpecos.com/2022/12/25/mastodon-as-comment-system-for-your-static-blog/">Mastodon as Comment System for Your Static Blog<sup>[1]</sup></a>. I thought it was brilliant and decided to implement it on my website.</p>
 			<p>Later this month, I successfully integrated Mastodon, and just today, December 31st, 2025, I got Bluesky working as well.</p>
 			<p>The idea is great because it’s simple and doesn’t require a database or backend server. It also doesn’t need any API keys or OAuth tokens. Above all, I’m taking advantage of the moderation on the Fediverse and Bluesky to keep my website free of spam.</p>
 			<p>On top of that, I believe Mastodon and Bluesky are okay with this setup since they gain engagement too. My implementation links back to my posts on their platforms.</p>
@@ -97,11 +97,6 @@
 			<h3 id="mastodon">Mastodon</h3>
 			<p>For Mastodon, the API is pretty straightforward: I hit the `/api/v1/statuses/{id}/context` endpoint to grab the reply thread.</p>
 			<p>The basic shape is:</p>
-			<ul>
-				<li><b>A small wrapper</b> that returns HTML for the page.</li>
-				<li><b>A “bundle” builder</b> that fetches the API response (with caching), then normalizes it into a consistent format my site can render.</li>
-			</ul>
-			<p>Here’s the rough structure (similar to how I show code in <a href="../articles/firefox-unlimited-tabs-setup.md">Firefox Unlimited Tabs Setup</a>):</p>
 			<pre>
 				<code class="language-php">
 function get_mastodon_comments($post_id, $host = 'mastodon.social', $user = 'your_handle') {

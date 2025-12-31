@@ -6,7 +6,7 @@ As 2025 comes to a close, I want to share one of my personal commitments this ye
 
 I’ve noticed that typical comment engines on websites are often targeted by spammers boosting their SEO. I’m at a disadvantage here since I don’t want to implement something like an AI-based automated review system, which would be expensive to run.
 
-Then I stumbled upon an idea from Daniel Pecos’s article titled [Mastodon as Comment System for Your Static Blog](https://danielpecos.com/2022/12/25/mastodon-as-comment-system-for-your-static-blog/). I thought it was brilliant and decided to implement it on my website.
+Then I stumbled upon an idea from Daniel Pecos’s article titled [Mastodon as Comment System for Your Static Blog<sup>[1]</sup>](https://danielpecos.com/2022/12/25/mastodon-as-comment-system-for-your-static-blog/). I thought it was brilliant and decided to implement it on my website.
 
 Later this month, I successfully integrated Mastodon, and just today, December 31st, 2025, I got Bluesky working as well.
 
