@@ -36,18 +36,17 @@ The basic shape is:
 - **A “bundle” builder** that fetches the API response (with caching), then normalizes it into a consistent format my site can render.
 
 ```php
-function get_mastodon_comments($post_id, $host = 'mastodon.social', $user = 'your_handle') {
-    $bundle = mastodon_comment_bundle($post_id, $host, $user);
-    return mastodon_render_comments_bundle($bundle);
-}
+class MastodonCommentProvider extends CommentProvider {
+    public function getComments($config) {
+        $post_id = trim((string)($config['post_id'] ?? ''));
+        // ... setup ...
 
-function mastodon_comment_bundle($post_id, $host = 'mastodon.social', $user = 'your_handle') {
-    // ... setup cache ...
-    
-    $apiUrl = 'https://' . $host . '/api/v1/statuses/' . rawurlencode($post_id) . '/context';
-    $response = mastodon_comments_http_get($apiUrl);
-    
-    // ... parse and normalize data ...
+        $apiUrl = 'https://' . $host . '/api/v1/statuses/' . rawurlencode($post_id) . '/context';
+        $response = $this->httpGet($apiUrl);
+
+        // ... parse and normalize data ...
+        return $result;
+    }
 }
 ```
 
@@ -58,22 +57,26 @@ Bluesky, built on the AT Protocol, gets a bit trickier. Comments are nested as '
 In practice, the flow looks like this: parse the URL, resolve the handle to a DID (if needed), build an `at://` URI, then fetch and flatten the thread replies.
 
 ```php
-function bluesky_comment_bundle($post_url) {
-    // ... parse URL ...
+class BlueskyCommentProvider extends CommentProvider {
+    public function getComments($config) {
+        // ... parse URL ...
 
-    // Resolve Handle -> DID
-    $did = $handleOrDid;
-    if (strpos($handleOrDid, 'did:') !== 0) {
-        $did = bluesky_resolve_handle($handleOrDid, $cacheDir);
+        // Resolve Handle -> DID
+        $did = $handleOrDid;
+        if (strpos($handleOrDid, 'did:') !== 0) {
+            $did = $this->resolveHandle($handleOrDid);
+        }
+
+        // Build AT URI
+        $atUri = "at://$did/app.bsky.feed.post/$rkey";
+
+        // Fetch Thread
+        $apiUrl = "https://public.api.bsky.app/xrpc/app.bsky.feed.getPostThread?uri=" . urlencode($atUri) . "&depth=6&parentHeight=0";
+        $response = $this->httpGet($apiUrl, 'PHP Bluesky Comments');
+        
+        // ... flatten nested replies ...
+        return $result;
     }
-
-    // Build AT URI
-    $atUri = "at://$did/app.bsky.feed.post/$rkey";
-
-    // Fetch Thread
-    $apiUrl = "https://public.api.bsky.app/xrpc/app.bsky.feed.getPostThread?uri=" . urlencode($atUri);
-    
-    // ... flatten nested replies ...
 }
 ```
 
@@ -91,18 +94,31 @@ These scripts fetch the image on the server side, cache it locally, and serve it
 Here is the core logic from the Bluesky proxy:
 
 ```php
-$url = isset($_GET['url']) ? trim((string)$_GET['url']) : '';
+class ImageProxyProvider {
+    public function serve($url) {
+        // ... validation ...
+        $this->checkSsrf($host);
+        
+        if ($this->serveFromCache($bodyFile, $metaFile)) {
+            exit;
+        }
 
-// Basic SSRF protection
-$ips = @gethostbynamel($host);
-foreach ($ips as $ip) {
-    if (filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_NO_PRIV_RANGE) === false) {
-        http_response_code(403);
-        exit;
+        $this->fetchAndCache($url, $bodyFile, $metaFile);
+    }
+
+    protected function checkSsrf($host) {
+        $ips = @gethostbynamel($host);
+        if (is_array($ips)) {
+            foreach ($ips as $ip) {
+                // Filter out private ranges
+                $publicIp = filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE);
+                if ($publicIp === false) {
+                    $this->error(403);
+                }
+            }
+        }
     }
 }
-
-// ... Fetch and Cache ...
 ```
 
 ## The Factory Pattern: Putting It All Together
@@ -112,30 +128,32 @@ With the data fetching and image issues sorted, the last hurdle was combining ev
 So I merge the 'bundles' from Mastodon and Bluesky into a single array, then sort by timestamp so the newest comments show up first.
 
 ```php
-function comment_factory_merge(array $bundles) {
-    $merged = [
-        'sources' => [],
-        'comments' => [],
-        'hasComments' => false,
-    ];
+class CommentFactory {
+    public static function merge(array $bundles) {
+        $merged = [
+            'sources' => [],
+            'comments' => [],
+            'hasComments' => false,
+        ];
 
-    foreach ($bundles as $bundle) {
-        // ... Normalize platform data ...
-        
-        foreach ($bundle['comments'] ?? [] as $comment) {
-            $comment['platform'] = $platform;
-            $merged['comments'][] = $comment;
+        foreach ($bundles as $bundle) {
+            // ... Normalize platform data ...
+            
+            foreach ($bundle['comments'] ?? [] as $comment) {
+                $comment['platform'] = $platform;
+                $merged['comments'][] = $comment;
+            }
         }
+
+        // Sort by timestamp
+        usort($merged['comments'], function ($a, $b) {
+            $timeA = (int)($a['timestamp'] ?? 0);
+            $timeB = (int)($b['timestamp'] ?? 0);
+            return $timeB <=> $timeA;
+        });
+
+        return $merged;
     }
-
-    // Sort by timestamp
-    usort($merged['comments'], function ($a, $b) {
-        $timeA = (int)($a['timestamp'] ?? 0);
-        $timeB = (int)($b['timestamp'] ?? 0);
-        return $timeB <=> $timeA;
-    });
-
-    return $merged;
 }
 ```
 
