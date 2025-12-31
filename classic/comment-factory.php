@@ -85,7 +85,13 @@ function comment_factory_render(array $merged) {
                 $messages[] = $source['emptyMessage'];
             }
         }
-        $fallback = !empty($messages) ? implode(' ', $messages) : 'No comments to display right now.';
+
+        if (count($merged['sources']) > 1) {
+            $fallback = 'No comments yet. Reply on any of the platforms below to join the discussion.';
+        } else {
+            $fallback = !empty($messages) ? implode(' ', $messages) : 'No comments to display right now.';
+        }
+
         $html .= "<div class='comment-factory-empty'><p>" . htmlspecialchars($fallback, ENT_QUOTES, 'UTF-8') . "</p></div></div>";
         return $html;
     }
