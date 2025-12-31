@@ -54,7 +54,9 @@ class PublisherApp:
         self.slug_var = tk.StringVar()
         self.mastodon_post_id_var = tk.StringVar()
         self.mastodon_instance_var = tk.StringVar()
+        self.mastodon_instance_var = tk.StringVar()
         self.mastodon_user_handle_var = tk.StringVar()
+        self.bluesky_post_url_var = tk.StringVar()
 
         # Layout: label + entry + choose button on first row
         choose_frame = tk.Frame(master, padx=20, pady=15)
@@ -151,6 +153,20 @@ class PublisherApp:
             lambda _event: self.mastodon_user_handle_var.set(self.mastodon_user_handle_var.get().strip()),
         )
 
+        bluesky_label = tk.Label(comments_frame, text="Bluesky Post URL:", font=("Segoe UI", 10))
+        bluesky_label.grid(row=4, column=0, sticky="w")
+        bluesky_entry = tk.Entry(
+            comments_frame,
+            textvariable=self.bluesky_post_url_var,
+            width=40,
+            font=("Segoe UI", 10),
+        )
+        bluesky_entry.grid(row=4, column=1, padx=(10, 0), pady=3, sticky="we")
+        bluesky_entry.bind(
+            "<FocusOut>",
+            lambda _event: self.bluesky_post_url_var.set(self.bluesky_post_url_var.get().strip()),
+        )
+
         comments_frame.columnconfigure(1, weight=1)
 
         # Convert button styled broadly like provided mockup
@@ -217,6 +233,7 @@ class PublisherApp:
         mastodon_post_id = self.mastodon_post_id_var.get().strip() or None
         mastodon_instance = self.mastodon_instance_var.get().strip() or None
         mastodon_user_handle = self.mastodon_user_handle_var.get().strip() or None
+        bluesky_post_url = self.bluesky_post_url_var.get().strip() or None
 
         try:
             self.status_var.set("Publishing...")
@@ -229,6 +246,7 @@ class PublisherApp:
                 mastodon_post_id=mastodon_post_id,
                 mastodon_instance=mastodon_instance,
                 mastodon_user_handle=mastodon_user_handle,
+                bluesky_post_url=bluesky_post_url,
             )
             publish_article(
                 str(CLASSIC_TEMPLATE),
@@ -237,6 +255,7 @@ class PublisherApp:
                 mastodon_post_id=mastodon_post_id,
                 mastodon_instance=mastodon_instance,
                 mastodon_user_handle=mastodon_user_handle,
+                bluesky_post_url=bluesky_post_url,
             )
 
             result = generate_sitemaps.main(["generate_sitemaps.py"])

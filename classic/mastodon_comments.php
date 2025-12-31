@@ -1,14 +1,40 @@
 <?php
 
 function get_mastodon_comments($post_id, $host = 'mastodon.social', $user = 'your_handle') {
+    $bundle = mastodon_comment_bundle($post_id, $host, $user);
+    return mastodon_render_comments_bundle($bundle);
+}
+
+function mastodon_comment_bundle($post_id, $host = 'mastodon.social', $user = 'your_handle') {
     $post_id = trim((string)$post_id);
+
+    $result = [
+        'platform' => 'mastodon',
+        'platformLabel' => 'Fediverse',
+        'sourceId' => $post_id,
+        'host' => '',
+        'comments' => [],
+        'postMetrics' => [
+            'boosts' => ['label' => 'Boosts', 'value' => 0],
+            'favorites' => ['label' => 'Favorites', 'value' => 0],
+        ],
+        'cta' => [
+            'label' => 'Reply to this post on Mastodon',
+            'url' => '',
+        ],
+        'emptyMessage' => 'No comments yet. Reply on Mastodon to join the discussion.',
+        'errors' => [],
+    ];
+
     if ($post_id === '') {
-        return "<div class='mastodon-nocomments'><p>No comments yet. Reply on Mastodon to join the discussion.</p></div>";
+        $result['errors'][] = 'No comments yet. Reply on Mastodon to join the discussion.';
+        return $result;
     }
 
     $host = trim((string)$host);
     $host = preg_replace('#^https?://#i', '', $host);
     $host = preg_replace('#/.*$#', '', $host);
+    $result['host'] = $host;
 
     $user = trim((string)$user);
 
@@ -56,22 +82,19 @@ function get_mastodon_comments($post_id, $host = 'mastodon.social', $user = 'you
         $data = mastodon_comments_latest($data, 50);
     }
 
-    if (!is_array($data) || count($data) === 0) {
-        $postReactions = mastodon_comments_post_reactions($host, $post_id, $cacheDir, $safePostId, $cacheTtlSeconds);
-        $postBoostCount = (int)($postReactions['boosts'] ?? 0);
-        $postFavoriteCount = (int)($postReactions['favorites'] ?? 0);
-        $replyUrl = mastodon_comments_reply_url($host, $post_id, $user);
-        return "<div class='mastodon-nocomments'><h4>This post has " . $postBoostCount . " boosts and " . $postFavoriteCount . " favorites</h4><p>No comments yet. <a href='" . htmlspecialchars($replyUrl) . "' target='_blank' rel='noopener'>Reply on Mastodon</a> to join the discussion.</p></div>";
+    if (!is_array($data)) {
+        $data = [];
     }
-
-    $html = "<div class='mastodon-comments-list'>";
 
     $postReactions = mastodon_comments_post_reactions($host, $post_id, $cacheDir, $safePostId, $cacheTtlSeconds);
     $postBoostCount = (int)($postReactions['boosts'] ?? 0);
     $postFavoriteCount = (int)($postReactions['favorites'] ?? 0);
 
-    $html .= "<h4>This post has " . $postBoostCount . " boosts and " . $postFavoriteCount . " favorites</h4>";
-    $html .= "<h3>Comments from the Fediverse</h3>";
+    $result['postMetrics']['boosts']['value'] = $postBoostCount;
+    $result['postMetrics']['favorites']['value'] = $postFavoriteCount;
+
+    $replyUrl = mastodon_comments_reply_url($host, $post_id, $user);
+    $result['cta']['url'] = $replyUrl;
 
     foreach ($data as $comment) {
         if (!is_array($comment)) {
@@ -86,28 +109,86 @@ function get_mastodon_comments($post_id, $host = 'mastodon.social', $user = 'you
         $account = $comment['account'] ?? [];
         $avatarRaw = (string)($account['avatar_static'] ?? $account['avatar'] ?? '');
         $avatarProxy = $avatarRaw !== '' ? ('mastodon_image_proxy.php?url=' . rawurlencode($avatarRaw)) : '';
-        $avatar = htmlspecialchars($avatarProxy, ENT_QUOTES, 'UTF-8');
-        $displayName = htmlspecialchars((string)($account['display_name'] ?? ''), ENT_QUOTES, 'UTF-8');
-        $username = htmlspecialchars((string)($account['acct'] ?? ''), ENT_QUOTES, 'UTF-8');
-        $url = htmlspecialchars((string)($comment['url'] ?? ''), ENT_QUOTES, 'UTF-8');
+        $displayName = (string)($account['display_name'] ?? '');
+        $username = (string)($account['acct'] ?? '');
+        $url = (string)($comment['url'] ?? '');
 
         $createdAt = (string)($comment['created_at'] ?? '');
         $timestamp = strtotime($createdAt);
         $dateText = $timestamp ? date('M j, Y', $timestamp) : '';
-        $dateTextEsc = htmlspecialchars($dateText, ENT_QUOTES, 'UTF-8');
 
         $boostsCount = (int)($comment['reblogs_count'] ?? 0);
         $favesCount = (int)($comment['favourites_count'] ?? 0);
-        $reactionsTextEsc = htmlspecialchars('Boosts: ' . $boostsCount . ' · Faves: ' . $favesCount, ENT_QUOTES, 'UTF-8');
 
         $content = (string)($comment['content'] ?? '');
         $cleanContent = mastodon_comments_sanitize_html($content);
 
+        $result['comments'][] = [
+            'id' => (string)($comment['id'] ?? ''),
+            'platform' => 'mastodon',
+            'timestamp' => $timestamp ?: 0,
+            'dateText' => $dateText,
+            'permalink' => $url,
+            'author' => [
+                'displayName' => $displayName,
+                'handle' => $username,
+                'avatar' => $avatarProxy,
+            ],
+            'contentHtml' => $cleanContent,
+            'contentText' => trim(strip_tags($cleanContent)),
+            'metrics' => [
+                'boosts' => [
+                    'label' => 'Boosts',
+                    'value' => $boostsCount,
+                ],
+                'favorites' => [
+                    'label' => 'Faves',
+                    'value' => $favesCount,
+                ],
+            ],
+        ];
+    }
+
+    return $result;
+}
+
+function mastodon_render_comments_bundle($bundle) {
+    $postBoostCount = (int)($bundle['postMetrics']['boosts']['value'] ?? 0);
+    $postFavoriteCount = (int)($bundle['postMetrics']['favorites']['value'] ?? 0);
+    $replyUrl = $bundle['cta']['url'] ?? '';
+
+    if (!empty($bundle['errors'])) {
+        $message = htmlspecialchars($bundle['errors'][0], ENT_QUOTES, 'UTF-8');
+        return "<div class='mastodon-nocomments'><p>" . $message . "</p></div>";
+    }
+
+    if (empty($bundle['comments'])) {
+        $replyLink = htmlspecialchars($replyUrl, ENT_QUOTES, 'UTF-8');
+        return "<div class='mastodon-nocomments'><h4>This post has " . $postBoostCount . " boosts and " . $postFavoriteCount . " favorites</h4><p>No comments yet. <a href='" . $replyLink . "' target='_blank' rel='noopener'>Reply on Mastodon</a> to join the discussion.</p></div>";
+    }
+
+    $html = "<div class='mastodon-comments-list'>";
+    $html .= "<h4>This post has " . $postBoostCount . " boosts and " . $postFavoriteCount . " favorites</h4>";
+    $html .= "<h3>Comments from the Fediverse</h3>";
+
+    foreach ($bundle['comments'] as $comment) {
+        $author = $comment['author'] ?? [];
+        $avatar = (string)($author['avatar'] ?? '');
+        $avatarEsc = htmlspecialchars($avatar, ENT_QUOTES, 'UTF-8');
+        $displayName = htmlspecialchars((string)($author['displayName'] ?? ''), ENT_QUOTES, 'UTF-8');
+        $username = htmlspecialchars((string)($author['handle'] ?? ''), ENT_QUOTES, 'UTF-8');
+        $url = htmlspecialchars((string)($comment['permalink'] ?? ''), ENT_QUOTES, 'UTF-8');
+        $dateTextEsc = htmlspecialchars((string)($comment['dateText'] ?? ''), ENT_QUOTES, 'UTF-8');
+
+        $boostsCount = (int)($comment['metrics']['boosts']['value'] ?? 0);
+        $favesCount = (int)($comment['metrics']['favorites']['value'] ?? 0);
+        $reactionsTextEsc = htmlspecialchars('Boosts: ' . $boostsCount . ' · Faves: ' . $favesCount, ENT_QUOTES, 'UTF-8');
+
         $html .= "<div class='mastodon-comment' style='margin-bottom: 20px; border-bottom: 1px solid #eee; padding-bottom: 10px;'>";
         $html .= "<div style='display: flex; align-items: center; margin-bottom: 5px;'>";
 
-        if ($avatar !== '') {
-            $html .= "<img src='" . $avatar . "' alt='" . $username . "' style='width: 40px; height: 40px; border-radius: 50%; margin-right: 10px;'>";
+        if ($avatarEsc !== '') {
+            $html .= "<img src='" . $avatarEsc . "' alt='" . $username . "' style='width: 40px; height: 40px; border-radius: 50%; margin-right: 10px;'>";
         }
 
         $html .= "<div>";
@@ -122,12 +203,12 @@ function get_mastodon_comments($post_id, $host = 'mastodon.social', $user = 'you
         $html .= "</div>";
         $html .= "</div>";
 
-        $html .= "<div class='comment-body'>" . $cleanContent . "</div>";
+        $html .= "<div class='comment-body'>" . ($comment['contentHtml'] ?? '') . "</div>";
         $html .= "</div>";
     }
 
-    $replyUrl = mastodon_comments_reply_url($host, $post_id, $user);
-    $html .= "<p><a href='" . htmlspecialchars($replyUrl, ENT_QUOTES, 'UTF-8') . "' target='_blank' rel='noopener' class='button'>Reply to this post on Mastodon</a></p>";
+    $replyLink = htmlspecialchars($replyUrl, ENT_QUOTES, 'UTF-8');
+    $html .= "<p><a href='" . $replyLink . "' target='_blank' rel='noopener' class='button'>Reply to this post on Mastodon</a></p>";
     $html .= "</div>";
 
     return $html;

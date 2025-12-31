@@ -25,6 +25,7 @@ class Publisher(ABC):
         mastodon_post_id: Optional[str] = None,
         mastodon_instance: Optional[str] = None,
         mastodon_user_handle: Optional[str] = None,
+        bluesky_post_url: Optional[str] = None,
     ):
         self.template = template
         self.markdown = article
@@ -32,6 +33,7 @@ class Publisher(ABC):
         self.mastodon_post_id = mastodon_post_id
         self.mastodon_instance = mastodon_instance
         self.mastodon_user_handle = mastodon_user_handle
+        self.bluesky_post_url = bluesky_post_url
         self.article = MarkdownParser.parse(self._fetch_content(self.markdown))
         self.images = []
 
@@ -344,6 +346,15 @@ class Publisher(ABC):
                 mastodon_call = f'echo get_mastodon_comments("{mastodon_post_id}");'
 
             html_content = self._push_to_html_content(html_content, mastodon_call, 2)
+            html_content = self._push_to_html_content(html_content, '?>', 1)
+
+
+        if self.bluesky_post_url:
+            bluesky_post_url = self._escape_php_double_quoted_string(self.bluesky_post_url)
+            html_content = self._push_to_html_content(html_content, '<section id="bsky-comments">')
+            html_content = self._push_to_html_content(html_content, '<?php', 1)
+            html_content = self._push_to_html_content(html_content, 'require_once "bluesky_comments.php";', 2)
+            html_content = self._push_to_html_content(html_content, f'echo get_bluesky_comments("{bluesky_post_url}");', 2)
             html_content = self._push_to_html_content(html_content, '?>', 1)
             html_content = self._push_to_html_content(html_content, '</section>')
 
