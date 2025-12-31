@@ -322,39 +322,49 @@ class Publisher(ABC):
         html_content = self._push_to_html_content(html_content, 'viewers that have read this page.', 1)
         html_content = self._push_to_html_content(html_content, '</h4>')
 
-        if self.mastodon_post_id:
-            mastodon_post_id = self._escape_php_double_quoted_string(self.mastodon_post_id)
-            mastodon_instance = (
-                self._escape_php_double_quoted_string(self.mastodon_instance)
-                if self.mastodon_instance
-                else None
-            )
-            mastodon_user_handle = (
-                self._escape_php_double_quoted_string(self.mastodon_user_handle)
-                if self.mastodon_user_handle
-                else None
-            )
+        if self.mastodon_post_id or self.bluesky_post_url:
             html_content = self._push_to_html_content(html_content, '<section id="comments">')
             html_content = self._push_to_html_content(html_content, '<?php', 1)
-            html_content = self._push_to_html_content(html_content, 'require_once "mastodon_comments.php";', 2)
+            html_content = self._push_to_html_content(html_content, 'require_once "comment-factory.php";', 2)
 
-            if mastodon_instance and mastodon_user_handle:
-                mastodon_call = f'echo get_mastodon_comments("{mastodon_post_id}", "{mastodon_instance}", "{mastodon_user_handle}");'
-            elif mastodon_instance:
-                mastodon_call = f'echo get_mastodon_comments("{mastodon_post_id}", "{mastodon_instance}");'
-            else:
-                mastodon_call = f'echo get_mastodon_comments("{mastodon_post_id}");'
+            if self.mastodon_post_id:
+                html_content = self._push_to_html_content(html_content, 'require_once "mastodon_comments.php";', 2)
 
-            html_content = self._push_to_html_content(html_content, mastodon_call, 2)
-            html_content = self._push_to_html_content(html_content, '?>', 1)
+            if self.bluesky_post_url:
+                html_content = self._push_to_html_content(html_content, 'require_once "bluesky_comments.php";', 2)
 
+            html_content = self._push_to_html_content(html_content, '', 0)
+            html_content = self._push_to_html_content(html_content, '$commentBundles = [', 2)
 
-        if self.bluesky_post_url:
-            bluesky_post_url = self._escape_php_double_quoted_string(self.bluesky_post_url)
-            html_content = self._push_to_html_content(html_content, '<section id="bsky-comments">')
-            html_content = self._push_to_html_content(html_content, '<?php', 1)
-            html_content = self._push_to_html_content(html_content, 'require_once "bluesky_comments.php";', 2)
-            html_content = self._push_to_html_content(html_content, f'echo get_bluesky_comments("{bluesky_post_url}");', 2)
+            if self.mastodon_post_id:
+                mastodon_post_id = self._escape_php_double_quoted_string(self.mastodon_post_id)
+                mastodon_instance = (
+                    self._escape_php_double_quoted_string(self.mastodon_instance)
+                    if self.mastodon_instance
+                    else None
+                )
+                mastodon_user_handle = (
+                    self._escape_php_double_quoted_string(self.mastodon_user_handle)
+                    if self.mastodon_user_handle
+                    else None
+                )
+
+                if mastodon_instance and mastodon_user_handle:
+                    args = f'"{mastodon_post_id}", "{mastodon_instance}", "{mastodon_user_handle}"'
+                elif mastodon_instance:
+                    args = f'"{mastodon_post_id}", "{mastodon_instance}"'
+                else:
+                    args = f'"{mastodon_post_id}"'
+
+                html_content = self._push_to_html_content(html_content, f'mastodon_comment_bundle({args}),', 3)
+
+            if self.bluesky_post_url:
+                bluesky_post_url = self._escape_php_double_quoted_string(self.bluesky_post_url)
+                html_content = self._push_to_html_content(html_content, f'bluesky_comment_bundle("{bluesky_post_url}"),', 3)
+
+            html_content = self._push_to_html_content(html_content, '];', 2)
+            html_content = self._push_to_html_content(html_content, '', 0)
+            html_content = self._push_to_html_content(html_content, 'echo comment_factory_render(comment_factory_merge($commentBundles));', 2)
             html_content = self._push_to_html_content(html_content, '?>', 1)
             html_content = self._push_to_html_content(html_content, '</section>')
 
