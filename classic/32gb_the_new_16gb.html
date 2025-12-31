@@ -90,8 +90,15 @@
 			</h4>
 			<section id="comments">
 				<?php
+					require_once "comment-factory.php";
 					require_once "mastodon_comments.php";
-					echo get_mastodon_comments("115728294479846929", "mastodon.social", "richardorilla");
+					require_once "bluesky_comments.php";
+
+					$commentBundles = [
+						mastodon_comment_bundle("115728294479846929", "mastodon.social", "richardorilla"),
+					];
+
+					echo comment_factory_render(comment_factory_merge($commentBundles));
 				?>
 			</section>
 			<h4>
