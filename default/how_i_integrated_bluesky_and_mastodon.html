@@ -196,10 +196,10 @@ function comment_factory_merge(array $bundles) {
 			</figure>
 			<p>If you’re curious about the specifics of my implementation, you can check out the code on GitHub:</p>
 			<ul>
-				<li><a href="https://github.com/Shin-Aska/personal-website-repository/blob/master/default/comment-factory.php">Comment Factory</a> Combines multiple comment “bundles” into one feed, sorts by timestamp, and renders the unified comment stream.</li>
-				<li><a href="https://github.com/Shin-Aska/personal-website-repository/blob/master/default/bluesky_comments.php">Bluesky Comments</a> Parses the Bluesky post URL, resolves handle -> DID, fetches the thread, flattens replies, and normalizes them into the bundle format.</li>
+				<li><a href="https://github.com/Shin-Aska/personal-website-repository/blob/master/default/CommentFactory.php">Comment Factory</a> Combines multiple comment “bundles” into one feed, sorts by timestamp, and renders the unified comment stream.</li>
+				<li><a href="https://github.com/Shin-Aska/personal-website-repository/blob/master/default/BlueskyCommentProvider.php">Bluesky Comments</a> Parses the Bluesky post URL, resolves handle -> DID, fetches the thread, flattens replies, and normalizes them into the bundle format.</li>
 				<li><a href="https://github.com/Shin-Aska/personal-website-repository/blob/master/default/bluesky_image_proxy.php">Bluesky Image Proxy</a> Server-side image fetch + cache with basic SSRF protection, used for avatars.</li>
-				<li><a href="https://github.com/Shin-Aska/personal-website-repository/blob/master/default/mastodon_comments.php">Mastodon Comments</a> Fetches the Mastodon context thread, filters/normalizes replies, and produces the bundle + HTML.</li>
+				<li><a href="https://github.com/Shin-Aska/personal-website-repository/blob/master/default/MastodonCommentProvider.php">Mastodon Comments</a> Fetches the Mastodon context thread, filters/normalizes replies, and produces the bundle + HTML.</li>
 				<li><a href="https://github.com/Shin-Aska/personal-website-repository/blob/master/default/mastodon_image_proxy.php">Mastodon Image Proxy</a> Same proxy idea as Bluesky, but for Mastodon avatar URLs.</li>
 			</ul>
 			<h3>~ End ~</h3>
@@ -213,9 +213,9 @@ function comment_factory_merge(array $bundles) {
 			</h4>
 			<section id="comments">
 				<?php
-					require_once "comment-factory.php";
-					require_once "mastodon_comments.php";
-					require_once "bluesky_comments.php";
+					require_once "CommentFactory.php";
+					require_once "MastodonCommentProvider.php";
+					require_once "BlueskyCommentProvider.php";
 			
 					$commentBundles = [
 						mastodon_comment_bundle("115813721428946777", "mastodon.social", "richardorilla"),
