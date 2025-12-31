@@ -130,8 +130,16 @@
 			</h4>
 			<section id="comments">
 				<?php
+					require_once "comment-factory.php";
 					require_once "mastodon_comments.php";
-					echo get_mastodon_comments("115732975405194817", "mastodon.social", "richardorilla");
+					require_once "bluesky_comments.php";
+
+					$commentBundles = [
+						mastodon_comment_bundle("115732975405194817", "mastodon.social", "richardorilla"),
+						bluesky_comment_bundle("https://bsky.app/profile/www.richardorilla.website/post/3ma5sk43fs22h"),
+					];
+
+					echo comment_factory_render(comment_factory_merge($commentBundles));
 				?>
 			</section>
 			<h4>

@@ -1,21 +1,46 @@
 <?php
 
 function get_bluesky_comments($post_url) {
+    $bundle = bluesky_comment_bundle($post_url);
+    return bluesky_render_comments_bundle($bundle);
+}
+
+function bluesky_comment_bundle($post_url) {
+    $result = [
+        'platform' => 'bluesky',
+        'platformLabel' => 'Bluesky',
+        'sourceId' => $post_url,
+        'comments' => [],
+        'postMetrics' => [
+            'reposts' => ['label' => 'Reposts', 'value' => 0],
+            'likes' => ['label' => 'Likes', 'value' => 0],
+        ],
+        'cta' => [
+            'label' => 'Reply to this post on Bluesky',
+            'url' => $post_url,
+        ],
+        'emptyMessage' => 'No comments yet. Reply on Bluesky to join the discussion.',
+        'errors' => [],
+    ];
+
     if (empty($post_url)) {
-        return "<div class='bluesky-nocomments'><p>No comments yet.</p></div>";
+        $result['errors'][] = 'No comments yet.';
+        return $result;
     }
 
     // 1. Parse URL
     // Expected: https://bsky.app/profile/{handleOrDid}/post/{rkey}
     $parts = parse_url($post_url);
     if (!isset($parts['path']) || $parts['host'] !== 'bsky.app') {
-        return "<div class='bluesky-nocomments'><p>Invalid Bluesky URL.</p></div>";
+        $result['errors'][] = 'Invalid Bluesky URL.';
+        return $result;
     }
 
     $pathSegments = explode('/', trim($parts['path'], '/'));
     // [0]=>profile, [1]=>{handleOrDid}, [2]=>post, [3]=>{rkey}
     if (count($pathSegments) < 4 || $pathSegments[0] !== 'profile' || $pathSegments[2] !== 'post') {
-        return "<div class='bluesky-nocomments'><p>Invalid Bluesky URL format.</p></div>";
+        $result['errors'][] = 'Invalid Bluesky URL format.';
+        return $result;
     }
 
     $handleOrDid = $pathSegments[1];
@@ -32,7 +57,8 @@ function get_bluesky_comments($post_url) {
     if (strpos($handleOrDid, 'did:') !== 0) {
         $did = bluesky_resolve_handle($handleOrDid, $cacheDir);
         if (!$did) {
-            return "<div class='bluesky-nocomments'><p>Could not resolve user handle.</p></div>";
+            $result['errors'][] = 'Could not resolve user handle.';
+            return $result;
         }
     }
 
@@ -64,7 +90,8 @@ function get_bluesky_comments($post_url) {
     }
 
     if (!$threadData) {
-        return "<div class='bluesky-nocomments'><p>Could not load comments from Bluesky. <a href='" . htmlspecialchars($post_url) . "' target='_blank' rel='noopener'>View on Bluesky</a></p></div>";
+        $result['errors'][] = 'Could not load comments from Bluesky.';
+        return $result;
     }
 
     // 6. Flatten Thread
@@ -87,17 +114,13 @@ function get_bluesky_comments($post_url) {
     $rootPost = $threadData['post'] ?? null;
     $boostCount = $rootPost['repostCount'] ?? 0;
     $likeCount = $rootPost['likeCount'] ?? 0;
-
-    $html = "<div class='bluesky-comments-list'>";
+    $result['postMetrics']['reposts']['value'] = $boostCount;
+    $result['postMetrics']['likes']['value'] = $likeCount;
+    $result['cta']['url'] = $post_url;
 
     if (empty($comments)) {
-        $html .= "<div class='bluesky-nocomments'><h4>This post has " . $boostCount . " reposts and " . $likeCount . " likes</h4><p>No comments yet. <a href='" . htmlspecialchars($post_url) . "' target='_blank' rel='noopener'>Reply on Bluesky</a> to join the discussion.</p></div>";
-        $html .= "</div>";
-        return $html;
+        return $result;
     }
-
-    $html .= "<h4>This post has " . $boostCount . " reposts and " . $likeCount . " likes</h4>";
-    $html .= "<h3>Comments from Bluesky</h3>";
 
     foreach ($comments as $node) {
         $post = $node['post'];
@@ -128,23 +151,85 @@ function get_bluesky_comments($post_url) {
         $contentText = htmlspecialchars($record['text'] ?? '');
         $contentHtml = nl2br($contentText);
 
+        $result['comments'][] = [
+            'id' => $post['uri'] ?? '',
+            'platform' => 'bluesky',
+            'timestamp' => $timestamp ?: 0,
+            'dateText' => $dateText,
+            'permalink' => $replyUrl,
+            'author' => [
+                'displayName' => $author['displayName'] ?? $author['handle'],
+                'handle' => $author['handle'] ?? '',
+                'avatar' => $avatarProxy,
+            ],
+            'contentHtml' => $contentHtml,
+            'contentText' => $record['text'] ?? '',
+            'metrics' => [
+                'reposts' => [
+                    'label' => 'Reposts',
+                    'value' => $reposts,
+                ],
+                'likes' => [
+                    'label' => 'Likes',
+                    'value' => $likes,
+                ],
+            ],
+        ];
+    }
+
+    return $result;
+}
+
+function bluesky_render_comments_bundle($bundle) {
+    if (!empty($bundle['errors'])) {
+        $message = htmlspecialchars($bundle['errors'][0], ENT_QUOTES, 'UTF-8');
+        $link = htmlspecialchars($bundle['sourceId'] ?? '', ENT_QUOTES, 'UTF-8');
+        return "<div class='bluesky-nocomments'><p>" . $message . " " . ($link ? "<a href='" . $link . "' target='_blank' rel='noopener'>View on Bluesky</a>" : '') . "</p></div>";
+    }
+
+    $repostCount = (int)($bundle['postMetrics']['reposts']['value'] ?? 0);
+    $likeCount = (int)($bundle['postMetrics']['likes']['value'] ?? 0);
+    $postUrl = htmlspecialchars($bundle['cta']['url'] ?? '', ENT_QUOTES, 'UTF-8');
+
+    $html = "<div class='bluesky-comments-list'>";
+
+    if (empty($bundle['comments'])) {
+        $html .= "<div class='bluesky-nocomments'><h4>This post has " . $repostCount . " reposts and " . $likeCount . " likes</h4><p>No comments yet. <a href='" . $postUrl . "' target='_blank' rel='noopener'>Reply on Bluesky</a> to join the discussion.</p></div>";
+        $html .= "</div>";
+        return $html;
+    }
+
+    $html .= "<h4>This post has " . $repostCount . " reposts and " . $likeCount . " likes</h4>";
+    $html .= "<h3>Comments from Bluesky</h3>";
+
+    foreach ($bundle['comments'] as $comment) {
+        $author = $comment['author'] ?? [];
+        $avatar = htmlspecialchars((string)($author['avatar'] ?? ''), ENT_QUOTES, 'UTF-8');
+        $displayName = htmlspecialchars((string)($author['displayName'] ?? ''), ENT_QUOTES, 'UTF-8');
+        $handle = htmlspecialchars((string)($author['handle'] ?? ''), ENT_QUOTES, 'UTF-8');
+        $permalink = htmlspecialchars((string)($comment['permalink'] ?? ''), ENT_QUOTES, 'UTF-8');
+        $dateText = htmlspecialchars((string)($comment['dateText'] ?? ''), ENT_QUOTES, 'UTF-8');
+        $reposts = (int)($comment['metrics']['reposts']['value'] ?? 0);
+        $likes = (int)($comment['metrics']['likes']['value'] ?? 0);
+        $reactionsText = htmlspecialchars("Reposts: $reposts · Likes: $likes", ENT_QUOTES, 'UTF-8');
+
         $html .= "<div class='bluesky-comment' style='margin-bottom: 20px; border-bottom: 1px solid #eee; padding-bottom: 10px;'>";
         $html .= "<div style='display: flex; align-items: center; margin-bottom: 5px;'>";
-        
+
         if ($avatar) {
              $html .= "<img src='" . $avatar . "' alt='" . $handle . "' style='width: 40px; height: 40px; border-radius: 50%; margin-right: 10px;'>";
         }
 
         $html .= "<div>";
         $html .= "<strong>" . $displayName . "</strong> <small>@" . $handle . "</small><br>";
-        $html .= "<small><a href='" . htmlspecialchars($replyUrl) . "' target='_blank' rel='noopener' style='color: #888;'>" . $dateText . "</a> <span class='bluesky-reactions' style='color: #888;'>" . htmlspecialchars($reactionsText) . "</span></small>";
+        $html .= "<small><a href='" . $permalink . "' target='_blank' rel='noopener' style='color: #888;'>" . $dateText . "</a> <span class='bluesky-reactions' style='color: #888;'>" . $reactionsText . "</span></small>";
         $html .= "</div></div>";
         
-        $html .= "<div class='comment-body'>" . $contentHtml . "</div>";
+        $html .= "<div class='comment-body'>" . ($comment['contentHtml'] ?? '') . "</div>";
         $html .= "</div>";
     }
 
-    $html .= "<p><a href='" . htmlspecialchars($post_url) . "' target='_blank' rel='noopener' class='button'>Reply to this post on Bluesky</a></p>";
+    $html .= "<p><a href='" . $postUrl . "' target='_blank' rel='noopener' class='button'>Reply to this post on Bluesky</a></p>";
     $html .= "</div>";
 
     return $html;
