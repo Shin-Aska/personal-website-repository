@@ -325,13 +325,13 @@ class Publisher(ABC):
         if self.mastodon_post_id or self.bluesky_post_url:
             html_content = self._push_to_html_content(html_content, '<section id="comments">')
             html_content = self._push_to_html_content(html_content, '<?php', 1)
-            html_content = self._push_to_html_content(html_content, 'require_once "comment-factory.php";', 2)
+            html_content = self._push_to_html_content(html_content, 'require_once "CommentFactory.php";', 2)
 
             if self.mastodon_post_id:
-                html_content = self._push_to_html_content(html_content, 'require_once "mastodon_comments.php";', 2)
+                html_content = self._push_to_html_content(html_content, 'require_once "MastodonCommentProvider.php";', 2)
 
             if self.bluesky_post_url:
-                html_content = self._push_to_html_content(html_content, 'require_once "bluesky_comments.php";', 2)
+                html_content = self._push_to_html_content(html_content, 'require_once "BlueskyCommentProvider.php";', 2)
 
             html_content = self._push_to_html_content(html_content, '', 0)
             html_content = self._push_to_html_content(html_content, '$commentBundles = [', 2)
