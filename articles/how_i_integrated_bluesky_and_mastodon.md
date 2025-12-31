@@ -35,8 +35,6 @@ The basic shape is:
 - **A small wrapper** that returns HTML for the page.
 - **A “bundle” builder** that fetches the API response (with caching), then normalizes it into a consistent format my site can render.
 
-Here’s the rough structure (similar to how I show code in [Firefox Unlimited Tabs Setup](../articles/firefox-unlimited-tabs-setup.md)):
-
 ```php
 function get_mastodon_comments($post_id, $host = 'mastodon.social', $user = 'your_handle') {
     $bundle = mastodon_comment_bundle($post_id, $host, $user);
