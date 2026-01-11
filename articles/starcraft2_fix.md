@@ -13,6 +13,9 @@ Windows 11 is usually good at handling this, and it even provides a per-app GPU 
 
 This setup works for most Blizzard games I occasionally play (Warcraft III: Reforged, Diablo II: Resurrected, and StarCraft: Remastered). StarCraft II is the odd one out: it fails at startup with a "graphics device not available" error.
 
+- [ ] [![](images/sc2error.png)](images/sc2error.png)
+- [ ] Figure 2\. StarCraft II error message on multi-GPU setup.
+
 I tried the usual suggestions first:
 
 - forcing a different display mode (`-displaymode 0`)
