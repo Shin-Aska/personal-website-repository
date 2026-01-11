@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="author" content="Richard Orilla">
+	<meta http-equiv="content-language" content="en-us">
+	<meta http-equiv="cache-control" content="no-cache">
+	<meta http-equiv="pragma" content="no-cache">
+	<meta name="robots" content="index">
+	<meta name="keywords" content="richard orilla, free games, resume">
+
+	<link href="css/animation.css" rel="stylesheet" type="text/css">
+	<link href="css/fonts.css" rel="stylesheet" type="text/css">
+	<link href="css/site.css" rel="stylesheet" type="text/css">
+	<link href="css/sky.css" rel="stylesheet" type="text/css">
+	<link href="css/reset.css" rel="stylesheet" type="text/css">
+
+	<!-- @@@ -->
+	<title>Skies of the Lost Cause - Fixing StarCraft II "Graphics device not available" on multi-GPU setups (DXVK)</title>
+</head>
+
+<body>
+	<center>
+		<div id="header">
+			<div class="center themeContainer">
+			  <img class="themepicture" src="images/penj.png" alt="Logo">
+			</div>
+			<p class="headingBase start">~ Skies of the lost cause ~</p>
+			<p class="headingBase middle">Personal website of Richard Orilla</p>
+			<div class="center lineContainer"><img class="linePNG" src="images/hrj.png" alt="Logo"></div>
+			<br>
+		</div>
+
+		<div class="menu-container">
+			<div id="menu">
+				<a class="menuButton" href=about.html>About</a>
+				<a class="menuButton" href=project.html>Projects</a>
+				<a class="menuButton" href=goodies.html>Goodies</a>
+				<a class="menuButton" href=blog.html>Blog</a>
+				<a class="menuButton" href=gallery.html>Gallery</a>
+			</div>
+		</div>
+
+		<div id="content">
+			<h2 id="tableContents">Table of Contents</h2>
+			<ul>
+				<li><a href="#introduction">Introduction</a></li>
+				<li><a href="#the_fix_d_x_v_k">The Fix (DXVK)</a></li>
+				<li><a href="#a_quick_note_on_d_x_v_k">A quick note on DXVK</a></li>
+				<li><a href="#installation">Installation</a></li>
+				<li><a href="#conclusion">Conclusion</a></li>
+			</ul>
+			<h1 id="headingBlog">Fixing StarCraft II "Graphics device not available" on multi-GPU setups (DXVK)</h1>
+			<h2 id="introduction">Introduction</h2>
+			<p>StarCraft II is an old game by modern standards. Wings of Liberty released in 2010, back when DirectX 9 was still the default. Blizzard later added DirectX 10 and DirectX 11 render paths, but parts of the engine still behave like a DX9-era application.</p>
+			<p>I run a multi-GPU setup where Intel graphics handles most desktop work and the NVIDIA card is used for heavier applications. This is common on laptops, but less common on desktops. My main display is also plugged into the motherboard HDMI port, so Windows often treats the Intel adapter as the primary GPU.</p>
+			<p>Windows 11 is usually good at handling this, and it even provides a per-app GPU preference setting:</p>
+			<figure>
+				<a href="images/win11gpusettings.png" target="_blank"><img class="preview center" src="images/win11gpusettings.png"></a>
+				<figcaption>Figure 1. Windows 11 GPU settings for choosing which GPU an application should use.</figcaption>
+			</figure>
+			<p>This setup works for most Blizzard games I occasionally play (Warcraft III: Reforged, Diablo II: Resurrected, and StarCraft: Remastered). StarCraft II is the odd one out: it fails at startup with a "graphics device not available" error.</p>
+			<figure>
+				<a href="images/sc2error.png" target="_blank"><img class="preview center" src="images/sc2error.png"></a>
+				<figcaption>Figure 2. StarCraft II error message on multi-GPU setup.</figcaption>
+			</figure>
+			<p>I tried the usual suggestions first:</p>
+			<ul>
+				<li>forcing a different display mode (`-displaymode 0`)</li>
+				<li>forcing a different renderer (`-dx11`, plus other AI-suggested launch flags)</li>
+			</ul>
+			<p>None of them helped. At that point I remembered that the Linux gaming community has spent years building mature DirectX translation layers, and those layers often sidestep old DirectX quirks.</p>
+			<h2 id="the_fix_d_x_v_k">The Fix (DXVK)</h2>
+			<p>DXVK is a translation layer that implements Direct3D 9/10/11 on top of Vulkan. It is mostly used through Wine/Proton on Linux, but you can also use it on Windows by placing the right DLL next to the game executable.</p>
+			<p>StarCraft II still relies on Direct3D 9 for compatibility, so DXVK's `d3d9.dll` was enough to get past the device initialization issue on my machine.</p>
+			<h2 id="a_quick_note_on_d_x_v_k">A quick note on DXVK</h2>
+			<p>DXVK has a long history in the Linux community as a pragmatic way to make DirectX games run well. In a 2018 GamingOnLinux interview, DXVK's author Philip Rebohle described it as a mix of not wanting to dual-boot anymore, being unhappy with Wine's performance at the time, and <a href="https://www.gamingonlinux.com/2018/09/an-interview-with-the-developer-of-dxvk-part-of-what-makes-valves-steam-play-tick/">"really wanting to get one specific game to work" (NieR:Automata was the early motivator that brought the project a lot of attention) <sup>[1]</sup></a>.</p>
+			<h2 id="installation">Installation</h2>
+			<ol>
+				<li>Download DXVK from the official <a href="https://github.com/doitsujin/dxvk">GitHub repository <sup>[2]</sup></a>.</li>
+				<li>Extract the archive and locate <b>d3d9.dll</b>:</li>
+			</ol>
+			<ul>
+				<li><b>x64&#92;d3d9.dll</b> for 64-bit executables</li>
+				<li><b>x32&#92;d3d9.dll</b> for 32-bit executables</li>
+			</ul>
+			<p>To decide which one to use, check what executable exists in your StarCraft II version folder (see the next step):</p>
+			<ul>
+				<li>if you see <b>SC2_x64.exe</b>, use <b>x64&#92;d3d9.dll</b></li>
+				<li>if you see <b>SC2.exe</b>, use <b>x32&#92;d3d9.dll</b></li>
+			</ul>
+			<ol>
+				<li>Copy <b>d3d9.dll</b> into the StarCraft II version folders. On my system that directory was:</li>
+			</ol>
+			<p><b>C:&#92;Program Files (x86)&#92;StarCraft II&#92;Versions&#92;</b></p>
+			<p>I placed the DLL into each subfolder under <b>Versions</b> so whichever build Battle.net launched would pick it up.</p>
+			<p>PowerShell example (copies to all <b>Base&#42;</b> folders):</p>
+			<pre style="text-align: left !important;">
+				<code language="powershell">
+$dxvkDll = "C:\path\to\dxvk\x64\d3d9.dll"  # or x32\d3d9.dll
+$sc2Versions = "C:\Program Files (x86)\StarCraft II\Versions"
+Get-ChildItem -Path $sc2Versions -Directory -Filter "Base*" | ForEach-Object {
+   Copy-Item -Path $dxvkDll -Destination (Join-Path $_.FullName "d3d9.dll") -Force
+}
+
+				</code>
+			</pre>
+			<ol>
+				<li>Launch the game normally from Battle.net.</li>
+			</ol>
+			<p>To undo this change, delete the <b>d3d9.dll</b> files you copied into those version folders.</p>
+			<h2 id="conclusion">Conclusion</h2>
+			<p>With DXVK in place, StarCraft II starts reliably on my multi-GPU setup. I also noticed smoother gameplay, although I did not benchmark it seriously. On Linux I never hit this specific error, which is why looking at the Linux ecosystem ended up being the simplest solution for Windows too.</p>
+			<h3>~ End ~</h3>
+			<h4>
+				There are
+				<?php
+					include "site_counter.php";
+					echo get_page_count("starcraft2_fix");
+				?>
+				viewers that have read this page.
+			</h4>
+			<h4>
+				<a href="#headingBlog">Go back to top</a>
+			</h4>
+			<h4>
+				<a href="blog.html">Go back to list of articles</a>
+			</h4>
+		</div>
+	</center>
+</body>
+
+</html>

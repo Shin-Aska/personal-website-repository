@@ -31,45 +31,42 @@ StarCraft II still relies on Direct3D 9 for compatibility, so DXVK's `d3d9.dll` 
 
 ## A quick note on DXVK
 
-DXVK has a long history in the Linux community as a pragmatic way to make DirectX games run well. In a 2018 GamingOnLinux interview, DXVK's author Philip Rebohle described it as a mix of not wanting to dual-boot anymore, being unhappy with Wine's performance at the time, and "really want[ing] to get one specific game to work" (NieR:Automata was the early motivator that brought the project a lot of attention).
-
-Source: https://www.gamingonlinux.com/2018/09/an-interview-with-the-developer-of-dxvk-part-of-what-makes-valves-steam-play-tick/
+DXVK has a long history in the Linux community as a pragmatic way to make DirectX games run well. In a 2018 GamingOnLinux interview, DXVK's author Philip Rebohle described it as a mix of not wanting to dual-boot anymore, being unhappy with Wine's performance at the time, and ["really wanting to get one specific game to work" (NieR:Automata was the early motivator that brought the project a lot of attention) <sup>[1]</sup>](https://www.gamingonlinux.com/2018/09/an-interview-with-the-developer-of-dxvk-part-of-what-makes-valves-steam-play-tick/).
 
 ## Installation
 
-1. Download DXVK from the official GitHub repository:
-   https://github.com/doitsujin/dxvk
+1. Download DXVK from the official [GitHub repository <sup>[2]</sup>](https://github.com/doitsujin/dxvk).
 
-2. Extract the archive and locate `d3d9.dll`:
+2. Extract the archive and locate **d3d9.dll**:
 
-   - `x64\d3d9.dll` for 64-bit executables
-   - `x32\d3d9.dll` for 32-bit executables
+- **x64&#92;d3d9.dll** for 64-bit executables
+- **x32&#92;d3d9.dll** for 32-bit executables
 
-   To decide which one to use, check what executable exists in your StarCraft II version folder (see the next step):
+To decide which one to use, check what executable exists in your StarCraft II version folder (see the next step):
 
-   - if you see `SC2_x64.exe`, use `x64\d3d9.dll`
-   - if you see `SC2.exe`, use `x32\d3d9.dll`
+- if you see **SC2_x64.exe**, use **x64&#92;d3d9.dll**
+- if you see **SC2.exe**, use **x32&#92;d3d9.dll**
 
-3. Copy `d3d9.dll` into the StarCraft II version folders. On my system that directory was:
+3. Copy **d3d9.dll** into the StarCraft II version folders. On my system that directory was:
 
-   `C:\Program Files (x86)\StarCraft II\Versions\`
+**C:&#92;Program Files (x86)&#92;StarCraft II&#92;Versions&#92;**
 
-   I placed the DLL into each subfolder under `Versions` so whichever build Battle.net launched would pick it up.
+I placed the DLL into each subfolder under **Versions** so whichever build Battle.net launched would pick it up.
 
-   PowerShell example (copies to all `Base*` folders):
+PowerShell example (copies to all **Base&#42;** folders):
 
-   ```powershell
-   $dxvkDll = "C:\path\to\dxvk\x64\d3d9.dll"  # or x32\d3d9.dll
-   $sc2Versions = "C:\Program Files (x86)\StarCraft II\Versions"
+```powershell
+$dxvkDll = "C:\path\to\dxvk\x64\d3d9.dll"  # or x32\d3d9.dll
+$sc2Versions = "C:\Program Files (x86)\StarCraft II\Versions"
 
-   Get-ChildItem -Path $sc2Versions -Directory -Filter "Base*" | ForEach-Object {
-     Copy-Item -Path $dxvkDll -Destination (Join-Path $_.FullName "d3d9.dll") -Force
-   }
-   ```
+Get-ChildItem -Path $sc2Versions -Directory -Filter "Base*" | ForEach-Object {
+   Copy-Item -Path $dxvkDll -Destination (Join-Path $_.FullName "d3d9.dll") -Force
+}
+```
 
 4. Launch the game normally from Battle.net.
 
-To undo this change, delete the `d3d9.dll` files you copied into those version folders.
+To undo this change, delete the **d3d9.dll** files you copied into those version folders.
 
 ## Conclusion
 
