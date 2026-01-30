@@ -1600,9 +1600,45 @@ function appendWalkthroughAiMessage(role, content) {
     const wrap = document.createElement('div');
     wrap.className = `walkthrough-ai-msg ${role}`;
     wrap.innerHTML = `<div class="walkthrough-ai-msg-inner"></div>`;
-    wrap.querySelector('.walkthrough-ai-msg-inner').textContent = content;
+
+    // Parse markdown if available
+    const htmlContent = (typeof marked !== 'undefined') ? marked.parse(content) : content;
+    wrap.querySelector('.walkthrough-ai-msg-inner').innerHTML = htmlContent;
+
+    // Style adjustments for markdown content
+    if (typeof marked !== 'undefined') {
+        const inner = wrap.querySelector('.walkthrough-ai-msg-inner');
+        // Simple fix for list styling within the chat
+        inner.querySelectorAll('ul, ol').forEach(list => list.classList.add('list-inside', 'pl-1'));
+        inner.querySelectorAll('ul').forEach(list => list.classList.add('list-disc'));
+        inner.querySelectorAll('ol').forEach(list => list.classList.add('list-decimal'));
+        inner.querySelectorAll('p').forEach(p => p.classList.add('mb-2', 'last:mb-0'));
+        inner.querySelectorAll('strong').forEach(s => s.classList.add('font-bold', 'text-white'));
+    }
+
     body.appendChild(wrap);
     body.scrollTop = body.scrollHeight;
+}
+
+function showWalkthroughAiTyping() {
+    const body = document.getElementById('walkthrough-ai-body');
+    if (!body || document.getElementById('walkthrough-ai-typing')) return;
+
+    const typing = document.createElement('div');
+    typing.id = 'walkthrough-ai-typing';
+    typing.className = 'walkthrough-ai-typing';
+    typing.innerHTML = `
+        <div class="walkthrough-ai-typing-dot"></div>
+        <div class="walkthrough-ai-typing-dot"></div>
+        <div class="walkthrough-ai-typing-dot"></div>
+    `;
+    body.appendChild(typing);
+    body.scrollTop = body.scrollHeight;
+}
+
+function hideWalkthroughAiTyping() {
+    const typing = document.getElementById('walkthrough-ai-typing');
+    if (typing) typing.remove();
 }
 
 function getWalkthroughAiChapterContext() {
@@ -1778,6 +1814,7 @@ STYLE:
 OUTPUT FORMAT:
 - Prefer 3–8 bullet steps for "what to do next".
 - Call out 1–2 common mistakes to avoid if relevant.
+- Use Markdown formatting (bold key items, lists for steps).
 
 ${ctxText}
 
@@ -1787,10 +1824,15 @@ ${progressText}`;
             .map(m => `${m.role === 'user' ? 'User' : 'Assistant'}: ${m.content}`)
             .join('\n');
         const prompt = `${systemWithContext}\n\n<query>\n${transcript ? `Prior transcript (most recent last):\n${transcript}\n\n` : ''}User: ${query}\n</query>`;
+
+        showWalkthroughAiTyping();
         const text = await callGeminiFunction(prompt);
+        hideWalkthroughAiTyping();
+
         appendWalkthroughAiMessage('ai', text);
         walkthroughAiHistory.push({ role: 'assistant', content: text });
     } catch (error) {
+        hideWalkthroughAiTyping();
         console.error('Walkthrough AI error:', error);
         const msg = 'AI proxy unavailable. Please try again in a moment.';
         appendWalkthroughAiMessage('ai', msg);

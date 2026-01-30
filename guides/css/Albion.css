@@ -678,6 +678,51 @@ a:hover {
     color: rgba(226, 232, 240, 0.9);
 }
 
+.walkthrough-ai-typing {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.75rem 1rem;
+    background: rgba(30, 41, 59, 0.4);
+    border-radius: 0.85rem;
+    border: 1px solid rgba(148, 163, 184, 0.1);
+    width: fit-content;
+    margin-bottom: 0.6rem;
+}
+
+.walkthrough-ai-typing-dot {
+    width: 6px;
+    height: 6px;
+    background: rgba(148, 163, 184, 0.6);
+    border-radius: 50%;
+    animation: typingBounce 1.4s infinite ease-in-out both;
+}
+
+.walkthrough-ai-typing-dot:nth-child(1) {
+    animation-delay: -0.32s;
+}
+
+.walkthrough-ai-typing-dot:nth-child(2) {
+    animation-delay: -0.16s;
+}
+
+.walkthrough-ai-typing-dot:nth-child(3) {
+    animation-delay: 0s;
+}
+
+@keyframes typingBounce {
+
+    0%,
+    80%,
+    100% {
+        transform: scale(0);
+    }
+
+    40% {
+        transform: scale(1);
+    }
+}
+
 .walkthrough-ai-input {
     margin-top: 0.75rem;
     display: flex;
