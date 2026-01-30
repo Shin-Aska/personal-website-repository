@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <title>Albion (1995) — Interactive Guide</title>
+    <script src="js/tailwind.js"></script>
+    <link rel="stylesheet" href="css/fonts.css">
+    <link rel="stylesheet" href="css/leaflet.css">
+    <link rel="stylesheet" href="css/Albion.css">
+</head>
+<body class="antialiased">
+    <!-- Back Navigation -->
+    <div class="w-full bg-black/30 text-gray-400 border-b border-gray-800/50 relative z-10">
+        <div class="container mx-auto px-4 py-2">
+            <a href="index.html" class="inline-flex items-center gap-2 hover:text-white transition-colors">
+                <span aria-hidden="true">←</span> Back to Guides
+            </a>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="albion-header py-4">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col xl:flex-row justify-between items-center gap-4">
+                <div class="text-center xl:text-left">
+                    <h1 class="albion-title">ALBION</h1>
+                    <p class="albion-subtitle">Interactive Companion Guide • Blue Byte 1995</p>
+                </div>
+                <nav id="main-nav" class="flex flex-wrap justify-center gap-2">
+                    <button data-target="crew" class="nav-button active">The Crew</button>
+                    <button data-target="quests" class="nav-button">Quest Log</button>
+                    <button data-target="missions" class="nav-button">Walkthrough</button>
+                    <button data-target="almanac" class="nav-button">Almanac</button>
+                    <button data-target="magic" class="nav-button">Magic</button>
+                    <button data-target="atlas" class="nav-button">Atlas</button>
+                    <button data-target="trade" class="nav-button">Trade</button>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8 relative z-10">
+
+        <!-- ==================== THE CREW ==================== -->
+        <section id="crew" class="content-section active">
+            <div class="text-center mb-10">
+                <h2 class="text-4xl font-bold mb-3 text-gradient">The Crew's Path</h2>
+                <p class="text-lg max-w-3xl mx-auto text-gray-400">
+                    Assemble your team to save Albion. From the Toronto spaceship to the alien Iskai lands, 
+                    choose your companions wisely.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Character Selection Grid -->
+                <div class="lg:col-span-1">
+                    <h3 class="text-lg font-bold mb-4 text-gray-300 uppercase tracking-wider">Select Character</h3>
+                    <div id="character-grid" class="grid grid-cols-2 gap-3">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+
+                <!-- Character Details -->
+                <div id="character-details" class="lg:col-span-2 character-detail-panel p-6">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+
+            <!-- Party Composition Tips -->
+            <div class="albion-card p-6 mt-8">
+                <h3 class="text-2xl font-bold mb-6 text-gradient">Recommended Party Compositions</h3>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="p-4 rounded-lg bg-black/20">
+                        <h4 class="font-bold text-lg mb-2" style="color: var(--albion-accent-blue)">⚖️ Balanced</h4>
+                        <p class="text-sm text-gray-300 mb-3">Tom, Drirr, Sira, Melthas, Siobhan, Harriet</p>
+                        <p class="text-xs text-gray-500">Mix of physical power and magical utility. Best for first-time players.</p>
+                    </div>
+                    <div class="p-4 rounded-lg bg-black/20">
+                        <h4 class="font-bold text-lg mb-2" style="color: var(--albion-accent-purple)">✨ Magic-Heavy</h4>
+                        <p class="text-sm text-gray-300 mb-3">Tom, Drirr, Sira, Melthas, Khunag, Harriet</p>
+                        <p class="text-xs text-gray-500">Maximizes spellcasting. Khunag is required for Kenget Kamulos chapter.</p>
+                    </div>
+                    <div class="p-4 rounded-lg bg-black/20">
+                        <h4 class="font-bold text-lg mb-2" style="color: var(--albion-accent-red)">⚔️ Combat-Focused</h4>
+                        <p class="text-sm text-gray-300 mb-3">Tom, Drirr, Siobhan, Melthas, Joe, Harriet</p>
+                        <p class="text-xs text-gray-500">Raw damage and tech. Joe simplifies the endgame significantly.</p>
+                    </div>
+                </div>
+
+                <div class="warning-box mt-6">
+                    <p class="text-sm"><strong class="text-red-400">⚠️ Key Decision:</strong> 
+                    Siobhan and Khunag are initially mutually exclusive. You can recruit both later, 
+                    but Khunag is <em>required</em> to enter Kenget Kamulos.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== QUEST LOG ==================== -->
+        <section id="quests" class="content-section">
+            <div class="text-center mb-10">
+                <h2 class="text-4xl font-bold mb-3 text-gradient">Quest Log</h2>
+                <p class="text-lg max-w-3xl mx-auto text-gray-400">
+                    Track what you’ve done, what you’re missing, and what’s next. This is a checklist that persists in your browser.
+                </p>
+            </div>
+
+            <div class="max-w-5xl mx-auto">
+                <div id="quest-log-summary" class="albion-card p-6 mb-6"></div>
+                <div id="quest-log" class="space-y-4"></div>
+            </div>
+        </section>
+
+        <!-- ==================== MISSION LOG ==================== -->
+        <section id="missions" class="content-section">
+            <div class="text-center mb-10">
+                <h2 class="text-4xl font-bold mb-3 text-gradient">Walkthrough</h2>
+                <p class="text-lg max-w-3xl mx-auto text-gray-400">
+                    A chapter-by-chapter walkthrough of Tom Driscoll's journey to save Albion from destruction.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 xl:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <div class="xl:col-span-2">
+                    <div id="chapter-list" class="space-y-3">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+                <aside class="albion-card p-6 walkthrough-ai" aria-label="Walkthrough AI assistant">
+                    <div class="flex items-start justify-between gap-4 mb-4">
+                        <div>
+                            <h3 class="text-xl font-bold" style="color: var(--albion-accent-blue)">Toronto Ship AI</h3>
+                            <p class="text-xs text-gray-500">Ask for next steps, item locations, party comps, or battle tactics.</p>
+                        </div>
+                        <button type="button" class="walkthrough-ai-clear" onclick="resetWalkthroughAi()">Clear</button>
+                    </div>
+                    <div id="walkthrough-ai-body" class="walkthrough-ai-body">
+                        <p class="text-gray-400 italic text-center py-8">AI terminal online. Ask about your current chapter.</p>
+                    </div>
+                    <div class="walkthrough-ai-input">
+                        <input type="text" class="walkthrough-ai-text" id="walkthrough-ai-input"
+                               placeholder="Type a question..."
+                               onkeypress="if(event.key==='Enter')walkthroughAiSend()">
+                        <button class="walkthrough-ai-send" id="walkthrough-ai-send" onclick="walkthroughAiSend()">Send</button>
+                    </div>
+                </aside>
+            </div>
+        </section>
+
+        <!-- ==================== ALMANAC ==================== -->
+        <section id="almanac" class="content-section">
+            <div class="text-center mb-10">
+                <h2 class="text-4xl font-bold mb-3 text-gradient">Albion Almanac</h2>
+                <p class="text-lg max-w-3xl mx-auto text-gray-400">
+                    Reference data for weapons, armor, and the creatures you'll encounter.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 xl:grid-cols-2 gap-8">
+                <!-- Equipment -->
+                <div class="albion-card p-6">
+                    <h3 class="text-xl font-bold mb-4" style="color: var(--albion-accent-blue)">Equipment Registry</h3>
+                    <div class="overflow-x-auto">
+                        <table class="albion-table">
+                            <thead>
+                                <tr>
+                                    <th>Item</th>
+                                    <th>Type</th>
+                                    <th>Effect</th>
+                                    <th>Location</th>
+                                </tr>
+                            </thead>
+                            <tbody id="equipment-table">
+                                <!-- Populated by JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Bestiary -->
+                <div class="albion-card p-6">
+                    <h3 class="text-xl font-bold mb-4" style="color: var(--albion-accent-red)">Xenobiological Data</h3>
+                    <div id="bestiary-grid" class="space-y-4">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== MAGIC ==================== -->
+        <section id="magic" class="content-section">
+            <div class="text-center mb-10">
+                <h2 class="text-4xl font-bold mb-3 text-gradient">The Four Schools of Magic</h2>
+                <p class="text-lg max-w-3xl mx-auto text-gray-400">
+                    Master the mystical arts of Albion—from the icy grip of Dji-Kas to the divine wrath of the Enlightened Ones.
+                </p>
+            </div>
+
+            <div id="magic-schools" class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+                <!-- Populated by JS -->
+            </div>
+        </section>
+
+        <!-- ==================== ATLAS ==================== -->
+        <section id="atlas" class="content-section">
+            <div class="text-center mb-10">
+                <h2 class="text-4xl font-bold mb-3 text-gradient">World Atlas</h2>
+                <p class="text-lg max-w-3xl mx-auto text-gray-400">
+                    Nakiridaani/Konti region map overlay.
+                </p>
+            </div>
+
+            <div class="albion-card p-6 mb-6">
+                <div id="atlas-status" class="text-sm text-gray-400 mb-4"></div>
+                <div id="atlas-filters" class="atlas-filters mb-4"></div>
+                <div id="albion-atlas-map" class="albion-atlas-map" role="application" aria-label="Interactive map of Albion"></div>
+                <div class="text-xs text-gray-500 mt-3">
+                    Tip: use filters to toggle categories; click markers for details.
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="locations-grid">
+                <!-- Populated by JS (Region reference cards) -->
+            </div>
+        </section>
+
+        <!-- ==================== TRADE ==================== -->
+        <section id="trade" class="content-section">
+            <div class="text-center mb-10">
+                <h2 class="text-4xl font-bold mb-3 text-gradient">Trade Ledger</h2>
+                <p class="text-lg max-w-3xl mx-auto text-gray-400">
+                    Maximize your profits. Know where to buy low and sell high.
+                </p>
+            </div>
+
+            <div class="max-w-4xl mx-auto">
+                <div class="albion-card p-6 mb-6">
+                    <h3 class="text-xl font-bold mb-4" style="color: var(--albion-accent-gold)">Market Prices by Location</h3>
+                    <div class="overflow-x-auto">
+                        <table class="albion-table">
+                            <thead>
+                                <tr>
+                                    <th>Location</th>
+                                    <th class="text-green-400">Sell %</th>
+                                    <th class="text-red-400">Buy %</th>
+                                    <th>Notes</th>
+                                </tr>
+                            </thead>
+                            <tbody id="trade-table">
+                                <!-- Populated by JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="tip-box">
+                    <div class="tip-box-title">💰 Money-Making Strategies</div>
+                    <ul class="space-y-2 text-sm text-gray-300">
+                        <li><strong class="text-white">Rejira Exploit (Jirinaar):</strong> Talk to the healer repeatedly for free Blue Healing Potions. Sell at Rabir's for 18.3G each.</li>
+                        <li><strong class="text-white">Umajo Trading:</strong> Best sell prices in the game (130%). Hoard expensive items until you reach the desert.</li>
+                        <li><strong class="text-white">Kenget Kamulos Farming:</strong> Surrender to guards to trigger infinite battles. Farm Bolt-Throwers (516.6G each at Umajo).</li>
+                        <li><strong class="text-white">Krondir Hunting:</strong> Farm for Meat and Trii (9.1G at Rabir).</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="js/leaflet.js"></script>
+    <script src="js/AlbionMarkers.js"></script>
+    <script src="js/Albion.js"></script>
+</body>
+</html>
