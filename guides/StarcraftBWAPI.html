@@ -15,27 +15,50 @@
     <style>
         :root {
             /* Override utility vars to the 20th Anniversary green skin */
-            --primary: #22ff99;      /* holo green */
-            --primary-dark: #082016; /* header gradient start */
-            --secondary: #c8ff54;    /* lime accent */
-            --accent: #ff5757;       /* alert red */
+            --primary: #22ff99;
+            /* holo green */
+            --primary-dark: #082016;
+            /* header gradient start */
+            --secondary: #c8ff54;
+            /* lime accent */
+            --accent: #ff5757;
+            /* alert red */
         }
 
         /* Use theme defaults for background and text (defined in css/Starcraft.css) */
 
-        .bg-primary { background-color: var(--primary); }
-        .bg-primary-dark { background-color: var(--primary-dark); }
-        .text-primary { color: var(--primary); }
-        .border-primary { border-color: var(--primary); }
-        .bg-secondary { background-color: var(--secondary); }
-        .bg-accent { background-color: var(--accent); }
+        .bg-primary {
+            background-color: var(--primary);
+        }
+
+        .bg-primary-dark {
+            background-color: var(--primary-dark);
+        }
+
+        .text-primary {
+            color: var(--primary);
+        }
+
+        .border-primary {
+            border-color: var(--primary);
+        }
+
+        .bg-secondary {
+            background-color: var(--secondary);
+        }
+
+        .bg-accent {
+            background-color: var(--accent);
+        }
 
         .nav-link.active {
             background-color: rgba(34, 255, 153, 0.12);
             border-left: 4px solid var(--primary);
         }
 
-        .nav-link:hover { background-color: rgba(34, 255, 153, 0.06); }
+        .nav-link:hover {
+            background-color: rgba(34, 255, 153, 0.06);
+        }
     </style>
 </head>
 
@@ -50,7 +73,8 @@
     <div id="app" class="min-h-screen flex flex-col">
         <header class="bg-primary text-white p-4 shadow-lg sticky top-0 z-20 mb-[30px]">
             <div class="container mx-auto flex justify-between items-center">
-                <h1 class="text-2xl md:text-3xl font-bold tracking-wider">Playing against advanced AIs in Starcraft: Brood War</h1>
+                <h1 class="text-2xl md:text-3xl font-bold tracking-wider">Playing against advanced AIs in Starcraft:
+                    Brood War</h1>
                 <button id="mobile-menu-button"
                     class="md:hidden p-2 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-white">
                     <i data-lucide="menu" class="h-6 w-6"></i>
@@ -75,6 +99,9 @@
                                 class="font-medium">Troubleshooting</span></a></li>
                     <li><a href="#resources" class="nav-link flex items-center gap-3 p-3 rounded-lg"><i
                                 data-lucide="book" class="h-5 w-5"></i> <span class="font-medium">Resources</span></a>
+                    </li>
+                    <li><a href="#ai-assistant" class="nav-link flex items-center gap-3 p-3 rounded-lg"><i
+                                data-lucide="bot" class="h-5 w-5"></i> <span class="font-medium">AI Assistant</span></a>
                     </li>
                 </ul>
             </nav>
@@ -612,6 +639,73 @@
                         </div>
 
                 </section>
+
+                <section id="ai-assistant" class="content-section hidden">
+                    <h2 class="text-3xl font-bold text-[#22ff99] mb-8 border-b-2 border-[#22ff99] pb-2">Tactical Advisor
+                    </h2>
+                    <div class="space-y-6">
+                        <div
+                            class="bg-gray-900 border border-[#22ff99]/30 p-1 rounded-xl shadow-[0_0_20px_rgba(34,255,153,0.15)] overflow-hidden relative">
+                            <!-- Scanline effect overlay -->
+                            <div
+                                class="absolute inset-0 pointer-events-none bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0IiBoZWlnaHQ9IjQiPgo8cmVjdCB3aWR0aD0iNCIgaGVpZ2h0PSI0IiBmaWxsPSIjMDAwIiBmaWxsLW9wYWNpdHk9IjAuMSIvPgo8L3N2Zz4=')] opacity-20">
+                            </div>
+
+                            <!-- Header -->
+                            <div
+                                class="bg-black/40 border-b border-[#22ff99]/20 p-4 flex items-center justify-between backdrop-blur-md">
+                                <div class="flex items-center gap-3">
+                                    <div
+                                        class="h-3 w-3 bg-[#22ff99] rounded-full animate-pulse shadow-[0_0_8px_#22ff99]">
+                                    </div>
+                                    <div>
+                                        <h3 class="text-lg font-bold text-[#22ff99] tracking-widest uppercase">Adjutant
+                                            Online</h3>
+                                        <p class="text-xs text-[#22ff99]/60 font-mono">System Ready // Waiting for input
+                                        </p>
+                                    </div>
+                                </div>
+                                <button type="button" onclick="scAiClear()"
+                                    class="p-2 text-[#22ff99]/70 hover:text-[#22ff99] hover:bg-[#22ff99]/10 rounded transition-colors"
+                                    title="Clear Comms">
+                                    <i data-lucide="trash-2" class="h-4 w-4"></i>
+                                </button>
+                            </div>
+
+                            <!-- Chat Area -->
+                            <div id="sc-ai-chat"
+                                class="h-96 overflow-y-auto p-4 space-y-4 bg-black/20 scrollbar-thin scrollbar-thumb-[#22ff99]/20 scrollbar-track-transparent">
+                                <div class="text-[#22ff99]/40 font-mono text-center py-10 text-sm">
+                                    &lt; CHANNEL OPEN &gt;<br>
+                                    Awaiting instructions, Commander.
+                                </div>
+                            </div>
+
+                            <!-- Input Area -->
+                            <div class="p-4 bg-black/40 border-t border-[#22ff99]/20 backdrop-blur-md">
+                                <div class="relative flex gap-2">
+                                    <input id="sc-ai-input" type="text"
+                                        class="flex-1 bg-black/30 border border-[#22ff99]/30 text-[#22ff99] placeholder-[#22ff99]/30 rounded-md px-4 py-3 focus:outline-none focus:border-[#22ff99] focus:ring-1 focus:ring-[#22ff99] font-mono text-sm transition-all"
+                                        placeholder="Transmit orders..." onkeypress="if(event.key==='Enter')scAiSend()">
+                                    <button id="sc-ai-send" type="button" onclick="scAiSend()"
+                                        class="px-6 py-2 bg-[#22ff99]/10 border border-[#22ff99]/50 text-[#22ff99] hover:bg-[#22ff99] hover:text-black font-bold uppercase tracking-wider text-xs rounded transition-all focus:outline-none focus:ring-2 focus:ring-[#22ff99] shadow-[0_0_10px_rgba(34,255,153,0.1)] hover:shadow-[0_0_15px_rgba(34,255,153,0.6)]">
+                                        Send
+                                    </button>
+                                </div>
+                                <p class="text-[10px] text-[#22ff99]/30 mt-2 font-mono text-center">
+                                    :: SECURE CONNECTION ESTABLISHED ::
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="bg-blue-900/20 border-l-2 border-[#22ff99] p-4 rounded-r mt-4">
+                            <p class="text-sm text-[#22ff99]/80 leading-relaxed font-mono">
+                                <strong class="text-white">COMMANDER TIP:</strong> Specify your version (1.16.1 or
+                                Remastered) for accurate deployment protocols.
+                            </p>
+                        </div>
+                    </div>
+                </section>
         </div>
 
         </main>
@@ -658,6 +752,202 @@
                 window.lucide.createIcons();
             }
         });
+
+        let scAiHistory = [];
+
+        async function scCallGemini(prompt, maxRetries = 3) {
+            const apiUrl = '/php/llm.php';
+            const payload = { contents: [{ role: 'user', parts: [{ text: prompt }] }] };
+            let delay = 1000;
+            for (let i = 0; i < maxRetries; i++) {
+                try {
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                    const result = await response.json();
+                    const text = result?.candidates?.[0]?.content?.parts?.[0]?.text;
+                    if (text) return text;
+                    throw new Error('Invalid response structure from Gemini API');
+                } catch (error) {
+                    if (i < maxRetries - 1) {
+                        await new Promise(r => setTimeout(r, delay));
+                        delay *= 2;
+                    } else {
+                        throw error;
+                    }
+                }
+            }
+        }
+
+        function parseMarkdown(text) {
+            // Basic Markdown Parser
+            if (!text) return '';
+
+            // Escape HTML
+            let html = text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+
+            // Bold
+            html = html.replace(/\*\*(.*?)\*\*/g, '<strong class="text-white">$1</strong>');
+
+            // Italic
+            html = html.replace(/\*(.*?)\*/g, '<em>$1</em>');
+
+            // Code blocks
+            html = html.replace(/```([\s\S]*?)```/g, '<div class="bg-black/80 border border-[#22ff99]/30 rounded p-2 my-2 overflow-x-auto"><code class="font-mono text-xs text-[#22ff99]">$1</code></div>');
+
+            // Inline code
+            html = html.replace(/`([^`]+)`/g, '<code class="bg-black/50 text-[#22ff99] px-1 rounded font-mono text-xs">$1</code>');
+
+            // Header - we'll just bold them for chat
+            html = html.replace(/^#{1,6}\s+(.*)$/gm, '<strong class="text-lg text-white block mt-2 mb-1">$1</strong>');
+
+            // Lists
+            // Simple dash replacement
+            html = html.replace(/^\s*-\s+(.*)$/gm, '<div class="flex items-start ml-1"><span class="mr-2 text-[#22ff99]">•</span><span>$1</span></div>');
+            // Numbered lists (simple)
+            html = html.replace(/^\s*\d+\.\s+(.*)$/gm, '<div class="flex items-start ml-1"><span class="mr-2 text-[#22ff99]">»</span><span>$1</span></div>');
+
+            // Newlines to <br> (but not inside the divs we just made)
+            html = html.replace(/\n/g, '<br>');
+
+            // Cleanup extra BRs around divs
+            html = html.replace(/<br><div/g, '<div');
+            html = html.replace(/<\/div><br>/g, '</div>');
+
+            return html;
+        }
+
+        function scAppendMessage(role, text) {
+            const chat = document.getElementById('sc-ai-chat');
+            if (!chat) return;
+
+            const isUser = role === 'user';
+            const wrap = document.createElement('div');
+            wrap.className = `mb-4 flex ${isUser ? 'justify-end' : 'justify-start'}`;
+
+            const bubble = document.createElement('div');
+            // User: Dark Green with bright text
+            // AI: Transparent Black with bright green text (Terminal style)
+
+            if (isUser) {
+                // User: "Transmission" style
+                bubble.className = "bg-[#0f3d2e] border border-[#22ff99]/40 text-[#b5ffd9] max-w-[85%] rounded-lg rounded-tr-none px-4 py-3 text-sm leading-relaxed shadow-[0_4px_12px_rgba(0,0,0,0.3)]";
+            } else {
+                // AI: Terminal
+                bubble.className = "bg-black/60 border border-[#22ff99]/30 text-[#22ff99] hover:bg-black/70 transition-colors backdrop-blur-sm max-w-[90%] rounded-lg rounded-tl-none px-4 py-3 text-sm leading-relaxed font-mono shadow-[0_0_15px_rgba(34,255,153,0.05)]";
+            }
+
+            bubble.innerHTML = parseMarkdown(text);
+            wrap.appendChild(bubble);
+
+            chat.appendChild(wrap);
+            chat.scrollTop = chat.scrollHeight;
+        }
+
+        async function scAiSend() {
+            const input = document.getElementById('sc-ai-input');
+            const btn = document.getElementById('sc-ai-send');
+            const query = input?.value?.trim();
+            if (!query) return;
+
+            input.value = '';
+            const chat = document.getElementById('sc-ai-chat');
+            // Remove placeholder
+            if (chat && chat.textContent.includes('CHANNEL OPEN')) {
+                chat.innerHTML = '';
+            }
+
+            scAppendMessage('user', query);
+            scAiHistory.push({ role: 'user', content: query });
+
+            // Loading UI
+            if (btn) {
+                btn.disabled = true;
+                const originalText = btn.innerText;
+                btn.innerHTML = '<span class="animate-pulse">...</span>';
+
+                // Add loading indicator to chat
+                const loadId = 'sc-ai-loading-' + Date.now();
+                const loadWrap = document.createElement('div');
+                loadWrap.id = loadId;
+                loadWrap.className = 'mb-4 flex justify-start';
+                loadWrap.innerHTML = `
+                    <div class="bg-black/60 border border-[#22ff99]/20 text-[#22ff99] rounded-lg rounded-tl-none px-4 py-3 font-mono text-xs flex items-center gap-2">
+                        <span class="animate-pulse">PROCESSING DATA...</span>
+                        <span class="w-1.5 h-1.5 bg-[#22ff99] rounded-full animate-bounce"></span>
+                        <span class="w-1.5 h-1.5 bg-[#22ff99] rounded-full animate-bounce" style="animation-delay: 0.1s"></span>
+                        <span class="w-1.5 h-1.5 bg-[#22ff99] rounded-full animate-bounce" style="animation-delay: 0.2s"></span>
+                    </div>`;
+                chat.appendChild(loadWrap);
+                chat.scrollTop = chat.scrollHeight;
+
+                try {
+                    const recent = scAiHistory
+                        .filter(m => m && (m.role === 'user' || m.role === 'assistant') && typeof m.content === 'string')
+                        .slice(-10);
+
+                    const systemWithContext = `You are a Tactical Advisor (Adjutant) for a StarCraft: Brood War advanced AI guide.
+                    
+                    PERSONA:
+                    - You are a military computer system: Efficient, precise, "StarCraft" flavored.
+                    - Use terms like "Commander", "deployment", "configuration", "hostile entities" (for bugs).
+                    
+                    FORMATTING:
+                    - Use **Bold** for key terms/buttons.
+                    - Use Lists for steps.
+                    - Use \`Code\` for filenames or commands.
+                    
+                    KNOWLEDGE BASE:
+                    - SCHNAIL: Requires Java, account, has own BW install.
+                    - BWAILauncher: Offline, requires BW 1.16.1, replaces standard AI.
+                    - Remastered vs 1.16.1: VITAL distinction. Always ask if unsure.
+                    
+                    Do not hallucinate URLs. Use known ones from the guide (schnail.com, GitHub).`;
+
+                    const transcript = recent
+                        .map(m => `${m.role === 'user' ? 'Commander' : 'Adjutant'}: ${m.content}`)
+                        .join('\n');
+
+                    const prompt = `${systemWithContext}\n\n[INCOMING TRANSMISSION]\n${transcript}\n\nCommander: ${query}\n`;
+
+                    const text = await scCallGemini(prompt);
+
+                    // Remove loading
+                    document.getElementById(loadId)?.remove();
+
+                    scAppendMessage('assistant', text);
+                    scAiHistory.push({ role: 'assistant', content: text });
+                } catch (error) {
+                    document.getElementById(loadId)?.remove();
+                    const msg = ':: ALERT :: COMMS INTERFERENCE DETECTED. PLEASE RETRY.';
+                    scAppendMessage('assistant', msg);
+                } finally {
+                    btn.disabled = false;
+                    btn.innerText = 'SEND';
+                    input.focus();
+                }
+            }
+        }
+
+        function scAiClear() {
+            scAiHistory = [];
+            const chat = document.getElementById('sc-ai-chat');
+            if (chat) {
+                chat.innerHTML = `
+                    <div class="text-[#22ff99]/40 font-mono text-center py-10 text-sm">
+                        &lt; CHANNEL OPEN &gt;<br>
+                        Awaiting instructions, Commander.
+                    </div>`;
+            }
+            const input = document.getElementById('sc-ai-input');
+            if (input) input.value = '';
+        }
+
+        window.scAiSend = scAiSend;
+        window.scAiClear = scAiClear;
     </script>
 </body>
 

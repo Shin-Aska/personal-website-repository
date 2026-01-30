@@ -607,7 +607,123 @@ const QUEST_LOG = [
     }
 ];
 
+const QUEST_HINTS = {
+    'toronto-intro': {
+        'hide-weapon': 'After looting the COM room, hide the Pistol + Canisters in the wall cabinet on the service level before passing security.',
+        'com-code': 'Talk to Joe, then use the access ladder in the room north of Joe’s; key in 1042 to enter the COM/service level access.',
+        'pistol': 'In the COM room, examine the damaged console to get the Pistol + Canisters; grab the extra Stimdrinks from the east drawer.',
+        'anne-rations': 'In the mess hall, talk to Anne at the counter, take the free chocolate, end talk, repeat 6 times for extra rations.',
+        'beegle-room': 'Inspector Beegle’s room: search the left cupboard (rations) and the north cabinet (canisters).'
+    },
+    'nakiridaani': {
+        'recruit-drirr': 'After the festival murder sequence in Jirinaar, Drirr joins automatically as part of the investigation.',
+        'recruit-sira': 'Confront Bradir in the Dji-Fadh guild (north wing) and complete that sequence; Sira joins after the story scene.',
+        'rejira-exploit': 'Rejira can repeatedly provide Blue Healing Potions; sell to Rabir for steady early money.',
+        'formers-stats': 'Former’s Building: use the rainbow bushes / hidden cracked-wall passages for party-wide stat boosts (+10 Speed/Stamina/Strength).',
+        'train-cheap': 'Jirinaar has the cheapest training (2.5G per point). Train key skills here before leaving the island.'
+    },
+    'gratogel': {
+        'recruit-melthas': 'Reach the Druid’s hut (Arjano area) after Klouta/Vanello; the scene inside recruits Melthas.',
+        'monster-eye': 'Buy the Monster Eye from Rifrako (mixed goods) — it’s a key utility item and hard to replace.',
+        'dreamshield': 'Rifrako in Aballon sells Dreamshield (strong value shield) and other essentials.',
+        'bandits': 'Mountain pass ambushes are a reliable early money source; sell loot at Winion (Vanello) for best local prices.'
+    },
+    'maini': {
+        'choose-siobhan-or-khunag': 'Beloveno: you can recruit Siobhan directly, or recruit Khunag via dialogue (he’s required later for Kenget Kamulos).',
+        'assassination-sequence': 'Timed sequence: talk to Herras (council), visit Kariah (ask “Yes” + “Information”), find Melthas’s friend (Kounos), buy Edjiir info (Srimalinar), return to Herras (ask “Assassination”), then find Melthas’s friend again to trigger the event.',
+        'herras-key': 'After saving Herras, ask him about reward to receive Herras’s Key; the treasury chest contains major loot.'
+    },
+    'dji-cantos': {
+        'harriet': 'Harriet joins on Dji-Cantos and replaces Rainer; she is essential for Goddess cave fast travel.',
+        'flowers': 'Use the chapter’s flower locations list; there are 8 total and each boosts a stat by +3 when used (recharges over time).'
+    },
+    'umajo': {
+        'umajo-sell': 'Umajo has the best sell rates in the game (130%). Hoard high-value loot until you reach Umajo.',
+        'porenoil': 'Ask Merdger/Merger in the Equipment Maker’s Guild about Porenoil; it prevents dehydration in the desert.',
+        'find-path': 'To reach Toronto: either pay Ohl a Jewel (meet via the Miner’s Guild schedule) or follow the “stones to coastline then south” route to the cave entrance.'
+    },
+    'toronto-return': {
+        'codes': 'Toronto Again: use 1001 (notebook), then 1712 (service level), then 4312 (code-notes reversed) to reach the reactor sequence.',
+        'evidence': 'After the reactor scene, return to Dji-Cantos with the evidence/video footage for the payout and to progress toward the finale.'
+    },
+    'kenget-kamulos': {
+        'khunag-required': 'Hard gate: you cannot enter Kenget Kamulos without Khunag in the party.',
+        'defeat-kamulos': 'Kamulos is immune to Frost; use Thorn Snare to lock him down, then focus damage to secure the High Knowledge.',
+        'bolt-throwers': 'Optional money: the surrender/loop fights can be farmed for Bolt-Throwers; sell in Umajo for massive profit.'
+    },
+    'equipment-makers': {
+        'umajo-danu': 'Secret word: infiltrate the mine shaft ceremony without being seen to hear “Umajo Danu”.',
+        'metalmagic': 'Find Kossotto and speak the secret word to receive the Metalmagic Scroll.',
+        'xp-plate': 'Optional XP: the blue floor plate summons 16 Animal 3; put party in back row and use Demon Exodus for fast clears.'
+    },
+    'finale': {
+        'bring-joe': 'Joe is strongly recommended: he prevents most of the Service Robot grind and handles electronics safely.',
+        'plant-seed': 'Carry The Seed to Toronto’s reactor route and complete the final sequence.',
+        'ai-housing': 'AI Housing is not meant to be killed. It’s immune to weapons and most spells; Thorn Snare can hold it, but the ending triggers when a party member falls.'
+    }
+};
+
+function getQuestHint(groupId, itemId) {
+    return (QUEST_HINTS && QUEST_HINTS[groupId] && QUEST_HINTS[groupId][itemId])
+        ? QUEST_HINTS[groupId][itemId]
+        : '';
+}
+
 const QUEST_STORAGE_KEY = 'albion.questLog.v1';
+
+async function callGeminiFunction(prompt, maxRetries = 3) {
+    const apiUrl = '/php/llm.php';
+    const payload = { contents: [{ role: "user", parts: [{ text: prompt }] }] };
+
+    let delay = 1000;
+    for (let i = 0; i < maxRetries; i++) {
+        try {
+            const response = await fetch(apiUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+
+            if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+            const result = await response.json();
+
+            const text = result?.candidates?.[0]?.content?.parts?.[0]?.text;
+            if (text) return text;
+            throw new Error('Invalid response structure from Gemini API');
+        } catch (error) {
+            console.warn(`API call attempt ${i + 1} failed. Retrying in ${delay}ms...`, error);
+            if (i < maxRetries - 1) {
+                await new Promise(r => setTimeout(r, delay));
+                delay *= 2;
+            } else {
+                throw error;
+            }
+        }
+    }
+}
+
+const QUEST_OPEN_GROUPS_KEY = 'albion.questOpenGroups.v1';
+let questOpenGroups = new Set();
+
+function loadQuestOpenGroups() {
+    try {
+        const raw = localStorage.getItem(QUEST_OPEN_GROUPS_KEY);
+        if (!raw) return new Set();
+        const parsed = JSON.parse(raw);
+        if (!Array.isArray(parsed)) return new Set();
+        return new Set(parsed.filter(Boolean));
+    } catch {
+        return new Set();
+    }
+}
+
+function saveQuestOpenGroups(set) {
+    try {
+        localStorage.setItem(QUEST_OPEN_GROUPS_KEY, JSON.stringify(Array.from(set || [])));
+    } catch {
+        // ignore
+    }
+}
 
 function loadQuestState() {
     try {
@@ -633,7 +749,8 @@ function setQuestItemDone(groupId, itemId, done) {
 
 function resetQuestLog() {
     localStorage.removeItem(QUEST_STORAGE_KEY);
-    renderQuestLog();
+    renderMergedWalkthroughProgress();
+    renderChapters();
 }
 
 function computeQuestProgress(state) {
@@ -648,19 +765,20 @@ function computeQuestProgress(state) {
     return { total, done, percent: total ? Math.round((done / total) * 100) : 0 };
 }
 
-function renderQuestLog() {
-    const container = document.getElementById('quest-log');
-    const summary = document.getElementById('quest-log-summary');
-    if (!container || !summary) return;
+function renderMergedWalkthroughProgress() {
+    const summary = document.getElementById('walkthrough-progress-summary');
+    if (!summary) return;
 
     const state = loadQuestState();
     const progress = computeQuestProgress(state);
-
     summary.innerHTML = `
         <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
             <div>
                 <h3 class="text-xl font-bold text-white">Progress</h3>
                 <p class="text-sm text-gray-400">Completed <span class="text-gray-200 font-semibold">${progress.done}</span> / ${progress.total} tasks (${progress.percent}%).</p>
+                <div class="stat-bar-container mt-3" role="progressbar" aria-valuenow="${progress.percent}" aria-valuemin="0" aria-valuemax="100" aria-label="Walkthrough progress">
+                    <div class="stat-bar intelligence" style="width: ${progress.percent}%"></div>
+                </div>
             </div>
             <div class="flex items-center gap-3">
                 <button class="seer-send-btn" onclick="resetQuestLog()" style="background: linear-gradient(135deg, var(--albion-accent-red), #b91c1c);">
@@ -669,58 +787,58 @@ function renderQuestLog() {
             </div>
         </div>
     `;
-
-    container.innerHTML = QUEST_LOG.map((group, groupIndex) => {
-        const groupDone = group.items.filter(i => state?.[group.id]?.[i.id]).length;
-        const groupTotal = group.items.length;
-        const accordionId = `quest-accordion-${groupIndex}`;
-        const arrowId = `quest-arrow-${groupIndex}`;
-
-        return `
-            <div class="accordion-item">
-                <button class="accordion-header" onclick="toggleQuestGroup('${accordionId}', '${arrowId}')">
-                    <div>
-                        <span class="font-bold text-lg">${group.title}</span>
-                        <span class="text-sm text-gray-500 ml-2">${groupDone}/${groupTotal}</span>
-                    </div>
-                    <span class="accordion-arrow" id="${arrowId}">▼</span>
-                </button>
-                <div class="accordion-content" id="${accordionId}">
-                    <div class="p-4 space-y-2">
-                        ${group.items.map(item => {
-                            const isDone = !!state?.[group.id]?.[item.id];
-                            return `
-                                <div class="quest-log-item ${isDone ? 'quest-log-item--done' : ''}">
-                                    <input type="checkbox" ${isDone ? 'checked' : ''}
-                                        onchange="toggleQuestItem('${group.id}', '${item.id}', this.checked)" />
-                                    <div class="quest-log-text text-sm text-gray-200">${item.text}</div>
-                                </div>
-                            `;
-                        }).join('')}
-                    </div>
-                </div>
-            </div>
-        `;
-    }).join('');
 }
 
-function toggleQuestGroup(contentId, arrowId) {
+
+function toggleQuestGroup(contentId, arrowId, groupId) {
     const content = document.getElementById(contentId);
     const arrow = document.getElementById(arrowId);
     if (!content) return;
     content.classList.toggle('open');
     if (arrow) arrow.classList.toggle('open');
+    const isOpen = content.classList.contains('open');
+    if (groupId) {
+        if (isOpen) {
+            questOpenGroups.add(groupId);
+        } else {
+            questOpenGroups.delete(groupId);
+        }
+        saveQuestOpenGroups(questOpenGroups);
+    }
 }
 
 function toggleQuestItem(groupId, itemId, checked) {
+    handleQuestItemToggle(groupId, itemId, checked);
+}
+
+function handleQuestItemToggle(groupId, itemId, checked, checkboxEl) {
     setQuestItemDone(groupId, itemId, checked);
-    renderQuestLog();
+
+    const row = checkboxEl?.closest ? checkboxEl.closest('.quest-log-item') : null;
+    if (row) row.classList.toggle('quest-log-item--done', !!checked);
+
+    if (checkboxEl?.closest) {
+        const localBlock = checkboxEl.closest('[data-quest-group]');
+        if (localBlock) {
+            const progressEl = localBlock.querySelector('[data-quest-progress]');
+            const group = (QUEST_LOG || []).find(g => g && g.id === groupId);
+            if (progressEl && group) {
+                const state = loadQuestState();
+                const doneCount = (group.items || []).filter(it => state?.[groupId]?.[it.id]).length;
+                const totalCount = (group.items || []).length;
+                progressEl.textContent = `${doneCount}/${totalCount} done`;
+            }
+        }
+    }
+
+    renderMergedWalkthroughProgress();
 }
 
 // Expose for inline handlers
 window.resetQuestLog = resetQuestLog;
 window.toggleQuestItem = toggleQuestItem;
 window.toggleQuestGroup = toggleQuestGroup;
+window.handleQuestItemToggle = handleQuestItemToggle;
 
 // ==================== ATLAS (LEAFLET IMAGE MAP) ====================
 
@@ -957,12 +1075,19 @@ const CREW_PORTRAITS = {
     'Melthas': 'images/albion/portraits/melthas.png',
     'Siobhan': 'images/albion/portraits/siobhan.png',
     'Khunag': 'images/albion/portraits/khunag.png',
-    'Joe Bernard': 'images/albion/portraits/joe.png'
+    'Joe Bernard': 'images/albion/portraits/joe.png',
+    'Harriet': 'images/albion/portraits/harriet.png'
 };
 
 function getCrewPortraitSrc(character) {
     if (!character || !character.name) return null;
     return CREW_PORTRAITS[character.name] || null;
+}
+
+function getCrewPortraitHiResSrc(character) {
+    const base = getCrewPortraitSrc(character);
+    if (!base) return null;
+    return base.replace('images/albion/portraits/', 'images/albion/portraits_reimagined/');
 }
 
 function renderCharacters() {
@@ -974,8 +1099,8 @@ function renderCharacters() {
             <div class="character-card-row">
                 <div class="character-card-portrait">
                     ${getCrewPortraitSrc(c)
-                        ? `<img src="${getCrewPortraitSrc(c)}" alt="${c.name} portrait" loading="lazy">`
-                        : `<div class="character-card-portrait-fallback" aria-hidden="true"></div>`}
+            ? `<img src="${getCrewPortraitSrc(c)}" alt="${c.name} portrait" loading="lazy">`
+            : `<div class="character-card-portrait-fallback" aria-hidden="true"></div>`}
                 </div>
                 <div class="min-w-0">
                     <h4 class="font-bold text-sm mb-1 truncate" style="color: ${c.race === 'Iskai' ? 'var(--race-iskai)' : 'var(--albion-text)'}">${c.name}</h4>
@@ -1005,66 +1130,85 @@ function selectCharacter(index) {
     const details = document.getElementById('character-details');
     const maxStat = 99;
 
+    const portraitHiResSrc = getCrewPortraitHiResSrc(char);
+    const portraitLowResSrc = getCrewPortraitSrc(char);
+    const raceColor = char.race === 'Iskai' ? 'var(--race-iskai)' : 'var(--albion-accent-blue)';
+
+    // Prioritize high-res image
+    const imageSrc = portraitHiResSrc || portraitLowResSrc;
+
     details.innerHTML = `
-        <div class="flex flex-col gap-6">
-            <div class="flex justify-between items-start">
-                <div>
-                    ${getCrewPortraitSrc(char)
-                        ? `<img class="character-detail-portrait" src="${getCrewPortraitSrc(char)}" alt="${char.name} portrait" loading="lazy">`
-                        : ''}
-                    <h3 class="text-3xl font-bold mb-1" style="color: ${char.race === 'Iskai' ? 'var(--race-iskai)' : 'var(--albion-accent-blue)'}">${char.name}</h3>
-                    <p class="text-lg text-gray-400">${char.race} • ${char.role}</p>
-                    ${char.magicSchool ? `<span class="magic-tag ${getMagicClass(char.magicSchool)} mt-2">${char.magicSchool}</span>` : ''}
-                </div>
-                <div class="text-right text-sm text-gray-500">
-                    <p>Joins: ${char.joinLocation}</p>
-                    ${char.canLeave === false ? '<p class="text-green-400">Permanent</p>' : ''}
-                    ${char.leavesAt ? `<p class="text-yellow-400">Leaves: ${char.leavesAt}</p>` : ''}
-                </div>
+        <div class="character-showcase">
+            <!-- Visual Column -->
+            <div class="character-showcase-visual">
+                ${imageSrc ? `<img src="${imageSrc}" alt="${char.name}" class="character-showcase-img" loading="lazy">` : ''}
+                ${portraitHiResSrc ? `<span class="character-showcase-tag-ai">AI Enhanced</span>` : ''}
             </div>
 
-            <p class="text-gray-300">${char.notes}</p>
+            <!-- Info Column -->
+            <div class="character-showcase-info">
+                <header class="character-showcase-header">
+                    <h3 class="character-showcase-name" style="background: linear-gradient(135deg, #fff 0%, ${raceColor} 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+                        ${char.name}
+                    </h3>
+                    <div class="character-showcase-role">
+                         ${char.race} • ${char.role}
+                    </div>
+                
+                    ${char.magicSchool ? `<div class="mt-3"><span class="magic-tag ${getMagicClass(char.magicSchool)}">${char.magicSchool}</span></div>` : ''}
+                    
+                    <div class="character-showcase-meta">
+                        <span><strong class="text-white">Joins:</strong> ${char.joinLocation}</span>
+                        ${char.canLeave === false ? '<span class="text-green-400">• Permanent</span>' : ''}
+                        ${char.leavesAt ? `<span class="text-yellow-400">• Leaves: ${char.leavesAt}</span>` : ''}
+                    </div>
+                </header>
 
-            <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-                ${renderStatBar('Strength', char.stats.strength, maxStat, 'strength')}
-                ${renderStatBar('Intelligence', char.stats.intelligence, maxStat, 'intelligence')}
-                ${renderStatBar('Dexterity', char.stats.dexterity, maxStat, 'dexterity')}
-                ${renderStatBar('Speed', char.stats.speed, maxStat, 'speed')}
-                ${renderStatBar('Stamina', char.stats.stamina, maxStat, 'stamina')}
-                ${renderStatBar('Magic Talent', char.stats.magicTalent, maxStat, 'magic')}
-            </div>
-
-            <div class="grid md:grid-cols-2 gap-4">
-                <div class="p-4 rounded-lg bg-black/20">
-                    <h4 class="font-bold text-green-400 mb-2">✓ Strengths</h4>
-                    <ul class="text-sm text-gray-300 space-y-1">
-                        ${char.strengths.map(s => `<li>• ${s}</li>`).join('')}
-                    </ul>
+                <div class="text-gray-300 text-lg leading-relaxed">
+                    ${char.notes}
                 </div>
-                <div class="p-4 rounded-lg bg-black/20">
-                    <h4 class="font-bold text-red-400 mb-2">✗ Weaknesses</h4>
-                    <ul class="text-sm text-gray-300 space-y-1">
-                        ${char.weaknesses.map(w => `<li>• ${w}</li>`).join('')}
-                    </ul>
+
+                <div class="character-showcase-stats">
+                    ${renderStatBar('Strength', char.stats.strength, maxStat, 'strength')}
+                    ${renderStatBar('Intelligence', char.stats.intelligence, maxStat, 'intelligence')}
+                    ${renderStatBar('Dexterity', char.stats.dexterity, maxStat, 'dexterity')}
+                    ${renderStatBar('Speed', char.stats.speed, maxStat, 'speed')}
+                    ${renderStatBar('Stamina', char.stats.stamina, maxStat, 'stamina')}
+                    ${renderStatBar('Magic Talent', char.stats.magicTalent, maxStat, 'magic')}
                 </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
+                     <div class="p-4 rounded-lg bg-black/20 border border-green-500/10">
+                        <h4 class="font-bold text-green-400 mb-2 uppercase text-xs tracking-wider">Strengths</h4>
+                        <ul class="text-sm text-gray-400 space-y-1">
+                            ${char.strengths.map(s => `<li>• ${s}</li>`).join('')}
+                        </ul>
+                    </div>
+                    <div class="p-4 rounded-lg bg-black/20 border border-red-500/10">
+                        <h4 class="font-bold text-red-400 mb-2 uppercase text-xs tracking-wider">Weaknesses</h4>
+                        <ul class="text-sm text-gray-400 space-y-1">
+                            ${char.weaknesses.map(w => `<li>• ${w}</li>`).join('')}
+                        </ul>
+                    </div>
+                </div>
+
+                ${char.keySpells ? `
+                 <div class="p-4 rounded-lg bg-black/20">
+                    <h4 class="font-bold text-purple-400 mb-2 uppercase text-xs tracking-wider">Key Spells</h4>
+                    <p class="text-sm text-gray-300">${char.keySpells.join(' • ')}</p>
+                </div>` : ''}
+
+                ${char.specialAbility ? `
+                <div class="p-4 rounded-lg bg-blue-500/10 border border-blue-500/20">
+                    <h4 class="font-bold text-blue-400 mb-1 uppercase text-xs tracking-wider">Special Ability</h4>
+                    <p class="text-sm text-gray-300">${char.specialAbility}</p>
+                </div>` : ''}
+
+                 ${char.requiredFor ? `
+                <div class="p-4 rounded-lg bg-yellow-500/10 border border-yellow-500/20">
+                    <p class="text-sm"><strong class="text-yellow-400">⚠️ Required:</strong> ${char.requiredFor}</p>
+                </div>` : ''}
             </div>
-
-            ${char.keySpells ? `
-            <div class="p-4 rounded-lg bg-black/20">
-                <h4 class="font-bold text-purple-400 mb-2">Key Spells</h4>
-                <p class="text-sm text-gray-300">${char.keySpells.join(', ')}</p>
-            </div>` : ''}
-
-            ${char.specialAbility ? `
-            <div class="tip-box">
-                <div class="tip-box-title">Special Ability</div>
-                <p class="text-sm text-gray-300">${char.specialAbility}</p>
-            </div>` : ''}
-
-            ${char.requiredFor ? `
-            <div class="warning-box">
-                <p class="text-sm"><strong class="text-red-400">⚠️ Required:</strong> ${char.requiredFor}</p>
-            </div>` : ''}
         </div>
     `;
 }
@@ -1086,8 +1230,6 @@ function renderStatBar(label, stat, max, type) {
     `;
 }
 
-const WALKTHROUGH_SCREEN_STORAGE_KEY = 'albion.walkthroughScreens.v1';
-
 const WALKTHROUGH_SCREENS = [
     { id: 'ui-dialogue-window', src: 'images/albion/screens/ui-dialogue-window.png', label: 'Dialogue window' },
     { id: 'ui-dialogue-council', src: 'images/albion/screens/ui-dialogue-council.png', label: 'Council dialogue' },
@@ -1108,89 +1250,103 @@ const WALKTHROUGH_SCREENS_BY_ID = WALKTHROUGH_SCREENS.reduce((acc, s) => {
     return acc;
 }, {});
 
-function loadWalkthroughScreenState() {
-    try {
-        const raw = localStorage.getItem(WALKTHROUGH_SCREEN_STORAGE_KEY);
-        if (!raw) return {};
-        const parsed = JSON.parse(raw);
-        return (parsed && typeof parsed === 'object') ? parsed : {};
-    } catch {
-        return {};
-    }
-}
-
-function saveWalkthroughScreenState(state) {
-    try {
-        localStorage.setItem(WALKTHROUGH_SCREEN_STORAGE_KEY, JSON.stringify(state || {}));
-    } catch {
-        // ignore
-    }
-}
-
-function getAttachedScreensForChapter(chapterId) {
-    const state = loadWalkthroughScreenState();
-    const list = state[chapterId];
-    return Array.isArray(list) ? list : [];
-}
-
-function renderChapterScreens(chapterId) {
-    const container = document.getElementById(`chapter-screens-${chapterId}`);
+function renderScreenshots() {
+    const container = document.getElementById('screenshots-grid');
     if (!container) return;
 
-    const attached = getAttachedScreensForChapter(chapterId)
-        .map(id => WALKTHROUGH_SCREENS_BY_ID[id])
-        .filter(Boolean);
+    const groups = [
+        {
+            title: 'UI & Dialogue',
+            color: 'var(--albion-accent-blue)',
+            description: 'How conversations and quest prompts look in-game.',
+            pick: (s) => s.id.startsWith('ui-')
+        },
+        {
+            title: 'Exploration (Top-Down)',
+            color: 'var(--albion-accent-green)',
+            description: 'Albion swaps between outdoor exploration and interior locations in a classic top-down view.',
+            pick: (s) => s.id.startsWith('gameplay-topdown-')
+        },
+        {
+            title: 'Combat (Tactical Grid)',
+            color: 'var(--albion-accent-red)',
+            description: 'Turn-based combat is fought on a grid, with row positioning and heavy emphasis on speed.',
+            pick: (s) => s.id.startsWith('combat-')
+        },
+        {
+            title: 'Cutscenes',
+            color: 'var(--albion-accent-purple)',
+            description: 'Story beats and location transitions often use illustrated cutscenes.',
+            pick: (s) => s.id.startsWith('cutscene-')
+        },
+        {
+            title: '3D Dungeons',
+            color: 'var(--albion-accent-gold)',
+            description: 'Some dungeons switch to a first-person 3D view. Bring torches.',
+            pick: (s) => s.id.startsWith('dungeon-3d-')
+        }
+    ];
 
-    if (attached.length === 0) {
-        container.innerHTML = `<div class="walkthrough-screens-empty">No screens attached yet.</div>`;
-        return;
-    }
-
-    container.innerHTML = `
-        <div class="walkthrough-screens-grid">
-            ${attached.map(s => `
-                <div class="walkthrough-screen">
-                    <a href="${s.src}" target="_blank" rel="noopener">
-                        <img src="${s.src}" alt="${s.label}" loading="lazy">
-                    </a>
-                    <div class="walkthrough-screen-meta">
-                        <span class="walkthrough-screen-label">${s.label}</span>
-                        <button type="button" class="walkthrough-screen-remove" onclick="detachWalkthroughScreen('${chapterId}', '${s.id}')">Remove</button>
-                    </div>
+    const html = groups.map(g => {
+        const screens = WALKTHROUGH_SCREENS.filter(g.pick);
+        if (!screens.length) return '';
+        return `
+            <div class="mb-10">
+                <h3 class="text-2xl font-bold mb-2" style="color: ${g.color}">${g.title}</h3>
+                <p class="text-sm text-gray-400 mb-4">${g.description}</p>
+                <div class="walkthrough-screens-grid">
+                    ${screens.map(s => `
+                        <div class="walkthrough-screen cursor-pointer" onclick="openScreenshotModal('${s.src}', '${s.label}')">
+                            <img src="${s.src}" alt="${s.label}" loading="lazy">
+                            <div class="walkthrough-screen-meta">
+                                <span class="walkthrough-screen-label">${s.label}</span>
+                            </div>
+                        </div>
+                    `).join('')}
                 </div>
-            `).join('')}
-        </div>
-    `;
-}
+            </div>
+        `;
+    }).join('');
 
-function attachWalkthroughScreen(chapterId) {
-    const select = document.getElementById(`chapter-screen-select-${chapterId}`);
-    if (!select) return;
-    const screenId = select.value;
-    if (!screenId) return;
-
-    const state = loadWalkthroughScreenState();
-    const existing = Array.isArray(state[chapterId]) ? state[chapterId] : [];
-    if (!existing.includes(screenId)) {
-        state[chapterId] = [...existing, screenId];
-        saveWalkthroughScreenState(state);
-    }
-    renderChapterScreens(chapterId);
-}
-
-function detachWalkthroughScreen(chapterId, screenId) {
-    const state = loadWalkthroughScreenState();
-    const existing = Array.isArray(state[chapterId]) ? state[chapterId] : [];
-    state[chapterId] = existing.filter(id => id !== screenId);
-    saveWalkthroughScreenState(state);
-    renderChapterScreens(chapterId);
+    container.innerHTML = html || `<div class="text-sm text-gray-400">No screenshots available.</div>`;
 }
 
 function renderChapters() {
     const container = document.getElementById('chapter-list');
     if (!container) return;
 
-    container.innerHTML = DB.chapters.map((chap, i) => `
+    const questState = loadQuestState();
+
+    container.innerHTML = DB.chapters.map((chap, i) => {
+        const questGroup = (QUEST_LOG || []).find(g => g && g.id === chap.id);
+        const items = questGroup?.items || [];
+        const doneCount = items.filter(it => questState?.[chap.id]?.[it.id]).length;
+        const totalCount = items.length;
+
+        const questBlock = questGroup ? `
+            <div class="p-4 rounded-lg bg-black/20 border border-gray-700/40" data-quest-group="${chap.id}">
+                <div class="flex items-start justify-between gap-3">
+                    <div>
+                        <h5 class="font-bold text-sm" style="color: var(--albion-accent-purple)">Quest Checklist</h5>
+                        <p class="text-xs text-gray-500" data-quest-progress>${doneCount}/${totalCount} done</p>
+                    </div>
+                </div>
+                <div class="mt-3 space-y-2">
+                    ${items.map(item => {
+            const isDone = !!questState?.[chap.id]?.[item.id];
+            return `
+                            <div class="quest-log-item ${isDone ? 'quest-log-item--done' : ''}">
+                                <input type="checkbox" ${isDone ? 'checked' : ''}
+                                    onchange="handleQuestItemToggle('${chap.id}', '${item.id}', this.checked, this)" />
+                                <div class="quest-log-text text-sm text-gray-200">${item.text}</div>
+                            </div>
+                        `;
+        }).join('')}
+                </div>
+            </div>
+        ` : '';
+
+        return `
         <div class="accordion-item">
             <button class="accordion-header" onclick="toggleAccordion(${i})">
                 <div>
@@ -1240,27 +1396,12 @@ function renderChapters() {
                         </div>
                     </div>` : ''}
 
-                    <div class="walkthrough-screens">
-                        <div class="walkthrough-screens-header">
-                            <div class="walkthrough-screens-title">Screens</div>
-                            <div class="walkthrough-screens-controls">
-                                <select id="chapter-screen-select-${chap.id}" class="walkthrough-screens-select">
-                                    <option value="">Attach a screen…</option>
-                                    ${WALKTHROUGH_SCREENS.map(s => `<option value="${s.id}">${s.label}</option>`).join('')}
-                                </select>
-                                <button type="button" class="walkthrough-screens-attach" onclick="attachWalkthroughScreen('${chap.id}')">Attach</button>
-                            </div>
-                        </div>
-                        <div id="chapter-screens-${chap.id}"></div>
-                    </div>
+                    ${questBlock}
                 </div>
             </div>
         </div>
-    `).join('');
-
-    DB.chapters.forEach(ch => {
-        if (ch && ch.id) renderChapterScreens(ch.id);
-    });
+        `;
+    }).join('');
 }
 
 function toggleAccordion(index) {
@@ -1410,27 +1551,27 @@ document.addEventListener('DOMContentLoaded', () => {
                 ensureAtlasMap();
             }
 
-            if (target === 'quests') {
-                renderQuestLog();
+            if (target === 'missions') {
+                renderMergedWalkthroughProgress();
+                renderChapters();
             }
 
-            if (target === 'missions') {
-                setTimeout(() => {
-                    document.getElementById('walkthrough-ai-input')?.focus();
-                }, 50);
-            }
+            // Smooth scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         });
     });
 
     // Render all sections
     renderCharacters();
     renderChapters();
-    renderQuestLog();
+    renderScreenshots();
+    renderMergedWalkthroughProgress();
     renderEquipment();
     renderBestiary();
     renderMagic();
     renderLocations();
     renderTrade();
+
 });
 
 // ==================== WALKTHROUGH AI (Claude Integration) ====================
@@ -1469,13 +1610,91 @@ function getWalkthroughAiChapterContext() {
     const chapter = (DB.chapters || []).find(c => c && c.id === walkthroughAiActiveChapterId);
     if (!chapter) return null;
 
-    const tips = Array.isArray(chapter.tips) ? chapter.tips.slice(0, 8) : [];
+    const tips = Array.isArray(chapter.tips) ? chapter.tips.slice(0, 10) : [];
+    const questGroup = (QUEST_LOG || []).find(g => g && g.id === chapter.id);
+    const questState = loadQuestState();
+    const checklist = (questGroup?.items || []).map(item => ({
+        id: item.id,
+        text: item.text,
+        done: !!questState?.[chapter.id]?.[item.id]
+    }));
+    const remaining = checklist.filter(i => !i.done).map(i => i.text).slice(0, 10);
     return {
         id: chapter.id,
         title: chapter.title,
         subtitle: chapter.subtitle,
         summary: chapter.summary,
-        tips
+        tips,
+        newMembers: chapter.newMembers || null,
+        requiredMember: chapter.requiredMember || null,
+        optionalMember: chapter.optionalMember || null,
+        keyItems: chapter.keyItems || null,
+        keyCode: chapter.keyCode || null,
+        codes: chapter.codes || null,
+        secretWord: chapter.secretWord || null,
+        reward: chapter.reward || null,
+        goddessFlowers: chapter.goddessFlowers || null,
+        flowerBonus: chapter.flowerBonus || null,
+        checklist,
+        remaining
+    };
+}
+
+function getWalkthroughAiProgressSnapshot(ctx) {
+    const state = loadQuestState();
+    const overall = computeQuestProgress(state);
+
+    if (!ctx) {
+        return {
+            overall,
+            chapter: null,
+            likelyStuck: null
+        };
+    }
+
+    const checklist = Array.isArray(ctx.checklist) ? ctx.checklist : [];
+    const doneCount = checklist.filter(i => i && i.done).length;
+    const totalCount = checklist.length;
+    const percent = totalCount ? Math.round((doneCount / totalCount) * 100) : 0;
+
+    const isOptionalText = (text) => {
+        const t = String(text || '');
+        return t.startsWith('Optional:') || t.startsWith('Strongly recommended:');
+    };
+
+    const completedItems = checklist
+        .filter(i => i && i.done)
+        .map(i => ({
+            id: i.id,
+            text: i.text,
+            hint: getQuestHint(ctx.id, i.id)
+        }));
+
+    const remainingItems = checklist
+        .filter(i => i && !i.done)
+        .map(i => ({
+            id: i.id,
+            text: i.text,
+            hint: getQuestHint(ctx.id, i.id),
+            optional: isOptionalText(i.text)
+        }));
+
+    const remainingRequired = remainingItems.filter(i => !i.optional);
+    const remainingOptional = remainingItems.filter(i => i.optional);
+
+    const likelyStuck = (remainingRequired[0] || remainingOptional[0] || null);
+
+    return {
+        overall,
+        chapter: {
+            doneCount,
+            totalCount,
+            percent,
+            completedItems: completedItems.slice(0, 8),
+            remainingRequired: remainingRequired.slice(0, 10),
+            remainingOptional: remainingOptional.slice(0, 10)
+        },
+        likelyStuck
     };
 }
 
@@ -1492,28 +1711,58 @@ async function walkthroughAiSend() {
     if (sendBtn) sendBtn.disabled = true;
 
     const ctx = getWalkthroughAiChapterContext();
+    const snapshot = getWalkthroughAiProgressSnapshot(ctx);
     const ctxText = ctx
-        ? `CURRENT CHAPTER: ${ctx.title} — ${ctx.subtitle}\nSummary: ${ctx.summary}\nTips: ${ctx.tips.join(' | ')}`
+        ? `CURRENT CHAPTER: ${ctx.title} — ${ctx.subtitle}\nSummary: ${ctx.summary}\nTips: ${ctx.tips.join(' | ') || '(none)'}\nPlayer note: If your progress differs from this checklist, tell me what you already did.`
         : `CURRENT CHAPTER: (none selected). The user may be browsing multiple chapters.`;
 
     try {
-        if (!window.CLAUDE_API_KEY) {
-            const local = getLocalShipAiResponse(query, ctx);
-            appendWalkthroughAiMessage('ai', local);
-            walkthroughAiHistory.push({ role: 'assistant', content: local });
-            return;
-        }
-
         const recent = walkthroughAiHistory
             .filter(m => m && (m.role === 'user' || m.role === 'assistant') && typeof m.content === 'string')
-            .slice(-10)
-            .map(m => ({ role: m.role, content: m.content }));
+            .slice(-10);
+
+        const completedLines = (snapshot?.chapter?.completedItems || [])
+            .slice(0, 8)
+            .map(i => `- [x] ${i.text}${i.hint ? `\n  hint: ${i.hint}` : ''}`)
+            .join('\n');
+
+        const remainingRequiredLines = (snapshot?.chapter?.remainingRequired || [])
+            .slice(0, 8)
+            .map(i => `- [ ] ${i.text}${i.hint ? `\n  hint: ${i.hint}` : ''}`)
+            .join('\n');
+
+        const remainingOptionalLines = (snapshot?.chapter?.remainingOptional || [])
+            .slice(0, 6)
+            .map(i => `- [ ] ${i.text}${i.hint ? `\n  hint: ${i.hint}` : ''}`)
+            .join('\n');
+
+        const likelyLine = snapshot.likelyStuck
+            ? `- ${snapshot.likelyStuck.text}${snapshot.likelyStuck.hint ? `\n  hint: ${snapshot.likelyStuck.hint}` : ''}`
+            : '- Chapter checklist appears complete.';
+
+        const progressText = ctx
+            ? `PROGRESS SNAPSHOT:\n- Overall: ${snapshot.overall.done}/${snapshot.overall.total} (${snapshot.overall.percent}%)\n- This chapter: ${snapshot.chapter.doneCount}/${snapshot.chapter.totalCount} (${snapshot.chapter.percent}%)\n\nCOMPLETED (this chapter):\n${completedLines || '- (none)'}\n\nUNFINISHED (priority):\n${remainingRequiredLines || '- (none)'}\n\nUNFINISHED (optional):\n${remainingOptionalLines || '- (none)'}\n\nLIKELY NEXT / WHERE PLAYER MAY BE STUCK:\n${likelyLine}\n`
+            : `PROGRESS SNAPSHOT:\n- Overall: ${snapshot.overall.done}/${snapshot.overall.total} (${snapshot.overall.percent}%)\n- Current chapter: (none selected)\n`;
 
         const systemWithContext = `You are the Toronto spaceship's onboard AI assisting the crew during Albion (1995).
 
 GOAL:
-- Give practical walkthrough guidance: next steps, item locations, party advice, and combat tactics.
+- Give practical, playable guidance: next steps, item locations, party advice, and combat tactics.
+- Use the current chapter summary and the player's checklist progress to suggest what to do next.
+- Infer where the player is likely stuck from the first unfinished checklist items.
 - If the user asks for spoilers, answer directly but keep it short.
+
+WHAT YOU CAN HELP WITH:
+- Where to go next in the current chapter.
+- Specific item locations (keys, codes, quest items) and what they're used for.
+- Party planning (who to bring, why, and when characters are required).
+- Combat advice (formation, spell choices, common threats).
+- Money/training strategies (when it’s worth grinding, and common exploits).
+
+WHAT YOU SHOULD ASK FOR (IF MISSING):
+- Which chapter you're on (open it in the walkthrough if possible).
+- Your current party members.
+- Any blockers (locked door, missing NPC, can’t trigger event, running out of rations/gold).
 
 GAME FACTS:
 - Albion is a 1995 RPG by Blue Byte with 2D/3D hybrid gameplay.
@@ -1526,68 +1775,93 @@ STYLE:
 - Use short, numbered steps when giving directions.
 - If you need more context, ask 1 clarifying question.
 
-${ctxText}`;
+OUTPUT FORMAT:
+- Prefer 3–8 bullet steps for "what to do next".
+- Call out 1–2 common mistakes to avoid if relevant.
 
-        const response = await fetch('https://api.anthropic.com/v1/messages', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'x-api-key': window.CLAUDE_API_KEY || '',
-                'anthropic-version': '2023-06-01',
-                'anthropic-dangerous-direct-browser-access': 'true'
-            },
-            body: JSON.stringify({
-                model: 'claude-sonnet-4-20250514',
-                max_tokens: 900,
-                system: systemWithContext,
-                messages: recent
-            })
-        });
+${ctxText}
 
-        if (!response.ok) {
-            throw new Error(`API error: ${response.status}`);
-        }
+${progressText}`;
 
-        const data = await response.json();
-        const text = data.content?.[0]?.text || 'No response received.';
+        const transcript = recent
+            .map(m => `${m.role === 'user' ? 'User' : 'Assistant'}: ${m.content}`)
+            .join('\n');
+        const prompt = `${systemWithContext}\n\n<query>\n${transcript ? `Prior transcript (most recent last):\n${transcript}\n\n` : ''}User: ${query}\n</query>`;
+        const text = await callGeminiFunction(prompt);
         appendWalkthroughAiMessage('ai', text);
         walkthroughAiHistory.push({ role: 'assistant', content: text });
     } catch (error) {
         console.error('Walkthrough AI error:', error);
-        const local = getLocalShipAiResponse(query, ctx);
-        appendWalkthroughAiMessage('ai', `${local}\n\n(Offline response — set window.CLAUDE_API_KEY for AI-powered answers)`);
-        walkthroughAiHistory.push({ role: 'assistant', content: local });
+        const msg = 'AI proxy unavailable. Please try again in a moment.';
+        appendWalkthroughAiMessage('ai', msg);
+        walkthroughAiHistory.push({ role: 'assistant', content: msg });
     } finally {
         if (sendBtn) sendBtn.disabled = false;
     }
 }
 
-function getLocalShipAiResponse(query, chapterCtx) {
-    const q = String(query || '').toLowerCase();
-
-    if (q.includes('gold') || q.includes('money')) {
-        return `Market route: In Jirinaar, talk to Rejira repeatedly for Blue Healing Potions, then sell to Rabir. Later, Umajo pays 130% sell price — hold valuables until then.`;
-    }
-
-    if (q.includes('party') || q.includes('team') || q.includes('composition')) {
-        return `Recommended squad (general): Tom + Drirr + Sira + Melthas + Siobhan + Harriet. Warning: Khunag is required to enter Kenget Kamulos.`;
-    }
-
-    if (q.includes('khunag') || q.includes('siobhan')) {
-        return `Beloveno choice: Siobhan = best physical damage. Khunag = mandatory for Kenget Kamulos access and strong spell damage. If you want full map coverage, prioritize Khunag, then recruit Siobhan later.`;
-    }
-
-    if (q.includes('ai housing') || q.includes('final') || q.includes('ending')) {
-        return `Finale note: AI Housing has 4500 HP and is not intended to be killed normally. Use control (e.g., Thorn Snare) and expect the ending trigger when a party member is defeated. Bring Joe Bernard to avoid 106 robot battles.`;
-    }
-
-    if (chapterCtx && (q.includes('next') || q.includes('what now') || q.includes('where') || q.includes('do i'))) {
-        const tips = (chapterCtx.tips || []).slice(0, 4);
-        return `Chapter guidance for ${chapterCtx.title}:\n1) Follow the chapter objective in the summary.\n2) Apply these quick tips: ${tips.join(' | ') || 'No tips recorded.'}`;
-    }
-
-    return `Specify what you need: next objective, item location, party build, or combat tactics. If you tell me your current chapter (or open it), I can be precise.`;
-}
-
 window.walkthroughAiSend = walkthroughAiSend;
 window.resetWalkthroughAi = resetWalkthroughAi;
+
+// ==================== SCREENSHOT MODAL ====================
+
+function ensureScreenshotModal() {
+    if (document.getElementById('albion-screenshot-modal')) return;
+
+    const modal = document.createElement('div');
+    modal.id = 'albion-screenshot-modal';
+    modal.className = 'screenshot-modal';
+    modal.innerHTML = `
+        <div class="screenshot-modal-content">
+            <button class="screenshot-modal-close" onclick="closeScreenshotModal()">&times;</button>
+            <img id="screenshot-modal-img" class="screenshot-modal-img" src="" alt="">
+            <div id="screenshot-modal-caption" class="screenshot-modal-caption"></div>
+        </div>
+    `;
+
+    // Close on background click
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeScreenshotModal();
+    });
+
+    document.body.appendChild(modal);
+
+    // Close on Escape
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeScreenshotModal();
+    });
+}
+
+function openScreenshotModal(src, caption) {
+    ensureScreenshotModal();
+    const modal = document.getElementById('albion-screenshot-modal');
+    const img = document.getElementById('screenshot-modal-img');
+    const cap = document.getElementById('screenshot-modal-caption');
+
+    if (!modal || !img) return;
+
+    img.src = src;
+    if (cap) cap.textContent = caption || '';
+
+    // Force reflow
+    void modal.offsetWidth;
+
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden'; // Prevent scrolling
+}
+
+function closeScreenshotModal() {
+    const modal = document.getElementById('albion-screenshot-modal');
+    if (modal) {
+        modal.classList.remove('active');
+        setTimeout(() => {
+            const img = document.getElementById('screenshot-modal-img');
+            if (img) img.src = ''; // Clear src
+        }, 300);
+    }
+    document.body.style.overflow = '';
+}
+
+window.openScreenshotModal = openScreenshotModal;
+window.closeScreenshotModal = closeScreenshotModal;
+

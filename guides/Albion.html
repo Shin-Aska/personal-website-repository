@@ -30,8 +30,8 @@
                 </div>
                 <nav id="main-nav" class="flex flex-wrap justify-center gap-2">
                     <button data-target="crew" class="nav-button active">The Crew</button>
-                    <button data-target="quests" class="nav-button">Quest Log</button>
                     <button data-target="missions" class="nav-button">Walkthrough</button>
+                    <button data-target="screenshots" class="nav-button">Screenshots</button>
                     <button data-target="almanac" class="nav-button">Almanac</button>
                     <button data-target="magic" class="nav-button">Magic</button>
                     <button data-target="atlas" class="nav-button">Atlas</button>
@@ -97,21 +97,6 @@
             </div>
         </section>
 
-        <!-- ==================== QUEST LOG ==================== -->
-        <section id="quests" class="content-section">
-            <div class="text-center mb-10">
-                <h2 class="text-4xl font-bold mb-3 text-gradient">Quest Log</h2>
-                <p class="text-lg max-w-3xl mx-auto text-gray-400">
-                    Track what you’ve done, what you’re missing, and what’s next. This is a checklist that persists in your browser.
-                </p>
-            </div>
-
-            <div class="max-w-5xl mx-auto">
-                <div id="quest-log-summary" class="albion-card p-6 mb-6"></div>
-                <div id="quest-log" class="space-y-4"></div>
-            </div>
-        </section>
-
         <!-- ==================== MISSION LOG ==================== -->
         <section id="missions" class="content-section">
             <div class="text-center mb-10">
@@ -119,6 +104,10 @@
                 <p class="text-lg max-w-3xl mx-auto text-gray-400">
                     A chapter-by-chapter walkthrough of Tom Driscoll's journey to save Albion from destruction.
                 </p>
+            </div>
+
+            <div class="max-w-6xl mx-auto mb-6">
+                <div id="walkthrough-progress-summary" class="albion-card p-6"></div>
             </div>
 
             <div class="grid grid-cols-1 xl:grid-cols-3 gap-8 max-w-6xl mx-auto">
@@ -145,6 +134,22 @@
                         <button class="walkthrough-ai-send" id="walkthrough-ai-send" onclick="walkthroughAiSend()">Send</button>
                     </div>
                 </aside>
+            </div>
+        </section>
+
+        <!-- ==================== SCREENSHOTS ==================== -->
+        <section id="screenshots" class="content-section">
+            <div class="text-center mb-10">
+                <h2 class="text-4xl font-bold mb-3 text-gradient">Screenshots</h2>
+                <p class="text-lg max-w-3xl mx-auto text-gray-400">
+                    A small gallery to get a feel for Albion’s UI, exploration, and combat.
+                </p>
+            </div>
+
+            <div class="max-w-6xl mx-auto">
+                <div class="albion-card p-6">
+                    <div id="screenshots-grid"></div>
+                </div>
             </div>
         </section>
 
@@ -267,6 +272,7 @@
         </section>
 
     </main>
+
 
     <script src="js/leaflet.js"></script>
     <script src="js/AlbionMarkers.js"></script>
