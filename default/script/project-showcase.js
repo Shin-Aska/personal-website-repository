@@ -13,6 +13,10 @@
   let currentMode = 'card';
   let currentShuffleIndex = 0;
   let shuffleInterval = null;
+  let shuffleKeyHandler = null;
+  let currentSearchQuery = '';
+  let filteredProjectsData = [];
+  let currentRenderProjectsData = [];
 
   // Icon SVGs
   const icons = {
@@ -119,6 +123,14 @@
       });
 
       const details = normalizeWhitespace(clone.innerHTML) ? clone.innerHTML.trim() : '';
+      const detailsText = normalizeWhitespace(clone.textContent);
+      const searchText = normalizeWhitespace([
+        name,
+        typesById.get(id) || '',
+        status,
+        description,
+        detailsText
+      ].join(' ')).toLowerCase();
 
       projects.push({
         id,
@@ -130,11 +142,176 @@
         statusColor,
         legacy: legacyIds.has(id),
         links,
-        details
+        details,
+        searchText
       });
     });
 
     return projects;
+  }
+
+  function updateFilteredProjects() {
+    const q = normalizeWhitespace(currentSearchQuery).toLowerCase();
+    if (!q) {
+      filteredProjectsData = projectsData.slice();
+      return;
+    }
+
+    filteredProjectsData = projectsData.filter(p => {
+      const haystack = p.searchText || '';
+      return haystack.includes(q);
+    });
+  }
+
+  function ensureListNoResultsElement(sourceDiv) {
+    if (!sourceDiv) return null;
+
+    let el = document.getElementById('projects-source-no-results');
+    if (!el) {
+      el = document.createElement('div');
+      el.id = 'projects-source-no-results';
+      el.className = 'projects-empty-message';
+      el.textContent = 'No projects found.';
+      sourceDiv.insertBefore(el, sourceDiv.firstChild);
+    }
+    return el;
+  }
+
+  function applyListFilter() {
+    const sourceDiv = document.getElementById('projects-source');
+    if (!sourceDiv) return;
+
+    const visibleIds = new Set(filteredProjectsData.map(p => p.id));
+    const hasQuery = !!normalizeWhitespace(currentSearchQuery);
+
+    const emptyEl = ensureListNoResultsElement(sourceDiv);
+    if (emptyEl) {
+      emptyEl.style.display = filteredProjectsData.length ? 'none' : '';
+    }
+
+    const table = sourceDiv.querySelector('table.projectsTable');
+    let hasAnyVisibleRow = false;
+    let hasAnyVisibleLegacyRow = false;
+
+    if (table) {
+      let isLegacy = false;
+      table.querySelectorAll('tr').forEach(row => {
+        if (row.querySelectorAll('th').length) {
+          row.style.display = '';
+          return;
+        }
+
+        if (row.id === 'legacy-button') {
+          isLegacy = true;
+          row.style.display = '';
+          return;
+        }
+
+        const link = row.querySelector('a[href^="#"]');
+        if (!link) {
+          row.style.display = '';
+          return;
+        }
+
+        const id = link.getAttribute('href').slice(1);
+        const show = !hasQuery || visibleIds.has(id);
+        row.style.display = show ? '' : 'none';
+
+        if (show) {
+          hasAnyVisibleRow = true;
+          if (isLegacy) hasAnyVisibleLegacyRow = true;
+        }
+      });
+
+      const legacyRow = table.querySelector('#legacy-button');
+      if (legacyRow) {
+        legacyRow.style.display = (!hasQuery || hasAnyVisibleLegacyRow) ? '' : 'none';
+      }
+    }
+
+    const projectsRoot = sourceDiv.querySelector('#projects');
+    if (projectsRoot) {
+      projectsRoot.querySelectorAll(':scope > div[id]').forEach(section => {
+        const show = !hasQuery || visibleIds.has(section.id);
+        section.style.display = show ? '' : 'none';
+      });
+
+      const legacyHeading = projectsRoot.querySelector(':scope > h3');
+      if (legacyHeading) {
+        legacyHeading.style.display = (!hasQuery || hasAnyVisibleLegacyRow) ? '' : 'none';
+      }
+
+      const legacyBreak = projectsRoot.querySelector(':scope > br');
+      if (legacyBreak) {
+        legacyBreak.style.display = (!hasQuery || hasAnyVisibleLegacyRow) ? '' : 'none';
+      }
+    }
+
+    if (emptyEl) {
+      emptyEl.style.display = (!hasQuery || hasAnyVisibleRow) ? 'none' : '';
+    }
+  }
+
+  function setSearchQuery(query) {
+    const normalized = normalizeWhitespace(query);
+    if (normalized === currentSearchQuery) return;
+
+    currentSearchQuery = normalized;
+    updateFilteredProjects();
+    applyListFilter();
+
+    currentShuffleIndex = 0;
+
+    if (currentMode === 'shuffle' && shuffleInterval) {
+      clearInterval(shuffleInterval);
+      shuffleInterval = null;
+    }
+
+    if (currentMode === 'shuffle' && shuffleKeyHandler) {
+      document.removeEventListener('keydown', shuffleKeyHandler);
+      shuffleKeyHandler = null;
+    }
+
+    closeCardModal();
+    renderMode(currentMode);
+  }
+
+  function createSearchBar(container) {
+    const searchDiv = document.createElement('div');
+    searchDiv.className = 'projects-search-bar';
+    searchDiv.innerHTML = `
+      <input id="projects-search-input" class="projects-search-input" type="search" placeholder="Search projects" autocomplete="off" aria-label="Search projects">
+      <button id="projects-search-clear" class="projects-search-clear" type="button" aria-label="Clear search">Clear</button>
+    `;
+
+    const input = searchDiv.querySelector('#projects-search-input');
+    const clearBtn = searchDiv.querySelector('#projects-search-clear');
+
+    if (input) {
+      input.value = currentSearchQuery;
+      input.addEventListener('input', () => setSearchQuery(input.value));
+      input.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          input.value = '';
+          setSearchQuery('');
+        }
+      });
+    }
+
+    if (clearBtn) {
+      clearBtn.addEventListener('click', () => {
+        if (input) input.value = '';
+        setSearchQuery('');
+        if (input) input.focus();
+      });
+    }
+
+    const selector = container.querySelector('.view-mode-selector');
+    if (selector && selector.parentNode) {
+      selector.parentNode.insertBefore(searchDiv, selector.nextSibling);
+    } else {
+      container.insertBefore(searchDiv, container.firstChild);
+    }
   }
 
   /**
@@ -147,8 +324,14 @@
     projectsData = parseProjectsDataFromDom();
     if (!projectsData.length) return;
 
+    updateFilteredProjects();
+    applyListFilter();
+
     // Create mode selector
     createModeSelector(container);
+
+    // Create search bar
+    createSearchBar(container);
 
     // Create content container
     const contentDiv = document.createElement('div');
@@ -214,6 +397,11 @@
       shuffleInterval = null;
     }
 
+    if (currentMode === 'shuffle' && shuffleKeyHandler) {
+      document.removeEventListener('keydown', shuffleKeyHandler);
+      shuffleKeyHandler = null;
+    }
+
     if (currentMode === 'card') closeCardModal();
 
     currentMode = mode;
@@ -233,6 +421,7 @@
       if (sourceDiv) sourceDiv.style.display = '';
       contentDiv.style.display = 'none';
       contentDiv.innerHTML = '';
+      applyListFilter();
       return;
     }
 
@@ -242,14 +431,35 @@
     contentDiv.className = `projects-showcase mode-${mode}`;
     contentDiv.innerHTML = '';
 
+    currentRenderProjectsData = filteredProjectsData.slice();
+
+    if (mode === 'shuffle' && !currentRenderProjectsData.length) {
+      if (shuffleInterval) {
+        clearInterval(shuffleInterval);
+        shuffleInterval = null;
+      }
+      if (shuffleKeyHandler) {
+        document.removeEventListener('keydown', shuffleKeyHandler);
+        shuffleKeyHandler = null;
+      }
+    }
+
+    if (!currentRenderProjectsData.length) {
+      const empty = document.createElement('div');
+      empty.className = 'projects-empty-message';
+      empty.textContent = 'No projects found.';
+      contentDiv.appendChild(empty);
+      return;
+    }
+
     switch (mode) {
       case 'original':
         break;
       case 'card':
-        renderCardMode(contentDiv);
+        renderCardMode(contentDiv, currentRenderProjectsData);
         break;
       case 'shuffle':
-        renderShuffleMode(contentDiv);
+        renderShuffleMode(contentDiv, currentRenderProjectsData);
         break;
     }
   }
@@ -343,11 +553,11 @@
   /**
    * Render Card Grid Mode
    */
-  function renderCardMode(container) {
+  function renderCardMode(container, renderProjects) {
     const grid = document.createElement('div');
     grid.className = 'projects-grid';
 
-    projectsData.forEach(project => {
+    renderProjects.forEach(project => {
       const statusClass = project.status === 'Active' || project.status === 'Completed' 
         ? 'status-active' : 'status-hiatus';
       const linksHtml = project.links.map(l => 
@@ -444,16 +654,26 @@
   /**
    * Render Shuffle (Carousel) Mode
    */
-  function renderShuffleMode(container) {
+  function renderShuffleMode(container, renderProjects) {
     container.classList.add('mode-shuffle');
+
+    if (shuffleKeyHandler) {
+      document.removeEventListener('keydown', shuffleKeyHandler);
+      shuffleKeyHandler = null;
+    }
+
+    if (shuffleInterval) {
+      clearInterval(shuffleInterval);
+      shuffleInterval = null;
+    }
 
     const shuffleContainer = document.createElement('div');
     shuffleContainer.className = 'shuffle-container';
 
     // Generate random angles for each card
-    const angles = projectsData.map(() => (Math.random() * 40 - 20).toFixed(0));
+    const angles = renderProjects.map(() => (Math.random() * 40 - 20).toFixed(0));
 
-    projectsData.forEach((project, index) => {
+    renderProjects.forEach((project, index) => {
       const isActive = index === currentShuffleIndex;
       const statusColor = project.statusColor === 'green' ? '#4ade80' : 
                          project.statusColor === 'purple' ? '#a78bfa' : '#f87171';
@@ -470,7 +690,7 @@
       card.innerHTML = `
         <img src="${project.image}" alt="${project.name}" class="shuffle-card-image" loading="lazy">
         <div class="shuffle-card-data">
-          <span class="shuffle-card-num">${index + 1} / ${projectsData.length}</span>
+          <span class="shuffle-card-num">${index + 1} / ${renderProjects.length}</span>
           <h2 class="shuffle-card-title">${project.name} ${linksHtml}</h2>
           <span class="shuffle-card-type">${project.type}</span>
           <p class="shuffle-card-desc">${project.description}</p>
@@ -490,7 +710,7 @@
     // Indicators
     const indicators = document.createElement('div');
     indicators.className = 'shuffle-indicators';
-    projectsData.forEach((_, index) => {
+    renderProjects.forEach((_, index) => {
       const dot = document.createElement('button');
       dot.className = `shuffle-indicator ${index === currentShuffleIndex ? 'active' : ''}`;
       dot.dataset.index = index;
@@ -503,39 +723,44 @@
     // Add navigation handlers
     shuffleContainer.querySelectorAll('.shuffle-prev').forEach(btn => {
       btn.addEventListener('click', () => {
-        const newIndex = (currentShuffleIndex - 1 + projectsData.length) % projectsData.length;
+        const len = currentRenderProjectsData.length;
+        const newIndex = (currentShuffleIndex - 1 + len) % len;
         goToShuffleCard(newIndex);
       });
     });
 
     shuffleContainer.querySelectorAll('.shuffle-next').forEach(btn => {
       btn.addEventListener('click', () => {
-        const newIndex = (currentShuffleIndex + 1) % projectsData.length;
+        const len = currentRenderProjectsData.length;
+        const newIndex = (currentShuffleIndex + 1) % len;
         goToShuffleCard(newIndex);
       });
     });
 
     // Keyboard navigation
-    const keyHandler = (e) => {
+    shuffleKeyHandler = (e) => {
       if (currentMode !== 'shuffle') {
-        document.removeEventListener('keydown', keyHandler);
+        document.removeEventListener('keydown', shuffleKeyHandler);
+        shuffleKeyHandler = null;
         return;
       }
       if (e.key === 'ArrowLeft') {
-        const newIndex = (currentShuffleIndex - 1 + projectsData.length) % projectsData.length;
+        const len = currentRenderProjectsData.length;
+        const newIndex = (currentShuffleIndex - 1 + len) % len;
         goToShuffleCard(newIndex);
       } else if (e.key === 'ArrowRight') {
-        const newIndex = (currentShuffleIndex + 1) % projectsData.length;
+        const len = currentRenderProjectsData.length;
+        const newIndex = (currentShuffleIndex + 1) % len;
         goToShuffleCard(newIndex);
       }
     };
-    document.addEventListener('keydown', keyHandler);
+    document.addEventListener('keydown', shuffleKeyHandler);
 
     // Auto-advance every 8 seconds
-    if (shuffleInterval) clearInterval(shuffleInterval);
     shuffleInterval = setInterval(() => {
       if (currentMode === 'shuffle') {
-        const newIndex = (currentShuffleIndex + 1) % projectsData.length;
+        const len = currentRenderProjectsData.length;
+        const newIndex = (currentShuffleIndex + 1) % len;
         goToShuffleCard(newIndex);
       }
     }, 8000);
@@ -546,6 +771,10 @@
    */
   function goToShuffleCard(index) {
     if (index === currentShuffleIndex) return;
+
+    const len = currentRenderProjectsData.length;
+    if (!len) return;
+    if (index < 0 || index >= len) return;
 
     const cards = document.querySelectorAll('.shuffle-card');
     const indicators = document.querySelectorAll('.shuffle-indicator');
@@ -558,9 +787,9 @@
         card.classList.add('active', 'entering');
       } else if (i === currentShuffleIndex) {
         card.classList.add('leaving');
-      } else if (i === (index - 1 + projectsData.length) % projectsData.length) {
+      } else if (i === (index - 1 + len) % len) {
         card.classList.add('prev');
-      } else if (i === (index + 1) % projectsData.length) {
+      } else if (i === (index + 1) % len) {
         card.classList.add('next');
       }
     });
@@ -583,15 +812,21 @@
     const project = projectsData.find(p => p.id === hash);
     if (!project) return;
 
+    if (currentSearchQuery) {
+      const existsInFiltered = filteredProjectsData.some(p => p.id === hash);
+      if (!existsInFiltered) setSearchQuery('');
+    }
+
     // If in original mode, show the project detail
     if (currentMode === 'original') {
       const target = document.getElementById(hash);
       if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     } else if (currentMode === 'shuffle') {
-      const index = projectsData.findIndex(p => p.id === hash);
+      const index = currentRenderProjectsData.findIndex(p => p.id === hash);
       if (index !== -1) goToShuffleCard(index);
     } else if (currentMode === 'card') {
-      openCardModal(project);
+      const filteredProject = filteredProjectsData.find(p => p.id === hash);
+      if (filteredProject) openCardModal(filteredProject);
     }
   }
 
