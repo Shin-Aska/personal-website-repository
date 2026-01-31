@@ -31,10 +31,11 @@
 	<link href="css/site.css" rel="stylesheet" type="text/css">
 	<link href="css/sky.css" rel="stylesheet" type="text/css">
 	<link href="css/reset.css" rel="stylesheet" type="text/css">
+	<link href="css/project-showcase.css" rel="stylesheet" type="text/css">
 
 	<!-- @@@ -->
 	<title>Skies of the Lost Cause - Projects</title>
-	<script nonce="<?php echo $token; ?>" src="script/project-viewer.js" type="text/javascript"></script>
+	<script nonce="<?php echo $token; ?>" src="script/project-showcase.js" type="text/javascript"></script>
 
 </head>
 
@@ -79,225 +80,221 @@
 		<h1>Projects</h1>
 		<p>
 			Here is the list of projects that I started and I had worked on. Some of it are discontinued but I still
-			planned to
-			continue it on the future. Here's a quick table of the projects currently listed on this site. Just click on
-			the name
-			to automatically be redirected to the section of this page you want to go to.
+			planned to continue it on the future. Explore them using the view modes below.
 		</p>
 
-		<table class="projectsTable">
-			<tr>
-				<th>Name</th>
-				<th>Type</th>
-			</tr>
-			<tr id="team_report_generator-button">
-				<td><a href="#team_report_generator">Team Report Generator</a></td>
-				<td>Full Stack / Tool</td>
-			</tr>
-			<tr id="gog_galaxy_replacer-button">
-				<td><a href="#gog_galaxy_replacer">GOG Galaxy Replacer</a></td>
-				<td>Automation Tool</td>
-			</tr>
-			<tr id="robojs-button">
-				<td><a href="#robojs">Robo-JS</a></td>
-				<td>Interpreter / Game</td>
-			</tr>
-			<tr id="s2sc-button">
-				<td><a href="#s2sc">s2sc.js</a></td>
-				<td>Compiler / Tool</td>
-			</tr>
-			<tr id="poc_racing_game_2dcanvas_js-button">
-				<td><a href="#poc_racing_game_2dcanvas_js">[POC] Canvas Racing Game</a></td>
-				<td>Tech Demo</td>
-			</tr>
-			<tr id="game_guides_hub-button">
-				<td><a href="#game_guides_hub">Game Guides Hub</a></td>
-				<td>Website</td>
-			</tr>
-			<tr id="legacy-button">
-				<td colspan="2" style="text-align: center; font-style: italic;">--- Legacy / Archived ---</td>
-			</tr>
-			<tr id="zero-button">
-				<td><a href="#zero">Zero Engine</a></td>
-				<td>Engine</td>
-			</tr>
-			<tr id="dslayer-button">
-				<td><a href="#dslayer">Dragon Slayer</a></td>
-				<td>Game</td>
-			</tr>
-		</table>
+		<div id="projects-showcase">
+			<div id="projects-source">
+				<table class="projectsTable">
+					<tr>
+						<th>Name</th>
+						<th>Type</th>
+					</tr>
+					<tr id="team_report_generator-button">
+						<td><a href="#team_report_generator">Team Report Generator</a></td>
+						<td>Full Stack / Tool</td>
+					</tr>
+					<tr id="gog_galaxy_replacer-button">
+						<td><a href="#gog_galaxy_replacer">GOG Galaxy Replacer</a></td>
+						<td>Automation Tool</td>
+					</tr>
+					<tr id="robojs-button">
+						<td><a href="#robojs">Robo-JS</a></td>
+						<td>Interpreter / Game</td>
+					</tr>
+					<tr id="s2sc-button">
+						<td><a href="#s2sc">s2sc.js</a></td>
+						<td>Compiler / Tool</td>
+					</tr>
+					<tr id="poc_racing_game_2dcanvas_js-button">
+						<td><a href="#poc_racing_game_2dcanvas_js">[POC] Canvas Racing Game</a></td>
+						<td>Tech Demo</td>
+					</tr>
+					<tr id="game_guides_hub-button">
+						<td><a href="#game_guides_hub">Game Guides Hub</a></td>
+						<td>Website</td>
+					</tr>
+					<tr id="legacy-button">
+						<td colspan="2" style="text-align: center; font-style: italic;">--- Legacy / Archived ---</td>
+					</tr>
+					<tr id="zero-button">
+						<td><a href="#zero">Zero Engine</a></td>
+						<td>Engine</td>
+					</tr>
+					<tr id="dslayer-button">
+						<td><a href="#dslayer">Dragon Slayer</a></td>
+						<td>Game</td>
+					</tr>
+				</table>
 
-		<hr>
-
-		<div id="projects">
-			<div id="empty">
-				<h3>Select a title</h3>
-				<p style="text-align: center">
-					Click or tap on any title above and see what the project is all about.
-				</p>
-			</div>
-
-			<div id="team_report_generator">
-				<h3>Team Report Generator <a href="https://github.com/Shin-Aska/team-report-generator"
-						target="_blank">(Github)</a></h3>
-				<img src="images/teamreportgenerator.png" class="preview center">
-				<p>
-					An automated team synchronization platform designed to drastically reduce administrative overhead.
-					It uses Generative AI (Gemini) to synthesize daily updates into consolidated weekly reports, solving
-					the real-world problem of fragmented team communication.
-				</p>
-				<p>
-					<strong>Key Technologies & Architecture:</strong>
-				</p>
-				<ul>
-					<li><strong>Modern Integration:</strong> Implements a sophisticated LLM pipeline for intelligent
-						text summarization.</li>
-					<li><strong>Backend Security:</strong> Features a secure LLM JSON proxy with CORS handling and rate
-						limiting to protect API usage.</li>
-					<li><strong>Full-Stack Architecture:</strong> Built with Laravel (backend) and Bootstrap/AJAX
-						(frontend), featuring robust User Management (Roles/Permissions) and "Masquerade" functionality
-						for admins.</li>
-				</ul>
-				<p style="text-align: center">
-					Status: <abbr style='color: green'>Active</abbr>
-				</p>
 				<hr>
-			</div>
 
-			<div id="gog_galaxy_replacer">
-				<h3>GOG Galaxy Replacer <a href="https://github.com/Shin-Aska/DosboxStagingReplacerForGOGGalaxy"
-						target="_blank">(CLI)</a> <a
-						href="https://github.com/Shin-Aska/DosboxStagingReplacerForGOGGalaxy-UI"
-						target="_blank">(GUI)</a></h3>
-				<img src="images/gog_galaxy_replacer.png" class="preview center">
-				<p>
-					A system-level automation tool that fixes legacy software compatibility issues by seamlessly
-					upgrading GOG Galaxy's DOSBox installations to DOSBox Staging. It ensures older games run correctly
-					on modern systems with improved input, scaling, and stability.
-				</p>
-				<p>
-					<strong>Engineering Highlights:</strong>
-				</p>
-				<ul>
-					<li><strong>C++ (CLI):</strong> High-performance core logic for automated file detection, hash
-						verification, and atomic replacement.</li>
-					<li><strong>PowerShell (GUI):</strong> A user-friendly wrapper enabling non-technical users to
-						leverage the tool safely.</li>
-					<li><strong>Tooling:</strong> Demonstrates the ability to build practical utilities that improve
-						workflows and fix third-party platform limitations.</li>
-				</ul>
-				<p style="text-align: center">
-					Status: <abbr style='color: green'>Completed</abbr>
-				</p>
-				<hr>
-			</div>
+				<div id="projects">
+					<div id="team_report_generator">
+						<h3>Team Report Generator <a href="https://github.com/Shin-Aska/team-report-generator"
+								target="_blank">(Github)</a></h3>
+						<img src="images/teamreportgenerator.png" class="preview center" width="400" height="300">
+						<p>
+							An automated team synchronization platform designed to drastically reduce administrative
+							overhead. It uses Generative AI (Gemini) to synthesize daily updates into consolidated weekly
+							reports, solving the real-world problem of fragmented team communication.
+						</p>
+						<p>
+							<strong>Key Technologies & Architecture:</strong>
+						</p>
+						<ul>
+							<li><strong>Modern Integration:</strong> Implements a sophisticated LLM pipeline for intelligent
+								text summarization.</li>
+							<li><strong>Backend Security:</strong> Features a secure LLM JSON proxy with CORS handling and
+								rate limiting to protect API usage.</li>
+							<li><strong>Full-Stack Architecture:</strong> Built with Laravel (backend) and Bootstrap/AJAX
+								(frontend), featuring robust User Management (Roles/Permissions) and "Masquerade"
+								functionality for admins.</li>
+						</ul>
+						<p style="text-align: center">
+							Status: <abbr style='color: green'>Active</abbr>
+						</p>
+						<hr>
+					</div>
 
-			<div id="robojs">
-				<h3>Robo.js <a href="https://github.com/Shin-Aska/Robo-JS" target="_blank">(Github Link)</a></h3>
-				<img src="images/robojs.jpg" class="preview center">
-				<p>
-					A gamified exploration of programming language theory, specifically interpreter design. This project
-					builds a custom script execution engine where users write code using specific op-codes to control a
-					robot.
-				</p>
-				<p>
-					It extends academic concepts into a functional product, demonstrating a deep understanding of
-					parsers, execution stacks, and instruction processing "under the hood."
-				</p>
-				<p style="text-align: center">
-					Status: <abbr style='color: red'>Hiatus</abbr>
-				</p>
-				<hr>
-			</div>
+					<div id="gog_galaxy_replacer">
+						<h3>GOG Galaxy Replacer <a href="https://github.com/Shin-Aska/DosboxStagingReplacerForGOGGalaxy"
+								target="_blank">(CLI)</a> <a
+								href="https://github.com/Shin-Aska/DosboxStagingReplacerForGOGGalaxy-UI"
+								target="_blank">(GUI)</a></h3>
+						<img src="images/gog_galaxy_replacer.png" class="preview center" width="400">
+						<p>
+							A system-level automation tool that fixes legacy software compatibility issues by seamlessly
+							upgrading GOG Galaxy's DOSBox installations to DOSBox Staging. It ensures older games run
+							correctly on modern systems with improved input, scaling, and stability.
+						</p>
+						<p>
+							<strong>Engineering Highlights:</strong>
+						</p>
+						<ul>
+							<li><strong>C++ (CLI):</strong> High-performance core logic for automated file detection, hash
+								verification, and atomic replacement.</li>
+							<li><strong>PowerShell (GUI):</strong> A user-friendly wrapper enabling non-technical users to
+								leverage the tool safely.</li>
+							<li><strong>Tooling:</strong> Demonstrates the ability to build practical utilities that improve
+								workflows and fix third-party platform limitations.</li>
+						</ul>
+						<p style="text-align: center">
+							Status: <abbr style='color: green'>Completed</abbr>
+						</p>
+						<hr>
+					</div>
 
-			<div id="s2sc">
-				<h3>s2sc.js <a href="https://github.com/Shin-Aska/s2sc.js" target="_blank">(Github Link)</a></h3>
-				<img src="images/s2sc.png" class="preview center">
-				<p>
-					My college thesis project. This source-to-source compiler (transpiler) framework explores the
-					complexities of language interoperability by parsing syntax from high-level languages and
-					reconstructing it for execution in a web browser environment.
-				</p>
-				<p>
-					It represents a deep dive into compiler construction, AST manipulation, and code generation.
-				</p>
-				<p style="text-align: center">
-					Status: <abbr style='color: purple'>Completed</abbr>
-				</p>
-				<hr>
-			</div>
+					<div id="robojs">
+						<h3>Robo.js <a href="https://github.com/Shin-Aska/Robo-JS" target="_blank">(Github Link)</a></h3>
+						<img src="images/robojs.jpg" class="preview center" width="400" height="300">
+						<p>
+							A gamified exploration of programming language theory, specifically interpreter design. This
+							project builds a custom script execution engine where users write code using specific op-codes
+							to control a robot.
+						</p>
+						<p>
+							It extends academic concepts into a functional product, demonstrating a deep understanding of
+							parsers, execution stacks, and instruction processing "under the hood."
+						</p>
+						<p style="text-align: center">
+							Status: <abbr style='color: red'>Hiatus</abbr>
+						</p>
+						<hr>
+					</div>
 
-			<div id="poc_racing_game_2dcanvas_js">
-				<h3>[Proof of Concept] HTML 2D Canvas racing game <a
-						href="https://github.com/Shin-Aska/Proof-of-concept-Racing-Game-HTML5" target="_blank">(Github
-						Link)</a> <a href="/online-samples/racing-poc/index.html" target="_blank">(Demo page)</a></h3>
-				<img src="images/proof_of_concept_racing_game.png" class="preview center">
-				<p>
-					A technical feasibility study analyzing the performance limits of the raw HTML5 2D Canvas API.
-				</p>
-				<p>
-					Rather than just building a game, this project served as a stress test to evaluate rendering
-					bottlenecks without external libraries. The findings provided valuable insights into when to use
-					Canvas API versus WebGL for high-performance rendering.
-				</p>
-				<p>
-					For those interested in the implementation details, I recorded the full coding session. You can
-					watch the 1.5-hour development video <a href="/videos/coding_sessions_simple_racing_game.mp4"
-						target="_blank">here</a>.
-				</p>
-				<p style="text-align: center">
-					Status: <abbr style='color: purple'>Completed</abbr>
-				</p>
-				<hr>
-			</div>
+					<div id="s2sc">
+						<h3>s2sc.js <a href="https://github.com/Shin-Aska/s2sc.js" target="_blank">(Github Link)</a></h3>
+						<img src="images/s2sc.png" class="preview center" width="400" height="300">
+						<p>
+							My college thesis project. This source-to-source compiler (transpiler) framework explores the
+							complexities of language interoperability by parsing syntax from high-level languages and
+							reconstructing it for execution in a web browser environment.
+						</p>
+						<p>
+							It represents a deep dive into compiler construction, AST manipulation, and code generation.
+						</p>
+						<p style="text-align: center">
+							Status: <abbr style='color: purple'>Completed</abbr>
+						</p>
+						<hr>
+					</div>
 
-			<div id="game_guides_hub">
-				<h3>Game Guides Hub <a href="https://guides.richardorilla.website/" target="_blank">(Open)</a></h3>
-				<img src="images/gamehub.png" class="preview center">
-				<p>
-					A content-rich web platform for game guides, featuring experimental AI assistance on select
-					articles. It demonstrates the application of context-aware AI agents to provide specific answers
-					based on page content.
-				</p>
-				<p style="text-align: center">
-					Status: <abbr style='color: green'>Active</abbr>
-				</p>
-				<hr>
-			</div>
+					<div id="poc_racing_game_2dcanvas_js">
+						<h3>[Proof of Concept] HTML 2D Canvas racing game <a
+								href="https://github.com/Shin-Aska/Proof-of-concept-Racing-Game-HTML5"
+								target="_blank">(Github Link)</a> <a href="/online-samples/racing-poc/index.html"
+								target="_blank">(Demo page)</a></h3>
+						<img src="images/proof_of_concept_racing_game.png" class="preview center" width="400">
+						<p>
+							A technical feasibility study analyzing the performance limits of the raw HTML5 2D Canvas API.
+						</p>
+						<p>
+							Rather than just building a game, this project served as a stress test to evaluate rendering
+							bottlenecks without external libraries. The findings provided valuable insights into when to use
+							Canvas API versus WebGL for high-performance rendering.
+						</p>
+						<p>
+							For those interested in the implementation details, I recorded the full coding session. You can
+							watch the 1.5-hour development video <a href="/videos/coding_sessions_simple_racing_game.mp4"
+								target="_blank">here</a>.
+						</p>
+						<p style="text-align: center">
+							Status: <abbr style='color: purple'>Completed</abbr>
+						</p>
+						<hr>
+					</div>
 
-			<div id="zero">
-				<h3>Zero Engine <a href="http://archive.richardorilla.website/ZeroGuardian.html" target="_blank">(Last
-						Update 2012)</a></h3>
-				<img src="images/Build16pt2.png" class="preview center">
-				<p>
-					An early attempt at a 2D game engine focusing on drag-and-drop functionality and template
-					management. Kept for historical reference of engine architecture exploration.
-				</p>
-				<p style="text-align: center">
-					Status: <abbr style='color: red'>Hiatus</abbr>
-				</p>
-				<hr>
-			</div>
+					<div id="game_guides_hub">
+						<h3>Game Guides Hub <a href="https://guides.richardorilla.website/" target="_blank">(Open)</a></h3>
+						<img src="images/gamehub.png" class="preview center" width="400">
+						<p>
+							A content-rich web platform for game guides, featuring experimental AI assistance on select
+							articles. It demonstrates the application of context-aware AI agents to provide specific answers
+							based on page content.
+						</p>
+						<p style="text-align: center">
+							Status: <abbr style='color: green'>Active</abbr>
+						</p>
+						<hr>
+					</div>
 
-			<div id="dslayer">
-				<h3> Dragon Slayer (Text Based Game) <a href="http://archive.richardorilla.website/DragonSlayer.html"
-						target="_blank">(Last Update 2011)</a></h3>
-				<img src="images/DragonSlayer3.png" class="preview center">
-				<p>
-					A text-based RPG from my early academic years (CS120). It mirrors the style of classic games like
-					Ultima. Preserved here as a memento of my starting point in software development.
-				</p>
-				<p style="text-align: center">
-					Status: <abbr style='color: red'>Legacy</abbr>
-				</p>
-				<hr>
+					<h3>Legacy & Archived Projects</h3>
+					<br>
+
+					<div id="zero">
+						<h3>Zero Engine <a href="http://archive.richardorilla.website/ZeroGuardian.html"
+								target="_blank">(Last Update 2012)</a></h3>
+						<img src="images/Build16pt2.png" class="preview center" width="400" height="300">
+						<p>
+							An early attempt at a 2D game engine focusing on drag-and-drop functionality and template
+							management. Kept for historical reference of engine architecture exploration.
+						</p>
+						<p style="text-align: center">
+							Status: <abbr style='color: red'>Hiatus</abbr>
+						</p>
+						<hr>
+					</div>
+
+					<div id="dslayer">
+						<h3> Dragon Slayer (Text Based Game) <a
+								href="http://archive.richardorilla.website/DragonSlayer.html" target="_blank">(Last Update
+								2011)</a></h3>
+						<img src="images/DragonSlayer3.png" class="preview center" width="400" height="300">
+						<p>
+							A text-based RPG from my early academic years (CS120). It mirrors the style of classic games
+							like Ultima. Preserved here as a memento of my starting point in software development.
+						</p>
+						<p style="text-align: center">
+							Status: <abbr style='color: red'>Legacy</abbr>
+						</p>
+						<hr>
+					</div>
+				</div>
 			</div>
 		</div>
 
 	</div>
-	<script nonce="<?php echo $token; ?>">
-		initProjectViewer();
-	</script>
 </body>
 
 </html>
