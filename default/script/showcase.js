@@ -205,12 +205,16 @@
         'warzone 2100': 'warzone_2100.jpg',
         '0 a.d': 'zero_ad.jpg',
         '0 a.d.': 'zero_ad.jpg',
+        'super tux kart': 'supertuxkart.png',
+        'super tux': 'supertux.png',
+        'openredalert': 'openra.png',
         'battle for wesnoth': 'battle_for_wesnoth.jpg',
         'handwritten letter recognition': 'handwritten_recognition.png',
         'image similarity finder': 'image_similarity.png',
         'video summarizer': 'video_summarizer.png',
-        'customized programming language': 'settings.png',
-        'introduction to image processing to a statistician': 'presentation.png'
+        'introduction to image processing to a statistician': 'intro-to-stat.jpg',
+        'customized programming language': 'custom_lang.jpg'
+
       };
 
       // Parse games table
