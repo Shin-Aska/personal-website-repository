@@ -50,6 +50,7 @@
       this.shuffleInterval = null;
       this.shuffleKeyHandler = null;
       this.currentSearchQuery = '';
+      this.currentCategory = null;
     }
 
     // Initialize the showcase
@@ -60,11 +61,18 @@
       this.itemsData = this.parseItemsDataFromDom();
       if (!this.itemsData.length) return;
 
+      if (this.config.type === 'goodies') {
+        this.currentCategory = this.config.defaultCategory || 'games';
+      }
+
       this.updateFilteredItems();
       this.applyListFilter();
 
-      // Create mode selector
-      this.createModeSelector(container);
+      if (this.config.type === 'goodies') {
+        this.createGoodiesCategorySelector(container);
+      } else {
+        this.createModeSelector(container);
+      }
 
       // Create search bar
       if (this.config.enableSearch) {
@@ -78,7 +86,9 @@
       container.appendChild(contentDiv);
 
       // Initial render
-      this.renderMode(this.config.defaultMode);
+      const initialMode = this.config.defaultMode;
+      this.currentMode = initialMode;
+      this.renderMode(initialMode);
 
       // Check for URL hash
       this.handleUrlHash();
@@ -478,12 +488,18 @@
 
     updateFilteredItems() {
       const q = normalizeWhitespace(this.currentSearchQuery).toLowerCase();
+
+      let base = this.itemsData;
+      if (this.config.type === 'goodies' && this.currentCategory) {
+        base = base.filter(p => p.category === this.currentCategory);
+      }
+
       if (!q) {
-        this.filteredItemsData = this.itemsData.slice();
+        this.filteredItemsData = base.slice();
         return;
       }
 
-      this.filteredItemsData = this.itemsData.filter(p => {
+      this.filteredItemsData = base.filter(p => {
         const haystack = p.searchText || '';
         return haystack.includes(q);
       });
@@ -513,6 +529,11 @@
       const emptyEl = this.ensureListNoResultsElement(sourceDiv);
       if (emptyEl) {
         emptyEl.style.display = this.filteredItemsData.length ? 'none' : '';
+      }
+
+      if (this.config.type === 'goodies') {
+        this.applyGoodiesListFilter(sourceDiv, visibleIds, hasQuery, emptyEl);
+        return;
       }
 
       const table = sourceDiv.querySelector('table.' + this.config.tableClass);
@@ -638,6 +659,91 @@
         selector.parentNode.insertBefore(searchDiv, selector.nextSibling);
       } else {
         container.insertBefore(searchDiv, container.firstChild);
+      }
+    }
+
+    createGoodiesCategorySelector(container) {
+      const selectorDiv = document.createElement('div');
+      selectorDiv.className = 'view-mode-selector';
+
+      const category = this.currentCategory || 'games';
+
+      selectorDiv.innerHTML = `
+        <button class="view-mode-btn ${category === 'games' ? 'active' : ''}" data-category="games" title="Games">
+          ${icons.list}
+          <span>Games</span>
+        </button>
+        <button class="view-mode-btn ${category === 'utilities' ? 'active' : ''}" data-category="utilities" title="Utilities">
+          ${icons.list}
+          <span>Utilities</span>
+        </button>
+      `;
+
+      selectorDiv.querySelectorAll('.view-mode-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const categoryValue = btn.dataset.category;
+          this.setCategory(categoryValue);
+        });
+      });
+
+      container.insertBefore(selectorDiv, container.firstChild);
+    }
+
+    setCategory(category) {
+      if (!category) return;
+      if (category === this.currentCategory) return;
+
+      this.currentCategory = category;
+
+      document.querySelectorAll(`#${this.config.containerId} .view-mode-btn[data-category]`).forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.category === category);
+      });
+
+      this.updateFilteredItems();
+      this.applyListFilter();
+
+      if (this.currentMode !== 'original') {
+        this.currentShuffleIndex = 0;
+        this.closeCardModal();
+        this.renderMode(this.currentMode);
+      }
+    }
+
+    applyGoodiesListFilter(sourceDiv, visibleIds, hasQuery, emptyEl) {
+      const gamesTable = sourceDiv.querySelector('#games-list');
+      const utilityTable = sourceDiv.querySelector('#utility-list');
+
+      const category = this.currentCategory || 'games';
+
+      if (gamesTable) gamesTable.style.display = category === 'games' ? '' : 'none';
+      if (utilityTable) utilityTable.style.display = category === 'utilities' ? '' : 'none';
+
+      const activeTable = category === 'utilities' ? utilityTable : gamesTable;
+      let hasAnyVisibleRow = false;
+
+      if (activeTable) {
+        const tbody = activeTable.querySelector('tbody');
+        const rows = tbody ? tbody.querySelectorAll('tr') : activeTable.querySelectorAll('tr');
+
+        rows.forEach(row => {
+          const firstCell = row.querySelector('td');
+          if (!firstCell) return;
+
+          let itemId = row.dataset.itemId;
+          if (!itemId) {
+            const name = normalizeWhitespace(firstCell.textContent);
+            itemId = name.toLowerCase().replace(/[^a-zA-Z0-9]+/g, '_');
+            row.dataset.itemId = itemId;
+          }
+
+          const show = !hasQuery || visibleIds.has(itemId);
+          row.style.display = show ? '' : 'none';
+          if (show) hasAnyVisibleRow = true;
+        });
+      }
+
+      if (emptyEl) {
+        emptyEl.style.display = (!hasQuery || hasAnyVisibleRow) ? 'none' : '';
       }
     }
 
@@ -1066,6 +1172,10 @@
       const item = this.itemsData.find(p => p.id === hash);
       if (!item) return;
 
+      if (this.config.type === 'goodies' && item.category && item.category !== this.currentCategory) {
+        this.setCategory(item.category);
+      }
+
       if (this.currentSearchQuery) {
         const existsInFiltered = this.filteredItemsData.some(p => p.id === hash);
         if (!existsInFiltered) this.setSearchQuery('');
@@ -1073,8 +1183,37 @@
 
       // If in original mode, scroll to the item
       if (this.currentMode === 'original') {
-        const target = document.getElementById(hash);
-        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        if (this.config.type === 'goodies') {
+          const sourceDiv = document.getElementById(this.config.sourceId);
+          if (!sourceDiv) return;
+
+          const table = item.category === 'utilities'
+            ? sourceDiv.querySelector('#utility-list')
+            : sourceDiv.querySelector('#games-list');
+          if (!table) return;
+
+          const tbody = table.querySelector('tbody');
+          const rows = tbody ? tbody.querySelectorAll('tr') : table.querySelectorAll('tr');
+          for (const row of rows) {
+            const firstCell = row.querySelector('td');
+            if (!firstCell) continue;
+
+            let itemId = row.dataset.itemId;
+            if (!itemId) {
+              const name = normalizeWhitespace(firstCell.textContent);
+              itemId = name.toLowerCase().replace(/[^a-zA-Z0-9]+/g, '_');
+              row.dataset.itemId = itemId;
+            }
+
+            if (itemId === hash) {
+              row.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              break;
+            }
+          }
+        } else {
+          const target = document.getElementById(hash);
+          if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
       } else if (this.currentMode === 'shuffle') {
         const index = this.currentRenderItemsData.findIndex(p => p.id === hash);
         if (index !== -1) this.goToShuffleCard(index);
