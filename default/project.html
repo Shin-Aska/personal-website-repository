@@ -90,6 +90,10 @@
 						<th>Name</th>
 						<th>Type</th>
 					</tr>
+					<tr id="hand_tracking_game-button">
+						<td><a href="#hand_tracking_game">Hand Tracking Game</a></td>
+						<td>Game / ML Experiment</td>
+					</tr>
 					<tr id="team_report_generator-button">
 						<td><a href="#team_report_generator">Team Report Generator</a></td>
 						<td>Full Stack / Tool</td>
@@ -130,24 +134,53 @@
 				<hr>
 
 				<div id="projects">
+					<div id="hand_tracking_game">
+						<h3>Hand Tracking Game <a href="https://github.com/Shin-Aska/poc-camera-ml"
+								target="_blank">(Github)</a> <a href="hand-tracking-article.html"
+								target="_blank">(Article)</a></h3>
+						<img src="images/hand-tracking.png" class="preview center" width="400">
+						<p>
+							A browser-based hand-tracking game built from scratch. It uses MediaPipe for real-time hand
+							detection
+							and maps landmarks into a 3D physics world (React Three Fiber + Rapier).
+						</p>
+						<p>
+							<strong>Key Technologies:</strong>
+						</p>
+						<ul>
+							<li><strong>Computer Vision:</strong> MediaPipe Hands for real-time landmark detection.</li>
+							<li><strong>3D & Physics:</strong> React Three Fiber for rendering and React Three Rapier
+								for physics interactions.</li>
+							<li><strong>React Architecture:</strong> Demonstrates how to effectively combine a game loop
+								with React's component model.</li>
+						</ul>
+						<p style="text-align: center">
+							Status: <abbr style='color: green'>Completed</abbr>
+						</p>
+						<hr>
+					</div>
 					<div id="team_report_generator">
 						<h3>Team Report Generator <a href="https://github.com/Shin-Aska/team-report-generator"
 								target="_blank">(Github)</a></h3>
 						<img src="images/teamreportgenerator.png" class="preview center" width="400" height="300">
 						<p>
 							An automated team synchronization platform designed to drastically reduce administrative
-							overhead. It uses Generative AI (Gemini) to synthesize daily updates into consolidated weekly
+							overhead. It uses Generative AI (Gemini) to synthesize daily updates into consolidated
+							weekly
 							reports, solving the real-world problem of fragmented team communication.
 						</p>
 						<p>
 							<strong>Key Technologies & Architecture:</strong>
 						</p>
 						<ul>
-							<li><strong>Modern Integration:</strong> Implements a sophisticated LLM pipeline for intelligent
+							<li><strong>Modern Integration:</strong> Implements a sophisticated LLM pipeline for
+								intelligent
 								text summarization.</li>
-							<li><strong>Backend Security:</strong> Features a secure LLM JSON proxy with CORS handling and
+							<li><strong>Backend Security:</strong> Features a secure LLM JSON proxy with CORS handling
+								and
 								rate limiting to protect API usage.</li>
-							<li><strong>Full-Stack Architecture:</strong> Built with Laravel (backend) and Bootstrap/AJAX
+							<li><strong>Full-Stack Architecture:</strong> Built with Laravel (backend) and
+								Bootstrap/AJAX
 								(frontend), featuring robust User Management (Roles/Permissions) and "Masquerade"
 								functionality for admins.</li>
 						</ul>
@@ -172,11 +205,14 @@
 							<strong>Engineering Highlights:</strong>
 						</p>
 						<ul>
-							<li><strong>C++ (CLI):</strong> High-performance core logic for automated file detection, hash
+							<li><strong>C++ (CLI):</strong> High-performance core logic for automated file detection,
+								hash
 								verification, and atomic replacement.</li>
-							<li><strong>PowerShell (GUI):</strong> A user-friendly wrapper enabling non-technical users to
+							<li><strong>PowerShell (GUI):</strong> A user-friendly wrapper enabling non-technical users
+								to
 								leverage the tool safely.</li>
-							<li><strong>Tooling:</strong> Demonstrates the ability to build practical utilities that improve
+							<li><strong>Tooling:</strong> Demonstrates the ability to build practical utilities that
+								improve
 								workflows and fix third-party platform limitations.</li>
 						</ul>
 						<p style="text-align: center">
@@ -186,15 +222,18 @@
 					</div>
 
 					<div id="robojs">
-						<h3>Robo.js <a href="https://github.com/Shin-Aska/Robo-JS" target="_blank">(Github Link)</a></h3>
+						<h3>Robo.js <a href="https://github.com/Shin-Aska/Robo-JS" target="_blank">(Github Link)</a>
+						</h3>
 						<img src="images/robojs.jpg" class="preview center" width="400" height="300">
 						<p>
 							A gamified exploration of programming language theory, specifically interpreter design. This
-							project builds a custom script execution engine where users write code using specific op-codes
+							project builds a custom script execution engine where users write code using specific
+							op-codes
 							to control a robot.
 						</p>
 						<p>
-							It extends academic concepts into a functional product, demonstrating a deep understanding of
+							It extends academic concepts into a functional product, demonstrating a deep understanding
+							of
 							parsers, execution stacks, and instruction processing "under the hood."
 						</p>
 						<p style="text-align: center">
@@ -204,10 +243,12 @@
 					</div>
 
 					<div id="s2sc">
-						<h3>s2sc.js <a href="https://github.com/Shin-Aska/s2sc.js" target="_blank">(Github Link)</a></h3>
+						<h3>s2sc.js <a href="https://github.com/Shin-Aska/s2sc.js" target="_blank">(Github Link)</a>
+						</h3>
 						<img src="images/s2sc.png" class="preview center" width="400" height="300">
 						<p>
-							My college thesis project. This source-to-source compiler (transpiler) framework explores the
+							My college thesis project. This source-to-source compiler (transpiler) framework explores
+							the
 							complexities of language interoperability by parsing syntax from high-level languages and
 							reconstructing it for execution in a web browser environment.
 						</p>
@@ -227,17 +268,20 @@
 								target="_blank">(Demo page)</a></h3>
 						<img src="images/proof_of_concept_racing_game.png" class="preview center" width="400">
 						<p>
-							A technical feasibility study analyzing the performance limits of the raw HTML5 2D Canvas API.
+							A technical feasibility study analyzing the performance limits of the raw HTML5 2D Canvas
+							API.
 						</p>
 						<p>
 							Rather than just building a game, this project served as a stress test to evaluate rendering
-							bottlenecks without external libraries. The findings provided valuable insights into when to use
+							bottlenecks without external libraries. The findings provided valuable insights into when to
+							use
 							Canvas API versus WebGL for high-performance rendering.
 						</p>
 						<p>
-							For those interested in the implementation details, I recorded the full coding session. You can
-							watch the 1.5-hour development video <a href="/videos/coding_sessions_simple_racing_game.mp4"
-								target="_blank">here</a>.
+							For those interested in the implementation details, I recorded the full coding session. You
+							can
+							watch the 1.5-hour development video <a
+								href="/videos/coding_sessions_simple_racing_game.mp4" target="_blank">here</a>.
 						</p>
 						<p style="text-align: center">
 							Status: <abbr style='color: purple'>Completed</abbr>
@@ -246,11 +290,13 @@
 					</div>
 
 					<div id="game_guides_hub">
-						<h3>Game Guides Hub <a href="https://guides.richardorilla.website/" target="_blank">(Open)</a></h3>
+						<h3>Game Guides Hub <a href="https://guides.richardorilla.website/" target="_blank">(Open)</a>
+						</h3>
 						<img src="images/gamehub.png" class="preview center" width="400">
 						<p>
 							A content-rich web platform for game guides, featuring experimental AI assistance on select
-							articles. It demonstrates the application of context-aware AI agents to provide specific answers
+							articles. It demonstrates the application of context-aware AI agents to provide specific
+							answers
 							based on page content.
 						</p>
 						<p style="text-align: center">
@@ -278,7 +324,8 @@
 
 					<div id="dslayer">
 						<h3> Dragon Slayer (Text Based Game) <a
-								href="http://archive.richardorilla.website/DragonSlayer.html" target="_blank">(Last Update
+								href="http://archive.richardorilla.website/DragonSlayer.html" target="_blank">(Last
+								Update
 								2011)</a></h3>
 						<img src="images/DragonSlayer3.png" class="preview center" width="400" height="300">
 						<p>

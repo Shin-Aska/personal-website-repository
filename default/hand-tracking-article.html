@@ -1,0 +1,377 @@
+<?php include "header.php" ?>
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="author" content="Richard Orilla">
+		<meta http-equiv="content-language" content="en-us">
+		<meta http-equiv="cache-control" content="no-cache">
+		<meta http-equiv="pragma" content="no-cache">
+		<meta name="robots" content="index" /><meta name="theme-color" content="#003eaa" /> 
+		<meta name="keywords" content="richard orilla, free games, resume">
+		<meta name="color-scheme" content="light only">
+		<meta name="darkreader-lock">
+		<noscript><meta http-equiv="refresh" content="0; url=https://classic.richardorilla.website/template.html" /></noscript>
+		<script nonce="<?php echo $token; ?>" src="script/data/menu.json" type="text/javascript"></script>
+		<script nonce="<?php echo $token; ?>" src="script/ThreeWebGL.js" type="text/javascript"></script>
+		<script nonce="<?php echo $token; ?>" src="script/ThreeCanvas.js" type="text/javascript"></script>
+		<script nonce="<?php echo $token; ?>" src="script/ThreeExtras.js" type="text/javascript"></script>
+		<script nonce="<?php echo $token; ?>" src="script/jquery.js" type="text/javascript"></script>
+		<script nonce="<?php echo $token; ?>" src="script/stats.js" type="text/javascript"></script>
+		<script nonce="<?php echo $token; ?>" src="script/sky.js"></script>
+		<script nonce="<?php echo $token; ?>" src="script/site.js" type="text/javascript"></script>
+		<script nonce="<?php echo $token; ?>" src="script/highlight.js" type="text/javascript"></script>
+
+		<link href="css/animation.css" rel="stylesheet" type="text/css">
+		<link href="css/fonts.css" rel="stylesheet" type="text/css">
+		<link href="css/site.css" rel="stylesheet" type="text/css">
+		<link href="css/sky.css" rel="stylesheet" type="text/css">
+		<link href="css/reset.css" rel="stylesheet" type="text/css">
+		<link href="css/tomorrow-night-blue.css" rel="stylesheet" type="text/css">
+
+		<!-- @@@ -->
+		<title>Skies of the Lost Cause - How I wrote a hand tracking game from scratch</title>
+
+
+	</head>
+	<body>
+
+		<canvas id="main"></canvas>
+		<canvas id="background"></canvas>
+		<div id="mainLabel">
+			<p>Hi, it seems that the browser you're using is not compatible with my site. Either because it's too old or you're using one of the following browsers:</p>
+			<ul>
+				<li>Brow.sh - Terminal based browser that attempts to render a modern web using ssh</li>
+				<li>Lynx - Text based browser. The oldest browser that is still active in development!</li>
+				<li>w3m - Text based browser. Quite popular too</li>
+			</ul>
+		</div>
+		<div id="backgroundLabel">
+			<p>More importantly, I got you :-), Here is a backwards compatible version that is designed to work on older or no-javascript browsers <a href="http://classic.richardorilla.website">classic.richardorilla.website</a></p>
+		</div>
+		
+		<div id="header">
+			<div class="center themeContainer">
+				<object class="themelogo" type="image/svg+xml" data="images/pen.svg" align="middle">Your browser does not support SVG</object>
+			</div>
+			
+			<p class="headingBase start">= Skies of the lost cause +</p>
+			<p class="headingBase middle">Personal website of Richard Orilla</p>
+			<br>
+			<div class="center lineContainer">
+				<object class="lineSVG" type="image/svg+xml" data="images/hr.svg" align="middle">Your browser does not support SVG</object>
+			</div>
+		</div>
+
+		<div class="menu-container">
+			<div id="menu"></div>
+		</div>
+
+		<div id="content">
+			<h2 id="tableContents">Table of Contents</h2>
+			<ul>
+				<li><a href="#introduction">Introduction</a></li>
+				<li><a href="#methodology_how_i_approached_the_build">Methodology: how I approached the build</a></li>
+				<li><a href="#libraries_used_and_why_these_ones">Libraries used (and why these ones)</a></li>
+				<li><a href="#how_the_pieces_connect_mental_model">How the pieces connect (mental model)</a></li>
+				<li><a href="#performance_&_tradeoffs_the_“pain”_behind_the_happy_path">Performance & trade-offs (the “pain” behind the happy path)</a></li>
+				<li><a href="#follow_along_in_the_code_recommended_starting_points">Follow along in the code (recommended starting points)</a></li>
+				<li><a href="#the_core_idea_map_camera_landmarks_into_a_physics_playground">The core idea: map camera landmarks into a physics playground</a></li>
+				<li><a href="#bootstrapping_the_app_vite_+_react_entry_points">Bootstrapping the app: Vite + React entry points</a></li>
+				<li><a href="#getting_the_webcam_feed_reliably">Getting the webcam feed reliably</a></li>
+				<li><a href="#initializing_media_pipe_hands">Initializing MediaPipe Hands</a></li>
+				<li><a href="#building_the_“hands”_as_physics_colliders">Building the “hands” as physics colliders</a></li>
+				<li><a href="#the_scene_orthographic_camera_+_rapier_physics">The scene: orthographic camera + Rapier physics</a></li>
+				<li><a href="#touch_vs_grab_two_interaction_modes">Touch vs grab: two interaction modes</a></li>
+				<li><a href="#scoring_zones_sensors_instead_of_walls">Scoring zones: sensors instead of walls</a></li>
+				<li><a href="#state_waves_and_the_“game_loop”_in_react">State, waves, and the “game loop” in React</a></li>
+				<li><a href="#u_i_make_the_invisible_visible">UI: make the invisible visible</a></li>
+				<li><a href="#the_configuration_knobs_that_mattered">The configuration knobs that mattered</a></li>
+				<li><a href="#what_i’d_improve_next">What I’d improve next</a></li>
+				<li><a href="#conclusion">Conclusion</a></li>
+			</ul>
+			<h1 id="headingBlog">How I wrote a hand tracking game from scratch</h1>
+			<h2 id="introduction">Introduction</h2>
+			<p>I wanted to build something that felt like a “real” computer vision project but shipped as a playable web experience: open a page, allow the webcam, and immediately interact with a 3D world using nothing but your hands.</p>
+			<p>This repository is that experiment: a hand-tracking mini game built with <b>MediaPipe Hands</b> for real-time landmarks, <b>React</b> for UI structure and state, <b>React Three Fiber + Three.js</b> for rendering, and <b>React Three Rapier</b> for physics collisions and sensors.</p>
+			<p>Play the proof of concept (webcam required): <b><a href="https://www.richardorilla.website/online-samples/webcam-poc/">Launch the game</a></b></p>
+			<figure>
+				<a href="images/hand-tracking.png" target="_blank"><img class="preview center" src="images/hand-tracking.png"></a>
+				<figcaption>Figure 1. A gameplay screenshot showing the hand tracking integration.</figcaption>
+			</figure>
+			<h2 id="methodology_how_i_approached_the_build">Methodology: how I approached the build</h2>
+			<p>Before writing the first line of gameplay logic, I treated this like a small research project. The goal wasn’t just “detect hands”, it was “make it feel responsive enough to be a game”, and that changes which tradeoffs matter.</p>
+			<p>My selection criteria looked roughly like this:</p>
+			<ol>
+				<li>It has to run in the browser with a simple refresh loop (no native install).</li>
+				<li>Asset loading and initialization need to be predictable, otherwise the UX dies at the start screen.</li>
+				<li>Tracking output has to be easy to turn into something interactive (touching, grabbing, scoring), not just pretty overlays.</li>
+				<li>The runtime needs to stay stable under continuous processing (you’re doing CV and 3D every frame).</li>
+			</ol>
+			<p>From there, I picked the smallest set of tools that cover the whole loop: camera input, real-time inference, coordinate mapping, a physics world, and a UI layer that keeps the player oriented.</p>
+			<h2 id="libraries_used_and_why_these_ones">Libraries used (and why these ones)</h2>
+			<p><b>MediaPipe Hands</b> gave me strong tracking quality without having to build or host a model pipeline. The output is also structured (21 landmarks per hand), which is perfect for turning into colliders.</p>
+			<figure>
+				<a href="images/hand-landmarks.png" target="_blank"><img class="preview center" src="images/hand-landmarks.png"></a>
+				<figcaption>Figure 2. Visual representation of the 21 hand landmarks detected by MediaPipe.</figcaption>
+			</figure>
+			<p><b>React</b> keeps the app “web-native”: loading states, overlays, and game UI are easy to build and iterate on.</p>
+			<p><b>React Three Fiber + Three.js</b> is the bridge between React and a real 3D scene. I can compose the world as components, but still get a proper render loop.</p>
+			<p><b>React Three Rapier</b> gives the interactions weight. Instead of faking collisions with distance checks, I can let a physics engine handle contacts and sensors.</p>
+			<h2 id="how_the_pieces_connect_mental_model">How the pieces connect (mental model)</h2>
+			<p>If you’re trying to understand the architecture quickly, this is the data flow I kept in my head while building:</p>
+			<ol>
+				<li><b>useWebcam</b> is responsible for getting a <b>video</b> element that is actually ready, plus its real dimensions.</li>
+				<li><b>useHandTracking</b> consumes that video element, runs MediaPipe continuously, and produces <b>HandData[]</b> plus an <b>fps</b> counter.</li>
+				<li><b>Game.tsx</b> composes the system: it passes <b>hands</b> into the 3D world, passes video dimensions everywhere mapping is needed, and decides which overlays to show.</li>
+				<li><b>Scene.tsx</b> turns “hands and objects” into physics reality: colliders, a grab system, touch detection, and scoring sensors.</li>
+				<li><b>useGameState</b> keeps score, waves, lives, and UI events in a way that still feels like React rather than a custom engine.</li>
+			</ol>
+			<h2 id="performance_&_tradeoffs_the_“pain”_behind_the_happy_path">Performance & trade-offs (the “pain” behind the happy path)</h2>
+			<p>This stack is heavy: MediaPipe inference, a physics step, and a WebGL scene all have to cooperate in real time, and you feel every millisecond of latency.</p>
+			<ul>
+				<li><b>Why React for a game?</b> This is a casual, discrete-interaction game. Most state changes happen on events (touch, deliver, miss), not every frame, so React state stays manageable. For a twitch game, I would drive gameplay from the render loop with refs and keep React for UI only.</li>
+				<li><b>Glass-to-glass latency is real.</b> Camera frames arrive late, MediaPipe adds inference latency, and smoothing adds deliberate lag to reduce jitter. I tuned for stability and “touchability”, not perfect 1:1 mirroring.</li>
+				<li><b>Main thread vs Worker.</b> I kept MediaPipe on the main thread for simplicity. On lower-end devices, a production version should move inference into a Worker and decouple rendering from CV.</li>
+			</ul>
+			<p>Most of the tuning ended up being small constants:</p>
+			<ul>
+				<li><b>Jitter vs lag</b>: increasing <b>HAND_SMOOTHING_FACTOR</b> makes motion steadier, but your hand collider trails more.</li>
+				<li><b>Pinch stability</b>: the start/end thresholds (<b>PINCH_START_DISTANCE</b>/<b>PINCH_END_DISTANCE</b>) are a simple hysteresis that prevents flicker.</li>
+			</ul>
+			<h2 id="follow_along_in_the_code_recommended_starting_points">Follow along in the code (recommended starting points)</h2>
+			<p>The <a href="https://github.com/Shin-Aska/poc-camera-ml/blob/main/src/components/Game.tsx"><b>Game.tsx</b></a> component is the orchestrator. It wires up the webcam, the MediaPipe hook, the game state machine, and decides which layers render (video, 3D scene, overlays, UI). You can see the entire “composition root” in one place:</p>
+			<p>I’m intentionally not inlining the full component here. Most of it is standard React wiring. If you want the full end-to-end “composition root”, start with that file.</p>
+			<p>The <a href="https://github.com/Shin-Aska/poc-camera-ml/blob/main/src/hooks/useHandTracking.ts"><b>useHandTracking.ts</b></a> hook is where MediaPipe is configured, initialized, and run on every frame. It also turns MediaPipe’s raw results into the project’s <b>HandData</b> model (plus an <b>fps</b> counter), which is what the rest of the app consumes:</p>
+			<p>The interesting parts here are the asset loading strategy (<b>locateFile</b>), the continuously-fed frame loop, and the “domain model” conversion step. The repo has the full implementation.</p>
+			<p>Finally, <a href="https://github.com/Shin-Aska/poc-camera-ml/blob/main/src/components/Scene.tsx"><b>Scene.tsx</b></a> is the 3D “wiring” for React Three Fiber + Rapier. It derives an orthographic camera frustum from the webcam aspect ratio, mounts the physics world, then composes the gameplay primitives: hand colliders, falling objects, scoring zones, and the grab system:</p>
+			<p>Most of the JSX here is boilerplate scene composition. The key idea is that the camera frustum is derived from the <b>actual</b> video aspect ratio, so the world scale matches what you see on screen.</p>
+			<h2 id="the_core_idea_map_camera_landmarks_into_a_physics_playground">The core idea: map camera landmarks into a physics playground</h2>
+			<p>MediaPipe gives you hand landmarks in <b>normalized video space</b> (values roughly from <b>0..1</b>, plus a relative depth <b>z</b>). A physics engine wants coordinates in a consistent “world” space.</p>
+			<p>This project treats the webcam feed like a 2D input surface that drives a 3D scene:</p>
+			<p>A webcam video is shown as the background, an orthographic 3D scene is rendered on top, hand landmarks become kinematic physics colliders, and falling objects can be touched or grabbed and delivered into scoring zones.</p>
+			<p>The key translation layer is the coordinate mapper:</p>
+			<p><a href="https://github.com/Shin-Aska/poc-camera-ml/blob/main/src/services/CoordinateMapper/service.ts"><b>src/services/CoordinateMapper/service.ts</b></a></p>
+			<p>It mirrors X (so movement feels natural like a selfie camera), scales to match the current video aspect ratio, and clamps depth to keep interactions stable.</p>
+			<p>The important part is that it takes normalized landmark coordinates from MediaPipe and produces world coordinates that match the orthographic frustum:</p>
+			<pre>
+				<code class="language-ts">
+  static toWorld(landmark: NormalizedPoint, videoWidth: number, videoHeight: number): WorldPoint {
+    const nx = Math.max(0, Math.min(1, landmark.x))
+    const ny = Math.max(0, Math.min(1, landmark.y))
+    const mirroredX = 1 - nx
+    const aspect = videoHeight === 0 ? 1 : videoWidth / videoHeight
+    const frustumHeight = GameConfig.WORLD_HEIGHT
+    const frustumWidth = frustumHeight * aspect
+    const worldX = (mirroredX - 0.5) * frustumWidth
+    const worldY = (0.5 - ny) * frustumHeight
+    const normalizedDepth = Math.max(-0.5, Math.min(0.5, -landmark.z))
+    const worldZ = InteractionConfig.INTERACTION_PLANE_Z +
+      normalizedDepth * InteractionConfig.INTERACTION_DEPTH
+    return { x: worldX, y: worldY, z: worldZ }
+  }
+
+				</code>
+			</pre>
+			<h2 id="bootstrapping_the_app_vite_+_react_entry_points">Bootstrapping the app: Vite + React entry points</h2>
+			<p>I kept the browser surface area small and predictable: Vite serves <b>index.html</b>, mounts React into <b>#root</b>, and the game takes over.</p>
+			<p>Entry Points:</p>
+			<ul>
+				<li><a href="https://github.com/Shin-Aska/poc-camera-ml/blob/main/index.html"><b>index.html</b></a> Defines the single <b>#root</b> mount point and loads the Vite entry module.</li>
+				<li><a href="https://github.com/Shin-Aska/poc-camera-ml/blob/main/src/main.tsx"><b>src/main.tsx</b></a> Boots React and renders <b>&lt;App/&gt;</b> into <b>#root</b>.</li>
+				<li><a href="https://github.com/Shin-Aska/poc-camera-ml/blob/main/src/App.tsx"><b>src/App.tsx</b></a> Minimal wrapper that returns <b>&lt;Game/&gt;</b>.</li>
+			</ul>
+			<p>These are intentionally boring. The whole point is that the app starts with a single DOM node, React mounts once, and then everything lives inside <b>&lt;Game/&gt;</b>.</p>
+			<p>I’m skipping the boilerplate snippets here. If you want to see the full boot sequence, it’s in the three files above.</p>
+			<p>Managing MediaPipe assets in a Vite build can be surprisingly annoying. I used a small copy script in <b>postinstall</b>/<b>predev</b>/<b>prebuild</b> so the model assets are always available during dev and build:</p>
+			<ul>
+				<li><a href="https://github.com/Shin-Aska/poc-camera-ml/blob/main/package.json"><b>package.json</b></a></li>
+				<li><a href="https://github.com/Shin-Aska/poc-camera-ml/blob/main/scripts/copy-mediapipe-hands.mjs"><b>scripts/copy-mediapipe-hands.mjs</b></a></li>
+			</ul>
+			<h2 id="getting_the_webcam_feed_reliably">Getting the webcam feed reliably</h2>
+			<p>The first practical hurdle is not ML—it’s camera initialization and video metadata.</p>
+			<p>The hook:</p>
+			<p><a href="https://github.com/Shin-Aska/poc-camera-ml/blob/main/src/hooks/useWebcam.ts"><b>src/hooks/useWebcam.ts</b></a></p>
+			<p>does a few important things:</p>
+			<p>It calls <b>navigator.mediaDevices.getUserMedia</b> with a reasonable “ideal” resolution, waits for <b>onloadedmetadata</b> so the app knows the <i>real</i> <b>videoWidth</b> and <b>videoHeight</b>, then stores those dimensions because everything downstream (mapping + world scale) depends on them.</p>
+			<h2 id="initializing_media_pipe_hands">Initializing MediaPipe Hands</h2>
+			<p>The heart of hand tracking lives in:</p>
+			<p><a href="https://github.com/Shin-Aska/poc-camera-ml/blob/main/src/hooks/useHandTracking.ts"><b>src/hooks/useHandTracking.ts</b></a></p>
+			<p>A few design decisions here mattered a lot for a game feel:</p>
+			<p>It loads assets via CDN using <b>locateFile</b> (so bundling doesn’t get complicated), runs continuous frame processing with <b>requestAnimationFrame</b>, and exposes an FPS counter so performance is visible during play.</p>
+			<p>The hook turns MediaPipe output into a small domain model (<b>HandData</b>) that’s easy to pass around the app.</p>
+			<p>You can see the full “lifecycle” in one hook: instantiate <b>Hands</b>, register <b>onResults</b>, initialize, then keep feeding frames from the video element.</p>
+			<p>I’m omitting the full implementation here because it’s mostly library configuration. The file above is the authoritative reference.</p>
+			<h2 id="building_the_“hands”_as_physics_colliders">Building the “hands” as physics colliders</h2>
+			<p>A common trap is to treat hand landmarks like UI coordinates. For gameplay, physics collisions are more robust.</p>
+			<p>This project spawns a set of spheres (only for selected landmarks) and moves them kinematically:</p>
+			<ul>
+				<li><a href="https://github.com/Shin-Aska/poc-camera-ml/blob/main/src/components/physics/HandColliders.tsx"><b>src/components/physics/HandColliders.tsx</b></a></li>
+				<li><a href="https://github.com/Shin-Aska/poc-camera-ml/blob/main/src/components/physics/HandColliderSphere.tsx"><b>src/components/physics/HandColliderSphere.tsx</b></a></li>
+			</ul>
+			<p>Two small but important touches:</p>
+			<p>Fingertips have a larger radius (which makes “touching” objects feel less pixel-perfect), and smoothing reduces jitter so the collider doesn’t teleport; it lerps toward the target using <a href="https://github.com/Shin-Aska/poc-camera-ml/blob/main/src/services/Smoothing/service.ts"><b>src/services/Smoothing/service.ts</b></a></p>
+			<p><b>HandColliders.tsx</b> is the “spawn colliders from landmarks” bridge. It selects a subset of landmark indices, maps each one into world space, and creates a collider sphere per landmark.</p>
+			<p><b>HandColliderSphere.tsx</b> is where the “game feel” starts to show up. It makes fingertips fatter, then uses <b>setNextKinematicTranslation</b> so Rapier treats the hand as a kinematic driver instead of a dynamic body:</p>
+			<pre>
+				<code class="language-ts">
+  const isFingertip = [4, 8, 12, 16, 20].includes(landmarkIndex)
+  const radius = isFingertip
+    ? VisualConfig.HAND_SPHERE_RADIUS * 1.5
+    : VisualConfig.HAND_SPHERE_RADIUS
+  useFrame((_, delta) =&gt; {
+    const next = SmoothingService.lerpPosition(
+      currentPositionRef.current,
+      targetPositionRef.current,
+      InteractionConfig.HAND_SMOOTHING_FACTOR,
+      delta
+    )
+    rigidBodyRef.current.setNextKinematicTranslation({ x: next[0], y: next[1], z: next[2] })
+  })
+
+				</code>
+			</pre>
+			<p>This is also where I traded a bit of latency for stability: smoothing reduces jitter, but it means the collider trails behind your real hand slightly.</p>
+			<h2 id="the_scene_orthographic_camera_+_rapier_physics">The scene: orthographic camera + Rapier physics</h2>
+			<p>The 3D world is intentionally “flat” in the sense that an orthographic camera makes interactions feel like dragging stickers on a screen—except it’s still real physics under the hood.</p>
+			<p><a href="https://github.com/Shin-Aska/poc-camera-ml/blob/main/src/components/Scene.tsx"><b>src/components/Scene.tsx</b></a></p>
+			<p>The scene computes a frustum based on the <i>actual</i> video aspect ratio so world coordinates match what you see behind the canvas.</p>
+			<p>This is the part that keeps the 3D world “locked” to whatever the camera is doing. <b>WORLD_HEIGHT</b> stays constant, while <b>frustumWidth</b> adapts to the webcam feed.</p>
+			<h2 id="touch_vs_grab_two_interaction_modes">Touch vs grab: two interaction modes</h2>
+			<p>I wanted two distinct actions:</p>
+			<p>Quick touch means holding your fingertip on an object briefly, while grab & drag means pinching to pick the nearest object within a radius, then moving it.</p>
+			<p>The grab system:</p>
+			<p><a href="https://github.com/Shin-Aska/poc-camera-ml/blob/main/src/hooks/useGrabSystem.ts"><b>src/hooks/useGrabSystem.ts</b></a></p>
+			<p>uses a pinch detector:</p>
+			<p><a href="https://github.com/Shin-Aska/poc-camera-ml/blob/main/src/services/GestureDetector/service.ts"><b>src/services/GestureDetector/service.ts</b></a></p>
+			<p>and translates a “cursor” landmark (middle MCP, or midpoint between finger tips) into a world target.</p>
+			<p>The “pinch” itself is deliberately simple and stable: a two-threshold hysteresis so you don’t flicker between pinching and not pinching every other frame.</p>
+			<pre>
+				<code class="language-ts">
+  const wasPinching = this.pinchStateByHand.get(handIndex) ?? false
+  const isPinching = wasPinching
+    ? distance &lt;= InteractionConfig.PINCH_END_DISTANCE
+    : distance &lt;= InteractionConfig.PINCH_START_DISTANCE
+
+				</code>
+			</pre>
+			<p>Then <b>useGrabSystem</b> turns pinch + cursor into object selection. It maps the cursor into world space, finds the nearest body within <b>GRAB_RADIUS</b>, and stores a per-object grab target:</p>
+			<p>In other words: pinch creates a “grab intent”, and the system picks the closest candidate inside a radius.</p>
+			<p>On the object side, the renderer combines:</p>
+			<p>Actual Rapier collisions (hand spheres collide with objects), a “hold-to-touch” timer, and a kinematic mode for dragging.</p>
+			<p>All of that logic is in:</p>
+			<p><a href="https://github.com/Shin-Aska/poc-camera-ml/blob/main/src/components/items/ShapeItemRenderer.tsx"><b>src/components/items/ShapeItemRenderer.tsx</b></a></p>
+			<p><b>ShapeItemRenderer.tsx</b> is where “physics object” becomes “game object”. It has to handle multiple interaction modes: collision touches, hold-to-touch timing, and being dragged by a kinematic hand.</p>
+			<p>At the collision level, it uses Rapier’s collision callbacks and checks for <b>userData.type === 'hand'</b> on the other body:</p>
+			<p>I also made touch recognition time-based (instead of frame-based) so it feels consistent across machines with different frame rates.</p>
+			<h2 id="scoring_zones_sensors_instead_of_walls">Scoring zones: sensors instead of walls</h2>
+			<p>The scoring zones are physics sensors that allow objects to pass through them without bouncing off.</p>
+			<ul>
+				<li><a href="https://github.com/Shin-Aska/poc-camera-ml/blob/main/src/components/items/ScoringZoneList.tsx"><b>src/components/items/ScoringZoneList.tsx</b></a></li>
+				<li><a href="https://github.com/Shin-Aska/poc-camera-ml/blob/main/src/components/items/ScoringZoneRenderer.tsx"><b>src/components/items/ScoringZoneRenderer.tsx</b></a></li>
+			</ul>
+			<p>When an object intersects a zone, the zone reports <b>objectId</b> and <b>colorIndex</b>, which becomes a scoring event.</p>
+			<p>The zones are built as a small generated list (left/right per Y position) so the layout can be tuned from config:</p>
+			<p>And the renderer uses a Rapier <b>sensor</b> body. Instead of bouncing objects away, it listens for intersections and reports deliveries back up to game state.</p>
+			<h2 id="state_waves_and_the_“game_loop”_in_react">State, waves, and the “game loop” in React</h2>
+			<p>I kept the “game loop” mostly in React state + effects instead of a monolithic engine.</p>
+			<p><b>useGameState</b> manages:</p>
+			<p>Score, wave progression, lives, combo multipliers, and score popups.</p>
+			<p>Source:</p>
+			<p><a href="https://github.com/Shin-Aska/poc-camera-ml/blob/main/src/hooks/useGameState.ts"><b>src/hooks/useGameState.ts</b></a></p>
+			<p><b>useGameState.ts</b> is where the “game loop” lives in React terms. Instead of a classic <b>while (running)</b> loop, it’s event-driven: touch events mark objects as eligible, deliveries award points, and waves spawn when the current wave is cleared.</p>
+			<p>The scoring rules are all centralized in <b>onObjectDelivered</b>, including combo logic and game-over handling:</p>
+			<p>This is also where the “React for a game” trade-off is most visible: <b>useGameState</b> uses React state, so scoring and wave changes cause re-renders. In this project, that’s acceptable because these updates are event-driven and relatively infrequent compared to the render loop.</p>
+			<p>The main <b>Game</b> component composes the system and decides what layers render:</p>
+			<p>Webcam video layer, 3D scene layer, SVG hand wireframe overlay, and the UI overlay.</p>
+			<p><a href="https://github.com/Shin-Aska/poc-camera-ml/blob/main/src/components/Game.tsx"><b>src/components/Game.tsx</b></a></p>
+			<p>The key thing to notice is that it gates the expensive layers behind <b>gameState.isPlaying</b>, and it passes the two pieces of “global context” everywhere: <b>hands</b> and <b>videoDimensions</b>.</p>
+			<p>I’m omitting the component markup here. The full wiring is in the <b>Game.tsx</b> file linked above.</p>
+			<h2 id="u_i_make_the_invisible_visible">UI: make the invisible visible</h2>
+			<p>The UI pieces are intentionally simple, but they solve a real usability problem: when tracking is imperfect, players need feedback.</p>
+			<p>Key components:</p>
+			<p>These UI components are mostly standard React, so I’ll summarize instead of dumping markup:</p>
+			<ul>
+				<li><b>Hand overlay wireframe</b>: <a href="https://github.com/Shin-Aska/poc-camera-ml/blob/main/src/components/UI/HandWireframe.tsx"><b>src/components/UI/HandWireframe.tsx</b></a></li>
+				<li><b>Start screen + loading gate</b>: <a href="https://github.com/Shin-Aska/poc-camera-ml/blob/main/src/components/UI/StartScreen.tsx"><b>src/components/UI/StartScreen.tsx</b></a></li>
+				<li><b>Score + lives + FPS overlay</b>: <a href="https://github.com/Shin-Aska/poc-camera-ml/blob/main/src/components/UI/ScoreOverlay.tsx"><b>src/components/UI/ScoreOverlay.tsx</b></a></li>
+				<li><b>Wave announcements</b>: <a href="https://github.com/Shin-Aska/poc-camera-ml/blob/main/src/components/UI/WaveAnnouncement.tsx"><b>src/components/UI/WaveAnnouncement.tsx</b></a></li>
+				<li><b>Score popups</b>: <a href="https://github.com/Shin-Aska/poc-camera-ml/blob/main/src/components/UI/ScorePopup.tsx"><b>src/components/UI/ScorePopup.tsx</b></a></li>
+			</ul>
+			<h2 id="the_configuration_knobs_that_mattered">The configuration knobs that mattered</h2>
+			<p>This kind of project lives or dies on small constants. I separated the most “game feel” settings into configs:</p>
+			<p>Interaction tuning (pinch thresholds, smoothing, grab radius): <a href="https://github.com/Shin-Aska/poc-camera-ml/blob/main/src/config/interaction.config.ts"><b>src/config/interaction.config.ts</b></a></p>
+			<p>World scale + gravity + pacing: <a href="https://github.com/Shin-Aska/poc-camera-ml/blob/main/src/config/game.config.ts"><b>src/config/game.config.ts</b></a></p>
+			<p>Colors, sizes, scoring, and combo multipliers: <a href="https://github.com/Shin-Aska/poc-camera-ml/blob/main/src/config/visual.config.ts"><b>src/config/visual.config.ts</b></a></p>
+			<p>These config files look small, but they are the difference between “it technically works” and “it feels playable”. For example, the pinch thresholds and smoothing factors are all in one place:</p>
+			<p>Rather than listing constants inline, I keep them centralized in config so I can tune without rewriting logic:</p>
+			<ul>
+				<li><a href="https://github.com/Shin-Aska/poc-camera-ml/blob/main/src/config/interaction.config.ts"><b>src/config/interaction.config.ts</b></a></li>
+				<li><a href="https://github.com/Shin-Aska/poc-camera-ml/blob/main/src/config/game.config.ts"><b>src/config/game.config.ts</b></a></li>
+				<li><a href="https://github.com/Shin-Aska/poc-camera-ml/blob/main/src/config/visual.config.ts"><b>src/config/visual.config.ts</b></a></li>
+			</ul>
+			<p>A nice side effect: I can tune the experience without rewriting logic.</p>
+			<h2 id="what_i’d_improve_next">What I’d improve next</h2>
+			<p>If I had another iteration, I’d focus on:</p>
+			<ul>
+				<li>Better temporal filtering (landmark smoothing per joint, not just collider lerp)</li>
+				<li>Gesture vocabulary (open palm, swipe, “push” depth)</li>
+				<li>Accessibility options (left-handed vs right-handed defaults, colorblind-friendly palettes)</li>
+				<li>Mobile performance profiling</li>
+			</ul>
+			<p>But for now, this proof of concept is already a solid foundation for further exploration.</p>
+			<h2 id="conclusion">Conclusion</h2>
+			<p>This project taught me that “hand tracking game” is really three separate problems that all have to cooperate:</p>
+			<p>Perception (MediaPipe landmarks), mapping (turning normalized coordinates into a stable world), and interaction (physics + gestures + feedback).</p>
+			<p>Once those layers are clean, the game becomes surprisingly straightforward: spawn objects, detect touches and deliveries, and make the UI celebrate what the player just did.</p>
+			<p>If you want to build your own version, start small: get the webcam + landmarks rendering, then add one physics object, then add one scoring rule. By the time you have those three pieces working together, you’re already most of the way to a playable hand-tracking experience.</p>
+			<h3>~ End ~</h3>
+			<h4>
+				There are
+				<?php
+					include "site_counter.php";
+					echo get_page_count("hand-tracking-article");
+				?>
+				viewers that have read this page.
+			</h4>
+			<section id="comments">
+				<?php
+					require_once "CommentFactory.php";
+					require_once "MastodonCommentProvider.php";
+					require_once "BlueskyCommentProvider.php";
+			
+					$commentBundles = [
+						mastodon_comment_bundle("116029405377710255", "mastodon.social", "richardorilla"),
+						bluesky_comment_bundle("https://bsky.app/profile/www.richardorilla.website/post/3mebh2wuwmc2n"),
+					];
+			
+					echo comment_factory_render(comment_factory_merge($commentBundles));
+				?>
+			</section>
+			<h4>
+				<a href="#headingBlog">Go back to top</a>
+			</h4>
+			<h4>
+				<a href="blog.html">Go back to list of articles</a>
+			</h4>
+		</div>
+	</body>
+	<script nonce="<?php echo $token; ?>">
+		$(document).ready(function () {
+			var images = $("img.preview.center");
+			for (var i = 0; i < images.length; i++) {
+				let element = images[i];
+				element.onmouseover = () => {
+					element.oldsrc = element.src;
+					element.src = element.src.replace("_tmb", "");
+				}
+	
+				element.onmouseout = () => {
+					element.src = element.oldsrc;
+				}
+			}
+			hljs.highlightAll();
+		});
+	</script>
+</html>
