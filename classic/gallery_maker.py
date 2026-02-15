@@ -48,6 +48,8 @@ if __name__ == "__main__":
         doc = f"""
         <html>
         <head>
+            <meta name="color-scheme" content="light only">
+            <meta name="darkreader-lock">
             <style>
                 {css}
             </style>

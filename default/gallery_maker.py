@@ -1,5 +1,9 @@
 import os
 import json
+import re
+
+def natural_sort_key(s):
+    return [int(part) if part.isdigit() else part.lower() for part in re.split(r"(\d+)", s)]
 
 def scan(folder, mode=1):
     results = []
@@ -10,6 +14,7 @@ def scan(folder, mode=1):
         if mode == 2:
             if i.is_dir():
                 results.append(i)
+    results.sort(key=lambda e: natural_sort_key(e.name))
     return results
 
 if __name__ == "__main__":
@@ -31,4 +36,3 @@ if __name__ == "__main__":
     f = open("gallery.js", "w")
     f.write("var pictures = " + json.dumps(result))
     f.close()
-    

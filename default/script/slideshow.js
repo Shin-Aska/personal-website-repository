@@ -26,30 +26,39 @@ function chooseAlbum(album) {
 	showSlides(slideIndex);
 }
 
+function getSortedFilesForGallery(gallery) {
+	return pictures[gallery].files.slice().sort(function(a, b) {
+		var ap = (a && a.path) ? a.path : "";
+		var bp = (b && b.path) ? b.path : "";
+		return ap.localeCompare(bp, undefined, { numeric: true, sensitivity: "base" });
+	});
+}
+
 function render() {
 	var thumbnailContainer = document.getElementById("thumbnailContainer");
 	var slideContainer = document.getElementById("slideContainer");
+	var files = getSortedFilesForGallery(chosenGallery);
 
 	slideContainer.innerHTML = "";
 	thumbnailContainer.innerHTML = "";
-	for (var i = 0; i < pictures[chosenGallery].files.length; i++) {
-		var picture = pictures[chosenGallery].files[i];
+	for (var i = 0; i < files.length; i++) {
+		var picture = files[i];
 		var slide = 
 		'<div class="mySlides">' +
-		'	<div class="numbertext">' + (i+1) + ' / ' + pictures[chosenGallery].files.length + '</div>' +
-		'   <a href="' + pictures[chosenGallery].files[i].path + '" target="_blank">' +
-		'	  <img src="' + pictures[chosenGallery].files[i].path + '" class="imageSlide">' +
+		'	<div class="numbertext">' + (i+1) + ' / ' + files.length + '</div>' +
+		'   <a href="' + picture.path + '" target="_blank">' +
+		'	  <img src="' + picture.path + '" class="imageSlide">' +
 		'   </a>' +
 		'</div>';
 
 		var thumbnail = 
-		'<div class="column" ><img class="demo cursor" src="' + pictures[chosenGallery].files[i].path + '" id="slideImage_' + (i+1) + '""></div>';
+		'<div class="column" ><img class="demo cursor" src="' + picture.path + '" id="slideImage_' + (i+1) + '"></div>';
 
 		slideContainer.innerHTML += slide;
 		thumbnailContainer.innerHTML += thumbnail;
 	}
 
-	for (var i = 0; i < pictures[chosenGallery].files.length; i++) {
+	for (var i = 0; i < files.length; i++) {
 		document.getElementById("slideImage_" + (i+1)).onclick = function(elem) {
 			var chosenId = elem.target.id.split("_")[1];
 			currentSlide(parseInt(chosenId));
