@@ -1,28 +1,134 @@
 
         <html>
         <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
             <meta name="color-scheme" content="light only">
             <meta name="darkreader-lock">
+            <link href="css/slideshow.css" rel="stylesheet" type="text/css">
             <style>
                 
-            img {
-              width: 150px;
-              height: 300px;
+            html, body {
+              margin: 0;
+              padding: 0;
+              background: transparent;
+            }
+
+            body {
+              overflow: hidden;
+            }
+
+            .mySlides {
+              display: none;
+            }
+
+            .numbertext {
+              background: black;
+            }
+
+            .imageSlide {
+              width: 100%;
+              height: 416px;
+              object-fit: cover;
+              display: block;
+            }
+
+            .column {
+              display: inline;
+            }
+
+            .column > .demo {
+              width: 148px;
+              height: 120px;
               object-fit: cover;
             }
 
-            h1 {
-              text-transform: capitalize;
+            #thumbnailContainer {
+              white-space: nowrap;
+              overflow: auto;
             }
         
             </style>
         </head>
             <body>
-                <center>
-                    <h1>scenery</h1>
-                    <br>
-                    <a href='gallery\scenery\personal_1.jpg' target='_blank'><img src='gallery\scenery\personal_1.jpg' /></a><a href='gallery\scenery\personal_10.jpg' target='_blank'><img src='gallery\scenery\personal_10.jpg' /></a><a href='gallery\scenery\personal_11.jpg' target='_blank'><img src='gallery\scenery\personal_11.jpg' /></a><a href='gallery\scenery\personal_12.jpg' target='_blank'><img src='gallery\scenery\personal_12.jpg' /></a><a href='gallery\scenery\personal_13.jpg' target='_blank'><img src='gallery\scenery\personal_13.jpg' /></a><a href='gallery\scenery\personal_14.jpg' target='_blank'><img src='gallery\scenery\personal_14.jpg' /></a><a href='gallery\scenery\personal_15.jpg' target='_blank'><img src='gallery\scenery\personal_15.jpg' /></a><a href='gallery\scenery\personal_16.png' target='_blank'><img src='gallery\scenery\personal_16.png' /></a><a href='gallery\scenery\personal_17.jpeg' target='_blank'><img src='gallery\scenery\personal_17.jpeg' /></a><a href='gallery\scenery\personal_18.jpeg' target='_blank'><img src='gallery\scenery\personal_18.jpeg' /></a><a href='gallery\scenery\personal_19.jpeg' target='_blank'><img src='gallery\scenery\personal_19.jpeg' /></a><a href='gallery\scenery\personal_2.jpg' target='_blank'><img src='gallery\scenery\personal_2.jpg' /></a><a href='gallery\scenery\personal_3.jpg' target='_blank'><img src='gallery\scenery\personal_3.jpg' /></a><a href='gallery\scenery\personal_4.jpg' target='_blank'><img src='gallery\scenery\personal_4.jpg' /></a><a href='gallery\scenery\personal_5.jpg' target='_blank'><img src='gallery\scenery\personal_5.jpg' /></a><a href='gallery\scenery\personal_6.jpg' target='_blank'><img src='gallery\scenery\personal_6.jpg' /></a><a href='gallery\scenery\personal_7.jpg' target='_blank'><img src='gallery\scenery\personal_7.jpg' /></a><a href='gallery\scenery\personal_8.jpg' target='_blank'><img src='gallery\scenery\personal_8.jpg' /></a><a href='gallery\scenery\personal_9.jpg' target='_blank'><img src='gallery\scenery\personal_9.jpg' /></a>
-                </center>
+                <div class="container">
+                    <div id="slideContainer"><div class="mySlides">  <div class="numbertext">1 / 19</div>  <a href="gallery\scenery\personal_1.jpg" target="_blank">    <img src="gallery\scenery\personal_1.jpg" class="imageSlide">  </a></div><div class="mySlides">  <div class="numbertext">2 / 19</div>  <a href="gallery\scenery\personal_2.jpg" target="_blank">    <img src="gallery\scenery\personal_2.jpg" class="imageSlide">  </a></div><div class="mySlides">  <div class="numbertext">3 / 19</div>  <a href="gallery\scenery\personal_3.jpg" target="_blank">    <img src="gallery\scenery\personal_3.jpg" class="imageSlide">  </a></div><div class="mySlides">  <div class="numbertext">4 / 19</div>  <a href="gallery\scenery\personal_4.jpg" target="_blank">    <img src="gallery\scenery\personal_4.jpg" class="imageSlide">  </a></div><div class="mySlides">  <div class="numbertext">5 / 19</div>  <a href="gallery\scenery\personal_5.jpg" target="_blank">    <img src="gallery\scenery\personal_5.jpg" class="imageSlide">  </a></div><div class="mySlides">  <div class="numbertext">6 / 19</div>  <a href="gallery\scenery\personal_6.jpg" target="_blank">    <img src="gallery\scenery\personal_6.jpg" class="imageSlide">  </a></div><div class="mySlides">  <div class="numbertext">7 / 19</div>  <a href="gallery\scenery\personal_7.jpg" target="_blank">    <img src="gallery\scenery\personal_7.jpg" class="imageSlide">  </a></div><div class="mySlides">  <div class="numbertext">8 / 19</div>  <a href="gallery\scenery\personal_8.jpg" target="_blank">    <img src="gallery\scenery\personal_8.jpg" class="imageSlide">  </a></div><div class="mySlides">  <div class="numbertext">9 / 19</div>  <a href="gallery\scenery\personal_9.jpg" target="_blank">    <img src="gallery\scenery\personal_9.jpg" class="imageSlide">  </a></div><div class="mySlides">  <div class="numbertext">10 / 19</div>  <a href="gallery\scenery\personal_10.jpg" target="_blank">    <img src="gallery\scenery\personal_10.jpg" class="imageSlide">  </a></div><div class="mySlides">  <div class="numbertext">11 / 19</div>  <a href="gallery\scenery\personal_11.jpg" target="_blank">    <img src="gallery\scenery\personal_11.jpg" class="imageSlide">  </a></div><div class="mySlides">  <div class="numbertext">12 / 19</div>  <a href="gallery\scenery\personal_12.jpg" target="_blank">    <img src="gallery\scenery\personal_12.jpg" class="imageSlide">  </a></div><div class="mySlides">  <div class="numbertext">13 / 19</div>  <a href="gallery\scenery\personal_13.jpg" target="_blank">    <img src="gallery\scenery\personal_13.jpg" class="imageSlide">  </a></div><div class="mySlides">  <div class="numbertext">14 / 19</div>  <a href="gallery\scenery\personal_14.jpg" target="_blank">    <img src="gallery\scenery\personal_14.jpg" class="imageSlide">  </a></div><div class="mySlides">  <div class="numbertext">15 / 19</div>  <a href="gallery\scenery\personal_15.jpg" target="_blank">    <img src="gallery\scenery\personal_15.jpg" class="imageSlide">  </a></div><div class="mySlides">  <div class="numbertext">16 / 19</div>  <a href="gallery\scenery\personal_16.png" target="_blank">    <img src="gallery\scenery\personal_16.png" class="imageSlide">  </a></div><div class="mySlides">  <div class="numbertext">17 / 19</div>  <a href="gallery\scenery\personal_17.jpeg" target="_blank">    <img src="gallery\scenery\personal_17.jpeg" class="imageSlide">  </a></div><div class="mySlides">  <div class="numbertext">18 / 19</div>  <a href="gallery\scenery\personal_18.jpeg" target="_blank">    <img src="gallery\scenery\personal_18.jpeg" class="imageSlide">  </a></div><div class="mySlides">  <div class="numbertext">19 / 19</div>  <a href="gallery\scenery\personal_19.jpeg" target="_blank">    <img src="gallery\scenery\personal_19.jpeg" class="imageSlide">  </a></div></div>
+                    <a id="prevBtn" class="prev">&#10094;</a>
+                    <a id="nextBtn" class="next">&#10095;</a>
+                    <div class="caption-container"><p id="caption"></p></div>
+                    <div class="row" id="thumbnailContainer"><div class="column"><img class="demo cursor" src="gallery\scenery\personal_1.jpg" id="slideImage_1"></div><div class="column"><img class="demo cursor" src="gallery\scenery\personal_2.jpg" id="slideImage_2"></div><div class="column"><img class="demo cursor" src="gallery\scenery\personal_3.jpg" id="slideImage_3"></div><div class="column"><img class="demo cursor" src="gallery\scenery\personal_4.jpg" id="slideImage_4"></div><div class="column"><img class="demo cursor" src="gallery\scenery\personal_5.jpg" id="slideImage_5"></div><div class="column"><img class="demo cursor" src="gallery\scenery\personal_6.jpg" id="slideImage_6"></div><div class="column"><img class="demo cursor" src="gallery\scenery\personal_7.jpg" id="slideImage_7"></div><div class="column"><img class="demo cursor" src="gallery\scenery\personal_8.jpg" id="slideImage_8"></div><div class="column"><img class="demo cursor" src="gallery\scenery\personal_9.jpg" id="slideImage_9"></div><div class="column"><img class="demo cursor" src="gallery\scenery\personal_10.jpg" id="slideImage_10"></div><div class="column"><img class="demo cursor" src="gallery\scenery\personal_11.jpg" id="slideImage_11"></div><div class="column"><img class="demo cursor" src="gallery\scenery\personal_12.jpg" id="slideImage_12"></div><div class="column"><img class="demo cursor" src="gallery\scenery\personal_13.jpg" id="slideImage_13"></div><div class="column"><img class="demo cursor" src="gallery\scenery\personal_14.jpg" id="slideImage_14"></div><div class="column"><img class="demo cursor" src="gallery\scenery\personal_15.jpg" id="slideImage_15"></div><div class="column"><img class="demo cursor" src="gallery\scenery\personal_16.png" id="slideImage_16"></div><div class="column"><img class="demo cursor" src="gallery\scenery\personal_17.jpeg" id="slideImage_17"></div><div class="column"><img class="demo cursor" src="gallery\scenery\personal_18.jpeg" id="slideImage_18"></div><div class="column"><img class="demo cursor" src="gallery\scenery\personal_19.jpeg" id="slideImage_19"></div></div>
+                </div>
+                <script>
+                    var slideIndex = 1;
+
+                    function resizeIframeToContent() {
+                        try {
+                            var iframe = window.frameElement;
+                            if (!iframe) {
+                                return;
+                            }
+                            var h = Math.max(
+                                document.body ? document.body.scrollHeight : 0,
+                                document.documentElement ? document.documentElement.scrollHeight : 0
+                            );
+                            if (h > 0) {
+                                iframe.style.height = h + "px";
+                            }
+                        } catch (e) {
+                        }
+                    }
+
+                    function plusSlides(n) {
+                        showSlides(slideIndex += n);
+                    }
+
+                    function currentSlide(n) {
+                        showSlides(slideIndex = n);
+                    }
+
+                    function showSlides(n) {
+                        var i;
+                        var slides = document.getElementsByClassName("mySlides");
+                        var dots = document.getElementsByClassName("demo");
+                        if (slides.length === 0) {
+                            return;
+                        }
+                        if (n > slides.length) { slideIndex = 1 }
+                        if (n < 1) { slideIndex = slides.length }
+                        for (i = 0; i < slides.length; i++) {
+                            slides[i].style.display = "none";
+                        }
+                        for (i = 0; i < dots.length; i++) {
+                            dots[i].className = dots[i].className.replace(" active", "");
+                        }
+                        slides[slideIndex - 1].style.display = "block";
+                        if (dots[slideIndex - 1]) {
+                            dots[slideIndex - 1].className += " active";
+                            dots[slideIndex - 1].scrollIntoView({behavior: "smooth", block: "nearest", inline: "nearest"});
+                        }
+                    }
+
+                    for (var i = 0; i < 19; i++) {
+                        var el = document.getElementById("slideImage_" + (i + 1));
+                        if (!el) continue;
+                        el.onclick = function(elem) {
+                            var chosenId = elem.target.id.split("_")[1];
+                            currentSlide(parseInt(chosenId));
+                        }
+                    }
+
+                    var nextBtn = document.getElementById("nextBtn");
+                    if (nextBtn) {
+                        nextBtn.onclick = function() { plusSlides(1); }
+                    }
+                    var prevBtn = document.getElementById("prevBtn");
+                    if (prevBtn) {
+                        prevBtn.onclick = function() { plusSlides(-1); }
+                    }
+
+                    showSlides(slideIndex);
+                    window.addEventListener("load", resizeIframeToContent);
+                </script>
             </body>
         </html>
         
