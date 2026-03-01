@@ -74,6 +74,8 @@ class Publisher(ABC):
 
             elif element.element_type == MarkdownElementType.codeblock:
                 html_content = self._generate_codeblock_content(html_content, element.content, element)
+            elif element.element_type == MarkdownElementType.table:
+                html_content = self._generate_table_content(html_content, element)
 
         html_content = self._generate_bottom_options(html_content)
 
@@ -309,6 +311,66 @@ class Publisher(ABC):
             html_content = self._push_to_html_content(html_content, line, Publisher.base_padding * -1, add_new_line_per_join=False)
         html_content = self._push_to_html_content(html_content, '</code>', 1)
         html_content = self._push_to_html_content(html_content, '</pre>')
+        return html_content
+
+    def _generate_table_content(self, html_content: str, element: MarkdownElement) -> str:
+        rows: list[str] = element.content
+        header_rows: list[list[str]] = []
+        body_rows: list[list[str]] = []
+        separator_found: bool = False
+
+        for row in rows:
+            # Parse cells by splitting on | and stripping whitespace
+            cells: list[str] = [cell.strip() for cell in row.split('|')]
+            # Remove exactly one leading and one trailing empty string caused by outer pipes
+            # e.g. '| A | B |'.split('|') -> ['', ' A ', ' B ', ''] -> after strip ['', 'A', 'B', '']
+            if cells and cells[0] == '':
+                cells.pop(0)
+            if cells and cells[-1] == '':
+                cells.pop()
+            
+            if not cells:
+                continue
+                
+            # Check if this is a separator row (all cells contain only dashes, colons, and spaces)
+            is_separator: bool = all(cell.replace('-', '').replace(':', '').replace(' ', '') == '' for cell in cells)
+            
+            if is_separator:
+                separator_found = True
+                continue
+            elif not separator_found:
+                header_rows.append(cells)
+            else:
+                body_rows.append(cells)
+
+        # Build HTML table
+        html_content = self._push_to_html_content(html_content, '<table>')
+        
+        # Render header rows
+        if header_rows:
+            html_content = self._push_to_html_content(html_content, '<thead>', 1)
+            for header_row in header_rows:
+                html_content = self._push_to_html_content(html_content, '<tr>', 2)
+                for cell in header_row:
+                    cell = self._convert_markdown_markers_to_html(cell)
+                    cell = self._process_link_markers(cell)
+                    html_content = self._push_to_html_content(html_content, f'<th>{cell}</th>', 3)
+                html_content = self._push_to_html_content(html_content, '</tr>', 2)
+            html_content = self._push_to_html_content(html_content, '</thead>', 1)
+        
+        # Render body rows
+        if body_rows:
+            html_content = self._push_to_html_content(html_content, '<tbody>', 1)
+            for body_row in body_rows:
+                html_content = self._push_to_html_content(html_content, '<tr>', 2)
+                for cell in body_row:
+                    cell = self._convert_markdown_markers_to_html(cell)
+                    cell = self._process_link_markers(cell)
+                    html_content = self._push_to_html_content(html_content, f'<td>{cell}</td>', 3)
+                html_content = self._push_to_html_content(html_content, '</tr>', 2)
+            html_content = self._push_to_html_content(html_content, '</tbody>', 1)
+        
+        html_content = self._push_to_html_content(html_content, '</table>')
         return html_content
 
     def _generate_bottom_options(self, html_content: str) -> str:

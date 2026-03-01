@@ -117,7 +117,10 @@ class MarkdownParser:
                     element_type = MarkdownElementType.p
                     prefix = ''
 
-            value: str = line.replace(prefix, '').strip().rstrip().replace('\\', '')
+            if element_type == MarkdownElementType.table:
+                value: str = line.strip().rstrip()
+            else:
+                value: str = line.replace(prefix, '').strip().rstrip().replace('\\', '')
 
             if element_type == MarkdownElementType.codeblock:
                 if (element and element.element_type != MarkdownElementType.codeblock) or not element:

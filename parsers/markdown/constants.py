@@ -15,6 +15,7 @@ class MarkdownElementType(StrEnum):
     image = "image"
     codeblock = "codeblock"
     link = "link"
+    table = "table"
 
 element_type_mapping: dict[str, MarkdownElementType] = {
     '######': MarkdownElementType.h6,
@@ -30,6 +31,8 @@ element_type_mapping: dict[str, MarkdownElementType] = {
     '{num}.': MarkdownElementType.ol,
     '![': MarkdownElementType.image,
     '```': MarkdownElementType.codeblock,
+    '| ': MarkdownElementType.table,
+    '|': MarkdownElementType.table,
     '[': MarkdownElementType.link
 }
 
@@ -37,7 +40,8 @@ multi_content_markdown_element_type: list[MarkdownElementType] = [
     MarkdownElementType.ul,
     MarkdownElementType.ol,
     MarkdownElementType.checkbox,
-    MarkdownElementType.codeblock
+    MarkdownElementType.codeblock,
+    MarkdownElementType.table
 ]
 
 heading_markdown_element_type: list[MarkdownElementType] = [
