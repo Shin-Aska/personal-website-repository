@@ -4,7 +4,7 @@
 
 I've been wanting an offline visual HTML editor for a while now. Tools like Pingendo, Mobirise, and Bootstrap Studio exist, but they all have friction points that bug me: some are cloud-dependent, some are Windows/Mac-only, some lock you into their ecosystem, and most of them are closed-source. I wanted something where I open an HTML page, see it rendered visually, drag widgets around, tweak properties in a sidebar, and flip to the raw code whenever I need to, all without an internet connection.
 
-So I built one. It's called **Amagon**, and the entire thing was vibe coded across multiple AI agents in Windsurf.
+So I built one. It's called **[Amagon](https://github.com/Shin-Aska/amagon-html-editor)**, and the entire thing was vibe coded across multiple AI agents in Windsurf.
 
 This article is about how that process worked: the planning, the multi-agent workflow, the outcome, and the security considerations that come with letting AI write most of your code.
 
@@ -62,6 +62,9 @@ Because the agent stops after each phase, I caught this before any downstream wo
 After the initial 12 phases were done, I used the same multi-agent planning approach for revisions. Revision 1, for example, addressed six UX issues I found during testing: CSS variable mismatches causing invisible borders, offline placeholder images (the defaults used `via.placeholder.com`, which obviously doesn't work offline), invisible blocks that had no default content, and a missing block tree / layers panel. Each bug got its own root-cause analysis in the revision plan, and the fixes were assigned to the agent best suited for the work.
 
 ## The outcome
+
+- [ ] [![](images/amagon.png)](images/amagon.png)
+- [ ] Figure 1\. Amagon HTML Editor in action
 
 The finished product is called **Amagon** (from the Cebuano word *Amag*, meaning "to glow"). It's a fully functional offline visual HTML editor with more features than I originally planned for.
 

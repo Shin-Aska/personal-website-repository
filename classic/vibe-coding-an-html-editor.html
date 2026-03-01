@@ -62,7 +62,7 @@
 			<h1 id="headingBlog">Vibe coding an offline HTML editor with four AI agents</h1>
 			<h2 id="introduction">Introduction</h2>
 			<p>I've been wanting an offline visual HTML editor for a while now. Tools like Pingendo, Mobirise, and Bootstrap Studio exist, but they all have friction points that bug me: some are cloud-dependent, some are Windows/Mac-only, some lock you into their ecosystem, and most of them are closed-source. I wanted something where I open an HTML page, see it rendered visually, drag widgets around, tweak properties in a sidebar, and flip to the raw code whenever I need to, all without an internet connection.</p>
-			<p>So I built one. It's called <b>Amagon</b>, and the entire thing was vibe coded across multiple AI agents in Windsurf.</p>
+			<p>So I built one. It's called <b><a href="https://github.com/Shin-Aska/amagon-html-editor">Amagon</a></b>, and the entire thing was vibe coded across multiple AI agents in Windsurf.</p>
 			<p>This article is about how that process worked: the planning, the multi-agent workflow, the outcome, and the security considerations that come with letting AI write most of your code.</p>
 			<h2 id="the_vision">The vision</h2>
 			<p>My ideal layout was simple in concept but large in scope:</p>
@@ -122,6 +122,10 @@
 			<p>Because the agent stops after each phase, I caught this before any downstream work depended on Electron actually working. I decided to pivot: develop everything as a <b>pure Vite + React web app</b> with a mock API layer that uses browser APIs (localStorage, File API, download links) to simulate Electron IPC. All the visual editor work (canvas, drag-drop, Monaco, widgets, inspector) is pure web code and doesn't care about Electron at all. The Electron integration got deferred to a later phase, and when we got there, the mock was swapped for real IPC.</p>
 			<p>After the initial 12 phases were done, I used the same multi-agent planning approach for revisions. Revision 1, for example, addressed six UX issues I found during testing: CSS variable mismatches causing invisible borders, offline placeholder images (the defaults used `via.placeholder.com`, which obviously doesn't work offline), invisible blocks that had no default content, and a missing block tree / layers panel. Each bug got its own root-cause analysis in the revision plan, and the fixes were assigned to the agent best suited for the work.</p>
 			<h2 id="the_outcome">The outcome</h2>
+			<figure>
+				<a href="images/amagon.png" target="_blank"><img class="preview center" src="images/amagon.png"></a>
+				<figcaption>Figure 1. Amagon HTML Editor in action</figcaption>
+			</figure>
 			<p>The finished product is called <b>Amagon</b> (from the Cebuano word <i>Amag</i>, meaning "to glow"). It's a fully functional offline visual HTML editor with more features than I originally planned for.</p>
 			<p><b>Visual editing</b> is the core experience. You drag blocks from a sidebar library of 50+ pre-built components (headers, heroes, grids, forms, navbars, footers, code blocks, and more) onto an isolated iframe canvas. Double-click any text block to edit it in place. A floating toolbar appears on hover with quick actions for edit, duplicate, delete, and move. You can switch between desktop, tablet, and mobile viewports for responsive preview.</p>
 			<p><b>Code integration</b> runs through Monaco Editor (the same engine behind VS Code) with full syntax highlighting and IntelliSense. Changes in code reflect in the visual canvas and vice versa. Code blocks in the canvas get syntax coloring via highlight.js. Export produces clean standalone HTML with no editor artifacts.</p>
