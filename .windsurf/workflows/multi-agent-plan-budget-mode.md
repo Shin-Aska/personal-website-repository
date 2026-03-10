@@ -80,8 +80,8 @@ Now produce the plan.
 ```
 
 ## Agent roster & expertise
-- **Claude Opus 4.6 (Planner & QA only)**: High-level strategy, risk analysis, coordination, final review, integration checklist.
-- **Claude Sonnet 4.6**: Implementation, smaller refactors, wiring features end-to-end.
+- **Claude Opus 4.6 (Planner only)**: Produces the checkbox execution plan; no coordination, QA, or integration duties.
+- **Claude Sonnet 4.6**: Leads coordination between executors, handles implementation + smaller refactors, and owns final review/integration checklists when assigned.
 - **GPT-5.2-Codex**: Coding-heavy tasks, refactors, tests, complex code modifications with clear specs.
 - **Gemini 3 Pro**: UI/UX component generation, widget libraries, styling/theming.
 - **Kimi K2.5**: UX polish, shortcuts/clipboard flows, accessibility, well-scoped implementation.

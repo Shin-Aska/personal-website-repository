@@ -77,10 +77,10 @@ Now produce the plan.
 ```
 
 ## Agent roster & expertise
-- **Claude Opus 4.6 (Planner & QA only)**: High-level strategy, risk analysis, coordination, final review, integration checklist.
-- **GPT-5.1-Codex**: Coding-heavy tasks, refactors with explicit specs, tests, straightforward algorithmic work.
-- **SWE1.5**: Smaller end-to-end implementations, bug fixes, incremental UI wiring, safe refactors.
-- **Grok-Code-Fast-1**: Fast debugging passes, quick instrumentation, narrow changes with tight acceptance criteria.
+- **Claude Opus 4.6 (Planner only)**: Produces the checkbox execution plan; no coordination, QA, or integration work.
+- **GPT-5.1-Codex**: Handles coordination with other executors, coding-heavy tasks, refactors with explicit specs, tests, and final review/integration checklists when assigned.
+- **SWE1.5**: Takes smaller end-to-end implementations, bug fixes, incremental UI wiring, safe refactors, and can run integration/QA checklists.
+- **Grok-Code-Fast-1**: Runs fast debugging passes, quick instrumentation, narrow changes with tight acceptance criteria, and assists with last-mile verification when needed.
 
 ## Handoff tips
 - Keep a running checklist of completed subtasks and outstanding ones.
