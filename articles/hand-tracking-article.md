@@ -8,10 +8,8 @@ I built a browser-based game where you use your actual hands, tracked via webcam
 
 Play the proof of concept (webcam required): **[Launch the game](https://www.richardorilla.website/online-samples/webcam-poc/)**
 
-[![](images/hand-tracking.png)](images/hand-tracking.png)
-*Figure 1. A gameplay screenshot showing the hand tracking integration.*
-
----
+- [ ]  [![](images/hand-tracking.png)](images/hand-tracking.png)
+- [ ]  Figure 1. A gameplay screenshot showing the hand tracking integration.
 
 ## The Stack I Chose (and Why)
 
@@ -41,10 +39,8 @@ Google's MediaPipe gives you 21 hand landmarks per detected hand, running entire
 
 Each landmark comes with an x, y, and z coordinate, normalized 0 to 1 for x and y, and relative depth for z. That structure maps naturally onto physics colliders.
 
-[![](images/hand-landmarks.png)](images/hand-landmarks.png)
-*Figure 2. The 21 hand landmarks detected by MediaPipe.*
-
----
+- [ ]  [![](images/hand-landmarks.png)](images/hand-landmarks.png)
+- [ ]  Figure 2. Visual representation of the 21 hand landmarks detected by MediaPipe.
 
 ## The Game Concept
 
@@ -53,8 +49,6 @@ The idea is simple enough. Shapes fall from the top of the screen, each with a c
 Think of it as a color-matching sorting game where your controller is your actual hands, overlaid on your webcam feed.
 
 Simple concept. The devil is entirely in the implementation.
-
----
 
 ## The Naive Starting Point
 
@@ -67,8 +61,6 @@ The obvious first architecture looked like this:
 5. Move objects when grabbed
 
 This worked for about five minutes of testing. Then the problems started.
-
----
 
 ## Challenge 1: The Z-Axis Problem
 
@@ -92,8 +84,6 @@ This turns an unreliable 3D input into a reliable 2D input with cosmetic depth h
 
 **Lesson:** Sometimes the right solution is to constrain the problem, not solve it perfectly.
 
----
-
 ## Challenge 2: The Jitter Problem
 
 Raw hand landmarks jitter. A lot.
@@ -116,8 +106,6 @@ const next = SmoothingService.lerpPosition(
 Higher smoothing means less jitter but more lag between your real hand and the on-screen collider. It's a direct tradeoff.
 
 I landed on a `HAND_SMOOTHING_FACTOR` of 0.35. Enough to kill visible jitter while keeping lag under around 100ms. Players don't notice the delay because the camera pipeline already introduces some latency anyway. The smoothing just disappears into that existing gap.
-
----
 
 ## Challenge 3: Low FPS (The Surface Pro Problem)
 
@@ -161,8 +149,6 @@ At low FPS, each step covers more ground. At high FPS, each step is smaller. The
 
 **Fewer colliders.** Instead of physics bodies for all 21 landmarks, I only create them for key points: the five fingertips plus a handful of palm landmarks. Fewer bodies, less CPU.
 
----
-
 ## Challenge 4: The Coordinate Mapping Nightmare
 
 MediaPipe gives normalized 0-to-1 coordinates. The physics engine wants world units. The webcam has one aspect ratio. The game world has another. And the webcam feed is mirrored like a selfie camera, but the coordinate system doesn't know that.
@@ -194,8 +180,6 @@ static toWorld(landmark, videoWidth, videoHeight): WorldPoint {
 
 One function, one source of truth. Every component that needs world coordinates goes through this mapper. When something looked off, I knew exactly where to look.
 
----
-
 ## Challenge 5: Making "Grab" Feel Right
 
 This was the most frustrating part of the whole project.
@@ -207,8 +191,6 @@ The naive version: detect pinch, find nearest object, attach it. But as soon as 
 The grab system now tracks explicit state per hand: which object it's currently holding, a cooldown timer after each release, and a cursor position.
 
 The cursor position was a subtle but important detail. I originally used the pinch point, the spot between thumb and index finger, as the cursor. But that point moves when you pinch, which caused objects to jump the moment you grabbed them. Switching the cursor to the middle MCP landmark, the base of your middle finger, fixed it. That point stays stable during a pinch, so grabbed objects follow your hand smoothly.
-
----
 
 ## The Part Nobody Talks About: Tuning
 
@@ -228,17 +210,13 @@ I spent hours on these numbers. Moving the pinch threshold from 0.04 to 0.045 wa
 
 Good game feel isn't in the architecture. It's in the tuning.
 
----
-
 ## What's Still Not Done
 
 No project is ever finished, only abandoned.
 
 MediaPipe still runs on the main thread, competing directly with rendering on low-end devices. Moving inference to a Web Worker is the obvious next step. Smoothing currently applies uniformly across all joints, but fingertips could probably use more than the wrist. Only pinch is recognized as a gesture; open palm, swipes, and push gestures are all possible but unimplemented. And there's no accessibility work done yet: no colorblind palette, no keyboard fallback, no left-handed mode.
 
----
-
-## What I Took Away From This
+## Conclusions
 
 The ML part worked out of the box. MediaPipe is genuinely impressive. I didn't train anything, configure much, or debug model accuracy at all.
 
@@ -253,7 +231,5 @@ If you're building something like this, the advice I'd actually give is:
 5. Test on bad hardware early. Your development machine is lying to you about performance.
 
 Full source is on GitHub if you want to dig in: **[GitHub Repository](https://github.com/Shin-Aska/poc-camera-ml)**
-
----
 
 *Now if you'll excuse me, I need to go adjust `PINCH_START_DISTANCE` for the 47th time.*
