@@ -162,6 +162,20 @@
 				?>
 				viewers that have read this page.
 			</h4>
+			<section id="comments">
+				<?php
+					require_once "CommentFactory.php";
+					require_once "MastodonCommentProvider.php";
+					require_once "BlueskyCommentProvider.php";
+			
+					$commentBundles = [
+						mastodon_comment_bundle("116152920906012491", "mastodon.social", "@richardorilla"),
+						bluesky_comment_bundle("https://bsky.app/profile/www.richardorilla.website/post/3mfycd7m3nc2i"),
+					];
+			
+					echo comment_factory_render(comment_factory_merge($commentBundles));
+				?>
+			</section>
 			<h4>
 				<a href="#headingBlog">Go back to top</a>
 			</h4>
