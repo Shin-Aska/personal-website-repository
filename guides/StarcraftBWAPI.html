@@ -164,7 +164,7 @@
                     <h2 class="text-3xl font-bold text-primary mb-6">AI Solution Comparison</h2>
                     <div class="bg-white p-6 rounded-lg shadow-lg mb-8">
                         <h3 class="text-2xl font-semibold mb-4 text-primary">Choose Your AI Solution</h3>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                             <div class="border border-gray-200 rounded-lg p-4 hover:shadow-md">
                                 <h4 class="font-semibold text-lg mb-2">SCHNAIL</h4>
                                 <div class="pros-cons mb-3">
@@ -183,7 +183,7 @@
                                 </div>
                                 <div class="mt-4">
                                     <a href="#setup"
-                                        onclick="document.querySelector('[href=\'#setup\']').click(); document.querySelector('#schnail-setup').scrollIntoView({ behavior: 'smooth' }); return false;"
+                                        onclick="document.querySelector('[href=&quot;#setup&quot;]').click(); document.querySelector('#schnail-setup').scrollIntoView({ behavior: 'smooth' }); return false;"
                                         class="inline-flex items-center px-3 py-1.5 border border-transparent text-sm font-medium rounded-md text-blue-700 bg-blue-100 hover:bg-blue-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
                                         View Setup Guide
                                         <i data-lucide="arrow-right" class="ml-1 h-4 w-4"></i>
@@ -209,7 +209,32 @@
                                 </div>
                                 <div class="mt-4">
                                     <a href="#setup"
-                                        onclick="document.querySelector('[href=\'#setup\']').click(); document.querySelector('#bwai-setup').scrollIntoView({ behavior: 'smooth' }); return false;"
+                                        onclick="document.querySelector('[href=&quot;#setup&quot;]').click(); document.querySelector('#bwai-setup').scrollIntoView({ behavior: 'smooth' }); return false;"
+                                        class="inline-flex items-center px-3 py-1.5 border border-transparent text-sm font-medium rounded-md text-blue-700 bg-blue-100 hover:bg-blue-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                                        View Setup Guide
+                                        <i data-lucide="arrow-right" class="ml-1 h-4 w-4"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <!-- Remastered SCM Map -->
+                            <div class="border border-gray-200 rounded-lg p-4 hover:shadow-md">
+                                <h4 class="font-semibold text-lg mb-2">Remastered SCM Map</h4>
+                                <div class="pros-cons mb-3">
+                                    <p class="font-medium text-green-600">Pros:</p>
+                                    <ul class="list-disc pl-5 mb-3">
+                                        <li>Works directly with StarCraft Remastered</li>
+                                        <li>No external launcher required</li>
+                                        <li>Easy setup (just download and play)</li>
+                                    </ul>
+                                    <p class="font-medium text-red-600">Cons:</p>
+                                    <ul class="list-disc pl-5">
+                                        <li>Must be played in "Use Map Settings" mode</li>
+                                        <li>Limited to the provided integrated maps</li>
+                                    </ul>
+                                </div>
+                                <div class="mt-4">
+                                    <a href="#setup"
+                                        onclick="document.querySelector('[href=&quot;#setup&quot;]').click(); document.querySelector('#remastered-setup').scrollIntoView({ behavior: 'smooth' }); return false;"
                                         class="inline-flex items-center px-3 py-1.5 border border-transparent text-sm font-medium rounded-md text-blue-700 bg-blue-100 hover:bg-blue-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
                                         View Setup Guide
                                         <i data-lucide="arrow-right" class="ml-1 h-4 w-4"></i>
@@ -241,7 +266,7 @@
                                         <a href="https://www.schnail.com/#/downloads" target="_blank"
                                             class="text-blue-600 hover:underline">their downloads page</a> (requires
                                         account, see <a href="#setup"
-                                            onclick="document.querySelector('[href=\'#setup\']').click(); document.querySelector('#schnai-setup').scrollIntoView({ behavior: 'smooth' }); return false;"
+                                            onclick="document.querySelector('[href=&quot;#setup&quot;]').click(); document.querySelector('#schnai-setup').scrollIntoView({ behavior: 'smooth' }); return false;"
                                             class="text-blue-600 hover:underline">SCHNAIL Setup Guide</a> for more
                                         information)
                                     </div>
@@ -286,6 +311,29 @@
                                 </li>
                             </ol>
                         </div>
+                    </div>
+
+                    <!-- Remastered SCM Map Prerequisites -->
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <h3 class="text-2xl font-semibold mb-4 text-primary">Remastered SCM Map Prerequisites</h3>
+                        <ol class="list-decimal pl-6 space-y-3">
+                            <li class="flex items-start">
+                                <span class="mr-2">1.</span>
+                                <div>
+                                    <span class="font-medium">Install StarCraft Remastered</span>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="mr-2">2.</span>
+                                <div>
+                                    <span class="font-medium">Download the BWAPI integrated SCM map</span> from
+                                    <a href="https://drive.proton.me/urls/55AMBJ5FN4#BB7pM4E3tZeE" target="_blank"
+                                        class="text-blue-600 hover:underline">Proton Drive</a> or
+                                    <a href="https://www.richardorilla.website/files/bwapiscr.zip" target="_blank"
+                                        class="text-blue-600 hover:underline">Direct Download</a>
+                                </div>
+                            </li>
+                        </ol>
                     </div>
 
                     <div class="bg-white p-6 rounded-lg shadow-lg">
@@ -452,6 +500,36 @@
                                     support</li>
                             </ul>
                         </div>
+
+                        <!-- Remastered SCM Map Setup Guide -->
+                        <div id="remastered-setup" class="bg-white p-6 rounded-lg shadow-lg mt-8">
+                            <h3 class="text-2xl font-semibold mb-4 text-primary">Remastered SCM Map Setup Guide</h3>
+                            <div class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded-r mb-6">
+                                <div class="flex">
+                                    <div class="flex-shrink-0">
+                                        <i data-lucide="info" class="h-5 w-5 text-blue-500"></i>
+                                    </div>
+                                    <div class="ml-3">
+                                        <p class="text-sm text-blue-700">
+                                            <strong>Note:</strong> This method works natively with StarCraft Remastered without needing version downgrades.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h4 class="font-semibold text-lg mb-3">Installation Steps</h4>
+                            <ol class="list-decimal pl-6 space-y-3">
+                                <li>Ensure StarCraft Remastered is installed and updated.</li>
+                                <li>Download the BWAPI integrated SCM map archive from <a href="https://drive.proton.me/urls/55AMBJ5FN4#BB7pM4E3tZeE" target="_blank" class="text-blue-600 hover:underline">Proton Drive</a> or <a href="https://www.richardorilla.website/files/bwapiscr.zip" target="_blank" class="text-blue-600 hover:underline">Direct Download</a>.</li>
+                                <li>Extract the downloaded ZIP file to your StarCraft maps folder (typically <code class="bg-gray-100 px-1 rounded">Documents\StarCraft\Maps</code>).</li>
+                                <li>Launch StarCraft Remastered.</li>
+                                <li>Navigate to <strong>Single Player</strong> &#8594; <strong>Custom Game</strong>.</li>
+                                <li>Select the extracted BWAPI map.</li>
+                                <li><strong class="text-red-600 font-bold">Crucial Step:</strong> Under <strong>Game Type</strong>, you MUST select <strong>"Use Map Settings"</strong>. The AI will not function properly in a standard Melee game.</li>
+                                <li>Start the game and enjoy playing against the advanced AI!</li>
+                            </ol>
+                        </div>
+                    </div>
                 </section>
 
                 <section id="troubleshooting" class="content-section hidden">
@@ -903,9 +981,10 @@
                     KNOWLEDGE BASE:
                     - SCHNAIL: Requires Java, account, has own BW install.
                     - BWAILauncher: Offline, requires BW 1.16.1, replaces standard AI.
+                    - Remastered SCM Map: For Remastered players, use the BWAPI integrated SCM map. Play in "Use Map Settings" mode.
                     - Remastered vs 1.16.1: VITAL distinction. Always ask if unsure.
                     
-                    Do not hallucinate URLs. Use known ones from the guide (schnail.com, GitHub).`;
+                    Do not hallucinate URLs. Use known ones from the guide (schnail.com, GitHub, https://drive.proton.me/urls/55AMBJ5FN4#BB7pM4E3tZeE, https://www.richardorilla.website/files/bwapiscr.zip).`;
 
                     const transcript = recent
                         .map(m => `${m.role === 'user' ? 'Commander' : 'Adjutant'}: ${m.content}`)
