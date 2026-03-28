@@ -14,9 +14,9 @@ When I raised it, the response was: if you're not happy, you can get a refund. S
 
 That was a while ago. I'm still waiting. And based on what I've seen in community threads, with other users asking the same question and staff responses that amount to "refunds are processed according to our Terms of Service," I'm not holding my breath.
 
-[![](images/the-tragedy-of-windsurf-discord.png)](images/the-tragedy-of-windsurf-discord.png)
+- [ ] [![](images/the-tragedy-of-windsurf-discord.png)](images/the-tragedy-of-windsurf-discord.png)
+- [ ] Figure 1\. Community reaction to Windsurf's refund handling
 
-*Figure 1. Community reaction to Windsurf's refund handling*
 
 ## The Budget Math
 
@@ -36,9 +36,9 @@ Moving back to Antigravity full-time turned out to be less of a downgrade than I
 
 One of the highlights for me is how it segments models. I use Gemini Flash for basic autocomplete and documentation, but I can pull in Claude or Gemini Pro for the heavy lifting without having to jump between tabs. It also plugs into Google's AI credit system, giving me 1000 credits that I can spend across coding, image generation, or whatever else my current project needs.
 
-[![](images/antigravity_setup.png)](images/antigravity_setup.png)
+- [ ] [![](images/antigravity_setup.png)](images/antigravity_setup.png)
+- [ ] Figure 2\. My local Antigravity configuration for multi-agent workflows
 
-*Figure 2. My local Antigravity configuration for multi-agent workflows*
 
 This shift wasn't just about the features, though. It was about **having a deep bench of supporting models**. After my experience with Windsurf, I realized that for tools I depend on for multi-day builds, I need powerful backups for whenever things get complex. That's a big part of why I added GPT Plus (for Codex) and Claude Pro back into my stack. Sometimes you're not just paying for a single tool. You're paying for those heavy-hitting models to support you during the high-complexity reasoning.
 
@@ -63,19 +63,25 @@ With three AI subscriptions in play instead of one, I needed a way to keep the m
 The key difference: because Codex and Claude Code extensions don't support calling workflows directly, I split the multi-agent system into two separate invocable workflows that you call explicitly.
 
 **Step 1: Plan the task**
-```
+
+```markdown
 @.agents/workflows/planner.md I want to [task description here]
 ```
+
 This invokes Claude Opus 4.6 with your task and project context. It outputs a Markdown checkbox plan to **plan.md** with phases assigned to the appropriate agents (Claude Pro, GPT-5/Codex, or Gemini).
 
 **Step 2: Execute each phase**
-```
+
+```markdown
 @.agents/workflows/execute-plan.md Phase 1
 ```
+
 Or just call it without specifying a phase to execute the next incomplete phase:
-```
+
+```markdown
 @.agents/workflows/execute-plan.md
 ```
+
 The execute workflow reads **plan.md**, identifies which phase to run, hands off to the assigned agent, and updates checkboxes as tasks are completed. Each call executes exactly one phase, then stops — ready for the next.
 
 
