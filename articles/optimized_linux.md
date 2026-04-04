@@ -8,11 +8,12 @@ And to be clear, I do not mean this as some cheap jab against Fedora, Ubuntu, Ar
 
 The problem is that the “broadly correct” default is not always the same thing as “best for desktop responsiveness.”
 
-A typical desktop user does not really care if a certain default squeezes a bit more throughput out of the storage stack, or if the kernel allows a little more dirty data to build up before flushing it, or if memory pressure is tolerated a bit longer before something gets killed. What the desktop user notices instead is this:
+A typical desktop user does not really care if a certain default squeezes a bit more throughput out of the storage stack, if the kernel allows a bit more dirty data to build up before flushing it, or if memory pressure is tolerated a bit longer before something gets killed. What the desktop user notices instead is this:
 
 - the mouse starts hitching during heavy disk activity
 - the browser makes the whole session feel sticky
 - a VM or big file copy causes the UI to stutter
+- GPU-heavy workloads can drag the whole desktop down with them
 - low-memory situations do not fail gracefully
 
 This is where I think many Linux distros still show their general-purpose roots.
@@ -23,7 +24,7 @@ But that does not mean we cannot tune it further.
 
 And that is really the point of this article.
 
-This article is not about turning Linux into some unstable Frankenstein build full of random internet `sysctl` snippets and placebo boot parameters. It is about making deliberate changes that trade a bit of the throughput-oriented, general-purpose, or server-friendly behavior for something that feels better on an actual desktop machine.
+This article is not about turning Linux into some unstable Frankenstein build full of random internet **sysctl** snippets and placebo boot parameters. It is about making deliberate changes that trade a bit of the throughput-oriented, general-purpose, or server-friendly behavior for something that feels better on an actual desktop machine.
 
 In particular, I want to focus on the things that matter most when a machine is under stress:
 
@@ -31,8 +32,9 @@ In particular, I want to focus on the things that matter most when a machine is 
 - keeping a proper swap file as overflow
 - choosing an I/O scheduler with desktop responsiveness in mind
 - understanding when CPU scheduler tweaking matters and when it does not
-- using tools like `earlyoom` as a last line of defense
+- using tools like **earlyoom** as a last line of defense
 - reducing the kinds of writeback and I/O bursts that cause visible stutter
+- isolating heavy GPU workloads so they do not drag the whole desktop down with them
 
 The idea here is simple: I am willing to give up a bit of theoretical peak performance if it means my desktop remains responsive in low-memory or busy situations.
 
@@ -42,14 +44,14 @@ Because at the end of the day, that is what a desktop machine is supposed to do.
 
 Before we begin, I would like to clarify the terminology used throughout this article:
 
-* **zram** – A compressed RAM-backed block device commonly used as swap. It allows the system to store compressed pages in memory before falling back to slower disk-backed swap.
-* **Swap file** – A regular file on disk that Linux can use for swap instead of a dedicated swap partition.
-* **I/O Scheduler** – The kernel component responsible for deciding how block device requests are ordered and served.
-* **BFQ** – Budget Fair Queueing, an I/O scheduler that prioritizes responsiveness and low latency, often making it attractive for desktop systems.
-* **mq-deadline** – A multi-queue I/O scheduler focused heavily on keeping request service times bounded, especially for reads.
-* **earlyoom** – A userspace daemon that kills memory-hungry processes before the whole machine becomes unusable during an out-of-memory situation.
-* **Writeback** – The process where dirty cached data in RAM is flushed to storage.
-* **Desktop responsiveness** – In the context of this article, this means how well the user interface continues to feel smooth and usable during memory pressure, heavy background disk activity, or mixed workloads.
+- **zram** – A compressed RAM-backed block device commonly used as swap. It allows the system to store compressed pages in memory before falling back to slower disk-backed swap.
+- **Swap file** – A regular file on disk that Linux can use for swap instead of a dedicated swap partition.
+- **I/O Scheduler** – The kernel component responsible for deciding how block device requests are ordered and served.
+- **BFQ** – Budget Fair Queueing, an I/O scheduler that prioritizes responsiveness and low latency, often making it attractive for desktop systems.
+- **mq-deadline** – A multi-queue I/O scheduler focused heavily on keeping request service times bounded, especially for reads.
+- **earlyoom** – A userspace daemon that kills memory-hungry processes before the whole machine becomes unusable during an out-of-memory situation.
+- **Writeback** – The process where dirty cached data in RAM is flushed to storage.
+- **Desktop responsiveness** – In the context of this article, this means how well the user interface continues to feel smooth and usable during memory pressure, heavy background disk activity, mixed workloads, or graphics saturation.
 
 ## The Problem with General-Purpose Defaults
 
@@ -57,11 +59,11 @@ I think one mistake people often make when tuning Linux is immediately assuming 
 
 In practice, that is often not the real issue.
 
-Modern Linux already has a competent CPU scheduler. For a lot of normal desktop use, it is not as though the kernel is clueless about how to distribute CPU time fairly. The real pain points tend to show up elsewhere: memory reclaim, storage contention, swap behavior, and writeback.
+Modern Linux already has a competent CPU scheduler. For a lot of normal desktop use, it is not as though the kernel is clueless about how to distribute CPU time fairly. The real pain points tend to show up elsewhere: memory reclaim, storage contention, swap behavior, writeback, and sometimes graphics saturation.
 
 This is why you can have a Linux system that benchmarks perfectly fine and still feels annoying in real-world use.
 
-For example, a distro may be perfectly happy to let a large amount of dirty data pile up in RAM before flushing it. On paper, this can be good for throughput. In actual desktop use, however, it can also mean that once the flush starts hitting hard, the desktop suddenly feels awful. Likewise, a distro may ship with a tiny swap file or no useful compressed swap layer, which means once memory pressure rises, the system has fewer graceful ways to absorb it.
+For example, a distro may be perfectly happy to let a large amount of dirty data pile up in RAM before flushing it. On paper, this can be good for throughput. In actual desktop use, however, it can also mean that once the flush starts hitting hard, the desktop suddenly feels awful. Likewise, a distro may ship with a tiny swap file or no useful compressed swap layer, which means once memory pressure rises, the system has fewer graceful ways to absorb it. And on the graphics side, the system may behave fine in normal use but still feel miserable once the GPU that is driving the desktop gets saturated by a heavy workload.
 
 This is what I mean when I say many Linux distros feel tuned more like general-purpose systems than desktop-first systems.
 
@@ -120,13 +122,13 @@ A practical rule of thumb I would start with is this:
 
 The exact numbers will vary depending on RAM size and workload, but the general principle is the same: zram is not your excuse to remove all real swap.
 
-## earlyoom as the Last Safety Net
+## OOM Killers as the Last Safety Net
 
 Even with zram and a proper swap file, there are still situations where the machine needs help making a decision.
 
-That is where `earlyoom` comes in.
+That is where something like **earlyoom** comes in.
 
-The reason I like `earlyoom` on a desktop is because it accepts a reality that Linux users do not always want to admit: sometimes it is better to kill one greedy process than to preserve everything equally and let the whole session become miserable.
+The reason I like *earlyoom* is that it is a simple userspace OOM killer. The config is also very straightforward and easy to understand.
 
 If a browser, Chromium-based app, Electron app, or some runaway workload is eating memory aggressively, I would rather lose that process than have KWin, Plasma, Xwayland, audio, and general interactivity all collapse into a half-dead state.
 
@@ -138,11 +140,15 @@ EARLYOOM_ARGS="-m 5 -s 5 -k -n \
   --avoid '(^|/)(kwin_wayland|plasmashell|Xwayland|systemd|dbus-daemon)$'"
 ```
 
-The idea is not that `earlyoom` should constantly interfere. It should not.
+The idea is not that **earlyoom** should constantly interfere. It should not.
 
 The idea is that when the machine is truly heading toward an unusable state, the thing that gets sacrificed first should be the greedy desktop application, not the entire desktop experience.
 
 That kind of prioritization makes sense to me on a personal machine.
+
+Also take note that my config is for KDE Plasma on Wayland, so you may need to adjust it for your own desktop environment.
+
+**systemd-oomd** is a valid alternative and, in some ways, the more modern one. However, it is more cgroup- and unit-oriented. That makes it better suited to users who want to build memory-pressure policy around slices, scopes, and service units rather than around simple process-name heuristics.
 
 ## CPU Scheduler: Important, but Usually Not First
 
@@ -150,7 +156,7 @@ This is where I think Linux tuning discussions often get derailed.
 
 People love talking about CPU scheduler tweaks because they feel advanced. They sound like the kind of knobs only power users know about. But in many cases, they are simply not where the real desktop pain is coming from.
 
-If your complaint is that heavy disk I/O makes the mouse stutter, or that the desktop becomes sticky when memory pressure rises, or that a large copy causes the UI to hitch, then chances are good that your real problem is not the CPU scheduler.
+If your complaint is that heavy disk I/O makes the mouse stutter, that the desktop becomes sticky when memory pressure rises, or that a large copy causes the UI to hitch, then chances are good that your real problem is not the CPU scheduler.
 
 That does not mean CPU-related tuning is useless. It just means I would rank it below memory and storage tuning for this specific goal.
 
@@ -168,7 +174,7 @@ The reason is not that BFQ is magically the best at everything. It is not. The r
 
 That is exactly the kind of tradeoff I want.
 
-By contrast, `mq-deadline` is still a respectable scheduler, and if BFQ is unavailable, it is often the sensible fallback. But if BFQ is there, I think it deserves serious consideration on a desktop machine.
+By contrast, **mq-deadline** is still a respectable scheduler, and if BFQ is unavailable, it is often the sensible fallback. But if BFQ is there, I think it deserves serious consideration on a desktop machine.
 
 Especially if your system has spinning disks, mixed storage, virtual machines, large background copies, indexing, package installs, or any kind of workload where background I/O can interfere with foreground smoothness.
 
@@ -192,7 +198,7 @@ For a desktop, I generally prefer lower and more explicit dirty data limits rath
 
 A practical starting point would be:
 
-```conf
+```txt
 vm.dirty_background_bytes=268435456
 vm.dirty_bytes=1073741824
 ```
@@ -208,17 +214,29 @@ The idea is that I would rather keep writes moving more steadily than allow a hu
 
 Again, this is the theme of the whole article: less emphasis on peak throughput, more emphasis on graceful behavior.
 
-## Utilizing integrated GPUs
+## Graphics Saturation Is a Different Kind of Responsiveness Problem
+
+Up to this point, I have mostly focused on responsiveness problems caused by memory pressure and storage contention. However, those are not the only ways a Linux desktop can become unpleasant under load. Graphics saturation can cause a very similar kind of visible stutter, especially when the same GPU is responsible for both driving the desktop compositor and handling a heavy rendering workload.
+
+In other words, the desktop can become unpleasant not because the machine is out of memory or because the disk is busy, but because the GPU that is responsible for drawing the session is now too busy doing something else.
+
+That is where hybrid graphics become relevant.
+
+## Utilizing Integrated GPUs
 
 If your hardware supports it, one practical way to keep the desktop responsive is to let the integrated GPU handle the desktop compositor while offloading heavier applications to the dedicated GPU.
 
-The reason is simple. On Linux, there is no universal, user-facing equivalent to the block I/O schedulers we can switch for storage. The graphics stack does have internal scheduling and compositors like KWin try to predict frame timing, but when the GPU driving the desktop becomes saturated, the compositor can still miss frame deadlines and the result is visible stutter. KWin’s own explanation of this problem is that once a frame deadline is missed, some frames are shown twice while others are skipped, which is exactly the kind of “my desktop feels like it is freezing even though it technically is not” behavior users notice.
+The reason is simple. On Linux, there is no universal, user-facing equivalent to the block I/O schedulers we can switch for storage. The graphics stack does have internal scheduling, and compositors like KWin try to predict frame timing, but when the GPU driving the desktop becomes saturated, the compositor can still miss frame deadlines and the result is visible stutter. KWin’s own explanation of this problem is that once a frame deadline is missed, some frames are shown twice while others are skipped, which is exactly the kind of “my desktop feels like it is freezing even though it technically is not” behavior users notice.
 
-This is where hybrid graphics can help. NVIDIA’s PRIME Render Offload model explicitly treats one GPU as the **sink** that renders the main desktop, while selected applications can be rendered on another GPU as the **source**. In practice, this means the integrated GPU can remain responsible for presenting the desktop while the dedicated GPU handles the heavier rendering workload. 
+In other words, what is missing on Linux is not GPU scheduling in the absolute sense, but a universal, user-facing desktop-priority policy for graphics. The drivers and compositors do have internal scheduling and frame-timing logic, but there is no simple cross-vendor equivalent to saying “the desktop environment comes first; everything else can fight for what remains.”
+
+That being said, this is where hybrid graphics can help. NVIDIA’s PRIME Render Offload model explicitly treats one GPU as the **sink** that renders the main desktop, while selected applications can be rendered on another GPU as the **source**. In practice, this means the integrated GPU can remain responsible for presenting the desktop while the dedicated GPU handles the heavier rendering workload.
 
 For example, if I visit the browser-based [GPU stress test](https://mprep.info/gpu/) and the browser is rendering on the same GPU that is driving my desktop, the whole session can stutter so badly that stopping the test becomes annoying. That site is explicitly designed to heavily load the GPU through WebGL and JavaScript, so this behavior is not surprising.
 
-However, if that heavy application is instead running on the dedicated GPU while the desktop itself remains on the integrated GPU, the application may become sluggish, but the desktop often remains usable. In other words, the lag is isolated more to the application instead of dragging the whole session down with it. 
+However, if that heavy application is instead running on the dedicated GPU while the desktop itself remains on the integrated GPU, the application itself may become sluggish, but the desktop often remains usable. In other words, the lag is isolated more to the application instead of dragging the whole session down with it.
+
+This is also not just a laptop thing. Desktop systems can benefit from it too, as long as the CPU has an integrated GPU and the motherboard exposes display outputs for it. In my case, my **12th Gen Intel(R) Core(TM) i7-12700** has an iGPU, and I can use it alongside an NVIDIA 4060 just fine. The catch is that the monitor driving the desktop has to be plugged into the motherboard’s HDMI or DisplayPort output rather than directly into the discrete GPU. If your UEFI also supports an **implicit main GPU** setting, that can help ensure the integrated GPU remains the one driving the desktop. Once that is in place, the integrated GPU can keep the desktop responsive while the dedicated GPU handles heavier applications.
 
 ## Desktop Tuning Is About Choosing the Right Tradeoff
 
@@ -236,7 +254,7 @@ That means accepting tradeoffs honestly:
 - BFQ may reduce raw throughput, but can improve interactivity
 - a lower dirty writeback limit may flush earlier, but can reduce UI hitches
 - **earlyoom** may kill an application sooner, but can save the session from becoming unbearable
-- **igpu/dgpu** hybrid setup may cause some applications to either run slower or have runtime issues that you need to fix.
+- hybrid iGPU/dGPU setups can keep the desktop smoother under GPU-heavy workloads, but may require extra configuration and can make some applications run slower or behave differently
 
 From my perspective, these are all perfectly reasonable desktop trades.
 
@@ -253,6 +271,7 @@ If I were to summarize the direction I would take for a mainstream Linux desktop
 5. **Lower dirty writeback thresholds** so storage pressure becomes steadier and less bursty
 6. **Use earlyoom** as a final safety net so one bad process does not ruin the whole session
 7. **Treat CPU scheduler tweaks as secondary**, not foundational
+8. **Use hybrid graphics strategically** if GPU-heavy workloads are dragging the whole desktop down
 
 That, to me, is a much more coherent desktop strategy than just randomly piling on boot parameters and hoping one of them feels faster.
 
@@ -264,11 +283,11 @@ There are exceptions. Distros such as CachyOS and Bazzite already ship with more
 
 And for a lot of users, that difference matters.
 
-A desktop machine should not merely perform well in ideal conditions. It should remain pleasant when things get messy: when memory gets tight, when the browser goes wild, when storage gets hammered, or when background workloads refuse to stay politely in the background.
+A desktop machine should not merely perform well in ideal conditions. It should remain pleasant when things get messy: when memory gets tight, when storage gets hammered, when the browser goes wild, when the GPU gets saturated, or when background workloads refuse to stay politely in the background.
 
 That is why I think desktop Linux often benefits from a more opinionated tuning profile.
 
-For me, that profile begins with zram, a real swap file, a responsiveness-oriented I/O scheduler like BFQ, tighter writeback behavior, and a safety valve like `earlyoom`. Only after those are in place do I think it makes sense to worry much about more exotic scheduler or kernel-parameter tweaks.
+For me, that profile begins with zram, a real swap file, a responsiveness-oriented I/O scheduler like BFQ, tighter writeback behavior, and a safety valve like **earlyoom**. If graphics saturation is also a problem, then hybrid graphics can be another practical tool for keeping the desktop usable under load. Only after those are in place do I think it makes sense to worry much about more exotic scheduler or kernel-parameter tweaks.
 
 In other words, I am not trying to optimize Linux for theoretical maximum performance.
 
