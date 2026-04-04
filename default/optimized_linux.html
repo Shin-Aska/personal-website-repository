@@ -1,0 +1,336 @@
+<?php include "header.php" ?>
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="author" content="Richard Orilla">
+		<meta http-equiv="content-language" content="en-us">
+		<meta http-equiv="cache-control" content="no-cache">
+		<meta http-equiv="pragma" content="no-cache">
+		<meta name="robots" content="index" /><meta name="theme-color" content="#003eaa" /> 
+		<meta name="keywords" content="richard orilla, free games, resume">
+		<meta name="color-scheme" content="light only">
+		<meta name="darkreader-lock">
+		<noscript><meta http-equiv="refresh" content="0; url=https://classic.richardorilla.website/template.html" /></noscript>
+		<script nonce="<?php echo $token; ?>" src="script/data/menu.json" type="text/javascript"></script>
+		<script nonce="<?php echo $token; ?>" src="script/ThreeWebGL.js" type="text/javascript"></script>
+		<script nonce="<?php echo $token; ?>" src="script/ThreeCanvas.js" type="text/javascript"></script>
+		<script nonce="<?php echo $token; ?>" src="script/ThreeExtras.js" type="text/javascript"></script>
+		<script nonce="<?php echo $token; ?>" src="script/jquery.js" type="text/javascript"></script>
+		<script nonce="<?php echo $token; ?>" src="script/stats.js" type="text/javascript"></script>
+		<script nonce="<?php echo $token; ?>" src="script/sky.js"></script>
+		<script nonce="<?php echo $token; ?>" src="script/site.js" type="text/javascript"></script>
+		<script nonce="<?php echo $token; ?>" src="script/highlight.js" type="text/javascript"></script>
+
+		<link href="css/animation.css" rel="stylesheet" type="text/css">
+		<link href="css/fonts.css" rel="stylesheet" type="text/css">
+		<link href="css/site.css" rel="stylesheet" type="text/css">
+		<link href="css/sky.css" rel="stylesheet" type="text/css">
+		<link href="css/reset.css" rel="stylesheet" type="text/css">
+		<link href="css/tomorrow-night-blue.css" rel="stylesheet" type="text/css">
+
+		<!-- @@@ -->
+		<title>Skies of the Lost Cause - Optimizing a Typical Linux Distro for Desktop Responsiveness</title>
+
+
+	</head>
+	<body>
+
+		<canvas id="main"></canvas>
+		<canvas id="background"></canvas>
+		<div id="mainLabel">
+			<p>Hi, it seems that the browser you're using is not compatible with my site. Either because it's too old or you're using one of the following browsers:</p>
+			<ul>
+				<li>Brow.sh - Terminal based browser that attempts to render a modern web using ssh</li>
+				<li>Lynx - Text based browser. The oldest browser that is still active in development!</li>
+				<li>w3m - Text based browser. Quite popular too</li>
+			</ul>
+		</div>
+		<div id="backgroundLabel">
+			<p>More importantly, I got you :-), Here is a backwards compatible version that is designed to work on older or no-javascript browsers <a href="http://classic.richardorilla.website">classic.richardorilla.website</a></p>
+		</div>
+		
+		<div id="header">
+			<div class="center themeContainer">
+				<object class="themelogo" type="image/svg+xml" data="images/pen.svg" align="middle">Your browser does not support SVG</object>
+			</div>
+			
+			<p class="headingBase start">= Skies of the lost cause +</p>
+			<p class="headingBase middle">Personal website of Richard Orilla</p>
+			<br>
+			<div class="center lineContainer">
+				<object class="lineSVG" type="image/svg+xml" data="images/hr.svg" align="middle">Your browser does not support SVG</object>
+			</div>
+		</div>
+
+		<div class="menu-container">
+			<div id="menu"></div>
+		</div>
+
+		<div id="content">
+			<h2 id="tableContents">Table of Contents</h2>
+			<ul>
+				<li><a href="#introduction">Introduction</a></li>
+				<li><a href="#definition_of_terms">Definition of Terms</a></li>
+				<li><a href="#the_problem_with_general_purpose_defaults">The Problem with General-Purpose Defaults</a></li>
+				<li><a href="#start_with_zram">Start with zram</a></li>
+				<li><a href="#keep_a_real_swap_file_too">Keep a Real Swap File Too</a></li>
+				<li><a href="#o_o_m_killers_as_the_last_safety_net">OOM Killers as the Last Safety Net</a></li>
+				<li><a href="#c_p_u_scheduler_important_but_usually_not_first">CPU Scheduler: Important, but Usually Not First</a></li>
+				<li><a href="#i/_o_scheduler_where_desktop_tuning_becomes_noticeable">I/O Scheduler: Where Desktop Tuning Becomes Noticeable</a></li>
+				<li><a href="#writeback_tuning_one_of_the_most_overlooked_causes_of_stutter">Writeback Tuning: One of the Most Overlooked Causes of Stutter</a></li>
+				<li><a href="#graphics_saturation_is_a_different_kind_of_responsiveness_problem">Graphics Saturation Is a Different Kind of Responsiveness Problem</a></li>
+				<li><a href="#utilizing_integrated_g_p_us">Utilizing Integrated GPUs</a></li>
+				<li><a href="#desktop_tuning_is_about_choosing_the_right_tradeoff">Desktop Tuning Is About Choosing the Right Tradeoff</a></li>
+				<li><a href="#a_practical_desktop_first_profile">A Practical Desktop-First Profile</a></li>
+				<li><a href="#conclusion">Conclusion</a></li>
+			</ul>
+			<h1 id="headingBlog">Optimizing a Typical Linux Distro for Desktop Responsiveness</h1>
+			<h2 id="introduction">Introduction</h2>
+			<p>One thing I have noticed over the years of using Linux as my main desktop operating system is that a lot of mainstream distros feel like they are tuned first for being broadly correct rather than specifically pleasant on a personal computer.</p>
+			<p>And to be clear, I do not mean this as some cheap jab against Fedora, Ubuntu, Arch, or whatever distribution you happen to use. These are not bad operating systems. In fact, part of why they are so good is because their defaults are safe, predictable, and broad enough to work across many different kinds of hardware and workloads.</p>
+			<p>The problem is that the “broadly correct” default is not always the same thing as “best for desktop responsiveness.”</p>
+			<p>A typical desktop user does not really care if a certain default squeezes a bit more throughput out of the storage stack, if the kernel allows a bit more dirty data to build up before flushing it, or if memory pressure is tolerated a bit longer before something gets killed. What the desktop user notices instead is this:</p>
+			<ul>
+				<li>the mouse starts hitching during heavy disk activity</li>
+				<li>the browser makes the whole session feel sticky</li>
+				<li>a VM or big file copy causes the UI to stutter</li>
+				<li>GPU-heavy workloads can drag the whole desktop down with them</li>
+				<li>low-memory situations do not fail gracefully</li>
+			</ul>
+			<p>This is where I think many Linux distros still show their general-purpose roots.</p>
+			<p>Unlike something like SteamOS, which is built around a very specific hardware target and a very specific use case, the average Linux desktop distro has to be a compromise. It has to run on laptops, workstations, desktops, virtual machines, and even setups that are not really desktop-oriented at all. So naturally, it ships with defaults that are “good enough” across the board.</p>
+			<p>But that does not mean we cannot tune it further.</p>
+			<p>And that is really the point of this article.</p>
+			<p>This article is not about turning Linux into some unstable Frankenstein build full of random internet <b>sysctl</b> snippets and placebo boot parameters. It is about making deliberate changes that trade a bit of the throughput-oriented, general-purpose, or server-friendly behavior for something that feels better on an actual desktop machine.</p>
+			<p>In particular, I want to focus on the things that matter most when a machine is under stress:</p>
+			<ul>
+				<li>memory compression via zram</li>
+				<li>keeping a proper swap file as overflow</li>
+				<li>choosing an I/O scheduler with desktop responsiveness in mind</li>
+				<li>understanding when CPU scheduler tweaking matters and when it does not</li>
+				<li>using tools like <b>earlyoom</b> as a last line of defense</li>
+				<li>reducing the kinds of writeback and I/O bursts that cause visible stutter</li>
+				<li>isolating heavy GPU workloads so they do not drag the whole desktop down with them</li>
+			</ul>
+			<p>The idea here is simple: I am willing to give up a bit of theoretical peak performance if it means my desktop remains responsive in low-memory or busy situations.</p>
+			<p>Because at the end of the day, that is what a desktop machine is supposed to do.</p>
+			<h2 id="definition_of_terms">Definition of Terms</h2>
+			<p>Before we begin, I would like to clarify the terminology used throughout this article:</p>
+			<ul>
+				<li><b>zram</b> – A compressed RAM-backed block device commonly used as swap. It allows the system to store compressed pages in memory before falling back to slower disk-backed swap.</li>
+				<li><b>Swap file</b> – A regular file on disk that Linux can use for swap instead of a dedicated swap partition.</li>
+				<li><b>I/O Scheduler</b> – The kernel component responsible for deciding how block device requests are ordered and served.</li>
+				<li><b>BFQ</b> – Budget Fair Queueing, an I/O scheduler that prioritizes responsiveness and low latency, often making it attractive for desktop systems.</li>
+				<li><b>mq-deadline</b> – A multi-queue I/O scheduler focused heavily on keeping request service times bounded, especially for reads.</li>
+				<li><b>earlyoom</b> – A userspace daemon that kills memory-hungry processes before the whole machine becomes unusable during an out-of-memory situation.</li>
+				<li><b>Writeback</b> – The process where dirty cached data in RAM is flushed to storage.</li>
+				<li><b>Desktop responsiveness</b> – In the context of this article, this means how well the user interface continues to feel smooth and usable during memory pressure, heavy background disk activity, mixed workloads, or graphics saturation.</li>
+			</ul>
+			<h2 id="the_problem_with_general_purpose_defaults">The Problem with General-Purpose Defaults</h2>
+			<p>I think one mistake people often make when tuning Linux is immediately assuming that desktop sluggishness must be a CPU scheduling problem.</p>
+			<p>In practice, that is often not the real issue.</p>
+			<p>Modern Linux already has a competent CPU scheduler. For a lot of normal desktop use, it is not as though the kernel is clueless about how to distribute CPU time fairly. The real pain points tend to show up elsewhere: memory reclaim, storage contention, swap behavior, writeback, and sometimes graphics saturation.</p>
+			<p>This is why you can have a Linux system that benchmarks perfectly fine and still feels annoying in real-world use.</p>
+			<p>For example, a distro may be perfectly happy to let a large amount of dirty data pile up in RAM before flushing it. On paper, this can be good for throughput. In actual desktop use, however, it can also mean that once the flush starts hitting hard, the desktop suddenly feels awful. Likewise, a distro may ship with a tiny swap file or no useful compressed swap layer, which means once memory pressure rises, the system has fewer graceful ways to absorb it. And on the graphics side, the system may behave fine in normal use but still feel miserable once the GPU that is driving the desktop gets saturated by a heavy workload.</p>
+			<p>This is what I mean when I say many Linux distros feel tuned more like general-purpose systems than desktop-first systems.</p>
+			<p>That is not the same as saying they are <i>“for servers only.”</i> It is more accurate to say that their defaults are conservative and broad, whereas a desktop user usually has a narrower goal: keep the machine pleasant under stress.</p>
+			<h2 id="start_with_zram">Start with zram</h2>
+			<p>If there is one tweak I think deserves to be treated as foundational for desktop responsiveness, it is zram.</p>
+			<p>The reason is simple. zram gives the system a fast, compressed memory-backed place to put less-active pages before it has to go to slower disk swap. In other words, instead of the machine immediately degrading into ugly reclaim behavior or slamming the disk, it gets another layer of breathing room first.</p>
+			<p>For desktop use, this is huge.</p>
+			<p>A lot of responsiveness problems do not begin when the system is fully out of memory. They begin earlier, when memory pressure starts rising and the system has to make tougher decisions about what stays hot in RAM and what gets pushed out. zram helps soften that transition.</p>
+			<p>This is why I consider zram one of the best “first upgrades” to a normal Linux desktop install. It changes the shape of memory pressure from something abrupt and ugly into something that is often much more survivable.</p>
+			<p>For a practical setup, I prefer starting conservatively:</p>
+			<pre>
+				<code class="language-ini">
+[zram0]
+zram-size = min(ram / 2, 4096)
+compression-algorithm = zstd
+swap-priority = 100
+
+				</code>
+			</pre>
+			<p>This gives you a moderate compressed swap layer without going overboard. It is not trying to replace real swap entirely. It is trying to provide a fast first buffer.</p>
+			<p>For many systems, that alone already improves how the machine behaves when multiple browser tabs, background tasks, and memory-heavy applications collide.</p>
+			<h2 id="keep_a_real_swap_file_too">Keep a Real Swap File Too</h2>
+			<p>One thing I do not agree with is the idea that zram means disk-backed swap is no longer necessary.</p>
+			<p>I prefer keeping both.</p>
+			<p>zram is about speed. A swap file is about capacity and survivability.</p>
+			<p>If memory pressure is only brief, zram may be enough to keep the system responsive until the pressure drops. But if the pressure is sustained, or if the workload is simply too large, then the machine still benefits from having a proper swap file to absorb overflow.</p>
+			<p>This is why I like the layered approach:</p>
+			<ol>
+				<li>RAM first</li>
+				<li>zram second</li>
+				<li>disk swap last</li>
+			</ol>
+			<p>That way the system tries the fast options first but still has somewhere to go when the pressure continues rising.</p>
+			<p>As for sizing the swap file, I do not think there is a universally sacred number. But for a normal modern desktop, I think a tiny swap file is one of the easiest ways to sabotage responsiveness under load.</p>
+			<p>A practical rule of thumb I would start with is this:</p>
+			<ul>
+				<li>use zram for fast compressed breathing room</li>
+				<li>keep at least <b>8 GiB</b> of disk-backed swap if you do not hibernate</li>
+				<li>size disk-backed swap larger if you rely on hibernation or expect heavier sustained memory pressure</li>
+			</ul>
+			<p>The exact numbers will vary depending on RAM size and workload, but the general principle is the same: zram is not your excuse to remove all real swap.</p>
+			<h2 id="o_o_m_killers_as_the_last_safety_net">OOM Killers as the Last Safety Net</h2>
+			<p>Even with zram and a proper swap file, there are still situations where the machine needs help making a decision.</p>
+			<p>That is where something like <b>earlyoom</b> comes in.</p>
+			<p>The reason I like <i>earlyoom</i> is that it is a simple userspace OOM killer. The config is also very straightforward and easy to understand.</p>
+			<p>If a browser, Chromium-based app, Electron app, or some runaway workload is eating memory aggressively, I would rather lose that process than have KWin, Plasma, Xwayland, audio, and general interactivity all collapse into a half-dead state.</p>
+			<p>A practical config I like is something along these lines:</p>
+			<pre>
+				<code class="language-sh">
+EARLYOOM_ARGS="-m 5 -s 5 -k -n \
+  --prefer '(^|/)(chrome|chromium|firefox|electron)' \
+  --avoid '(^|/)(kwin_wayland|plasmashell|Xwayland|systemd|dbus-daemon)$'"
+
+				</code>
+			</pre>
+			<p>The idea is not that <b>earlyoom</b> should constantly interfere. It should not.</p>
+			<p>The idea is that when the machine is truly heading toward an unusable state, the thing that gets sacrificed first should be the greedy desktop application, not the entire desktop experience.</p>
+			<p>That kind of prioritization makes sense to me on a personal machine.</p>
+			<p>Also take note that my config is for KDE Plasma on Wayland, so you may need to adjust it for your own desktop environment.</p>
+			<p><b>systemd-oomd</b> is a valid alternative and, in some ways, the more modern one. However, it is more cgroup- and unit-oriented. That makes it better suited to users who want to build memory-pressure policy around slices, scopes, and service units rather than around simple process-name heuristics.</p>
+			<h2 id="c_p_u_scheduler_important_but_usually_not_first">CPU Scheduler: Important, but Usually Not First</h2>
+			<p>This is where I think Linux tuning discussions often get derailed.</p>
+			<p>People love talking about CPU scheduler tweaks because they feel advanced. They sound like the kind of knobs only power users know about. But in many cases, they are simply not where the real desktop pain is coming from.</p>
+			<p>If your complaint is that heavy disk I/O makes the mouse stutter, that the desktop becomes sticky when memory pressure rises, or that a large copy causes the UI to hitch, then chances are good that your real problem is not the CPU scheduler.</p>
+			<p>That does not mean CPU-related tuning is useless. It just means I would rank it below memory and storage tuning for this specific goal.</p>
+			<p>So my position here is straightforward: do not start with exotic boot parameters just because they sound powerful. If your memory behavior, I/O scheduling, writeback policy, and OOM safety nets are still poor, then CPU scheduler tuning is often just dressing up the wrong layer.</p>
+			<h2 id="i/_o_scheduler_where_desktop_tuning_becomes_noticeable">I/O Scheduler: Where Desktop Tuning Becomes Noticeable</h2>
+			<p>If memory handling is one pillar of desktop responsiveness, storage behavior is the other.</p>
+			<p>This is where I think choosing the right I/O scheduler can actually make a real-world difference, especially on systems that do more than just sit idle and browse light web pages.</p>
+			<p>For desktop use, I strongly prefer <b>BFQ</b> when it is available.</p>
+			<p>The reason is not that BFQ is magically the best at everything. It is not. The reason is that BFQ is explicitly biased toward responsiveness and low latency. That is a very desktop-oriented tradeoff. It is willing to give up some throughput in exchange for keeping applications and the UI feeling smoother under competing disk workloads.</p>
+			<p>That is exactly the kind of tradeoff I want.</p>
+			<p>By contrast, <b>mq-deadline</b> is still a respectable scheduler, and if BFQ is unavailable, it is often the sensible fallback. But if BFQ is there, I think it deserves serious consideration on a desktop machine.</p>
+			<p>Especially if your system has spinning disks, mixed storage, virtual machines, large background copies, indexing, package installs, or any kind of workload where background I/O can interfere with foreground smoothness.</p>
+			<p>So my bias is:</p>
+			<ul>
+				<li><b>BFQ first</b> for desktop interactivity</li>
+				<li><b>mq-deadline</b> when BFQ is not available</li>
+				<li><b>none</b> only when testing proves it is better for a specific device and use case</li>
+			</ul>
+			<p>I would much rather lose a bit of benchmark bragging rights than have the desktop visibly stumble every time storage gets busy.</p>
+			<h2 id="writeback_tuning_one_of_the_most_overlooked_causes_of_stutter">Writeback Tuning: One of the Most Overlooked Causes of Stutter</h2>
+			<p>One thing that surprised me when digging deeper into Linux desktop responsiveness is just how much writeback behavior can affect the feel of the system.</p>
+			<p>A lot of visible stutter during heavy disk activity is not simply “the disk is busy.” It is that the system allowed too much dirty data to accumulate, and then when the writeback pressure hits, it becomes far more disruptive than it needed to be.</p>
+			<p>This is why I think writeback tuning is one of the most overlooked areas for desktop systems.</p>
+			<p>For a desktop, I generally prefer lower and more explicit dirty data limits rather than letting very large bursts accumulate. In practice, that can mean the system starts background flushing sooner and behaves in a steadier, more controlled way.</p>
+			<p>A practical starting point would be:</p>
+			<pre>
+				<code class="language-txt">
+vm.dirty_background_bytes=268435456
+vm.dirty_bytes=1073741824
+
+				</code>
+			</pre>
+			<p>That is:</p>
+			<ul>
+				<li>start background flushing around 256 MiB</li>
+				<li>begin constraining writers around 1 GiB</li>
+			</ul>
+			<p>This is not some universal law. It is simply a desktop-first preference.</p>
+			<p>The idea is that I would rather keep writes moving more steadily than allow a huge burst to build up and then pay for it later in the form of visible hitching.</p>
+			<p>Again, this is the theme of the whole article: less emphasis on peak throughput, more emphasis on graceful behavior.</p>
+			<h2 id="graphics_saturation_is_a_different_kind_of_responsiveness_problem">Graphics Saturation Is a Different Kind of Responsiveness Problem</h2>
+			<p>Up to this point, I have mostly focused on responsiveness problems caused by memory pressure and storage contention. However, those are not the only ways a Linux desktop can become unpleasant under load. Graphics saturation can cause a very similar kind of visible stutter, especially when the same GPU is responsible for both driving the desktop compositor and handling a heavy rendering workload.</p>
+			<p>In other words, the desktop can become unpleasant not because the machine is out of memory or because the disk is busy, but because the GPU that is responsible for drawing the session is now too busy doing something else.</p>
+			<p>That is where hybrid graphics become relevant.</p>
+			<h2 id="utilizing_integrated_g_p_us">Utilizing Integrated GPUs</h2>
+			<p>If your hardware supports it, one practical way to keep the desktop responsive is to let the integrated GPU handle the desktop compositor while offloading heavier applications to the dedicated GPU.</p>
+			<p>The reason is simple. On Linux, there is no universal, user-facing equivalent to the block I/O schedulers we can switch for storage. The graphics stack does have internal scheduling, and compositors like KWin try to predict frame timing, but when the GPU driving the desktop becomes saturated, the compositor can still miss frame deadlines and the result is visible stutter. KWin’s own explanation of this problem is that once a frame deadline is missed, some frames are shown twice while others are skipped, which is exactly the kind of “my desktop feels like it is freezing even though it technically is not” behavior users notice.</p>
+			<p>In other words, what is missing on Linux is not GPU scheduling in the absolute sense, but a universal, user-facing desktop-priority policy for graphics. The drivers and compositors do have internal scheduling and frame-timing logic, but there is no simple cross-vendor equivalent to saying “the desktop environment comes first; everything else can fight for what remains.”</p>
+			<p>That being said, this is where hybrid graphics can help. NVIDIA’s PRIME Render Offload model explicitly treats one GPU as the <b>sink</b> that renders the main desktop, while selected applications can be rendered on another GPU as the <b>source</b>. In practice, this means the integrated GPU can remain responsible for presenting the desktop while the dedicated GPU handles the heavier rendering workload.</p>
+			<p>For example, if I visit the browser-based <a href="https://mprep.info/gpu/">GPU stress test</a> and the browser is rendering on the same GPU that is driving my desktop, the whole session can stutter so badly that stopping the test becomes annoying. That site is explicitly designed to heavily load the GPU through WebGL and JavaScript, so this behavior is not surprising.</p>
+			<p>However, if that heavy application is instead running on the dedicated GPU while the desktop itself remains on the integrated GPU, the application itself may become sluggish, but the desktop often remains usable. In other words, the lag is isolated more to the application instead of dragging the whole session down with it.</p>
+			<p>This is also not just a laptop thing. Desktop systems can benefit from it too, as long as the CPU has an integrated GPU and the motherboard exposes display outputs for it. In my case, my <b>12th Gen Intel(R) Core(TM) i7-12700</b> has an iGPU, and I can use it alongside an NVIDIA 4060 just fine. The catch is that the monitor driving the desktop has to be plugged into the motherboard’s HDMI or DisplayPort output rather than directly into the discrete GPU. If your UEFI also supports an <b>implicit main GPU</b> setting, that can help ensure the integrated GPU remains the one driving the desktop. Once that is in place, the integrated GPU can keep the desktop responsive while the dedicated GPU handles heavier applications.</p>
+			<h2 id="desktop_tuning_is_about_choosing_the_right_tradeoff">Desktop Tuning Is About Choosing the Right Tradeoff</h2>
+			<p>I think this is where people sometimes get overly defensive.</p>
+			<p>The moment you suggest tuning a Linux desktop away from its default behavior, someone will inevitably say that the defaults exist for a reason. And yes, of course they do.</p>
+			<p>But that does not mean those defaults are optimal for every use case.</p>
+			<p>A distro has to make decisions that work broadly. A desktop user is allowed to make decisions that work narrowly.</p>
+			<p>That means accepting tradeoffs honestly:</p>
+			<ul>
+				<li>zram uses CPU cycles to compress pages, but often improves responsiveness</li>
+				<li>BFQ may reduce raw throughput, but can improve interactivity</li>
+				<li>a lower dirty writeback limit may flush earlier, but can reduce UI hitches</li>
+				<li><b>earlyoom</b> may kill an application sooner, but can save the session from becoming unbearable</li>
+				<li>hybrid iGPU/dGPU setups can keep the desktop smoother under GPU-heavy workloads, but may require extra configuration and can make some applications run slower or behave differently</li>
+			</ul>
+			<p>From my perspective, these are all perfectly reasonable desktop trades.</p>
+			<p>A personal machine is not a benchmark harness. It is a machine meant to remain usable while you are actually using it.</p>
+			<h2 id="a_practical_desktop_first_profile">A Practical Desktop-First Profile</h2>
+			<p>If I were to summarize the direction I would take for a mainstream Linux desktop, it would look like this:</p>
+			<ol>
+				<li><b>Enable zram</b> with a sane size and high priority</li>
+				<li><b>Keep a real swap file</b> instead of relying on zram alone</li>
+				<li><b>Use BFQ</b> where available, especially on disks that affect interactivity</li>
+				<li><b>Use mq-deadline</b> as the fallback when BFQ is unavailable</li>
+				<li><b>Lower dirty writeback thresholds</b> so storage pressure becomes steadier and less bursty</li>
+				<li><b>Use earlyoom</b> as a final safety net so one bad process does not ruin the whole session</li>
+				<li><b>Treat CPU scheduler tweaks as secondary</b>, not foundational</li>
+				<li><b>Use hybrid graphics strategically</b> if GPU-heavy workloads are dragging the whole desktop down</li>
+			</ol>
+			<p>That, to me, is a much more coherent desktop strategy than just randomly piling on boot parameters and hoping one of them feels faster.</p>
+			<h2 id="conclusion">Conclusion</h2>
+			<p>Mainstream Linux distributions are not broken, nor are they secretly “server-only” operating systems pretending to be desktops. But I do think many stock, general-purpose distro defaults reflect broader priorities more than desktop-first ones.</p>
+			<p>There are exceptions. Distros such as CachyOS and Bazzite already ship with more opinionated tuning aimed at responsiveness and gaming. However, the average Fedora, Ubuntu, or Arch installation still tends to favor broad compatibility and conservative defaults over a specifically desktop-tuned behavior under pressure.</p>
+			<p>And for a lot of users, that difference matters.</p>
+			<p>A desktop machine should not merely perform well in ideal conditions. It should remain pleasant when things get messy: when memory gets tight, when storage gets hammered, when the browser goes wild, when the GPU gets saturated, or when background workloads refuse to stay politely in the background.</p>
+			<p>That is why I think desktop Linux often benefits from a more opinionated tuning profile.</p>
+			<p>For me, that profile begins with zram, a real swap file, a responsiveness-oriented I/O scheduler like BFQ, tighter writeback behavior, and a safety valve like <b>earlyoom</b>. If graphics saturation is also a problem, then hybrid graphics can be another practical tool for keeping the desktop usable under load. Only after those are in place do I think it makes sense to worry much about more exotic scheduler or kernel-parameter tweaks.</p>
+			<p>In other words, I am not trying to optimize Linux for theoretical maximum performance.</p>
+			<p>I am trying to optimize it for what I actually want from a desktop: responsiveness, graceful degradation, and a machine that still feels like it belongs to me even when it is under pressure.</p>
+			<p>That, to me, is the more practical goal.</p>
+			<h3>~ End ~</h3>
+			<h4>
+				There are
+				<?php
+					include "site_counter.php";
+					echo get_page_count("optimized_linux");
+				?>
+				viewers that have read this page.
+			</h4>
+			<section id="comments">
+				<?php
+					require_once "CommentFactory.php";
+					require_once "MastodonCommentProvider.php";
+					require_once "BlueskyCommentProvider.php";
+			
+					$commentBundles = [
+						mastodon_comment_bundle("116343922738965419", "mastodon.social", "@richardorilla"),
+						bluesky_comment_bundle("https://bsky.app/profile/www.richardorilla.website/post/3min4mqph2c2p"),
+					];
+			
+					echo comment_factory_render(comment_factory_merge($commentBundles));
+				?>
+			</section>
+			<h4>
+				<a href="#headingBlog">Go back to top</a>
+			</h4>
+			<h4>
+				<a href="blog.html">Go back to list of articles</a>
+			</h4>
+		</div>
+	</body>
+	<script nonce="<?php echo $token; ?>">
+		$(document).ready(function () {
+			var images = $("img.preview.center");
+			for (var i = 0; i < images.length; i++) {
+				let element = images[i];
+				element.onmouseover = () => {
+					element.oldsrc = element.src;
+					element.src = element.src.replace("_tmb", "");
+				}
+	
+				element.onmouseout = () => {
+					element.src = element.oldsrc;
+				}
+			}
+			hljs.highlightAll();
+		});
+	</script>
+</html>
