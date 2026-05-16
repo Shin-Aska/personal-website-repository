@@ -8,18 +8,18 @@ The project lives at [github.com/anomalyco/opencode](https://github.com/anomalyc
 
 Out of the box, Opencode ships with two built in agents:
 
-- `build`, the default agent with full access for actually doing work
-- `plan`, a read only agent for analysis and planning
+- **build**, the default agent with full access for actually doing work
+- **plan**, a read only agent for analysis and planning
 
 On the model side, Opencode supports more than 75 LLM providers through [models.dev](https://models.dev), including local models if you prefer to run things on your own hardware. Privacy is also a big selling point here. Opencode advertises a zero retention policy, which is a lot easier to live with than blindly pasting code into random web chatboxes.
 
 ## Openweight Models
 
-One of the more interesting parts of the Opencode ecosystem is how well it fits openweight models. In practice, that means you are not limited to the usual closed model lineup. You can use strong coding focused models from labs that publish openweight or more openly available model families, while still getting a polished agent workflow on top.
+One of the more interesting parts of the Opencode ecosystem is how well it fits openweight models. That means you are not limited to the usual closed model lineup. You can use strong coding focused models from labs that publish openweight or more openly available model families, while still getting a polished agent workflow on top.
 
 This matters because a lot of the newer coding friendly models people care about right now come from that world. Think DeepSeek, Kimi, GLM, Qwen, and MiniMax. If you have been hopping between providers just to try those models, Opencode gives you one interface for all of it.
 
-These models are also available through OpenCode Go, which is the easiest way to get reliable access without juggling a pile of separate accounts.
+These models are also available through OpenCode Go, which gives you reliable access without juggling a pile of separate accounts.
 
 ### OpenCode Go
 
@@ -80,15 +80,17 @@ curl -fsSL https://opencode.ai/install | bash
 If you want alternative install methods, these are available too:
 
 ```powershell
+# If you use Chocolatey
 choco install opencode
-```
 
-```powershell
+# If you use Scoop
 scoop install opencode
-```
 
-```bash
+# If you use npm
 npm install -g opencode-ai
+
+# If you use Bun
+bun add -g opencode-ai
 ```
 
 There is also a desktop app in beta available from [opencode.ai/download](https://opencode.ai/download).
@@ -140,6 +142,8 @@ After installation, the next command you should care about is:
 opencode auth login
 ```
 
+![Opencode auth login showing the provider selection screen with OpenCode Go selected](images/opencode_auth_login.jpg)
+
 That starts an interactive prompt where you choose a provider and enter the API key for it. Opencode stores those credentials in:
 
 ```text
@@ -180,12 +184,12 @@ opencode auth list
 
 If you want a much more specialized agent setup than the default Build and Plan pair, install **[Oh My OpenAgent](https://github.com/code-yeongyu/oh-my-openagent)**. It is a plugin for Opencode that replaces the default agents with a larger roster of purpose built agents such as Sisyphus, Hephaestus, Prometheus, Atlas, Oracle, Librarian, Explore, and others.
 
-The basic idea is simple. Instead of one generic worker and one planner, you get an orchestrated set of agents that are tuned for different jobs. That tends to feel a lot better once your tasks stop being trivial.
+Instead of one generic worker and one planner, you get an orchestrated set of agents tuned for different jobs. This works better once your tasks stop being trivial.
 
 Before installing it, make sure you have:
 
-- Opencode 1.4.0 or newer
-- Bun installed, which is only needed for the installation step
+- Opencode 1.4.0 or newer (should be if you followed the earlier steps)
+- Bun installed, which is only needed for the installation step (To install bun, go to [https://bun.sh/](https://bun.sh/))
 
 For users who already have Zen and Go set up, this non interactive install command is the recommended path:
 
@@ -193,23 +197,25 @@ For users who already have Zen and Go set up, this non interactive install comma
 bunx oh-my-openagent install --no-tui --claude=no --openai=no --gemini=no --copilot=no --opencode-zen=yes --opencode-go=yes
 ```
 
-One note here. If you do not have a Claude subscription, Sisyphus may not work ideally depending on how your setup is configured. Also, the `--opencode-zen=yes` and `--opencode-go=yes` flags are both used because Zen and Go share the same API key and account.
+If you do not have a Claude subscription, Sisyphus may not work as well depending on your setup. The **--opencode-zen=yes** and **--opencode-go=yes** flags are both used because Zen and Go share the same API key and account.
 
 ### Installing via Build mode
 
-If you prefer to let Opencode handle the installation for you, start Opencode in the default `build` mode and paste this prompt:
+If you prefer to let Opencode handle the installation for you, start Opencode in the default **build** mode and paste this prompt:
 
 ```text
 Install and configure oh-my-openagent by following the instructions here: https://raw.githubusercontent.com/code-yeongyu/oh-my-openagent/refs/heads/dev/docs/guide/installation.md
 ```
 
-The Build agent will fetch the guide, read the steps, and run the appropriate commands on your behalf. This is useful if you do not want to copy paste CLI commands manually. You will still need to answer the subscription questions (Zen, Go, Claude, and so on) when the installer asks for them.
+The Build agent will fetch the guide, read the steps, and run the appropriate commands on your behalf. Use this if you do not want to copy paste CLI commands manually. You will still need to answer the subscription questions when the installer asks for them.
 
 After the install finishes, verify the setup with:
 
 ```bash
 bunx oh-my-openagent doctor
 ```
+
+![Oh My OpenAgent doctor output showing System OK](images/opencode_bunx_omo_ok.jpg)
 
 The main config file for Oh My OpenAgent lives here:
 
@@ -225,7 +231,13 @@ After installing Oh My OpenAgent, start Opencode from your terminal:
 opencode
 ```
 
-If everything is wired up correctly, you should no longer just see "Build" or "Plan" mode. Instead, you should see agent names like Sisyphus, Hephaestus, Prometheus, or Atlas. Sisyphus is usually the default orchestrator, so that is the one you will most likely land in first.
+If everything is wired up correctly, you should see agent names like Sisyphus, Hephaestus, Prometheus, or Atlas instead of only "Build" or "Plan".
+
+![Agent selection screen showing Sisyphus, Hephaestus, Prometheus, and Atlas](images/opencode_agents_list.jpg)
+
+Sisyphus is usually the default orchestrator, so you will most likely land there first.
+
+![Opencode TUI showing Sisyphus mode with Kimi K2.6](images/opencode_kimi.jpg)
 
 Once you are in Sisyphus mode, open the model selector with:
 
@@ -233,13 +245,15 @@ Once you are in Sisyphus mode, open the model selector with:
 /models
 ```
 
+![Opencode model selector showing available providers and models](images/opencode_model_selector.jpg)
+
 From there, change the active model to:
 
 ```text
 opencode-go/kimi-k2.6
 ```
 
-It usually defaults to Claude, so this is worth changing right away if you want to follow the roster described here.
+It usually defaults to Claude, so change this right away if you want to follow the roster described here.
 
 After that, give Sisyphus this instruction:
 
@@ -247,9 +261,9 @@ After that, give Sisyphus this instruction:
 Update the OhMyOpenAgent LLM roster for the agents to what is inside @LLM-Roster.md
 ```
 
-The roster is basically a model assignment map. It tells Oh My OpenAgent which model each agent should prefer, what fallback chain to use, and which model families should back broader task categories. That way you are not using the same model for everything when different agents clearly have different strengths.
+The roster is a model assignment map. It tells Oh My OpenAgent which model each agent should prefer, what fallback chain to use, and which model families should back broader task categories. That way you are not using the same model for everything when different agents have different strengths.
 
-Here is the openweight-only roster I use. Every primary and every fallback is an `opencode-go` model. If you want to run purely on openweight models without any closed providers, you can copy the block below directly into your `~/.config/opencode/oh-my-openagent.jsonc`.
+Here is the openweight-only roster I use. Every primary and fallback is an **opencode-go** model. If you want to run purely on openweight models without any closed providers, you can copy the block below directly into your **~/.config/opencode/oh-my-openagent.jsonc**.
 
 ```markdown
 # Oh-My-OpenAgent LLM Roster
@@ -322,4 +336,4 @@ Here is the openweight-only roster I use. Every primary and every fallback is an
 **Kept unchanged**: `metis` (Kimi K2.6 high), `multimodal-looker` (Kimi K2.6 — vision required).
 ```
 
-That gives you the complete picture. Every agent and category runs on `opencode-go` models. If you ever add another subscription later, you can always extend the fallback chains, but this setup works entirely on its own.
+Every agent and category runs on **opencode-go** models. If you add another subscription later, you can extend the fallback chains, but this setup works on its own.
