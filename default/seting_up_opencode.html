@@ -302,14 +302,14 @@ bunx oh-my-openagent doctor
 			<p>The main config file for Oh My OpenAgent lives here:</p>
 			<pre>
 				<code class="language-text">
-~/.config/opencode/oh-my-openagent.jsonc
+~/.config/opencode/oh-my-openagent.json
 
 				</code>
 			</pre>
 			<p>On Windows, this maps to:</p>
 			<pre>
 				<code class="language-text">
-%USERPROFILE%\.config\opencode\oh-my-openagent.jsonc
+%USERPROFILE%\.config\opencode\oh-my-openagent.json
 
 				</code>
 			</pre>
@@ -350,12 +350,13 @@ opencode-go/kimi-k2.6
 			<p>After that, give Sisyphus this instruction:</p>
 			<pre>
 				<code class="language-text">
-Update the OhMyOpenAgent LLM roster for the agents to what is inside @LLM-Roster.md
+Update the OhMyOpenAgent LLM roster for the agents to what is inside @LLM-Roster.md which is located at the ~/.config/opencode/oh-my-openagent.json file. Note: If you're on Windows, the file is located at the %USERPROFILE%\.config\opencode\oh-my-openagent.json file.
 
 				</code>
 			</pre>
 			<p>The roster is a model assignment map. It tells Oh My OpenAgent which model each agent should prefer, what fallback chain to use, and which model families should back broader task categories. That way you are not using the same model for everything when different agents have different strengths.</p>
-			<p>Here is the openweight-only roster I use. Every primary and fallback is an <b>opencode-go</b> model. If you want to run purely on openweight models without any closed providers, you can copy the block below directly into your <b>~/.config/opencode/oh-my-openagent.jsonc</b>.</p>
+			<p>Here is the openweight-only roster I use. Every primary and fallback is an <b>opencode-go</b> model. The roster below is shown as markdown tables for readability — the actual config file uses JSON format with <b>model</b> and <b>variant</b> fields for each agent and category.</p>
+			<p>That being said, here is the contents of <b>LLM-Roster.md</b>:</p>
 			<pre>
 				<code class="language-markdown">
 # Oh-My-OpenAgent LLM Roster
@@ -413,6 +414,7 @@ Update the OhMyOpenAgent LLM roster for the agents to what is inside @LLM-Roster
 				</code>
 			</pre>
 			<p>Every agent and category runs on <b>opencode-go</b> models. If you add another subscription later, you can extend the fallback chains, but this setup works on its own.</p>
+			<p>Alternatively</p>
 			<h3>~ End ~</h3>
 			<h4>
 				There are

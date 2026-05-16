@@ -230,13 +230,13 @@ bunx oh-my-openagent doctor
 The main config file for Oh My OpenAgent lives here:
 
 ```text
-~/.config/opencode/oh-my-openagent.jsonc
+~/.config/opencode/oh-my-openagent.json
 ```
 
 On Windows, this maps to:
 
 ```text
-%USERPROFILE%\.config\opencode\oh-my-openagent.jsonc
+%USERPROFILE%\.config\opencode\oh-my-openagent.json
 ```
 
 ## Configuring Oh My Open Agent
@@ -274,12 +274,14 @@ It usually defaults to Claude, so change this right away if you want to follow t
 After that, give Sisyphus this instruction:
 
 ```text
-Update the OhMyOpenAgent LLM roster for the agents to what is inside @LLM-Roster.md
+Update the OhMyOpenAgent LLM roster for the agents to what is inside @LLM-Roster.md which is located at the ~/.config/opencode/oh-my-openagent.json file. Note: If you're on Windows, the file is located at the %USERPROFILE%\.config\opencode\oh-my-openagent.json file.
 ```
 
 The roster is a model assignment map. It tells Oh My OpenAgent which model each agent should prefer, what fallback chain to use, and which model families should back broader task categories. That way you are not using the same model for everything when different agents have different strengths.
 
-Here is the openweight-only roster I use. Every primary and fallback is an **opencode-go** model. If you want to run purely on openweight models without any closed providers, you can copy the block below directly into your **~/.config/opencode/oh-my-openagent.jsonc**.
+Here is the openweight-only roster I use. Every primary and fallback is an **opencode-go** model. The roster below is shown as markdown tables for readability — the actual config file uses JSON format with **model** and **variant** fields for each agent and category.
+
+That being said, here is the contents of **LLM-Roster.md**:
 
 ```markdown
 # Oh-My-OpenAgent LLM Roster
@@ -353,3 +355,5 @@ Here is the openweight-only roster I use. Every primary and fallback is an **ope
 ```
 
 Every agent and category runs on **opencode-go** models. If you add another subscription later, you can extend the fallback chains, but this setup works on its own.
+
+Alternatively 
