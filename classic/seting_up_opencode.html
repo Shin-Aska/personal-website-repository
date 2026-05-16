@@ -56,6 +56,9 @@
 				<li><a href="#configuring_opencode_using_oh_my_open_agent">Configuring Opencode (using Oh My OpenAgent)</a></li>
 				<li><a href="#installing_via_build_mode">Installing via Build mode</a></li>
 				<li><a href="#configuring_oh_my_open_agent">Configuring Oh My Open Agent</a></li>
+				<li><a href="#cost">Cost</a></li>
+				<li><a href="#cost_by_model">Cost by Model</a></li>
+				<li><a href="#conclusion">Conclusion</a></li>
 			</ul>
 			<h1 id="headingBlog">Setting up Opencode</h1>
 			<h2 id="introduction_to_opencode">Introduction to Opencode</h2>
@@ -389,7 +392,21 @@ Update the OhMyOpenAgent LLM roster for the agents to what is inside @LLM-Roster
 				</code>
 			</pre>
 			<p>Every agent and category runs on <b>opencode-go</b> models. If you add another subscription later, you can extend the fallback chains, but this setup works on its own.</p>
-			<p>Alternatively</p>
+			<p>Alternatively, you can modify the contents here with other agents you have like adding GPT-5.5 on your OpenAI subscription and it should work just as fine.</p>
+			<h2 id="cost">Cost</h2>
+			<p>Here is a snapshot of actual usage costs from a 33-hour session using the openweight roster above. The totals are from the LLM Usage Dashboard:</p>
+			<figure>
+			<img class="preview center" src="images/opencode_openwight_cost.png">
+			</figure>
+			<p>The session ran <b>792 inferences</b> over roughly 33 hours with a <b>total cost of $5.94</b> and an <b>average of $0.0075 per inference</b>.</p>
+			<h3 id="cost_by_model">Cost by Model</h3>
+			<p><b>kimi-k2.6</b> accounted for the bulk of the usage at <b>704 inferences</b> and <b>$5.79</b>. <b>deepseek-v4-flash</b> came in second with <b>81 inferences</b> at <b>$0.13</b>, followed by <b>qwen3.6-plus</b> at <b>2 inferences</b> and <b>$0.03</b>. There were also <b>5 inferences</b> on <b>big-pickle</b> at effectively <b>$0.00</b>.</p>
+			<p>To put this in perspective, running the same 792-inference session on <b>Claude Opus</b> would have cost significantly more — likely in the $50–$150 range depending on token counts — because Opus pricing is roughly an order of magnitude higher per token. Even <b>Claude Sonnet</b> would have run several times more expensive than this openweight setup.</p>
+			<p>Most of the cost goes to <b>kimi-k2.6</b>, which makes sense because it handles the bulk of the orchestration and reasoning tasks. DeepSeek V4 Flash is used for exploration and librarian work, so it stays cheap despite the large context windows. The overall average is well under a cent per inference, which keeps the total reasonable even for long sessions.</p>
+			<h2 id="conclusion">Conclusion</h2>
+			<p>So, is it worth setting up Opencode with openweight models?</p>
+			<p>From my experience, <b>absolutely.</b> You get a fully capable AI coding agent without being locked into a single provider or paying premium API prices. The setup is straightforward, the roster is flexible, and the cost is hard to beat. For under $6 across a 33-hour session, I had access to multiple specialized agents handling everything from orchestration to codebase exploration.</p>
+			<p>If you are already paying for Claude or GPT subscriptions, this is a low-risk way to diversify your tooling. And if you are just getting started, OpenCode Go at $10 per month is a gentle entry point compared to enterprise API tiers. Either way, having options is the whole point.</p>
 			<h3>~ End ~</h3>
 			<h4>
 				There are
@@ -399,6 +416,20 @@ Update the OhMyOpenAgent LLM roster for the agents to what is inside @LLM-Roster
 				?>
 				viewers that have read this page.
 			</h4>
+			<section id="comments">
+				<?php
+					require_once "CommentFactory.php";
+					require_once "MastodonCommentProvider.php";
+					require_once "BlueskyCommentProvider.php";
+			
+					$commentBundles = [
+						mastodon_comment_bundle("116585647444340240", "mastodon.social", "@richardorilla"),
+						bluesky_comment_bundle("https://bsky.app/profile/www.richardorilla.website/post/3mlyhpz64gs2m"),
+					];
+			
+					echo comment_factory_render(comment_factory_merge($commentBundles));
+				?>
+			</section>
 			<h4>
 				<a href="#headingBlog">Go back to top</a>
 			</h4>

@@ -356,4 +356,28 @@ That being said, here is the contents of **LLM-Roster.md**:
 
 Every agent and category runs on **opencode-go** models. If you add another subscription later, you can extend the fallback chains, but this setup works on its own.
 
-Alternatively 
+Alternatively, you can modify the contents here with other agents you have like adding GPT-5.5 on your OpenAI subscription and it should work just as fine.
+
+## Cost
+
+Here is a snapshot of actual usage costs from a 33-hour session using the openweight roster above. The totals are from the LLM Usage Dashboard:
+
+![LLM Usage Dashboard showing total cost of $5.94 across 792 inferences](images/opencode_openwight_cost.png)
+
+The session ran **792 inferences** over roughly 33 hours with a **total cost of $5.94** and an **average of $0.0075 per inference**.
+
+### Cost by Model
+
+**kimi-k2.6** accounted for the bulk of the usage at **704 inferences** and **$5.79**. **deepseek-v4-flash** came in second with **81 inferences** at **$0.13**, followed by **qwen3.6-plus** at **2 inferences** and **$0.03**. There were also **5 inferences** on **big-pickle** at effectively **$0.00**.
+
+To put this in perspective, running the same 792-inference session on **Claude Opus** would have cost significantly more — likely in the $50–$150 range depending on token counts — because Opus pricing is roughly an order of magnitude higher per token. Even **Claude Sonnet** would have run several times more expensive than this openweight setup.
+
+Most of the cost goes to **kimi-k2.6**, which makes sense because it handles the bulk of the orchestration and reasoning tasks. DeepSeek V4 Flash is used for exploration and librarian work, so it stays cheap despite the large context windows. The overall average is well under a cent per inference, which keeps the total reasonable even for long sessions.
+
+## Conclusion
+
+So, is it worth setting up Opencode with openweight models?
+
+From my experience, **absolutely.** You get a fully capable AI coding agent without being locked into a single provider or paying premium API prices. The setup is straightforward, the roster is flexible, and the cost is hard to beat. For under $6 across a 33-hour session, I had access to multiple specialized agents handling everything from orchestration to codebase exploration.
+
+If you are already paying for Claude or GPT subscriptions, this is a low-risk way to diversify your tooling. And if you are just getting started, OpenCode Go at $10 per month is a gentle entry point compared to enterprise API tiers. Either way, having options is the whole point.
