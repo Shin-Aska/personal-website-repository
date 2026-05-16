@@ -232,6 +232,38 @@
   
 }
 
+.copy-btn {
+  position: absolute;
+  top: 0.5em;
+  right: 0.5em;
+  padding: 0.3em 0.8em;
+  font-size: 0.75rem;
+  font-family: inherit;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 4px;
+  color: #ffffff;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.2s, background 0.2s;
+  z-index: 10;
+}
+
+pre:hover .copy-btn {
+  opacity: 1;
+}
+
+.copy-btn:hover {
+  background: rgba(0, 0, 0, 0.55);
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+.copy-btn.copied {
+  background: rgba(0, 0, 0, 0.55);
+  border-color: #64ffda;
+  color: #64ffda;
+}
+
 body {
   /*background: rgba(0, 0, 0, 0) url("../images/Tempholder.png") no-repeat fixed top;*/
 

@@ -56,4 +56,30 @@ $( document ).ready(function() {
 			window.location.href = window.siteMenuURLs[elem.target.id];
 		}
 	}
+
+	var codeBlocks = document.querySelectorAll('pre > code');
+	for (var i = 0; i < codeBlocks.length; i++) {
+		var pre = codeBlocks[i].parentNode;
+		pre.style.position = 'relative';
+
+		var btn = document.createElement('button');
+		btn.className = 'copy-btn';
+		btn.textContent = 'Copy';
+		btn.type = 'button';
+
+		btn.addEventListener('click', function(block, button) {
+			return function() {
+				navigator.clipboard.writeText(block.textContent).then(function() {
+					button.textContent = 'Copied!';
+					button.classList.add('copied');
+					setTimeout(function() {
+						button.textContent = 'Copy';
+						button.classList.remove('copied');
+					}, 2000);
+				});
+			};
+		}(codeBlocks[i], btn));
+
+		pre.appendChild(btn);
+	}
 });
