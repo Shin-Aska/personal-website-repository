@@ -110,7 +110,9 @@ opencode-go/kimi-k2.6
 			</pre>
 			<h2 id="installation_of_opencode">Installation of Opencode</h2>
 			<h3 id="windows">Windows</h3>
-			<p>If you are on Windows, my strong recommendation is to use WSL, Windows Subsystem for Linux. Opencode feels much more natural in a Linux shell, and you avoid a lot of the weird edge cases that come from forcing terminal heavy tooling into native Windows workflows.</p>
+			<p>If you are on Windows, my strong recommendation is to use WSL, Windows Subsystem for Linux. Opencode feels much more natural in a Linux shell, and you avoid a few platform specific issues that can appear when running terminal heavy tooling natively on Windows.</p>
+			<p>One specific issue to know about: if you install Oh My OpenAgent directly on Windows (without WSL), the installer can create files named <b>NUL</b> in the project directory. <b>NUL</b> is a reserved device name on Windows, so these files are difficult to remove with standard tools and can break some file operations. If this happens, you can ask the Build agent inside Opencode to clean them up for you, or you can remove them from WSL if you have it installed.</p>
+			<p>That said, native Windows works fine for most users. The config and auth paths use XDG conventions even on Windows, so <b>~/.config/opencode/</b> and <b>~/.local/share/opencode/</b> resolve to <b>%USERPROFILE%.configopencode</b> and <b>%USERPROFILE%.localshareopencode</b> respectively.</p>
 			<p>First, open PowerShell as Administrator and install WSL:</p>
 			<pre style="text-align: left !important;">
 				<code language="powershell">
@@ -199,6 +201,13 @@ opencode auth login
 
 				</code>
 			</pre>
+			<p>On Windows, this maps to:</p>
+			<pre style="text-align: left !important;">
+				<code language="text">
+%USERPROFILE%\.local\share\opencode\auth.json
+
+				</code>
+			</pre>
 			<p>If you are setting up both OpenCode Zen and OpenCode Go, you should run the auth flow twice.</p>
 			<p>First, log into OpenCode Zen:</p>
 			<pre style="text-align: left !important;">
@@ -215,7 +224,7 @@ opencode auth login --provider opencode
 
 				</code>
 			</pre>
-			<p>Again, you can also choose OpenCode Go from the interactive prompt. This uses the same API key from the same Zen console, because Go is a subscription add on inside Zen rather than a completely separate account.</p>
+			<p>Again, you can also choose OpenCode Go from the interactive prompt. Both providers use the same web console at <a href="https://opencode.ai/auth">opencode.ai/auth</a>, but they may receive different API keys depending on your account setup. Go is a subscription add on inside Zen, so you manage both from the same place even if the keys differ.</p>
 			<p>If you are already inside the TUI, you can also use:</p>
 			<pre style="text-align: left !important;">
 				<code language="text">
@@ -269,6 +278,13 @@ bunx oh-my-openagent doctor
 			<pre style="text-align: left !important;">
 				<code language="text">
 ~/.config/opencode/oh-my-openagent.jsonc
+
+				</code>
+			</pre>
+			<p>On Windows, this maps to:</p>
+			<pre style="text-align: left !important;">
+				<code language="text">
+%USERPROFILE%\.config\opencode\oh-my-openagent.jsonc
 
 				</code>
 			</pre>
