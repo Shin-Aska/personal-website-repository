@@ -1,0 +1,434 @@
+<?php include "header.php" ?>
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="author" content="Richard Orilla">
+		<meta http-equiv="content-language" content="en-us">
+		<meta http-equiv="cache-control" content="no-cache">
+		<meta http-equiv="pragma" content="no-cache">
+		<meta name="robots" content="index" /><meta name="theme-color" content="#003eaa" />
+		<meta name="keywords" content="richard orilla, free games, resume">
+		<meta name="color-scheme" content="light only">
+		<meta name="darkreader-lock">
+		<noscript><meta http-equiv="refresh" content="0; url=https://classic.richardorilla.website/template.html" /></noscript>
+		<script nonce="<?php echo $token; ?>" src="script/data/menu.json" type="text/javascript"></script>
+		<script nonce="<?php echo $token; ?>" src="script/ThreeWebGL.js" type="text/javascript"></script>
+		<script nonce="<?php echo $token; ?>" src="script/ThreeCanvas.js" type="text/javascript"></script>
+		<script nonce="<?php echo $token; ?>" src="script/ThreeExtras.js" type="text/javascript"></script>
+		<script nonce="<?php echo $token; ?>" src="script/jquery.js" type="text/javascript"></script>
+		<script nonce="<?php echo $token; ?>" src="script/stats.js" type="text/javascript"></script>
+		<script nonce="<?php echo $token; ?>" src="script/sky.js"></script>
+		<script nonce="<?php echo $token; ?>" src="script/site.js" type="text/javascript"></script>
+		<script nonce="<?php echo $token; ?>" src="script/highlight.js" type="text/javascript"></script>
+
+		<link href="css/animation.css" rel="stylesheet" type="text/css">
+		<link href="css/fonts.css" rel="stylesheet" type="text/css">
+		<link href="css/site.css" rel="stylesheet" type="text/css">
+		<link href="css/sky.css" rel="stylesheet" type="text/css">
+		<link href="css/reset.css" rel="stylesheet" type="text/css">
+		<link href="css/tomorrow-night-blue.css" rel="stylesheet" type="text/css">
+
+		<!-- @@@ -->
+		<title>Skies of the Lost Cause - Setting up Opencode</title>
+
+
+	</head>
+	<body>
+
+		<canvas id="main"></canvas>
+		<canvas id="background"></canvas>
+		<div id="mainLabel">
+			<p>Hi, it seems that the browser you're using is not compatible with my site. Either because it's too old or you're using one of the following browsers:</p>
+			<ul>
+				<li>Brow.sh - Terminal based browser that attempts to render a modern web using ssh</li>
+				<li>Lynx - Text based browser. The oldest browser that is still active in development!</li>
+				<li>w3m - Text based browser. Quite popular too</li>
+			</ul>
+		</div>
+		<div id="backgroundLabel">
+			<p>More importantly, I got you :-), Here is a backwards compatible version that is designed to work on older or no-javascript browsers <a href="http://classic.richardorilla.website">classic.richardorilla.website</a></p>
+		</div>
+
+		<div id="header">
+			<div class="center themeContainer">
+				<object class="themelogo" type="image/svg+xml" data="images/pen.svg" align="middle">Your browser does not support SVG</object>
+			</div>
+
+			<p class="headingBase start">= Skies of the lost cause +</p>
+			<p class="headingBase middle">Personal website of Richard Orilla</p>
+			<br>
+			<div class="center lineContainer">
+				<object class="lineSVG" type="image/svg+xml" data="images/hr.svg" align="middle">Your browser does not support SVG</object>
+			</div>
+		</div>
+
+		<div class="menu-container">
+			<div id="menu"></div>
+		</div>
+
+		<div id="content">
+			<h2 id="tableContents">Table of Contents</h2>
+			<ul>
+				<li><a href="#introduction_to_opencode">Introduction to Opencode</a></li>
+				<li><a href="#openweight_models">Openweight Models</a></li>
+				<li><a href="#open_code_go">OpenCode Go</a></li>
+				<li><a href="#installation_of_opencode">Installation of Opencode</a></li>
+				<li><a href="#windows">Windows</a></li>
+				<li><a href="#linux">Linux</a></li>
+				<li><a href="#post_setup">Post Setup</a></li>
+				<li><a href="#configuring_opencode_using_oh_my_open_agent">Configuring Opencode (using Oh My OpenAgent)</a></li>
+				<li><a href="#installing_via_build_mode">Installing via Build mode</a></li>
+				<li><a href="#configuring_oh_my_open_agent">Configuring Oh My Open Agent</a></li>
+			</ul>
+			<h1 id="headingBlog">Setting up Opencode</h1>
+			<h2 id="introduction_to_opencode">Introduction to Opencode</h2>
+			<p>Opencode is an open source AI coding agent that you can use from a terminal interface, a desktop app, or an IDE extension. If you like staying in the shell, the terminal UI is the main attraction. If you want something a bit more point and click, the desktop app exists too.</p>
+			<p>The project lives at <a href="https://github.com/anomalyco/opencode">github.com/anomalyco/opencode</a>, has more than 160,000 GitHub stars, and is released under the MIT license. That matters to me because it means I am not locked into some opaque hosted tool with mystery behavior.</p>
+			<p>Out of the box, Opencode ships with two built in agents:</p>
+			<ul>
+				<li><b>build</b>, the default agent with full access for actually doing work</li>
+				<li><b>plan</b>, a read only agent for analysis and planning</li>
+			</ul>
+			<p>On the model side, Opencode supports more than 75 LLM providers through <a href="https://models.dev">models.dev</a>, including local models if you prefer to run things on your own hardware. Privacy is also a big selling point here. Opencode advertises a zero retention policy, which is a lot easier to live with than blindly pasting code into random web chatboxes.</p>
+			<h2 id="openweight_models">Openweight Models</h2>
+			<p>One of the more interesting parts of the Opencode ecosystem is how well it fits openweight models. That means you are not limited to the usual closed model lineup. You can use strong coding focused models from labs that publish openweight or more openly available model families, while still getting a polished agent workflow on top.</p>
+			<p>This matters because a lot of the newer coding friendly models people care about right now come from that world. Think DeepSeek, Kimi, GLM, Qwen, and MiniMax. If you have been hopping between providers just to try those models, Opencode gives you one interface for all of it.</p>
+			<p>These models are also available through OpenCode Go, which gives you reliable access without juggling a pile of separate accounts.</p>
+			<h3 id="open_code_go">OpenCode Go</h3>
+			<p>OpenCode Go is a low cost subscription for reliable access to popular open coding models. It costs $5 for the first month, then $10 per month after that. For a lot of people, that is the sweet spot between paying enterprise API prices and depending on flaky free endpoints.</p>
+			<p>The current OpenCode Go lineup includes:</p>
+			<ul>
+				<li>DeepSeek V4 Pro and DeepSeek V4 Flash</li>
+				<li>Kimi K2.5 and Kimi K2.6</li>
+				<li>GLM-5 and GLM-5.1</li>
+				<li>Qwen3.5 Plus and Qwen3.6 Plus</li>
+				<li>MiniMax M2.5 and MiniMax M2.7</li>
+				<li>MiMo-V2.5 and MiMo Pro</li>
+			</ul>
+			<p>Pricing is simple:</p>
+			<ul>
+				<li>$5 for the first month</li>
+				<li>$10 per month after</li>
+			</ul>
+			<p>There are also soft limits, which are currently listed at roughly:</p>
+			<ul>
+				<li>about $12 per 5 hours</li>
+				<li>about $30 per week</li>
+				<li>about $60 per month</li>
+			</ul>
+			<p>OpenCode Go is designed with international users in mind, with models hosted in the US, EU, and Singapore. Another useful detail is that it uses the same API key as OpenCode Zen and shares the same console at <a href="https://opencode.ai/auth">opencode.ai/auth</a>. So you are not managing two separate identities here.</p>
+			<p>When you reference a Go model inside Opencode, the model ID format looks like this:</p>
+			<pre>
+				<code class="language-text">
+opencode-go/<model-id>
+
+				</code>
+			</pre>
+			<p>For example:</p>
+			<pre>
+				<code class="language-text">
+opencode-go/kimi-k2.6
+
+				</code>
+			</pre>
+			<h2 id="installation_of_opencode">Installation of Opencode</h2>
+			<h3 id="windows">Windows</h3>
+			<p>If you are on Windows, my strong recommendation is to use WSL, Windows Subsystem for Linux. Opencode feels much more natural in a Linux shell, and you avoid a lot of the weird edge cases that come from forcing terminal heavy tooling into native Windows workflows.</p>
+			<p>First, open PowerShell as Administrator and install WSL:</p>
+			<pre>
+				<code class="language-powershell">
+wsl --install
+
+				</code>
+			</pre>
+			<p>Once WSL is installed and you are inside your Linux terminal, run:</p>
+			<pre>
+				<code class="language-bash">
+curl -fsSL https://opencode.ai/install | bash
+
+				</code>
+			</pre>
+			<p>If you want alternative install methods, these are available too:</p>
+			<pre>
+				<code class="language-powershell">
+# If you use Chocolatey
+choco install opencode
+# If you use Scoop
+scoop install opencode
+# If you use npm
+npm install -g opencode-ai
+# If you use Bun
+bun add -g opencode-ai
+
+				</code>
+			</pre>
+			<p>There is also a desktop app in beta available from <a href="https://opencode.ai/download">opencode.ai/download</a>.</p>
+			<h3 id="linux">Linux</h3>
+			<p>On Linux, the quickest install, and the one I would recommend first, is:</p>
+			<pre>
+				<code class="language-bash">
+curl -fsSL https://opencode.ai/install | bash
+
+				</code>
+			</pre>
+			<p>If you prefer npm, that works too:</p>
+			<pre>
+				<code class="language-bash">
+npm install -g opencode-ai
+
+				</code>
+			</pre>
+			<p>You can also install it with other JavaScript package managers such as bun, pnpm, or yarn.</p>
+			<p>Homebrew is supported:</p>
+			<pre>
+				<code class="language-bash">
+brew install anomalyco/tap/opencode
+
+				</code>
+			</pre>
+			<p>On Arch Linux:</p>
+			<pre>
+				<code class="language-bash">
+sudo pacman -S opencode
+
+				</code>
+			</pre>
+			<p>Other install paths exist as well, including Docker, Mise, and Nix.</p>
+			<p>If you use the install script, the binary install directory priority is:</p>
+			<pre>
+				<code class="language-text">
+$OPENCODE_INSTALL_DIR
+$XDG_BIN_DIR
+$HOME/bin
+$HOME/.opencode/bin
+
+				</code>
+			</pre>
+			<h2 id="post_setup">Post Setup</h2>
+			<p>After installation, the next command you should care about is:</p>
+			<pre>
+				<code class="language-bash">
+opencode auth login
+
+				</code>
+			</pre>
+			<figure>
+			<img class="preview center" src="images/opencode_auth_login.jpg">
+			</figure>
+			<p>That starts an interactive prompt where you choose a provider and enter the API key for it. Opencode stores those credentials in:</p>
+			<pre>
+				<code class="language-text">
+~/.local/share/opencode/auth.json
+
+				</code>
+			</pre>
+			<p>If you are setting up both OpenCode Zen and OpenCode Go, you should run the auth flow twice.</p>
+			<p>First, log into OpenCode Zen:</p>
+			<pre>
+				<code class="language-bash">
+opencode auth login --provider zen
+
+				</code>
+			</pre>
+			<p>Or, if you prefer the interactive prompt, just pick Zen there. Then go to <a href="https://opencode.ai/auth">https://opencode.ai/auth</a>, sign in, and copy your API key.</p>
+			<p>Second, log into OpenCode Go:</p>
+			<pre>
+				<code class="language-bash">
+opencode auth login --provider opencode
+
+				</code>
+			</pre>
+			<p>Again, you can also choose OpenCode Go from the interactive prompt. This uses the same API key from the same Zen console, because Go is a subscription add on inside Zen rather than a completely separate account.</p>
+			<p>If you are already inside the TUI, you can also use:</p>
+			<pre>
+				<code class="language-text">
+/connect
+
+				</code>
+			</pre>
+			<p>To verify what providers are currently configured, run:</p>
+			<pre>
+				<code class="language-bash">
+opencode auth list
+
+				</code>
+			</pre>
+			<h2 id="configuring_opencode_using_oh_my_open_agent">Configuring Opencode (using Oh My OpenAgent)</h2>
+			<p>If you want a much more specialized agent setup than the default Build and Plan pair, install <b><a href="https://github.com/code-yeongyu/oh-my-openagent">Oh My OpenAgent</a></b>. It is a plugin for Opencode that replaces the default agents with a larger roster of purpose built agents such as Sisyphus, Hephaestus, Prometheus, Atlas, Oracle, Librarian, Explore, and others.</p>
+			<p>Instead of one generic worker and one planner, you get an orchestrated set of agents tuned for different jobs. This works better once your tasks stop being trivial.</p>
+			<p>Before installing it, make sure you have:</p>
+			<ul>
+				<li>Opencode 1.4.0 or newer (should be if you followed the earlier steps)</li>
+				<li>Bun installed, which is only needed for the installation step (To install bun, go to <a href="https://bun.sh/">https://bun.sh/</a>)</li>
+			</ul>
+			<p>For users who already have Zen and Go set up, this non interactive install command is the recommended path:</p>
+			<pre>
+				<code class="language-bash">
+bunx oh-my-openagent install --no-tui --claude=no --openai=no --gemini=no --copilot=no --opencode-zen=yes --opencode-go=yes
+
+				</code>
+			</pre>
+			<p>If you do not have a Claude subscription, Sisyphus may not work as well depending on your setup. The <b>--opencode-zen=yes</b> and <b>--opencode-go=yes</b> flags are both used because Zen and Go share the same API key and account.</p>
+			<h3 id="installing_via_build_mode">Installing via Build mode</h3>
+			<p>If you prefer to let Opencode handle the installation for you, start Opencode in the default <b>build</b> mode and paste this prompt:</p>
+			<pre>
+				<code class="language-text">
+Install and configure oh-my-openagent by following the instructions here: https://raw.githubusercontent.com/code-yeongyu/oh-my-openagent/refs/heads/dev/docs/guide/installation.md
+
+				</code>
+			</pre>
+			<p>The Build agent will fetch the guide, read the steps, and run the appropriate commands on your behalf. Use this if you do not want to copy paste CLI commands manually. You will still need to answer the subscription questions when the installer asks for them.</p>
+			<p>After the install finishes, verify the setup with:</p>
+			<pre>
+				<code class="language-bash">
+bunx oh-my-openagent doctor
+
+				</code>
+			</pre>
+			<figure>
+			<img class="preview center" src="images/opencode_bunx_omo_ok.jpg">
+			</figure>
+			<p>The main config file for Oh My OpenAgent lives here:</p>
+			<pre>
+				<code class="language-text">
+~/.config/opencode/oh-my-openagent.jsonc
+
+				</code>
+			</pre>
+			<h2 id="configuring_oh_my_open_agent">Configuring Oh My Open Agent</h2>
+			<p>After installing Oh My OpenAgent, start Opencode from your terminal:</p>
+			<pre>
+				<code class="language-bash">
+opencode
+
+				</code>
+			</pre>
+			<p>If everything is wired up correctly, you should see agent names like Sisyphus, Hephaestus, Prometheus, or Atlas instead of only "Build" or "Plan".</p>
+			<figure>
+			<img class="preview center" src="images/opencode_agents_list.jpg">
+			</figure>
+			<p>Sisyphus is usually the default orchestrator, so you will most likely land there first.</p>
+			<figure>
+			<img class="preview center" src="images/opencode_kimi.jpg">
+			</figure>
+			<p>Once you are in Sisyphus mode, open the model selector with:</p>
+			<pre>
+				<code class="language-text">
+/models
+
+				</code>
+			</pre>
+			<figure>
+			<img class="preview center" src="images/opencode_model_selector.jpg">
+			</figure>
+			<p>From there, change the active model to:</p>
+			<pre>
+				<code class="language-text">
+opencode-go/kimi-k2.6
+
+				</code>
+			</pre>
+			<p>It usually defaults to Claude, so change this right away if you want to follow the roster described here.</p>
+			<p>After that, give Sisyphus this instruction:</p>
+			<pre>
+				<code class="language-text">
+Update the OhMyOpenAgent LLM roster for the agents to what is inside @LLM-Roster.md
+
+				</code>
+			</pre>
+			<p>The roster is a model assignment map. It tells Oh My OpenAgent which model each agent should prefer, what fallback chain to use, and which model families should back broader task categories. That way you are not using the same model for everything when different agents have different strengths.</p>
+			<p>Here is the openweight-only roster I use. Every primary and fallback is an <b>opencode-go</b> model. If you want to run purely on openweight models without any closed providers, you can copy the block below directly into your <b>~/.config/opencode/oh-my-openagent.jsonc</b>.</p>
+			<pre>
+				<code class="language-markdown">
+# Oh-My-OpenAgent LLM Roster
+> Generated on 2026-04-27 from `~/.config/opencode/oh-my-openagent.json`
+---
+## Agents
+| Agent | Role | Primary Model | Variant | Fallback Chain |
+|-------|------|---------------|---------|----------------|
+| `sisyphus` | Orchestrator (you) | `opencode-go/kimi-k2.6` | medium | `opencode-go/glm-5` (medium) |
+| `hephaestus` | Build executor | **`opencode-go/deepseek-v4-pro`** | high | `opencode-go/kimi-k2.6` (medium) |
+| `oracle` | High-IQ consultant | `opencode-go/glm-5` | high | `opencode-go/kimi-k2.6` (high) |
+| `librarian` | External docs / GitHub | **`opencode-go/deepseek-v4-flash`** | — | `opencode-go/minimax-m2.7-highspeed` → `opencode-go/qwen3.6-plus` |
+| `explore` | Codebase pattern search | **`opencode-go/deepseek-v4-flash`** | — | `opencode-go/qwen3.6-plus` → `opencode-go/minimax-m2.7-highspeed` |
+| `multimodal-looker` | PDF / image analysis | `opencode-go/kimi-k2.6` | medium | `opencode-go/deepseek-v4-flash` (medium) → `opencode-go/glm-5` |
+| `prometheus` | Planner | **`opencode-go/deepseek-v4-pro`** | high | `opencode-go/kimi-k2.6` (high) |
+| `metis` | Pre-planning consultant | `opencode-go/kimi-k2.6` | high | `opencode-go/glm-5` (high) |
+| `momus` | Plan critic | `opencode-go/deepseek-v4-pro` | xhigh | `opencode-go/glm-5` |
+| `atlas` | General-purpose | `opencode-go/kimi-k2.6` | medium | `opencode-go/glm-5` (medium) → `opencode-go/minimax-m2.7` |
+| `sisyphus-junior` | Focused executor | **`opencode-go/deepseek-v4-flash`** | medium | `opencode-go/kimi-k2.5` → `opencode-go/glm-5` (medium) → `opencode-go/minimax-m2.7` |
+**Bold** = DeepSeek V4 models
+### Special Configurations
+| Agent | Special Setting |
+|-------|-----------------|
+| `sisyphus` | **ultrawork**: `opencode-go/kimi-k2.6` (high) with `thinking.budgetTokens: 16000` |
+---
+## Categories
+| Category | Primary Model | Variant | Fallback |
+|----------|---------------|---------|----------|
+| `visual-engineering` | `opencode-go/kimi-k2.6` | high | `opencode-go/minimax-m2.7` |
+| `ultrabrain` | `opencode-go/deepseek-v4-pro` | xhigh | `opencode-go/glm-5` |
+| `deep` | `opencode-go/kimi-k2.6` | medium | `opencode-go/glm-5` |
+| `quick` | `opencode-go/minimax-m2.7` | — | `opencode-go/deepseek-v4-flash` |
+| `unspecified-low` | `opencode-go/kimi-k2.5` | medium | `opencode-go/minimax-m2.7` |
+| `unspecified-high` | `opencode-go/kimi-k2.6` | medium | `opencode-go/glm-5` → `opencode-go/minimax-m2.7` |
+| `writing` | `opencode-go/kimi-k2.6` | medium | `opencode-go/minimax-m2.7` |
+| `artistry` | `opencode-go/deepseek-v4-pro` | xhigh | `opencode-go/glm-5` |
+---
+## Model Provider Summary
+| Provider | Models Used |
+|----------|-------------|
+| **opencode-go** | `deepseek-v4-pro` (×4), `deepseek-v4-flash` (×4), `kimi-k2.6` (×5), `kimi-k2.5` (×2), `glm-5` (×4), `minimax-m2.7` (×4), `minimax-m2.7-highspeed` (×2), `qwen3.6-plus` (×2) |
+---
+## DeepSeek Insertions (2026-04-27)
+| Agent | Previous Model | New Model | Rationale |
+|-------|---------------|-----------|-----------|
+| `hephaestus` | `opencode-go/glm-5.1` | `opencode-go/deepseek-v4-pro` | Best-in-class coding (93.5% LiveCodeBench) |
+| `prometheus` | `opencode-go/glm-5.1` | `opencode-go/deepseek-v4-pro` | Best planning + coding combo |
+| `explore` | `opencode-go/qwen3.6-plus` | `opencode-go/deepseek-v4-flash` | 1M context for codebase-wide search |
+| `librarian` | `opencode-go/deepseek-v4-flash` | `opencode-go/deepseek-v4-flash` | 1M context for multi-repo docs |
+| `sisyphus-junior` | `opencode-go/kimi-k2.5` | `opencode-go/deepseek-v4-flash` | Faster, cheaper, stronger than K2.5 |
+| `oracle` | `opencode-go/glm-5` | `opencode-go/glm-5` | Kept openweight |
+| `momus` | `opencode-go/deepseek-v4-pro` | `opencode-go/deepseek-v4-pro` | Kept openweight |
+**Kept unchanged**: `metis` (Kimi K2.6 high), `multimodal-looker` (Kimi K2.6 — vision required).
+
+				</code>
+			</pre>
+			<p>Every agent and category runs on <b>opencode-go</b> models. If you add another subscription later, you can extend the fallback chains, but this setup works on its own.</p>
+			<h3>~ End ~</h3>
+			<h4>
+				There are
+				<?php
+					include "site_counter.php";
+					echo get_page_count("seting_up_opencode");
+				?>
+				viewers that have read this page.
+			</h4>
+			<h4>
+				<a href="#headingBlog">Go back to top</a>
+			</h4>
+			<h4>
+				<a href="blog.html">Go back to list of articles</a>
+			</h4>
+		</div>
+	</body>
+	<script nonce="<?php echo $token; ?>">
+		$(document).ready(function () {
+			var images = $("img.preview.center");
+			for (var i = 0; i < images.length; i++) {
+				let element = images[i];
+				element.onmouseover = () => {
+					element.oldsrc = element.src;
+					element.src = element.src.replace("_tmb", "");
+				}
+
+				element.onmouseout = () => {
+					element.src = element.oldsrc;
+				}
+			}
+			hljs.highlightAll();
+		});
+	</script>
+</html>
