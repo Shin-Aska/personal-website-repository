@@ -674,7 +674,7 @@ async function renderAtlas() {
     // Load annotations database if not loaded
     if (Object.keys(annotationsDB).length === 0) {
         try {
-            const res = await fetch('alqadim/annotations.json');
+            const res = await fetch('js/AlqadimAnnotations.json');
             if (res.ok) {
                 annotationsDB = await res.json();
             }
