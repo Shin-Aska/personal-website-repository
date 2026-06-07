@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <title>Al-Qadim: The Genie's Curse — Interactive Guide</title>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="js/tailwind.js"></script>
+    <link rel="stylesheet" href="css/fonts.css">
+    <link rel="stylesheet" href="css/AlQadim.css">
+</head>
+
+<body class="antialiased">
+    <!-- Back Navigation -->
+    <div class="w-full bg-black/40 text-gray-400 border-b border-gray-800/60 relative z-10">
+        <div class="container mx-auto px-4 py-2 flex justify-between items-center">
+            <a href="index.html" class="inline-flex items-center gap-2 hover:text-white transition-colors text-sm">
+                <span aria-hidden="true">←</span> Back to Guides Hub
+            </a>
+            <div class="flex items-center gap-3">
+                <span class="text-xs text-[var(--aq-text-muted)] font-semibold uppercase">Art Style:</span>
+                <div class="art-mode-switch">
+                    <button id="art-classic" class="text-white hover:text-[var(--aq-accent-gold)]">Classic</button>
+                    <button id="art-remastered" class="active text-white">Remastered</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="aq-header py-6">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex items-center gap-4 text-center md:text-left">
+                <img id="header-logo" class="w-16 h-16 object-contain" 
+                     src="images/alqadim/art_genie_lamp_reimagined.png" 
+                     data-art-classic="images/alqadim/art_genie_lamp.png" 
+                     data-art-remastered="images/alqadim/art_genie_lamp_reimagined.png" 
+                     alt="Genie Lamp">
+                <div>
+                    <h1 class="aq-title text-gradient">Al-Qadim</h1>
+                    <p class="aq-subtitle">Interactive Companion Guide • SSI & Cyberlore 1994</p>
+                </div>
+            </div>
+            <nav id="main-nav" class="flex flex-wrap justify-center gap-2">
+                <button data-target="corsair" class="nav-button active">🗡️ The Corsair</button>
+                <button data-target="walkthrough" class="nav-button">📜 Walkthrough</button>
+                <button data-target="atlas" class="nav-button">🗺️ Atlas</button>
+                <button data-target="bestiary" class="nav-button">📖 Bestiary & Items</button>
+                <button data-target="genie" class="nav-button">🔮 Genie's Counsel</button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8 relative z-10">
+
+        <!-- ==================== THE CORSAIR ==================== -->
+        <section id="corsair" class="content-section active">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Character stats and details -->
+                <div class="lg:col-span-1 space-y-6">
+                    <div class="aq-card p-6">
+                        <div class="text-center mb-4">
+                            <img id="art-character" class="mx-auto rounded max-h-[280px] object-contain" 
+                                 src="images/alqadim/art_corsair_reimagined.png" 
+                                 data-art-classic="images/alqadim/art_corsair.png" 
+                                 data-art-remastered="images/alqadim/art_corsair_reimagined.png" 
+                                 alt="The Corsair">
+                            <h2 class="text-2xl font-bold mt-4 text-[var(--aq-accent-gold)]">The Corsair</h2>
+                            <p class="text-xs text-[var(--aq-text-muted)] uppercase tracking-wider mt-1">Class: Fighter Type</p>
+                        </div>
+                        <p class="text-sm text-[var(--aq-text-muted)] leading-relaxed border-t border-gray-800/80 pt-4">
+                            You control a single, noble Corsair graduated from the martial academy. Banished from your home city due to a dark conspiracy, you must master combat moves and recruit genies to lift the curse.
+                        </p>
+                    </div>
+
+                    <!-- Statistics grid -->
+                    <div class="aq-card p-6">
+                        <h3 class="text-xl font-bold mb-4 text-[var(--aq-accent-sand)]">Base Statistics</h3>
+                        <div id="character-stats-grid" class="grid grid-cols-2 gap-3">
+                            <!-- Populated by JS -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Combat Moves & Items -->
+                <div class="lg:col-span-2 space-y-6">
+                    <div class="aq-card p-6">
+                        <div class="flex items-center gap-3 mb-4">
+                            <img id="art-divider" class="w-10 h-10 object-contain" 
+                                 src="images/alqadim/art_sword_reimagined.png" 
+                                 data-art-classic="images/alqadim/art_sword.png" 
+                                 data-art-remastered="images/alqadim/art_sword_reimagined.png" 
+                                 alt="Scimitar">
+                            <h3 class="text-2xl font-bold text-[var(--aq-accent-gold)]">Special Combat Moves</h3>
+                        </div>
+                        <p class="text-sm text-[var(--aq-text-muted)] mb-4">
+                            Trainers teach you special attacks as you grow in power. To execute, hold down the strike key until the scimitar gem on the interface charges and flashes the appropriate color.
+                        </p>
+                        <div id="combat-moves-grid" class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <!-- Populated by JS -->
+                        </div>
+                    </div>
+
+                    <!-- Moonstone Magic Shards -->
+                    <div class="aq-card p-6">
+                        <h3 class="text-xl font-bold mb-4 text-[var(--aq-accent-teal)]">Moonstone Magic Shards</h3>
+                        <p class="text-sm text-[var(--aq-text-muted)] mb-4">
+                            Unlike traditional spellcasters, Corsairs channel elemental powers through charges embedded in precious moonstone shards.
+                        </p>
+                        <div class="overflow-x-auto">
+                            <table class="aq-table">
+                                <thead>
+                                    <tr>
+                                        <th>Shard Type</th>
+                                        <th>Charges</th>
+                                        <th>Spell Effect</th>
+                                        <th>Strategy Notes</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="shards-table">
+                                    <!-- Populated by JS -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Consumables and Potions -->
+                    <div class="aq-card p-6">
+                        <h3 class="text-xl font-bold mb-4 text-[var(--aq-accent-sand)]">Supernatural Consumables</h3>
+                        <div class="overflow-x-auto">
+                            <table class="aq-table">
+                                <thead>
+                                    <tr>
+                                        <th>Consumable</th>
+                                        <th>Effect</th>
+                                        <th>Vendor Details</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="potions-table">
+                                    <!-- Populated by JS -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Screenshots Gallery -->
+                    <div class="aq-card p-6">
+                        <h3 class="text-xl font-bold mb-4 text-[var(--aq-text)]">Gameplay Screenshots</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="bg-black/40 p-2 border border-gray-800 rounded">
+                                <span class="text-xs text-[var(--aq-accent-sand)] font-semibold block mb-2">Real-time Scimitar Combat</span>
+                                <img id="screenshot-inv" class="rounded w-full" 
+                                     src="images/alqadim/screenshot_inventory_remastered.png" 
+                                     data-art-classic="images/alqadim/screenshot_inventory.png" 
+                                     data-art-remastered="images/alqadim/screenshot_inventory_remastered.png" 
+                                     alt="Real-time Combat Screen">
+                            </div>
+                            <div class="bg-black/40 p-2 border border-gray-800 rounded">
+                                <span class="text-xs text-[var(--aq-accent-teal)] font-semibold block mb-2">Overworld Sailing & Navigation</span>
+                                <img id="screenshot-shards" class="rounded w-full" 
+                                     src="images/alqadim/screenshot_shards_remastered.png" 
+                                     data-art-classic="images/alqadim/screenshot_shards.png" 
+                                     data-art-remastered="images/alqadim/screenshot_shards_remastered.png" 
+                                     alt="Overworld Sailing Screen">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== WALKTHROUGH ==================== -->
+        <section id="walkthrough" class="content-section">
+            <div class="text-center mb-8">
+                <h2 class="text-4xl font-bold mb-2 text-gradient">Walkthrough</h2>
+                <p class="text-sm text-[var(--aq-text-muted)] max-w-2xl mx-auto">
+                    A comprehensive, chapter-by-chapter checklist for Zubin's trial. Track completed goals and request guidance from the Genie's Counsel when you are blocked.
+                </p>
+            </div>
+
+            <!-- Overall Progress Summary -->
+            <div class="max-w-6xl mx-auto mb-6">
+                <div class="aq-card p-5">
+                    <div id="overall-progress-label" class="text-xs uppercase font-bold text-[var(--aq-accent-gold)] tracking-wider mb-2">
+                        Overall Guide Progress: 0/0 Tasks Checked (0%)
+                    </div>
+                    <div class="w-full bg-black/40 h-2 rounded overflow-hidden">
+                        <div id="overall-progress-bar" class="bg-gradient-to-r from-[var(--aq-accent-gold)] to-[var(--aq-accent-sand)] h-full transition-all duration-300" style="width: 0%;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Walkthrough columns -->
+            <div class="grid grid-cols-1 xl:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <div class="xl:col-span-2">
+                    <div id="chapter-list" class="space-y-3">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+
+                <!-- AI Sidebar -->
+                <aside class="aq-card p-5 walkthrough-ai rounded-lg" aria-label="Genie's Counsel AI Assistant">
+                    <div class="flex items-start justify-between gap-4 mb-4 border-b border-gray-800/80 pb-3">
+                        <div>
+                            <h3 class="text-lg font-bold text-[var(--aq-accent-purple)]">🔮 Genie's Counsel</h3>
+                            <p class="text-[10px] text-[var(--aq-text-muted)] mt-0.5">Ask questions about keys, puzzle hints, and paths.</p>
+                        </div>
+                        <button type="button" class="walkthrough-ai-clear text-[var(--aq-text-muted)] hover:text-red-400 font-semibold" onclick="clearAiChat()">Clear</button>
+                    </div>
+
+                    <div id="walkthrough-ai-body" class="walkthrough-ai-body space-y-4 pr-1 mb-4 flex flex-col justify-start">
+                        <p class="text-[var(--aq-text-muted)] italic text-center py-8">Genie terminal online. Select a chapter in the walkthrough to update context, then ask the Genie for wisdom.</p>
+                    </div>
+
+                    <div class="walkthrough-ai-input">
+                        <input type="text" class="walkthrough-ai-text" id="walkthrough-ai-input" placeholder="Ask the Genie..." />
+                        <button class="walkthrough-ai-send" id="walkthrough-ai-send" onclick="sendAiMessage()">Ask</button>
+                    </div>
+                </aside>
+            </div>
+
+            <!-- Chapter-specific Interactive Helpers -->
+            <div class="max-w-6xl mx-auto mt-8 space-y-6">
+                <!-- Gambling Strategy Calculator Widget -->
+                <div class="aq-card p-6">
+                    <h3 class="text-xl font-bold text-[var(--aq-accent-gold)] border-b border-gray-800 pb-2 mb-4">🎰 Guess the Number Gambling Helper</h3>
+                    <p class="text-sm text-[var(--aq-text-muted)] mb-4">
+                        At the Sand Point table in Capital City, you can gamble up to 500 gold. Use this binary-search helper to calculate the mathematically optimal guesses and win consistently.
+                    </p>
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 items-end">
+                        <div>
+                            <label class="text-xs font-semibold text-gray-400 block mb-1">Lower Bound:</label>
+                            <input type="number" id="gambling-min" class="calc-input" value="1">
+                        </div>
+                        <div>
+                            <label class="text-xs font-semibold text-gray-400 block mb-1">Upper Bound:</label>
+                            <input type="number" id="gambling-max" class="calc-input" value="100">
+                        </div>
+                        <div>
+                            <label class="text-xs font-semibold text-gray-400 block mb-1">Current Guess Count:</label>
+                            <input type="number" id="gambling-guess-count" class="calc-input" value="0" readonly>
+                        </div>
+                        <div class="flex gap-2">
+                            <button class="calc-btn px-4 py-2 rounded text-sm w-full" onclick="calculateGamblingGuess()">Calculate</button>
+                            <button class="bg-gray-800 hover:bg-gray-700 px-4 py-2 rounded text-sm text-gray-400" onclick="resetGamblingBounds()">Reset</button>
+                        </div>
+                    </div>
+                    <div id="gambling-result-log" class="mt-4 p-3 bg-black/40 border border-gray-800 rounded min-h-[60px] flex items-center justify-center">
+                        <span class="text-[var(--aq-text-muted)] italic">Enter parameters above and calculate.</span>
+                    </div>
+                </div>
+
+                <!-- Diplomatic Flowchart & Chessboard Navigator -->
+                <div class="aq-card p-6">
+                    <div class="flex items-center gap-3 border-b border-gray-800 pb-2 mb-4">
+                        <img id="art-chess" class="w-10 h-10 object-contain" 
+                             src="images/alqadim/art_chessboard_reimagined.png" 
+                             data-art-classic="images/alqadim/art_chessboard.png" 
+                             data-art-remastered="images/alqadim/art_chessboard_reimagined.png" 
+                             alt="Chessboard">
+                        <h3 class="text-xl font-bold text-[var(--aq-accent-purple)]">♟️ Island of Senat Diplomatic Gauntlet</h3>
+                    </div>
+                    <p class="text-sm text-[var(--aq-text-muted)] mb-4">
+                        The Genie Lords negotiation sequence is complex and requires traveling across the chessboard grid to complete quests in the correct order.
+                    </p>
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <div class="p-4 bg-black/35 rounded border border-gray-800/80">
+                            <h4 class="text-sm font-semibold text-[var(--aq-accent-gold)] mb-3">Diplomacy Step-by-Step Flowchart</h4>
+                            <ol class="space-y-3 text-xs text-gray-300 list-decimal pl-4">
+                                <li>Talk to the <strong class="text-white">Djinn Lords</strong> (East) &rarr; they tell you to seek the Marid Lord.</li>
+                                <li>Talk to the <strong class="text-white">Marid Lord</strong> (North) &rarr; he requests you free his Storyteller.</li>
+                                <li>Talk to the <strong class="text-white">Dao Lord</strong> (West) &rarr; he requires the Pale Blue Jewel of Fire to release her.</li>
+                                <li>Return to the <strong class="text-white">Djinn Lords</strong> &rarr; accept their terms, then say you will sail to the end of the world for Ardonat Isle. They grant the Jewel for your courage.</li>
+                                <li>Trade the Jewel to the <strong class="text-white">Dao Lord</strong> &rarr; retrieve the Storyteller and escort her to the Marid Lord.</li>
+                                <li>Return her voice &rarr; the Marid Lord rewards you with the <strong class="text-yellow-300">Efreet Potion</strong>.</li>
+                                <li>Drink the potion &rarr; cross the South chessboard path to the <strong class="text-white">Efreet Lord</strong>.</li>
+                            </ol>
+                        </div>
+                        <div class="p-4 bg-black/35 rounded border border-gray-800/80 space-y-4">
+                            <h4 class="text-sm font-semibold text-[var(--aq-accent-sand)]">Quick Coordinates Reference</h4>
+                            <div class="grid grid-cols-2 gap-3 text-xs">
+                                <div class="p-2 bg-[#1c2545]/45 rounded border border-gray-800">
+                                    <div class="font-bold text-[var(--aq-accent-gold)]">North Path (Marid Lord)</div>
+                                    <div class="text-gray-400 mt-1">Down 5 &rarr; East 3 &rarr; Up 1</div>
+                                </div>
+                                <div class="p-2 bg-[#1c2545]/45 rounded border border-gray-800">
+                                    <div class="font-bold text-[var(--aq-accent-gold)]">East Path (Djinn Lords)</div>
+                                    <div class="text-gray-400 mt-1">West 5 &rarr; Up 3 &rarr; East 1</div>
+                                </div>
+                                <div class="p-2 bg-[#1c2545]/45 rounded border border-gray-800">
+                                    <div class="font-bold text-[var(--aq-accent-gold)]">West Path (Dao Lord)</div>
+                                    <div class="text-gray-400 mt-1">East 5 &rarr; Down 3 &rarr; West 1</div>
+                                </div>
+                                <div class="p-2 bg-[#1c2545]/45 rounded border border-gray-800">
+                                    <div class="font-bold text-[var(--aq-accent-gold)]">South Path (Efreet Lord)</div>
+                                    <div class="text-gray-400 mt-1">North 5 &rarr; East 3 &rarr; South 1</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== ATLAS ==================== -->
+        <section id="atlas" class="content-section">
+            <div class="text-center mb-8">
+                <h2 class="text-4xl font-bold mb-2 text-gradient">World Atlas</h2>
+                <p class="text-sm text-[var(--aq-text-muted)] max-w-2xl mx-auto">
+                    Inspect high-resolution, meander-bordered maps extracted directly from the cluebook PDF. Cross-reference locations with landmarks and inhabitant coordinates.
+                </p>
+            </div>
+
+            <div class="max-w-6xl mx-auto atlas-container">
+                <!-- Map image container -->
+                <div class="map-viewer-wrapper flex flex-col justify-between p-4">
+                    <div id="map-view-image-container" class="flex-grow flex items-center justify-center min-h-[300px]">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+
+                <!-- Selectors and annotations database -->
+                <div class="space-y-4">
+                    <div class="aq-card p-4">
+                        <h4 class="text-xs uppercase font-bold text-gray-400 tracking-wider mb-2">Select Location Map</h4>
+                        <div id="map-select-list" class="max-h-[220px] overflow-y-auto border border-gray-800/80 rounded bg-black/30 pr-1 scroll-panel">
+                            <!-- Populated by JS -->
+                        </div>
+                    </div>
+
+                    <div id="map-details-panel" class="aq-card p-5">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== BESTIARY & ITEMS ==================== -->
+        <section id="bestiary" class="content-section">
+            <div class="text-center mb-8">
+                <h2 class="text-4xl font-bold mb-2 text-gradient">Bestiary, Quest Items & Shops</h2>
+                <p class="text-sm text-[var(--aq-text-muted)] max-w-2xl mx-auto">
+                    Reference databases detailing Zakhara's hostile creatures, quest-critical artifacts, and city shop inventories.
+                </p>
+            </div>
+
+            <div class="max-w-6xl mx-auto space-y-8">
+                <!-- Shop inventories grid -->
+                <div>
+                    <h3 class="text-2xl font-bold text-[var(--aq-accent-gold)] mb-4">🛒 Capital City Merchants</h3>
+                    <div id="shops-grid" class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+
+                <!-- Monsters bestiary -->
+                <div>
+                    <h3 class="text-2xl font-bold text-[var(--aq-accent-sand)] mb-4">👹 Zakhara Bestiary</h3>
+                    <div id="bestiary-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+
+                <!-- Key Quest items -->
+                <div>
+                    <h3 class="text-2xl font-bold text-[var(--aq-accent-teal)] mb-4">🔑 Quest Artifact Registry</h3>
+                    <div id="key-items-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== GENIE'S COUNSEL ==================== -->
+        <section id="genie" class="content-section">
+            <div class="text-center mb-6">
+                <h2 class="text-4xl font-bold mb-2 text-gradient">Genie's Counsel</h2>
+                <p class="text-sm text-[var(--aq-text-muted)] max-w-2xl mx-auto">
+                    A dedicated consulting panel to converse with the magical genie assistant. Ask for advice on riddles, passwords, or puzzle solutions.
+                </p>
+            </div>
+
+            <div class="max-w-4xl mx-auto aq-card p-6 flex flex-col items-center gap-4">
+                <img id="art-genie-large" class="w-32 h-32 object-contain" 
+                     src="images/alqadim/art_nameless_one_reimagined.png" 
+                     data-art-classic="images/alqadim/art_nameless_one.png" 
+                     data-art-remastered="images/alqadim/art_nameless_one_reimagined.png" 
+                     alt="Genie Counsel">
+                <div class="text-center">
+                    <h3 class="text-2xl font-bold text-[var(--aq-accent-purple)]">Seek Mystical Wisdom</h3>
+                    <p class="text-xs text-[var(--aq-text-muted)] mt-1">Converse directly with the guide genie. The context updates automatically based on walkthrough chapters.</p>
+                </div>
+                <div class="w-full mt-4">
+                    <div id="main-ai-wrapper" class="aq-card p-5 walkthrough-ai rounded-lg w-full">
+                        <div class="flex items-start justify-between gap-4 mb-4 border-b border-gray-800 pb-3">
+                            <div>
+                                <h3 class="text-lg font-bold text-[var(--aq-accent-purple)]">🔮 Chat Terminal</h3>
+                                <p class="text-[10px] text-gray-500 mt-0.5">Offline mode available; queries are proxied via LLM.</p>
+                            </div>
+                            <button type="button" class="walkthrough-ai-clear text-[var(--aq-text-muted)] hover:text-red-400 font-semibold" onclick="clearAiChat()">Clear History</button>
+                        </div>
+
+                        <div id="walkthrough-ai-body-tab" class="walkthrough-ai-body space-y-4 pr-1 mb-4 flex flex-col justify-start min-h-[300px]">
+                            <!-- Mirroring the sidebar chat body -->
+                            <p class="text-[var(--aq-text-muted)] italic text-center py-8">Ask the Genie anything about Al-Qadim's maps, items, or quests.</p>
+                        </div>
+
+                        <div class="walkthrough-ai-input">
+                            <input type="text" class="walkthrough-ai-text" id="walkthrough-ai-input-tab" placeholder="Type your query..." />
+                            <button class="walkthrough-ai-send" id="walkthrough-ai-send-tab" onclick="sendAiMessageTab()">Send</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Map input/send mirror logic for full tab chat -->
+    <script>
+        // Mirror message handler for the second chat panel in Tab 5
+        function sendAiMessageTab() {
+            const tabInput = document.getElementById('walkthrough-ai-input-tab');
+            const mainInput = document.getElementById('walkthrough-ai-input');
+            if (tabInput && mainInput) {
+                mainInput.value = tabInput.value;
+                // Temporarily swap body container ref in JS state so messages render to full tab body
+                const originalBody = document.getElementById('walkthrough-ai-body');
+                const tabBody = document.getElementById('walkthrough-ai-body-tab');
+                
+                // Swap targets
+                Object.defineProperty(document, 'getElementById', {
+                    value: function(id) {
+                        if (id === 'walkthrough-ai-body') return tabBody;
+                        if (id === 'walkthrough-ai-input') return tabInput;
+                        if (id === 'walkthrough-ai-send') return document.getElementById('walkthrough-ai-send-tab');
+                        return HTMLElement.prototype.cloneNode ? document.querySelector('#' + id) || originalGetElementById(id) : originalGetElementById(id);
+                    },
+                    configurable: true
+                });
+
+                sendAiMessage().then(() => {
+                    // Restore original
+                    Object.defineProperty(document, 'getElementById', {
+                        value: originalGetElementById,
+                        configurable: true
+                    });
+                });
+                tabInput.value = '';
+            }
+        }
+        const originalGetElementById = document.getElementById.bind(document);
+
+        // Bind enter key on Tab chat input
+        document.addEventListener('DOMContentLoaded', () => {
+            const tabInput = document.getElementById('walkthrough-ai-input-tab');
+            if (tabInput) {
+                tabInput.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') {
+                        sendAiMessageTab();
+                    }
+                });
+            }
+        });
+    </script>
+
+    <script src="js/AlQadim.js"></script>
+</body>
+
+</html>
