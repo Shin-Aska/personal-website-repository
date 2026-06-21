@@ -52,6 +52,7 @@
 				<li><a href="#start_with_zram">Start with zram</a></li>
 				<li><a href="#keep_a_real_swap_file_too">Keep a Real Swap File Too</a></li>
 				<li><a href="#o_o_m_killers_as_the_last_safety_net">OOM Killers as the Last Safety Net</a></li>
+				<li><a href="#disabling_systemdcoredump_eliminating_crash_hangs">Disabling systemd-coredump: Eliminating Crash Hangs</a></li>
 				<li><a href="#c_p_u_scheduler_important_but_usually_not_first">CPU Scheduler: Important, but Usually Not First</a></li>
 				<li><a href="#i/_o_scheduler_where_desktop_tuning_becomes_noticeable">I/O Scheduler: Where Desktop Tuning Becomes Noticeable</a></li>
 				<li><a href="#writeback_tuning_one_of_the_most_overlooked_causes_of_stutter">Writeback Tuning: One of the Most Overlooked Causes of Stutter</a></li>
@@ -60,6 +61,7 @@
 				<li><a href="#desktop_tuning_is_about_choosing_the_right_tradeoff">Desktop Tuning Is About Choosing the Right Tradeoff</a></li>
 				<li><a href="#a_practical_desktop_first_profile">A Practical Desktop-First Profile</a></li>
 				<li><a href="#conclusion">Conclusion</a></li>
+				<li><a href="#june_21_2026_update">June 21, 2026 Update</a></li>
 			</ul>
 			<h1 id="headingBlog">Optimizing a Typical Linux Distro for Desktop Responsiveness</h1>
 			<h2 id="introduction">Introduction</h2>
@@ -100,6 +102,7 @@
 				<li><b>BFQ</b> – Budget Fair Queueing, an I/O scheduler that prioritizes responsiveness and low latency, often making it attractive for desktop systems.</li>
 				<li><b>mq-deadline</b> – A multi-queue I/O scheduler focused heavily on keeping request service times bounded, especially for reads.</li>
 				<li><b>earlyoom</b> – A userspace daemon that kills memory-hungry processes before the whole machine becomes unusable during an out-of-memory situation.</li>
+				<li><b>systemd-coredump</b> – A systemd utility that intercepts process crashes, records their memory contents (core dumps), compresses them, and logs them to the journal or storage for debugging.</li>
 				<li><b>Writeback</b> – The process where dirty cached data in RAM is flushed to storage.</li>
 				<li><b>Desktop responsiveness</b> – In the context of this article, this means how well the user interface continues to feel smooth and usable during memory pressure, heavy background disk activity, mixed workloads, or graphics saturation.</li>
 			</ul>
@@ -168,6 +171,34 @@ EARLYOOM_ARGS="-m 5 -s 5 -k -n \
 			<p>That kind of prioritization makes sense to me on a personal machine.</p>
 			<p>Also take note that my config is for KDE Plasma on Wayland, so you may need to adjust it for your own desktop environment.</p>
 			<p><b>systemd-oomd</b> is a valid alternative and, in some ways, the more modern one. However, it is more cgroup- and unit-oriented. That makes it better suited to users who want to build memory-pressure policy around slices, scopes, and service units rather than around simple process-name heuristics.</p>
+			<h2 id="disabling_systemdcoredump_eliminating_crash_hangs">Disabling systemd-coredump: Eliminating Crash Hangs</h2>
+			<p>Another subtle but highly disruptive source of desktop stutter occurs when an application crashes.</p>
+			<p>By default, modern Linux distributions utilize <b>systemd-coredump</b> to log process crashes. When a massive process (like a web browser, a modern game, or an Electron application) crashes, systemd-coredump intercepts it. To build the core dump, it must read the entire resident memory footprint of the crashed process, compress it (typically using LZ4 or ZSTD), and write it to disk (usually in <b>/var/lib/systemd/coredump</b> or within the system journal).</p>
+			<p>This process creates a dual penalty for desktop responsiveness:</p>
+			<ol>
+				<li><b>Memory/CPU Read Overhead:</b> Reading gigabytes of raw memory from a dying process for compression uses significant CPU and memory bandwidth.</li>
+				<li><b>Disk Writeback Congestion:</b> Writing a compressed multi-gigabyte file to disk triggers aggressive writeback activity, which blocks other operations (This is also why sometimes all of a sudden you see a massive read/write spike and your disk space starts shrinking then expands back a few minutes after).</li>
+			</ol>
+			<p>On a desktop system, this manifests as a complete UI freeze or mouse hitch lasting several seconds right when a crash occurs. For a normal desktop user, this behavior is almost entirely useless. If an application crashes, you rarely need a full raw memory dump to debug it.</p>
+			<p>The standard system logs (which remain fully active) are already more than enough to tell you what went wrong. More importantly, writing gigabytes of dump data to disk every time a game or browser tab dies is a massive performance drag and causes unnecessary write wear, actively reducing the lifespan of your SSD.</p>
+			<p>On top of that, raw core dumps contain whatever was in memory at the time of the crash, meaning private passwords or keys could easily end up saved in plaintext on your storage.</p>
+			<p>To disable this behavior and ensure crashed applications exit instantly without dragging down the desktop's responsiveness, you can disable systemd-coredump.</p>
+			<p>You can configure an override to drop all coredumps, clean up existing ones, and apply the configuration immediately:</p>
+			<pre style="text-align: left !important;">
+				<code language="bash">
+sudo mkdir -p /etc/systemd/coredump.conf.d
+sudo tee /etc/systemd/coredump.conf.d/99-disable.conf >/dev/null <<'EOF'
+[Coredump]
+Storage=none
+ProcessSizeMax=0
+EOF
+# Optional: Clear existing core dumps, as they'll no longer be needed moving forward
+sudo rm -f /var/lib/systemd/coredump/*
+sudo systemctl daemon-reload
+
+				</code>
+			</pre>
+			<p>This instructs systemd to neither store the core dumps on disk nor process them in memory, allowing crashed applications to terminate immediately.</p>
 			<h2 id="c_p_u_scheduler_important_but_usually_not_first">CPU Scheduler: Important, but Usually Not First</h2>
 			<p>This is where I think Linux tuning discussions often get derailed.</p>
 			<p>People love talking about CPU scheduler tweaks because they feel advanced. They sound like the kind of knobs only power users know about. But in many cases, they are simply not where the real desktop pain is coming from.</p>
@@ -233,6 +264,7 @@ vm.dirty_bytes=1073741824
 				<li>BFQ may reduce raw throughput, but can improve interactivity</li>
 				<li>a lower dirty writeback limit may flush earlier, but can reduce UI hitches</li>
 				<li><b>earlyoom</b> may kill an application sooner, but can save the session from becoming unbearable</li>
+				<li>disabling <b>systemd-coredump</b> means you cannot debug application crashes, but you avoid major CPU and writeback stutter when apps die</li>
 				<li>hybrid iGPU/dGPU setups can keep the desktop smoother under GPU-heavy workloads, but may require extra configuration and can make some applications run slower or behave differently</li>
 			</ul>
 			<p>From my perspective, these are all perfectly reasonable desktop trades.</p>
@@ -246,6 +278,7 @@ vm.dirty_bytes=1073741824
 				<li><b>Use mq-deadline</b> as the fallback when BFQ is unavailable</li>
 				<li><b>Lower dirty writeback thresholds</b> so storage pressure becomes steadier and less bursty</li>
 				<li><b>Use earlyoom</b> as a final safety net so one bad process does not ruin the whole session</li>
+				<li><b>Disable systemd-coredump</b> to eliminate CPU spikes and writeback freezes when applications crash</li>
 				<li><b>Treat CPU scheduler tweaks as secondary</b>, not foundational</li>
 				<li><b>Use hybrid graphics strategically</b> if GPU-heavy workloads are dragging the whole desktop down</li>
 			</ol>
@@ -256,10 +289,14 @@ vm.dirty_bytes=1073741824
 			<p>And for a lot of users, that difference matters.</p>
 			<p>A desktop machine should not merely perform well in ideal conditions. It should remain pleasant when things get messy: when memory gets tight, when storage gets hammered, when the browser goes wild, when the GPU gets saturated, or when background workloads refuse to stay politely in the background.</p>
 			<p>That is why I think desktop Linux often benefits from a more opinionated tuning profile.</p>
-			<p>For me, that profile begins with zram, a real swap file, a responsiveness-oriented I/O scheduler like BFQ, tighter writeback behavior, and a safety valve like <b>earlyoom</b>. If graphics saturation is also a problem, then hybrid graphics can be another practical tool for keeping the desktop usable under load. Only after those are in place do I think it makes sense to worry much about more exotic scheduler or kernel-parameter tweaks.</p>
+			<p>For me, that profile begins with zram, a real swap file, a responsiveness-oriented I/O scheduler like BFQ, tighter writeback behavior, a safety valve like <b>earlyoom</b>, and disabling <b>systemd-coredump</b>. If graphics saturation is also a problem, then hybrid graphics can be another practical tool for keeping the desktop usable under load. Only after those are in place do I think it makes sense to worry much about more exotic scheduler or kernel-parameter tweaks.</p>
 			<p>In other words, I am not trying to optimize Linux for theoretical maximum performance.</p>
 			<p>I am trying to optimize it for what I actually want from a desktop: responsiveness, graceful degradation, and a machine that still feels like it belongs to me even when it is under pressure.</p>
 			<p>That, to me, is the more practical goal.</p>
+			<h2 id="june_21_2026_update">June 21, 2026 Update</h2>
+			<p>I recently noticed a strange behavior on my Kubuntu system: whenever I closed the Antigravity IDE, my main SSD would experience a massive read and write spike. I had noticed this stutter before, but never paid much attention to it since I rarely run the editor outside of a virtual machine.</p>
+			<p>It turned out that the IDE was silently crashing every time it closed. Since the IDE on Linux is currently distributed as a raw tarball rather than a proper system package, I was able to edit its launcher script to set the <b>ulimit -c 0</b> flag, which limits the core dump size to zero.</p>
+			<p>That immediate fix solved the sudden SSD read/write spike during IDE shutdown (which is bad for SSD lifespan), but it also got me thinking: why are we letting the system process and write huge core dumps on a desktop machine in the first place? That real-world annoyance is what inspired this update.</p>
 			<h3>~ End ~</h3>
 			<h4>
 				There are

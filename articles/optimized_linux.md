@@ -333,3 +333,11 @@ In other words, I am not trying to optimize Linux for theoretical maximum perfor
 I am trying to optimize it for what I actually want from a desktop: responsiveness, graceful degradation, and a machine that still feels like it belongs to me even when it is under pressure.
 
 That, to me, is the more practical goal.
+
+## June 21, 2026 Update
+
+I recently noticed a strange behavior on my Kubuntu system: whenever I closed the Antigravity IDE, my main SSD would experience a massive read and write spike. I had noticed this stutter before, but never paid much attention to it since I rarely run the editor outside of a virtual machine.
+
+It turned out that the IDE was silently crashing every time it closed. Since the IDE on Linux is currently distributed as a raw tarball rather than a proper system package, I was able to edit its launcher script to set the **ulimit -c 0** flag, which limits the core dump size to zero. 
+
+That immediate fix solved the sudden SSD read/write spike during IDE shutdown (which is bad for SSD lifespan), but it also got me thinking: why are we letting the system process and write huge core dumps on a desktop machine in the first place? That real-world annoyance is what inspired this update.
