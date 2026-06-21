@@ -50,6 +50,7 @@ Before we begin, I would like to clarify the terminology used throughout this ar
 - **BFQ** – Budget Fair Queueing, an I/O scheduler that prioritizes responsiveness and low latency, often making it attractive for desktop systems.
 - **mq-deadline** – A multi-queue I/O scheduler focused heavily on keeping request service times bounded, especially for reads.
 - **earlyoom** – A userspace daemon that kills memory-hungry processes before the whole machine becomes unusable during an out-of-memory situation.
+- **systemd-coredump** – A systemd utility that intercepts process crashes, records their memory contents (core dumps), compresses them, and logs them to the journal or storage for debugging.
 - **Writeback** – The process where dirty cached data in RAM is flushed to storage.
 - **Desktop responsiveness** – In the context of this article, this means how well the user interface continues to feel smooth and usable during memory pressure, heavy background disk activity, mixed workloads, or graphics saturation.
 
@@ -149,6 +150,42 @@ That kind of prioritization makes sense to me on a personal machine.
 Also take note that my config is for KDE Plasma on Wayland, so you may need to adjust it for your own desktop environment.
 
 **systemd-oomd** is a valid alternative and, in some ways, the more modern one. However, it is more cgroup- and unit-oriented. That makes it better suited to users who want to build memory-pressure policy around slices, scopes, and service units rather than around simple process-name heuristics.
+
+## Disabling systemd-coredump: Eliminating Crash Hangs
+
+Another subtle but highly disruptive source of desktop stutter occurs when an application crashes. 
+
+By default, modern Linux distributions utilize **systemd-coredump** to log process crashes. When a massive process (like a web browser, a modern game, or an Electron application) crashes, systemd-coredump intercepts it. To build the core dump, it must read the entire resident memory footprint of the crashed process, compress it (typically using LZ4 or ZSTD), and write it to disk (usually in **/var/lib/systemd/coredump** or within the system journal).
+
+This process creates a dual penalty for desktop responsiveness:
+1. **Memory/CPU Read Overhead:** Reading gigabytes of raw memory from a dying process for compression uses significant CPU and memory bandwidth.
+2. **Disk Writeback Congestion:** Writing a compressed multi-gigabyte file to disk triggers aggressive writeback activity, which blocks other operations (This is also why sometimes all of a sudden you see a massive read/write spike and your disk space starts shrinking then expands back a few minutes after).
+
+On a desktop system, this manifests as a complete UI freeze or mouse hitch lasting several seconds right when a crash occurs. For a normal desktop user, this behavior is almost entirely useless. If an application crashes, you rarely need a full raw memory dump to debug it.
+
+The standard system logs (which remain fully active) are already more than enough to tell you what went wrong. More importantly, writing gigabytes of dump data to disk every time a game or browser tab dies is a massive performance drag and causes unnecessary write wear, actively reducing the lifespan of your SSD.
+
+On top of that, raw core dumps contain whatever was in memory at the time of the crash, meaning private passwords or keys could easily end up saved in plaintext on your storage.
+
+To disable this behavior and ensure crashed applications exit instantly without dragging down the desktop's responsiveness, you can disable systemd-coredump.
+
+You can configure an override to drop all coredumps, clean up existing ones, and apply the configuration immediately:
+
+```bash
+sudo mkdir -p /etc/systemd/coredump.conf.d
+
+sudo tee /etc/systemd/coredump.conf.d/99-disable.conf >/dev/null <<'EOF'
+[Coredump]
+Storage=none
+ProcessSizeMax=0
+EOF
+
+# Optional: Clear existing core dumps, as they'll no longer be needed moving forward
+sudo rm -f /var/lib/systemd/coredump/*
+sudo systemctl daemon-reload
+```
+
+This instructs systemd to neither store the core dumps on disk nor process them in memory, allowing crashed applications to terminate immediately.
 
 ## CPU Scheduler: Important, but Usually Not First
 
@@ -254,6 +291,7 @@ That means accepting tradeoffs honestly:
 - BFQ may reduce raw throughput, but can improve interactivity
 - a lower dirty writeback limit may flush earlier, but can reduce UI hitches
 - **earlyoom** may kill an application sooner, but can save the session from becoming unbearable
+- disabling **systemd-coredump** means you cannot debug application crashes, but you avoid major CPU and writeback stutter when apps die
 - hybrid iGPU/dGPU setups can keep the desktop smoother under GPU-heavy workloads, but may require extra configuration and can make some applications run slower or behave differently
 
 From my perspective, these are all perfectly reasonable desktop trades.
@@ -270,8 +308,9 @@ If I were to summarize the direction I would take for a mainstream Linux desktop
 4. **Use mq-deadline** as the fallback when BFQ is unavailable
 5. **Lower dirty writeback thresholds** so storage pressure becomes steadier and less bursty
 6. **Use earlyoom** as a final safety net so one bad process does not ruin the whole session
-7. **Treat CPU scheduler tweaks as secondary**, not foundational
-8. **Use hybrid graphics strategically** if GPU-heavy workloads are dragging the whole desktop down
+7. **Disable systemd-coredump** to eliminate CPU spikes and writeback freezes when applications crash
+8. **Treat CPU scheduler tweaks as secondary**, not foundational
+9. **Use hybrid graphics strategically** if GPU-heavy workloads are dragging the whole desktop down
 
 That, to me, is a much more coherent desktop strategy than just randomly piling on boot parameters and hoping one of them feels faster.
 
@@ -287,7 +326,7 @@ A desktop machine should not merely perform well in ideal conditions. It should 
 
 That is why I think desktop Linux often benefits from a more opinionated tuning profile.
 
-For me, that profile begins with zram, a real swap file, a responsiveness-oriented I/O scheduler like BFQ, tighter writeback behavior, and a safety valve like **earlyoom**. If graphics saturation is also a problem, then hybrid graphics can be another practical tool for keeping the desktop usable under load. Only after those are in place do I think it makes sense to worry much about more exotic scheduler or kernel-parameter tweaks.
+For me, that profile begins with zram, a real swap file, a responsiveness-oriented I/O scheduler like BFQ, tighter writeback behavior, a safety valve like **earlyoom**, and disabling **systemd-coredump**. If graphics saturation is also a problem, then hybrid graphics can be another practical tool for keeping the desktop usable under load. Only after those are in place do I think it makes sense to worry much about more exotic scheduler or kernel-parameter tweaks.
 
 In other words, I am not trying to optimize Linux for theoretical maximum performance.
 
