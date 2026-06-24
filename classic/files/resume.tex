@@ -1,0 +1,131 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Classic Professional Resume
+% LaTeX Template
+%
+% This template uses standard LaTeX classes and packages for a clean,
+% recruiter-friendly single-column layout.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[11pt,letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{hyperref}
+\usepackage{titlesec}
+\usepackage{enumitem}
+
+% Clean style for section headings with dividing lines
+\titleformat{\section}{\large\bfseries}{}{0em}{}[\titlerule]
+\titlespacing*{\section}{0pt}{12pt}{6pt}
+
+% Clean bullet lists with minimal padding
+\setlist[itemize]{leftmargin=1.5em, noitemsep, topsep=2pt}
+
+% Configure hyperlink coloring
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=blue,
+}
+
+\begin{document}
+\pagestyle{empty}
+
+% Contact Information Header
+\begin{center}
+    {\LARGE \bfseries Richard Orilla} \\
+    \vspace{4pt}
+    Davao City, Philippines \ $\bullet$ \ \href{mailto:richardorilla@pm.me}{richardorilla@pm.me} \ $\bullet$ \ \href{http://www.richardorilla.website}{www.richardorilla.website} \\
+    \href{https://github.com/Shin-Aska}{github.com/Shin-Aska} \ $\bullet$ \ \href{https://mastodon.social/@richardorilla}{mastodon.social/@richardorilla} \ $\bullet$ \ \href{https://pixelfed.social/richard\_orilla}{pixelfed.social/richard\_orilla}
+\end{center}
+
+\vspace{6pt}
+
+% Education Section
+\section{Education}
+\noindent
+\textbf{De La Salle University} \hfill 2017--2019 \\
+M.Sc. in Computer Science (Coursework Completed) \\
+\vspace{4pt}
+\noindent
+\textbf{University of Mindanao} \hfill 2010--2015 \\
+B.Sc. in Computer Science (Status: Graduated)
+
+% Experience Section
+\section{Experience}
+
+\noindent
+\textbf{inRiver} \hfill Present \\
+\textit{Technical Lead}
+\begin{itemize}
+    \item Architected 5 interconnected microservices (CMS, Central Command, Spider, ETL, Post-Processing) using Python and Azure DevOps CI/CD to manage enterprise-scale web scraping workflows with isolated, per-customer databases.
+    \item Led a team of 8 engineers in designing the complete data pipeline and designed SQL Server schemas for customer data synchronization via CMS with real-time replica databases, ensuring zero cross-customer data leakage.
+    \item Evolved the architecture into an AI Agent Orchestrator using Python, and engineered an interactive client-side AI Chat UI using React that manages session state purely in-browser to comply with strict EU data privacy laws.
+    \item Spearheaded the design of a C\# data mapper to interface the core C\# PIM platform with Python services, facilitating seamless post-acquisition corporate technology integration.
+    \item Coded Vue + Quasar front-ends and managed the transition to modern React applications designed with Material UI (MUI).
+    \item Standardized containerized infrastructure using Docker and Kubernetes (Helm) to reduce deployment friction across staging and production environments.
+\end{itemize}
+
+\vspace{8pt}
+
+\noindent
+\textbf{Detail Online} \hfill 2018--2022 \\
+\textit{Senior Backend Developer}
+\begin{itemize}
+    \item Maintained high-performing NodeJS and JavaScript backend applications to process compliance results, building custom query engines that enabled efficient dynamic client-side sorting and row-fetching.
+    \item Engineered a portable C\#/.NET Windows desktop application to automate and streamline data validation QA workflows for internal teams.
+    \item Built ML-powered automation tools in Python using TensorFlow, Caffe, and Darknet to eliminate manual data processing, saving 8 hours of labor overhead per week.
+    \item Designed and delivered 15+ production REST APIs in Python interacting with PostgreSQL databases to service organization-wide data pipeline integrations.
+    \item Conducted technical evaluations of third-party AI platforms and prototyped vision-based ML models in PyTorch to benchmark capabilities against requirements, saving an estimated \$50K in licensing costs.
+\end{itemize}
+
+\vspace{8pt}
+
+\noindent
+\textbf{University of Mindanao} \hfill 2015--2018 \\
+\textit{Computer Science Instructor}
+\begin{itemize}
+    \item Instructed academic coursework covering Fundamentals of Programming, Object-Oriented Programming (OOP), Database Programming (SQL Server/IBM DB2 fundamentals), Visual Programming, Game Development, and Security.
+    \item Developed curricula, prepared lectures, and mentored over 100+ undergraduate students in software engineering and database design concepts.
+\end{itemize}
+
+\vspace{8pt}
+
+\noindent
+\textbf{Freelance Software Developer} \hfill 2015--2018 \\
+\textit{Independent Contractor}
+\begin{itemize}
+    \item Maintained legacy business-critical C++ desktop applications integrated with MySQL, resolving bugs and implementing minor feature updates (2016--2017).
+    \item Developed custom WordPress PHP plugins and maintained Laravel e-commerce web applications to support client online scaling and feature updates.
+\end{itemize}
+
+% Technical Skills Section
+\section{Technical Skills}
+\noindent
+\textbf{Languages:} Python, C\#, JavaScript, SQL, C++, PHP, HTML, CSS \\
+\textbf{Frameworks \& Libraries:} React, Vue, NodeJS, Quasar, Material UI (MUI), Laravel, TensorFlow, PyTorch \\
+\textbf{Tools \& Database:} Docker, Kubernetes, Helm, Git, Azure DevOps, SQL Server, PostgreSQL, MySQL, IBM DB2
+
+% Projects & Research Section
+\section{Projects \& Research}
+\noindent
+\textbf{DOSBox Staging Replacer} \hfill C++ \\
+Open-source utility that replaces GOG Galaxy's default DOSBox emulator, resolving scaling and performance issues for retro gaming on modern platforms. \\
+\vspace{4pt}
+\noindent
+\textbf{Amagon HTML Editor} \hfill Electron, Monaco Editor, AI \\
+Offline visual editor featuring bidirectional code/canvas sync and natural language page building. \\
+\vspace{4pt}
+\noindent
+\textbf{Team Report Generator} \hfill Laravel, Gemini AI \\
+LLM-driven daily update summarizer with secure JSON proxy, CORS, and rate limiting. \\
+\vspace{4pt}
+\noindent
+\textbf{s2sc.js Transpiler} \hfill Compiler Construction \\
+Source-to-source compiler exploring language interoperability via AST parsing and code generation. \\
+\vspace{4pt}
+\noindent
+\textbf{Hand Tracking Game} \hfill Computer Vision, 3D Physics \\
+Browser-based game using MediaPipe landmark detection mapped to React Three Fiber + Rapier.
+
+\end{document}
