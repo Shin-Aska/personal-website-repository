@@ -223,8 +223,8 @@
         'image similarity finder': 'image_similarity.png',
         'video summarizer': 'video_summarizer.png',
         'introduction to image processing to a statistician': 'intro-to-stat.jpg',
-        'customized programming language': 'custom_lang.jpg'
-
+        'customized programming language': 'custom_lang.jpg',
+        'basics of latex: the de facto standard for publishing mathematical researches': 'latex_presentation.png'
       };
 
       // Parse games table
