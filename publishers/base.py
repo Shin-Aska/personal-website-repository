@@ -55,6 +55,8 @@ class Publisher(ABC):
                 html_content = self._generate_heading_content(html_content, element.content, element, table_contents)
             elif element.element_type == MarkdownElementType.p:
                 html_content = self._push_to_html_content(html_content, f'<p>{element.content}</p>', convert_formatting_markers_to_html=True, convert_link_markers_to_html=True)
+            elif element.element_type == MarkdownElementType.blockquote:
+                html_content = self._push_to_html_content(html_content, f'<blockquote><p>{element.content}</p></blockquote>', convert_formatting_markers_to_html=True, convert_link_markers_to_html=True)
             elif element.element_type == MarkdownElementType.ul or element.element_type == MarkdownElementType.ol:
                 html_content = self._generate_list_content(html_content, element)
             elif element.element_type == MarkdownElementType.checkbox:

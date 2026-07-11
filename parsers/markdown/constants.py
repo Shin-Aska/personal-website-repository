@@ -16,6 +16,7 @@ class MarkdownElementType(StrEnum):
     codeblock = "codeblock"
     link = "link"
     table = "table"
+    blockquote = "blockquote"
 
 element_type_mapping: dict[str, MarkdownElementType] = {
     '######': MarkdownElementType.h6,
@@ -33,6 +34,8 @@ element_type_mapping: dict[str, MarkdownElementType] = {
     '```': MarkdownElementType.codeblock,
     '| ': MarkdownElementType.table,
     '|': MarkdownElementType.table,
+    '> ': MarkdownElementType.blockquote,
+    '>': MarkdownElementType.blockquote,
     '[': MarkdownElementType.link
 }
 
