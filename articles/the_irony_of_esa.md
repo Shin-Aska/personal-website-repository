@@ -19,7 +19,7 @@ The ESA's **greatest achievement** was basically a self-policing sticker system,
 
 So if their historical highlight is a useless shield from thirty years ago, it certainly doesn't give them much weight in the gaming industry right now nor give them a free-pass to spew anti-consumer garbage they pull today.
 
-The truth is, the ESA’s actual job is not to protect the gamers. Their sole purpose is to run defense for their corporate overlords,the massive publishers who want to maximize profit at all costs.
+The truth is, the ESA’s actual job is not to protect the gamers. Their sole purpose is to run defense for their corporate overlords, the massive publishers who want to maximize profit at all costs.
 
 If that means making sure a game you paid $70 for becomes completely unplayable two years later so you are forced to buy the sequel, the ESA will happily stand on Capitol Hill and lie through their teeth to make it happen.
 
@@ -30,7 +30,7 @@ If that means making sure a game you paid $70 for becomes completely unplayable 
 
 So, what got the ESA’s suits sweating in the first place? Enter California Assembly Bill **AB 1921**, also known as the **Protect Our Games Act**, introduced by Assembly member Chris Ward. 
 
-For all intents and purposes, this is California's own version of the European "Stop Killing Games" initiative. But compared to the European version, this bill is a bit more mellow. It doesn't force publishers to keep running official servers until the end of time.
+For all intents and purposes, this is California's own version of the European "Stop Killing Games" initiative. But compared to the European version, this bill is a bit more mellow. Instead of strictly mandating that all games be preserved, it only applies to games released after 2028 and gives publishers an easy out: if they don't want to preserve the game, they can just issue refunds.
 
 It simply says that for paid, server-dependent digital games released or sold on or after January 1, 2028, publishers must provide at least 60 days' notice before shutting down the servers. And when they do shut them down, they have to provide gamers with a way to keep playing, which could be:
 * An offline-playable version of the game or patch.
@@ -107,3 +107,7 @@ But the whole fiasco has exposed a depressing truth. The ESA is so deeply out of
 As lobbyists, they aren't helping developers, they aren't helping games, and they certainly aren't helping gamers. They exist solely to protect the right of massive publishers to sell us digital smoke and mirrors, collect our money, and delete the product whenever it suits their balance sheet.
 
 In the end, they aren't helping anyone but themselves and their corporate overlords. And if it takes lying to lawmakers to keep their scam going, they'll do it with a smile.
+
+## Edit: July 12, 2026
+
+I have reviewed the article again and noticed an editorial error. I noticed that I incorrectly stated that Stop Killing Games requires games to be online forever; what I meant was, it enforces a policy for online games to provide an offline route after the service shuts down.
