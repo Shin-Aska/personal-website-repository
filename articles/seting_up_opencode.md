@@ -401,6 +401,11 @@ Currently, my Oh My OpenAgent roster is this:
 ```json
 {
   "$schema": "https://raw.githubusercontent.com/code-yeongyu/oh-my-openagent/dev/assets/oh-my-opencode.schema.json",
+  "runtime_fallback": {
+    "enabled": true,
+    "retry_on_errors": [402, 429, 500, 502, 503, 504]
+  },
+  "model_fallback": true,
   "agents": {
     "sisyphus": {
       "model": "ollama-cloud/kimi-k2.7-code",
@@ -616,7 +621,6 @@ Currently, my Oh My OpenAgent roster is this:
     }
   }
 }
-
 ```
 
 Save the contents of this snippet as either **oh-my-opencode.json** or **oh-my-openagent.json**, then replace the existing file. After that, you will have the same setup that I use.
