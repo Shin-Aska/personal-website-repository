@@ -445,6 +445,11 @@ Update the OhMyOpenAgent LLM roster for the agents to what is inside @LLM-Roster
 				<code class="language-json">
 {
   "$schema": "https://raw.githubusercontent.com/code-yeongyu/oh-my-openagent/dev/assets/oh-my-opencode.schema.json",
+  "runtime_fallback": {
+    "enabled": true,
+    "retry_on_errors": [402, 429, 500, 502, 503, 504]
+  },
+  "model_fallback": true,
   "agents": {
     "sisyphus": {
       "model": "ollama-cloud/kimi-k2.7-code",
