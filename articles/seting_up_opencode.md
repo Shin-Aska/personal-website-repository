@@ -381,3 +381,244 @@ So, is it worth setting up Opencode with openweight models?
 From my experience, **absolutely.** You get a fully capable AI coding agent without being locked into a single provider or paying premium API prices. The setup is straightforward, the roster is flexible, and the cost is hard to beat. For under $6 across a 33-hour session, I had access to multiple specialized agents handling everything from orchestration to codebase exploration.
 
 If you are already paying for Claude or GPT subscriptions, this is a low-risk way to diversify your tooling. And if you are just getting started, OpenCode Go at $10 per month is a gentle entry point compared to enterprise API tiers. Either way, having options is the whole point.
+
+
+## Update: July 18, 2026
+
+A lot of people are asking about going all in on openweight models, but they do not want to use raw API pricing tiers. Even if the models are cheaper, costs can add up very quickly.
+
+Personally, I have a $100 ChatGPT Pro subscription that handles most of my use cases. However, some people may be interested in the subscription plans that [Ollama Cloud](https://ollama.com/pricing) offers.
+
+Ollama Cloud offers many of the top openweight models, such as Kimi, GLM, and DeepSeek, along with others like Qwen. This means its model roster works well with the setup I suggested earlier. I tried the $20 subscription, and it already gave me plenty of room. I have not maxed it out yet, but so far, at 46.2% of my weekly quota, I have used 1,503 Kimi K2.7 requests, 62 Kimi K2.6 requests, 92 DeepSeek V4 Flash requests, and 84 MiniMax requests, which says a lot.
+
+It has 3-hour sessions, weekly quotas, and, more importantly, no monthly quotas, unlike OpenCode Go. I have noticed that responses are a bit slower than OpenCode Go, but it is still very usable.
+
+If you are interested in my setup, it combines OpenCode Go, Ollama Cloud, and ChatGPT Pro (Still can work with Plus since I do not use the Pro models at all).
+
+I mainly use GPT for the deep-agent models because the deep-agent prompts from Oh My OpenAgent are primarily designed for GPT and nothing else. The plugin refuses to run them with non-GPT models.
+
+Currently, my Oh My OpenAgent roster is this:
+```json
+{
+  "$schema": "https://raw.githubusercontent.com/code-yeongyu/oh-my-openagent/dev/assets/oh-my-opencode.schema.json",
+  "agents": {
+    "sisyphus": {
+      "model": "ollama-cloud/kimi-k2.7-code",
+      "variant": "medium",
+      "fallback_models": [
+        {
+          "model": "opencode-go/kimi-k2.7-code",
+          "variant": "medium"
+        }
+      ],
+      "ultrawork": {
+        "model": "ollama-cloud/kimi-k2.7-code",
+        "variant": "high",
+        "thinking": {
+          "budgetTokens": 16000
+        }
+      }
+    },
+    "hephaestus": {
+      "model": "openai/gpt-5.6-terra",
+      "variant": "high",
+      "fallback_models": [
+        {
+          "model": "openai/gpt-5.6-luna",
+          "variant": "medium"
+        },
+        {
+          "model": "opencode-go/kimi-k2.6",
+          "variant": "high"
+        }
+      ]
+    },
+    "oracle": {
+      "model": "openai/gpt-5.6-sol",
+      "variant": "high",
+      "fallback_models": [
+        {
+          "model": "opencode-go/glm-5",
+          "variant": "high"
+        },
+        {
+          "model": "opencode-go/kimi-k2.6",
+          "variant": "high"
+        }
+      ]
+    },
+    "librarian": {
+      "model": "ollama-cloud/deepseek-v4-flash",
+      "fallback_models": [
+        {
+          "model": "opencode-go/deepseek-v4-flash"
+        }
+      ]
+    },
+    "explore": {
+      "model": "ollama-cloud/deepseek-v4-flash",
+      "fallback_models": [
+        {
+          "model": "opencode-go/deepseek-v4-flash"
+        }
+      ]
+    },
+    "multimodal-looker": {
+      "model": "openai/gpt-5.6-terra",
+      "variant": "medium",
+      "fallback_models": [
+        {
+          "model": "openai/gpt-5.6-luna",
+          "variant": "medium"
+        },
+        {
+          "model": "opencode-go/kimi-k2.6",
+          "variant": "medium"
+        },
+        {
+          "model": "opencode-go/glm-5"
+        }
+      ]
+    },
+    "prometheus": {
+      "model": "openai/gpt-5.6-terra",
+      "variant": "high",
+      "fallback_models": [
+        {
+          "model": "opencode-go/deepseek-v4-pro",
+          "variant": "high"
+        },
+        {
+          "model": "opencode-go/kimi-k2.6",
+          "variant": "high"
+        }
+      ]
+    },
+    "metis": {
+      "model": "ollama-cloud/kimi-k2.7-code",
+      "variant": "high",
+      "fallback_models": [
+        {
+          "model": "opencode-go/kimi-k2.7-code",
+          "variant": "high"
+        }
+      ]
+    },
+    "momus": {
+      "model": "ollama-cloud/deepseek-v4-pro",
+      "variant": "xhigh",
+      "fallback_models": [
+        {
+          "model": "opencode-go/deepseek-v4-pro",
+          "variant": "xhigh"
+        }
+      ]
+    },
+    "atlas": {
+      "model": "ollama-cloud/kimi-k2.7-code",
+      "variant": "medium",
+      "fallback_models": [
+        {
+          "model": "opencode-go/kimi-k2.7-code",
+          "variant": "medium"
+        }
+      ]
+    },
+    "sisyphus-junior": {
+      "model": "ollama-cloud/deepseek-v4-flash",
+      "variant": "medium",
+      "fallback_models": [
+        {
+          "model": "opencode-go/deepseek-v4-flash",
+          "variant": "medium"
+        }
+      ]
+    }
+  },
+  "categories": {
+    "visual-engineering": {
+      "model": "ollama-cloud/kimi-k2.7-code",
+      "variant": "high",
+      "fallback_models": [
+        {
+          "model": "opencode-go/kimi-k2.7-code",
+          "variant": "high"
+        }
+      ]
+    },
+    "ultrabrain": {
+      "model": "ollama-cloud/deepseek-v4-pro",
+      "variant": "xhigh",
+      "fallback_models": [
+        {
+          "model": "opencode-go/deepseek-v4-pro",
+          "variant": "xhigh"
+        }
+      ]
+    },
+    "deep": {
+      "model": "ollama-cloud/kimi-k2.7-code",
+      "variant": "medium",
+      "fallback_models": [
+        {
+          "model": "opencode-go/kimi-k2.7-code",
+          "variant": "medium"
+        }
+      ]
+    },
+    "artistry": {
+      "model": "ollama-cloud/deepseek-v4-pro",
+      "variant": "xhigh",
+      "fallback_models": [
+        {
+          "model": "opencode-go/deepseek-v4-pro",
+          "variant": "xhigh"
+        }
+      ]
+    },
+    "quick": {
+      "model": "ollama-cloud/minimax-m2.7",
+      "fallback_models": [
+        {
+          "model": "opencode-go/minimax-m2.7"
+        }
+      ]
+    },
+    "unspecified-low": {
+      "model": "ollama-cloud/kimi-k2.5",
+      "variant": "medium",
+      "fallback_models": [
+        {
+          "model": "opencode-go/kimi-k2.5",
+          "variant": "medium"
+        }
+      ]
+    },
+    "unspecified-high": {
+      "model": "ollama-cloud/kimi-k2.7-code",
+      "variant": "medium",
+      "fallback_models": [
+        {
+          "model": "opencode-go/kimi-k2.7-code",
+          "variant": "medium"
+        }
+      ]
+    },
+    "writing": {
+      "model": "ollama-cloud/kimi-k2.7-code",
+      "variant": "medium",
+      "fallback_models": [
+        {
+          "model": "opencode-go/kimi-k2.7-code",
+          "variant": "medium"
+        }
+      ]
+    }
+  }
+}
+
+```
+
+Save the contents of this snippet as either **oh-my-opencode.json** or **oh-my-openagent.json**, then replace the existing file. After that, you will have the same setup that I use.
+
+If you have forgotten where to save it, refer back to the **Installing via Build mode** section of this article. It explains exactly where the file should be saved, depending on your operating system.
