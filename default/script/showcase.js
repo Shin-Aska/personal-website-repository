@@ -213,6 +213,11 @@
       // Image mapping for items that don't follow id.jpg pattern
       const imageMap = {
         'warzone 2100': 'warzone_2100.jpg',
+        'openttd': 'openttd.png',
+        'freedroidrpg': 'freedroidrpg.png',
+        'mari0': 'mari0.png',
+        'sonic robo blast 2': 'sonic_robo_blast_2.png',
+        'l\'abbaye des morts': 'l_abbaye_des_morts.png',
         '0 a.d': 'zero_ad.jpg',
         '0 a.d.': 'zero_ad.jpg',
         'super tux kart': 'supertuxkart.png',
