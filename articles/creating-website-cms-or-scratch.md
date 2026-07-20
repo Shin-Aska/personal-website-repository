@@ -64,7 +64,7 @@ This time around, I prefer my approach because I managed to build the gallery wi
 Finally if you are interested in the output of my Wordpress experiment, you can find my hosted site [here<sup>[18]</sup>](https://wordpress.richardorilla.website/).
 
 ### Joomla
-
+> **Note:** The Joomla version has been removed from this article due to hosting limitations; the links above are no longer functional.
 When someone talks about a **WordPress alternative** in a forum of freelance web developers, **Joomla** is almost always mentioned. Often considered the **second-best CMS option**, Joomla offers similar functionality to WordPress, including an **extension store** where you can install third-party plugins or even develop and manually install your own.
 
 - [ ] [![](images/joomla_store.png)](images/joomla_store.png) 
@@ -80,12 +80,12 @@ Unfortunately, I was unable to install any landing page extensions since most of
 
 As for themes, I modified the **Cassiopeia template** that comes preinstalled with Joomla to create a custom look.
 
-Overall I was **somehow satisfied** with the outcome of my experiment for Joomla and if you are interested in the output of my Joomla experiment, you can find my hosted site [here<sup>[19]</sup>](https://joomla.richardorilla.website/).
+Overall I was **somehow satisfied** with the outcome of my experiment for Joomla.
 
 Lastly what I have experienced strengthens how Joomla is often perceive by many. That is it is often good enough that you can stand on its own without having the need to install plugins or extensions.
 
 ### Drupal
-
+> **Note:** The Drupal version has been removed from this article due to hosting limitations; the links above are no longer functional.
 If WordPress is known for its user-friendliness and Joomla for its balance of power and usability, **Drupal** stands as the **developer’s CMS**—a platform built for those who love structure, flexibility, and security but don’t mind a steeper learning curve.
 
 Out of the three CMS platforms I tested, Drupal felt the most **developer-centric**. Unlike WordPress, where you can get started quickly with prebuilt themes and plugins, or Joomla where you have everything you need to get started. Drupal requires a bit more **technical knowledge** right from the get-go. Installation was straightforward, but configuring my site to work the way I wanted took more effort.
@@ -93,8 +93,6 @@ Out of the three CMS platforms I tested, Drupal felt the most **developer-centri
 Although unlike Joomla, I did like that fact that it feels a bit more what I wanted where each node is just a blank canvas effectively making it possible to create landing pages unlike on Joomla where it feels a bit limiting.
 
 I had to understand the concept of nodes, views and aliases to get started. Then there is the effort of updating Drupal core (as currently updating Drupal core automatically or through click of a button is not yet supported).
-
-Of course just like the previous two CMS, If you are interested in the output of my Drupal experiment, you can find my hosted site [here<sup>[20]</sup>](http://drupal.richardorilla.website/).
 
 ## Common Misconceptions
 
@@ -131,3 +129,7 @@ Ultimately, **website development is about trade-offs**. Do you prefer **control
 Personally, I've been the sole maintainer of my website for over a decade now. I started with a site builder theme on Freewebs, but as my need for more granular control over design grew, I transitioned to static web pages and I've stuck with them ever since. 
 
 While I've moved between different hosting providers, the static approach continues to offer me the flexibility and performance I need without the overhead of a CMS.  
+
+## Update: July 20, 2026
+
+I have removed the Joomla and Drupal versions from this article because I exceeded the 10 k file‑count limit imposed by my hosting provider’s terms of service (Under my account, I do have multiple websites hosted, unfortunately Laravel applications just consumes that much). The WordPress version remains active but I might remove it also in the future if I need more room.
