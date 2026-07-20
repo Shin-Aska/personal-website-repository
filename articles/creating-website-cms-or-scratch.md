@@ -64,7 +64,8 @@ This time around, I prefer my approach because I managed to build the gallery wi
 Finally if you are interested in the output of my Wordpress experiment, you can find my hosted site [here<sup>[18]</sup>](https://wordpress.richardorilla.website/).
 
 ### Joomla
-> **Note:** The Joomla version has been removed from this article due to hosting limitations; the links above are no longer functional.
+> **Note:** The Joomla version has been removed from this article due to hosting limitations; any dangling links pointing to joomla.richardorilla.website will no longer work.
+
 When someone talks about a **WordPress alternative** in a forum of freelance web developers, **Joomla** is almost always mentioned. Often considered the **second-best CMS option**, Joomla offers similar functionality to WordPress, including an **extension store** where you can install third-party plugins or even develop and manually install your own.
 
 - [ ] [![](images/joomla_store.png)](images/joomla_store.png) 
@@ -85,7 +86,8 @@ Overall I was **somehow satisfied** with the outcome of my experiment for Joomla
 Lastly what I have experienced strengthens how Joomla is often perceive by many. That is it is often good enough that you can stand on its own without having the need to install plugins or extensions.
 
 ### Drupal
-> **Note:** The Drupal version has been removed from this article due to hosting limitations; the links above are no longer functional.
+> **Note:** The Drupal version has been removed from this article due to hosting limitations; Any dangling links pointing to drupal.richardorilla.website will no longer work.
+
 If WordPress is known for its user-friendliness and Joomla for its balance of power and usability, **Drupal** stands as the **developer’s CMS**—a platform built for those who love structure, flexibility, and security but don’t mind a steeper learning curve.
 
 Out of the three CMS platforms I tested, Drupal felt the most **developer-centric**. Unlike WordPress, where you can get started quickly with prebuilt themes and plugins, or Joomla where you have everything you need to get started. Drupal requires a bit more **technical knowledge** right from the get-go. Installation was straightforward, but configuring my site to work the way I wanted took more effort.
@@ -133,3 +135,7 @@ While I've moved between different hosting providers, the static approach contin
 ## Update: July 20, 2026
 
 I have removed the Joomla and Drupal versions from this article because I exceeded the 10 k file‑count limit imposed by my hosting provider’s terms of service (Under my account, I do have multiple websites hosted, unfortunately Laravel applications just consumes that much). The WordPress version remains active but I might remove it also in the future if I need more room.
+
+More importantly, I have integrated both Bluesky and Mastodon to my newer articles as describe in the [Bluesky and Mastodon integration](how_i_integrated_bluesky_and_mastodon.html) article which further proves my point that static websites can support dynamic functionality.
+
+Ofcourse in this case, my hosting provider has supported PHP since forever, so I just took advantage of the tools I already have access. So a pure HTML hosting provider will probably not be able to enjoy the same technique described in the article but there are still options such as what I have mentioned, comment.io integration.
