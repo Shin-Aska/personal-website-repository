@@ -409,31 +409,35 @@ Currently, my Oh My OpenAgent roster is this:
   "agents": {
     "sisyphus": {
       "model": "ollama-cloud/kimi-k2.7-code",
-      "variant": "medium",
+      "variant": "high",
       "fallback_models": [
         {
           "model": "opencode-go/kimi-k2.7-code",
-          "variant": "medium"
+          "variant": "high"
+        },
+        {
+          "model": "ollama-cloud/glm-5.2",
+          "variant": "high"
         }
       ],
       "ultrawork": {
-        "model": "ollama-cloud/kimi-k2.7-code",
-        "variant": "high",
+        "model": "ollama-cloud/glm-5.2",
+        "variant": "xhigh",
         "thinking": {
           "budgetTokens": 16000
         }
       }
     },
     "hephaestus": {
-      "model": "openai/gpt-5.6-terra",
+      "model": "openai/gpt-5.6-sol",
       "variant": "high",
       "fallback_models": [
         {
-          "model": "openai/gpt-5.6-luna",
+          "model": "openai/gpt-5.6-sol-fast",
           "variant": "medium"
         },
         {
-          "model": "opencode-go/kimi-k2.6",
+          "model": "opencode-go/deepseek-v4-pro",
           "variant": "high"
         }
       ]
@@ -443,11 +447,15 @@ Currently, my Oh My OpenAgent roster is this:
       "variant": "high",
       "fallback_models": [
         {
-          "model": "opencode-go/glm-5",
+          "model": "ollama-cloud/glm-5.2",
           "variant": "high"
         },
         {
-          "model": "opencode-go/kimi-k2.6",
+          "model": "opencode-go/glm-5.2",
+          "variant": "high"
+        },
+        {
+          "model": "opencode-go/deepseek-v4-pro",
           "variant": "high"
         }
       ]
@@ -473,38 +481,30 @@ Currently, my Oh My OpenAgent roster is this:
       "variant": "medium",
       "fallback_models": [
         {
-          "model": "openai/gpt-5.6-luna",
+          "model": "ollama-cloud/kimi-k2.6",
           "variant": "medium"
         },
         {
           "model": "opencode-go/kimi-k2.6",
           "variant": "medium"
-        },
-        {
-          "model": "opencode-go/glm-5"
         }
       ]
     },
     "prometheus": {
       "model": "openai/gpt-5.6-terra",
       "variant": "high",
-      "fallback_models": [
-        {
-          "model": "opencode-go/deepseek-v4-pro",
-          "variant": "high"
-        },
-        {
-          "model": "opencode-go/kimi-k2.6",
-          "variant": "high"
-        }
-      ]
+      "fallback_models": []
     },
     "metis": {
-      "model": "ollama-cloud/kimi-k2.7-code",
+      "model": "ollama-cloud/glm-5.2",
       "variant": "high",
       "fallback_models": [
         {
-          "model": "opencode-go/kimi-k2.7-code",
+          "model": "opencode-go/glm-5.2",
+          "variant": "high"
+        },
+        {
+          "model": "ollama-cloud/kimi-k2.7-code",
           "variant": "high"
         }
       ]
@@ -542,11 +542,11 @@ Currently, my Oh My OpenAgent roster is this:
   },
   "categories": {
     "visual-engineering": {
-      "model": "ollama-cloud/kimi-k2.7-code",
+      "model": "ollama-cloud/glm-5.2",
       "variant": "high",
       "fallback_models": [
         {
-          "model": "opencode-go/kimi-k2.7-code",
+          "model": "opencode-go/glm-5.2",
           "variant": "high"
         }
       ]
@@ -562,21 +562,21 @@ Currently, my Oh My OpenAgent roster is this:
       ]
     },
     "deep": {
-      "model": "ollama-cloud/kimi-k2.7-code",
-      "variant": "medium",
+      "model": "ollama-cloud/deepseek-v4-pro",
+      "variant": "high",
       "fallback_models": [
         {
-          "model": "opencode-go/kimi-k2.7-code",
-          "variant": "medium"
+          "model": "opencode-go/deepseek-v4-pro",
+          "variant": "high"
         }
       ]
     },
     "artistry": {
-      "model": "ollama-cloud/deepseek-v4-pro",
+      "model": "ollama-cloud/glm-5.2",
       "variant": "xhigh",
       "fallback_models": [
         {
-          "model": "opencode-go/deepseek-v4-pro",
+          "model": "opencode-go/glm-5.2",
           "variant": "xhigh"
         }
       ]
@@ -590,22 +590,22 @@ Currently, my Oh My OpenAgent roster is this:
       ]
     },
     "unspecified-low": {
-      "model": "ollama-cloud/kimi-k2.5",
-      "variant": "medium",
-      "fallback_models": [
-        {
-          "model": "opencode-go/kimi-k2.5",
-          "variant": "medium"
-        }
-      ]
-    },
-    "unspecified-high": {
       "model": "ollama-cloud/kimi-k2.7-code",
       "variant": "medium",
       "fallback_models": [
         {
           "model": "opencode-go/kimi-k2.7-code",
           "variant": "medium"
+        }
+      ]
+    },
+    "unspecified-high": {
+      "model": "ollama-cloud/glm-5.2",
+      "variant": "high",
+      "fallback_models": [
+        {
+          "model": "opencode-go/glm-5.2",
+          "variant": "high"
         }
       ]
     },
@@ -626,3 +626,25 @@ Currently, my Oh My OpenAgent roster is this:
 Save the contents of this snippet as either **oh-my-opencode.json** or **oh-my-openagent.json**, then replace the existing file. After that, you will have the same setup that I use.
 
 If you have forgotten where to save it, refer back to the **Installing via Build mode** section of this article. It explains exactly where the file should be saved, depending on your operating system.
+
+### Why These Models?
+
+The config above is not random. Each model was chosen based on what it is actually good at, while keeping costs reasonable by preferring models available on both Ollama Cloud and OpenCode Go.
+
+**Kimi K2.7 Code** is the daily driver for Sisyphus, Atlas, and the lighter categories (unspecified-low, writing). It is a coding specialist with excellent instruction-following and tool-calling precision. It does not overthink, it does not get stuck in reasoning loops, and it dispatches subtasks cleanly. That is exactly what you want from an orchestrator that spends most of its time delegating work to other agents.
+
+**GLM-5.2** handles the heavy thinking. It powers ultrawork mode, Metis (plan consultation), and the categories where reasoning depth matters: visual-engineering, artistry, and unspecified-high. It has a 1 million token context window, which lets it hold an entire repository in memory, and it leads the FrontierSWE and Terminal-Bench benchmarks among open-weight models. It also scored first on Code Arena Frontend, which is why it gets visual-engineering and artistry duties.
+
+**DeepSeek V4 Pro** is the value pick for deep reasoning. It runs the ultrabrain, deep, and momus (code review) roles. At roughly a third of the cost of frontier models, it still scores around 80% on SWE-bench Verified. For tasks that need autonomous problem-solving but do not need the absolute best, it is hard to beat on price-to-performance.
+
+**DeepSeek V4 Flash** handles the lightweight jobs: Librarian (docs search), Explore (codebase grep), and Sisyphus-Junior. These agents make many small, fast calls where latency matters more than reasoning depth. Flash is extremely cheap and fast, which is exactly what you want for high-volume lookup work.
+
+**GPT-5.6 Sol** powers Hephaestus and Oracle. These are the GPT-native agents in OMO, and their system prompts are specifically tuned for Sol. Running them on a different GPT variant (like Terra or Luna) means the prompt calibration is mismatched with the model. Hephaestus in particular is designed as "The Legitimate Craftsman", an autonomous deep worker that explores your codebase end-to-end without hand-holding. Sol is the right engine for that.
+
+**GPT-5.6 Terra** stays on Prometheus (the strategic planner) and Multimodal Looker. Prometheus is intentionally GPT-only with no fallbacks; if GPT is down, the planner simply does not run. Terra's deep reasoning strength is a natural fit for interview-style planning.
+
+**Kimi K2.6** is the fallback for Multimodal Looker because it has a native vision encoder. Unlike K2.7 Code, which is text-only, K2.6 can actually process screenshots and design mockups, which is the whole point of a multimodal agent.
+
+**MiniMax M2.7** runs the quick category. It is fast, cheap, and good enough for trivial tasks like typo fixes and single-file changes. You do not need a frontier model to rename a variable.
+
+These are not configured for the absolute best performance. The reason I did not go for Kimi K3 and the like is because I chose models that are affordable enough to let you do intense vibe-coding for at least the whole weekend. If you need more than that, just upgrade your plan 😉. Go from the $20 Ollama Pro and ChatGPT Plus combo to $100 Ollama Max and ChatGPT Pro (or 20x) if you want to work intensely all week.
