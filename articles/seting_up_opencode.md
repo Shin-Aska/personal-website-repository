@@ -343,9 +343,9 @@ Also include the following top-level runtime settings in the final JSON config:
 
 | Agent | Role | Primary Model | Variant | Fallback Chain |
 |-------|------|---------------|---------|----------------|
-| `sisyphus` | Orchestrator (you) | `ollama-cloud/kimi-k2.7-code` | high | `opencode-go/kimi-k2.7-code` (high) → `ollama-cloud/glm-5.2` (high) |
+| `sisyphus` | Orchestrator (you) | `ollama-cloud/kimi-k2.7-code` | high | `opencode-go/kimi-k2.7-code` (high) |
 | `hephaestus` | Build executor | **`openai/gpt-5.6-sol`** | high | none |
-| `oracle` | High-IQ consultant | **`openai/gpt-5.6-sol`** | high | `ollama-cloud/glm-5.2` (high) → `opencode-go/glm-5.2` (high) → `opencode-go/deepseek-v4-pro` (high) |
+| `oracle` | High-IQ consultant | **`openai/gpt-5.6-sol`** | high | `ollama-cloud/glm-5.2` (high) → `opencode-go/glm-5.2` (high) → `ollama-cloud/deepseek-v4-pro` (high) → `opencode-go/deepseek-v4-pro` (high) |
 | `librarian` | External docs / GitHub | `ollama-cloud/deepseek-v4-flash` | — | `opencode-go/deepseek-v4-flash` |
 | `explore` | Codebase pattern search | `ollama-cloud/deepseek-v4-flash` | — | `opencode-go/deepseek-v4-flash` |
 | `multimodal-looker` | PDF / image analysis | **`openai/gpt-5.6-terra`** | medium | `ollama-cloud/kimi-k2.7-code` (medium) → `opencode-go/kimi-k2.7-code` (medium) |
@@ -361,7 +361,7 @@ Also include the following top-level runtime settings in the final JSON config:
 
 | Agent | Special Setting |
 |-------|-----------------|
-| `sisyphus` | **ultrawork**: `ollama-cloud/glm-5.2` (xhigh) with `thinking.budgetTokens: 16000` |
+| `sisyphus` | **ultrawork**: `ollama-cloud/kimi-k2.7-code` (xhigh) |
 
 ---
 
@@ -374,7 +374,7 @@ Also include the following top-level runtime settings in the final JSON config:
 | `deep` | `ollama-cloud/deepseek-v4-pro` | high | `opencode-go/deepseek-v4-pro` (high) |
 | `quick` | `ollama-cloud/minimax-m2.7` | — | `opencode-go/minimax-m2.7` |
 | `unspecified-low` | `ollama-cloud/kimi-k2.7-code` | medium | `opencode-go/kimi-k2.7-code` (medium) |
-| `unspecified-high` | `ollama-cloud/glm-5.2` | high | `opencode-go/glm-5.2` (high) |
+| `unspecified-high` | `ollama-cloud/kimi-k2.7-code` | high | `opencode-go/kimi-k2.7-code` (high) |
 | `writing` | `ollama-cloud/kimi-k2.7-code` | medium | `opencode-go/kimi-k2.7-code` (medium) |
 | `artistry` | `ollama-cloud/glm-5.2` | xhigh | `opencode-go/glm-5.2` (xhigh) |
 
@@ -416,18 +416,11 @@ And here is the complete JSON config snippet for `oh-my-openagent.json`, you can
         {
           "model": "opencode-go/kimi-k2.7-code",
           "variant": "high"
-        },
-        {
-          "model": "ollama-cloud/glm-5.2",
-          "variant": "high"
         }
       ],
       "ultrawork": {
-        "model": "ollama-cloud/glm-5.2",
-        "variant": "xhigh",
-        "thinking": {
-          "budgetTokens": 16000
-        }
+        "model": "ollama-cloud/kimi-k2.7-code",
+        "variant": "xhigh"
       }
     },
     "hephaestus": {
@@ -445,6 +438,10 @@ And here is the complete JSON config snippet for `oh-my-openagent.json`, you can
         },
         {
           "model": "opencode-go/glm-5.2",
+          "variant": "high"
+        },
+        {
+          "model": "ollama-cloud/deepseek-v4-pro",
           "variant": "high"
         },
         {
@@ -598,11 +595,11 @@ And here is the complete JSON config snippet for `oh-my-openagent.json`, you can
       ]
     },
     "unspecified-high": {
-      "model": "ollama-cloud/glm-5.2",
+      "model": "ollama-cloud/kimi-k2.7-code",
       "variant": "high",
       "fallback_models": [
         {
-          "model": "opencode-go/glm-5.2",
+          "model": "opencode-go/kimi-k2.7-code",
           "variant": "high"
         }
       ]
