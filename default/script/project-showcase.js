@@ -617,7 +617,7 @@
       <div class="card-modal">
         <div class="card-modal-header">
           <img src="${project.image}" alt="${project.name}" class="card-modal-image">
-          <button class="card-modal-close" onclick="closeCardModal()">&times;</button>
+          <button class="card-modal-close" aria-label="Close">&times;</button>
         </div>
         <div class="card-modal-body">
           <span class="card-modal-type">${project.type}</span>
@@ -630,6 +630,11 @@
         </div>
       </div>
     `;
+
+    const closeButton = overlay.querySelector('.card-modal-close');
+    if (closeButton) {
+      closeButton.addEventListener('click', window.closeCardModal);
+    }
 
     overlay.classList.add('active');
     document.body.style.overflow = 'hidden';
