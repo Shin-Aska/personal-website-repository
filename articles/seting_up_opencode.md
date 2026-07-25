@@ -13,13 +13,13 @@ Out of the box, Opencode ships with two built in agents:
 
 On the model side, Opencode supports more than 75 LLM providers through [models.dev](https://models.dev), including local models if you prefer to run things on your own hardware. Privacy is also a big selling point here. Opencode advertises a zero retention policy, which is a lot easier to live with than blindly pasting code into random web chatboxes.
 
-## Openweight Models
+## Openweight & Multi-Provider Models
 
 One of the more interesting parts of the Opencode ecosystem is how well it fits openweight models. That means you are not limited to the usual closed model lineup. You can use strong coding focused models from labs that publish openweight or more openly available model families, while still getting a polished agent workflow on top.
 
 This matters because a lot of the newer coding friendly models people care about right now come from that world. Think DeepSeek, Kimi, GLM, Qwen, and MiniMax. If you have been hopping between providers just to try those models, Opencode gives you one interface for all of it.
 
-These models are also available through OpenCode Go, which gives you reliable access without juggling a pile of separate accounts.
+These models are available through multiple providers. I personally use a combination of **OpenCode Go**, **Ollama Cloud Pro**, and **ChatGPT Subscription**, which together cost about $50 per month and give me access to every model I need.
 
 ### OpenCode Go
 
@@ -28,11 +28,12 @@ OpenCode Go is a low cost subscription for reliable access to popular open codin
 The current OpenCode Go lineup includes:
 
 - DeepSeek V4 Pro and DeepSeek V4 Flash
-- Kimi K2.5 and Kimi K2.6
-- GLM-5 and GLM-5.1
-- Qwen3.5 Plus and Qwen3.6 Plus
-- MiniMax M2.5 and MiniMax M2.7
-- MiMo-V2.5 and MiMo Pro
+- Kimi K2.6, Kimi K2.7 Code, and Kimi K3
+- GLM-5.1 and GLM-5.2
+- Qwen3.6 Plus, Qwen3.7 Max, and Qwen3.7 Plus
+- Grok 4.5 and HY3
+- MiniMax M2.7 and MiniMax M3
+- MiMo-V2.5 and MiMo-V2.5 Pro
 
 Pricing is simple:
 
@@ -47,16 +48,44 @@ There are also soft limits, which are currently listed at roughly:
 
 OpenCode Go is designed with international users in mind, with models hosted in the US, EU, and Singapore. Another useful detail is that it uses the same API key as OpenCode Zen and shares the same console at [opencode.ai/auth](https://opencode.ai/auth). So you are not managing two separate identities here.
 
-When you reference a Go model inside Opencode, the model ID format looks like this:
+### Ollama Cloud
+
+[Ollama Cloud](https://ollama.com/pricing) is another provider worth knowing about. It offers many of the same openweight models as OpenCode Go, plus a few extra ones, through a single $20 Pro subscription with generous weekly quotas and no monthly caps.
+
+The current Ollama Cloud lineup includes:
+
+- DeepSeek V4 Pro and DeepSeek V4 Flash
+- Kimi K2.5, Kimi K2.6, and Kimi K2.7 Code
+- GLM-5.1 and GLM-5.2
+- Qwen3.5:397b
+- MiniMax M2.5, MiniMax M2.7, and MiniMax M3
+- Gemma 4 31B
+- GPT-OSS 20B and GPT-OSS 120B
+- Mistral Large 3 675B
+- Nemotron 3 Nano 30B, Nemotron 3 Super, and Nemotron 3 Ultra
+
+I use the $20 Ollama Cloud Pro plan alongside OpenCode Go. The two complement each other well: Ollama Cloud handles my primary model calls, while OpenCode Go serves as a fallback when I hit Ollama's 3-hour session limits or weekly quotas. Responses on Ollama Cloud can be a bit slower than OpenCode Go, but it is still very usable.
+
+At 46.2% of my weekly quota, I have used 1,503 Kimi K2.7 Code requests, 92 DeepSeek V4 Flash requests, and 84 MiniMax requests, which says a lot about how much room the Pro plan gives you.
+
+### ChatGPT Subscription
+
+For the GPT-native agents in Oh My OpenAgent, I use a ChatGPT Subscription at $20 per month. The deep-agent prompts in Oh My OpenAgent are specifically designed for GPT models and the plugin refuses to run them with non-GPT models. The subscription covers all the GPT-5.6 family models the agents need, including Sol, Terra, and Luna.
+
+You do not need ChatGPT Pro ($100) for this. I do not use any Pro-exclusive models. The standard subscription covers everything the GPT-native agents need.
+
+When you reference a model inside Opencode, the model ID format depends on the provider:
 
 ```text
 opencode-go/<model-id>
+ollama-cloud/<model-id>
+openai/<model-id>
 ```
 
 For example:
 
 ```text
-opencode-go/kimi-k2.6
+ollama-cloud/kimi-k2.7-code
 ```
 
 ## Installation of Opencode
@@ -204,10 +233,10 @@ Before installing it, make sure you have:
 For users who already have Zen and Go set up, this non interactive install command is the recommended path:
 
 ```bash
-bunx oh-my-openagent install --no-tui --claude=no --openai=no --gemini=no --copilot=no --opencode-zen=yes --opencode-go=yes
+bunx oh-my-openagent install --no-tui --claude=no --openai=yes --gemini=no --copilot=no --opencode-zen=yes --opencode-go=yes
 ```
 
-If you do not have a Claude subscription, Sisyphus may not work as well depending on your setup. The **--opencode-zen=yes** and **--opencode-go=yes** flags are both used because Zen and Go share the same API key and account.
+The **--openai=yes** flag is included because several agents (Hephaestus, Oracle, Prometheus, Multimodal Looker) use GPT-native prompts that only work with OpenAI models. The **--opencode-zen=yes** and **--opencode-go=yes** flags are both used because Zen and Go share the same API key and account.
 
 ### Installing via Build mode
 
@@ -253,7 +282,7 @@ If everything is wired up correctly, you should see agent names like Sisyphus, H
 
 Sisyphus is usually the default orchestrator, so you will most likely land there first.
 
-![Opencode TUI showing Sisyphus mode with Kimi K2.6](images/opencode_kimi.jpg)
+![Opencode TUI showing Sisyphus mode with Kimi K2.7 Code](images/opencode_kimi.jpg)
 
 Once you are in Sisyphus mode, open the model selector with:
 
@@ -266,7 +295,7 @@ Once you are in Sisyphus mode, open the model selector with:
 From there, change the active model to:
 
 ```text
-opencode-go/kimi-k2.6
+ollama-cloud/kimi-k2.7-code
 ```
 
 It usually defaults to Claude, so change this right away if you want to follow the roster described here.
@@ -274,19 +303,39 @@ It usually defaults to Claude, so change this right away if you want to follow t
 After that, give Sisyphus this instruction:
 
 ```text
-Update the OhMyOpenAgent LLM roster for the agents to what is inside @LLM-Roster.md which is located at the ~/.config/opencode/oh-my-openagent.json file. Note: If you're on Windows, the file is located at the %USERPROFILE%\.config\opencode\oh-my-openagent.json file.
+Invoke the built-in Opencode skill `/customize-opencode` and update the Oh My OpenAgent LLM roster so the agents and categories match the model assignments in @LLM-Roster.md. Before applying, verify the model IDs exist in the current provider console. If any model is unavailable, stop and ask me for an alternative instead of substituting one on your own. The config file is located at `~/.config/opencode/oh-my-openagent.json`; on Windows, it is at `%USERPROFILE%\.config\opencode\oh-my-openagent.json`.
 ```
 
 The roster is a model assignment map. It tells Oh My OpenAgent which model each agent should prefer, what fallback chain to use, and which model families should back broader task categories. That way you are not using the same model for everything when different agents have different strengths.
 
-Here is the openweight-only roster I use. Every primary and fallback is an **opencode-go** model. The roster below is shown as markdown tables for readability — the actual config file uses JSON format with **model** and **variant** fields for each agent and category.
+Here is the roster I use. It pulls from three providers: **ollama-cloud** as the primary, **opencode-go** as the fallback for openweight models, and **openai** for the GPT-native agents. The roster below is shown as markdown tables for readability; the actual config file uses JSON format with **model** and **variant** fields for each agent and category.
 
 That being said, here is the contents of **LLM-Roster.md**:
 
 ```markdown
 # Oh-My-OpenAgent LLM Roster
 
-> Generated on 2026-04-27 from `~/.config/opencode/oh-my-openagent.json`
+> Updated on 2026-07-25 from `~/.config/opencode/oh-my-openagent.json`
+> Verify these model IDs against your current provider console before applying. Lineup availability changes over time, and some models are region- or plan-specific.
+
+Also include the following top-level runtime settings in the final JSON config:
+
+~~~json
+{
+  "runtime_fallback": {
+    "enabled": true,
+    "retry_on_errors": [
+      402,
+      429,
+      500,
+      502,
+      503,
+      504
+    ]
+  },
+  "model_fallback": true
+}
+~~~
 
 ---
 
@@ -294,25 +343,25 @@ That being said, here is the contents of **LLM-Roster.md**:
 
 | Agent | Role | Primary Model | Variant | Fallback Chain |
 |-------|------|---------------|---------|----------------|
-| `sisyphus` | Orchestrator (you) | `opencode-go/kimi-k2.6` | medium | `opencode-go/glm-5` (medium) |
-| `hephaestus` | Build executor | **`opencode-go/deepseek-v4-pro`** | high | `opencode-go/kimi-k2.6` (medium) |
-| `oracle` | High-IQ consultant | `opencode-go/glm-5` | high | `opencode-go/kimi-k2.6` (high) |
-| `librarian` | External docs / GitHub | **`opencode-go/deepseek-v4-flash`** | — | `opencode-go/minimax-m2.7-highspeed` → `opencode-go/qwen3.6-plus` |
-| `explore` | Codebase pattern search | **`opencode-go/deepseek-v4-flash`** | — | `opencode-go/qwen3.6-plus` → `opencode-go/minimax-m2.7-highspeed` |
-| `multimodal-looker` | PDF / image analysis | `opencode-go/kimi-k2.6` | medium | `opencode-go/deepseek-v4-flash` (medium) → `opencode-go/glm-5` |
-| `prometheus` | Planner | **`opencode-go/deepseek-v4-pro`** | high | `opencode-go/kimi-k2.6` (high) |
-| `metis` | Pre-planning consultant | `opencode-go/kimi-k2.6` | high | `opencode-go/glm-5` (high) |
-| `momus` | Plan critic | `opencode-go/deepseek-v4-pro` | xhigh | `opencode-go/glm-5` |
-| `atlas` | General-purpose | `opencode-go/kimi-k2.6` | medium | `opencode-go/glm-5` (medium) → `opencode-go/minimax-m2.7` |
-| `sisyphus-junior` | Focused executor | **`opencode-go/deepseek-v4-flash`** | medium | `opencode-go/kimi-k2.5` → `opencode-go/glm-5` (medium) → `opencode-go/minimax-m2.7` |
+| `sisyphus` | Orchestrator (you) | `ollama-cloud/kimi-k2.7-code` | high | `opencode-go/kimi-k2.7-code` (high) → `ollama-cloud/glm-5.2` (high) |
+| `hephaestus` | Build executor | **`openai/gpt-5.6-sol`** | high | none |
+| `oracle` | High-IQ consultant | **`openai/gpt-5.6-sol`** | high | `ollama-cloud/glm-5.2` (high) → `opencode-go/glm-5.2` (high) → `opencode-go/deepseek-v4-pro` (high) |
+| `librarian` | External docs / GitHub | `ollama-cloud/deepseek-v4-flash` | — | `opencode-go/deepseek-v4-flash` |
+| `explore` | Codebase pattern search | `ollama-cloud/deepseek-v4-flash` | — | `opencode-go/deepseek-v4-flash` |
+| `multimodal-looker` | PDF / image analysis | **`openai/gpt-5.6-terra`** | medium | `ollama-cloud/kimi-k2.7-code` (medium) → `opencode-go/kimi-k2.7-code` (medium) |
+| `prometheus` | Planner | `ollama-cloud/glm-5.2` | high | `opencode-go/glm-5.2` (high) |
+| `metis` | Pre-planning consultant | `ollama-cloud/glm-5.2` | high | `opencode-go/glm-5.2` (high) → `ollama-cloud/kimi-k2.7-code` (high) |
+| `momus` | Plan critic | `ollama-cloud/deepseek-v4-pro` | xhigh | `opencode-go/deepseek-v4-pro` (xhigh) |
+| `atlas` | General-purpose | `ollama-cloud/kimi-k2.7-code` | medium | `opencode-go/kimi-k2.7-code` (medium) |
+| `sisyphus-junior` | Focused executor | `ollama-cloud/deepseek-v4-flash` | medium | `opencode-go/deepseek-v4-flash` (medium) |
 
-**Bold** = DeepSeek V4 models
+**Bold** = OpenAI GPT models (requires ChatGPT Subscription)
 
 ### Special Configurations
 
 | Agent | Special Setting |
 |-------|-----------------|
-| `sisyphus` | **ultrawork**: `opencode-go/kimi-k2.6` (high) with `thinking.budgetTokens: 16000` |
+| `sisyphus` | **ultrawork**: `ollama-cloud/glm-5.2` (xhigh) with `thinking.budgetTokens: 16000` |
 
 ---
 
@@ -320,14 +369,14 @@ That being said, here is the contents of **LLM-Roster.md**:
 
 | Category | Primary Model | Variant | Fallback |
 |----------|---------------|---------|----------|
-| `visual-engineering` | `opencode-go/kimi-k2.6` | high | `opencode-go/minimax-m2.7` |
-| `ultrabrain` | `opencode-go/deepseek-v4-pro` | xhigh | `opencode-go/glm-5` |
-| `deep` | `opencode-go/kimi-k2.6` | medium | `opencode-go/glm-5` |
-| `quick` | `opencode-go/minimax-m2.7` | — | `opencode-go/deepseek-v4-flash` |
-| `unspecified-low` | `opencode-go/kimi-k2.5` | medium | `opencode-go/minimax-m2.7` |
-| `unspecified-high` | `opencode-go/kimi-k2.6` | medium | `opencode-go/glm-5` → `opencode-go/minimax-m2.7` |
-| `writing` | `opencode-go/kimi-k2.6` | medium | `opencode-go/minimax-m2.7` |
-| `artistry` | `opencode-go/deepseek-v4-pro` | xhigh | `opencode-go/glm-5` |
+| `visual-engineering` | `ollama-cloud/glm-5.2` | high | `opencode-go/glm-5.2` (high) |
+| `ultrabrain` | `ollama-cloud/deepseek-v4-pro` | xhigh | `opencode-go/deepseek-v4-pro` (xhigh) |
+| `deep` | `ollama-cloud/deepseek-v4-pro` | high | `opencode-go/deepseek-v4-pro` (high) |
+| `quick` | `ollama-cloud/minimax-m2.7` | — | `opencode-go/minimax-m2.7` |
+| `unspecified-low` | `ollama-cloud/kimi-k2.7-code` | medium | `opencode-go/kimi-k2.7-code` (medium) |
+| `unspecified-high` | `ollama-cloud/glm-5.2` | high | `opencode-go/glm-5.2` (high) |
+| `writing` | `ollama-cloud/kimi-k2.7-code` | medium | `opencode-go/kimi-k2.7-code` (medium) |
+| `artistry` | `ollama-cloud/glm-5.2` | xhigh | `opencode-go/glm-5.2` (xhigh) |
 
 ---
 
@@ -335,75 +384,28 @@ That being said, here is the contents of **LLM-Roster.md**:
 
 | Provider | Models Used |
 |----------|-------------|
-| **opencode-go** | `deepseek-v4-pro` (×4), `deepseek-v4-flash` (×4), `kimi-k2.6` (×5), `kimi-k2.5` (×2), `glm-5` (×4), `minimax-m2.7` (×4), `minimax-m2.7-highspeed` (×2), `qwen3.6-plus` (×2) |
-
----
-
-## DeepSeek Insertions (2026-04-27)
-
-| Agent | Previous Model | New Model | Rationale |
-|-------|---------------|-----------|-----------|
-| `hephaestus` | `opencode-go/glm-5.1` | `opencode-go/deepseek-v4-pro` | Best-in-class coding (93.5% LiveCodeBench) |
-| `prometheus` | `opencode-go/glm-5.1` | `opencode-go/deepseek-v4-pro` | Best planning + coding combo |
-| `explore` | `opencode-go/qwen3.6-plus` | `opencode-go/deepseek-v4-flash` | 1M context for codebase-wide search |
-| `librarian` | `opencode-go/deepseek-v4-flash` | `opencode-go/deepseek-v4-flash` | 1M context for multi-repo docs |
-| `sisyphus-junior` | `opencode-go/kimi-k2.5` | `opencode-go/deepseek-v4-flash` | Faster, cheaper, stronger than K2.5 |
-| `oracle` | `opencode-go/glm-5` | `opencode-go/glm-5` | Kept openweight |
-| `momus` | `opencode-go/deepseek-v4-pro` | `opencode-go/deepseek-v4-pro` | Kept openweight |
-
-**Kept unchanged**: `metis` (Kimi K2.6 high), `multimodal-looker` (Kimi K2.6 — vision required).
+| **ollama-cloud** | `kimi-k2.7-code` (×5), `glm-5.2` (×6), `deepseek-v4-pro` (×3), `deepseek-v4-flash` (×3), `minimax-m2.7` (×1) |
+| **opencode-go** | `kimi-k2.7-code` (×5), `glm-5.2` (×5), `deepseek-v4-pro` (×4), `deepseek-v4-flash` (×3), `minimax-m2.7` (×1) |
+| **openai** | `gpt-5.6-sol` (×2), `gpt-5.6-sol-fast` (×1), `gpt-5.6-terra` (×1) |
 ```
 
-Every agent and category runs on **opencode-go** models. If you add another subscription later, you can extend the fallback chains, but this setup works on its own.
+The setup uses three providers. **Ollama Cloud** handles the primary calls for all openweight agents, **OpenCode Go** serves as a fallback so you never hit a wall when quotas run low, and **OpenAI** powers the GPT-native agents that need it. If you only want to use OpenCode Go and skip the other two, you can swap the ollama-cloud models for opencode-go and remove the openai entries entirely.
 
-Alternatively, you can modify the contents here with other agents you have like adding GPT-5.5 on your OpenAI subscription and it should work just as fine.
+And here is the complete JSON config snippet for `oh-my-openagent.json`, you can copy-paste this directly instead if you want my exact setup as of this writing:
 
-## Cost
-
-Here is a snapshot of actual usage costs from a 33-hour session using the openweight roster above. The totals are from the LLM Usage Dashboard:
-
-![LLM Usage Dashboard showing total cost of $5.94 across 792 inferences](images/opencode_openwight_cost.png)
-
-The session ran **792 inferences** over roughly 33 hours with a **total cost of $5.94** and an **average of $0.0075 per inference**.
-
-### Cost by Model
-
-**kimi-k2.6** accounted for the bulk of the usage at **704 inferences** and **$5.79**. **deepseek-v4-flash** came in second with **81 inferences** at **$0.13**, followed by **qwen3.6-plus** at **2 inferences** and **$0.03**. There were also **5 inferences** on **big-pickle** at effectively **$0.00**.
-
-To put this in perspective, running the same 792-inference session on **Claude Opus** would have cost significantly more — likely in the $50–$150 range depending on token counts — because Opus pricing is roughly an order of magnitude higher per token. Even **Claude Sonnet** would have run several times more expensive than this openweight setup.
-
-Most of the cost goes to **kimi-k2.6**, which makes sense because it handles the bulk of the orchestration and reasoning tasks. DeepSeek V4 Flash is used for exploration and librarian work, so it stays cheap despite the large context windows. The overall average is well under a cent per inference, which keeps the total reasonable even for long sessions.
-
-## Conclusion
-
-So, is it worth setting up Opencode with openweight models?
-
-From my experience, **absolutely.** You get a fully capable AI coding agent without being locked into a single provider or paying premium API prices. The setup is straightforward, the roster is flexible, and the cost is hard to beat. For under $6 across a 33-hour session, I had access to multiple specialized agents handling everything from orchestration to codebase exploration.
-
-If you are already paying for Claude or GPT subscriptions, this is a low-risk way to diversify your tooling. And if you are just getting started, OpenCode Go at $10 per month is a gentle entry point compared to enterprise API tiers. Either way, having options is the whole point.
-
-
-## Update: July 18, 2026
-
-A lot of people are asking about going all in on openweight models, but they do not want to use raw API pricing tiers. Even if the models are cheaper, costs can add up very quickly.
-
-Personally, I have a $100 ChatGPT Pro subscription that handles most of my use cases. However, some people may be interested in the subscription plans that [Ollama Cloud](https://ollama.com/pricing) offers.
-
-Ollama Cloud offers many of the top openweight models, such as Kimi, GLM, and DeepSeek, along with others like Qwen. This means its model roster works well with the setup I suggested earlier. I tried the $20 subscription, and it already gave me plenty of room. I have not maxed it out yet, but so far, at 46.2% of my weekly quota, I have used 1,503 Kimi K2.7 requests, 62 Kimi K2.6 requests, 92 DeepSeek V4 Flash requests, and 84 MiniMax requests, which says a lot.
-
-It has 3-hour sessions, weekly quotas, and, more importantly, no monthly quotas, unlike OpenCode Go. I have noticed that responses are a bit slower than OpenCode Go, but it is still very usable.
-
-If you are interested in my setup, it combines OpenCode Go, Ollama Cloud, and ChatGPT Pro (Still can work with Plus since I do not use the Pro models at all).
-
-I mainly use GPT for the deep-agent models because the deep-agent prompts from Oh My OpenAgent are primarily designed for GPT and nothing else. The plugin refuses to run them with non-GPT models.
-
-Currently, my Oh My OpenAgent roster is this:
 ```json
 {
   "$schema": "https://raw.githubusercontent.com/code-yeongyu/oh-my-openagent/dev/assets/oh-my-opencode.schema.json",
   "runtime_fallback": {
     "enabled": true,
-    "retry_on_errors": [402, 429, 500, 502, 503, 504]
+    "retry_on_errors": [
+      402,
+      429,
+      500,
+      502,
+      503,
+      504
+    ]
   },
   "model_fallback": true,
   "agents": {
@@ -431,16 +433,7 @@ Currently, my Oh My OpenAgent roster is this:
     "hephaestus": {
       "model": "openai/gpt-5.6-sol",
       "variant": "high",
-      "fallback_models": [
-        {
-          "model": "openai/gpt-5.6-sol-fast",
-          "variant": "medium"
-        },
-        {
-          "model": "opencode-go/deepseek-v4-pro",
-          "variant": "high"
-        }
-      ]
+      "fallback_models": []
     },
     "oracle": {
       "model": "openai/gpt-5.6-sol",
@@ -481,19 +474,24 @@ Currently, my Oh My OpenAgent roster is this:
       "variant": "medium",
       "fallback_models": [
         {
-          "model": "ollama-cloud/kimi-k2.6",
+          "model": "ollama-cloud/kimi-k2.7-code",
           "variant": "medium"
         },
         {
-          "model": "opencode-go/kimi-k2.6",
+          "model": "opencode-go/kimi-k2.7-code",
           "variant": "medium"
         }
       ]
     },
     "prometheus": {
-      "model": "openai/gpt-5.6-terra",
+      "model": "ollama-cloud/glm-5.2",
       "variant": "high",
-      "fallback_models": []
+      "fallback_models": [
+        {
+          "model": "opencode-go/glm-5.2",
+          "variant": "high"
+        }
+      ]
     },
     "metis": {
       "model": "ollama-cloud/glm-5.2",
@@ -623,28 +621,52 @@ Currently, my Oh My OpenAgent roster is this:
 }
 ```
 
-Save the contents of this snippet as either **oh-my-opencode.json** or **oh-my-openagent.json**, then replace the existing file. After that, you will have the same setup that I use.
-
-If you have forgotten where to save it, refer back to the **Installing via Build mode** section of this article. It explains exactly where the file should be saved, depending on your operating system.
-
 ### Why These Models?
 
 The config above is not random. Each model was chosen based on what it is actually good at, while keeping costs reasonable by preferring models available on both Ollama Cloud and OpenCode Go.
 
 **Kimi K2.7 Code** is the daily driver for Sisyphus, Atlas, and the lighter categories (unspecified-low, writing). It is a coding specialist with excellent instruction-following and tool-calling precision. It does not overthink, it does not get stuck in reasoning loops, and it dispatches subtasks cleanly. That is exactly what you want from an orchestrator that spends most of its time delegating work to other agents.
 
-**GLM-5.2** handles the heavy thinking. It powers ultrawork mode, Metis (plan consultation), and the categories where reasoning depth matters: visual-engineering, artistry, and unspecified-high. It has a 1 million token context window, which lets it hold an entire repository in memory, and it leads the FrontierSWE and Terminal-Bench benchmarks among open-weight models. It also scored first on Code Arena Frontend, which is why it gets visual-engineering and artistry duties.
+**GLM-5.2** handles the heavy thinking. It powers ultrawork mode, Prometheus (strategic planning), Metis (plan consultation), and the categories where reasoning depth matters: visual-engineering, artistry, and unspecified-high. It has a 1 million token context window, which lets it hold an entire repository in memory, and it leads the FrontierSWE and Terminal-Bench benchmarks among open-weight models. It also scored first on Code Arena Frontend, which is why it gets visual-engineering and artistry duties.
 
 **DeepSeek V4 Pro** is the value pick for deep reasoning. It runs the ultrabrain, deep, and momus (code review) roles. At roughly a third of the cost of frontier models, it still scores around 80% on SWE-bench Verified. For tasks that need autonomous problem-solving but do not need the absolute best, it is hard to beat on price-to-performance.
 
 **DeepSeek V4 Flash** handles the lightweight jobs: Librarian (docs search), Explore (codebase grep), and Sisyphus-Junior. These agents make many small, fast calls where latency matters more than reasoning depth. Flash is extremely cheap and fast, which is exactly what you want for high-volume lookup work.
 
-**GPT-5.6 Sol** powers Hephaestus and Oracle. These are the GPT-native agents in OMO, and their system prompts are specifically tuned for Sol. Running them on a different GPT variant (like Terra or Luna) means the prompt calibration is mismatched with the model. Hephaestus in particular is designed as "The Legitimate Craftsman", an autonomous deep worker that explores your codebase end-to-end without hand-holding. Sol is the right engine for that.
+**GPT-5.6 Sol** powers Hephaestus and Oracle. These are the GPT-native agents in OMO, and their system prompts are specifically tuned for Sol. Hephaestus is kept strictly GPT-only with no non-GPT fallbacks because running it on non-GPT models breaks its prompt calibration. Hephaestus in particular is designed as "The Legitimate Craftsman", an autonomous deep worker that explores your codebase end-to-end without hand-holding. Sol is the right engine for that.
 
-**GPT-5.6 Terra** stays on Prometheus (the strategic planner) and Multimodal Looker. Prometheus is intentionally GPT-only with no fallbacks; if GPT is down, the planner simply does not run. Terra's deep reasoning strength is a natural fit for interview-style planning.
-
-**Kimi K2.6** is the fallback for Multimodal Looker because it has a native vision encoder. Unlike K2.7 Code, which is text-only, K2.6 can actually process screenshots and design mockups, which is the whole point of a multimodal agent.
+**GPT-5.6 Terra** powers Multimodal Looker, providing strong vision reasoning capabilities for analyzing images and visual specs.
 
 **MiniMax M2.7** runs the quick category. It is fast, cheap, and good enough for trivial tasks like typo fixes and single-file changes. You do not need a frontier model to rename a variable.
 
-These are not configured for the absolute best performance. The reason I did not go for Kimi K3 and the like is because I chose models that are affordable enough to let you do intense vibe-coding for at least the whole weekend. If you need more than that, just upgrade your plan 😉. Go from the $20 Ollama Pro and ChatGPT Plus combo to $100 Ollama Max and ChatGPT Pro (or 20x) if you want to work intensely all week.
+These are not configured for the absolute best performance. The reason I did not go for Kimi K3 and the like is because I chose models that are affordable enough to let you do intense vibe-coding for at least the whole weekend. If you need more than that, just upgrade your plan 😉. Go from the $20 Ollama Pro and ChatGPT Subscription combo to $100 Ollama Max and ChatGPT Pro (or 20x) if you want to work intensely all week.
+
+## Cost
+
+Here is a snapshot of actual usage costs from a 33-hour session using openweight models. The totals are from the LLM Usage Dashboard:
+
+![LLM Usage Dashboard showing total cost of $5.94 across 792 inferences](images/opencode_openwight_cost.png)
+
+The session ran **792 inferences** over roughly 33 hours with a **total cost of $5.94** and an **average of $0.0075 per inference**.
+
+### Cost by Model
+
+**kimi-k2.6** accounted for the bulk of the usage at **704 inferences** and **$5.79**. **deepseek-v4-flash** came in second with **81 inferences** at **$0.13**, followed by **qwen3.6-plus** at **2 inferences** and **$0.03**. There were also **5 inferences** on **big-pickle** at effectively **$0.00**.
+
+To put this in perspective, running the same 792-inference session on **Claude Opus** would have cost significantly more, likely in the $50 to $150 range depending on token counts, because Opus pricing is roughly an order of magnitude higher per token. Even **Claude Sonnet** would have run several times more expensive than this setup.
+
+Most of the cost goes to **kimi-k2.6**, which makes sense because it handles the bulk of the orchestration and reasoning tasks. DeepSeek V4 Flash is used for exploration and librarian work, so it stays cheap despite the large context windows. The overall average is well under a cent per inference, which keeps the total reasonable even for long sessions.
+
+The fixed monthly cost for the full three-provider setup is $50: $10 for OpenCode Go, $20 for Ollama Cloud Pro, and $20 for ChatGPT Subscription (the GPT calls themselves are covered by the subscription, not billed per token). That is competitive with a single Claude Pro or GPT Pro subscription, except you get access to a much wider range of models.
+
+## Conclusion
+
+So, is it worth setting up Opencode with a multi-provider roster?
+
+From my experience, **absolutely.** You get a fully capable AI coding agent with specialized models for every role, and the total cost stays around $50 per month. The setup is straightforward, the roster is flexible, and you are not locked into a single provider or paying premium API prices.
+
+If you are already paying for Claude or GPT subscriptions, this is a low-risk way to diversify your tooling. And if you are just getting started, you can start with OpenCode Go alone at $10 per month and add Ollama Cloud and ChatGPT later as you need them. Either way, having options is the whole point.
+
+## Update: July 25, 2026
+
+I have removed the previous July 18 update section because I decided to update the main article directly to reflect my current multi-provider setup (OpenCode Go, Ollama Cloud Pro, and ChatGPT Subscription) and LLM roster.
