@@ -9,8 +9,10 @@ resulting HTML file name; the tool writes outputs into ``default/`` and
 from __future__ import annotations
 
 import os
+import re
 import sys
 import tkinter as tk
+from dataclasses import dataclass
 from pathlib import Path
 from tkinter import filedialog, messagebox
 
@@ -25,6 +27,121 @@ DEFAULT_TEMPLATE = TEMPLATES_DIR / "default.html"
 CLASSIC_TEMPLATE = TEMPLATES_DIR / "classic.html"
 DEFAULT_OUTPUT_DIR = REPO_ROOT / "default"
 CLASSIC_OUTPUT_DIR = REPO_ROOT / "classic"
+
+_PHP_STRING = r"""(?:"(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*')"""
+_MASTODON_BUNDLE_PATTERN = re.compile(
+    rf"""mastodon_comment_bundle\s*\(\s*
+        (?P<post_id>{_PHP_STRING})\s*,\s*
+        (?P<instance>{_PHP_STRING})\s*,\s*
+        (?P<user_handle>{_PHP_STRING})\s*
+        \)""",
+    re.VERBOSE,
+)
+_BLUESKY_BUNDLE_PATTERN = re.compile(
+    rf"""bluesky_comment_bundle\s*\(\s*
+        (?P<post_url>{_PHP_STRING})\s*
+        \)""",
+    re.VERBOSE,
+)
+
+
+@dataclass(frozen=True)
+class SocialPostParameters:
+    """Social-comment parameters recovered from a previously published page."""
+
+    mastodon_post_id: str = ""
+    mastodon_instance: str = ""
+    mastodon_user_handle: str = ""
+    bluesky_post_url: str = ""
+
+    def has_values(self) -> bool:
+        return any(
+            (
+                self.mastodon_post_id,
+                self.mastodon_instance,
+                self.mastodon_user_handle,
+                self.bluesky_post_url,
+            )
+        )
+
+    def with_missing_from(
+        self, fallback: "SocialPostParameters"
+    ) -> "SocialPostParameters":
+        """Fill any missing fields from another published page."""
+        return SocialPostParameters(
+            mastodon_post_id=self.mastodon_post_id or fallback.mastodon_post_id,
+            mastodon_instance=self.mastodon_instance or fallback.mastodon_instance,
+            mastodon_user_handle=(
+                self.mastodon_user_handle or fallback.mastodon_user_handle
+            ),
+            bluesky_post_url=self.bluesky_post_url or fallback.bluesky_post_url,
+        )
+
+
+def _unquote_php_string(value: str) -> str:
+    """Decode the simple quoted PHP strings emitted by the publishers."""
+    quote = value[0]
+    inner = value[1:-1]
+    return inner.replace(f"\\{quote}", quote).replace("\\\\", "\\")
+
+
+def extract_social_parameters(html: str) -> SocialPostParameters:
+    """Extract social-comment settings from generated article HTML."""
+    # Use the last call because an article about the integration itself may
+    # include an earlier bundle call as a displayed code example.
+    mastodon_match = next(
+        reversed(tuple(_MASTODON_BUNDLE_PATTERN.finditer(html))), None
+    )
+    bluesky_match = next(
+        reversed(tuple(_BLUESKY_BUNDLE_PATTERN.finditer(html))), None
+    )
+
+    return SocialPostParameters(
+        mastodon_post_id=(
+            _unquote_php_string(mastodon_match.group("post_id"))
+            if mastodon_match
+            else ""
+        ),
+        mastodon_instance=(
+            _unquote_php_string(mastodon_match.group("instance"))
+            if mastodon_match
+            else ""
+        ),
+        mastodon_user_handle=(
+            _unquote_php_string(mastodon_match.group("user_handle"))
+            if mastodon_match
+            else ""
+        ),
+        bluesky_post_url=(
+            _unquote_php_string(bluesky_match.group("post_url"))
+            if bluesky_match
+            else ""
+        ),
+    )
+
+
+def load_published_social_parameters(
+    slug: str,
+    output_dirs: tuple[Path, ...] | None = None,
+) -> tuple[SocialPostParameters, tuple[Path, ...]]:
+    """Load settings from matching generated pages, preferring default output."""
+    directories = output_dirs or (DEFAULT_OUTPUT_DIR, CLASSIC_OUTPUT_DIR)
+    parameters = SocialPostParameters()
+    sources: list[Path] = []
+
+    for output_dir in directories:
+        published_path = output_dir / f"{slug}.html"
+        if not published_path.is_file():
+            continue
+
+        recovered = extract_social_parameters(
+            published_path.read_text(encoding="utf-8")
+        )
+        if recovered.has_values():
+            parameters = parameters.with_missing_from(recovered)
+            sources.append(published_path)
+
+    return parameters, tuple(sources)
 
 
 def ensure_environment() -> None:
@@ -53,7 +170,6 @@ class PublisherApp:
         self.source_var = tk.StringVar()
         self.slug_var = tk.StringVar()
         self.mastodon_post_id_var = tk.StringVar()
-        self.mastodon_instance_var = tk.StringVar()
         self.mastodon_instance_var = tk.StringVar()
         self.mastodon_user_handle_var = tk.StringVar()
         self.bluesky_post_url_var = tk.StringVar()
@@ -213,7 +329,31 @@ class PublisherApp:
         self.source_var.set(file_path)
         slug = Path(file_path).stem
         self.slug_var.set(slug)
-        self.status_var.set("")
+        self.load_existing_social_parameters(slug)
+
+    def load_existing_social_parameters(self, slug: str) -> None:
+        """Populate social fields from the article's existing published output."""
+        try:
+            parameters, sources = load_published_social_parameters(slug)
+        except OSError as exc:
+            parameters = SocialPostParameters()
+            sources = ()
+            self.status_var.set(f"Could not read existing published page: {exc}")
+        else:
+            if sources:
+                locations = ", ".join(
+                    str(source.relative_to(REPO_ROOT)) for source in sources
+                )
+                self.status_var.set(f"Loaded social details from {locations}")
+            else:
+                self.status_var.set("No existing social details found for this article.")
+
+        # Always replace the fields so values from a previously selected article
+        # cannot accidentally be published with the newly selected one.
+        self.mastodon_post_id_var.set(parameters.mastodon_post_id)
+        self.mastodon_instance_var.set(parameters.mastodon_instance)
+        self.mastodon_user_handle_var.set(parameters.mastodon_user_handle)
+        self.bluesky_post_url_var.set(parameters.bluesky_post_url)
 
     def save_article(self) -> None:
         markdown_path = self.source_var.get().strip()
