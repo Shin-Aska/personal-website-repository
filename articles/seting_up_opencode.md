@@ -391,7 +391,7 @@ Also include the following top-level runtime settings in the final JSON config:
 
 The setup uses three providers. **Ollama Cloud** handles the primary calls for all openweight agents, **OpenCode Go** serves as a fallback so you never hit a wall when quotas run low, and **OpenAI** powers the GPT-native agents that need it. If you only want to use OpenCode Go and skip the other two, you can swap the ollama-cloud models for opencode-go and remove the openai entries entirely.
 
-And here is the complete JSON config snippet for `oh-my-openagent.json`, you can copy-paste this directly instead if you want my exact setup as of this writing:
+And here is an alternate JSON config snippet for `oh-my-openagent.json`, this one maximizes the subscription of ChatGPT Plus, Ollama Cloud Pro and Opencode Go. This is what I recommend if you're just doing weekend work for small to medium sideprojects.
 
 ```json
 {
@@ -416,22 +416,7 @@ And here is the complete JSON config snippet for `oh-my-openagent.json`, you can
         {
           "model": "opencode-go/kimi-k2.7-code",
           "variant": "high"
-        }
-      ],
-      "ultrawork": {
-        "model": "ollama-cloud/kimi-k2.7-code",
-        "variant": "xhigh"
-      }
-    },
-    "hephaestus": {
-      "model": "openai/gpt-5.6-sol",
-      "variant": "high",
-      "fallback_models": []
-    },
-    "oracle": {
-      "model": "openai/gpt-5.6-sol",
-      "variant": "high",
-      "fallback_models": [
+        },
         {
           "model": "ollama-cloud/glm-5.2",
           "variant": "high"
@@ -439,36 +424,72 @@ And here is the complete JSON config snippet for `oh-my-openagent.json`, you can
         {
           "model": "opencode-go/glm-5.2",
           "variant": "high"
-        },
+        }
+      ],
+      "ultrawork": {
+        "model": "ollama-cloud/kimi-k2.7-code",
+        "variant": "high"
+      }
+    },
+    "hephaestus": {
+      "model": "openai/gpt-5.6-sol",
+      "variant": "medium",
+      "fallback_models": [
         {
-          "model": "ollama-cloud/deepseek-v4-pro",
+          "model": "openai/gpt-5.6-terra",
+          "variant": "high"
+        }
+      ]
+    },
+    "oracle": {
+      "model": "openai/gpt-5.6-sol",
+      "variant": "high",
+      "fallback_models": [
+        {
+          "model": "opencode-go/deepseek-v4-pro",
           "variant": "high"
         },
         {
-          "model": "opencode-go/deepseek-v4-pro",
+          "model": "ollama-cloud/glm-5.2",
+          "variant": "high"
+        },
+        {
+          "model": "opencode-go/glm-5.2",
           "variant": "high"
         }
       ]
     },
     "librarian": {
-      "model": "ollama-cloud/deepseek-v4-flash",
+      "model": "openai/gpt-5.6-luna",
+      "variant": "medium",
       "fallback_models": [
         {
-          "model": "opencode-go/deepseek-v4-flash"
+          "model": "ollama-cloud/deepseek-v4-flash",
+          "variant": "medium"
+        },
+        {
+          "model": "opencode-go/deepseek-v4-flash",
+          "variant": "medium"
         }
       ]
     },
     "explore": {
-      "model": "ollama-cloud/deepseek-v4-flash",
+      "model": "openai/gpt-5.6-luna",
+      "variant": "medium",
       "fallback_models": [
         {
-          "model": "opencode-go/deepseek-v4-flash"
+          "model": "ollama-cloud/deepseek-v4-flash",
+          "variant": "medium"
+        },
+        {
+          "model": "opencode-go/deepseek-v4-flash",
+          "variant": "medium"
         }
       ]
     },
     "multimodal-looker": {
-      "model": "openai/gpt-5.6-terra",
-      "variant": "medium",
+      "model": "opencode-go/qwen3.7-plus",
+      "variant": "high",
       "fallback_models": [
         {
           "model": "ollama-cloud/kimi-k2.7-code",
@@ -476,6 +497,10 @@ And here is the complete JSON config snippet for `oh-my-openagent.json`, you can
         },
         {
           "model": "opencode-go/kimi-k2.7-code",
+          "variant": "medium"
+        },
+        {
+          "model": "openai/gpt-5.6-luna",
           "variant": "medium"
         }
       ]
@@ -487,30 +512,50 @@ And here is the complete JSON config snippet for `oh-my-openagent.json`, you can
         {
           "model": "opencode-go/glm-5.2",
           "variant": "high"
+        },
+        {
+          "model": "ollama-cloud/kimi-k2.7-code",
+          "variant": "high"
+        },
+        {
+          "model": "opencode-go/kimi-k2.7-code",
+          "variant": "high"
         }
       ]
     },
     "metis": {
-      "model": "ollama-cloud/glm-5.2",
+      "model": "ollama-cloud/kimi-k2.7-code",
       "variant": "high",
       "fallback_models": [
         {
-          "model": "opencode-go/glm-5.2",
+          "model": "opencode-go/kimi-k2.7-code",
           "variant": "high"
         },
         {
-          "model": "ollama-cloud/kimi-k2.7-code",
+          "model": "ollama-cloud/glm-5.2",
+          "variant": "high"
+        },
+        {
+          "model": "opencode-go/glm-5.2",
           "variant": "high"
         }
       ]
     },
     "momus": {
-      "model": "ollama-cloud/deepseek-v4-pro",
-      "variant": "xhigh",
+      "model": "openai/gpt-5.6-terra",
+      "variant": "high",
       "fallback_models": [
         {
           "model": "opencode-go/deepseek-v4-pro",
-          "variant": "xhigh"
+          "variant": "high"
+        },
+        {
+          "model": "ollama-cloud/glm-5.2",
+          "variant": "high"
+        },
+        {
+          "model": "opencode-go/glm-5.2",
+          "variant": "high"
         }
       ]
     },
@@ -521,15 +566,23 @@ And here is the complete JSON config snippet for `oh-my-openagent.json`, you can
         {
           "model": "opencode-go/kimi-k2.7-code",
           "variant": "medium"
+        },
+        {
+          "model": "opencode-go/minimax-m3",
+          "variant": "medium"
         }
       ]
     },
     "sisyphus-junior": {
-      "model": "ollama-cloud/deepseek-v4-flash",
+      "model": "ollama-cloud/kimi-k2.7-code",
       "variant": "medium",
       "fallback_models": [
         {
-          "model": "opencode-go/deepseek-v4-flash",
+          "model": "opencode-go/kimi-k2.7-code",
+          "variant": "medium"
+        },
+        {
+          "model": "opencode-go/minimax-m3",
           "variant": "medium"
         }
       ]
@@ -537,50 +590,87 @@ And here is the complete JSON config snippet for `oh-my-openagent.json`, you can
   },
   "categories": {
     "visual-engineering": {
-      "model": "ollama-cloud/glm-5.2",
+      "model": "ollama-cloud/kimi-k2.7-code",
       "variant": "high",
       "fallback_models": [
         {
-          "model": "opencode-go/glm-5.2",
+          "model": "opencode-go/qwen3.7-plus",
+          "variant": "high"
+        },
+        {
+          "model": "opencode-go/kimi-k2.7-code",
           "variant": "high"
         }
       ]
     },
     "ultrabrain": {
-      "model": "ollama-cloud/deepseek-v4-pro",
+      "model": "openai/gpt-5.6-sol",
       "variant": "xhigh",
       "fallback_models": [
         {
           "model": "opencode-go/deepseek-v4-pro",
           "variant": "xhigh"
+        },
+        {
+          "model": "ollama-cloud/glm-5.2",
+          "variant": "high"
+        },
+        {
+          "model": "opencode-go/glm-5.2",
+          "variant": "high"
         }
       ]
     },
     "deep": {
-      "model": "ollama-cloud/deepseek-v4-pro",
-      "variant": "high",
+      "model": "openai/gpt-5.6-terra",
+      "variant": "xhigh",
       "fallback_models": [
         {
           "model": "opencode-go/deepseek-v4-pro",
+          "variant": "high"
+        },
+        {
+          "model": "ollama-cloud/glm-5.2",
+          "variant": "high"
+        },
+        {
+          "model": "opencode-go/glm-5.2",
+          "variant": "high"
+        },
+        {
+          "model": "openai/gpt-5.6-sol",
           "variant": "high"
         }
       ]
     },
     "artistry": {
-      "model": "ollama-cloud/glm-5.2",
-      "variant": "xhigh",
+      "model": "opencode-go/qwen3.7-plus",
+      "variant": "high",
       "fallback_models": [
         {
-          "model": "opencode-go/glm-5.2",
-          "variant": "xhigh"
+          "model": "ollama-cloud/kimi-k2.7-code",
+          "variant": "high"
+        },
+        {
+          "model": "opencode-go/kimi-k2.7-code",
+          "variant": "high"
         }
       ]
     },
     "quick": {
-      "model": "ollama-cloud/minimax-m2.7",
+      "model": "openai/gpt-5.6-luna",
+      "variant": "medium",
       "fallback_models": [
         {
-          "model": "opencode-go/minimax-m2.7"
+          "model": "ollama-cloud/deepseek-v4-flash",
+          "variant": "medium"
+        },
+        {
+          "model": "opencode-go/deepseek-v4-flash",
+          "variant": "medium"
+        },
+        {
+          "model": "ollama-cloud/minimax-m2.7"
         }
       ]
     },
@@ -591,6 +681,10 @@ And here is the complete JSON config snippet for `oh-my-openagent.json`, you can
         {
           "model": "opencode-go/kimi-k2.7-code",
           "variant": "medium"
+        },
+        {
+          "model": "openai/gpt-5.6-luna",
+          "variant": "high"
         }
       ]
     },
@@ -601,6 +695,14 @@ And here is the complete JSON config snippet for `oh-my-openagent.json`, you can
         {
           "model": "opencode-go/kimi-k2.7-code",
           "variant": "high"
+        },
+        {
+          "model": "ollama-cloud/glm-5.2",
+          "variant": "high"
+        },
+        {
+          "model": "opencode-go/glm-5.2",
+          "variant": "high"
         }
       ]
     },
@@ -610,6 +712,14 @@ And here is the complete JSON config snippet for `oh-my-openagent.json`, you can
       "fallback_models": [
         {
           "model": "opencode-go/kimi-k2.7-code",
+          "variant": "medium"
+        },
+        {
+          "model": "opencode-go/qwen3.7-plus",
+          "variant": "medium"
+        },
+        {
+          "model": "opencode-go/minimax-m3",
           "variant": "medium"
         }
       ]
