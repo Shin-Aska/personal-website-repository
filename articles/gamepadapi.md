@@ -6,15 +6,15 @@ A few months ago, I was using my Steam Deck to browse Netflix, and I remember th
 
 That experience rewired my expectations. I got used to the idea that I could sit on a couch and browse the web with a controller in my hands.
 
-Then one evening I moved to my Linux desktop, opened Netflix, and remembered: *there is no Netflix app here*. On Linux, Netflix is a browser tab. And a browser tab assumes you have a mouse and keyboard within arm's reach. The same controller sitting next to me had nothing to say to the page.
+Then one evening I moved to my Linux desktop, opened Netflix, and remembered: *there is no Netflix app here*. Netflix, in their infinite wisdom, moved to a PWA on Windows. PWAs are not inherently bad, but I am not even sure the old app had gamepad support. What I did know was that I had a gamepad nearby, plus a Bluetooth mouse and keyboard on the couch table, and I did not want to use any of them. I wanted to lean back and browse with just the gamepad. On Linux, Netflix is a browser tab, and browser tabs assume you have a mouse and keyboard within arm's reach.
 
-I tried the obvious workarounds first. Keyboard mappers. Mouse emulation tools. Browser extensions that simulate keys. Each one had a flaw: some only worked in Chrome, some needed the browser in debug mode, some treated every website as if it were the same page. None of them gave me the thing I actually wanted — a controller-native way to browse the web that understood the site I was on.
+There was another nudge. I subscribe to AI tools like Ollama.com, GPT Plus, and Opencode Go mainly to test new things. It is not that I was desperate to justify the cost — I just had unused quota sitting there, and I thought, *I might as well put this toward something real instead of letting it rot*. So I asked myself: what is something actually cool I could build? The project became a slow background task, built across maybe three or four weekends while I was doing other things.
 
 So I started building one. That project became Remapad.
 
 # Origin: A Stitch Mock and a PoC Monolith
 
-The idea did not come from nowhere. I had already sketched out the concept as a mock in Google Stitch — a controller-first browser layer for sites that refuse to be controller-friendly. The mock made the need visible. What I wanted was a real extension that could do the same thing.
+The idea did not come from nowhere. With AI tools already on my desk, I had sketched out the concept as a mock in Google Stitch — a controller-first browser layer for sites that refuse to be controller-friendly. The mock made the need visible, and having the AI subscription made me want to turn it into something real. What I wanted was an actual extension that could do the same thing.
 
 The first real commit, `a6fa8fa`, was Remapad v1.0.0. It was a proof of concept, and it looked like one: a single `content/content_script.js` that was 710 lines long, doing gamepad polling, settings handling, page actions, and UI feedback all in one file. That monolith was the right shape for a PoC. I could move fast, test the core loop, and figure out whether the idea was worth keeping.
 
