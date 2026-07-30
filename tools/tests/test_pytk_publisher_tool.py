@@ -1,8 +1,10 @@
 import tempfile
 import unittest
 from pathlib import Path
+from unittest.mock import Mock
 
 from tools.pytk_publisher_tool import (
+    PublisherApp,
     SocialPostParameters,
     extract_social_parameters,
     load_published_social_parameters,
@@ -91,6 +93,64 @@ class SocialParameterLoadingTests(unittest.TestCase):
 
             self.assertEqual(parameters, SocialPostParameters())
             self.assertEqual(sources, ())
+
+
+class FTPManifestTests(unittest.TestCase):
+    def test_default_and_classic_outputs_use_separate_document_roots(
+        self,
+    ) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            root = Path(temp_dir)
+            default_output = root / "default" / "article.html"
+            classic_output = root / "classic" / "article.html"
+
+            manifest = PublisherApp._ftp_upload_manifest(
+                rendered_images=(),
+                default_output=default_output,
+                classic_output=classic_output,
+                default_publishing_path="/sites/default",
+                classic_publishing_path="/sites/classic",
+                include_sitemap=True,
+            )
+
+        destinations = tuple(destination for _source, destination in manifest)
+        self.assertEqual(
+            destinations,
+            (
+                "/sites/default/article.html",
+                "/sites/classic/article.html",
+                "/sites/default/sitemap.xml",
+                "/sites/classic/sitemap.xml",
+                "/sites/default/blog.html",
+                "/sites/classic/blog.html",
+            ),
+        )
+
+    def test_matching_document_roots_are_rejected(self) -> None:
+        with self.assertRaisesRegex(ValueError, "same FTP destination"):
+            PublisherApp._ftp_upload_manifest(
+                rendered_images=(),
+                default_output=Path("/tmp/default/article.html"),
+                classic_output=Path("/tmp/classic/article.html"),
+                default_publishing_path="",
+                classic_publishing_path="/",
+                include_sitemap=False,
+            )
+
+
+class PublishingGuardTests(unittest.TestCase):
+    def test_active_publish_ignores_a_second_submission(self) -> None:
+        app = object.__new__(PublisherApp)
+        app._publishing = True
+        app.status_var = Mock()
+        app._save_article = Mock()
+
+        app.save_article()
+
+        app._save_article.assert_not_called()
+        app.status_var.set.assert_called_once_with(
+            "Publishing is already in progress."
+        )
 
 
 if __name__ == "__main__":

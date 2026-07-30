@@ -12,9 +12,46 @@ This script is licensed under the MIT License.
 import optparse
 import os
 import shutil
+from dataclasses import dataclass
 from typing import Optional
 
 from factories.publisher import PublisherFactory
+
+
+@dataclass(frozen=True)
+class RenderedArticle:
+    """A portable article body and its local image dependencies."""
+
+    title: str
+    content: str
+    images: tuple[str, ...]
+
+
+def render_portable_article(
+    template_path: str,
+    markdown_path: str,
+) -> RenderedArticle:
+    """Render Markdown as a CMS-safe HTML fragment without writing a file."""
+    template_path = os.path.normpath(template_path)
+    markdown_path = os.path.normpath(markdown_path)
+
+    try:
+        with open(template_path, "r", encoding="utf-8") as template_file, open(
+            markdown_path, "r", encoding="utf-8"
+        ) as markdown_file:
+            publisher = PublisherFactory.get_publisher(
+                os.path.basename(template_path),
+                template_file,
+                markdown_file,
+                os.path.splitext(os.path.basename(markdown_path))[0],
+            )
+            title, content, images = publisher.render_portable_article()
+    except FileNotFoundError as exc:
+        raise FileNotFoundError(
+            "File not found for either template or markdown file"
+        ) from exc
+
+    return RenderedArticle(title=title, content=content, images=images)
 
 
 def publish_article(

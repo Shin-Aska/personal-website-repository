@@ -36,8 +36,14 @@ class Publisher(ABC):
         self.bluesky_post_url = bluesky_post_url
         self.article = MarkdownParser.parse(self._fetch_content(self.markdown))
         self.images = []
+        self._title_heading_emitted = False
 
-    def _generate_content(self) -> str:
+    def _generate_content(
+        self,
+        *,
+        include_title_heading: bool = True,
+        include_bottom_options: bool = True,
+    ) -> str:
         # Read each line of the markdown file
         html_content: str = ''
         table_of_contents: str = ''
@@ -49,8 +55,16 @@ class Publisher(ABC):
         print(']')
 
         table_contents: list[HeadingContent] = []
+        title_heading_skipped: bool = False
 
         for element in elements:
+            if (
+                element.element_type == MarkdownElementType.h1
+                and not include_title_heading
+                and not title_heading_skipped
+            ):
+                title_heading_skipped = True
+                continue
             if element.element_type in heading_markdown_element_type:
                 html_content = self._generate_heading_content(html_content, element.content, element, table_contents)
             elif element.element_type == MarkdownElementType.p:
@@ -79,7 +93,8 @@ class Publisher(ABC):
             elif element.element_type == MarkdownElementType.table:
                 html_content = self._generate_table_content(html_content, element)
 
-        html_content = self._generate_bottom_options(html_content)
+        if include_bottom_options:
+            html_content = self._generate_bottom_options(html_content)
 
         table_of_contents = self._push_to_html_content(table_of_contents,
                                                        '<h2 id="tableContents">Table of Contents</h2>')
@@ -92,6 +107,24 @@ class Publisher(ABC):
         table_of_contents = self._push_to_html_content(table_of_contents, '</ul>')
 
         return table_of_contents + '\n' + ('\t' * Publisher.base_padding) + html_content
+
+    def render_portable_article(self) -> tuple[str, str, tuple[str, ...]]:
+        """Render an article body suitable for a CMS such as WordPress.
+
+        The static-site templates display the article title separately and add
+        PHP-only footer features. A remote CMS needs only the portable HTML
+        fragment, so omit both while retaining the generated table of contents.
+        """
+        self.images = []
+        # The title heading is not rendered, but it is still the conceptual
+        # first heading of the article. Mark it as emitted so section headings
+        # receive content-derived IDs and the table of contents is populated.
+        self._title_heading_emitted = True
+        content = self._generate_content(
+            include_title_heading=False,
+            include_bottom_options=False,
+        )
+        return self._generate_meta_title(), content, tuple(self.images)
 
     def _generate_meta_title(self) -> str:
         title: str = ''
@@ -251,8 +284,14 @@ class Publisher(ABC):
             file.write(output)
 
     def _generate_heading_content(self, html_content: str, line: str, element: MarkdownElement, table_contents: list[HeadingContent]) -> str:
-        heading_id: str = 'headingBlog'
-        if element.element_type != MarkdownElementType.h1:
+        is_first_title = (
+            element.element_type == MarkdownElementType.h1
+            and not self._title_heading_emitted
+        )
+        if is_first_title:
+            heading_id: str = 'headingBlog'
+            self._title_heading_emitted = True
+        else:
             heading_id = ''.join([' ' + i.lower() if i.isupper() else i for i in element.content]).lstrip()
             heading_id = heading_id.replace(' ', '_')
             for char in publisher_heading_characters_ignore_for_heading_tag:
@@ -299,6 +338,9 @@ class Publisher(ABC):
                 html_content = self._push_to_html_content(html_content, f'<figcaption>{markdown_elements[1].content}</figcaption>', 1, convert_formatting_markers_to_html=True)
                 html_content = self._push_to_html_content(html_content, '</figure>')
                 self.images.append('articles/' + link_content[0].content)
+                linked_image = markdown_elements[0].extra["link"]
+                if linked_image != link_content[0].content:
+                    self.images.append('articles/' + linked_image)
 
         return html_content
 

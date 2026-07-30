@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="author" content="Richard Orilla">
+	<meta http-equiv="content-language" content="en-us">
+	<meta http-equiv="cache-control" content="no-cache">
+	<meta http-equiv="pragma" content="no-cache">
+	<meta name="robots" content="index">
+	<meta name="keywords" content="richard orilla, free games, resume">
+
+	<link href="css/animation.css" rel="stylesheet" type="text/css">
+	<link href="css/fonts.css" rel="stylesheet" type="text/css">
+	<link href="css/site.css" rel="stylesheet" type="text/css">
+	<link href="css/sky.css" rel="stylesheet" type="text/css">
+	<link href="css/reset.css" rel="stylesheet" type="text/css">
+
+	<!-- @@@ -->
+	<title>Skies of the Lost Cause - Remapad, or: How I Stopped Pretending a Gamepad Was a Keyboard</title>
+		<!-- publisher-social-meta:start -->
+		<meta property="og:type" content="article">
+		<meta property="og:title" content="Remapad, or: How I Stopped Pretending a Gamepad Was a Keyboard">
+		<meta property="og:description" content="A few months ago, I was using my Steam Deck to browse Netflix, and I remember thinking: this actually works. Not because Netflix had built a great controller interface, but because Steam Input was translating everything for me. The gamepad…">
+		<meta property="og:url" content="https://www.richardorilla.website/gamepadapi.html">
+		<link rel="canonical" href="https://www.richardorilla.website/gamepadapi.html">
+		<!-- publisher-social-meta:end -->
+</head>
+
+<body>
+	<center>
+		<div id="header">
+			<div class="center themeContainer">
+			  <img class="themepicture" src="images/penj.png" alt="Logo">
+			</div>
+			<p class="headingBase start">~ Skies of the lost cause ~</p>
+			<p class="headingBase middle">Personal website of Richard Orilla</p>
+			<div class="center lineContainer"><img class="linePNG" src="images/hrj.png" alt="Logo"></div>
+			<br>
+		</div>
+
+		<div class="menu-container">
+			<div id="menu">
+				<a class="menuButton" href=about.html>About</a>
+				<a class="menuButton" href=project.html>Projects</a>
+				<a class="menuButton" href=goodies.html>Goodies</a>
+				<a class="menuButton" href=blog.html>Blog</a>
+				<a class="menuButton" href=gallery.html>Gallery</a>
+			</div>
+		</div>
+
+		<div id="content">
+			<h2 id="tableContents">Table of Contents</h2>
+			<ul>
+				<li><a href="#introduction">Introduction</a></li>
+				<li><a href="#the_easy_part_reading_the_gamepad">The Easy Part: Reading the Gamepad</a></li>
+				<li><a href="#the_first_real_decision_actions_not_keystrokes">The First Real Decision: Actions, Not Keystrokes</a></li>
+				<li><a href="#the_collections_dead_end">The Collections Dead-End</a></li>
+				<li><a href="#the_accidental_cursor">The Accidental Cursor</a></li>
+				<li><a href="#navigating_back">Navigating Back</a></li>
+				<li><a href="#fullscreen_search_and_the_keyboard_that_made_search_make_sense">Fullscreen, Search, and the Keyboard That Made Search Make Sense</a></li>
+				<li><a href="#autoplay_the_hurdle_that_refused_to_die">Autoplay: The Hurdle That Refused to Die</a></li>
+				<li><a href="#gamepad_isolation_two_worlds_one_controller">Gamepad Isolation: Two Worlds, One Controller</a></li>
+				<li><a href="#how_a_i_fit_in_and_where_it_didn't">How AI Fit In (and Where It Didn't)</a></li>
+				<li><a href="#polish_then_more_polish">Polish, Then More Polish</a></li>
+				<li><a href="#conclusion">Conclusion</a></li>
+			</ul>
+			<h1 id="headingBlog">Remapad, or: How I Stopped Pretending a Gamepad Was a Keyboard</h1>
+			<h1 id="introduction">Introduction</h1>
+			<p>A few months ago, I was using my Steam Deck to browse Netflix, and I remember thinking: <i>this actually works</i>. Not because Netflix had built a great controller interface, but because Steam Input was translating everything for me. The gamepad became a mouse. The touchpads became a trackpad. The shoulder buttons clicked. I could lean back on the couch, navigate a web app built for keyboard and mouse, and it felt fine.</p>
+			<p>That experience rewired my expectations. I got used to the idea that I could sit on a couch and browse the web with a controller in my hands.</p>
+			<p>Then one evening I moved to my Linux desktop, opened Netflix, and remembered: <i>there is no Netflix app here</i>. Netflix, in their infinite wisdom, moved to a PWA on Windows. PWAs are not inherently bad, but I am not even sure the old app had gamepad support. What I did know was that I had a gamepad nearby, plus a Bluetooth mouse and keyboard on the couch table, and I did not want to use any of them except for the gamepad. I wanted to lean back and browse with just the gamepad. On Linux, Netflix is a browser tab, and browser tabs assume you have a mouse and keyboard within arm's reach.</p>
+			<p>There was another nudge. I subscribe to AI tools like Ollama.com, GPT Plus, and Opencode Go mainly to test new things. It is not that I was desperate to justify the cost. I just had unused quota sitting there, and I thought, <i>I might as well put this toward something real instead of letting it rot</i>. So I asked myself: what is something actually cool I could build? The project became a slow background task, built across maybe three or four weekends while I was doing other things.</p>
+			<p>So I started building one. That project became Remapad.</p>
+			<h1 id="the_easy_part_reading_the_gamepad">The Easy Part: Reading the Gamepad</h1>
+			<p>The <b>Gamepad API</b> itself is not where the difficulty lives. It is stable, well-supported in Firefox and Chromium, and gives you everything you expect: analog sticks, triggers, pressure-sensitive buttons, full layouts. Reading a controller is straightforward.</p>
+			<p>The hard part is deciding what to do with that input once you have it.</p>
+			<h1 id="the_first_real_decision_actions_not_keystrokes">The First Real Decision: Actions, Not Keystrokes</h1>
+			<p>My first approach was the naive one. A controller button maps to a keyboard key. A button press dispatches a synthetic `keydown` event. The website reacts as if the user hit a key. Problem solved.</p>
+			<p>Except it was not.</p>
+			<p>Browsers in general do not let an extension inject synthetic keyboard events into a page in the way you need for a generic controller-to-keyboard mapper. Chrome somehow allows it, but only if it has a debugging permission and like the Claude for Chrome tool, if it is active, it will say "Extension is debugging this browser". For me, that is not acceptable since this isn't Claude for Chrome or an AI agent autonomously doing tasks in the browser. So I had to find another way.</p>
+			<p>That constraint changed the entire shape of the project. I had to stop asking <i>which key does this button press?</i> and start asking <i>what action does the user want?</i></p>
+			<p>If the user presses the A button on Netflix, they do not want an Enter key. They want <i>select the focused thing</i>. If they press right on the D-pad, they do not want a right-arrow key. They want <i>move to the next item in the carousel</i>. So Remapad defines a small set of generic actions: click, scroll, focus, fill, toggle, move the virtual cursor, press a physical key combination, and lets users assign them to controller inputs per domain. Netflix gets its own profile. Prime Video gets its own. Everything else falls back to a shared default.</p>
+			<p>That pivot, from keypresses to intents, is the architectural center of Remapad.</p>
+			<h1 id="the_collections_dead_end">The Collections Dead-End</h1>
+			<p>With actions in place, I needed a navigation model. My first idea was console-style collections. You would specify CSS class names that group elements into a collection, then navigate left and right within a group and up and down between groups. It sounded clean. It mapped neatly to a directional pad. It made sense on paper.</p>
+			<p>It did not make sense in a browser.</p>
+			<p>Web pages are not grid menus. Carousels overlap. Rows are not uniform. Focus and hover are not the same thing. What works on a home screen breaks down on a site with a sidebar, a header, and a lazy-loaded grid. I kept bumping into edge cases where the collection model either did nothing useful or did the wrong thing. That approach shows me trying to make it work, adding a tabbed interface for collection navigation, direct DOM actions, and a HUD. But the core idea was fighting the medium.</p>
+			<p>I had to admit it was a dead end.</p>
+			<h1 id="the_accidental_cursor">The Accidental Cursor</h1>
+			<p>Once collections failed, I asked myself what actually worked on the Steam Deck. The answer was not a grid navigator. It was a virtual cursor. A pointer that you move with a stick, just like a mouse, but driven by a gamepad.</p>
+			<p>The virtual cursor was not the plan. It was an accident. The collections failure made it obvious that trying to outsmart the page's own layout was hopeless. A cursor does not outsmart the page. It just points at things, the same way a mouse does.</p>
+			<p>That cursor became the foundation of the whole browsing model. Instead of tracking collection state, the extension simply asks: what is under the cursor right now? If it is inside a carousel, the user scrolls naturally. If it is on a button, the user clicks. No state machine required.</p>
+			<h1 id="navigating_back">Navigating Back</h1>
+			<p>A cursor solves a lot, but it creates a new problem: what does "back" mean?</p>
+			<p>On a console, back is usually a button that takes you up one level. In a browser, back can mean browser history, escaping a focused element, closing a modal, or moving out of a submenu. I spent more time on this than I expected. There is no single commit that says "back navigation fixed" because there was no single fix.</p>
+			<p>The `ModalFocusManager` handles one piece: detecting modals, closing them, restoring focus. The `NavigationController` handles collection state and spatial scoring. The HUD shows contextual bindings. "Back" ended up being a behavior that depends on context: sometimes history, sometimes focus escape, sometimes modal close. It took iteration to feel right.</p>
+			<h1 id="fullscreen_search_and_the_keyboard_that_made_search_make_sense">Fullscreen, Search, and the Keyboard That Made Search Make Sense</h1>
+			<p>Once the cursor worked, other features fell into place, but not all at once, and not in the order I expected.</p>
+			<p>Fullscreen, for example, took longer than it should have. Added proper browser-window fullscreen toggle support and improved element detection for media players. It sounds small, but fullscreen is one of those browser APIs that behaves slightly differently depending on whether you are targeting a video element, a container, or the document itself. Getting it consistent across sites was tedious.</p>
+			<p>Search initially did not make sense. Why would a controller user need search? Then I realized that once you have a virtual cursor, clicking a search box is easy, but typing is impossible without a physical keyboard. So I added a virtual keyboard. Modularized the keyboard, added per-site layouts and controller navigation, and wired backspace and enter submission. Once the keyboard existed, search became obvious. Then I added site-specific search selectors and cursor pinning, the final piece that made search usable.</p>
+			<p>The lesson: search did not make sense until the keyboard did.</p>
+			<h1 id="autoplay_the_hurdle_that_refused_to_die">Autoplay: The Hurdle That Refused to Die</h1>
+			<p>During the PoC, I would successfully navigate to a video with the controller, press the button to play it, and nothing would happen. The video would only start if I physically clicked it with a mouse.</p>
+			<p>It took me a while to understand why. Modern browsers aggressively gate autoplay behind user-activation policies. A controller click is not the same, in the browser's eyes, as a real user gesture. If the extension activates a video element without satisfying that policy, the browser blocks playback.</p>
+			<p>Autoplay policy detection and simulated interactions were introduced. Later, `AutoplayService` was extracted to own the cached autoplay check, audio/video probes, and warning toast. The audio probe itself became its own mini-project: it was improved with structured cleanup and a more distinct multi-tone WAV signal. The extension now probes whether the browser will allow media playback, warns the user if it will not, and only acts once it knows the policy state.</p>
+			<p>Autoplay was the kind of problem that sounds like a footnote until it breaks your entire use case.</p>
+			<h1 id="gamepad_isolation_two_worlds_one_controller">Gamepad Isolation: Two Worlds, One Controller</h1>
+			<p>There is a problem you only notice once you test on a real site that already uses gamepads.</p>
+			<p>Some pages, browser games, media players, and interactive demos also read from `navigator.getGamepads()`. If your extension and the page both consume the same controller, you get duplicate behavior. The user presses up; your virtual cursor moves up, and the page's own gamepad handler moves something else up. The experience falls apart.</p>
+			<p>The fix is to separate who owns the input. I introduced a gamepad event blocker and later transitioned this to dynamic content script injection. The blocker runs in the page's own JavaScript world at `document_start`, before the page's scripts run, and prevents the page from seeing the Gamepad API. Remapad's actual controller logic runs in the extension's isolated content-script world. The page never sees the controller. The extension does. The user gets one consistent behavior.</p>
+			<p>That split, a MAIN-world blocker and an ISOLATED-world runtime, is not in any tutorial. It is the kind of detail you only discover when you stop treating the controller as a peripheral and start treating it as the primary input device.</p>
+			<h1 id="how_a_i_fit_in_and_where_it_didn't">How AI Fit In (and Where It Didn't)</h1>
+			<p>I should be honest about how this got built. Most of the implementation volume was done with AI, through my OMO (Oh My Opencode) setup — which I wrote about in <a href="seting_up_opencode.html">seting_up_opencode.html</a>. Primarily using the Sisyphus agent. Sisyphus is good at turning an architectural intent into working code across many files.</p>
+			<p>But the architecture itself was mine. The decision to stop pretending a gamepad was a keyboard. The decision that collections were a dead end. The decision that a virtual cursor was the right navigation model. The call to support both Firefox and Chrome from the start. Those were not AI suggestions. Those were product calls I made after hitting walls and testing alternatives.</p>
+			<p>AI was the implementer. I was the architect. When the direction was wrong, and collections was wrong, AI would not have saved me. I had to recognize the failure and redirect. That part is still human work.</p>
+			<h1 id="polish_then_more_polish">Polish, Then More Polish</h1>
+			<p>After the hard problems were solved, there was a long tail of smaller things that mattered more than they sound.</p>
+			<p>Controller glyphs, for example. A button is not just a button. To a PlayStation user it is ✕, to an Xbox user it is A, to a Nintendo user it is B. The Gamepad API gives you an `id` string, but manufacturers do not standardize it. Remapad auto-detects PlayStation, Xbox, and Nintendo layouts and lets users override the guess.</p>
+			<p>Then there was discoverability. A controller extension has no visible UI until you know the right button. I added a HUD for in-page binding hints, then a full interactive options tutorial, then reset/skip controls, then an activation chime with volume settings. Each one came from watching the extension almost work and realizing the user had no way to learn it.</p>
+			<p>The final commits were the practical things you need to ship: release checklist, store listing notes, promotional assets.</p>
+			<h1 id="conclusion">Conclusion</h1>
+			<p>The Gamepad API is stable. It is supported in Firefox and Chromium. It works with USB and Bluetooth controllers. It has been there for years, waiting for someone to take it seriously outside of games.</p>
+			<p>Building Remapad taught me that the hard part is not reading the controller. The hard part is deciding what the input means, preventing the page from interpreting it twice, and making the whole thing discoverable without a mouse.</p>
+			<p>I did not build for controllers because most of us build for the desk. But the browser runs on TVs, handhelds, couches, and projection screens. It runs for users whose primary input device is not a keyboard. Treating gamepads as second-class input does not just limit games; it limits how and where the web can be used.</p>
+			<p>Remapad is one attempt to change that default. It builds a controller-first browsing layer on top of a web platform that already has everything it needs — we just have not been using it.</p>
+			<h3>~ End ~</h3>
+			<h4>
+				There are
+				<?php
+					include "site_counter.php";
+					echo get_page_count("gamepadapi");
+				?>
+				viewers that have read this page.
+			</h4>
+			<section id="comments">
+				<?php
+					require_once "CommentFactory.php";
+					require_once "MastodonCommentProvider.php";
+					require_once "BlueskyCommentProvider.php";
+			
+					$commentBundles = [
+						mastodon_comment_bundle("117008404873727577", "mastodon.social", "richardorilla"),
+						bluesky_comment_bundle("https://bsky.app/profile/www.richardorilla.website/post/3mru7ica6gq2t"),
+					];
+			
+					echo comment_factory_render(comment_factory_merge($commentBundles));
+				?>
+			</section>
+			<h4>
+				<a href="#headingBlog">Go back to top</a>
+			</h4>
+			<h4>
+				<a href="blog.html">Go back to list of articles</a>
+			</h4>
+		</div>
+	</center>
+</body>
+
+</html>
