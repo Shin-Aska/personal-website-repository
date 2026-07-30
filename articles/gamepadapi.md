@@ -115,3 +115,5 @@ Building Remapad taught me that the hard part is not reading the controller. The
 I did not build for controllers because most of us build for the desk. But the browser runs on TVs, handhelds, couches, and projection screens. It runs for users whose primary input device is not a keyboard. Treating gamepads as second-class input does not just limit games; it limits how and where the web can be used.
 
 Remapad is one attempt to change that default. It builds a controller-first browsing layer on top of a web platform that already has everything it needs — we just have not been using it.
+
+You can install Remapad from the [Chrome Web Store](https://chromewebstore.google.com/detail/remapad-%E2%80%94-gamepad-browser/nbjngbeilcghlhgcofapgclljddnlaol) or [Firefox Add-ons](https://addons.mozilla.org/en-US/firefox/addon/remapad/).
