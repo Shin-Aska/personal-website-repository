@@ -83,25 +83,25 @@
       if (!section || section.tagName !== 'DIV' || !section.id) return;
 
       const id = section.id;
-      const h3 = section.querySelector(':scope > h3');
+      const heading = section.querySelector(':scope > h2, :scope > h3');
       const img = section.querySelector(':scope > img');
       const statusAbbr = section.querySelector(':scope > p abbr');
       const status = statusAbbr ? normalizeWhitespace(statusAbbr.textContent) : '';
       const statusColor = detectStatusColor(statusAbbr, status);
 
       let name = '';
-      if (h3) {
-        for (const node of h3.childNodes) {
+      if (heading) {
+        for (const node of heading.childNodes) {
           if (node.nodeType === Node.TEXT_NODE && normalizeWhitespace(node.textContent)) {
             name = normalizeWhitespace(node.textContent);
             break;
           }
         }
-        if (!name) name = normalizeWhitespace(h3.textContent);
+        if (!name) name = normalizeWhitespace(heading.textContent);
       }
 
-      const links = h3
-        ? Array.from(h3.querySelectorAll('a')).map(a => ({
+      const links = heading
+        ? Array.from(heading.querySelectorAll('a')).map(a => ({
             label: cleanLinkLabel(a.textContent),
             url: a.getAttribute('href') || ''
           }))
@@ -113,8 +113,8 @@
       const description = descriptionP ? normalizeWhitespace(descriptionP.textContent) : '';
 
       const clone = section.cloneNode(true);
-      const cloneH3 = clone.querySelector(':scope > h3');
-      if (cloneH3) cloneH3.remove();
+      const cloneHeading = clone.querySelector(':scope > h2, :scope > h3');
+      if (cloneHeading) cloneHeading.remove();
       const cloneImg = clone.querySelector(':scope > img');
       if (cloneImg) cloneImg.remove();
       clone.querySelectorAll('hr').forEach(hr => hr.remove());
@@ -236,7 +236,7 @@
         section.style.display = show ? '' : 'none';
       });
 
-      const legacyHeading = projectsRoot.querySelector(':scope > h3');
+      const legacyHeading = projectsRoot.querySelector(':scope > h2, :scope > h3');
       if (legacyHeading) {
         legacyHeading.style.display = (!hasQuery || hasAnyVisibleLegacyRow) ? '' : 'none';
       }

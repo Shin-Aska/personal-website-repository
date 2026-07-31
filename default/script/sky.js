@@ -14,6 +14,7 @@ var sky =  {
 	position: null,
 	windowHalfX: null,
 	windowHalfY: null,
+	drawInterval: null,
 	header: '<div class="center themeContainer"><img class="themepicture" src="images/pen.png" alt="Logo"></div><p class="headingBase start">= Skies of the lost cause +</p><p class="headingBase middle">Personal website of Richard Orilla</p><br><div class="center lineContainer"><img class="linePNG" src="images/hr.png" alt="Logo"></div>',
 	vertexShaderContext:  '   varying vec2 vUv;  \n               void main() {  \n                   vUv = uv;  \n                   gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );  \n              }  ',
 	fragmentShaderContext:  '   uniform sampler2D map;  \n               uniform vec3 fogColor;  \n               uniform float fogNear;  \n               uniform float fogFar;  \n               varying vec2 vUv;  \n               void main() {  \n                   float depth = gl_FragCoord.z / gl_FragCoord.w;  \n                   float fogFactor = smoothstep( fogNear, fogFar, depth );  \n                   gl_FragColor = texture2D( map, vUv );  \n                   gl_FragColor.w *= pow( gl_FragCoord.z, 20.0 );  \n                   gl_FragColor = mix( gl_FragColor, vec4( fogColor, gl_FragColor.w ), fogFactor );  \n              }  ',
@@ -27,7 +28,7 @@ var sky =  {
 		img: undefined
 	},
 
-	loadTexture: function() {
+	loadTexture: function(onLoad) {
 		// Dispose of the old texture if it exists
 
 		var texturePath = "images/clouds.png";
@@ -35,7 +36,7 @@ var sky =  {
 			texturePath = "images/clouds-inverted.png";
 		}
 
-		var texture = THREE.ImageUtils.loadTexture(texturePath);
+		var texture = THREE.ImageUtils.loadTexture(texturePath, undefined, onLoad);
 		texture.magFilter = THREE.LinearMipMapLinearFilter;
 		texture.minFilter = THREE.LinearMipMapLinearFilter;
 		
@@ -45,7 +46,7 @@ var sky =  {
 	setupColorSchemeListener: function() {
 		const colorSchemeQuery = window.matchMedia('(prefers-color-scheme: dark)');
 		const handleColorSchemeChange = (e) => {
-			const newTexture = sky.loadTexture();
+			const newTexture = sky.loadTexture(sky.drawReducedMotionScene);
 			sky.meshMaterial.uniforms.map.texture = newTexture;
 			sky.meshMaterial.needsUpdate = true;
 		};
@@ -56,6 +57,41 @@ var sky =  {
 		} else {
 			// For older browsers
 			colorSchemeQuery.addListener(handleColorSchemeChange);
+		}
+	},
+
+	prefersReducedMotion: function() {
+		return window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+	},
+
+	drawReducedMotionScene: function() {
+		if (sky.prefersReducedMotion() && sky.renderer) {
+			sky.drawScene();
+		}
+	},
+
+	applyMotionPreference: function() {
+		if (sky.prefersReducedMotion()) {
+			if (sky.drawInterval) {
+				clearInterval(sky.drawInterval);
+				sky.drawInterval = null;
+			}
+			return;
+		}
+
+		if (!sky.drawInterval) {
+			sky.drawInterval = setInterval(sky.drawScene, 30);
+		}
+	},
+
+	setupReducedMotionListener: function() {
+		const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+		const handleReducedMotionChange = () => sky.applyMotionPreference();
+
+		if (reducedMotionQuery.addEventListener) {
+			reducedMotionQuery.addEventListener('change', handleReducedMotionChange);
+		} else if (reducedMotionQuery.addListener) {
+			reducedMotionQuery.addListener(handleReducedMotionChange);
 		}
 	},
 
@@ -74,7 +110,7 @@ var sky =  {
 		sky.geometry = new THREE.Geometry();
 
 		var fog = new THREE.Fog(0x251d32, -100, 5000);
-		var texture = sky.loadTexture();
+		var texture = sky.loadTexture(sky.drawReducedMotionScene);
 
 		sky.meshMaterial = new THREE.ShaderMaterial({
 			uniforms: {
@@ -120,7 +156,8 @@ var sky =  {
 		finalRenderer.id = "threejsmain";
 		finalRenderer.innerHTML = "Your browser doesn't support canvas"
 		document.body.appendChild(finalRenderer);
-		setInterval(sky.drawScene, 30);
+		sky.setupReducedMotionListener();
+		sky.applyMotionPreference();
 	},
 
 	onResize: function() {
@@ -179,6 +216,11 @@ window.sky_fps_holder = [];
 window.sky_fps_average = 0;
 window.sky_fps_iteration_count = 0;
 window.sky_timeout = setInterval(async function() {
+	if (window.sky.prefersReducedMotion()) {
+		window.sky_fps_holder = [];
+		return;
+	}
+
 	if (window.sky.tabFocus) {
 		window.sky_fps_holder.push(window.sky.stats.fps);
 		if (window.sky_fps_holder.length >= 20) {

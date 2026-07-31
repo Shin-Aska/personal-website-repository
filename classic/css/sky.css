@@ -104,6 +104,17 @@ figcaption {
   -webkit-animation-duration: 1s;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .menuButton:hover {
+    animation: none;
+  }
+
+  a,
+  .pictureContainer {
+    transition: none;
+  }
+}
+
 /* About */
 
 .aboutPic {
@@ -268,10 +279,15 @@ a:hover {
   margin-bottom: 25px;
   padding: 16px 18px;
   border-radius: 10px;
-  border: 1px solid rgba(0, 0, 0, 0.15);
-  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid #aaaaaa;
+  background: rgba(232, 232, 232, 0.92);
   box-sizing: border-box;
   text-align: left;
+}
+
+#comments,
+#comments * {
+  text-shadow: none;
 }
 
 #comments .mastodon-comments-list {
