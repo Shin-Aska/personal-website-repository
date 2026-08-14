@@ -27,20 +27,17 @@
 	<script nonce="<?php echo $token; ?>" src="script/sky.js"></script>
 	<script nonce="<?php echo $token; ?>" src="script/site.js" type="text/javascript"></script>
 
+	<link href="css/reset.css" rel="stylesheet" type="text/css">
 	<link href="css/animation.css" rel="stylesheet" type="text/css">
 	<link href="css/fonts.css" rel="stylesheet" type="text/css">
-	<link href="css/site.css" rel="stylesheet" type="text/css">
 	<link href="css/sky.css" rel="stylesheet" type="text/css">
+	<link href="css/site.css" rel="stylesheet" type="text/css">
+	<link href="css/game-table.css?v=6" rel="stylesheet" type="text/css">
 
 	<!-- @@@ -->
 	<title>Skies of the Lost Cause - Blogs: Browser-based games in the modern internet</title>
 
-	<script nonce="<?php echo $token; ?>" src="script/jquery-ui.js" type="text/javascript"></script>
-	<link href="css/jquery-ui.css" rel="stylesheet" type="text/css" />
-	<link href="css/jquery-ui.structure.css" rel="stylesheet" type="text/css" />
-	<link href="css/jquery-ui.theme.css" rel="stylesheet" type="text/css" />
-	<link rel="stylesheet" type="text/css" href="jdatatables/datatables.min.css" />
-	<script type="text/javascript" nonce="<?php echo $token; ?>" src="jdatatables/datatables.min.js"></script>
+	<script nonce="<?php echo $token; ?>" src="script/game-table.js?v=1" defer></script>
 
 </head>
 
@@ -323,12 +320,21 @@
 		</p>
 
 		<p>
-			Note: This table is rendered in Javascript; you can expand the row and read the description by clicking on
-			the
-			[+] plus button or the game's name.
+			Use the game index below to search the list. Select a game's name to reveal its description and screenshot.
 		</p>
 
-		<table id="games-list">
+		<section class="game-index" aria-labelledby="game-index-title">
+			<div class="game-index-toolbar">
+				<label for="game-search">
+					<span>Find a game</span>
+					<input id="game-search" type="search" placeholder="Search by name, genre, or description"
+						autocomplete="off">
+				</label>
+				<p id="game-count" role="status" aria-live="polite">10 games</p>
+			</div>
+
+			<table id="games-list">
+			<caption id="game-index-title">Recommended browser-based games</caption>
 			<thead>
 				<tr>
 					<th>Game name</th>
@@ -569,7 +575,8 @@
 				</tr>
 
 			</tbody>
-		</table>
+			</table>
+		</section>
 
 		<h2 id="finale">Ending notes</h2>
 
@@ -677,38 +684,6 @@
 			<a href="blog.html">Go back to list of articles</a>
 		</h4>
 	</div>
-	<script nonce="<?php echo $token; ?>">
-		$(document).ready(function () {
-			$("#games-list").DataTable({
-				paging: true,
-				order: [[1, "asc"]],
-				colReorder: true,
-				responsive: true,
-				"rowCallback": function (row, data, index) {
-					var that = row;
-					if (!$(row).attr('role') || $(row).attr('role') != 'row' || $(row).hasClass('parent')) {
-						return;
-					}
-					$(row).addClass('parent');
-				}
-			});
-
-			var images = $("img.preview.center");
-			for (var i = 0; i < images.length; i++) {
-				let element = images[i];
-				element.onmouseover = () => {
-					if (typeof (element.oldsrc) === "undefined") {
-						element.oldsrc = element.src;
-					}
-					element.src = element.src.replace("_tmb", "");
-				}
-
-				element.onmouseout = () => {
-					element.src = element.oldsrc;
-				}
-			}
-		});
-	</script>
 </body>
 
 </html>
