@@ -8,8 +8,13 @@
 		<meta http-equiv="content-language" content="en-us">
 		<meta http-equiv="cache-control" content="no-cache">
 		<meta http-equiv="pragma" content="no-cache">
-		<meta name="robots" content="index" /><meta name="theme-color" content="#003eaa" /> 
-		<meta name="keywords" content="richard orilla, free games, resume">
+		<meta name="robots" content="index, follow">
+		<meta name="theme-color" content="#0a4f8f">
+		<meta name="description" content="An article by Richard Orilla on Skies of the Lost Cause.">
+		<meta property="og:type" content="article">
+		<meta property="og:site_name" content="Skies of the Lost Cause">
+		<meta property="og:title" content="Article title">
+		<meta property="og:description" content="An article by Richard Orilla on technology, games, and the open web.">
 		<meta name="color-scheme" content="light dark">
 		<meta name="darkreader-lock">
 		<noscript><meta http-equiv="refresh" content="0; url=https://classic.richardorilla.website/template.html" /></noscript>
@@ -22,13 +27,14 @@
 		<script nonce="<?php echo $token; ?>" src="script/sky.js"></script>
 		<script nonce="<?php echo $token; ?>" src="script/site.js" type="text/javascript"></script>
 
+		<link href="css/reset.css" rel="stylesheet" type="text/css">
 		<link href="css/animation.css" rel="stylesheet" type="text/css">
 		<link href="css/fonts.css" rel="stylesheet" type="text/css">
-		<link href="css/site.css" rel="stylesheet" type="text/css">
 		<link href="css/sky.css" rel="stylesheet" type="text/css">
+		<link href="css/site.css" rel="stylesheet" type="text/css">
 
 		<!-- @@@ -->
-		<title>Skies of the Lost Cause - Template</title>
+		<title>Article title | Skies of the Lost Cause</title>
 
 
 	</head>
@@ -65,24 +71,56 @@
 			<div id="menu"></div>
 		</div>
 
-		<div id="content">
+		<main id="content" class="article-shell">
+			<article>
+				<header class="article-header" id="headingBlog">
+					<p class="eyebrow">Notes from Richard Orilla</p>
+					<h1>Article title goes here</h1>
+					<p class="article-deck">Add a concise introduction that tells readers what they will learn and why it matters.</p>
+					<div class="article-meta" aria-label="Article details">
+						<span>Published <time datetime="YYYY-MM-DD">Month DD, YYYY</time></span>
+						<span aria-hidden="true">&middot;</span>
+						<span>About 5 minutes</span>
+					</div>
+				</header>
 
-			<h2 id="tableContents">Table of Contents</h2>
-		    <ul>
-		      <li><a href="#introduction">Introduction</a></li>
-		    </ul>
-		    <h1 id="headingBlog">Title goes here</h1>
-		    <h2 id="introduction">Introduction</h2>
+				<nav class="table-of-contents" aria-labelledby="tableContents">
+					<p class="eyebrow">In this article</p>
+					<h2 id="tableContents">Table of contents</h2>
+					<ol>
+						<li><a href="#introduction">Introduction</a></li>
+						<li><a href="#main-idea">Main idea</a></li>
+						<li><a href="#closing-thoughts">Closing thoughts</a></li>
+					</ol>
+				</nav>
 
-		    <h3>~ End ~</h3>
-		    <h4>
-		      <a href="#headingBlog">Go back to top</a>
-		    </h4>
-		    <h4>
-		      <a href="blog.html">Go back to list of articles</a>
-		    </h4>
-		</div>
-	</body>
+				<section id="introduction">
+					<h2>Introduction</h2>
+					<p>Open with the context for the article. Keep paragraphs focused and conversational so the page remains comfortable to read on any screen.</p>
+				</section>
+
+				<section id="main-idea">
+					<h2>Main idea</h2>
+					<p>Develop the central argument here. Use descriptive headings, helpful links, figures, and code samples as needed.</p>
+					<blockquote>
+						<p>Use a callout for the one idea readers should remember.</p>
+					</blockquote>
+				</section>
+
+				<section id="closing-thoughts">
+					<h2>Closing thoughts</h2>
+					<p>Summarize the conclusion and give readers a clear next step.</p>
+				</section>
+
+				<footer class="article-footer">
+					<p class="end-mark" aria-hidden="true">~ End ~</p>
+					<div class="article-actions">
+						<a href="#headingBlog">Back to top</a>
+						<a href="blog.html">All articles</a>
+					</div>
+				</footer>
+			</article>
+		</main>
 	<script nonce="<?php echo $token; ?>">
 		$(document).ready(function () {
 			var images = $("img.preview.center");
@@ -99,4 +137,5 @@
 			}
 		});
 	</script>
+	</body>
 </html>

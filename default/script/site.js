@@ -41,21 +41,37 @@ $( document ).ready(function() {
 		window.location = window.location.href.replace(window.location.hostname, "classic.richardorilla.website");
 	}
 	
-	window.siteMenuURLs = {}
+	var menu = document.getElementById("menu");
 	for (var i = 0; i < menus.length; i++) {
-		//document.getElementById("menu").innerHTML += "<div class=\"menuButton\" onclick=\"javascript:window.location.href='" + menus[i].url +"'\">" + menus[i].name + "</div>";
-		document.getElementById("menu").innerHTML += "<div id=\"siteMenu_entry_" + (i+1) + "\" class=\"menuButton\">" + menus[i].name + "</div>"; 
-		window.siteMenuURLs["siteMenu_entry_" + (i+1)] = menus[i].url;
+		var menuLink = document.createElement("a");
+		menuLink.id = "siteMenu_entry_" + (i + 1);
+		menuLink.className = "menuButton";
+		menuLink.href = menus[i].url;
+		menuLink.textContent = menus[i].name;
+		if (window.location.pathname.split("/").pop() === menus[i].url ||
+			(window.location.pathname.endsWith("/") && menus[i].url === "about.html") ||
+			(window.location.pathname.endsWith("index.html") && menus[i].url === "about.html")) {
+			menuLink.classList.add("is-active");
+			menuLink.setAttribute("aria-current", "page");
+		}
+		menu.appendChild(menuLink);
 	}
-    document.getElementById("header").innerHTML = sky.header;
-	document.getElementById("mainLabel").style.display = "none";
-	document.getElementById("backgroundLabel").style.display = "none";
+	menu.setAttribute("aria-label", "Primary navigation");
+	menu.setAttribute("role", "navigation");
 
-	for (var i = 0; i < menus.length; i++) {
-		document.getElementById("siteMenu_entry_" + (i+1)).onclick = function(elem) {
-			window.location.href = window.siteMenuURLs[elem.target.id];
+	// Article pages do not have their own top-level menu entry, so keep readers
+	// oriented by treating them as part of the Blogs section.
+	if (!menu.querySelector(".is-active") &&
+		(document.getElementById("headingBlog") || document.getElementById("tableContents"))) {
+		var blogLink = document.querySelector('#menu a[href="blog.html"]');
+		if (blogLink) {
+			blogLink.classList.add("is-active");
+			blogLink.setAttribute("aria-current", "page");
 		}
 	}
+	document.getElementById("header").innerHTML = sky.header;
+	document.getElementById("mainLabel").style.display = "none";
+	document.getElementById("backgroundLabel").style.display = "none";
 
 	var codeBlocks = document.querySelectorAll('pre > code');
 	for (var i = 0; i < codeBlocks.length; i++) {
