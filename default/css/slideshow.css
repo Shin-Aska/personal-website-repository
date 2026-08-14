@@ -1,102 +1,215 @@
-.container {
+.pictureContainer {
+	--gallery-stage: #07111c;
+	--gallery-strip: transparent;
+	--gallery-strip-end: transparent;
+	--gallery-paper: #000;
+	--gallery-divider: 1px solid #000;
+	--gallery-shadow: rgba(0, 0, 0, 0.38);
+	--gallery-control: #f8fafc;
+	--gallery-control-shadow: 0 2px 8px #000, 0 0 2px #000;
 	position: relative;
+	width: min(740px, 100%);
+	height: auto;
+	padding: 0;
+	overflow: hidden;
+	filter: drop-shadow(0 16px 28px var(--gallery-shadow));
 }
 
-/* Hide the images by default */
-.mySlides {
-
+#slideContainer {
+	position: relative;
+	width: 100%;
+	background: var(--gallery-stage);
 }
 
-/* Add a pointer when hovering over the thumbnail images */
-.cursor {
-	cursor: pointer;
+.gallery-stage {
+	position: relative;
+	width: 100%;
+	margin: 0;
 }
 
-/* Next & previous buttons */
+.gallery-stage > a {
+	display: grid;
+	width: 100%;
+	aspect-ratio: 16 / 9;
+	background: radial-gradient(circle at 50% 35%, rgba(255, 255, 255, 0.12), transparent 62%), var(--gallery-stage);
+	place-items: center;
+}
+
+.imageSlide {
+	display: block;
+	width: 100%;
+	height: 100%;
+	max-height: none;
+	border-radius: 0 !important;
+	object-fit: contain;
+	opacity: 0;
+	transition: opacity 220ms ease;
+}
+
+.imageSlide.is-loaded { opacity: 1; }
+
 .prev,
 .next {
-	cursor: pointer;
 	position: absolute;
-	top: 40%;
-	width: auto;
-	padding: 16px;
-	margin-top: -50px;
-	color: white;
-	font-weight: bold;
-	font-size: 20px;
-	border-radius: 0 3px 3px 0;
-	user-select: none;
-	-webkit-user-select: none;
-	background-color: rgba(0, 0, 0, 0.4);
+	top: min(42%, 210px);
+	z-index: 2;
+	display: grid;
+	width: 48px;
+	height: 64px;
+	padding: 0;
+	border: 0;
+	background: transparent;
+	color: var(--gallery-control);
+	font-family: CFJackStory;
+	font-size: 32px;
+	text-shadow: var(--gallery-control-shadow);
+	cursor: pointer;
+	place-items: center;
+	transition: color 160ms ease, transform 160ms ease;
 }
 
-/* Position the "next button" to the right */
-.next {
-	right: 0;
-	border-radius: 3px 0 0 3px;
-}
-
-/* On hover, add a black background color with a little bit see-through */
+.prev { left: 4px; }
+.next { right: 4px; }
 .prev:hover,
 .next:hover {
-	background-color: rgba(0, 0, 0, 0.8);
+	background: transparent;
+	color: var(--link-color);
+	transform: scale(1.14);
 }
 
-/* Number text (1/3 etc) */
 .numbertext {
-	color: #f2f2f2;
-	font-size: 12px;
-	padding: 8px 12px;
 	position: absolute;
 	top: 0;
-	background: black;
+	left: 0;
+	padding: 10px 14px;
+	background: transparent;
+	color: var(--gallery-control);
+	font-family: CFJackStory;
+	font-size: 1rem;
+	text-shadow: var(--gallery-control-shadow);
 }
 
-/* Container for image text */
-.caption-container {
-	text-align: center;
-	background-color: #222;
-	padding: 2px 16px;
-	color: white;
-	display: none;
+.caption-container { display: none; }
+
+#thumbnailContainer {
+	display: flex;
+	gap: 11px;
+	width: 100%;
+	padding: 16px 14px 15px;
+	overflow-x: auto;
+	border-top: var(--gallery-divider);
+	background: linear-gradient(180deg, var(--gallery-strip), var(--gallery-strip-end));
+	scroll-behavior: smooth;
+	scroll-snap-type: x proximity;
+	scrollbar-color: color-mix(in srgb, var(--text-color) 48%, transparent) transparent;
 }
 
-.row:after {
-	content: "";
-	display: table;
-	clear: both;
+.thumbnailButton {
+	flex: 0 0 108px;
+	width: 108px;
+	height: 72px;
+	padding: 4px;
+	overflow: hidden;
+	border: 0;
+	border-radius: 2px;
+	background: var(--gallery-paper);
+	box-shadow: 0 4px 10px var(--gallery-shadow);
+	cursor: pointer;
+	scroll-snap-align: center;
+	transform: rotate(-1.2deg);
+	transition: box-shadow 160ms ease, transform 160ms ease;
 }
 
-/* Six columns side by side */
+.thumbnailButton:nth-child(even) { transform: rotate(1deg); }
+.thumbnailButton:nth-child(3n) { transform: rotate(-0.35deg); }
 
+.thumbnailButton[aria-current="true"] {
+	box-shadow: 0 0 0 3px var(--link-color), 0 7px 14px var(--gallery-shadow);
+	transform: translateY(-3px) rotate(0);
+}
 
-/* Add a transparency effect for thumnbail images */
 .demo {
-	opacity: 0.6;
+	display: block;
+	width: 100%;
+	height: 100%;
+	border-radius: 0;
+	object-fit: cover;
+	opacity: 0.65;
+	transition: opacity 160ms ease;
 }
 
-.active,
-.demo:hover {
+.thumbnailButton:hover .demo,
+.thumbnailButton:focus-visible .demo,
+.thumbnailButton[aria-current="true"] .demo {
 	opacity: 1;
 }
 
+.thumbnailButton:hover,
+.thumbnailButton:focus-visible {
+	transform: translateY(-2px) rotate(0);
+}
+
 #albums {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 1.5rem;
 	text-align: center;
 }
 
 .albumEntry {
-	display: inline;
-	padding: 25px;
-	text-align: center;
+	position: relative;
+	min-height: 44px;
+	padding: 6px 3px;
+	border: 0;
+	background: transparent;
+	color: var(--text-color);
+	font-family: CFJackStory;
+	font-size: 1.35em;
 	cursor: pointer;
-	transition: 1s;
 }
 
-.albumEntry:hover {
-	color: green;
+.albumEntry::after {
+	position: absolute;
+	right: 3px;
+	bottom: 2px;
+	left: 3px;
+	height: 2px;
+	background: var(--link-color);
+	content: "";
+	opacity: 0;
 }
 
-#thumbnailContainer {
-	white-space: nowrap;
-	overflow: auto;
+.albumEntry:hover,
+.albumEntry.is-active { color: var(--link-color); }
+.albumEntry.is-active::after { opacity: 1; }
+
+.pictureContainer :focus-visible {
+	outline-color: var(--link-color);
+}
+
+@media (prefers-color-scheme: dark) {
+	.pictureContainer {
+		--gallery-stage: rgba(3, 10, 20, 0.72);
+		--gallery-strip: rgba(19, 47, 76, 0.62);
+		--gallery-strip-end: transparent;
+		--gallery-paper: #e9e2d5;
+		--gallery-divider: 1px dashed color-mix(in srgb, var(--text-color) 34%, transparent);
+		--gallery-shadow: rgba(0, 0, 0, 0.42);
+		--gallery-control: #f8fafc;
+		--gallery-control-shadow: 0 2px 8px #000, 0 0 2px #000;
+	}
+}
+
+@media (max-width: 600px) {
+	.pictureContainer { border-width: 7px; }
+	.gallery-stage > a { aspect-ratio: 4 / 3; }
+	.prev, .next { top: min(40%, 150px); width: 42px; height: 52px; font-size: 27px; }
+	.thumbnailButton { flex-basis: 84px; width: 84px; height: 58px; padding: 3px; }
+	#thumbnailContainer { gap: 9px; padding: 12px 10px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.imageSlide { transition: none; }
+	#thumbnailContainer { scroll-behavior: auto; }
 }
