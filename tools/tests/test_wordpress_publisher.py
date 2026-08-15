@@ -45,6 +45,11 @@ class PortableArticleRenderingTests(unittest.TestCase):
 
 Article body.
 
+<!-- table: expand=Support; toggle=Feature -->
+| Feature | Support |
+|---|---|
+| Tables | **Ready** |
+
 - [ ] [![](images/preview.png)](images/full.png)
 - [ ] A caption
 """
@@ -60,6 +65,13 @@ Article body.
         self.assertEqual(article.title, "Portable title")
         self.assertNotIn("<h1", article.content)
         self.assertIn('<h2 id="first_section">First section</h2>', article.content)
+        self.assertIn('<div class="article-table-wrap"', article.content)
+        self.assertIn('<table class="article-table"', article.content)
+        self.assertIn('data-expand-columns="1"', article.content)
+        self.assertIn('data-toggle-column="0"', article.content)
+        self.assertNotIn('<!-- table:', article.content)
+        self.assertIn('<th scope="col">Feature</th>', article.content)
+        self.assertIn('<td data-label="Support"><b>Ready</b></td>', article.content)
         self.assertNotIn("<?php", article.content)
         self.assertNotIn("site_counter.php", article.content)
         self.assertEqual(

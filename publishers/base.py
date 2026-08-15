@@ -1,4 +1,6 @@
+import re
 from abc import ABC
+from html import escape
 from typing import TextIO, Optional
 
 from parsers.markdown.constants import heading_markdown_element_type, MarkdownElementType, \
@@ -56,6 +58,7 @@ class Publisher(ABC):
 
         table_contents: list[HeadingContent] = []
         title_heading_skipped: bool = False
+        pending_table_options: Optional[dict[str, list[str]]] = None
 
         for element in elements:
             if (
@@ -65,6 +68,12 @@ class Publisher(ABC):
             ):
                 title_heading_skipped = True
                 continue
+            if element.element_type == MarkdownElementType.p:
+                table_options = self._parse_table_directive(element.content)
+                if table_options is not None:
+                    pending_table_options = table_options
+                    continue
+
             if element.element_type in heading_markdown_element_type:
                 html_content = self._generate_heading_content(html_content, element.content, element, table_contents)
             elif element.element_type == MarkdownElementType.p:
@@ -91,7 +100,12 @@ class Publisher(ABC):
             elif element.element_type == MarkdownElementType.codeblock:
                 html_content = self._generate_codeblock_content(html_content, element.content, element)
             elif element.element_type == MarkdownElementType.table:
-                html_content = self._generate_table_content(html_content, element)
+                html_content = self._generate_table_content(
+                    html_content,
+                    element,
+                    options=pending_table_options,
+                )
+                pending_table_options = None
 
         if include_bottom_options:
             html_content = self._generate_bottom_options(html_content)
@@ -357,7 +371,12 @@ class Publisher(ABC):
         html_content = self._push_to_html_content(html_content, '</pre>')
         return html_content
 
-    def _generate_table_content(self, html_content: str, element: MarkdownElement) -> str:
+    def _generate_table_content(
+        self,
+        html_content: str,
+        element: MarkdownElement,
+        options: Optional[dict[str, list[str]]] = None,
+    ) -> str:
         rows: list[str] = element.content
         header_rows: list[list[str]] = []
         body_rows: list[list[str]] = []
@@ -387,8 +406,48 @@ class Publisher(ABC):
             else:
                 body_rows.append(cells)
 
-        # Build HTML table
-        html_content = self._push_to_html_content(html_content, '<table>')
+        header_labels: list[str] = header_rows[-1] if header_rows else []
+        normalized_headers = [self._plain_table_header_label(label).casefold() for label in header_labels]
+        expandable_columns: list[int] = []
+
+        for requested_label in (options or {}).get('expand', []):
+            normalized_label = self._plain_table_header_label(requested_label).casefold()
+            if normalized_label in normalized_headers:
+                column_index = normalized_headers.index(normalized_label)
+                if column_index not in expandable_columns:
+                    expandable_columns.append(column_index)
+
+        toggle_column = 0
+        requested_toggle = (options or {}).get('toggle', [])
+        if requested_toggle:
+            normalized_toggle = self._plain_table_header_label(requested_toggle[0]).casefold()
+            if normalized_toggle in normalized_headers:
+                toggle_column = normalized_headers.index(normalized_toggle)
+
+        if toggle_column in expandable_columns:
+            toggle_column = next(
+                (index for index in range(len(header_labels)) if index not in expandable_columns),
+                0,
+            )
+
+        table_attributes = ['class="article-table"']
+        if expandable_columns:
+            table_attributes.append(
+                f'data-expand-columns="{",".join(str(index) for index in expandable_columns)}"'
+            )
+            table_attributes.append(f'data-toggle-column="{toggle_column}"')
+
+        # Keep the table semantic while giving narrow screens a keyboard-scrollable
+        # fallback and enough metadata to present each row as a readable card.
+        html_content = self._push_to_html_content(
+            html_content,
+            '<div class="article-table-wrap" role="region" aria-label="Scrollable data table" tabindex="0">',
+        )
+        html_content = self._push_to_html_content(
+            html_content,
+            f'<table {" ".join(table_attributes)}>',
+            1,
+        )
         
         # Render header rows
         if header_rows:
@@ -398,7 +457,7 @@ class Publisher(ABC):
                 for cell in header_row:
                     cell = self._convert_markdown_markers_to_html(cell)
                     cell = self._process_link_markers(cell)
-                    html_content = self._push_to_html_content(html_content, f'<th>{cell}</th>', 3)
+                    html_content = self._push_to_html_content(html_content, f'<th scope="col">{cell}</th>', 3)
                 html_content = self._push_to_html_content(html_content, '</tr>', 2)
             html_content = self._push_to_html_content(html_content, '</thead>', 1)
         
@@ -407,15 +466,92 @@ class Publisher(ABC):
             html_content = self._push_to_html_content(html_content, '<tbody>', 1)
             for body_row in body_rows:
                 html_content = self._push_to_html_content(html_content, '<tr>', 2)
-                for cell in body_row:
-                    cell = self._convert_markdown_markers_to_html(cell)
-                    cell = self._process_link_markers(cell)
-                    html_content = self._push_to_html_content(html_content, f'<td>{cell}</td>', 3)
+                for column_index, cell in enumerate(body_row):
+                    cell = self._convert_table_cell_content(cell)
+                    raw_label = (
+                        header_labels[column_index]
+                        if column_index < len(header_labels)
+                        else f'Column {column_index + 1}'
+                    )
+                    label = self._table_header_label(raw_label)
+                    html_content = self._push_to_html_content(
+                        html_content,
+                        f'<td data-label="{label}">{cell}</td>',
+                        3,
+                    )
                 html_content = self._push_to_html_content(html_content, '</tr>', 2)
             html_content = self._push_to_html_content(html_content, '</tbody>', 1)
         
-        html_content = self._push_to_html_content(html_content, '</table>')
+        html_content = self._push_to_html_content(html_content, '</table>', 1)
+        html_content = self._push_to_html_content(html_content, '</div>')
         return html_content
+
+    @staticmethod
+    def _parse_table_directive(value: str) -> Optional[dict[str, list[str]]]:
+        match = re.fullmatch(r'\s*<!--\s*table:\s*(.*?)\s*-->\s*', value, flags=re.IGNORECASE)
+        if not match:
+            return None
+
+        options: dict[str, list[str]] = {}
+        for option in match.group(1).split(';'):
+            key, separator, raw_value = option.partition('=')
+            key = key.strip().lower()
+            if not separator or key not in {'expand', 'toggle'}:
+                continue
+            values = [item.strip() for item in raw_value.split(',') if item.strip()]
+            if values:
+                options[key] = values
+        return options
+
+    @staticmethod
+    def _plain_table_header_label(value: str) -> str:
+        label = re.sub(r'!\[([^\]]*)\]\([^)]*\)', r'\1', value)
+        label = re.sub(r'\[([^\]]+)\]\([^)]*\)', r'\1', label)
+        label = re.sub(r'<[^>]+>', '', label)
+        return label.replace('**', '').replace('*', '').strip()
+
+    @classmethod
+    def _table_header_label(cls, value: str) -> str:
+        """Return a plain, attribute-safe label for responsive table cells."""
+        return escape(cls._plain_table_header_label(value), quote=True)
+
+    def _convert_table_cell_content(self, value: str) -> str:
+        value = self._convert_markdown_markers_to_html(value)
+
+        def linked_image(match: re.Match) -> str:
+            alt, thumbnail, target = match.groups()
+            self._record_table_image(thumbnail)
+            self._record_table_image(target)
+            return (
+                f'<a href="{escape(target, quote=True)}" target="_blank" rel="noopener noreferrer">'
+                f'<img class="article-table-image" src="{escape(thumbnail, quote=True)}" '
+                f'alt="{escape(alt, quote=True)}" loading="lazy" decoding="async">'
+                '</a>'
+            )
+
+        value = re.sub(
+            r'\[!\[([^\]]*)\]\(([^)]+)\)\]\(([^)]+)\)',
+            linked_image,
+            value,
+        )
+
+        def standalone_image(match: re.Match) -> str:
+            alt, source = match.groups()
+            self._record_table_image(source)
+            return (
+                f'<img class="article-table-image" src="{escape(source, quote=True)}" '
+                f'alt="{escape(alt, quote=True)}" loading="lazy" decoding="async">'
+            )
+
+        value = re.sub(r'!\[([^\]]*)\]\(([^)]+)\)', standalone_image, value)
+        return self._process_link_markers(value)
+
+    def _record_table_image(self, source: str) -> None:
+        if re.match(r'^(?:[a-z]+:)?//', source, flags=re.IGNORECASE) or source.startswith('/'):
+            return
+        image_path = 'articles/' + source
+        if image_path not in self.images:
+            self.images.append(image_path)
 
     def _generate_bottom_options(self, html_content: str) -> str:
         html_content = self._push_to_html_content(html_content, '<h3>~ End ~</h3>')

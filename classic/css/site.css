@@ -210,6 +210,88 @@ ul {
     width: 100%;
 }
 
+.article-table-wrap {
+    width: 100%;
+    max-width: 100%;
+    margin: 24px 0;
+    overflow-x: auto;
+    border: 2px solid #222222;
+    background: #eeeeee;
+}
+
+.article-table-wrap:focus-visible {
+    outline: 3px solid #1a6ec2;
+    outline-offset: 3px;
+}
+
+.article-table {
+    width: 100%;
+    border-collapse: collapse;
+    color: #222222;
+    text-align: left;
+}
+
+.article-table th,
+.article-table td {
+    padding: 10px 12px;
+    border: 1px solid #777777;
+    vertical-align: top;
+}
+
+.article-table th {
+    background: #d5d5d5;
+}
+
+.article-table tbody tr:nth-child(even) {
+    background: #f7f7f7;
+}
+
+.article-table-image {
+    display: block;
+    width: 220px;
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #000000;
+}
+
+@media (max-width: 600px) {
+    .article-table,
+    .article-table tbody,
+    .article-table tr,
+    .article-table td {
+        display: block;
+        width: 100%;
+    }
+
+    .article-table thead {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        clip: rect(0, 0, 0, 0);
+        overflow: hidden;
+        white-space: nowrap;
+    }
+
+    .article-table tbody tr {
+        padding: 8px 0;
+        border-bottom: 2px solid #222222;
+    }
+
+    .article-table td {
+        display: grid;
+        grid-template-columns: minmax(100px, 35%) minmax(0, 1fr);
+        gap: 10px;
+        border: 0;
+        overflow-wrap: anywhere;
+    }
+
+    .article-table td::before {
+        content: attr(data-label);
+        font-weight: bold;
+    }
+}
+
 blockquote {
     border-left: 4px solid var(--link-color, #1a6ec2);
     padding: 10px 20px;
