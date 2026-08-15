@@ -1,3 +1,4 @@
+import re
 from typing import Optional
 
 from parsers.markdown.constants import MarkdownElementType, element_type_mapping, multi_content_markdown_element_type
@@ -5,6 +6,64 @@ from parsers.markdown.models import MarkdownElement
 
 
 class MarkdownParser:
+
+    @staticmethod
+    def _is_paragraph_line(line: str) -> bool:
+        """Return whether a source line belongs to ordinary paragraph prose."""
+        if not line.strip():
+            return False
+
+        for element_prefix, element_type in element_type_mapping.items():
+            if element_prefix.__contains__('{num}'):
+                if re.match(r'^\d+\. ', line):
+                    return False
+            elif line.startswith(element_prefix):
+                # A link split across physical lines is paragraph content, while
+                # a complete link on its own line keeps the existing link element.
+                if element_type == MarkdownElementType.link:
+                    return not MarkdownParser._check_if_valid_link(line)
+                return False
+        return True
+
+    @staticmethod
+    def _merge_paragraph_lines(markdown_file_contents: list[str]) -> list[str]:
+        """Join soft-wrapped prose until a blank line or block element.
+
+        Markdown treats consecutive prose lines as one paragraph. The original
+        parser emitted one paragraph per physical line, which inflated spacing
+        and broke inline markup that crossed a source line boundary.
+        """
+        merged_lines: list[str] = []
+        paragraph_lines: list[str] = []
+        inside_code_block = False
+
+        def flush_paragraph() -> None:
+            if paragraph_lines:
+                merged_lines.append(' '.join(part.strip() for part in paragraph_lines))
+                paragraph_lines.clear()
+
+        for line in markdown_file_contents:
+            stripped_line = line.strip()
+
+            if stripped_line.startswith('```'):
+                flush_paragraph()
+                merged_lines.append(line)
+                inside_code_block = not inside_code_block
+                continue
+
+            if inside_code_block:
+                merged_lines.append(line)
+                continue
+
+            if MarkdownParser._is_paragraph_line(line):
+                paragraph_lines.append(line)
+                continue
+
+            flush_paragraph()
+            merged_lines.append(line)
+
+        flush_paragraph()
+        return merged_lines
 
     @staticmethod
     def _generate_non_multi_content_markdown_element(element_type: MarkdownElementType, line: str, value: str) -> MarkdownElement:
@@ -63,6 +122,7 @@ class MarkdownParser:
 
     @staticmethod
     def parse(markdown_file_contents: list[str], debug = False) -> list[MarkdownElement]:
+        markdown_file_contents = MarkdownParser._merge_paragraph_lines(markdown_file_contents)
         elements = []
         element_type: Optional[MarkdownElementType] = None
         code_block_flag: bool = False
