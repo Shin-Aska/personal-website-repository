@@ -1,0 +1,76 @@
+/*
+ * Optional full-viewport readability layer for sea.js.
+ *
+ * The rules are deliberately scoped to the class sea.js adds at runtime.
+ * Loading sky.js instead leaves the site unchanged, even when this stylesheet
+ * is still linked, which keeps the theme rollback to a one-line script swap.
+ */
+
+html.sea-theme {
+  --sea-overlay-blur: 16px;
+  --sea-overlay-saturation: 40%;
+  --sea-overlay-reveal-duration: 10s;
+}
+
+html.sea-theme body::before {
+  position: fixed;
+  z-index: -9997;
+  inset: 0;
+  background: rgba(4, 8, 14, 0.52);
+  content: "";
+  pointer-events: none;
+  -webkit-backdrop-filter: blur(var(--sea-overlay-blur)) saturate(var(--sea-overlay-saturation));
+  backdrop-filter: blur(var(--sea-overlay-blur)) saturate(var(--sea-overlay-saturation));
+}
+
+html.sea-theme.sea-overlay-reveal body::before {
+  animation: sea-overlay-reveal var(--sea-overlay-reveal-duration) cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@media (prefers-color-scheme: light) {
+  html.sea-theme {
+    --sea-overlay-blur: 14px;
+    --sea-overlay-saturation: 30%;
+  }
+
+  html.sea-theme body::before {
+    background: rgba(245, 250, 255, 0.55);
+  }
+
+  html.sea-theme #content,
+  html.sea-theme #content a {
+    text-shadow: none;
+  }
+}
+
+@keyframes sea-overlay-reveal {
+  from {
+    opacity: 0;
+    -webkit-backdrop-filter: blur(0) saturate(100%);
+    backdrop-filter: blur(0) saturate(100%);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-backdrop-filter: blur(var(--sea-overlay-blur)) saturate(var(--sea-overlay-saturation));
+    backdrop-filter: blur(var(--sea-overlay-blur)) saturate(var(--sea-overlay-saturation));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.sea-theme.sea-overlay-reveal body::before {
+    animation: none;
+  }
+}
+
+@supports not ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+  html.sea-theme body::before {
+    background: rgba(4, 8, 14, 0.72);
+  }
+
+  @media (prefers-color-scheme: light) {
+    html.sea-theme body::before {
+      background: rgba(245, 250, 255, 0.76);
+    }
+  }
+}
