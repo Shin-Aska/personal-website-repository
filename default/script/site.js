@@ -69,7 +69,84 @@ $( document ).ready(function() {
 			blogLink.setAttribute("aria-current", "page");
 		}
 	}
-	document.getElementById("header").innerHTML = sky.header;
+	var header = document.getElementById("header");
+	header.innerHTML = sky.header;
+	document.documentElement.dataset.backgroundTheme = window.sky === window.sea ? "sea" : "sky";
+
+	var themeContainer = header.querySelector(".themeContainer");
+	var themeContainerClickCount = 0;
+	var backgroundThemeSwitching = false;
+	var reducedMotionQuery = window.matchMedia
+		? window.matchMedia("(prefers-reduced-motion: reduce)")
+		: null;
+
+	function waitForBackgroundFade(canvas) {
+		if (!canvas || (reducedMotionQuery && reducedMotionQuery.matches)) {
+			return Promise.resolve();
+		}
+		return new Promise(function(resolve) {
+			var resolved = false;
+			var timeout;
+			var finish = function() {
+				if (resolved) return;
+				resolved = true;
+				clearTimeout(timeout);
+				canvas.removeEventListener("transitionend", handleTransitionEnd);
+				resolve();
+			};
+			var handleTransitionEnd = function(event) {
+				if (event.propertyName === "opacity") finish();
+			};
+			canvas.addEventListener("transitionend", handleTransitionEnd);
+			timeout = setTimeout(finish, 650);
+		});
+	}
+
+	function waitForPaint() {
+		return new Promise(function(resolve) {
+			requestAnimationFrame(function() {
+				requestAnimationFrame(resolve);
+			});
+		});
+	}
+
+	themeContainer.addEventListener("click", async function() {
+		if (backgroundThemeSwitching) return;
+		themeContainerClickCount++;
+		if (themeContainerClickCount < 5) return;
+		themeContainerClickCount = 0;
+
+		var currentTheme = window.sky;
+		var nextTheme = currentTheme === window.sea ? window.legacySky : window.sea;
+		if (!nextTheme || nextTheme === currentTheme) return;
+
+		backgroundThemeSwitching = true;
+		var root = document.documentElement;
+		var currentCanvas = document.getElementById("threejsmain");
+		root.classList.add("background-theme-is-switching");
+		try {
+			await waitForBackgroundFade(currentCanvas);
+			if (typeof currentTheme.destroy === "function") currentTheme.destroy();
+			window.sky = nextTheme;
+			await Promise.resolve(nextTheme.init());
+			document.documentElement.dataset.backgroundTheme = nextTheme === window.sea ? "sea" : "sky";
+			await waitForPaint();
+			root.classList.remove("background-theme-is-switching");
+			await waitForBackgroundFade(document.getElementById("threejsmain"));
+		} catch (error) {
+			console.error("Unable to switch background themes:", error);
+			if (typeof nextTheme.destroy === "function") nextTheme.destroy();
+			window.sky = currentTheme;
+			await Promise.resolve(currentTheme.init());
+			document.documentElement.dataset.backgroundTheme = currentTheme === window.sea ? "sea" : "sky";
+			await waitForPaint();
+			root.classList.remove("background-theme-is-switching");
+			await waitForBackgroundFade(document.getElementById("threejsmain"));
+		} finally {
+			root.classList.remove("background-theme-is-switching");
+			backgroundThemeSwitching = false;
+		}
+	});
 	document.getElementById("mainLabel").style.display = "none";
 	document.getElementById("backgroundLabel").style.display = "none";
 

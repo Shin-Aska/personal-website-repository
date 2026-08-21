@@ -140,6 +140,7 @@ const sea = {
     _runtime: null,
     _motionQuery: null,
     _motionListener: null,
+    _generation: 0,
     backgroundOverlayEnabled: true,
 
     init(options = {}) {
@@ -154,9 +155,14 @@ const sea = {
         this.setBackgroundOverlay(useBackgroundOverlay);
         if (this._initialization) return this._initialization;
 
+        const generation = ++this._generation;
         this.startTime = performance.now();
         this._initialization = createSeaRenderer(options)
             .then((runtime) => {
+                if (generation !== this._generation) {
+                    runtime.destroy();
+                    return null;
+                }
                 this._runtime = runtime;
                 this.canvas = runtime.canvas;
                 this.ctx = runtime.gl;
@@ -166,6 +172,7 @@ const sea = {
                 return runtime;
             })
             .catch((error) => {
+                if (generation !== this._generation) return null;
                 this._initialization = null;
                 this.setBackgroundOverlay(false);
                 console.error('Unable to initialize the sea theme:', error);
@@ -247,8 +254,9 @@ const sea = {
     },
 
     destroy() {
+        this._generation++;
         if (this._runtime) this._runtime.destroy();
-        this.setBackgroundOverlay(false);
+        document.documentElement.classList.remove('sea-theme', 'sea-overlay-reveal');
         if (this._motionQuery && this._motionListener) {
             if (this._motionQuery.removeEventListener) {
                 this._motionQuery.removeEventListener('change', this._motionListener);
@@ -1278,6 +1286,7 @@ const container = resolveElement(options.container) || document.body;
 const canvas = resolveElement(options.canvas) || document.createElement('canvas');
 if (!canvas.parentNode) container.appendChild(canvas);
 canvas.id = options.canvasId || (container === document.body ? 'threejsmain' : 'sea-canvas');
+canvas.dataset.backgroundTheme = 'sea';
 canvas.setAttribute('aria-hidden', 'true');
 
 const gl = canvas.getContext('webgl2', {
@@ -1868,6 +1877,8 @@ return {
                 colorSchemeQuery.removeListener(handleColorSchemeChange);
             }
         }
+        const loseContext = gl.getExtension('WEBGL_lose_context');
+        if (loseContext) loseContext.loseContext();
         if (canvas.parentNode) canvas.parentNode.removeChild(canvas);
     }
 };

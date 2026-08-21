@@ -6,6 +6,15 @@
  * is still linked, which keeps the theme rollback to a one-line script swap.
  */
 
+#threejsmain {
+  opacity: 1;
+  transition: opacity 500ms ease-in-out;
+}
+
+html.background-theme-is-switching #threejsmain {
+  opacity: 0;
+}
+
 html.sea-theme {
   --sea-overlay-blur: 16px;
   --sea-overlay-saturation: 40%;
@@ -19,8 +28,14 @@ html.sea-theme body::before {
   background: rgba(4, 8, 14, 0.52);
   content: "";
   pointer-events: none;
+  transition: opacity 500ms ease-in-out;
   -webkit-backdrop-filter: blur(var(--sea-overlay-blur)) saturate(var(--sea-overlay-saturation));
   backdrop-filter: blur(var(--sea-overlay-blur)) saturate(var(--sea-overlay-saturation));
+}
+
+html.background-theme-is-switching.sea-theme body::before {
+  opacity: 0;
+  animation: none;
 }
 
 html.sea-theme.sea-overlay-reveal body::before {
@@ -58,6 +73,14 @@ html.sea-theme.sea-overlay-reveal body::before {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  #threejsmain {
+    transition: none;
+  }
+
+  html.sea-theme body::before {
+    transition: none;
+  }
+
   html.sea-theme.sea-overlay-reveal body::before {
     animation: none;
   }

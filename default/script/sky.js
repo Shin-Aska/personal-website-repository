@@ -1,3 +1,4 @@
+(function() {
 var sky =  {
 	
 	canvas: null,
@@ -15,6 +16,10 @@ var sky =  {
 	windowHalfX: null,
 	windowHalfY: null,
 	drawInterval: null,
+	_colorSchemeQuery: null,
+	_colorSchemeListener: null,
+	_reducedMotionQuery: null,
+	_reducedMotionListener: null,
 	header: '<div class="center themeContainer"><img class="themepicture" src="images/pen.png" alt="Logo"></div><p class="headingBase start">= Skies of the lost cause +</p><p class="headingBase middle">Personal website of Richard Orilla</p><br><div class="center lineContainer"><img class="linePNG" src="images/hr.png" alt="Decorative divider"></div>',
 	vertexShaderContext:  '   varying vec2 vUv;  \n               void main() {  \n                   vUv = uv;  \n                   gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );  \n              }  ',
 	fragmentShaderContext:  '   uniform sampler2D map;  \n               uniform vec3 fogColor;  \n               uniform float fogNear;  \n               uniform float fogFar;  \n               varying vec2 vUv;  \n               void main() {  \n                   float depth = gl_FragCoord.z / gl_FragCoord.w;  \n                   float fogFactor = smoothstep( fogNear, fogFar, depth );  \n                   gl_FragColor = texture2D( map, vUv );  \n                   gl_FragColor.w *= pow( gl_FragCoord.z, 20.0 );  \n                   gl_FragColor = mix( gl_FragColor, vec4( fogColor, gl_FragColor.w ), fogFactor );  \n              }  ',
@@ -44,12 +49,20 @@ var sky =  {
 	},
 
 	setupColorSchemeListener: function() {
+		if (sky._colorSchemeQuery) {
+			return;
+		}
 		const colorSchemeQuery = window.matchMedia('(prefers-color-scheme: dark)');
 		const handleColorSchemeChange = (e) => {
+			if (!sky.meshMaterial) {
+				return;
+			}
 			const newTexture = sky.loadTexture(sky.drawReducedMotionScene);
 			sky.meshMaterial.uniforms.map.texture = newTexture;
 			sky.meshMaterial.needsUpdate = true;
 		};
+		sky._colorSchemeQuery = colorSchemeQuery;
+		sky._colorSchemeListener = handleColorSchemeChange;
 
 		// Add listener for color scheme changes
 		if (colorSchemeQuery.addEventListener) {
@@ -85,8 +98,13 @@ var sky =  {
 	},
 
 	setupReducedMotionListener: function() {
+		if (sky._reducedMotionQuery) {
+			return;
+		}
 		const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
 		const handleReducedMotionChange = () => sky.applyMotionPreference();
+		sky._reducedMotionQuery = reducedMotionQuery;
+		sky._reducedMotionListener = handleReducedMotionChange;
 
 		if (reducedMotionQuery.addEventListener) {
 			reducedMotionQuery.addEventListener('change', handleReducedMotionChange);
@@ -96,6 +114,10 @@ var sky =  {
 	},
 
 	init: function() {
+		if (sky.renderer) {
+			sky.applyMotionPreference();
+			return sky;
+		}
 		var background = document.getElementById("background");
 		var bgContext = background.getContext("2d");
 		bgContext.rect(0, 0, background.width, background.height);
@@ -154,6 +176,7 @@ var sky =  {
 		window.addEventListener("resize", sky.onResize, false);
 		var finalRenderer = sky.renderer.domElement;
 		finalRenderer.id = "threejsmain";
+		finalRenderer.dataset.backgroundTheme = "sky";
 		finalRenderer.innerHTML = "Your browser doesn't support canvas"
 		document.body.appendChild(finalRenderer);
 		sky.setupReducedMotionListener();
@@ -209,48 +232,64 @@ var sky =  {
 
 	redirectToClassic: function() {
 		window.location.href = window.location.href.replace("default", "classic").replace("www.", "classic.");
+	},
+
+	destroy: function() {
+		if (sky.drawInterval) {
+			clearInterval(sky.drawInterval);
+			sky.drawInterval = null;
+		}
+		window.removeEventListener("resize", sky.onResize, false);
+
+		if (sky._colorSchemeQuery && sky._colorSchemeListener) {
+			if (sky._colorSchemeQuery.removeEventListener) {
+				sky._colorSchemeQuery.removeEventListener('change', sky._colorSchemeListener);
+			} else if (sky._colorSchemeQuery.removeListener) {
+				sky._colorSchemeQuery.removeListener(sky._colorSchemeListener);
+			}
+		}
+		if (sky._reducedMotionQuery && sky._reducedMotionListener) {
+			if (sky._reducedMotionQuery.removeEventListener) {
+				sky._reducedMotionQuery.removeEventListener('change', sky._reducedMotionListener);
+			} else if (sky._reducedMotionQuery.removeListener) {
+				sky._reducedMotionQuery.removeListener(sky._reducedMotionListener);
+			}
+		}
+
+		if (sky.geometry && sky.geometry.dispose) sky.geometry.dispose();
+		if (sky.meshMaterial && sky.meshMaterial.dispose) sky.meshMaterial.dispose();
+		if (sky.renderer) {
+			var rendererCanvas = sky.renderer.domElement;
+			var rendererContext = sky.renderer.getContext
+				? sky.renderer.getContext()
+				: sky.renderer.context;
+			if (rendererCanvas && rendererCanvas.parentNode) {
+				rendererCanvas.parentNode.removeChild(rendererCanvas);
+			}
+			if (sky.renderer.dispose) sky.renderer.dispose();
+			if (rendererContext) {
+				var loseContext = rendererContext.getExtension('WEBGL_lose_context');
+				if (loseContext) loseContext.loseContext();
+			}
+		}
+
+		sky.canvas = null;
+		sky.ctx = null;
+		sky.camera = null;
+		sky.scene = null;
+		sky.renderer = null;
+		sky.meshMaterial = null;
+		sky.mesh = null;
+		sky.geometry = null;
+		sky._colorSchemeQuery = null;
+		sky._colorSchemeListener = null;
+		sky._reducedMotionQuery = null;
+		sky._reducedMotionListener = null;
 	}
 }
 
-window.sky_fps_holder = [];
-window.sky_fps_average = 0;
-window.sky_fps_iteration_count = 0;
-window.sky_timeout = setInterval(async function() {
-	if (window.sky.prefersReducedMotion()) {
-		window.sky_fps_holder = [];
-		return;
-	}
-
-	if (window.sky.tabFocus) {
-		window.sky_fps_holder.push(window.sky.stats.fps);
-		if (window.sky_fps_holder.length >= 20) {
-			const threshold = 15;
-			const totalElements = window.sky_fps_holder.length;
-			const requiredCount = Math.ceil((2 / 3) * totalElements);
-			
-			let count = 0;
-			for (let i = 0; i < totalElements; i++) {
-
-				if (window.sky_fps_holder[i] >= threshold) {
-					count++;
-				}
-
-				if (count >= requiredCount) {
-					clearInterval(window.sky_timeout);
-					break;
-				}
-			}
-			console.log(`count: ${count}, requiredCount: ${requiredCount}`);
-		  }
-		  
-	}
-}, 500);
-
-window.sky.tabFocus = true;
-document.addEventListener("visibilitychange", function() {
-    if (document.visibilityState === 'visible') {
-        window.sky.tabFocus = true;
-    } else {
-        window.sky.tabFocus = false;
-    }
-});
+// Keep the legacy renderer available without claiming the active-theme alias.
+// When this file is used by itself it still behaves like the original sky.js.
+window.legacySky = sky;
+if (!window.sky) window.sky = sky;
+})();
