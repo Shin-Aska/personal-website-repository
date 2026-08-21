@@ -9,6 +9,24 @@ var oldtime = +new Date;
 var fps = 0;
 var stats = new Stats();
 var showStats = false;
+var backgroundThemeStorageKey = "backgroundTheme";
+
+function getStoredBackgroundTheme() {
+	try {
+		var storedTheme = window.localStorage.getItem(backgroundThemeStorageKey);
+		return storedTheme === "sea" || storedTheme === "sky" ? storedTheme : null;
+	} catch (error) {
+		return null;
+	}
+}
+
+function storeBackgroundTheme(themeName) {
+	try {
+		window.localStorage.setItem(backgroundThemeStorageKey, themeName);
+	} catch (error) {
+		// Theme switching remains available when browser storage is unavailable.
+	}
+}
 
 function webglAvailable() {
 	try {
@@ -23,7 +41,12 @@ function webglAvailable() {
 }
 
 $( document ).ready(function() {
-	
+	var storedBackgroundTheme = getStoredBackgroundTheme();
+	if (storedBackgroundTheme === "sky" && window.legacySky) {
+		window.sky = window.legacySky;
+	} else if (storedBackgroundTheme === "sea" && window.sea) {
+		window.sky = window.sea;
+	}
 
 	if (showStats) {
 		stats.setMode(0);
@@ -129,7 +152,9 @@ $( document ).ready(function() {
 			if (typeof currentTheme.destroy === "function") currentTheme.destroy();
 			window.sky = nextTheme;
 			await Promise.resolve(nextTheme.init());
-			document.documentElement.dataset.backgroundTheme = nextTheme === window.sea ? "sea" : "sky";
+			var nextThemeName = nextTheme === window.sea ? "sea" : "sky";
+			document.documentElement.dataset.backgroundTheme = nextThemeName;
+			storeBackgroundTheme(nextThemeName);
 			await waitForPaint();
 			root.classList.remove("background-theme-is-switching");
 			await waitForBackgroundFade(document.getElementById("threejsmain"));
