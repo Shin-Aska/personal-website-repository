@@ -57,51 +57,32 @@ $( document ).ready(function() {
 		document.body.appendChild( stats.domElement );
 	}
 
-	try {
-		sky.init();
-	}
-	catch (ex) {
-		window.location = window.location.href.replace(window.location.hostname, "classic.richardorilla.website");
-	}
-	
-	var menu = document.getElementById("menu");
-	for (var i = 0; i < menus.length; i++) {
-		var menuLink = document.createElement("a");
-		menuLink.id = "siteMenu_entry_" + (i + 1);
-		menuLink.className = "menuButton";
-		menuLink.href = menus[i].url;
-		menuLink.textContent = menus[i].name;
-		if (window.location.pathname.split("/").pop() === menus[i].url ||
-			(window.location.pathname.endsWith("/") && menus[i].url === "about.html") ||
-			(window.location.pathname.endsWith("index.html") && menus[i].url === "about.html")) {
-			menuLink.classList.add("is-active");
-			menuLink.setAttribute("aria-current", "page");
-		}
-		menu.appendChild(menuLink);
-	}
-	menu.setAttribute("aria-label", "Primary navigation");
-	menu.setAttribute("role", "navigation");
-
-	// Article pages do not have their own top-level menu entry, so keep readers
-	// oriented by treating them as part of the Blogs section.
-	if (!menu.querySelector(".is-active") &&
-		(document.getElementById("headingBlog") || document.getElementById("tableContents"))) {
-		var blogLink = document.querySelector('#menu a[href="blog.html"]');
-		if (blogLink) {
-			blogLink.classList.add("is-active");
-			blogLink.setAttribute("aria-current", "page");
-		}
-	}
 	var header = document.getElementById("header");
-	header.innerHTML = sky.header;
-	document.documentElement.dataset.backgroundTheme = window.sky === window.sea ? "sea" : "sky";
-
-	var themeContainer = header.querySelector(".themeContainer");
+	var themeContainer = null;
 	var themeContainerClickCount = 0;
 	var backgroundThemeSwitching = false;
 	var reducedMotionQuery = window.matchMedia
 		? window.matchMedia("(prefers-reduced-motion: reduce)")
 		: null;
+	var performanceMonitor = null;
+	var performanceBadge = null;
+
+	function getActiveThemeName() {
+		if (!window.sky) return "sky";
+		return window.sky === window.sea ? "sea" : "sky";
+	}
+
+	function goClassic() {
+		try {
+			window.sessionStorage.setItem("performanceAutoSwitched", "true");
+			window.sessionStorage.setItem("classicReturnPath", window.location.pathname);
+		} catch (error) {
+			// Storage may be unavailable; fallback still proceeds.
+		}
+		window.location.href = window.location.href
+			.replace(window.location.hostname, "classic.richardorilla.website")
+			.replace("default", "classic");
+	}
 
 	function waitForBackgroundFade(canvas) {
 		if (!canvas || (reducedMotionQuery && reducedMotionQuery.matches)) {
@@ -133,17 +114,24 @@ $( document ).ready(function() {
 		});
 	}
 
-	themeContainer.addEventListener("click", async function() {
+	async function setBackgroundTheme(targetName) {
 		if (backgroundThemeSwitching) return;
-		themeContainerClickCount++;
-		if (themeContainerClickCount < 5) return;
-		themeContainerClickCount = 0;
-
 		var currentTheme = window.sky;
-		var nextTheme = currentTheme === window.sea ? window.legacySky : window.sea;
+		var currentName = getActiveThemeName();
+		if (targetName === currentName) return;
+
+		var nextTheme = null;
+		if (targetName === "sea" && window.sea) nextTheme = window.sea;
+		else if (targetName === "sky" && window.legacySky) nextTheme = window.legacySky;
+		else if (targetName === "classic") {
+			goClassic();
+			return;
+		}
+
 		if (!nextTheme || nextTheme === currentTheme) return;
 
 		backgroundThemeSwitching = true;
+		if (performanceMonitor) performanceMonitor.ignoreNextSwitch();
 		var root = document.documentElement;
 		var currentCanvas = document.getElementById("threejsmain");
 		root.classList.add("background-theme-is-switching");
@@ -152,9 +140,8 @@ $( document ).ready(function() {
 			if (typeof currentTheme.destroy === "function") currentTheme.destroy();
 			window.sky = nextTheme;
 			await Promise.resolve(nextTheme.init());
-			var nextThemeName = nextTheme === window.sea ? "sea" : "sky";
-			document.documentElement.dataset.backgroundTheme = nextThemeName;
-			storeBackgroundTheme(nextThemeName);
+			document.documentElement.dataset.backgroundTheme = targetName;
+			storeBackgroundTheme(targetName);
 			await waitForPaint();
 			root.classList.remove("background-theme-is-switching");
 			await waitForBackgroundFade(document.getElementById("threejsmain"));
@@ -163,15 +150,132 @@ $( document ).ready(function() {
 			if (typeof nextTheme.destroy === "function") nextTheme.destroy();
 			window.sky = currentTheme;
 			await Promise.resolve(currentTheme.init());
-			document.documentElement.dataset.backgroundTheme = currentTheme === window.sea ? "sea" : "sky";
+			document.documentElement.dataset.backgroundTheme = currentName;
+			storeBackgroundTheme(currentName);
 			await waitForPaint();
 			root.classList.remove("background-theme-is-switching");
 			await waitForBackgroundFade(document.getElementById("threejsmain"));
 		} finally {
 			root.classList.remove("background-theme-is-switching");
 			backgroundThemeSwitching = false;
+			updatePerformanceBadge();
 		}
-	});
+	}
+
+	async function handlePerformanceDecision(decision, theme, frameTimeMs, reason) {
+		var currentName = getActiveThemeName();
+		console.info("Performance monitor:", decision, "on", theme, "(" + (reason || "unknown") + ")", "frame time", frameTimeMs, "ms");
+
+		if (decision === "degraded") {
+			if (currentName === "sea") {
+				await setBackgroundTheme("sky");
+			} else if (currentName === "sky") {
+				goClassic();
+			}
+		}
+	}
+
+	function createPerformanceBadge() {
+		var badge = document.createElement("button");
+		badge.className = "perf-badge";
+		badge.type = "button";
+		badge.setAttribute("aria-live", "polite");
+		badge.title = "Performance mode";
+		badge.addEventListener("click", function() {
+			var current = getActiveThemeName();
+			if (current === "sea") {
+				setBackgroundTheme("sky");
+			} else if (current === "sky") {
+				setBackgroundTheme("sea");
+			}
+		});
+		return badge;
+	}
+
+	function updatePerformanceBadge() {
+		if (!performanceBadge) return;
+		var current = getActiveThemeName();
+		var fps = performanceMonitor ? Math.round(performanceMonitor.getLastFps()) : 0;
+		performanceBadge.dataset.theme = current;
+		performanceBadge.textContent = (current === "sea" ? "🌊" : "☁️") + (fps > 0 ? " " + fps : "");
+		performanceBadge.title = current === "sea"
+			? "Sea theme (heavy). FPS: " + fps + ". Click to switch to sky."
+			: "Sky theme (light). FPS: " + fps + ". Click to switch to sea.";
+	}
+
+	function initPerformanceMonitor() {
+		if (typeof PerformanceMonitor !== "function") {
+			console.warn("PerformanceMonitor not available; skipping monitor.");
+			return;
+		}
+		performanceBadge = createPerformanceBadge();
+		document.body.appendChild(performanceBadge);
+		updatePerformanceBadge();
+		console.info("Performance monitor initialized. Theme:", getActiveThemeName());
+
+		performanceMonitor = new PerformanceMonitor(getActiveThemeName, handlePerformanceDecision, updatePerformanceBadge);
+		performanceMonitor.start();
+	}
+
+	try {
+		sky.init();
+	}
+	catch (ex) {
+		window.location = window.location.href.replace(window.location.hostname, "classic.richardorilla.website");
+	}
+
+	initPerformanceMonitor();
+
+	header.innerHTML = sky.header;
+	document.documentElement.dataset.backgroundTheme = window.sky === window.sea ? "sea" : "sky";
+
+	themeContainer = header.querySelector(".themeContainer");
+
+	function onThemeContainerClick(event) {
+		if (event && event.type === "touchend") {
+			event.preventDefault();
+		}
+		if (backgroundThemeSwitching) return;
+		themeContainerClickCount++;
+		if (themeContainerClickCount < 5) return;
+		themeContainerClickCount = 0;
+
+		var currentName = getActiveThemeName();
+		var nextName = currentName === "sea" ? "sky" : "sea";
+		setBackgroundTheme(nextName);
+	}
+
+	themeContainer.addEventListener("click", onThemeContainerClick);
+	themeContainer.addEventListener("touchend", onThemeContainerClick, { passive: false });
+
+	var menu = document.getElementById("menu");
+	for (var i = 0; i < menus.length; i++) {
+		var menuLink = document.createElement("a");
+		menuLink.id = "siteMenu_entry_" + (i + 1);
+		menuLink.className = "menuButton";
+		menuLink.href = menus[i].url;
+		menuLink.textContent = menus[i].name;
+		if (window.location.pathname.split("/").pop() === menus[i].url ||
+			(window.location.pathname.endsWith("/") && menus[i].url === "about.html") ||
+			(window.location.pathname.endsWith("index.html") && menus[i].url === "about.html")) {
+			menuLink.classList.add("is-active");
+			menuLink.setAttribute("aria-current", "page");
+		}
+		menu.appendChild(menuLink);
+	}
+	menu.setAttribute("aria-label", "Primary navigation");
+	menu.setAttribute("role", "navigation");
+
+	// Article pages do not have their own top-level menu entry, so keep readers
+	// oriented by treating them as part of the Blogs section.
+	if (!menu.querySelector(".is-active") &&
+		(document.getElementById("headingBlog") || document.getElementById("tableContents"))) {
+		var blogLink = document.querySelector('#menu a[href="blog.html"]');
+		if (blogLink) {
+			blogLink.classList.add("is-active");
+			blogLink.setAttribute("aria-current", "page");
+		}
+	}
 	document.getElementById("mainLabel").style.display = "none";
 	document.getElementById("backgroundLabel").style.display = "none";
 
