@@ -42,6 +42,57 @@ html.sea-theme.sea-overlay-reveal body::before {
   animation: sea-overlay-reveal var(--sea-overlay-reveal-duration) cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
+/* Sea-theme readability in dark mode only: hard outline + shadow so text doesn't blend with the orange bloom */
+@media (prefers-color-scheme: dark) {
+  html.sea-theme #header,
+  html.sea-theme #menu,
+  html.sea-theme #content {
+    text-shadow:
+      0 1px 3px rgba(0, 0, 0, 0.9),
+      0 0 8px rgba(0, 0, 0, 0.7),
+      0 0 18px rgba(0, 0, 0, 0.5);
+  }
+
+  html.sea-theme .middle {
+    text-shadow:
+      0 1px 3px rgba(0, 0, 0, 0.95),
+      0 0 10px rgba(0, 0, 0, 0.8),
+      0 0 22px rgba(0, 0, 0, 0.6);
+  }
+
+  html.sea-theme .menuButton {
+    text-shadow:
+      0 1px 3px rgba(0, 0, 0, 0.9),
+      0 0 10px rgba(0, 0, 0, 0.75),
+      0 0 22px rgba(0, 0, 0, 0.55);
+  }
+
+  html.sea-theme .themelogo,
+  html.sea-theme .lineSVG {
+    filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.75));
+  }
+
+  html.sea-theme .themepicture,
+  html.sea-theme .linePNG {
+    /* Rebuild the filter chain: invert the black PNG to white first, then paint the dark halo behind it. */
+    filter: invert(100%) drop-shadow(0 0 8px rgba(0, 0, 0, 0.75));
+  }
+
+  html.sea-theme #content a {
+    text-shadow:
+      0 0 6px rgba(0, 0, 0, 0.75),
+      0 0 10px rgba(0, 0, 0, 0.55),
+      5px 5px 12px var(--link-text-shadow-color, rgba(0, 0, 0, 0.45));
+  }
+
+  /* Embedded SVG documents (e.g. resume) should render with their own text styling. */
+  html.sea-theme #content svg,
+  html.sea-theme #content svg * {
+    text-shadow: none;
+    filter: none;
+  }
+}
+
 @media (prefers-color-scheme: light) {
   html.sea-theme {
     --sea-overlay-blur: 14px;
@@ -52,9 +103,9 @@ html.sea-theme.sea-overlay-reveal body::before {
     background: rgba(245, 250, 255, 0.55);
   }
 
-  html.sea-theme #content,
-  html.sea-theme #content a {
-    text-shadow: none;
+  html.sea-theme .themepicture,
+  html.sea-theme .linePNG {
+    filter: none;
   }
 }
 
