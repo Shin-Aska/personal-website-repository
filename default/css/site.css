@@ -1158,3 +1158,55 @@ pre:hover .copy-btn {
     display: none;
   }
 }
+
+/* Performance-mode indicator */
+
+.perf-badge {
+  position: fixed;
+  right: 0.75rem;
+  bottom: 0.75rem;
+  z-index: 2147483647;
+  min-width: 2.25rem;
+  height: 2.25rem;
+  padding: 0 0.5rem;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  font-size: 0.85rem;
+  line-height: 1;
+  cursor: pointer;
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  transition: transform 120ms ease, background 120ms ease;
+  user-select: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  pointer-events: auto;
+}
+
+.perf-badge:hover,
+.perf-badge:focus-visible {
+  background: rgba(0, 0, 0, 0.75);
+  transform: scale(1.1);
+}
+
+.perf-badge[data-theme="sea"] {
+  border-color: rgba(100, 255, 218, 0.5);
+}
+
+.perf-badge[data-theme="sky"] {
+  border-color: rgba(142, 214, 255, 0.5);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .perf-badge {
+    transition: none;
+  }
+}
+
+.perf-badge {
+  display: none;
+}
