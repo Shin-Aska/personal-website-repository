@@ -1158,6 +1158,171 @@ const gameData = {
         let britanniaMapBounds = null;
         let britanniaMapCenter = null;
         let britanniaMapZoom = null;
+        let britanniaAtlasNavigation = null;
+        let britanniaLocationPattern = null;
+        let britanniaLocationLookup = null;
+
+        const britanniaQuestDestinations = {
+            'Compassion — Britain': ['Britain', 'Ariana', 'Anya', 'Shrine of Compassion'],
+            'Honesty — Moonglow': ['Moonglow', 'Manrel', 'Shrine of Honesty'],
+            'Valor — Jhelom': ["Lord British's Castle", 'Sherry', 'Jhelom', 'Shrine of Valor'],
+            'Justice — Yew': ['Yew', 'Lenora', 'Boskin', 'Shrine of Justice'],
+            'Sacrifice — Minoc': ['Minoc', 'Julia', 'Gwenno', 'Selganor', 'Shrine of Sacrifice'],
+            'Honor — Trinsic': ['Trinsic', 'Whitsaber', 'Shrine of Honor'],
+            'Spirituality — Skara Brae': ['Skara Brae', 'Marney'],
+            'Humility — New Magincia': ['New Magincia', 'Antonio', 'Conor', 'Shrine of Humility'],
+            'Translate the Gargish Tome': ['Mariah', 'The Lycaeum', 'Zoltan', 'Homer', "Buccaneer's Den"],
+            "Join the Thieves' Guild": ["Buccaneer's Den", 'Homer', 'Budo', 'Phoenix'],
+            "Assemble Hawkins's Map": ['Old Ybarra', 'Wrong and Covetous Map Room', 'Ant Cave: Mushroom Lake', 'Ant Cave: Hole to the Map', 'Ant Cave: Pirate Map Fragment', "Bonn's Basement", 'Arturos', 'Whitsaber'],
+            'Plunder the Pirate Cave': ['Pirate Cave', 'Pirate Cave: Treasure Room', 'Homer'],
+            'Reach the Gargoyle Realm': ['Dungeon Hythloth', 'Captain Johne', 'Hythloth: Gargoyle Entrance'],
+            'Secure Diplomatic Access': ['Beh Lem', 'Draxinusom', 'Valkadesh'],
+            'Build the Hot-Air Balloon': ["Sutek's Castle", "Sutek's Castle: Balloon Plans", 'Paws', 'Marissa', 'Charlotte', 'Michelle'],
+            'Embrace Singularity': ['Shrine of Control', 'Shrine of Passion', 'Shrine of Diligence', 'Temple of Singularity'],
+            'Recover the Vortex Cube': ['Cyclops Castle', 'Vortex Cube'],
+            'Forge the Twin Lenses': ["Buccaneer's Cave: Glass Sword and Magic Bow", 'Hall of Knowledge', 'Lensmaker', 'Ephemerides', 'Moonglow'],
+            'Prepare the Codex Shrine': ['Vortex Cube', 'Shrine of the Codex']
+        };
+
+        const britanniaLocationAliases = {
+            'Castle Britannia': "Lord British's Castle",
+            'Hythloth': 'Dungeon Hythloth',
+            'Dungeon Shame': 'Dungeon Shame',
+            'Wrong/Covetous': 'Wrong and Covetous Map Room',
+            'Stonegate': 'Cyclops Castle',
+            'Shrine of Singularity': 'Temple of Singularity',
+            'Lord Draxinusom': 'Draxinusom',
+            'Lor-wis-lem': 'Lensmaker',
+            'Codex': 'Shrine of the Codex'
+        };
+
+        function britanniaSlug(value) {
+            return String(value || '')
+                .normalize('NFKD')
+                .replace(/[^\w\s-]/g, '')
+                .trim()
+                .toLowerCase()
+                .replace(/[\s_-]+/g, '-');
+        }
+
+        function britanniaEscapeRegExp(value) {
+            return String(value).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        }
+
+        function findBritanniaDestination(name) {
+            const config = window.BRITANNIA_MAP_CONFIG || {};
+            const locations = [...(config.markers || []), ...(config.npcs || [])];
+            const target = britanniaLocationAliases[name] || name;
+            return locations.find(location => location.name.toLowerCase() === String(target).toLowerCase()) || null;
+        }
+
+        function britanniaAtlasHref(name) {
+            return `#atlas:marker=${encodeURIComponent(name)}`;
+        }
+
+        function britanniaQuestHref(quest, section) {
+            const questKey = britanniaSlug(quest.title);
+            const sectionKey = section ? `&section=${encodeURIComponent(britanniaSlug(section.heading))}` : '';
+            return `#quests:quest=${encodeURIComponent(questKey)}${sectionKey}`;
+        }
+
+        function britanniaQuestRoutes() {
+            return gameData.quests.flatMap(quest => (quest.sections || []).map(section => ({
+                quest,
+                section,
+                destinations: (britanniaQuestDestinations[section.heading] || [])
+                    .map(findBritanniaDestination)
+                    .filter(Boolean)
+            })));
+        }
+
+        function relatedBritanniaQuests(markerData, limit = 4) {
+            const markerName = markerData?.name;
+            if (!markerName) {
+                return [];
+            }
+
+            const markerPattern = new RegExp(`(^|[^A-Za-z0-9_])${britanniaEscapeRegExp(markerName)}(?=$|[^A-Za-z0-9_])`, 'i');
+            return britanniaQuestRoutes().filter(route => {
+                if (route.destinations.some(destination => destination.name === markerName)) {
+                    return true;
+                }
+                const routeText = [route.section.heading, route.section.summary, ...(route.section.steps || [])].join(' ');
+                return markerPattern.test(routeText);
+            }).slice(0, limit);
+        }
+
+        function linkBritanniaQuestText(text) {
+            const value = String(text || '');
+            if (!britanniaLocationPattern) {
+                const config = window.BRITANNIA_MAP_CONFIG || {};
+                britanniaLocationLookup = new Map();
+                [...(config.markers || []), ...(config.npcs || [])].forEach(location => {
+                    if (location.name.length >= 3 && !britanniaLocationLookup.has(location.name.toLowerCase())) {
+                        britanniaLocationLookup.set(location.name.toLowerCase(), location.name);
+                    }
+                });
+                Object.entries(britanniaLocationAliases).forEach(([alias, destination]) => {
+                    britanniaLocationLookup.set(alias.toLowerCase(), destination);
+                });
+                const names = [...britanniaLocationLookup.keys()]
+                    .sort((first, second) => second.length - first.length)
+                    .map(britanniaEscapeRegExp);
+                britanniaLocationPattern = new RegExp(`(^|[^A-Za-z0-9_])(${names.join('|')})(?=$|[^A-Za-z0-9_])`, 'gi');
+            }
+
+            return value.replace(britanniaLocationPattern, (match, boundary, label) => {
+                if (label === label.toLowerCase()) {
+                    return match;
+                }
+                const destination = britanniaLocationLookup.get(label.toLowerCase());
+                return `${boundary}<a href="${britanniaAtlasHref(destination)}" class="u6-atlas-link">${label}</a>`;
+            });
+        }
+
+        function openBritanniaQuest(questKey, sectionKey) {
+            showTab('quest');
+            const questElement = document.querySelector(`#quest-accordion [data-quest-key="${questKey}"]`);
+            if (!questElement) {
+                return;
+            }
+
+            const toggle = questElement.querySelector('.accordion-toggle');
+            const content = questElement.querySelector('.accordion-content');
+            if (toggle && content && !content.style.maxHeight) {
+                toggle.click();
+            }
+
+            const target = sectionKey
+                ? questElement.querySelector(`[data-quest-section="${sectionKey}"]`)
+                : questElement;
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }
+
+        function openBritanniaAtlasDestination(name) {
+            showTab('atlas');
+            const activate = () => {
+                if (!britanniaAtlasNavigation) {
+                    requestAnimationFrame(activate);
+                    return;
+                }
+                britanniaAtlasNavigation(name);
+            };
+            requestAnimationFrame(activate);
+        }
+
+        function applyBritanniaDeepLink() {
+            const hash = window.location.hash.slice(1);
+            const [route, query = ''] = hash.split(':');
+            const params = new URLSearchParams(query);
+            if (route === 'atlas' && params.has('marker')) {
+                openBritanniaAtlasDestination(params.get('marker'));
+            } else if ((route === 'quests' || route === 'quest') && params.has('quest')) {
+                openBritanniaQuest(params.get('quest'), params.get('section'));
+            }
+        }
 
         function showTab(tabId) {
             document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
@@ -1204,7 +1369,6 @@ const gameData = {
             setupEventListeners();
             setupVirtueChart();
             renderPassageList(gameData.passage);
-            setupBritanniaMap();
             document.getElementById('passage-search').addEventListener('input', (e) => {
                 const searchTerm = e.target.value.toLowerCase();
                 const filteredPassage = gameData.passage.filter(p => 
@@ -1214,21 +1378,29 @@ const gameData = {
                 );
                 renderPassageList(filteredPassage);
             });
+            window.addEventListener('hashchange', applyBritanniaDeepLink);
+            applyBritanniaDeepLink();
         });
         
         function generateQuestContent(quest) {
-            const introHtml = quest.intro ? `<p class="mb-4 text-amber-900/85">${quest.intro}</p>` : '';
+            const introHtml = quest.intro ? `<p class="mb-4 text-amber-900/85">${linkBritanniaQuestText(quest.intro)}</p>` : '';
             const sectionsHtml = (quest.sections || []).map(section => {
-                const summaryHtml = section.summary ? `<p class="mb-2 text-amber-900/80">${section.summary}</p>` : '';
+                const summaryHtml = section.summary ? `<p class="mb-2 text-amber-900/80">${linkBritanniaQuestText(section.summary)}</p>` : '';
                 const stepsHtml = (section.steps && section.steps.length)
-                    ? `<ol class="list-decimal list-inside space-y-1 text-amber-900/90">${section.steps.map(step => `<li>${step}</li>`).join('')}</ol>`
+                    ? `<ol class="list-decimal list-inside space-y-1 text-amber-900/90">${section.steps.map(step => `<li>${linkBritanniaQuestText(step)}</li>`).join('')}</ol>`
                     : '';
                 const keywordsHtml = (section.keywords && section.keywords.length)
                     ? `<div class="flex flex-wrap gap-2 mt-3">${section.keywords.map(keyword => `<button type="button" class="keyword-hint inline-flex items-center gap-1 px-3 py-1 text-sm font-medium text-amber-900 bg-amber-100/70 border border-amber-300 rounded hover:bg-amber-100 transition" data-helper="${encodeURIComponent(keyword.helper)}">${keyword.label}</button>`).join('')}</div>`
                     : '';
-                return `<article class="quest-subsection p-4 bg-amber-50/60 rounded-lg border border-amber-200"><h4 class="font-semibold text-lg text-amber-900 mb-1">${section.heading}</h4>${summaryHtml}${stepsHtml}${keywordsHtml}</article>`;
+                const destinations = (britanniaQuestDestinations[section.heading] || [])
+                    .map(findBritanniaDestination)
+                    .filter(Boolean);
+                const destinationsHtml = destinations.length
+                    ? `<div class="u6-quest-destinations"><span class="u6-quest-destinations__label">Mapped stops</span>${destinations.map(destination => `<a href="${britanniaAtlasHref(destination.name)}" class="u6-quest-destination">${destination.name}<span class="u6-quest-destination__level">L${destination.position.z ?? 0}</span></a>`).join('')}</div>`
+                    : '';
+                return `<article class="quest-subsection p-4 bg-amber-50/60 rounded-lg border border-amber-200" data-quest-section="${britanniaSlug(section.heading)}"><h4 class="font-semibold text-lg text-amber-900 mb-1">${section.heading}</h4>${summaryHtml}${stepsHtml}${destinationsHtml}${keywordsHtml}</article>`;
             }).join('');
-            const recapHtml = quest.recap ? `<div class="mt-6 p-4 bg-amber-100/60 border-l-4 border-amber-500 rounded text-amber-900/90">${quest.recap}</div>` : '';
+            const recapHtml = quest.recap ? `<div class="mt-6 p-4 bg-amber-100/60 border-l-4 border-amber-500 rounded text-amber-900/90">${linkBritanniaQuestText(quest.recap)}</div>` : '';
             return `${introHtml}<div class="space-y-4">${sectionsHtml}</div>${recapHtml}`;
         }
 
@@ -1245,6 +1417,7 @@ const gameData = {
             gameData.quests.forEach((quest) => {
                 const div = document.createElement('div');
                 div.className = "border border-amber-200 rounded-lg bg-white/50";
+                div.dataset.questKey = britanniaSlug(quest.title);
                 const questContent = generateQuestContent(quest);
                 div.innerHTML = `
                     <button class="accordion-toggle w-full text-left p-4 font-semibold text-xl text-amber-900 flex justify-between items-center">
@@ -1273,10 +1446,17 @@ const gameData = {
         
         const dungeonList = document.getElementById('dungeon-list');
         gameData.dungeons.forEach(dungeon => {
-            const div = document.createElement('div');
-            div.className = "p-4 bg-white/50 rounded-md border border-amber-200";
-            div.innerHTML = `<h4 class="font-bold text-lg text-amber-900">${dungeon.name}</h4><p class="text-sm text-amber-800 italic">${dungeon.location}</p><p class="text-amber-900/90 mt-2">${dungeon.objective}</p>`;
-            dungeonList.appendChild(div);
+            const destinations = {
+                "Dungeon Destard (Dragon's Den)": 'Dungeon Destard',
+                'Dungeon Wrong/Covetous': 'Dungeon Wrong',
+                'The Ant Mound': 'Ant Mound'
+            };
+            const destination = destinations[dungeon.name] || dungeon.name;
+            const link = document.createElement('a');
+            link.className = 'u6-atlas__dungeon-card';
+            link.href = britanniaAtlasHref(destination);
+            link.innerHTML = `<h4>${dungeon.name}</h4><span class="u6-atlas__dungeon-location">${dungeon.location}</span><span class="u6-atlas__dungeon-objective">${dungeon.objective}</span>`;
+            dungeonList.appendChild(link);
         });
         
         const virtueSelection = document.getElementById('virtue-selection');
@@ -1689,11 +1869,21 @@ Player’s question: "${query}"`;
         }
 
         const config = window.BRITANNIA_MAP_CONFIG || {};
-        const imageUrl = config.imageUrl;
+        const levels = Array.isArray(config.levels) ? config.levels : [];
+        let activeLevel = levels.find(level => level.id === 0) || null;
+        const imageUrl = activeLevel ? activeLevel.imageUrl : config.imageUrl;
         const imageSize = Array.isArray(config.imageSize) ? config.imageSize : null;
         const markers = Array.isArray(config.markers) ? config.markers : [];
-        const xRange = Array.isArray(config.xRange) && config.xRange.length === 2 ? config.xRange : [0, 100];
-        const yRange = Array.isArray(config.yRange) && config.yRange.length === 2 ? config.yRange : [0, 100];
+        const npcMarkers = Array.isArray(config.npcs) ? config.npcs : [];
+        const npcToggle = document.getElementById('britannia-map-npcs');
+        const npcCount = document.getElementById('britannia-map-npc-count');
+        const xRange = activeLevel
+            ? [0, activeLevel.worldSize]
+            : (Array.isArray(config.xRange) && config.xRange.length === 2 ? config.xRange : [0, 100]);
+        const yRange = activeLevel
+            ? [0, activeLevel.worldSize]
+            : (Array.isArray(config.yRange) && config.yRange.length === 2 ? config.yRange : [0, 100]);
+        const gameCoordinates = config.coordinateSystem === 'game';
         const editorEnabled = Boolean(config.editorEnabled);
 
         if (!imageUrl || !imageSize || imageSize.length !== 2) {
@@ -1702,10 +1892,10 @@ Player’s question: "${query}"`;
         }
 
         const [width, height] = imageSize;
-        const [minX, maxX] = xRange;
-        const [minY, maxY] = yRange;
-        const spanX = maxX - minX;
-        const spanY = maxY - minY;
+        let [minX, maxX] = xRange;
+        let [minY, maxY] = yRange;
+        let spanX = maxX - minX;
+        let spanY = maxY - minY;
         if (!spanX || !spanY) {
             container.innerHTML = '<p class="text-sm text-amber-800/80">Interactive map coordinate ranges are invalid.</p>';
             return;
@@ -1741,6 +1931,10 @@ Player’s question: "${query}"`;
                 color: '#0891b2',
                 label: 'Site of Interest'
             },
+            npc: {
+                color: '#047857',
+                label: 'Named NPC'
+            },
             questline: {
                 color: '#0ea5e9',
                 label: 'Questline Marker'
@@ -1762,12 +1956,20 @@ Player’s question: "${query}"`;
             const safeDescription = markerData.description ? `<p class="text-sm leading-snug">${markerData.description}</p>` : '';
             const position = markerData.position || {};
             const style = resolveMarkerStyle(markerData);
+            const quests = relatedBritanniaQuests(markerData, 3);
+            const questLinks = quests.length
+                ? `<div class="u6-atlas__popup-quests"><strong>Connected quest threads</strong>${quests.map(route => `<a href="${britanniaQuestHref(route.quest, route.section)}" class="u6-atlas__popup-link">${route.section.heading}</a>`).join('')}</div>`
+                : '';
+            const coordinateLabel = gameCoordinates
+                ? `World coordinates: X ${Number(position.x).toString(16).toUpperCase().padStart(3, '0')}, Y ${Number(position.y).toString(16).toUpperCase().padStart(3, '0')}, Z ${position.z ?? 0}`
+                : `Approx. coordinates: ${typeof position.x === 'number' ? position.x.toFixed(2) : '?'}°E, ${typeof position.y === 'number' ? position.y.toFixed(2) : '?'}°S`;
             return `
                 <article class="space-y-1">
                     <h4 class="font-semibold text-base">${markerData.name || 'Point of interest'}</h4>
                     ${safeDescription}
                     <p class="text-xs text-amber-700/80">Category: ${style.label}</p>
-                    <p class="text-xs text-amber-700/80">Approx. coordinates: ${typeof position.x === 'number' ? position.x.toFixed(2) : '?'}°E, ${typeof position.y === 'number' ? position.y.toFixed(2) : '?'}°S</p>
+                    <p class="text-xs text-amber-700/80">${coordinateLabel}</p>
+                    ${questLinks}
                 </article>
             `;
         };
@@ -1776,10 +1978,11 @@ Player’s question: "${query}"`;
             const pixelX = latlng.lng;
             const pixelY = latlng.lat;
             const xCoord = minX + (pixelX / width) * spanX;
-            const yCoord = minY + (pixelY / height) * spanY;
+            const yRatio = gameCoordinates ? 1 - pixelY / height : pixelY / height;
+            const yCoord = minY + yRatio * spanY;
             return {
-                x: Number(xCoord.toFixed(2)),
-                y: Number(yCoord.toFixed(2)),
+                x: gameCoordinates ? Math.round(xCoord) : Number(xCoord.toFixed(2)),
+                y: gameCoordinates ? Math.round(yCoord) : Number(yCoord.toFixed(2)),
             };
         };
 
@@ -1787,7 +1990,7 @@ Player’s question: "${query}"`;
             const xPercent = Math.min(Math.max((position.x - minX) / spanX, 0), 1);
             const yPercent = Math.min(Math.max((position.y - minY) / spanY, 0), 1);
             const xCoord = xPercent * width;
-            const yCoord = yPercent * height;
+            const yCoord = gameCoordinates ? (1 - yPercent) * height : yPercent * height;
             return { lat: yCoord, lng: xCoord };
         };
 
@@ -1799,7 +2002,7 @@ Player’s question: "${query}"`;
 
         const map = L.map(container, {
             crs: L.CRS.Simple,
-            minZoom: -2.5,
+            minZoom: gameCoordinates ? -5 : -2.5,
             maxZoom: 4,
             zoomSnap: 0.10,
             wheelPxPerZoomLevel: 90,
@@ -1807,7 +2010,7 @@ Player’s question: "${query}"`;
         });
 
         const overlay = L.imageOverlay(imageUrl, bounds, {
-            alt: 'Ultima VI: The False Prophet world map',
+            alt: 'Britannia surface terrain extracted from the original Ultima VI game data',
             interactive: true
         });
         overlay.addTo(map);
@@ -1824,6 +2027,8 @@ Player’s question: "${query}"`;
             britanniaMapCenter = map.getCenter();
             britanniaMapZoom = map.getZoom();
         });
+        map.on('popupopen', () => container.classList.add('britannia-map--popup-open'));
+        map.on('popupclose', () => container.classList.remove('britannia-map--popup-open'));
 
         const legendEntries = new Map();
         let legendControl = null;
@@ -1851,10 +2056,12 @@ Player’s question: "${query}"`;
             }
             const container = ensureLegendControl();
             container.innerHTML = '';
-            const header = L.DomUtil.create('h4', 'font-semibold text-amber-900 mb-2', container);
+            const compactLegend = map.getContainer().clientWidth < 360;
+            const legendContent = compactLegend ? L.DomUtil.create('details', '', container) : container;
+            const header = L.DomUtil.create(compactLegend ? 'summary' : 'h4', 'font-semibold text-amber-900 mb-2', legendContent);
             header.textContent = 'Marker Types';
             legendEntries.forEach((color, label) => {
-                const item = L.DomUtil.create('div', 'flex items-center gap-2', container);
+                const item = L.DomUtil.create('div', 'flex items-center gap-2', legendContent);
                 item.innerHTML = `
                     <span style="
                         display:inline-block;
@@ -1869,9 +2076,12 @@ Player’s question: "${query}"`;
             });
         };
 
+        map.on('resize', renderLegend);
+
         const buildMarkerIcon = (markerData, { highlight = false } = {}) => {
             const style = resolveMarkerStyle(markerData);
             const initial = markerData.name ? markerData.name.charAt(0).toUpperCase() : '?';
+            const markerSize = markerData.type === 'npc' ? 22 : 28;
             const highlightStyles = highlight
                 ? 'transform: scale(1.12); box-shadow: 0 0 0 3px rgba(254, 243, 199, 0.95), 0 8px 18px rgba(0, 0, 0, 0.35);'
                 : 'box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);';
@@ -1882,12 +2092,12 @@ Player’s question: "${query}"`;
                         display:inline-flex;
                         align-items:center;
                         justify-content:center;
-                        width:1.75rem;
-                        height:1.75rem;
+                        width:${markerSize}px;
+                        height:${markerSize}px;
                         border-radius:9999px;
                         background:${style.color};
                         color:white;
-                        font-size:0.75rem;
+                        font-size:${markerData.type === 'npc' ? '0.625rem' : '0.75rem'};
                         font-weight:700;
                         border:2px solid rgba(0,0,0,0.3);
                         ${highlightStyles}
@@ -1895,10 +2105,61 @@ Player’s question: "${query}"`;
                         ${initial}
                     </span>
                 `,
-                iconSize: [28, 28],
-                iconAnchor: [14, 28],
-                popupAnchor: [0, -24]
+                iconSize: [markerSize, markerSize],
+                iconAnchor: [markerSize / 2, markerSize],
+                popupAnchor: [0, 4 - markerSize]
             });
+        };
+
+        const renderQuestRoutes = (markerData = null) => {
+            const journal = document.getElementById('britannia-atlas-quest-list');
+            const context = document.getElementById('britannia-atlas-quest-context');
+            if (!journal || !context) {
+                return;
+            }
+
+            const levelId = activeLevel?.id ?? 0;
+            const allRoutes = markerData
+                ? relatedBritanniaQuests(markerData, 6)
+                : britanniaQuestRoutes().filter(route => route.destinations.some(destination => (destination.position.z ?? 0) === levelId));
+
+            let routes = allRoutes;
+            if (!markerData) {
+                const groupedRoutes = new Map();
+                allRoutes.forEach(route => {
+                    if (!groupedRoutes.has(route.quest.title)) {
+                        groupedRoutes.set(route.quest.title, []);
+                    }
+                    groupedRoutes.get(route.quest.title).push(route);
+                });
+
+                routes = [];
+                while (routes.length < 6 && [...groupedRoutes.values()].some(group => group.length)) {
+                    groupedRoutes.forEach(group => {
+                        if (routes.length < 6 && group.length) {
+                            routes.push(group.shift());
+                        }
+                    });
+                }
+            }
+
+            context.textContent = markerData
+                ? `Quest threads connected to ${markerData.name}`
+                : `Destinations on ${activeLevel?.name || 'the Britannian surface'}`;
+
+            if (!routes.length) {
+                journal.innerHTML = '<p class="u6-atlas__journal-context">No quest thread currently points to this destination.</p>';
+                return;
+            }
+
+            journal.innerHTML = routes.map(route => {
+                const stops = route.destinations
+                    .filter(destination => markerData || (destination.position.z ?? 0) === levelId)
+                    .slice(0, 3)
+                    .map(destination => destination.name)
+                    .join(' · ');
+                return `<a href="${britanniaQuestHref(route.quest, route.section)}" class="u6-atlas__quest-card"><span class="u6-atlas__quest-act">${route.quest.title}</span><span class="u6-atlas__quest-title">${route.section.heading}</span><span class="u6-atlas__quest-stops">${stops}</span></a>`;
+            }).join('');
         };
 
         const createLeafletMarker = (markerData, options = {}) => {
@@ -1927,8 +2188,11 @@ Player’s question: "${query}"`;
             const popupHtml = buildPopupHtml(markerData);
             leafletMarker.bindPopup(popupHtml, {
                 autoPan: true,
-                autoPanPadding: L.point(24, 24)
+                autoPanPadding: L.point(12, 12),
+                maxWidth: Math.max(160, Math.min(280, map.getContainer().clientWidth - 48))
             });
+
+            leafletMarker.on('click', () => renderQuestRoutes(markerData));
 
             if (description) {
                 leafletMarker.options.markerDescription = description;
@@ -1954,12 +2218,41 @@ Player’s question: "${query}"`;
 
         const markerInstances = [];
 
-        markers.forEach(marker => {
-            const instance = createLeafletMarker(marker);
-            if (instance) {
-                markerInstances.push({ markerData: marker, leafletMarker: instance });
+        const renderLevelMarkers = () => {
+            markerInstances.forEach(({ leafletMarker }) => map.removeLayer(leafletMarker));
+            markerInstances.length = 0;
+            legendEntries.clear();
+
+            const activeLevelId = activeLevel?.id ?? 0;
+            const activeNpcs = npcMarkers.filter(marker => marker.position.z === activeLevelId);
+            if (npcCount) {
+                npcCount.textContent = `(${activeNpcs.length})`;
             }
-        });
+
+            const visibleMarkers = npcToggle?.checked ? markers.concat(activeNpcs) : markers;
+            visibleMarkers.filter(marker => (marker.position.z ?? 0) === activeLevelId).forEach(marker => {
+                const instance = createLeafletMarker(marker);
+                if (instance) {
+                    markerInstances.push({ markerData: marker, leafletMarker: instance });
+                }
+            });
+
+            renderLegend();
+            renderQuestRoutes();
+        };
+
+        renderLevelMarkers();
+        requestAnimationFrame(renderLegend);
+
+        if (npcToggle) {
+            npcToggle.addEventListener('change', () => {
+                if (searchInput?.value) {
+                    searchInput.value = '';
+                    searchInput.dispatchEvent(new Event('input'));
+                }
+                renderLevelMarkers();
+            });
+        }
 
         const searchInput = document.getElementById('britannia-map-search');
         const clearSearchButton = document.getElementById('britannia-map-search-clear');
@@ -1989,9 +2282,11 @@ Player’s question: "${query}"`;
                 entry.leafletMarker.setIcon(buildMarkerIcon(entry.markerData, { highlight: true }));
                 const latLng = entry.leafletMarker.getLatLng();
                 const targetZoom = Math.max(map.getZoom(), 0);
-                map.flyTo(latLng, targetZoom, { animate: true, duration: 0.6 });
+                const animateMap = map.getContainer().clientWidth >= 360;
+                map.flyTo(latLng, targetZoom, { animate: animateMap, duration: 0.6 });
                 entry.leafletMarker.openPopup();
                 activeEntry = entry;
+                renderQuestRoutes(entry.markerData);
                 if (announce) {
                     console.info(`[Britannia Map] Focused "${entry.markerData.name}" (${currentIndex + 1} of ${currentMatches.length}).`);
                 }
@@ -2080,6 +2375,66 @@ Player’s question: "${query}"`;
                 clearSearchButton.addEventListener('click', () => clearSearch());
             }
         }
+
+        const levelSelector = document.getElementById('britannia-map-level');
+        const downloadLink = document.getElementById('britannia-map-download');
+
+        if (levelSelector && levels.length) {
+            levelSelector.addEventListener('change', () => {
+                const nextLevel = levels.find(level => level.id === Number(levelSelector.value));
+                if (!nextLevel || nextLevel === activeLevel) {
+                    return;
+                }
+
+                if (searchInput) {
+                    searchInput.value = '';
+                    searchInput.dispatchEvent(new Event('input'));
+                }
+
+                activeLevel = nextLevel;
+                [minX, maxX] = [0, activeLevel.worldSize];
+                [minY, maxY] = [0, activeLevel.worldSize];
+                spanX = maxX - minX;
+                spanY = maxY - minY;
+
+                overlay.setUrl(activeLevel.imageUrl);
+                const overlayImage = overlay.getElement();
+                if (overlayImage) {
+                    overlayImage.alt = `${activeLevel.name} terrain extracted from the original Ultima VI game data`;
+                }
+
+                container.setAttribute('aria-label', `Interactive map of Ultima VI ${activeLevel.name}`);
+                if (downloadLink) {
+                    downloadLink.href = activeLevel.imageUrl;
+                    downloadLink.textContent = 'Full-size map';
+                    downloadLink.setAttribute('aria-label', `Open the full-size ${activeLevel.name.toLowerCase()} map`);
+                }
+
+                renderLevelMarkers();
+                map.fitBounds(bounds);
+            });
+        }
+
+        britanniaAtlasNavigation = (name) => {
+            const destination = findBritanniaDestination(name);
+            if (!destination || !searchInput) {
+                return;
+            }
+
+            const destinationLevel = destination.position.z ?? 0;
+            if (levelSelector && Number(levelSelector.value) !== destinationLevel) {
+                levelSelector.value = String(destinationLevel);
+                levelSelector.dispatchEvent(new Event('change', { bubbles: true }));
+            }
+
+            if (destination.type === 'npc' && npcToggle && !npcToggle.checked) {
+                npcToggle.checked = true;
+                npcToggle.dispatchEvent(new Event('change', { bubbles: true }));
+            }
+
+            searchInput.value = destination.name;
+            searchInput.dispatchEvent(new Event('input', { bubbles: true }));
+        };
 
         if (editorEnabled) {
             let addMarkerMode = false;

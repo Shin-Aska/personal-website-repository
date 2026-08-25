@@ -206,12 +206,14 @@ h1, h2, h3, h4 {
 
 .britannia-map-toolbar__controls {
     display: flex;
+    min-width: 0;
     gap: 0.5rem;
     align-items: center;
 }
 
 .britannia-map-toolbar__input {
     flex: 1;
+    min-width: 0;
     border: 1px solid rgba(180, 140, 80, 0.6);
     border-radius: 0.5rem;
     padding: 0.55rem 0.75rem;
@@ -246,4 +248,484 @@ h1, h2, h3, h4 {
 .britannia-map-toolbar__hint {
     font-size: 0.75rem;
     color: rgba(146, 64, 14, 0.75);
+}
+
+.u6-atlas {
+    --atlas-ink: #382d24;
+    --atlas-muted: #854d0e;
+    --atlas-copper: #b45309;
+    --atlas-gold: #d97706;
+    --atlas-paper: #fdf6e3;
+    --atlas-leaf: #047857;
+    --atlas-line: rgba(133, 77, 14, 0.19);
+    padding: clamp(1rem, 3vw, 2rem);
+    border: 1px solid rgba(133, 77, 14, 0.14);
+    border-radius: 1.25rem;
+    background:
+        radial-gradient(ellipse at top right, rgba(251, 191, 36, 0.16), transparent 42%),
+        linear-gradient(155deg, rgba(255, 253, 243, 0.96), rgba(251, 241, 211, 0.86));
+    box-shadow: 0 18px 46px rgba(56, 45, 36, 0.09);
+}
+
+.u6-atlas__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 1.5rem;
+    padding-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid var(--atlas-line);
+}
+
+.u6-atlas__heading {
+    max-width: 37rem;
+}
+
+.u6-atlas__eyebrow {
+    margin: 0 0 0.45rem;
+    color: var(--atlas-copper);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+.u6-atlas__heading h2 {
+    margin: 0 0 0.45rem;
+    color: var(--atlas-ink);
+    font-size: clamp(2rem, 4vw, 3.15rem);
+    line-height: 1;
+}
+
+.u6-atlas__heading > p:last-child {
+    margin: 0;
+    color: rgba(56, 45, 36, 0.74);
+    font-size: 0.95rem;
+    line-height: 1.65;
+}
+
+.u6-atlas__metrics {
+    display: flex;
+    gap: 1.35rem;
+    margin: 0;
+}
+
+.u6-atlas__metrics div {
+    display: flex;
+    flex-direction: column-reverse;
+    min-width: 4.5rem;
+}
+
+.u6-atlas__metrics dt {
+    color: var(--atlas-muted);
+    font-size: 0.69rem;
+    white-space: nowrap;
+}
+
+.u6-atlas__metrics dd {
+    margin: 0;
+    color: var(--atlas-ink);
+    font-family: 'IM Fell English', serif;
+    font-size: 1.8rem;
+    line-height: 1.1;
+}
+
+.u6-atlas__workspace {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(15rem, 17.5rem);
+    gap: 1.25rem;
+    align-items: start;
+}
+
+.u6-atlas__map-panel,
+.u6-atlas__field {
+    min-width: 0;
+}
+
+.u6-atlas .britannia-map-toolbar {
+    display: grid;
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+    gap: 0.75rem 1rem;
+    margin-bottom: 0.85rem;
+    padding: 0.85rem;
+    border-color: var(--atlas-line);
+    background: rgba(255, 253, 243, 0.65);
+    box-shadow: none;
+}
+
+.u6-atlas__field {
+    display: grid;
+    gap: 0.3rem;
+}
+
+.u6-atlas .britannia-map-toolbar__label {
+    color: var(--atlas-muted);
+    font-size: 0.72rem;
+    font-weight: 600;
+}
+
+.u6-atlas .britannia-map-toolbar__input {
+    width: 100%;
+    min-height: 2.65rem;
+    padding: 0.55rem 0.65rem;
+    border-color: var(--atlas-line);
+    background: rgba(255, 255, 255, 0.77);
+    font-size: 0.83rem;
+}
+
+.u6-atlas .britannia-map-toolbar__clear {
+    min-height: 2.65rem;
+    padding-inline: 0.7rem;
+    font-size: 0.78rem;
+}
+
+.u6-atlas__layer-row {
+    display: flex;
+    grid-column: 1 / -1;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.55rem 1rem;
+    padding-top: 0.1rem;
+}
+
+.u6-atlas__npc-toggle {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    color: var(--atlas-ink);
+    font-size: 0.78rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.u6-atlas__npc-toggle input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+}
+
+.u6-atlas__toggle-indicator {
+    position: relative;
+    width: 2rem;
+    height: 1.1rem;
+    border-radius: 999px;
+    background: rgba(133, 77, 14, 0.28);
+    transition: background-color 0.18s ease;
+}
+
+.u6-atlas__toggle-indicator::after {
+    position: absolute;
+    top: 0.15rem;
+    left: 0.17rem;
+    width: 0.8rem;
+    height: 0.8rem;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 1px 3px rgba(56, 45, 36, 0.25);
+    content: '';
+    transition: transform 0.18s ease;
+}
+
+.u6-atlas__npc-toggle input:checked + .u6-atlas__toggle-indicator {
+    background: var(--atlas-leaf);
+}
+
+.u6-atlas__npc-toggle input:checked + .u6-atlas__toggle-indicator::after {
+    transform: translateX(0.86rem);
+}
+
+.u6-atlas__npc-toggle input:focus-visible + .u6-atlas__toggle-indicator {
+    outline: 2px solid var(--atlas-gold);
+    outline-offset: 3px;
+}
+
+.u6-atlas__resident-count,
+.u6-atlas__map-hint,
+.u6-atlas__map-footer,
+.u6-atlas__journal-note {
+    color: rgba(56, 45, 36, 0.67);
+    font-size: 0.72rem;
+}
+
+.u6-atlas__map-frame {
+    padding: 0.3rem;
+    border: 1px solid var(--atlas-line);
+    border-radius: 1rem;
+    background: rgba(56, 45, 36, 0.08);
+}
+
+.u6-atlas .britannia-map {
+    height: clamp(360px, 57vw, 620px);
+    border: 0;
+    border-radius: 0.7rem;
+    background: #1f2937;
+}
+
+.u6-atlas__map-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.45rem 1rem;
+    padding: 0.75rem 0.15rem 0;
+}
+
+.u6-atlas__map-footer .map-instructions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+}
+
+.u6-atlas__map-footer a,
+.u6-atlas__journal-link,
+.u6-atlas-link,
+.u6-atlas__popup-link {
+    color: var(--atlas-copper);
+    text-decoration: underline;
+    text-decoration-color: rgba(180, 83, 9, 0.42);
+    text-underline-offset: 0.15em;
+}
+
+.u6-atlas__journal {
+    min-width: 0;
+    padding: 1.2rem 1rem;
+    border: 1px solid var(--atlas-line);
+    border-radius: 1rem;
+    background:
+        linear-gradient(180deg, rgba(255, 253, 243, 0.93), rgba(251, 241, 211, 0.74));
+    box-shadow: 0 8px 24px rgba(56, 45, 36, 0.05);
+}
+
+.u6-atlas__journal h3,
+.u6-atlas__expedition-header h3 {
+    margin: 0;
+    color: var(--atlas-ink);
+    font-size: 1.5rem;
+    line-height: 1.15;
+}
+
+.u6-atlas__journal-context {
+    margin: 0.5rem 0 1rem;
+    color: var(--atlas-muted);
+    font-size: 0.78rem;
+    line-height: 1.5;
+}
+
+.u6-atlas__quest-list {
+    display: grid;
+    gap: 0.65rem;
+    max-height: 29rem;
+    overflow-y: auto;
+}
+
+.u6-atlas__quest-card {
+    display: block;
+    padding: 0.8rem;
+    border: 1px solid rgba(133, 77, 14, 0.12);
+    border-left: 3px solid var(--atlas-gold);
+    border-radius: 0.6rem;
+    background: rgba(255, 255, 255, 0.58);
+    color: var(--atlas-ink);
+    text-decoration: none;
+}
+
+.u6-atlas__quest-act,
+.u6-atlas__dungeon-location {
+    display: block;
+    margin-bottom: 0.28rem;
+    color: var(--atlas-muted);
+    font-size: 0.67rem;
+}
+
+.u6-atlas__quest-title {
+    display: block;
+    font-family: 'IM Fell English', serif;
+    font-size: 1rem;
+    line-height: 1.25;
+}
+
+.u6-atlas__quest-stops {
+    display: block;
+    margin-top: 0.36rem;
+    color: rgba(56, 45, 36, 0.7);
+    font-size: 0.72rem;
+    line-height: 1.4;
+}
+
+.u6-atlas__journal-link {
+    display: inline-block;
+    margin-top: 1rem;
+    font-size: 0.78rem;
+}
+
+.u6-atlas__journal-note {
+    margin: 1rem 0 0;
+    padding-top: 0.8rem;
+    border-top: 1px solid var(--atlas-line);
+    line-height: 1.55;
+}
+
+.u6-atlas__expeditions {
+    padding-top: 2rem;
+    margin-top: 1.8rem;
+    border-top: 1px solid var(--atlas-line);
+}
+
+.u6-atlas__expedition-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 0.6rem 1rem;
+    margin-bottom: 1rem;
+}
+
+.u6-atlas__expedition-header > p {
+    margin: 0;
+    color: rgba(56, 45, 36, 0.69);
+    font-size: 0.78rem;
+}
+
+.u6-atlas__dungeon-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(16rem, 100%), 1fr));
+    gap: 0.8rem;
+}
+
+.u6-atlas__dungeon-card {
+    display: block;
+    padding: 1rem;
+    border: 1px solid var(--atlas-line);
+    border-radius: 0.8rem;
+    background: rgba(255, 253, 243, 0.7);
+    color: var(--atlas-ink);
+    text-decoration: none;
+}
+
+.u6-atlas__dungeon-card h4 {
+    margin: 0 0 0.3rem;
+    font-size: 1.1rem;
+}
+
+.u6-atlas__dungeon-objective {
+    display: block;
+    margin-top: 0.5rem;
+    color: rgba(56, 45, 36, 0.76);
+    font-size: 0.78rem;
+    line-height: 1.5;
+}
+
+.u6-quest-destinations {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    margin-top: 0.95rem;
+}
+
+.u6-quest-destinations__label {
+    color: #854d0e;
+    font-size: 0.74rem;
+    font-weight: 600;
+}
+
+.u6-quest-destination {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.32rem 0.58rem;
+    border: 1px solid rgba(133, 77, 14, 0.24);
+    border-radius: 999px;
+    background: rgba(255, 253, 243, 0.85);
+    color: #854d0e;
+    font-size: 0.74rem;
+    text-decoration: none;
+}
+
+.u6-quest-destination__level {
+    color: rgba(56, 45, 36, 0.66);
+    font-size: 0.66rem;
+}
+
+.u6-atlas__popup-quests {
+    padding-top: 0.55rem;
+    margin-top: 0.55rem;
+    border-top: 1px solid rgba(133, 77, 14, 0.2);
+}
+
+.u6-atlas__popup-quests a {
+    display: block;
+    margin-top: 0.25rem;
+    font-size: 0.78rem;
+}
+
+@media (max-width: 980px) {
+    .u6-atlas__header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .u6-atlas__workspace {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .u6-atlas__quest-list {
+        grid-template-columns: repeat(auto-fit, minmax(min(15rem, 100%), 1fr));
+        max-height: none;
+        overflow: visible;
+    }
+}
+
+@media (max-width: 560px) {
+    .u6-atlas__header {
+        gap: 1rem;
+    }
+
+    .u6-atlas__metrics {
+        width: 100%;
+        gap: 0.55rem;
+        justify-content: space-between;
+    }
+
+    .u6-atlas__metrics div {
+        min-width: 0;
+    }
+
+    .u6-atlas__metrics dt {
+        font-size: 0.63rem;
+    }
+
+    .u6-atlas__metrics dd {
+        font-size: 1.55rem;
+    }
+
+    .u6-atlas .britannia-map-toolbar {
+        grid-template-columns: minmax(0, 1fr);
+        padding: 0.75rem;
+    }
+
+    .u6-atlas .britannia-map {
+        min-height: 310px;
+        height: 390px;
+    }
+
+    .u6-atlas .britannia-map--popup-open .leaflet-control-zoom,
+    .u6-atlas .britannia-map--popup-open .britannia-legend {
+        visibility: hidden;
+    }
+
+    .u6-atlas__map-footer {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .u6-atlas__toggle-indicator,
+    .u6-atlas__toggle-indicator::after {
+        transition: none;
+    }
 }

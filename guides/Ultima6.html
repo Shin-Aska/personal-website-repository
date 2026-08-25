@@ -22,7 +22,7 @@
         - AI Strategic Advisor (Gemini): Goal -> Provide dynamic, on-demand help. Viz/Method -> Text input and response display. Interaction -> User types a question and receives a detailed, contextual answer. Justification -> Offers a more interactive and flexible help system than a static FAQ or walkthrough.
     -->
     <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
-    <link rel="stylesheet" href="css/Ultima6.css">
+    <link rel="stylesheet" href="css/Ultima6.css?v=quest-atlas-r2">
 </head>
 
 <body class="antialiased">
@@ -155,35 +155,98 @@
             </section>
 
             <section id="atlas" class="tab-content">
-                <div class="bg-amber-50/50 p-6 rounded-lg shadow-md">
-                    <h2 class="text-3xl font-bold mb-4 text-amber-900">World Atlas: Dungeons of Britannia</h2>
-                    <p class="mb-6 text-amber-900/80">The depths of Britannia hold both great treasure and great peril.
-                        This guide provides an overview of the key dungeons you must brave to complete your quest.</p>
-                    <div class="atlas-map mb-8">
-                        <h3 class="text-2xl font-semibold mb-3 text-amber-900">Interactive Britannia Atlas</h3>
-                        <p class="text-amber-900/80 mb-4">Drag to explore, scroll or pinch to zoom, and tap the markers
-                            to focus on notable dungeons across Britannia.</p>
-                        <div class="britannia-map-toolbar">
-                            <label for="britannia-map-search" class="britannia-map-toolbar__label">Search Britannia</label>
-                            <div class="britannia-map-toolbar__controls">
-                                <input id="britannia-map-search" type="search" autocomplete="off" class="britannia-map-toolbar__input" placeholder="Find a city, shrine, dungeon, or keyword…">
-                                <button type="button" id="britannia-map-search-clear" class="britannia-map-toolbar__clear" aria-label="Clear map search">Clear</button>
-                            </div>
-                            <p class="britannia-map-toolbar__hint">Press Enter to cycle through matches. Escape clears the search.</p>
+                <div class="u6-atlas">
+                    <header class="u6-atlas__header">
+                        <div class="u6-atlas__heading">
+                            <p class="u6-atlas__eyebrow">The cartographer's field guide</p>
+                            <h2>Britannia, mapped</h2>
+                            <p>Follow the quest from its first shrine to the Gargoyle realm. Every place, character,
+                                and hidden passage is traced from the original game.</p>
                         </div>
-                        <div id="britannia-map" class="britannia-map" role="application"
-                            aria-label="Interactive map of Ultima VI Britannia"></div>
-                        <p class="map-instructions text-sm text-amber-800/80 mt-3">
-                            Prefer the parchment? <a href="images/U6PWorldMap.jpg" target="_blank" rel="noopener"
-                                class="underline">Open the full-size map in a new tab</a>.
-                        </p>
-                        <noscript>
-                            <p class="text-sm text-amber-800/80 mt-3">JavaScript is required for the interactive atlas.
-                                You can still <a href="images/U6PWorldMap.jpg" target="_blank" rel="noopener"
-                                    class="underline">view the full map here</a>.</p>
-                        </noscript>
+                        <dl class="u6-atlas__metrics" aria-label="Atlas coverage">
+                            <div><dt>World layers</dt><dd>06</dd></div>
+                            <div><dt>Named residents</dt><dd>186</dd></div>
+                            <div><dt>Quest threads</dt><dd>19</dd></div>
+                        </dl>
+                    </header>
+
+                    <div class="u6-atlas__workspace">
+                        <div class="u6-atlas__map-panel">
+                            <div class="britannia-map-toolbar u6-atlas__controls">
+                                <div class="u6-atlas__field u6-atlas__field--world">
+                                    <label for="britannia-map-level" class="britannia-map-toolbar__label">World layer</label>
+                                    <select id="britannia-map-level" class="britannia-map-toolbar__input">
+                                        <option value="0">Britannia surface</option>
+                                        <option value="1">Dungeon level 1</option>
+                                        <option value="2">Dungeon level 2</option>
+                                        <option value="3">Dungeon level 3</option>
+                                        <option value="4">Dungeon level 4</option>
+                                        <option value="5">Gargoyle realm</option>
+                                    </select>
+                                </div>
+                                <div class="u6-atlas__field u6-atlas__field--search">
+                                    <label for="britannia-map-search" class="britannia-map-toolbar__label">Find a place or person</label>
+                                    <div class="britannia-map-toolbar__controls">
+                                        <input id="britannia-map-search" type="search" autocomplete="off"
+                                            class="britannia-map-toolbar__input" placeholder="Homer, Hythloth, a shrine…">
+                                        <button type="button" id="britannia-map-search-clear"
+                                            class="britannia-map-toolbar__clear" aria-label="Clear map search">Clear</button>
+                                    </div>
+                                </div>
+                                <div class="u6-atlas__layer-row">
+                                    <label for="britannia-map-npcs" class="u6-atlas__npc-toggle">
+                                        <input id="britannia-map-npcs" type="checkbox" aria-label="Show named NPCs">
+                                        <span class="u6-atlas__toggle-indicator" aria-hidden="true"></span>
+                                        <span>Show residents</span>
+                                        <span id="britannia-map-npc-count" class="u6-atlas__resident-count"></span>
+                                    </label>
+                                    <span class="u6-atlas__map-hint">Select a marker to reveal its quest connections.</span>
+                                </div>
+                            </div>
+
+                            <div class="u6-atlas__map-frame">
+                                <div id="britannia-map" class="britannia-map" role="application"
+                                    aria-label="Interactive map of Ultima VI Britannia"></div>
+                            </div>
+
+                            <div class="u6-atlas__map-footer">
+                                <span>Original terrain · Hexadecimal world coordinates</span>
+                                <div class="map-instructions">
+                                    <a id="britannia-map-download" href="images/U6GameWorld.png" target="_blank"
+                                        rel="noopener">Full-size map</a>
+                                    <a href="images/U6PWorldMap.jpg" target="_blank" rel="noopener">Parchment edition</a>
+                                </div>
+                            </div>
+                            <noscript>
+                                <p class="u6-atlas__map-hint">JavaScript is required for the interactive atlas.
+                                    <a href="images/U6GameWorld.png" target="_blank" rel="noopener">View the surface map.</a>
+                                </p>
+                            </noscript>
+                        </div>
+
+                        <aside class="u6-atlas__journal" aria-labelledby="britannia-atlas-journal-title">
+                            <p class="u6-atlas__eyebrow">Connected quest journal</p>
+                            <h3 id="britannia-atlas-journal-title">Follow the thread</h3>
+                            <p id="britannia-atlas-quest-context" class="u6-atlas__journal-context">Destinations on the Britannian surface</p>
+                            <div id="britannia-atlas-quest-list" class="u6-atlas__quest-list"></div>
+                            <a href="#quests:quest=act-i-liberating-the-shrines" class="u6-atlas__journal-link">
+                                Open the complete quest walkthrough
+                            </a>
+                            <p class="u6-atlas__journal-note">Resident positions are read from the original saved game;
+                                characters may move during their daily schedules.</p>
+                        </aside>
                     </div>
-                    <div id="dungeon-list" class="space-y-4"></div>
+
+                    <section class="u6-atlas__expeditions" aria-labelledby="britannia-atlas-expeditions-title">
+                        <div class="u6-atlas__expedition-header">
+                            <div>
+                                <p class="u6-atlas__eyebrow">Routes beneath Britannia</p>
+                                <h3 id="britannia-atlas-expeditions-title">Dungeon expeditions</h3>
+                            </div>
+                            <p>Choose an expedition to locate its entrance on the atlas.</p>
+                        </div>
+                        <div id="dungeon-list" class="u6-atlas__dungeon-grid"></div>
+                    </section>
                 </div>
             </section>
 
@@ -270,667 +333,9 @@
     </div>
 
     <script src="js/leaflet.js"></script>
-    <script>
-        window.BRITANNIA_MAP_CONFIG = {
-            imageUrl: 'images/U6PWorldMap.jpg',
-            imageSize: [7917, 7917],
-            xRange: [-40, 95],
-            yRange: [-45, 95],
-            editorEnabled: false,
-            markers: [
-                {
-                    "name": "Bonn's Hut",
-                    "type": "quest",
-                    "description": "On Dagger Isle, move the harpsichord to uncover the map piece stashed below.",
-                    "position": {
-                        "x": 68.08,
-                        "y": 62.24
-                    }
-                },
-                {
-                    "name": "Britain",
-                    "type": "city",
-                    "description": "Capital of Compassion; earn Ariana's permission for the rune and scour the sewers for balloon parts.",
-                    "position": {
-                        "x": 0.24,
-                        "y": 41.43
-                    }
-                },
-                {
-                    "name": "Buccaneer's Den",
-                    "type": "site",
-                    "description": "Join Homer and Budo's Thieves Guild to advance the Hawkins treasure hunt.",
-                    "position": {
-                        "x": 25,
-                        "y": 21
-                    }
-                },
-                {
-                    "name": "Cove",
-                    "type": "city",
-                    "description": "Quiet retreat of Rudyom the mage; harvest reagents and seek wisdom near the Shrine of Compassion.",
-                    "position": {
-                        "x": 26.17,
-                        "y": 49.03
-                    }
-                },
-                {
-                    "name": "Cyclops Cave",
-                    "type": "dungeon",
-                    "description": "Treacherous cavern south of Empath Abbey patrolled by cyclopes.",
-                    "position": {
-                        "x": -19.74,
-                        "y": 43.13
-                    }
-                },
-                {
-                    "name": "Dungeon Covetous",
-                    "type": "dungeon",
-                    "description": "Enter north of Minoc to face the depths of greed and reach its link to Wrong.",
-                    "position": {
-                        "x": 33.35,
-                        "y": 74.65
-                    }
-                },
-                {
-                    "name": "Dungeon Deceit",
-                    "type": "dungeon",
-                    "description": "Dagger Isle labyrinth brimming with traps, glass swords, and powerful magic.",
-                    "position": {
-                        "x": 70.91,
-                        "y": 52.69
-                    }
-                },
-                {
-                    "name": "Dungeon Despise",
-                    "type": "dungeon",
-                    "description": "Eastern dungeon of contempt bordering the Britannian heartland.",
-                    "position": {
-                        "x": 4.76,
-                        "y": 55.43
-                    }
-                },
-                {
-                    "name": "Dungeon Destard",
-                    "type": "dungeon",
-                    "description": "Retrieve a dragon's egg from the depths to aid Sandy's culinary quest.",
-                    "position": {
-                        "x": -1.8,
-                        "y": 4.82
-                    }
-                },
-                {
-                    "name": "Dungeon Hythloth",
-                    "type": "dungeon",
-                    "description": "Isle of the Avatar gateway to the gargoyle realm and Captain Johne's refuge.",
-                    "position": {
-                        "x": 69.48,
-                        "y": -19.39
-                    }
-                },
-                {
-                    "name": "Dungeon Shame",
-                    "type": "dungeon",
-                    "description": "Trade food with Old Ybarra on level four to secure his Hawkins map piece.",
-                    "position": {
-                        "x": -8.26,
-                        "y": 37.93
-                    }
-                },
-                {
-                    "name": "Dungeon Wrong",
-                    "type": "dungeon",
-                    "description": "Injustice incarnate; recover Heftimus McPry's map scrap hidden deep within.",
-                    "position": {
-                        "x": 20.48,
-                        "y": 77.44
-                    }
-                },
-                {
-                    "name": "Empath Abbey",
-                    "type": "castle",
-                    "description": "Sanctuary of Love west of Yew; nearby Sylaina holds clues to Hawkins's hoard.",
-                    "position": {
-                        "x": -22.15,
-                        "y": 63.54
-                    }
-                },
-                {
-                    "name": "Jhelom",
-                    "type": "city",
-                    "description": "Valorian Isle stronghold of Valor; enlist Sherry the mouse to reclaim the rune.",
-                    "position": {
-                        "x": -17.52,
-                        "y": -11.29
-                    }
-                },
-                {
-                    "name": "Lord British's Castle",
-                    "type": "castle",
-                    "description": "Seat of Britannia; collect your spellbook and scour the sewers for hidden passages.",
-                    "position": {
-                        "x": -0.9,
-                        "y": 46.69
-                    }
-                },
-                {
-                    "name": "Minoc",
-                    "type": "city",
-                    "description": "Artisan hub of Sacrifice; craft panpipes and gather balloon components.",
-                    "position": {
-                        "x": 32.54,
-                        "y": 80.74
-                    }
-                },
-                {
-                    "name": "Moonglow",
-                    "type": "city",
-                    "description": "Verity Isle of Honesty; delve into Beyvin's tomb and consult Ephemerides.",
-                    "position": {
-                        "x": 68.32,
-                        "y": 29.42
-                    }
-                },
-                {
-                    "name": "New Magincia",
-                    "type": "city",
-                    "description": "Island of Humility; identify Conor and commission Charlotte's silk weaving.",
-                    "position": {
-                        "x": 44.69,
-                        "y": 12.82
-                    }
-                },
-                {
-                    "name": "Paws",
-                    "type": "city",
-                    "description": "Riverside village supplying spinner Arbeth and seamstress Marissa for the balloon.",
-                    "position": {
-                        "x": 8,
-                        "y": 27
-                    }
-                },
-                {
-                    "name": "Pirate Cave",
-                    "type": "dungeon",
-                    "description": "Hidden cache east of New Magincia stocked with contraband and secrets.",
-                    "position": {
-                        "x": 41.41,
-                        "y": -6.59
-                    }
-                },
-                {
-                    "name": "Serpent's Hold",
-                    "type": "castle",
-                    "description": "Fortress of courage where Gherick forges the shield needed for Morchella's trade.",
-                    "position": {
-                        "x": 28.87,
-                        "y": -18.39
-                    }
-                },
-                {
-                    "name": "Shipwreck",
-                    "type": "quest",
-                    "description": "Cape of Heroes wreckage hiding the first fragment of Hawkins's map.",
-                    "position": {
-                        "x": 17.3,
-                        "y": 7.42
-                    }
-                },
-                {
-                    "name": "Shrine of Compassion",
-                    "type": "shrine",
-                    "description": "Mantra MU; meditate here to restore Dexterity and safeguard the rune.",
-                    "position": {
-                        "x": 19.79,
-                        "y": 46.2
-                    }
-                },
-                {
-                    "name": "Shrine of Honesty",
-                    "type": "shrine",
-                    "description": "Mantra AHM; follow Moonglow's catacombs to reclaim this sanctum.",
-                    "position": {
-                        "x": 67.31,
-                        "y": 57.98
-                    }
-                },
-                {
-                    "name": "Shrine of Honor",
-                    "type": "shrine",
-                    "description": "Mantra SUMM; honor Whitsaber's trust by returning the rune after cleansing.",
-                    "position": {
-                        "x": 4.18,
-                        "y": -4.19
-                    }
-                },
-                {
-                    "name": "Shrine of Humility",
-                    "type": "shrine",
-                    "description": "Mantra LUM; an austere shrine granting enlightenment without attribute gain.",
-                    "position": {
-                        "x": 65.82,
-                        "y": -6.59
-                    }
-                },
-                {
-                    "name": "Shrine of Justice",
-                    "type": "shrine",
-                    "description": "Mantra BEH; expose Boskin's lies before meditating amid the Deep Forest.",
-                    "position": {
-                        "x": -1.51,
-                        "y": 78.14
-                    }
-                },
-                {
-                    "name": "Shrine of Sacrifice",
-                    "type": "shrine",
-                    "description": "Mantra CAH; desert sands test your resolve before granting Dexterity and Strength.",
-                    "position": {
-                        "x": 57.67,
-                        "y": 65.79
-                    }
-                },
-                {
-                    "name": "Sutek's Castle",
-                    "type": "castle",
-                    "description": "Castle of a very powerful mage",
-                    "position": {
-                        "x": 49.61,
-                        "y": -21.69
-                    }
-                },
-                {
-                    "name": "Shrine of the Codex",
-                    "type": "quest",
-                    "description": "Isle of the Avatar dais where the final ritual with the Vortex Cube unfolds.",
-                    "position": {
-                        "x": 65.33,
-                        "y": -15.59
-                    }
-                },
-                {
-                    "name": "Shrine of Valor",
-                    "type": "shrine",
-                    "description": "Mantra RA; summit the Serpent's Spine to restore Strength and reclaim the rune.",
-                    "position": {
-                        "x": -13.38,
-                        "y": -22.19
-                    }
-                },
-                {
-                    "name": "Skara Brae",
-                    "type": "city",
-                    "description": "Haunted isle of Spirituality; recover Marney's hope chest rune and soothe lost souls.",
-                    "position": {
-                        "x": -26.98,
-                        "y": 31.02
-                    }
-                },
-                {
-                    "name": "Trinsic",
-                    "type": "city",
-                    "description": "City of Honor; borrow the rune with Whitsaber's blessing and learn of Hawkins's alias.",
-                    "position": {
-                        "x": 9.48,
-                        "y": 6.42
-                    }
-                },
-                {
-                    "name": "Yew",
-                    "type": "city",
-                    "description": "Deep Forest village of Justice where Boskin's deceit hides the rune beneath a tavern plant.",
-                    "position": {
-                        "x": -5.7,
-                        "y": 68.53
-                    }
-                },
-                {
-                    "name": "Sunken Ruins",
-                    "type": "site",
-                    "description": "Once a proud keep and a refuge against Lord Blackthorn, this castle sank beneath the waves due to the Underworld's collapse.",
-                    "position": {
-                        "x": -27.46,
-                        "y": 10.92
-                    }
-                },
-                {
-                    "name": "Pirate's Den",
-                    "type": "dungeon",
-                    "description": "A hidden cave system on a northern island that serves as the base for the feared pirate, Captain Hawkins. It is the destination for the assembled pirate map and the resting place of the Rune of Honor.",
-                    "position": {
-                        "x": 42.47,
-                        "y": -31.8
-                    }
-                },
-                {
-                    "name": "Thor's rest",
-                    "type": "site",
-                    "description": "The lonely, windswept grave of Thor, a former companion of the Avatar. His spirit haunts the site, unable to rest until the Avatar confronts his murderer, the mad mage Sutek.",
-                    "position": {
-                        "x": 60.8,
-                        "y": -35.1
-                    }
-                },
-                {
-                    "name": "Polar Bear Cave",
-                    "type": "dungeon",
-                    "description": "A frigid cavern located deep within the northern Serpent's Spine mountains. It is the den of several polar bears and the hiding place of the Gargish Amulet of Submission, which must be retrieved to earn the trust of the exiled gargoyle, Sin'Vraal.",
-                    "position": {
-                        "x": 68.81,
-                        "y": -33.6
-                    }
-                },
-                {
-                    "name": "Marsor's Isle",
-                    "type": "site",
-                    "description": "The small, secluded island home of the gargoyle fisherman Marsor. The Avatar must travel here to retrieve a crucial silver tablet from him, which his brother Beh Lem needs to complete the translation of the Book of Prophecies.",
-                    "position": {
-                        "x": 44.5,
-                        "y": 31.73
-                    }
-                },
-                {
-                    "name": "Fogsbane",
-                    "type": "quest",
-                    "description": "A shimmering, magical cape bestowed upon the Avatar by Lord British. Its unique power is to part the enchanted mists that surround and protect the Lycaeum, making it the essential key to gaining entrance to Britannia's foremost library and fortress of knowledge.",
-                    "position": {
-                        "x": 5.72,
-                        "y": 33.93
-                    }
-                },
-                {
-                    "name": "Horace",
-                    "type": "quest",
-                    "description": "The ghost of a short, pudgy man who haunts the inn at Paws. He cannot find peace until the Avatar recovers his lost locket, which was stolen by a rat and taken to the sewers beneath Britain. Returning it earns a reward and a vital password.",
-                    "position": {
-                        "x": -30.93,
-                        "y": 34.83
-                    }
-                },
-                {
-                    "name": "Michael's Hut",
-                    "type": "quest",
-                    "description": "The secluded coastal hut of the shipwright Michael, located on an island south west of Britain and near the Spiritwood. The Avatar must travel to this remote location to retrieve the Book of the Dead from him, which contains the Vanish spell essential for navigating his master Sutek's dungeon.",
-                    "position": {
-                        "x": -6.53,
-                        "y": 31.63
-                    }
-                },
-                {
-                    "name": "Gremlin Cave",
-                    "type": "dungeon",
-                    "description": "A cavernous network located beneath the town of Yew, accessible via the well. It is infested with hordes of mischievous gremlins who have been stealing the town's food supplies. Deep within their lair lies a magical jug of wine that never empties, an item needed to help the gypsies.",
-                    "position": {
-                        "x": 58,
-                        "y": 40.53
-                    }
-                },
-                {
-                    "name": "Waveguide",
-                    "type": "site",
-                    "description": "Rustic lighthouses were built throughout Britannian waters during the recent years of peace; their bright presence has dramatically lowered the number of ships breaking up on reefs and shoals in dark and storms.",
-                    "position": {
-                        "x": 60.22,
-                        "y": 33.03
-                    }
-                },
-                {
-                    "name": "Ben's Cabin",
-                    "type": "site",
-                    "description": "The remote coastal home of Ben, a reclusive scholar and craftsman. He is the only person in Britannia who can fashion a lens from a glass sword. This lens is essential for repairing the magical Orrery at the Lycaeum, a critical step in understanding the heavens and the Gargoyle prophecy.",
-                    "position": {
-                        "x": -9.51,
-                        "y": 75.72
-                    }
-                },
-                {
-                    "name": "Nicodemus",
-                    "type": "quest",
-                    "description": "The quest to seek out the powerful but reclusive mage in his tower, hidden deep within the swamps northwest of Paws. Nicodemus is the only one capable of performing the massive ritual needed to destroy all eight Gargoyle shrines at once, but requires a rare mandrake root to do so.",
-                    "position": {
-                        "x": 5.1,
-                        "y": 68.28
-                    }
-                },
-                {
-                    "name": "Orc Cave",
-                    "type": "dungeon",
-                    "description": "A treacherous cave system that serves as a passage through the mountains separating Empath Abbey from the Deep Forest. It is infested with Orcs and other violent creatures, making it a dangerous shortcut for only the most battle-hardened travelers.",
-                    "position": {
-                        "x": -27.89,
-                        "y": 58.98
-                    }
-                },
-                {
-                    "name": "Spider Cave",
-                    "type": "dungeon",
-                    "description": "A nightmarish, multi-leveled cavern system located on the southern end of the Isle of the Avatar. It is infested with giant spiders and is the only place in Britannia where one can harvest spider silk, a rare reagent required to construct a hot air balloon.",
-                    "position": {
-                        "x": -20.44,
-                        "y": 60.31
-                    }
-                },
-                {
-                    "name": "Hideout",
-                    "type": "dungeon",
-                    "description": "The secret headquarters of the Thieves' Guild, hidden deep within the sewers beneath Britain. You can only gain entry by learning the password, \"Black Cat\" 🤫, from the ghost Horace after completing his quest. The hideout is run by a man named Budo, who is the only person in Britannia that will sell you a magic sextant—a crucial tool needed to complete the pirate map quest and find the Rune of Honor. Be prepared to pay a hefty price for it! 💰",
-                    "position": {
-                        "x": -15.87,
-                        "y": 54.32
-                    }
-                },
-                {
-                    "name": "Ambrosia",
-                    "type": "site",
-                    "description": "In ages long past, Ambrosia was a legendary lost land of untold beauty and mystery, famed for its four great shrines. However, by the time of the Gargoyle war, the way to Ambrosia had been lost to the mists of time and the shifting of the seas. While it is a famous and important location in Britannia's deeper history, it is not a place that could be visited during the quest to bring peace between humans and Gargoyles.",
-                    "position": {
-                        "x": 82.49,
-                        "y": 74.16
-                    }
-                },
-                {
-                    "name": "Windmere",
-                    "type": "site",
-                    "description": "During the tyrannical reign of Lord Blackthorn, Castle Windmere was a grim and remote mountain fortress used as a prison for his enemies. However, after Lord British's return, the castle was abandoned and fell into ruin. By the time of the Gargoyle War, it was a forgotten place of crumbling stone, holding no significance in the quest to bring peace to the realm.",
-                    "position": {
-                        "x": 66.58,
-                        "y": 81.2
-                    }
-                },
-                {
-                    "name": "Iolo's Hut",
-                    "type": "site",
-                    "description": "The cozy home of the bowyer and bard Iolo and his wife Gwenno, located just east of Britain. The Avatar can recruit the loyal Iolo to the party here. More importantly, the hut contains the Order of the Silver Serpent amulet, a vital item that must be shown to the gargoyle scholar Beh Lem to gain his trust and assistance in translating the Book of Prophecies.",
-                    "position": {
-                        "x": -11.65,
-                        "y": 59.2
-                    }
-                },
-                {
-                    "name": "Stormcrow",
-                    "type": "quest",
-                    "description": "The personal quest of any archer to find the legendary crossbow Stormcrow. This unique and immensely powerful magical crossbow is not given, but earned. It can be found hidden amongst the ill-gotten treasures within the dangerous Pirate's Den, the same lair where the Rune of Honor is buried.",
-                    "position": {
-                        "x": 30.35,
-                        "y": 77.29
-                    }
-                },
-                {
-                    "name": "Stonegate",
-                    "type": "castle",
-                    "description": "The fortress home of the honorable Lord Seggallion, located on Verity Isle, south of Moonglow. Lord Seggallion possesses a vital piece of the pirate map, but he will not part with it until the Avatar finds and returns his beloved talking horse, Smith.",
-                    "position": {
-                        "x": 32.79,
-                        "y": 60.41
-                    }
-                },
-                {
-                    "name": "Rudyom",
-                    "type": "quest",
-                    "description": "The quest to seek out the powerful mage Rudyom, who lives in the secluded town of Cove. He is the only person in Britannia who can teach the highest, eighth circle of magic spells. His home is also the hiding place for a legendary magic carpet, an invaluable tool that allows the party to fly over any terrain.",
-                    "position": {
-                        "x": 30.75,
-                        "y": 48.22
-                    }
-                },
-                {
-                    "name": "Swamp Cave",
-                    "type": "dungeon",
-                    "description": "A damp and dangerous cavern located in the fetid swamp on the Bloody Plains. This cave is a monster-filled passage leading to a section of the underworld, and it is the only way to reach the sacred Gargish Shrine of Control. The Avatar must brave its depths to learn one of the three mantras required to bring peace between the two worlds.",
-                    "position": {
-                        "x": 35.55,
-                        "y": 46
-                    }
-                },
-                {
-                    "name": "HMS Virtueous",
-                    "type": "site",
-                    "description": "The shipwreck of a royal naval vessel that ran aground on the remote and dangerous Dagger Isle. Within the ruined ship, the Avatar can find the captain's journal. This logbook contains the exact coordinates of a magic sextant that was lost overboard, providing a vital clue for completing the pirate map quest and recovering the Rune of Honor.",
-                    "position": {
-                        "x": 19.59,
-                        "y": 53.98
-                    }
-                },
-                {
-                    "name": "Lock Lake",
-                    "type": "site",
-                    "description": "The great lake situated in the very heart of Britannia, upon whose shores Castle Britannia is built. It is home to a mysterious sea serpent that responds to music, but its true secret lies beneath the waves. A rare glass sword is hidden on the lakebed, a crucial item the Avatar must retrieve to have a special lens crafted for the Orrery in the Lycaeum.",
-                    "position": {
-                        "x": 19.9,
-                        "y": 51.41
-                    }
-                },
-                {
-                    "name": "Frost Drake Cave",
-                    "type": "dungeon",
-                    "description": "The frozen lair of a great white dragon, located deep within the northern Serpent's Spine mountains. This cave is the final destination in the quest to return a baby dragon that was stolen by the gypsies. Only by bringing the hatchling back to its mother can the Avatar learn the secret of where the gypsies have hidden the Rune of Justice.",
-                    "position": {
-                        "x": 10.27,
-                        "y": 58.51
-                    }
-                },
-                {
-                    "name": "Bog of Desolation",
-                    "type": "site",
-                    "description": "This blighted swamp does not feature in the events of Ultima 6. Its story comes later, in the saga of the Stygian Abyss. It was once a beautiful wetland known as the Great Mossy Fens, but a terrible magical duel between two powerful wizards twisted it into the haunted, desolate bog that later adventurers would have to cross.",
-                    "position": {
-                        "x": 20.77,
-                        "y": 61.26
-                    }
-                },
-                {
-                    "name": "River of Despair",
-                    "type": "site",
-                    "description": "This river is not found in the world of Ultima 6. It was a dark and treacherous waterway that flowed through the vast Underworld during the time of Lord Blackthorn's tyrannical reign. The Avatar had to navigate its miserable currents to defeat the Shadowlords in a previous adventure, the saga of the Warriors of Destiny.",
-                    "position": {
-                        "x": 18.73,
-                        "y": 67.26
-                    }
-                },
-                {
-                    "name": "High Steppes",
-                    "type": "site",
-                    "description": "This vast, grassy plateau isn't a named region in the world of Ultima 6. It became famous in the era after the Gargoyle War, during the time of the Fellowship. In those later chronicles, the High Steppes are the large plains in north-central Britannia where the town of Paws was rebuilt. During the war with the Gargoyles, this area was simply the fertile farmland south of Britain.",
-                    "position": {
-                        "x": 17.27,
-                        "y": 70.67
-                    }
-                },
-                {
-                    "name": "Bloody Plains",
-                    "type": "site",
-                    "description": "A vast, desolate swampland located south of Britain. This dangerous region is notable for several key locations. It contains the Britannian Shrine of Sacrifice, one of the eight shrines essential to the Avatar's quest. It is also the location of the Swamp Cave, which serves as the sole entrance to the Gargish Shrine of Control. Furthermore, the rare Mandrake Root reagent can be harvested here under the cover of night, a component vital for the ritual performed by the mage Nicodemus.",
-                    "position": {
-                        "x": 42.96,
-                        "y": 63.21
-                    }
-                },
-                {
-                    "name": "Ant Mound",
-                    "type": "quest",
-                    "description": "",
-                    "position": {
-                        "x": 52.81,
-                        "y": 63.57
-                    }
-                },
-                {
-                    "name": "Sin'Vrall's Hut",
-                    "type": "site",
-                    "description": "The secluded cave refuge of the gargoyle exile, Sin'Vraal",
-                    "position": {
-                        "x": 53.84,
-                        "y": 57.45
-                    }
-                },
-                {
-                    "name": "Drylands",
-                    "type": "site",
-                    "description": "Britannia's vast and dangerous desert region, located in the southwest of the continent.",
-                    "position": {
-                        "x": 58.42,
-                        "y": 70.9
-                    }
-                },
-                {
-                    "name": "Wrecker's Isle",
-                    "type": "site",
-                    "description": "This dangerous island isn't a location you'd find in the world of Ultima 6. Instead, it belongs to the saga of the Serpent Isle. It's a treacherous place, infamous for its inhabitants, the Wreckers, who use false lighthouses to lure ships onto the rocks for plunder. In that later chronicle, it's the very first land the Avatar sets foot on after arriving in a strange new world.",
-                    "position": {
-                        "x": 79.88,
-                        "y": 36.1
-                    }
-                },
-                {
-                    "name": "Sea Cave",
-                    "type": "dungeon",
-                    "description": "This is the secret dungeon whose only entrance is a massive whirlpool found in the ocean, far to the southeast of Britannia. It's a treacherous, water-logged cave system filled with dangerous sea monsters like giant squids and serpents.    This cave is absolutely vital to the main quest. Deep inside, protected by all those creatures, you will find a piece of the sacred Vortex Cube, which you must assemble to bring peace between the two worlds.",
-                    "position": {
-                        "x": -13.82,
-                        "y": 10.88
-                    }
-                },
-                {
-                    "name": "Greyhaven",
-                    "type": "site",
-                    "description": "The lighthouse Greyhaven south of Trinsic at the Cape of Heroes was responsible for ensuring the safe passage of ships through these dangerous waters.",
-                    "position": {
-                        "x": 11.68,
-                        "y": -8.23
-                    }
-                },
-                {
-                    "name": "HMS Empire",
-                    "type": "site",
-                    "description": "The HMS Empire was once Lord British's flagship! It sank during a terrible storm and came to rest on the ocean floor. In that earlier saga, the Avatar had to explore its haunted, water-logged decks to find a crucial item: the magical Grapple. Without it, climbing the high mountains of Britannia would have been impossible.",
-                    "position": {
-                        "x": 16.21,
-                        "y": -18.32
-                    }
-                },
-                {
-                    "name": "Heroes' Hole",
-                    "type": "dungeon",
-                    "description": "A testing ground for the knights of Serpent's Hold, who would frequently journey to these caves to prove their prowess in battle.",
-                    "position": {
-                        "x": 6.37,
-                        "y": -9.06
-                    }
-                },
-                {
-                    "name": "Heftimus Cave",
-                    "type": "dungeon",
-                    "description": "Located on the western Valorian Isles, the Heftimus Cave is vast. It is named for its most prominent inhabitant, Heftimus McPry, a penniless pirate who used it as shelter. Within this grotto, one may find numerous supplies in caches throughout the passages, although they are guarded by a variety of fierce beasts.",
-                    "position": {
-                        "x": -17.55,
-                        "y": -3
-                    }
-                }
-            ]
-        };
-    </script>
+    <script src="js/Ultima6Atlas.js?v=game-npcs"></script>
     <link rel="stylesheet" href="styles.css">
-    <script src="js/Ultima6.js"></script>
+    <script src="js/Ultima6.js?v=quest-atlas-r3"></script>
 </body>
 
 </html>
