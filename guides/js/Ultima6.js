@@ -1877,6 +1877,11 @@ Player’s question: "${query}"`;
         const npcMarkers = Array.isArray(config.npcs) ? config.npcs : [];
         const npcToggle = document.getElementById('britannia-map-npcs');
         const npcCount = document.getElementById('britannia-map-npc-count');
+        const levelSelector = document.getElementById('britannia-map-level');
+        const downloadLink = document.getElementById('britannia-map-download');
+        const loadingIndicator = document.getElementById('britannia-map-loading');
+        const loadingMessage = document.getElementById('britannia-map-loading-message');
+        const loadingDetail = document.getElementById('britannia-map-loading-detail');
         const xRange = activeLevel
             ? [0, activeLevel.worldSize]
             : (Array.isArray(config.xRange) && config.xRange.length === 2 ? config.xRange : [0, 100]);
@@ -1901,6 +1906,49 @@ Player’s question: "${query}"`;
             return;
         }
         const bounds = [[0, 0], [height, width]];
+        let expectedImageUrl = '';
+
+        const beginMapLoad = (level) => {
+            const levelName = level?.name || 'Britannia';
+            const levelImageUrl = level?.imageUrl || imageUrl;
+            expectedImageUrl = new URL(levelImageUrl, document.baseURI).href;
+            container.setAttribute('aria-busy', 'true');
+            loadingIndicator?.classList.remove('u6-atlas__map-loading--error');
+            if (loadingMessage) {
+                loadingMessage.textContent = `Charting ${levelName}…`;
+            }
+            if (loadingDetail) {
+                loadingDetail.textContent = 'Loading terrain';
+            }
+            if (loadingIndicator) {
+                loadingIndicator.hidden = false;
+            }
+        };
+
+        const finishMapLoad = (failed = false) => {
+            const currentImageUrl = overlay.getElement()?.currentSrc || overlay.getElement()?.src || '';
+            if (currentImageUrl && currentImageUrl !== expectedImageUrl) {
+                return;
+            }
+
+            container.setAttribute('aria-busy', 'false');
+            if (!loadingIndicator) {
+                return;
+            }
+
+            if (failed) {
+                loadingIndicator.classList.add('u6-atlas__map-loading--error');
+                if (loadingMessage) {
+                    loadingMessage.textContent = `${activeLevel?.name || 'Map'} could not be charted`;
+                }
+                if (loadingDetail) {
+                    loadingDetail.textContent = 'Try another layer or reconnect and return.';
+                }
+                return;
+            }
+
+            loadingIndicator.hidden = true;
+        };
 
         const markerStyle = {
             city: {
@@ -2013,6 +2061,9 @@ Player’s question: "${query}"`;
             alt: 'Britannia surface terrain extracted from the original Ultima VI game data',
             interactive: true
         });
+        overlay.on('load', () => finishMapLoad());
+        overlay.on('error', () => finishMapLoad(true));
+        beginMapLoad(activeLevel);
         overlay.addTo(map);
 
         map.fitBounds(bounds);
@@ -2376,9 +2427,6 @@ Player’s question: "${query}"`;
             }
         }
 
-        const levelSelector = document.getElementById('britannia-map-level');
-        const downloadLink = document.getElementById('britannia-map-download');
-
         if (levelSelector && levels.length) {
             levelSelector.addEventListener('change', () => {
                 const nextLevel = levels.find(level => level.id === Number(levelSelector.value));
@@ -2397,6 +2445,7 @@ Player’s question: "${query}"`;
                 spanX = maxX - minX;
                 spanY = maxY - minY;
 
+                beginMapLoad(activeLevel);
                 overlay.setUrl(activeLevel.imageUrl);
                 const overlayImage = overlay.getElement();
                 if (overlayImage) {

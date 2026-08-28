@@ -451,10 +451,73 @@ h1, h2, h3, h4 {
 }
 
 .u6-atlas__map-frame {
+    position: relative;
     padding: 0.3rem;
     border: 1px solid var(--atlas-line);
     border-radius: 1rem;
     background: rgba(56, 45, 36, 0.08);
+}
+
+.u6-atlas__map-loading {
+    position: absolute;
+    z-index: 1000;
+    inset: 0.3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.85rem;
+    padding: 1.25rem;
+    border-radius: 0.7rem;
+    background:
+        radial-gradient(circle at center, rgba(133, 77, 14, 0.2), transparent 55%),
+        rgba(31, 41, 55, 0.88);
+    color: #fdf6e3;
+    text-align: left;
+    pointer-events: auto;
+    backdrop-filter: blur(3px);
+}
+
+.u6-atlas__map-loading[hidden] {
+    display: none;
+}
+
+.u6-atlas__map-loading--error {
+    background: rgba(69, 26, 3, 0.92);
+}
+
+.u6-atlas__map-spinner {
+    width: 2.35rem;
+    height: 2.35rem;
+    flex: 0 0 auto;
+    border: 3px solid rgba(253, 246, 227, 0.32);
+    border-top-color: #fbbf24;
+    border-radius: 50%;
+    animation: u6-atlas-charting 0.8s linear infinite;
+}
+
+.u6-atlas__map-loading--error .u6-atlas__map-spinner {
+    animation: none;
+    border-color: #fbbf24;
+}
+
+.u6-atlas__map-loading-copy {
+    display: grid;
+    gap: 0.15rem;
+}
+
+.u6-atlas__map-loading-copy strong {
+    font-family: 'IM Fell English', serif;
+    font-size: clamp(1.05rem, 2vw, 1.35rem);
+    font-weight: 600;
+}
+
+.u6-atlas__map-loading-copy span {
+    color: rgba(253, 246, 227, 0.72);
+    font-size: 0.75rem;
+}
+
+@keyframes u6-atlas-charting {
+    to { transform: rotate(360deg); }
 }
 
 .u6-atlas .britannia-map {
@@ -725,7 +788,9 @@ h1, h2, h3, h4 {
 
 @media (prefers-reduced-motion: reduce) {
     .u6-atlas__toggle-indicator,
-    .u6-atlas__toggle-indicator::after {
+    .u6-atlas__toggle-indicator::after,
+    .u6-atlas__map-spinner {
         transition: none;
+        animation: none;
     }
 }

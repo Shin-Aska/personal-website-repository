@@ -22,7 +22,7 @@
         - AI Strategic Advisor (Gemini): Goal -> Provide dynamic, on-demand help. Viz/Method -> Text input and response display. Interaction -> User types a question and receives a detailed, contextual answer. Justification -> Offers a more interactive and flexible help system than a static FAQ or walkthrough.
     -->
     <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
-    <link rel="stylesheet" href="css/Ultima6.css?v=quest-atlas-r2">
+    <link rel="stylesheet" href="css/Ultima6.css?v=atlas-loading-r1">
 </head>
 
 <body class="antialiased">
@@ -207,6 +207,14 @@
                             <div class="u6-atlas__map-frame">
                                 <div id="britannia-map" class="britannia-map" role="application"
                                     aria-label="Interactive map of Ultima VI Britannia"></div>
+                                <div id="britannia-map-loading" class="u6-atlas__map-loading" role="status"
+                                    aria-live="polite" aria-atomic="true" hidden>
+                                    <span class="u6-atlas__map-spinner" aria-hidden="true"></span>
+                                    <span class="u6-atlas__map-loading-copy">
+                                        <strong id="britannia-map-loading-message">Charting Britannia Surface…</strong>
+                                        <span id="britannia-map-loading-detail">Loading terrain</span>
+                                    </span>
+                                </div>
                             </div>
 
                             <div class="u6-atlas__map-footer">
@@ -335,7 +343,7 @@
     <script src="js/leaflet.js"></script>
     <script src="js/Ultima6Atlas.js?v=game-npcs"></script>
     <link rel="stylesheet" href="styles.css">
-    <script src="js/Ultima6.js?v=quest-atlas-r3"></script>
+    <script src="js/Ultima6.js?v=atlas-loading-r1"></script>
 </body>
 
 </html>
