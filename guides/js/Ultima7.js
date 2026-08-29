@@ -1,14 +1,14 @@
 const DB = {
     companions: [
-        { name: "Iolo", role: "Fighter (Bard)", str: 18, dex: 19, int: 20, com: 19, location: "Trinsic", notes: "Joins automatically at the start." },
-        { name: "Shamino", role: "Fighter (Ranger)", str: 18, dex: 21, int: 19, com: 16, location: "Britain, Blue Boar Tavern", notes: "Excellent archer due to high Dexterity." },
-        { name: "Dupre", role: "Fighter (Paladin)", str: 21, dex: 20, int: 18, com: 18, location: "Jhelom, The Bunk and Stool", notes: "The best front-line tank with the highest starting Strength." },
-        { name: "Spark", role: "Fighter", str: 14, dex: 22, int: 18, com: 10, location: "Trinsic, Christopher's House", notes: "Gains training points at double rate. Huge damage potential." },
-        { name: "Sentri", role: "Trainer (Fighter)", str: 18, dex: 20, int: 18, com: 16, location: "Britain, Training Hall", notes: "Will not join if party size is > 5. Offers free DEX training." },
-        { name: "Tseramed", role: "Fighter (Ranger)", str: 16, dex: 17, int: 18, com: 12, location: "Yew, near Bee Cave", notes: "" },
-        { name: "Jaana", role: "Healer (Druid)", str: 13, dex: 16, int: 18, com: 8, location: "Cove, Healer's Shop", notes: "Can periodically heal the party for free. Only companion with innate magic." },
-        { name: "Katrina", role: "Fighter (Shepherd)", str: 11, dex: 15, int: 18, com: 8, location: "New Magincia", notes: "Will not join if party size is > 5. Generally a poor choice due to low stats." },
-        { name: "Julia", role: "Fighter (Tinker)", str: 12, dex: 14, int: 18, com: 8, location: "Minoc, Tinker Shop", notes: "Will not join if party size is > 5. Will not rejoin if dismissed." },
+        { name: "Iolo", portrait: "images/ultima7-portraits/iolo.png", role: "Fighter (Bard)", focus: "Balanced archer", tags: ["ranged"], str: 18, dex: 19, int: 20, com: 19, location: "Trinsic", notes: "Joins automatically at the start." },
+        { name: "Shamino", portrait: "images/ultima7-portraits/shamino.png", role: "Fighter (Ranger)", focus: "Fast ranged damage", tags: ["ranged"], str: 18, dex: 21, int: 19, com: 16, location: "Britain, Blue Boar Tavern", notes: "Excellent archer due to high Dexterity." },
+        { name: "Dupre", portrait: "images/ultima7-portraits/dupre.png", role: "Fighter (Paladin)", focus: "Front-line anchor", tags: ["frontline"], str: 21, dex: 20, int: 18, com: 18, location: "Jhelom, The Bunk and Stool", notes: "The best front-line tank with the highest starting Strength." },
+        { name: "Spark", portrait: "images/ultima7-portraits/spark.png", role: "Fighter", focus: "Fastest growth", tags: ["growth"], str: 14, dex: 22, int: 18, com: 10, location: "Trinsic, Christopher's House", notes: "Gains training points at double rate. Huge damage potential." },
+        { name: "Sentri", portrait: "images/ultima7-portraits/sentri.png", role: "Trainer (Fighter)", focus: "Free DEX training", tags: ["frontline", "growth"], recruitEarly: true, str: 18, dex: 20, int: 18, com: 16, location: "Britain, Training Hall", notes: "Will not join if party size is > 5. Offers free DEX training." },
+        { name: "Tseramed", portrait: "images/ultima7-portraits/tseramed.png", role: "Fighter (Ranger)", focus: "Wilderness archer", tags: ["ranged"], str: 16, dex: 17, int: 18, com: 12, location: "Yew, near Bee Cave", notes: "A dependable wilderness fighter found near the Bee Cave." },
+        { name: "Jaana", portrait: "images/ultima7-portraits/jaana.png", role: "Healer (Druid)", focus: "Healing and magic", tags: ["healing"], str: 13, dex: 16, int: 18, com: 8, location: "Cove, Healer's Shop", notes: "Can periodically heal the party for free. Only companion with innate magic." },
+        { name: "Katrina", portrait: "images/ultima7-portraits/katrina.png", role: "Fighter (Shepherd)", focus: "Reserve fighter", tags: ["frontline"], recruitEarly: true, str: 11, dex: 15, int: 18, com: 8, location: "New Magincia", notes: "Will not join if party size is > 5. Generally a poor choice due to low stats." },
+        { name: "Julia", portrait: "images/ultima7-portraits/julia.png", role: "Fighter (Tinker)", focus: "Utility fighter", tags: ["frontline"], recruitEarly: true, str: 12, dex: 14, int: 18, com: 8, location: "Minoc, Tinker Shop", notes: "Will not join if party size is > 5. Will not rejoin if dismissed." },
     ],
     equipment: [
         { name: "Magic Armour (Full Suit)", type: "Armour", effect: "High Protection", location: "128S/3W (Chest SW of Trinsic)" },
@@ -22,10 +22,19 @@ const DB = {
         { name: "Sword of Defense", type: "1H Weapon", effect: "Adds to Armor Value", location: "157S/53E (Serpent's Hold Armoury)" },
     ],
     bestiary: [
-        { name: "Slimes", tactic: "Use a low-damage weapon. They duplicate when struck, allowing for controlled farming of XP." },
-        { name: "Stone Harpy", tactic: "Completely immune to all magic and enchanted weapons. Must be defeated with non-magical attacks. A Glass Sword is highly effective." },
-        { name: "Liches", tactic: "Extremely dangerous spellcasters. Use the Magebane sword to drain their mana, rendering them helpless." },
-        { name: "Dragons", tactic: "Formidable beasts with high health. A single Glass Sword can often defeat them in one hit." },
+        { name: "Slimes", threat: "Controlled", counter: "Low-damage weapon", tactic: "They duplicate when struck, which makes careless attacks messy but permits controlled experience farming." },
+        { name: "Stone Harpy", threat: "High", counter: "Mundane attacks", tactic: "Immune to magic and enchanted weapons. Fight with non-magical attacks; a Glass Sword is also highly effective." },
+        { name: "Liches", threat: "Severe", counter: "Magebane", tactic: "Dangerous spellcasters. Drain their mana with Magebane to shut down the part of their arsenal that makes them lethal." },
+        { name: "Dragons", threat: "Severe", counter: "Glass Sword", tactic: "Their large health pool punishes a drawn-out fight. A Glass Sword can often end the encounter in a single hit." },
+    ],
+    spells: [
+        { name: "Seance", category: "Quest", description: "Required to speak with the spirits of Skara Brae and progress the main investigation." },
+        { name: "Destroy Trap", category: "Quest", description: "Required to reach the Tetrahedron Generator; also makes trapped containers safer to handle." },
+        { name: "Mark & Recall", category: "Travel", description: "Creates a reusable return point, dramatically reducing cross-map travel and supply runs." },
+        { name: "Unlock Magic", category: "Utility", description: "Opens magically sealed doors and containers that ordinary keys cannot address." },
+        { name: "Heal & Cure", category: "Support", description: "The dependable core of party recovery between dangerous encounters." },
+        { name: "Mass Might", category: "Support", description: "Raises the party's strength together, making it a strong pre-combat buff." },
+        { name: "Armageddon", category: "Warning", description: "Kills nearly every NPC in Britannia and breaks most quests. Keep it as a curiosity, not a normal field spell." },
     ],
     reagents: {
         vendors: ["Rudyom (Cove)", "Nystul (Britain)", "Nicodemus (Yew)", "Mariah (Moonglow)", "Wis-Sur (Vesper)", "Sarpling (Terfin)"],
@@ -765,7 +774,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const aiResponseText = document.getElementById('ai-response-text');
     const aiModalTitle = document.getElementById('ai-modal-title');
 
-    let companionChart = null;
     let reagentChart = null;
     // Handcrafted prompts loaded from prompts/ultima7_prompts.json
     let QUEST_PROMPTS = {};
@@ -845,9 +853,17 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     mainNav.addEventListener('click', (e) => {
-        if (e.target.classList.contains('nav-button')) {
-            switchTab(e.target.dataset.target);
+        const button = e.target.closest('.nav-button');
+        if (button) {
+            switchTab(button.dataset.target);
         }
+    });
+
+    document.addEventListener('click', (e) => {
+        const guideAction = e.target.closest('[data-guide-target]');
+        if (!guideAction) return;
+        switchTab(guideAction.dataset.guideTarget);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
     function parseHashQuery(qs) {
@@ -957,24 +973,159 @@ document.addEventListener('DOMContentLoaded', () => {
     function initPartyBuilder() {
         const grid = document.getElementById('companion-grid');
         const details = document.getElementById('companion-details');
-        // Removed party strategy button binding per request
+        const partySlots = document.getElementById('party-slots');
+        const partyCount = document.getElementById('party-count');
+        const partyCoverage = document.getElementById('party-coverage');
+        const partyMessage = document.getElementById('party-builder-message');
+        const resetPartyPlan = document.getElementById('reset-party-plan');
+        const maxCompanions = 8;
+        const storageKey = 'ultima7-party-plan';
+        let selectedCompanionId = 0;
 
-        grid.innerHTML = '';
-        DB.companions.forEach((c, index) => {
-            const card = document.createElement('div');
-            card.className = 'companion-card border-2 border-transparent p-2 rounded-lg text-center cursor-pointer transform transition-all duration-300 hover:bg-[#4a5568]';
-            card.dataset.id = index;
-            card.innerHTML = `<h4>${c.name}</h4><p class="text-xs text-secondary">${c.role}</p>`;
-            grid.appendChild(card);
+        function loadPartyPlan() {
+            try {
+                const stored = JSON.parse(localStorage.getItem(storageKey));
+                if (Array.isArray(stored)) {
+                    return new Set(stored.filter(id => Number.isInteger(id) && DB.companions[id]).slice(0, maxCompanions));
+                }
+            } catch (_error) {
+                // Ignore unavailable or malformed local storage and use the starting plan.
+            }
+            return new Set([0]);
+        }
+
+        let plannedParty = loadPartyPlan();
+
+        function savePartyPlan() {
+            try {
+                localStorage.setItem(storageKey, JSON.stringify([...plannedParty]));
+            } catch (_error) {
+                // The builder remains usable when storage is unavailable.
+            }
+        }
+
+        function showPartyMessage(message = '', tone = 'neutral') {
+            partyMessage.textContent = message;
+            partyMessage.dataset.tone = tone;
+        }
+
+        function renderRoster() {
+            grid.innerHTML = '';
+            DB.companions.forEach((companion, index) => {
+                const isPlanned = plannedParty.has(index);
+                const isInspected = selectedCompanionId === index;
+                const card = document.createElement('article');
+                card.className = `companion-card${isPlanned ? ' in-party' : ''}${isInspected ? ' selected' : ''}`;
+                card.dataset.id = index;
+                card.innerHTML = `
+                    <button type="button" class="companion-card__inspect" data-party-action="inspect" aria-label="Inspect ${companion.name}">
+                        <span class="companion-card__portrait"><img src="${companion.portrait}" alt="" loading="lazy"></span>
+                        <span class="companion-card__copy">
+                            <strong>${companion.name}</strong>
+                            <small>${companion.focus}</small>
+                        </span>
+                    </button>
+                    <button type="button" class="companion-card__toggle" data-party-action="toggle" aria-pressed="${isPlanned}" aria-label="${isPlanned ? 'Remove' : 'Add'} ${companion.name} ${isPlanned ? 'from' : 'to'} planned party">${isPlanned ? '✓' : '+'}</button>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function renderPartyPlan() {
+            const members = [...plannedParty];
+            partyCount.textContent = `${members.length} / ${maxCompanions} companions`;
+            partySlots.innerHTML = `
+                <span class="u7-party-slot u7-party-slot--avatar">
+                    <img src="images/ultima7-portraits/avatar.png" alt="">
+                    <span><strong>Avatar</strong><small>Party leader</small></span>
+                </span>
+                ${Array.from({ length: maxCompanions }, (_unused, slotIndex) => {
+                    const companionId = members[slotIndex];
+                    if (companionId === undefined) {
+                        return `<span class="u7-party-slot u7-party-slot--empty"><span aria-hidden="true">+</span><small>Open slot</small></span>`;
+                    }
+                    const companion = DB.companions[companionId];
+                    return `
+                        <button type="button" class="u7-party-slot u7-party-slot--filled" data-party-slot-id="${companionId}" aria-label="Inspect ${companion.name}">
+                            <img src="${companion.portrait}" alt="">
+                            <span><strong>${companion.name}</strong><small>${companion.focus}</small></span>
+                        </button>
+                    `;
+                }).join('')}
+            `;
+
+            const coverageDefinitions = [
+                { tag: 'frontline', label: 'Front line', ready: 'A durable fighter can hold the line.', gap: 'Add Dupre, Sentri, Katrina, or Julia.' },
+                { tag: 'ranged', label: 'Ranged', ready: 'Archery coverage is ready.', gap: 'Add Iolo, Shamino, or Tseramed.' },
+                { tag: 'healing', label: 'Healing', ready: 'Jaana provides field recovery.', gap: 'Add Jaana for dependable recovery.' },
+                { tag: 'growth', label: 'Training', ready: 'Fast growth or free training is covered.', gap: 'Add Spark or Sentri for efficient growth.' }
+            ];
+            partyCoverage.innerHTML = coverageDefinitions.map(definition => {
+                const covered = members.some(id => DB.companions[id].tags.includes(definition.tag));
+                return `
+                    <article class="u7-coverage-card ${covered ? 'is-ready' : 'has-gap'}">
+                        <span>${covered ? 'Ready' : 'Gap'}</span>
+                        <strong>${definition.label}</strong>
+                        <small>${covered ? definition.ready : definition.gap}</small>
+                    </article>
+                `;
+            }).join('');
+        }
+
+        function togglePartyMember(id) {
+            const companion = DB.companions[id];
+            if (plannedParty.has(id)) {
+                plannedParty.delete(id);
+                showPartyMessage(`${companion.name} removed from the plan.`);
+            } else if (plannedParty.size >= maxCompanions) {
+                showPartyMessage('All eight companion slots are filled. Remove someone before adding another recruit.', 'warning');
+                return;
+            } else {
+                plannedParty.add(id);
+                showPartyMessage(`${companion.name} added to the plan.`, 'success');
+            }
+            savePartyPlan();
+            renderRoster();
+            renderPartyPlan();
+            displayCompanionDetails(selectedCompanionId);
+        }
+
+        function revealDossierOnCompactLayout() {
+            if (!window.matchMedia('(max-width: 1023px)').matches) return;
+            requestAnimationFrame(() => details.scrollIntoView({ behavior: 'smooth', block: 'start' }));
+        }
+
+        grid.addEventListener('click', (event) => {
+            const action = event.target.closest('[data-party-action]');
+            const card = event.target.closest('.companion-card');
+            if (!action || !card) return;
+            const id = Number(card.dataset.id);
+            selectedCompanionId = id;
+            if (action.dataset.partyAction === 'toggle') {
+                togglePartyMember(id);
+            } else {
+                renderRoster();
+                displayCompanionDetails(id);
+                revealDossierOnCompactLayout();
+            }
         });
 
-        grid.addEventListener('click', (e) => {
-            const card = e.target.closest('.companion-card');
-            if (card) {
-                grid.querySelectorAll('.companion-card').forEach(c => c.classList.remove('selected'));
-                card.classList.add('selected');
-                displayCompanionDetails(parseInt(card.dataset.id));
-            }
+        partySlots.addEventListener('click', (event) => {
+            const slot = event.target.closest('[data-party-slot-id]');
+            if (!slot) return;
+            selectedCompanionId = Number(slot.dataset.partySlotId);
+            renderRoster();
+            displayCompanionDetails(selectedCompanionId);
+        });
+
+        resetPartyPlan.addEventListener('click', () => {
+            plannedParty = new Set([0]);
+            selectedCompanionId = 0;
+            savePartyPlan();
+            showPartyMessage('Starting plan restored with Iolo at the Avatar’s side.');
+            renderRoster();
+            renderPartyPlan();
+            displayCompanionDetails(0);
         });
 
         function handleGenerateBackstory(id) {
@@ -984,102 +1135,163 @@ document.addEventListener('DOMContentLoaded', () => {
             displayAiResponse(backstory, `📑 ${c.name}'s Journal`);
         }
 
-        // Get Party Strategy feature removed per request
-
         function displayCompanionDetails(id) {
             const c = DB.companions[id];
+            const isPlanned = plannedParty.has(id);
+            const stats = [
+                { label: 'Strength', short: 'STR', value: c.str, color: '#d94a4a' },
+                { label: 'Dexterity', short: 'DEX', value: c.dex, color: '#48a868' },
+                { label: 'Intelligence', short: 'INT', value: c.int, color: '#4f8fd7' },
+                { label: 'Combat', short: 'COM', value: c.com, color: '#d6a646' }
+            ];
             details.innerHTML = `
-                <div class="flex flex-col md:flex-row gap-6">
-                    <div class="flex-grow">
-                        <h3 class="text-3xl font-bold">${c.name}</h3>
-                        <p class="text-lg text-secondary">${c.role}</p>
-                        <p class="mt-4"><span class="font-semibold">Location:</span> ${c.location}</p>
-                        <p class="mt-2 bg-[#1a202c] p-3 rounded-md"><span class="font-semibold">Notes:</span> ${c.notes || 'No special notes.'}</p>
-                        <button id="generate-backstory-btn" class="ai-button mt-4 w-full font-bold py-2 px-4 rounded-lg">Backstory</button>
-                    </div>
-                    <div class="w-full md:w-1/2 flex-shrink-0">
-                         <div class="chart-container !h-[250px] !max-h-[250px]">
-                            <canvas id="companion-chart"></canvas>
+                <div class="u7-companion-profile">
+                    <div class="u7-companion-profile__identity">
+                        <img class="u7-companion-profile__portrait" src="${c.portrait}" alt="Portrait of ${c.name}">
+                        <div>
+                            <p class="u7-kicker">Companion dossier</p>
+                            <div class="u7-companion-profile__title"><h3>${c.name}</h3><span>${c.focus}</span></div>
+                            <p class="u7-companion-profile__role">${c.role}</p>
+                            <p class="u7-companion-profile__location"><span class="font-semibold">Recruit at:</span> ${c.location}</p>
                         </div>
+                    </div>
+                    <p class="u7-companion-profile__notes"><span>Field note</span>${c.notes || 'No special notes.'}</p>
+                    ${c.recruitEarly ? '<p class="u7-companion-profile__warning"><strong>Recruit early:</strong> this companion may refuse once the active party is already large.</p>' : ''}
+                    <div class="u7-stat-sheet" aria-label="${c.name} attributes">
+                        ${stats.map(stat => `
+                            <div class="u7-stat-row">
+                                <span title="${stat.label}">${stat.short}</span>
+                                <div class="u7-stat-meter"><i style="width: ${(stat.value / 30) * 100}%; background: ${stat.color}"></i></div>
+                                <strong>${stat.value}</strong>
+                            </div>
+                        `).join('')}
+                    </div>
+                    <div class="u7-dossier-actions">
+                        <button id="toggle-party-member" type="button" class="u7-party-action ${isPlanned ? 'is-remove' : ''}">${isPlanned ? `Remove ${c.name}` : `Add ${c.name} to plan`}</button>
+                        <button id="generate-backstory-btn" type="button" class="u7-journal-action">Read journal</button>
                     </div>
                 </div>
             `;
+            document.getElementById('toggle-party-member').addEventListener('click', () => togglePartyMember(id));
             document.getElementById('generate-backstory-btn').addEventListener('click', () => handleGenerateBackstory(id));
-
-            const ctx = document.getElementById('companion-chart').getContext('2d');
-            if (companionChart) companionChart.destroy();
-            const chartOptions = {
-                responsive: true, maintainAspectRatio: false,
-                scales: {
-                    y: {
-                        beginAtZero: true, max: 30,
-                        grid: { color: '#4a5568' },
-                        ticks: { color: '#a0aec0' }
-                    },
-                    x: {
-                        grid: { color: '#4a5568' },
-                        ticks: { color: '#a0aec0' }
-                    }
-                },
-                plugins: { legend: { display: false } }
-            };
-            companionChart = new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: ['STR', 'DEX', 'INT', 'COM'],
-                    datasets: [{
-                        label: c.name + ' Stats',
-                        data: [c.str, c.dex, c.int, c.com],
-                        backgroundColor: ['#c53030', '#2f855a', '#2b6cb0', '#805ad5'],
-                        borderColor: '#a0aec0',
-                        borderWidth: 1
-                    }]
-                },
-                options: chartOptions
-            });
         }
+        renderRoster();
+        renderPartyPlan();
         displayCompanionDetails(0);
-        grid.querySelector('.companion-card').classList.add('selected');
     }
 
     // Equipment lore feature removed per request
 
     function initArmory() {
         const tableBody = document.getElementById('equipment-table');
-        tableBody.innerHTML = '';
-        DB.equipment.forEach(item => {
-            const row = tableBody.insertRow();
-            row.className = 'border-b border-color';
-            row.innerHTML = `
-                <td class="px-4 py-3 font-semibold">${item.name}</td>
-                <td class="px-4 py-3">${item.type}</td>
-                <td class="px-4 py-3">${item.effect}</td>
-                <td class="px-4 py-3">${item.location}</td>
-            `;
-        });
+        const search = document.getElementById('equipment-search');
+        const typeFilter = document.getElementById('equipment-type-filter');
+        const resultCount = document.getElementById('equipment-result-count');
+        const types = [...new Set(DB.equipment.map(item => item.type))].sort();
+        types.forEach(type => typeFilter.add(new Option(type, type)));
+
+        function renderEquipment() {
+            const term = search.value.trim().toLowerCase();
+            const selectedType = typeFilter.value;
+            const filtered = DB.equipment.filter(item => {
+                const matchesType = selectedType === 'all' || item.type === selectedType;
+                const haystack = `${item.name} ${item.type} ${item.effect} ${item.location}`.toLowerCase();
+                return matchesType && (!term || haystack.includes(term));
+            });
+
+            tableBody.innerHTML = '';
+            filtered.forEach(item => {
+                const row = tableBody.insertRow();
+                row.className = 'border-b border-color';
+                row.innerHTML = `
+                    <td class="px-4 py-3 font-semibold">${item.name}</td>
+                    <td class="px-4 py-3">${item.type}</td>
+                    <td class="px-4 py-3">${item.effect}</td>
+                    <td class="px-4 py-3">${item.location}</td>
+                `;
+            });
+            if (!filtered.length) {
+                const row = tableBody.insertRow();
+                row.innerHTML = '<td colspan="4" class="u7-equipment-empty">No equipment matches those filters.</td>';
+            }
+            resultCount.textContent = `${filtered.length} of ${DB.equipment.length} items`;
+        }
+
+        search.addEventListener('input', renderEquipment);
+        typeFilter.addEventListener('change', renderEquipment);
+        renderEquipment();
 
         // Removed lore button event listener per request
 
         const bestiaryGrid = document.getElementById('bestiary-grid');
         bestiaryGrid.innerHTML = '';
         DB.bestiary.forEach(monster => {
-            const card = document.createElement('div');
-            card.className = 'bg-[#1a202c] p-4 rounded-lg';
-            card.innerHTML = `<h4 class="font-bold text-lg accent-text">${monster.name}</h4><p class="text-sm mt-1">${monster.tactic}</p>`;
+            const card = document.createElement('article');
+            card.className = 'u7-bestiary-card';
+            card.innerHTML = `
+                <div class="u7-bestiary-card__meta"><span>Threat</span><strong>${monster.threat}</strong></div>
+                <h4>${monster.name}</h4>
+                <p>${monster.tactic}</p>
+                <p class="u7-bestiary-card__counter"><span>Best answer</span>${monster.counter}</p>
+            `;
             bestiaryGrid.appendChild(card);
         });
     }
 
     function initMagic() {
         const selector = document.getElementById('reagent-selector');
+        const bestBuy = document.getElementById('reagent-best-buy');
+        const spellFilters = document.getElementById('spell-filters');
+        const spellGrid = document.getElementById('spell-grid');
         selector.innerHTML = '';
         Object.keys(DB.reagents.data).forEach(reagent => {
             selector.add(new Option(reagent, reagent));
         });
 
+        const spellCategories = ['All', ...new Set(DB.spells.map(spell => spell.category))];
+        let activeSpellCategory = 'All';
+
+        function renderSpells() {
+            spellGrid.innerHTML = '';
+            DB.spells
+                .filter(spell => activeSpellCategory === 'All' || spell.category === activeSpellCategory)
+                .forEach(spell => {
+                    const card = document.createElement('article');
+                    card.className = 'u7-spell-card';
+                    card.innerHTML = `
+                        <div class="u7-spell-card__name">${spell.name}<span class="u7-spell-card__category">${spell.category}</span></div>
+                        <p>${spell.description}</p>
+                    `;
+                    spellGrid.appendChild(card);
+                });
+        }
+
+        spellCategories.forEach(category => {
+            const button = document.createElement('button');
+            button.type = 'button';
+            button.textContent = category;
+            button.classList.toggle('active', category === activeSpellCategory);
+            button.addEventListener('click', () => {
+                activeSpellCategory = category;
+                spellFilters.querySelectorAll('button').forEach(filterButton => {
+                    filterButton.classList.toggle('active', filterButton === button);
+                });
+                renderSpells();
+            });
+            spellFilters.appendChild(button);
+        });
+        renderSpells();
+
         const ctx = document.getElementById('reagent-chart').getContext('2d');
 
         function updateReagentChart(reagent) {
+            const prices = DB.reagents.data[reagent];
+            const available = prices
+                .map((price, index) => ({ price, vendor: DB.reagents.vendors[index] }))
+                .filter(entry => entry.price !== null);
+            const lowestPrice = Math.min(...available.map(entry => entry.price));
+            const cheapest = available.filter(entry => entry.price === lowestPrice);
+            bestBuy.innerHTML = `<strong>Best buy: ${cheapest.map(entry => entry.vendor).join(' or ')}</strong> · ${lowestPrice} gold each`;
             const chartOptions = {
                 responsive: true, maintainAspectRatio: false,
                 scales: {
@@ -1438,9 +1650,8 @@ document.addEventListener('DOMContentLoaded', () => {
     initArmory();
     initMagic();
     initQuests();
-    ensureUltima7Map();
 
-    switchTab('party');
+    switchTab('briefing');
 
     window.addEventListener('hashchange', applyDeepLink);
     applyDeepLink();

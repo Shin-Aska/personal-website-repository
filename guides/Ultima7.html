@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="css/fonts.css">
     <link rel="stylesheet" href="css/leaflet.css">
     <!-- Chosen Palette: Guardian's Shadow -->
-    <!-- Application Structure Plan: A task-oriented, dashboard-style SPA. The structure prioritizes quick information retrieval over the linear format of the source document. A fixed top navigation bar allows users to instantly jump between four key sections: 'Party Builder', 'Armory & Bestiary', 'Spellbook', and 'Quest Log'. This non-linear design is optimal for a game guide, as players typically need to look up specific, disconnected pieces of information during gameplay (e.g., "Who should I recruit next?" or "Where is the best sword?"). Each section is designed as an interactive tool (e.g., a companion comparator, a searchable equipment table, a quest filter) to directly support player decision-making. -->
+    <!-- Application Structure Plan: A briefing-first, task-oriented SPA. The opening page establishes the campaign and routes players into the Party Builder, Field Manual, Spellbook, Quest Log, and World Atlas. Each reference section remains an interactive tool for fast use during play. -->
     <!-- Visualization & Content Choices: 
         - Companion Stats Comparison: Report Info -> Companion attribute table. Goal -> Compare potential party members visually. Viz -> Interactive Bar Chart (Chart.js). Interaction -> Chart updates on companion selection. Justification -> Faster than reading a table for comparative analysis. Library -> Chart.js.
         - Reagent Price Finder: Report Info -> Reagent price table. Goal -> Find the cheapest vendor for each reagent. Viz -> Interactive Bar Chart (Chart.js). Interaction -> Dropdown selects a reagent, chart updates with vendor prices. Justification -> Instantly highlights the most economical choice, a primary user goal. Library -> Chart.js.
@@ -34,8 +34,9 @@
         <div class="container mx-auto px-4 flex flex-col sm:flex-row justify-between items-center">
             <h1 class="text-2xl font-bold">Ultima VII Interactive Guide</h1>
             <nav id="main-nav" class="flex flex-wrap justify-center gap-2 mt-2 sm:mt-0">
-                <button data-target="party" class="nav-button active px-4 py-2 rounded-lg font-semibold">Party Builder</button>
-                <button data-target="armory" class="nav-button px-4 py-2 rounded-lg font-semibold">Armory & Bestiary</button>
+                <button data-target="briefing" class="nav-button active px-4 py-2 rounded-lg font-semibold">Briefing</button>
+                <button data-target="party" class="nav-button px-4 py-2 rounded-lg font-semibold">Party Builder</button>
+                <button data-target="armory" class="nav-button px-4 py-2 rounded-lg font-semibold">Field Manual</button>
                 <button data-target="magic" class="nav-button px-4 py-2 rounded-lg font-semibold">Spellbook</button>
                 <button data-target="quests" class="nav-button px-4 py-2 rounded-lg font-semibold">Quest Log</button>
                 <button data-target="atlas" class="nav-button px-4 py-2 rounded-lg font-semibold">World Atlas</button>
@@ -45,26 +46,114 @@
 
     <main class="container mx-auto p-4 md:p-8">
 
-        <!-- Party Builder Section -->
-        <section id="party" class="content-section active">
-            <div class="text-center mb-8">
-                <h2 class="text-4xl font-bold mb-2">The Party Builder</h2>
-                <p class="text-lg max-w-3xl mx-auto text-secondary">Assemble your ideal fellowship. Click on a companion to view their stats and learn the most effective ways to train your party for the trials ahead. A well-balanced team is the first step to victory.</p>
-            </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                <div class="lg-col-span-1">
-                    <h3 class="text-2xl font-bold mb-4">Choose Your Companions</h3>
-                    <div id="companion-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-2 gap-4">
+        <!-- Briefing Section -->
+        <section id="briefing" class="content-section active">
+            <div class="u7-briefing-hero">
+                <div class="u7-briefing-hero__copy">
+                    <p class="u7-kicker">A murder in Trinsic · A voice in the ether</p>
+                    <h2>The Guardian has found Britannia.</h2>
+                    <p class="u7-briefing-lead">Two centuries after the Avatar's last journey, a ritual killing reveals a conspiracy spreading beneath an age of peace. Assemble old friends, follow the Fellowship, and close the Black Gate before its master can cross.</p>
+                    <div class="u7-briefing-actions">
+                        <button type="button" class="u7-primary-action" data-guide-target="quests">Begin the investigation <span aria-hidden="true">→</span></button>
+                        <button type="button" class="u7-secondary-action" data-guide-target="atlas">Open Britannia atlas</button>
+                    </div>
+                    <div class="u7-feature-chips" aria-label="Guide features">
+                        <span>Spoiler-light quest steps</span>
+                        <span>Original game portraits</span>
+                        <span>Searchable field references</span>
                     </div>
                 </div>
-                <div id="companion-details" class="lg:col-span-2 section-bg p-6 rounded-xl shadow-lg">
+                <figure class="u7-briefing-hero__art">
+                    <img src="images/Ultima7box.jpg" alt="Ultima VII: The Black Gate box artwork">
+                    <figcaption>Origin Systems · 1992</figcaption>
+                </figure>
+            </div>
+
+            <div class="u7-briefing-grid">
+                <article class="u7-briefing-card u7-briefing-card--map">
+                    <div>
+                        <p class="u7-kicker">The realm</p>
+                        <h3>Britannia, fully charted</h3>
+                        <p>Search settlements, dungeons, companions, clues, and high-value equipment without leaving the campaign flow.</p>
+                        <button type="button" data-guide-target="atlas">Survey the realm <span aria-hidden="true">→</span></button>
+                    </div>
+                </article>
+                <article class="u7-briefing-card">
+                    <p class="u7-kicker">Field priority</p>
+                    <h3>Prepare before pursuing Hook</h3>
+                    <p>Recruit a balanced fellowship, secure dependable equipment, and keep Seance plus Destroy Trap ready. The guide's three reference desks are built around those decisions.</p>
+                    <div class="u7-briefing-links">
+                        <button type="button" data-guide-target="party"><strong>Party Builder</strong><small>Compare all nine companions</small></button>
+                        <button type="button" data-guide-target="armory"><strong>Field Manual</strong><small>Weapons, armour, and counters</small></button>
+                        <button type="button" data-guide-target="magic"><strong>Spellbook</strong><small>Loadout and reagent economy</small></button>
+                    </div>
+                </article>
+            </div>
+
+            <section class="u7-campaign-roadmap" aria-labelledby="u7-roadmap-title">
+                <div class="u7-section-heading">
+                    <div>
+                        <p class="u7-kicker">The road ahead</p>
+                        <h3 id="u7-roadmap-title">Four movements against the Guardian</h3>
+                    </div>
+                    <p>Open the Quest Log for expandable, spoiler-conscious guidance.</p>
+                </div>
+                <div class="u7-roadmap-grid">
+                    <button type="button" data-guide-target="quests"><span>01</span><strong>Investigate Trinsic</strong><small>Read the crime scene and follow the Crown Jewel.</small></button>
+                    <button type="button" data-guide-target="quests"><span>02</span><strong>Enter the Fellowship</strong><small>Win Batlin's trust and expose the organization.</small></button>
+                    <button type="button" data-guide-target="quests"><span>03</span><strong>Find the Time Lord</strong><small>Cross the Deep Forest and seek the wisps.</small></button>
+                    <button type="button" data-guide-target="quests"><span>04</span><strong>Break the Black Gate</strong><small>Destroy three generators and descend into Hythloth.</small></button>
+                </div>
+            </section>
+        </section>
+
+        <!-- Party Builder Section -->
+        <section id="party" class="content-section">
+            <header class="u7-party-intro">
+                <p class="u7-kicker">Plan the fellowship</p>
+                <h2>The Party Builder</h2>
+                <p>Choose a balanced travelling company, inspect each companion, and identify gaps before setting out across Britannia.</p>
+            </header>
+
+            <div class="u7-party-workbench">
+                <section class="u7-party-plan" aria-labelledby="u7-party-plan-title">
+                    <div class="u7-party-plan__heading">
+                        <div>
+                            <p class="u7-kicker">Your planned company</p>
+                            <h3 id="u7-party-plan-title">Fellowship lineup</h3>
+                            <p>The Avatar leads. Add up to eight travelling companions; your plan is saved in this browser.</p>
+                        </div>
+                        <div class="u7-party-plan__controls">
+                            <strong id="party-count" aria-live="polite">1 / 8 companions</strong>
+                            <button id="reset-party-plan" type="button">Reset to start</button>
+                        </div>
+                    </div>
+                    <div id="party-slots" class="u7-party-slots" aria-label="Planned party lineup"></div>
+                    <div id="party-builder-message" class="u7-party-message" role="status" aria-live="polite"></div>
+                    <div id="party-coverage" class="u7-party-coverage" aria-label="Party role coverage"></div>
+                </section>
+
+                <div class="u7-party-layout">
+                    <aside class="u7-roster-panel" aria-labelledby="u7-roster-title">
+                        <div class="u7-roster-panel__heading">
+                            <div>
+                                <p class="u7-kicker">Recruitment board</p>
+                                <h3 id="u7-roster-title">Companions</h3>
+                            </div>
+                            <p>Select a portrait to inspect. Use <strong>+</strong> to add someone to your plan.</p>
+                        </div>
+                        <div id="companion-grid" class="u7-companion-grid"></div>
+                    </aside>
+                    <section id="companion-details" class="u7-dossier-panel" aria-live="polite"></section>
                 </div>
             </div>
-            
-            <div class="mt-12 section-bg p-6 rounded-xl shadow-lg">
-                <h3 class="text-2xl font-bold mb-4 text-center">Character Progression Strategy</h3>
-                <div class="grid md:grid-cols-2 gap-6 text-sm">
+
+            <details class="u7-party-notes">
+                <summary>
+                    <span><span class="u7-kicker">Field notes</span><strong>Training and economy strategy</strong></span>
+                    <span aria-hidden="true">+</span>
+                </summary>
+                <div class="u7-party-notes__grid">
                     <div>
                         <h4 class="font-bold text-lg mb-2 accent-text">The Training System</h4>
                         <p class="mb-2">Upon leveling up, characters gain 3 training points. Spend these at trainers to increase attributes. The key is the "rubber-band effect": training a secondary skill (Combat, Magic) yields huge gains if it's far below its primary attribute (Dexterity, Intelligence).</p>
@@ -84,7 +173,7 @@
                         </ul>
                     </div>
                 </div>
-            </div>
+            </details>
         </section>
 
         <!-- Armory & Bestiary Section -->
@@ -95,8 +184,18 @@
             </div>
             
             <div class="section-bg p-6 rounded-xl shadow-lg mb-8">
-                <h3 class="text-2xl font-bold mb-4">Top-Tier Equipment</h3>
-                <p class="mb-4">Systematically acquiring the best gear is the primary path to power. Here are the locations of the game's most essential and powerful items.</p>
+                <div class="u7-reference-heading">
+                    <div>
+                        <p class="u7-kicker">Quartermaster's desk</p>
+                        <h3 class="text-2xl font-bold">Top-Tier Equipment</h3>
+                        <p>Search the most useful endgame and early-power finds, or narrow the ledger by equipment type.</p>
+                    </div>
+                    <span id="equipment-result-count" class="u7-result-count" aria-live="polite"></span>
+                </div>
+                <div class="u7-filter-bar">
+                    <label><span>Find equipment</span><input id="equipment-search" type="search" placeholder="Try magic, ranged, Trinsic…"></label>
+                    <label><span>Type</span><select id="equipment-type-filter"><option value="all">All equipment</option></select></label>
+                </div>
                 <div class="overflow-x-auto">
                     <table class="w-full text-sm text-left">
                         <thead class="bg-[#1c2331] text-xs uppercase">
@@ -114,9 +213,10 @@
             </div>
 
             <div class="section-bg p-6 rounded-xl shadow-lg">
-                <h3 class="text-2xl font-bold mb-4">Strategic Bestiary</h3>
-                <p class="mb-4">Brute force isn't always enough. Know your enemy's weakness to ensure a swift victory.</p>
-                <div id="bestiary-grid" class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <p class="u7-kicker">Threat desk</p>
+                <h3 class="text-2xl font-bold mb-2">Strategic Bestiary</h3>
+                <p class="mb-5 text-secondary">The practical answer to each dangerous encounter—what makes it threatening and what to bring.</p>
+                <div id="bestiary-grid" class="u7-bestiary-grid">
                 </div>
             </div>
         </section>
@@ -130,39 +230,25 @@
             
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
                 <div class="section-bg p-6 rounded-xl shadow-lg">
-                    <h3 class="text-2xl font-bold mb-4">Essential Spells</h3>
-                    <p class="mb-4">Prioritize acquiring this suite of utility spells. They are more reliable than offensive magic in chaotic combat and many are required to complete the main quest.</p>
-                    <div class="space-y-4">
+                    <div class="u7-reference-heading">
                         <div>
-                            <h4 class="font-bold text-lg accent-text">Quest-Critical Spells</h4>
-                            <ul class="list-disc list-inside">
-                                <li><b>Seance:</b> Mandatory to communicate with the spirits of Skara Brae.</li>
-                                <li><b>Destroy Trap:</b> Needed to access the Tetrahedron Generator.</li>
-                            </ul>
+                            <p class="u7-kicker">Prepared casting</p>
+                            <h3 class="text-2xl font-bold">Essential Spell Loadout</h3>
                         </div>
-                        <div>
-                            <h4 class="font-bold text-lg accent-text">Top-Tier Utility Spells</h4>
-                            <ul class="list-disc list-inside">
-                                <li><b>Mark & Recall:</b> Invaluable for setting a teleport point and returning instantly.</li>
-                                <li><b>Unlock Magic:</b> Opens magically sealed chests and doors.</li>
-                                <li><b>Heal & Cure:</b> Fundamental for party survival.</li>
-                                <li><b>Mass Might:</b> Buffs the entire party's strength.</li>
-                            </ul>
-                        </div>
-                         <div>
-                            <h4 class="font-bold text-lg accent-text">The Ultimate Spell</h4>
-                            <ul class="list-disc list-inside">
-                                <li><b>Armageddon:</b> An 8th Circle spell that kills nearly every NPC in Britannia. It will break most quests but unlocks unique, grim dialogue from key characters. Use with extreme caution.</li>
-                            </ul>
-                        </div>
+                    </div>
+                    <p class="mb-4 text-secondary">Filter a compact field loadout by purpose. Quest-critical and survival magic should take priority over spectacle.</p>
+                    <div id="spell-filters" class="u7-filter-pills" aria-label="Filter essential spells"></div>
+                    <div id="spell-grid" class="u7-spell-grid">
                     </div>
                 </div>
 
                 <div class="section-bg p-6 rounded-xl shadow-lg">
-                    <h3 class="text-2xl font-bold mb-4">Reagent Economics</h3>
+                    <p class="u7-kicker">Provisioner's ledger</p>
+                    <h3 class="text-2xl font-bold mb-2">Reagent Economics</h3>
                     <p class="mb-4">Reagent costs vary wildly between vendors. Select a reagent below to find the most economical place to shop and save thousands of gold.</p>
                     <select id="reagent-selector" class="w-full p-2 rounded-md bg-[#4a5568] border border-color mb-4">
                     </select>
+                    <div id="reagent-best-buy" class="u7-best-buy" aria-live="polite"></div>
                     <div class="chart-container">
                         <canvas id="reagent-chart"></canvas>
                     </div>
