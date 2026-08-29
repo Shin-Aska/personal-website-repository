@@ -10,7 +10,7 @@
     <script src="js/tailwind.js"></script>
     <link rel="stylesheet" href="css/fonts.css">
     <link rel="stylesheet" href="css/leaflet.css">
-    <link rel="stylesheet" href="css/Albion.css">
+    <link rel="stylesheet" href="css/Albion.css?v=20260829-atlas5">
 </head>
 
 <body class="antialiased">
@@ -109,7 +109,7 @@
             <div class="text-center mb-10">
                 <h2 class="text-4xl font-bold mb-3 text-gradient">Walkthrough</h2>
                 <p class="text-lg max-w-3xl mx-auto text-gray-400">
-                    A chapter-by-chapter walkthrough of Tom Driscoll's journey to save Albion from destruction.
+                    A chapter-by-chapter route through Albion, connected directly to the exact game maps and named NPCs.
                 </p>
             </div>
 
@@ -222,17 +222,44 @@
             <div class="text-center mb-10">
                 <h2 class="text-4xl font-bold mb-3 text-gradient">World Atlas</h2>
                 <p class="text-lg max-w-3xl mx-auto text-gray-400">
-                    Nakiridaani/Konti region map overlay.
+                    Explore Albion exactly as it is stored in the original game—from continental wilderness maps to
+                    guilds, homes, fortresses, and the Toronto.
                 </p>
             </div>
 
-            <div class="albion-card p-6 mb-6">
-                <div id="atlas-status" class="text-sm text-gray-400 mb-4"></div>
-                <div id="atlas-filters" class="atlas-filters mb-4"></div>
-                <div id="albion-atlas-map" class="albion-atlas-map" role="application"
-                    aria-label="Interactive map of Albion"></div>
-                <div class="text-xs text-gray-500 mt-3">
-                    Tip: use filters to toggle categories; click markers for details.
+            <div class="albion-card p-4 md:p-6 mb-6 albion-atlas-shell">
+                <div class="albion-atlas-intro">
+                    <div>
+                        <p class="albion-atlas-eyebrow">Recovered cartography</p>
+                        <h3>Enter every city, guild, home, cave, and floor</h3>
+                    </div>
+                    <p>The atlas decodes Albion’s original tile layers, first-person floor grids, palettes, NPC
+                        waypoints, and doorway event chains. Gold doors open destinations; cyan pins identify named people.</p>
+                </div>
+                <nav class="albion-atlas-breadcrumb" aria-label="Atlas path">
+                    <button id="albion-atlas-back" type="button" hidden><span aria-hidden="true">←</span> Back</button>
+                    <ol id="albion-atlas-trail" aria-live="polite">
+                        <li><span>Atlas</span></li>
+                    </ol>
+                </nav>
+                <div id="atlas-filters" class="atlas-filters" aria-label="Atlas controls"></div>
+                <div class="albion-atlas-workspace">
+                    <div class="albion-atlas-stage">
+                        <div id="atlas-status" class="atlas-status" aria-live="polite">
+                            <span class="atlas-status__loading">Preparing the atlas…</span>
+                        </div>
+                        <div id="albion-atlas-map" class="albion-atlas-map" role="application"
+                            aria-label="Interactive game-data map of Albion"></div>
+                        <div class="albion-atlas-footer">
+                            <span>Drag to pan · scroll or pinch to zoom · click the map for tile coordinates</span>
+                            <span id="albion-atlas-coverage">Source: original English GOG game files</span>
+                        </div>
+                    </div>
+                    <aside id="albion-atlas-detail" class="albion-atlas-detail" aria-live="polite">
+                        <p class="albion-atlas-eyebrow">Current map</p>
+                        <h4>Preparing the atlas…</h4>
+                        <p>Map details and reachable locations will appear here.</p>
+                    </aside>
                 </div>
             </div>
 
@@ -291,8 +318,9 @@
 
 
     <script src="js/leaflet.js"></script>
+    <script src="js/AlbionAtlasData.js"></script>
     <script src="js/AlbionMarkers.js"></script>
-    <script src="js/Albion.js"></script>
+    <script src="js/Albion.js?v=20260829-atlas5"></script>
 </body>
 
 </html>

@@ -219,6 +219,10 @@ const DB = {
             title: "Toronto — The Beginning",
             subtitle: "The Spaceship",
             summary: "Explore the ship, find the hidden pistol, and launch to Albion.",
+            atlasStops: [
+                { mapId: 300, label: "Toronto — Beginning", note: "Crew quarters, COM access, and launch preparation" },
+                { mapId: 301, label: "Toronto — Reactor", note: "Reactor and service-level route" }
+            ],
             keyItems: ["Pistol", "Canisters", "Stimdrinks"],
             keyCode: "1042 (COM room access)",
             tips: [
@@ -233,6 +237,12 @@ const DB = {
             subtitle: "The Hunter's Clan",
             newMembers: ["Drirr", "Sira"],
             summary: "Explore Iskai city, investigate murder, explore Former's Building for stat bonuses.",
+            atlasStops: [
+                { mapId: 200, label: "Nakiridaani", note: "Island overview and road to Jirinaar" },
+                { mapId: 110, label: "Jirinaar", note: "City services and guild entrances", npcName: "Rabir" },
+                { mapId: 111, label: "Hunter Clan", note: "Opening investigation and Rejira" },
+                { mapId: 122, label: "Former's Building", note: "Party-wide stat bonuses" }
+            ],
             statBonuses: [
                 { stat: "Speed +10", location: "Former's Building - Rainbow bushes" },
                 { stat: "Stamina +10", location: "Former's Building - South passage" },
@@ -250,6 +260,12 @@ const DB = {
             subtitle: "The Druids",
             newMembers: ["Melthas"],
             summary: "Find amulet for King Tharnos, explore forbidden druid library.",
+            atlasStops: [
+                { mapId: 201, label: "Gratogel North", note: "Northern settlements and travel routes" },
+                { mapId: 141, label: "Arjano", note: "Druid complex" },
+                { mapId: 143, label: "Drinno", note: "Forbidden druid area" },
+                { mapId: 138, label: "Rifrako", note: "Monster Eye and Dreamshield" }
+            ],
             keyItems: ["Strength Amulet", "Power Amulet", "Monster Eye", "Dream Shield"],
             tips: [
                 "Kill bandits in mountain pass for money",
@@ -263,6 +279,14 @@ const DB = {
             subtitle: "Preventing Assassination",
             newMembers: ["Siobhan OR Khunag"],
             summary: "Prevent Herras's assassination, confront Kontos at the shrine.",
+            atlasStops: [
+                { mapId: 283, label: "Beloveno", note: "Main city and residence entrances" },
+                { mapId: 265, label: "Beloveno Town Hall", note: "Herras and the council" },
+                { mapId: 264, label: "Kariah", note: "Khunag investigation" },
+                { mapId: 284, label: "Srimalinar", note: "Information-gathering stop" },
+                { mapId: 281, label: "Edjirr", note: "Purchase the assassination information" },
+                { mapId: 213, label: "Kontos", note: "Shrine confrontation" }
+            ],
             timedEvent: true,
             questSequence: [
                 "Talk to Herras in council",
@@ -280,6 +304,11 @@ const DB = {
             subtitle: "Goddess's Island",
             newMembers: ["Harriet"],
             summary: "Join the Enlightened Ones, find all 8 Goddess's Flowers for permanent stat boosts.",
+            atlasStops: [
+                { mapId: 320, label: "Isle of Peace", note: "Flower route and exterior landmarks" },
+                { mapId: 322, label: "Cantos House", note: "Enlightened Ones headquarters" },
+                { mapId: 282, label: "Holy Site Basement", note: "Lower sacred chambers" }
+            ],
             goddessFlowers: [
                 { stat: "Magic Resistance", location: "Southeast from building, near alcove" },
                 { stat: "Luck", location: "Northwest, near large bridge junction" },
@@ -297,6 +326,12 @@ const DB = {
             title: "Umajo — City of Metalmakers",
             subtitle: "The Desert City",
             summary: "Navigate desert, find path to Toronto, explore prison sidequest.",
+            atlasStops: [
+                { mapId: 215, label: "Umajo 1", note: "City approach and desert routes" },
+                { mapId: 230, label: "Device Maker Guild", note: "Porenoil and guild business" },
+                { mapId: 242, label: "Mountain Pass", note: "Route toward Toronto" },
+                { mapId: 248, label: "Mine Entrance", note: "Underground access" }
+            ],
             keyItems: ["Porenoil (desert survival)"],
             tips: [
                 "Best selling prices in game (130%)",
@@ -308,6 +343,11 @@ const DB = {
             title: "Toronto Again — The Bitter Truth",
             subtitle: "Return to the Ship",
             summary: "Discover the truth about DDT's plans, return to Dji-Cantos with evidence.",
+            atlasStops: [
+                { mapId: 302, label: "Toronto — Arrival", note: "Return entry point" },
+                { mapId: 303, label: "Toronto — Discovery", note: "Evidence and ship exploration" },
+                { mapId: 301, label: "Toronto — Reactor", note: "Service-level code route" }
+            ],
             codes: ["1001 (from notebook)", "1712 (service level)", "4312 (reversed Code-Notes)"],
             reward: "1500G + video footage"
         },
@@ -317,6 +357,11 @@ const DB = {
             subtitle: "The Mage Order",
             requiredMember: "Khunag",
             summary: "Infiltrate the order, defeat Kamulos, obtain the High Knowledge.",
+            atlasStops: [
+                { mapId: 154, label: "Kenget Kamulos 1", note: "Order entrance" },
+                { mapId: 161, label: "Kenget Kamulos Hall", note: "Central fortress route" },
+                { mapId: 313, label: "Kenget Boss", note: "Kamulos confrontation" }
+            ],
             boss: { name: "Kamulos", hp: 650, weakness: "Thorn Snare (immune to Frost)", reward: "High Knowledge + 3000 XP" },
             tips: [
                 "Surrender triggers endless battles - farm Bolt-Throwers (516.6G each at Umajo)"
@@ -327,6 +372,11 @@ const DB = {
             title: "Equipment Makers — Metal Magic",
             subtitle: "The Secret Society",
             summary: "Learn the secret word 'Umajo Danu', obtain Metalmagic Scroll.",
+            atlasStops: [
+                { mapId: 230, label: "Device Maker Guild", note: "Guild entrance and contacts" },
+                { mapId: 243, label: "Device Maker Dungeon", note: "Secret ceremony route" },
+                { mapId: 247, label: "Device Maker Chamber", note: "Metalmagic reward chamber" }
+            ],
             secretWord: "Umajo Danu",
             keyItems: ["Metalmagic Scroll", "Stone of Visions", "Serpent Staff"],
             tips: [
@@ -339,6 +389,11 @@ const DB = {
             subtitle: "Destroying Toronto",
             optionalMember: "Joe (highly recommended)",
             summary: "Plant The Seed in the reactor, end the threat to Albion.",
+            atlasStops: [
+                { mapId: 304, label: "Toronto — Discovery with Joe", note: "Preferred technician route" },
+                { mapId: 305, label: "Toronto — Reactor with AI", note: "Final reactor approach" },
+                { mapId: 174, label: "Endgame", note: "Final sequence" }
+            ],
             finalBoss: {
                 name: "AI Housing",
                 hp: 4500,
@@ -840,94 +895,174 @@ window.toggleQuestItem = toggleQuestItem;
 window.toggleQuestGroup = toggleQuestGroup;
 window.handleQuestItemToggle = handleQuestItemToggle;
 
-// ==================== ATLAS (LEAFLET IMAGE MAP) ====================
+// ==================== ATLAS (GAME-DERIVED LEAFLET IMAGE MAP) ====================
 
-const ATLAS_CONFIG = {
-    imageUrl: 'images/albion/albion-nakiridaani-konti-pc-map.webp',
-    markers: (window.ALBION_MARKERS_DATA && window.ALBION_MARKERS_DATA.markers) ? window.ALBION_MARKERS_DATA.markers : [],
-    xRange: [0, 100],
-    yRange: [0, 100]
-};
+const LEGACY_ATLAS_MARKERS = (window.ALBION_MARKERS_DATA && window.ALBION_MARKERS_DATA.markers)
+    ? window.ALBION_MARKERS_DATA.markers
+    : [];
+
+const ATLAS_CONFIG = (window.ALBION_ATLAS_CONFIG && Array.isArray(window.ALBION_ATLAS_CONFIG.maps))
+    ? window.ALBION_ATLAS_CONFIG
+    : {
+        formatVersion: 0,
+        tileSize: 1,
+        coordinateOrigin: 0,
+        defaultMapId: 'legacy',
+        source: { method: 'Illustrated fallback map; generated game maps are unavailable' },
+        maps: [{
+            id: 'legacy',
+            name: 'Nakiridaani / Konti (illustrated)',
+            group: 'Regional map',
+            development: false,
+            imageUrl: 'images/albion/albion-nakiridaani-konti-pc-map.webp',
+            widthTiles: 100,
+            heightTiles: 100,
+            widthPixels: 100,
+            heightPixels: 100,
+            tileset: 'Illustrated map',
+            markers: LEGACY_ATLAS_MARKERS
+        }]
+    };
 
 const ATLAS_MARKER_STYLE = {
-    city: { color: '#38bdf8', label: 'City' },
+    city: { color: '#38bdf8', label: 'Enterable city', symbol: '⌂' },
     town: { color: '#60a5fa', label: 'Town' },
     dungeon: { color: '#f87171', label: 'Dungeon' },
     site: { color: '#34d399', label: 'Site' },
     quest: { color: '#fbbf24', label: 'Quest / POI' },
     spaceship: { color: '#a78bfa', label: 'Toronto' },
+    entrance: { color: '#fbbf24', label: 'Doorway', symbol: '↳' },
+    exit: { color: '#fb923c', label: 'Map exit', symbol: '↗' },
+    passage: { color: '#c084fc', label: 'Internal passage', symbol: '↔' },
+    arrival: { color: '#34d399', label: 'Arrival tile', symbol: '◆' },
+    npc: { color: '#22d3ee', label: 'Named NPC', symbol: '●' },
+    walkthrough: { color: '#f472b6', label: 'Walkthrough stop', symbol: '◆' },
     default: { color: '#94a3b8', label: 'Point of Interest' }
 };
 
 let albionAtlasMap = null;
+let albionAtlasImageLayer = null;
 let albionAtlasLegend = null;
 let albionAtlasLayers = null;
+let albionAtlasActiveMap = null;
+let albionAtlasBounds = null;
+let albionAtlasHistory = [];
+let albionAtlasNpcMarkers = new Map();
+let albionAtlasNpcLayerEnabled = true;
+const ALBION_ATLAS_MAP_KEY = 'albion-atlas-map-id';
+const ALBION_ATLAS_NPC_KEY = 'albion-atlas-show-npcs';
+
+function escapeAtlasHtml(value) {
+    return String(value ?? '')
+        .replaceAll('&', '&amp;')
+        .replaceAll('<', '&lt;')
+        .replaceAll('>', '&gt;')
+        .replaceAll('"', '&quot;')
+        .replaceAll("'", '&#039;');
+}
 
 function resolveAtlasStyle(marker) {
     if (!marker || !marker.type) return ATLAS_MARKER_STYLE.default;
     return ATLAS_MARKER_STYLE[marker.type] || ATLAS_MARKER_STYLE.default;
 }
 
-function atlasToLatLng(position, boundsConfig) {
-    const { width, height, minX, maxX, minY, maxY } = boundsConfig;
-    const spanX = maxX - minX;
-    const spanY = maxY - minY;
-    const xPercent = (position.x - minX) / spanX;
-    const yPercent = (position.y - minY) / spanY;
-    return { lat: yPercent * height, lng: xPercent * width };
+function atlasToLatLng(position, mapConfig) {
+    const tileSize = Number(ATLAS_CONFIG.tileSize) || 1;
+    const origin = Number(ATLAS_CONFIG.coordinateOrigin) || 0;
+    if (ATLAS_CONFIG.formatVersion > 0) {
+        return {
+            lat: mapConfig.heightPixels - ((position.y - origin) + 0.5) * tileSize,
+            lng: ((position.x - origin) + 0.5) * tileSize
+        };
+    }
+    return {
+        lat: (position.y / mapConfig.heightTiles) * mapConfig.heightPixels,
+        lng: (position.x / mapConfig.widthTiles) * mapConfig.widthPixels
+    };
 }
 
 function buildAtlasIcon(marker) {
     const style = resolveAtlasStyle(marker);
-    const initial = marker.name ? marker.name.charAt(0).toUpperCase() : '?';
+    const initial = style.symbol || (marker.name ? marker.name.charAt(0).toUpperCase() : '?');
+    const compact = marker.type === 'npc';
+    const size = compact ? 20 : 28;
+    const anchor = compact ? 10 : 14;
     return L.divIcon({
-        className: 'albion-atlas-marker',
+        className: `albion-atlas-marker albion-atlas-marker--${escapeAtlasHtml(marker.type || 'default')}`,
         html: `
             <span style="
                 display:inline-flex;
                 align-items:center;
                 justify-content:center;
-                width:1.75rem;
-                height:1.75rem;
+                width:${compact ? '1.25rem' : '1.75rem'};
+                height:${compact ? '1.25rem' : '1.75rem'};
                 border-radius:9999px;
                 background:${style.color};
                 color:#0b1220;
-                font-size:0.85rem;
+                font-size:${compact ? '0.62rem' : '0.85rem'};
                 font-weight:800;
                 border:2px solid rgba(0,0,0,0.35);
                 box-shadow: 0 3px 12px rgba(0,0,0,0.35);
             ">${initial}</span>
         `,
-        iconSize: [28, 28],
-        iconAnchor: [14, 28],
-        popupAnchor: [0, -22]
+        iconSize: [size, size],
+        iconAnchor: [anchor, size],
+        popupAnchor: [0, compact ? -14 : -22]
     });
+}
+
+function atlasTileList(tiles) {
+    if (!Array.isArray(tiles) || !tiles.length) return '';
+    const shown = tiles.slice(0, 6).map(tile => `${tile.x},${tile.y}`).join(' · ');
+    return shown + (tiles.length > 6 ? ` · +${tiles.length - 6}` : '');
 }
 
 function buildAtlasPopup(marker) {
     const style = resolveAtlasStyle(marker);
-    const description = marker.description ? `<p class="text-sm leading-snug text-gray-200">${marker.description}</p>` : '';
+    const description = marker.description ? `<p>${escapeAtlasHtml(marker.description)}</p>` : '';
+    const sourceTiles = atlasTileList(marker.sourceTiles);
+    const profile = marker.profile ? `
+        <dl class="albion-atlas-popup__profile">
+            <div><dt>Record</dt><dd>NPC sheet ${escapeAtlasHtml(marker.sheetId)}</dd></div>
+            <div><dt>Movement</dt><dd>${escapeAtlasHtml(marker.movement || 'Unknown')}</dd></div>
+        </dl>
+        ${marker.scheduledPositions > 1 ? `<p class="albion-atlas-popup__meta">Marker uses the first of ${escapeAtlasHtml(marker.scheduledPositions)} recorded route positions.</p>` : ''}
+    ` : '';
+    const actions = (marker.destinations || []).map(destination => destination.available ? `
+        <a class="albion-atlas-popup__enter"
+            href="#atlas:map=${escapeAtlasHtml(destination.mapId)}&at=${escapeAtlasHtml(destination.x)},${escapeAtlasHtml(destination.y)}"
+            data-albion-enter-map="${escapeAtlasHtml(destination.mapId)}"
+            data-albion-arrival-x="${escapeAtlasHtml(destination.x)}"
+            data-albion-arrival-y="${escapeAtlasHtml(destination.y)}">
+            ${destination.mapId === albionAtlasActiveMap?.id ? 'Follow passage' : `Enter ${escapeAtlasHtml(destination.name)}`}
+        </a>
+    ` : '').join('');
     return `
-        <article class="space-y-1">
-            <h4 class="font-semibold text-base text-white">${marker.name || 'Point of interest'}</h4>
+        <article class="albion-atlas-popup">
+            <h4>${escapeAtlasHtml(marker.name || 'Point of interest')}</h4>
             ${description}
-            <p class="text-xs text-gray-400">Category: ${style.label}</p>
+            <p>${escapeAtlasHtml(style.label)}</p>
+            ${profile}
+            ${sourceTiles ? `<p class="albion-atlas-popup__meta">Source tile${marker.sourceTiles.length === 1 ? '' : 's'} ${escapeAtlasHtml(sourceTiles)}</p>` : ''}
+            ${actions ? `<div class="albion-atlas-popup__actions">${actions}</div>` : ''}
         </article>
     `;
 }
 
-function renderAtlasLegend(map) {
+function renderAtlasLegend(map, markers) {
     if (albionAtlasLegend) {
         albionAtlasLegend.remove();
         albionAtlasLegend = null;
     }
 
-    const presentTypes = Array.from(new Set((ATLAS_CONFIG.markers || []).map(m => m?.type).filter(Boolean)));
-    const order = ['spaceship', 'city', 'town', 'dungeon', 'site', 'quest'];
+    const presentTypes = Array.from(new Set((markers || []).map(m => m?.type).filter(Boolean)));
+    const order = ['city', 'entrance', 'exit', 'passage', 'npc', 'walkthrough', 'arrival', 'spaceship', 'town', 'dungeon', 'site', 'quest'];
     const types = order.filter(t => presentTypes.includes(t)).concat(presentTypes.filter(t => !order.includes(t)));
     const entries = types
         .map(k => ({ key: k, ...(ATLAS_MARKER_STYLE[k] || ATLAS_MARKER_STYLE.default) }))
         .filter(e => e.label);
+
+    if (!entries.length) return;
 
     albionAtlasLegend = L.control({ position: 'topright' });
     albionAtlasLegend.onAdd = () => {
@@ -945,40 +1080,450 @@ function renderAtlasLegend(map) {
     albionAtlasLegend.addTo(map);
 }
 
+function atlasMapIsVisible(mapConfig, includeDevelopment) {
+    return includeDevelopment || !mapConfig.development;
+}
+
+function groupedAtlasMaps(includeDevelopment = false) {
+    const maps = (ATLAS_CONFIG.maps || []).filter(mapConfig => atlasMapIsVisible(mapConfig, includeDevelopment));
+    return maps.reduce((groups, mapConfig) => {
+        const group = mapConfig.group || 'Other maps';
+        if (!groups.has(group)) groups.set(group, []);
+        groups.get(group).push(mapConfig);
+        return groups;
+    }, new Map());
+}
+
 function renderAtlasFilters(map) {
     const el = document.getElementById('atlas-filters');
-    if (!el || !albionAtlasLayers) return;
+    if (!el) return;
 
-    const presentTypes = Array.from(new Set((ATLAS_CONFIG.markers || []).map(m => m?.type).filter(Boolean)));
-    const order = ['city', 'town', 'dungeon', 'site', 'quest', 'spaceship'];
-    const types = order.filter(t => presentTypes.includes(t)).concat(presentTypes.filter(t => !order.includes(t)));
+    try {
+        const savedNpcPreference = localStorage.getItem(ALBION_ATLAS_NPC_KEY);
+        if (savedNpcPreference !== null) albionAtlasNpcLayerEnabled = savedNpcPreference !== 'false';
+    } catch (_) { /* unavailable */ }
 
-    el.innerHTML = types.map(t => {
-        const style = ATLAS_MARKER_STYLE[t] || ATLAS_MARKER_STYLE.default;
-        return `
-            <label class="atlas-filter">
-                <input type="checkbox" data-type="${t}" checked>
-                <span style="display:inline-block;width:0.7rem;height:0.7rem;border-radius:50%;background:${style.color};border:1px solid rgba(0,0,0,0.35);"></span>
-                <span>${style.label}</span>
+    const coverage = document.getElementById('albion-atlas-coverage');
+    if (coverage && ATLAS_CONFIG.coverage) {
+        coverage.textContent = `${ATLAS_CONFIG.coverage.rendered2d} original 2D maps · ${ATLAS_CONFIG.coverage.rendered3d || 0} first-person floor plans · ${ATLAS_CONFIG.coverage.entrances || 0} linked passages · ${ATLAS_CONFIG.coverage.npcs || 0} named NPC placements`;
+    }
+
+    const hasDevelopmentMaps = (ATLAS_CONFIG.maps || []).some(mapConfig => mapConfig.development);
+    el.innerHTML = `
+        <label class="atlas-control atlas-control--map">
+            <span>Map</span>
+            <select id="albion-atlas-map-select" aria-label="Choose an Albion map"></select>
+        </label>
+        <label class="atlas-control atlas-control--search">
+            <span>Find a map</span>
+            <input id="albion-atlas-search" type="search" list="albion-atlas-map-list"
+                placeholder="Jirinaar, Toronto, Kenget…" autocomplete="off">
+            <datalist id="albion-atlas-map-list"></datalist>
+        </label>
+        ${hasDevelopmentMaps ? `
+            <label class="atlas-filter atlas-filter--development">
+                <input id="albion-atlas-development" type="checkbox">
+                <span>Development maps</span>
             </label>
-        `;
-    }).join('');
+        ` : ''}
+        <label class="atlas-filter atlas-filter--npcs">
+            <input id="albion-atlas-npcs" type="checkbox" ${albionAtlasNpcLayerEnabled ? 'checked' : ''}>
+            <span>Named NPCs</span>
+        </label>
+        <button id="albion-atlas-fit" type="button" class="atlas-fit-button">Fit map</button>
+    `;
 
-    el.querySelectorAll('input[type="checkbox"]').forEach(cb => {
-        cb.addEventListener('change', () => {
-            const type = cb.getAttribute('data-type');
-            const layer = albionAtlasLayers?.[type];
-            if (!layer) return;
-            if (cb.checked) layer.addTo(map);
-            else map.removeLayer(layer);
+    const select = document.getElementById('albion-atlas-map-select');
+    const search = document.getElementById('albion-atlas-search');
+    const list = document.getElementById('albion-atlas-map-list');
+    const developmentToggle = document.getElementById('albion-atlas-development');
+    const npcToggle = document.getElementById('albion-atlas-npcs');
+
+    const populate = () => {
+        const includeDevelopment = Boolean(developmentToggle?.checked);
+        const previous = String(albionAtlasActiveMap?.id ?? ATLAS_CONFIG.defaultMapId);
+        select.innerHTML = '';
+        list.innerHTML = '';
+        groupedAtlasMaps(includeDevelopment).forEach((maps, groupName) => {
+            const optgroup = document.createElement('optgroup');
+            optgroup.label = groupName;
+            maps.sort((a, b) => Number(a.id) - Number(b.id)).forEach(mapConfig => {
+                const option = document.createElement('option');
+                option.value = String(mapConfig.id);
+                option.textContent = `${mapConfig.id} — ${mapConfig.name}`;
+                optgroup.appendChild(option);
+
+                const searchOption = document.createElement('option');
+                searchOption.value = mapConfig.name;
+                searchOption.label = `Map ${mapConfig.id}`;
+                list.appendChild(searchOption);
+            });
+            select.appendChild(optgroup);
+        });
+        if (Array.from(select.options).some(option => option.value === previous)) {
+            select.value = previous;
+        }
+    };
+
+    populate();
+    select.addEventListener('change', () => loadAlbionAtlasMap(select.value, { resetHistory: true }));
+    developmentToggle?.addEventListener('change', populate);
+    npcToggle?.addEventListener('change', () => {
+        albionAtlasNpcLayerEnabled = Boolean(npcToggle.checked);
+        try { localStorage.setItem(ALBION_ATLAS_NPC_KEY, String(albionAtlasNpcLayerEnabled)); } catch (_) { /* unavailable */ }
+        if (albionAtlasActiveMap) {
+            loadAlbionAtlasMap(albionAtlasActiveMap.id, { fit: false });
+        }
+    });
+    document.getElementById('albion-atlas-fit')?.addEventListener('click', () => {
+        if (albionAtlasBounds) map.fitBounds(albionAtlasBounds);
+    });
+
+    const openSearchResult = () => {
+        const needle = search.value.trim().toLocaleLowerCase();
+        if (!needle) return;
+        const includeDevelopment = Boolean(developmentToggle?.checked);
+        const matches = (ATLAS_CONFIG.maps || []).filter(mapConfig =>
+            atlasMapIsVisible(mapConfig, includeDevelopment)
+            && (`${mapConfig.id} ${mapConfig.name}`).toLocaleLowerCase().includes(needle)
+        );
+        if (matches.length) {
+            search.value = matches[0].name;
+            loadAlbionAtlasMap(matches[0].id, { resetHistory: true });
+        }
+    };
+    search.addEventListener('change', openSearchResult);
+    search.addEventListener('keydown', event => {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            openSearchResult();
+        }
+    });
+}
+
+function atlasMapLabel(mapConfig) {
+    return mapConfig?.mapType === '3d-plan' ? 'First-person floor plan' : 'Original 2D tile map';
+}
+
+function renderAlbionAtlasTrail() {
+    const trail = document.getElementById('albion-atlas-trail');
+    const back = document.getElementById('albion-atlas-back');
+    if (back) back.hidden = albionAtlasHistory.length === 0;
+    if (!trail || !albionAtlasActiveMap) return;
+    const visibleHistory = albionAtlasHistory.slice(-3);
+    const hiddenCount = albionAtlasHistory.length - visibleHistory.length;
+    const offset = Math.max(0, hiddenCount);
+    trail.innerHTML = `
+        <li><button type="button" data-albion-trail-index="-1">Atlas</button></li>
+        ${hiddenCount ? '<li><span>…</span></li>' : ''}
+        ${visibleHistory.map((item, index) => `
+            <li><button type="button" data-albion-trail-index="${offset + index}">${escapeAtlasHtml(item.name)}</button></li>
+        `).join('')}
+        <li><span>${escapeAtlasHtml(albionAtlasActiveMap.name)}</span></li>
+    `;
+}
+
+function uniqueAtlasDestinations(mapConfig) {
+    const result = new Map();
+    (mapConfig?.markers || []).forEach(marker => {
+        (marker.destinations || []).forEach(destination => {
+            if (!destination.available || Number(destination.mapId) === Number(mapConfig.id)) return;
+            const key = String(destination.mapId);
+            if (!result.has(key)) result.set(key, { ...destination, via: marker.name });
         });
     });
+    return Array.from(result.values()).sort((a, b) => String(a.name).localeCompare(String(b.name)));
+}
+
+function renderAlbionAtlasDetail() {
+    const detail = document.getElementById('albion-atlas-detail');
+    const current = albionAtlasActiveMap;
+    if (!detail || !current) return;
+    const destinations = uniqueAtlasDestinations(current);
+    const people = Array.isArray(current.npcs) ? current.npcs : [];
+    const summary = current.mapType === '3d-plan'
+        ? 'Hybrid top-down reconstruction of the original first-person map. Floors, wall faces, water, vegetation, and object details are sampled from the game’s own graphics.'
+        : 'Pixel-accurate composite of the original underlay and overlay tiles, using the palette shipped with the game.';
+    detail.innerHTML = `
+        <p class="albion-atlas-eyebrow">Current map · ${escapeAtlasHtml(atlasMapLabel(current))}</p>
+        <h4>${escapeAtlasHtml(current.name)}</h4>
+        <p>${escapeAtlasHtml(summary)}</p>
+        <dl class="albion-atlas-detail__facts">
+            <div><dt>Map ID</dt><dd>${escapeAtlasHtml(current.id)}</dd></div>
+            <div><dt>Native grid</dt><dd>${escapeAtlasHtml(current.widthTiles)} × ${escapeAtlasHtml(current.heightTiles)}</dd></div>
+            <div><dt>Map asset</dt><dd>${escapeAtlasHtml(current.tileset || 'Unknown')}</dd></div>
+            <div><dt>Entrances</dt><dd>${escapeAtlasHtml(current.entranceCount || 0)}</dd></div>
+            <div><dt>Named NPCs</dt><dd>${escapeAtlasHtml(current.npcCount || 0)}</dd></div>
+            <div><dt>Events</dt><dd>${escapeAtlasHtml(current.eventCount || 0)}</dd></div>
+            <div><dt>Palette</dt><dd>${escapeAtlasHtml(current.paletteId ?? '—')}</dd></div>
+        </dl>
+        ${people.length ? `
+            <h5 class="albion-atlas-detail__heading">People here</h5>
+            <div class="albion-atlas-people">
+                ${people.map(person => `
+                    <button type="button" class="albion-atlas-person" data-albion-focus-npc="${escapeAtlasHtml(person.slot)}">
+                        <span class="albion-atlas-person__pin" aria-hidden="true">●</span>
+                        <span><strong>${escapeAtlasHtml(person.name)}</strong><small>${escapeAtlasHtml(person.movement || 'Named NPC')} · tile ${escapeAtlasHtml(person.position?.x)},${escapeAtlasHtml(person.position?.y)}</small></span>
+                        <b aria-hidden="true">⌖</b>
+                    </button>
+                `).join('')}
+            </div>
+        ` : ''}
+        <h5 class="albion-atlas-detail__heading">Directly reachable</h5>
+        ${destinations.length ? `
+            <div class="albion-atlas-destinations">
+                ${destinations.map(destination => `
+                    <button type="button" class="albion-atlas-destination"
+                        data-albion-enter-map="${escapeAtlasHtml(destination.mapId)}"
+                        data-albion-arrival-x="${escapeAtlasHtml(destination.x)}"
+                        data-albion-arrival-y="${escapeAtlasHtml(destination.y)}">
+                        <strong>${escapeAtlasHtml(destination.name)}</strong>
+                        <span>${escapeAtlasHtml(destination.via)} · destination ${escapeAtlasHtml(destination.x)},${escapeAtlasHtml(destination.y)}</span>
+                        <b aria-hidden="true">→</b>
+                    </button>
+                `).join('')}
+            </div>
+        ` : '<p class="albion-atlas-detail__empty">No direct map exit is attached to this floor. Use Back or choose another map from the index.</p>'}
+    `;
+}
+
+function enterAlbionAtlasMap(button) {
+    const mapId = button?.dataset?.albionEnterMap;
+    if (!mapId) return;
+    const arrival = {
+        x: Number(button.dataset.albionArrivalX),
+        y: Number(button.dataset.albionArrivalY)
+    };
+    const isSameMap = String(mapId) === String(albionAtlasActiveMap?.id);
+    if (albionAtlasMap) albionAtlasMap.closePopup();
+    loadAlbionAtlasMap(mapId, {
+        pushHistory: !isSameMap,
+        arrival: Number.isFinite(arrival.x) && Number.isFinite(arrival.y) ? arrival : null
+    });
+}
+
+function focusAlbionAtlasNpc(button) {
+    const slot = button?.dataset?.albionFocusNpc;
+    if (slot === undefined || slot === null || !albionAtlasActiveMap) return;
+    albionAtlasNpcLayerEnabled = true;
+    const toggle = document.getElementById('albion-atlas-npcs');
+    if (toggle) toggle.checked = true;
+    try { localStorage.setItem(ALBION_ATLAS_NPC_KEY, 'true'); } catch (_) { /* unavailable */ }
+    const marker = albionAtlasNpcMarkers.get(String(slot));
+    if (marker) {
+        marker.openPopup();
+        albionAtlasMap.panTo(marker.getLatLng());
+        try { window.history.replaceState(null, '', `#atlas:map=${albionAtlasActiveMap.id}&npc=${slot}`); } catch (_) { /* unavailable */ }
+        return;
+    }
+    loadAlbionAtlasMap(albionAtlasActiveMap.id, { fit: false, focusNpcSlot: slot });
+}
+
+function updateAlbionAtlasStatus(message = '') {
+    const status = document.getElementById('atlas-status');
+    if (!status) return;
+    if (message) {
+        status.innerHTML = message;
+        return;
+    }
+    if (!albionAtlasActiveMap) return;
+    const current = albionAtlasActiveMap;
+    status.innerHTML = `
+        <span class="atlas-status__name">Map ${current.id} · ${current.name}</span>
+        <span>${current.widthTiles} × ${current.heightTiles} tiles</span>
+        <span>${atlasMapLabel(current)}</span>
+        <span>${current.tileset || `Asset ${current.assetId}`}</span>
+        <span>${current.entranceCount || 0} passages</span>
+        <span>Palette ${current.paletteId ?? '—'}</span>
+    `;
+}
+
+let albionAtlasLoadToken = 0;
+
+function loadAlbionAtlasMap(mapId, options = {}) {
+    if (!albionAtlasMap) return;
+    const mapConfig = (ATLAS_CONFIG.maps || []).find(candidate => String(candidate.id) === String(mapId));
+    if (!mapConfig) return;
+    const previous = albionAtlasActiveMap;
+    if (options.resetHistory) albionAtlasHistory = [];
+    if (options.pushHistory && previous && String(previous.id) !== String(mapConfig.id)) {
+        albionAtlasHistory.push({ id: previous.id, name: previous.name });
+    }
+    const loadToken = ++albionAtlasLoadToken;
+
+    updateAlbionAtlasStatus(`<span class="atlas-status__loading">Charting map ${mapConfig.id} · ${mapConfig.name}…</span>`);
+    const image = new Image();
+    image.onload = () => {
+        if (loadToken !== albionAtlasLoadToken) return;
+        const width = Number(mapConfig.widthPixels) || image.naturalWidth;
+        const height = Number(mapConfig.heightPixels) || image.naturalHeight;
+        const bounds = [[0, 0], [height, width]];
+
+        if (albionAtlasImageLayer) albionAtlasMap.removeLayer(albionAtlasImageLayer);
+        if (albionAtlasLayers) {
+            Object.values(albionAtlasLayers).forEach(layer => albionAtlasMap.removeLayer(layer));
+        }
+        albionAtlasImageLayer = L.imageOverlay(mapConfig.imageUrl, bounds).addTo(albionAtlasMap);
+        albionAtlasBounds = bounds;
+        albionAtlasActiveMap = { ...mapConfig, widthPixels: width, heightPixels: height };
+        albionAtlasLayers = {};
+        albionAtlasNpcMarkers = new Map();
+        albionAtlasMap.setMaxBounds(L.latLngBounds(bounds).pad(0.08));
+
+        const markers = [
+            ...(mapConfig.markers || []),
+            ...(albionAtlasNpcLayerEnabled ? (mapConfig.npcs || []) : [])
+        ];
+        const visibleMarkers = [...markers];
+        markers.forEach(markerData => {
+            if (!markerData?.position) return;
+            const type = markerData.type || 'default';
+            if (!albionAtlasLayers[type]) albionAtlasLayers[type] = L.layerGroup().addTo(albionAtlasMap);
+            const point = atlasToLatLng(markerData.position, albionAtlasActiveMap);
+            const leafletMarker = L.marker([point.lat, point.lng], {
+                title: markerData.name,
+                icon: buildAtlasIcon(markerData)
+            });
+            const popupContent = document.createElement('div');
+            popupContent.innerHTML = buildAtlasPopup(markerData);
+            popupContent.querySelectorAll('[data-albion-enter-map]').forEach(action => {
+                action.addEventListener('pointerdown', event => {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    enterAlbionAtlasMap(action);
+                });
+            });
+            leafletMarker.bindPopup(popupContent).addTo(albionAtlasLayers[type]);
+            if (type === 'npc') albionAtlasNpcMarkers.set(String(markerData.slot), leafletMarker);
+        });
+
+        if (options.arrival) {
+            const arrivalMarker = {
+                name: 'Arrival tile',
+                type: 'arrival',
+                position: options.arrival,
+                sourceTiles: [options.arrival]
+            };
+            const point = atlasToLatLng(options.arrival, albionAtlasActiveMap);
+            albionAtlasLayers.arrival = L.layerGroup().addTo(albionAtlasMap);
+            L.marker([point.lat, point.lng], {
+                title: `Arrival at ${options.arrival.x},${options.arrival.y}`,
+                icon: buildAtlasIcon(arrivalMarker),
+                zIndexOffset: 900
+            }).bindPopup(`
+                <article class="albion-atlas-popup">
+                    <h4>Arrival tile</h4>
+                    <p class="albion-atlas-popup__meta">Destination ${options.arrival.x},${options.arrival.y}</p>
+                </article>
+            `).addTo(albionAtlasLayers.arrival);
+            visibleMarkers.push(arrivalMarker);
+        }
+
+        if (options.focusPosition) {
+            const walkthroughMarker = {
+                name: options.focusLabel || 'Walkthrough stop',
+                description: options.focusDescription || '',
+                type: 'walkthrough',
+                position: options.focusPosition,
+                sourceTiles: [options.focusPosition]
+            };
+            const point = atlasToLatLng(options.focusPosition, albionAtlasActiveMap);
+            albionAtlasLayers.walkthrough = L.layerGroup().addTo(albionAtlasMap);
+            L.marker([point.lat, point.lng], {
+                title: walkthroughMarker.name,
+                icon: buildAtlasIcon(walkthroughMarker),
+                zIndexOffset: 950
+            }).bindPopup(buildAtlasPopup(walkthroughMarker)).addTo(albionAtlasLayers.walkthrough).openPopup();
+            visibleMarkers.push(walkthroughMarker);
+        }
+
+        if (options.fit !== false) albionAtlasMap.fitBounds(bounds);
+        if (options.focusNpcSlot !== undefined && options.focusNpcSlot !== null) {
+            const npcMarker = albionAtlasNpcMarkers.get(String(options.focusNpcSlot));
+            if (npcMarker) {
+                npcMarker.openPopup();
+                albionAtlasMap.panTo(npcMarker.getLatLng());
+            }
+        } else if (options.focusPosition) {
+            albionAtlasMap.panTo(atlasToLatLng(options.focusPosition, albionAtlasActiveMap));
+        }
+        const select = document.getElementById('albion-atlas-map-select');
+        if (select && Array.from(select.options).some(option => option.value === String(mapConfig.id))) {
+            select.value = String(mapConfig.id);
+        }
+        try { localStorage.setItem(ALBION_ATLAS_MAP_KEY, String(mapConfig.id)); } catch (_) { /* unavailable */ }
+        let routeHash = `#atlas:map=${mapConfig.id}`;
+        if (options.arrival) routeHash += `&at=${options.arrival.x},${options.arrival.y}`;
+        else if (options.walkthroughStep) routeHash += `&step=${encodeURIComponent(options.walkthroughStep)}`;
+        else if (options.focusNpcSlot !== undefined && options.focusNpcSlot !== null) routeHash += `&npc=${options.focusNpcSlot}`;
+        try { window.history.replaceState(null, '', routeHash); } catch (_) { /* unavailable */ }
+        updateAlbionAtlasStatus();
+        renderAtlasLegend(albionAtlasMap, visibleMarkers);
+        renderAlbionAtlasTrail();
+        renderAlbionAtlasDetail();
+    };
+    image.onerror = () => {
+        updateAlbionAtlasStatus(`<span class="text-yellow-400 font-semibold">Map image missing.</span> Expected <span class="font-mono text-gray-200">${mapConfig.imageUrl}</span>.`);
+    };
+    image.src = mapConfig.imageUrl;
+}
+
+function readAlbionAtlasHash() {
+    const match = window.location.hash.match(/^#atlas:map=(\d+)(?:&(at|npc|step)=([^&]+))?$/);
+    if (!match) return null;
+    const route = { mapId: match[1], arrival: null, npcSlot: null, walkthroughStep: null };
+    if (match[2] === 'at') {
+        const coordinates = match[3].split(',').map(Number);
+        if (coordinates.length === 2 && coordinates.every(Number.isFinite)) {
+            route.arrival = { x: coordinates[0], y: coordinates[1] };
+        }
+    } else if (match[2] === 'npc') {
+        route.npcSlot = Number(match[3]);
+    } else if (match[2] === 'step') {
+        route.walkthroughStep = decodeURIComponent(match[3]);
+    }
+    return route;
+}
+
+function resolveWalkthroughAtlasStep(stepKey) {
+    const separator = String(stepKey || '').lastIndexOf('.');
+    if (separator < 1) return null;
+    const chapterId = stepKey.slice(0, separator);
+    const stopIndex = Number(stepKey.slice(separator + 1));
+    const chapter = (DB.chapters || []).find(candidate => candidate.id === chapterId);
+    const stop = chapter?.atlasStops?.[stopIndex];
+    if (!stop) return null;
+    const mapConfig = (ATLAS_CONFIG.maps || []).find(candidate => String(candidate.id) === String(stop.mapId));
+    if (!mapConfig) return null;
+    const npc = stop.npcName
+        ? (mapConfig.npcs || []).find(person => person.name.toLocaleLowerCase() === stop.npcName.toLocaleLowerCase())
+        : null;
+    return {
+        mapId: stop.mapId,
+        options: {
+            walkthroughStep: stepKey,
+            focusNpcSlot: npc?.slot ?? null,
+            focusPosition: stop.position || null,
+            focusLabel: stop.label,
+            focusDescription: stop.note
+        }
+    };
+}
+
+function atlasRouteOptions(route) {
+    if (!route) return {};
+    if (route.walkthroughStep) {
+        const resolved = resolveWalkthroughAtlasStep(route.walkthroughStep);
+        if (resolved) return resolved.options;
+    }
+    return {
+        arrival: route.arrival,
+        focusNpcSlot: Number.isFinite(route.npcSlot) ? route.npcSlot : null
+    };
 }
 
 function ensureAtlasMap() {
     const container = document.getElementById('albion-atlas-map');
-    const status = document.getElementById('atlas-status');
-
     if (!container || typeof L === 'undefined') return;
 
     if (albionAtlasMap) {
@@ -986,81 +1531,78 @@ function ensureAtlasMap() {
         return;
     }
 
-    // Probe map image so we can create correct bounds.
-    const img = new Image();
-    img.onload = () => {
-        const width = img.naturalWidth || 2048;
-        const height = img.naturalHeight || 2048;
+    container.innerHTML = '';
+    const map = L.map(container, {
+        crs: L.CRS.Simple,
+        minZoom: -4,
+        maxZoom: 3,
+        zoomSnap: 0.25,
+        attributionControl: false
+    });
+    albionAtlasMap = map;
+    renderAtlasFilters(map);
 
-        // Leaflet expects an empty container.
-        container.innerHTML = '';
-
-        if (status) {
-            status.innerHTML = `<span class="text-green-400 font-semibold">Map loaded.</span> Markers are approximations until coordinates are tuned.`;
+    document.getElementById('albion-atlas-detail')?.addEventListener('click', event => {
+        const button = event.target.closest('[data-albion-enter-map]');
+        if (button) {
+            enterAlbionAtlasMap(button);
+            return;
         }
-
-        const bounds = [[0, 0], [height, width]];
-
-        const map = L.map(container, {
-            crs: L.CRS.Simple,
-            minZoom: -2,
-            maxZoom: 2,
-            attributionControl: false
-        });
-
-        L.imageOverlay(ATLAS_CONFIG.imageUrl, bounds).addTo(map);
-        map.fitBounds(bounds);
-        albionAtlasMap = map;
-
-        albionAtlasLayers = {};
-
-        const boundsConfig = {
-            width,
-            height,
-            minX: ATLAS_CONFIG.xRange[0],
-            maxX: ATLAS_CONFIG.xRange[1],
-            minY: ATLAS_CONFIG.yRange[0],
-            maxY: ATLAS_CONFIG.yRange[1]
-        };
-
-        (ATLAS_CONFIG.markers || []).forEach(m => {
-            if (!m || !m.position) return;
-            const type = m.type || 'default';
-            if (!albionAtlasLayers[type]) {
-                albionAtlasLayers[type] = L.layerGroup().addTo(map);
-            }
-            const ll = atlasToLatLng(m.position, boundsConfig);
-            const marker = L.marker([ll.lat, ll.lng], { title: m.name, icon: buildAtlasIcon(m) }).addTo(albionAtlasLayers[type]);
-            marker.bindPopup(buildAtlasPopup(m));
-        });
-
-        map.on('click', (e) => {
-            const x = (e.latlng.lng / width) * (boundsConfig.maxX - boundsConfig.minX) + boundsConfig.minX;
-            const y = (e.latlng.lat / height) * (boundsConfig.maxY - boundsConfig.minY) + boundsConfig.minY;
-            if (status) {
-                status.innerHTML = `<span class="text-green-400 font-semibold">Map loaded.</span> Clicked: <span class="font-mono text-gray-200">x=${x.toFixed(1)}, y=${y.toFixed(1)}</span>`;
-            }
-        });
-
-        renderAtlasLegend(map);
-        renderAtlasFilters(map);
-    };
-
-    img.onerror = () => {
-        if (status) {
-            status.innerHTML = `<span class="text-yellow-400 font-semibold">Map missing.</span> Expected <span class="font-mono text-gray-200">guides/images/albion/albion-nakiridaani-konti-pc-map.webp</span>.`;
+        const npcButton = event.target.closest('[data-albion-focus-npc]');
+        if (npcButton) focusAlbionAtlasNpc(npcButton);
+    });
+    document.getElementById('albion-atlas-back')?.addEventListener('click', () => {
+        const previous = albionAtlasHistory.pop();
+        if (previous) loadAlbionAtlasMap(previous.id);
+    });
+    document.getElementById('albion-atlas-trail')?.addEventListener('click', event => {
+        const button = event.target.closest('[data-albion-trail-index]');
+        if (!button) return;
+        const index = Number(button.dataset.albionTrailIndex);
+        if (index < 0) {
+            albionAtlasHistory = [];
+            loadAlbionAtlasMap(ATLAS_CONFIG.defaultMapId);
+            return;
         }
-        container.innerHTML = `
-            <div class="albion-atlas-missing">
-                <div>
-                    <div class="text-lg mb-2"><strong>Albion region map not found.</strong></div>
-                    <div class="text-sm text-gray-400">Expected file: <span class="font-mono">guides/images/albion/albion-nakiridaani-konti-pc-map.webp</span></div>
-                </div>
-            </div>
-        `;
-    };
+        const target = albionAtlasHistory[index];
+        if (!target) return;
+        albionAtlasHistory = albionAtlasHistory.slice(0, index);
+        loadAlbionAtlasMap(target.id);
+    });
+    window.addEventListener('hashchange', () => {
+        const route = readAlbionAtlasHash();
+        if (!route || !(ATLAS_CONFIG.maps || []).some(candidate => String(candidate.id) === route.mapId)) return;
+        loadAlbionAtlasMap(route.mapId, {
+            pushHistory: String(route.mapId) !== String(albionAtlasActiveMap?.id),
+            ...atlasRouteOptions(route)
+        });
+    });
 
-    img.src = ATLAS_CONFIG.imageUrl;
+    map.on('click', event => {
+        if (!albionAtlasActiveMap) return;
+        const tileSize = Number(ATLAS_CONFIG.tileSize) || 1;
+        const origin = Number(ATLAS_CONFIG.coordinateOrigin) || 0;
+        const x = Math.floor(event.latlng.lng / tileSize) + origin;
+        const y = Math.floor((albionAtlasActiveMap.heightPixels - event.latlng.lat) / tileSize) + origin;
+        updateAlbionAtlasStatus();
+        const status = document.getElementById('atlas-status');
+        if (status && x >= origin && y >= origin && x < albionAtlasActiveMap.widthTiles + origin && y < albionAtlasActiveMap.heightTiles + origin) {
+            status.insertAdjacentHTML('beforeend', `<span class="atlas-status__coordinate">Tile x=${x}, y=${y}</span>`);
+        }
+    });
+
+    let initialId = ATLAS_CONFIG.defaultMapId;
+    const hashRoute = readAlbionAtlasHash();
+    if (hashRoute && (ATLAS_CONFIG.maps || []).some(candidate => String(candidate.id) === hashRoute.mapId)) {
+        initialId = hashRoute.mapId;
+    }
+    try {
+        const saved = localStorage.getItem(ALBION_ATLAS_MAP_KEY);
+        if (!hashRoute && saved && (ATLAS_CONFIG.maps || []).some(candidate => String(candidate.id) === saved && !candidate.development)) {
+            initialId = saved;
+        }
+    } catch (_) { /* unavailable */ }
+    loadAlbionAtlasMap(initialId, atlasRouteOptions(hashRoute));
 }
 
 window.ensureAtlasMap = ensureAtlasMap;
@@ -1311,6 +1853,35 @@ function renderScreenshots() {
     container.innerHTML = html || `<div class="text-sm text-gray-400">No screenshots available.</div>`;
 }
 
+function activateAlbionSection(target, scrollBehavior = 'smooth') {
+    document.querySelectorAll('.nav-button').forEach(button => {
+        button.classList.toggle('active', button.dataset.target === target);
+    });
+    document.querySelectorAll('.content-section').forEach(section => {
+        section.classList.toggle('active', section.id === target);
+    });
+    if (target === 'atlas') ensureAtlasMap();
+    if (target === 'missions') {
+        renderMergedWalkthroughProgress();
+        renderChapters();
+    }
+    window.scrollTo({ top: 0, behavior: scrollBehavior });
+}
+
+function openWalkthroughAtlasStop(chapterId, stopIndex) {
+    const stepKey = `${chapterId}.${stopIndex}`;
+    const resolved = resolveWalkthroughAtlasStep(stepKey);
+    if (!resolved) return;
+    activateAlbionSection('atlas');
+    ensureAtlasMap();
+    loadAlbionAtlasMap(resolved.mapId, {
+        resetHistory: true,
+        ...resolved.options
+    });
+}
+
+window.openWalkthroughAtlasStop = openWalkthroughAtlasStop;
+
 function renderChapters() {
     const container = document.getElementById('chapter-list');
     if (!container) return;
@@ -1322,6 +1893,33 @@ function renderChapters() {
         const items = questGroup?.items || [];
         const doneCount = items.filter(it => questState?.[chap.id]?.[it.id]).length;
         const totalCount = items.length;
+        const atlasStops = Array.isArray(chap.atlasStops) ? chap.atlasStops : [];
+
+        const atlasRoute = atlasStops.length ? `
+            <section class="walkthrough-atlas-route" aria-label="${escapeAtlasHtml(chap.title)} atlas route">
+                <div class="walkthrough-atlas-route__header">
+                    <div>
+                        <span class="walkthrough-atlas-route__eyebrow">Connected atlas route</span>
+                        <h5>Open each location exactly where it appears in the game</h5>
+                    </div>
+                    <span>${atlasStops.length} stop${atlasStops.length === 1 ? '' : 's'}</span>
+                </div>
+                <ol class="walkthrough-atlas-route__stops">
+                    ${atlasStops.map((stop, stopIndex) => `
+                        <li>
+                            <span class="walkthrough-atlas-route__number">${stopIndex + 1}</span>
+                            <span class="walkthrough-atlas-route__copy">
+                                <strong>${escapeAtlasHtml(stop.label)}</strong>
+                                <small>${escapeAtlasHtml(stop.note || `Map ${stop.mapId}`)}</small>
+                            </span>
+                            <button type="button" onclick="openWalkthroughAtlasStop('${escapeAtlasHtml(chap.id)}', ${stopIndex})" aria-label="Show ${escapeAtlasHtml(stop.label)} on the atlas">
+                                Map <span aria-hidden="true">→</span>
+                            </button>
+                        </li>
+                    `).join('')}
+                </ol>
+            </section>
+        ` : '';
 
         const questBlock = questGroup ? `
             <div class="p-4 rounded-lg bg-black/20 border border-gray-700/40" data-quest-group="${chap.id}">
@@ -1358,6 +1956,7 @@ function renderChapters() {
             <div class="accordion-content" id="accordion-${i}">
                 <div class="p-5 space-y-4">
                     <p class="text-gray-300 italic">${chap.summary}</p>
+                    ${atlasRoute}
                     
                     ${chap.newMembers ? `<p class="text-sm"><strong class="text-purple-400">New Party Members:</strong> ${chap.newMembers.join(', ')}</p>` : ''}
                     ${chap.requiredMember ? `<p class="text-sm text-yellow-400">⚠️ Requires: ${chap.requiredMember}</p>` : ''}
@@ -1536,28 +2135,10 @@ function renderTrade() {
 
 document.addEventListener('DOMContentLoaded', () => {
     const navButtons = document.querySelectorAll('.nav-button');
-    const sections = document.querySelectorAll('.content-section');
 
     navButtons.forEach(btn => {
         btn.addEventListener('click', () => {
-            navButtons.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-
-            const target = btn.dataset.target;
-            sections.forEach(s => s.classList.remove('active'));
-            document.getElementById(target)?.classList.add('active');
-
-            if (target === 'atlas') {
-                ensureAtlasMap();
-            }
-
-            if (target === 'missions') {
-                renderMergedWalkthroughProgress();
-                renderChapters();
-            }
-
-            // Smooth scroll to top
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            activateAlbionSection(btn.dataset.target);
         });
     });
 
@@ -1571,6 +2152,8 @@ document.addEventListener('DOMContentLoaded', () => {
     renderMagic();
     renderLocations();
     renderTrade();
+
+    if (readAlbionAtlasHash()) activateAlbionSection('atlas', 'auto');
 
 });
 
@@ -1906,4 +2489,3 @@ function closeScreenshotModal() {
 
 window.openScreenshotModal = openScreenshotModal;
 window.closeScreenshotModal = closeScreenshotModal;
-
