@@ -6,6 +6,8 @@
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
+    <meta name="theme-color" content="#263a2e">
+    <meta name="description" content="An interactive Ultima V guide with a searchable world atlas, companion builder, campaign tracker, survival checklist, spellbook, and complete liberation walkthrough.">
     <title>Ultima V: Interactive Guide</title>
     <script src="js/tailwind.js"></script>
     <script src="js/chart.js"></script>
@@ -14,54 +16,133 @@
     <!-- Application Structure Plan: A task-oriented SPA with side navigation was chosen to provide players with rapid, non-linear access to specific game information. The structure is divided into logical sections a player would need during a playthrough: 'Party Builder' for team composition, 'Survival Kit' for essential tips, a 'Quest Log' with nested tabs for the main story acts, and a 'Reference' section for quick data lookups. This architecture prioritizes usability and quick information retrieval over the original report's linear narrative flow. Key interactions include a filterable bar chart for companion stats, searchable/sortable data tables, and a tabbed interface to break down complex quests into manageable steps. -->
     <!-- Visualization & Content Choices: Companion Stats -> Goal: Compare -> Viz: Interactive Bar Chart (Chart.js) -> Interaction: Filter by STR/INT/DEX -> Justification: Visual comparison is faster than reading a table for identifying top-tier characters. Quest Walkthroughs -> Goal: Inform/Organize -> Presentation: Tabbed/Card-based HTML/CSS layout -> Interaction: Click to reveal steps -> Justification: Breaks down dense text into a clear, step-by-step process, reducing cognitive load. Reference Tables (Spells/Words) -> Goal: Inform/Organize -> Presentation: HTML Table -> Interaction: Search/Filter (JS) -> Justification: Allows for immediate lookup of specific data points without manual scrolling. -->
     <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
-    <link rel="stylesheet" href="css/Ultima5.css">
+    <link rel="stylesheet" href="css/leaflet.css">
+    <link rel="stylesheet" href="css/Ultima5.css?v=20260829i">
 </head>
-<body class="bg-amber-50 text-stone-800">
-    <div class="w-full bg-gray-100 text-gray-700">
-      <div class="container mx-auto px-4 py-2">
-        <a href="index.html" class="inline-flex items-center gap-2 hover:underline"><span aria-hidden="true">←</span> Back to Guides</a>
-      </div>
+<body>
+    <div class="u5-backbar">
+        <div class="u5-container">
+            <a href="index.html"><span aria-hidden="true">←</span> Back to Guides</a>
+        </div>
     </div>
 
-    <div id="app" class="min-h-screen flex flex-col">
-        <header class="bg-yellow-800 text-amber-50 p-4 shadow-lg sticky top-0 z-20">
-            <div class="container mx-auto flex justify-between items-center">
-                <h1 class="text-2xl md:text-3xl font-bold tracking-wider">Ultima V: Warriors of Destiny</h1>
-                <button id="mobile-menu-button" class="md:hidden p-2 rounded-md hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-amber-50">
-                    <i data-lucide="menu" class="h-6 w-6"></i>
-                </button>
+    <div id="app" class="u5-app">
+        <header class="u5-masthead">
+            <div class="u5-container u5-masthead__inner">
+                <div class="u5-masthead__copy">
+                    <p class="u5-kicker">A field guide for the resistance</p>
+                    <h1>Ultima V interactive guide</h1>
+                    <p class="u5-masthead__lead">Britannia is under threat from the forces of the Shadowlords.  Only you can save them.</p>
+                    <div class="u5-masthead__badges" aria-label="Guide features">
+                        <span><i data-lucide="map-pinned" aria-hidden="true"></i> Original-data atlas</span>
+                        <span><i data-lucide="check-circle-2" aria-hidden="true"></i> Persistent progress</span>
+                        <span><i data-lucide="search" aria-hidden="true"></i> Searchable archives</span>
+                    </div>
+                </div>
+                <figure class="u5-masthead__art">
+                    <img src="images/Ultima5box.jpg" alt="Ultima V Warriors of Destiny box artwork">
+                    <figcaption>Origin Systems · 1988</figcaption>
+                </figure>
             </div>
         </header>
 
-        <div class="container mx-auto flex-grow flex flex-col md:flex-row">
-            <nav id="main-nav" class="w-full md:w-64 bg-yellow-100 p-4 md:p-6 shadow-md flex-shrink-0 block md:block">
-                <ul class="space-y-2">
-                    <li><a href="#overview" class="nav-link flex items-center gap-3 p-3 rounded-lg hover:bg-amber-200 active"><i data-lucide="scroll-text" class="h-5 w-5"></i> <span class="font-medium">Overview</span></a></li>
-                    <li><a href="#party" class="nav-link flex items-center gap-3 p-3 rounded-lg hover:bg-amber-200"><i data-lucide="users" class="h-5 w-5"></i> <span class="font-medium">Party Builder</span></a></li>
-                    <li><a href="#survival" class="nav-link flex items-center gap-3 p-3 rounded-lg hover:bg-amber-200"><i data-lucide="shield-check" class="h-5 w-5"></i> <span class="font-medium">Survival Kit</span></a></li>
-                    <li><a href="#quests" class="nav-link flex items-center gap-3 p-3 rounded-lg hover:bg-amber-200"><i data-lucide="map" class="h-5 w-5"></i> <span class="font-medium">Quest Log</span></a></li>
-                    <li><a href="#reference" class="nav-link flex items-center gap-3 p-3 rounded-lg hover:bg-amber-200"><i data-lucide="book-open" class="h-5 w-5"></i> <span class="font-medium">Reference</span></a></li>
-                    <li><a href="#counsel" class="nav-link flex items-center gap-3 p-3 rounded-lg hover:bg-amber-200"><i data-lucide="message-circle" class="h-5 w-5"></i> <span class="font-medium">Consult with the Seer</span></a></li>
-                </ul>
+        <div class="u5-shell">
+            <nav id="main-nav" class="u5-navigation" aria-label="Ultima V guide sections">
+                <div class="u5-container u5-navigation__rail">
+                    <a href="#overview" class="nav-link active" aria-current="page"><i data-lucide="scroll-text" aria-hidden="true"></i><span>Briefing</span></a>
+                    <a href="#party" class="nav-link"><i data-lucide="users" aria-hidden="true"></i><span>Party</span></a>
+                    <a href="#survival" class="nav-link"><i data-lucide="shield-check" aria-hidden="true"></i><span>Survival</span></a>
+                    <a href="#atlas" class="nav-link"><i data-lucide="map-pinned" aria-hidden="true"></i><span>Atlas</span></a>
+                    <a href="#quests" class="nav-link"><i data-lucide="route" aria-hidden="true"></i><span>Campaign</span></a>
+                    <a href="#reference" class="nav-link"><i data-lucide="book-open" aria-hidden="true"></i><span>Archives</span></a>
+                    <a href="#counsel" class="nav-link"><i data-lucide="message-circle" aria-hidden="true"></i><span>Seer</span></a>
+                </div>
             </nav>
 
-            <main class="flex-grow p-4 md:p-8 overflow-y-auto">
+            <main class="u5-container u5-main">
                 
                 <section id="overview" class="content-section active">
-                    <h2 class="text-3xl font-bold text-yellow-900 mb-4 border-b-2 border-yellow-800 pb-2">The Tyranny of Virtue</h2>
-                    <div class="space-y-4 text-lg leading-relaxed bg-white p-6 rounded-lg shadow">
-                        <p class="bg-yellow-100 border border-yellow-300 text-yellow-900 p-4 rounded-md">
-                            Tooling tip: <strong>Ultimapper 5</strong> is a Windows tool for Ultima V that overlays a HUD above the game and shows a live map of your current location in a separate window. It works great with the GOG version (and typically with other DOSBox-based versions).
-                            See my setup guide: <a class="underline font-medium" href="https://www.richardorilla.website/best_way_to_play_ultima5.html" target="_blank" rel="noopener noreferrer">Best way to play Ultima 5</a>.
-                        </p>
-                        <p>Welcome back to Britannia, Avatar. The land you once saved has fallen under a dark shadow. Lord British is lost in the Underworld, and his regent, Lord Blackthorn, enforces the Virtues with an iron fist, twisted by the influence of the three malevolent Shadowlords.</p>
-                        <p>This interactive guide is your companion in the struggle to liberate Britannia. It's designed to provide quick, accessible information when you need it most. Use the navigation to explore potential party members, learn survival essentials, track your progress through the main quests, and reference critical information like spells and mantras. Your goal is not just to rescue a king, but to restore the very soul of Britannia—the principle that true virtue must be a choice, not a law.</p>
+                    <header class="u5-section-heading">
+                        <div>
+                            <p class="u5-kicker">Resistance briefing</p>
+                            <h2>The Tyranny of Virtue</h2>
+                            <p>Britannia is occupied, Lord British is missing, and Blackthorn has turned the Eight Virtues into instruments of fear. This guide keeps the whole liberation campaign within reach.</p>
+                        </div>
+                        <button class="u5-primary-action" type="button" data-u5-section="quests">
+                            Continue the campaign <i data-lucide="arrow-right" aria-hidden="true"></i>
+                        </button>
+                    </header>
+
+                    <div class="u5-briefing-grid">
+                        <article class="u5-story-card u5-story-card--feature">
+                            <p class="u5-kicker">The situation</p>
+                            <h3>A kingdom held in shadow</h3>
+                            <p>Lord British is trapped below the world. Above, the three Shadowlords bend cities toward Falsehood, Hatred, and Cowardice while Blackthorn's regime punishes virtue without choice.</p>
+                            <blockquote>“True virtue must be chosen—not imposed.”</blockquote>
+                        </article>
+                        <article class="u5-story-card u5-story-card--map">
+                            <div>
+                                <p class="u5-kicker">Newly charted</p>
+                                <h3>Two complete worlds</h3>
+                                <p>The surface and Underworld are decoded from your original Ultima V data, with 73 searchable campaign locations.</p>
+                                <button type="button" class="u5-text-action" data-u5-section="atlas">Open the atlas <span aria-hidden="true">→</span></button>
+                            </div>
+                        </article>
+                    </div>
+
+                    <section class="u5-campaign-overview" aria-labelledby="u5-campaign-overview-title">
+                        <div class="u5-subheading-row">
+                            <div>
+                                <p class="u5-kicker">The road ahead</p>
+                                <h3 id="u5-campaign-overview-title">Four movements of liberation</h3>
+                            </div>
+                            <p id="u5-overview-progress-label">Your campaign progress will appear here.</p>
+                        </div>
+                        <div class="u5-campaign-cards">
+                            <button type="button" class="u5-campaign-card" data-u5-quest-tab="shrines">
+                                <span class="u5-campaign-card__number">01</span>
+                                <span><strong>Liberate the Shrines</strong><small>Restore all eight paths of virtue.</small></span>
+                                <span class="u5-campaign-card__count" data-u5-chapter-count="shrines">0/8</span>
+                            </button>
+                            <button type="button" class="u5-campaign-card" data-u5-quest-tab="shadowlords">
+                                <span class="u5-campaign-card__number">02</span>
+                                <span><strong>Break the Shadows</strong><small>Recover three shards and banish their lords.</small></span>
+                                <span class="u5-campaign-card__count" data-u5-chapter-count="shadowlords">0/3</span>
+                            </button>
+                            <button type="button" class="u5-campaign-card" data-u5-quest-tab="regalia">
+                                <span class="u5-campaign-card__number">03</span>
+                                <span><strong>Recover the Regalia</strong><small>Find the Sceptre, Crown, Amulet, and Box.</small></span>
+                                <span class="u5-campaign-card__count" data-u5-chapter-count="regalia">0/4</span>
+                            </button>
+                            <button type="button" class="u5-campaign-card" data-u5-quest-tab="doom">
+                                <span class="u5-campaign-card__number">04</span>
+                                <span><strong>Descend into Doom</strong><small>Free Lord British and escape the collapse.</small></span>
+                                <span class="u5-campaign-card__count" data-u5-chapter-count="doom">0/1</span>
+                            </button>
+                        </div>
+                    </section>
+
+                    <div class="u5-field-note">
+                        <div class="u5-field-note__icon"><i data-lucide="monitor-up" aria-hidden="true"></i></div>
+                        <div>
+                            <p class="u5-kicker">Recommended setup</p>
+                            <h3>Play with a live mapping companion</h3>
+                            <p><strong>Ultimapper 5</strong> overlays a HUD and follows your position in DOSBox-based releases. Pair it with this guide's atlas for route planning.</p>
+                        </div>
+                        <a href="https://www.richardorilla.website/best_way_to_play_ultima5.html" target="_blank" rel="noopener noreferrer">Read the setup guide <span aria-hidden="true">↗</span></a>
                     </div>
                 </section>
 
                 <section id="counsel" class="content-section">
-                    <h2 class="text-3xl font-bold text-yellow-900 mb-6">✨ Consult with the Seer</h2>
-                    <div class="bg-white p-6 rounded-lg shadow">
+                    <header class="u5-section-heading">
+                        <div>
+                            <p class="u5-kicker">Private counsel</p>
+                            <h2>Consult with the Seer</h2>
+                            <p>Ask for a gentle hint, an efficient route, or a precise reminder when Britannia has you at an impasse.</p>
+                        </div>
+                    </header>
+                    <div class="u5-seer-chamber bg-white p-6 rounded-lg shadow">
+                        <div class="u5-seer-chamber__sigil" aria-hidden="true">✦</div>
                         <p class="mb-6">Lost in the Underworld, stumped by a puzzle, or unsure which quest to tackle next? Ask the seer for practical guidance grounded in Ultima V’s mechanics and quest flow.</p>
                         <label for="seer-query" class="block text-lg font-semibold text-yellow-900 mb-2">What guidance do you seek?</label>
                         <textarea id="seer-query" rows="4" class="w-full p-2 border border-amber-300 rounded-md bg-white focus:ring-amber-500 focus:border-amber-500" placeholder="e.g., Fastest route to Stonegate? Best way to get skull keys? Where do I find the Amulet?"></textarea>
@@ -71,9 +152,29 @@
                 </section>
 
                 <section id="party" class="content-section">
-                    <h2 class="text-3xl font-bold text-yellow-900 mb-6">Building the Warriors of Destiny</h2>
-                     <p class="mb-6 text-lg bg-white p-4 rounded-lg shadow">This section is your headquarters for assembling the perfect team to challenge Blackthorn. Here you can visually compare the core attributes of all potential companions to find the strongest fighters or most brilliant mages. Below the chart, a detailed, sortable roster provides strategic notes on every character you can recruit.</p>
-                    <div class="bg-white p-6 rounded-lg shadow mb-8">
+                    <header class="u5-section-heading">
+                        <div>
+                            <p class="u5-kicker">Resistance roster</p>
+                            <h2>Build the Warriors of Destiny</h2>
+                            <p>Balance front-line strength, ranged pressure, and enough Intelligence to survive the Underworld. Select any recruit for a tactical assessment.</p>
+                        </div>
+                    </header>
+
+                    <div class="u5-roster-workbench">
+                        <div>
+                            <div class="u5-subheading-row">
+                                <div>
+                                    <p class="u5-kicker">Potential companions</p>
+                                    <h3>Choose a recruit</h3>
+                                </div>
+                                <span class="u5-roster-count">15 available</span>
+                            </div>
+                            <div id="companion-roster" class="u5-roster-grid" role="group" aria-label="Potential Ultima V companions"></div>
+                        </div>
+                        <aside id="companion-profile" class="u5-companion-profile" aria-live="polite"></aside>
+                    </div>
+
+                    <div class="u5-panel bg-white p-6 rounded-lg shadow mb-8">
                         <h3 class="text-2xl font-semibold mb-4 text-yellow-800">Companion Stat Comparison</h3>
                         <p class="mb-4">A successful resistance needs a balanced team. While the tables below provide detailed stats, this chart offers a quick visual comparison to help you identify the strongest, smartest, or most agile companions for your party. Use the buttons to switch between attributes.</p>
                         <div class="flex justify-center space-x-2 mb-4">
@@ -86,7 +187,7 @@
                         </div>
                     </div>
                     
-                    <div class="bg-white p-6 rounded-lg shadow">
+                    <div class="u5-panel bg-white p-6 rounded-lg shadow">
                         <h3 class="text-2xl font-semibold mb-4 text-yellow-800">Potential Companions</h3>
                         <p class="mb-4">Britannia is home to many who would join your cause, but choose wisely. A smaller, well-equipped party can be more efficient. Mages are invaluable, but some potential recruits may have ulterior motives. Use the search bar to find a specific companion or click the table headers to sort.</p>
                         <input type="text" id="companion-search" placeholder="Search for a companion..." class="w-full p-2 border border-gray-300 rounded-md mb-4 focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500">
@@ -111,29 +212,39 @@
                 </section>
 
                 <section id="survival" class="content-section">
-                    <h2 class="text-3xl font-bold text-yellow-900 mb-6">The Resistance Survival Kit</h2>
-                    <p class="mb-6 text-lg bg-white p-4 rounded-lg shadow">Success in *Ultima V* is about more than just combat prowess; it's about preparation and resourcefulness. This section provides a quick reference for the core principles of survival in Blackthorn's Britannia, strategies for funding your resistance, and a checklist of the most essential gear you'll need to find to complete your quest.</p>
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                        <div class="bg-white p-6 rounded-lg shadow space-y-4">
-                            <h3 class="text-2xl font-semibold text-yellow-800 flex items-center gap-2"><i data-lucide="gem" class="h-6 w-6"></i> Essential Gear</h3>
-                            <div class="border-t pt-4">
-                                <h4 class="font-bold">Magic Carpet</h4>
-                                <p>Found in Lord British's chambers. Allows flight over shallow water, swamps, and hills. Essential for traversing Stonegate.</p>
-                            </div>
-                            <div class="border-t pt-4">
-                                <h4 class="font-bold">Skull Keys</h4>
-                                <p>Revealed by following <strong>Shenstone</strong> in Minoc around noon—search the tree stump he visits to collect a fresh set daily. Opens magically locked doors (one key is consumed per use).</p>
-                            </div>
-                            <div class="border-t pt-4">
-                                <h4 class="font-bold">Grappling Hook</h4>
-                                <p>Given by Lord Michael in Empath Abbey. Necessary for climbing mountains and accessing key areas.</p>
-                            </div>
-                            <div class="border-t pt-4">
-                                <h4 class="font-bold">Magic Axes</h4>
-                                <p>The best ranged weapon. <strong>Purchased at Arms of Justice in Yew</strong> and also found in the wild (e.g., near Jhelom’s east walls). They return after being thrown.</p>
-                            </div>
+                    <header class="u5-section-heading">
+                        <div>
+                            <p class="u5-kicker">Field readiness</p>
+                            <h2>The Resistance Survival Kit</h2>
+                            <p>Mark equipment as you secure it. Your kit is saved in this browser, so the guide remains useful between expeditions.</p>
                         </div>
-                        <div class="bg-white p-6 rounded-lg shadow space-y-4">
+                        <div class="u5-readiness" aria-live="polite">
+                            <span id="u5-readiness-value">0%</span>
+                            <small>field ready</small>
+                        </div>
+                    </header>
+                    <div class="u5-progress-track" aria-hidden="true"><span id="u5-readiness-bar"></span></div>
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                        <div class="u5-panel bg-white p-6 rounded-lg shadow space-y-4">
+                            <h3 class="text-2xl font-semibold text-yellow-800 flex items-center gap-2"><i data-lucide="gem" class="h-6 w-6"></i> Essential Gear</h3>
+                            <label class="u5-gear-check">
+                                <input type="checkbox" data-u5-supply="carpet">
+                                <span><strong>Magic Carpet</strong><small>Lord British's chambers. Crosses shallow water, swamp, and hills; essential for Stonegate.</small></span>
+                            </label>
+                            <label class="u5-gear-check">
+                                <input type="checkbox" data-u5-supply="keys">
+                                <span><strong>Skull Keys</strong><small>Search Shenstone's stump in Minoc for a fresh daily set of five.</small></span>
+                            </label>
+                            <label class="u5-gear-check">
+                                <input type="checkbox" data-u5-supply="grapple">
+                                <span><strong>Grappling Hook</strong><small>Ask Lord Michael at Empath Abbey; needed for mountain routes and shards.</small></span>
+                            </label>
+                            <label class="u5-gear-check">
+                                <input type="checkbox" data-u5-supply="axes">
+                                <span><strong>Magic Axes</strong><small>Buy at Arms of Justice in Yew. Infinite range and return after every throw.</small></span>
+                            </label>
+                        </div>
+                        <div class="u5-panel bg-white p-6 rounded-lg shadow space-y-4">
                             <h3 class="text-2xl font-semibold text-yellow-800 flex items-center gap-2"><i data-lucide="coins" class="h-6 w-6"></i> Funding & Survival</h3>
                              <div class="border-t pt-4">
                                 <h4 class="font-bold">Core Tenets</h4>
@@ -153,40 +264,155 @@
                             </div>
                         </div>
                     </div>
+                    <div class="u5-section-bridge">
+                        <span><i data-lucide="map" aria-hidden="true"></i> Ready to plan a supply run?</span>
+                        <button type="button" data-u5-section="atlas">Find every key location on the atlas <span aria-hidden="true">→</span></button>
+                    </div>
+                </section>
+
+                <section id="atlas" class="content-section">
+                    <div class="u5-atlas">
+                        <header class="u5-atlas__header">
+                            <div>
+                                <p class="u5-atlas__eyebrow">Drawn from the original game data</p>
+                                <h2 class="text-3xl font-bold">Britannia, its cities, and the depths below</h2>
+                                <p>Explore both worlds, then enter every city, castle, keep, dwelling, and dungeon.
+                                    All 128 floor maps are decoded from the original Ultima V game data.</p>
+                            </div>
+                            <dl class="u5-atlas__metrics" aria-label="Atlas coverage">
+                                <div><dt>World layers</dt><dd>02</dd></div>
+                                <div><dt>Interiors</dt><dd id="ultima5-atlas-interior-count">40</dd></div>
+                                <div><dt>Floor maps</dt><dd id="ultima5-atlas-floor-count">128</dd></div>
+                                <div><dt>Mapped sites</dt><dd id="ultima5-atlas-marker-count">73</dd></div>
+                            </dl>
+                        </header>
+
+                        <div class="u5-atlas__workspace">
+                            <div class="u5-atlas__map-panel">
+                                <div class="u5-atlas__breadcrumb" aria-live="polite">
+                                    <button id="ultima5-atlas-back" type="button" hidden><span aria-hidden="true">←</span> World map</button>
+                                    <span id="ultima5-atlas-view-title">Britannia Surface</span>
+                                </div>
+                                <div class="u5-atlas__toolbar">
+                                    <div class="u5-atlas__field">
+                                        <label for="ultima5-map-layer">Map or interior</label>
+                                        <select id="ultima5-map-layer">
+                                            <optgroup label="World maps">
+                                                <option value="surface">Britannia Surface</option>
+                                                <option value="underworld">The Underworld</option>
+                                            </optgroup>
+                                        </select>
+                                    </div>
+                                    <div id="ultima5-floor-field" class="u5-atlas__field" hidden>
+                                        <label for="ultima5-map-floor">Floor</label>
+                                        <select id="ultima5-map-floor"></select>
+                                    </div>
+                                    <div id="ultima5-npc-time-field" class="u5-atlas__field" hidden>
+                                        <label for="ultima5-npc-time">NPC schedule</label>
+                                        <select id="ultima5-npc-time" aria-label="NPC schedule hour"></select>
+                                    </div>
+                                    <div class="u5-atlas__field u5-atlas__field--search">
+                                        <label for="ultima5-map-search">Find a place, shrine, or quest item</label>
+                                        <div class="u5-atlas__search-controls">
+                                            <input id="ultima5-map-search" type="search" autocomplete="off"
+                                                placeholder="Stonegate, Amulet, Minoc…">
+                                            <button id="ultima5-map-search-clear" type="button">Clear</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="u5-atlas__map-frame">
+                                    <div id="ultima5-map" class="ultima5-map" role="application"
+                                        aria-label="Interactive map of Ultima V Britannia and the Underworld"></div>
+                                </div>
+
+                                <footer class="u5-atlas__map-footer">
+                                    <span id="ultima5-map-coordinates" aria-live="polite">Move across the map to read U5 coordinates.</span>
+                                    <div>
+                                        <a id="ultima5-map-download" href="images/U5GameWorld.png" target="_blank" rel="noopener">Open full-size layer</a>
+                                    </div>
+                                </footer>
+                                <noscript>
+                                    <p class="u5-atlas__noscript">JavaScript is required for the interactive atlas.
+                                        <a href="images/U5GameWorld.png">Open the full Britannia map.</a>
+                                    </p>
+                                </noscript>
+                            </div>
+
+                            <aside class="u5-atlas__sidebar" aria-labelledby="ultima5-atlas-sidebar-title">
+                                <p class="u5-atlas__eyebrow">Cartographer's index</p>
+                                <h3 id="ultima5-atlas-sidebar-title">What is charted</h3>
+                                <p id="ultima5-atlas-layer-summary">Cities, keeps, shrines, moongates, and hidden resources across Britannia.</p>
+                                <div id="ultima5-atlas-legend" class="u5-atlas__legend"></div>
+                                <div class="u5-atlas__coordinate-key">
+                                    <strong>Reading coordinates</strong>
+                                    <p>Ultima V replaces hexadecimal 0–F with the letters A–P. The game displays
+                                        north/south first, then east/west: for example, <code>IH OI</code>.</p>
+                                </div>
+                                <a href="#quests" class="u5-atlas__quest-link">Open the liberation quest log</a>
+                            </aside>
+                        </div>
+                    </div>
                 </section>
                 
                 <section id="quests" class="content-section">
-                    <h2 class="text-3xl font-bold text-yellow-900 mb-6">The Path to Liberation</h2>
-                    <p class="mb-6 text-lg bg-white p-4 rounded-lg shadow">Your journey to free Britannia is long and perilous. It involves dismantling Blackthorn's regime, rescuing the true king, and restoring the meaning of Virtue. This quest log is divided into the major acts of your adventure. Begin by restoring the Shrines, then shatter the Shadowlords' influence, recover the king's regalia, and finally, prepare for the descent into Doom.</p>
-                    <div class="flex flex-wrap border-b border-gray-200">
-                        <button class="quest-tab-button tab-button py-2 px-4 font-semibold border-b-2 border-transparent hover:bg-yellow-100" data-tab="quickstart">1. Quick Start Route</button>
-                        <button class="quest-tab-button tab-button py-2 px-4 font-semibold border-b-2 border-transparent hover:bg-yellow-100 active" data-tab="shrines">2. The Shrine Quests</button>
-                        <button class="quest-tab-button tab-button py-2 px-4 font-semibold border-b-2 border-transparent hover:bg-yellow-100" data-tab="shadowlords">3. Shatter the Shadows</button>
-                        <button class="quest-tab-button tab-button py-2 px-4 font-semibold border-b-2 border-transparent hover:bg-yellow-100" data-tab="regalia">4. Recover the Regalia</button>
-                        <button class="quest-tab-button tab-button py-2 px-4 font-semibold border-b-2 border-transparent hover:bg-yellow-100" data-tab="doom">5. Descent into Doom</button>
+                    <header class="u5-section-heading">
+                        <div>
+                            <p class="u5-kicker">Campaign journal</p>
+                            <h2>The Path to Liberation</h2>
+                            <p>Follow the liberation campaign in order, then pursue optional resistance work whenever you need allies, equipment, or faster travel.</p>
+                        </div>
+                        <div class="u5-campaign-total" aria-live="polite">
+                            <strong id="u5-campaign-percent">0%</strong>
+                            <span id="u5-campaign-total-label">0 of 16 main quests</span>
+                        </div>
+                    </header>
+
+                    <div class="u5-campaign-tabs" role="tablist" aria-label="Quest journal">
+                        <button type="button" class="u5-campaign-tab active" data-u5-campaign-view="main" role="tab" aria-selected="true" aria-controls="u5-main-quest-view">
+                            <span>01</span>
+                            <strong>Main Quests</strong>
+                            <small>Ordered critical path</small>
+                        </button>
+                        <button type="button" class="u5-campaign-tab" data-u5-campaign-view="side" role="tab" aria-selected="false" aria-controls="u5-side-quest-view">
+                            <span>02</span>
+                            <strong>Side Quests</strong>
+                            <small>Optional preparations</small>
+                        </button>
                     </div>
 
-                    <div id="quickstart" class="quest-tab-content mt-6 space-y-4">
-                        <h3 class="text-2xl font-semibold text-yellow-800">Early Game Quick Start</h3>
-                        <p class="mb-2">Follow this accelerated route to assemble a strong early party, secure mobility tools, and unlock key conveniences before tackling the shrine loops.</p>
-                        <ol class="list-decimal list-inside bg-white p-4 rounded-lg shadow space-y-2">
-                            <li><strong>Grapple (Empath Abbey)</strong> — Ask Lord Michael for <code>GRAPPLE</code>. <span class="text-sm text-stone-600">He’s upstairs in the east wing by day; the hook climbs small peaks only.</span></li>
-                            <li><strong>Recruit Julia</strong> — Also in Empath Abbey’s quarters.</li>
-                            <li><strong>Recruit Jaana</strong> — Yew jail’s hidden basement. <span class="text-sm text-stone-600">Enter the fireplace behind the living area; behind a locked door.</span></li>
-                            <li><strong>Glass Swords cache</strong> — Hidden valley in the Serpent’s Spine (south of Yew). <span class="text-sm text-stone-600">Ready a sword after each find to duplicate until everyone has one; save for dragons/balrons.</span></li>
-                            <li><strong>Swap companions in Britain</strong> — Drop off Shamino at the inn; recruit Gwenno at the weapons shop.</li>
-                            <li><strong>Minoc skull keys (+ Shrine of Sacrifice)</strong> — Moongate to Minoc and search Shenstone’s stump for 5 keys; exit/re-enter at night to refresh. <span class="text-sm text-stone-600">Free healer here; you can detour to the Sacrifice shrine nearby.</span></li>
-                            <li><strong>Magic Carpet + Sandalwood Box</strong> — Castle Britannia, Lord British’s chambers (skull key the center door). Play <em>Stones</em> on the harpsichord: <code>6-7-8-9-8-7-8-7-6-7-6-5-3</code>.</li>
-                            <li><strong>HMS Cape plans</strong> — East Brittany (The Oaken Oar), in the east room’s drawers. <span class="text-sm text-stone-600">Doubles frigate speed.</span></li>
-                            <li><strong>Lycaeum stop (Isle of Honesty)</strong> — Recruit Mariah and stock reagents in Moonglow.</li>
-                            <li><strong>Magic Axe (Jhelom)</strong> — Hidden stump via the tower route and barrel push. <span class="text-sm text-stone-600">Infinite-range thrown weapon that returns.</span></li>
-                            <li><strong>Fund the arsenal</strong> — Farm bridge trolls for gold to buy more Magic Axes (Yew’s Arms of Justice).</li>
-                        </ol>
-                        <p class="text-sm text-stone-600">Tip: Cities can be afflicted by a random Shadowlord each day. If critical NPCs are hostile, rest until after midnight or plan around tomorrow’s affliction.</p>
+                    <div id="u5-main-quest-view" class="u5-campaign-view active" role="tabpanel">
+                    <section class="u5-quest-dashboard" aria-labelledby="u5-current-objective-title">
+                        <div class="u5-quest-dashboard__status">
+                            <p class="u5-kicker">Next required quest</p>
+                            <h3 id="u5-current-objective-title">Restore the Shrine of Honesty</h3>
+                            <p id="u5-current-objective-copy">Begin in Moonglow: learn AHM, meditate three cycles, and seek the Codex.</p>
+                            <div class="u5-current-objective-actions">
+                                <button type="button" id="u5-current-objective-action" class="u5-primary-action">Open this chapter <i data-lucide="arrow-right" aria-hidden="true"></i></button>
+                                <button type="button" id="u5-current-objective-map" class="u5-secondary-action"><i data-lucide="map-pinned" aria-hidden="true"></i> Show on atlas</button>
+                            </div>
+                        </div>
+                        <div class="u5-main-checklist">
+                            <div class="u5-main-checklist__heading">
+                                <div>
+                                    <p class="u5-kicker">Main quest checklist</p>
+                                    <h3>Follow this order</h3>
+                                </div>
+                                <span><i data-lucide="lock-keyhole" aria-hidden="true"></i> Later quests unlock one at a time</span>
+                            </div>
+                            <div id="u5-main-quest-checkpoints" class="u5-quest-checkpoints"></div>
+                        </div>
+                    </section>
+
+                    <div class="u5-tab-strip flex flex-wrap border-b border-gray-200" role="tablist" aria-label="Campaign chapters">
+                        <button class="quest-tab-button tab-button py-2 px-4 font-semibold border-b-2 border-transparent hover:bg-yellow-100 active" data-tab="shrines">Act I · Restore the Shrines</button>
+                        <button class="quest-tab-button tab-button py-2 px-4 font-semibold border-b-2 border-transparent hover:bg-yellow-100" data-tab="shadowlords">Act II · Shatter the Shadows</button>
+                        <button class="quest-tab-button tab-button py-2 px-4 font-semibold border-b-2 border-transparent hover:bg-yellow-100" data-tab="regalia">Act III · Recover the Regalia</button>
+                        <button class="quest-tab-button tab-button py-2 px-4 font-semibold border-b-2 border-transparent hover:bg-yellow-100" data-tab="doom">Act IV · Descent into Doom</button>
                     </div>
 
                     <div id="shrines" class="quest-tab-content active mt-6 space-y-4">
-                        <h3 class="text-2xl font-semibold text-yellow-800">The Path of Virtue</h3>
+                        <h3 class="text-2xl font-semibold text-yellow-800">Act I: The Path of Virtue</h3>
                         <p>Restoring the Shrines of the Eight Virtues is the primary way to increase your party's attributes and is required to learn the final Word of Power. Every shrine uses the same simple loop:</p>
                         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                             <div class="bg-white p-4 rounded-lg shadow"><span class="font-bold text-yellow-700">1) Learn the Mantra</span> from NPCs in the virtue's city.</div>
@@ -212,7 +438,7 @@
                     </div>
 
                     <div id="shadowlords" class="quest-tab-content mt-6 space-y-4">
-                        <h3 class="text-2xl font-semibold text-yellow-800">Act I: Shatter the Shadows</h3>
+                        <h3 class="text-2xl font-semibold text-yellow-800">Act II: Shatter the Shadows</h3>
                         <p>The three Shadowlords cannot be beaten in normal combat. You must recover their shards from the Underworld and perform a banishment ritual at the castles of Truth, Love, and Courage.</p>
                         <div class="space-y-6">
                             <div>
@@ -260,7 +486,7 @@
                     </div>
 
                     <div id="regalia" class="quest-tab-content mt-6 space-y-4">
-                        <h3 class="text-2xl font-semibold text-yellow-800">Act II: Recover the Regalia</h3>
+                        <h3 class="text-2xl font-semibold text-yellow-800">Act III: Recover the Regalia</h3>
                         <p>With the Shadowlords gone, recover Lord British's artifacts. These make the Underworld and Doom manageable.</p>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div class="bg-white p-4 rounded-lg shadow">
@@ -291,7 +517,7 @@
                     </div>
 
                     <div id="doom" class="quest-tab-content mt-6 space-y-4">
-                        <h3 class="text-2xl font-semibold text-yellow-800">Act III: The Final Descent into Doom</h3>
+                        <h3 class="text-2xl font-semibold text-yellow-800">Act IV: The Final Descent into Doom</h3>
                         <p>The final challenge. This is a one-way trip, so make a permanent save before you enter. Ensure you have all four royal artifacts and the Sandalwood Box, and that the Shadowlords are defeated.</p>
                         <div class="space-y-6">
                             <div>
@@ -316,12 +542,38 @@
                             </div>
                         </div>
                     </div>
+                    </div>
+
+                    <div id="u5-side-quest-view" class="u5-campaign-view" role="tabpanel" hidden>
+                        <section class="u5-side-quest-intro">
+                            <div>
+                                <p class="u5-kicker">Resistance opportunities</p>
+                                <h3>Side Quests</h3>
+                                <p>These jobs are optional and can be completed in any order. They make the ordered campaign safer, faster, and better supplied.</p>
+                            </div>
+                            <div class="u5-side-progress" aria-live="polite">
+                                <strong id="u5-side-quest-percent">0%</strong>
+                                <span id="u5-side-quest-total-label">0 of 10 complete</span>
+                            </div>
+                        </section>
+                        <div id="u5-side-quest-list" class="u5-side-quest-list"></div>
+                    </div>
                 </section>
 
                 <section id="reference" class="content-section">
-                    <h2 class="text-3xl font-bold text-yellow-900 mb-6">Britannian Archives</h2>
-                    <p class="mb-6 text-lg bg-white p-4 rounded-lg shadow">This section serves as your complete in-game encyclopedia. Use the tabs to switch between a searchable spellbook, complete with reagent lists and strategic notes, and a directory of all the vital Mantras and Words of Power you will need to unlock Britannia's secrets.</p>
-                     <div class="flex flex-wrap border-b border-gray-200">
+                    <header class="u5-section-heading">
+                        <div>
+                            <p class="u5-kicker">Field reference</p>
+                            <h2>Britannian Archives</h2>
+                            <p>Search the grimoire, decode mantras and Words of Power, time the moongates, or skim hard-won campaign advice.</p>
+                        </div>
+                        <dl class="u5-archive-metrics">
+                            <div><dt>Spells</dt><dd>17</dd></div>
+                            <div><dt>Virtues</dt><dd>8</dd></div>
+                            <div><dt>Field notes</dt><dd>20</dd></div>
+                        </dl>
+                    </header>
+                     <div class="u5-tab-strip flex flex-wrap border-b border-gray-200" role="tablist" aria-label="Archive collections">
                         <button class="ref-tab-button tab-button py-2 px-4 font-semibold border-b-2 border-transparent hover:bg-yellow-100 active" data-tab="spells">Grimoire</button>
                         <button class="ref-tab-button tab-button py-2 px-4 font-semibold border-b-2 border-transparent hover:bg-yellow-100" data-tab="words">Words & Mantras</button>
                         <button class="ref-tab-button tab-button py-2 px-4 font-semibold border-b-2 border-transparent hover:bg-yellow-100" data-tab="moongates">Moongate Phases</button>
@@ -401,6 +653,8 @@
         </div>
     </div>
 
-    <script src="js/Ultima5.js"></script>
+    <script src="js/leaflet.js"></script>
+    <script src="js/Ultima5AtlasData.js?v=20260829g"></script>
+    <script src="js/Ultima5.js?v=20260829i"></script>
 </body>
 </html>

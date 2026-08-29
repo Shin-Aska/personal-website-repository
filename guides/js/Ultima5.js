@@ -83,6 +83,131 @@ const moongatePhaseData = [
     { phase: 8, destination: 'New Magincia' }
 ];
 
+const ULTIMA5_PROGRESS_STORAGE_KEY = 'ultima5-campaign-progress-v2';
+const ULTIMA5_SIDEQUEST_STORAGE_KEY = 'ultima5-sidequest-progress-v1';
+const ULTIMA5_SUPPLY_STORAGE_KEY = 'ultima5-field-kit-v2';
+
+const ultima5CampaignObjectives = [
+    { id: 'shrine-honesty', chapter: 'shrines', title: 'Shrine of Honesty', detail: 'AHM · Moonglow', atlas: { marker: 'Shrine of Honesty' } },
+    { id: 'shrine-compassion', chapter: 'shrines', title: 'Shrine of Compassion', detail: 'MU · Britain', atlas: { marker: 'Shrine of Compassion' } },
+    { id: 'shrine-valor', chapter: 'shrines', title: 'Shrine of Valor', detail: 'RA · Jhelom', atlas: { marker: 'Shrine of Valor' } },
+    { id: 'shrine-justice', chapter: 'shrines', title: 'Shrine of Justice', detail: 'BEH · Yew', atlas: { marker: 'Shrine of Justice' } },
+    { id: 'shrine-sacrifice', chapter: 'shrines', title: 'Shrine of Sacrifice', detail: 'CAH · Minoc', atlas: { marker: 'Shrine of Sacrifice' } },
+    { id: 'shrine-honor', chapter: 'shrines', title: 'Shrine of Honor', detail: 'SUMM · Trinsic', atlas: { marker: 'Shrine of Honor' } },
+    { id: 'shrine-spirituality', chapter: 'shrines', title: 'Shrine of Spirituality', detail: 'OM · Skara Brae', atlas: { interiorId: 'location-7', floor: '0' } },
+    { id: 'shrine-humility', chapter: 'shrines', title: 'Shrine of Humility', detail: 'LUM · New Magincia', atlas: { marker: 'Shrine of Humility' } },
+    { id: 'shadow-faulinei', chapter: 'shadowlords', title: 'Banish Faulinei', detail: 'Falsehood · Lycaeum', atlas: { marker: 'Shard of Falsehood' } },
+    { id: 'shadow-astaroth', chapter: 'shadowlords', title: 'Banish Astaroth', detail: 'Hatred · Empath Abbey', atlas: { marker: 'Shard of Hatred' } },
+    { id: 'shadow-nosfentor', chapter: 'shadowlords', title: 'Banish Nosfentor', detail: 'Cowardice · Serpent’s Hold', atlas: { marker: 'Shard of Cowardice' } },
+    { id: 'regalia-box', chapter: 'regalia', title: 'Recover the Sandalwood Box', detail: 'Castle Britannia', atlas: { interiorId: 'location-17', floor: '2' } },
+    { id: 'regalia-sceptre', chapter: 'regalia', title: 'Recover the Sceptre', detail: 'Stonegate', atlas: { interiorId: 'location-29', floor: '0' } },
+    { id: 'regalia-crown', chapter: 'regalia', title: 'Recover the Crown', detail: 'Blackthorn’s Castle', atlas: { interiorId: 'location-18', floor: '3' } },
+    { id: 'regalia-amulet', chapter: 'regalia', title: 'Recover the Amulet', detail: 'Underworld burial ground', atlas: { marker: "Lord British's Amulet" } },
+    { id: 'doom-rescue', chapter: 'doom', title: 'Rescue Lord British', detail: 'Dungeon Doom', atlas: { interiorId: 'location-40', floor: '7' } }
+];
+
+const ultima5SideQuests = [
+    {
+        id: 'side-grapple', category: 'Equipment', title: 'Secure the Grapple', location: 'Empath Abbey',
+        detail: 'Ask Lord Michael about GRAPPLE upstairs in the east wing. The hook opens routes across small peaks.',
+        reward: 'Mountain access', recommendedBefore: 'shadow-faulinei', atlas: { interiorId: 'location-31', floor: '1' }
+    },
+    {
+        id: 'side-jaana', category: 'Companion', title: 'Free Jaana from Yew', location: 'Yew',
+        detail: 'Enter the fireplace behind the living area, descend to the hidden jail, unlock the door, and recruit Jaana.',
+        reward: 'Healer companion', recommendedBefore: 'shrine-compassion', atlas: { interiorId: 'location-4', floor: '-1' }
+    },
+    {
+        id: 'side-resistance-party', category: 'Companions', title: 'Build a Resistance Party', location: 'Across Britannia',
+        detail: 'Recruit Julia at Empath Abbey, Mariah at the Lycaeum, and Gwenno in Britain; use the Party Builder to choose your six.',
+        reward: 'Flexible party roles', recommendedBefore: 'shrine-compassion', atlas: { interiorId: 'location-31', floor: '1' }
+    },
+    {
+        id: 'side-skull-keys', category: 'Supplies', title: 'Stockpile Skull Keys', location: 'Minoc',
+        detail: 'Search Shenstone’s stump at night for five keys. Leave and return on another day to replenish the cache.',
+        reward: 'Opens sealed quest rooms', recommendedBefore: 'regalia-box', atlas: { interiorId: 'location-5', floor: '0' }
+    },
+    {
+        id: 'side-glass-swords', category: 'Treasure', title: 'Raid the Glass Sword Cache', location: 'Serpent’s Spine',
+        detail: 'Find the hidden valley south of Yew. Ready each sword after finding it to multiply the cache for the party.',
+        reward: 'Emergency boss weapons', recommendedBefore: 'shadow-faulinei', atlas: { marker: 'Glass Sword Cache' }
+    },
+    {
+        id: 'side-hms-cape', category: 'Travel', title: 'Steal the HMS Cape Plans', location: 'East Britanny',
+        detail: 'Jimmy the locked double doors at The Oaken Oar and search the east room’s drawers for the ship plans.',
+        reward: 'Double frigate speed', recommendedBefore: 'shadow-faulinei', atlas: { interiorId: 'location-21', floor: '0' }
+    },
+    {
+        id: 'side-magic-axe', category: 'Treasure', title: 'Claim Jhelom’s Magic Axe', location: 'Jhelom',
+        detail: 'Use the tower route, push the barrels, and search the concealed stump for a returning ranged weapon.',
+        reward: 'Infinite-range returning axe', recommendedBefore: 'shadow-faulinei', atlas: { interiorId: 'location-3', floor: '0' }
+    },
+    {
+        id: 'side-reagents', category: 'Magic', title: 'Establish a Reagent Run', location: 'Spiritwood & Bloody Plains',
+        detail: 'Harvest Nightshade at midnight in Spiritwood and Mandrake southeast of Minoc for high-circle travel and scouting magic.',
+        reward: 'Renewable rare reagents', recommendedBefore: 'shrine-spirituality', atlas: { marker: 'Nightshade' }
+    },
+    {
+        id: 'side-navigation', category: 'Travel', title: 'Collect the Sextant & Spyglass', location: 'Greyhaven & Farthing',
+        detail: 'Ask David at Greyhaven for the sextant, then visit Seggallion at Farthing for the spyglass.',
+        reward: 'Coordinates and scouting', recommendedBefore: 'shrine-compassion', atlas: { interiorId: 'location-11', floor: '0' }
+    },
+    {
+        id: 'side-mystic-arms', category: 'Treasure', title: 'Recover the Mystic Arms', location: 'Southeast Underworld',
+        detail: 'Mount a late-game expedition into the far southeast Underworld to recover Britannia’s hidden Mystic equipment.',
+        reward: 'Ultimate equipment set', recommendedBefore: 'doom-rescue', atlas: { marker: 'Mystic Arms' }
+    }
+];
+
+const ultima5ObjectiveGuidance = {
+    'shrine-honesty': 'Begin in Moonglow: learn AHM, meditate three cycles, and seek the Codex.',
+    'shrine-compassion': 'Find Greyson in Britain, affirm Lord British, and ask for the mantra MU.',
+    'shrine-valor': 'Follow Trian’s lead to Thorne in Jhelom and learn RA.',
+    'shrine-justice': 'Help Jeremy, join the Resistance with DAWN, and seek Chamfort for BEH.',
+    'shrine-sacrifice': 'Speak with Rew in East Brittany to learn CAH, then make the shrine pilgrimage.',
+    'shrine-honor': 'Ask Gruman in Trinsic for SUMM before visiting the Shrine of Honor.',
+    'shrine-spirituality': 'Follow Saul’s direction to Kindor, ask about the shrine, and learn OM.',
+    'shrine-humility': 'Pass Wartow’s questions in New Magincia to earn the mantra LUM.',
+    'shadow-faulinei': 'Recover the Shard of Falsehood below Deceit, then carry it to the Lycaeum flame.',
+    'shadow-astaroth': 'Seek the Shard of Hatred through Wrong or Covetous and banish Astaroth at Empath Abbey.',
+    'shadow-nosfentor': 'Descend through Hythloth for the Shard of Cowardice, then return to Serpent’s Hold.',
+    'regalia-sceptre': 'Bring Carpet, Grapple, and Skull Keys to Stonegate; the demon’s answer is WELL.',
+    'regalia-crown': 'Infiltrate Blackthorn’s Castle, reach the rooftop, and escape by Magic Carpet.',
+    'regalia-amulet': 'Take the waterfall east of Skara Brae into the Underworld and find the burial ground.',
+    'regalia-box': 'Play Stones on Lord British’s harpsichord to reveal the private study.',
+    'doom-rescue': 'Carry every royal artifact, speak VERAMOCOR, and make the final descent into Doom.'
+};
+
+const ULTIMA5_ATLAS_MARKER_STYLES = {
+    city: { label: 'Cities & villages', color: '#fbbf24', symbol: 'T' },
+    castle: { label: 'Castles', color: '#fb7185', symbol: 'C' },
+    keep: { label: 'Keeps', color: '#fb923c', symbol: 'K' },
+    site: { label: 'Dwellings & sites', color: '#a3e635', symbol: '•' },
+    dungeon: { label: 'Dungeons', color: '#c084fc', symbol: 'D' },
+    shrine: { label: 'Shrines', color: '#fef08a', symbol: 'S' },
+    moongate: { label: 'Moongates', color: '#67e8f9', symbol: 'M' },
+    quest: { label: 'Quest objectives', color: '#f472b6', symbol: 'Q' },
+    passage: { label: 'World passages', color: '#38bdf8', symbol: '↕' },
+    reagent: { label: 'Reagents', color: '#4ade80', symbol: 'R' },
+    treasure: { label: 'Hidden treasure', color: '#fde047', symbol: '✦' },
+    default: { label: 'Points of interest', color: '#e7e5e4', symbol: '•' }
+};
+
+const ultima5AtlasState = {
+    map: null,
+    overlay: null,
+    markerLayer: null,
+    entries: [],
+    currentLayer: 'surface',
+    viewMode: 'world',
+    currentInterior: null,
+    currentFloor: null,
+    currentHour: 12,
+    activeEntry: null,
+    controlsBound: false,
+    searchResults: []
+};
+
 // Initialize the application
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize Lucide icons
@@ -93,6 +218,9 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Populate companion table
     populateCompanionTable();
+
+    // Build the interactive resistance roster
+    populateCompanionRoster();
     
     // Populate spell table
     populateSpellTable();
@@ -106,6 +234,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Set up event listeners
     setupEventListeners();
+
+    // Restore locally saved field-kit and campaign progress
+    initializeUltima5FieldKit();
+    initializeUltima5CampaignProgress();
+
+    initializeUltima5AtlasShell();
 });
 
 // Initialize the companion chart
@@ -173,6 +307,59 @@ function populateCompanionTable() {
     });
 }
 
+function populateCompanionRoster() {
+    const roster = document.getElementById('companion-roster');
+    if (!roster) return;
+    roster.innerHTML = '';
+
+    companionData.forEach((companion, index) => {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'u5-roster-button';
+        button.setAttribute('aria-selected', index === 0 ? 'true' : 'false');
+        button.innerHTML = `
+            <strong>${escapeUltima5AtlasHtml(companion.Name)}</strong>
+            <small>${escapeUltima5AtlasHtml(companion.Class)} · ${escapeUltima5AtlasHtml(companion.Location)}</small>
+        `;
+        button.addEventListener('click', () => selectUltima5Companion(index));
+        roster.appendChild(button);
+    });
+
+    renderUltima5CompanionProfile(companionData[0]);
+}
+
+function selectUltima5Companion(index) {
+    const companion = companionData[index];
+    if (!companion) return;
+    document.querySelectorAll('.u5-roster-button').forEach((button, buttonIndex) => {
+        button.setAttribute('aria-selected', buttonIndex === index ? 'true' : 'false');
+    });
+    renderUltima5CompanionProfile(companion);
+}
+
+function renderUltima5CompanionProfile(companion) {
+    const profile = document.getElementById('companion-profile');
+    if (!profile || !companion) return;
+    const statLine = (label, value) => `
+        <div class="u5-stat-line">
+            <span>${label}</span>
+            <span class="u5-stat-line__track"><span style="width:${Math.min(value / 30 * 100, 100)}%"></span></span>
+            <span>${value}</span>
+        </div>
+    `;
+    profile.innerHTML = `
+        <p class="u5-kicker">Tactical assessment</p>
+        <h3>${escapeUltima5AtlasHtml(companion.Name)}</h3>
+        <p class="u5-companion-profile__meta">${escapeUltima5AtlasHtml(companion.Class)} · Level ${companion.Level} · ${escapeUltima5AtlasHtml(companion.Location)}</p>
+        <div class="u5-companion-profile__stats" aria-label="${escapeUltima5AtlasHtml(companion.Name)} attributes">
+            ${statLine('STR', companion.STR)}
+            ${statLine('INT', companion.INT)}
+            ${statLine('DEX', companion.DEX)}
+        </div>
+        <p class="u5-companion-profile__note">${escapeUltima5AtlasHtml(companion.Notes)}</p>
+    `;
+}
+
 // Populate spell table
 function populateSpellTable() {
     const tbody = document.getElementById('spell-table-body');
@@ -237,46 +424,331 @@ function populateMoongateTable() {
     });
 }
 
+function readUltima5StoredSet(storageKey) {
+    try {
+        const stored = JSON.parse(window.localStorage.getItem(storageKey) || '[]');
+        return new Set(Array.isArray(stored) ? stored : []);
+    } catch (error) {
+        return new Set();
+    }
+}
+
+function writeUltima5StoredSet(storageKey, values) {
+    try {
+        window.localStorage.setItem(storageKey, JSON.stringify([...values]));
+    } catch (error) {
+        // The guide remains fully usable if browser storage is unavailable.
+    }
+}
+
+function initializeUltima5FieldKit() {
+    const inputs = [...document.querySelectorAll('[data-u5-supply]')];
+    if (!inputs.length) return;
+    const saved = readUltima5StoredSet(ULTIMA5_SUPPLY_STORAGE_KEY);
+    inputs.forEach(input => {
+        input.checked = saved.has(input.dataset.u5Supply);
+        input.addEventListener('change', () => {
+            const current = readUltima5StoredSet(ULTIMA5_SUPPLY_STORAGE_KEY);
+            if (input.checked) current.add(input.dataset.u5Supply);
+            else current.delete(input.dataset.u5Supply);
+            writeUltima5StoredSet(ULTIMA5_SUPPLY_STORAGE_KEY, current);
+            updateUltima5FieldKit();
+        });
+    });
+    updateUltima5FieldKit();
+}
+
+function updateUltima5FieldKit() {
+    const inputs = [...document.querySelectorAll('[data-u5-supply]')];
+    const complete = inputs.filter(input => input.checked).length;
+    const percent = inputs.length ? Math.round(complete / inputs.length * 100) : 0;
+    const value = document.getElementById('u5-readiness-value');
+    const bar = document.getElementById('u5-readiness-bar');
+    if (value) value.textContent = `${percent}%`;
+    if (bar) bar.style.width = `${percent}%`;
+}
+
+function initializeUltima5CampaignProgress() {
+    const container = document.getElementById('u5-main-quest-checkpoints');
+    if (!container) return;
+    const saved = normalizeUltima5MainQuestProgress(readUltima5StoredSet(ULTIMA5_PROGRESS_STORAGE_KEY));
+    writeUltima5StoredSet(ULTIMA5_PROGRESS_STORAGE_KEY, saved);
+    container.innerHTML = '';
+
+    ultima5CampaignObjectives.forEach((objective, index) => {
+        const row = document.createElement('div');
+        row.className = 'u5-checkpoint-row u5-main-step';
+        row.dataset.u5MainStep = objective.id;
+        row.innerHTML = `<span class="u5-main-step__number" aria-hidden="true">${String(index + 1).padStart(2, '0')}</span>`;
+        const label = document.createElement('label');
+        label.className = 'u5-checkpoint';
+        label.innerHTML = `
+            <input type="checkbox" data-u5-objective="${objective.id}" ${saved.has(objective.id) ? 'checked' : ''}>
+            <span><strong>${escapeUltima5AtlasHtml(objective.title)}</strong><small>${escapeUltima5AtlasHtml(objective.detail)}</small></span>
+            <span class="u5-main-step__state" data-u5-main-state>Locked</span>
+        `;
+        const mapButton = document.createElement('button');
+        mapButton.type = 'button';
+        mapButton.className = 'u5-checkpoint__map';
+        mapButton.dataset.u5ObjectiveMap = objective.id;
+        mapButton.setAttribute('aria-label', `Show ${objective.title} on the atlas`);
+        mapButton.title = 'Show on atlas';
+        mapButton.innerHTML = '<i data-lucide="map-pinned" aria-hidden="true"></i>';
+        row.append(label, mapButton);
+        container.appendChild(row);
+    });
+
+    container.addEventListener('change', event => {
+        const input = event.target.closest('[data-u5-objective]');
+        if (!input) return;
+        const current = readUltima5StoredSet(ULTIMA5_PROGRESS_STORAGE_KEY);
+        const objectiveIndex = ultima5CampaignObjectives.findIndex(objective => objective.id === input.dataset.u5Objective);
+        if (objectiveIndex < 0) return;
+        if (input.checked) {
+            const nextIndex = ultima5CampaignObjectives.findIndex(objective => !current.has(objective.id));
+            if (objectiveIndex === nextIndex) current.add(input.dataset.u5Objective);
+        } else {
+            ultima5CampaignObjectives.slice(objectiveIndex).forEach(objective => current.delete(objective.id));
+        }
+        writeUltima5StoredSet(ULTIMA5_PROGRESS_STORAGE_KEY, current);
+        updateUltima5CampaignProgress();
+    });
+    container.addEventListener('click', event => {
+        const button = event.target.closest('[data-u5-objective-map]');
+        if (!button) return;
+        const objective = ultima5CampaignObjectives.find(item => item.id === button.dataset.u5ObjectiveMap);
+        if (objective) openUltima5ObjectiveOnAtlas(objective);
+    });
+
+    const objectiveAction = document.getElementById('u5-current-objective-action');
+    if (objectiveAction) {
+        objectiveAction.addEventListener('click', () => {
+            openUltima5QuestTab(objectiveAction.dataset.tab || 'doom');
+        });
+    }
+    const objectiveMap = document.getElementById('u5-current-objective-map');
+    if (objectiveMap) {
+        objectiveMap.addEventListener('click', () => {
+            const objective = ultima5CampaignObjectives.find(item => item.id === objectiveMap.dataset.objective);
+            if (objective) openUltima5ObjectiveOnAtlas(objective);
+        });
+    }
+
+    document.querySelectorAll('[data-u5-campaign-view]').forEach(button => {
+        button.addEventListener('click', () => setUltima5CampaignView(button.dataset.u5CampaignView));
+    });
+
+    initializeUltima5SideQuests();
+    if (window.lucide) lucide.createIcons();
+    updateUltima5CampaignProgress();
+}
+
+function normalizeUltima5MainQuestProgress(progress) {
+    let highestCompletedIndex = -1;
+    ultima5CampaignObjectives.forEach((objective, index) => {
+        if (progress.has(objective.id)) highestCompletedIndex = index;
+    });
+    return new Set(ultima5CampaignObjectives.slice(0, highestCompletedIndex + 1).map(objective => objective.id));
+}
+
+function initializeUltima5SideQuests() {
+    const container = document.getElementById('u5-side-quest-list');
+    if (!container) return;
+    const saved = readUltima5StoredSet(ULTIMA5_SIDEQUEST_STORAGE_KEY);
+    container.innerHTML = '';
+
+    ultima5SideQuests.forEach((quest, index) => {
+        const recommendedObjectiveIndex = ultima5CampaignObjectives.findIndex(objective => objective.id === quest.recommendedBefore);
+        const recommendedObjective = ultima5CampaignObjectives[recommendedObjectiveIndex];
+        const recommendation = recommendedObjective ? `
+            <p class="u5-side-quest-card__recommendation">
+                <i data-lucide="signpost" aria-hidden="true"></i>
+                <span>Recommended before <strong>Main Quest ${String(recommendedObjectiveIndex + 1).padStart(2, '0')}</strong> · ${escapeUltima5AtlasHtml(recommendedObjective.title)}</span>
+            </p>
+        ` : '';
+        const card = document.createElement('article');
+        card.className = 'u5-side-quest-card';
+        card.dataset.u5SideQuestCard = quest.id;
+        card.innerHTML = `
+            <div class="u5-side-quest-card__topline">
+                <span>${String(index + 1).padStart(2, '0')}</span>
+                <small>${escapeUltima5AtlasHtml(quest.category)}</small>
+            </div>
+            <div class="u5-side-quest-card__heading">
+                <div>
+                    <h4>${escapeUltima5AtlasHtml(quest.title)}</h4>
+                    <p><i data-lucide="map-pin" aria-hidden="true"></i> ${escapeUltima5AtlasHtml(quest.location)}</p>
+                </div>
+                <label class="u5-side-quest-check" title="Mark side quest complete">
+                    <input type="checkbox" data-u5-side-quest="${quest.id}" aria-label="Mark ${escapeUltima5AtlasHtml(quest.title)} complete" ${saved.has(quest.id) ? 'checked' : ''}>
+                    <span><i data-lucide="check" aria-hidden="true"></i></span>
+                </label>
+            </div>
+            ${recommendation}
+            <p class="u5-side-quest-card__copy">${escapeUltima5AtlasHtml(quest.detail)}</p>
+            <footer>
+                <span><strong>Reward:</strong> ${escapeUltima5AtlasHtml(quest.reward)}</span>
+                <button type="button" data-u5-side-quest-map="${quest.id}"><i data-lucide="map-pinned" aria-hidden="true"></i> Atlas</button>
+            </footer>
+        `;
+        container.appendChild(card);
+    });
+
+    container.addEventListener('change', event => {
+        const input = event.target.closest('[data-u5-side-quest]');
+        if (!input) return;
+        const current = readUltima5StoredSet(ULTIMA5_SIDEQUEST_STORAGE_KEY);
+        if (input.checked) current.add(input.dataset.u5SideQuest);
+        else current.delete(input.dataset.u5SideQuest);
+        writeUltima5StoredSet(ULTIMA5_SIDEQUEST_STORAGE_KEY, current);
+        updateUltima5SideQuestProgress();
+    });
+    container.addEventListener('click', event => {
+        const button = event.target.closest('[data-u5-side-quest-map]');
+        if (!button) return;
+        const quest = ultima5SideQuests.find(item => item.id === button.dataset.u5SideQuestMap);
+        if (quest) openUltima5ObjectiveOnAtlas(quest);
+    });
+    updateUltima5SideQuestProgress();
+}
+
+function updateUltima5SideQuestProgress() {
+    const completed = readUltima5StoredSet(ULTIMA5_SIDEQUEST_STORAGE_KEY);
+    const completeCount = ultima5SideQuests.filter(quest => completed.has(quest.id)).length;
+    const percent = Math.round(completeCount / ultima5SideQuests.length * 100);
+    const percentOutput = document.getElementById('u5-side-quest-percent');
+    const totalOutput = document.getElementById('u5-side-quest-total-label');
+    if (percentOutput) percentOutput.textContent = `${percent}%`;
+    if (totalOutput) totalOutput.textContent = `${completeCount} of ${ultima5SideQuests.length} complete`;
+    document.querySelectorAll('[data-u5-side-quest-card]').forEach(card => {
+        card.classList.toggle('is-complete', completed.has(card.dataset.u5SideQuestCard));
+    });
+}
+
+function setUltima5CampaignView(view) {
+    const selectedView = view === 'side' ? 'side' : 'main';
+    document.querySelectorAll('[data-u5-campaign-view]').forEach(button => {
+        const active = button.dataset.u5CampaignView === selectedView;
+        button.classList.toggle('active', active);
+        button.setAttribute('aria-selected', active ? 'true' : 'false');
+    });
+    document.querySelectorAll('.u5-campaign-view').forEach(panel => {
+        const active = panel.id === `u5-${selectedView}-quest-view`;
+        panel.classList.toggle('active', active);
+        panel.hidden = !active;
+    });
+}
+
+function updateUltima5CampaignProgress() {
+    const completed = readUltima5StoredSet(ULTIMA5_PROGRESS_STORAGE_KEY);
+    const completeCount = ultima5CampaignObjectives.filter(objective => completed.has(objective.id)).length;
+    const total = ultima5CampaignObjectives.length;
+    const percent = total ? Math.round(completeCount / total * 100) : 0;
+    const percentOutput = document.getElementById('u5-campaign-percent');
+    const totalLabel = document.getElementById('u5-campaign-total-label');
+    const overviewLabel = document.getElementById('u5-overview-progress-label');
+    if (percentOutput) percentOutput.textContent = `${percent}%`;
+    if (totalLabel) totalLabel.textContent = `${completeCount} of ${total} main quests`;
+    if (overviewLabel) overviewLabel.textContent = `${completeCount} of ${total} decisive objectives complete`;
+
+    ['shrines', 'shadowlords', 'regalia', 'doom'].forEach(chapter => {
+        const chapterObjectives = ultima5CampaignObjectives.filter(objective => objective.chapter === chapter);
+        const chapterComplete = chapterObjectives.filter(objective => completed.has(objective.id)).length;
+        document.querySelectorAll(`[data-u5-chapter-count="${chapter}"]`).forEach(output => {
+            output.textContent = `${chapterComplete}/${chapterObjectives.length}`;
+            output.closest('.u5-campaign-card')?.classList.toggle('is-complete', chapterComplete === chapterObjectives.length);
+        });
+    });
+
+    const nextIndex = ultima5CampaignObjectives.findIndex(objective => !completed.has(objective.id));
+    const next = nextIndex >= 0 ? ultima5CampaignObjectives[nextIndex] : null;
+    document.querySelectorAll('[data-u5-main-step]').forEach((row, index) => {
+        const objective = ultima5CampaignObjectives[index];
+        const complete = completed.has(objective.id);
+        const current = index === nextIndex;
+        const locked = nextIndex >= 0 && index > nextIndex;
+        const input = row.querySelector('[data-u5-objective]');
+        const state = row.querySelector('[data-u5-main-state]');
+        row.classList.toggle('is-complete', complete);
+        row.classList.toggle('is-current', current);
+        row.classList.toggle('is-locked', locked);
+        if (input) {
+            input.checked = complete;
+            input.disabled = locked;
+            input.setAttribute('aria-label', `${objective.title}: ${complete ? 'complete' : current ? 'current quest' : 'locked'}`);
+        }
+        if (state) state.textContent = complete ? 'Complete' : current ? 'Current' : 'Locked';
+    });
+
+    const title = document.getElementById('u5-current-objective-title');
+    const copy = document.getElementById('u5-current-objective-copy');
+    const action = document.getElementById('u5-current-objective-action');
+    const mapAction = document.getElementById('u5-current-objective-map');
+    if (!title || !copy || !action) return;
+    if (next) {
+        title.textContent = next.title;
+        copy.textContent = ultima5ObjectiveGuidance[next.id] || next.detail;
+        action.dataset.tab = next.chapter;
+        if (mapAction) {
+            mapAction.dataset.objective = next.id;
+            mapAction.hidden = !next.atlas;
+        }
+        action.innerHTML = 'Open this chapter <i data-lucide="arrow-right" aria-hidden="true"></i>';
+    } else {
+        title.textContent = 'Britannia is free';
+        copy.textContent = 'Every decisive objective is complete. The resistance has become a restoration.';
+        action.dataset.tab = 'doom';
+        if (mapAction) {
+            mapAction.dataset.objective = 'doom-rescue';
+            mapAction.hidden = false;
+        }
+        action.innerHTML = 'Revisit the finale <i data-lucide="rotate-ccw" aria-hidden="true"></i>';
+    }
+    if (window.lucide) lucide.createIcons();
+}
+
+function openUltima5QuestTab(tabId, { activateSection = true } = {}) {
+    if (activateSection) showUltima5Section('quests');
+    setUltima5CampaignView('main');
+    document.querySelectorAll('.quest-tab-button').forEach(button => {
+        const active = button.dataset.tab === tabId;
+        button.classList.toggle('active', active);
+        button.setAttribute('aria-selected', active ? 'true' : 'false');
+    });
+    document.querySelectorAll('.quest-tab-content').forEach(content => {
+        content.classList.toggle('active', content.id === tabId);
+    });
+}
+
 // Set up event listeners
 function setupEventListeners() {
+    document.querySelectorAll('.quest-tab-button, .ref-tab-button').forEach(button => {
+        button.setAttribute('role', 'tab');
+        button.setAttribute('aria-selected', button.classList.contains('active') ? 'true' : 'false');
+    });
+
     // Navigation links
     document.querySelectorAll('.nav-link').forEach(link => {
         link.addEventListener('click', function(e) {
             e.preventDefault();
             const targetId = this.getAttribute('href').substring(1);
-            
-            // Update active nav link
-            document.querySelectorAll('.nav-link').forEach(navLink => {
-                navLink.classList.remove('active');
-            });
-            this.classList.add('active');
-            
-            // Show target section
-            document.querySelectorAll('.content-section').forEach(section => {
-                section.classList.remove('active');
-            });
-            document.getElementById(targetId).classList.add('active');
-
-            // Keep mobile menu persistent; do not auto-hide after click
+            showUltima5Section(targetId);
         });
+    });
+
+    document.querySelectorAll('[data-u5-section]').forEach(control => {
+        control.addEventListener('click', () => showUltima5Section(control.dataset.u5Section));
+    });
+
+    document.querySelectorAll('[data-u5-quest-tab]').forEach(control => {
+        control.addEventListener('click', () => openUltima5QuestTab(control.dataset.u5QuestTab));
     });
     
     // Quest tab buttons
     document.querySelectorAll('.quest-tab-button').forEach(button => {
         button.addEventListener('click', function() {
             const tabId = this.getAttribute('data-tab');
-            
-            // Update active tab button
-            document.querySelectorAll('.quest-tab-button').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            this.classList.add('active');
-            
-            // Show target tab content
-            document.querySelectorAll('.quest-tab-content').forEach(content => {
-                content.classList.remove('active');
-            });
-            document.getElementById(tabId).classList.add('active');
+            openUltima5QuestTab(tabId, { activateSection: false });
         });
     });
     
@@ -287,10 +759,11 @@ function setupEventListeners() {
             
             // Update active tab button
             document.querySelectorAll('.ref-tab-button').forEach(btn => {
-                btn.classList.remove('active');
+                const active = btn === this;
+                btn.classList.toggle('active', active);
+                btn.setAttribute('aria-selected', active ? 'true' : 'false');
             });
-            this.classList.add('active');
-            
+
             // Show target tab content
             document.querySelectorAll('.ref-tab-content').forEach(content => {
                 content.classList.remove('active');
@@ -321,14 +794,9 @@ function setupEventListeners() {
         companionSearch.addEventListener('input', function() {
             const searchTerm = this.value.toLowerCase();
             const rows = document.querySelectorAll('#companion-table-body tr');
-            
+
             rows.forEach(row => {
-                const name = row.querySelector('td:first-child').textContent.toLowerCase();
-                if (name.includes(searchTerm)) {
-                    row.style.display = '';
-                } else {
-                    row.style.display = 'none';
-                }
+                row.style.display = row.textContent.toLowerCase().includes(searchTerm) ? '' : 'none';
             });
         });
     }
@@ -394,6 +862,616 @@ function setupEventListeners() {
     if (askSeerBtn) {
         askSeerBtn.addEventListener('click', askTheSeer);
     }
+}
+
+function showUltima5Section(targetId) {
+    const target = document.getElementById(targetId);
+    if (!target || !target.classList.contains('content-section')) return;
+
+    document.querySelectorAll('.nav-link').forEach(navLink => {
+        const active = navLink.getAttribute('href') === `#${targetId}`;
+        navLink.classList.toggle('active', active);
+        if (active) navLink.setAttribute('aria-current', 'page');
+        else navLink.removeAttribute('aria-current');
+    });
+    document.querySelectorAll('.content-section').forEach(section => {
+        section.classList.toggle('active', section.id === targetId);
+    });
+    window.history.replaceState(null, '', `#${targetId}`);
+
+    const navigation = document.getElementById('main-nav');
+    if (navigation) {
+        const navigationTop = (document.querySelector('.u5-backbar')?.offsetHeight || 0)
+            + (document.querySelector('.u5-masthead')?.offsetHeight || 0);
+        if (window.scrollY > navigationTop + 12) {
+            window.scrollTo({ top: navigationTop, behavior: 'auto' });
+        }
+    }
+
+    if (targetId === 'atlas') {
+        ensureUltima5Atlas();
+        window.setTimeout(() => {
+            if (ultima5AtlasState.map) ultima5AtlasState.map.invalidateSize();
+        }, 60);
+    }
+}
+
+function initializeUltima5AtlasShell() {
+    const config = window.ULTIMA5_ATLAS_CONFIG;
+    const count = document.getElementById('ultima5-atlas-marker-count');
+    if (count && config && Array.isArray(config.markers)) {
+        count.textContent = String(config.markers.length).padStart(2, '0');
+    }
+    const interiorCount = document.getElementById('ultima5-atlas-interior-count');
+    const floorCount = document.getElementById('ultima5-atlas-floor-count');
+    if (interiorCount && Array.isArray(config?.interiors)) {
+        interiorCount.textContent = String(config.interiors.length).padStart(2, '0');
+    }
+    if (floorCount && Array.isArray(config?.interiors)) {
+        floorCount.textContent = String(config.interiors.reduce((total, interior) => total + (interior.floors?.length || 0), 0));
+    }
+
+    const sectionLink = document.querySelector('.u5-atlas__quest-link');
+    if (sectionLink) {
+        sectionLink.addEventListener('click', event => {
+            event.preventDefault();
+            showUltima5Section('quests');
+        });
+    }
+
+    const initialSection = window.location.hash.slice(1);
+    if (initialSection && document.getElementById(initialSection)?.classList.contains('content-section')) {
+        showUltima5Section(initialSection);
+    }
+}
+
+function escapeUltima5AtlasHtml(value) {
+    return String(value ?? '')
+        .replaceAll('&', '&amp;')
+        .replaceAll('<', '&lt;')
+        .replaceAll('>', '&gt;')
+        .replaceAll('"', '&quot;')
+        .replaceAll("'", '&#039;');
+}
+
+function getUltima5AtlasStyle(markerData) {
+    return ULTIMA5_ATLAS_MARKER_STYLES[markerData?.type] || ULTIMA5_ATLAS_MARKER_STYLES.default;
+}
+
+function ultima5Coordinate(value) {
+    const clamped = Math.min(Math.max(Math.floor(value), 0), 255);
+    return clamped.toString(16).padStart(2, '0').toUpperCase().replace(/[0-9A-F]/g, digit => {
+        return String.fromCharCode('A'.charCodeAt(0) + parseInt(digit, 16));
+    });
+}
+
+function ultima5MarkerLatLng(markerData) {
+    const size = Number(window.ULTIMA5_ATLAS_CONFIG?.worldSize) || 256;
+    const x = markerData.position.x;
+    const y = markerData.position.y;
+    return L.latLng(size - y - 0.5, x + 0.5);
+}
+
+function buildUltima5MarkerIcon(markerData, active = false) {
+    const style = getUltima5AtlasStyle(markerData);
+    return L.divIcon({
+        className: `ultima5-marker${active ? ' ultima5-marker--active' : ''}`,
+        html: `<span class="ultima5-marker__pin" style="background:${style.color}"><span>${style.symbol}</span></span>`,
+        iconSize: [28, 28],
+        iconAnchor: [14, 28],
+        popupAnchor: [0, -23]
+    });
+}
+
+function ultima5InteriorLatLng(position, floor) {
+    const height = Number(floor?.height) || 32;
+    return L.latLng(height - position.y - 0.5, position.x + 0.5);
+}
+
+function buildUltima5InteriorIcon(kind, symbol) {
+    return L.divIcon({
+        className: `ultima5-interior-marker ultima5-interior-marker--${kind}`,
+        html: `<span>${escapeUltima5AtlasHtml(symbol)}</span>`,
+        iconSize: [30, 30],
+        iconAnchor: [15, 15],
+        popupAnchor: [0, -12]
+    });
+}
+
+function buildUltima5Popup(markerData) {
+    const style = getUltima5AtlasStyle(markerData);
+    const { x, y } = markerData.position;
+    const coordinate = `${ultima5Coordinate(y)} ${ultima5Coordinate(x)}`;
+    return `
+        <article class="u5-atlas-popup">
+            <h4>${escapeUltima5AtlasHtml(markerData.name)}</h4>
+            <p>${escapeUltima5AtlasHtml(markerData.description || '')}</p>
+            <p class="u5-atlas-popup__meta">${escapeUltima5AtlasHtml(style.label)} · ${coordinate} · tile ${x}, ${y}</p>
+            ${markerData.interiorId ? `<button type="button" class="u5-atlas-popup__enter" data-u5-enter-interior="${escapeUltima5AtlasHtml(markerData.interiorId)}">Enter ${escapeUltima5AtlasHtml(markerData.name)}</button>` : ''}
+            <br><a href="#quests" class="u5-atlas-popup__quest" data-u5-open-quests>Open quest log</a>
+        </article>
+    `;
+}
+
+function setUltima5AtlasActiveEntry(entry) {
+    if (ultima5AtlasState.activeEntry && ultima5AtlasState.activeEntry !== entry) {
+        const previous = ultima5AtlasState.activeEntry;
+        previous.leafletMarker.setIcon(buildUltima5MarkerIcon(previous.markerData, false));
+    }
+    ultima5AtlasState.activeEntry = entry || null;
+    if (entry) entry.leafletMarker.setIcon(buildUltima5MarkerIcon(entry.markerData, true));
+}
+
+function ensureUltima5Atlas() {
+    const container = document.getElementById('ultima5-map');
+    const config = window.ULTIMA5_ATLAS_CONFIG;
+    if (!container || !config || typeof L === 'undefined') return;
+
+    if (ultima5AtlasState.map) {
+        ultima5AtlasState.map.invalidateSize();
+        return;
+    }
+
+    const worldSize = Number(config.worldSize) || 256;
+    const bounds = L.latLngBounds([0, 0], [worldSize, worldSize]);
+    const map = L.map(container, {
+        crs: L.CRS.Simple,
+        minZoom: -1.5,
+        maxZoom: 5,
+        zoomSnap: 0.25,
+        wheelPxPerZoomLevel: 85,
+        attributionControl: false,
+        maxBoundsViscosity: 0.8
+    });
+    map.setMaxBounds(bounds.pad(0.02));
+    ultima5AtlasState.map = map;
+    ultima5AtlasState.markerLayer = L.layerGroup().addTo(map);
+
+    ultima5AtlasState.entries = (config.markers || []).map(markerData => {
+        if (!markerData?.position || typeof markerData.position.x !== 'number' || typeof markerData.position.y !== 'number') {
+            return null;
+        }
+        const leafletMarker = L.marker(ultima5MarkerLatLng(markerData), {
+            title: markerData.name,
+            icon: buildUltima5MarkerIcon(markerData)
+        });
+        leafletMarker.bindPopup(buildUltima5Popup(markerData), {
+            autoPan: true,
+            autoPanPadding: L.point(28, 28),
+            maxWidth: 310
+        });
+        leafletMarker.on('add', () => {
+            const markerElement = leafletMarker.getElement();
+            if (!markerElement) return;
+            markerElement.setAttribute('aria-label', markerData.name);
+            markerElement.setAttribute('title', markerData.name);
+        });
+        const entry = { markerData, leafletMarker };
+        leafletMarker.on('popupopen', () => setUltima5AtlasActiveEntry(entry));
+        return entry;
+    }).filter(Boolean);
+
+    map.on('mousemove', event => updateUltima5AtlasCoordinates(event.latlng));
+    map.on('mouseout', () => {
+        const output = document.getElementById('ultima5-map-coordinates');
+        if (output) output.textContent = 'Move across the map to read U5 coordinates.';
+    });
+    container.addEventListener('click', event => {
+        const floorButton = event.target.closest('[data-u5-go-floor]');
+        if (floorButton && ultima5AtlasState.currentInterior) {
+            map.closePopup();
+            openUltima5Interior(ultima5AtlasState.currentInterior.id, floorButton.dataset.u5GoFloor, { resetView: true });
+            return;
+        }
+        const enterButton = event.target.closest('[data-u5-enter-interior]');
+        if (enterButton) {
+            map.closePopup();
+            openUltima5Interior(enterButton.dataset.u5EnterInterior, null, { resetView: true });
+            return;
+        }
+        const questLink = event.target.closest('[data-u5-open-quests]');
+        if (!questLink) return;
+        event.preventDefault();
+        map.closePopup();
+        showUltima5Section('quests');
+    });
+
+    bindUltima5AtlasControls();
+    switchUltima5AtlasLayer('surface', { resetView: true });
+    window.setTimeout(() => map.invalidateSize(), 75);
+}
+
+function updateUltima5AtlasCoordinates(latlng) {
+    const config = window.ULTIMA5_ATLAS_CONFIG;
+    const output = document.getElementById('ultima5-map-coordinates');
+    if (!config || !output) return;
+    const size = ultima5AtlasState.viewMode === 'interior'
+        ? Number(ultima5AtlasState.currentFloor?.width) || 32
+        : Number(config.worldSize) || 256;
+    const height = ultima5AtlasState.viewMode === 'interior'
+        ? Number(ultima5AtlasState.currentFloor?.height) || size
+        : size;
+    const x = Math.min(Math.max(Math.floor(latlng.lng), 0), size - 1);
+    const y = Math.min(Math.max(Math.floor(height - latlng.lat), 0), height - 1);
+    output.textContent = ultima5AtlasState.viewMode === 'world'
+        ? `U5 ${ultima5Coordinate(y)} ${ultima5Coordinate(x)} · tile x ${x}, y ${y}`
+        : `${ultima5AtlasState.currentInterior?.name || 'Interior'} · tile x ${x}, y ${y}`;
+}
+
+function bindUltima5AtlasControls() {
+    if (ultima5AtlasState.controlsBound) return;
+    const layerSelect = document.getElementById('ultima5-map-layer');
+    const floorSelect = document.getElementById('ultima5-map-floor');
+    const npcTimeSelect = document.getElementById('ultima5-npc-time');
+    const searchInput = document.getElementById('ultima5-map-search');
+    const clearButton = document.getElementById('ultima5-map-search-clear');
+    const searchField = searchInput?.closest('.u5-atlas__field--search');
+    if (!layerSelect || !floorSelect || !npcTimeSelect || !searchInput || !clearButton || !searchField) return;
+
+    const config = window.ULTIMA5_ATLAS_CONFIG;
+    const interiorGroup = document.createElement('optgroup');
+    interiorGroup.label = 'Enterable locations';
+    (config?.interiors || []).forEach(interior => {
+        const option = document.createElement('option');
+        option.value = `interior:${interior.id}`;
+        option.textContent = interior.type === 'dungeon' ? `Dungeon ${interior.name}` : interior.name;
+        interiorGroup.appendChild(option);
+    });
+    layerSelect.appendChild(interiorGroup);
+    for (let hour = 0; hour < 24; hour += 1) {
+        const option = document.createElement('option');
+        option.value = String(hour);
+        const suffix = hour === 0 ? ' · midnight' : hour === 6 ? ' · dawn' : hour === 12 ? ' · noon' : hour === 18 ? ' · evening' : '';
+        option.textContent = `${String(hour).padStart(2, '0')}:00${suffix}`;
+        option.selected = hour === ultima5AtlasState.currentHour;
+        npcTimeSelect.appendChild(option);
+    }
+
+    const resultsPanel = document.createElement('div');
+    resultsPanel.className = 'u5-atlas__search-results';
+    resultsPanel.hidden = true;
+    resultsPanel.setAttribute('role', 'listbox');
+    searchField.appendChild(resultsPanel);
+
+    layerSelect.addEventListener('change', () => {
+        if (layerSelect.value.startsWith('interior:')) {
+            openUltima5Interior(layerSelect.value.slice('interior:'.length), null, { resetView: true });
+        } else {
+            switchUltima5AtlasLayer(layerSelect.value, { resetView: true });
+        }
+        clearUltima5AtlasSearch(false);
+    });
+    floorSelect.addEventListener('change', () => {
+        if (ultima5AtlasState.currentInterior) {
+            openUltima5Interior(ultima5AtlasState.currentInterior.id, floorSelect.value, { resetView: true });
+        }
+    });
+    npcTimeSelect.addEventListener('change', () => {
+        ultima5AtlasState.currentHour = Number(npcTimeSelect.value) || 0;
+        renderUltima5InteriorMarkers();
+        if (ultima5AtlasState.currentInterior) renderUltima5InteriorLegend(ultima5AtlasState.currentInterior);
+    });
+    document.getElementById('ultima5-atlas-back')?.addEventListener('click', () => {
+        const marker = ultima5AtlasState.entries.find(entry => entry.markerData.interiorId === ultima5AtlasState.currentInterior?.id);
+        switchUltima5AtlasLayer(marker?.markerData.layer || 'surface', { resetView: true });
+        if (marker) focusUltima5AtlasEntry(marker);
+    });
+    searchInput.addEventListener('input', () => renderUltima5AtlasSearch(searchInput.value));
+    searchInput.addEventListener('keydown', event => {
+        if (event.key === 'Enter' && ultima5AtlasState.searchResults.length) {
+            event.preventDefault();
+            focusUltima5AtlasEntry(ultima5AtlasState.searchResults[0]);
+        }
+        if (event.key === 'Escape') clearUltima5AtlasSearch(true);
+    });
+    clearButton.addEventListener('click', () => clearUltima5AtlasSearch(true));
+    document.addEventListener('click', event => {
+        if (!searchField.contains(event.target)) resultsPanel.hidden = true;
+    });
+
+    ultima5AtlasState.controlsBound = true;
+}
+
+function switchUltima5AtlasLayer(layerId, { resetView = false } = {}) {
+    const config = window.ULTIMA5_ATLAS_CONFIG;
+    const map = ultima5AtlasState.map;
+    if (!config || !map) return;
+    const layerConfig = (config.layers || []).find(layer => layer.id === layerId) || config.layers?.[0];
+    if (!layerConfig) return;
+
+    const worldSize = Number(config.worldSize) || 256;
+    const bounds = L.latLngBounds([0, 0], [worldSize, worldSize]);
+    map.setMaxBounds(bounds.pad(0.02));
+    if (ultima5AtlasState.overlay) map.removeLayer(ultima5AtlasState.overlay);
+    ultima5AtlasState.overlay = L.imageOverlay(layerConfig.imageUrl, bounds, {
+        alt: `Ultima V ${layerConfig.name} map`,
+        interactive: false
+    }).addTo(map);
+    ultima5AtlasState.overlay.bringToBack();
+    ultima5AtlasState.currentLayer = layerConfig.id;
+    ultima5AtlasState.viewMode = 'world';
+    ultima5AtlasState.currentInterior = null;
+    ultima5AtlasState.currentFloor = null;
+
+    ultima5AtlasState.markerLayer.clearLayers();
+    ultima5AtlasState.entries.forEach(entry => {
+        if (entry.markerData.layer === layerConfig.id) {
+            entry.leafletMarker.setIcon(buildUltima5MarkerIcon(entry.markerData));
+            ultima5AtlasState.markerLayer.addLayer(entry.leafletMarker);
+        }
+    });
+    setUltima5AtlasActiveEntry(null);
+
+    const layerSelect = document.getElementById('ultima5-map-layer');
+    const floorField = document.getElementById('ultima5-floor-field');
+    const npcTimeField = document.getElementById('ultima5-npc-time-field');
+    const backButton = document.getElementById('ultima5-atlas-back');
+    const viewTitle = document.getElementById('ultima5-atlas-view-title');
+    const download = document.getElementById('ultima5-map-download');
+    const summary = document.getElementById('ultima5-atlas-layer-summary');
+    if (layerSelect) layerSelect.value = layerConfig.id;
+    if (floorField) floorField.hidden = true;
+    if (npcTimeField) npcTimeField.hidden = true;
+    if (backButton) backButton.hidden = true;
+    if (viewTitle) viewTitle.textContent = layerConfig.name;
+    if (download) download.href = layerConfig.imageUrl;
+    if (summary) {
+        summary.textContent = layerConfig.id === 'surface'
+            ? 'Cities, keeps, shrines, moongates, and hidden resources across Britannia.'
+            : 'Dungeon connections, the three shards, Lord British’s Amulet, Ararat, and Doom.';
+    }
+    renderUltima5AtlasLegend(layerConfig.id);
+    if (resetView) map.fitBounds(bounds, { animate: false, padding: [8, 8] });
+}
+
+function openUltima5Interior(interiorId, floorId = null, { resetView = true } = {}) {
+    const config = window.ULTIMA5_ATLAS_CONFIG;
+    const map = ultima5AtlasState.map;
+    if (!config || !map) return;
+    const interior = (config.interiors || []).find(item => item.id === interiorId);
+    if (!interior || !interior.floors?.length) return;
+    const floor = interior.floors.find(item => String(item.id) === String(floorId)) || interior.floors[0];
+    const width = Number(floor.width) || 32;
+    const height = Number(floor.height) || width;
+    const bounds = L.latLngBounds([0, 0], [height, width]);
+
+    if (ultima5AtlasState.overlay) map.removeLayer(ultima5AtlasState.overlay);
+    ultima5AtlasState.markerLayer.clearLayers();
+    setUltima5AtlasActiveEntry(null);
+    ultima5AtlasState.overlay = L.imageOverlay(floor.imageUrl, bounds, {
+        alt: `Ultima V ${interior.name}, ${floor.label} map`,
+        interactive: false
+    }).addTo(map);
+    ultima5AtlasState.overlay.bringToBack();
+    ultima5AtlasState.viewMode = 'interior';
+    ultima5AtlasState.currentInterior = interior;
+    ultima5AtlasState.currentFloor = floor;
+    map.setMaxBounds(bounds.pad(0.08));
+
+    const layerSelect = document.getElementById('ultima5-map-layer');
+    const floorField = document.getElementById('ultima5-floor-field');
+    const floorSelect = document.getElementById('ultima5-map-floor');
+    const npcTimeField = document.getElementById('ultima5-npc-time-field');
+    const npcTimeSelect = document.getElementById('ultima5-npc-time');
+    const backButton = document.getElementById('ultima5-atlas-back');
+    const viewTitle = document.getElementById('ultima5-atlas-view-title');
+    const download = document.getElementById('ultima5-map-download');
+    const summary = document.getElementById('ultima5-atlas-layer-summary');
+    const coordinates = document.getElementById('ultima5-map-coordinates');
+    if (layerSelect) layerSelect.value = `interior:${interior.id}`;
+    if (floorField) floorField.hidden = interior.floors.length < 2;
+    if (npcTimeField) npcTimeField.hidden = !interior.npcs?.length;
+    if (npcTimeSelect) npcTimeSelect.value = String(ultima5AtlasState.currentHour);
+    if (floorSelect) {
+        floorSelect.innerHTML = '';
+        interior.floors.forEach(item => {
+            const option = document.createElement('option');
+            option.value = item.id;
+            option.textContent = item.label;
+            option.selected = String(item.id) === String(floor.id);
+            floorSelect.appendChild(option);
+        });
+    }
+    if (backButton) backButton.hidden = false;
+    if (viewTitle) viewTitle.textContent = `${interior.name} · ${floor.label}`;
+    if (download) download.href = floor.imageUrl;
+    if (summary) summary.textContent = interior.npcs?.length
+        ? `${interior.description} NPC positions follow their original hourly schedules.`
+        : interior.description;
+    if (coordinates) coordinates.textContent = `${interior.name} · ${floor.label} · ${width}×${height} native tiles`;
+    renderUltima5InteriorMarkers();
+    renderUltima5InteriorLegend(interior);
+    if (resetView) map.fitBounds(bounds, { animate: false, padding: [10, 10] });
+}
+
+function renderUltima5InteriorLegend(interior) {
+    const legend = document.getElementById('ultima5-atlas-legend');
+    if (!legend) return;
+    const currentNpcCount = (interior.npcs || []).filter(npc => npc.schedule?.some(position =>
+        position.hour === ultima5AtlasState.currentHour && position.floor === ultima5AtlasState.currentFloor?.level
+    )).length;
+    const facts = [
+        ['Location type', interior.type === 'dungeon' ? 'Dungeon' : interior.type],
+        ['Available floors', String(interior.floors.length)],
+        ['Native grid', interior.type === 'dungeon' ? '8 × 8 tiles' : '32 × 32 tiles'],
+        ['Floor links', String(ultima5AtlasState.currentFloor?.transitions?.length || 0)]
+    ];
+    if (interior.npcs?.length) facts.push([`NPCs at ${String(ultima5AtlasState.currentHour).padStart(2, '0')}:00`, String(currentNpcCount)]);
+    legend.innerHTML = facts.map(([label, value]) => `
+        <div class="u5-atlas__legend-item">
+            <span class="u5-atlas__legend-label">${escapeUltima5AtlasHtml(label)}</span>
+            <span class="u5-atlas__legend-count">${escapeUltima5AtlasHtml(value)}</span>
+        </div>
+    `).join('');
+}
+
+function renderUltima5InteriorMarkers() {
+    const map = ultima5AtlasState.map;
+    const layer = ultima5AtlasState.markerLayer;
+    const interior = ultima5AtlasState.currentInterior;
+    const floor = ultima5AtlasState.currentFloor;
+    if (!map || !layer || !interior || !floor) return;
+    layer.clearLayers();
+
+    const transitionGroups = new Map();
+    (floor.transitions || []).forEach(transition => {
+        const key = `${transition.position.x},${transition.position.y}`;
+        if (!transitionGroups.has(key)) transitionGroups.set(key, []);
+        transitionGroups.get(key).push(transition);
+    });
+    transitionGroups.forEach(transitions => {
+        const first = transitions[0];
+        const symbol = transitions.length > 1 ? '↕' : first.direction === 'up' ? '↑' : '↓';
+        const marker = L.marker(ultima5InteriorLatLng(first.position, floor), {
+            title: transitions.map(item => item.label).join(' / '),
+            icon: buildUltima5InteriorIcon('transition', symbol),
+            zIndexOffset: 700
+        });
+        const buttons = transitions.map(item => `
+            <button type="button" class="u5-atlas-popup__floor" data-u5-go-floor="${escapeUltima5AtlasHtml(item.targetFloor)}">
+                ${item.direction === 'up' ? '↑' : '↓'} ${escapeUltima5AtlasHtml(item.label)}
+            </button>
+        `).join('');
+        marker.bindPopup(`
+            <article class="u5-atlas-popup">
+                <h4>Floor passage</h4>
+                <p>Tile ${first.position.x}, ${first.position.y}</p>
+                <div class="u5-atlas-popup__floor-actions">${buttons}</div>
+            </article>
+        `, { maxWidth: 290 });
+        layer.addLayer(marker);
+    });
+
+    (interior.npcs || []).forEach(npc => {
+        const position = npc.schedule?.find(item =>
+            item.hour === ultima5AtlasState.currentHour && item.floor === floor.level
+        );
+        if (!position) return;
+        const initial = String(npc.name || 'N').trim().charAt(0).toUpperCase();
+        const marker = L.marker(ultima5InteriorLatLng(position, floor), {
+            title: npc.name,
+            icon: buildUltima5InteriorIcon('npc', initial),
+            zIndexOffset: 900
+        });
+        marker.bindPopup(`
+            <article class="u5-atlas-popup">
+                <p class="u5-atlas-popup__eyebrow">NPC at ${String(ultima5AtlasState.currentHour).padStart(2, '0')}:00</p>
+                <h4>${escapeUltima5AtlasHtml(npc.name)}</h4>
+                <p>${escapeUltima5AtlasHtml(npc.role || 'Resident')} · ${escapeUltima5AtlasHtml(floor.label)} · tile ${position.x}, ${position.y}</p>
+                <p class="u5-atlas-popup__meta">Change the NPC schedule control to follow this resident through the day.</p>
+            </article>
+        `, { maxWidth: 300 });
+        layer.addLayer(marker);
+    });
+}
+
+function renderUltima5AtlasLegend(layerId) {
+    const legend = document.getElementById('ultima5-atlas-legend');
+    if (!legend) return;
+    const counts = new Map();
+    ultima5AtlasState.entries.forEach(entry => {
+        if (entry.markerData.layer !== layerId) return;
+        counts.set(entry.markerData.type, (counts.get(entry.markerData.type) || 0) + 1);
+    });
+    legend.innerHTML = '';
+    counts.forEach((count, type) => {
+        const style = ULTIMA5_ATLAS_MARKER_STYLES[type] || ULTIMA5_ATLAS_MARKER_STYLES.default;
+        const row = document.createElement('div');
+        row.className = 'u5-atlas__legend-item';
+        row.innerHTML = `
+            <span class="u5-atlas__legend-label">
+                <span class="u5-atlas__legend-swatch" style="background:${style.color}"></span>
+                <span>${escapeUltima5AtlasHtml(style.label)}</span>
+            </span>
+            <span class="u5-atlas__legend-count">${count}</span>
+        `;
+        legend.appendChild(row);
+    });
+}
+
+function renderUltima5AtlasSearch(query) {
+    const input = document.getElementById('ultima5-map-search');
+    const panel = input?.closest('.u5-atlas__field--search')?.querySelector('.u5-atlas__search-results');
+    if (!input || !panel) return;
+    const term = String(query || '').trim().toLowerCase();
+    if (!term) {
+        panel.hidden = true;
+        ultima5AtlasState.searchResults = [];
+        return;
+    }
+
+    const matches = ultima5AtlasState.entries.filter(entry => {
+        const marker = entry.markerData;
+        return [marker.name, marker.description, getUltima5AtlasStyle(marker).label]
+            .some(value => String(value || '').toLowerCase().includes(term));
+    }).slice(0, 7);
+    ultima5AtlasState.searchResults = matches;
+    panel.innerHTML = '';
+
+    if (!matches.length) {
+        const empty = document.createElement('div');
+        empty.className = 'u5-atlas__search-result';
+        empty.textContent = 'No charted location matches that search.';
+        panel.appendChild(empty);
+    } else {
+        matches.forEach(entry => {
+            const button = document.createElement('button');
+            button.type = 'button';
+            button.className = 'u5-atlas__search-result';
+            button.setAttribute('role', 'option');
+            const layer = entry.markerData.layer === 'surface' ? 'Surface' : 'Underworld';
+            button.innerHTML = `<span>${escapeUltima5AtlasHtml(entry.markerData.name)}</span><small>${layer}</small>`;
+            button.addEventListener('click', () => focusUltima5AtlasEntry(entry));
+            panel.appendChild(button);
+        });
+    }
+    panel.hidden = false;
+}
+
+function focusUltima5AtlasEntry(entry) {
+    if (!entry || !ultima5AtlasState.map) return;
+    if (entry.markerData.layer !== ultima5AtlasState.currentLayer) {
+        switchUltima5AtlasLayer(entry.markerData.layer, { resetView: false });
+    }
+    setUltima5AtlasActiveEntry(entry);
+    const latLng = ultima5MarkerLatLng(entry.markerData);
+    ultima5AtlasState.map.setView(latLng, Math.max(ultima5AtlasState.map.getZoom(), 2.25), {
+        animate: true
+    });
+    entry.leafletMarker.openPopup();
+    const panel = document.querySelector('.u5-atlas__search-results');
+    if (panel) panel.hidden = true;
+}
+
+function clearUltima5AtlasSearch(focusInput = false) {
+    const input = document.getElementById('ultima5-map-search');
+    const panel = document.querySelector('.u5-atlas__search-results');
+    if (input) {
+        input.value = '';
+        if (focusInput) input.focus();
+    }
+    if (panel) panel.hidden = true;
+    ultima5AtlasState.searchResults = [];
+    if (ultima5AtlasState.map) ultima5AtlasState.map.closePopup();
+    setUltima5AtlasActiveEntry(null);
+}
+
+function openUltima5ObjectiveOnAtlas(objective) {
+    if (!objective?.atlas) return;
+    showUltima5Section('atlas');
+    ensureUltima5Atlas();
+    window.setTimeout(() => {
+        if (objective.atlas.interiorId) {
+            openUltima5Interior(objective.atlas.interiorId, objective.atlas.floor, { resetView: true });
+            const title = document.getElementById('ultima5-atlas-view-title');
+            const summary = document.getElementById('ultima5-atlas-layer-summary');
+            if (title) title.textContent += ` · Campaign: ${objective.title}`;
+            if (summary) summary.textContent = ultima5ObjectiveGuidance[objective.id] || objective.detail;
+            return;
+        }
+        const entry = ultima5AtlasState.entries.find(item => item.markerData.name === objective.atlas.marker);
+        if (entry) focusUltima5AtlasEntry(entry);
+    }, 80);
 }
 
 // Update chart based on selected stat
@@ -463,7 +1541,7 @@ function initializeTableSorting() {
     document.querySelectorAll('.table-sortable th').forEach((th, index) => {
         th.addEventListener('click', () => {
             const table = th.closest('table');
-            const isNumeric = th.getAttribute('data-sort') === 'numeric';
+            const isNumeric = ['Level', 'STR', 'INT', 'DEX', 'numeric'].includes(th.getAttribute('data-sort'));
             sortTable(table.id, index, isNumeric);
         });
     });
