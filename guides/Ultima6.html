@@ -13,16 +13,16 @@
     <link rel="stylesheet" href="css/fonts.css">
     <link rel="stylesheet" href="css/leaflet.css">
     <!-- Chosen Palette: Parchment & Ink -->
-    <!-- Application Structure Plan: The application is structured as a tabbed interface to mirror a player's typical progression and information-seeking behavior. It's divided into five main sections: 'The Avatar's Path' (character setup), 'The Grand Quest' (walkthrough), 'Britannian Almanac' (data reference), 'World Atlas' (dungeons), and 'Sage's Counsel' (AI-powered help). This non-linear structure allows users to either follow the quest chronologically or quickly look up specific information. Interactive charts, filterable tables, and two new Gemini API features—an AI backstory generator and a strategic advisor—provide dynamic, personalized content. -->
+    <!-- Application Structure Plan: The application uses task-oriented tabs for character setup, the Grand Quest, reference material, maps, copy-protection answers, and optional cheats. Seer counsel is deliberately embedded in Grand Quest steps and Atlas locations instead of occupying a separate destination, keeping hints and follow-up advice attached to the player's current problem. -->
     <!-- Visualization & Content Choices: 
         - Character Virtues: Report Info -> Starting attribute bonuses. Goal -> Allow players to plan their character build. Viz/Method -> Interactive bar chart (Chart.js). Interaction -> Hovering over bars shows precise stat bonuses. Justification -> A chart is more engaging and easier to compare than a static table.
         - Companion Roster: Report Info -> Companion stats and roles. Goal -> Help players build their ideal party. Viz/Method -> A filterable and sortable HTML table. Interaction -> Users can sort by STR, DEX, INT, or Level. Justification -> An interactive table is superior to a static list for comparing multiple attributes.
         - Quest Walkthrough: Report Info -> Linear steps for major quests. Goal -> Guide players through the game's narrative. Viz/Method -> Accordion-style collapsible sections. Interaction -> Clicking a quest title expands to show the detailed steps. Justification -> Prevents overwhelming the user with a wall of text.
         - AI Backstory Generator (Gemini): Goal -> Enhance roleplaying immersion. Viz/Method -> Button-triggered text generation. Interaction -> User selects virtues and clicks a button. Justification -> Creates personalized, creative content that connects the player to their character.
-        - AI Strategic Advisor (Gemini): Goal -> Provide dynamic, on-demand help. Viz/Method -> Text input and response display. Interaction -> User types a question and receives a detailed, contextual answer. Justification -> Offers a more interactive and flexible help system than a static FAQ or walkthrough.
+        - Contextual Seer (Gemini): Goal -> Provide dynamic, on-demand help without breaking the player's flow. Viz/Method -> Quest- and Atlas-bound hint modal with a continuing advice conversation. Interaction -> A Hint or Seer counsel action opens general guidance first, then passes the exact source context into follow-up questions.
     -->
     <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
-    <link rel="stylesheet" href="css/Ultima6.css?v=atlas-loading-r1">
+    <link rel="stylesheet" href="css/Ultima6.css?v=briefing-r1">
 </head>
 
 <body class="antialiased">
@@ -40,69 +40,205 @@
         </header>
 
         <nav class="flex flex-wrap justify-center border-b-2 border-amber-800/20 mb-8">
-            <button class="tab-button active text-sm sm:text-lg p-4" onclick="showTab('avatar')">The Avatar's
-                Path</button>
+            <button class="tab-button active text-sm sm:text-lg p-4" onclick="showTab('avatar')">Briefing</button>
             <button class="tab-button text-sm sm:text-lg p-4" onclick="showTab('quest')">The Grand Quest</button>
             <button class="tab-button text-sm sm:text-lg p-4" onclick="showTab('almanac')">Britannian Almanac</button>
             <button class="tab-button text-sm sm:text-lg p-4" onclick="showTab('atlas')">World Atlas</button>
             <button class="tab-button text-sm sm:text-lg p-4" onclick="showTab('passage')">Words of Passage</button>
             <button class="tab-button text-sm sm:text-lg p-4" onclick="showTab('cheats')">Cheat Codex</button>
-            <button class="tab-button text-sm sm:text-lg p-4" onclick="showTab('counsel')">Consult with the
-                Seer</button>
         </nav>
 
         <main>
             <section id="avatar" class="tab-content active">
-                <div class="bg-amber-50/50 p-6 rounded-lg shadow-md">
-                    <h2 class="text-3xl font-bold mb-4 text-amber-900">Character Creation & Development</h2>
-                    <p class="mb-6 text-amber-900/80">Your journey begins not with a sword, but with a choice. The
-                        gypsy's questions and your meditations at the shrines forge the hero you will become. This
-                        section provides the tools to understand and master your Avatar's growth.</p>
+                <div class="u6-briefing">
+                    <header class="u6-briefing__heading">
+                        <div>
+                            <p class="u6-briefing__kicker">Britannian briefing</p>
+                            <h2>The False Prophet</h2>
+                            <p>Britannia is under siege, the Shrines of Virtue have fallen, and an ancient Gargish
+                                prophecy names the Avatar as the destroyer of their world. This briefing keeps the
+                                campaign, the realm, and your readiness in one place.</p>
+                        </div>
+                        <a class="u6-briefing__primary-action"
+                            href="#quests:quest=act-i-liberating-the-shrines&section=compassion-britain">
+                            Continue the Grand Quest <span aria-hidden="true">→</span>
+                        </a>
+                    </header>
 
-                    <div class="grid md:grid-cols-2 gap-8">
-                        <div>
-                            <h3 class="text-2xl font-semibold mb-3 text-amber-900">The Gypsy's Prophecy</h3>
-                            <p class="mb-4">The seven questions posed by the gypsy determine your starting attributes.
-                                The chart below visualizes the total potential bonus for each attribute based on the
-                                virtues you favor.</p>
-                            <div class="chart-container">
-                                <canvas id="virtueChart"></canvas>
+                    <div class="u6-briefing-grid">
+                        <article class="u6-briefing-card u6-briefing-card--feature">
+                            <p class="u6-briefing__kicker">The situation</p>
+                            <h3>Two peoples, one crisis</h3>
+                            <p>Gargoyles occupy the shrines while Britannia answers them with fear and steel. Behind
+                                the invasion lies the stolen Codex, a collapsing homeland, and a conflict that cannot
+                                be solved by conquest alone.</p>
+                            <blockquote>Seek first to understand the enemy named by prophecy.</blockquote>
+                        </article>
+                        <article class="u6-briefing-card u6-briefing-card--atlas">
+                            <div>
+                                <p class="u6-briefing__kicker">The theatre</p>
+                                <h3>Britannia, surface to depths</h3>
+                                <p>Plan routes across the surface, four dungeon levels, and the Gargoyle Realm using
+                                    locations and residents recovered from the original game data.</p>
+                                <button type="button" class="u6-briefing__text-action" onclick="showTab('atlas')">
+                                    Open the World Atlas <span aria-hidden="true">→</span>
+                                </button>
                             </div>
-                        </div>
-                        <div>
-                            <h3 class="text-2xl font-semibold mb-3 text-amber-900">Path to Enlightenment</h3>
-                            <p class="mb-4">Experience points alone do not grant power. You must meditate at a cleansed
-                                Shrine of Virtue to level up. Each shrine grants a unique, permanent bonus to your
-                                attributes.</p>
-                            <ul id="shrine-list" class="space-y-2"></ul>
-                        </div>
+                        </article>
                     </div>
-                    <div class="mt-8 pt-8 border-t border-amber-800/20">
-                        <h3 class="text-2xl font-semibold mb-3 text-amber-900">The Avatar's Chronicle</h3>
-                        <p class="mb-4">Your virtues define not only your abilities but your story. Select up to three
-                            virtues that best represent your Avatar, and let the bards of Britannia compose your
-                            chronicle.</p>
-                        <div id="virtue-selection" class="flex flex-wrap gap-4 mb-4"></div>
-                        <button id="generate-chronicle"
-                            class="bg-amber-800 hover:bg-amber-900 text-white font-bold py-2 px-4 rounded transition-colors duration-300">
-                            ✨ Generate My Avatar's Chronicle
-                        </button>
-                        <div id="chronicle-output" class="mt-4"></div>
-                    </div>
+
+                    <section class="u6-briefing-campaign" aria-labelledby="u6-briefing-campaign-title">
+                        <div class="u6-briefing-subheading">
+                            <div>
+                                <p class="u6-briefing__kicker">The road ahead</p>
+                                <h3 id="u6-briefing-campaign-title">Four movements toward peace</h3>
+                            </div>
+                            <p id="u6-briefing-progress-label">Your Grand Quest progress will appear here.</p>
+                        </div>
+                        <div class="u6-briefing-campaign__cards">
+                            <a class="u6-briefing-campaign__card"
+                                href="#quests:quest=act-i-liberating-the-shrines">
+                                <span class="u6-briefing-campaign__number">01</span>
+                                <span><strong>Liberate the Shrines</strong><small>Restore all eight paths of virtue.</small></span>
+                                <span class="u6-briefing-campaign__count" data-u6-briefing-act-count="act-i-liberating-the-shrines">0/8</span>
+                            </a>
+                            <a class="u6-briefing-campaign__card"
+                                href="#quests:quest=act-ii-prophecy-pirates">
+                                <span class="u6-briefing-campaign__number">02</span>
+                                <span><strong>Uncover the Prophecy</strong><small>Follow the tablet through pirates and thieves.</small></span>
+                                <span class="u6-briefing-campaign__count" data-u6-briefing-act-count="act-ii-prophecy-pirates">0/4</span>
+                            </a>
+                            <a class="u6-briefing-campaign__card"
+                                href="#quests:quest=act-iii-realm-of-the-gargoyles">
+                                <span class="u6-briefing-campaign__number">03</span>
+                                <span><strong>Enter the Gargoyle Realm</strong><small>Earn trust and accept the Sacred Quest.</small></span>
+                                <span class="u6-briefing-campaign__count" data-u6-briefing-act-count="act-iii-realm-of-the-gargoyles">0/4</span>
+                            </a>
+                            <a class="u6-briefing-campaign__card" href="#quests:quest=final-ritual">
+                                <span class="u6-briefing-campaign__number">04</span>
+                                <span><strong>Complete the Ritual</strong><small>Unite the lenses, Moonstones, and Codex.</small></span>
+                                <span class="u6-briefing-campaign__count" data-u6-briefing-act-count="final-ritual">0/3</span>
+                            </a>
+                        </div>
+                    </section>
+
+                    <section class="u6-briefing-readiness" aria-labelledby="u6-briefing-readiness-title">
+                        <div class="u6-briefing-subheading">
+                            <div>
+                                <p class="u6-briefing__kicker">Before you depart</p>
+                                <h3 id="u6-briefing-readiness-title">Avatar readiness</h3>
+                            </div>
+                            <p>Understand how your virtues shape starting attributes and later advancement.</p>
+                        </div>
+                        <div class="u6-briefing-readiness__grid">
+                            <article class="u6-briefing-readiness__card">
+                                <h4>The Gypsy's Prophecy</h4>
+                                <p>The seven questions determine your starting attributes. The chart compares the
+                                    potential bonuses attached to each virtue.</p>
+                                <div class="chart-container">
+                                    <canvas id="virtueChart"></canvas>
+                                </div>
+                            </article>
+                            <article class="u6-briefing-readiness__card">
+                                <h4>Path to Enlightenment</h4>
+                                <p>Experience alone does not grant levels. Meditate at cleansed shrines for permanent
+                                    attribute growth.</p>
+                                <ul id="shrine-list" class="space-y-2"></ul>
+                            </article>
+                        </div>
+                        <div class="u6-briefing-chronicle">
+                            <div>
+                                <p class="u6-briefing__kicker">Personal record</p>
+                                <h4>The Avatar's Chronicle</h4>
+                                <p>Select up to three defining virtues and let Britannia's bards compose your chronicle.</p>
+                            </div>
+                            <div id="virtue-selection" class="flex flex-wrap gap-4"></div>
+                            <button id="generate-chronicle" type="button">✨ Generate My Avatar's Chronicle</button>
+                            <div id="chronicle-output"></div>
+                        </div>
+                    </section>
                 </div>
             </section>
 
             <section id="quest" class="tab-content">
-                <div class="bg-amber-50/50 p-6 rounded-lg shadow-md">
-                    <h2 class="text-3xl font-bold mb-4 text-amber-900">The Grand Quest Walkthrough</h2>
-                    <p class="mb-4 text-amber-900/80">The path to peace is fraught with peril, prophecy, and pirates.
-                        This walkthrough is divided into the major acts of the story. Click on any title to expand its
-                        section and reveal layered guidance, including dialogue keywords, puzzle solutions, and
-                        virtue-friendly alternatives.</p>
-                    <p class="mb-6 text-sm text-amber-800/80">Tip: Look for the <span
-                            class="inline-block px-2 py-1">Dialogue Keywords</span> badges inside each act. Hover or
-                        focus on a badge to summon a floating cheat sheet right beside it.</p>
-                    <div id="quest-accordion" class="space-y-2"></div>
+                <div class="u6-quest-journal">
+                    <header class="u6-quest-journal__hero">
+                        <div>
+                            <p class="u6-quest-journal__eyebrow">The Avatar's living journal</p>
+                            <h2>The Grand Quest</h2>
+                            <p>Follow the required journey in order, Act by Act, then explore Britannia's optional
+                                stories without mixing them into the path to the finale.</p>
+                        </div>
+                        <div class="u6-quest-progress" aria-labelledby="quest-progress-label">
+                            <div class="u6-quest-progress__summary">
+                                <span id="quest-progress-label">Main quest progress</span>
+                                <strong><span id="quest-progress-complete">0</span>/<span id="quest-progress-total">19</span></strong>
+                            </div>
+                            <div class="u6-quest-progress__track" role="progressbar" aria-valuemin="0"
+                                aria-valuemax="19" aria-valuenow="0" aria-label="Grand Quest objectives completed">
+                                <span id="quest-progress-bar"></span>
+                            </div>
+                            <span id="quest-progress-percent" class="u6-quest-progress__percent">0% complete</span>
+                        </div>
+                    </header>
+
+                    <section id="quest-continue" class="u6-quest-continue" aria-labelledby="quest-continue-title">
+                        <div class="u6-quest-continue__marker" aria-hidden="true">✦</div>
+                        <div class="u6-quest-continue__copy">
+                            <span id="quest-continue-act">Your next objective</span>
+                            <h3 id="quest-continue-title">Begin the journey</h3>
+                            <p id="quest-continue-summary">Open the first act and follow Lord British's summons.</p>
+                        </div>
+                        <div class="u6-quest-continue__actions">
+                            <button id="quest-continue-button" type="button">Continue quest</button>
+                            <a id="quest-continue-atlas" href="#atlas">Show route</a>
+                        </div>
+                    </section>
+
+                    <nav class="u6-quest-flow-nav" role="tablist" aria-label="Quest log sections">
+                        <button type="button" class="u6-quest-flow-nav__button active" data-quest-view="main"
+                            role="tab" aria-selected="true" aria-controls="main-quest-content">
+                            <span>Main Quest</span>
+                            <small>Required · ordered</small>
+                        </button>
+                        <button type="button" class="u6-quest-flow-nav__button" data-quest-view="side"
+                            role="tab" aria-selected="false" aria-controls="side-quest-content">
+                            <span>Side Quests</span>
+                            <small>Optional pursuits</small>
+                        </button>
+                    </nav>
+
+                    <section id="main-quest-content" class="u6-quest-flow-panel active" data-quest-view-panel="main"
+                        role="tabpanel">
+                        <div class="u6-quest-flow-intro">
+                            <div>
+                                <span>Critical path</span>
+                                <h3>Main Quest Checklist</h3>
+                                <p>Complete objectives from top to bottom. Later steps unlock only when every
+                                    requirement before them is finished.</p>
+                            </div>
+                            <div class="u6-quest-order-rule"><span aria-hidden="true">⇣</span> Follow in order</div>
+                        </div>
+                        <div id="quest-accordion" class="u6-quest-act-stage"></div>
+                    </section>
+
+                    <section id="side-quest-content" class="u6-quest-flow-panel" data-quest-view-panel="side"
+                        role="tabpanel" hidden>
+                        <div class="u6-quest-flow-intro u6-quest-flow-intro--side">
+                            <div>
+                                <span>Optional Britannia</span>
+                                <h3>Side Quests</h3>
+                                <p>Take these detours whenever they suit your journey. Their progress never blocks or
+                                    advances the ordered Main Quest.</p>
+                            </div>
+                            <div class="u6-side-progress"><strong id="side-quest-progress-complete">0</strong>/<span
+                                    id="side-quest-progress-total">0</span> complete</div>
+                        </div>
+                        <div id="side-quest-list" class="u6-side-quest-list"></div>
+                    </section>
+
+                    <p class="u6-quest-journal__tip">Dialogue keyword badges reveal compact conversation prompts.
+                        <strong>Hint</strong> opens Seer counsel already attached to that objective.</p>
                     <div id="keyword-helper" class="keyword-helper hidden" role="tooltip" aria-hidden="true">
                         <h3 class="text-xl font-semibold text-amber-900 mb-2 flex items-center gap-2">Quick Guide <span
                                 aria-hidden="true">🗣️</span></h3>
@@ -237,6 +373,11 @@
                             <h3 id="britannia-atlas-journal-title">Follow the thread</h3>
                             <p id="britannia-atlas-quest-context" class="u6-atlas__journal-context">Destinations on the Britannian surface</p>
                             <div id="britannia-atlas-quest-list" class="u6-atlas__quest-list"></div>
+                            <button id="britannia-atlas-seer-link" type="button" data-seer-atlas="0"
+                                class="u6-seer-context-link u6-atlas__seer-link">
+                                <span aria-hidden="true">✨</span>
+                                <span><strong>Seer counsel</strong><small>Plan this map layer</small></span>
+                            </button>
                             <a href="#quests:quest=act-i-liberating-the-shrines" class="u6-atlas__journal-link">
                                 Open the complete quest walkthrough
                             </a>
@@ -255,62 +396,6 @@
                         </div>
                         <div id="dungeon-list" class="u6-atlas__dungeon-grid"></div>
                     </section>
-                </div>
-            </section>
-
-            <section id="counsel" class="tab-content">
-                <div class="bg-amber-50/50 p-6 rounded-lg shadow-md">
-                    <h2 class="text-3xl font-bold mb-4 text-amber-900">✨ Consult with the Seer</h2>
-                    <p class="mb-6 text-amber-900/80">The seer no longer demands checklists and scrolls. Instead, attune the
-                        lenses, whisper your question, and let a handful of runes colour the response. The counsel that returns will
-                        flow in the voice and spoiler veil you choose.</p>
-                    <div class="grid lg:grid-cols-2 gap-6">
-                        <div class="space-y-6">
-                            <div class="bg-white/75 border border-amber-200/70 rounded-lg p-4 shadow-sm">
-                                <label for="seer-query" class="block text-lg font-semibold text-amber-900 mb-2">Whisper your dilemma</label>
-                                <textarea id="seer-query" rows="5"
-                                    class="w-full p-3 border border-amber-300 rounded-md bg-white/80 focus:ring-amber-500 focus:border-amber-500"
-                                    placeholder="e.g., How can I defeat the dragons in Destard? or Where can I find the plans for the hot-air balloon?"></textarea>
-                                <div class="mt-4">
-                                    <h3 class="text-sm font-semibold text-amber-900 mb-2">Shortcut sparks</h3>
-                                    <div id="seer-shortcut-grid" class="grid sm:grid-cols-2 gap-2"></div>
-                                </div>
-                            </div>
-                            <div class="bg-white/75 border border-amber-200/70 rounded-lg p-4 shadow-sm space-y-4">
-                                <div>
-                                    <h3 class="text-sm font-semibold text-amber-900 mb-2">Tune the seer's voice</h3>
-                                    <div class="flex flex-wrap gap-2" id="seer-tone-options">
-                                        <button type="button" class="seer-tone-option px-3 py-2 rounded-md border border-amber-300 bg-white/70 text-sm font-medium text-amber-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500" data-tone="pragmatic" data-default="true">Pragmatic counsel</button>
-                                        <button type="button" class="seer-tone-option px-3 py-2 rounded-md border border-amber-300 bg-white/70 text-sm font-medium text-amber-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500" data-tone="visionary">Visionary prophecy</button>
-                                        <button type="button" class="seer-tone-option px-3 py-2 rounded-md border border-amber-300 bg-white/70 text-sm font-medium text-amber-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500" data-tone="cryptic">Cryptic riddles</button>
-                                    </div>
-                                </div>
-                                <div>
-                                    <h3 class="text-sm font-semibold text-amber-900 mb-2">Spoiler veil</h3>
-                                    <div class="flex flex-wrap gap-2" id="seer-spoiler-options">
-                                        <button type="button" class="seer-spoiler-option px-3 py-2 rounded-md border border-amber-300 bg-white/70 text-sm font-medium text-amber-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500" data-spoiler="light" data-default="true">Gentle nudges</button>
-                                        <button type="button" class="seer-spoiler-option px-3 py-2 rounded-md border border-amber-300 bg-white/70 text-sm font-medium text-amber-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500" data-spoiler="balanced">Balanced guidance</button>
-                                        <button type="button" class="seer-spoiler-option px-3 py-2 rounded-md border border-amber-300 bg-white/70 text-sm font-medium text-amber-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500" data-spoiler="direct">Full disclosure</button>
-                                    </div>
-                                </div>
-                                <button id="ask-seer"
-                                    class="w-full bg-amber-800 hover:bg-amber-900 text-white font-bold py-3 px-4 rounded transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500">Ask the Seer</button>
-                            </div>
-                        </div>
-                        <div class="space-y-4">
-                            <div class="bg-white/75 border border-amber-200/70 rounded-lg p-4 shadow-sm">
-                                <h3 class="text-lg font-semibold text-amber-900 mb-2">Infuse lore runes</h3>
-                                <p class="text-sm text-amber-800/80 mb-3">Tap up to three runes to seed the response with specific context. Each rune adds flavour, not a script.</p>
-                                <div id="seer-context-deck" class="flex flex-wrap gap-3"></div>
-                                <p id="seer-context-limit" class="mt-3 text-xs text-amber-700/80 hidden">Only three runes may be infused at once.</p>
-                            </div>
-                            <div class="bg-white/75 border border-amber-200/70 rounded-lg p-4 shadow-inner">
-                                <h4 class="text-sm font-semibold text-amber-900 mb-2">Active infusions</h4>
-                                <div id="seer-context-infusions" class="text-sm text-amber-800/80 italic">No runes selected—answers will be purely intuitive.</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="seer-response" class="mt-6"></div>
                 </div>
             </section>
 
@@ -340,10 +425,64 @@
 
     </div>
 
+    <div id="seer-modal" class="u6-seer-modal hidden" role="dialog" aria-modal="true"
+        aria-labelledby="seer-modal-title" aria-describedby="seer-modal-summary">
+        <div class="u6-seer-modal__panel">
+            <button id="close-seer-modal" type="button" class="u6-seer-modal__close" aria-label="Close Seer counsel">×</button>
+            <header class="u6-seer-modal__header">
+                <span class="u6-seer-modal__eyebrow">Contextual counsel</span>
+                <h2 id="seer-modal-title">✨ Consult the Seer</h2>
+                <p id="seer-modal-summary"></p>
+            </header>
+
+            <div class="u6-seer-modal__tabs" role="tablist" aria-label="Seer counsel views">
+                <button id="seer-tab-hints" type="button" role="tab" aria-selected="true"
+                    aria-controls="seer-hints-panel" data-seer-tab="hints">General hints</button>
+                <button id="seer-tab-advice" type="button" role="tab" aria-selected="false"
+                    aria-controls="seer-advice-panel" data-seer-tab="advice">Ask the Seer</button>
+            </div>
+
+            <section id="seer-hints-panel" class="u6-seer-modal__view" role="tabpanel"
+                aria-labelledby="seer-tab-hints">
+                <div id="seer-general-hints" class="u6-seer-hints"></div>
+                <p class="u6-seer-modal__tip">Need a tailored answer? Open <strong>Ask the Seer</strong>; this exact quest step or map location is already attached.</p>
+            </section>
+
+            <section id="seer-advice-panel" class="u6-seer-modal__view hidden" role="tabpanel"
+                aria-labelledby="seer-tab-advice">
+                <div class="u6-seer-modal__controls">
+                    <fieldset>
+                        <legend>Voice</legend>
+                        <div id="seer-tone-options" class="u6-seer-choice-row">
+                            <button type="button" class="seer-tone-option" data-tone="pragmatic" data-default="true">Pragmatic</button>
+                            <button type="button" class="seer-tone-option" data-tone="visionary">Visionary</button>
+                            <button type="button" class="seer-tone-option" data-tone="cryptic">Cryptic</button>
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Spoilers</legend>
+                        <div id="seer-spoiler-options" class="u6-seer-choice-row">
+                            <button type="button" class="seer-spoiler-option" data-spoiler="light" data-default="true">Gentle</button>
+                            <button type="button" class="seer-spoiler-option" data-spoiler="balanced">Balanced</button>
+                            <button type="button" class="seer-spoiler-option" data-spoiler="direct">Direct</button>
+                        </div>
+                    </fieldset>
+                </div>
+
+                <div id="seer-chat-messages" class="u6-seer-chat" aria-live="polite"></div>
+                <div class="u6-seer-composer">
+                    <label for="seer-query" class="sr-only">Ask the Seer about this context</label>
+                    <textarea id="seer-query" rows="2" placeholder="Ask about this quest step or location…"></textarea>
+                    <button id="ask-seer" type="button">Send</button>
+                </div>
+            </section>
+        </div>
+    </div>
+
     <script src="js/leaflet.js"></script>
     <script src="js/Ultima6Atlas.js?v=game-npcs"></script>
     <link rel="stylesheet" href="styles.css">
-    <script src="js/Ultima6.js?v=atlas-loading-r1"></script>
+    <script src="js/Ultima6.js?v=briefing-r1"></script>
 </body>
 
 </html>
