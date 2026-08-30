@@ -193,6 +193,22 @@ There are two distinct levels of validation:
   coordinates, camera origin, and roof state. The dumps were temporary and are
   not repository inputs.
 
+The optional full-installation regression now makes that extraction statement
+repeatable instead of relying only on a recorded command. With
+`ALQADIM_GAME_DIR` set, it requires exactly the 31 named archives, decodes every
+archive twice, and compares dimensions, object counts, base-raster hashes and
+roof-raster hashes. It also exercises three materially different cases:
+TOWN's outdoor/roof/staging data, HOLD's interior foreground, and OLDDUNG's
+roofless dungeon. The full audit corrected an earlier assumption that SHIPA
+itself had foreground records: its archive does not produce a roof raster;
+HOLD and DEDHOLD are the ship interiors with that data. The test skips when
+private assets are absent from CI.
+
+```sh
+ALQADIM_GAME_DIR=/tmp/alqadim-game/Al-Qadim \
+  python -m unittest guides/tools/test_alqadim_installation.py
+```
+
 The private archive was downloaded and extracted without adding it to Git:
 
 ```sh
