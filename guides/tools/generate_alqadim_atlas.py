@@ -140,6 +140,11 @@ def u32(data: bytes, offset: int) -> int:
     return struct.unpack_from("<I", data, offset)[0]
 
 
+def s16(value: int) -> int:
+    """Interpret an unpacked engine coordinate as a signed 16-bit value."""
+    return value - 0x10000 if value & 0x8000 else value
+
+
 def archive_entries(data: bytes) -> list[tuple[int, int]]:
     count = u32(data, 0)
     entries = [struct.unpack_from("<II", data, 4 + index * 8) for index in range(count)]
@@ -416,20 +421,14 @@ def composite_world_objects(
             cached_origin = None
             if len(record) >= 38 and 0 <= sprite_id < len(scenery_bank):
                 sprite = scenery_bank[sprite_id]
-                # Opaque type-2 images are editor collision/region helpers
-                # (including labels such as LEFTY and MEDIUM), not runtime
-                # scenery.  Transparent type-2 images and all type-4 images
-                # are actual visual instances.
-                if record_type == 2 and sprite is not None and sprite.kind != 5:
-                    continue
                 cached = struct.unpack_from("<8H", record, 22)
                 # The first coordinate pair is the depth anchor, while the
                 # cached rectangle stores the actual top/left used to draw the
                 # current frame.  This is intentionally keyed by field 10:
                 # field 7 describes associated collision/interaction state.
                 if sprite is not None and (cached[0], cached[1]) == (sprite.height, sprite.width):
-                    cached_y = cached[4] - 0x10000 if cached[4] & 0x8000 else cached[4]
-                    cached_x = cached[5] - 0x10000 if cached[5] & 0x8000 else cached[5]
+                    cached_y = s16(cached[4])
+                    cached_x = s16(cached[5])
                     cached_origin = (cached_y, cached_x)
             scenery_records += 1
             drawables.append((world_y, slot, world_y, world_x, scenery_bank, sprite_id, cached_origin))
@@ -442,8 +441,8 @@ def composite_world_objects(
             sprite_id = values[10] & 0x7FFF
             if 0 <= sprite_id < len(foreground_bank):
                 cached = struct.unpack_from("<8H", record, 22)
-                cached_y = cached[4] - 0x10000 if cached[4] & 0x8000 else cached[4]
-                cached_x = cached[5] - 0x10000 if cached[5] & 0x8000 else cached[5]
+                cached_y = s16(cached[4])
+                cached_x = s16(cached[5])
                 foreground_records += 1
                 foreground_drawables.append((world_y, slot, sprite_id, world_x, (cached_y, cached_x)))
 
@@ -608,8 +607,8 @@ def build_catalogue(worlds: list[WorldMap]) -> dict[str, object]:
             }
         )
     return {
-        "format": "Al-Qadim Cyberlore world atlas v7",
-        "rendering": "Terrain, cached-origin runtime scenery, optional roof/foreground layer, NPC spawn metadata, and original 256-colour palette",
+        "format": "Al-Qadim Cyberlore world atlas v8",
+        "rendering": "Terrain, opaque and transparent cached-origin runtime scenery, optional roof/foreground layer, NPC spawn metadata, and original 256-colour palette",
         "worldCount": len(entries),
         "worlds": entries,
     }
