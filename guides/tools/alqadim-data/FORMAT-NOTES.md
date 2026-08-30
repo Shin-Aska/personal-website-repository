@@ -1,8 +1,11 @@
 # Al-Qadim world and atlas rendering notes
 
 This note records the parts of the Cyberlore format that are supported by
-repeatable observations. The original installation and all debugger output
-used during the investigation were kept under `/tmp`, outside this repository.
+repeatable observations. The original installation and temporary analysis
+output used during the investigation were kept under `/tmp`, outside this
+repository. No DOSBox debugger session was performed for this revision; the
+runtime evidence below comes from the supplied captures, not newly captured
+emulator frames.
 
 ## Confirmed archive and image structures
 
@@ -49,9 +52,9 @@ of `TOWN.LIB` disproved that heuristic: its thirteen closed wooden doors are
 144-byte type-2 records selecting opaque sprite 108 (40 by 46), with scripts
 `EB9E` through `EBB2`. The grey threshold/floor is terrain; the opaque sprite
 is the actual runtime door. Restoring these records makes the western,
-guarded, and decorated doors agree with the captures. The other opaque type-2
-records in TOWN are likewise authored, scripted wall/door pieces, not editor
-labels.
+guarded, and decorated doors agree with the captures. Other opaque type-2
+records are now retained because they use the same drawable record structure,
+but they have not each been observed in a running DOSBox session.
 
 Type 1 records are dynamic actors. Their authored location and optional ASCII
 name block (bytes 112 through 135) are exported as metadata rather than baked
@@ -71,6 +74,19 @@ records represent mutually exclusive animation frames and are not baked.
 
 ## Runtime and visual validation
 
+### Scope
+
+There are two distinct levels of validation:
+
+* **Extraction validation:** the generator successfully decoded and rendered
+  all 31 world libraries, and a second run produced byte-identical catalogue
+  and PNG output. This checks parser coverage and determinism only.
+* **Runtime-image validation:** only `TOWN.LIB` was compared with in-game
+  imagery, using the eleven supplied screenshots. No new DOSBox session,
+  breakpoint, memory dump, or per-world gameplay capture was made. Therefore
+  `OLDDUNG.LIB`, `SHIPA.LIB`, and the other 28 worlds must not be described as
+  runtime-verified.
+
 The private archive was downloaded and extracted without adding it to Git:
 
 ```sh
@@ -86,25 +102,23 @@ against the generated TOWN image with OpenCV edge-template correlation. Camera
 origins (atlas pixels) were `(1428,737)`, `(1120,741)`, `(616,389)`,
 `(272,878)`, `(256,1046)`, and `(672,1092)` for the six distinct view groups.
 Normalized edge correlations ranged from 0.55 to 0.76 despite transient actors.
-At those origins the large and round wells, shrubs, palms, guards, banners,
-walls, and door thresholds align pixel-for-pixel. Captures 04/05, 06/07, and
-08 specifically verify that enabling opaque type-2 scenery restores the same
-wooden door frame and its correct cached origin. Captures 02/03, 04/05, and
-06/07 also confirm why NPCs must remain dynamic.
+Visual inspection at those origins shows matching large and round wells,
+shrubs, palms, guards, banners, walls, and door thresholds; this was not a
+pixel-perfect full-frame comparison. Captures 04/05, 06/07, and 08 show that
+enabling opaque type-2 scenery restores the expected wooden door at the cached
+origin. Captures 02/03, 04/05, and 06/07 also show why NPCs must remain dynamic.
 
-The supplied save slots were used as ordered state references: slots 0 and 9
-are the near-identical large-well state; slots 1 and 2 cover the western and
-guarded-door groups; slots 3, 4, and 6 cover the decorated-door, round-well,
-and street groups; slots 7 and 8 cover the final interior vicinity. Save bytes
-at 2033 are an 8.8 fixed-point changing position component (for example
-`1A 65` in slot 1 and `16 88` in slot 2), but the second component and exact
-camera-clamp formula have not yet been proved, so neither is presented as a
-public format guarantee.
+The save files were compared bytewise, but a definitive save-slot-to-screenshot
+mapping was not established. Bytes at 2033 behave like a changing 8.8
+fixed-point component (for example `1A 65` in slot 1 and `16 88` in slot 2),
+but its semantic name, the second position component, and the exact
+camera-clamp formula have not been proved. None is presented as a public format
+guarantee.
 
-Whole-world generation also validated materially different data paths:
+Whole-world extraction exercised materially different data paths, including
 `TOWN.LIB` (outdoor with buildings and foreground), `OLDDUNG.LIB` (dungeon),
-and `SHIPA.LIB` (interior/ship with foreground), in addition to generating all
-31 catalogue entries deterministically.
+and `SHIPA.LIB` (interior/ship with foreground). Only TOWN has screenshot-based
+runtime evidence in this revision.
 
 ## Remaining uncertainties
 
