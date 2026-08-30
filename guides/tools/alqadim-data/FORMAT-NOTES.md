@@ -139,6 +139,43 @@ check, but not as executable TAS data. In their absence, debugger warps and the
 supplied save slots are more reproducible ways to reach specific worlds than
 attempting to automate an entire mouse-driven playthrough.
 
+#### Save-start debug-mode trial
+
+This workflow was exercised in the container on 2026-08-30 rather than left as
+a proposal. The Ubuntu DOSBox-X 2024.03.01 package was run under Xvfb against a
+temporary version 1.10 installation; the repository's `SAVEGAME.DAT` and
+`SAVEGAM*.DAT` files were copied into that temporary installation. `GENIE.EXE
+-DEBUG` reached the title screen, accepted the manual challenge, displayed the
+copied save slots, and loaded slot A into a live Zaratan scene. Xdotool then
+sent `Ctrl+W` and sustained arrow-key movement, while ImageMagick captured the
+runtime window. No installation file, capture, or emulator artifact was added
+to the repository.
+
+The trial also corrects an important terminology error: the game's `Ctrl+W`
+debug command is a **collision bypass**, not a world-selection warp. It lets
+the player cross water, walls, and chasms within the currently loaded world,
+which is useful for reaching atlas coordinates, but it does not load an
+arbitrary `WORLDS/*.LIB`. Crossing a real exit can still initialize another
+world normally. Direct arbitrary-world loading instead requires either a save
+already in that world, following exits from a save, or changing the live world
+transition state with the debugger after that state has been identified.
+
+The exact launch used for the successful trial was:
+
+```sh
+cp guides/tools/alqadim-data/SAVEG*.DAT /tmp/alqadim-runtime/
+Xvfb :100 -screen 0 1024x768x24 &
+DISPLAY=:100 SDL_VIDEODRIVER=x11 dosbox-x -fastlaunch \
+  -set 'output=surface' -set 'windowresolution=640x480' \
+  -set 'autolock=false' -set 'cycles=fixed 20000' \
+  -c 'mount c /tmp/alqadim-runtime' -c 'c:' -c 'genie.exe -debug'
+```
+
+The practical coverage plan is therefore save -> `Ctrl+W` -> known exit for
+normal transitions, supplemented by debugger state manipulation only after
+the transition structure is recovered. It is feasible from this environment,
+but `Ctrl+W` alone cannot instantaneously cycle through all 31 libraries.
+
 ### Scope
 
 There are two distinct levels of validation:
