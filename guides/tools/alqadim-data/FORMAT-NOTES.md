@@ -3,9 +3,8 @@
 This note records the parts of the Cyberlore format that are supported by
 repeatable observations. The original installation and temporary analysis
 output used during the investigation were kept under `/tmp`, outside this
-repository. No DOSBox debugger session was performed for this revision; the
-runtime evidence below comes from the supplied captures, not newly captured
-emulator frames.
+repository. A debugger-enabled DOSBox-X build and its memory dumps were also
+kept there; no emulator binary, dump, or new game capture is part of the PR.
 
 ## Confirmed archive and image structures
 
@@ -56,6 +55,14 @@ guarded, and decorated doors agree with the captures. Other opaque type-2
 records are now retained because they use the same drawable record structure,
 but they have not each been observed in a running DOSBox session.
 
+An all-world structural audit found 408 opaque layer-2 type-2 instances across
+16 worlds. Every one has cached height and width exactly matching its selected
+kind-0 sprite. None has the mismatched or absent visual cache expected of a
+non-drawable region helper. The TOWN memory observation proves the engine keeps
+the same 38-byte drawable prefix at runtime; applying that rule to the other
+worlds is therefore data-driven, although not a substitute for visiting all
+408 instances during gameplay.
+
 Type 1 records are dynamic actors. Their authored location and optional ASCII
 name block (bytes 112 through 135) are exported as metadata rather than baked
 into the static image. This is why near-duplicate screenshots can show moved
@@ -82,10 +89,14 @@ There are two distinct levels of validation:
   all 31 world libraries, and a second run produced byte-identical catalogue
   and PNG output. This checks parser coverage and determinism only.
 * **Runtime-image validation:** only `TOWN.LIB` was compared with in-game
-  imagery, using the eleven supplied screenshots. No new DOSBox session,
-  breakpoint, memory dump, or per-world gameplay capture was made. Therefore
-  `OLDDUNG.LIB`, `SHIPA.LIB`, and the other 28 worlds must not be described as
-  runtime-verified.
+  imagery, using the eleven supplied screenshots plus a fresh slot-0 frame.
+  Therefore `OLDDUNG.LIB`, `SHIPA.LIB`, and the other 28 worlds must not be
+  described as runtime-verified.
+* **Runtime-memory validation:** TOWN was run under DOSBox-X compiled with its
+  heavy debugger. Two complete guest-memory dumps, taken before and after
+  moving the player left, were used to verify loaded object records, player
+  coordinates, camera origin, and roof state. The dumps were temporary and are
+  not repository inputs.
 
 The private archive was downloaded and extracted without adding it to Git:
 
@@ -97,6 +108,47 @@ python guides/tools/generate_alqadim_atlas.py \
   --catalogue /tmp/AlQadimAtlasData.js
 ```
 
+The debugger build and launch used these commands (the game requires its
+configured Sound Blaster device; `sbtype=none` makes its protected-mode loader
+fail with trap 15):
+
+```sh
+git clone --depth 1 --branch dosbox-x-v2024.03.01 \
+  https://github.com/joncampbell123/dosbox-x.git /tmp/dosbox-x-src
+cd /tmp/dosbox-x-src
+./autogen.sh
+./configure --enable-sdl2 --enable-debug=heavy --disable-opengl
+make -j8
+xvfb-run -a -s '-screen 0 1024x768x24' \
+  /tmp/dosbox-x-src/src/dosbox-x -conf /tmp/aqsound.conf
+```
+
+After loading slot 0, **Debug > Start DOSBox-X Debugger** (Alt+Pause) stopped
+the guest. The debugger commands used were:
+
+```text
+CPU
+DOS XMS
+MEMDUMPBIN 38:0 FFFFFF
+```
+
+The flat selector dump established the following:
+
+* The live TOWN object blob begins at linear `002F26B6`. For example, source
+  door slot 366 begins at object offset `0000C146`; the first 38 bytes appear
+  unchanged at runtime address `002FE7FC`. This confirms record type, layer,
+  current sprite word, cached dimensions, and cached `top,left` all survive
+  into the engine's drawable instance. Script-private bytes after the cache do
+  change, so the atlas intentionally does not interpret them as placement.
+* Type-1 slot 8 was the player in this save. Its common words 3 and 4 were
+  `(915,1590)` before movement and `(915,1570)` after moving left. Thus the
+  common object axes really are `(vertical, horizontal)` pixels rather than
+  conventional `(x,y)` or tile coordinates.
+* The registered camera origin for the fresh frame was `(top=825,left=1428)`.
+  Subtracting it from the live player anchor gives screen `(90,162)`, matching
+  the player in the 320-by-180 playfield. This independently confirms both the
+  object axes and the camera registration.
+
 For reference captures 02 through 10, the 320 by 180 playfield was registered
 against the generated TOWN image with OpenCV edge-template correlation. Camera
 origins (atlas pixels) were `(1428,737)`, `(1120,741)`, `(616,389)`,
@@ -107,6 +159,12 @@ shrubs, palms, guards, banners, walls, and door thresholds; this was not a
 pixel-perfect full-frame comparison. Captures 04/05, 06/07, and 08 show that
 enabling opaque type-2 scenery restores the expected wooden door at the cached
 origin. Captures 02/03, 04/05, and 06/07 also show why NPCs must remain dynamic.
+
+For the fresh slot-0 frame, edge correlation at camera origin `(1428,825)` was
+`0.607` against the cutaway image and `0.753` against the complete foreground
+image. The improvement is the covered room immediately east of the player,
+and confirms that the runtime exterior state corresponds to the separately
+generated `-roofed.png` layer rather than the cutaway base map.
 
 The save files were compared bytewise, but a definitive save-slot-to-screenshot
 mapping was not established. Bytes at 2033 behave like a changing 8.8

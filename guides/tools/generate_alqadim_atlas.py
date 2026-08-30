@@ -426,6 +426,9 @@ def composite_world_objects(
                 # cached rectangle stores the actual top/left used to draw the
                 # current frame.  This is intentionally keyed by field 10:
                 # field 7 describes associated collision/interaction state.
+                # A heavy-debugger dump of TOWN slot 366 contained these first
+                # 38 bytes unchanged at runtime, including the kind-0 closed
+                # door sprite and its signed cached origin.
                 if sprite is not None and (cached[0], cached[1]) == (sprite.height, sprite.width):
                     cached_y = s16(cached[4])
                     cached_x = s16(cached[5])

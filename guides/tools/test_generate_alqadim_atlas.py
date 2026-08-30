@@ -7,9 +7,22 @@ from unittest.mock import patch
 import generate_alqadim_atlas as atlas
 
 
-def object_blob(record_type: int, record: bytes) -> bytes:
-    directory_end = 12
-    return struct.pack("<HHIHH", 0, directory_end, directory_end, len(record), record_type) + record
+def object_blob(*records: tuple[int, bytes]) -> bytes:
+    directory_end = 4 + len(records) * 8
+    directory = bytearray(struct.pack("<HH", 0, directory_end))
+    payload = bytearray()
+    for record_type, record in records:
+        directory += struct.pack("<IHH", directory_end + len(payload), len(record), record_type)
+        payload += record
+    return bytes(directory + payload)
+
+
+def drawable_record(world_y: int, world_x: int, layer: int, sprite_id: int, top: int, left: int) -> bytes:
+    values = [0] * 11
+    values[3:6] = (world_y, world_x, layer)
+    values[10] = sprite_id
+    cached = [1, 4, 0, 0, top & 0xFFFF, left & 0xFFFF, 0, 0]
+    return struct.pack("<11H8H", *(values + cached))
 
 
 class AtlasFormatTests(unittest.TestCase):
@@ -28,11 +41,7 @@ class AtlasFormatTests(unittest.TestCase):
         # heuristic discarded every such object and left only the grey floor
         # aperture beneath each door.
         sprite = atlas.Sprite(1, 0, 0, 1, 0, bytes((7, 7, 7, 7)))
-        values = [0] * 11
-        values[3:6] = (3, 2, 2)
-        cached = [1, 4, 0, 0, 3, 2, 0, 0]
-        record = struct.pack("<11H8H", *(values + cached))
-        blob = object_blob(2, record)
+        blob = object_blob((2, drawable_record(3, 2, 2, 0, 3, 2)))
         entries = [(0, 0)] * 8 + [(0, len(blob))]
         raster = bytearray(8 * 8)
 
@@ -44,6 +53,32 @@ class AtlasFormatTests(unittest.TestCase):
 
         self.assertEqual((scenery, foreground, actors, names, roof), (1, 0, 0, (), None))
         self.assertEqual(raster[3 * 8 + 2 : 3 * 8 + 6], bytes((7, 7, 7, 7)))
+
+    def test_depth_anchor_not_cached_top_controls_scenery_order(self) -> None:
+        early = atlas.Sprite(1, 0, 0, 1, 0, bytes((3, 3, 3, 3)))
+        late = atlas.Sprite(1, 0, 0, 1, 0, bytes((9, 9, 9, 9)))
+        # The later depth anchor deliberately has the smaller cached top. Both
+        # paint the same pixels, so sorting by cached top would produce 3.
+        blob = object_blob(
+            (2, drawable_record(10, 2, 2, 0, 4, 2)),
+            (2, drawable_record(20, 2, 2, 1, 4, 2)),
+        )
+        raster = bytearray(8 * 8)
+        with patch.object(atlas, "decode_sprite_bank", side_effect=[[], [early, late], []]):
+            atlas.composite_world_objects(blob, [(0, 0)] * 8 + [(0, len(blob))], raster, 8, 8)
+        self.assertEqual(raster[4 * 8 + 2 : 4 * 8 + 6], bytes((9, 9, 9, 9)))
+
+    def test_foreground_is_kept_out_of_cutaway_raster(self) -> None:
+        roof = atlas.Sprite(1, 0, 0, 1, 0, bytes((6, 6, 6, 6)))
+        blob = object_blob((2, drawable_record(5, 1, 3, 0, 2, 1)))
+        raster = bytearray(8 * 8)
+        with patch.object(atlas, "decode_sprite_bank", side_effect=[[], [], [roof]]):
+            _, foreground, _, _, roofed = atlas.composite_world_objects(
+                blob, [(0, 0)] * 8 + [(0, len(blob))], raster, 8, 8
+            )
+        self.assertEqual(foreground, 1)
+        self.assertEqual(raster[2 * 8 + 1 : 2 * 8 + 5], bytes(4))
+        self.assertEqual(roofed[2 * 8 + 1 : 2 * 8 + 5], bytes((6, 6, 6, 6)))
 
 
 if __name__ == "__main__":
