@@ -1355,6 +1355,485 @@ a:hover {
     padding: 1rem;
 }
 
+/* Briefing */
+.albion-briefing-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1.45fr) minmax(260px, 0.55fr);
+    gap: clamp(1.5rem, 4vw, 4rem);
+    align-items: center;
+    padding: clamp(1.4rem, 4vw, 3.5rem);
+    overflow: hidden;
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    border-radius: 1.25rem;
+    background:
+        radial-gradient(circle at 72% 8%, rgba(167, 139, 250, 0.2), transparent 36%),
+        linear-gradient(135deg, rgba(15, 23, 42, 0.96), rgba(17, 24, 39, 0.75));
+    box-shadow: 0 28px 80px rgba(0, 0, 0, 0.3);
+}
+
+.albion-briefing-kicker {
+    color: var(--albion-accent-blue);
+    font-size: 0.68rem;
+    font-weight: 900;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+.albion-briefing-hero__copy h2 {
+    max-width: 850px;
+    margin-top: 0.6rem;
+    font-size: clamp(2rem, 5vw, 4.5rem);
+    font-weight: 700;
+    line-height: 0.98;
+    letter-spacing: -0.035em;
+}
+
+.albion-briefing-hero__copy > p:not(.albion-briefing-kicker) {
+    max-width: 760px;
+    margin-top: 1.25rem;
+    color: rgba(203, 213, 225, 0.78);
+    font-size: clamp(0.95rem, 1.4vw, 1.08rem);
+    line-height: 1.75;
+}
+
+.albion-briefing-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+}
+
+.albion-primary-action,
+.albion-secondary-action {
+    min-height: 2.8rem;
+    border-radius: 0.65rem;
+    padding: 0.7rem 1rem;
+    cursor: pointer;
+    font-size: 0.82rem;
+    font-weight: 800;
+}
+
+.albion-primary-action {
+    border: 1px solid rgba(56, 189, 248, 0.7);
+    background: linear-gradient(135deg, #0284c7, #7c3aed);
+    color: white;
+}
+
+.albion-secondary-action {
+    border: 1px solid rgba(148, 163, 184, 0.28);
+    background: rgba(15, 23, 42, 0.7);
+    color: #e2e8f0;
+}
+
+.albion-primary-action:hover,
+.albion-secondary-action:hover,
+.albion-primary-action:focus-visible,
+.albion-secondary-action:focus-visible {
+    filter: brightness(1.12);
+    transform: translateY(-1px);
+}
+
+.albion-briefing-hero__visual {
+    position: relative;
+    margin: 0;
+}
+
+.albion-briefing-hero__visual::before {
+    content: '';
+    position: absolute;
+    inset: -10%;
+    z-index: -1;
+    border-radius: 50%;
+    background: rgba(56, 189, 248, 0.12);
+    filter: blur(28px);
+}
+
+.albion-briefing-hero__visual img {
+    width: min(100%, 340px);
+    margin-inline: auto;
+    border: 1px solid rgba(226, 232, 240, 0.18);
+    border-radius: 0.85rem;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+    display: block;
+}
+
+.albion-briefing-hero__visual figcaption {
+    margin-top: 0.75rem;
+    color: rgba(148, 163, 184, 0.7);
+    font-size: 0.68rem;
+    letter-spacing: 0.05em;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.albion-briefing-progress {
+    max-width: 620px;
+    margin-top: 1.6rem;
+}
+
+.albion-briefing-progress__label {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    color: rgba(203, 213, 225, 0.72);
+    font-size: 0.72rem;
+}
+
+.albion-briefing-progress__label strong {
+    color: #f8fafc;
+}
+
+.albion-briefing-progress__track {
+    height: 0.45rem;
+    margin-top: 0.45rem;
+    overflow: hidden;
+    border-radius: 999px;
+    background: rgba(2, 6, 23, 0.8);
+}
+
+.albion-briefing-progress__track span {
+    display: block;
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(90deg, var(--albion-accent-blue), var(--albion-accent-purple));
+}
+
+.albion-briefing-progress small {
+    display: block;
+    margin-top: 0.45rem;
+    color: rgba(148, 163, 184, 0.7);
+    font-size: 0.68rem;
+}
+
+.albion-briefing-stats {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    margin: 1rem 0 clamp(2.5rem, 6vw, 5rem);
+    border: 1px solid rgba(148, 163, 184, 0.13);
+    border-radius: 0.9rem;
+    background: rgba(15, 23, 42, 0.65);
+}
+
+.albion-briefing-stats > div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    padding: 1rem 1.25rem;
+}
+
+.albion-briefing-stats > div + div {
+    border-left: 1px solid rgba(148, 163, 184, 0.13);
+}
+
+.albion-briefing-stats strong {
+    color: #f8fafc;
+    font-family: 'Lora', Georgia, serif;
+    font-size: 1.3rem;
+}
+
+.albion-briefing-stats span {
+    color: rgba(148, 163, 184, 0.75);
+    font-size: 0.68rem;
+    text-transform: uppercase;
+}
+
+.albion-briefing-block {
+    margin-top: clamp(2.5rem, 6vw, 5rem);
+}
+
+.albion-section-heading {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-bottom: 1.2rem;
+}
+
+.albion-section-heading h3 {
+    margin-top: 0.35rem;
+    color: #f8fafc;
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+}
+
+.albion-section-heading > p {
+    max-width: 470px;
+    color: rgba(148, 163, 184, 0.76);
+    font-size: 0.84rem;
+    line-height: 1.6;
+}
+
+.albion-roadmap {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+.albion-roadmap-card {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 1rem;
+    min-height: 200px;
+    padding: 1.25rem;
+    border: 1px solid rgba(148, 163, 184, 0.16);
+    border-radius: 0.9rem;
+    background: linear-gradient(145deg, rgba(30, 41, 59, 0.72), rgba(15, 23, 42, 0.72));
+}
+
+.albion-roadmap-card__number {
+    display: grid;
+    place-items: center;
+    width: 2.4rem;
+    height: 2.4rem;
+    border: 1px solid rgba(167, 139, 250, 0.38);
+    border-radius: 50%;
+    color: #c4b5fd;
+    font-family: 'Lora', Georgia, serif;
+    font-weight: 700;
+}
+
+.albion-roadmap-card__count {
+    color: var(--albion-accent-blue);
+    font-size: 0.66rem;
+    font-weight: 800;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+}
+
+.albion-roadmap-card h4 {
+    margin-top: 0.45rem;
+    color: #f8fafc;
+    font-size: 1.12rem;
+}
+
+.albion-roadmap-card div > p:not(.albion-roadmap-card__count) {
+    margin-top: 0.55rem;
+    color: rgba(203, 213, 225, 0.7);
+    font-size: 0.82rem;
+    line-height: 1.6;
+}
+
+.albion-roadmap-card__actions,
+.albion-reference-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.45rem;
+    margin-top: 1rem;
+}
+
+.albion-roadmap-card__actions button,
+.albion-reference-actions button,
+.albion-source-link {
+    border: 1px solid rgba(56, 189, 248, 0.28);
+    border-radius: 0.45rem;
+    background: rgba(56, 189, 248, 0.08);
+    color: #bae6fd;
+    cursor: pointer;
+    padding: 0.36rem 0.55rem;
+    font-size: 0.68rem;
+    font-weight: 800;
+    line-height: 1.2;
+}
+
+.albion-source-link {
+    border-color: rgba(148, 163, 184, 0.22);
+    background: rgba(15, 23, 42, 0.6);
+    color: rgba(203, 213, 225, 0.78);
+}
+
+.albion-roadmap-card__actions button:hover,
+.albion-reference-actions button:hover,
+.albion-source-link:hover {
+    border-color: rgba(56, 189, 248, 0.58);
+    background: rgba(56, 189, 248, 0.16);
+    color: white;
+}
+
+.albion-field-desks {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.85rem;
+}
+
+.albion-field-desks button {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    gap: 0.3rem 0.8rem;
+    align-items: center;
+    min-height: 112px;
+    border: 1px solid rgba(148, 163, 184, 0.16);
+    border-radius: 0.8rem;
+    background: rgba(15, 23, 42, 0.68);
+    color: #e2e8f0;
+    padding: 1rem;
+    cursor: pointer;
+    text-align: left;
+}
+
+.albion-field-desks button:hover {
+    border-color: rgba(167, 139, 250, 0.5);
+    background: rgba(30, 41, 59, 0.82);
+}
+
+.albion-field-desks__icon {
+    grid-row: 1 / 3;
+    color: #c4b5fd;
+    font-family: ui-monospace, monospace;
+    font-size: 0.72rem;
+}
+
+.albion-field-desks strong {
+    font-family: 'Lora', Georgia, serif;
+}
+
+.albion-field-desks small {
+    color: rgba(148, 163, 184, 0.7);
+    font-size: 0.68rem;
+}
+
+.albion-field-desks b {
+    grid-column: 3;
+    grid-row: 1 / 3;
+    color: var(--albion-accent-blue);
+}
+
+.albion-source-note {
+    margin-top: 2rem;
+    border-left: 2px solid rgba(56, 189, 248, 0.5);
+    background: rgba(15, 23, 42, 0.5);
+    color: rgba(148, 163, 184, 0.8);
+    padding: 0.8rem 1rem;
+    font-size: 0.75rem;
+    line-height: 1.6;
+}
+
+.albion-source-note strong {
+    color: #cbd5e1;
+}
+
+.albion-source-note__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem 0.9rem;
+    margin-top: 0.55rem;
+}
+
+.albion-source-note__links a {
+    color: #7dd3fc;
+    font-size: 0.7rem;
+    font-weight: 700;
+}
+
+.albion-route-hint {
+    margin-top: 1rem;
+    border-left: 2px solid rgba(251, 191, 36, 0.55);
+    background: rgba(251, 191, 36, 0.06);
+    padding: 0.7rem 0.8rem;
+}
+
+.albion-route-hint strong,
+.albion-route-hint p {
+    display: block;
+}
+
+.albion-route-hint strong {
+    color: #fde68a;
+    font-size: 0.66rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.albion-route-hint p {
+    margin-top: 0.25rem;
+    color: rgba(203, 213, 225, 0.78);
+    font-size: 0.75rem;
+    line-height: 1.5;
+}
+
+.albion-linked-hint {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 1rem;
+    align-items: center;
+    border: 1px solid rgba(251, 191, 36, 0.22);
+    border-radius: 0.75rem;
+    background: rgba(251, 191, 36, 0.06);
+    padding: 1rem;
+}
+
+.albion-linked-hint__label {
+    color: #fcd34d;
+    font-size: 0.62rem;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.albion-linked-hint h4 {
+    margin-top: 0.25rem;
+    color: #f8fafc;
+    font-size: 1rem;
+}
+
+.albion-linked-hint p {
+    margin-top: 0.3rem;
+    color: rgba(203, 213, 225, 0.74);
+    font-size: 0.78rem;
+    line-height: 1.55;
+}
+
+.albion-linked-hint .albion-reference-actions {
+    margin-top: 0;
+}
+
+@media (max-width: 980px) {
+    .albion-briefing-hero {
+        grid-template-columns: 1fr;
+    }
+
+    .albion-briefing-hero__visual {
+        display: none;
+    }
+
+    .albion-field-desks {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 700px) {
+    .albion-section-heading,
+    .albion-linked-hint {
+        align-items: stretch;
+        grid-template-columns: 1fr;
+        flex-direction: column;
+    }
+
+    .albion-roadmap,
+    .albion-field-desks {
+        grid-template-columns: 1fr;
+    }
+
+    .albion-briefing-stats {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .albion-briefing-stats > div + div {
+        border-left: 0;
+    }
+
+    .albion-briefing-stats > div:nth-child(even) {
+        border-left: 1px solid rgba(148, 163, 184, 0.13);
+    }
+
+    .albion-briefing-stats > div:nth-child(n + 3) {
+        border-top: 1px solid rgba(148, 163, 184, 0.13);
+    }
+
+    .albion-linked-hint .albion-reference-actions {
+        margin-top: 0.5rem;
+    }
+}
+
 /* Atlas */
 .albion-atlas-shell {
     overflow: hidden;

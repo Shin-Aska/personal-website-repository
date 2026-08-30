@@ -364,7 +364,7 @@ const DB = {
             ],
             boss: { name: "Kamulos", hp: 650, weakness: "Thorn Snare (immune to Frost)", reward: "High Knowledge + 3000 XP" },
             tips: [
-                "Surrender triggers endless battles - farm Bolt-Throwers (516.6G each at Umajo)"
+                "Before surrendering, refusing the guards can repeat the documented battle for sellable Bolt-Throwers"
             ]
         },
         {
@@ -409,27 +409,25 @@ const DB = {
     ],
 
     equipment: [
-        { name: "Gaze of Kamulos", type: "2H Weapon", damage: 26, effect: "Spell charges (6)", location: "Kenget Kamulos", notes: "Best 2H for Siobhan" },
-        { name: "Shadowsword", type: "Weapon", damage: 25, effect: "Cursed: -30 LP, -50 Stamina", location: "Treasure Cave (Maini)", notes: "Good for Drirr despite curse" },
-        { name: "Danu's Light", type: "Weapon", damage: 14, effect: "+10 LP, +20 Speed, +5 Prot", location: "Shop (Beloveno)", notes: "Lifebringer spell charges" },
-        { name: "Iskai Lance", type: "2H Weapon", damage: 18, effect: "-6 CLO (Drirr only)", location: "Shops", notes: "Best Iskai weapon" },
-        { name: "Bolt-Rifle", type: "Ranged", damage: 18, effect: "+20 LON, uses Bolts", location: "Umajo shop", notes: "" },
-        { name: "Pistol", type: "Ranged", damage: 30, effect: "+60 LON, uses Canisters", location: "Toronto COM room", notes: "Cannot be sold, essential" },
-        { name: "Dreamshield", type: "Shield", damage: null, effect: "12 Prot, Sleep Spores (20)", location: "Rifrako's (Aballon)", notes: "Best value shield" },
-        { name: "Serpent Staff", type: "Shield", damage: null, effect: "10 Prot, +10 LP, +25 SP", location: "Equipment Makers (Umajo)", notes: "Can equip WITH 2H weapons" },
-        { name: "Heavy Chainmail", type: "Armor", damage: null, effect: "11 Prot, -6 CLO, -5 LON", location: "Shops", notes: "Human only" },
-        { name: "Lugh's Hand Helmet", type: "Helmet", damage: null, effect: "20 Prot, +35 Luck", location: "Kenget Kamulos", notes: "" },
-        { name: "Power Amulet", type: "Accessory", damage: null, effect: "+25 LP, +50 Str", location: "Druid's Library / Kounos", notes: "" },
-        { name: "Speed Amulet", type: "Accessory", damage: null, effect: "+30 Speed", location: "Shops", notes: "Essential for Sira" },
-        { name: "Thief's Amulet", type: "Accessory", damage: null, effect: "+30 Dex, +30 Lockpick", location: "Kenget Kamulos", notes: "" }
+        { name: "Gaze of Kamulos", type: "2H Weapon", damage: 26, effect: "Spell charges (6)", location: "Kenget Kamulos", mapId: 313, chapterId: "kenget-kamulos", sourceId: "draglung" },
+        { name: "Shadowsword", type: "Weapon", damage: 25, effect: "Cursed: -30 LP, -50 Stamina", location: "Treasure Cave (Maini)", mapId: 170, chapterId: "maini", sourceId: "draglung" },
+        { name: "Danu's Light", type: "Weapon", damage: 14, effect: "+10 LP, +20 Speed, +5 Prot", location: "Beloveno weapon shop", mapId: 269, chapterId: "maini", sourceId: "draglung" },
+        { name: "Iskai Lance", type: "2H Weapon", damage: 18, effect: "-6 CLO (Drirr only)", location: "Snird's Armoury", mapId: 118, chapterId: "nakiridaani", sourceId: "draglung" },
+        { name: "Bolt-Rifle", type: "Ranged", damage: 18, effect: "+20 LON, uses Bolts", location: "Umajo weapon guild", mapId: 232, chapterId: "umajo", sourceId: "draglung" },
+        { name: "Pistol", type: "Ranged", damage: 30, effect: "+60 LON, uses Canisters", location: "Toronto COM room", mapId: 300, chapterId: "toronto-intro", sourceId: "mkenny" },
+        { name: "Dreamshield", type: "Shield", damage: null, effect: "12 Prot, Sleep Spores (20)", location: "Rifrako's (Aballon)", mapId: 138, chapterId: "gratogel", sourceId: "draglung" },
+        { name: "Serpent Staff", type: "Shield", damage: null, effect: "10 Prot, +10 LP, +25 SP", location: "Equipment Makers", mapId: 230, chapterId: "equipment-makers", sourceId: "draglung" },
+        { name: "Lugh's Hand Helmet", type: "Helmet", damage: null, effect: "20 Prot, +35 Luck", location: "Kenget Kamulos", mapId: 313, chapterId: "kenget-kamulos", sourceId: "draglung" },
+        { name: "Power Amulet", type: "Accessory", damage: null, effect: "+25 LP, +50 Str", location: "Arjano / Kounos", mapId: 141, chapterId: "gratogel", sourceId: "draglung" },
+        { name: "Thief's Amulet", type: "Accessory", damage: null, effect: "+30 Dex, +30 Lockpick", location: "Kenget Kamulos", mapId: 313, chapterId: "kenget-kamulos", sourceId: "draglung" }
     ],
 
     bestiary: [
-        { name: "Animal 3 (Demon)", type: "Demon", exp: 357, hp: 125, danger: "Critical hit capable", strategy: "Fastest monster in game. Use Frost Avalanche/Thorn Snare/Demon Exodus immediately." },
-        { name: "Krondir", type: "Beast", exp: 180, hp: "32-75", drops: "Meat, Trii (9.1G at Rabir)", strategy: "Good early-game farming target." },
-        { name: "Service Robot", type: "Machine", exp: 174, hp: "High", danger: "106 battles without Joe", strategy: "Use Goddess's Wrath or critical hits. Bring Joe to avoid most battles." },
-        { name: "AI Housing", type: "Final Boss", exp: null, hp: 4500, danger: "Immune to most attacks", strategy: "Use Thorn Snare. Let it defeat a party member to trigger ending. NOT meant to be killed." },
-        { name: "Kamulos", type: "Boss", exp: 3000, hp: 650, danger: "Immune to Frost", strategy: "Weak to Thorn Snare. Use physical attacks and non-Frost magic." }
+        { name: "Animal 3 (Demon)", type: "Demon", exp: 357, hp: 125, danger: "Fast and critical-hit capable", strategy: "Use control or demon-banishing magic early.", mapId: 230, chapterId: "equipment-makers", sourceId: "draglung" },
+        { name: "Krondir", type: "Beast", exp: 180, hp: "32-75", strategy: "An early source of sellable Meat and Trii.", mapId: 110, chapterId: "nakiridaani", sourceId: "draglung" },
+        { name: "Service Robot", type: "Machine", exp: 174, hp: "High", danger: "Many more fights without Joe", strategy: "Bring Joe on the final Toronto return to bypass repair-gated robot encounters.", mapId: 304, chapterId: "finale", sourceId: "mkenny" },
+        { name: "AI Housing", type: "Final encounter", exp: null, hp: 4500, danger: "Immune to weapons and several spell types", strategy: "Thorn Snare can hold it; follow the walkthrough's ending trigger rather than treating it as a normal damage race.", mapId: 305, chapterId: "finale", sourceId: "draglung" },
+        { name: "Kamulos", type: "Boss", exp: 3000, hp: 650, danger: "Powerful spellcaster", strategy: "Thorn Snare is the documented control tactic, followed by physical and non-Frost attacks.", mapId: 313, chapterId: "kenget-kamulos", sourceId: "draglung" }
     ],
 
     magic: [
@@ -439,6 +437,10 @@ const DB = {
             color: "iskai",
             reagent: "Trifalai Seed (1.2G each)",
             freeTraining: "Fasiir in Dji-Kas guild (Jirinaar)",
+            mapId: 114,
+            chapterId: "nakiridaani",
+            sourceId: "draglung",
+            routeHint: "Visit Fasiir before leaving Jirinaar; this is the documented free spell-training stop for Sira.",
             specialties: ["Frost/immobilization", "Snares", "Light healing"],
             keySpells: [
                 { name: "Frost Avalanche", level: 9, sp: 30, effect: "Freezes all enemies" },
@@ -452,6 +454,10 @@ const DB = {
             color: "druid",
             reagent: "None",
             freeTraining: "Buy scrolls from Roves in Arjano library",
+            mapId: 141,
+            chapterId: "gratogel",
+            sourceId: "draglung",
+            routeHint: "Arjano's library is the route stop for Melthas's spell scrolls.",
             specialties: ["Demon banishment", "Buffs", "Healing"],
             keySpells: [
                 { name: "Demon Exodus", level: 20, sp: 70, effect: "Destroys ALL demon-type enemies" },
@@ -466,6 +472,10 @@ const DB = {
             color: "kenget",
             reagent: "None",
             freeTraining: "Pickup scrolls in Kenget Kamulos dungeon",
+            mapId: 161,
+            chapterId: "kenget-kamulos",
+            sourceId: "draglung",
+            routeHint: "Bring Khunag: the walkthrough identifies him as required for the Kenget Kamulos route.",
             specialties: ["Lightning damage", "Life/Magic stealing", "Traps"],
             keySpells: [
                 { name: "Thunderstorm", level: null, sp: 35, effect: "Damage all enemies" },
@@ -479,6 +489,10 @@ const DB = {
             color: "djicantos",
             reagent: "None",
             freeTraining: "Drannagh in Dji-Cantos building",
+            mapId: 322,
+            chapterId: "dji-cantos",
+            sourceId: "draglung",
+            routeHint: "Drannagh teaches Harriet without a spell-training fee at the Dji-Cantos building.",
             specialties: ["Mass healing", "Party recovery", "Ultimate destruction"],
             keySpells: [
                 { name: "Goddess's Wrath", level: 22, sp: 160, effect: "Destroys enemies (proficiency = count)" },
@@ -556,11 +570,11 @@ const DB = {
     ],
 
     trade: [
-        { location: "Rabir (Jirinaar)", sell: "110%", buy: "132%", notes: "Best on Iskai island" },
-        { location: "Winion (Vanello)", sell: "125%", buy: "150%", notes: "Best on Gratogel" },
-        { location: "Umajo Shops", sell: "130%", buy: "156%", notes: "BEST IN GAME" },
-        { location: "Kounos Woman", sell: "38%", buy: "—", notes: "NEVER sell here" },
-        { location: "Riolea (Beloveno)", sell: "75%", buy: "100%", notes: "Mediocre" }
+        { location: "Rabir (Jirinaar)", sell: "110%", buy: "132%", notes: "Best documented early buyer", mapId: 110, npcName: "Rabir", chapterId: "nakiridaani", sourceId: "draglung" },
+        { location: "Winion (Vanello)", sell: "125%", buy: "150%", notes: "Best documented Gratogel rate", mapId: 132, chapterId: "gratogel", sourceId: "draglung" },
+        { location: "Umajo shops", sell: "130%", buy: "156%", notes: "Highest documented sell rate", mapId: 232, npcName: "Jeros", chapterId: "umajo", sourceId: "draglung" },
+        { location: "Kounos trader", sell: "38%", buy: "—", notes: "Poor place to sell", mapId: 273, chapterId: "maini", sourceId: "draglung" },
+        { location: "Riolea (Beloveno)", sell: "75%", buy: "100%", notes: "Below the better regional buyers", mapId: 270, npcName: "Riolea", chapterId: "maini", sourceId: "draglung" }
     ]
 };
 
@@ -639,7 +653,7 @@ const QUEST_LOG = [
         items: [
             { id: 'khunag-required', text: 'Bring Khunag (required to enter Kenget Kamulos).' },
             { id: 'defeat-kamulos', text: 'Defeat Kamulos and obtain the High Knowledge.' },
-            { id: 'bolt-throwers', text: 'Optional: Surrender-loop to farm Bolt-Throwers for money.' }
+            { id: 'bolt-throwers', text: 'Optional: Before surrendering, repeat the guard battle for Bolt-Throwers.' }
         ]
     },
     {
@@ -659,6 +673,83 @@ const QUEST_LOG = [
             { id: 'plant-seed', text: 'Plant The Seed in the reactor.' },
             { id: 'ai-housing', text: 'AI Housing is not meant to be killed — let it defeat a party member to trigger ending.' }
         ]
+    }
+];
+
+const ALBION_REFERENCE_SOURCES = {
+    manual: {
+        label: 'Original Albion manual',
+        url: 'https://manualzz.com/doc/23223124/blue-byte-albion-video-game-user-manual'
+    },
+    draglung: {
+        label: 'draglung walkthrough',
+        url: 'https://gamefaqs.gamespot.com/pc/196575-albion/faqs/31454'
+    },
+    mkenny: {
+        label: 'MKenny walkthrough',
+        url: 'https://gamefaqs.gamespot.com/pc/196575-albion/faqs/9097'
+    },
+    gameFiles: {
+        label: 'Installed Albion game data',
+        url: 'https://github.com/jhorneman/albion'
+    }
+};
+
+const ALBION_CAMPAIGN_MOVEMENTS = [
+    {
+        number: 'I',
+        title: 'The impossible planet',
+        summary: 'Escape Toronto, survive the crash, and earn a place among the Iskai.',
+        chapters: ['toronto-intro', 'nakiridaani'],
+        mapId: 110
+    },
+    {
+        number: 'II',
+        title: 'Old powers, divided peoples',
+        summary: 'Cross Gratogel and Maini while the expedition’s true stakes begin to surface.',
+        chapters: ['gratogel', 'maini'],
+        mapId: 141
+    },
+    {
+        number: 'III',
+        title: 'The truth beneath the survey',
+        summary: 'Reach Dji-Cantos, Umajo, and the Toronto reactor trail.',
+        chapters: ['dji-cantos', 'umajo', 'toronto-return'],
+        mapId: 322
+    },
+    {
+        number: 'IV',
+        title: 'High Knowledge and the Seed',
+        summary: 'Take Khunag to Kenget Kamulos, recover Metal Magic, and return to Toronto.',
+        chapters: ['kenget-kamulos', 'equipment-makers', 'finale'],
+        mapId: 313
+    }
+];
+
+const ALBION_TRADE_HINTS = [
+    {
+        title: 'Rejira’s healing potions',
+        text: 'Ending conversations with Rejira in the Dji-Kas Guild can repeatedly produce Blue Healing Potions. The public walkthrough recommends Rabir early and Umajo later as buyers.',
+        mapId: 114,
+        npcName: 'Rejira',
+        chapterId: 'nakiridaani',
+        sourceId: 'draglung'
+    },
+    {
+        title: 'Hold valuable loot for Umajo',
+        text: 'Jeros, Zeibe, and Mykonou are listed at a 130% sell multiplier, the highest rate in the published shop table.',
+        mapId: 232,
+        npcName: 'Jeros',
+        chapterId: 'umajo',
+        sourceId: 'draglung'
+    },
+    {
+        title: 'Krondir parts fund the early route',
+        text: 'Krondirs drop Meat and Trii; the walkthrough lists Rabir as the useful early buyer for those drops.',
+        mapId: 110,
+        npcName: 'Rabir',
+        chapterId: 'nakiridaani',
+        sourceId: 'draglung'
     }
 ];
 
@@ -822,10 +913,10 @@ function computeQuestProgress(state) {
 
 function renderMergedWalkthroughProgress() {
     const summary = document.getElementById('walkthrough-progress-summary');
-    if (!summary) return;
-
     const state = loadQuestState();
     const progress = computeQuestProgress(state);
+    renderAlbionBriefing(state, progress);
+    if (!summary) return;
     summary.innerHTML = `
         <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
             <div>
@@ -1865,8 +1956,97 @@ function activateAlbionSection(target, scrollBehavior = 'smooth') {
         renderMergedWalkthroughProgress();
         renderChapters();
     }
+    if (target === 'briefing') renderAlbionBriefing();
     window.scrollTo({ top: 0, behavior: scrollBehavior });
 }
+
+function referenceSourceLink(sourceId, compact = false) {
+    const source = ALBION_REFERENCE_SOURCES[sourceId];
+    if (!source) return '';
+    return `<a class="albion-source-link" href="${source.url}" target="_blank" rel="noreferrer">${compact ? 'Source ↗' : `${source.label} ↗`}</a>`;
+}
+
+function referenceActionsHtml(entry) {
+    if (!entry) return '';
+    return `
+        <div class="albion-reference-actions">
+            ${entry.mapId ? `<button type="button" onclick="openReferenceAtlas(${Number(entry.mapId)}, '${escapeAtlasHtml(entry.npcName || '')}')">Atlas</button>` : ''}
+            ${entry.chapterId ? `<button type="button" onclick="openReferenceWalkthrough('${escapeAtlasHtml(entry.chapterId)}')">Walkthrough</button>` : ''}
+            ${referenceSourceLink(entry.sourceId, true)}
+        </div>
+    `;
+}
+
+function openReferenceAtlas(mapId, npcName = '') {
+    const mapConfig = (ATLAS_CONFIG.maps || []).find(candidate => String(candidate.id) === String(mapId));
+    if (!mapConfig) return;
+    const npc = npcName
+        ? (mapConfig.npcs || []).find(person => person.name.toLocaleLowerCase() === npcName.toLocaleLowerCase())
+        : null;
+    activateAlbionSection('atlas');
+    ensureAtlasMap();
+    loadAlbionAtlasMap(mapId, {
+        resetHistory: true,
+        focusNpcSlot: npc?.slot ?? null
+    });
+}
+
+function openReferenceWalkthrough(chapterId) {
+    const index = (DB.chapters || []).findIndex(chapter => chapter.id === chapterId);
+    if (index < 0) return;
+    activateAlbionSection('missions');
+    const content = document.getElementById(`accordion-${index}`);
+    const arrow = document.getElementById(`arrow-${index}`);
+    if (content) content.classList.add('open');
+    if (arrow) arrow.classList.add('open');
+    setWalkthroughAiActiveChapter(chapterId);
+    requestAnimationFrame(() => {
+        content?.closest('.accordion-item')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+}
+
+function renderAlbionBriefing(state = loadQuestState(), progress = computeQuestProgress(state)) {
+    const progressNode = document.getElementById('briefing-progress');
+    if (progressNode) {
+        const nextGroup = QUEST_LOG.find(group => group.items.some(item => !state?.[group.id]?.[item.id]));
+        progressNode.innerHTML = `
+            <div class="albion-briefing-progress__label">
+                <span>Campaign record</span>
+                <strong>${progress.done} / ${progress.total} complete</strong>
+            </div>
+            <div class="albion-briefing-progress__track" role="progressbar" aria-valuenow="${progress.percent}" aria-valuemin="0" aria-valuemax="100">
+                <span style="width:${progress.percent}%"></span>
+            </div>
+            <small>${nextGroup ? `Next open chapter: ${nextGroup.title}` : 'All campaign checklist items are complete.'}</small>
+        `;
+    }
+
+    const roadmap = document.getElementById('briefing-roadmap');
+    if (!roadmap) return;
+    roadmap.innerHTML = ALBION_CAMPAIGN_MOVEMENTS.map(movement => {
+        const groups = movement.chapters.map(id => QUEST_LOG.find(group => group.id === id)).filter(Boolean);
+        const total = groups.reduce((sum, group) => sum + group.items.length, 0);
+        const done = groups.reduce((sum, group) => sum + group.items.filter(item => state?.[group.id]?.[item.id]).length, 0);
+        return `
+            <article class="albion-roadmap-card">
+                <span class="albion-roadmap-card__number">${movement.number}</span>
+                <div>
+                    <p class="albion-roadmap-card__count">${done}/${total} objectives</p>
+                    <h4>${movement.title}</h4>
+                    <p>${movement.summary}</p>
+                    <div class="albion-roadmap-card__actions">
+                        <button type="button" onclick="openReferenceWalkthrough('${movement.chapters[0]}')">Open route</button>
+                        <button type="button" onclick="openReferenceAtlas(${movement.mapId})">First map</button>
+                    </div>
+                </div>
+            </article>
+        `;
+    }).join('');
+}
+
+window.activateAlbionSection = activateAlbionSection;
+window.openReferenceAtlas = openReferenceAtlas;
+window.openReferenceWalkthrough = openReferenceWalkthrough;
 
 function openWalkthroughAtlasStop(chapterId, stopIndex) {
     const stepKey = `${chapterId}.${stopIndex}`;
@@ -2029,6 +2209,7 @@ function renderEquipment() {
             <td class="text-gray-400">${item.type}</td>
             <td class="text-sm">${item.damage ? `${item.damage} Dmg` : ''} ${item.effect}</td>
             <td class="text-gray-500 text-sm">${item.location}</td>
+            <td>${referenceActionsHtml(item)}</td>
         </tr>
     `).join('');
 }
@@ -2046,6 +2227,7 @@ function renderBestiary() {
             ${beast.hp ? `<p class="text-xs text-gray-400 mb-2">HP: ${beast.hp} ${beast.exp ? `• EXP: ${beast.exp}` : ''}</p>` : ''}
             ${beast.danger ? `<p class="text-xs text-yellow-400 mb-2">⚠️ ${beast.danger}</p>` : ''}
             <p class="text-sm text-gray-300">${beast.strategy}</p>
+            ${referenceActionsHtml(beast)}
         </div>
     `).join('');
 }
@@ -2081,6 +2263,11 @@ function renderMagic() {
                 <p><strong>Reagent:</strong> ${school.reagent}</p>
                 <p><strong>Free Training:</strong> ${school.freeTraining}</p>
             </div>
+            <div class="albion-route-hint">
+                <strong>When the route needs it</strong>
+                <p>${school.routeHint}</p>
+            </div>
+            ${referenceActionsHtml(school)}
             
             ${school.notes ? `<p class="text-xs text-yellow-400 mt-2">Note: ${school.notes}</p>` : ''}
         </div>
@@ -2126,8 +2313,22 @@ function renderTrade() {
             <td class="font-medium text-white">${t.location}</td>
             <td class="text-green-400 font-mono">${t.sell}</td>
             <td class="text-red-400 font-mono">${t.buy}</td>
-            <td class="text-sm ${t.notes.includes('BEST') ? 'text-yellow-400 font-bold' : t.notes.includes('NEVER') ? 'text-red-400' : 'text-gray-500'}">${t.notes}</td>
+            <td class="text-sm text-gray-500">${t.notes}</td>
+            <td>${referenceActionsHtml(t)}</td>
         </tr>
+    `).join('');
+
+    const hints = document.getElementById('trade-hints');
+    if (!hints) return;
+    hints.innerHTML = ALBION_TRADE_HINTS.map(hint => `
+        <article class="albion-linked-hint">
+            <div>
+                <span class="albion-linked-hint__label">Verified optional hint</span>
+                <h4>${hint.title}</h4>
+                <p>${hint.text}</p>
+            </div>
+            ${referenceActionsHtml(hint)}
+        </article>
     `).join('');
 }
 

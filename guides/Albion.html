@@ -10,7 +10,7 @@
     <script src="js/tailwind.js"></script>
     <link rel="stylesheet" href="css/fonts.css">
     <link rel="stylesheet" href="css/leaflet.css">
-    <link rel="stylesheet" href="css/Albion.css?v=20260829-atlas5">
+    <link rel="stylesheet" href="css/Albion.css?v=20260829-briefing1">
 </head>
 
 <body class="antialiased">
@@ -32,7 +32,8 @@
                     <p class="albion-subtitle">Interactive Companion Guide • Blue Byte 1995</p>
                 </div>
                 <nav id="main-nav" class="flex flex-wrap justify-center gap-2">
-                    <button data-target="crew" class="nav-button active">The Crew</button>
+                    <button data-target="briefing" class="nav-button active">Briefing</button>
+                    <button data-target="crew" class="nav-button">The Crew</button>
                     <button data-target="missions" class="nav-button">Walkthrough</button>
                     <button data-target="screenshots" class="nav-button">Screenshots</button>
                     <button data-target="almanac" class="nav-button">Almanac</button>
@@ -46,8 +47,95 @@
 
     <main class="container mx-auto px-4 py-8 relative z-10">
 
+        <!-- ==================== BRIEFING ==================== -->
+        <section id="briefing" class="content-section active">
+            <div class="albion-briefing-hero">
+                <div class="albion-briefing-hero__copy">
+                    <p class="albion-briefing-kicker">Mission briefing · Survey vessel Toronto</p>
+                    <h2>A routine mineral survey becomes a fight for a living world.</h2>
+                    <p>Tom Driscoll reaches the planet that DDT calls “Nugget” and finds Albion: inhabited, ancient,
+                        and threatened by the same expedition that brought him there. This guide joins the route,
+                        people, lore, magic, and markets into one campaign desk.</p>
+                    <div class="albion-briefing-actions">
+                        <button type="button" class="albion-primary-action"
+                            onclick="openReferenceWalkthrough('toronto-intro')">Continue campaign <span
+                                aria-hidden="true">→</span></button>
+                        <button type="button" class="albion-secondary-action"
+                            onclick="openReferenceAtlas(300)">Open the Toronto atlas</button>
+                    </div>
+                    <div id="briefing-progress" class="albion-briefing-progress" aria-live="polite"></div>
+                </div>
+                <figure class="albion-briefing-hero__visual">
+                    <img src="images/albion/cover.jpg" alt="Albion game cover artwork" loading="eager">
+                    <figcaption>Science fiction above. A living fantasy world below.</figcaption>
+                </figure>
+            </div>
+
+            <div class="albion-briefing-stats" aria-label="Guide coverage">
+                <div><strong>177</strong><span>decoded maps</span></div>
+                <div><strong>165</strong><span>named NPC placements</span></div>
+                <div><strong>10</strong><span>connected chapters</span></div>
+                <div><strong>35</strong><span>atlas route stops</span></div>
+            </div>
+
+            <section class="albion-briefing-block" aria-labelledby="albion-road-ahead">
+                <div class="albion-section-heading">
+                    <div>
+                        <p class="albion-briefing-kicker">The road ahead</p>
+                        <h3 id="albion-road-ahead">Four movements across Albion</h3>
+                    </div>
+                    <p>Your checklist progress follows you from the opening on Toronto through the final return.</p>
+                </div>
+                <div id="briefing-roadmap" class="albion-roadmap"></div>
+            </section>
+
+            <section class="albion-briefing-block" aria-labelledby="albion-field-desks">
+                <div class="albion-section-heading">
+                    <div>
+                        <p class="albion-briefing-kicker">Field desks</p>
+                        <h3 id="albion-field-desks">Use the reference when the route calls for it</h3>
+                    </div>
+                    <p>The Almanac, Magic, and Trade stay—but now point back to the relevant map and chapter.</p>
+                </div>
+                <div class="albion-field-desks">
+                    <button type="button" onclick="activateAlbionSection('crew')">
+                        <span class="albion-field-desks__icon">01</span><strong>The Crew</strong>
+                        <small>Recruitment and party decisions</small><b aria-hidden="true">→</b>
+                    </button>
+                    <button type="button" onclick="activateAlbionSection('almanac')">
+                        <span class="albion-field-desks__icon">02</span><strong>Almanac</strong>
+                        <small>Equipment and encounter notes</small><b aria-hidden="true">→</b>
+                    </button>
+                    <button type="button" onclick="activateAlbionSection('magic')">
+                        <span class="albion-field-desks__icon">03</span><strong>Magic</strong>
+                        <small>Schools, teachers, and route use</small><b aria-hidden="true">→</b>
+                    </button>
+                    <button type="button" onclick="activateAlbionSection('trade')">
+                        <span class="albion-field-desks__icon">04</span><strong>Trade</strong>
+                        <small>Verified markets and money hints</small><b aria-hidden="true">→</b>
+                    </button>
+                </div>
+            </section>
+
+            <aside class="albion-source-note">
+                <strong>Source policy.</strong> Story and controls are checked against the original manual; route and
+                strategy notes are cross-checked against two established public walkthroughs. Map geometry and NPC
+                placements come from the installed game files. Each actionable reference identifies its source.
+                <span class="albion-source-note__links">
+                    <a href="https://manualzz.com/doc/23223124/blue-byte-albion-video-game-user-manual"
+                        target="_blank" rel="noreferrer">Original manual ↗</a>
+                    <a href="https://gamefaqs.gamespot.com/pc/196575-albion/faqs/31454" target="_blank"
+                        rel="noreferrer">Detailed walkthrough ↗</a>
+                    <a href="https://gamefaqs.gamespot.com/pc/196575-albion/faqs/9097" target="_blank"
+                        rel="noreferrer">Second walkthrough ↗</a>
+                    <a href="https://github.com/jhorneman/albion" target="_blank" rel="noreferrer">Historical game
+                        files ↗</a>
+                </span>
+            </aside>
+        </section>
+
         <!-- ==================== THE CREW ==================== -->
-        <section id="crew" class="content-section active">
+        <section id="crew" class="content-section">
             <div class="text-center mb-10">
                 <h2 class="text-4xl font-bold mb-3 text-gradient">The Crew's Path</h2>
                 <p class="text-lg max-w-3xl mx-auto text-gray-400">
@@ -167,7 +255,8 @@
             <div class="text-center mb-10">
                 <h2 class="text-4xl font-bold mb-3 text-gradient">Albion Almanac</h2>
                 <p class="text-lg max-w-3xl mx-auto text-gray-400">
-                    Reference data for weapons, armor, and the creatures you'll encounter.
+                    A route-aware field reference for important equipment and encounters. Open the exact map or the
+                    chapter where each entry matters.
                 </p>
             </div>
 
@@ -183,6 +272,7 @@
                                     <th>Type</th>
                                     <th>Effect</th>
                                     <th>Location</th>
+                                    <th>Route</th>
                                 </tr>
                             </thead>
                             <tbody id="equipment-table">
@@ -207,13 +297,18 @@
             <div class="text-center mb-10">
                 <h2 class="text-4xl font-bold mb-3 text-gradient">The Four Schools of Magic</h2>
                 <p class="text-lg max-w-3xl mx-auto text-gray-400">
-                    Master the mystical arts of Albion—from the icy grip of Dji-Kas to the divine wrath of the
-                    Enlightened Ones.
+                    The four spell traditions, their teachers, and the campaign moments where each school earns its
+                    place in the party.
                 </p>
             </div>
 
             <div id="magic-schools" class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
                 <!-- Populated by JS -->
+            </div>
+
+            <div class="albion-source-note max-w-5xl mx-auto mt-6">
+                <strong>Reference basis.</strong> Spell roles and teaching locations are paraphrased from the public
+                walkthrough; the school system and spellcasting rules are described in the original manual.
             </div>
         </section>
 
@@ -273,7 +368,8 @@
             <div class="text-center mb-10">
                 <h2 class="text-4xl font-bold mb-3 text-gradient">Trade Ledger</h2>
                 <p class="text-lg max-w-3xl mx-auto text-gray-400">
-                    Maximize your profits. Know where to buy low and sell high.
+                    Verified shop multipliers and optional money routes, connected to their cities and campaign
+                    chapters.
                 </p>
             </div>
 
@@ -289,6 +385,7 @@
                                     <th class="text-green-400">Sell %</th>
                                     <th class="text-red-400">Buy %</th>
                                     <th>Notes</th>
+                                    <th>Route</th>
                                 </tr>
                             </thead>
                             <tbody id="trade-table">
@@ -298,18 +395,11 @@
                     </div>
                 </div>
 
-                <div class="tip-box">
-                    <div class="tip-box-title">💰 Money-Making Strategies</div>
-                    <ul class="space-y-2 text-sm text-gray-300">
-                        <li><strong class="text-white">Rejira Exploit (Jirinaar):</strong> Talk to the healer repeatedly
-                            for free Blue Healing Potions. Sell at Rabir's for 18.3G each.</li>
-                        <li><strong class="text-white">Umajo Trading:</strong> Best sell prices in the game (130%).
-                            Hoard expensive items until you reach the desert.</li>
-                        <li><strong class="text-white">Kenget Kamulos Farming:</strong> Surrender to guards to trigger
-                            infinite battles. Farm Bolt-Throwers (516.6G each at Umajo).</li>
-                        <li><strong class="text-white">Krondir Hunting:</strong> Farm for Meat and Trii (9.1G at Rabir).
-                        </li>
-                    </ul>
+                <div id="trade-hints" class="space-y-3"></div>
+
+                <div class="albion-source-note mt-6">
+                    <strong>Prices and hints.</strong> Multipliers and optional routes are paraphrased from the
+                    draglung walkthrough. They are player-guide data, not claims from the manual.
                 </div>
             </div>
         </section>
@@ -320,7 +410,7 @@
     <script src="js/leaflet.js"></script>
     <script src="js/AlbionAtlasData.js"></script>
     <script src="js/AlbionMarkers.js"></script>
-    <script src="js/Albion.js?v=20260829-atlas5"></script>
+    <script src="js/Albion.js?v=20260829-briefing1"></script>
 </body>
 
 </html>

@@ -9,6 +9,7 @@
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script src="js/tailwind.js"></script>
     <link rel="stylesheet" href="css/fonts.css">
+    <link rel="stylesheet" href="css/leaflet.css">
     <link rel="stylesheet" href="css/AlQadim.css">
 </head>
 
@@ -328,33 +329,72 @@
         <!-- ==================== ATLAS ==================== -->
         <section id="atlas" class="content-section">
             <div class="text-center mb-8">
-                <h2 class="text-4xl font-bold mb-2 text-gradient">World Atlas</h2>
+                <div class="atlas-kicker">Decoded from the original 1994 game data</div>
+                <h2 class="text-4xl font-bold mb-2 text-gradient">The Genie Engine Atlas</h2>
                 <p class="text-sm text-[var(--aq-text-muted)] max-w-2xl mx-auto">
-                    Inspect high-resolution, meander-bordered maps extracted directly from the cluebook PDF. Cross-reference locations with landmarks and inhabitant coordinates.
+                    Explore all 31 world libraries as reconstructed in-game scenes, including terrain, placed scenery, optional roofs, and actor-location metadata. Pair each render with decoded engine labels and the official cluebook's inhabitants, landmarks, and chart when available.
                 </p>
             </div>
 
-            <div class="max-w-6xl mx-auto atlas-container">
-                <!-- Map image container -->
-                <div class="map-viewer-wrapper flex flex-col justify-between p-4">
-                    <div id="map-view-image-container" class="flex-grow flex items-center justify-center min-h-[300px]">
-                        <!-- Populated by JS -->
-                    </div>
+            <div class="max-w-[1600px] mx-auto">
+                <div class="atlas-summary" aria-label="Atlas source summary">
+                    <div><strong id="atlas-world-count">31</strong><span>game worlds</span></div>
+                    <div><strong>16×16</strong><span>original tiles</span></div>
+                    <div><strong id="atlas-npc-count">—</strong><span>engine actor labels</span></div>
+                    <div><strong>Read-only</strong><span>source extraction</span></div>
                 </div>
 
-                <!-- Selectors and annotations database -->
-                <div class="space-y-4">
-                    <div class="aq-card p-4">
-                        <h4 class="text-xs uppercase font-bold text-gray-400 tracking-wider mb-2">Select Location Map</h4>
-                        <div id="map-select-list" class="max-h-[220px] overflow-y-auto border border-gray-800/80 rounded bg-black/30 pr-1 scroll-panel">
+                <div class="atlas-toolbar" aria-label="Atlas controls">
+                    <label class="atlas-search">
+                        <span aria-hidden="true">⌕</span>
+                        <span class="sr-only">Search worlds and inhabitants</span>
+                        <input id="atlas-search-input" type="search" placeholder="Search world, engine ID, or inhabitant…" autocomplete="off">
+                    </label>
+                    <div class="atlas-view-switch" role="group" aria-label="Map source">
+                        <button id="atlas-view-game" class="active" type="button">Game render</button>
+                        <button id="atlas-view-manual" type="button">Cluebook chart</button>
+                    </div>
+                    <button id="atlas-fit-map" class="atlas-tool-button" type="button">Fit map</button>
+                    <label class="atlas-grid-toggle"><input id="atlas-roof-toggle" type="checkbox"> Roofs</label>
+                    <label class="atlas-grid-toggle"><input id="atlas-grid-toggle" type="checkbox"> Tile grid</label>
+                    <label class="atlas-grid-toggle"><input id="atlas-location-toggle" type="checkbox" checked> Cluebook places</label>
+                    <label class="atlas-grid-toggle"><input id="atlas-actor-toggle" type="checkbox" checked> Actor markers</label>
+                </div>
+
+                <div class="atlas-container">
+                    <aside class="atlas-world-browser aq-card" aria-label="World map browser">
+                        <div class="atlas-panel-heading">
+                            <span>World libraries</span>
+                            <span id="atlas-result-count">31</span>
+                        </div>
+                        <div id="map-select-list" class="scroll-panel" role="listbox" aria-label="Select a world map">
                             <!-- Populated by JS -->
+                        </div>
+                    </aside>
+
+                    <div class="map-viewer-wrapper">
+                        <div class="atlas-map-heading">
+                            <div>
+                                <div id="atlas-map-eyebrow" class="atlas-map-eyebrow">WORLDS/TOWN.LIB</div>
+                                <h3 id="atlas-map-title">Zaratan</h3>
+                            </div>
+                            <div id="atlas-map-badges" class="atlas-map-badges"></div>
+                        </div>
+                        <div id="alqadim-map" class="alqadim-map" role="application" aria-label="Interactive Al-Qadim game map"></div>
+                        <div class="atlas-map-footer">
+                            <span id="atlas-coordinate-readout">Move across the map to inspect tile coordinates.</span>
+                            <span>Wheel/pinch to zoom · drag to pan</span>
                         </div>
                     </div>
 
-                    <div id="map-details-panel" class="aq-card p-5">
+                    <aside id="map-details-panel" class="aq-card atlas-details-panel" aria-live="polite">
                         <!-- Populated by JS -->
-                    </div>
+                    </aside>
                 </div>
+
+                <p class="atlas-method-note">
+                    <strong>What is reconstructed:</strong> terrain geometry, original indexed-colour art, cached scenery placement, optional roof/foreground layers, raw actor labels, and initial spawn coordinates are decoded from each shipped <code>WORLDS/*.LIB</code>. Numbered cluebook places are manually registered to decoded game pixels and remain editable separately. Actor markers are metadata because scripts move or replace actors during play; the game also hides the roof over the player's current room.
+                </p>
             </div>
         </section>
 
@@ -487,6 +527,8 @@
         });
     </script>
 
+    <script src="js/leaflet.js"></script>
+    <script src="js/AlQadimAtlasData.js"></script>
     <script src="js/AlQadim.js"></script>
 </body>
 

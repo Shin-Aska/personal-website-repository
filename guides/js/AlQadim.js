@@ -393,8 +393,19 @@ const ART_MODE_KEY = 'alqadim.artMode.v1';
 
 let questState = {};
 let currentArtMode = 'remastered'; // default
-let currentAtlasMap = 'map_zaratan.png';
+let currentAtlasWorld = 'town';
+let currentAtlasView = 'game';
+let currentAtlasTab = 'people';
 let annotationsDB = {};
+let atlasMap = null;
+let atlasImageLayer = null;
+let atlasGridLayer = null;
+let atlasActorLayer = null;
+let atlasLocationLayer = null;
+let atlasDisplaySize = { width: 0, height: 0 };
+let atlasLoadToken = 0;
+let atlasControlsBound = false;
+let atlasHashRead = false;
 let aiHistory = [];
 let questPrompts = {};
 
@@ -477,9 +488,16 @@ function initTabs() {
             // If switching to Atlas, sync layout
             if (targetId === 'atlas') {
                 renderAtlas();
+            } else if (window.location.hash.startsWith('#atlas=')) {
+                history.replaceState(null, '', `${window.location.pathname}${window.location.search}`);
             }
         }
     });
+
+    // Atlas links are durable and restore the correct guide tab on reload.
+    if (window.location.hash.startsWith('#atlas=')) {
+        nav.querySelector('[data-target="atlas"]')?.click();
+    }
 }
 
 function initArtSwitcher() {
@@ -663,96 +681,460 @@ function handleCheck(id) {
     toggleChecklist(id);
 }
 
-// Atlas Map Viewer & Coordinates
-async function renderAtlas() {
+// Decoded Genie-engine Atlas
+function atlasData() {
+    return window.ALQADIM_ATLAS_DATA || { worlds: [], worldCount: 0 };
+}
+
+function atlasWorldById(worldId) {
+    return atlasData().worlds.find(world => world.id === worldId) || atlasData().worlds[0];
+}
+
+function escapeAtlasText(value) {
+    return String(value ?? '')
+        .replaceAll('&', '&amp;')
+        .replaceAll('<', '&lt;')
+        .replaceAll('>', '&gt;')
+        .replaceAll('"', '&quot;')
+        .replaceAll("'", '&#039;');
+}
+
+function readAtlasHash() {
+    if (atlasHashRead) return;
+    atlasHashRead = true;
+    const match = window.location.hash.match(/^#atlas=([^&]+)(?:&view=(game|manual))?/);
+    if (!match) return;
+    const requested = decodeURIComponent(match[1]);
+    if (atlasWorldById(requested)?.id === requested) currentAtlasWorld = requested;
+    if (match[2]) currentAtlasView = match[2];
+}
+
+function updateAtlasHash() {
+    const next = `#atlas=${encodeURIComponent(currentAtlasWorld)}&view=${currentAtlasView}`;
+    if (window.location.hash !== next) history.replaceState(null, '', next);
+}
+
+function atlasAnnotations(world) {
+    return world?.annotationKey ? annotationsDB[world.annotationKey] : null;
+}
+
+function atlasSearchHaystack(world) {
+    const notes = atlasAnnotations(world);
+    const inhabitants = (notes?.inhabitants || []).map(person => `${person.name} ${person.description}`).join(' ');
+    const locations = (notes?.locations || []).map(location => location.description).join(' ');
+    const engineActors = (world.namedActors || []).map(actor => actor.name).join(' ');
+    return `${world.title} ${world.engineId} ${engineActors} ${inhabitants} ${locations}`.toLowerCase();
+}
+
+function renderAtlasWorldList() {
     const listPanel = document.getElementById('map-select-list');
-    const imageContainer = document.getElementById('map-view-image-container');
-    const detailsPanel = document.getElementById('map-details-panel');
+    const countLabel = document.getElementById('atlas-result-count');
+    const search = document.getElementById('atlas-search-input');
+    if (!listPanel) return;
+    const query = (search?.value || '').trim().toLowerCase();
+    const worlds = atlasData().worlds.filter(world => !query || atlasSearchHaystack(world).includes(query));
+    if (countLabel) countLabel.textContent = worlds.length;
+    listPanel.innerHTML = worlds.length ? worlds.map(world => {
+        const notes = atlasAnnotations(world);
+        const people = world.namedActors?.length || 0;
+        return `
+            <button type="button" role="option" aria-selected="${world.id === currentAtlasWorld}" class="annotation-item ${world.id === currentAtlasWorld ? 'active' : ''}" onclick="selectAtlasMap('${world.id}')">
+                <span class="annotation-item-title">${escapeAtlasText(world.title)}</span>
+                <span class="annotation-item-meta">
+                    <span>${notes ? '<i class="annotation-source-dot"></i>' : ''}${escapeAtlasText(world.engineId)}</span>
+                    <span>${world.mapWidth}×${world.mapHeight}${people ? ` · ${people} labels` : ''}</span>
+                </span>
+            </button>
+        `;
+    }).join('') : '<div class="atlas-empty m-3">No world, engine ID, inhabitant, or landmark matches that search.</div>';
+}
 
-    if (!listPanel || !imageContainer || !detailsPanel) return;
+function bindAtlasControls() {
+    if (atlasControlsBound) return;
+    atlasControlsBound = true;
+    document.getElementById('atlas-search-input')?.addEventListener('input', renderAtlasWorldList);
+    document.getElementById('atlas-view-game')?.addEventListener('click', () => setAtlasView('game'));
+    document.getElementById('atlas-view-manual')?.addEventListener('click', () => setAtlasView('manual'));
+    document.getElementById('atlas-fit-map')?.addEventListener('click', fitAtlasMap);
+    document.getElementById('atlas-roof-toggle')?.addEventListener('change', () => loadAtlasImage(atlasWorldById(currentAtlasWorld)));
+    document.getElementById('atlas-grid-toggle')?.addEventListener('change', renderAtlasGrid);
+    document.getElementById('atlas-location-toggle')?.addEventListener('change', renderAtlasLocations);
+    document.getElementById('atlas-actor-toggle')?.addEventListener('change', renderAtlasActors);
+}
 
-    // Load annotations database if not loaded
+function ensureAtlasMap() {
+    if (atlasMap || !window.L) return;
+    atlasMap = L.map('alqadim-map', {
+        crs: L.CRS.Simple,
+        minZoom: -4,
+        maxZoom: 3,
+        zoomSnap: 0.25,
+        zoomDelta: 0.5,
+        attributionControl: true,
+        preferCanvas: true
+    });
+    atlasMap.attributionControl.setPrefix(false);
+    atlasMap.attributionControl.addAttribution('Decoded from original Al-Qadim game data');
+    atlasMap.on('mousemove', event => {
+        const readout = document.getElementById('atlas-coordinate-readout');
+        if (!readout || currentAtlasView !== 'game') return;
+        const x = Math.floor(event.latlng.lng / 16);
+        const y = Math.floor((atlasDisplaySize.height - event.latlng.lat) / 16);
+        const world = atlasWorldById(currentAtlasWorld);
+        if (x >= 0 && y >= 0 && x < world.mapWidth && y < world.mapHeight) {
+            readout.textContent = `Game tile X ${x} · Y ${y}  |  Pixel ${Math.floor(event.latlng.lng)}, ${Math.floor(atlasDisplaySize.height - event.latlng.lat)}`;
+        }
+    });
+    atlasMap.on('mouseout', () => {
+        const readout = document.getElementById('atlas-coordinate-readout');
+        if (readout) readout.textContent = currentAtlasView === 'game'
+            ? 'Move across the map to inspect tile coordinates.'
+            : 'Official cluebook chart; numbered circles correspond to the landmark list.';
+    });
+}
+
+function fitAtlasMap() {
+    if (!atlasMap || !atlasDisplaySize.width || !atlasDisplaySize.height) return;
+    atlasMap.fitBounds([[0, 0], [atlasDisplaySize.height, atlasDisplaySize.width]], { padding: [12, 12], animate: false });
+}
+
+function renderAtlasGrid() {
+    if (!atlasMap) return;
+    if (atlasGridLayer) {
+        atlasMap.removeLayer(atlasGridLayer);
+        atlasGridLayer = null;
+    }
+    const enabled = document.getElementById('atlas-grid-toggle')?.checked;
+    if (!enabled || currentAtlasView !== 'game') return;
+    const world = atlasWorldById(currentAtlasWorld);
+    const lines = [];
+    const style = { color: '#f4e2ba', weight: 0.45, opacity: 0.22, interactive: false };
+    for (let x = 0; x <= world.mapWidth; x += 1) {
+        lines.push(L.polyline([[0, x * 16], [world.height, x * 16]], style));
+    }
+    for (let y = 0; y <= world.mapHeight; y += 1) {
+        const latitude = world.height - y * 16;
+        lines.push(L.polyline([[latitude, 0], [latitude, world.width]], style));
+    }
+    atlasGridLayer = L.layerGroup(lines).addTo(atlasMap);
+}
+
+function renderAtlasActors() {
+    if (!atlasMap) return;
+    if (atlasActorLayer) {
+        atlasMap.removeLayer(atlasActorLayer);
+        atlasActorLayer = null;
+    }
+    const enabled = document.getElementById('atlas-actor-toggle')?.checked;
+    if (!enabled || currentAtlasView !== 'game') return;
+    const world = atlasWorldById(currentAtlasWorld);
+    const markers = (world.namedActors || [])
+        .filter(actor => actor.x >= 0 && actor.y >= 0 && actor.x < world.width && actor.y < world.height)
+        .map(actor => {
+            const marker = L.circleMarker([world.height - actor.y, actor.x], {
+                radius: 4,
+                color: '#f5c842',
+                weight: 1.5,
+                fillColor: '#102642',
+                fillOpacity: 0.86
+            });
+            marker.bindTooltip(
+                `<strong>${escapeAtlasText(actor.name)}</strong><br>Pixel ${actor.x}, ${actor.y} · Tile ${Math.floor(actor.x / 16)}, ${Math.floor(actor.y / 16)}`,
+                { className: 'atlas-actor-tooltip', direction: 'top', offset: [0, -4] }
+            );
+            return marker;
+        });
+    atlasActorLayer = L.layerGroup(markers).addTo(atlasMap);
+}
+
+function registeredAtlasLocations(world) {
+    const notes = atlasAnnotations(world);
+    return (notes?.locations || []).flatMap(location =>
+        (location.gamePositions || []).map((position, positionIndex) => ({
+            ...position,
+            number: location.number,
+            description: location.description,
+            positionIndex
+        }))
+    );
+}
+
+function renderAtlasLocations() {
+    if (!atlasMap) return;
+    if (atlasLocationLayer) {
+        atlasMap.removeLayer(atlasLocationLayer);
+        atlasLocationLayer = null;
+    }
+    const enabled = document.getElementById('atlas-location-toggle')?.checked;
+    if (!enabled || currentAtlasView !== 'game') return;
+    const world = atlasWorldById(currentAtlasWorld);
+    const markers = registeredAtlasLocations(world)
+        .filter(place => place.x >= 0 && place.y >= 0 && place.x < world.width && place.y < world.height)
+        .map(place => {
+            const marker = L.marker([world.height - place.y, place.x], {
+                icon: L.divIcon({
+                    className: 'atlas-place-marker',
+                    html: `<span>${escapeAtlasText(place.number)}</span>`,
+                    iconSize: [28, 28],
+                    iconAnchor: [14, 14]
+                }),
+                keyboard: true,
+                title: `Cluebook location ${place.number}`
+            });
+            marker.bindTooltip(
+                `<strong>Cluebook #${escapeAtlasText(place.number)}</strong><br>${escapeAtlasText(place.description)}`,
+                { className: 'atlas-place-tooltip', direction: 'top', offset: [0, -10] }
+            );
+            marker.on('click', () => {
+                currentAtlasTab = 'locations';
+                renderAtlasDetails(world);
+            });
+            return marker;
+        });
+    atlasLocationLayer = L.layerGroup(markers).addTo(atlasMap);
+}
+
+function loadAtlasImage(world) {
+    ensureAtlasMap();
+    if (!atlasMap) return;
+    const token = ++atlasLoadToken;
+    const usingManual = currentAtlasView === 'manual' && world.manualImage;
+    const usingRoofs = !usingManual && document.getElementById('atlas-roof-toggle')?.checked && world.roofImage;
+    const source = usingManual ? world.manualImage : (usingRoofs ? world.roofImage : world.image);
+    const image = new Image();
+    image.onload = () => {
+        if (token !== atlasLoadToken) return;
+        if (atlasImageLayer) atlasMap.removeLayer(atlasImageLayer);
+        const width = usingManual ? image.naturalWidth : world.width;
+        const height = usingManual ? image.naturalHeight : world.height;
+        atlasDisplaySize = { width, height };
+        const bounds = [[0, 0], [height, width]];
+        atlasImageLayer = L.imageOverlay(source, bounds, {
+            className: usingManual ? 'atlas-manual-layer' : 'atlas-game-layer',
+            alt: `${world.title} ${usingManual ? 'official cluebook chart' : (usingRoofs ? 'decoded game map with roofs' : 'decoded cutaway game map')}`
+        }).addTo(atlasMap);
+        atlasMap.setMaxBounds(L.latLngBounds(bounds).pad(0.35));
+        fitAtlasMap();
+        renderAtlasGrid();
+        renderAtlasLocations();
+        renderAtlasActors();
+        window.setTimeout(() => atlasMap.invalidateSize({ animate: false }), 0);
+    };
+    image.onerror = () => {
+        const readout = document.getElementById('atlas-coordinate-readout');
+        if (readout) readout.textContent = `Unable to load ${source}`;
+    };
+    image.src = source;
+}
+
+function setAtlasView(view) {
+    const world = atlasWorldById(currentAtlasWorld);
+    if (view === 'manual' && !world.manualImage) return;
+    currentAtlasView = view;
+    document.getElementById('atlas-view-game')?.classList.toggle('active', view === 'game');
+    document.getElementById('atlas-view-manual')?.classList.toggle('active', view === 'manual');
+    const grid = document.getElementById('atlas-grid-toggle');
+    if (grid) grid.disabled = view !== 'game';
+    const actors = document.getElementById('atlas-actor-toggle');
+    if (actors) actors.disabled = view !== 'game';
+    const locations = document.getElementById('atlas-location-toggle');
+    if (locations) locations.disabled = view !== 'game' || !registeredAtlasLocations(world).length;
+    const roofs = document.getElementById('atlas-roof-toggle');
+    if (roofs) roofs.disabled = view !== 'game' || !world.roofImage;
+    const readout = document.getElementById('atlas-coordinate-readout');
+    if (readout) readout.textContent = view === 'game'
+        ? 'Move across the map to inspect tile coordinates.'
+        : 'Official cluebook chart; numbered circles correspond to the landmark list.';
+    loadAtlasImage(world);
+    updateAtlasHash();
+}
+
+function setAtlasDetailTab(tab) {
+    currentAtlasTab = tab;
+    renderAtlasDetails(atlasWorldById(currentAtlasWorld));
+}
+
+function revealAtlasLocation() {
+    const world = atlasWorldById(currentAtlasWorld);
+    currentAtlasTab = 'locations';
+    if (world.manualImage) setAtlasView('manual');
+    renderAtlasDetails(world);
+}
+
+function revealRegisteredAtlasLocation(number) {
+    const world = atlasWorldById(currentAtlasWorld);
+    const location = (atlasAnnotations(world)?.locations || []).find(item => Number(item.number) === Number(number));
+    const position = location?.gamePositions?.[0];
+    if (!position) {
+        revealAtlasLocation();
+        return;
+    }
+    currentAtlasTab = 'locations';
+    const toggle = document.getElementById('atlas-location-toggle');
+    if (toggle) toggle.checked = true;
+    if (currentAtlasView !== 'game') setAtlasView('game');
+    else renderAtlasLocations();
+    renderAtlasDetails(world);
+    window.setTimeout(() => {
+        if (!atlasMap) return;
+        atlasMap.setView([world.height - position.y, position.x], Math.max(1, atlasMap.getZoom()), { animate: false });
+    }, 0);
+}
+
+function revealEngineActor(x, y) {
+    const world = atlasWorldById(currentAtlasWorld);
+    const toggle = document.getElementById('atlas-actor-toggle');
+    if (toggle) toggle.checked = true;
+    if (currentAtlasView !== 'game') setAtlasView('game');
+    else renderAtlasActors();
+    window.setTimeout(() => {
+        if (!atlasMap) return;
+        atlasMap.setView([world.height - y, x], Math.max(1, atlasMap.getZoom()), { animate: false });
+    }, 0);
+}
+
+function renderAtlasDetails(world) {
+    const panel = document.getElementById('map-details-panel');
+    if (!panel || !world) return;
+    const notes = atlasAnnotations(world);
+    const inhabitants = notes?.inhabitants || [];
+    const locations = notes?.locations || [];
+    const engineActors = world.namedActors || [];
+    let body = '';
+
+    if (currentAtlasTab === 'people') {
+        const engineBody = engineActors.length ? engineActors.map(actor => `
+            <button type="button" class="atlas-record atlas-record-engine" onclick="revealEngineActor(${actor.x}, ${actor.y})">
+                <span class="atlas-record-name">${escapeAtlasText(actor.name)}</span>
+                <span class="atlas-record-location">Pixel ${actor.x}, ${actor.y}</span>
+                <p>Engine actor record #${actor.id} · Tile ${Math.floor(actor.x / 16)}, ${Math.floor(actor.y / 16)}. Select to locate it on the rendered map.</p>
+            </button>
+        `).join('') : '<div class="atlas-empty">No readable actor label was recovered for this world.</div>';
+        const cluebookBody = inhabitants.length ? inhabitants.map(person => `
+            <button type="button" class="atlas-record" ${person.location !== null ? 'onclick="revealAtlasLocation()"' : ''}>
+                <span class="atlas-record-name">${escapeAtlasText(person.name)}</span>
+                <span class="atlas-record-location">${person.location !== null ? `Cluebook #${person.location}` : 'Roaming / varies'}</span>
+                <p>${escapeAtlasText(person.description)}</p>
+            </button>
+        `).join('') : '<div class="atlas-empty">No named cluebook inhabitant is attached to this engine world.</div>';
+        body = `
+            <div class="atlas-detail-section-title">Engine actor labels <span>${engineActors.length}</span></div>
+            <p class="atlas-detail-section-note">Raw names and initial coordinates decoded from the world library; internal or scripted labels are preserved as written.</p>
+            ${engineBody}
+            <div class="atlas-detail-section-title atlas-detail-section-spaced">Cluebook inhabitants <span>${inhabitants.length}</span></div>
+            ${cluebookBody}
+        `;
+    } else if (currentAtlasTab === 'locations') {
+        body = locations.length ? locations.map(location => `
+            <button type="button" class="atlas-landmark" onclick="revealRegisteredAtlasLocation(${Number(location.number)})">
+                <span class="atlas-landmark-number">${escapeAtlasText(location.number)}</span>
+                <p>${escapeAtlasText(location.description)}${location.gamePositions?.length ? `<span class="atlas-landmark-registration">Registered to ${location.gamePositions.length} game position${location.gamePositions.length === 1 ? '' : 's'}</span>` : ''}</p>
+            </button>
+        `).join('') : '<div class="atlas-empty">No numbered cluebook landmarks are linked to this engine world.</div>';
+    } else {
+        body = `
+            <table class="atlas-source-table">
+                <tr><th>Engine member</th><td>${escapeAtlasText(world.sourceFile)}</td></tr>
+                <tr><th>Terrain grid</th><td>${world.mapWidth} × ${world.mapHeight} cells</td></tr>
+                <tr><th>Raster</th><td>${world.width} × ${world.height} px</td></tr>
+                <tr><th>Tile bank</th><td>${world.tileCount} tiles · ${world.tileBits}-bit index</td></tr>
+                <tr><th>Scenery</th><td>${world.sceneryCount.toLocaleString()} placed records</td></tr>
+                <tr><th>Foreground</th><td>${world.foregroundCount.toLocaleString()} roof/layer records</td></tr>
+                <tr><th>Registered places</th><td>${registeredAtlasLocations(world).length.toLocaleString()} cluebook map positions</td></tr>
+                <tr><th>Actors</th><td>${world.actorCount.toLocaleString()} records · ${engineActors.length} readable labels</td></tr>
+                <tr><th>Palette</th><td>Original 256-colour HLIB palette</td></tr>
+                <tr><th>Source bytes</th><td>${world.sourceBytes.toLocaleString()}</td></tr>
+                <tr><th>SHA-256</th><td title="${world.sourceSha256}">${world.sourceSha256.slice(0, 16)}…</td></tr>
+                <tr><th>Cluebook</th><td>${notes ? escapeAtlasText(notes.source_pages) : 'No linked chart'}</td></tr>
+            </table>
+            <div class="atlas-empty mt-3">The game render is deterministic: member 0 supplies map cells; member 1 supplies terrain and palette; members 2, 4, and 6 supply actor, scenery, and foreground sprites; member 8 supplies placement records and actor labels. Scripted or conditional objects may move, hide, or change during play.</div>
+        `;
+    }
+
+    panel.innerHTML = `
+        <div class="atlas-detail-header">
+            <h4>${escapeAtlasText(world.title)}</h4>
+            <p>${engineActors.length} readable engine actor labels${notes ? `, ${inhabitants.length} cluebook inhabitants, and ${locations.length} numbered locations.` : '; no directly matched cluebook chart.'}</p>
+        </div>
+        <div class="atlas-detail-tabs" role="tablist" aria-label="Map records">
+            <button type="button" class="${currentAtlasTab === 'people' ? 'active' : ''}" onclick="setAtlasDetailTab('people')">Actors (${engineActors.length})</button>
+            <button type="button" class="${currentAtlasTab === 'locations' ? 'active' : ''}" onclick="setAtlasDetailTab('locations')">Places (${locations.length})</button>
+            <button type="button" class="${currentAtlasTab === 'source' ? 'active' : ''}" onclick="setAtlasDetailTab('source')">Source</button>
+        </div>
+        <div class="atlas-detail-body scroll-panel">${body}</div>
+    `;
+}
+
+function updateAtlasHeader(world) {
+    const title = document.getElementById('atlas-map-title');
+    const eyebrow = document.getElementById('atlas-map-eyebrow');
+    const badges = document.getElementById('atlas-map-badges');
+    const manualButton = document.getElementById('atlas-view-manual');
+    if (title) title.textContent = world.title;
+    if (eyebrow) eyebrow.textContent = world.sourceFile;
+    if (badges) badges.innerHTML = `
+        <span class="atlas-map-badge">${world.mapWidth}×${world.mapHeight} tiles</span>
+        <span class="atlas-map-badge">${world.width}×${world.height} px</span>
+        <span class="atlas-map-badge">${world.tileCount} terrain tiles</span>
+        <span class="atlas-map-badge">${world.sceneryCount} scenery</span>
+        <span class="atlas-map-badge">${world.actorCount} actors</span>
+    `;
+    if (manualButton) {
+        manualButton.disabled = !world.manualImage;
+        manualButton.title = world.manualImage ? 'Show the official cluebook chart' : 'No cluebook chart is linked to this engine world';
+    }
+    const roofToggle = document.getElementById('atlas-roof-toggle');
+    if (roofToggle) {
+        roofToggle.disabled = currentAtlasView !== 'game' || !world.roofImage;
+        roofToggle.title = world.roofImage ? 'Show the engine roof/foreground layer' : 'This world has no separate roof/foreground layer';
+    }
+    const locationToggle = document.getElementById('atlas-location-toggle');
+    const registeredCount = registeredAtlasLocations(world).length;
+    if (locationToggle) {
+        locationToggle.disabled = currentAtlasView !== 'game' || !registeredCount;
+        locationToggle.title = registeredCount ? 'Show cluebook numbers registered to game coordinates' : 'This world has not been manually registered yet';
+    }
+}
+
+async function renderAtlas() {
+    if (!document.getElementById('alqadim-map') || !atlasData().worlds.length) return;
+    readAtlasHash();
+    bindAtlasControls();
+
     if (Object.keys(annotationsDB).length === 0) {
         try {
-            const res = await fetch('js/AlqadimAnnotations.json');
-            if (res.ok) {
-                annotationsDB = await res.json();
-            }
+            // Registration coordinates are intentionally hand-editable; do
+            // not let a stale browser cache hide a corrected cluebook marker.
+            const res = await fetch('js/AlqadimAnnotations.json', { cache: 'no-store' });
+            if (res.ok) annotationsDB = await res.json();
         } catch (e) {
             console.error('Error fetching annotations:', e);
         }
     }
+    const npcCount = atlasData().worlds.reduce((sum, map) => sum + (map.namedActors?.length || 0), 0);
+    const npcLabel = document.getElementById('atlas-npc-count');
+    const worldLabel = document.getElementById('atlas-world-count');
+    if (npcLabel) npcLabel.textContent = npcCount;
+    if (worldLabel) worldLabel.textContent = atlasData().worldCount;
 
-    const maps = Object.keys(annotationsDB);
-    if (maps.length === 0) {
-        listPanel.innerHTML = '<p class="text-xs text-red-400">Failed to load coordinates annotations.</p>';
-        return;
-    }
-
-    // List of map selections
-    listPanel.innerHTML = maps.map(m => {
-        // Format filename as readable name
-        const cleanName = m.replace('map_', '').replace('.png', '').replaceAll('_', ' ');
-        return `
-            <div class="annotation-item p-3 border-b border-gray-800 text-sm font-semibold capitalize ${m === currentAtlasMap ? 'active' : ''}" onclick="selectAtlasMap('${m}')">
-                🗺️ ${cleanName}
-            </div>
-        `;
-    }).join('');
-
-    // Load selected map data
-    const mapData = annotationsDB[currentAtlasMap];
-    if (mapData) {
-        imageContainer.innerHTML = `
-            <img class="map-view-image mx-auto max-h-[500px] object-contain" src="images/alqadim/${currentAtlasMap}" alt="${currentAtlasMap}">
-        `;
-
-        // Render Inhabitants & Landmark descriptions
-        const inhabitantsHtml = (mapData.inhabitants && mapData.inhabitants.length > 0) ? mapData.inhabitants.map(i => `
-            <div class="p-3 bg-[#11162b] border border-gray-800 rounded">
-                <div class="flex justify-between items-center mb-1">
-                    <span class="font-bold text-[var(--aq-accent-gold)]">${i.name}</span>
-                    <span class="text-xs px-2 py-0.5 rounded bg-blue-900/30 text-blue-300">Loc: ${i.location !== null ? i.location : 'Any'}</span>
-                </div>
-                <p class="text-xs text-[var(--aq-text-muted)]">${i.description}</p>
-            </div>
-        `).join('') : '<p class="text-xs text-gray-500 italic">No inhabitant database listings for this location.</p>';
-
-        const locationsHtml = (mapData.locations && mapData.locations.length > 0) ? mapData.locations.map(l => `
-            <div class="p-3 bg-[#11162b] border border-gray-800 rounded">
-                <div class="flex gap-2 items-start">
-                    <span class="flex-shrink-0 flex items-center justify-center w-5 h-5 rounded-full bg-[var(--aq-accent-sand)] text-xs text-black font-bold mt-0.5">${l.number}</span>
-                    <p class="text-xs text-[var(--aq-text)]">${l.description}</p>
-                </div>
-            </div>
-        `).join('') : '<p class="text-xs text-gray-500 italic">No landmark annotations listed.</p>';
-
-        detailsPanel.innerHTML = `
-            <div class="space-y-4">
-                <div>
-                    <h4 class="text-xs uppercase font-bold text-gray-400 tracking-wider mb-2">Cluebook Source</h4>
-                    <p class="text-xs text-[var(--aq-text-muted)]">${mapData.source_pages}</p>
-                </div>
-                <div>
-                    <h4 class="text-sm font-bold text-[var(--aq-accent-gold)] border-b border-gray-800 pb-2 mb-2">👥 Notable Inhabitants</h4>
-                    <div class="space-y-2 max-h-[200px] overflow-y-auto pr-1 scroll-panel">
-                        ${inhabitantsHtml}
-                    </div>
-                </div>
-                <div>
-                    <h4 class="text-sm font-bold text-[var(--aq-accent-sand)] border-b border-gray-800 pb-2 mb-2">📍 Key Landmarks</h4>
-                    <div class="space-y-2 max-h-[300px] overflow-y-auto pr-1 scroll-panel">
-                        ${locationsHtml}
-                    </div>
-                </div>
-            </div>
-        `;
-    }
+    const world = atlasWorldById(currentAtlasWorld);
+    if (!world.manualImage && currentAtlasView === 'manual') currentAtlasView = 'game';
+    renderAtlasWorldList();
+    updateAtlasHeader(world);
+    renderAtlasDetails(world);
+    setAtlasView(currentAtlasView);
 }
 
-function selectAtlasMap(mapFile) {
-    currentAtlasMap = mapFile;
-    renderAtlas();
+function selectAtlasMap(worldId) {
+    const world = atlasWorldById(worldId);
+    if (!world) return;
+    currentAtlasWorld = world.id;
+    if (currentAtlasView === 'manual' && !world.manualImage) currentAtlasView = 'game';
+    renderAtlasWorldList();
+    updateAtlasHeader(world);
+    renderAtlasDetails(world);
+    setAtlasView(currentAtlasView);
+    document.querySelector(`.annotation-item[onclick="selectAtlasMap('${world.id}')"]`)?.scrollIntoView({ block: 'nearest' });
 }
 
 function renderBestiary() {
@@ -1041,6 +1423,8 @@ function clearAiChat() {
 window.toggleChapter = toggleChapter;
 window.handleCheck = handleCheck;
 window.selectAtlasMap = selectAtlasMap;
+window.setAtlasDetailTab = setAtlasDetailTab;
+window.revealAtlasLocation = revealAtlasLocation;
 window.calculateGamblingGuess = calculateGamblingGuess;
 window.resetGamblingBounds = resetGamblingBounds;
 window.sendAiMessage = sendAiMessage;
