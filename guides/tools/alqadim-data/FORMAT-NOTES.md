@@ -70,6 +70,30 @@ NPCs without forcing one transient pose into the atlas. Type-2 layer 3 records
 use the foreground HLIB. They are rendered to a separate `-roofed.png` image,
 leaving the viewer free to show either exterior/roof state or a cutaway.
 
+### Southern-edge staging cohorts
+
+The apparent people and marker row in the southwest sea of the old Zaratan
+atlas are not a playable encounter. `TOWN.LIB` parks five named type-1 records
+in its final tile row: `Sailor1`, `Sailor2`, `Rival_sailo1`,
+`Rival_sailor2`, and `Caliph`, at horizontal coordinates 23 through 94 and
+vertical coordinates 2038 through 2043. Their script words at byte 110 are
+the consecutive values `FF68` through `FF6C`. Two layer-2 pose objects are
+parked beside them at `(vertical,horizontal)=(2032,186)` and `(2031,213)`.
+Together these seven records explain the five Leaflet circles and two people
+shown over otherwise empty water.
+
+The five circles were actor markers, not waypoints. The eleven supplied TOWN
+captures do not visit this edge, so they cannot by themselves validate the
+strip. The stronger evidence is the record topology: an audit of all 31
+archives found one final-row actor in HOLD, two in ROAD, and this consecutive
+five-actor scripted cast plus two poses only in TOWN. The generator therefore
+recognizes an engine staging cohort only when at least three type-1 records
+occupy the one-tile southern strip. It omits layer-2 drawable records in that
+cohort from the static raster and moves its actors from `namedActors` to
+structured `stagedActors` metadata. This preserves the source records without
+presenting dormant script storage as an in-world location; the rule contains
+no world name or object-slot list.
+
 ## Draw order
 
 Terrain is drawn first. Layer-2 scenery is stable-sorted by vertical depth

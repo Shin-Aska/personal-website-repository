@@ -108,6 +108,8 @@ class WorldMap:
     foreground_count: int
     actor_count: int
     named_actors: tuple[dict[str, object], ...]
+    staged_object_count: int
+    staged_actors: tuple[dict[str, object], ...]
 
 
 @dataclass(frozen=True)
@@ -363,14 +365,22 @@ def composite_world_objects(
     raster: bytearray,
     raster_width: int,
     raster_height: int,
-) -> tuple[int, int, int, tuple[dict[str, object], ...], bytes | None]:
+) -> tuple[
+    int,
+    int,
+    int,
+    tuple[dict[str, object], ...],
+    int,
+    tuple[dict[str, object], ...],
+    bytes | None,
+]:
     actor_bank = decode_sprite_bank(world, entries[2])
     scenery_bank = decode_sprite_bank(world, entries[4])
     foreground_bank = decode_sprite_bank(world, entries[6])
     objects_offset, objects_size = entries[8]
     objects = world[objects_offset : objects_offset + objects_size]
     if len(objects) < 4:
-        return 0, 0, 0, (), None
+        return 0, 0, 0, (), 0, (), None
 
     directory_end = u16(objects, 2)
     if directory_end < 4 or directory_end > len(objects) or (directory_end - 4) % 8:
@@ -380,10 +390,31 @@ def composite_world_objects(
         tuple[int, int, int, int, list[Sprite | None], int, tuple[int, int] | None]
     ] = []
     named_actors: list[dict[str, object]] = []
+    staged_actors: list[dict[str, object]] = []
     foreground_drawables: list[tuple[int, int, int, int, tuple[int, int]]] = []
     actor_records = 0
     scenery_records = 0
     foreground_records = 0
+    staged_object_records = 0
+
+    # TOWN contains a five-member scripted cast parked together in the last
+    # map row, followed by two dormant pose/scenery objects in that same row.
+    # These are an engine staging cohort, not an encounter in Zaratan's sea:
+    # the actors have consecutive scripts FF68..FF6C. Detect the underlying
+    # convention rather than naming TOWN or hard-coding slots. An all-world
+    # audit finds single edge actors in HOLD and two in ROAD, but TOWN is the
+    # only archive with three or more actors in this one-tile southern strip.
+    southern_edge = raster_height - TILE_SIZE - 1
+    southern_actor_slots: set[int] = set()
+    for slot in range(slot_count):
+        record_offset, record_size, record_type = struct.unpack_from("<IHH", objects, 4 + slot * 8)
+        if record_type != 1 or not record_offset or record_size < 22:
+            continue
+        if record_offset + record_size > len(objects):
+            continue
+        if u16(objects, record_offset + 6) >= southern_edge:
+            southern_actor_slots.add(slot)
+    has_southern_staging_cohort = len(southern_actor_slots) >= 3
 
     for slot in range(slot_count):
         record_offset, record_size, record_type = struct.unpack_from("<IHH", objects, 4 + slot * 8)
@@ -394,23 +425,26 @@ def composite_world_objects(
             continue
         values = struct.unpack_from("<11H", record, 0)
         world_y, world_x = values[3], values[4]
+        is_staged = has_southern_staging_cohort and world_y >= southern_edge
 
         if record_type == 1:
             actor_records += 1
             sprite_id = values[10] & 0x7FFF
             name = actor_name(record)
             if name:
-                named_actors.append(
-                    {
-                        "id": slot,
-                        "name": name,
-                        "x": world_x,
-                        "y": world_y,
-                        "spriteId": sprite_id,
-                        "positionKind": "authored-spawn",
-                    }
-                )
+                actor = {
+                    "id": slot,
+                    "name": name,
+                    "x": world_x,
+                    "y": world_y,
+                    "spriteId": sprite_id,
+                    "positionKind": "engine-staging" if is_staged else "authored-spawn",
+                }
+                (staged_actors if is_staged else named_actors).append(actor)
         elif record_type in (2, 4) and values[5] == 2:
+            if is_staged:
+                staged_object_records += 1
+                continue
             # Script FA:F7 is the multi-frame genie/teleport effect.  Its
             # records describe mutually exclusive animation frames; drawing
             # every dormant frame at once creates the large blue-white burst
@@ -479,7 +513,16 @@ def composite_world_objects(
         roofed_raster = bytes(roofed)
 
     named_actors.sort(key=lambda actor: (int(actor["y"]), int(actor["x"]), str(actor["name"])))
-    return scenery_records, foreground_records, actor_records, tuple(named_actors), roofed_raster
+    staged_actors.sort(key=lambda actor: (int(actor["y"]), int(actor["x"]), str(actor["name"])))
+    return (
+        scenery_records,
+        foreground_records,
+        actor_records,
+        tuple(named_actors),
+        staged_object_records,
+        tuple(staged_actors),
+        roofed_raster,
+    )
 
 
 def read_world(path: Path) -> WorldMap:
@@ -534,13 +577,15 @@ def read_world(path: Path) -> WorldMap:
                 source = tile_y * TILE_SIZE
                 raster[destination : destination + TILE_SIZE] = tile[source : source + TILE_SIZE]
 
-    scenery_count, foreground_count, actor_count, named_actors, roofed_pixels = composite_world_objects(
-        world,
-        entries,
-        raster,
-        raster_width,
-        height * TILE_SIZE,
-    )
+    (
+        scenery_count,
+        foreground_count,
+        actor_count,
+        named_actors,
+        staged_object_count,
+        staged_actors,
+        roofed_pixels,
+    ) = composite_world_objects(world, entries, raster, raster_width, height * TILE_SIZE)
 
     engine_id = path.stem.upper()
     return WorldMap(
@@ -560,6 +605,8 @@ def read_world(path: Path) -> WorldMap:
         foreground_count=foreground_count,
         actor_count=actor_count,
         named_actors=named_actors,
+        staged_object_count=staged_object_count,
+        staged_actors=staged_actors,
     )
 
 
@@ -607,11 +654,13 @@ def build_catalogue(worlds: list[WorldMap]) -> dict[str, object]:
                 "foregroundCount": world.foreground_count,
                 "actorCount": world.actor_count,
                 "namedActors": world.named_actors,
+                "stagedObjectCount": world.staged_object_count,
+                "stagedActors": world.staged_actors,
             }
         )
     return {
-        "format": "Al-Qadim Cyberlore world atlas v8",
-        "rendering": "Terrain, opaque and transparent cached-origin runtime scenery, optional roof/foreground layer, NPC spawn metadata, and original 256-colour palette",
+        "format": "Al-Qadim Cyberlore world atlas v9",
+        "rendering": "Terrain, cached-origin runtime scenery excluding engine staging cohorts, optional roof/foreground layer, separate active and staged NPC metadata, and original 256-colour palette",
         "worldCount": len(entries),
         "worlds": entries,
     }
