@@ -12,6 +12,23 @@ repository.
 - `SAVEGAM6.DAT` through `SAVEGAM9.DAT` — occupied save slots.
 
 `SAVEGAM5.DAT` was not present in the source game directory when this dataset
-was collected. Screenshots are intentionally omitted: the planned
-debug-enabled emulator workflow should obtain coordinates, map identifiers,
-objects, and NPC state directly from the running game and its memory.
+was collected.
+
+## Screenshots
+
+`screenshots/reference-01.png` through `reference-11.png` preserve the exact
+order in which the reference captures were supplied. Keep near-duplicate
+frames: they record useful changes in NPC position, dropped-object state, and
+viewport presentation.
+
+- `reference-01.png`–`reference-03.png` — garden and large-well area.
+- `reference-04.png`–`reference-05.png` — western door and nearby NPC.
+- `reference-06.png`–`reference-07.png` — guarded door.
+- `reference-08.png` — decorated garden door.
+- `reference-09.png` — round-well garden.
+- `reference-10.png` — street NPC grouping.
+- `reference-11.png` — furnished interior beside an exterior path.
+
+The debug-enabled emulator should remain the source of truth for coordinates,
+map identifiers, objects, and NPC state. Use these screenshots to validate the
+final renderer's composition and appearance.
