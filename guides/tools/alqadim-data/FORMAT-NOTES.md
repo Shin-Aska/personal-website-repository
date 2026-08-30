@@ -114,7 +114,12 @@ file. The linked [development thread](https://tasvideos.org/Forum/Posts/399884)
 records that the author intended to make a JPC-rr TAS, published detailed route
 notes, and later reported that JPC-rr problems prevented work on the TAS. As of
 the 2026-08-30 check, neither page links a completed submission or downloadable
-JPC-rr input recording.
+JPC-rr input recording. TASVideos does have an indexed
+[Al-Qadim user-files page](https://tasvideos.org/UserFiles/Game/1641), but it is
+empty: it contains only the upload and all-user-files navigation, with no movie
+entry or download. Site searches for Al-Qadim submissions and JPC-rr movies
+likewise return no input file. Thus there is no public TAS input currently
+available from the project's own game, forum, submission, or user-file pages.
 
 Consequently, those notes cannot be replayed by DOSBox-X: they describe actions
 such as destinations and dialogue choices, not timestamped keyboard/mouse
