@@ -105,6 +105,35 @@ records represent mutually exclusive animation frames and are not baked.
 
 ## Runtime and visual validation
 
+### TAS-assisted traversal feasibility
+
+The public TASVideos material was checked before treating it as an emulator
+input source. The [game-resource page](https://tasvideos.org/GameResources/DOS/AlQadimTheGeniesCurse)
+contains route planning, item locations, and glitch descriptions, but no movie
+file. The linked [development thread](https://tasvideos.org/Forum/Posts/399884)
+records that the author intended to make a JPC-rr TAS, published detailed route
+notes, and later reported that JPC-rr problems prevented work on the TAS. As of
+the 2026-08-30 check, neither page links a completed submission or downloadable
+JPC-rr input recording.
+
+Consequently, those notes cannot be replayed by DOSBox-X: they describe actions
+such as destinations and dialogue choices, not timestamped keyboard/mouse
+events, initial machine state, executable hashes, or RNG state. DOSBox-X also
+cannot directly consume a hypothetical JPC-rr movie without translating its
+machine-level input stream and reproducing its initial disk and BIOS state.
+Calling a manual playthrough of the notes a TAS replay would give a false level
+of determinism and would not establish frame-to-world registration.
+
+A usable replacement would be either (1) the unpublished JPC-rr movie together
+with its initial-state disk image and version metadata, or (2) a DOSBox-X input
+movie made against the supplied version 1.10 installation. With either input,
+the useful validation procedure is to pause on each world transition, dump the
+loaded world id, player/camera coordinates, object table and roof state, and
+capture the 320-by-180 playfield. The route notes remain useful as a coverage
+check, but not as executable TAS data. In their absence, debugger warps and the
+supplied save slots are more reproducible ways to reach specific worlds than
+attempting to automate an entire mouse-driven playthrough.
+
 ### Scope
 
 There are two distinct levels of validation:
