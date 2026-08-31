@@ -30,63 +30,103 @@ TILE_SIZE = 16
 
 WORLD_LABELS = {
     "ACID": "Acid Dungeon",
-    "ACIDA": "Acid Dungeon — inner chamber",
-    "ALKATRZ": "Alkatraz",
-    "DEDHOLD": "Ships' Hold",
-    "FEUD": "Caliph's Palace — feud state",
-    "FINALA": "Unknown Plane — approach",
-    "FINALB": "Unknown Plane — finale",
+    "ACIDA": "Sorcerer's Tower",
+    "ALKATRZ": "Dungeon of Al'Katraz",
+    "DEDHOLD": "Rotting Ship's Hold",
+    "FEUD": "Island of Al'Katraz",
+    "FINALA": "Al-Naqqil",
+    "FINALB": "Unknown Plane",
     "HERMITA": "Isle of Shibaz — first region",
     "HERMITB": "Isle of Shibaz — second region",
     "HERMITC": "Isle of Shibaz — third region",
-    "HOLD": "Rotting Ships' Hold",
-    "LORDSA": "Sorcerer's Tower — first region",
-    "LORDSB": "Sorcerer's Tower — second region",
-    "LORDSC": "Sorcerer's Tower — third region",
-    "LORDSD": "Sorcerer's Tower — fourth region",
-    "LORDSE": "Sorcerer's Tower — final chamber",
-    "MAGROOM": "Isle of Hajar — magic room",
+    "HOLD": "Ship's Hold",
+    "LORDSA": "Isle of Jaza'ir Jiza — gate",
+    "LORDSB": "Isle of Jaza'ir Jiza — Noble Dao",
+    "LORDSC": "Isle of Jaza'ir Jiza — Noble Efreet",
+    "LORDSD": "Isle of Jaza'ir Jiza — Noble Marid",
+    "LORDSE": "Isle of Jaza'ir Jiza — Noble Djinni",
+    "MAGROOM": "Enchanted Platform",
     "NEWDUNG": "Caliph's New Dungeon",
-    "OASIS": "Bandar al-Sadat",
-    "OGRIMA": "Isle of Jaza'ir Jiza",
+    "OASIS": "Western Desert",
+    "OGRIMA": "Isle of Hajar",
     "OLDDUNG": "Old Dungeon",
     "OPENER": "Testing Grounds",
-    "PAL0": "Palace Facade",
+    "PAL0": "Caliph's Palace",
     "REEF": "Reef of the Dead",
-    "ROAD": "Western Desert",
-    "ROADB": "Isle of Aballat",
+    "ROAD": "Bandar al-Sa'adat",
+    "ROADB": "Palace Facade",
     "SENAT": "Isle of Senat",
     "SHIPA": "The Ship",
-    "SHIPB": "The Ship — later state",
+    "SHIPB": "The Ship — pirate encounter",
     "TOWN": "Zaratan",
-    "VOICE": "Al-Naqqil",
+    "VOICE": "Isle of Aballat",
 }
 
 ANNOTATION_KEYS = {
     "ACID": "map_acid_dungeon.png",
+    "ACIDA": "map_sorcerers_tower_l1.png",
     "ALKATRZ": "map_dungeon_alkatraz.png",
-    "DEDHOLD": "map_ships_hold.png",
-    "FINALA": "map_unknown_plane.png",
+    "DEDHOLD": "map_rotting_ships_hold.png",
+    "FEUD": "map_island_alkatraz.png",
+    "FINALA": "map_al_naqqil.png",
+    "FINALB": "map_unknown_plane.png",
     "HERMITA": "map_isle_shibaz_l1.png",
     "HERMITB": "map_isle_shibaz_l2.png",
     "HERMITC": "map_isle_shibaz_l3.png",
-    "HOLD": "map_rotting_ships_hold.png",
-    "LORDSA": "map_sorcerers_tower_l1.png",
-    "LORDSB": "map_sorcerers_tower_l2.png",
-    "MAGROOM": "map_isle_hajar.png",
+    "HOLD": "map_ships_hold.png",
+    "LORDSA": "map_isle_jaza_ir_jiza.png",
     "NEWDUNG": "map_caliphs_new_dungeon.png",
-    "OASIS": "map_bandar_al_sadat.png",
-    "OGRIMA": "map_isle_jaza_ir_jiza.png",
+    "OASIS": "map_western_desert.png",
+    "OGRIMA": "map_isle_hajar.png",
     "OLDDUNG": "map_old_dungeon.png",
     "OPENER": "map_testing_grounds.png",
-    "PAL0": "map_palace_facade.png",
+    "PAL0": "map_caliphs_palace.png",
     "REEF": "map_reef_of_dead.png",
-    "ROAD": "map_western_desert.png",
-    "ROADB": "map_isle_aballat.png",
+    "ROAD": "map_bandar_al_sadat.png",
+    "ROADB": "map_palace_facade.png",
     "SENAT": "map_isle_senat.png",
     "SHIPA": "map_the_ship.png",
+    "SHIPB": "map_the_ship.png",
     "TOWN": "map_zaratan.png",
-    "VOICE": "map_al_naqqil.png",
+    "VOICE": "map_isle_aballat.png",
+}
+
+CHART_OVERRIDES = {
+    "ACIDA": [
+        {
+            "annotationKey": "map_sorcerers_tower_l1.png",
+            "image": "images/alqadim/map_sorcerers_tower_l1.png",
+            "label": "Level 1",
+            "width": 1024,
+            "height": 1024,
+            "gameBounds": {"x": 225, "y": 0, "width": 319, "height": 508},
+        },
+        {
+            "annotationKey": "map_sorcerers_tower_l2.png",
+            "image": "images/alqadim/map_sorcerers_tower_l2.png",
+            "label": "Level 2",
+            "width": 1024,
+            "height": 1024,
+            "gameBounds": {"x": 144, "y": 642, "width": 496, "height": 352},
+        },
+    ],
+    "SHIPB": [
+        {
+            "annotationKey": "map_the_ship.png",
+            "image": "images/alqadim/map_the_ship.png",
+            "label": "Player vessel",
+            "width": 1024,
+            "height": 1024,
+            "gameBounds": {"x": 96, "y": 54, "width": 370, "height": 766},
+        }
+    ],
+}
+
+# The original engine member names are terse and sometimes counterintuitive;
+# these notes document the cluebook scope where a chart is shared by more than
+# one authored world state.
+ANNOTATION_NOTES = {
+    "SHIPB": "The cluebook charts the player's vessel only; this later game state adds the pirate ship alongside it.",
 }
 
 
@@ -432,6 +472,7 @@ def composite_world_objects(
             sprite_id = values[10] & 0x7FFF
             name = actor_name(record)
             if name:
+                sprite = actor_bank[sprite_id] if 0 <= sprite_id < len(actor_bank) else None
                 actor = {
                     "id": slot,
                     "name": name,
@@ -440,6 +481,17 @@ def composite_world_objects(
                     "spriteId": sprite_id,
                     "positionKind": "engine-staging" if is_staged else "authored-spawn",
                 }
+                if sprite is not None and sprite.kind in (0, 5):
+                    actor.update(
+                        {
+                            "spriteWidth": sprite.width,
+                            "spriteHeight": sprite.height,
+                            # Sprite headers use vertical/horizontal axis order.
+                            # Export conventional x/y hotspot names for the UI.
+                            "spriteHotspotX": sprite.anchor_y,
+                            "spriteHotspotY": sprite.anchor_x,
+                        }
+                    )
                 (staged_actors if is_staged else named_actors).append(actor)
         elif record_type in (2, 4) and values[5] == 2:
             if is_staged:
@@ -624,9 +676,38 @@ def write_indexed_png(path: Path, width: int, height: int, pixels: bytes, palett
     path.write_bytes(png)
 
 
+def write_actor_sprite_png(path: Path, sprite: Sprite, palette: bytes) -> None:
+    """Write one engine actor frame with palette-index FF transparency."""
+    if sprite.kind not in (0, 5):
+        raise ValueError(f"unsupported standalone actor sprite kind {sprite.kind}")
+    pixels = decode_planar_pixels(sprite.payload, sprite.width_quarters, sprite.rows)
+    rows = b"".join(
+        b"\0" + pixels[y * sprite.width : (y + 1) * sprite.width]
+        for y in range(sprite.height)
+    )
+    alpha = bytearray((255,) * 256)
+    if sprite.kind == 5:
+        alpha[0xFF] = 0
+    png = bytearray(b"\x89PNG\r\n\x1a\n")
+    png += png_chunk(b"IHDR", struct.pack(">IIBBBBB", sprite.width, sprite.height, 8, 3, 0, 0, 0))
+    png += png_chunk(b"PLTE", palette)
+    png += png_chunk(b"tRNS", bytes(alpha))
+    png += png_chunk(b"IDAT", zlib.compress(rows, 9))
+    png += png_chunk(b"IEND", b"")
+    path.write_bytes(png)
+
+
 def build_catalogue(worlds: list[WorldMap]) -> dict[str, object]:
     entries = []
     for world in worlds:
+        def actor_entry(actor: dict[str, object]) -> dict[str, object]:
+            entry = dict(actor)
+            if "spriteWidth" in entry:
+                entry["spriteImage"] = (
+                    f"images/alqadim-atlas/actors/{world.engine_id.lower()}-{entry['spriteId']}.png"
+                )
+            return entry
+
         entries.append(
             {
                 "id": world.engine_id.lower(),
@@ -647,20 +728,22 @@ def build_catalogue(worlds: list[WorldMap]) -> dict[str, object]:
                 "tileCount": world.tile_count,
                 "annotationKey": world.annotation_key,
                 "manualImage": f"images/alqadim/{world.annotation_key}" if world.annotation_key else None,
+                "charts": CHART_OVERRIDES.get(world.engine_id),
+                "chartNote": ANNOTATION_NOTES.get(world.engine_id),
                 "sourceFile": f"WORLDS/{world.engine_id}.LIB",
                 "sourceBytes": world.source_size,
                 "sourceSha256": world.source_sha256,
                 "sceneryCount": world.scenery_count,
                 "foregroundCount": world.foreground_count,
                 "actorCount": world.actor_count,
-                "namedActors": world.named_actors,
+                "namedActors": [actor_entry(actor) for actor in world.named_actors],
                 "stagedObjectCount": world.staged_object_count,
-                "stagedActors": world.staged_actors,
+                "stagedActors": [actor_entry(actor) for actor in world.staged_actors],
             }
         )
     return {
-        "format": "Al-Qadim Cyberlore world atlas v9",
-        "rendering": "Terrain, cached-origin runtime scenery excluding engine staging cohorts, optional roof/foreground layer, separate active and staged NPC metadata, and original 256-colour palette",
+        "format": "Al-Qadim Cyberlore world atlas v10",
+        "rendering": "Terrain, cached-origin runtime scenery excluding engine staging cohorts, optional roof/foreground layer, transparent authentic actor-frame assets, separate active and staged NPC metadata, and original 256-colour palette",
         "worldCount": len(entries),
         "worlds": entries,
     }
@@ -679,6 +762,8 @@ def main() -> None:
         raise SystemExit(f"No world libraries found in {worlds_dir}")
 
     args.output.mkdir(parents=True, exist_ok=True)
+    actor_output = args.output / "actors"
+    actor_output.mkdir(parents=True, exist_ok=True)
     worlds: list[WorldMap] = []
     for path in files:
         world = read_world(path)
@@ -699,6 +784,21 @@ def main() -> None:
                 world.roofed_pixels,
                 world.palette,
             )
+        source = path.read_bytes()
+        actor_bank = decode_sprite_bank(source, archive_entries(source)[2])
+        actor_sprite_ids = {
+            int(actor["spriteId"])
+            for actor in (*world.named_actors, *world.staged_actors)
+            if "spriteWidth" in actor
+        }
+        for sprite_id in sorted(actor_sprite_ids):
+            sprite = actor_bank[sprite_id]
+            if sprite is not None and sprite.kind in (0, 5):
+                write_actor_sprite_png(
+                    actor_output / f"{world.engine_id.lower()}-{sprite_id}.png",
+                    sprite,
+                    world.palette,
+                )
         print(f"rendered {world.engine_id:8} {world.width:3}x{world.height:<3} -> {image_path}")
 
     catalogue = build_catalogue(worlds)

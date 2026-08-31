@@ -29,6 +29,35 @@ def drawable_record(world_y: int, world_x: int, layer: int, sprite_id: int, top:
 
 
 class AtlasFormatTests(unittest.TestCase):
+    def test_world_names_and_cluebook_charts_follow_game_evidence(self) -> None:
+        expected = {
+            "ACIDA": ("Sorcerer's Tower", "map_sorcerers_tower_l1.png"),
+            "DEDHOLD": ("Rotting Ship's Hold", "map_rotting_ships_hold.png"),
+            "FEUD": ("Island of Al'Katraz", "map_island_alkatraz.png"),
+            "FINALA": ("Al-Naqqil", "map_al_naqqil.png"),
+            "FINALB": ("Unknown Plane", "map_unknown_plane.png"),
+            "HOLD": ("Ship's Hold", "map_ships_hold.png"),
+            "OASIS": ("Western Desert", "map_western_desert.png"),
+            "OGRIMA": ("Isle of Hajar", "map_isle_hajar.png"),
+            "PAL0": ("Caliph's Palace", "map_caliphs_palace.png"),
+            "ROAD": ("Bandar al-Sa'adat", "map_bandar_al_sadat.png"),
+            "ROADB": ("Palace Facade", "map_palace_facade.png"),
+            "VOICE": ("Isle of Aballat", "map_isle_aballat.png"),
+        }
+        for engine_id, (title, annotation_key) in expected.items():
+            with self.subTest(engine_id=engine_id):
+                self.assertEqual(atlas.WORLD_LABELS[engine_id], title)
+                self.assertEqual(atlas.ANNOTATION_KEYS[engine_id], annotation_key)
+
+        self.assertEqual(atlas.ANNOTATION_KEYS["SHIPA"], "map_the_ship.png")
+        self.assertEqual(atlas.ANNOTATION_KEYS["SHIPB"], "map_the_ship.png")
+        self.assertIn("player's vessel only", atlas.ANNOTATION_NOTES["SHIPB"])
+        self.assertEqual(
+            [chart["label"] for chart in atlas.CHART_OVERRIDES["ACIDA"]],
+            ["Level 1", "Level 2"],
+        )
+        self.assertEqual(atlas.CHART_OVERRIDES["SHIPB"][0]["label"], "Player vessel")
+
     def test_planar_pixels_are_interleaved_by_vga_plane(self) -> None:
         self.assertEqual(
             atlas.decode_planar_pixels(bytes((1, 5, 2, 6, 3, 7, 4, 8)), 2, 1),
@@ -101,7 +130,7 @@ class AtlasFormatTests(unittest.TestCase):
             (2, drawable_record(60, 20, 2, 0, 60, 20)),
         )
         raster = bytearray(64 * 64)
-        with patch.object(atlas, "decode_sprite_bank", side_effect=[[], [sprite], []]):
+        with patch.object(atlas, "decode_sprite_bank", side_effect=[[sprite], [sprite], []]):
             scenery, _, actors, names, staged, staged_names, _ = atlas.composite_world_objects(
                 blob, [(0, 0)] * 8 + [(0, len(blob))], raster, 64, 64
             )
@@ -109,6 +138,8 @@ class AtlasFormatTests(unittest.TestCase):
         self.assertEqual((scenery, actors, names, staged), (0, 3, (), 1))
         self.assertEqual([actor["name"] for actor in staged_names], ["Caliph", "Sailor2", "Sailor1"])
         self.assertTrue(all(actor["positionKind"] == "engine-staging" for actor in staged_names))
+        self.assertTrue(all(actor["spriteWidth"] == 4 for actor in staged_names))
+        self.assertTrue(all(actor["spriteHeight"] == 1 for actor in staged_names))
         self.assertEqual(raster, bytes(64 * 64))
 
 
