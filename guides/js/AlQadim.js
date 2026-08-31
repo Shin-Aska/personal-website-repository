@@ -2,58 +2,44 @@
 // Pattern matched to Albion.js and Ultima7.js
 
 const DB = {
-    character: {
-        class: "Corsair",
-        description: "A specialized fighter archetype native to Zakhara. Corsairs combine martial prowess with sailors' agility, specialized swordplay moves, and basic magical device activation.",
-        stats: [
-            { name: "Strength (STR)", value: 16, description: "Governs base melee damage and weapon accuracy." },
-            { name: "Dexterity (DEX)", value: 15, description: "Affects armor class rating and projectile evasion." },
-            { name: "Intelligence (INT)", value: 12, description: "Affects magical device understanding and item usage." },
-            { name: "Constitution (CON)", value: 14, description: "Determines hit point growth and poison resistance." },
-            { name: "Charisma (CHA)", value: 15, description: "Influences reaction adjustments from NPCs and genies." }
-        ]
-    },
     combatMoves: [
         {
-            name: "Hack",
-            effect: "A heavy downward slash dealing +50% physical damage and breaking through enemy shields.",
-            trainer: "Zaratan Training Compound / Academy Grounds",
-            requirements: "Base level 2. Activated by holding the attack button until the scimitar gem lights up yellow.",
-            class: "hack"
+            sequence: "01",
+            name: "Quick Swing",
+            coverage: "Front",
+            effect: "A fast scimitar strike in the direction the Corsair faces—or toward the sword cursor when using the mouse.",
+            training: "Available at second level",
+            control: "Click the action button",
+            class: "quick"
         },
         {
-            name: "Sweep",
-            effect: "A wide 180-degree sweep hitting multiple enemies standing in front of you.",
-            trainer: "Capital City (Bandar al Sa'adat) - Shop with no sign",
-            requirements: "Base level 4. Activated by holding attack until the scimitar gem flashes orange.",
-            class: "sweep"
+            sequence: "02",
+            name: "Wide Swing",
+            coverage: "Front + both sides",
+            effect: "A stronger cut that damages monsters in front of the Corsair and to his left and right.",
+            training: "Learn from Zubakon after becoming eligible",
+            control: "Release when the second action circle lights orange",
+            class: "wide"
         },
         {
-            name: "Twirling Sweep",
-            effect: "A full 360-degree spin-strike clearing all surrounding enemies and providing brief invincibility frames.",
-            trainer: "Capital City (Bandar al Sa'adat) - Shop with no sign",
-            requirements: "Base level 6. Activated by holding attack until the scimitar gem shines bright red.",
-            class: "twirling"
+            sequence: "03",
+            name: "Full-Circle Swing",
+            coverage: "All sides",
+            effect: "The most powerful swing: a complete 360-degree cut that also catches monsters behind the Corsair.",
+            training: "Learn from Zubakon after later progression",
+            control: "Release when the third action circle lights orange",
+            class: "circle"
         }
     ],
     moonstoneShards: [
-        { name: "Lightning", charges: 25, effect: "Shoots bouncing electrical bolts dealing massive chain damage.", notes: "Extremely limited. Best saved for bosses/large mobs." },
-        { name: "Cone of Cold", charges: 12, effect: "Emits a wide freeze spray in a single direction, stopping enemies.", notes: "Excellent crowd control tool." },
-        { name: "Water Blast", charges: 15, effect: "Launches high-velocity water projectiles.", notes: "Deals double damage to Fire Elementals and Efreet minions." },
-        { name: "Sunfire", charges: 10, effect: "Triggers a fireball blast upon impact, leaving burning terrain.", notes: "Use from range to avoid self-inflicted fire damage." },
-        { name: "Sun Scorch", charges: 15, effect: "Ignites a targeted enemy and deals damage over time.", notes: "Highly effective against plant-like creatures." },
-        { name: "Fire Arrow", charges: 7, effect: "Launches rapid fire projectiles.", notes: "Common shard, useful for standard combat." },
-        { name: "Magic Missile", charges: 12, effect: "Fires homing energy missiles that never miss.", notes: "Abundant and reliable for flying targets." }
-    ],
-    potions: [
-        { name: "Healing Potion", effect: "Restores a small portion of hit points.", source: "Supernatural Emporium (50G)" },
-        { name: "Extra Healing Potion", effect: "Fully restores hit points. Crucial consumable.", source: "Supernatural Emporium (120G)" },
-        { name: "Giant Strength Potion", effect: "Increases STR to 22, substantially raising physical hit damage temporarily.", source: "Supernatural Emporium (150G)" },
-        { name: "Invulnerability Potion", effect: "Reduces all incoming damage to 1 and boosts armor class temporarily.", source: "Supernatural Emporium (200G)" },
-        { name: "Oil of Fire Invulnerability", effect: "Grants 100% immunity to fire damage and fire elementals.", source: "Supernatural Emporium (100G)" },
-        { name: "Oil of Air Invulnerability", effect: "Grants immunity to air blasts and elemental storm strikes.", source: "Supernatural Emporium (100G)" },
-        { name: "Oil of Earth Invulnerability", effect: "Grants immunity to falling rock debris and seismic shocks.", source: "Supernatural Emporium (100G)" },
-        { name: "Oil of Water Invulnerability", effect: "Grants immunity to drowning and water blast damage.", source: "Supernatural Emporium (100G)" }
+        { name: "Cone of Cold", range: "10 yd", damage: "12–30", effect: "A cone of extreme cold that freezes everything it touches." },
+        { name: "Flame Arrow", range: "20 yd", damage: "1–6 + 4–24 fire", effect: "A fiery bolt whose larger damage applies to creatures affected by flame." },
+        { name: "Lightning Bolt", range: "100 yd", damage: "6–36 per target", effect: "Strikes every target in its path and can ricochet from walls—even back toward the caster." },
+        { name: "Magic Missile", range: "120 yd", damage: "6–15 total", effect: "Three missiles seek the nearest visible enemy in the direction faced." },
+        { name: "Sundazzle", range: "—", damage: "No damage", effect: "Dancing colored spheres temporarily blind the target." },
+        { name: "Sunfire", range: "70 yd", damage: "6–36", effect: "An explosive ball of solar flame; the Corsair is never damaged by his own blast." },
+        { name: "Sunscorch", range: "60 yd", damage: "4–24 + 2–8 metal", effect: "An unerring heat beam that curves around obstacles and punishes targets touching substantial metal." },
+        { name: "Water Blast", range: "60 yd", damage: "2–12", effect: "A fast-moving shot of water that seeks its target like a magic missile." }
     ],
     shops: [
         {
@@ -92,11 +78,11 @@ const DB = {
         { name: "Air Elemental", location: "Desert, Outer Planes", danger: "Medium", strategy: "Avoid storm spins. Attack immediately after they finish spinning." },
         { name: "Giant Boar", location: "Oasis Outskirts", danger: "Medium", strategy: "Charges in straight lines. Dodge sideways, then strike from behind." },
         { name: "Hornets", location: "Western Desert Oasis", danger: "Low", strategy: "Ranged sling attacks or Magic Missile shards deal with them quickly." },
-        { name: "Zombie & Skeleton", location: "Deadman's Reef, Dungeons", danger: "Medium", strategy: "Slow moving. Keep distance, utilize Hack moves to break shields." },
+        { name: "Zombie & Skeleton", location: "Deadman's Reef, Dungeons", danger: "Medium", strategy: "Slow moving. Keep distance and ready the strongest available sword swing before closing." },
         { name: "Acid Slime", location: "Sorcerer's Tower (Acid Dungeon)", danger: "Medium", strategy: "Leaves toxic pools. Do not stand in green residue. Strike from range." },
         { name: "Fire Elemental", location: "Isle of Senat, Dungeons", danger: "High", strategy: "Immune to fire. Apply Water Blast shards or Oil of Fire Invulnerability." },
         { name: "Hag", location: "Isle of Shibaz Outskirts", danger: "High", strategy: "Casts magic missile streams. Evade behind columns, strike during cooldown." },
-        { name: "Scaly-Horned Ogre", location: "Library of Shibaz, Dungeons", danger: "High", strategy: "Huge health pool. Evade heavy clubs. Charge Hack move." },
+        { name: "Scaly-Horned Ogre", location: "Library of Shibaz, Dungeons", danger: "High", strategy: "Huge health pool. Evade heavy clubs and ready a strong sword swing before closing." },
         { name: "Cyclops & Ettin", location: "Dungeons, Al'Katraz", danger: "High", strategy: "Devastating melee damage. Run in, hit once, back out. Use Giant Strength." },
         { name: "Nameless One (Mage)", location: "Al-Naqqil, Outer Planes", danger: "Fatal", strategy: "Spams magical missiles and elementals. Must use Idrid's Veil or reflect spells." }
     ],
@@ -210,7 +196,7 @@ const DB = {
                 { id: "ch6_3", text: "Visit the Closed Inn (Traveler's Rest) and converse with patrons." }
             ],
             optional: [
-                { id: "ch6_4", text: "Visit the Trainer (Shop with no sign) to learn Sweep & Twirling Sweep." },
+                { id: "ch6_4", text: "Visit Zubakon at the shop with no sign to learn any new sword swings you are eligible for." },
                 { id: "ch6_5", text: "Gamble at the Sand Point table using optimal binary search strategy." }
             ]
         },
@@ -387,15 +373,64 @@ const DB = {
     ]
 };
 
+// Walkthrough-to-atlas route registry. Keep this JSON-shaped so coverage tests
+// can verify that every chapter links only to decoded world ids.
+const CHAPTER_ATLAS_ROUTES = Object.freeze({
+    "1": ["opener"],
+    "2": ["town"],
+    "3": ["oasis"],
+    "4": ["reef", "dedhold", "shipa"],
+    "5": ["acida", "acid"],
+    "6": ["road"],
+    "7": ["roadb", "pal0"],
+    "8": ["hermita"],
+    "9": ["hermitb", "hermitc"],
+    "10": ["senat", "lordsa", "lordsb", "lordsc", "lordsd", "lordse"],
+    "11": ["road", "roadb", "pal0"],
+    "12": ["olddung"],
+    "13": ["newdung"],
+    "14": ["pal0"],
+    "15": ["feud"],
+    "16": ["alkatrz"],
+    "17": ["voice"],
+    "18": ["finala"],
+    "19": ["finalb"]
+});
+
+// Raw engine labels are sometimes role names or abbreviated script labels.
+// These aliases are limited to identities corroborated by the cluebook text.
+const ATLAS_ACTOR_CLUEBOOK_ALIASES = Object.freeze({
+    "alkatrz": {
+        "Alk_ettin": "Albino Ettin",
+        "Merc_leader": "Iskar",
+        "Alk_mage": "Kevric",
+        "your_brother": "Tarik Al-Hazrad"
+    },
+    "feud": {
+        "Ganleader": "Ra’is Saris",
+        "Razleader": "Ra’is Taraq"
+    },
+    "hold": {
+        "Your_brother": "Tarik Al-Hazrad"
+    },
+    "newdung": {
+        "Alhazrad": "Zubin al-Hazrad"
+    },
+    "town": {
+        "Family Genie": "Muliban"
+    }
+});
+
+const ATLAS_CLUEBOOK_ALIGNMENT_RADIUS = 64;
+
 // State Management
 const QUEST_STORAGE_KEY = 'alqadim.questState.v1';
-const ART_MODE_KEY = 'alqadim.artMode.v1';
 
 let questState = {};
-let currentArtMode = 'remastered'; // default
 let currentAtlasWorld = 'town';
 let currentAtlasView = 'game';
 let currentAtlasTab = 'people';
+let currentAtlasChartKey = null;
 let annotationsDB = {};
 let atlasMap = null;
 let atlasImageLayer = null;
@@ -406,8 +441,38 @@ let atlasDisplaySize = { width: 0, height: 0 };
 let atlasLoadToken = 0;
 let atlasControlsBound = false;
 let atlasHashRead = false;
+let atlasHoverCardPinned = false;
 let aiHistory = [];
 let questPrompts = {};
+
+const ATLAS_CHART_SIZES = {
+    'map_testing_grounds.png': [1024, 1024],
+    'map_zaratan.png': [1024, 1024],
+    'map_western_desert.png': [1024, 1024],
+    'map_reef_of_dead.png': [1024, 1024],
+    'map_rotting_ships_hold.png': [1024, 1024],
+    'map_the_ship.png': [1024, 1024],
+    'map_sorcerers_tower_l1.png': [1024, 1024],
+    'map_acid_dungeon.png': [1024, 1024],
+    'map_sorcerers_tower_l2.png': [1024, 1024],
+    'map_bandar_al_sadat.png': [1024, 1024],
+    'map_palace_facade.png': [1024, 1024],
+    'map_caliphs_palace.png': [1024, 1024],
+    'map_caliphs_new_dungeon.png': [1024, 1024],
+    'map_isle_shibaz_l1.png': [1024, 1024],
+    'map_isle_shibaz_l2.png': [1024, 1024],
+    'map_isle_shibaz_l3.png': [1024, 1024],
+    'map_isle_jaza_ir_jiza.png': [1024, 1024],
+    'map_isle_senat.png': [1024, 1024],
+    'map_old_dungeon.png': [781, 655],
+    'map_isle_hajar.png': [654, 451],
+    'map_island_alkatraz.png': [913, 595],
+    'map_dungeon_alkatraz.png': [912, 764],
+    'map_ships_hold.png': [306, 491],
+    'map_isle_aballat.png': [789, 615],
+    'map_al_naqqil.png': [725, 588],
+    'map_unknown_plane.png': [911, 569]
+};
 
 function saveQuestState() {
     localStorage.setItem(QUEST_STORAGE_KEY, JSON.stringify(questState));
@@ -468,30 +533,39 @@ function initTabs() {
     const nav = document.getElementById('main-nav');
     const sections = document.querySelectorAll('.content-section');
 
-    nav.addEventListener('click', (e) => {
-        if (e.target.classList.contains('nav-button')) {
-            const targetId = e.target.dataset.target;
+    function activateGuideSection(targetId) {
+        const activeButton = nav.querySelector(`.nav-button[data-target="${targetId}"]`);
+        const activeSection = document.getElementById(targetId);
+        if (!activeButton || !activeSection?.classList.contains('content-section')) return;
 
-            // Update buttons
-            nav.querySelectorAll('.nav-button').forEach(btn => btn.classList.remove('active'));
-            e.target.classList.add('active');
+        nav.querySelectorAll('.nav-button').forEach(button => {
+            const isActive = button === activeButton;
+            button.classList.toggle('active', isActive);
+            if (isActive) button.setAttribute('aria-current', 'page');
+            else button.removeAttribute('aria-current');
+        });
+        sections.forEach(section => section.classList.toggle('active', section === activeSection));
 
-            // Update sections
-            sections.forEach(sec => {
-                if (sec.id === targetId) {
-                    sec.classList.add('active');
-                } else {
-                    sec.classList.remove('active');
-                }
-            });
-
-            // If switching to Atlas, sync layout
-            if (targetId === 'atlas') {
-                renderAtlas();
-            } else if (window.location.hash.startsWith('#atlas=')) {
-                history.replaceState(null, '', `${window.location.pathname}${window.location.search}`);
-            }
+        if (targetId === 'atlas') {
+            renderAtlas();
+        } else if (window.location.hash.startsWith('#atlas=')) {
+            history.replaceState(null, '', `${window.location.pathname}${window.location.search}`);
         }
+    }
+
+    nav.addEventListener('click', (e) => {
+        const button = e.target.closest('.nav-button');
+        if (button && nav.contains(button)) activateGuideSection(button.dataset.target);
+    });
+
+    document.addEventListener('click', (e) => {
+        const guideLink = e.target.closest('[data-guide-target]');
+        if (!guideLink) return;
+        activateGuideSection(guideLink.dataset.guideTarget);
+        document.querySelector('.aq-header')?.scrollIntoView({
+            behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
+            block: 'start'
+        });
     });
 
     // Atlas links are durable and restore the correct guide tab on reload.
@@ -500,87 +574,36 @@ function initTabs() {
     }
 }
 
-function initArtSwitcher() {
-    const classicBtn = document.getElementById('art-classic');
-    const remasteredBtn = document.getElementById('art-remastered');
-
-    const savedMode = localStorage.getItem(ART_MODE_KEY);
-    if (savedMode === 'classic' || savedMode === 'remastered') {
-        currentArtMode = savedMode;
-    }
-
-    function applyArtMode(mode) {
-        currentArtMode = mode;
-        localStorage.setItem(ART_MODE_KEY, mode);
-
-        if (mode === 'classic') {
-            classicBtn.classList.add('active');
-            remasteredBtn.classList.remove('active');
-        } else {
-            remasteredBtn.classList.add('active');
-            classicBtn.classList.remove('active');
-        }
-
-        // Swap illustrations on the page
-        document.querySelectorAll('[data-art-classic]').forEach(el => {
-            const classicSrc = el.dataset.artClassic;
-            const remasteredSrc = el.dataset.artRemastered;
-            el.src = (mode === 'classic') ? classicSrc : remasteredSrc;
-        });
-    }
-
-    classicBtn.addEventListener('click', () => applyArtMode('classic'));
-    remasteredBtn.addEventListener('click', () => applyArtMode('remastered'));
-
-    applyArtMode(currentArtMode);
-}
-
 function renderCharacter() {
-    const statsGrid = document.getElementById('character-stats-grid');
-    if (statsGrid) {
-        statsGrid.innerHTML = DB.character.stats.map(s => `
-            <div class="p-4 rounded bg-[#101426] border border-gray-800">
-                <h4 class="font-bold text-sm text-[var(--aq-accent-gold)]">${s.name}</h4>
-                <div class="text-2xl font-extrabold mt-1 text-[var(--aq-text)]">${s.value}</div>
-                <p class="text-xs text-[var(--aq-text-muted)] mt-1">${s.description}</p>
-            </div>
-        `).join('');
-    }
-
     const movesGrid = document.getElementById('combat-moves-grid');
     if (movesGrid) {
         movesGrid.innerHTML = DB.combatMoves.map(m => `
-            <div class="move-card ${m.class} aq-card p-5">
-                <h4 class="text-xl font-bold text-[var(--aq-accent-sand)]">${m.name}</h4>
-                <p class="text-sm mt-2 text-[var(--aq-text)]">${m.effect}</p>
-                <div class="mt-4 space-y-1 text-xs text-[var(--aq-text-muted)] border-t border-gray-800/60 pt-3">
-                    <div><span class="font-semibold text-gray-400">Where to learn:</span> ${m.trainer}</div>
-                    <div><span class="font-semibold text-gray-400">Controls:</span> ${m.requirements}</div>
+            <article class="corsair-swing-card ${m.class}">
+                <div class="corsair-swing-card__top">
+                    <span>${m.sequence}</span>
+                    <small>${m.coverage}</small>
                 </div>
-            </div>
+                <h4>${m.name}</h4>
+                <p>${m.effect}</p>
+                <div class="corsair-swing-card__details">
+                    <div><strong>Training</strong><span>${m.training}</span></div>
+                    <div><strong>Input</strong><span>${m.control}</span></div>
+                </div>
+            </article>
         `).join('');
     }
 
-    const shardsTable = document.getElementById('shards-table');
-    if (shardsTable) {
-        shardsTable.innerHTML = DB.moonstoneShards.map(s => `
-            <tr class="hover:bg-gray-800/30">
-                <td class="font-bold text-[var(--aq-accent-teal)]">${s.name}</td>
-                <td>${s.charges}</td>
-                <td>${s.effect}</td>
-                <td class="text-xs text-[var(--aq-text-muted)]">${s.notes}</td>
-            </tr>
-        `).join('');
-    }
-
-    const potionsTable = document.getElementById('potions-table');
-    if (potionsTable) {
-        potionsTable.innerHTML = DB.potions.map(p => `
-            <tr class="hover:bg-gray-800/30">
-                <td class="font-bold text-[var(--aq-accent-gold)]">${p.name}</td>
-                <td>${p.effect}</td>
-                <td class="text-xs text-[var(--aq-text-muted)]">${p.source}</td>
-            </tr>
+    const shardsGrid = document.getElementById('shards-grid');
+    if (shardsGrid) {
+        shardsGrid.innerHTML = DB.moonstoneShards.map((s, index) => `
+            <article class="corsair-shard-card" style="--shard-index: ${index}">
+                <div class="corsair-shard-card__head"><span aria-hidden="true"></span><h4>${s.name}</h4></div>
+                <dl>
+                    <div><dt>Range</dt><dd>${s.range}</dd></div>
+                    <div><dt>Damage</dt><dd>${s.damage}</dd></div>
+                </dl>
+                <p>${s.effect}</p>
+            </article>
         `).join('');
     }
 }
@@ -602,6 +625,8 @@ function renderWalkthrough() {
                 </button>
                 <div id="chapter-content-${ch.id}" class="chapter-content hidden px-5 py-4 border-t border-gray-800/50 bg-[#0f1224]/50">
                     <p class="text-sm text-[var(--aq-text-muted)] mb-4 italic">${ch.summary}</p>
+
+                    ${renderChapterAtlasRoute(ch)}
                     
                     <!-- Special warning boxes for stealth chapters -->
                     ${[7, 13, 14].includes(ch.id) ? `
@@ -661,6 +686,43 @@ function renderWalkthrough() {
     }).join('');
 }
 
+function renderChapterAtlasRoute(chapter) {
+    const worlds = (CHAPTER_ATLAS_ROUTES[String(chapter.id)] || [])
+        .map(worldId => atlasData().worlds.find(world => world.id === worldId))
+        .filter(Boolean);
+    if (!worlds.length) return '';
+    return `
+        <aside class="chapter-atlas-route" aria-label="Atlas maps for chapter ${chapter.id}">
+            <div class="chapter-atlas-route__intro">
+                <span>Atlas route</span>
+                <small>Open the decoded world without losing checklist progress.</small>
+            </div>
+            <div class="chapter-atlas-route__links">
+                ${worlds.map(world => `
+                    <button type="button" onclick="openWalkthroughAtlas('${escapeAtlasText(world.id)}')" aria-label="Open ${escapeAtlasText(world.title)} in the Atlas">
+                        <span aria-hidden="true">⌖</span>${escapeAtlasText(world.title)}<b aria-hidden="true">→</b>
+                    </button>
+                `).join('')}
+            </div>
+        </aside>
+    `;
+}
+
+function openWalkthroughAtlas(worldId) {
+    const world = atlasData().worlds.find(item => item.id === worldId);
+    const atlasButton = document.querySelector('.nav-button[data-target="atlas"]');
+    if (!world || !atlasButton) return;
+    currentAtlasWorld = world.id;
+    currentAtlasView = 'game';
+    currentAtlasChartKey = null;
+    atlasButton.click();
+    selectAtlasMap(world.id);
+    document.getElementById('atlas')?.scrollIntoView({
+        behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
+        block: 'start'
+    });
+}
+
 function toggleChapter(id) {
     const panel = document.getElementById(`chapter-content-${id}`);
     const headers = document.querySelectorAll('.chapter-header');
@@ -714,8 +776,50 @@ function updateAtlasHash() {
     if (window.location.hash !== next) history.replaceState(null, '', next);
 }
 
+function atlasCharts(world) {
+    if (!world) return [];
+    const configured = Array.isArray(world.charts) && world.charts.length
+        ? world.charts
+        : (world.annotationKey ? [{ annotationKey: world.annotationKey, image: world.manualImage }] : []);
+    return configured.map((chart, index) => {
+        const [fallbackWidth, fallbackHeight] = ATLAS_CHART_SIZES[chart.annotationKey] || [1024, 1024];
+        return {
+            annotationKey: chart.annotationKey,
+            image: chart.image || `images/alqadim/${chart.annotationKey}`,
+            label: chart.label || (configured.length > 1 ? `Chart ${index + 1}` : 'Cluebook chart'),
+            width: Number(chart.width || fallbackWidth),
+            height: Number(chart.height || fallbackHeight),
+            gameBounds: chart.gameBounds || { x: 0, y: 0, width: world.width, height: world.height }
+        };
+    }).filter(chart => chart.annotationKey && annotationsDB[chart.annotationKey]);
+}
+
+function atlasActiveChart(world) {
+    const charts = atlasCharts(world);
+    return charts.find(chart => chart.annotationKey === currentAtlasChartKey) || charts[0] || null;
+}
+
+function atlasAnnotationSets(world) {
+    return atlasCharts(world).map(chart => ({ chart, notes: annotationsDB[chart.annotationKey] }));
+}
+
 function atlasAnnotations(world) {
-    return world?.annotationKey ? annotationsDB[world.annotationKey] : null;
+    const sets = atlasAnnotationSets(world);
+    if (!sets.length) return null;
+    return {
+        source_pages: [...new Set(sets.map(({ notes }) => notes.source_pages).filter(Boolean))].join(', '),
+        inhabitants: sets.flatMap(({ chart, notes }) =>
+            (notes.inhabitants || []).map(person => ({ ...person, chartKey: chart.annotationKey, chartLabel: chart.label }))
+        ),
+        locations: sets.flatMap(({ chart, notes }) =>
+            (notes.locations || []).map(location => ({ ...location, chartKey: chart.annotationKey, chartLabel: chart.label }))
+        )
+    };
+}
+
+function atlasLocationNotes(world, location) {
+    const key = location?.chartKey || atlasActiveChart(world)?.annotationKey || world?.annotationKey;
+    return key ? annotationsDB[key] : null;
 }
 
 function atlasSearchHaystack(world) {
@@ -755,6 +859,7 @@ function bindAtlasControls() {
     document.getElementById('atlas-search-input')?.addEventListener('input', renderAtlasWorldList);
     document.getElementById('atlas-view-game')?.addEventListener('click', () => setAtlasView('game'));
     document.getElementById('atlas-view-manual')?.addEventListener('click', () => setAtlasView('manual'));
+    document.getElementById('atlas-chart-select')?.addEventListener('change', event => setAtlasChart(event.target.value));
     document.getElementById('atlas-fit-map')?.addEventListener('click', fitAtlasMap);
     document.getElementById('atlas-roof-toggle')?.addEventListener('change', () => loadAtlasImage(atlasWorldById(currentAtlasWorld)));
     document.getElementById('atlas-grid-toggle')?.addEventListener('change', renderAtlasGrid);
@@ -789,7 +894,7 @@ function ensureAtlasMap() {
         const readout = document.getElementById('atlas-coordinate-readout');
         if (readout) readout.textContent = currentAtlasView === 'game'
             ? 'Move across the map to inspect tile coordinates.'
-            : 'Official cluebook chart; numbered circles correspond to the landmark list.';
+            : atlasManualReadout(atlasWorldById(currentAtlasWorld));
     });
 }
 
@@ -819,6 +924,182 @@ function renderAtlasGrid() {
     atlasGridLayer = L.layerGroup(lines).addTo(atlasMap);
 }
 
+function atlasNameKey(value) {
+    return String(value ?? '')
+        .normalize('NFKD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, ' ')
+        .trim();
+}
+
+function matchingAtlasActor(world, personName) {
+    const personKey = atlasNameKey(personName);
+    const personFirst = personKey.split(' ')[0];
+    if (!personFirst || personFirst.length < 4) return null;
+    const aliases = ATLAS_ACTOR_CLUEBOOK_ALIASES[world.id] || {};
+    return (world.namedActors || []).find(actor => {
+        const actorKey = atlasNameKey(actor.name);
+        const actorFirst = actorKey.split(' ')[0];
+        const aliasedPerson = Object.entries(aliases).find(([engineLabel]) =>
+            atlasNameKey(engineLabel) === actorKey
+        )?.[1];
+        if (aliasedPerson && atlasNameKey(aliasedPerson) === personKey) return true;
+        return actorKey === personKey
+            || actorKey.startsWith(`${personKey} `)
+            || personKey.startsWith(`${actorKey} `)
+            || (actorFirst.length >= 4 && (
+                actorFirst === personFirst
+                || actorFirst.startsWith(personFirst)
+                || personFirst.startsWith(actorFirst)
+            ));
+    }) || null;
+}
+
+function atlasGamePositions(world, location) {
+    if (location?.gamePositions?.length) {
+        return location.gamePositions.map(position => ({ ...position, positionKind: 'cluebook-registration' }));
+    }
+    const chart = atlasCharts(world).find(item => item.annotationKey === location?.chartKey)
+        || atlasActiveChart(world);
+    const notes = atlasLocationNotes(world, location);
+    if (!chart || !notes) return [];
+    const bounds = chart.gameBounds;
+    return atlasManualPositions(notes, location).map(position => ({
+        x: Math.round(bounds.x + (position.x / chart.width) * bounds.width),
+        y: Math.round(bounds.y + (position.y / chart.height) * bounds.height),
+        positionKind: 'cluebook-chart-projection'
+    }));
+}
+
+function atlasLocationIntelligence(world, location) {
+    const notes = atlasLocationNotes(world, location);
+    const positions = atlasGamePositions(world, location);
+    return (notes?.inhabitants || [])
+        .filter(person => Number(person.location) === Number(location.number))
+        .map(person => {
+            const actor = matchingAtlasActor(world, person.name);
+            const nearestDistance = actor && positions.length
+                ? Math.min(...positions.map(position => Math.hypot(actor.x - position.x, actor.y - position.y)))
+                : Number.POSITIVE_INFINITY;
+            return {
+                person,
+                actor,
+                coordinateAgrees: Boolean(actor && nearestDistance <= ATLAS_CLUEBOOK_ALIGNMENT_RADIUS),
+                nearestDistance
+            };
+        });
+}
+
+function atlasActorCluebookPlacement(world, actor) {
+    const locations = atlasAnnotations(world)?.locations || [];
+    const candidates = locations.flatMap(location => {
+        const match = atlasLocationIntelligence(world, location)
+            .find(item => Number(item.actor?.id) === Number(actor.id));
+        if (!match) return [];
+        return atlasGamePositions(world, location).map(position => ({
+            ...match,
+            location,
+            position,
+            distance: Math.hypot(actor.x - position.x, actor.y - position.y)
+        }));
+    });
+    return candidates.sort((left, right) => left.distance - right.distance)[0] || null;
+}
+
+function atlasActorResolvedPlacement(world, actor) {
+    const cluebook = atlasActorCluebookPlacement(world, actor);
+    const override = Boolean(cluebook && !cluebook.coordinateAgrees);
+    return {
+        actor,
+        cluebook,
+        override,
+        displayPosition: override ? cluebook.position : { x: actor.x, y: actor.y },
+        navigationPosition: cluebook?.position || { x: actor.x, y: actor.y }
+    };
+}
+
+function atlasActorEvidenceContent(actor, cluebook = null, authoritative = false) {
+    if (cluebook && authoritative) {
+        return `<strong>${escapeAtlasText(cluebook.person.name)}</strong><span class="atlas-evidence-pill">Cluebook-authoritative position</span><p>Cluebook #${escapeAtlasText(cluebook.location.number)} places this person here. Engine actor record #${actor.id} starts at Pixel ${actor.x}, ${actor.y}; that contradictory spawn is hidden and is not used for navigation.</p>`;
+    }
+    if (cluebook) {
+        return `<strong>${escapeAtlasText(cluebook.person.name)}</strong><span class="atlas-evidence-pill atlas-evidence-engine">Engine and cluebook agree</span><p>Cluebook #${escapeAtlasText(cluebook.location.number)} corroborates engine actor record #${actor.id}. Navigation uses the cluebook coordinate.</p>`;
+    }
+    return `<strong>${escapeAtlasText(actor.name)}</strong><span class="atlas-evidence-pill atlas-evidence-engine">Decoded initial spawn</span><p>Engine actor record #${actor.id} · Pixel ${actor.x}, ${actor.y} · Tile ${Math.floor(actor.x / 16)}, ${Math.floor(actor.y / 16)}</p>`;
+}
+
+function atlasActorSpriteBounds(world, actor, position) {
+    const top = position.y - Number(actor.spriteHotspotY);
+    const left = position.x - Number(actor.spriteHotspotX);
+    const bottom = top + Number(actor.spriteHeight);
+    const right = left + Number(actor.spriteWidth);
+    return [[world.height - bottom, left], [world.height - top, right]];
+}
+
+function showAtlasHoverCard(content, pinned = false) {
+    if (atlasHoverCardPinned && !pinned) return;
+    const card = document.getElementById('atlas-hover-card');
+    const body = document.getElementById('atlas-hover-card-body');
+    if (!card || !body) return;
+    body.innerHTML = content;
+    card.hidden = false;
+    atlasHoverCardPinned = pinned;
+    card.classList.toggle('is-pinned', pinned);
+}
+
+function hideAtlasHoverCard(force = false) {
+    if (atlasHoverCardPinned && !force) return;
+    const card = document.getElementById('atlas-hover-card');
+    if (card) card.hidden = true;
+    atlasHoverCardPinned = false;
+    card?.classList.remove('is-pinned');
+}
+
+function bindAtlasHoverCard(layer, content, label, focusLatLng = null) {
+    layer.on('mouseover', () => showAtlasHoverCard(content));
+    layer.on('mouseout', () => hideAtlasHoverCard());
+    layer.on('add', () => {
+        const element = layer.getElement();
+        if (!element) return;
+        element.setAttribute('tabindex', '0');
+        element.setAttribute('role', 'button');
+        element.setAttribute('aria-label', label);
+        element.setAttribute('aria-controls', 'atlas-hover-card');
+        element.addEventListener('focus', () => showAtlasHoverCard(content));
+        element.addEventListener('blur', () => hideAtlasHoverCard());
+        element.addEventListener('pointerdown', event => {
+            event.stopPropagation();
+            showAtlasHoverCard(content, true);
+        });
+        element.addEventListener('keydown', event => {
+            if (event.key !== 'Enter' && event.key !== ' ') return;
+            event.preventDefault();
+            showAtlasHoverCard(content, true);
+            if (focusLatLng && atlasMap) atlasMap.panInside(focusLatLng, { padding: [24, 24] });
+        });
+    });
+}
+
+function createAtlasActorSprite(world, actor, position, inference = null) {
+    if (!actor.spriteImage || !actor.spriteWidth || !actor.spriteHeight) return null;
+    const inferred = Boolean(inference);
+    const displayName = inference?.person?.name || actor.name;
+    const tooltip = atlasActorEvidenceContent(actor, inference, inferred);
+    const layer = L.imageOverlay(actor.spriteImage, atlasActorSpriteBounds(world, actor, position), {
+        className: `atlas-actor-sprite ${inferred ? 'atlas-actor-sprite-inferred' : 'atlas-actor-sprite-authored'}`,
+        interactive: true,
+        opacity: inferred ? 0.94 : 1,
+        alt: `${displayName} ${inferred ? 'cluebook-inferred' : 'decoded'} sprite`
+    });
+    const center = L.latLng(
+        (world.height - position.y) + ((Number(actor.spriteHotspotY) - (Number(actor.spriteHeight) / 2)) || 0),
+        position.x + (((Number(actor.spriteWidth) / 2) - Number(actor.spriteHotspotX)) || 0)
+    );
+    bindAtlasHoverCard(layer, tooltip, `${displayName}: open map details`, center);
+    return layer;
+}
+
 function renderAtlasActors() {
     if (!atlasMap) return;
     if (atlasActorLayer) {
@@ -829,19 +1110,26 @@ function renderAtlasActors() {
     if (!enabled || currentAtlasView !== 'game') return;
     const world = atlasWorldById(currentAtlasWorld);
     const markers = (world.namedActors || [])
-        .filter(actor => actor.x >= 0 && actor.y >= 0 && actor.x < world.width && actor.y < world.height)
-        .map(actor => {
-            const marker = L.circleMarker([world.height - actor.y, actor.x], {
+        .map(actor => atlasActorResolvedPlacement(world, actor))
+        .filter(item => item.displayPosition.x >= 0
+            && item.displayPosition.y >= 0
+            && item.displayPosition.x < world.width
+            && item.displayPosition.y < world.height)
+        .map(item => {
+            const { actor, cluebook, override, displayPosition } = item;
+            const evidence = override ? cluebook : null;
+            const sprite = createAtlasActorSprite(world, actor, displayPosition, evidence);
+            if (sprite) return sprite;
+            const marker = L.circleMarker([world.height - displayPosition.y, displayPosition.x], {
                 radius: 4,
                 color: '#f5c842',
                 weight: 1.5,
                 fillColor: '#102642',
                 fillOpacity: 0.86
             });
-            marker.bindTooltip(
-                `<strong>${escapeAtlasText(actor.name)}</strong><br>Pixel ${actor.x}, ${actor.y} · Tile ${Math.floor(actor.x / 16)}, ${Math.floor(actor.y / 16)}`,
-                { className: 'atlas-actor-tooltip', direction: 'top', offset: [0, -4] }
-            );
+            const displayName = cluebook?.person?.name || actor.name;
+            const markerContent = atlasActorEvidenceContent(actor, evidence, override);
+            bindAtlasHoverCard(marker, markerContent, `${displayName}: open map details`, marker.getLatLng());
             return marker;
         });
     atlasActorLayer = L.layerGroup(markers).addTo(atlasMap);
@@ -850,13 +1138,89 @@ function renderAtlasActors() {
 function registeredAtlasLocations(world) {
     const notes = atlasAnnotations(world);
     return (notes?.locations || []).flatMap(location =>
-        (location.gamePositions || []).map((position, positionIndex) => ({
+        atlasGamePositions(world, location).map((position, positionIndex) => ({
             ...position,
             number: location.number,
             description: location.description,
+            chartKey: location.chartKey,
+            chartLabel: location.chartLabel,
+            intelligence: atlasLocationIntelligence(world, location),
             positionIndex
         }))
     );
+}
+
+function atlasManualPositions(notes, location) {
+    return location.manualPositions || notes?.manualHotspots?.[String(location.number)] || [];
+}
+
+function registeredManualAtlasLocations(world) {
+    const chart = atlasActiveChart(world);
+    const notes = chart ? annotationsDB[chart.annotationKey] : null;
+    return (notes?.locations || []).flatMap(location =>
+        atlasManualPositions(notes, location).map((position, positionIndex) => ({
+            ...position,
+            number: location.number,
+            description: location.description,
+            chartKey: chart.annotationKey,
+            chartLabel: chart.label,
+            intelligence: atlasLocationIntelligence(world, { ...location, chartKey: chart.annotationKey }),
+            positionIndex
+        }))
+    );
+}
+
+function registeredAllManualAtlasLocations(world) {
+    return atlasAnnotationSets(world).flatMap(({ chart, notes }) =>
+        (notes.locations || []).flatMap(location =>
+            atlasManualPositions(notes, location).map((position, positionIndex) => ({
+                ...position,
+                number: location.number,
+                description: location.description,
+                chartKey: chart.annotationKey,
+                chartLabel: chart.label,
+                positionIndex
+            }))
+        )
+    );
+}
+
+function atlasManualPositionsForWorld(world, location) {
+    return atlasManualPositions(atlasLocationNotes(world, location), location);
+}
+
+function visibleRegisteredAtlasLocations(world) {
+    return currentAtlasView === 'manual'
+        ? registeredManualAtlasLocations(world)
+        : registeredAtlasLocations(world);
+}
+
+function atlasPlaceTooltip(place) {
+    const registration = place.positionKind === 'cluebook-chart-projection'
+        ? '<span class="atlas-evidence-pill atlas-evidence-engine">Chart-projected game hint</span>'
+        : '';
+    const evidence = (place.intelligence || []).map(item => {
+        let status = 'Cluebook association';
+        let explanation = 'No readable active engine actor coordinate is available for this person.';
+        if (item.coordinateAgrees) {
+            status = 'Engine coordinate agrees';
+            explanation = 'The decoded initial actor coordinate is at this cluebook location.';
+        } else if (item.actor) {
+            status = 'Cluebook-authoritative position';
+            explanation = 'The cluebook places this person here, so a contradictory decoded spawn is suppressed.';
+        }
+        return `<div class="atlas-place-evidence ${item.coordinateAgrees ? 'is-confirmed' : 'is-inferred'}"><strong>${escapeAtlasText(item.person.name)}</strong><span>${escapeAtlasText(status)}</span><p>${escapeAtlasText(explanation)}</p></div>`;
+    }).join('');
+    return `<div class="atlas-place-tooltip-content"><strong class="atlas-place-tooltip-title">Cluebook #${escapeAtlasText(place.number)}</strong>${registration}<p class="atlas-place-tooltip-description">${escapeAtlasText(place.description)}</p>${evidence}</div>`;
+}
+
+function atlasLocationEvidenceSummary(world, location) {
+    const intelligence = atlasLocationIntelligence(world, location);
+    if (!intelligence.length) return '';
+    const names = intelligence.map(item => escapeAtlasText(item.person.name)).join(', ');
+    const hasDynamicPresence = intelligence.some(item => item.actor && !item.coordinateAgrees);
+    const label = hasDynamicPresence ? 'Cluebook-authoritative position' : 'Cluebook-linked people';
+    return `<span class="atlas-landmark-intelligence"><strong>${label}:</strong> ${names}</span>`;
 }
 
 function renderAtlasLocations() {
@@ -866,24 +1230,33 @@ function renderAtlasLocations() {
         atlasLocationLayer = null;
     }
     const enabled = document.getElementById('atlas-location-toggle')?.checked;
-    if (!enabled || currentAtlasView !== 'game') return;
+    if (!enabled) return;
     const world = atlasWorldById(currentAtlasWorld);
-    const markers = registeredAtlasLocations(world)
-        .filter(place => place.x >= 0 && place.y >= 0 && place.x < world.width && place.y < world.height)
+    const isManual = currentAtlasView === 'manual';
+    const markers = visibleRegisteredAtlasLocations(world)
+        .filter(place => place.x >= 0 && place.y >= 0 && place.x < atlasDisplaySize.width && place.y < atlasDisplaySize.height)
         .map(place => {
-            const marker = L.marker([world.height - place.y, place.x], {
+            const hasPeople = place.intelligence?.length > 0;
+            const hasInference = place.intelligence?.some(item => item.actor && !item.coordinateAgrees);
+            const marker = L.marker([atlasDisplaySize.height - place.y, place.x], {
                 icon: L.divIcon({
-                    className: 'atlas-place-marker',
-                    html: `<span>${escapeAtlasText(place.number)}</span>`,
-                    iconSize: [28, 28],
-                    iconAnchor: [14, 14]
+                    className: `atlas-place-marker ${isManual ? 'atlas-manual-place-marker' : ''} ${place.positionKind === 'cluebook-chart-projection' ? 'atlas-place-marker-projected' : ''}`,
+                    html: isManual
+                        ? `<span><span class="sr-only">Cluebook location </span>${escapeAtlasText(place.number)}</span>`
+                        : `<span>${escapeAtlasText(place.number)}</span>${hasPeople ? `<i class="atlas-place-evidence-dot ${hasInference ? 'is-inferred' : 'is-confirmed'}" aria-hidden="true"></i>` : ''}`,
+                    iconSize: isManual ? [44, 44] : [28, 28],
+                    // Keep the numbered cluebook marker beside, rather than
+                    // directly over, an actor sprite sharing this position.
+                    iconAnchor: isManual ? [22, 22] : (hasPeople ? [-6, 14] : [14, 14])
                 }),
                 keyboard: true,
-                title: `Cluebook location ${place.number}`
+                alt: `Cluebook location ${place.number}: ${place.description}`
             });
-            marker.bindTooltip(
-                `<strong>Cluebook #${escapeAtlasText(place.number)}</strong><br>${escapeAtlasText(place.description)}`,
-                { className: 'atlas-place-tooltip', direction: 'top', offset: [0, -10] }
+            bindAtlasHoverCard(
+                marker,
+                atlasPlaceTooltip(place),
+                `Cluebook location ${place.number}: ${place.description}`,
+                marker.getLatLng()
             );
             marker.on('click', () => {
                 currentAtlasTab = 'locations';
@@ -895,12 +1268,14 @@ function renderAtlasLocations() {
 }
 
 function loadAtlasImage(world) {
+    hideAtlasHoverCard(true);
     ensureAtlasMap();
     if (!atlasMap) return;
     const token = ++atlasLoadToken;
-    const usingManual = currentAtlasView === 'manual' && world.manualImage;
+    const activeChart = atlasActiveChart(world);
+    const usingManual = Boolean(currentAtlasView === 'manual' && activeChart);
     const usingRoofs = !usingManual && document.getElementById('atlas-roof-toggle')?.checked && world.roofImage;
-    const source = usingManual ? world.manualImage : (usingRoofs ? world.roofImage : world.image);
+    const source = usingManual ? activeChart.image : (usingRoofs ? world.roofImage : world.image);
     const image = new Image();
     image.onload = () => {
         if (token !== atlasLoadToken) return;
@@ -911,7 +1286,7 @@ function loadAtlasImage(world) {
         const bounds = [[0, 0], [height, width]];
         atlasImageLayer = L.imageOverlay(source, bounds, {
             className: usingManual ? 'atlas-manual-layer' : 'atlas-game-layer',
-            alt: `${world.title} ${usingManual ? 'official cluebook chart' : (usingRoofs ? 'decoded game map with roofs' : 'decoded cutaway game map')}`
+            alt: `${world.title} ${usingManual ? 'cluebook chart' : (usingRoofs ? 'decoded game map with roofs' : 'decoded cutaway game map')}`
         }).addTo(atlasMap);
         atlasMap.setMaxBounds(L.latLngBounds(bounds).pad(0.35));
         fitAtlasMap();
@@ -927,9 +1302,30 @@ function loadAtlasImage(world) {
     image.src = source;
 }
 
+function atlasManualReadout(world) {
+    if (registeredManualAtlasLocations(world).length) {
+        return 'Cluebook chart; hover or focus a numbered circle for its description.';
+    }
+    const chart = atlasActiveChart(world);
+    const notes = chart ? annotationsDB[chart.annotationKey] : null;
+    return notes?.chartHasPrintedLabels === false
+        ? 'This source chart has no printed number circles; use Game render for registered cluebook hints.'
+        : 'This cluebook chart has no printed number at this location.';
+}
+
+function setAtlasChart(chartKey) {
+    const world = atlasWorldById(currentAtlasWorld);
+    if (!atlasCharts(world).some(chart => chart.annotationKey === chartKey)) return;
+    currentAtlasChartKey = chartKey;
+    updateAtlasHeader(world);
+    renderAtlasDetails(world);
+    if (currentAtlasView === 'manual') loadAtlasImage(world);
+    else renderAtlasLocations();
+}
+
 function setAtlasView(view) {
     const world = atlasWorldById(currentAtlasWorld);
-    if (view === 'manual' && !world.manualImage) return;
+    if (view === 'manual' && !atlasCharts(world).length) return;
     currentAtlasView = view;
     document.getElementById('atlas-view-game')?.classList.toggle('active', view === 'game');
     document.getElementById('atlas-view-manual')?.classList.toggle('active', view === 'manual');
@@ -938,13 +1334,15 @@ function setAtlasView(view) {
     const actors = document.getElementById('atlas-actor-toggle');
     if (actors) actors.disabled = view !== 'game';
     const locations = document.getElementById('atlas-location-toggle');
-    if (locations) locations.disabled = view !== 'game' || !registeredAtlasLocations(world).length;
+    if (locations) locations.disabled = view === 'manual'
+        ? !registeredManualAtlasLocations(world).length
+        : !registeredAtlasLocations(world).length;
     const roofs = document.getElementById('atlas-roof-toggle');
     if (roofs) roofs.disabled = view !== 'game' || !world.roofImage;
     const readout = document.getElementById('atlas-coordinate-readout');
     if (readout) readout.textContent = view === 'game'
         ? 'Move across the map to inspect tile coordinates.'
-        : 'Official cluebook chart; numbered circles correspond to the landmark list.';
+        : atlasManualReadout(world);
     loadAtlasImage(world);
     updateAtlasHash();
 }
@@ -957,14 +1355,24 @@ function setAtlasDetailTab(tab) {
 function revealAtlasLocation() {
     const world = atlasWorldById(currentAtlasWorld);
     currentAtlasTab = 'locations';
-    if (world.manualImage) setAtlasView('manual');
+    if (atlasCharts(world).length) setAtlasView('manual');
     renderAtlasDetails(world);
 }
 
-function revealRegisteredAtlasLocation(number) {
+function revealRegisteredAtlasLocation(number, chartKey = null) {
     const world = atlasWorldById(currentAtlasWorld);
-    const location = (atlasAnnotations(world)?.locations || []).find(item => Number(item.number) === Number(number));
-    const position = location?.gamePositions?.[0];
+    const notes = atlasAnnotations(world);
+    const location = (notes?.locations || []).find(item =>
+        Number(item.number) === Number(number) && (!chartKey || item.chartKey === chartKey)
+    );
+    if (location?.chartKey) {
+        currentAtlasChartKey = location.chartKey;
+        updateAtlasHeader(world);
+    }
+    const manualPosition = location ? atlasManualPositionsForWorld(world, location)[0] : null;
+    const gamePosition = location ? atlasGamePositions(world, location)[0] : null;
+    const useManual = currentAtlasView === 'manual' && manualPosition;
+    const position = useManual ? manualPosition : gamePosition || manualPosition;
     if (!position) {
         revealAtlasLocation();
         return;
@@ -972,24 +1380,35 @@ function revealRegisteredAtlasLocation(number) {
     currentAtlasTab = 'locations';
     const toggle = document.getElementById('atlas-location-toggle');
     if (toggle) toggle.checked = true;
-    if (currentAtlasView !== 'game') setAtlasView('game');
+    if (useManual) renderAtlasLocations();
+    else if (gamePosition && currentAtlasView !== 'game') setAtlasView('game');
+    else if (!gamePosition && manualPosition && currentAtlasView !== 'manual') setAtlasView('manual');
     else renderAtlasLocations();
     renderAtlasDetails(world);
     window.setTimeout(() => {
         if (!atlasMap) return;
-        atlasMap.setView([world.height - position.y, position.x], Math.max(1, atlasMap.getZoom()), { animate: false });
+        const height = (useManual || (!gamePosition && manualPosition)) ? atlasDisplaySize.height : world.height;
+        atlasMap.setView([height - position.y, position.x], Math.max(1, atlasMap.getZoom()), { animate: false });
     }, 0);
 }
 
-function revealEngineActor(x, y) {
+function revealEngineActor(actorId) {
     const world = atlasWorldById(currentAtlasWorld);
+    const actor = (world.namedActors || []).find(item => Number(item.id) === Number(actorId));
+    if (!actor) return;
+    const resolved = atlasActorResolvedPlacement(world, actor);
+    const position = resolved.navigationPosition;
     const toggle = document.getElementById('atlas-actor-toggle');
     if (toggle) toggle.checked = true;
     if (currentAtlasView !== 'game') setAtlasView('game');
     else renderAtlasActors();
     window.setTimeout(() => {
         if (!atlasMap) return;
-        atlasMap.setView([world.height - y, x], Math.max(1, atlasMap.getZoom()), { animate: false });
+        atlasMap.setView([world.height - position.y, position.x], Math.max(1, atlasMap.getZoom()), { animate: false });
+        showAtlasHoverCard(
+            atlasActorEvidenceContent(actor, resolved.cluebook, resolved.override),
+            true
+        );
     }, 0);
 }
 
@@ -1003,17 +1422,31 @@ function renderAtlasDetails(world) {
     let body = '';
 
     if (currentAtlasTab === 'people') {
-        const engineBody = engineActors.length ? engineActors.map(actor => `
-            <button type="button" class="atlas-record atlas-record-engine" onclick="revealEngineActor(${actor.x}, ${actor.y})">
-                <span class="atlas-record-name">${escapeAtlasText(actor.name)}</span>
-                <span class="atlas-record-location">Pixel ${actor.x}, ${actor.y}</span>
-                <p>Engine actor record #${actor.id} · Tile ${Math.floor(actor.x / 16)}, ${Math.floor(actor.y / 16)}. Select to locate it on the rendered map.</p>
-            </button>
-        `).join('') : '<div class="atlas-empty">No readable actor label was recovered for this world.</div>';
+        const engineBody = engineActors.length ? engineActors.map(actor => {
+            const resolved = atlasActorResolvedPlacement(world, actor);
+            const person = resolved.cluebook?.person;
+            const location = resolved.cluebook?.location;
+            const displayName = person?.name || actor.name;
+            const locationLabel = resolved.override
+                ? `Cluebook #${location.number} · corrected`
+                : (location ? `Cluebook #${location.number} · aligned` : `Pixel ${actor.x}, ${actor.y}`);
+            const detail = resolved.override
+                ? `Engine actor record #${actor.id} starts at Pixel ${actor.x}, ${actor.y}, but the cluebook places ${escapeAtlasText(displayName)} at location ${location.number}. Select to open the cluebook source of truth.`
+                : (location
+                    ? `Engine actor record #${actor.id} agrees with this cluebook location. Select to locate it on the rendered map.`
+                    : `Engine actor record #${actor.id} · Tile ${Math.floor(actor.x / 16)}, ${Math.floor(actor.y / 16)}. Select to locate it on the rendered map.`);
+            return `
+                <button type="button" class="atlas-record atlas-record-engine ${resolved.override ? 'atlas-record-corrected' : ''}" onclick="revealEngineActor(${actor.id})">
+                    <span class="atlas-record-name">${escapeAtlasText(displayName)}</span>
+                    <span class="atlas-record-location ${resolved.override ? 'is-corrected' : ''}">${locationLabel}</span>
+                    <p>${detail}</p>
+                </button>
+            `;
+        }).join('') : '<div class="atlas-empty">No readable actor label was recovered for this world.</div>';
         const cluebookBody = inhabitants.length ? inhabitants.map(person => `
-            <button type="button" class="atlas-record" ${person.location !== null ? 'onclick="revealAtlasLocation()"' : ''}>
+            <button type="button" class="atlas-record" ${person.location !== null ? `onclick="revealRegisteredAtlasLocation(${Number(person.location)}, '${escapeAtlasText(person.chartKey)}')"` : ''}>
                 <span class="atlas-record-name">${escapeAtlasText(person.name)}</span>
-                <span class="atlas-record-location">${person.location !== null ? `Cluebook #${person.location}` : 'Roaming / varies'}</span>
+                <span class="atlas-record-location">${person.location !== null ? `Cluebook #${person.location}${atlasCharts(world).length > 1 ? ` · ${escapeAtlasText(person.chartLabel)}` : ''}` : 'Roaming / varies'}</span>
                 <p>${escapeAtlasText(person.description)}</p>
             </button>
         `).join('') : '<div class="atlas-empty">No named cluebook inhabitant is attached to this engine world.</div>';
@@ -1026,9 +1459,9 @@ function renderAtlasDetails(world) {
         `;
     } else if (currentAtlasTab === 'locations') {
         body = locations.length ? locations.map(location => `
-            <button type="button" class="atlas-landmark" onclick="revealRegisteredAtlasLocation(${Number(location.number)})">
+            <button type="button" class="atlas-landmark" onclick="revealRegisteredAtlasLocation(${Number(location.number)}, '${escapeAtlasText(location.chartKey)}')">
                 <span class="atlas-landmark-number">${escapeAtlasText(location.number)}</span>
-                <p>${escapeAtlasText(location.description)}${location.gamePositions?.length ? `<span class="atlas-landmark-registration">Registered to ${location.gamePositions.length} game position${location.gamePositions.length === 1 ? '' : 's'}</span>` : ''}</p>
+                <p>${atlasCharts(world).length > 1 ? `<span class="atlas-landmark-registration">${escapeAtlasText(location.chartLabel)}</span>` : ''}${escapeAtlasText(location.description)}${atlasLocationEvidenceSummary(world, location)}${atlasGamePositions(world, location).length ? `<span class="atlas-landmark-registration">${atlasGamePositions(world, location).length} game hint${atlasGamePositions(world, location).length === 1 ? '' : 's'}</span>` : ''}${atlasManualPositionsForWorld(world, location).length ? `<span class="atlas-landmark-registration">Hover hotspot on ${atlasManualPositionsForWorld(world, location).length} printed chart label${atlasManualPositionsForWorld(world, location).length === 1 ? '' : 's'}</span>` : '<span class="atlas-landmark-registration">No printed chart number</span>'}</p>
             </button>
         `).join('') : '<div class="atlas-empty">No numbered cluebook landmarks are linked to this engine world.</div>';
     } else {
@@ -1040,12 +1473,13 @@ function renderAtlasDetails(world) {
                 <tr><th>Tile bank</th><td>${world.tileCount} tiles · ${world.tileBits}-bit index</td></tr>
                 <tr><th>Scenery</th><td>${world.sceneryCount.toLocaleString()} placed records</td></tr>
                 <tr><th>Foreground</th><td>${world.foregroundCount.toLocaleString()} roof/layer records</td></tr>
-                <tr><th>Registered places</th><td>${registeredAtlasLocations(world).length.toLocaleString()} cluebook map positions</td></tr>
+                <tr><th>Registered places</th><td>${registeredAtlasLocations(world).length.toLocaleString()} game hints · ${registeredAllManualAtlasLocations(world).length.toLocaleString()} chart hotspots</td></tr>
                 <tr><th>Actors</th><td>${world.actorCount.toLocaleString()} records · ${engineActors.length} readable labels</td></tr>
                 <tr><th>Palette</th><td>Original 256-colour HLIB palette</td></tr>
                 <tr><th>Source bytes</th><td>${world.sourceBytes.toLocaleString()}</td></tr>
                 <tr><th>SHA-256</th><td title="${world.sourceSha256}">${world.sourceSha256.slice(0, 16)}…</td></tr>
-                <tr><th>Cluebook</th><td>${notes ? escapeAtlasText(notes.source_pages) : 'No linked chart'}</td></tr>
+                <tr><th>Cluebook</th><td>${notes ? `${atlasCharts(world).length} matched chart${atlasCharts(world).length === 1 ? '' : 's'} · ${escapeAtlasText(notes.source_pages)}` : 'No linked chart in the cluebook'}</td></tr>
+                ${world.chartNote ? `<tr><th>Chart scope</th><td>${escapeAtlasText(world.chartNote)}</td></tr>` : ''}
             </table>
             <div class="atlas-empty mt-3">The game render is deterministic: member 0 supplies map cells; member 1 supplies terrain and palette; members 2, 4, and 6 supply actor, scenery, and foreground sprites; member 8 supplies placement records and actor labels. Scripted or conditional objects may move, hide, or change during play.</div>
         `;
@@ -1070,6 +1504,10 @@ function updateAtlasHeader(world) {
     const eyebrow = document.getElementById('atlas-map-eyebrow');
     const badges = document.getElementById('atlas-map-badges');
     const manualButton = document.getElementById('atlas-view-manual');
+    const chartPicker = document.getElementById('atlas-chart-picker');
+    const chartSelect = document.getElementById('atlas-chart-select');
+    const charts = atlasCharts(world);
+    const activeChart = atlasActiveChart(world);
     if (title) title.textContent = world.title;
     if (eyebrow) eyebrow.textContent = world.sourceFile;
     if (badges) badges.innerHTML = `
@@ -1080,8 +1518,14 @@ function updateAtlasHeader(world) {
         <span class="atlas-map-badge">${world.actorCount} actors</span>
     `;
     if (manualButton) {
-        manualButton.disabled = !world.manualImage;
-        manualButton.title = world.manualImage ? 'Show the official cluebook chart' : 'No cluebook chart is linked to this engine world';
+        manualButton.disabled = !charts.length;
+        manualButton.title = charts.length ? 'Show the matched cluebook chart' : 'The cluebook does not provide a chart for this engine world';
+    }
+    if (chartPicker && chartSelect) {
+        chartPicker.hidden = charts.length < 2;
+        chartSelect.innerHTML = charts.map(chart =>
+            `<option value="${escapeAtlasText(chart.annotationKey)}" ${chart.annotationKey === activeChart?.annotationKey ? 'selected' : ''}>${escapeAtlasText(chart.label)}</option>`
+        ).join('');
     }
     const roofToggle = document.getElementById('atlas-roof-toggle');
     if (roofToggle) {
@@ -1089,10 +1533,14 @@ function updateAtlasHeader(world) {
         roofToggle.title = world.roofImage ? 'Show the engine roof/foreground layer' : 'This world has no separate roof/foreground layer';
     }
     const locationToggle = document.getElementById('atlas-location-toggle');
-    const registeredCount = registeredAtlasLocations(world).length;
+    const registeredCount = currentAtlasView === 'manual'
+        ? registeredManualAtlasLocations(world).length
+        : registeredAtlasLocations(world).length;
     if (locationToggle) {
-        locationToggle.disabled = currentAtlasView !== 'game' || !registeredCount;
-        locationToggle.title = registeredCount ? 'Show cluebook numbers registered to game coordinates' : 'This world has not been manually registered yet';
+        locationToggle.disabled = !registeredCount;
+        locationToggle.title = registeredCount
+            ? (currentAtlasView === 'manual' ? 'Enable hoverable cluebook chart labels' : 'Show cluebook numbers registered to game coordinates')
+            : (currentAtlasView === 'manual' ? 'This chart does not have registered label hotspots yet' : 'This world has not been manually registered yet');
     }
 }
 
@@ -1118,7 +1566,11 @@ async function renderAtlas() {
     if (worldLabel) worldLabel.textContent = atlasData().worldCount;
 
     const world = atlasWorldById(currentAtlasWorld);
-    if (!world.manualImage && currentAtlasView === 'manual') currentAtlasView = 'game';
+    const charts = atlasCharts(world);
+    if (!charts.some(chart => chart.annotationKey === currentAtlasChartKey)) {
+        currentAtlasChartKey = charts[0]?.annotationKey || null;
+    }
+    if (!charts.length && currentAtlasView === 'manual') currentAtlasView = 'game';
     renderAtlasWorldList();
     updateAtlasHeader(world);
     renderAtlasDetails(world);
@@ -1129,7 +1581,8 @@ function selectAtlasMap(worldId) {
     const world = atlasWorldById(worldId);
     if (!world) return;
     currentAtlasWorld = world.id;
-    if (currentAtlasView === 'manual' && !world.manualImage) currentAtlasView = 'game';
+    currentAtlasChartKey = atlasCharts(world)[0]?.annotationKey || null;
+    if (currentAtlasView === 'manual' && !atlasCharts(world).length) currentAtlasView = 'game';
     renderAtlasWorldList();
     updateAtlasHeader(world);
     renderAtlasDetails(world);
@@ -1435,7 +1888,6 @@ window.updateGamblingBounds = updateGamblingBounds;
 document.addEventListener('DOMContentLoaded', () => {
     loadQuestState();
     initTabs();
-    initArtSwitcher();
     renderCharacter();
     renderWalkthrough();
     renderBestiary();
