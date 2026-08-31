@@ -239,8 +239,10 @@ h4 {
     display: flex;
     justify-content: center;
     overflow-x: auto;
-    scrollbar-width: thin;
+    scrollbar-width: none;
 }
+
+.u5-navigation__rail::-webkit-scrollbar { display: none; }
 
 .nav-link {
     position: relative;
@@ -356,6 +358,141 @@ h4 {
 
 .u5-primary-action svg {
     width: 1rem;
+}
+
+.u5-briefing-hero {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(17rem, 22rem);
+    gap: clamp(2rem, 5vw, 4.5rem);
+    align-items: center;
+    min-height: 34rem;
+    margin-bottom: 1rem;
+    padding: clamp(2rem, 5vw, 4rem);
+    overflow: hidden;
+    border: 1px solid rgba(215, 154, 34, 0.44);
+    border-radius: 1.15rem;
+    background:
+        radial-gradient(circle at 80% 18%, rgba(215, 154, 34, 0.16), transparent 30%),
+        radial-gradient(circle at 8% 88%, rgba(125, 43, 37, 0.3), transparent 38%),
+        linear-gradient(130deg, #263a2e, #151d19 58%, #211712);
+    box-shadow: 0 24px 60px rgba(52, 34, 17, 0.3);
+}
+
+.u5-briefing-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0.14;
+    background-image: url('../images/paper-texture2.jpg');
+    background-size: 520px;
+    mix-blend-mode: soft-light;
+    pointer-events: none;
+}
+
+.u5-briefing-hero__copy,
+.u5-briefing-hero__art { position: relative; z-index: 1; }
+.u5-briefing-hero .u5-kicker { color: #f0be5d; }
+
+.u5-briefing-hero h2 {
+    max-width: 11ch;
+    margin: 0;
+    color: #fff2c9;
+    font-size: clamp(2.75rem, 6vw, 5.2rem);
+    font-weight: 700;
+    letter-spacing: -0.045em;
+    line-height: 0.94;
+    text-wrap: balance;
+}
+
+.u5-briefing-hero__copy > p:not(.u5-kicker) {
+    max-width: 43rem;
+    margin: 1.3rem 0 0;
+    color: rgba(255, 244, 218, 0.76);
+    font-family: 'U5 Lora', Georgia, serif;
+    font-size: clamp(0.94rem, 1.6vw, 1.08rem);
+    line-height: 1.72;
+}
+
+.u5-briefing-hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+    margin-top: 1.6rem;
+}
+
+.u5-briefing-hero .u5-primary-action {
+    background: linear-gradient(135deg, #e0a431, #b96c0b);
+    color: #21150c;
+    box-shadow: 0 10px 25px rgba(215, 154, 34, 0.22);
+}
+
+.u5-hero-secondary {
+    min-height: 2.8rem;
+    padding: 0.68rem 1rem;
+    border: 1px solid rgba(255, 226, 163, 0.38);
+    border-radius: 0.55rem;
+    background: rgba(255, 250, 240, 0.05);
+    color: #f6d896;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.u5-hero-secondary:hover,
+.u5-hero-secondary:focus-visible { border-color: #f0be5d; background: rgba(240, 190, 93, 0.11); outline: 0; }
+
+.u5-briefing-hero__chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    margin-top: 1.25rem;
+}
+
+.u5-briefing-hero__chips span {
+    padding: 0.34rem 0.52rem;
+    border: 1px solid rgba(255, 226, 163, 0.18);
+    border-radius: 999px;
+    background: rgba(5, 11, 8, 0.2);
+    color: rgba(255, 244, 218, 0.68);
+    font-size: 0.62rem;
+}
+
+.u5-briefing-hero__art {
+    justify-self: center;
+    width: min(100%, 21rem);
+    margin: 0;
+    transform: rotate(1deg);
+}
+
+.u5-briefing-hero__art::before {
+    content: '';
+    position: absolute;
+    inset: -0.55rem;
+    border: 1px solid rgba(240, 190, 93, 0.24);
+    border-radius: 0.55rem;
+    transform: rotate(1.6deg);
+}
+
+.u5-briefing-hero__art img {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    object-position: center;
+    border: 1px solid rgba(255, 239, 197, 0.62);
+    border-radius: 0.38rem;
+    box-shadow: 0 24px 42px rgba(0, 0, 0, 0.52);
+}
+
+.u5-briefing-hero__art figcaption {
+    position: relative;
+    margin-top: 0.8rem;
+    color: rgba(255, 244, 218, 0.54);
+    font-size: 0.58rem;
+    letter-spacing: 0.1em;
+    line-height: 1.45;
+    text-align: center;
+    text-transform: uppercase;
 }
 
 .u5-briefing-grid {
@@ -2172,6 +2309,23 @@ select:focus {
         padding-top: 1.2rem;
     }
 
+    .u5-briefing-hero {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 2rem;
+        min-height: 0;
+        padding: 1.6rem;
+    }
+
+    .u5-briefing-hero__art {
+        width: 100%;
+        transform: none;
+    }
+
+    .u5-briefing-hero__art img {
+        aspect-ratio: 16 / 10;
+        object-position: center 38%;
+    }
+
     .u5-section-heading,
     .u5-briefing-grid {
         grid-template-columns: minmax(0, 1fr);
@@ -2256,6 +2410,12 @@ select:focus {
     .u5-masthead__badges {
         display: none;
     }
+
+    .u5-briefing-hero h2 { font-size: clamp(2.6rem, 15vw, 3.7rem); }
+    .u5-briefing-hero__actions { display: grid; }
+    .u5-briefing-hero__actions button { width: 100%; }
+    .u5-briefing-hero__chips { display: grid; }
+    .u5-briefing-hero__chips span { text-align: center; }
 
     .nav-link {
         min-height: 3.25rem;
