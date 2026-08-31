@@ -7,6 +7,8 @@
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
+    <meta name="theme-color" content="#4b2418">
+    <meta name="description" content="An interactive Ultima VI guide with a complete Grand Quest tracker, decoded Britannia atlas, companions, equipment, spell reference, and contextual Seer counsel.">
     <title>The Avatar's Interactive Guide to Britannia</title>
     <script src="js/tailwind.js"></script>
     <script src="js/chart.js"></script>
@@ -22,24 +24,28 @@
         - Contextual Seer (Gemini): Goal -> Provide dynamic, on-demand help without breaking the player's flow. Viz/Method -> Quest- and Atlas-bound hint modal with a continuing advice conversation. Interaction -> A Hint or Seer counsel action opens general guidance first, then passes the exact source context into follow-up questions.
     -->
     <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
-    <link rel="stylesheet" href="css/Ultima6.css?v=briefing-r1">
+    <link rel="stylesheet" href="css/Ultima6.css?v=20260831a">
 </head>
 
 <body class="antialiased">
-    <div class="w-full bg-gray-100 text-gray-700">
+    <div class="u6-backbar w-full bg-gray-100 text-gray-700">
         <div class="container mx-auto px-4 py-2">
             <a href="index.html" class="inline-flex items-center gap-2 hover:underline"><span
                     aria-hidden="true">←</span> Back to Guides</a>
         </div>
     </div>
 
-    <div class="container mx-auto p-4 sm:p-6 md:p-8">
-        <header class="text-center mb-8">
-            <h1 class="text-4xl md:text-6xl font-bold text-amber-900">The Avatar's Guide to Britannia</h1>
-            <p class="text-lg text-amber-800 mt-2">An Interactive Walkthrough of Ultima VI: The False Prophet</p>
+    <div class="u6-page container mx-auto p-4 sm:p-6 md:p-8">
+        <header class="u6-masthead">
+            <div>
+                <p class="u6-masthead__kicker">A field guide to reconciliation</p>
+                <h1>Ultima VI Interactive Guide</h1>
+                <p>The False Prophet · Origin Systems 1990</p>
+            </div>
+            <img src="images/Ultima6box.jpg" alt="Ultima VI The False Prophet original box artwork">
         </header>
 
-        <nav class="flex flex-wrap justify-center border-b-2 border-amber-800/20 mb-8">
+        <nav class="u6-navigation flex flex-wrap justify-center border-b-2 border-amber-800/20 mb-8" aria-label="Ultima VI guide sections">
             <button class="tab-button active text-sm sm:text-lg p-4" onclick="showTab('avatar')">Briefing</button>
             <button class="tab-button text-sm sm:text-lg p-4" onclick="showTab('quest')">The Grand Quest</button>
             <button class="tab-button text-sm sm:text-lg p-4" onclick="showTab('almanac')">Britannian Almanac</button>
@@ -49,20 +55,32 @@
         </nav>
 
         <main>
-            <section id="avatar" class="tab-content active">
+            <section id="avatar" class="tab-content active" aria-labelledby="u6-briefing-title">
                 <div class="u6-briefing">
-                    <header class="u6-briefing__heading">
-                        <div>
-                            <p class="u6-briefing__kicker">Britannian briefing</p>
-                            <h2>The False Prophet</h2>
-                            <p>Britannia is under siege, the Shrines of Virtue have fallen, and an ancient Gargish
-                                prophecy names the Avatar as the destroyer of their world. This briefing keeps the
-                                campaign, the realm, and your readiness in one place.</p>
+                    <header class="u6-briefing-hero">
+                        <div class="u6-briefing-hero__copy">
+                            <p class="u6-briefing__kicker">Britannian briefing · A prophecy misunderstood</p>
+                            <h2 id="u6-briefing-title">The enemy knows you as the False Prophet.</h2>
+                            <p>Gargoyles have seized Britannia's shrines because their dying world names the Avatar as its destroyer. Recover the stolen Codex, learn the truth behind the invasion, and end a war that cannot be solved by conquest alone.</p>
+                            <div class="u6-briefing-hero__actions">
+                                <a class="u6-briefing__primary-action"
+                                    href="#quests:quest=act-i-liberating-the-shrines&section=compassion-britain">
+                                    Begin the Grand Quest <span aria-hidden="true">→</span>
+                                </a>
+                                <button type="button" class="u6-briefing__secondary-action" onclick="showTab('atlas')">
+                                    Open the World Atlas
+                                </button>
+                            </div>
+                            <div class="u6-briefing-hero__chips" aria-label="Guide features">
+                                <span>Ordered peace campaign</span>
+                                <span>Surface-to-realm atlas</span>
+                                <span>Contextual Seer counsel</span>
+                            </div>
                         </div>
-                        <a class="u6-briefing__primary-action"
-                            href="#quests:quest=act-i-liberating-the-shrines&section=compassion-britain">
-                            Continue the Grand Quest <span aria-hidden="true">→</span>
-                        </a>
+                        <figure class="u6-briefing-hero__art">
+                            <img src="images/ultima6-briefing-hero.webp" alt="The Avatar and a dignified Gargoyle face one another across the luminous Codex of Ultimate Wisdom">
+                            <figcaption>Two peoples read the same prophecy from opposite sides.</figcaption>
+                        </figure>
                     </header>
 
                     <div class="u6-briefing-grid">

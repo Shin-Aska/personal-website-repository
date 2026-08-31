@@ -30,63 +30,103 @@ TILE_SIZE = 16
 
 WORLD_LABELS = {
     "ACID": "Acid Dungeon",
-    "ACIDA": "Acid Dungeon — inner chamber",
-    "ALKATRZ": "Alkatraz",
-    "DEDHOLD": "Ships' Hold",
-    "FEUD": "Caliph's Palace — feud state",
-    "FINALA": "Unknown Plane — approach",
-    "FINALB": "Unknown Plane — finale",
+    "ACIDA": "Sorcerer's Tower",
+    "ALKATRZ": "Dungeon of Al'Katraz",
+    "DEDHOLD": "Rotting Ship's Hold",
+    "FEUD": "Island of Al'Katraz",
+    "FINALA": "Al-Naqqil",
+    "FINALB": "Unknown Plane",
     "HERMITA": "Isle of Shibaz — first region",
     "HERMITB": "Isle of Shibaz — second region",
     "HERMITC": "Isle of Shibaz — third region",
-    "HOLD": "Rotting Ships' Hold",
-    "LORDSA": "Sorcerer's Tower — first region",
-    "LORDSB": "Sorcerer's Tower — second region",
-    "LORDSC": "Sorcerer's Tower — third region",
-    "LORDSD": "Sorcerer's Tower — fourth region",
-    "LORDSE": "Sorcerer's Tower — final chamber",
-    "MAGROOM": "Isle of Hajar — magic room",
+    "HOLD": "Ship's Hold",
+    "LORDSA": "Isle of Jaza'ir Jiza — gate",
+    "LORDSB": "Isle of Jaza'ir Jiza — Noble Dao",
+    "LORDSC": "Isle of Jaza'ir Jiza — Noble Efreet",
+    "LORDSD": "Isle of Jaza'ir Jiza — Noble Marid",
+    "LORDSE": "Isle of Jaza'ir Jiza — Noble Djinni",
+    "MAGROOM": "Enchanted Platform",
     "NEWDUNG": "Caliph's New Dungeon",
-    "OASIS": "Bandar al-Sadat",
-    "OGRIMA": "Isle of Jaza'ir Jiza",
+    "OASIS": "Western Desert",
+    "OGRIMA": "Isle of Hajar",
     "OLDDUNG": "Old Dungeon",
     "OPENER": "Testing Grounds",
-    "PAL0": "Palace Facade",
+    "PAL0": "Caliph's Palace",
     "REEF": "Reef of the Dead",
-    "ROAD": "Western Desert",
-    "ROADB": "Isle of Aballat",
+    "ROAD": "Bandar al-Sa'adat",
+    "ROADB": "Palace Facade",
     "SENAT": "Isle of Senat",
     "SHIPA": "The Ship",
-    "SHIPB": "The Ship — later state",
+    "SHIPB": "The Ship — pirate encounter",
     "TOWN": "Zaratan",
-    "VOICE": "Al-Naqqil",
+    "VOICE": "Isle of Aballat",
 }
 
 ANNOTATION_KEYS = {
     "ACID": "map_acid_dungeon.png",
+    "ACIDA": "map_sorcerers_tower_l1.png",
     "ALKATRZ": "map_dungeon_alkatraz.png",
-    "DEDHOLD": "map_ships_hold.png",
-    "FINALA": "map_unknown_plane.png",
+    "DEDHOLD": "map_rotting_ships_hold.png",
+    "FEUD": "map_island_alkatraz.png",
+    "FINALA": "map_al_naqqil.png",
+    "FINALB": "map_unknown_plane.png",
     "HERMITA": "map_isle_shibaz_l1.png",
     "HERMITB": "map_isle_shibaz_l2.png",
     "HERMITC": "map_isle_shibaz_l3.png",
-    "HOLD": "map_rotting_ships_hold.png",
-    "LORDSA": "map_sorcerers_tower_l1.png",
-    "LORDSB": "map_sorcerers_tower_l2.png",
-    "MAGROOM": "map_isle_hajar.png",
+    "HOLD": "map_ships_hold.png",
+    "LORDSA": "map_isle_jaza_ir_jiza.png",
     "NEWDUNG": "map_caliphs_new_dungeon.png",
-    "OASIS": "map_bandar_al_sadat.png",
-    "OGRIMA": "map_isle_jaza_ir_jiza.png",
+    "OASIS": "map_western_desert.png",
+    "OGRIMA": "map_isle_hajar.png",
     "OLDDUNG": "map_old_dungeon.png",
     "OPENER": "map_testing_grounds.png",
-    "PAL0": "map_palace_facade.png",
+    "PAL0": "map_caliphs_palace.png",
     "REEF": "map_reef_of_dead.png",
-    "ROAD": "map_western_desert.png",
-    "ROADB": "map_isle_aballat.png",
+    "ROAD": "map_bandar_al_sadat.png",
+    "ROADB": "map_palace_facade.png",
     "SENAT": "map_isle_senat.png",
     "SHIPA": "map_the_ship.png",
+    "SHIPB": "map_the_ship.png",
     "TOWN": "map_zaratan.png",
-    "VOICE": "map_al_naqqil.png",
+    "VOICE": "map_isle_aballat.png",
+}
+
+CHART_OVERRIDES = {
+    "ACIDA": [
+        {
+            "annotationKey": "map_sorcerers_tower_l1.png",
+            "image": "images/alqadim/map_sorcerers_tower_l1.png",
+            "label": "Level 1",
+            "width": 1024,
+            "height": 1024,
+            "gameBounds": {"x": 225, "y": 0, "width": 319, "height": 508},
+        },
+        {
+            "annotationKey": "map_sorcerers_tower_l2.png",
+            "image": "images/alqadim/map_sorcerers_tower_l2.png",
+            "label": "Level 2",
+            "width": 1024,
+            "height": 1024,
+            "gameBounds": {"x": 144, "y": 642, "width": 496, "height": 352},
+        },
+    ],
+    "SHIPB": [
+        {
+            "annotationKey": "map_the_ship.png",
+            "image": "images/alqadim/map_the_ship.png",
+            "label": "Player vessel",
+            "width": 1024,
+            "height": 1024,
+            "gameBounds": {"x": 96, "y": 54, "width": 370, "height": 766},
+        }
+    ],
+}
+
+# The original engine member names are terse and sometimes counterintuitive;
+# these notes document the cluebook scope where a chart is shared by more than
+# one authored world state.
+ANNOTATION_NOTES = {
+    "SHIPB": "The cluebook charts the player's vessel only; this later game state adds the pirate ship alongside it.",
 }
 
 
@@ -108,6 +148,8 @@ class WorldMap:
     foreground_count: int
     actor_count: int
     named_actors: tuple[dict[str, object], ...]
+    staged_object_count: int
+    staged_actors: tuple[dict[str, object], ...]
 
 
 @dataclass(frozen=True)
@@ -138,6 +180,11 @@ def u16(data: bytes, offset: int) -> int:
 
 def u32(data: bytes, offset: int) -> int:
     return struct.unpack_from("<I", data, offset)[0]
+
+
+def s16(value: int) -> int:
+    """Interpret an unpacked engine coordinate as a signed 16-bit value."""
+    return value - 0x10000 if value & 0x8000 else value
 
 
 def archive_entries(data: bytes) -> list[tuple[int, int]]:
@@ -358,14 +405,22 @@ def composite_world_objects(
     raster: bytearray,
     raster_width: int,
     raster_height: int,
-) -> tuple[int, int, int, tuple[dict[str, object], ...], bytes | None]:
+) -> tuple[
+    int,
+    int,
+    int,
+    tuple[dict[str, object], ...],
+    int,
+    tuple[dict[str, object], ...],
+    bytes | None,
+]:
     actor_bank = decode_sprite_bank(world, entries[2])
     scenery_bank = decode_sprite_bank(world, entries[4])
     foreground_bank = decode_sprite_bank(world, entries[6])
     objects_offset, objects_size = entries[8]
     objects = world[objects_offset : objects_offset + objects_size]
     if len(objects) < 4:
-        return 0, 0, 0, (), None
+        return 0, 0, 0, (), 0, (), None
 
     directory_end = u16(objects, 2)
     if directory_end < 4 or directory_end > len(objects) or (directory_end - 4) % 8:
@@ -375,10 +430,31 @@ def composite_world_objects(
         tuple[int, int, int, int, list[Sprite | None], int, tuple[int, int] | None]
     ] = []
     named_actors: list[dict[str, object]] = []
+    staged_actors: list[dict[str, object]] = []
     foreground_drawables: list[tuple[int, int, int, int, tuple[int, int]]] = []
     actor_records = 0
     scenery_records = 0
     foreground_records = 0
+    staged_object_records = 0
+
+    # TOWN contains a five-member scripted cast parked together in the last
+    # map row, followed by two dormant pose/scenery objects in that same row.
+    # These are an engine staging cohort, not an encounter in Zaratan's sea:
+    # the actors have consecutive scripts FF68..FF6C. Detect the underlying
+    # convention rather than naming TOWN or hard-coding slots. An all-world
+    # audit finds single edge actors in HOLD and two in ROAD, but TOWN is the
+    # only archive with three or more actors in this one-tile southern strip.
+    southern_edge = raster_height - TILE_SIZE - 1
+    southern_actor_slots: set[int] = set()
+    for slot in range(slot_count):
+        record_offset, record_size, record_type = struct.unpack_from("<IHH", objects, 4 + slot * 8)
+        if record_type != 1 or not record_offset or record_size < 22:
+            continue
+        if record_offset + record_size > len(objects):
+            continue
+        if u16(objects, record_offset + 6) >= southern_edge:
+            southern_actor_slots.add(slot)
+    has_southern_staging_cohort = len(southern_actor_slots) >= 3
 
     for slot in range(slot_count):
         record_offset, record_size, record_type = struct.unpack_from("<IHH", objects, 4 + slot * 8)
@@ -389,23 +465,38 @@ def composite_world_objects(
             continue
         values = struct.unpack_from("<11H", record, 0)
         world_y, world_x = values[3], values[4]
+        is_staged = has_southern_staging_cohort and world_y >= southern_edge
 
         if record_type == 1:
             actor_records += 1
             sprite_id = values[10] & 0x7FFF
             name = actor_name(record)
             if name:
-                named_actors.append(
-                    {
-                        "id": slot,
-                        "name": name,
-                        "x": world_x,
-                        "y": world_y,
-                        "spriteId": sprite_id,
-                        "positionKind": "authored-spawn",
-                    }
-                )
+                sprite = actor_bank[sprite_id] if 0 <= sprite_id < len(actor_bank) else None
+                actor = {
+                    "id": slot,
+                    "name": name,
+                    "x": world_x,
+                    "y": world_y,
+                    "spriteId": sprite_id,
+                    "positionKind": "engine-staging" if is_staged else "authored-spawn",
+                }
+                if sprite is not None and sprite.kind in (0, 5):
+                    actor.update(
+                        {
+                            "spriteWidth": sprite.width,
+                            "spriteHeight": sprite.height,
+                            # Sprite headers use vertical/horizontal axis order.
+                            # Export conventional x/y hotspot names for the UI.
+                            "spriteHotspotX": sprite.anchor_y,
+                            "spriteHotspotY": sprite.anchor_x,
+                        }
+                    )
+                (staged_actors if is_staged else named_actors).append(actor)
         elif record_type in (2, 4) and values[5] == 2:
+            if is_staged:
+                staged_object_records += 1
+                continue
             # Script FA:F7 is the multi-frame genie/teleport effect.  Its
             # records describe mutually exclusive animation frames; drawing
             # every dormant frame at once creates the large blue-white burst
@@ -416,20 +507,17 @@ def composite_world_objects(
             cached_origin = None
             if len(record) >= 38 and 0 <= sprite_id < len(scenery_bank):
                 sprite = scenery_bank[sprite_id]
-                # Opaque type-2 images are editor collision/region helpers
-                # (including labels such as LEFTY and MEDIUM), not runtime
-                # scenery.  Transparent type-2 images and all type-4 images
-                # are actual visual instances.
-                if record_type == 2 and sprite is not None and sprite.kind != 5:
-                    continue
                 cached = struct.unpack_from("<8H", record, 22)
                 # The first coordinate pair is the depth anchor, while the
                 # cached rectangle stores the actual top/left used to draw the
                 # current frame.  This is intentionally keyed by field 10:
                 # field 7 describes associated collision/interaction state.
+                # A heavy-debugger dump of TOWN slot 366 contained these first
+                # 38 bytes unchanged at runtime, including the kind-0 closed
+                # door sprite and its signed cached origin.
                 if sprite is not None and (cached[0], cached[1]) == (sprite.height, sprite.width):
-                    cached_y = cached[4] - 0x10000 if cached[4] & 0x8000 else cached[4]
-                    cached_x = cached[5] - 0x10000 if cached[5] & 0x8000 else cached[5]
+                    cached_y = s16(cached[4])
+                    cached_x = s16(cached[5])
                     cached_origin = (cached_y, cached_x)
             scenery_records += 1
             drawables.append((world_y, slot, world_y, world_x, scenery_bank, sprite_id, cached_origin))
@@ -442,8 +530,8 @@ def composite_world_objects(
             sprite_id = values[10] & 0x7FFF
             if 0 <= sprite_id < len(foreground_bank):
                 cached = struct.unpack_from("<8H", record, 22)
-                cached_y = cached[4] - 0x10000 if cached[4] & 0x8000 else cached[4]
-                cached_x = cached[5] - 0x10000 if cached[5] & 0x8000 else cached[5]
+                cached_y = s16(cached[4])
+                cached_x = s16(cached[5])
                 foreground_records += 1
                 foreground_drawables.append((world_y, slot, sprite_id, world_x, (cached_y, cached_x)))
 
@@ -477,7 +565,16 @@ def composite_world_objects(
         roofed_raster = bytes(roofed)
 
     named_actors.sort(key=lambda actor: (int(actor["y"]), int(actor["x"]), str(actor["name"])))
-    return scenery_records, foreground_records, actor_records, tuple(named_actors), roofed_raster
+    staged_actors.sort(key=lambda actor: (int(actor["y"]), int(actor["x"]), str(actor["name"])))
+    return (
+        scenery_records,
+        foreground_records,
+        actor_records,
+        tuple(named_actors),
+        staged_object_records,
+        tuple(staged_actors),
+        roofed_raster,
+    )
 
 
 def read_world(path: Path) -> WorldMap:
@@ -532,13 +629,15 @@ def read_world(path: Path) -> WorldMap:
                 source = tile_y * TILE_SIZE
                 raster[destination : destination + TILE_SIZE] = tile[source : source + TILE_SIZE]
 
-    scenery_count, foreground_count, actor_count, named_actors, roofed_pixels = composite_world_objects(
-        world,
-        entries,
-        raster,
-        raster_width,
-        height * TILE_SIZE,
-    )
+    (
+        scenery_count,
+        foreground_count,
+        actor_count,
+        named_actors,
+        staged_object_count,
+        staged_actors,
+        roofed_pixels,
+    ) = composite_world_objects(world, entries, raster, raster_width, height * TILE_SIZE)
 
     engine_id = path.stem.upper()
     return WorldMap(
@@ -558,6 +657,8 @@ def read_world(path: Path) -> WorldMap:
         foreground_count=foreground_count,
         actor_count=actor_count,
         named_actors=named_actors,
+        staged_object_count=staged_object_count,
+        staged_actors=staged_actors,
     )
 
 
@@ -575,9 +676,38 @@ def write_indexed_png(path: Path, width: int, height: int, pixels: bytes, palett
     path.write_bytes(png)
 
 
+def write_actor_sprite_png(path: Path, sprite: Sprite, palette: bytes) -> None:
+    """Write one engine actor frame with palette-index FF transparency."""
+    if sprite.kind not in (0, 5):
+        raise ValueError(f"unsupported standalone actor sprite kind {sprite.kind}")
+    pixels = decode_planar_pixels(sprite.payload, sprite.width_quarters, sprite.rows)
+    rows = b"".join(
+        b"\0" + pixels[y * sprite.width : (y + 1) * sprite.width]
+        for y in range(sprite.height)
+    )
+    alpha = bytearray((255,) * 256)
+    if sprite.kind == 5:
+        alpha[0xFF] = 0
+    png = bytearray(b"\x89PNG\r\n\x1a\n")
+    png += png_chunk(b"IHDR", struct.pack(">IIBBBBB", sprite.width, sprite.height, 8, 3, 0, 0, 0))
+    png += png_chunk(b"PLTE", palette)
+    png += png_chunk(b"tRNS", bytes(alpha))
+    png += png_chunk(b"IDAT", zlib.compress(rows, 9))
+    png += png_chunk(b"IEND", b"")
+    path.write_bytes(png)
+
+
 def build_catalogue(worlds: list[WorldMap]) -> dict[str, object]:
     entries = []
     for world in worlds:
+        def actor_entry(actor: dict[str, object]) -> dict[str, object]:
+            entry = dict(actor)
+            if "spriteWidth" in entry:
+                entry["spriteImage"] = (
+                    f"images/alqadim-atlas/actors/{world.engine_id.lower()}-{entry['spriteId']}.png"
+                )
+            return entry
+
         entries.append(
             {
                 "id": world.engine_id.lower(),
@@ -598,18 +728,22 @@ def build_catalogue(worlds: list[WorldMap]) -> dict[str, object]:
                 "tileCount": world.tile_count,
                 "annotationKey": world.annotation_key,
                 "manualImage": f"images/alqadim/{world.annotation_key}" if world.annotation_key else None,
+                "charts": CHART_OVERRIDES.get(world.engine_id),
+                "chartNote": ANNOTATION_NOTES.get(world.engine_id),
                 "sourceFile": f"WORLDS/{world.engine_id}.LIB",
                 "sourceBytes": world.source_size,
                 "sourceSha256": world.source_sha256,
                 "sceneryCount": world.scenery_count,
                 "foregroundCount": world.foreground_count,
                 "actorCount": world.actor_count,
-                "namedActors": world.named_actors,
+                "namedActors": [actor_entry(actor) for actor in world.named_actors],
+                "stagedObjectCount": world.staged_object_count,
+                "stagedActors": [actor_entry(actor) for actor in world.staged_actors],
             }
         )
     return {
-        "format": "Al-Qadim Cyberlore world atlas v7",
-        "rendering": "Terrain, cached-origin runtime scenery, optional roof/foreground layer, NPC spawn metadata, and original 256-colour palette",
+        "format": "Al-Qadim Cyberlore world atlas v10",
+        "rendering": "Terrain, cached-origin runtime scenery excluding engine staging cohorts, optional roof/foreground layer, transparent authentic actor-frame assets, separate active and staged NPC metadata, and original 256-colour palette",
         "worldCount": len(entries),
         "worlds": entries,
     }
@@ -628,6 +762,8 @@ def main() -> None:
         raise SystemExit(f"No world libraries found in {worlds_dir}")
 
     args.output.mkdir(parents=True, exist_ok=True)
+    actor_output = args.output / "actors"
+    actor_output.mkdir(parents=True, exist_ok=True)
     worlds: list[WorldMap] = []
     for path in files:
         world = read_world(path)
@@ -648,6 +784,21 @@ def main() -> None:
                 world.roofed_pixels,
                 world.palette,
             )
+        source = path.read_bytes()
+        actor_bank = decode_sprite_bank(source, archive_entries(source)[2])
+        actor_sprite_ids = {
+            int(actor["spriteId"])
+            for actor in (*world.named_actors, *world.staged_actors)
+            if "spriteWidth" in actor
+        }
+        for sprite_id in sorted(actor_sprite_ids):
+            sprite = actor_bank[sprite_id]
+            if sprite is not None and sprite.kind in (0, 5):
+                write_actor_sprite_png(
+                    actor_output / f"{world.engine_id.lower()}-{sprite_id}.png",
+                    sprite,
+                    world.palette,
+                )
         print(f"rendered {world.engine_id:8} {world.width:3}x{world.height:<3} -> {image_path}")
 
     catalogue = build_catalogue(worlds)

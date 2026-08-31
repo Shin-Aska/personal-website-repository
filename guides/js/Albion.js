@@ -1740,7 +1740,11 @@ function renderCharacters() {
                     <p class="text-xs text-gray-500 truncate">${c.role}</p>
                 </div>
             </div>
-            ${c.magicSchool ? `<span class="magic-tag ${getMagicClass(c.magicSchool)} mt-2">${c.magicSchool.split(' ')[0]}</span>` : ''}
+            ${c.race === 'Iskai'
+            ? '<span class="magic-tag iskai mt-2">Iskai</span>'
+            : c.magicSchool
+                ? `<span class="magic-tag ${getMagicClass(c.magicSchool)} mt-2">${c.magicSchool.split(' ')[0]}</span>`
+                : ''}
         </div>
     `).join('');
 

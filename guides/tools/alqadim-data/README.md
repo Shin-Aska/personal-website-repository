@@ -32,3 +32,7 @@ viewport presentation.
 The debug-enabled emulator should remain the source of truth for coordinates,
 map identifiers, objects, and NPC state. Use these screenshots to validate the
 final renderer's composition and appearance.
+
+See [`FORMAT-NOTES.md`](FORMAT-NOTES.md) for the confirmed archive, sprite,
+object-coordinate, and layer rules used by the atlas generator, along with the
+validation procedure and remaining runtime uncertainties.

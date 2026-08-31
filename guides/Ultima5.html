@@ -17,7 +17,7 @@
     <!-- Visualization & Content Choices: Companion Stats -> Goal: Compare -> Viz: Interactive Bar Chart (Chart.js) -> Interaction: Filter by STR/INT/DEX -> Justification: Visual comparison is faster than reading a table for identifying top-tier characters. Quest Walkthroughs -> Goal: Inform/Organize -> Presentation: Tabbed/Card-based HTML/CSS layout -> Interaction: Click to reveal steps -> Justification: Breaks down dense text into a clear, step-by-step process, reducing cognitive load. Reference Tables (Spells/Words) -> Goal: Inform/Organize -> Presentation: HTML Table -> Interaction: Search/Filter (JS) -> Justification: Allows for immediate lookup of specific data points without manual scrolling. -->
     <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
     <link rel="stylesheet" href="css/leaflet.css">
-    <link rel="stylesheet" href="css/Ultima5.css?v=20260829i">
+    <link rel="stylesheet" href="css/Ultima5.css?v=20260831a">
 </head>
 <body>
     <div class="u5-backbar">
@@ -61,16 +61,30 @@
 
             <main class="u5-container u5-main">
                 
-                <section id="overview" class="content-section active">
-                    <header class="u5-section-heading">
-                        <div>
-                            <p class="u5-kicker">Resistance briefing</p>
-                            <h2>The Tyranny of Virtue</h2>
-                            <p>Britannia is occupied, Lord British is missing, and Blackthorn has turned the Eight Virtues into instruments of fear. This guide keeps the whole liberation campaign within reach.</p>
+                <section id="overview" class="content-section active" aria-labelledby="u5-briefing-title">
+                    <header class="u5-briefing-hero">
+                        <div class="u5-briefing-hero__copy">
+                            <p class="u5-kicker">Resistance briefing · Britannia occupied</p>
+                            <h2 id="u5-briefing-title">Virtue has become a weapon.</h2>
+                            <p>Lord British is lost below the world. Above, Blackthorn rules through compulsory virtue while the Shadowlords turn Britannia toward Falsehood, Hatred, and Cowardice. Reassemble the old fellowship and prepare a kingdom-wide resistance.</p>
+                            <div class="u5-briefing-hero__actions">
+                                <button class="u5-primary-action" type="button" data-u5-section="quests">
+                                    Join the resistance <i data-lucide="arrow-right" aria-hidden="true"></i>
+                                </button>
+                                <button class="u5-hero-secondary" type="button" data-u5-section="atlas">
+                                    Survey Britannia
+                                </button>
+                            </div>
+                            <div class="u5-briefing-hero__chips" aria-label="Guide features">
+                                <span>Surface and Underworld atlas</span>
+                                <span>Persistent liberation tracker</span>
+                                <span>Searchable resistance archives</span>
+                            </div>
                         </div>
-                        <button class="u5-primary-action" type="button" data-u5-section="quests">
-                            Continue the campaign <i data-lucide="arrow-right" aria-hidden="true"></i>
-                        </button>
+                        <figure class="u5-briefing-hero__art">
+                            <img src="images/ultima5-briefing-hero.webp" alt="The Avatar and the resistance face Blackthorn's occupied Britannia beneath the three Shadowlords">
+                            <figcaption>The Shadowlords hold the realm. The resistance still stands.</figcaption>
+                        </figure>
                     </header>
 
                     <div class="u5-briefing-grid">

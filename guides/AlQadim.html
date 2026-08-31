@@ -5,28 +5,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta name="description" content="An interactive Al-Qadim: The Genie's Curse guide with a cluebook-aligned atlas, campaign checklist, combat reference, bestiary, and original source books.">
     <title>Al-Qadim: The Genie's Curse — Interactive Guide</title>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script src="js/tailwind.js"></script>
     <link rel="stylesheet" href="css/fonts.css">
     <link rel="stylesheet" href="css/leaflet.css">
-    <link rel="stylesheet" href="css/AlQadim.css">
+    <link rel="stylesheet" href="css/AlQadim.css?v=20260831c">
 </head>
 
 <body class="antialiased">
     <!-- Back Navigation -->
-    <div class="w-full bg-black/40 text-gray-400 border-b border-gray-800/60 relative z-10">
-        <div class="container mx-auto px-4 py-2 flex justify-between items-center">
+    <div class="aq-backbar w-full bg-black/40 text-gray-400 border-b border-gray-800/60 relative z-10">
+        <div class="container mx-auto px-4 py-2 flex items-center">
             <a href="index.html" class="inline-flex items-center gap-2 hover:text-white transition-colors text-sm">
                 <span aria-hidden="true">←</span> Back to Guides Hub
             </a>
-            <div class="flex items-center gap-3">
-                <span class="text-xs text-[var(--aq-text-muted)] font-semibold uppercase">Art Style:</span>
-                <div class="art-mode-switch">
-                    <button id="art-classic" class="text-white hover:text-[var(--aq-accent-gold)]">Classic</button>
-                    <button id="art-remastered" class="active text-white">Remastered</button>
-                </div>
-            </div>
         </div>
     </div>
 
@@ -36,16 +30,15 @@
             <div class="flex items-center gap-4 text-center md:text-left">
                 <img id="header-logo" class="w-16 h-16 object-contain" 
                      src="images/alqadim/art_genie_lamp_reimagined.png" 
-                     data-art-classic="images/alqadim/art_genie_lamp.png" 
-                     data-art-remastered="images/alqadim/art_genie_lamp_reimagined.png" 
                      alt="Genie Lamp">
                 <div>
                     <h1 class="aq-title text-gradient">Al-Qadim</h1>
-                    <p class="aq-subtitle">Interactive Companion Guide • SSI & Cyberlore 1994</p>
+                    <p class="aq-subtitle">AD&amp;D Campaign Companion • SSI &amp; Cyberlore 1994</p>
                 </div>
             </div>
             <nav id="main-nav" class="flex flex-wrap justify-center gap-2">
-                <button data-target="corsair" class="nav-button active">🗡️ The Corsair</button>
+                <button data-target="briefing" class="nav-button active" aria-current="page">🌙 Briefing</button>
+                <button data-target="corsair" class="nav-button">🗡️ Field Manual</button>
                 <button data-target="walkthrough" class="nav-button">📜 Walkthrough</button>
                 <button data-target="atlas" class="nav-button">🗺️ Atlas</button>
                 <button data-target="bestiary" class="nav-button">📖 Bestiary & Items</button>
@@ -56,140 +49,200 @@
 
     <main class="container mx-auto px-4 py-8 relative z-10">
 
-        <!-- ==================== THE CORSAIR ==================== -->
-        <section id="corsair" class="content-section active">
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                <!-- Character stats and details -->
-                <div class="lg:col-span-1 space-y-6">
-                    <div class="aq-card p-6">
-                        <div class="text-center mb-4">
-                            <img id="art-character" class="mx-auto rounded max-h-[280px] object-contain" 
-                                 src="images/alqadim/art_corsair_reimagined.png" 
-                                 data-art-classic="images/alqadim/art_corsair.png" 
-                                 data-art-remastered="images/alqadim/art_corsair_reimagined.png" 
-                                 alt="The Corsair">
-                            <h2 class="text-2xl font-bold mt-4 text-[var(--aq-accent-gold)]">The Corsair</h2>
-                            <p class="text-xs text-[var(--aq-text-muted)] uppercase tracking-wider mt-1">Class: Fighter Type</p>
-                        </div>
-                        <p class="text-sm text-[var(--aq-text-muted)] leading-relaxed border-t border-gray-800/80 pt-4">
-                            You control a single, noble Corsair graduated from the martial academy. Banished from your home city due to a dark conspiracy, you must master combat moves and recruit genies to lift the curse.
+        <!-- ==================== BRIEFING ==================== -->
+        <section id="briefing" class="content-section active" aria-labelledby="aq-briefing-title">
+            <div class="aq-intro-hero">
+                <div class="aq-intro-hero__copy">
+                    <p class="aq-intro-kicker">An AD&amp;D adventure across Zakhara</p>
+                    <h2 id="aq-briefing-title">Restore your family’s honor. Break the Genie’s Curse.</h2>
+                    <p class="aq-intro-lead">
+                        Your graduation as a Corsair should begin a life of honor. Instead, a false accusation casts your family from Zaratan and draws you into a voyage across haunted reefs, elemental islands, palace dungeons, and the outer planes.
+                    </p>
+                    <div class="aq-intro-actions">
+                        <button type="button" class="aq-intro-action aq-intro-action--primary" data-guide-target="walkthrough">
+                            Begin the journey <span aria-hidden="true">→</span>
+                        </button>
+                        <button type="button" class="aq-intro-action aq-intro-action--secondary" data-guide-target="atlas">
+                            Open the Genie Engine Atlas
+                        </button>
+                    </div>
+                    <div class="aq-intro-chips" aria-label="Guide features">
+                        <span>Cluebook-aligned maps</span>
+                        <span>Persistent campaign checklist</span>
+                        <span>Authentic decoded sprites</span>
+                    </div>
+                </div>
+                <figure class="aq-intro-cover">
+                    <img src="images/alqadim/briefing-hero.webp" alt="A young Corsair sails from Zaratan beneath a gathering genie-shaped storm">
+                    <figcaption>Zaratan behind. The cursed voyage ahead.</figcaption>
+                </figure>
+            </div>
+
+            <div class="aq-intro-metrics" aria-label="Guide coverage">
+                <div><strong>31</strong><span>decoded game worlds</span></div>
+                <div><strong>26</strong><span>official cluebook charts</span></div>
+                <div><strong>19</strong><span>campaign chapters</span></div>
+                <div><strong>2</strong><span>original source books</span></div>
+            </div>
+
+            <div class="aq-intro-grid">
+                <article class="aq-intro-card aq-intro-card--story">
+                    <p class="aq-intro-kicker">Your mission</p>
+                    <h3>A Corsair’s oath carries farther than a sword</h3>
+                    <p>
+                        The campaign begins at Master Sinbar’s testing grounds, then opens into a connected journey through Zakhara. Recover your family’s standing, expose the Vizier’s conspiracy, bargain with the four Genie Lords, and confront the power behind Muliban’s curse.
+                    </p>
+                    <div class="aq-intro-story-notes">
+                        <span><strong>Play style</strong> Real-time combat, exploration, and environmental puzzles</span>
+                        <span><strong>Guide style</strong> Source-backed directions with optional spoilers kept inside the walkthrough</span>
+                    </div>
+                </article>
+
+                <article class="aq-intro-card aq-intro-card--desks">
+                    <p class="aq-intro-kicker">Field desks</p>
+                    <h3>Choose what you need right now</h3>
+                    <div class="aq-intro-desk-links">
+                        <button type="button" data-guide-target="corsair">
+                            <span>01</span><strong>Corsair Field Manual</strong><small>Master swordwork, shards, and combat rhythm</small><b aria-hidden="true">→</b>
+                        </button>
+                        <button type="button" data-guide-target="walkthrough">
+                            <span>02</span><strong>Walkthrough</strong><small>Track the complete nineteen-chapter route</small><b aria-hidden="true">→</b>
+                        </button>
+                        <button type="button" data-guide-target="atlas">
+                            <span>03</span><strong>Atlas</strong><small>Compare decoded worlds with cluebook charts</small><b aria-hidden="true">→</b>
+                        </button>
+                        <button type="button" data-guide-target="bestiary">
+                            <span>04</span><strong>Bestiary &amp; Items</strong><small>Look up threats, shops, and quest objects</small><b aria-hidden="true">→</b>
+                        </button>
+                    </div>
+                </article>
+            </div>
+
+            <section class="aq-intro-roadmap" aria-labelledby="aq-roadmap-title">
+                <div class="aq-intro-section-heading">
+                    <div>
+                        <p class="aq-intro-kicker">The road ahead</p>
+                        <h3 id="aq-roadmap-title">Four movements across Zakhara</h3>
+                    </div>
+                    <p>The walkthrough keeps individual objectives collapsible so you can control how much of the route you reveal.</p>
+                </div>
+                <div class="aq-intro-roadmap__grid">
+                    <button type="button" data-guide-target="walkthrough"><span>01</span><strong>Academy &amp; Zaratan</strong><small>Graduate, return home, and survive the accusation.</small></button>
+                    <button type="button" data-guide-target="walkthrough"><span>02</span><strong>Seas &amp; Sorcery</strong><small>Cross the oasis, reef, ship, and Sorcerer’s Tower.</small></button>
+                    <button type="button" data-guide-target="walkthrough"><span>03</span><strong>Caliph &amp; Genie Lords</strong><small>Navigate the capital, palace, and elemental islands.</small></button>
+                    <button type="button" data-guide-target="walkthrough"><span>04</span><strong>Prison &amp; Outer Planes</strong><small>Break Al’Katraz and carry the final battle beyond the world.</small></button>
+                </div>
+            </section>
+
+            <aside class="aq-intro-source-note">
+                <div>
+                    <strong>Source policy.</strong>
+                    Story and controls follow the original manual. Locations, inhabitants, and route notes follow the official cluebook; when decoded game metadata disagrees, the cluebook is the location authority. World geometry and sprites come from the installed game files.
+                </div>
+                <div class="aq-intro-source-links">
+                    <a href="alqadim/al-qadim_manual_PDF.pdf" target="_blank" rel="noreferrer">Game manual ↗</a>
+                    <a href="alqadim/al-qadim_cluebook_PDF.pdf" target="_blank" rel="noreferrer">Official cluebook ↗</a>
+                </div>
+            </aside>
+        </section>
+
+        <!-- ==================== CORSAIR FIELD MANUAL ==================== -->
+        <section id="corsair" class="content-section" aria-labelledby="corsair-manual-title">
+            <div class="corsair-manual">
+                <header class="corsair-manual-hero">
+                    <div class="corsair-manual-hero__copy">
+                        <p class="aq-intro-kicker">Player field manual</p>
+                        <h2 id="corsair-manual-title">Fight like a Corsair</h2>
+                        <p class="corsair-manual-lead">
+                            You begin as a second-level seafaring warrior: lightly equipped, quick on your feet, and already skilled with the scimitar. Survival is less about a hidden stat sheet and more about facing, timing, spacing, and choosing the right ranged tool.
                         </p>
-                    </div>
-
-                    <!-- Statistics grid -->
-                    <div class="aq-card p-6">
-                        <h3 class="text-xl font-bold mb-4 text-[var(--aq-accent-sand)]">Base Statistics</h3>
-                        <div id="character-stats-grid" class="grid grid-cols-2 gap-3">
-                            <!-- Populated by JS -->
+                        <div class="corsair-manual-loadout" aria-label="Starting combat profile">
+                            <span><b>2nd level</b><small>Human Corsair</small></span>
+                            <span><b>No armor</b><small>Movement first</small></span>
+                            <span><b>Right hand</b><small>Magic scimitar</small></span>
+                            <span><b>Left hand</b><small>Sling or shard</small></span>
                         </div>
                     </div>
+                    <figure class="corsair-manual-portrait">
+                        <img src="images/alqadim/corsair-field-manual.webp" alt="A sun-weathered Corsair holding his curved scimitar and a glowing Moonstone shard">
+                        <figcaption>Fast feet, a clear facing, and one decisive swing.</figcaption>
+                    </figure>
+                </header>
 
-                    <!-- Original References -->
-                    <div class="aq-card p-6">
-                        <h3 class="text-xl font-bold mb-4 text-[var(--aq-accent-gold)]">Original References</h3>
-                        <div class="space-y-3">
-                            <a href="alqadim/al-qadim_manual_PDF.pdf" target="_blank" class="flex items-center gap-3 p-3 rounded bg-black/30 border border-gray-800/80 hover:border-[var(--aq-accent-gold)] transition-colors group">
-                                <span class="text-2xl group-hover:scale-110 transition-transform">📕</span>
-                                <div>
-                                    <div class="font-semibold text-sm group-hover:text-[var(--aq-accent-gold)] transition-colors">Game Manual</div>
-                                    <div class="text-[10px] text-[var(--aq-text-muted)]">Official PDF Manual (Rules, lore, controls)</div>
-                                </div>
-                            </a>
-                            <a href="alqadim/al-qadim_cluebook_PDF.pdf" target="_blank" class="flex items-center gap-3 p-3 rounded bg-black/30 border border-gray-800/80 hover:border-[var(--aq-accent-gold)] transition-colors group">
-                                <span class="text-2xl group-hover:scale-110 transition-transform">📘</span>
-                                <div>
-                                    <div class="font-semibold text-sm group-hover:text-[var(--aq-accent-gold)] transition-colors">Official Cluebook</div>
-                                    <div class="text-[10px] text-[var(--aq-text-muted)]">Official PDF Walkthrough & Maps</div>
-                                </div>
-                            </a>
+                <section class="corsair-manual-panel" aria-labelledby="corsair-rhythm-title">
+                    <div class="corsair-manual-heading">
+                        <div>
+                            <p class="aq-intro-kicker">The combat rhythm</p>
+                            <h3 id="corsair-rhythm-title">Read the circles. Set your facing. Commit.</h3>
                         </div>
+                        <p>Combat is real time. The three action circles appear in dangerous areas and show which sword swings are currently available.</p>
+                    </div>
+                    <div class="corsair-rhythm-grid">
+                        <article><span>01</span><h4>Face the threat</h4><p>Your scimitar strikes in the direction you face. Press <kbd>Alt</kbd> to lock that direction in a corridor; unlock when surrounded.</p></article>
+                        <article><span>02</span><h4>Choose the swing</h4><p>Click for the quick attack. Hold the action button longer and release when the second or third circle lights orange.</p></article>
+                        <article><span>03</span><h4>Respect recovery</h4><p>Every blow has a brief readying pause. Land a clean hit, make space, then begin the next attack before closing again.</p></article>
+                        <article><span>04</span><h4>Switch the left hand</h4><p>Ready either the seeking sling or one magic shard. Fire with <kbd>Space</kbd> in the direction your Corsair last faced.</p></article>
+                    </div>
+                </section>
+
+                <section id="corsair-swings" class="corsair-manual-panel" aria-labelledby="corsair-swings-title">
+                    <div class="corsair-manual-heading">
+                        <div>
+                            <p class="aq-intro-kicker">Scimitar discipline</p>
+                            <h3 id="corsair-swings-title">Three swings, three areas of control</h3>
+                        </div>
+                        <p>Zubakon can teach the later swings once experience makes you eligible. The labels below describe their coverage; the manual does not give them separate fantasy-ability names.</p>
+                    </div>
+                    <div id="combat-moves-grid" class="corsair-swing-grid">
+                        <!-- Populated by JS -->
+                    </div>
+                </section>
+
+                <section class="corsair-manual-panel corsair-shards" aria-labelledby="corsair-shards-title">
+                    <div class="corsair-manual-heading">
+                        <div>
+                            <p class="aq-intro-kicker">Moonstone arsenal</p>
+                            <h3 id="corsair-shards-title">Eight spells anyone of the old bloodline can fire</h3>
+                        </div>
+                        <p>Each glowing fragment carries its own remaining charges. One shot spends one charge; when a shard is empty, it breaks apart.</p>
+                    </div>
+                    <div class="corsair-shard-rules" aria-label="Shard rules">
+                        <span><strong>Equip</strong> One shard or the sling</span>
+                        <span><strong>Aim</strong> Face the intended direction</span>
+                        <span><strong>Fire</strong> Press <kbd>Space</kbd></span>
+                    </div>
+                    <div id="shards-grid" class="corsair-shard-grid">
+                        <!-- Populated by JS -->
+                    </div>
+                </section>
+
+                <div class="corsair-manual-bottom">
+                    <section class="corsair-manual-panel" aria-labelledby="corsair-tactics-title">
+                        <p class="aq-intro-kicker">Hu’rakan’s field notes</p>
+                        <h3 id="corsair-tactics-title">Win the exchange, not the spectacle</h3>
+                        <ul class="corsair-tactics-list">
+                            <li><strong>Charge before contact.</strong><span>Do not wait until you are beside a creature to ready the swing.</span></li>
+                            <li><strong>Hit and withdraw.</strong><span>Against powerful foes, secure one blow and back away before the return strike.</span></li>
+                            <li><strong>Keep moving.</strong><span>Slower creatures can be dodged; your moving feet make you harder to hit.</span></li>
+                            <li><strong>Use the pause.</strong><span>Opening the menu pauses combat, giving you time to drink a healing potion before the health bar empties.</span></li>
+                        </ul>
+                    </section>
+
+                    <div class="corsair-manual-side">
+                        <figure class="corsair-combat-screen">
+                            <img src="images/alqadim/screenshot_inventory_remastered.png" alt="The Corsair fighting at close range with the action circles visible above the play area">
+                            <figcaption><strong>Read the interface.</strong> The action circles sit above the play area; your health bar remains visible during the exchange.</figcaption>
+                        </figure>
+                        <aside class="corsair-supplies-callout">
+                            <div><p class="aq-intro-kicker">Need provisions?</p><h3>Potions, rings, shops, and quest items live at the supply desk.</h3></div>
+                            <button type="button" data-guide-target="bestiary">Open Bestiary &amp; Items <span aria-hidden="true">→</span></button>
+                        </aside>
                     </div>
                 </div>
 
-                <!-- Combat Moves & Items -->
-                <div class="lg:col-span-2 space-y-6">
-                    <div class="aq-card p-6">
-                        <div class="flex items-center gap-3 mb-4">
-                            <img id="art-divider" class="w-10 h-10 object-contain" 
-                                 src="images/alqadim/art_sword_reimagined.png" 
-                                 data-art-classic="images/alqadim/art_sword.png" 
-                                 data-art-remastered="images/alqadim/art_sword_reimagined.png" 
-                                 alt="Scimitar">
-                            <h3 class="text-2xl font-bold text-[var(--aq-accent-gold)]">Special Combat Moves</h3>
-                        </div>
-                        <p class="text-sm text-[var(--aq-text-muted)] mb-4">
-                            Trainers teach you special attacks as you grow in power. To execute, hold down the strike key until the scimitar gem on the interface charges and flashes the appropriate color.
-                        </p>
-                        <div id="combat-moves-grid" class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                            <!-- Populated by JS -->
-                        </div>
-                    </div>
-
-                    <!-- Moonstone Magic Shards -->
-                    <div class="aq-card p-6">
-                        <h3 class="text-xl font-bold mb-4 text-[var(--aq-accent-teal)]">Moonstone Magic Shards</h3>
-                        <p class="text-sm text-[var(--aq-text-muted)] mb-4">
-                            Unlike traditional spellcasters, Corsairs channel elemental powers through charges embedded in precious moonstone shards.
-                        </p>
-                        <div class="overflow-x-auto">
-                            <table class="aq-table">
-                                <thead>
-                                    <tr>
-                                        <th>Shard Type</th>
-                                        <th>Charges</th>
-                                        <th>Spell Effect</th>
-                                        <th>Strategy Notes</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="shards-table">
-                                    <!-- Populated by JS -->
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-
-                    <!-- Consumables and Potions -->
-                    <div class="aq-card p-6">
-                        <h3 class="text-xl font-bold mb-4 text-[var(--aq-accent-sand)]">Supernatural Consumables</h3>
-                        <div class="overflow-x-auto">
-                            <table class="aq-table">
-                                <thead>
-                                    <tr>
-                                        <th>Consumable</th>
-                                        <th>Effect</th>
-                                        <th>Vendor Details</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="potions-table">
-                                    <!-- Populated by JS -->
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-
-                    <!-- Screenshots Gallery -->
-                    <div class="aq-card p-6">
-                        <h3 class="text-xl font-bold mb-4 text-[var(--aq-text)]">Gameplay Screenshots</h3>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div class="bg-black/40 p-2 border border-gray-800 rounded">
-                                <span class="text-xs text-[var(--aq-accent-sand)] font-semibold block mb-2">Real-time Scimitar Combat</span>
-                                <img id="screenshot-inv" class="rounded w-full" 
-                                     src="images/alqadim/screenshot_inventory_remastered.png" 
-                                     data-art-classic="images/alqadim/screenshot_inventory.png" 
-                                     data-art-remastered="images/alqadim/screenshot_inventory_remastered.png" 
-                                     alt="Real-time Combat Screen">
-                            </div>
-                            <div class="bg-black/40 p-2 border border-gray-800 rounded">
-                                <span class="text-xs text-[var(--aq-accent-teal)] font-semibold block mb-2">Overworld Sailing & Navigation</span>
-                                <img id="screenshot-shards" class="rounded w-full" 
-                                     src="images/alqadim/screenshot_shards_remastered.png" 
-                                     data-art-classic="images/alqadim/screenshot_shards.png" 
-                                     data-art-remastered="images/alqadim/screenshot_shards_remastered.png" 
-                                     alt="Overworld Sailing Screen">
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <aside class="corsair-source-note">
+                    Mechanics and spell values follow the original game manual; Weapons Master locations and practical combat advice follow the official cluebook.
+                </aside>
             </div>
         </section>
 
@@ -279,8 +332,6 @@
                     <div class="flex items-center gap-3 border-b border-gray-800 pb-2 mb-4">
                         <img id="art-chess" class="w-10 h-10 object-contain" 
                              src="images/alqadim/art_chessboard_reimagined.png" 
-                             data-art-classic="images/alqadim/art_chessboard.png" 
-                             data-art-remastered="images/alqadim/art_chessboard_reimagined.png" 
                              alt="Chessboard">
                         <h3 class="text-xl font-bold text-[var(--aq-accent-purple)]">♟️ Island of Senat Diplomatic Gauntlet</h3>
                     </div>
@@ -354,11 +405,15 @@
                         <button id="atlas-view-game" class="active" type="button">Game render</button>
                         <button id="atlas-view-manual" type="button">Cluebook chart</button>
                     </div>
+                    <label id="atlas-chart-picker" class="atlas-chart-picker" hidden>
+                        <span>Chart</span>
+                        <select id="atlas-chart-select" aria-label="Select cluebook chart"></select>
+                    </label>
                     <button id="atlas-fit-map" class="atlas-tool-button" type="button">Fit map</button>
                     <label class="atlas-grid-toggle"><input id="atlas-roof-toggle" type="checkbox"> Roofs</label>
                     <label class="atlas-grid-toggle"><input id="atlas-grid-toggle" type="checkbox"> Tile grid</label>
                     <label class="atlas-grid-toggle"><input id="atlas-location-toggle" type="checkbox" checked> Cluebook places</label>
-                    <label class="atlas-grid-toggle"><input id="atlas-actor-toggle" type="checkbox" checked> Actor markers</label>
+                    <label class="atlas-grid-toggle"><input id="atlas-actor-toggle" type="checkbox" checked> Actor sprites</label>
                 </div>
 
                 <div class="atlas-container">
@@ -380,6 +435,10 @@
                             </div>
                             <div id="atlas-map-badges" class="atlas-map-badges"></div>
                         </div>
+                        <aside id="atlas-hover-card" class="atlas-hover-card" hidden aria-live="polite" aria-label="Map detail pop-out">
+                            <button type="button" class="atlas-hover-card__close" onclick="hideAtlasHoverCard(true)" aria-label="Close map detail pop-out">×</button>
+                            <div id="atlas-hover-card-body"></div>
+                        </aside>
                         <div id="alqadim-map" class="alqadim-map" role="application" aria-label="Interactive Al-Qadim game map"></div>
                         <div class="atlas-map-footer">
                             <span id="atlas-coordinate-readout">Move across the map to inspect tile coordinates.</span>
@@ -393,7 +452,7 @@
                 </div>
 
                 <p class="atlas-method-note">
-                    <strong>What is reconstructed:</strong> terrain geometry, original indexed-colour art, cached scenery placement, optional roof/foreground layers, raw actor labels, and initial spawn coordinates are decoded from each shipped <code>WORLDS/*.LIB</code>. Numbered cluebook places are manually registered to decoded game pixels and remain editable separately. Actor markers are metadata because scripts move or replace actors during play; the game also hides the roof over the player's current room.
+                    <strong>What is reconstructed:</strong> terrain geometry, original indexed-colour art, cached scenery placement, optional roof/foreground layers, actor frames, raw labels, and initial spawn coordinates are decoded from each shipped <code>WORLDS/*.LIB</code>. Numbered cluebook places are registered as game hints and every printed chart number is keyboard-focusable and hoverable. When an actor spawn contradicts a named cluebook location, the cluebook placement is shown once as the source of truth. The game also hides the roof over the player's current room.
                 </p>
             </div>
         </section>
@@ -446,8 +505,6 @@
             <div class="max-w-4xl mx-auto aq-card p-6 flex flex-col items-center gap-4">
                 <img id="art-genie-large" class="w-32 h-32 object-contain" 
                      src="images/alqadim/art_nameless_one_reimagined.png" 
-                     data-art-classic="images/alqadim/art_nameless_one.png" 
-                     data-art-remastered="images/alqadim/art_nameless_one_reimagined.png" 
                      alt="Genie Counsel">
                 <div class="text-center">
                     <h3 class="text-2xl font-bold text-[var(--aq-accent-purple)]">Seek Mystical Wisdom</h3>
@@ -529,7 +586,7 @@
 
     <script src="js/leaflet.js"></script>
     <script src="js/AlQadimAtlasData.js"></script>
-    <script src="js/AlQadim.js"></script>
+    <script src="js/AlQadim.js?v=20260831i"></script>
 </body>
 
 </html>
