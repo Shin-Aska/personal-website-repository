@@ -108,6 +108,11 @@ const ultima5CampaignObjectives = [
 
 const ultima5SideQuests = [
     {
+        id: 'side-magic-carpet', category: 'Travel', title: 'Secure the Magic Carpet', location: 'Castle Britannia',
+        detail: 'Bring a Skull Key from Shenstone’s stump in Minoc (or AN SANCT), climb to Lord British’s private rooftop room, unlock the magic door, and take the carpet. It crosses shallow water, swamp, brush, and hills; mountains still need the Grapple, and rough sea is dangerous.',
+        reward: 'Fast terrain-crossing travel', recommendedBefore: 'regalia-sceptre', atlas: { interiorId: 'location-17', floor: '2' }
+    },
+    {
         id: 'side-grapple', category: 'Equipment', title: 'Secure the Grapple', location: 'Empath Abbey',
         detail: 'Ask Lord Michael about GRAPPLE upstairs in the east wing. The hook opens routes across small peaks.',
         reward: 'Mountain access', recommendedBefore: 'shadow-faulinei', atlas: { interiorId: 'location-31', floor: '1' }
@@ -534,8 +539,31 @@ function initializeUltima5CampaignProgress() {
         });
     }
 
-    document.querySelectorAll('[data-u5-campaign-view]').forEach(button => {
+    const campaignViewButtons = [...document.querySelectorAll('[data-u5-campaign-view]')];
+    campaignViewButtons.forEach((button, index) => {
         button.addEventListener('click', () => setUltima5CampaignView(button.dataset.u5CampaignView));
+        button.addEventListener('keydown', event => {
+            if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
+            const nextIndex = event.key === 'Home'
+                ? 0
+                : event.key === 'End'
+                    ? campaignViewButtons.length - 1
+                    : (index + (event.key === 'ArrowRight' ? 1 : -1) + campaignViewButtons.length) % campaignViewButtons.length;
+            event.preventDefault();
+            campaignViewButtons[nextIndex].focus();
+            setUltima5CampaignView(campaignViewButtons[nextIndex].dataset.u5CampaignView);
+        });
+    });
+
+    document.querySelectorAll('[data-u5-side-quest-link]').forEach(button => {
+        button.addEventListener('click', () => {
+            setUltima5CampaignView('side');
+            const card = document.querySelector(`[data-u5-side-quest-card="${button.dataset.u5SideQuestLink}"]`);
+            if (!card) return;
+            const behavior = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
+            card.scrollIntoView({ behavior, block: 'center' });
+            card.querySelector('[data-u5-side-quest]')?.focus();
+        });
     });
 
     initializeUltima5SideQuests();
@@ -631,6 +659,7 @@ function setUltima5CampaignView(view) {
         const active = button.dataset.u5CampaignView === selectedView;
         button.classList.toggle('active', active);
         button.setAttribute('aria-selected', active ? 'true' : 'false');
+        button.tabIndex = active ? 0 : -1;
     });
     document.querySelectorAll('.u5-campaign-view').forEach(panel => {
         const active = panel.id === `u5-${selectedView}-quest-view`;
@@ -657,6 +686,7 @@ function updateUltima5CampaignProgress() {
         document.querySelectorAll(`[data-u5-chapter-count="${chapter}"]`).forEach(output => {
             output.textContent = `${chapterComplete}/${chapterObjectives.length}`;
             output.closest('.u5-campaign-card')?.classList.toggle('is-complete', chapterComplete === chapterObjectives.length);
+            output.closest('.u5-act-tab')?.classList.toggle('is-complete', chapterComplete === chapterObjectives.length);
         });
     });
 
@@ -716,7 +746,9 @@ function openUltima5QuestTab(tabId, { activateSection = true } = {}) {
         button.setAttribute('aria-selected', active ? 'true' : 'false');
     });
     document.querySelectorAll('.quest-tab-content').forEach(content => {
-        content.classList.toggle('active', content.id === tabId);
+        const active = content.id === tabId;
+        content.classList.toggle('active', active);
+        content.hidden = !active;
     });
 }
 
@@ -749,6 +781,19 @@ function setupEventListeners() {
         button.addEventListener('click', function() {
             const tabId = this.getAttribute('data-tab');
             openUltima5QuestTab(tabId, { activateSection: false });
+        });
+        button.addEventListener('keydown', function(event) {
+            if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
+            const buttons = [...this.closest('[role="tablist"]').querySelectorAll('.quest-tab-button')];
+            const currentIndex = buttons.indexOf(this);
+            const nextIndex = event.key === 'Home'
+                ? 0
+                : event.key === 'End'
+                    ? buttons.length - 1
+                    : (currentIndex + (event.key === 'ArrowRight' ? 1 : -1) + buttons.length) % buttons.length;
+            event.preventDefault();
+            buttons[nextIndex].focus();
+            openUltima5QuestTab(buttons[nextIndex].dataset.tab, { activateSection: false });
         });
     });
     
@@ -1597,7 +1642,7 @@ function askTheSeer() {
 - Words of Power (dungeons): Deceit—Malik → Malifora → FALLAX. Despise—Annon → VILIS. Destard—Zachariah (Britain) → Goeth (Jhelom; ask for "DROW") → INOPIA. Wrong—Terrence (Britain) → join Resistance (DAWN) → Felespar (Yew) → MALUM. Covetous—Rew → Fiona (Minoc; DAWN) → AVIDUS. Shame—Woolfe (Trinsic) → Sindar → INFAMA. Hythloth—Kaiko (New Magincia) → Hassad (Blackthorn’s dungeon; ref KAIKO) → IGNAVUS. Doom—after all shrine quests, speak VERAMOCOR.
 - Shadowlords: Names are Faulinei (Falsehood), Astaroth (Hatred), Nosfentor (Cowardice). Shards lie via Deceit, Wrong/Covetous, and Hythloth respectively. In the castles’ sacred flame rooms (Lycaeum, Empath Abbey, Serpent’s Hold), stand one tile south, shout the name, wait a turn, then use the shard as it stands on the flame.
 - Regalia: Sceptre—Stonegate (Grapple, Skull Keys, Magic Carpet). Use a skull key, answer the demon’s riddle ("WELL"), outrun Shadowlords on the carpet, grab the Sceptre (dispels fields). Crown—Blackthorn’s rooftop: outrun guards on the Magic Carpet, climb to L3, skull key the center room, take crown, fly off roof (capture risk can erase a companion). Amulet—Underworld: quick route is the waterfall east of Skara Brae (junctions D → L → D), then southeast through swamp/mountain pass to the burial ground; exit via VAS REL POR or intentional death. Sandalwood Box—Castle Britannia: play Stones on the harpsichord (6-7-8-9-8-7-8-7-6-7-6-5-3).
-- Key Tools: Grapple from Lord Michael (Empath Abbey). Skull keys from Shenstone’s stump in Minoc (refill daily by re-entering). Magic Carpet from Lord British’s private chambers. Magic Axe is top-tier (find one in Jhelom’s stump; buy more in Yew).
+- Key Tools: Grapple from Lord Michael (Empath Abbey). Skull keys from Shenstone’s stump in Minoc (refill daily by re-entering). Magic Carpet—bring a Skull Key or AN SANCT to Castle Britannia, climb to Lord British’s private rooftop room, unlock the magic door, and take it; it crosses shallow water, swamp, brush, and hills, but mountains still require the Grapple and rough sea is dangerous. Magic Axe is top-tier (find one in Jhelom’s stump; buy more in Yew).
 - Underworld tips: Use IN POR (Blink), especially around Hythloth’s shard area; use the Magic Carpet to cross swamps/shallow water/low hills.
 - Doom: Use the Amulet to pierce the darkness, Sceptre to remove ethereal walls, keep the Crown ready. Speak VERAMOCOR to enter and rescue Lord British.
 

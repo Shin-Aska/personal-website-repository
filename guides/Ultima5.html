@@ -17,7 +17,7 @@
     <!-- Visualization & Content Choices: Companion Stats -> Goal: Compare -> Viz: Interactive Bar Chart (Chart.js) -> Interaction: Filter by STR/INT/DEX -> Justification: Visual comparison is faster than reading a table for identifying top-tier characters. Quest Walkthroughs -> Goal: Inform/Organize -> Presentation: Tabbed/Card-based HTML/CSS layout -> Interaction: Click to reveal steps -> Justification: Breaks down dense text into a clear, step-by-step process, reducing cognitive load. Reference Tables (Spells/Words) -> Goal: Inform/Organize -> Presentation: HTML Table -> Interaction: Search/Filter (JS) -> Justification: Allows for immediate lookup of specific data points without manual scrolling. -->
     <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
     <link rel="stylesheet" href="css/leaflet.css">
-    <link rel="stylesheet" href="css/Ultima5.css?v=20260831a">
+    <link rel="stylesheet" href="css/Ultima5.css?v=20260901b">
 </head>
 <body>
     <div class="u5-backbar">
@@ -383,49 +383,52 @@
                     </header>
 
                     <div class="u5-campaign-tabs" role="tablist" aria-label="Quest journal">
-                        <button type="button" class="u5-campaign-tab active" data-u5-campaign-view="main" role="tab" aria-selected="true" aria-controls="u5-main-quest-view">
+                        <button type="button" id="u5-main-campaign-tab" class="u5-campaign-tab active" data-u5-campaign-view="main" role="tab" aria-selected="true" aria-controls="u5-main-quest-view">
                             <span>01</span>
                             <strong>Main Quests</strong>
                             <small>Ordered critical path</small>
                         </button>
-                        <button type="button" class="u5-campaign-tab" data-u5-campaign-view="side" role="tab" aria-selected="false" aria-controls="u5-side-quest-view">
+                        <button type="button" id="u5-side-campaign-tab" class="u5-campaign-tab" data-u5-campaign-view="side" role="tab" aria-selected="false" aria-controls="u5-side-quest-view">
                             <span>02</span>
                             <strong>Side Quests</strong>
                             <small>Optional preparations</small>
                         </button>
                     </div>
 
-                    <div id="u5-main-quest-view" class="u5-campaign-view active" role="tabpanel">
-                    <section class="u5-quest-dashboard" aria-labelledby="u5-current-objective-title">
-                        <div class="u5-quest-dashboard__status">
-                            <p class="u5-kicker">Next required quest</p>
-                            <h3 id="u5-current-objective-title">Restore the Shrine of Honesty</h3>
-                            <p id="u5-current-objective-copy">Begin in Moonglow: learn AHM, meditate three cycles, and seek the Codex.</p>
-                            <div class="u5-current-objective-actions">
-                                <button type="button" id="u5-current-objective-action" class="u5-primary-action">Open this chapter <i data-lucide="arrow-right" aria-hidden="true"></i></button>
-                                <button type="button" id="u5-current-objective-map" class="u5-secondary-action"><i data-lucide="map-pinned" aria-hidden="true"></i> Show on atlas</button>
+                    <div id="u5-main-quest-view" class="u5-campaign-view active" role="tabpanel" aria-labelledby="u5-main-campaign-tab">
+                    <section class="u5-campaign-route" aria-labelledby="u5-campaign-route-title">
+                        <div class="u5-campaign-route__heading">
+                            <div>
+                                <p class="u5-kicker">Campaign route</p>
+                                <h3 id="u5-campaign-route-title">Choose the act you are preparing for</h3>
                             </div>
+                            <p>The active chapter, its preparation, and its walkthrough now travel together.</p>
                         </div>
-                        <div class="u5-main-checklist">
-                            <div class="u5-main-checklist__heading">
-                                <div>
-                                    <p class="u5-kicker">Main quest checklist</p>
-                                    <h3>Follow this order</h3>
-                                </div>
-                                <span><i data-lucide="lock-keyhole" aria-hidden="true"></i> Later quests unlock one at a time</span>
-                            </div>
-                            <div id="u5-main-quest-checkpoints" class="u5-quest-checkpoints"></div>
+                        <div class="u5-act-tabs" role="tablist" aria-label="Campaign chapters">
+                            <button type="button" id="u5-act-tab-shrines" class="quest-tab-button u5-act-tab active" data-tab="shrines" role="tab" aria-selected="true" aria-controls="shrines">
+                                <span class="u5-act-tab__number">Act I</span>
+                                <span><strong>Restore the Shrines</strong><small>Rebuild the paths of virtue.</small></span>
+                                <span class="u5-act-tab__count" data-u5-chapter-count="shrines">0/8</span>
+                            </button>
+                            <button type="button" id="u5-act-tab-shadowlords" class="quest-tab-button u5-act-tab" data-tab="shadowlords" role="tab" aria-selected="false" aria-controls="shadowlords">
+                                <span class="u5-act-tab__number">Act II</span>
+                                <span><strong>Shatter the Shadows</strong><small>Recover the shards and banish their lords.</small></span>
+                                <span class="u5-act-tab__count" data-u5-chapter-count="shadowlords">0/3</span>
+                            </button>
+                            <button type="button" id="u5-act-tab-regalia" class="quest-tab-button u5-act-tab" data-tab="regalia" role="tab" aria-selected="false" aria-controls="regalia">
+                                <span class="u5-act-tab__number">Act III</span>
+                                <span><strong>Recover the Regalia</strong><small>Prepare for Stonegate and the Underworld.</small></span>
+                                <span class="u5-act-tab__count" data-u5-chapter-count="regalia">0/4</span>
+                            </button>
+                            <button type="button" id="u5-act-tab-doom" class="quest-tab-button u5-act-tab" data-tab="doom" role="tab" aria-selected="false" aria-controls="doom">
+                                <span class="u5-act-tab__number">Act IV</span>
+                                <span><strong>Descend into Doom</strong><small>Free Lord British and escape.</small></span>
+                                <span class="u5-act-tab__count" data-u5-chapter-count="doom">0/1</span>
+                            </button>
                         </div>
                     </section>
 
-                    <div class="u5-tab-strip flex flex-wrap border-b border-gray-200" role="tablist" aria-label="Campaign chapters">
-                        <button class="quest-tab-button tab-button py-2 px-4 font-semibold border-b-2 border-transparent hover:bg-yellow-100 active" data-tab="shrines">Act I · Restore the Shrines</button>
-                        <button class="quest-tab-button tab-button py-2 px-4 font-semibold border-b-2 border-transparent hover:bg-yellow-100" data-tab="shadowlords">Act II · Shatter the Shadows</button>
-                        <button class="quest-tab-button tab-button py-2 px-4 font-semibold border-b-2 border-transparent hover:bg-yellow-100" data-tab="regalia">Act III · Recover the Regalia</button>
-                        <button class="quest-tab-button tab-button py-2 px-4 font-semibold border-b-2 border-transparent hover:bg-yellow-100" data-tab="doom">Act IV · Descent into Doom</button>
-                    </div>
-
-                    <div id="shrines" class="quest-tab-content active mt-6 space-y-4">
+                    <div id="shrines" class="quest-tab-content active mt-6 space-y-4" role="tabpanel" aria-labelledby="u5-act-tab-shrines">
                         <h3 class="text-2xl font-semibold text-yellow-800">Act I: The Path of Virtue</h3>
                         <p>Restoring the Shrines of the Eight Virtues is the primary way to increase your party's attributes and is required to learn the final Word of Power. Every shrine uses the same simple loop:</p>
                         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -451,7 +454,7 @@
                         <p class="pt-4">Completing all eight shrine quests grants the Word of Power for Doom: <strong>VERAMOCOR</strong>.</p>
                     </div>
 
-                    <div id="shadowlords" class="quest-tab-content mt-6 space-y-4">
+                    <div id="shadowlords" class="quest-tab-content mt-6 space-y-4" role="tabpanel" aria-labelledby="u5-act-tab-shadowlords" hidden>
                         <h3 class="text-2xl font-semibold text-yellow-800">Act II: Shatter the Shadows</h3>
                         <p>The three Shadowlords cannot be beaten in normal combat. You must recover their shards from the Underworld and perform a banishment ritual at the castles of Truth, Love, and Courage.</p>
                         <div class="space-y-6">
@@ -499,9 +502,23 @@
                         </div>
                     </div>
 
-                    <div id="regalia" class="quest-tab-content mt-6 space-y-4">
+                    <div id="regalia" class="quest-tab-content mt-6 space-y-4" role="tabpanel" aria-labelledby="u5-act-tab-regalia" hidden>
                         <h3 class="text-2xl font-semibold text-yellow-800">Act III: Recover the Regalia</h3>
                         <p>With the Shadowlords gone, recover Lord British's artifacts. These make the Underworld and Doom manageable.</p>
+                        <aside class="u5-preparation-card" data-u5-magic-carpet-prep aria-labelledby="u5-magic-carpet-prep-title">
+                            <div class="u5-preparation-card__intro">
+                                <p class="u5-kicker">Prepare before Stonegate</p>
+                                <h4 id="u5-magic-carpet-prep-title">Secure the Magic Carpet</h4>
+                                <p>The Sceptre route assumes you already have Britannia's best travel tool. Collect it early, then return here ready for Act III.</p>
+                                <button type="button" class="u5-secondary-action" data-u5-side-quest-link="side-magic-carpet"><i data-lucide="check-circle-2" aria-hidden="true"></i> Track this preparation</button>
+                            </div>
+                            <ol class="u5-preparation-card__steps">
+                                <li><strong>Prepare:</strong> collect Skull Keys from Shenstone's stump in Minoc, or mix <code>AN SANCT</code>; bring food, healing, and a fresh save.</li>
+                                <li><strong>Obtain:</strong> climb to Lord British's private room atop Castle Britannia, unlock the magic door, and take the carpet.</li>
+                                <li><strong>Use it wisely:</strong> cross shallow water, swamp, brush, and hills. Mountains still require the Grappling Hook, and deep or rough sea can hurt the party.</li>
+                            </ol>
+                            <p class="u5-preparation-card__payoff"><strong>Why now:</strong> the carpet lets you enter Stonegate, outrun the Shadowlords while taking the Sceptre, and reach later Underworld routes.</p>
+                        </aside>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div class="bg-white p-4 rounded-lg shadow">
                                 <h4 class="font-bold text-xl mb-2 text-yellow-900">The Sceptre</h4>
@@ -530,7 +547,7 @@
                         </div>
                     </div>
 
-                    <div id="doom" class="quest-tab-content mt-6 space-y-4">
+                    <div id="doom" class="quest-tab-content mt-6 space-y-4" role="tabpanel" aria-labelledby="u5-act-tab-doom" hidden>
                         <h3 class="text-2xl font-semibold text-yellow-800">Act IV: The Final Descent into Doom</h3>
                         <p>The final challenge. This is a one-way trip, so make a permanent save before you enter. Ensure you have all four royal artifacts and the Sandalwood Box, and that the Shadowlords are defeated.</p>
                         <div class="space-y-6">
@@ -556,9 +573,30 @@
                             </div>
                         </div>
                     </div>
+                    <section class="u5-current-objective" aria-labelledby="u5-current-objective-title">
+                        <div class="u5-quest-dashboard__status">
+                            <p class="u5-kicker">Next required quest</p>
+                            <h3 id="u5-current-objective-title">Restore the Shrine of Honesty</h3>
+                            <p id="u5-current-objective-copy">Begin in Moonglow: learn AHM, meditate three cycles, and seek the Codex.</p>
+                            <div class="u5-current-objective-actions">
+                                <button type="button" id="u5-current-objective-action" class="u5-primary-action">Open this chapter <i data-lucide="arrow-right" aria-hidden="true"></i></button>
+                                <button type="button" id="u5-current-objective-map" class="u5-secondary-action"><i data-lucide="map-pinned" aria-hidden="true"></i> Show on atlas</button>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="u5-main-checklist" aria-labelledby="u5-main-checklist-title">
+                        <div class="u5-main-checklist__heading">
+                            <div>
+                                <p class="u5-kicker">Full liberation ledger</p>
+                                <h3 id="u5-main-checklist-title">Track the decisive objectives</h3>
+                            </div>
+                            <span><i data-lucide="lock-keyhole" aria-hidden="true"></i> Later quests unlock one at a time</span>
+                        </div>
+                        <div id="u5-main-quest-checkpoints" class="u5-quest-checkpoints"></div>
+                    </section>
                     </div>
 
-                    <div id="u5-side-quest-view" class="u5-campaign-view" role="tabpanel" hidden>
+                    <div id="u5-side-quest-view" class="u5-campaign-view" role="tabpanel" aria-labelledby="u5-side-campaign-tab" hidden>
                         <section class="u5-side-quest-intro">
                             <div>
                                 <p class="u5-kicker">Resistance opportunities</p>
@@ -567,7 +605,7 @@
                             </div>
                             <div class="u5-side-progress" aria-live="polite">
                                 <strong id="u5-side-quest-percent">0%</strong>
-                                <span id="u5-side-quest-total-label">0 of 10 complete</span>
+                                <span id="u5-side-quest-total-label">0 of 11 complete</span>
                             </div>
                         </section>
                         <div id="u5-side-quest-list" class="u5-side-quest-list"></div>
@@ -669,6 +707,6 @@
 
     <script src="js/leaflet.js"></script>
     <script src="js/Ultima5AtlasData.js?v=20260829g"></script>
-    <script src="js/Ultima5.js?v=20260829i"></script>
+    <script src="js/Ultima5.js?v=20260901b"></script>
 </body>
 </html>

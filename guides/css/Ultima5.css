@@ -1000,8 +1000,15 @@ h4 {
     font-size: 0.67rem;
 }
 
-.u5-campaign-tab:hover {
+.u5-campaign-tab:hover,
+.u5-campaign-tab:focus-visible {
     background: rgba(234, 216, 166, 0.44);
+}
+
+.u5-campaign-tab:focus-visible {
+    border-color: var(--u5-gold);
+    outline: 3px solid color-mix(in srgb, var(--u5-gold) 46%, transparent);
+    outline-offset: 2px;
 }
 
 .u5-campaign-tab.active {
@@ -1028,6 +1035,227 @@ h4 {
     animation: u5-section-arrive 0.22s ease-out;
 }
 
+.u5-campaign-route {
+    padding: 1rem;
+    border: 1px solid var(--u5-rule);
+    border-radius: 0.82rem;
+    background: color-mix(in srgb, var(--u5-paper-light) 74%, transparent);
+    box-shadow: var(--u5-shadow);
+}
+
+.u5-campaign-route__heading {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 0.85rem;
+}
+
+.u5-campaign-route__heading .u5-kicker,
+.u5-campaign-route__heading h3,
+.u5-campaign-route__heading > p {
+    margin: 0;
+}
+
+.u5-campaign-route__heading h3 {
+    color: var(--u5-wine);
+    font-size: 1.35rem;
+    text-wrap: balance;
+}
+
+.u5-campaign-route__heading > p {
+    max-width: 32rem;
+    color: var(--u5-muted);
+    font-size: 0.78rem;
+    line-height: 1.5;
+    text-align: right;
+    text-wrap: pretty;
+}
+
+.u5-act-tabs {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.55rem;
+}
+
+.u5-act-tab {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 0.35rem 0.6rem;
+    align-items: start;
+    min-height: 7rem;
+    padding: 0.85rem;
+    border: 1px solid var(--u5-rule);
+    border-radius: 0.68rem;
+    background: color-mix(in srgb, var(--u5-paper-light) 82%, transparent);
+    color: var(--u5-ink);
+    text-align: left;
+    cursor: pointer;
+    transition: transform 0.15s ease-out, border-color 0.15s ease-out, background-color 0.15s ease-out, box-shadow 0.15s ease-out;
+}
+
+.u5-act-tab > span:not(.u5-act-tab__count) {
+    grid-column: 1 / -1;
+}
+
+.u5-act-tab strong,
+.u5-act-tab small {
+    display: block;
+}
+
+.u5-act-tab strong {
+    color: var(--u5-wine);
+    font-family: 'U5 Lora', Georgia, serif;
+    font-size: 1rem;
+    line-height: 1.2;
+    text-wrap: balance;
+}
+
+.u5-act-tab small {
+    margin-top: 0.24rem;
+    color: var(--u5-muted);
+    font-size: 0.7rem;
+    line-height: 1.4;
+}
+
+.u5-act-tab__number,
+.u5-act-tab__count {
+    color: var(--u5-amber);
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.u5-act-tab__count {
+    grid-column: 2;
+    grid-row: 1;
+    padding: 0.16rem 0.38rem;
+    border-radius: 99px;
+    background: color-mix(in srgb, var(--u5-gold) 14%, transparent);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0;
+}
+
+.u5-act-tab:hover,
+.u5-act-tab:focus-visible {
+    border-color: var(--u5-gold);
+    box-shadow: 0 8px 18px color-mix(in srgb, var(--u5-amber) 16%, transparent);
+    transform: translateY(-2px);
+    outline: none;
+}
+
+.u5-act-tab.active {
+    border-color: var(--u5-gold);
+    background: linear-gradient(145deg, var(--u5-forest), var(--u5-wine));
+    box-shadow: 0 10px 24px color-mix(in srgb, var(--u5-wine) 24%, transparent);
+}
+
+.u5-act-tab.active strong,
+.u5-act-tab.active .u5-act-tab__number,
+.u5-act-tab.active .u5-act-tab__count {
+    color: var(--u5-paper-light);
+}
+
+.u5-act-tab.active small {
+    color: color-mix(in srgb, var(--u5-paper-light) 78%, var(--u5-muted));
+}
+
+.u5-act-tab.active .u5-act-tab__count {
+    background: color-mix(in srgb, var(--u5-paper-light) 14%, transparent);
+}
+
+.u5-act-tab.is-complete:not(.active) {
+    border-color: var(--u5-forest);
+}
+
+.u5-current-objective {
+    margin: 1rem 0 1.5rem;
+}
+
+.u5-current-objective .u5-quest-dashboard__status {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    column-gap: 1.5rem;
+}
+
+.u5-current-objective .u5-current-objective-actions {
+    grid-column: 2;
+    grid-row: 1 / 4;
+    align-self: center;
+}
+
+.u5-preparation-card {
+    display: grid;
+    grid-template-columns: minmax(15rem, 0.78fr) minmax(0, 1.22fr);
+    gap: 1.2rem 1.5rem;
+    margin: 1.2rem 0 1.5rem;
+    padding: 1.25rem;
+    border: 1px solid var(--u5-rule);
+    border-left: 0.32rem solid var(--u5-gold);
+    border-radius: 0.82rem;
+    background:
+        radial-gradient(circle at 8% 10%, color-mix(in srgb, var(--u5-gold) 14%, transparent), transparent 34%),
+        color-mix(in srgb, var(--u5-paper-light) 88%, transparent);
+    box-shadow: var(--u5-shadow);
+}
+
+.u5-preparation-card__intro h4 {
+    margin: 0;
+    color: var(--u5-wine);
+    font-size: 1.35rem;
+    text-wrap: balance;
+}
+
+.u5-preparation-card__intro > p:not(.u5-kicker) {
+    margin: 0.55rem 0 0.85rem;
+    color: var(--u5-muted);
+    line-height: 1.55;
+    text-wrap: pretty;
+}
+
+.u5-preparation-card .u5-secondary-action {
+    border-color: var(--u5-rule);
+    background: color-mix(in srgb, var(--u5-gold) 13%, var(--u5-paper-light));
+    color: var(--u5-wine);
+}
+
+.u5-preparation-card .u5-secondary-action:hover,
+.u5-preparation-card .u5-secondary-action:focus-visible {
+    border-color: var(--u5-gold);
+    background: color-mix(in srgb, var(--u5-gold) 22%, var(--u5-paper-light));
+    outline: none;
+}
+
+.u5-preparation-card__steps {
+    display: grid;
+    gap: 0.65rem;
+    margin: 0;
+    padding-left: 1.3rem;
+}
+
+.u5-preparation-card__steps li {
+    padding-left: 0.2rem;
+    color: var(--u5-ink);
+    line-height: 1.55;
+    text-wrap: pretty;
+}
+
+.u5-preparation-card__steps li::marker {
+    color: var(--u5-amber);
+    font-weight: 800;
+}
+
+.u5-preparation-card__payoff {
+    grid-column: 1 / -1;
+    margin: 0;
+    padding-top: 0.85rem;
+    border-top: 1px solid var(--u5-rule);
+    color: var(--u5-forest);
+    font-family: 'U5 Lora', Georgia, serif;
+    line-height: 1.5;
+}
+
 .u5-quest-dashboard {
     display: grid;
     grid-template-columns: minmax(250px, 0.72fr) minmax(0, 1.28fr);
@@ -1037,6 +1265,7 @@ h4 {
 
 .u5-main-checklist {
     min-width: 0;
+    margin-top: 2rem;
     padding: 0.8rem;
     border: 1px solid var(--u5-rule);
     border-radius: 0.8rem;
@@ -1407,8 +1636,8 @@ h4 {
 
 .u5-side-quest-check span {
     display: grid;
-    width: 2.1rem;
-    height: 2.1rem;
+    width: 2.75rem;
+    height: 2.75rem;
     place-items: center;
     border: 1px solid rgba(116, 74, 28, 0.28);
     border-radius: 999px;
@@ -1437,7 +1666,7 @@ h4 {
     margin-top: 0.85rem !important;
     color: #5d4a35;
     font-family: 'U5 Lora', Georgia, serif;
-    font-size: 0.79rem;
+    font-size: 0.875rem;
     line-height: 1.6;
 }
 
@@ -1451,7 +1680,7 @@ h4 {
     border-radius: 0.35rem;
     color: #70451c;
     background: rgba(254, 243, 199, 0.72);
-    font-size: 0.68rem;
+    font-size: 0.875rem;
     line-height: 1.35;
 }
 
@@ -2265,6 +2494,10 @@ select:focus {
         grid-template-columns: minmax(0, 1fr);
     }
 
+    .u5-act-tabs {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
     .u5-companion-profile {
         min-height: auto;
     }
@@ -2370,6 +2603,30 @@ select:focus {
         text-align: left;
     }
 
+    .u5-campaign-route__heading {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .u5-campaign-route__heading > p {
+        max-width: none;
+        text-align: left;
+    }
+
+    .u5-current-objective .u5-quest-dashboard__status,
+    .u5-preparation-card {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .u5-current-objective .u5-current-objective-actions {
+        grid-column: 1;
+        grid-row: auto;
+    }
+
+    .u5-preparation-card__payoff {
+        grid-column: 1;
+    }
+
     .u5-main-checklist__heading,
     .u5-side-quest-intro {
         align-items: flex-start;
@@ -2432,6 +2689,22 @@ select:focus {
     .u5-campaign-cards,
     .u5-quest-checkpoints {
         grid-template-columns: minmax(0, 1fr);
+    }
+
+    .u5-campaign-route {
+        padding: 0.7rem;
+    }
+
+    .u5-act-tabs {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .u5-act-tab {
+        min-height: 0;
+    }
+
+    .u5-preparation-card {
+        padding: 1rem;
     }
 
     .u5-campaign-tab {
