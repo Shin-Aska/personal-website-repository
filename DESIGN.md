@@ -84,6 +84,13 @@ The base spacing unit is 4px. Existing guide rhythm uses 4, 8, 12, 16, 20, 24, 3
 - **Layout**: a forest-tinted inset separated from the exact route by the shared spacing rhythm; entries form one reading column at every breakpoint.
 - **Accessibility**: the aside has an explicit `Field notes` label, uses a semantic list, and never makes an optimization sound mandatory when the normal route remains valid.
 
+### Inline Atlas locator
+
+- **Structure**: a text-level button used inside instructional prose when a named NPC, place, or quest item has a precise Atlas destination. The visible name remains part of the sentence and carries a small map-pin icon.
+- **Behavior**: a place or interior item locator opens the correct floor, a mapped world item opens its exact marker, and an NPC locator also sets a documented daytime hour, highlights that resident, and opens the NPC popup. Exact routes remain in Campaign `Next steps`.
+- **States**: default, hover, active, and visible keyboard focus, using the existing amber-to-wine action language and 150ms color transitions.
+- **Accessibility**: each locator has an explicit `Show … in the Atlas` accessible name, uses a real button, preserves sentence reading order, and never relies on its icon or color alone.
+
 ### Opening strategy briefing
 
 - **Structure**: a semantic `aside` before Grand Quest 01 that states the recommended party, supply threshold, and why the route delays shrine grinding until the resistance is mobile.

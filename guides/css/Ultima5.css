@@ -1851,6 +1851,48 @@ h4 {
     line-height: 1.6;
 }
 
+.u5-inline-atlas-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--u5-space-1);
+    margin: 0;
+    padding: 0 var(--u5-space-1);
+    border: 0;
+    border-bottom: 1px dotted color-mix(in srgb, var(--u5-amber) 68%, transparent);
+    color: var(--u5-amber);
+    background: transparent;
+    font: inherit;
+    font-weight: 700;
+    line-height: inherit;
+    cursor: pointer;
+    transition: border-color 150ms ease-out, color 150ms ease-out, background-color 150ms ease-out;
+}
+
+.u5-inline-atlas-link svg {
+    width: 0.9em;
+    height: 0.9em;
+    flex: 0 0 auto;
+}
+
+.u5-inline-atlas-link:hover {
+    border-color: var(--u5-wine);
+    color: var(--u5-wine);
+    background: color-mix(in srgb, var(--u5-gold) 8%, transparent);
+}
+
+.u5-inline-atlas-link:active {
+    border-color: var(--u5-wine);
+    color: var(--u5-wine);
+    background: color-mix(in srgb, var(--u5-gold) 16%, transparent);
+}
+
+.u5-inline-atlas-link:focus-visible {
+    border-color: var(--u5-wine);
+    outline: 3px solid color-mix(in srgb, var(--u5-amber) 42%, transparent);
+    outline-offset: 2px;
+    color: var(--u5-wine);
+}
+
 .u5-side-quest-card__recommendation {
     display: flex;
     align-items: center;
@@ -2450,7 +2492,7 @@ select:focus {
 
 .ultima5-map .leaflet-popup-content-wrapper,
 .ultima5-map .leaflet-popup-tip {
-    background: rgba(255, 250, 240, 0.98);
+    background: var(--u5-paper-light);
     color: var(--u5-atlas-ink);
 }
 
@@ -2887,9 +2929,7 @@ select:focus {
 }
 
 .u5-grand-objective__location {
-    display: flex;
-    gap: var(--u5-space-2);
-    align-items: center;
+    display: block;
     color: var(--u5-amber);
     font-size: var(--u5-text-caption);
     font-weight: 700;
@@ -2898,6 +2938,8 @@ select:focus {
 .u5-grand-objective__location svg {
     width: 0.82rem;
     height: 0.82rem;
+    margin-inline-end: var(--u5-space-1);
+    vertical-align: -0.12em;
 }
 
 .u5-grand-objective__summary {
@@ -3244,6 +3286,16 @@ select:focus {
     .ultima5-map {
         height: 430px;
         min-height: 330px;
+    }
+
+    .ultima5-map .leaflet-top.leaflet-left {
+        top: auto;
+        bottom: 0;
+    }
+
+    .ultima5-map .leaflet-top.leaflet-left .leaflet-control {
+        margin-top: 0;
+        margin-bottom: var(--u5-space-3);
     }
 
     .u5-atlas__map-footer {

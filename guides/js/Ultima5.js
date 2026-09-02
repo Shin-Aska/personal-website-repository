@@ -114,13 +114,13 @@ const ultima5SideQuests = [
     },
     {
         id: 'side-grapple', category: 'Equipment', title: 'Secure the Grapple', location: 'Empath Abbey',
-        detail: 'Ask Lord Michael about GRAPPLE upstairs in the east wing. The hook opens routes across small peaks.',
+        detail: 'Ask Lord Michael about GRAPPLE. If you want the in-world clue first, ask Bidney in Buccaneer’s Den about climbing; he points you back to the Abbey. The hook opens routes across small peaks.',
         reward: 'Mountain access', recommendedBefore: 'shadow-faulinei', atlas: { interiorId: 'location-31', floor: '1' }
     },
     {
         id: 'side-jaana', category: 'Companion', title: 'Free Jaana from Yew', location: 'Yew',
         detail: 'Enter the fireplace behind the living area, descend to the hidden jail, unlock the door, and recruit Jaana.',
-        reward: 'Healer companion', recommendedBefore: 'shrine-compassion', atlas: { interiorId: 'location-4', floor: '-1' }
+        reward: 'Healer companion', recommendedBefore: 'shrine-compassion', atlas: { interiorId: 'location-4', floor: '0' }
     },
     {
         id: 'side-resistance-party', category: 'Companions', title: 'Build a Resistance Party', location: 'Across Britannia',
@@ -155,19 +155,109 @@ const ultima5SideQuests = [
     {
         id: 'side-navigation', category: 'Travel', title: 'Collect the Sextant & Spyglass', location: 'Greyhaven & Farthing',
         detail: 'Ask David at Greyhaven for the sextant, then visit Seggallion at Farthing for the spyglass.',
+        detailAtlasLinks: [
+            { label: 'David', target: 'david' },
+            { label: 'Greyhaven', target: 'greyhaven' },
+            { label: 'Seggallion', target: 'seggallion' },
+            { label: 'Farthing', target: 'farthing' }
+        ],
         reward: 'Coordinates and scouting', recommendedBefore: 'shrine-compassion', usefulnessRank: 1, atlas: { interiorId: 'location-11', floor: '0' }
     },
     {
         id: 'side-mystic-arms', category: 'Treasure', title: 'Recover the Mystic Arms', location: 'Southeast Underworld',
-        detail: 'Mount a late-game expedition into the far southeast Underworld to recover Britannia’s hidden Mystic equipment.',
-        reward: 'Ultimate equipment set', recommendedBefore: 'doom-rescue', usefulnessRank: 1, atlas: { marker: 'Mystic Arms' }
+        detail: 'During the Hythloth run for the Shard of Cowardice, continue into the far southeast Underworld and recover Britannia’s hidden Mystic equipment before leaving.',
+        reward: 'Ultimate equipment set', recommendedBefore: 'regalia-sceptre', usefulnessRank: 1, atlas: { marker: 'Mystic Arms' }
     }
 ];
 
 const ultima5SideQuestGroupRationales = {
     shrines: 'Navigation and renewable spell supplies make the long shrine circuit faster and safer.',
     shadowlords: 'Reliable ranged damage and emergency finishers reduce the risk of the Underworld shard runs.',
+    regalia: 'Fold this into the Hythloth expedition so the strongest equipment is ready for Stonegate and Blackthorn’s fortress.',
     doom: 'Claim the strongest optional equipment immediately before the final one-way descent.'
+};
+
+const ultima5InlineAtlasTargets = {
+    david: { terms: ['David'], label: 'David at Greyhaven', interiorId: 'location-11', floor: '0', hour: 12, npcId: 'npc-11-3' },
+    greyhaven: { terms: ['Greyhaven'], label: 'Greyhaven', interiorId: 'location-11', floor: '0' },
+    seggallion: { terms: ['Seggallion'], label: 'Lord Seggallion at Farthing', interiorId: 'location-27', floor: '0', hour: 12, npcId: 'npc-27-1' },
+    farthing: { terms: ['Farthing'], label: 'Farthing', interiorId: 'location-27', floor: '0' },
+    jaana: { terms: ['Jaana'], label: 'Jaana’s hidden jail route in Yew', interiorId: 'location-4', floor: '0' },
+    julia: { terms: ['Julia'], label: 'Julia at Empath Abbey', interiorId: 'location-31', floor: '1', hour: 12, npcId: 'npc-31-16' },
+    gwenno: { terms: ['Gwenno'], label: 'Gwenno in Britain', interiorId: 'location-2', floor: '0', hour: 12, npcId: 'npc-2-8' },
+    mariah: { terms: ['Mariah'], label: 'Mariah at the Lycaeum', interiorId: 'location-30', floor: '1', hour: 12, npcId: 'npc-30-19' },
+    johne: { terms: ['Johne'], label: 'Johne aboard the Ararat', interiorId: 'location-25', floor: '0' },
+    lordMichael: { terms: ['Lord Michael'], label: 'Lord Michael at Empath Abbey', interiorId: 'location-31', floor: '1', hour: 12, npcId: 'npc-31-10' },
+    bidney: { terms: ['Bidney'], label: 'Bidney in Buccaneer’s Den', interiorId: 'location-24', floor: '0', hour: 12, npcId: 'npc-24-8' },
+    buccaneersDen: { terms: ['Buccaneer’s Den', "Buccaneer's Den"], label: 'Buccaneer’s Den', interiorId: 'location-24', floor: '0' },
+    shenstoneStump: { terms: ['Shenstone’s stump', "Shenstone's stump", 'Skull Keys', 'Skull Key'], label: 'Shenstone’s Skull Key stump in Minoc', interiorId: 'location-5', floor: '0' },
+    saduj: { terms: ['Saduj'], label: 'Saduj in Castle Britannia', interiorId: 'location-17', floor: '-1', hour: 12, npcId: 'npc-17-26' },
+    malifora: { terms: ['Malifora'], label: 'Malifora in Moonglow', interiorId: 'location-1', floor: '0', hour: 12, npcId: 'npc-1-4' },
+    greyson: { terms: ['Greyson'], label: 'Greyson in Britain', interiorId: 'location-2', floor: '0', hour: 12, npcId: 'npc-2-14' },
+    trian: { terms: ['Trian'], label: 'Trian in Jhelom', interiorId: 'location-3', floor: '0', hour: 12, npcId: 'npc-3-8' },
+    thorne: { terms: ['Thorne'], label: 'Thorne in Jhelom', interiorId: 'location-3', floor: '0', hour: 12, npcId: 'npc-3-10' },
+    jeremy: { terms: ['Jeremy'], label: 'Jeremy in Yew', interiorId: 'location-4', floor: '0', hour: 12, npcId: 'npc-4-8' },
+    chamfort: { terms: ['Chamfort'], label: 'Chamfort in Yew', interiorId: 'location-4', floor: '0', hour: 12, npcId: 'npc-4-14' },
+    rew: { terms: ['Rew'], label: 'Rew in Minoc', interiorId: 'location-5', floor: '0', hour: 12, npcId: 'npc-5-6' },
+    gruman: { terms: ['Gruman'], label: 'Gruman in Trinsic', interiorId: 'location-6', floor: '1', hour: 12, npcId: 'npc-6-9' },
+    saul: { terms: ['Saul'], label: 'Saul in Skara Brae', interiorId: 'location-7', floor: '0', hour: 12, npcId: 'npc-7-7' },
+    kindor: { terms: ['Kindor'], label: 'Kindor in Skara Brae', interiorId: 'location-7', floor: '0', hour: 12, npcId: 'npc-7-6' },
+    shirita: { terms: ['Shirita'], label: 'Shirita in New Magincia', interiorId: 'location-8', floor: '0', hour: 12, npcId: 'npc-8-10' },
+    wartow: { terms: ['Wartow'], label: 'Wartow in New Magincia', interiorId: 'location-8', floor: '0', hour: 12, npcId: 'npc-8-8' },
+    malik: { terms: ['Malik'], label: 'Malik in Moonglow', interiorId: 'location-1', floor: '0', hour: 12, npcId: 'npc-1-5' },
+    felespar: { terms: ['Felespar'], label: 'Felespar in Yew', interiorId: 'location-4', floor: '0', hour: 12, npcId: 'npc-4-10' },
+    fiona: { terms: ['Fiona'], label: 'Fiona in Minoc', interiorId: 'location-5', floor: '0', hour: 12, npcId: 'npc-5-3' },
+    kaiko: { terms: ['Kaiko'], label: 'Kaiko in New Magincia', interiorId: 'location-8', floor: '0', hour: 12, npcId: 'npc-8-6' },
+    hassad: { terms: ['Hassad'], label: 'Hassad in Blackthorn’s dungeon', interiorId: 'location-18', floor: '-1', hour: 12, npcId: 'npc-18-31' },
+    yew: { terms: ['Yew'], label: 'Yew', interiorId: 'location-4', floor: '0' },
+    empathAbbey: { terms: ['Empath Abbey'], label: 'Empath Abbey', interiorId: 'location-31', floor: '0' },
+    britain: { terms: ['Britain'], label: 'Britain', interiorId: 'location-2', floor: '0' },
+    lycaeum: { terms: ['Lycaeum'], label: 'The Lycaeum', interiorId: 'location-30', floor: '0' },
+    minoc: { terms: ['Minoc'], label: 'Minoc', interiorId: 'location-5', floor: '0' },
+    eastBritanny: { terms: ['East Britanny', 'East Brittany'], label: 'East Britanny', interiorId: 'location-21', floor: '0' },
+    castleBritannia: { terms: ['Castle Britannia', 'Lord British’s private rooftop room', 'Lord British’s private study'], label: 'Castle Britannia’s upper private suite', interiorId: 'location-17', floor: '2' },
+    moonglow: { terms: ['Moonglow'], label: 'Moonglow', interiorId: 'location-1', floor: '0' },
+    jhelom: { terms: ['Jhelom'], label: 'Jhelom', interiorId: 'location-3', floor: '0' },
+    trinsic: { terms: ['Trinsic'], label: 'Trinsic', interiorId: 'location-6', floor: '0' },
+    skaraBrae: { terms: ['Skara Brae'], label: 'Skara Brae', interiorId: 'location-7', floor: '0' },
+    newMagincia: { terms: ['New Magincia'], label: 'New Magincia', interiorId: 'location-8', floor: '0' },
+    oakenOar: { terms: ['The Oaken Oar', 'Oaken Oar'], label: 'The Oaken Oar in East Britanny', interiorId: 'location-21', floor: '0' },
+    deceit: { terms: ['Deceit'], label: 'Dungeon Deceit', interiorId: 'location-33', floor: '0' },
+    wrong: { terms: ['Wrong'], label: 'Dungeon Wrong', interiorId: 'location-36', floor: '0' },
+    covetous: { terms: ['Covetous'], label: 'Dungeon Covetous', interiorId: 'location-37', floor: '0' },
+    hythloth: { terms: ['Hythloth'], label: 'Dungeon Hythloth', interiorId: 'location-39', floor: '0' },
+    serpentHold: { terms: ['Serpent’s Hold', "Serpent's Hold"], label: 'Serpent’s Hold', interiorId: 'location-32', floor: '0' },
+    stonegate: { terms: ['Stonegate'], label: 'Stonegate', interiorId: 'location-29', floor: '0' },
+    blackthornCastle: { terms: ['Blackthorn’s Castle', 'Blackthorn’s fortress'], label: 'Blackthorn’s Castle rooftop', interiorId: 'location-18', floor: '3' },
+    blackthornDungeon: { terms: ['Blackthorn’s dungeon'], label: 'Blackthorn’s dungeon', interiorId: 'location-18', floor: '-1' },
+    doom: { terms: ['Dungeon Doom', 'Doom'], label: 'Dungeon Doom’s final level', interiorId: 'location-40', floor: '7' },
+    grapple: { terms: ['Grappling Hook', 'Grapple'], label: 'The Grapple at Empath Abbey', interiorId: 'location-31', floor: '1' },
+    magicCarpet: { terms: ['Magic Carpet', 'magic carpet', 'Carpet'], label: 'The Magic Carpet in Castle Britannia', interiorId: 'location-17', floor: '2' },
+    sandalwoodBox: { terms: ['Sandalwood Box', 'the Box'], label: 'The Sandalwood Box in Castle Britannia', interiorId: 'location-17', floor: '2' },
+    hmsCapePlans: { terms: ['HMS Cape plans', 'ship plans'], label: 'The HMS Cape plans at the Oaken Oar', interiorId: 'location-21', floor: '0' },
+    sceptre: { terms: ['Sceptre'], label: 'The Sceptre in Stonegate', interiorId: 'location-29', floor: '0' },
+    crown: { terms: ['Crown'], label: 'The Crown in Blackthorn’s Castle', interiorId: 'location-18', floor: '3' },
+    shrineHonesty: { terms: ['Shrine of Honesty'], label: 'Shrine of Honesty', marker: 'Shrine of Honesty' },
+    shrineCompassion: { terms: ['Shrine of Compassion'], label: 'Shrine of Compassion', marker: 'Shrine of Compassion' },
+    shrineValor: { terms: ['Shrine of Valor'], label: 'Shrine of Valor', marker: 'Shrine of Valor' },
+    shrineJustice: { terms: ['Shrine of Justice'], label: 'Shrine of Justice', marker: 'Shrine of Justice' },
+    shrineSacrifice: { terms: ['Shrine of Sacrifice'], label: 'Shrine of Sacrifice', marker: 'Shrine of Sacrifice' },
+    shrineHonor: { terms: ['Shrine of Honor'], label: 'Shrine of Honor', marker: 'Shrine of Honor' },
+    shrineSpirituality: { terms: ['Shrine of Spirituality'], label: 'Shrine of Spirituality via Skara Brae', interiorId: 'location-7', floor: '0' },
+    shrineHumility: { terms: ['Shrine of Humility'], label: 'Shrine of Humility', marker: 'Shrine of Humility' },
+    codex: { terms: ['the Codex', 'Codex'], label: 'Shrine of the Codex', marker: 'Shrine of the Codex' },
+    flameTruth: { terms: ['Flame of Truth'], label: 'Flame of Truth at the Lycaeum', interiorId: 'location-30', floor: '0' },
+    flameLove: { terms: ['Flame of Love'], label: 'Flame of Love at Empath Abbey', interiorId: 'location-31', floor: '0' },
+    flameCourage: { terms: ['Flame of Courage'], label: 'Flame of Courage at Serpent’s Hold', interiorId: 'location-32', floor: '0' },
+    shardFalsehood: { terms: ['Shard of Falsehood'], label: 'Shard of Falsehood', marker: 'Shard of Falsehood' },
+    shardHatred: { terms: ['Shard of Hatred'], label: 'Shard of Hatred', marker: 'Shard of Hatred' },
+    shardCowardice: { terms: ['Shard of Cowardice'], label: 'Shard of Cowardice', marker: 'Shard of Cowardice' },
+    amuletBurial: { terms: ['Underworld burial ground', 'burial ground of Lord British’s expedition', 'Amulet'], label: 'Lord British’s Amulet', marker: "Lord British's Amulet" },
+    waterfall: { terms: ['waterfall east of Skara Brae'], label: 'Waterfall to the Underworld', marker: 'Waterfall to the Underworld' },
+    nightshade: { terms: ['Nightshade', 'Spiritwood'], label: 'Nightshade in Spiritwood', marker: 'Nightshade' },
+    mandrake: { terms: ['Mandrake Root', 'Mandrake', 'Bloody Plains'], label: 'Mandrake Root in the Bloody Plains', marker: 'Mandrake Root' },
+    glassSwordCache: { terms: ['Glass Sword Cache', 'Serpent’s Spine'], label: 'Glass Sword Cache in Serpent’s Spine', marker: 'Glass Sword Cache' },
+    mysticArms: { terms: ['Mystic Arms', 'Mystic equipment'], label: 'Mystic Arms in the southeast Underworld', marker: 'Mystic Arms' }
 };
 
 const ultima5ObjectiveGuidance = {
@@ -213,7 +303,7 @@ const ultima5GrandQuestChapters = [
                     { store: 'side', id: 'side-jaana' },
                     { store: 'side', id: 'side-resistance-party' }
                 ],
-                atlas: { interiorId: 'location-4', floor: '-1' },
+                atlas: { interiorId: 'location-4', floor: '0' },
                 steps: [
                     'Keep Iolo and Shamino while the party is small; heal Shamino before taking road fights.',
                     'In Yew, enter the fireplace behind the living area, descend into the hidden jail, unlock Jaana’s cell, and ask the mage to join.',
@@ -235,10 +325,13 @@ const ultima5GrandQuestChapters = [
                 progress: [{ store: 'side', id: 'side-grapple' }],
                 atlas: { interiorId: 'location-31', floor: '1' },
                 steps: [
-                    'Enter Empath Abbey and climb to Lord Michael’s rooms in the east wing.',
+                    'Find Lord Michael at Empath Abbey: he is in the courtyard by day and retires to the northwest bedroom.',
                     'Speak with Lord Michael and ask specifically about GRAPPLE.',
                     'Take the Grappling Hook he provides and keep it in the active party’s inventory.',
                     'Recruit Julia before leaving so you do not need a second opening-game trip to the Abbey.'
+                ],
+                hints: [
+                    { label: 'Natural clue chain', text: 'If you prefer to discover the keyword in-world, ask Bidney in Buccaneer’s Den about climbing before speaking with Lord Michael.' }
                 ]
             },
             {
@@ -324,7 +417,9 @@ const ultima5GrandQuestChapters = [
             title: `Restore the Shrine of ${virtue}`,
             location,
             summary: `${lead} The mantra is ${mantra}.`,
-            outcome: `${virtue} restored and its attribute lesson completed.`,
+            outcome: virtue === 'Humility'
+                ? 'Humility restored and the full pilgrimage completed.'
+                : `${virtue} restored and its attribute lesson completed.`,
             progress: [{ store: 'main', id }],
             atlas: ultima5CampaignObjectives.find(objective => objective.id === id)?.atlas,
             hints: ultima5ShrineFieldNotes[id] || [],
@@ -332,7 +427,9 @@ const ultima5GrandQuestChapters = [
                 `${lead} Record the mantra ${mantra}.`,
                 `Visit the Shrine of ${virtue}, speak the virtue name, and meditate with ${mantra} for three cycles.`,
                 'Travel to the Codex only after the shrine sends you there and receive its counsel.',
-                `Return to the Shrine of ${virtue} and meditate again to complete the quest and gain attributes.`
+                virtue === 'Humility'
+                    ? 'Return to the Shrine of Humility and meditate again to complete the quest; this shrine grants no attribute bonus.'
+                    : `Return to the Shrine of ${virtue} and meditate again to complete the quest and gain attributes.`
             ]
         }))
     },
@@ -346,21 +443,21 @@ const ultima5GrandQuestChapters = [
             {
                 id: 'shadow-faulinei', title: 'Banish Faulinei, Shadowlord of Falsehood', location: 'Deceit to the Lycaeum',
                 summary: 'Use FALLAX at Deceit, recover the Shard of Falsehood, and carry it to the Flame of Truth.',
-                outcome: 'Falsehood is broken and Moonglow is freed.', progress: [{ store: 'main', id: 'shadow-faulinei' }],
+                outcome: 'Faulinei is permanently destroyed; Falsehood can no longer corrupt Britannia.', progress: [{ store: 'main', id: 'shadow-faulinei' }],
                 atlas: { marker: 'Shard of Falsehood' },
                 steps: ['Learn FALLAX from Malifora after Malik points you to her.', 'Descend through Deceit and travel west through the Underworld to the Shard of Falsehood; bring the Carpet and Grapple.', 'At the Lycaeum, stand one tile south of the Flame of Truth and shout FAULINEI.', 'Wait one turn, then use the Shard of Falsehood when Faulinei stands on the flame.']
             },
             {
                 id: 'shadow-astaroth', title: 'Banish Astaroth, Shadowlord of Hatred', location: 'Wrong or Covetous to Empath Abbey',
                 summary: 'Reach the Shard of Hatred with MALUM or AVIDUS, then carry it to the Flame of Love.',
-                outcome: 'Hatred is broken and Yew is freed.', progress: [{ store: 'main', id: 'shadow-astaroth' }],
+                outcome: 'Astaroth is permanently destroyed; Hatred can no longer corrupt Britannia.', progress: [{ store: 'main', id: 'shadow-astaroth' }],
                 atlas: { marker: 'Shard of Hatred' },
                 steps: ['Learn MALUM from Felespar in Yew with DAWN, or AVIDUS from Fiona in Minoc.', 'Descend through Wrong or Covetous into the southwest Underworld labyrinth and recover the Shard of Hatred.', 'At Empath Abbey, stand one tile south of the Flame of Love and shout ASTAROTH.', 'Wait one turn, then use the Shard of Hatred when Astaroth stands on the flame.']
             },
             {
                 id: 'shadow-nosfentor', title: 'Banish Nosfentor, Shadowlord of Cowardice', location: 'Hythloth to Serpent’s Hold',
                 summary: 'Use IGNAVUS at Hythloth, take the Shard of Cowardice, and carry it to the Flame of Courage.',
-                outcome: 'Cowardice is broken and Jhelom is freed.', progress: [{ store: 'main', id: 'shadow-nosfentor' }],
+                outcome: 'Nosfentor is permanently destroyed; Cowardice can no longer corrupt Britannia.', progress: [{ store: 'main', id: 'shadow-nosfentor' }],
                 atlas: { marker: 'Shard of Cowardice' },
                 steps: ['Ask Kaiko in New Magincia about Hassad, then use Kaiko as a reference with Hassad in Blackthorn’s dungeon to learn IGNAVUS.', 'Descend through Hythloth; use IN POR for mountain rooms and the Magic Carpet over swamp to reach the northeast clearing.', 'At Serpent’s Hold, stand one tile south of the Flame of Courage and shout NOSFENTOR.', 'Wait one turn, then use the Shard of Cowardice when Nosfentor stands on the flame.']
             }
@@ -427,6 +524,7 @@ const ultima5AtlasState = {
     currentInterior: null,
     currentFloor: null,
     currentHour: 12,
+    npcMarkers: new Map(),
     activeEntry: null,
     controlsBound: false,
     searchResults: []
@@ -729,29 +827,33 @@ function ultima5GrandObjectiveMarkup(objective, chapterIndex, objectiveIndex) {
     const detailsId = `u5-grand-details-${objective.id}`;
     const hintsLabelId = `u5-grand-hints-${objective.id}`;
     const objectiveNumber = `${String(chapterIndex + 1).padStart(2, '0')}.${objectiveIndex + 1}`;
-    const steps = objective.steps.map(step => `<li>${escapeUltima5AtlasHtml(step)}</li>`).join('');
+    const linkedTargets = new Set();
+    const location = renderUltima5AtlasLinkedText(objective.location, undefined, linkedTargets);
+    const summary = renderUltima5AtlasLinkedText(objective.summary, undefined, linkedTargets);
+    const steps = objective.steps.map(step => `<li>${renderUltima5AtlasLinkedText(step, undefined, linkedTargets)}</li>`).join('');
     const hints = objective.hints?.length ? `
         <aside class="u5-grand-objective__hints" aria-labelledby="${hintsLabelId}">
             <p id="${hintsLabelId}" class="u5-kicker"><i data-lucide="lightbulb" aria-hidden="true"></i> Field notes</p>
             <ul>
-                ${objective.hints.map(hint => `<li><strong>${escapeUltima5AtlasHtml(hint.label)}:</strong> ${escapeUltima5AtlasHtml(hint.text)}</li>`).join('')}
+                ${objective.hints.map(hint => `<li><strong>${escapeUltima5AtlasHtml(hint.label)}:</strong> ${renderUltima5AtlasLinkedText(hint.text, undefined, linkedTargets)}</li>`).join('')}
             </ul>
         </aside>
     ` : '';
+    const outcome = renderUltima5AtlasLinkedText(objective.outcome, undefined, linkedTargets);
     return `
         <article class="u5-grand-objective" data-u5-grand-objective="${objective.id}">
             <div class="u5-grand-objective__number" aria-hidden="true">${objectiveNumber}</div>
             <div class="u5-grand-objective__content">
                 <div class="u5-grand-objective__heading">
                     <div>
-                        <p class="u5-grand-objective__location"><i data-lucide="map-pin" aria-hidden="true"></i> ${escapeUltima5AtlasHtml(objective.location)}</p>
+                        <p class="u5-grand-objective__location"><i data-lucide="map-pin" aria-hidden="true"></i> ${location}</p>
                         <h4>${escapeUltima5AtlasHtml(objective.title)}</h4>
                     </div>
                     <button type="button" class="u5-grand-objective__complete" data-u5-grand-complete="${objective.id}" aria-pressed="false">
                         <i data-lucide="circle" aria-hidden="true"></i><span>Mark complete</span>
                     </button>
                 </div>
-                <p class="u5-grand-objective__summary">${escapeUltima5AtlasHtml(objective.summary)}</p>
+                <p class="u5-grand-objective__summary">${summary}</p>
                 <div class="u5-grand-objective__actions">
                     <button type="button" data-u5-grand-details-toggle="${objective.id}" aria-expanded="false" aria-controls="${detailsId}">
                         Next steps <i data-lucide="chevron-down" aria-hidden="true"></i>
@@ -762,7 +864,7 @@ function ultima5GrandObjectiveMarkup(objective, chapterIndex, objectiveIndex) {
                     <p class="u5-kicker">Exact route</p>
                     <ol>${steps}</ol>
                     ${hints}
-                    <p class="u5-grand-objective__outcome"><strong>When this is done:</strong> ${escapeUltima5AtlasHtml(objective.outcome)}</p>
+                    <p class="u5-grand-objective__outcome"><strong>When this is done:</strong> ${outcome}</p>
                 </div>
             </div>
         </article>
@@ -791,6 +893,8 @@ function initializeUltima5CampaignProgress() {
             </li>
         `;
     }).join('');
+
+    initializeUltima5CampaignInlineAtlas();
 
     journal.addEventListener('click', event => {
         const chapterToggle = event.target.closest('[data-u5-grand-toggle]');
@@ -990,6 +1094,9 @@ function initializeUltima5SideQuests() {
 
         quests.sort((first, second) => first.usefulnessRank - second.usefulnessRank).forEach(quest => {
             sequence += 1;
+            const linkedTargets = new Set();
+            const detail = renderUltima5AtlasLinkedText(quest.detail, quest.detailAtlasLinks, linkedTargets);
+            const location = renderUltima5AtlasLinkedText(quest.location, undefined, linkedTargets);
             const card = document.createElement('article');
             card.className = 'u5-side-quest-card';
             card.dataset.u5SideQuestCard = quest.id;
@@ -1001,14 +1108,14 @@ function initializeUltima5SideQuests() {
                 <div class="u5-side-quest-card__heading">
                     <div>
                         <h5>${escapeUltima5AtlasHtml(quest.title)}</h5>
-                        <p><i data-lucide="map-pin" aria-hidden="true"></i> ${escapeUltima5AtlasHtml(quest.location)}</p>
+                        <p><i data-lucide="map-pin" aria-hidden="true"></i> ${location}</p>
                     </div>
                     <label class="u5-side-quest-check" title="Mark side quest complete">
                         <input type="checkbox" data-u5-side-quest="${quest.id}" aria-label="Mark ${escapeUltima5AtlasHtml(quest.title)} complete" ${saved.has(quest.id) ? 'checked' : ''}>
                         <span><i data-lucide="check" aria-hidden="true"></i></span>
                     </label>
                 </div>
-                <p class="u5-side-quest-card__copy">${escapeUltima5AtlasHtml(quest.detail)}</p>
+                <p class="u5-side-quest-card__copy">${detail}</p>
                 <footer>
                     <span><strong>Reward:</strong> ${escapeUltima5AtlasHtml(quest.reward)}</span>
                     <button type="button" data-u5-side-quest-map="${quest.id}"><i data-lucide="map-pinned" aria-hidden="true"></i> Atlas</button>
@@ -1068,6 +1175,57 @@ function setUltima5CampaignView(view) {
     });
 }
 
+function renderUltima5AtlasLinkedText(value, links, usedTargets = new Set()) {
+    const source = String(value ?? '');
+    const candidates = Array.isArray(links) && links.length
+        ? links
+        : Object.entries(ultima5InlineAtlasTargets).flatMap(([target, entry]) => (
+            entry.terms.map(label => ({ label, target }))
+        ));
+    const matchingLinks = candidates
+        .filter(link => source.includes(link.label) && ultima5InlineAtlasTargets[link.target] && !usedTargets.has(link.target))
+        .sort((first, second) => second.label.length - first.label.length);
+    if (!matchingLinks.length) return escapeUltima5AtlasHtml(source);
+
+    const targetByLabel = new Map(matchingLinks.map(link => [link.label, link.target]));
+    const pattern = new RegExp(matchingLinks.map(link => link.label.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|'), 'g');
+    let cursor = 0;
+    let markup = '';
+    source.replace(pattern, (label, offset) => {
+        markup += escapeUltima5AtlasHtml(source.slice(cursor, offset));
+        const targetId = targetByLabel.get(label);
+        const target = ultima5InlineAtlasTargets[targetId];
+        const safeLabel = escapeUltima5AtlasHtml(label);
+        if (usedTargets.has(targetId)) {
+            markup += safeLabel;
+            cursor = offset + label.length;
+            return label;
+        }
+        const safeTargetId = escapeUltima5AtlasHtml(targetId);
+        const accessibleLabel = escapeUltima5AtlasHtml(target.label);
+        markup += `<button type="button" class="u5-inline-atlas-link" data-u5-inline-atlas="${safeTargetId}" aria-label="Show ${accessibleLabel} in the Atlas" title="Show ${accessibleLabel} in the Atlas">${safeLabel}<i data-lucide="map-pin" aria-hidden="true"></i></button>`;
+        usedTargets.add(targetId);
+        cursor = offset + label.length;
+        return label;
+    });
+    return markup + escapeUltima5AtlasHtml(source.slice(cursor));
+}
+
+function initializeUltima5CampaignInlineAtlas() {
+    const campaign = document.getElementById('quests');
+    if (!campaign) return;
+    const linkedTargets = new Set();
+    campaign.querySelectorAll('[data-u5-atlas-text]').forEach(element => {
+        element.innerHTML = renderUltima5AtlasLinkedText(element.textContent, undefined, linkedTargets);
+    });
+    if (campaign.dataset.u5InlineAtlasBound === 'true') return;
+    campaign.dataset.u5InlineAtlasBound = 'true';
+    campaign.addEventListener('click', event => {
+        const button = event.target.closest('[data-u5-inline-atlas]');
+        if (button) openUltima5InlineAtlasTarget(button.dataset.u5InlineAtlas);
+    });
+}
+
 function updateUltima5CampaignProgress() {
     const progressByStore = ultima5GrandProgressSets();
     const objectives = ultima5GrandQuestChapters.flatMap((chapter, chapterIndex) => chapter.objectives.map(objective => ({ objective, chapter, chapterIndex })));
@@ -1120,7 +1278,7 @@ function updateUltima5CampaignProgress() {
     if (next) {
         if (chapterOutput) chapterOutput.textContent = `Grand Quest ${next.chapter.number} · ${next.chapter.title}`;
         if (title) title.textContent = next.objective.title;
-        if (copy) copy.textContent = next.objective.summary;
+        if (copy) copy.innerHTML = renderUltima5AtlasLinkedText(next.objective.summary);
         if (action) {
             action.dataset.objective = next.objective.id;
             action.innerHTML = 'Open next steps <i data-lucide="arrow-right" aria-hidden="true"></i>';
@@ -1864,6 +2022,7 @@ function renderUltima5InteriorMarkers() {
     const floor = ultima5AtlasState.currentFloor;
     if (!map || !layer || !interior || !floor) return;
     layer.clearLayers();
+    ultima5AtlasState.npcMarkers.clear();
 
     const transitionGroups = new Map();
     (floor.transitions || []).forEach(transition => {
@@ -1913,6 +2072,7 @@ function renderUltima5InteriorMarkers() {
                 <p class="u5-atlas-popup__meta">Change the NPC schedule control to follow this resident through the day.</p>
             </article>
         `, { maxWidth: 300 });
+        ultima5AtlasState.npcMarkers.set(npc.id, marker);
         layer.addLayer(marker);
     });
 }
@@ -1982,7 +2142,7 @@ function renderUltima5AtlasSearch(query) {
 
 function focusUltima5AtlasEntry(entry) {
     if (!entry || !ultima5AtlasState.map) return;
-    if (entry.markerData.layer !== ultima5AtlasState.currentLayer) {
+    if (ultima5AtlasState.viewMode !== 'world' || entry.markerData.layer !== ultima5AtlasState.currentLayer) {
         switchUltima5AtlasLayer(entry.markerData.layer, { resetView: false });
     }
     setUltima5AtlasActiveEntry(entry);
@@ -2023,6 +2183,42 @@ function openUltima5ObjectiveOnAtlas(objective) {
         }
         const entry = ultima5AtlasState.entries.find(item => item.markerData.name === objective.atlas.marker);
         if (entry) focusUltima5AtlasEntry(entry);
+    }, 80);
+}
+
+function openUltima5InlineAtlasTarget(targetId) {
+    const target = ultima5InlineAtlasTargets[targetId];
+    if (!target) return;
+    showUltima5Section('atlas');
+    ensureUltima5Atlas();
+    if (Number.isInteger(target.hour)) ultima5AtlasState.currentHour = target.hour;
+    window.setTimeout(() => {
+        if (target.marker) {
+            const entry = ultima5AtlasState.entries.find(item => item.markerData.name === target.marker);
+            if (!entry) return;
+            focusUltima5AtlasEntry(entry);
+            const title = document.getElementById('ultima5-atlas-view-title');
+            const summary = document.getElementById('ultima5-atlas-layer-summary');
+            if (title) title.textContent += ` · Quest locator: ${target.label}`;
+            if (summary) summary.textContent = `${target.label} is highlighted on the ${entry.markerData.layer === 'surface' ? 'Britannia' : 'Underworld'} map.`;
+            document.getElementById('ultima5-map')?.focus({ preventScroll: true });
+            return;
+        }
+        openUltima5Interior(target.interiorId, target.floor, { resetView: true });
+        const marker = target.npcId ? ultima5AtlasState.npcMarkers.get(target.npcId) : null;
+        if (marker) {
+            marker.openPopup();
+            ultima5AtlasState.map?.panTo(marker.getLatLng(), { animate: false });
+        }
+        const title = document.getElementById('ultima5-atlas-view-title');
+        const summary = document.getElementById('ultima5-atlas-layer-summary');
+        if (title) title.textContent += ` · Quest locator: ${target.label}`;
+        if (summary) {
+            summary.textContent = target.npcId
+                ? `${target.label} is highlighted at ${String(target.hour).padStart(2, '0')}:00. Change the NPC time control to follow the resident’s full daily schedule.`
+                : `${target.label} is open from the Campaign route.`;
+        }
+        document.getElementById('ultima5-map')?.focus({ preventScroll: true });
     }, 80);
 }
 
