@@ -7,8 +7,9 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
     <meta name="theme-color" content="#263a2e">
-    <meta name="description" content="An interactive Ultima V guide with a searchable world atlas, companion builder, campaign tracker, survival checklist, spellbook, and complete liberation walkthrough.">
+    <meta name="description" content="An interactive Ultima V guide with a searchable world atlas, companion builder, campaign tracker, expedition readiness ledger, spellbook, and complete liberation walkthrough.">
     <title>Ultima V: Interactive Guide</title>
+    <link rel="icon" href="images/Ultima5box.jpg" type="image/jpeg">
     <script src="js/tailwind.js"></script>
     <script src="js/chart.js"></script>
     <script src="js/lucide.js"></script>
@@ -51,7 +52,7 @@
                 <div class="u5-container u5-navigation__rail">
                     <a href="#overview" class="nav-link active" aria-current="page"><i data-lucide="scroll-text" aria-hidden="true"></i><span>Briefing</span></a>
                     <a href="#party" class="nav-link"><i data-lucide="users" aria-hidden="true"></i><span>Party</span></a>
-                    <a href="#survival" class="nav-link"><i data-lucide="shield-check" aria-hidden="true"></i><span>Survival</span></a>
+                    <a href="#survival" class="nav-link"><i data-lucide="shield-check" aria-hidden="true"></i><span>Readiness</span></a>
                     <a href="#atlas" class="nav-link"><i data-lucide="map-pinned" aria-hidden="true"></i><span>Atlas</span></a>
                     <a href="#quests" class="nav-link"><i data-lucide="route" aria-hidden="true"></i><span>Campaign</span></a>
                     <a href="#reference" class="nav-link"><i data-lucide="book-open" aria-hidden="true"></i><span>Archives</span></a>
@@ -108,28 +109,33 @@
                         <div class="u5-subheading-row">
                             <div>
                                 <p class="u5-kicker">The road ahead</p>
-                                <h3 id="u5-campaign-overview-title">Four movements of liberation</h3>
+                                <h3 id="u5-campaign-overview-title">Five Grand Quests to liberation</h3>
                             </div>
                             <p id="u5-overview-progress-label">Your campaign progress will appear here.</p>
                         </div>
                         <div class="u5-campaign-cards">
-                            <button type="button" class="u5-campaign-card" data-u5-quest-tab="shrines">
+                            <button type="button" class="u5-campaign-card" data-u5-quest-tab="readiness">
                                 <span class="u5-campaign-card__number">01</span>
+                                <span><strong>Forge a Mobile Resistance</strong><small>Party, Grapple, plans, supplies, and the castle raid.</small></span>
+                                <span class="u5-campaign-card__count" data-u5-chapter-count="readiness">0/5</span>
+                            </button>
+                            <button type="button" class="u5-campaign-card" data-u5-quest-tab="shrines">
+                                <span class="u5-campaign-card__number">02</span>
                                 <span><strong>Liberate the Shrines</strong><small>Restore all eight paths of virtue.</small></span>
                                 <span class="u5-campaign-card__count" data-u5-chapter-count="shrines">0/8</span>
                             </button>
                             <button type="button" class="u5-campaign-card" data-u5-quest-tab="shadowlords">
-                                <span class="u5-campaign-card__number">02</span>
+                                <span class="u5-campaign-card__number">03</span>
                                 <span><strong>Break the Shadows</strong><small>Recover three shards and banish their lords.</small></span>
                                 <span class="u5-campaign-card__count" data-u5-chapter-count="shadowlords">0/3</span>
                             </button>
                             <button type="button" class="u5-campaign-card" data-u5-quest-tab="regalia">
-                                <span class="u5-campaign-card__number">03</span>
-                                <span><strong>Recover the Regalia</strong><small>Find the Sceptre, Crown, Amulet, and Box.</small></span>
-                                <span class="u5-campaign-card__count" data-u5-chapter-count="regalia">0/4</span>
+                                <span class="u5-campaign-card__number">04</span>
+                                <span><strong>Recover the Regalia</strong><small>Take the Sceptre, Crown, and Amulet after the Box is safe.</small></span>
+                                <span class="u5-campaign-card__count" data-u5-chapter-count="regalia">0/3</span>
                             </button>
                             <button type="button" class="u5-campaign-card" data-u5-quest-tab="doom">
-                                <span class="u5-campaign-card__number">04</span>
+                                <span class="u5-campaign-card__number">05</span>
                                 <span><strong>Descend into Doom</strong><small>Free Lord British and escape the collapse.</small></span>
                                 <span class="u5-campaign-card__count" data-u5-chapter-count="doom">0/1</span>
                             </button>
@@ -228,59 +234,151 @@
                 <section id="survival" class="content-section">
                     <header class="u5-section-heading">
                         <div>
-                            <p class="u5-kicker">Field readiness</p>
-                            <h2>The Resistance Survival Kit</h2>
-                            <p>Mark equipment as you secure it. Your kit is saved in this browser, so the guide remains useful between expeditions.</p>
+                            <p class="u5-kicker">Campaign support</p>
+                            <h2>Expedition Readiness</h2>
+                            <p>Use these loadouts as departure gates, not as another walkthrough. The Grand Quest tells you where to go and in what order; this ledger only confirms what should be in hand before the next dangerous leg.</p>
                         </div>
-                        <div class="u5-readiness" aria-live="polite">
-                            <span id="u5-readiness-value">0%</span>
-                            <small>field ready</small>
+                        <div class="u5-readiness" aria-live="polite" aria-atomic="true">
+                            <span id="u5-readiness-value">0 of 4</span>
+                            <small>loadouts ready</small>
                         </div>
                     </header>
                     <div class="u5-progress-track" aria-hidden="true"><span id="u5-readiness-bar"></span></div>
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                        <div class="u5-panel bg-white p-6 rounded-lg shadow space-y-4">
-                            <h3 class="text-2xl font-semibold text-yellow-800 flex items-center gap-2"><i data-lucide="gem" class="h-6 w-6"></i> Essential Gear</h3>
+                    <aside class="u5-readiness-key" aria-label="How to use expedition readiness">
+                        <div><strong>Need the route?</strong><span>The linked Campaign button opens the relevant Next steps.</span></div>
+                        <div><strong>About the checks</strong><span>They are saved in this browser and repeated gear stays in sync across loadouts.</span></div>
+                    </aside>
+                    <div class="u5-loadout-grid">
+                        <article class="u5-loadout" data-u5-loadout="opening" aria-labelledby="u5-loadout-opening-title">
+                            <header class="u5-loadout__header">
+                                <div>
+                                    <p class="u5-kicker">Before Grand Quest 01.5</p>
+                                    <h3 id="u5-loadout-opening-title">Castle Britannia raid</h3>
+                                </div>
+                                <p class="u5-loadout__status" data-u5-loadout-status="opening" aria-live="polite">0/4 secured</p>
+                            </header>
+                            <p class="u5-loadout__purpose">Leave only when the upper-floor burglary can be completed in one controlled visit.</p>
                             <label class="u5-gear-check">
-                                <input type="checkbox" data-u5-supply="carpet">
-                                <span><strong>Magic Carpet</strong><small>Lord British's chambers. Crosses shallow water, swamp, and hills; essential for Stonegate.</small></span>
+                                <input type="checkbox" data-u5-supply="keys" data-u5-loadout-item="opening">
+                                <span><strong>Two Skull Keys</strong><small>One for Lord British’s magic door and one spare.</small></span>
                             </label>
                             <label class="u5-gear-check">
-                                <input type="checkbox" data-u5-supply="keys">
-                                <span><strong>Skull Keys</strong><small>Search Shenstone's stump in Minoc for a fresh daily set of five.</small></span>
+                                <input type="checkbox" data-u5-supply="raid-lockpicks" data-u5-loadout-item="opening">
+                                <span><strong>Several lockpicks</strong><small>For the ordinary doors before the magically locked chamber.</small></span>
                             </label>
                             <label class="u5-gear-check">
-                                <input type="checkbox" data-u5-supply="grapple">
-                                <span><strong>Grappling Hook</strong><small>Ask Lord Michael at Empath Abbey; needed for mountain routes and shards.</small></span>
+                                <input type="checkbox" data-u5-supply="raid-recovery" data-u5-loadout-item="opening">
+                                <span><strong>Food, healing, and poison cure</strong><small>Enough margin for fireplace damage or a guard mistake.</small></span>
                             </label>
                             <label class="u5-gear-check">
-                                <input type="checkbox" data-u5-supply="axes">
-                                <span><strong>Magic Axes</strong><small>Buy at Arms of Justice in Yew. Infinite range and return after every throw.</small></span>
+                                <input type="checkbox" data-u5-supply="raid-save" data-u5-loadout-item="opening">
+                                <span><strong>Fresh save outside the castle</strong><small>A clean rollback before committing to the upper route.</small></span>
                             </label>
-                        </div>
-                        <div class="u5-panel bg-white p-6 rounded-lg shadow space-y-4">
-                            <h3 class="text-2xl font-semibold text-yellow-800 flex items-center gap-2"><i data-lucide="coins" class="h-6 w-6"></i> Funding & Survival</h3>
-                             <div class="border-t pt-4">
-                                <h4 class="font-bold">Core Tenets</h4>
-                                <ul class="list-disc list-inside space-y-1">
-                                    <li><b>Save constantly:</b> Avoid losing hours of progress.</li>
-                                    <li><b>Avoid death:</b> Resurrection causes permanent XP loss.</li>
-                                    <li><b>Manage resources:</b> Food is consumed with every step.</li>
-                                </ul>
+                            <button type="button" class="u5-loadout__route" data-u5-grand-target="opening-castle-raid">Open Castle raid steps <span aria-hidden="true">→</span></button>
+                        </article>
+
+                        <article class="u5-loadout" data-u5-loadout="pilgrimage" aria-labelledby="u5-loadout-pilgrimage-title">
+                            <header class="u5-loadout__header">
+                                <div>
+                                    <p class="u5-kicker">Before Grand Quest 02</p>
+                                    <h3 id="u5-loadout-pilgrimage-title">Shrine and sea circuit</h3>
+                                </div>
+                                <p class="u5-loadout__status" data-u5-loadout-status="pilgrimage" aria-live="polite">0/4 secured</p>
+                            </header>
+                            <p class="u5-loadout__purpose">Begin the pilgrimage after the resistance can cross terrain quickly and navigate without guesswork.</p>
+                            <label class="u5-gear-check">
+                                <input type="checkbox" data-u5-supply="carpet" data-u5-loadout-item="pilgrimage">
+                                <span><strong>Magic Carpet and Sandalwood Box</strong><small>Both should already be secured during the Grand Quest 01 castle raid.</small></span>
+                            </label>
+                            <label class="u5-gear-check">
+                                <input type="checkbox" data-u5-supply="grapple" data-u5-loadout-item="pilgrimage">
+                                <span><strong>Grappling Hook</strong><small>Required when the Carpet reaches terrain it cannot cross.</small></span>
+                            </label>
+                            <label class="u5-gear-check">
+                                <input type="checkbox" data-u5-supply="frigate" data-u5-loadout-item="pilgrimage">
+                                <span><strong>Frigate with HMS Cape plans applied</strong><small>The fast, reliable choice for the ocean legs.</small></span>
+                            </label>
+                            <label class="u5-gear-check">
+                                <input type="checkbox" data-u5-supply="navigation-tools" data-u5-loadout-item="pilgrimage">
+                                <span><strong>Sextant, spyglass, food, and recovery</strong><small>Coordinates and scouting keep long routes deliberate.</small></span>
+                            </label>
+                            <p class="u5-loadout__note"><strong>Short on gold?</strong> Capture a pirate frigate for free. The Jhelom fallback is about 600 gold before the Avatar’s Intelligence discount.</p>
+                            <div class="u5-loadout__routes">
+                                <button type="button" class="u5-loadout__route" data-u5-grand-target="opening-hms-cape">Review frigate setup <span aria-hidden="true">→</span></button>
+                                <button type="button" class="u5-loadout__route" data-u5-quest-tab="shrines">Open Grand Quest 02 <span aria-hidden="true">→</span></button>
                             </div>
-                            <div class="border-t pt-4">
-                                <h4 class="font-bold">Economic Strategy</h4>
-                                <p>The most lucrative way to fund the resistance is by repeatedly looting Lord British's castle treasury. Use Skull Keys to enter the basement, take everything, exit the castle, and re-enter. The treasury will be restocked. Be aware this will lower your Karma.</p>
+                        </article>
+
+                        <article class="u5-loadout" data-u5-loadout="underworld" aria-labelledby="u5-loadout-underworld-title">
+                            <header class="u5-loadout__header">
+                                <div>
+                                    <p class="u5-kicker">Before Grand Quests 03–04</p>
+                                    <h3 id="u5-loadout-underworld-title">Underworld sorties</h3>
+                                </div>
+                                <p class="u5-loadout__status" data-u5-loadout-status="underworld" aria-live="polite">0/5 secured</p>
+                            </header>
+                            <p class="u5-loadout__purpose">Treat every shard or regalia run as a self-contained expedition with a planned exit.</p>
+                            <label class="u5-gear-check">
+                                <input type="checkbox" data-u5-supply="carpet" data-u5-loadout-item="underworld">
+                                <span><strong>Magic Carpet</strong><small>For water, swamp, brush, and hills; rough sea remains dangerous.</small></span>
+                            </label>
+                            <label class="u5-gear-check">
+                                <input type="checkbox" data-u5-supply="grapple" data-u5-loadout-item="underworld">
+                                <span><strong>Grappling Hook</strong><small>For mountain tiles and routes the Carpet cannot solve.</small></span>
+                            </label>
+                            <label class="u5-gear-check">
+                                <input type="checkbox" data-u5-supply="underworld-food" data-u5-loadout-item="underworld">
+                                <span><strong>200–300 food</strong><small>A practical reserve for long navigation and mistakes.</small></span>
+                            </label>
+                            <label class="u5-gear-check">
+                                <input type="checkbox" data-u5-supply="underworld-light" data-u5-loadout-item="underworld">
+                                <span><strong>Torches and gems</strong><small>Carry a generous stack of both for darkness and route checks.</small></span>
+                            </label>
+                            <label class="u5-gear-check">
+                                <input type="checkbox" data-u5-supply="underworld-spells" data-u5-loadout-item="underworld">
+                                <span><strong><code>IN POR</code> and <code>VAS REL POR</code></strong><small>Blink across blocked terrain and keep a reliable exit.</small></span>
+                            </label>
+                            <div class="u5-loadout__routes">
+                                <button type="button" class="u5-loadout__route" data-u5-grand-target="shadow-faulinei">Open Grand Quest 03 <span aria-hidden="true">→</span></button>
+                                <button type="button" class="u5-loadout__route" data-u5-grand-target="regalia-sceptre">Open Grand Quest 04 <span aria-hidden="true">→</span></button>
                             </div>
-                            <div class="border-t pt-4">
-                                <h4 class="font-bold">Navigation</h4>
-                                <p>Horses provide faster overland travel. A frigate, won from pirates, is needed for sea voyages. Moongates offer magical transport at night, with destinations determined by the two moons.</p>
-                            </div>
-                        </div>
+                        </article>
+
+                        <article class="u5-loadout" data-u5-loadout="doom" aria-labelledby="u5-loadout-doom-title">
+                            <header class="u5-loadout__header">
+                                <div>
+                                    <p class="u5-kicker">Before Grand Quest 05</p>
+                                    <h3 id="u5-loadout-doom-title">Dungeon Doom</h3>
+                                </div>
+                                <p class="u5-loadout__status" data-u5-loadout-status="doom" aria-live="polite">0/5 secured</p>
+                            </header>
+                            <p class="u5-loadout__purpose">Doom is a one-way commitment. Make the permanent save before crossing its threshold.</p>
+                            <label class="u5-gear-check">
+                                <input type="checkbox" data-u5-supply="shadowlords-defeated" data-u5-loadout-item="doom">
+                                <span><strong>All three Shadowlords destroyed</strong><small>The final descent assumes Britannia’s strongholds are free.</small></span>
+                            </label>
+                            <label class="u5-gear-check">
+                                <input type="checkbox" data-u5-supply="royal-artifacts" data-u5-loadout-item="doom">
+                                <span><strong>Sceptre, Crown, Amulet, and Box</strong><small>All four royal artifacts have a job in the rescue.</small></span>
+                            </label>
+                            <label class="u5-gear-check">
+                                <input type="checkbox" data-u5-supply="veramocor" data-u5-loadout-item="doom">
+                                <span><strong>Word of Power: <code>VERAMOCOR</code></strong><small>Earned after restoring all eight shrines.</small></span>
+                            </label>
+                            <label class="u5-gear-check">
+                                <input type="checkbox" data-u5-supply="doom-level" data-u5-loadout-item="doom">
+                                <span><strong>Avatar near Level 8</strong><small>Strongly recommended rather than a hard requirement.</small></span>
+                            </label>
+                            <label class="u5-gear-check">
+                                <input type="checkbox" data-u5-supply="doom-supplies" data-u5-loadout-item="doom">
+                                <span><strong>Healing, resurrection, and prepared spells</strong><small>Pre-mix <code>AN TYM</code>; keep <code>VAS MANI</code> for recovery.</small></span>
+                            </label>
+                            <button type="button" class="u5-loadout__route" data-u5-grand-target="doom-rescue">Open Grand Quest 05 steps <span aria-hidden="true">→</span></button>
+                        </article>
                     </div>
                     <div class="u5-section-bridge">
-                        <span><i data-lucide="map" aria-hidden="true"></i> Ready to plan a supply run?</span>
-                        <button type="button" data-u5-section="atlas">Find every key location on the atlas <span aria-hidden="true">→</span></button>
+                        <span><i data-lucide="route" aria-hidden="true"></i> A loadout says when to leave; the Campaign says where to go.</span>
+                        <button type="button" data-u5-section="quests">Continue the Grand Quest <span aria-hidden="true">→</span></button>
                     </div>
                 </section>
 
@@ -372,17 +470,60 @@
                 <section id="quests" class="content-section">
                     <header class="u5-section-heading">
                         <div>
-                            <p class="u5-kicker">Campaign journal</p>
-                            <h2>The Path to Liberation</h2>
-                            <p>Follow the liberation campaign in order, then pursue optional resistance work whenever you need allies, equipment, or faster travel.</p>
+                            <p class="u5-kicker">The Avatar's living journal</p>
+                            <h2>The Grand Quest</h2>
+                            <p>Build a mobile resistance first, then restore Britannia. Open <strong>Next steps</strong> beneath any objective for the exact route, supplies, dialogue, and escape plan.</p>
                         </div>
                         <div class="u5-campaign-total" aria-live="polite">
                             <strong id="u5-campaign-percent">0%</strong>
-                            <span id="u5-campaign-total-label">0 of 16 main quests</span>
+                            <span id="u5-campaign-total-label">0 route objectives complete</span>
                         </div>
                     </header>
 
-                    <div class="u5-campaign-tabs" role="tablist" aria-label="Quest journal">
+                    <section class="u5-quest-continue" aria-labelledby="u5-current-objective-title">
+                        <span class="u5-quest-continue__marker" aria-hidden="true">✦</span>
+                        <div>
+                            <p class="u5-kicker" id="u5-current-objective-chapter">Your next objective</p>
+                            <h3 id="u5-current-objective-title">Assemble the resistance party</h3>
+                            <p id="u5-current-objective-copy">Recruit the companions who make the opening route safer.</p>
+                        </div>
+                        <div class="u5-current-objective-actions">
+                            <button type="button" id="u5-current-objective-action" class="u5-primary-action">Open next steps <i data-lucide="arrow-right" aria-hidden="true"></i></button>
+                            <button type="button" id="u5-current-objective-map" class="u5-secondary-action"><i data-lucide="map-pinned" aria-hidden="true"></i> Show on atlas</button>
+                        </div>
+                    </section>
+
+                    <aside class="u5-opening-briefing" aria-labelledby="u5-opening-briefing-title">
+                        <div class="u5-opening-briefing__lead">
+                            <p class="u5-kicker">Recommended opening strategy</p>
+                            <h3 id="u5-opening-briefing-title">Power first. Pilgrimage second.</h3>
+                            <p>The shrines remain important, but the efficient opening is to recruit, unlock mountain and sea travel, and raid Castle Britannia before committing to the long virtue circuit.</p>
+                        </div>
+                        <dl>
+                            <div><dt>Field party</dt><dd>Avatar, Iolo, Jaana, Julia, Gwenno, then Mariah</dd></div>
+                            <div><dt>Raid threshold</dt><dd>1 Skull Key minimum; 2 recommended, plus lockpicks, food, healing, cure, and a fresh save</dd></div>
+                            <div><dt>Opening payoff</dt><dd>Grapple, fast frigates, Magic Carpet, Sandalwood Box</dd></div>
+                        </dl>
+                    </aside>
+
+                    <ol id="u5-grand-quest-journal" class="u5-grand-quest-journal"></ol>
+
+                    <section class="u5-optional-quests" aria-labelledby="u5-optional-quests-title">
+                        <header class="u5-side-quest-intro">
+                            <div>
+                                <p class="u5-kicker">After the strategic opening</p>
+                                <h3 id="u5-optional-quests-title">Optional Resistance Work</h3>
+                                <p>These pursuits are arranged by the point where they deliver the most value. Complete each group before its named Grand Quest when practical; none of them gate the campaign.</p>
+                            </div>
+                            <div class="u5-side-progress" aria-live="polite">
+                                <strong id="u5-side-quest-percent">0%</strong>
+                                <span id="u5-side-quest-total-label">0 optional jobs complete</span>
+                            </div>
+                        </header>
+                        <div id="u5-side-quest-list" class="u5-side-quest-groups"></div>
+                    </section>
+
+                    <div class="u5-campaign-tabs" role="tablist" aria-label="Legacy quest journal" hidden>
                         <button type="button" id="u5-main-campaign-tab" class="u5-campaign-tab active" data-u5-campaign-view="main" role="tab" aria-selected="true" aria-controls="u5-main-quest-view">
                             <span>01</span>
                             <strong>Main Quests</strong>
@@ -395,7 +536,7 @@
                         </button>
                     </div>
 
-                    <div id="u5-main-quest-view" class="u5-campaign-view active" role="tabpanel" aria-labelledby="u5-main-campaign-tab">
+                    <div id="u5-main-quest-view" class="u5-campaign-view active" role="tabpanel" aria-labelledby="u5-main-campaign-tab" hidden>
                     <section class="u5-campaign-route" aria-labelledby="u5-campaign-route-title">
                         <div class="u5-campaign-route__heading">
                             <div>
@@ -573,14 +714,14 @@
                             </div>
                         </div>
                     </div>
-                    <section class="u5-current-objective" aria-labelledby="u5-current-objective-title">
+                    <section class="u5-current-objective" aria-labelledby="u5-legacy-current-objective-title">
                         <div class="u5-quest-dashboard__status">
                             <p class="u5-kicker">Next required quest</p>
-                            <h3 id="u5-current-objective-title">Restore the Shrine of Honesty</h3>
-                            <p id="u5-current-objective-copy">Begin in Moonglow: learn AHM, meditate three cycles, and seek the Codex.</p>
+                            <h3 id="u5-legacy-current-objective-title">Restore the Shrine of Honesty</h3>
+                            <p id="u5-legacy-current-objective-copy">Begin in Moonglow: learn AHM, meditate three cycles, and seek the Codex.</p>
                             <div class="u5-current-objective-actions">
-                                <button type="button" id="u5-current-objective-action" class="u5-primary-action">Open this chapter <i data-lucide="arrow-right" aria-hidden="true"></i></button>
-                                <button type="button" id="u5-current-objective-map" class="u5-secondary-action"><i data-lucide="map-pinned" aria-hidden="true"></i> Show on atlas</button>
+                                <button type="button" id="u5-legacy-current-objective-action" class="u5-primary-action">Open this chapter <i data-lucide="arrow-right" aria-hidden="true"></i></button>
+                                <button type="button" id="u5-legacy-current-objective-map" class="u5-secondary-action"><i data-lucide="map-pinned" aria-hidden="true"></i> Show on atlas</button>
                             </div>
                         </div>
                     </section>
@@ -604,11 +745,11 @@
                                 <p>These jobs are optional and can be completed in any order. They make the ordered campaign safer, faster, and better supplied.</p>
                             </div>
                             <div class="u5-side-progress" aria-live="polite">
-                                <strong id="u5-side-quest-percent">0%</strong>
-                                <span id="u5-side-quest-total-label">0 of 11 complete</span>
+                                <strong id="u5-legacy-side-quest-percent">0%</strong>
+                                <span id="u5-legacy-side-quest-total-label">0 of 11 complete</span>
                             </div>
                         </section>
-                        <div id="u5-side-quest-list" class="u5-side-quest-list"></div>
+                        <div id="u5-legacy-side-quest-list" class="u5-side-quest-list"></div>
                     </div>
                 </section>
 

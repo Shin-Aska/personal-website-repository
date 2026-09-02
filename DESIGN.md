@@ -39,14 +39,20 @@ The guides feel like carefully preserved field manuals: warm paper, archival ink
 
 Headings use `text-wrap: balance` where available; body copy uses `text-wrap: pretty`. Body text must not fall below `0.875rem` for instructional content.
 
+Ultima V component typography uses `--u5-text-kicker`, `--u5-text-caption`, `--u5-text-small`, `--u5-text-body`, `--u5-text-base`, `--u5-text-card`, `--u5-text-section`, and `--u5-text-number`. Line-height and tracking use `--u5-leading-tight`, `--u5-leading-compact`, `--u5-leading-body`, and `--u5-tracking-kicker`.
+
 ## 4. Spacing & Layout
 
 The base spacing unit is 4px. Existing guide rhythm uses 4, 8, 12, 16, 20, 24, 32, and 40px steps through rem values.
 
+- Spacing tokens: `--u5-space-1` through `--u5-space-6`, plus `--u5-space-8` and `--u5-space-10`, map the approved 4px rhythm.
+- Radius tokens: `--u5-radius-sm`, `--u5-radius-md`, and `--u5-radius-lg`; primary control height uses `--u5-control-min`.
+- Reading measure: `--u5-reading-measure` caps expanded instructional prose at `78ch` so route steps and field notes do not become tiring desktop-wide lines.
+
 - Content shell: `min(1180px, calc(100% - 2rem))`; mobile shell: `min(100% - 1rem, 1180px)`.
 - Primary breakpoints: 520px for compact phone controls, 760px for one-column content, and 980px for dashboard stacking.
-- Campaign controls use grid for chapter structure and horizontal overflow only as a last-resort affordance; the primary reading column must never create page-level horizontal scroll.
-- Preparation guidance sits directly beneath its controlling chapter rail. The global checklist follows chapter content as a secondary ledger, never between the chapter control and its content.
+- Campaign controls use a single journal column so the recommended route reads from top to bottom; the primary reading column must never create page-level horizontal scroll.
+- Preparation is Grand Quest 01, not a detached side-quest detour. The remaining optional pursuits follow the complete Grand Quest as a secondary ledger.
 
 ## 5. Components
 
@@ -57,27 +63,40 @@ The base spacing unit is 4px. Existing guide rhythm uses 4, 8, 12, 16, 20, 24, 3
 - **Layout**: centered cluster on desktop; horizontally scrollable cluster on small screens.
 - **Motion**: color and surface transitions only.
 
-### Campaign view switcher
+### Grand Quest journal
 
-- **Structure**: two-button `tablist` switching Main and Side Quest `tabpanel` regions.
-- **States**: default, hover, selected via `aria-selected`, and visible focus.
-- **Layout**: equal two-column grid; stacks internal label hierarchy on compact phones.
+- **Structure**: one ordered list of Grand Quest chapters. Each chapter header contains its sequence number, strategic purpose, live completed/total count, and a disclosure control for the chapter body.
+- **States**: upcoming, current, complete, hover, and visible keyboard focus. The current chapter is identified by text and an amber marker; completion uses both a check mark and forest treatment.
+- **Layout**: a wide journal column with a compact number gutter. On phones, metadata wraps below the title without reducing instructional copy below `0.875rem`.
+- **Accessibility**: chapter buttons expose `aria-expanded` and `aria-controls`; chapter regions retain a labelled heading even when collapsed. Opening one chapter does not forcibly close another.
 
-### Campaign route rail
+### Grand Quest objective
 
-- **Structure**: ordered Act I–IV `tablist`; each tab contains act number, title, purpose, and live completed/total count; each controls one chapter `tabpanel`.
-- **States**: default paper, hover amber wash, selected wine/forest material, completed forest indicator, keyboard focus, and compact phone layout.
-- **Accessibility**: arrow-key movement is supported within the tablist, `aria-controls` and `aria-labelledby` pair tabs with panels, and selection is always expressed independently of color.
-- **Layout**: four-column route on wide screens, two columns on tablet, and one readable column on phone.
-- **Motion**: selected panel enters with the existing 220ms opacity/transform arrival; reduced motion disables it.
+- **Structure**: an ordered objective card with a trackable completion control, concise goal, location, outcome, atlas action, and a `Next steps` disclosure. Contextual economy or survival advice appears as a `Field notes` block after the exact route and before the outcome.
+- **States**: default, expanded, complete, hover, and visible keyboard focus. Preparation objectives can mirror existing side-quest progress; decisive objectives retain their ordered main-campaign progress.
+- **Layout**: title and actions share one row on desktop and stack on compact phones. Exact instructions live in the disclosure directly beneath the goal they explain and share the `--u5-reading-measure` cap on wide screens.
+- **Accessibility**: `Next steps` is a real button with `aria-expanded` and `aria-controls`; instructions are an ordered list, field notes are a labelled unordered list, and both remain understandable without icons or color. Completion controls have explicit action labels.
 
-### Preparation callout
+### Field notes
 
-- **Structure**: semantic `aside` with a preparation label, title, prerequisite checklist, acquisition route, use/limits, and connection to the active chapter objective.
-- **Variants**: chapter preparation and side-quest summary.
-- **States**: static instructional content; any contained action uses standard button/link focus and hover states.
-- **Layout**: asymmetric two-column dossier on desktop and a single reading column below 760px.
-- **Accessibility**: headings preserve reading order; lists carry the steps without relying on icons or color.
+- **Structure**: a compact labelled aside inside a Grand Quest disclosure, containing short `label + advice` entries for optional optimizations, warnings, prices, or resource-saving alternatives.
+- **States**: static guidance shown only while its parent `Next steps` disclosure is expanded.
+- **Layout**: a forest-tinted inset separated from the exact route by the shared spacing rhythm; entries form one reading column at every breakpoint.
+- **Accessibility**: the aside has an explicit `Field notes` label, uses a semantic list, and never makes an optimization sound mandatory when the normal route remains valid.
+
+### Opening strategy briefing
+
+- **Structure**: a semantic `aside` before Grand Quest 01 that states the recommended party, supply threshold, and why the route delays shrine grinding until the resistance is mobile.
+- **Layout**: three concise briefing facts on desktop and one reading column below 760px.
+- **Accessibility**: guidance is text-first, with no meaning carried only by decorative route lines.
+
+### Expedition readiness ledger
+
+- **Structure**: a campaign-support section made of stage-specific loadout cards. Each card names the Grand Quest it prepares for, shows a saved checklist and local ready count, and links back to that Grand Quest for acquisition routes and sequencing.
+- **Responsibility**: the ledger answers “what must be in hand before departure”; the Grand Quest journal remains the only source for “where to go next” and exact routes. Readiness copy must not duplicate a walkthrough.
+- **States**: incomplete, ready, checked item, hover, and visible keyboard focus. The overall summary counts ready loadouts rather than averaging unrelated inventory into a percentage.
+- **Layout**: a two-column ledger above 980px and one reading column below it. Card headers keep the campaign gate and status together; checklist rows remain at least 44px tall and wrap naturally on phones.
+- **Accessibility**: every card is a labelled semantic article, status text is announced politely, checkboxes retain explicit labels, and readiness is never communicated by color alone.
 
 ### Main objective checklist
 
@@ -90,6 +109,13 @@ The base spacing unit is 4px. Existing guide rhythm uses 4, 8, 12, 16, 20, 24, 3
 - **Structure**: category/location header, trackable title, recommendation, instruction copy, reward, and atlas action.
 - **States**: default, hover, checked/complete, focus, and local-storage-unavailable fallback.
 - **Layout**: two-column card grid on desktop and one column below 980px.
+
+### Side-quest preparation group
+
+- **Structure**: a semantic section headed by the Grand Quest it prepares for, a short strategic rationale, and its optional side-quest cards ordered from highest to lowest practical usefulness.
+- **States**: group headings remain visible while individual cards retain their default, hover, complete, and keyboard-focus states; optional completion never locks or blocks the Grand Quest.
+- **Layout**: groups form one full-width preparation timeline; cards use the shared two-column side-quest grid and collapse to one column below 980px. Group headings stack below 760px.
+- **Accessibility**: each group is labelled by its own heading, the sequence is communicated in text as well as card numbering, and reading order matches the recommended play order.
 
 ## 6. Motion & Interaction
 

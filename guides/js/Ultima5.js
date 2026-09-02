@@ -135,7 +135,7 @@ const ultima5SideQuests = [
     {
         id: 'side-glass-swords', category: 'Treasure', title: 'Raid the Glass Sword Cache', location: 'Serpent’s Spine',
         detail: 'Find the hidden valley south of Yew. Ready each sword after finding it to multiply the cache for the party.',
-        reward: 'Emergency boss weapons', recommendedBefore: 'shadow-faulinei', atlas: { marker: 'Glass Sword Cache' }
+        reward: 'Emergency boss weapons', recommendedBefore: 'shadow-faulinei', usefulnessRank: 2, atlas: { marker: 'Glass Sword Cache' }
     },
     {
         id: 'side-hms-cape', category: 'Travel', title: 'Steal the HMS Cape Plans', location: 'East Britanny',
@@ -144,25 +144,31 @@ const ultima5SideQuests = [
     },
     {
         id: 'side-magic-axe', category: 'Treasure', title: 'Claim Jhelom’s Magic Axe', location: 'Jhelom',
-        detail: 'Use the tower route, push the barrels, and search the concealed stump for a returning ranged weapon.',
-        reward: 'Infinite-range returning axe', recommendedBefore: 'shadow-faulinei', atlas: { interiorId: 'location-3', floor: '0' }
+        detail: 'Use the tower route, push the barrels, and search the concealed stump for a free returning ranged weapon before spending roughly 1,000 gold on additional axes.',
+        reward: 'Infinite-range returning axe', recommendedBefore: 'shadow-faulinei', usefulnessRank: 1, atlas: { interiorId: 'location-3', floor: '0' }
     },
     {
         id: 'side-reagents', category: 'Magic', title: 'Establish a Reagent Run', location: 'Spiritwood & Bloody Plains',
         detail: 'Harvest Nightshade at midnight in Spiritwood and Mandrake southeast of Minoc for high-circle travel and scouting magic.',
-        reward: 'Renewable rare reagents', recommendedBefore: 'shrine-spirituality', atlas: { marker: 'Nightshade' }
+        reward: 'Renewable rare reagents', recommendedBefore: 'shrine-spirituality', usefulnessRank: 2, atlas: { marker: 'Nightshade' }
     },
     {
         id: 'side-navigation', category: 'Travel', title: 'Collect the Sextant & Spyglass', location: 'Greyhaven & Farthing',
         detail: 'Ask David at Greyhaven for the sextant, then visit Seggallion at Farthing for the spyglass.',
-        reward: 'Coordinates and scouting', recommendedBefore: 'shrine-compassion', atlas: { interiorId: 'location-11', floor: '0' }
+        reward: 'Coordinates and scouting', recommendedBefore: 'shrine-compassion', usefulnessRank: 1, atlas: { interiorId: 'location-11', floor: '0' }
     },
     {
         id: 'side-mystic-arms', category: 'Treasure', title: 'Recover the Mystic Arms', location: 'Southeast Underworld',
         detail: 'Mount a late-game expedition into the far southeast Underworld to recover Britannia’s hidden Mystic equipment.',
-        reward: 'Ultimate equipment set', recommendedBefore: 'doom-rescue', atlas: { marker: 'Mystic Arms' }
+        reward: 'Ultimate equipment set', recommendedBefore: 'doom-rescue', usefulnessRank: 1, atlas: { marker: 'Mystic Arms' }
     }
 ];
+
+const ultima5SideQuestGroupRationales = {
+    shrines: 'Navigation and renewable spell supplies make the long shrine circuit faster and safer.',
+    shadowlords: 'Reliable ranged damage and emergency finishers reduce the risk of the Underworld shard runs.',
+    doom: 'Claim the strongest optional equipment immediately before the final one-way descent.'
+};
 
 const ultima5ObjectiveGuidance = {
     'shrine-honesty': 'Begin in Moonglow: learn AHM, meditate three cycles, and seek the Codex.',
@@ -182,6 +188,219 @@ const ultima5ObjectiveGuidance = {
     'regalia-box': 'Play Stones on Lord British’s harpsichord to reveal the private study.',
     'doom-rescue': 'Carry every royal artifact, speak VERAMOCOR, and make the final descent into Doom.'
 };
+
+const ultima5ShrineFieldNotes = {
+    'shrine-honesty': [{ label: 'Merchant timing', text: 'Completing Honesty grants the Avatar +1 Intelligence, which lowers later shop prices.' }],
+    'shrine-justice': [{ label: 'Merchant timing', text: 'Justice is aligned with Truth, so its completed Codex quest also raises Intelligence and improves later prices.' }],
+    'shrine-spirituality': [{ label: 'Merchant timing', text: 'Spirituality raises all three attributes, including Intelligence; postpone expensive axes, armour, and reagents until afterward when practical.' }]
+};
+
+const ultima5GrandQuestChapters = [
+    {
+        id: 'readiness',
+        number: '01',
+        eyebrow: 'Opening strategy',
+        title: 'Forge a Mobile Resistance',
+        summary: 'Recruit the right party and take the tools that make every later pilgrimage safer and faster.',
+        objectives: [
+            {
+                id: 'opening-party',
+                title: 'Assemble the recommended field party',
+                location: 'Yew, Empath Abbey, Britain, and the Lycaeum',
+                summary: 'Prioritize spellcasters and capable ranged fighters before committing to the shrine circuit.',
+                outcome: 'A resilient six-person party with healing, utility magic, and ranged pressure.',
+                progress: [
+                    { store: 'side', id: 'side-jaana' },
+                    { store: 'side', id: 'side-resistance-party' }
+                ],
+                atlas: { interiorId: 'location-4', floor: '-1' },
+                steps: [
+                    'Keep Iolo and Shamino while the party is small; heal Shamino before taking road fights.',
+                    'In Yew, enter the fireplace behind the living area, descend into the hidden jail, unlock Jaana’s cell, and ask the mage to join.',
+                    'Follow the road to Empath Abbey and recruit Julia upstairs. She is the strongest practical early replacement when the party begins to fill.',
+                    'Recruit Gwenno in Britain, then add Mariah at the Lycaeum once a moongate, skiff, frigate, or the Magic Carpet makes the island reachable.',
+                    'Aim for Avatar, Iolo, Jaana, Julia, Gwenno, and Mariah. If you need space, leave Shamino at an inn; later, Johne can replace Julia for an even more magic-heavy endgame party.'
+                ],
+                hints: [
+                    { label: 'Sell before lodging', text: 'Move useful equipment off Shamino before leaving him at the Britain inn, then sell surplus weapons and armour instead of carrying dead weight.' },
+                    { label: 'Starter stake', text: 'The hidden Yew jail route contains a Silver Sword behind the rat room. Keep it as an early upgrade or sell it to seed the ship fund.' }
+                ]
+            },
+            {
+                id: 'opening-grapple',
+                title: 'Secure the Grapple',
+                location: 'Empath Abbey',
+                summary: 'Take the mountain-crossing tool while recruiting Julia so the trip pays twice.',
+                outcome: 'Small mountain peaks and several Underworld routes become traversable.',
+                progress: [{ store: 'side', id: 'side-grapple' }],
+                atlas: { interiorId: 'location-31', floor: '1' },
+                steps: [
+                    'Enter Empath Abbey and climb to Lord Michael’s rooms in the east wing.',
+                    'Speak with Lord Michael and ask specifically about GRAPPLE.',
+                    'Take the Grappling Hook he provides and keep it in the active party’s inventory.',
+                    'Recruit Julia before leaving so you do not need a second opening-game trip to the Abbey.'
+                ]
+            },
+            {
+                id: 'opening-hms-cape',
+                title: 'Steal the HMS Cape plans',
+                location: 'The Oaken Oar, East Britanny',
+                summary: 'Upgrade any frigate before sea travel becomes a major part of the campaign.',
+                outcome: 'Using the plans on a frigate doubles its speed relative to enemies.',
+                progress: [{ store: 'side', id: 'side-hms-cape' }],
+                atlas: { interiorId: 'location-21', floor: '0' },
+                steps: [
+                    'Enter East Britanny and go north to the Oaken Oar shipwright’s building; use the west entrance.',
+                    'Move to the eastern room and jimmy both ordinary locked doors with lockpicks.',
+                    'Search the drawers in the room until you recover the HMS Cape plans.',
+                    'When you obtain a frigate, use the plans on the ship once to apply the faster sail upgrade.'
+                ],
+                hints: [
+                    { label: 'Best-value frigate', text: 'Do not grind for a purchase unless you want to. Patrol the coast near Minoc, let a pirate frigate close, defeat its crew, and claim the ship for free.' },
+                    { label: 'If buying', text: 'Check Jhelom first: a frigate is listed around 600 gold there, versus roughly 650 in East Britanny, 700 in Buccaneer’s Den, and 753 in Minoc.' },
+                    { label: 'Intelligence discount', text: 'Merchant prices fall as the Avatar’s Intelligence rises. A high-INT start pays less; after the pilgrimage, Honesty, Justice, and Spirituality rewards make later purchases cheaper.' },
+                    { label: 'Build the fund safely', text: 'Refuse bridge-troll tolls and win the fights, sell surplus companion and monster loot, and search every chest or bloodstain. Save after profitable victories.' },
+                    { label: 'Protect the purse', text: 'Use Minoc’s free healer and cure, avoid its guards because they can take half your gold, and never shop in a town while a Shadowlord is distorting prices.' }
+                ]
+            },
+            {
+                id: 'opening-raid-kit',
+                title: 'Stock the Castle Britannia raid kit',
+                location: 'Minoc and any well-supplied town',
+                summary: 'Prepare for locked doors, fireplace damage, guards, and a clean retreat before entering the upper castle.',
+                outcome: 'Enough access and recovery supplies to take both treasures in one visit.',
+                progress: [{ store: 'side', id: 'side-skull-keys' }],
+                atlas: { interiorId: 'location-5', floor: '0' },
+                steps: [
+                    'Visit Minoc at night and search Shenstone’s stump in the northwest for five Skull Keys; leave and return on a later day if you want more.',
+                    'Reserve at least one Skull Key for Lord British’s magically locked chamber and carry a spare in case your route changes.',
+                    'Bring several lockpicks, food, direct healing, poison cure, and enough hit points to survive any fireplace passage or guard mistake.',
+                    'Make a fresh save outside Castle Britannia. Do not recruit Saduj if he appears; he is Blackthorn’s agent and can betray the party.'
+                ],
+                hints: [
+                    { label: 'Free recovery', text: 'Minoc’s healer cures and heals without charge. Use that service while restocking Skull Keys instead of spending the frigate fund elsewhere.' },
+                    { label: 'Buy last', text: 'Enemies can leave food, torches, keys, gold, weapons, and armour. Search their chests and remains before paying for anything except missing raid essentials.' }
+                ]
+            },
+            {
+                id: 'opening-castle-raid',
+                title: 'Raid Lord British’s third-floor chambers',
+                location: 'Castle Britannia, upper private suite',
+                summary: 'Take the Magic Carpet and Sandalwood Box together before the long pilgrimage begins.',
+                outcome: 'Britannia’s best travel tool and the proof required to rescue Lord British.',
+                progress: [
+                    { store: 'side', id: 'side-magic-carpet' },
+                    { store: 'main', id: 'regalia-box' }
+                ],
+                atlas: { interiorId: 'location-17', floor: '2' },
+                steps: [
+                    'Enter Castle Britannia and use a perimeter tower stair to climb to the third-floor and rooftop level.',
+                    'Circle the upper perimeter until the guard moves away. If you receive a warning or the guard starts following, retreat down a stair, wait, and try again.',
+                    'Approach the central private suite and spend a Skull Key on Lord British’s magically locked door.',
+                    'Take the Magic Carpet lying just inside the chamber. It crosses land, water, swamps, brush, and hills, but rough sea still damages the party and mountains still require the Grapple.',
+                    'Stand at the harpsichord and play Stones as 6-7-8-9-8-7-8-7-6-7-6-5-3. The secret wall opens; enter and take the Sandalwood Box.',
+                    'Leave by the same upper route. Keep the Carpet with the active party and retain the Box until Lord British uses it in Dungeon Doom.'
+                ]
+            }
+        ]
+    },
+    {
+        id: 'shrines',
+        number: '02',
+        eyebrow: 'The pilgrimage',
+        title: 'Restore the Eight Shrines',
+        summary: 'With fast travel secured, complete each virtue loop and earn the Word of Power for Doom.',
+        objectives: [
+            ['shrine-honesty', 'Honesty', 'Moonglow', 'AHM', 'Ask Malifora for the mantra.'],
+            ['shrine-compassion', 'Compassion', 'Britain', 'MU', 'Ask Greyson, affirm that British is the rightful ruler, then ask for Compassion.'],
+            ['shrine-valor', 'Valor', 'Jhelom', 'RA', 'Follow Trian’s lead to Thorne.'],
+            ['shrine-justice', 'Justice', 'Yew', 'BEH', 'Help Jeremy, use the Resistance password DAWN with Chamfort, and follow the lead.'],
+            ['shrine-sacrifice', 'Sacrifice', 'Minoc / East Britanny', 'CAH', 'Ask Rew in East Britanny.'],
+            ['shrine-honor', 'Honor', 'Trinsic', 'SUMM', 'Ask Gruman when your karma is high enough.'],
+            ['shrine-spirituality', 'Spirituality', 'Skara Brae', 'OM', 'Ask Saul, then Kindor about SHRINE and answer yes.'],
+            ['shrine-humility', 'Humility', 'New Magincia', 'LUM', 'Ask Shirita, then answer Wartow: BRITISH, N, N, N, Y.']
+        ].map(([id, virtue, location, mantra, lead]) => ({
+            id,
+            title: `Restore the Shrine of ${virtue}`,
+            location,
+            summary: `${lead} The mantra is ${mantra}.`,
+            outcome: `${virtue} restored and its attribute lesson completed.`,
+            progress: [{ store: 'main', id }],
+            atlas: ultima5CampaignObjectives.find(objective => objective.id === id)?.atlas,
+            hints: ultima5ShrineFieldNotes[id] || [],
+            steps: [
+                `${lead} Record the mantra ${mantra}.`,
+                `Visit the Shrine of ${virtue}, speak the virtue name, and meditate with ${mantra} for three cycles.`,
+                'Travel to the Codex only after the shrine sends you there and receive its counsel.',
+                `Return to the Shrine of ${virtue} and meditate again to complete the quest and gain attributes.`
+            ]
+        }))
+    },
+    {
+        id: 'shadowlords',
+        number: '03',
+        eyebrow: 'Break the tyranny',
+        title: 'Shatter the Three Shadows',
+        summary: 'Recover each shard in the Underworld and destroy its Shadowlord at the opposing sacred flame.',
+        objectives: [
+            {
+                id: 'shadow-faulinei', title: 'Banish Faulinei, Shadowlord of Falsehood', location: 'Deceit to the Lycaeum',
+                summary: 'Use FALLAX at Deceit, recover the Shard of Falsehood, and carry it to the Flame of Truth.',
+                outcome: 'Falsehood is broken and Moonglow is freed.', progress: [{ store: 'main', id: 'shadow-faulinei' }],
+                atlas: { marker: 'Shard of Falsehood' },
+                steps: ['Learn FALLAX from Malifora after Malik points you to her.', 'Descend through Deceit and travel west through the Underworld to the Shard of Falsehood; bring the Carpet and Grapple.', 'At the Lycaeum, stand one tile south of the Flame of Truth and shout FAULINEI.', 'Wait one turn, then use the Shard of Falsehood when Faulinei stands on the flame.']
+            },
+            {
+                id: 'shadow-astaroth', title: 'Banish Astaroth, Shadowlord of Hatred', location: 'Wrong or Covetous to Empath Abbey',
+                summary: 'Reach the Shard of Hatred with MALUM or AVIDUS, then carry it to the Flame of Love.',
+                outcome: 'Hatred is broken and Yew is freed.', progress: [{ store: 'main', id: 'shadow-astaroth' }],
+                atlas: { marker: 'Shard of Hatred' },
+                steps: ['Learn MALUM from Felespar in Yew with DAWN, or AVIDUS from Fiona in Minoc.', 'Descend through Wrong or Covetous into the southwest Underworld labyrinth and recover the Shard of Hatred.', 'At Empath Abbey, stand one tile south of the Flame of Love and shout ASTAROTH.', 'Wait one turn, then use the Shard of Hatred when Astaroth stands on the flame.']
+            },
+            {
+                id: 'shadow-nosfentor', title: 'Banish Nosfentor, Shadowlord of Cowardice', location: 'Hythloth to Serpent’s Hold',
+                summary: 'Use IGNAVUS at Hythloth, take the Shard of Cowardice, and carry it to the Flame of Courage.',
+                outcome: 'Cowardice is broken and Jhelom is freed.', progress: [{ store: 'main', id: 'shadow-nosfentor' }],
+                atlas: { marker: 'Shard of Cowardice' },
+                steps: ['Ask Kaiko in New Magincia about Hassad, then use Kaiko as a reference with Hassad in Blackthorn’s dungeon to learn IGNAVUS.', 'Descend through Hythloth; use IN POR for mountain rooms and the Magic Carpet over swamp to reach the northeast clearing.', 'At Serpent’s Hold, stand one tile south of the Flame of Courage and shout NOSFENTOR.', 'Wait one turn, then use the Shard of Cowardice when Nosfentor stands on the flame.']
+            }
+        ]
+    },
+    {
+        id: 'regalia',
+        number: '04',
+        eyebrow: 'Arm for the abyss',
+        title: 'Recover the Royal Regalia',
+        summary: 'The Box is already safe; take the three artifacts that make Stonegate, Blackthorn’s fortress, and Doom survivable.',
+        objectives: [
+            {
+                id: 'regalia-sceptre', title: 'Recover the Sceptre', location: 'Stonegate', summary: 'Use the Grapple, Carpet, and Skull Keys to cross Stonegate’s lethal approach.', outcome: 'A reusable way to dispel every magical field.', progress: [{ store: 'main', id: 'regalia-sceptre' }], atlas: { interiorId: 'location-29', floor: '0' },
+                steps: ['Banish the Shadowlords first so they cannot reclaim the Sceptre later.', 'Reach Stonegate with the Grapple, unlock the center door with a Skull Key, and answer the demon’s riddle with WELL.', 'Ride the Magic Carpet over the fire pits and trapdoors, take the Sceptre, and leave before the tower becomes crowded.']
+            },
+            {
+                id: 'regalia-crown', title: 'Recover the Crown', location: 'Blackthorn’s Castle rooftop', summary: 'Infiltrate the upper fortress, unlock the center room, and escape over the roof.', outcome: 'Protection from enemy magic when the Crown is worn.', progress: [{ store: 'main', id: 'regalia-crown' }], atlas: { interiorId: 'location-18', floor: '3' },
+                steps: ['Make a permanent save; capture in Blackthorn’s Castle can permanently erase a companion.', 'Ride the Carpet from the entrance, outrun the guards, and climb through levels two and three to the rooftop.', 'Use a Skull Key on the center room, take the Crown, board the Carpet, and fly off the roof to escape.']
+            },
+            {
+                id: 'regalia-amulet', title: 'Recover the Amulet', location: 'Southeast Underworld burial ground', summary: 'Use the waterfall east of Skara Brae for the quickest approach.', outcome: 'The darkness hiding Dungeon Doom can be pierced.', progress: [{ store: 'main', id: 'regalia-amulet' }], atlas: { marker: "Lord British's Amulet" },
+                steps: ['Ride the Magic Carpet into the waterfall east of Skara Brae.', 'At the river junctions travel Down, Left, then Down; circle the lake and continue southeast through swamp and the mountain pass.', 'Take the Amulet from the burial ground of Lord British’s expedition.', 'Escape with VAS REL POR, or accept a controlled party death if no return spell remains.']
+            }
+        ]
+    },
+    {
+        id: 'doom',
+        number: '05',
+        eyebrow: 'The final descent',
+        title: 'Rescue Lord British from Doom',
+        summary: 'Carry every royal artifact into the central Underworld and survive the one-way descent.',
+        objectives: [
+            {
+                id: 'doom-rescue', title: 'Enter Doom and free the king', location: 'Dungeon Doom', summary: 'Commit only when every Shadowlord is gone and the full royal set is in the party.', outcome: 'Lord British returns and the tyranny collapses.', progress: [{ store: 'main', id: 'doom-rescue' }], atlas: { interiorId: 'location-40', floor: '7' },
+                steps: ['Reach Avatar level 8 if possible; stock healing, resurrection magic, food, reagents, gems, and a permanent save.', 'Carry the Sceptre, Crown, Amulet, and Sandalwood Box. Use the Amulet to reveal Doom in the central Underworld and speak VERAMOCOR.', 'Use the Sceptre to dispel ethereal walls and wear the Crown through magic-heavy rooms.', 'Find the hidden pit on the final level, step through Lord British’s mirror, and give him the Sandalwood Box.', 'Use the Orb of the Moons he releases to escape the collapsing dungeon.']
+            }
+        ]
+    }
+];
 
 const ULTIMA5_ATLAS_MARKER_STYLES = {
     city: { label: 'Cities & villages', color: '#fbbf24', symbol: 'T' },
@@ -457,6 +676,9 @@ function initializeUltima5FieldKit() {
             if (input.checked) current.add(input.dataset.u5Supply);
             else current.delete(input.dataset.u5Supply);
             writeUltima5StoredSet(ULTIMA5_SUPPLY_STORAGE_KEY, current);
+            inputs
+                .filter(candidate => candidate.dataset.u5Supply === input.dataset.u5Supply)
+                .forEach(candidate => { candidate.checked = input.checked; });
             updateUltima5FieldKit();
         });
     });
@@ -464,16 +686,168 @@ function initializeUltima5FieldKit() {
 }
 
 function updateUltima5FieldKit() {
-    const inputs = [...document.querySelectorAll('[data-u5-supply]')];
-    const complete = inputs.filter(input => input.checked).length;
-    const percent = inputs.length ? Math.round(complete / inputs.length * 100) : 0;
+    const loadouts = [...document.querySelectorAll('[data-u5-loadout]')];
+    let readyLoadouts = 0;
+    loadouts.forEach(loadout => {
+        const inputs = [...loadout.querySelectorAll('[data-u5-loadout-item]')];
+        const complete = inputs.filter(input => input.checked).length;
+        const ready = inputs.length > 0 && complete === inputs.length;
+        const status = loadout.querySelector('[data-u5-loadout-status]');
+        loadout.classList.toggle('is-ready', ready);
+        if (status) status.textContent = ready ? `Ready · ${complete}/${inputs.length}` : `${complete}/${inputs.length} secured`;
+        if (ready) readyLoadouts += 1;
+    });
+    const percent = loadouts.length ? Math.round(readyLoadouts / loadouts.length * 100) : 0;
     const value = document.getElementById('u5-readiness-value');
     const bar = document.getElementById('u5-readiness-bar');
-    if (value) value.textContent = `${percent}%`;
+    if (value) value.textContent = `${readyLoadouts} of ${loadouts.length}`;
     if (bar) bar.style.width = `${percent}%`;
 }
 
+function ultima5GrandObjectiveComplete(objective, progressByStore) {
+    return objective.progress.every(item => progressByStore[item.store].has(item.id));
+}
+
+function ultima5GrandProgressSets() {
+    return {
+        main: readUltima5StoredSet(ULTIMA5_PROGRESS_STORAGE_KEY),
+        side: readUltima5StoredSet(ULTIMA5_SIDEQUEST_STORAGE_KEY)
+    };
+}
+
+function setUltima5GrandObjectiveProgress(objective, complete) {
+    const progressByStore = ultima5GrandProgressSets();
+    objective.progress.forEach(item => {
+        if (complete) progressByStore[item.store].add(item.id);
+        else progressByStore[item.store].delete(item.id);
+    });
+    writeUltima5StoredSet(ULTIMA5_PROGRESS_STORAGE_KEY, progressByStore.main);
+    writeUltima5StoredSet(ULTIMA5_SIDEQUEST_STORAGE_KEY, progressByStore.side);
+}
+
+function ultima5GrandObjectiveMarkup(objective, chapterIndex, objectiveIndex) {
+    const detailsId = `u5-grand-details-${objective.id}`;
+    const hintsLabelId = `u5-grand-hints-${objective.id}`;
+    const objectiveNumber = `${String(chapterIndex + 1).padStart(2, '0')}.${objectiveIndex + 1}`;
+    const steps = objective.steps.map(step => `<li>${escapeUltima5AtlasHtml(step)}</li>`).join('');
+    const hints = objective.hints?.length ? `
+        <aside class="u5-grand-objective__hints" aria-labelledby="${hintsLabelId}">
+            <p id="${hintsLabelId}" class="u5-kicker"><i data-lucide="lightbulb" aria-hidden="true"></i> Field notes</p>
+            <ul>
+                ${objective.hints.map(hint => `<li><strong>${escapeUltima5AtlasHtml(hint.label)}:</strong> ${escapeUltima5AtlasHtml(hint.text)}</li>`).join('')}
+            </ul>
+        </aside>
+    ` : '';
+    return `
+        <article class="u5-grand-objective" data-u5-grand-objective="${objective.id}">
+            <div class="u5-grand-objective__number" aria-hidden="true">${objectiveNumber}</div>
+            <div class="u5-grand-objective__content">
+                <div class="u5-grand-objective__heading">
+                    <div>
+                        <p class="u5-grand-objective__location"><i data-lucide="map-pin" aria-hidden="true"></i> ${escapeUltima5AtlasHtml(objective.location)}</p>
+                        <h4>${escapeUltima5AtlasHtml(objective.title)}</h4>
+                    </div>
+                    <button type="button" class="u5-grand-objective__complete" data-u5-grand-complete="${objective.id}" aria-pressed="false">
+                        <i data-lucide="circle" aria-hidden="true"></i><span>Mark complete</span>
+                    </button>
+                </div>
+                <p class="u5-grand-objective__summary">${escapeUltima5AtlasHtml(objective.summary)}</p>
+                <div class="u5-grand-objective__actions">
+                    <button type="button" data-u5-grand-details-toggle="${objective.id}" aria-expanded="false" aria-controls="${detailsId}">
+                        Next steps <i data-lucide="chevron-down" aria-hidden="true"></i>
+                    </button>
+                    ${objective.atlas ? `<button type="button" data-u5-grand-map="${objective.id}"><i data-lucide="map-pinned" aria-hidden="true"></i> Atlas</button>` : ''}
+                </div>
+                <div id="${detailsId}" class="u5-grand-objective__details" hidden>
+                    <p class="u5-kicker">Exact route</p>
+                    <ol>${steps}</ol>
+                    ${hints}
+                    <p class="u5-grand-objective__outcome"><strong>When this is done:</strong> ${escapeUltima5AtlasHtml(objective.outcome)}</p>
+                </div>
+            </div>
+        </article>
+    `;
+}
+
 function initializeUltima5CampaignProgress() {
+    const journal = document.getElementById('u5-grand-quest-journal');
+    if (!journal) return;
+    journal.innerHTML = ultima5GrandQuestChapters.map((chapter, chapterIndex) => {
+        const bodyId = `u5-grand-chapter-${chapter.id}`;
+        const objectives = chapter.objectives.map((objective, objectiveIndex) => ultima5GrandObjectiveMarkup(objective, chapterIndex, objectiveIndex)).join('');
+        return `
+            <li class="u5-grand-chapter" data-u5-grand-chapter="${chapter.id}">
+                <button type="button" class="u5-grand-chapter__toggle" data-u5-grand-toggle="${chapter.id}" aria-expanded="${chapterIndex === 0 ? 'true' : 'false'}" aria-controls="${bodyId}">
+                    <span class="u5-grand-chapter__number">${chapter.number}</span>
+                    <span class="u5-grand-chapter__title">
+                        <small>${escapeUltima5AtlasHtml(chapter.eyebrow)}</small>
+                        <strong>${escapeUltima5AtlasHtml(chapter.title)}</strong>
+                        <span>${escapeUltima5AtlasHtml(chapter.summary)}</span>
+                    </span>
+                    <span class="u5-grand-chapter__progress"><strong data-u5-grand-count="${chapter.id}">0/${chapter.objectives.length}</strong><small>complete</small></span>
+                    <i data-lucide="chevron-down" class="u5-grand-chapter__chevron" aria-hidden="true"></i>
+                </button>
+                <div id="${bodyId}" class="u5-grand-chapter__body" ${chapterIndex === 0 ? '' : 'hidden'}>${objectives}</div>
+            </li>
+        `;
+    }).join('');
+
+    journal.addEventListener('click', event => {
+        const chapterToggle = event.target.closest('[data-u5-grand-toggle]');
+        if (chapterToggle) {
+            const body = document.getElementById(chapterToggle.getAttribute('aria-controls'));
+            const expanded = chapterToggle.getAttribute('aria-expanded') === 'true';
+            chapterToggle.setAttribute('aria-expanded', String(!expanded));
+            chapterToggle.closest('.u5-grand-chapter')?.classList.toggle('is-expanded', !expanded);
+            if (body) body.hidden = expanded;
+            return;
+        }
+
+        const detailsToggle = event.target.closest('[data-u5-grand-details-toggle]');
+        if (detailsToggle) {
+            const details = document.getElementById(detailsToggle.getAttribute('aria-controls'));
+            const expanded = detailsToggle.getAttribute('aria-expanded') === 'true';
+            detailsToggle.setAttribute('aria-expanded', String(!expanded));
+            detailsToggle.closest('.u5-grand-objective')?.classList.toggle('is-expanded', !expanded);
+            if (details) details.hidden = expanded;
+            detailsToggle.firstChild.textContent = expanded ? 'Next steps ' : 'Hide steps ';
+            return;
+        }
+
+        const completeButton = event.target.closest('[data-u5-grand-complete]');
+        if (completeButton) {
+            const objective = ultima5GrandQuestChapters.flatMap(chapter => chapter.objectives)
+                .find(item => item.id === completeButton.dataset.u5GrandComplete);
+            if (!objective) return;
+            const complete = ultima5GrandObjectiveComplete(objective, ultima5GrandProgressSets());
+            setUltima5GrandObjectiveProgress(objective, !complete);
+            updateUltima5CampaignProgress();
+            return;
+        }
+
+        const mapButton = event.target.closest('[data-u5-grand-map]');
+        if (mapButton) {
+            const objective = ultima5GrandQuestChapters.flatMap(chapter => chapter.objectives)
+                .find(item => item.id === mapButton.dataset.u5GrandMap);
+            if (objective) openUltima5ObjectiveOnAtlas(objective);
+        }
+    });
+
+    document.getElementById('u5-current-objective-action')?.addEventListener('click', event => {
+        openUltima5GrandObjective(event.currentTarget.dataset.objective);
+    });
+    document.getElementById('u5-current-objective-map')?.addEventListener('click', event => {
+        const objective = ultima5GrandQuestChapters.flatMap(chapter => chapter.objectives)
+            .find(item => item.id === event.currentTarget.dataset.objective);
+        if (objective) openUltima5ObjectiveOnAtlas(objective);
+    });
+
+    initializeUltima5SideQuests();
+    updateUltima5CampaignProgress();
+    if (window.lucide) lucide.createIcons();
+}
+
+function initializeUltima5LegacyCampaignProgress() {
     const container = document.getElementById('u5-main-quest-checkpoints');
     if (!container) return;
     const saved = normalizeUltima5MainQuestProgress(readUltima5StoredSet(ULTIMA5_PROGRESS_STORAGE_KEY));
@@ -516,7 +890,7 @@ function initializeUltima5CampaignProgress() {
             ultima5CampaignObjectives.slice(objectiveIndex).forEach(objective => current.delete(objective.id));
         }
         writeUltima5StoredSet(ULTIMA5_PROGRESS_STORAGE_KEY, current);
-        updateUltima5CampaignProgress();
+            updateUltima5LegacyCampaignProgress();
     });
     container.addEventListener('click', event => {
         const button = event.target.closest('[data-u5-objective-map]');
@@ -568,7 +942,7 @@ function initializeUltima5CampaignProgress() {
 
     initializeUltima5SideQuests();
     if (window.lucide) lucide.createIcons();
-    updateUltima5CampaignProgress();
+    updateUltima5LegacyCampaignProgress();
 }
 
 function normalizeUltima5MainQuestProgress(progress) {
@@ -583,43 +957,67 @@ function initializeUltima5SideQuests() {
     const container = document.getElementById('u5-side-quest-list');
     if (!container) return;
     const saved = readUltima5StoredSet(ULTIMA5_SIDEQUEST_STORAGE_KEY);
+    const strategicQuestIds = new Set(['side-magic-carpet', 'side-grapple', 'side-jaana', 'side-resistance-party', 'side-skull-keys', 'side-hms-cape']);
+    const optionalQuests = ultima5SideQuests.filter(quest => !strategicQuestIds.has(quest.id));
+    const groupedQuests = new Map();
     container.innerHTML = '';
 
-    ultima5SideQuests.forEach((quest, index) => {
-        const recommendedObjectiveIndex = ultima5CampaignObjectives.findIndex(objective => objective.id === quest.recommendedBefore);
-        const recommendedObjective = ultima5CampaignObjectives[recommendedObjectiveIndex];
-        const recommendation = recommendedObjective ? `
-            <p class="u5-side-quest-card__recommendation">
-                <i data-lucide="signpost" aria-hidden="true"></i>
-                <span>Recommended before <strong>Main Quest ${String(recommendedObjectiveIndex + 1).padStart(2, '0')}</strong> · ${escapeUltima5AtlasHtml(recommendedObjective.title)}</span>
-            </p>
-        ` : '';
-        const card = document.createElement('article');
-        card.className = 'u5-side-quest-card';
-        card.dataset.u5SideQuestCard = quest.id;
-        card.innerHTML = `
-            <div class="u5-side-quest-card__topline">
-                <span>${String(index + 1).padStart(2, '0')}</span>
-                <small>${escapeUltima5AtlasHtml(quest.category)}</small>
-            </div>
-            <div class="u5-side-quest-card__heading">
+    optionalQuests.forEach(quest => {
+        const recommendedChapter = ultima5GrandQuestChapters.find(chapter => chapter.objectives.some(objective => objective.progress.some(item => item.store === 'main' && item.id === quest.recommendedBefore)));
+        if (!groupedQuests.has(recommendedChapter.id)) groupedQuests.set(recommendedChapter.id, { chapter: recommendedChapter, quests: [] });
+        groupedQuests.get(recommendedChapter.id).quests.push(quest);
+    });
+
+    const orderedGroups = Array.from(groupedQuests.values()).sort((first, second) => first.chapter.number.localeCompare(second.chapter.number));
+    let sequence = 0;
+
+    orderedGroups.forEach(({ chapter, quests }) => {
+        const group = document.createElement('section');
+        const groupHeadingId = `u5-side-quest-group-${chapter.id}`;
+        group.className = 'u5-side-quest-group';
+        group.setAttribute('aria-labelledby', groupHeadingId);
+        group.innerHTML = `
+            <header class="u5-side-quest-group__header">
                 <div>
-                    <h4>${escapeUltima5AtlasHtml(quest.title)}</h4>
-                    <p><i data-lucide="map-pin" aria-hidden="true"></i> ${escapeUltima5AtlasHtml(quest.location)}</p>
+                    <p class="u5-kicker">Prepare before Grand Quest ${chapter.number}</p>
+                    <h4 id="${groupHeadingId}">${escapeUltima5AtlasHtml(chapter.title)}</h4>
                 </div>
-                <label class="u5-side-quest-check" title="Mark side quest complete">
-                    <input type="checkbox" data-u5-side-quest="${quest.id}" aria-label="Mark ${escapeUltima5AtlasHtml(quest.title)} complete" ${saved.has(quest.id) ? 'checked' : ''}>
-                    <span><i data-lucide="check" aria-hidden="true"></i></span>
-                </label>
-            </div>
-            ${recommendation}
-            <p class="u5-side-quest-card__copy">${escapeUltima5AtlasHtml(quest.detail)}</p>
-            <footer>
-                <span><strong>Reward:</strong> ${escapeUltima5AtlasHtml(quest.reward)}</span>
-                <button type="button" data-u5-side-quest-map="${quest.id}"><i data-lucide="map-pinned" aria-hidden="true"></i> Atlas</button>
-            </footer>
+                <p>${escapeUltima5AtlasHtml(ultima5SideQuestGroupRationales[chapter.id])}</p>
+            </header>
+            <div class="u5-side-quest-list"></div>
         `;
-        container.appendChild(card);
+        const questList = group.querySelector('.u5-side-quest-list');
+
+        quests.sort((first, second) => first.usefulnessRank - second.usefulnessRank).forEach(quest => {
+            sequence += 1;
+            const card = document.createElement('article');
+            card.className = 'u5-side-quest-card';
+            card.dataset.u5SideQuestCard = quest.id;
+            card.innerHTML = `
+                <div class="u5-side-quest-card__topline">
+                    <span>${String(sequence).padStart(2, '0')}</span>
+                    <small>${escapeUltima5AtlasHtml(quest.category)}</small>
+                </div>
+                <div class="u5-side-quest-card__heading">
+                    <div>
+                        <h5>${escapeUltima5AtlasHtml(quest.title)}</h5>
+                        <p><i data-lucide="map-pin" aria-hidden="true"></i> ${escapeUltima5AtlasHtml(quest.location)}</p>
+                    </div>
+                    <label class="u5-side-quest-check" title="Mark side quest complete">
+                        <input type="checkbox" data-u5-side-quest="${quest.id}" aria-label="Mark ${escapeUltima5AtlasHtml(quest.title)} complete" ${saved.has(quest.id) ? 'checked' : ''}>
+                        <span><i data-lucide="check" aria-hidden="true"></i></span>
+                    </label>
+                </div>
+                <p class="u5-side-quest-card__copy">${escapeUltima5AtlasHtml(quest.detail)}</p>
+                <footer>
+                    <span><strong>Reward:</strong> ${escapeUltima5AtlasHtml(quest.reward)}</span>
+                    <button type="button" data-u5-side-quest-map="${quest.id}"><i data-lucide="map-pinned" aria-hidden="true"></i> Atlas</button>
+                </footer>
+            `;
+            questList.appendChild(card);
+        });
+
+        container.appendChild(group);
     });
 
     container.addEventListener('change', event => {
@@ -642,12 +1040,14 @@ function initializeUltima5SideQuests() {
 
 function updateUltima5SideQuestProgress() {
     const completed = readUltima5StoredSet(ULTIMA5_SIDEQUEST_STORAGE_KEY);
-    const completeCount = ultima5SideQuests.filter(quest => completed.has(quest.id)).length;
-    const percent = Math.round(completeCount / ultima5SideQuests.length * 100);
+    const strategicQuestIds = new Set(['side-magic-carpet', 'side-grapple', 'side-jaana', 'side-resistance-party', 'side-skull-keys', 'side-hms-cape']);
+    const optionalQuests = ultima5SideQuests.filter(quest => !strategicQuestIds.has(quest.id));
+    const completeCount = optionalQuests.filter(quest => completed.has(quest.id)).length;
+    const percent = optionalQuests.length ? Math.round(completeCount / optionalQuests.length * 100) : 0;
     const percentOutput = document.getElementById('u5-side-quest-percent');
     const totalOutput = document.getElementById('u5-side-quest-total-label');
     if (percentOutput) percentOutput.textContent = `${percent}%`;
-    if (totalOutput) totalOutput.textContent = `${completeCount} of ${ultima5SideQuests.length} complete`;
+    if (totalOutput) totalOutput.textContent = `${completeCount} of ${optionalQuests.length} optional jobs complete`;
     document.querySelectorAll('[data-u5-side-quest-card]').forEach(card => {
         card.classList.toggle('is-complete', completed.has(card.dataset.u5SideQuestCard));
     });
@@ -669,6 +1069,108 @@ function setUltima5CampaignView(view) {
 }
 
 function updateUltima5CampaignProgress() {
+    const progressByStore = ultima5GrandProgressSets();
+    const objectives = ultima5GrandQuestChapters.flatMap((chapter, chapterIndex) => chapter.objectives.map(objective => ({ objective, chapter, chapterIndex })));
+    const completedObjectives = objectives.filter(({ objective }) => ultima5GrandObjectiveComplete(objective, progressByStore));
+    const total = objectives.length;
+    const percent = total ? Math.round(completedObjectives.length / total * 100) : 0;
+    const next = objectives.find(({ objective }) => !ultima5GrandObjectiveComplete(objective, progressByStore));
+
+    const percentOutput = document.getElementById('u5-campaign-percent');
+    const totalLabel = document.getElementById('u5-campaign-total-label');
+    const overviewLabel = document.getElementById('u5-overview-progress-label');
+    if (percentOutput) percentOutput.textContent = `${percent}%`;
+    if (totalLabel) totalLabel.textContent = `${completedObjectives.length} of ${total} route objectives`;
+    if (overviewLabel) overviewLabel.textContent = `${completedObjectives.length} of ${total} Grand Quest objectives complete`;
+
+    ultima5GrandQuestChapters.forEach((chapter, chapterIndex) => {
+        const chapterComplete = chapter.objectives.filter(objective => ultima5GrandObjectiveComplete(objective, progressByStore)).length;
+        const panel = document.querySelector(`[data-u5-grand-chapter="${chapter.id}"]`);
+        const current = next?.chapter.id === chapter.id;
+        panel?.classList.toggle('is-current', current);
+        panel?.classList.toggle('is-complete', chapterComplete === chapter.objectives.length);
+        const count = panel?.querySelector(`[data-u5-grand-count="${chapter.id}"]`);
+        if (count) count.textContent = `${chapterComplete}/${chapter.objectives.length}`;
+        document.querySelectorAll(`[data-u5-chapter-count="${chapter.id}"]`).forEach(output => {
+            output.textContent = `${chapterComplete}/${chapter.objectives.length}`;
+            output.closest('.u5-campaign-card')?.classList.toggle('is-complete', chapterComplete === chapter.objectives.length);
+        });
+        if (current && chapterIndex === 0) panel?.classList.add('is-expanded');
+    });
+
+    objectives.forEach(({ objective }) => {
+        const complete = ultima5GrandObjectiveComplete(objective, progressByStore);
+        const card = document.querySelector(`[data-u5-grand-objective="${objective.id}"]`);
+        const button = card?.querySelector('[data-u5-grand-complete]');
+        card?.classList.toggle('is-complete', complete);
+        card?.classList.toggle('is-current', next?.objective.id === objective.id);
+        if (button) {
+            button.setAttribute('aria-pressed', String(complete));
+            button.innerHTML = complete
+                ? '<i data-lucide="check-circle-2" aria-hidden="true"></i><span>Completed</span>'
+                : '<i data-lucide="circle" aria-hidden="true"></i><span>Mark complete</span>';
+        }
+    });
+
+    const chapterOutput = document.getElementById('u5-current-objective-chapter');
+    const title = document.getElementById('u5-current-objective-title');
+    const copy = document.getElementById('u5-current-objective-copy');
+    const action = document.getElementById('u5-current-objective-action');
+    const mapAction = document.getElementById('u5-current-objective-map');
+    if (next) {
+        if (chapterOutput) chapterOutput.textContent = `Grand Quest ${next.chapter.number} · ${next.chapter.title}`;
+        if (title) title.textContent = next.objective.title;
+        if (copy) copy.textContent = next.objective.summary;
+        if (action) {
+            action.dataset.objective = next.objective.id;
+            action.innerHTML = 'Open next steps <i data-lucide="arrow-right" aria-hidden="true"></i>';
+        }
+        if (mapAction) {
+            mapAction.dataset.objective = next.objective.id;
+            mapAction.hidden = !next.objective.atlas;
+        }
+    } else {
+        if (chapterOutput) chapterOutput.textContent = 'Grand Quest complete';
+        if (title) title.textContent = 'Britannia is free';
+        if (copy) copy.textContent = 'Every strategic and decisive objective is complete.';
+        if (action) {
+            action.dataset.objective = 'doom-rescue';
+            action.innerHTML = 'Revisit the finale <i data-lucide="rotate-ccw" aria-hidden="true"></i>';
+        }
+        if (mapAction) {
+            mapAction.dataset.objective = 'doom-rescue';
+            mapAction.hidden = false;
+        }
+    }
+    updateUltima5SideQuestProgress();
+    if (window.lucide) lucide.createIcons();
+}
+
+function openUltima5GrandObjective(objectiveId) {
+    const chapter = ultima5GrandQuestChapters.find(entry => entry.objectives.some(objective => objective.id === objectiveId));
+    if (!chapter) return;
+    showUltima5Section('quests');
+    const chapterPanel = document.querySelector(`[data-u5-grand-chapter="${chapter.id}"]`);
+    const chapterToggle = chapterPanel?.querySelector('[data-u5-grand-toggle]');
+    const chapterBody = chapterToggle ? document.getElementById(chapterToggle.getAttribute('aria-controls')) : null;
+    if (chapterToggle) chapterToggle.setAttribute('aria-expanded', 'true');
+    if (chapterBody) chapterBody.hidden = false;
+    chapterPanel?.classList.add('is-expanded');
+
+    const objectiveCard = document.querySelector(`[data-u5-grand-objective="${objectiveId}"]`);
+    const detailsToggle = objectiveCard?.querySelector('[data-u5-grand-details-toggle]');
+    const details = detailsToggle ? document.getElementById(detailsToggle.getAttribute('aria-controls')) : null;
+    if (detailsToggle) {
+        detailsToggle.setAttribute('aria-expanded', 'true');
+        detailsToggle.firstChild.textContent = 'Hide steps ';
+    }
+    if (details) details.hidden = false;
+    objectiveCard?.classList.add('is-expanded');
+    objectiveCard?.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'center' });
+    detailsToggle?.focus({ preventScroll: true });
+}
+
+function updateUltima5LegacyCampaignProgress() {
     const completed = readUltima5StoredSet(ULTIMA5_PROGRESS_STORAGE_KEY);
     const completeCount = ultima5CampaignObjectives.filter(objective => completed.has(objective.id)).length;
     const total = ultima5CampaignObjectives.length;
@@ -739,17 +1241,11 @@ function updateUltima5CampaignProgress() {
 
 function openUltima5QuestTab(tabId, { activateSection = true } = {}) {
     if (activateSection) showUltima5Section('quests');
-    setUltima5CampaignView('main');
-    document.querySelectorAll('.quest-tab-button').forEach(button => {
-        const active = button.dataset.tab === tabId;
-        button.classList.toggle('active', active);
-        button.setAttribute('aria-selected', active ? 'true' : 'false');
-    });
-    document.querySelectorAll('.quest-tab-content').forEach(content => {
-        const active = content.id === tabId;
-        content.classList.toggle('active', active);
-        content.hidden = !active;
-    });
+    const chapter = ultima5GrandQuestChapters.find(entry => entry.id === tabId) || ultima5GrandQuestChapters[0];
+    const progressByStore = ultima5GrandProgressSets();
+    const firstIncomplete = chapter.objectives.find(objective => !ultima5GrandObjectiveComplete(objective, progressByStore))
+        || chapter.objectives[0];
+    openUltima5GrandObjective(firstIncomplete.id);
 }
 
 // Set up event listeners
@@ -770,6 +1266,10 @@ function setupEventListeners() {
 
     document.querySelectorAll('[data-u5-section]').forEach(control => {
         control.addEventListener('click', () => showUltima5Section(control.dataset.u5Section));
+    });
+
+    document.querySelectorAll('[data-u5-grand-target]').forEach(control => {
+        control.addEventListener('click', () => openUltima5GrandObjective(control.dataset.u5GrandTarget));
     });
 
     document.querySelectorAll('[data-u5-quest-tab]').forEach(control => {
@@ -966,7 +1466,14 @@ function initializeUltima5AtlasShell() {
 
     const initialSection = window.location.hash.slice(1);
     if (initialSection && document.getElementById(initialSection)?.classList.contains('content-section')) {
-        showUltima5Section(initialSection);
+        const activateInitialSection = () => {
+            showUltima5Section(initialSection);
+            const navigationTop = (document.querySelector('.u5-backbar')?.offsetHeight || 0)
+                + (document.querySelector('.u5-masthead')?.offsetHeight || 0);
+            window.scrollTo({ top: navigationTop, behavior: 'auto' });
+        };
+        if (document.readyState === 'complete') activateInitialSection();
+        else window.addEventListener('load', activateInitialSection, { once: true });
     }
 }
 
