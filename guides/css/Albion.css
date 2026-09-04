@@ -614,6 +614,47 @@ a:hover {
     background: rgba(56, 189, 248, 0.18);
 }
 
+.walkthrough-atlas-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.2rem;
+    border: 0;
+    border-bottom: 1px dotted color-mix(in srgb, var(--albion-accent-blue) 70%, transparent);
+    background: transparent;
+    color: var(--albion-accent-blue);
+    cursor: pointer;
+    padding: 0 0.08rem;
+    font: inherit;
+    font-weight: 700;
+    line-height: inherit;
+    vertical-align: baseline;
+    transition: color 150ms ease-out, border-color 150ms ease-out;
+}
+
+.walkthrough-atlas-link svg {
+    width: 0.8em;
+    height: 0.8em;
+    flex: 0 0 auto;
+    fill: none;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 2;
+}
+
+.walkthrough-atlas-link:hover {
+    border-color: var(--albion-accent-purple);
+    color: var(--albion-accent-purple);
+}
+
+.walkthrough-atlas-link:focus-visible {
+    border-color: var(--albion-accent-gold);
+    border-radius: 0.2rem;
+    color: var(--albion-accent-gold);
+    outline: 2px solid color-mix(in srgb, var(--albion-accent-gold) 70%, transparent);
+    outline-offset: 2px;
+}
+
 @media (max-width: 520px) {
     .walkthrough-atlas-route__header {
         align-items: flex-start;
@@ -2149,6 +2190,39 @@ a:hover {
     background: rgba(30, 41, 59, 0.95);
     color: var(--albion-text);
     border: 1px solid rgba(148, 163, 184, 0.25);
+}
+
+.leaflet-tooltip.albion-atlas-walkthrough-label {
+    display: grid;
+    gap: 0.2rem;
+    width: min(18rem, calc(100vw - 5rem));
+    border-color: var(--albion-accent-purple);
+    border-radius: 0.65rem;
+    background: var(--albion-bg-card);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.42);
+    color: var(--albion-text);
+    padding: 0.6rem 0.7rem;
+    white-space: normal;
+}
+
+.leaflet-tooltip.albion-atlas-walkthrough-label strong,
+.leaflet-tooltip.albion-atlas-walkthrough-label span {
+    display: block;
+}
+
+.leaflet-tooltip.albion-atlas-walkthrough-label strong {
+    color: var(--albion-accent-purple);
+    font-size: 0.78rem;
+}
+
+.leaflet-tooltip.albion-atlas-walkthrough-label span {
+    color: var(--albion-text-muted);
+    font-size: 0.68rem;
+    line-height: 1.4;
+}
+
+.leaflet-tooltip-bottom.albion-atlas-walkthrough-label::before {
+    border-bottom-color: var(--albion-accent-purple);
 }
 
 .leaflet-control-zoom a {

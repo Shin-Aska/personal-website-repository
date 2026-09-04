@@ -397,6 +397,73 @@ const CHAPTER_ATLAS_ROUTES = Object.freeze({
     "19": ["finalb"]
 });
 
+const WALKTHROUGH_ATLAS_TARGETS = Object.freeze({
+    "sinbar": { "label": "Master Sinbar", "terms": ["Master Sinbar", "Sinbar"], "chapters": [1], "worldId": "opener", "locationNumber": 3 },
+    "zaratan": { "label": "Zaratan", "terms": ["Zaratan"], "chapters": [1, 2], "worldId": "town" },
+    "aliya": { "label": "Aliya", "terms": ["Aliya"], "chapters": [2], "worldId": "town", "actorId": 496 },
+    "zubin-zaratan": { "label": "Zubin", "terms": ["Zubin"], "chapters": [2], "worldId": "town", "actorId": 165 },
+    "jessamin": { "label": "Jessamin", "terms": ["Jessamin"], "chapters": [2], "worldId": "town", "actorId": 125 },
+    "babazar": { "label": "Babazar", "terms": ["Babazar"], "chapters": [2], "worldId": "town", "locationNumber": 6 },
+    "purple-berries": { "label": "Purple Berries", "terms": ["Purple Berries", "purple desert berries"], "chapters": [2, 3], "worldId": "oasis", "locationNumber": 2 },
+    "haroon": { "label": "Haroon abi Wassab", "terms": ["Haroon abi Wassab", "Haroon"], "chapters": [2], "worldId": "town", "actorId": 423 },
+    "qadi": { "label": "the Qadi", "terms": ["Qadi"], "chapters": [2], "worldId": "town", "locationNumber": 18 },
+    "muliban": { "label": "Muliban", "terms": ["Muliban"], "chapters": [2], "worldId": "town", "actorId": 97 },
+    "western-desert-oasis": { "label": "Western Desert Oasis", "terms": ["Western Desert Oasis"], "chapters": [3], "worldId": "oasis", "locationNumber": 1 },
+    "oasis-mermaid": { "label": "the Pahari at the oasis", "terms": ["mermaid"], "chapters": [3], "worldId": "oasis", "locationNumber": 1 },
+    "deadmans-reef": { "label": "Deadman's Reef", "terms": ["Deadman's Reef", "Reef of the Dead"], "chapters": [4], "worldId": "reef" },
+    "rotting-ships-hold": { "label": "Rotting Ship's Hold", "terms": ["Rotting Ship's Hold", "ship's hold"], "chapters": [4], "worldId": "dedhold" },
+    "ship-orb": { "label": "the Ship Orb", "terms": ["Ship Orb"], "chapters": [4], "worldId": "shipa" },
+    "sorcerers-tower": { "label": "Sorcerer's Tower", "terms": ["Sorcerer's Tower"], "chapters": [5], "worldId": "acida" },
+    "acid-dungeon": { "label": "Acid Dungeon", "terms": ["Acid Dungeon"], "chapters": [5], "worldId": "acid" },
+    "bandar-al-saadat": { "label": "Bandar al-Sa'adat", "terms": ["Bandar al Sa'adat"], "chapters": [6], "worldId": "road" },
+    "supernatural-emporium": { "label": "Supernatural Emporium", "terms": ["Supernatural Emporium"], "chapters": [6], "worldId": "road", "locationNumber": 7 },
+    "ingrids-shop": { "label": "Ingrid's Shop of Wonders", "terms": ["Ingrid's Veil", "Shop of Wonders"], "chapters": [6], "worldId": "road", "locationNumber": 17 },
+    "travelers-rest": { "label": "Traveler's Rest", "terms": ["Traveler's Rest", "Closed Inn"], "chapters": [6], "worldId": "road", "locationNumber": 9 },
+    "zubakon": { "label": "Zubakon", "terms": ["Zubakon"], "chapters": [6], "worldId": "road", "actorId": 98 },
+    "sand-point": { "label": "Sand's Point Gambling Club", "terms": ["Sand Point"], "chapters": [6], "worldId": "road", "locationNumber": 14 },
+    "caliph": { "label": "the Caliph", "terms": ["Caliph"], "chapters": [7], "worldId": "pal0", "actorId": 263 },
+    "vizier-palace": { "label": "the Vizier", "terms": ["Vizier"], "chapters": [7, 14], "worldId": "pal0", "actorId": 232 },
+    "island-of-shibaz": { "label": "Island of Shibaz", "terms": ["Island of Shibaz"], "chapters": [8], "worldId": "hermita" },
+    "shibaz-hermit": { "label": "Rashidin the Hermit", "terms": ["Hermit's hut", "Hermit"], "chapters": [8], "worldId": "hermita", "locationNumber": 16 },
+    "flying-carpet": { "label": "the Flying Carpet", "terms": ["Flying Carpet"], "chapters": [8], "worldId": "hermita", "locationNumber": 16 },
+    "shibaz-library": { "label": "the Library of Shibaz", "terms": ["Library"], "chapters": [8, 9], "worldId": "hermitb" },
+    "isle-of-senat": { "label": "Isle of Senat", "terms": ["Isle of Senat"], "chapters": [9, 10], "worldId": "senat" },
+    "genie-lords": { "label": "the Genie Lords' Isle", "terms": ["Genie Lords"], "chapters": [9, 10], "worldId": "lordsa" },
+    "bottle-of-emptiness": { "label": "Bottle of Eternal Emptiness", "terms": ["Bottle of Eternal Emptiness"], "chapters": [10], "worldId": "senat", "locationNumber": 4 },
+    "efreet-agent": { "label": "the Efreet agent", "terms": ["Efreet agent"], "chapters": [10], "worldId": "lordsa", "locationNumber": 3 },
+    "genie-chessboard": { "label": "the giant chessboard", "terms": ["Chessboard"], "chapters": [10], "worldId": "lordsa", "locationNumber": 6 },
+    "marid-lord": { "label": "the Marid Lord", "terms": ["Marid Lord", "Marid"], "chapters": [10], "worldId": "lordsd" },
+    "djinn-lords": { "label": "the Djinn Lords", "terms": ["Djinn Lords", "Djinns"], "chapters": [10], "worldId": "lordse" },
+    "dao-lord": { "label": "the Dao Lord", "terms": ["Dao Lord", "Daos"], "chapters": [10], "worldId": "lordsb" },
+    "storyteller": { "label": "Shahar Izad the Storyteller", "terms": ["Storyteller"], "chapters": [10], "worldId": "lordsa", "actorId": 475 },
+    "efreet-lord": { "label": "the Efreet Lord", "terms": ["Efreet Lord"], "chapters": [10], "worldId": "lordsc" },
+    "bandar-palace": { "label": "Bandar al-Sa'adat palace", "terms": ["Bandar al Sa'adat palace"], "chapters": [11], "worldId": "pal0" },
+    "sumie": { "label": "Sumia the head chef", "terms": ["Sumie"], "chapters": [11], "worldId": "pal0", "locationNumber": 8 },
+    "office-of-trade": { "label": "Office of Trade", "terms": ["Office of Trade"], "chapters": [11], "worldId": "road", "locationNumber": 3 },
+    "omar-baker": { "label": "Omar the Baker", "terms": ["Baker"], "chapters": [11], "worldId": "road", "locationNumber": 19 },
+    "key-of-bone": { "label": "Key of Bone", "terms": ["Key of Bone"], "chapters": [11], "worldId": "road", "locationNumber": 19 },
+    "old-dungeon": { "label": "the Old Dungeon", "terms": ["Old Dungeon"], "chapters": [12], "worldId": "olddung" },
+    "pangar-bek": { "label": "Pangar-Bek", "terms": ["Pangar-Bek"], "chapters": [12], "worldId": "olddung", "locationNumber": 9 },
+    "new-dungeon": { "label": "the Caliph's New Dungeon", "terms": ["New Dungeon"], "chapters": [13], "worldId": "newdung" },
+    "zubin-dungeon": { "label": "Zubin's cell", "terms": ["Zubin"], "chapters": [13], "worldId": "newdung", "actorId": 70 },
+    "nameless-masters": { "label": "Al-Naqqil, home of the Nameless Masters", "terms": ["Nameless Ones", "Nameless Masters", "Nameless mages"], "chapters": [13, 18], "worldId": "finala" },
+    "vizier-quarters": { "label": "the Vizier's private quarters", "terms": ["Vizier's private quarters", "Vizier's private apartments"], "chapters": [14], "worldId": "pal0", "locationNumber": 14 },
+    "vizier-desk": { "label": "the Vizier's work room", "terms": ["Vizier's desk"], "chapters": [14], "worldId": "pal0", "locationNumber": 13 },
+    "alkatraz-island": { "label": "the Island of Al'Katraz", "terms": ["Island of Al'Katraz", "Al'Katraz surface", "Al'Katraz island"], "chapters": [15], "worldId": "feud" },
+    "elemental-shrines": { "label": "the Al'Katraz shrines", "terms": ["elemental shrines"], "chapters": [15], "worldId": "feud", "locationNumber": 14 },
+    "alkatraz-prison": { "label": "the Dungeon of Al'Katraz", "terms": ["Al'Katraz Prison Dungeon", "prison dungeons"], "chapters": [16], "worldId": "alkatrz" },
+    "ettin-guard": { "label": "the Albino Ettin", "terms": ["Ettin guards"], "chapters": [16], "worldId": "alkatrz", "locationNumber": 26 },
+    "mercenary-captain": { "label": "Iskar, the mercenary captain", "terms": ["Mercenary Captain"], "chapters": [16], "worldId": "alkatrz", "actorId": 265 },
+    "tarik-prison": { "label": "Tarik's cell", "terms": ["Tarik"], "chapters": [16], "worldId": "alkatrz", "actorId": 383 },
+    "aballat-isle": { "label": "Aballat Isle", "terms": ["Aballat Isle"], "chapters": [17], "worldId": "voice" },
+    "voice-bottles": { "label": "the voice-trapping bottles", "terms": ["voice-trapping bottles"], "chapters": [17], "worldId": "voice" },
+    "tarik-voice": { "label": "Tarik's trapped voice", "terms": ["Tarik's voice"], "chapters": [17], "worldId": "voice", "locationNumber": 10 },
+    "al-naqqil": { "label": "Al-Naqqil", "terms": ["Al-Naqqil"], "chapters": [18], "worldId": "finala" },
+    "outer-planes": { "label": "the Outer Planes", "terms": ["Outer Planes"], "chapters": [18, 19], "worldId": "finalb" },
+    "princess-kara": { "label": "Princess Kara", "terms": ["Kara"], "chapters": [19], "worldId": "finalb", "locationNumber": 12 },
+    "final-vizier": { "label": "the final confrontation", "terms": ["Vizier"], "chapters": [19], "worldId": "finalb", "locationNumber": 14 }
+});
+
 // Raw engine labels are sometimes role names or abbreviated script labels.
 // These aliases are limited to identities corroborated by the cluebook text.
 const ATLAS_ACTOR_CLUEBOOK_ALIASES = Object.freeze({
@@ -442,6 +509,8 @@ let atlasLoadToken = 0;
 let atlasControlsBound = false;
 let atlasHashRead = false;
 let atlasHoverCardPinned = false;
+let atlasRenderPromise = Promise.resolve();
+let pendingWalkthroughAtlasTarget = null;
 let aiHistory = [];
 let questPrompts = {};
 
@@ -547,7 +616,7 @@ function initTabs() {
         sections.forEach(section => section.classList.toggle('active', section === activeSection));
 
         if (targetId === 'atlas') {
-            renderAtlas();
+            atlasRenderPromise = Promise.resolve(renderAtlas());
         } else if (window.location.hash.startsWith('#atlas=')) {
             history.replaceState(null, '', `${window.location.pathname}${window.location.search}`);
         }
@@ -608,6 +677,54 @@ function renderCharacter() {
     }
 }
 
+function renderWalkthroughAtlasText(value, chapterId) {
+    const source = String(value ?? '');
+    const candidates = Object.entries(WALKTHROUGH_ATLAS_TARGETS)
+        .filter(([, target]) => target.chapters.includes(Number(chapterId)))
+        .flatMap(([targetId, target]) => target.terms.map(term => ({ targetId, target, term })))
+        .filter(candidate => source.toLowerCase().includes(candidate.term.toLowerCase()))
+        .sort((first, second) => second.term.length - first.term.length);
+    if (!candidates.length) return escapeAtlasText(source);
+
+    const targetByTerm = new Map(candidates.map(candidate => [candidate.term.toLowerCase(), candidate]));
+    const pattern = new RegExp(
+        candidates.map(candidate => candidate.term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|'),
+        'gi'
+    );
+    let cursor = 0;
+    let markup = '';
+    source.replace(pattern, (term, offset) => {
+        const candidate = targetByTerm.get(term.toLowerCase());
+        markup += escapeAtlasText(source.slice(cursor, offset));
+        if (!candidate) {
+            markup += escapeAtlasText(term);
+            cursor = offset + term.length;
+            return term;
+        }
+        const safeTargetId = escapeAtlasText(candidate.targetId);
+        const safeTerm = escapeAtlasText(term);
+        const accessibleLabel = escapeAtlasText(candidate.target.label);
+        markup += `<button type="button" class="walkthrough-inline-atlas-link" data-walkthrough-atlas-target="${safeTargetId}" onclick="openWalkthroughAtlasTarget('${safeTargetId}')" aria-label="Show ${accessibleLabel} in the Atlas" title="Show ${accessibleLabel} in the Atlas">${safeTerm}<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg></button>`;
+        cursor = offset + term.length;
+        return term;
+    });
+    return markup + escapeAtlasText(source.slice(cursor));
+}
+
+function renderWalkthroughObjective(objective, chapterId) {
+    const objectiveId = `walkthrough-objective-${escapeAtlasText(objective.id)}`;
+    const objectiveLabelId = `${objectiveId}-label`;
+    return `
+        <div class="walkthrough-objective">
+            <label class="walkthrough-objective__check" for="${objectiveId}">
+                <input id="${objectiveId}" type="checkbox" class="walkthrough-objective__input" aria-labelledby="${objectiveLabelId}" ${questState[objective.id] ? 'checked' : ''} onchange="handleCheck('${escapeAtlasText(objective.id)}')">
+                <span class="checkbox-custom" aria-hidden="true"></span>
+            </label>
+            <span id="${objectiveLabelId}" class="walkthrough-objective__text text-sm text-[var(--aq-text)]">${renderWalkthroughAtlasText(objective.text, chapterId)}</span>
+        </div>
+    `;
+}
+
 function renderWalkthrough() {
     const list = document.getElementById('chapter-list');
     if (!list) return;
@@ -624,7 +741,7 @@ function renderWalkthrough() {
                     <span class="chevron text-gray-500 transform transition-transform duration-200">&#9662;</span>
                 </button>
                 <div id="chapter-content-${ch.id}" class="chapter-content hidden px-5 py-4 border-t border-gray-800/50 bg-[#0f1224]/50">
-                    <p class="text-sm text-[var(--aq-text-muted)] mb-4 italic">${ch.summary}</p>
+                    <p class="text-sm text-[var(--aq-text-muted)] mb-4 italic">${renderWalkthroughAtlasText(ch.summary, ch.id)}</p>
 
                     ${renderChapterAtlasRoute(ch)}
                     
@@ -640,23 +757,17 @@ function renderWalkthrough() {
                     ${ch.id === 10 ? `
                         <div class="gold-box text-xs space-y-1">
                             <h4 class="font-bold text-[var(--aq-accent-gold)] mb-1">♟️ Chessboard Navigator Coordinates:</h4>
-                            <div>- <strong>North path (Marid Lord)</strong>: Go down 5, east 3, up 1.</div>
-                            <div>- <strong>East path (Djinn Lords)</strong>: Go west 5, up 3, east 1.</div>
-                            <div>- <strong>West path (Dao Lord)</strong>: Go east 5, down 3, west 1.</div>
-                            <div>- <strong>South path (Efreet Lord)</strong>: Go north 5, east 3, south 1. <em>(Needs Efreet Potion)</em></div>
+                            <div>- <strong>${renderWalkthroughAtlasText('North path (Marid Lord)', ch.id)}</strong>: Go down 5, east 3, up 1.</div>
+                            <div>- <strong>${renderWalkthroughAtlasText('East path (Djinn Lords)', ch.id)}</strong>: Go west 5, up 3, east 1.</div>
+                            <div>- <strong>${renderWalkthroughAtlasText('West path (Dao Lord)', ch.id)}</strong>: Go east 5, down 3, west 1.</div>
+                            <div>- <strong>${renderWalkthroughAtlasText('South path (Efreet Lord)', ch.id)}</strong>: Go north 5, east 3, south 1. <em>(Needs Efreet Potion)</em></div>
                         </div>
                     ` : ''}
 
                     <div class="space-y-3">
                         <h4 class="text-xs uppercase font-bold text-gray-400 tracking-wider">Required Objectives</h4>
                         <div class="space-y-2">
-                            ${ch.required.map(r => `
-                                <label class="flex items-start gap-3 cursor-pointer select-none">
-                                    <input type="checkbox" class="hidden" ${questState[r.id] ? 'checked' : ''} onchange="handleCheck('${r.id}')">
-                                    <span class="checkbox-custom mt-0.5"></span>
-                                    <span class="text-sm text-[var(--aq-text)]">${r.text}</span>
-                                </label>
-                            `).join('')}
+                            ${ch.required.map(objective => renderWalkthroughObjective(objective, ch.id)).join('')}
                         </div>
                     </div>
 
@@ -666,11 +777,7 @@ function renderWalkthrough() {
                             <div class="space-y-2">
                                 ${ch.optional.map(o => `
                                     <div class="flex flex-col gap-1">
-                                        <label class="flex items-start gap-3 cursor-pointer select-none">
-                                            <input type="checkbox" class="hidden" ${questState[o.id] ? 'checked' : ''} onchange="handleCheck('${o.id}')">
-                                            <span class="checkbox-custom mt-0.5"></span>
-                                            <span class="text-sm text-[var(--aq-text)]">${o.text}</span>
-                                        </label>
+                                        ${renderWalkthroughObjective(o, ch.id)}
                                         ${o.hint ? `
                                             <button class="text-[10px] text-left text-[var(--aq-accent-teal)] hover:underline ml-8" onclick="alert('${o.hint}')">
                                                 💡 Reveal Strategy Hint
@@ -708,19 +815,26 @@ function renderChapterAtlasRoute(chapter) {
     `;
 }
 
-function openWalkthroughAtlas(worldId) {
+async function openWalkthroughAtlas(worldId, targetId = null) {
     const world = atlasData().worlds.find(item => item.id === worldId);
     const atlasButton = document.querySelector('.nav-button[data-target="atlas"]');
     if (!world || !atlasButton) return;
     currentAtlasWorld = world.id;
     currentAtlasView = 'game';
     currentAtlasChartKey = null;
+    pendingWalkthroughAtlasTarget = targetId ? WALKTHROUGH_ATLAS_TARGETS[targetId] : null;
     atlasButton.click();
-    selectAtlasMap(world.id);
+    await atlasRenderPromise;
     document.getElementById('atlas')?.scrollIntoView({
         behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
         block: 'start'
     });
+}
+
+function openWalkthroughAtlasTarget(targetId) {
+    const target = WALKTHROUGH_ATLAS_TARGETS[targetId];
+    if (!target) return;
+    openWalkthroughAtlas(target.worldId, targetId);
 }
 
 function toggleChapter(id) {
@@ -1293,9 +1407,22 @@ function loadAtlasImage(world) {
         renderAtlasGrid();
         renderAtlasLocations();
         renderAtlasActors();
+        if (pendingWalkthroughAtlasTarget?.worldId === world.id) {
+            const target = pendingWalkthroughAtlasTarget;
+            pendingWalkthroughAtlasTarget = null;
+            if (target.actorId != null) revealEngineActor(target.actorId);
+            else if (target.locationNumber != null) {
+                const place = registeredAtlasLocations(world).find(item =>
+                    Number(item.number) === Number(target.locationNumber)
+                );
+                revealRegisteredAtlasLocation(target.locationNumber, target.chartKey || null);
+                if (place) showAtlasHoverCard(atlasPlaceTooltip(place), true);
+            }
+        }
         window.setTimeout(() => atlasMap.invalidateSize({ animate: false }), 0);
     };
     image.onerror = () => {
+        pendingWalkthroughAtlasTarget = null;
         const readout = document.getElementById('atlas-coordinate-readout');
         if (readout) readout.textContent = `Unable to load ${source}`;
     };
@@ -1875,6 +2002,8 @@ function clearAiChat() {
 // Global binding
 window.toggleChapter = toggleChapter;
 window.handleCheck = handleCheck;
+window.openWalkthroughAtlas = openWalkthroughAtlas;
+window.openWalkthroughAtlasTarget = openWalkthroughAtlasTarget;
 window.selectAtlasMap = selectAtlasMap;
 window.setAtlasDetailTab = setAtlasDetailTab;
 window.revealAtlasLocation = revealAtlasLocation;

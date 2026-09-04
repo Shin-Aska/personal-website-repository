@@ -26,6 +26,17 @@ The guides feel like carefully preserved field manuals: warm paper, archival ink
 - Amber identifies available action, wine identifies the selected campaign chapter, and forest identifies readiness or completion.
 - Paper texture and warm translucent surfaces preserve the archival material; avoid flat white dashboard panels.
 
+### Al-Qadim sourcebook palette
+
+| Role | Token | Value | Usage |
+| --- | --- | --- | --- |
+| Text / primary | `--aq-source-ink` | `#2f241a` | Walkthrough copy on parchment surfaces |
+| Text / secondary | `--aq-source-muted` | `#55432f` | Supporting directions and metadata |
+| Surface / elevated | `--aq-source-paper-light` | `#f7edcf` | Chapter and control surfaces |
+| Border / default | `--aq-source-rule` | `rgba(101, 65, 31, 0.34)` | Sourcebook dividers and control outlines |
+| Accent / action | `--aq-source-oxblood` | `#6f2427` | Inline Atlas locators and chapter actions |
+| Accent / confirmation | `--aq-source-green` | `#173d30` | Hover, focus, and confirmed Atlas states |
+
 ## 3. Typography
 
 | Level | Family | Size | Weight | Line height | Usage |
@@ -88,7 +99,7 @@ The base spacing unit is 4px. Existing guide rhythm uses 4, 8, 12, 16, 20, 24, 3
 
 - **Structure**: a text-level button used inside instructional prose when a named NPC, place, or quest item has a precise Atlas destination. The visible name remains part of the sentence and carries a small map-pin icon.
 - **Behavior**: a place or interior item locator opens the correct floor, a mapped world item opens its exact marker, and an NPC locator also sets a documented daytime hour, highlights that resident, and opens the NPC popup. Exact routes remain in Campaign `Next steps`.
-- **States**: default, hover, active, and visible keyboard focus, using the existing amber-to-wine action language and 150ms color transitions.
+- **States**: default, hover, active, and visible keyboard focus, using each guide's established accent pair (amber-to-wine in Ultima V, oxblood-to-green in Al-Qadim) and 150ms color transitions.
 - **Accessibility**: each locator has an explicit `Show … in the Atlas` accessible name, uses a real button, preserves sentence reading order, and never relies on its icon or color alone.
 
 ### Opening strategy briefing

@@ -1791,6 +1791,92 @@ input[type="checkbox"]:checked + .checkbox-custom { border-color: var(--aq-sourc
 #walkthrough .gold-box { border-color: rgba(161, 112, 40, 0.42); background: rgba(245, 229, 184, 0.66); color: #493722; }
 #walkthrough .gold-box h4 { color: var(--aq-source-oxblood) !important; }
 
+#chapter-list .walkthrough-objective {
+    display: grid;
+    grid-template-columns: 2.75rem minmax(0, 1fr);
+    align-items: start;
+    gap: 0.25rem;
+}
+
+#chapter-list .walkthrough-objective__check {
+    display: grid;
+    min-width: 2.75rem;
+    min-height: 2.75rem;
+    place-items: center;
+    cursor: pointer;
+}
+
+#chapter-list .walkthrough-objective__input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+}
+
+#chapter-list .walkthrough-objective__input:focus-visible + .checkbox-custom {
+    outline: 3px solid color-mix(in srgb, var(--aq-source-oxblood) 38%, transparent);
+    outline-offset: 3px;
+}
+
+#chapter-list .walkthrough-objective__text {
+    padding-top: 0.65rem;
+    color: #493722 !important;
+    line-height: 1.55;
+    user-select: text;
+}
+
+#chapter-list .walkthrough-inline-atlas-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.2rem;
+    margin: 0;
+    padding: 0 0.18rem;
+    border: 0;
+    border-bottom: 1px dotted color-mix(in srgb, var(--aq-source-oxblood) 70%, transparent);
+    border-radius: 2px;
+    background: color-mix(in srgb, var(--aq-source-oxblood) 5%, transparent);
+    color: var(--aq-source-oxblood) !important;
+    font: inherit;
+    font-size: inherit !important;
+    font-weight: 800 !important;
+    line-height: inherit;
+    vertical-align: baseline;
+    cursor: pointer;
+    transition: background-color 150ms ease-out, border-color 150ms ease-out, color 150ms ease-out;
+}
+
+#chapter-list .walkthrough-inline-atlas-link svg {
+    width: 0.88em;
+    height: 0.88em;
+    flex: 0 0 auto;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+#chapter-list .walkthrough-inline-atlas-link:hover {
+    border-color: var(--aq-source-green);
+    background: color-mix(in srgb, var(--aq-source-green) 9%, transparent);
+    color: var(--aq-source-green) !important;
+}
+
+#chapter-list .walkthrough-inline-atlas-link:active {
+    border-color: var(--aq-source-green);
+    background: color-mix(in srgb, var(--aq-source-green) 16%, transparent);
+    color: var(--aq-source-green) !important;
+}
+
+#chapter-list .walkthrough-inline-atlas-link:focus-visible {
+    border-color: var(--aq-source-green);
+    outline: 3px solid color-mix(in srgb, var(--aq-source-oxblood) 38%, transparent);
+    outline-offset: 2px;
+    color: var(--aq-source-green) !important;
+}
+
 #walkthrough .walkthrough-ai,
 #genie .walkthrough-ai {
     border-color: rgba(111, 36, 39, 0.34);

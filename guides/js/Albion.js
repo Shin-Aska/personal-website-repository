@@ -221,7 +221,17 @@ const DB = {
             summary: "Explore the ship, find the hidden pistol, and launch to Albion.",
             atlasStops: [
                 { mapId: 300, label: "Toronto — Beginning", note: "Crew quarters, COM access, and launch preparation" },
-                { mapId: 301, label: "Toronto — Reactor", note: "Reactor and service-level route" }
+                { mapId: 301, label: "Toronto — Reactor", note: "Reactor and service-level route" },
+                {
+                    mapId: 300,
+                    label: "Inspector Beegle's room",
+                    note: "Northern crew cabin; search the left cupboard and north cabinet",
+                    position: { x: 63.5, y: 13.5 }
+                }
+            ],
+            atlasReferences: [
+                { label: "Anne", mapId: 300, npcName: "Anne Dorbeck" },
+                { label: "Inspector Beegle", mapId: 300, atlasStep: "toronto-intro.2" }
             ],
             keyItems: ["Pistol", "Canisters", "Stimdrinks"],
             keyCode: "1042 (COM room access)",
@@ -242,6 +252,12 @@ const DB = {
                 { mapId: 110, label: "Jirinaar", note: "City services and guild entrances", npcName: "Rabir" },
                 { mapId: 111, label: "Hunter Clan", note: "Opening investigation and Rejira" },
                 { mapId: 122, label: "Former's Building", note: "Party-wide stat bonuses" }
+            ],
+            atlasReferences: [
+                { label: "Drirr", mapId: 111 },
+                { label: "Sira", mapId: 114, npcName: "Sira" },
+                { label: "Bradir", mapId: 116, npcName: "Bradir" },
+                { label: "Rejira", mapId: 114, npcName: "Rejira" }
             ],
             statBonuses: [
                 { stat: "Speed +10", location: "Former's Building - Rainbow bushes" },
@@ -266,6 +282,10 @@ const DB = {
                 { mapId: 143, label: "Drinno", note: "Forbidden druid area" },
                 { mapId: 138, label: "Rifrako", note: "Monster Eye and Dreamshield" }
             ],
+            atlasReferences: [
+                { label: "King Tharnos", mapId: 131, npcName: "Tharnos" },
+                { label: "Melthas", mapId: 141 }
+            ],
             keyItems: ["Strength Amulet", "Power Amulet", "Monster Eye", "Dream Shield"],
             tips: [
                 "Kill bandits in mountain pass for money",
@@ -286,6 +306,11 @@ const DB = {
                 { mapId: 284, label: "Srimalinar", note: "Information-gathering stop" },
                 { mapId: 281, label: "Edjirr", note: "Purchase the assassination information" },
                 { mapId: 213, label: "Kontos", note: "Shrine confrontation" }
+            ],
+            atlasReferences: [
+                { label: "Siobhan", mapId: 261, npcName: "Siobhan" },
+                { label: "Khunag", mapId: 264, npcName: "Khunag" },
+                { label: "Herras", mapId: 265, npcName: "Herras" }
             ],
             timedEvent: true,
             questSequence: [
@@ -309,6 +334,10 @@ const DB = {
                 { mapId: 322, label: "Cantos House", note: "Enlightened Ones headquarters" },
                 { mapId: 282, label: "Holy Site Basement", note: "Lower sacred chambers" }
             ],
+            atlasReferences: [
+                { label: "Harriet", mapId: 322 },
+                { label: "Rainer", mapId: 322, npcName: "Rainer Hofstedt" }
+            ],
             goddessFlowers: [
                 { stat: "Magic Resistance", location: "Southeast from building, near alcove" },
                 { stat: "Luck", location: "Northwest, near large bridge junction" },
@@ -331,6 +360,9 @@ const DB = {
                 { mapId: 230, label: "Device Maker Guild", note: "Porenoil and guild business" },
                 { mapId: 242, label: "Mountain Pass", note: "Route toward Toronto" },
                 { mapId: 248, label: "Mine Entrance", note: "Underground access" }
+            ],
+            atlasReferences: [
+                { label: "Ohl", mapId: 217, npcName: "Ohl" }
             ],
             keyItems: ["Porenoil (desert survival)"],
             tips: [
@@ -361,6 +393,10 @@ const DB = {
                 { mapId: 154, label: "Kenget Kamulos 1", note: "Order entrance" },
                 { mapId: 161, label: "Kenget Kamulos Hall", note: "Central fortress route" },
                 { mapId: 313, label: "Kenget Boss", note: "Kamulos confrontation" }
+            ],
+            atlasReferences: [
+                { label: "Khunag", mapId: 313, npcName: "Khunagh" },
+                { label: "Kamulos", mapId: 313 }
             ],
             boss: { name: "Kamulos", hp: 650, weakness: "Thorn Snare (immune to Frost)", reward: "High Knowledge + 3000 XP" },
             tips: [
@@ -393,6 +429,9 @@ const DB = {
                 { mapId: 304, label: "Toronto — Discovery with Joe", note: "Preferred technician route" },
                 { mapId: 305, label: "Toronto — Reactor with AI", note: "Final reactor approach" },
                 { mapId: 174, label: "Endgame", note: "Final sequence" }
+            ],
+            atlasReferences: [
+                { label: "Joe", mapId: 322, npcName: "Joe Bernard" }
             ],
             finalBoss: {
                 name: "AI Housing",
@@ -1510,6 +1549,7 @@ function loadAlbionAtlasMap(mapId, options = {}) {
             visibleMarkers.push(arrivalMarker);
         }
 
+        let walkthroughFocusMarker = null;
         if (options.focusPosition) {
             const walkthroughMarker = {
                 name: options.focusLabel || 'Walkthrough stop',
@@ -1520,11 +1560,22 @@ function loadAlbionAtlasMap(mapId, options = {}) {
             };
             const point = atlasToLatLng(options.focusPosition, albionAtlasActiveMap);
             albionAtlasLayers.walkthrough = L.layerGroup().addTo(albionAtlasMap);
-            L.marker([point.lat, point.lng], {
+            walkthroughFocusMarker = L.marker([point.lat, point.lng], {
                 title: walkthroughMarker.name,
                 icon: buildAtlasIcon(walkthroughMarker),
                 zIndexOffset: 950
-            }).bindPopup(buildAtlasPopup(walkthroughMarker)).addTo(albionAtlasLayers.walkthrough).openPopup();
+            }).bindPopup(buildAtlasPopup(walkthroughMarker))
+                .bindTooltip(`
+                    <strong>${escapeAtlasHtml(walkthroughMarker.name)}</strong>
+                    ${walkthroughMarker.description ? `<span>${escapeAtlasHtml(walkthroughMarker.description)}</span>` : ''}
+                `, {
+                    permanent: true,
+                    direction: 'bottom',
+                    offset: [0, 18],
+                    opacity: 1,
+                    className: 'albion-atlas-walkthrough-label'
+                })
+                .addTo(albionAtlasLayers.walkthrough);
             visibleMarkers.push(walkthroughMarker);
         }
 
@@ -1537,6 +1588,7 @@ function loadAlbionAtlasMap(mapId, options = {}) {
             }
         } else if (options.focusPosition) {
             albionAtlasMap.panTo(atlasToLatLng(options.focusPosition, albionAtlasActiveMap));
+            walkthroughFocusMarker?.openTooltip();
         }
         const select = document.getElementById('albion-atlas-map-select');
         if (select && Array.from(select.options).some(option => option.value === String(mapConfig.id))) {
@@ -1549,6 +1601,11 @@ function loadAlbionAtlasMap(mapId, options = {}) {
         else if (options.focusNpcSlot !== undefined && options.focusNpcSlot !== null) routeHash += `&npc=${options.focusNpcSlot}`;
         try { window.history.replaceState(null, '', routeHash); } catch (_) { /* unavailable */ }
         updateAlbionAtlasStatus();
+        if (options.focusPosition) {
+            document.getElementById('atlas-status')?.insertAdjacentHTML('beforeend', `
+                <span class="atlas-status__coordinate">Target: ${escapeAtlasHtml(options.focusLabel || 'Walkthrough stop')}${options.focusDescription ? ` — ${escapeAtlasHtml(options.focusDescription)}` : ''}</span>
+            `);
+        }
         renderAtlasLegend(albionAtlasMap, visibleMarkers);
         renderAlbionAtlasTrail();
         renderAlbionAtlasDetail();
@@ -1981,6 +2038,39 @@ function referenceActionsHtml(entry) {
     `;
 }
 
+function walkthroughAtlasReferenceHtml(reference) {
+    const label = escapeAtlasHtml(reference.label);
+    const stepMatch = String(reference.atlasStep || '').match(/^(.+)\.(\d+)$/);
+    if (!reference.npcName && !stepMatch) return label;
+    const npcName = escapeAtlasHtml(reference.npcName || '');
+    const action = stepMatch
+        ? `openWalkthroughAtlasStop('${escapeAtlasHtml(stepMatch[1])}', ${Number(stepMatch[2])})`
+        : `openReferenceAtlas(${Number(reference.mapId)}, '${npcName}')`;
+    return `<button type="button" class="walkthrough-atlas-link"
+        onclick="${action}"
+        aria-label="Show ${label} in the Atlas">${label}<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s6-5.3 6-12a6 6 0 1 0-12 0c0 6.7 6 12 6 12Z"></path><circle cx="12" cy="9" r="2.25"></circle></svg></button>`;
+}
+
+function renderWalkthroughAtlasText(text, references = []) {
+    const source = String(text || '');
+    const available = references.filter(reference =>
+        reference?.label
+        && source.includes(reference.label)
+        && (reference.npcName || reference.atlasStep)
+    );
+    if (!available.length) return escapeAtlasHtml(source);
+
+    const labels = available
+        .map(reference => reference.label)
+        .sort((left, right) => right.length - left.length)
+        .map(label => label.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
+    const byLabel = new Map(available.map(reference => [reference.label, reference]));
+    return source
+        .split(new RegExp(`(${labels.join('|')})`, 'g'))
+        .map(part => byLabel.has(part) ? walkthroughAtlasReferenceHtml(byLabel.get(part)) : escapeAtlasHtml(part))
+        .join('');
+}
+
 function openReferenceAtlas(mapId, npcName = '') {
     const mapConfig = (ATLAS_CONFIG.maps || []).find(candidate => String(candidate.id) === String(mapId));
     if (!mapConfig) return;
@@ -2120,7 +2210,7 @@ function renderChapters() {
                             <div class="quest-log-item ${isDone ? 'quest-log-item--done' : ''}">
                                 <input type="checkbox" ${isDone ? 'checked' : ''}
                                     onchange="handleQuestItemToggle('${chap.id}', '${item.id}', this.checked, this)" />
-                                <div class="quest-log-text text-sm text-gray-200">${item.text}</div>
+                                <div class="quest-log-text text-sm text-gray-200">${renderWalkthroughAtlasText(item.text, chap.atlasReferences)}</div>
                             </div>
                         `;
         }).join('')}
@@ -2139,17 +2229,17 @@ function renderChapters() {
             </button>
             <div class="accordion-content" id="accordion-${i}">
                 <div class="p-5 space-y-4">
-                    <p class="text-gray-300 italic">${chap.summary}</p>
+                    <p class="text-gray-300 italic">${renderWalkthroughAtlasText(chap.summary, chap.atlasReferences)}</p>
                     ${atlasRoute}
                     
-                    ${chap.newMembers ? `<p class="text-sm"><strong class="text-purple-400">New Party Members:</strong> ${chap.newMembers.join(', ')}</p>` : ''}
-                    ${chap.requiredMember ? `<p class="text-sm text-yellow-400">⚠️ Requires: ${chap.requiredMember}</p>` : ''}
+                    ${chap.newMembers ? `<p class="text-sm"><strong class="text-purple-400">New Party Members:</strong> ${renderWalkthroughAtlasText(chap.newMembers.join(', '), chap.atlasReferences)}</p>` : ''}
+                    ${chap.requiredMember ? `<p class="text-sm text-yellow-400">⚠️ Requires: ${renderWalkthroughAtlasText(chap.requiredMember, chap.atlasReferences)}</p>` : ''}
                     
                     ${chap.tips && chap.tips.length > 0 ? `
                     <div class="tip-box">
                         <div class="tip-box-title">💡 Tips</div>
                         <ul class="text-sm text-gray-300 space-y-1">
-                            ${chap.tips.map(t => `<li>• ${t}</li>`).join('')}
+                            ${chap.tips.map(t => `<li>• ${renderWalkthroughAtlasText(t, chap.atlasReferences)}</li>`).join('')}
                         </ul>
                     </div>` : ''}
                     
@@ -2160,7 +2250,7 @@ function renderChapters() {
                     
                     ${chap.boss ? `
                     <div class="warning-box">
-                        <p class="text-sm"><strong class="text-red-400">Boss: ${chap.boss.name}</strong> (${chap.boss.hp} HP)</p>
+                        <p class="text-sm"><strong class="text-red-400">Boss: ${renderWalkthroughAtlasText(chap.boss.name, chap.atlasReferences)}</strong> (${chap.boss.hp} HP)</p>
                         <p class="text-xs text-gray-400 mt-1">${chap.boss.weakness}</p>
                     </div>` : ''}
                     

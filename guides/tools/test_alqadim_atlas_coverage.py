@@ -4,21 +4,24 @@ import json
 import re
 import unittest
 from pathlib import Path
+from typing import TypeAlias
 
 
 ROOT = Path(__file__).resolve().parents[1]
+JsonValue: TypeAlias = str | int | float | bool | None | list["JsonValue"] | dict[str, "JsonValue"]
+JsonObject: TypeAlias = dict[str, JsonValue]
 
 
-def load_catalogue() -> dict:
-    source = (ROOT / "js/AlQadimAtlasData.js").read_text()
+def load_catalogue() -> JsonObject:
+    source = (ROOT / "js/AlQadimAtlasData.js").read_text(encoding="utf-8")
     match = re.search(r"=\s*(\{.*\});\s*$", source, re.S)
     if not match:
         raise AssertionError("AlQadimAtlasData.js does not contain a JSON catalogue")
     return json.loads(match.group(1))
 
 
-def load_js_object_constant(name: str) -> dict:
-    source = (ROOT / "js/AlQadim.js").read_text()
+def load_js_object_constant(name: str) -> JsonObject:
+    source = (ROOT / "js/AlQadim.js").read_text(encoding="utf-8")
     match = re.search(
         rf"const {re.escape(name)} = Object\.freeze\((\{{.*?\}})\);",
         source,
@@ -36,7 +39,9 @@ def normalized_name(value: str) -> str:
 class AtlasCoverageTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls) -> None:
-        cls.annotations = json.loads((ROOT / "js/AlqadimAnnotations.json").read_text())
+        cls.annotations = json.loads(
+            (ROOT / "js/AlqadimAnnotations.json").read_text(encoding="utf-8")
+        )
         cls.catalogue = load_catalogue()
 
     def test_every_chart_location_is_hoverable_or_documented_as_unprinted(self) -> None:
@@ -127,6 +132,42 @@ class AtlasCoverageTests(unittest.TestCase):
                 self.assertEqual(len(linked_worlds), len(set(linked_worlds)))
                 self.assertTrue(set(linked_worlds) <= world_ids)
 
+    def test_walkthrough_inline_atlas_targets_resolve_to_real_destinations(self) -> None:
+        targets = load_js_object_constant("WALKTHROUGH_ATLAS_TARGETS")
+        worlds = {world["id"]: world for world in self.catalogue["worlds"]}
+        covered_chapters: set[int] = set()
+        terms_by_chapter: dict[int, set[str]] = {}
+
+        for target_id, target in targets.items():
+            with self.subTest(target=target_id):
+                world = worlds[target["worldId"]]
+                self.assertTrue(target["terms"])
+                self.assertTrue(target["chapters"])
+
+                for chapter in target["chapters"]:
+                    covered_chapters.add(chapter)
+                    chapter_terms = terms_by_chapter.setdefault(chapter, set())
+                    self.assertFalse(chapter_terms & set(target["terms"]))
+                    chapter_terms.update(target["terms"])
+
+                if "actorId" in target:
+                    actor_ids = {actor["id"] for actor in world.get("namedActors", [])}
+                    self.assertIn(target["actorId"], actor_ids)
+
+                if "locationNumber" in target:
+                    chart_keys = [
+                        chart["annotationKey"]
+                        for chart in world.get("charts", [])
+                    ] or ([world["annotationKey"]] if world.get("annotationKey") else [])
+                    location_numbers = {
+                        location["number"]
+                        for chart_key in chart_keys
+                        for location in self.annotations[chart_key].get("locations", [])
+                    }
+                    self.assertIn(target["locationNumber"], location_numbers)
+
+        self.assertEqual(set(range(1, 20)), covered_chapters)
+
     def test_actor_cluebook_aliases_resolve_to_real_records(self) -> None:
         aliases = load_js_object_constant("ATLAS_ACTOR_CLUEBOOK_ALIASES")
         worlds = {world["id"]: world for world in self.catalogue["worlds"]}
@@ -154,7 +195,7 @@ class AtlasCoverageTests(unittest.TestCase):
                     self.assertIn(normalized_name(cluebook_name), cluebook_names)
 
     def test_actor_sidebar_navigation_uses_canonical_actor_resolution(self) -> None:
-        source = (ROOT / "js/AlQadim.js").read_text()
+        source = (ROOT / "js/AlQadim.js").read_text(encoding="utf-8")
         self.assertIn('onclick="revealEngineActor(${actor.id})"', source)
         self.assertIn("function revealEngineActor(actorId)", source)
         self.assertIn("atlasActorResolvedPlacement(world, actor)", source)
