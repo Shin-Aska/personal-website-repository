@@ -169,12 +169,14 @@ const gameData = {
                         },
                         {
                             heading: "Spirituality — Skara Brae",
-                            summary: "Follow Marney's poem to her family's hidden hope chest.",
+                            summary: "Find the rune in Skara Brae, then travel by moongate to the shrine in the Ethereal Void. The shrine is not in Skara Brae.",
                             steps: [
                                 "Talk to Marney near the docks about the `RUNE`.",
                                 "Use follow-up keywords `POEM` and `BASKET` to jog her memory.",
                                 "Search the hope chest in Marney's house to obtain the rune.",
-                                "Cleanse the Shrine of Spirituality via moongate access, chanting `OM`."
+                                "Reach the Shrine of Spirituality in the Ethereal Void: use the Orb of the Moons two tiles west and one tile south of the Avatar, then enter the red moongate. This route does not require waiting until midnight.",
+                                "Alternatively, enter a blue moongate at midnight. You can depart from any blue moongate; Skara Brae is only where you obtain the rune.",
+                                "At the shrine, use the Rune of Spirituality and chant `OM` to cleanse it, then take the moonstone."
                             ],
                             keywords: [
                                 {

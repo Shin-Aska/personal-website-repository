@@ -56,6 +56,7 @@ const commonTips = [
     'Free reagents: Nightshade grows in the center of Spiritwood (east of Skara Brae); Mandrake in the Bloody Plains (SE of Minoc). With just Nightshade+Mandrake you can cast <code>IN WIS</code>, <code>QUAS AN WIS</code>, and <code>IN QUAS WIS</code>.',
     'Sextant & Spyglass: Ask David at Greyhaven (lighthouse south of Trinsic) for a free sextant (coords). Seggallion at Farthing grants a spyglass; Zachariah explains it if you\'re in the Resistance.',
     'Moonstones: You can dig up and rebury moonstones to relocate moongates. Consider clustering near Spiritwood/Bloody Plains for reagent runs, and keep one on you as an emergency escape gate.',
+    'Shrine of Spirituality: Enter any moongate at exactly midnight (12:00 AM) to reach the shrine in the Ethereal Void. Skara Brae is where you learn OM; the shrine is not in the town. Step into the active gate above a buried moonstone at midnight.',
     'Get a frigate: Wait near open water (e.g., Jhelom/New Magincia) without resting; pirate ships often spawn at dawn\u2014board and capture.',
     'Safe haven: The Brittany villages aren\'t visited by Shadowlords\u2014use them to lay low when a city is afflicted.',
     'Combat edges: Set the active player (1\u20136) to funnel XP. Halberds can strike through doors/walls in rooms; Magic Axes are infinite\u2011range and return.',
@@ -94,7 +95,7 @@ const ultima5CampaignObjectives = [
     { id: 'shrine-justice', chapter: 'shrines', title: 'Shrine of Justice', detail: 'BEH · Yew', atlas: { marker: 'Shrine of Justice' } },
     { id: 'shrine-sacrifice', chapter: 'shrines', title: 'Shrine of Sacrifice', detail: 'CAH · Minoc', atlas: { marker: 'Shrine of Sacrifice' } },
     { id: 'shrine-honor', chapter: 'shrines', title: 'Shrine of Honor', detail: 'SUMM · Trinsic', atlas: { marker: 'Shrine of Honor' } },
-    { id: 'shrine-spirituality', chapter: 'shrines', title: 'Shrine of Spirituality', detail: 'OM · Skara Brae', atlas: { interiorId: 'location-7', floor: '0' } },
+    { id: 'shrine-spirituality', chapter: 'shrines', title: 'Shrine of Spirituality', detail: 'OM · Any moongate at exactly midnight (12:00 AM)' },
     { id: 'shrine-humility', chapter: 'shrines', title: 'Shrine of Humility', detail: 'LUM · New Magincia', atlas: { marker: 'Shrine of Humility' } },
     { id: 'shadow-faulinei', chapter: 'shadowlords', title: 'Banish Faulinei', detail: 'Falsehood · Lycaeum', atlas: { marker: 'Shard of Falsehood' } },
     { id: 'shadow-astaroth', chapter: 'shadowlords', title: 'Banish Astaroth', detail: 'Hatred · Empath Abbey', atlas: { marker: 'Shard of Hatred' } },
@@ -243,7 +244,6 @@ const ultima5InlineAtlasTargets = {
     shrineJustice: { terms: ['Shrine of Justice'], label: 'Shrine of Justice', marker: 'Shrine of Justice' },
     shrineSacrifice: { terms: ['Shrine of Sacrifice'], label: 'Shrine of Sacrifice', marker: 'Shrine of Sacrifice' },
     shrineHonor: { terms: ['Shrine of Honor'], label: 'Shrine of Honor', marker: 'Shrine of Honor' },
-    shrineSpirituality: { terms: ['Shrine of Spirituality'], label: 'Shrine of Spirituality via Skara Brae', interiorId: 'location-7', floor: '0' },
     shrineHumility: { terms: ['Shrine of Humility'], label: 'Shrine of Humility', marker: 'Shrine of Humility' },
     codex: { terms: ['the Codex', 'Codex'], label: 'Shrine of the Codex', marker: 'Shrine of the Codex' },
     flameTruth: { terms: ['Flame of Truth'], label: 'Flame of Truth at the Lycaeum', interiorId: 'location-30', floor: '0' },
@@ -267,7 +267,7 @@ const ultima5ObjectiveGuidance = {
     'shrine-justice': 'Help Jeremy, join the Resistance with DAWN, and seek Chamfort for BEH.',
     'shrine-sacrifice': 'Speak with Rew in East Brittany to learn CAH, then make the shrine pilgrimage.',
     'shrine-honor': 'Ask Gruman in Trinsic for SUMM before visiting the Shrine of Honor.',
-    'shrine-spirituality': 'Follow Saul’s direction to Kindor, ask about the shrine, and learn OM.',
+    'shrine-spirituality': 'Learn OM from Kindor in Skara Brae, then enter any moongate at exactly midnight (12:00 AM) to reach the shrine in the Ethereal Void.',
     'shrine-humility': 'Pass Wartow’s questions in New Magincia to earn the mantra LUM.',
     'shadow-faulinei': 'Recover the Shard of Falsehood below Deceit, then carry it to the Lycaeum flame.',
     'shadow-astaroth': 'Seek the Shard of Hatred through Wrong or Covetous and banish Astaroth at Empath Abbey.',
@@ -410,13 +410,15 @@ const ultima5GrandQuestChapters = [
             ['shrine-justice', 'Justice', 'Yew', 'BEH', 'Help Jeremy, use the Resistance password DAWN with Chamfort, and follow the lead.'],
             ['shrine-sacrifice', 'Sacrifice', 'Minoc / East Britanny', 'CAH', 'Ask Rew in East Britanny.'],
             ['shrine-honor', 'Honor', 'Trinsic', 'SUMM', 'Ask Gruman when your karma is high enough.'],
-            ['shrine-spirituality', 'Spirituality', 'Skara Brae', 'OM', 'Ask Saul, then Kindor about SHRINE and answer yes.'],
+            ['shrine-spirituality', 'Spirituality', 'Ethereal Void · Any moongate at midnight', 'OM', 'In Skara Brae, ask Saul, then Kindor about SHRINE and answer yes.'],
             ['shrine-humility', 'Humility', 'New Magincia', 'LUM', 'Ask Shirita, then answer Wartow: BRITISH, N, N, N, Y.']
         ].map(([id, virtue, location, mantra, lead]) => ({
             id,
             title: `Restore the Shrine of ${virtue}`,
             location,
-            summary: `${lead} The mantra is ${mantra}.`,
+            summary: virtue === 'Spirituality'
+                ? 'Enter any moongate at exactly midnight (12:00 AM). The shrine is in the Ethereal Void; Skara Brae is only the town where you learn OM.'
+                : `${lead} The mantra is ${mantra}.`,
             outcome: virtue === 'Humility'
                 ? 'Humility restored and the full pilgrimage completed.'
                 : `${virtue} restored and its attribute lesson completed.`,
@@ -425,9 +427,12 @@ const ultima5GrandQuestChapters = [
             hints: ultima5ShrineFieldNotes[id] || [],
             steps: [
                 `${lead} Record the mantra ${mantra}.`,
+                ...(virtue === 'Spirituality' ? ['Wait beside any active moongate above a buried moonstone. Check your pocket watch and step into the gate at exactly midnight (12:00 AM) to reach the Ethereal Void. You do not need to depart from Skara Brae.'] : []),
                 `Visit the Shrine of ${virtue}, speak the virtue name, and meditate with ${mantra} for three cycles.`,
                 'Travel to the Codex only after the shrine sends you there and receive its counsel.',
-                virtue === 'Humility'
+                virtue === 'Spirituality'
+                    ? 'Enter any moongate at exactly midnight again to return to the Shrine of Spirituality, then meditate with OM to complete the quest and gain attributes.'
+                    : virtue === 'Humility'
                     ? 'Return to the Shrine of Humility and meditate again to complete the quest; this shrine grants no attribute bonus.'
                     : `Return to the Shrine of ${virtue} and meditate again to complete the quest and gain attributes.`
             ]
