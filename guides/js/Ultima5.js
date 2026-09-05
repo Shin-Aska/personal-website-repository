@@ -265,7 +265,7 @@ const ultima5ObjectiveGuidance = {
     'shrine-compassion': 'Find Greyson in Britain, affirm Lord British, and ask for the mantra MU.',
     'shrine-valor': 'Follow Trian’s lead to Thorne in Jhelom and learn RA.',
     'shrine-justice': 'Help Jeremy, join the Resistance with DAWN, and seek Chamfort for BEH.',
-    'shrine-sacrifice': 'Speak with Rew in East Brittany to learn CAH, then make the shrine pilgrimage.',
+    'shrine-sacrifice': 'Speak with Rew in Minoc to learn CAH, then make the shrine pilgrimage.',
     'shrine-honor': 'Ask Gruman in Trinsic for SUMM before visiting the Shrine of Honor.',
     'shrine-spirituality': 'Learn OM from Kindor in Skara Brae, then enter any moongate at exactly midnight (12:00 AM) to reach the shrine in the Ethereal Void.',
     'shrine-humility': 'Pass Wartow’s questions in New Magincia to earn the mantra LUM.',
@@ -276,7 +276,7 @@ const ultima5ObjectiveGuidance = {
     'regalia-crown': 'Infiltrate Blackthorn’s Castle, reach the rooftop, and escape by Magic Carpet.',
     'regalia-amulet': 'Take the waterfall east of Skara Brae into the Underworld and find the burial ground.',
     'regalia-box': 'Play Stones on Lord British’s harpsichord to reveal the private study.',
-    'doom-rescue': 'Carry every royal artifact, speak VERAMOCOR, and make the final descent into Doom.'
+    'doom-rescue': 'Carry every royal artifact through Shame to the central Underworld, speak VERAMOCOR, and descend into Doom to rescue Lord British.'
 };
 
 const ultima5ShrineFieldNotes = {
@@ -402,13 +402,13 @@ const ultima5GrandQuestChapters = [
         number: '02',
         eyebrow: 'The pilgrimage',
         title: 'Restore the Eight Shrines',
-        summary: 'With fast travel secured, complete each virtue loop and earn the Word of Power for Doom.',
+        summary: 'With fast travel secured, complete the eight virtue loops and earn the Word of Power for Doom. Recommended: complete each Shrine → Codex → Shrine cycle before accepting another Shrine quest. Multiple shrine quests can remain pending, and the Codex may resolve a different virtue than the one you most recently visited.',
         objectives: [
             ['shrine-honesty', 'Honesty', 'Moonglow', 'AHM', 'Ask Malifora for the mantra.'],
             ['shrine-compassion', 'Compassion', 'Britain', 'MU', 'Ask Greyson, affirm that British is the rightful ruler, then ask for Compassion.'],
             ['shrine-valor', 'Valor', 'Jhelom', 'RA', 'Follow Trian’s lead to Thorne.'],
             ['shrine-justice', 'Justice', 'Yew', 'BEH', 'Help Jeremy, use the Resistance password DAWN with Chamfort, and follow the lead.'],
-            ['shrine-sacrifice', 'Sacrifice', 'Minoc / East Britanny', 'CAH', 'Ask Rew in East Britanny.'],
+            ['shrine-sacrifice', 'Sacrifice', 'Minoc', 'CAH', 'Ask Rew in Minoc.'],
             ['shrine-honor', 'Honor', 'Trinsic', 'SUMM', 'Ask Gruman when your karma is high enough.'],
             ['shrine-spirituality', 'Spirituality', 'Ethereal Void · Any moongate at midnight', 'OM', 'In Skara Brae, ask Saul, then Kindor about SHRINE and answer yes.'],
             ['shrine-humility', 'Humility', 'New Magincia', 'LUM', 'Ask Shirita, then answer Wartow: BRITISH, N, N, N, Y.']
@@ -429,7 +429,7 @@ const ultima5GrandQuestChapters = [
                 `${lead} Record the mantra ${mantra}.`,
                 ...(virtue === 'Spirituality' ? ['Wait beside any active moongate above a buried moonstone. Check your pocket watch and step into the gate at exactly midnight (12:00 AM) to reach the Ethereal Void. You do not need to depart from Skara Brae.'] : []),
                 `Visit the Shrine of ${virtue}, speak the virtue name, and meditate with ${mantra} for three cycles.`,
-                'Travel to the Codex only after the shrine sends you there and receive its counsel.',
+                'Travel to the Codex on the Isle of the Avatar only after the shrine sends you there and receive its counsel.',
                 virtue === 'Spirituality'
                     ? 'Enter any moongate at exactly midnight again to return to the Shrine of Spirituality, then meditate with OM to complete the quest and gain attributes.'
                     : virtue === 'Humility'
@@ -457,7 +457,7 @@ const ultima5GrandQuestChapters = [
                 summary: 'Reach the Shard of Hatred with MALUM or AVIDUS, then carry it to the Flame of Love.',
                 outcome: 'Astaroth is permanently destroyed; Hatred can no longer corrupt Britannia.', progress: [{ store: 'main', id: 'shadow-astaroth' }],
                 atlas: { marker: 'Shard of Hatred' },
-                steps: ['Learn MALUM from Felespar in Yew with DAWN, or AVIDUS from Fiona in Minoc.', 'Descend through Wrong or Covetous into the southwest Underworld labyrinth and recover the Shard of Hatred.', 'At Empath Abbey, stand one tile south of the Flame of Love and shout ASTAROTH.', 'Wait one turn, then use the Shard of Hatred when Astaroth stands on the flame.']
+                steps: ['Learn MALUM from Felespar in Yew with DAWN, or follow Rew’s lead in Minoc to Fiona and use DAWN to learn AVIDUS.', 'Bring mixed AN GRAV spells to dispel magical fields in Wrong or Covetous. Descend into the southwest Underworld labyrinth and recover the Shard of Hatred.', 'At Empath Abbey, stand one tile south of the Flame of Love and shout ASTAROTH.', 'Wait one turn, then use the Shard of Hatred when Astaroth stands on the flame.']
             },
             {
                 id: 'shadow-nosfentor', title: 'Banish Nosfentor, Shadowlord of Cowardice', location: 'Hythloth to Serpent’s Hold',
@@ -473,7 +473,7 @@ const ultima5GrandQuestChapters = [
         number: '04',
         eyebrow: 'Arm for the abyss',
         title: 'Recover the Royal Regalia',
-        summary: 'The Box is already safe; take the three artifacts that make Stonegate, Blackthorn’s fortress, and Doom survivable.',
+        summary: 'With the Shadowlords destroyed and the Box already safe, recover the Sceptre, Crown, and Amulet for the final descent.',
         objectives: [
             {
                 id: 'regalia-sceptre', title: 'Recover the Sceptre', location: 'Stonegate', summary: 'Use the Grapple, Carpet, and Skull Keys to cross Stonegate’s lethal approach.', outcome: 'A reusable way to dispel every magical field.', progress: [{ store: 'main', id: 'regalia-sceptre' }], atlas: { interiorId: 'location-29', floor: '0' },
@@ -494,11 +494,11 @@ const ultima5GrandQuestChapters = [
         number: '05',
         eyebrow: 'The final descent',
         title: 'Rescue Lord British from Doom',
-        summary: 'Carry every royal artifact into the central Underworld and survive the one-way descent.',
+        summary: 'Carry every royal artifact through Shame to the central Underworld, enter Doom with VERAMOCOR, and rescue Lord British.',
         objectives: [
             {
                 id: 'doom-rescue', title: 'Enter Doom and free the king', location: 'Dungeon Doom', summary: 'Commit only when every Shadowlord is gone and the full royal set is in the party.', outcome: 'Lord British returns and the tyranny collapses.', progress: [{ store: 'main', id: 'doom-rescue' }], atlas: { interiorId: 'location-40', floor: '7' },
-                steps: ['Reach Avatar level 8 if possible; stock healing, resurrection magic, food, reagents, gems, and a permanent save.', 'Carry the Sceptre, Crown, Amulet, and Sandalwood Box. Use the Amulet to reveal Doom in the central Underworld and speak VERAMOCOR.', 'Use the Sceptre to dispel ethereal walls and wear the Crown through magic-heavy rooms.', 'Find the hidden pit on the final level, step through Lord British’s mirror, and give him the Sandalwood Box.', 'Use the Orb of the Moons he releases to escape the collapsing dungeon.']
+                steps: ['Reach Avatar level 8 if possible; stock healing, resurrection magic, food, reagents, gems, and a permanent save.', 'Carry the Sceptre, Crown, Amulet, and Sandalwood Box. Follow Woolfe’s lead in Trinsic to Sindar for INFAMA, use it to enter Dungeon Shame, and descend to the Underworld.', 'Follow the path to the central Underworld. Use the Amulet to reveal Doom’s entrance and speak VERAMOCOR to enter.', 'Use the Sceptre to dispel ethereal walls and wear the Crown through magic-heavy rooms.', 'Find the hidden pit on the final level, step through Lord British’s mirror, and give him the Sandalwood Box.', 'Use the Orb of the Moons he releases to escape the collapsing dungeon.']
             }
         ]
     }
@@ -2345,14 +2345,15 @@ function askTheSeer() {
 
     const prompt = `You are a seer in Ultima V: Warriors of Destiny. Provide precise, practical guidance grounded in Ultima V mechanics and quest flow. Use the following context as background knowledge; use it to inform your answer without restating it verbatim.
 
-- Shrines & VERAMOCOR: Each shrine loop is: learn mantra → meditate 3x → visit Codex (Underworld) → return and meditate to complete. Completing all eight reveals VERAMOCOR for Dungeon Doom.
-- Mantras (who to ask): Honesty—Malifora (Moonglow) → AHM. Compassion—Greyson (Britain inn; say BRITISH) → MU. Valor—Trian → Thorne (Jhelom) → RA. Justice—Pay Jeremy → Chamfort (Resistance; password DAWN) → BEH. Sacrifice—Rew (East Brittany) → CAH. Honor—Gruman (Trinsic) → SUMM. Spirituality—Saul → Kindor (ask SHRINE; answer Y) → OM. Humility—Shirita → Wartow (answers: BRITISH, N, N, N, Y) → LUM.
-- Words of Power (dungeons): Deceit—Malik → Malifora → FALLAX. Despise—Annon → VILIS. Destard—Zachariah (Britain) → Goeth (Jhelom; ask for "DROW") → INOPIA. Wrong—Terrence (Britain) → join Resistance (DAWN) → Felespar (Yew) → MALUM. Covetous—Rew → Fiona (Minoc; DAWN) → AVIDUS. Shame—Woolfe (Trinsic) → Sindar → INFAMA. Hythloth—Kaiko (New Magincia) → Hassad (Blackthorn’s dungeon; ref KAIKO) → IGNAVUS. Doom—after all shrine quests, speak VERAMOCOR.
-- Shadowlords: Names are Faulinei (Falsehood), Astaroth (Hatred), Nosfentor (Cowardice). Shards lie via Deceit, Wrong/Covetous, and Hythloth respectively. In the castles’ sacred flame rooms (Lycaeum, Empath Abbey, Serpent’s Hold), stand one tile south, shout the name, wait a turn, then use the shard as it stands on the flame.
-- Regalia: Sceptre—Stonegate (Grapple, Skull Keys, Magic Carpet). Use a skull key, answer the demon’s riddle ("WELL"), outrun Shadowlords on the carpet, grab the Sceptre (dispels fields). Crown—Blackthorn’s rooftop: outrun guards on the Magic Carpet, climb to L3, skull key the center room, take crown, fly off roof (capture risk can erase a companion). Amulet—Underworld: quick route is the waterfall east of Skara Brae (junctions D → L → D), then southeast through swamp/mountain pass to the burial ground; exit via VAS REL POR or intentional death. Sandalwood Box—Castle Britannia: play Stones on the harpsichord (6-7-8-9-8-7-8-7-6-7-6-5-3).
+- Campaign order: opening party, mobility, and key tools → eight Shrine and Codex cycles → three Shards and Shadowlords → Lord British’s Regalia → Shame → Underworld → central Underworld → VERAMOCOR → Doom → Lord British.
+- Shrines & VERAMOCOR: Each shrine loop is: learn mantra → meditate 3x → visit the Codex on the Isle of the Avatar → return and meditate to complete. Recommended: complete each Shrine → Codex → Shrine cycle before accepting another Shrine quest. Multiple shrine quests can remain pending, and the Codex may resolve a different virtue than the one most recently visited. Completing all eight reveals VERAMOCOR for Dungeon Doom.
+- Mantras (who to ask): Honesty—Malifora (Moonglow) → AHM. Compassion—Greyson (Britain inn; say BRITISH) → MU. Valor—Trian → Thorne (Jhelom) → RA. Justice—Pay Jeremy → Chamfort (Resistance; password DAWN) → BEH. Sacrifice—Rew (Minoc) → CAH. Honor—Gruman (Trinsic) → SUMM. Spirituality—Saul → Kindor (ask SHRINE; answer Y) → OM. Humility—Shirita → Wartow (answers: BRITISH, N, N, N, Y) → LUM.
+- Words of Power (dungeons): Deceit—Malik → Malifora → FALLAX. Despise—Annon → VILIS. Destard—Zachariah (Moonglow) → Goeth (Jhelom; ask for "DROW") → INOPIA. Wrong—Terrence (Britain) → join Resistance (DAWN) → Felespar (Yew) → MALUM. Covetous—Rew (Minoc) → Fiona (Minoc; DAWN) → AVIDUS. Shame—Woolfe (Trinsic) → Sindar → INFAMA. Hythloth—Kaiko (New Magincia) → Hassad (Blackthorn’s dungeon; ref KAIKO) → IGNAVUS. Doom—after all shrine quests, speak VERAMOCOR.
+- Shadowlords: Names are Faulinei (Falsehood), Astaroth (Hatred), Nosfentor (Cowardice). Shards lie via Deceit, Wrong/Covetous, and Hythloth respectively. Use AN GRAV to dispel magical fields during the shard expeditions. In the castles’ sacred flame rooms (Lycaeum, Empath Abbey, Serpent’s Hold), stand one tile south, shout the name, wait a turn, then use the shard as it stands on the flame.
+- Regalia: After destroying all three Shadowlords, recover the Sceptre, Crown, and Amulet; the Sandalwood Box should already be safe from the opening. Sceptre—Stonegate (Grapple, Skull Keys, Magic Carpet). Use a skull key, answer the demon’s riddle ("WELL"), ride the carpet over fire pits and trapdoors, and grab the Sceptre (dispels fields). Crown—Blackthorn’s rooftop: outrun guards on the Magic Carpet, climb to L3, skull key the center room, take crown, fly off roof (capture risk can erase a companion). Amulet—Underworld: quick route is the waterfall east of Skara Brae (junctions D → L → D), then southeast through swamp/mountain pass to the burial ground; exit via VAS REL POR or intentional death. Sandalwood Box—Castle Britannia: play Stones on the harpsichord (6-7-8-9-8-7-8-7-6-7-6-5-3).
 - Key Tools: Grapple from Lord Michael (Empath Abbey). Skull keys from Shenstone’s stump in Minoc (refill daily by re-entering). Magic Carpet—bring a Skull Key or AN SANCT to Castle Britannia, climb to Lord British’s private rooftop room, unlock the magic door, and take it; it crosses shallow water, swamp, brush, and hills, but mountains still require the Grapple and rough sea is dangerous. Magic Axe is top-tier (find one in Jhelom’s stump; buy more in Yew).
 - Underworld tips: Use IN POR (Blink), especially around Hythloth’s shard area; use the Magic Carpet to cross swamps/shallow water/low hills.
-- Doom: Use the Amulet to pierce the darkness, Sceptre to remove ethereal walls, keep the Crown ready. Speak VERAMOCOR to enter and rescue Lord British.
+- Doom: Enter Dungeon Shame with INFAMA and descend to the Underworld, then follow the path to the central Underworld. Use the Amulet to pierce the darkness and reveal Doom, speak VERAMOCOR to enter, use the Sceptre to remove ethereal walls, and keep the Crown ready. Find Lord British and free him with the Sandalwood Box.
 
 - Controls & UI (from the manual): Move with keypad 8/2/6/4 (N/S/E/W). Diagonals are for aiming in combat only. In 3D dungeons, tap Enter/Period to turn around. Core commands: A Attack (then direction), B Board, C Cast (type spell syllables), E Enter, G Get (dir), H Hole up (camp/rest), I Ignite torch, J Jimmy lock, K Klimb, L Look (dir), M Mix reagents, N New Order (swap party), O Open, P Push, Q Quit & Save, R Ready (equip), S Search (dir), T Talk, U Use, V View (bird’s‑eye, needs item), X X‑it, Y Yell (sails/say text), Z Z‑Stats (E/W pages; N/S scroll).
 - Lore & conversation: Ask residents about NAME/JOB and relevant keywords; some info requires prior references (e.g., Resistance password DAWN). Talk to people more than once; attitudes can change.
