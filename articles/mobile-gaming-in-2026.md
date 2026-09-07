@@ -14,23 +14,23 @@ Now it's 2026, and I've found more games worth talking about and spent more time
 
 I'm looking at Android and Google Play here in the Philippines. I don't own an iPhone, so these are the games available on the phone I use.
 
-Live service games are still the norm among the leading free-to-play titles here. In the [Philippine chart snapshot from September 5, 2026<sup>[1]</sup>](https://42matters.com/top-charts-explorer/android/philippines/all-games), Roblox and Mobile Legends: Bang Bang led the free chart, followed by Gangstar Mirage City: Online. Roblox, Mobile Legends, and Clash of Clans also topped the grossing chart, followed by Ragnarok: The New World and RF ONLINE NEXT.
+Live service games are still the norm among the leading free-to-play titles here. In the [Philippine chart snapshot from September 5, 2026<sup>[2]</sup>](https://42matters.com/top-charts-explorer/android/philippines/all-games), Roblox and Mobile Legends: Bang Bang led the free chart, followed by Gangstar Mirage City: Online. Roblox, Mobile Legends, and Clash of Clans also topped the grossing chart, followed by Ragnarok: The New World and RF ONLINE NEXT.
 
-It feels familiar. That snapshot doesn't measure growth, but ongoing online games clearly haven't been pushed aside. New arrivals such as [Gangstar Mirage City: Online<sup>[2]</sup>](https://www.levelinfinite.com/news/gangstar-mirage-city-is-live-in-select-regions/) follow the same approach: it entered its regional soft launch in August 2026 as a free-to-play multiplayer game, published by Level Infinite under license from Gameloft.
+It feels familiar. That snapshot doesn't measure growth, but ongoing online games clearly haven't been pushed aside. New arrivals such as [Gangstar Mirage City: Online<sup>[3]</sup>](https://www.levelinfinite.com/news/gangstar-mirage-city-is-live-in-select-regions/) follow the same approach: it entered its regional soft launch in August 2026 as a free-to-play multiplayer game, published by Level Infinite under license from Gameloft.
 
-I've also been looking at simpler free games. [Block Blast!<sup>[3]</sup>](https://play.google.com/store/apps/details?id=com.block.juggle) offers offline single-player play alongside ads and in-app purchases. Sometimes beating my own score is enough; purchases don't automatically mean a game needs a multiplayer server.
+I've also been looking at simpler free games. [Block Blast!<sup>[4]</sup>](https://play.google.com/store/apps/details?id=com.block.juggle) offers offline single-player play alongside ads and in-app purchases. Sometimes beating my own score is enough; purchases don't automatically mean a game needs a multiplayer server.
 
 I'd rather pay to remove ads or buy an optional cosmetic than feel pushed into spending to keep enjoying a game. Those options vary, though. A small-looking game isn't automatically indie or harmless with its purchases.
 
-The paid chart interests me more. In the same [September snapshot<sup>[1]</sup>](https://42matters.com/top-charts-explorer/android/philippines/all-games), Minecraft was first and LIMBO second. Stardew Valley, Terraria, Geometry Dash, Grand Theft Auto: San Andreas, and Balatro also appeared in the top 25.
+The paid chart interests me more. In the same [September snapshot<sup>[2]</sup>](https://42matters.com/top-charts-explorer/android/philippines/all-games), Minecraft was first and LIMBO second. Stardew Valley, Terraria, Geometry Dash, Grand Theft Auto: San Andreas, and Balatro also appeared in the top 25.
 
-Not every paid game is indie, but there's a welcome independent presence. LIMBO is from Playdead, and [Stardew Valley began as a solo project and is self-published by ConcernedApe<sup>[4]</sup>](https://www.stardewvalley.net/faq/). These are the kinds of games I wanted more of.
+Not every paid game is indie, but there's a welcome independent presence. LIMBO is from Playdead, and [Stardew Valley began as a solo project and is self-published by ConcernedApe<sup>[5]</sup>](https://www.stardewvalley.net/faq/). These are the kinds of games I wanted more of.
 
-Some are available through subscriptions, too. [LIMBO is included in Google Play Pass<sup>[5]</sup>](https://play.google.com/store/apps/details?id=com.playdead.limbo.full), a service I've spent more time with since the earlier article.
+Some are available through subscriptions, too. [LIMBO is included in Google Play Pass<sup>[6]</sup>](https://play.google.com/store/apps/details?id=com.playdead.limbo.full), a service I've spent more time with since the earlier article.
 
 ## Store Subscriptions
 
-[Apple Arcade launched on September 19, 2019<sup>[6]</sup>](https://www.apple.com/newsroom/2019/09/apple-arcade-its-time-to-play/), offering a curated selection of games for a subscription fee. Google followed [on September 23<sup>[7]</sup>](https://blog.google/products-and-platforms/platforms/google-play/google-play-pass-enjoy-apps-and-games-without-ads-or-app-purchases/), initially launching Play Pass in the United States with apps as well as games.
+[Apple Arcade launched on September 19, 2019<sup>[7]</sup>](https://www.apple.com/newsroom/2019/09/apple-arcade-its-time-to-play/), offering a curated selection of games for a subscription fee. Google followed [on September 23<sup>[8]</sup>](https://blog.google/products-and-platforms/platforms/google-play/google-play-pass-enjoy-apps-and-games-without-ads-or-app-purchases/), initially launching Play Pass in the United States with apps as well as games.
 
 From here, I want to explore the subscriptions I've personally tried and what they've been like to use.
 
@@ -38,14 +38,14 @@ From here, I want to explore the subscriptions I've personally tried and what th
 
 I started using Play Pass early after it became available to me. Some games are still as generous as I remember; others have changed how they deliver the benefits.
 
-The subscription covers games in Google's selected catalog, removes ads, and unlocks included in-app content. Developers can [express interest in joining<sup>[8]</sup>](https://play.google.com/console/about/programs/googleplaypass/) and earn through the program.
+The subscription covers games in Google's selected catalog, removes ads, and unlocks included in-app content. Developers can [express interest in joining<sup>[9]</sup>](https://play.google.com/console/about/programs/googleplaypass/) and earn through the program.
 
-Titan Quest was one of the games that made the subscription useful to me. I'd already bought it and the earlier DLCs when Play Pass let me add Eternal Embers without paying separately. [The game's listing<sup>[9]</sup>](https://play.google.com/store/apps/details?id=com.dotemu.titanquest&hl=en) shows Play Pass access and lists Eternal Embers among its expansions.
+Titan Quest was one of the games that made the subscription useful to me. I'd already bought it and the earlier DLCs when Play Pass let me add Eternal Embers without paying separately. [The game's listing<sup>[10]</sup>](https://play.google.com/store/apps/details?id=com.dotemu.titanquest&hl=en) shows Play Pass access and lists Eternal Embers among its expansions.
 
 - [ ] [![](images/mobile_2026_titanquest.jpg)](images/mobile_2026_titanquest.jpg)
 - [ ] Figure 1. Titan Quest on Android, one of the premium games I have played through Play Pass.
 
-I had a similar experience with [Cytus II<sup>[10]</sup>](https://play.google.com/store/apps/details?id=com.rayark.cytus2&hl=en). I remember buying the base game on sale for around ₱100, then getting the additional song packs available to me through Play Pass. That has remained a useful benefit even though I already owned the game.
+I had a similar experience with [Cytus II<sup>[11]</sup>](https://play.google.com/store/apps/details?id=com.rayark.cytus2&hl=en). I remember buying the base game on sale for around ₱100, then getting the additional song packs available to me through Play Pass. That has remained a useful benefit even though I already owned the game.
 
 Of course, those extras were covered by my subscription. I hadn't bought permanent copies of them.
 
@@ -54,11 +54,11 @@ Monster Hunter Stories kept working on my older phone after it stopped showing u
 - [ ] [![](images/mobile_2026_monsterhunter-stories.jpg)](images/mobile_2026_monsterhunter-stories.jpg)
 - [ ] Figure 2. Monster Hunter Stories running on my older phone.
 
-I was glad the old installation still ran, though [Google only allows temporary continued access to paid games leaving Play Pass<sup>[11]</sup>](https://support.google.com/googleplay/answer/9473027?hl=en) before requiring a purchase. Free games can keep working while ads and paid items return.
+I was glad the old installation still ran, though [Google only allows temporary continued access to paid games leaving Play Pass<sup>[12]</sup>](https://support.google.com/googleplay/answer/9473027?hl=en) before requiring a purchase. Free games can keep working while ads and paid items return.
 
 When I first started using Play Pass, most of the games I tried with in-app purchases handled the benefits pretty simply. The usual shop was still there, but the prices became zero. I could claim the packs straight away, with the subscription covering what would otherwise have been another purchase.
 
-[Hungry Shark Evolution<sup>[12]</sup>](https://play.google.com/store/apps/details?id=com.fgol.HungrySharkEvolution&hl=en) still feels like that earlier Play Pass experience to me. In the version I play, the bundles and gem packs still show ₱0.00, ready to claim without another payment. That generosity hasn't really changed: the shop still lets me pick up resources directly, instead of working through a separate reward system to get them.
+[Hungry Shark Evolution<sup>[13]</sup>](https://play.google.com/store/apps/details?id=com.fgol.HungrySharkEvolution&hl=en) still feels like that earlier Play Pass experience to me. In the version I play, the bundles and gem packs still show ₱0.00, ready to claim without another payment. That generosity hasn't really changed: the shop still lets me pick up resources directly, instead of working through a separate reward system to get them.
 
 - [ ] [![](images/mobile_2026_playpass_effect_in_hungryshark.jpg)](images/mobile_2026_playpass_effect_in_hungryshark.jpg)
 - [ ] Figure 3. Hungry Shark Evolution bundles showing ₱0.00 with Play Pass active.
@@ -68,7 +68,7 @@ When I first started using Play Pass, most of the games I tried with in-app purc
 
 It almost feels like playing as a whale, someone who spends unusually large amounts on in-game purchases, though that doesn't necessarily mean they're wealthy. I get to try those benefits without paying for each pack. It's amusingly generous, but getting resources so easily takes some satisfaction out of progressing.
 
-Some games I've played have since added more pacing. [Zombie Sniper War 3 - Fire FPS<sup>[13]</sup>](https://play.google.com/store/apps/details?id=com.JESoftware.LastHopeSniper3&hl=en) used to have zero-priced purchases in the version I remember. Now I get daily gold rewards and a vault to work toward, claiming its reward without another purchase once it's ready.
+Some games I've played have since added more pacing. [Zombie Sniper War 3 - Fire FPS<sup>[14]</sup>](https://play.google.com/store/apps/details?id=com.JESoftware.LastHopeSniper3&hl=en) used to have zero-priced purchases in the version I remember. Now I get daily gold rewards and a vault to work toward, claiming its reward without another purchase once it's ready.
 
 - [ ] [![](images/mobile_2026_playpass_effect_in_zombiesniperwar.jpg)](images/mobile_2026_playpass_effect_in_zombiesniperwar.jpg)
 - [ ] Figure 5. Daily Play Pass rewards in Zombie Sniper War 3 increase over the displayed five-day sequence.
@@ -83,15 +83,15 @@ I actually prefer that balance. The benefits are generous without making me feel
 
 It depends on the game and version. Hungry Shark Evolution and Zombie Sniper War 3 also advertise offline play, despite their currencies and purchase systems.
 
-Finding [Subnautica<sup>[14]</sup>](https://play.google.com/store/apps/details?id=com.unknownworlds.subnautica) included is impressive! There's also [Broken Sword: Reforged<sup>[15]</sup>](https://play.google.com/store/apps/details?id=uk.co.revolution.bs1r.google&hl=en), a remaster of the original Shadow of the Templars adventure. Both currently list Play Pass access and give me more to explore alongside the smaller games.
+Finding [Subnautica<sup>[15]</sup>](https://play.google.com/store/apps/details?id=com.unknownworlds.subnautica) included is impressive! There's also [Broken Sword: Reforged<sup>[16]</sup>](https://play.google.com/store/apps/details?id=uk.co.revolution.bs1r.google&hl=en), a remaster of the original Shadow of the Templars adventure. Both currently list Play Pass access and give me more to explore alongside the smaller games.
 
 I have limited patience for games that make progress frustrating and then sell the solution. I remember that feeling in Dungeon Hunter 4 and 5: reaching a difficult point, repeating earlier levels, and chasing the upgrades or bonuses I needed to continue. After a while, I'd rather uninstall and play something else.
 
 Play Pass has often reduced that pressure. I still want a challenge, but I don't want every obstacle to feel like another attempt to get me to spend.
 
-I'll also try games through the subscription that I wouldn't have bought individually. With [Google paying recurring revenue based on how subscribers value the content<sup>[8]</sup>](https://play.google.com/console/about/programs/googleplaypass/), developers get another way to earn and reach players who might otherwise pass their game by.
+I'll also try games through the subscription that I wouldn't have bought individually. With [Google paying recurring revenue based on how subscribers value the content<sup>[9]</sup>](https://play.google.com/console/about/programs/googleplaypass/), developers get another way to earn and reach players who might otherwise pass their game by.
 
-Play Pass offers are separate discounts for selected games outside the catalog. They [vary by account and region and refresh weekly<sup>[16]</sup>](https://support.google.com/googleplay/answer/14931929?hl=en), with the Philippines among the supported regions.
+Play Pass offers are separate discounts for selected games outside the catalog. They [vary by account and region and refresh weekly<sup>[17]</sup>](https://support.google.com/googleplay/answer/14931929?hl=en), with the Philippines among the supported regions.
 
 Some early Stumble Guys discounts I received were around ₱150, enough to cover an eligible skin costing less than that. A zero checkout felt like being given spending money, although it was a purchase discount, with no cash or leftover balance to keep.
 
@@ -99,43 +99,43 @@ My offers now include deals like 50% off with a maximum saving. I enjoyed the ol
 
 ### Netflix
 
-Netflix getting into games didn't surprise me. I'd tried its interactive shows, including [Carmen Sandiego: To Steal or Not to Steal<sup>[17]</sup>](https://www.netflix.com/title/80994695), the 2020 special that let you choose what happened next. The animated series had already [brought Carmen back in 2019<sup>[18]</sup>](https://about.netflix.com/en/news/the-carmen-effect-how-one-character-helped-shape-a-generation/), and I was curious where Netflix would take this.
+Netflix getting into games didn't surprise me. I'd tried its interactive shows, including [Carmen Sandiego: To Steal or Not to Steal<sup>[18]</sup>](https://www.netflix.com/title/80994695), the 2020 special that let you choose what happened next. The animated series had already [brought Carmen back in 2019<sup>[19]</sup>](https://about.netflix.com/en/news/the-carmen-effect-how-one-character-helped-shape-a-generation/), and I was curious where Netflix would take this.
 
-Its mobile games arrived in [November 2021 with five titles<sup>[19]</sup>](https://about.netflix.com/en/news/let-the-games-begin-a-new-way-to-experience-entertainment-on-mobile). I tried the service while the library was small and have watched it change. Unfortunately, games can leave as well as arrive.
+Its mobile games arrived in [November 2021 with five titles<sup>[20]</sup>](https://about.netflix.com/en/news/let-the-games-begin-a-new-way-to-experience-entertainment-on-mobile). I tried the service while the library was small and have watched it change. Unfortunately, games can leave as well as arrive.
 
-The GTA trilogy particularly excited me. [GTA III, Vice City, and San Andreas: The Definitive Edition arrived in December 2023<sup>[20]</sup>](https://about.netflix.com/en/news/grand-theft-auto-the-trilogy-the-definitive-edition-arrives-on-netflix), about two years into the service. GTA III and Vice City left in late 2024, while San Andreas stayed roughly another year before its [announced December 2025 departure<sup>[21]</sup>](https://www.whats-on-netflix.com/leaving-soon/grand-theft-auto-san-andreas-set-to-leave-netflix-games/).
+The GTA trilogy particularly excited me. [GTA III, Vice City, and San Andreas: The Definitive Edition arrived in December 2023<sup>[21]</sup>](https://about.netflix.com/en/news/grand-theft-auto-the-trilogy-the-definitive-edition-arrives-on-netflix), about two years into the service. GTA III and Vice City left in late 2024, while San Andreas stayed roughly another year before its [announced December 2025 departure<sup>[22]</sup>](https://www.whats-on-netflix.com/leaving-soon/grand-theft-auto-san-andreas-set-to-leave-netflix-games/).
 
 I still enjoy loading a completed GTA save and roaming around with everything I've unlocked. Starting over can be fun when I choose to. Being forced to repeat hours just to reach an unfinished part of the story is another matter.
 
-Netflix supports cloud saves for some games; others save locally. Its [save-data help page<sup>[22]</sup>](https://help.netflix.com/en/node/123943) says supported cloud saves work across devices with the same account and profile, but progress doesn't transfer between Netflix editions and separately published versions.
+Netflix supports cloud saves for some games; others save locally. Its [save-data help page<sup>[23]</sup>](https://help.netflix.com/en/node/123943) says supported cloud saves work across devices with the same account and profile, but progress doesn't transfer between Netflix editions and separately published versions.
 
 So buying the standalone Google Play edition doesn't automatically let me continue. Without a supported transfer, I'm back at the beginning. The save needn't be deleted; losing access to the version that reads it is enough.
 
-[Red Dead Redemption is currently in Netflix's mobile catalog<sup>[23]</sup>](https://help.netflix.com/en/node/121442). If it left while I was halfway through, I'd want to buy another edition and continue. There's no announced departure I'm referring to here, but that possibility makes me hesitate before investing hours.
+[Red Dead Redemption is currently in Netflix's mobile catalog<sup>[24]</sup>](https://help.netflix.com/en/node/121442). If it left while I was halfway through, I'd want to buy another edition and continue. There's no announced departure I'm referring to here, but that possibility makes me hesitate before investing hours.
 
-Then there's Poinpy: aim a jump, bounce upward, collect fruit, and try for one more run. It [launched on Netflix in June 2022<sup>[24]</sup>](https://about.netflix.com/en/news/geeked-week-2022-games-day-recap), later left, and [returned outside the service in July 2026<sup>[25]</sup>](https://www.gamesradar.com/games/platformer/one-of-the-best-modern-platformers-is-back-from-the-dead-after-being-delisted-on-its-only-platform-escaping-netflix-games-jail-for-good/). [Devolver Digital's current Google Play release<sup>[26]</sup>](https://play.google.com/store/apps/details?id=com.devolverdigital.poinpy&hl=en) is free, without ads or required purchases, and has optional developer tips.
+Then there's Poinpy: aim a jump, bounce upward, collect fruit, and try for one more run. It [launched on Netflix in June 2022<sup>[25]</sup>](https://about.netflix.com/en/news/geeked-week-2022-games-day-recap), later left, and [returned outside the service in July 2026<sup>[26]</sup>](https://www.gamesradar.com/games/platformer/one-of-the-best-modern-platformers-is-back-from-the-dead-after-being-delisted-on-its-only-platform-escaping-netflix-games-jail-for-good/). [Devolver Digital's current Google Play release<sup>[27]</sup>](https://play.google.com/store/apps/details?id=com.devolverdigital.poinpy&hl=en) is free, without ads or required purchases, and has optional developer tips.
 
 I'm glad it's back, but the progress I built up in the Netflix version didn't come with me. Downloading it again was easy enough; returning to where I'd left off wasn't. Having to begin again takes some of the excitement out of getting the game back.
 
-Netflix also has [Blood Line: A Rebel Moon Game<sup>[27]</sup>](https://help.netflix.com/en/node/346412778097764), [The Queen's Gambit Chess<sup>[28]</sup>](https://help.netflix.com/en/node/125966), and [Squid Game: Unleashed<sup>[29]</sup>](https://help.netflix.com/en/node/233362126647908). I hope their connections to its shows and films encourage continued support, though that doesn't promise a permanent place in the catalog. Even with The Queen's Gambit Chess's cloud saves, I'd want to keep my progress usable if access changed.
+Netflix also has [Blood Line: A Rebel Moon Game<sup>[28]</sup>](https://help.netflix.com/en/node/346412778097764), [The Queen's Gambit Chess<sup>[29]</sup>](https://help.netflix.com/en/node/125966), and [Squid Game: Unleashed<sup>[30]</sup>](https://help.netflix.com/en/node/233362126647908). I hope their connections to its shows and films encourage continued support, though that doesn't promise a permanent place in the catalog. Even with The Queen's Gambit Chess's cloud saves, I'd want to keep my progress usable if access changed.
 
-Removals aren't a deal breaker for me. These games are [included with my Netflix membership<sup>[23]</sup>](https://help.netflix.com/en/node/121442), without a separate game subscription fee, and add real value. But the time I spend playing matters even when the game comes with a service I already use.
+Removals aren't a deal breaker for me. These games are [included with my Netflix membership<sup>[24]</sup>](https://help.netflix.com/en/node/121442), without a separate game subscription fee, and add real value. But the time I spend playing matters even when the game comes with a service I already use.
 
 ## Premium Games and Preservation
 
-[Tomb Raider, the 2013 reboot, arrived on Android and iOS on February 12, 2026<sup>[30]</sup>](https://www.feralinteractive.com/en/news/?game=tombraidermobile). That's exactly the kind of substantial single-player adventure I wanted more of on mobile.
+[Tomb Raider, the 2013 reboot, arrived on Android and iOS on February 12, 2026<sup>[31]</sup>](https://www.feralinteractive.com/en/news/?game=tombraidermobile). That's exactly the kind of substantial single-player adventure I wanted more of on mobile.
 
-But I want to keep playing older purchases, too. I enjoyed Square Enix's The Last Remnant on Android, yet I can't access or play it on my newer phone and tablet. Its [Google Play listing is still present<sup>[31]</sup>](https://play.google.com/store/apps/details?id=com.square_enix.android_googleplay.thelastremnantremastered). I may need an older compatible device to return to my copy.
+But I want to keep playing older purchases, too. I enjoyed Square Enix's The Last Remnant on Android, yet I can't access or play it on my newer phone and tablet. Its [Google Play listing is still present<sup>[32]</sup>](https://play.google.com/store/apps/details?id=com.square_enix.android_googleplay.thelastremnantremastered). I may need an older compatible device to return to my copy.
 
-Android and iOS keep changing. Google's [policy for older apps<sup>[32]</sup>](https://support.google.com/googleplay/android-developer/answer/11926878?hl=en) can hide them from new users on newer Android versions; previous users can reinstall on versions the app supports. Apple [stopped running 32-bit apps with iOS 11<sup>[33]</sup>](https://developer.apple.com/library/archive/qa/qa1971/_index.html), leaving those games needing updates.
+Android and iOS keep changing. Google's [policy for older apps<sup>[33]</sup>](https://support.google.com/googleplay/android-developer/answer/11926878?hl=en) can hide them from new users on newer Android versions; previous users can reinstall on versions the app supports. Apple [stopped running 32-bit apps with iOS 11<sup>[34]</sup>](https://developer.apple.com/library/archive/qa/qa1971/_index.html), leaving those games needing updates.
 
 I can see how that might favor games with continuing revenue from purchases and live service content. My worry with a one-time port is that it gets a few updates, stops selling much, and gets left behind. It doesn't happen to every premium game, but a finished single-player game shouldn't become unusable because it has no new content to sell me.
 
 I remember getting into games from Gameloft and Com2uS, especially Inotia, and playing Red Alert on my iPad. Those weren't just things to open for a minute while waiting around. They were games I wanted to spend real time with, and returning to some of them feels harder than it should.
 
-At least [Inotia 4 is still available and receiving updates<sup>[34]</sup>](https://play.google.com/store/apps/details?id=com.com2us.inotia4.normal.freefull.google.global.android.common&hl=en), and [ZENONIA 1 got a PC release on August 31, 2026<sup>[35]</sup>](https://store.steampowered.com/app/4538960/ZENONIA_1/). I'm glad older mobile games are getting another chance instead of staying tied to the phone someone owned years ago.
+At least [Inotia 4 is still available and receiving updates<sup>[35]</sup>](https://play.google.com/store/apps/details?id=com.com2us.inotia4.normal.freefull.google.global.android.common&hl=en), and [ZENONIA 1 got a PC release on August 31, 2026<sup>[36]</sup>](https://store.steampowered.com/app/4538960/ZENONIA_1/). I'm glad older mobile games are getting another chance instead of staying tied to the phone someone owned years ago.
 
-I thought there wasn't an emulator for old iOS games, but [touchHLE exists<sup>[36]</sup>](https://touchhle.org/). Its community database has [working reports for particular Red Alert versions, including an iPad build<sup>[37]</sup>](https://appdb.touchhle.org/apps/404). I haven't tried those versions, and support is limited to particular games and versions. It's encouraging work, but recovering an old mobile library still isn't a simple, broadly supported official experience.
+I thought there wasn't an emulator for old iOS games, but [touchHLE exists<sup>[37]</sup>](https://touchhle.org/). Its community database has [working reports for particular Red Alert versions, including an iPad build<sup>[38]</sup>](https://appdb.touchhle.org/apps/404). I haven't tried those versions, and support is limited to particular games and versions. It's encouraging work, but recovering an old mobile library still isn't a simple, broadly supported official experience.
 
 I've also had a game I previously owned tell me to get it from Google Play again, even though it was still installed. When I checked the store, I couldn't obtain it there.
 
@@ -144,13 +144,13 @@ I've also had a game I previously owned tell me to get it from Google Play again
 
 The prompt says the app isn't recognized and could harm my device. I don't know what triggered it. I just know it sent me back to a store that didn't give me a way to play.
 
-My Steam library has been better for this. I can still download and play my original GTA III, Vice City, and San Andreas purchases despite their removal from sale. I mean the originals, not the Definitive Editions. [Steam keeps existing owners' download, installation, and launch access when a game is retired<sup>[38]</sup>](https://partner.steamgames.com/doc/store/retire_app).
+My Steam library has been better for this. I can still download and play my original GTA III, Vice City, and San Andreas purchases despite their removal from sale. I mean the originals, not the Definitive Editions. [Steam keeps existing owners' download, installation, and launch access when a game is retired<sup>[39]</sup>](https://partner.steamgames.com/doc/store/retire_app).
 
-I still have my older Delta Force purchases on GOG after their removal, too. [GOG keeps delisted games in owners' libraries and provides offline installers<sup>[39]</sup>](https://www.gog.com/blog/gog-is-getting-acquired-by-its-original-co-founder-what-it-means-for-you/). That gives me more confidence in buying something I'll revisit years later. It won't restore shut-down servers or guarantee future compatibility, but access to the files is a useful start.
+I still have my older Delta Force purchases on GOG after their removal, too. [GOG keeps delisted games in owners' libraries and provides offline installers<sup>[40]</sup>](https://www.gog.com/blog/gog-is-getting-acquired-by-its-original-co-founder-what-it-means-for-you/). That gives me more confidence in buying something I'll revisit years later. It won't restore shut-down servers or guarantee future compatibility, but access to the files is a useful start.
 
-To be fair, mobile stores have protections too. [Google Play lets existing users keep using and updating apps their developers unpublish<sup>[40]</sup>](https://support.google.com/googleplay/android-developer/answer/9859350?hl=en), and [Apple's App Store Improvements removals leave installed copies functional<sup>[41]</sup>](https://developer.apple.com/support/app-store-improvements/). Those apply to particular removal cases. Purchase history, store availability, installation, and compatibility are still separate hurdles between owning a game and actually playing it.
+To be fair, mobile stores have protections too. [Google Play lets existing users keep using and updating apps their developers unpublish<sup>[41]</sup>](https://support.google.com/googleplay/android-developer/answer/9859350?hl=en), and [Apple's App Store Improvements removals leave installed copies functional<sup>[42]</sup>](https://developer.apple.com/support/app-store-improvements/). Those apply to particular removal cases. Purchase history, store availability, installation, and compatibility are still separate hurdles between owning a game and actually playing it.
 
-I play games to enjoy my time. Replaying a story is fun when I choose to; repeating hours just to get back to where I stopped feels like a chore. That makes me appreciate [Trials of Mana's cloud saving<sup>[42]</sup>](https://play.google.com/store/apps/details?id=com.square_enix.android_googleplay.tom). I also remember [Battle Chasers: Nightwar<sup>[43]</sup>](https://play.google.com/store/apps/details?id=com.hg.bcnw&hl=en), which is in Play Pass, letting me manage local saves and upload or sync progress. After the frustration with Netflix, I want that control. A backup won't make incompatible editions share saves, though. I need both my progress and a working copy of the game.
+I play games to enjoy my time. Replaying a story is fun when I choose to; repeating hours just to get back to where I stopped feels like a chore. That makes me appreciate [Trials of Mana's cloud saving<sup>[43]</sup>](https://play.google.com/store/apps/details?id=com.square_enix.android_googleplay.tom). I also remember [Battle Chasers: Nightwar<sup>[44]</sup>](https://play.google.com/store/apps/details?id=com.hg.bcnw&hl=en), which is in Play Pass, letting me manage local saves and upload or sync progress. After the frustration with Netflix, I want that control. A backup won't make incompatible editions share saves, though. I need both my progress and a working copy of the game.
 
 I've even run the PC version of Tomb Raider on my ROG Phone through emulation or compatibility software. It was impressive, but the phone got uncomfortably hot. That isn't how I want to spend a long gaming session.
 
