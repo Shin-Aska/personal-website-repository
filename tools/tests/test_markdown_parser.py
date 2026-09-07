@@ -1,5 +1,7 @@
 import unittest
 
+import pytest
+
 from parsers.markdown.constants import MarkdownElementType
 from parsers.markdown.parser import MarkdownParser
 
@@ -69,6 +71,30 @@ class MarkdownParagraphParsingTests(unittest.TestCase):
         self.assertEqual(elements[0].element_type, MarkdownElementType.codeblock)
         self.assertIn("first line\n", elements[0].content)
         self.assertIn("second line\n", elements[0].content)
+
+
+@pytest.mark.parametrize("separator", ["\n", "   \n\n"])
+@pytest.mark.parametrize("ending", ["", "\n", "\nFollowing paragraph.\n"])
+def test_blank_lines_separate_adjacent_checkbox_figures(
+    separator: str, ending: str,
+) -> None:
+    first = ["[![](images/first.jpg)](images/first.jpg)", "Figure 5. First image."]
+    second = ["[![](images/second.jpg)](images/second.jpg)", "Figure 6. Second image."]
+    source = (
+        "\n".join(f"- [ ] {line}" for line in first)
+        + "\n" + separator
+        + "\n".join(f"- [ ] {line}" for line in second)
+        + ending
+    )
+
+    elements = MarkdownParser.parse(source.splitlines(keepends=True))
+
+    assert [
+        element.content for element in elements
+        if element.element_type == MarkdownElementType.checkbox
+    ] == [first, second]
+    if "Following paragraph." in ending:
+        assert elements[-1].content == "Following paragraph."
 
 
 if __name__ == "__main__":

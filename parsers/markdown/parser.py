@@ -214,7 +214,11 @@ class MarkdownParser:
                 # If this is the case we will just append the content to the element as long as the element type is the same
                 # If the element type is different, we will append the element to the elements list and create a new element
                 else:
-                    if element.element_type == element_type and element.element_type == MarkdownElementType.ul and last_line_was_empty:
+                    if (
+                        element.element_type == element_type
+                        and element.element_type in (MarkdownElementType.ul, MarkdownElementType.checkbox)
+                        and last_line_was_empty
+                    ):
                         elements.append(element)
                         element = None
                         if element_type not in multi_content_markdown_element_type:
