@@ -589,7 +589,10 @@
       card.querySelectorAll('.project-card-tag, .project-card-links > a').forEach(element => {
         element.title = element.textContent;
       });
-      card.addEventListener('click', () => openCardModal(project));
+      card.addEventListener('click', (event) => {
+        if (event.target.closest('a, details')) return;
+        openCardModal(project);
+      });
       grid.appendChild(card);
     });
 
@@ -620,7 +623,7 @@
       return '<li>' + tag + '</li>';
     }).join('');
     return visibleHtml
-      + '<details class="project-card-tag-overflow" onclick="event.stopPropagation()">'
+      + '<details class="project-card-tag-overflow">'
       + '<summary aria-label="Show ' + extraTags.length + ' more tags">+' + extraTags.length + '</summary>'
       + '<ul>' + overflowHtml + '</ul></details>';
   }
@@ -629,16 +632,16 @@
     const visibleLinks = links.slice(0, 2);
     const extraLinks = links.slice(2);
     const visibleHtml = visibleLinks.map(function (link) {
-      return '<a href="' + link.url + '" target="_blank" onclick="event.stopPropagation()">' + link.label + '</a>';
+      return '<a href="' + link.url + '" target="_blank">' + link.label + '</a>';
     }).join('');
 
     if (!extraLinks.length) return visibleHtml;
 
     const overflowHtml = extraLinks.map(function (link) {
-      return '<li><a href="' + link.url + '" target="_blank" onclick="event.stopPropagation()">' + link.label + '</a></li>';
+      return '<li><a href="' + link.url + '" target="_blank">' + link.label + '</a></li>';
     }).join('');
     return visibleHtml
-      + '<details class="project-card-link-overflow" onclick="event.stopPropagation()">'
+      + '<details class="project-card-link-overflow">'
       + '<summary aria-label="Show ' + extraLinks.length + ' more links">+' + extraLinks.length + ' more</summary>'
       + '<ul>' + overflowHtml + '</ul></details>';
   }

@@ -961,12 +961,15 @@
         // Handle card click behavior
         if (this.config.cardClickBehavior === 'link' && item.url) {
           card.addEventListener('click', (e) => {
-            if (e.target.tagName !== 'A') {
+            if (!e.target.closest('a, details')) {
               window.location.href = item.url;
             }
           });
         } else if (this.config.cardClickBehavior === 'modal') {
-          card.addEventListener('click', () => this.openCardModal(item));
+          card.addEventListener('click', (event) => {
+            if (event.target.closest('a, details')) return;
+            this.openCardModal(item);
+          });
         }
 
         grid.appendChild(card);
@@ -1000,7 +1003,7 @@
         return '<li>' + tag + '</li>';
       }).join('');
       return visibleHtml
-        + '<details class="showcase-card-tag-overflow" onclick="event.stopPropagation()">'
+        + '<details class="showcase-card-tag-overflow">'
         + '<summary aria-label="Show ' + extraTags.length + ' more tags">+' + extraTags.length + '</summary>'
         + '<ul>' + overflowHtml + '</ul></details>';
     }
@@ -1010,16 +1013,16 @@
       const extraLinks = links.slice(2);
       const visibleHtml = visibleLinks.map(function (link) {
         const target = link.target === '' ? '' : ' target="_blank"';
-        return '<a href="' + link.url + '"' + target + ' onclick="event.stopPropagation()">' + (link.shortLabel || link.label) + '</a>';
+        return '<a href="' + link.url + '"' + target + '>' + (link.shortLabel || link.label) + '</a>';
       }).join('');
 
       if (!extraLinks.length) return visibleHtml;
 
       const overflowHtml = extraLinks.map(function (link) {
-        return '<li><a href="' + link.url + '" target="_blank" onclick="event.stopPropagation()">' + link.label + '</a></li>';
+        return '<li><a href="' + link.url + '" target="_blank">' + link.label + '</a></li>';
       }).join('');
       return visibleHtml
-        + '<details class="showcase-card-link-overflow" onclick="event.stopPropagation()">'
+        + '<details class="showcase-card-link-overflow">'
         + '<summary aria-label="Show ' + extraLinks.length + ' more links">+' + extraLinks.length + ' more</summary>'
         + '<ul>' + overflowHtml + '</ul></details>';
     }
