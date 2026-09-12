@@ -190,7 +190,8 @@
           links: url ? [{ label: 'Read Article', url }] : [],
           details: description,
           searchText,
-          category: ''
+          category: '',
+          tags: ['Article']
         });
       });
 
@@ -296,7 +297,8 @@
             searchText,
             category: 'games',
             platform,
-            genre
+            genre,
+            tags: [genre, platform, 'Game'].filter(Boolean)
           });
         });
       }
@@ -363,7 +365,8 @@
             searchText,
             category: 'utilities',
             platform: type,
-            genre: ''
+            genre: '',
+            tags: [type, 'Utility'].filter(Boolean)
           });
         });
       }
@@ -887,6 +890,12 @@
             `<a href="${l.url}" target="_blank" onclick="event.stopPropagation()">${l.label}</a>`
           ).join(' ');
         }
+        const cardLinks = this.config.type === 'blog' && item.url
+          ? [{ label: 'Read More', url: item.url, target: '' }]
+          : item.links;
+        const tags = item.tags || [item.type].filter(Boolean);
+        linksHtml = this.buildCardLinks(cardLinks);
+        const tagsHtml = this.buildCardTags(tags);
 
         // Build meta info (date for blog, status for projects)
         let metaHtml = '';
@@ -903,8 +912,8 @@
           <div class="showcase-card-content">
             <div class="showcase-card-header">
               <h3 class="showcase-card-title">${item.name}</h3>
-              <span class="showcase-card-type">${item.type}</span>
             </div>
+            <div class="showcase-card-tags">${tagsHtml}</div>
             <p class="showcase-card-desc">${item.description}</p>
             <div class="showcase-card-footer">
               ${metaHtml}
@@ -940,6 +949,43 @@
         });
         document.body.appendChild(modalOverlay);
       }
+    }
+
+    buildCardTags(tags) {
+      const visibleTags = tags.slice(0, 2);
+      const extraTags = tags.slice(2);
+      const visibleHtml = visibleTags.map(function (tag) {
+        return '<span class="showcase-card-tag">' + tag + '</span>';
+      }).join('');
+
+      if (!extraTags.length) return visibleHtml;
+
+      const overflowHtml = extraTags.map(function (tag) {
+        return '<li>' + tag + '</li>';
+      }).join('');
+      return visibleHtml
+        + '<details class="showcase-card-tag-overflow" onclick="event.stopPropagation()">'
+        + '<summary aria-label="Show ' + extraTags.length + ' more tags">+' + extraTags.length + '</summary>'
+        + '<ul>' + overflowHtml + '</ul></details>';
+    }
+
+    buildCardLinks(links) {
+      const visibleLinks = links.slice(0, 2);
+      const extraLinks = links.slice(2);
+      const visibleHtml = visibleLinks.map(function (link) {
+        const target = link.target === '' ? '' : ' target="_blank"';
+        return '<a href="' + link.url + '"' + target + ' onclick="event.stopPropagation()">' + link.label + '</a>';
+      }).join('');
+
+      if (!extraLinks.length) return visibleHtml;
+
+      const overflowHtml = extraLinks.map(function (link) {
+        return '<li><a href="' + link.url + '" target="_blank" onclick="event.stopPropagation()">' + link.label + '</a></li>';
+      }).join('');
+      return visibleHtml
+        + '<details class="showcase-card-link-overflow" onclick="event.stopPropagation()">'
+        + '<summary aria-label="Show ' + extraLinks.length + ' more links">+' + extraLinks.length + ' more</summary>'
+        + '<ul>' + overflowHtml + '</ul></details>';
     }
 
     openCardModal(item) {

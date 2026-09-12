@@ -143,7 +143,8 @@
         legacy: legacyIds.has(id),
         links,
         details,
-        searchText
+        searchText,
+        tags: (typesById.get(id) || '').split(/\s*\/\s*/).filter(Boolean)
       });
     });
 
@@ -563,6 +564,8 @@
       const linksHtml = project.links.map(l => 
         `<a href="${l.url}" target="_blank" onclick="event.stopPropagation()">${l.label}</a>`
       ).join(' ');
+      const compactLinksHtml = buildCardLinks(project.links);
+      const tagsHtml = buildCardTags(project.tags || [project.type].filter(Boolean));
 
       const card = document.createElement('div');
       card.className = 'project-card';
@@ -571,12 +574,12 @@
         <div class="project-card-content">
           <div class="project-card-header">
             <h3 class="project-card-title">${project.name}</h3>
-            <span class="project-card-type">${project.type}</span>
           </div>
+          <div class="project-card-tags">${tagsHtml}</div>
           <p class="project-card-desc">${project.description}</p>
           <div class="project-card-footer">
             <span class="project-card-status ${statusClass}">${project.status}</span>
-            <div class="project-card-links">${linksHtml}</div>
+            <div class="project-card-links">${compactLinksHtml}</div>
           </div>
         </div>
       `;
@@ -597,6 +600,42 @@
       });
       document.body.appendChild(modalOverlay);
     }
+  }
+
+  function buildCardTags(tags) {
+    const visibleTags = tags.slice(0, 2);
+    const extraTags = tags.slice(2);
+    const visibleHtml = visibleTags.map(function (tag) {
+      return '<span class="project-card-tag">' + tag + '</span>';
+    }).join('');
+
+    if (!extraTags.length) return visibleHtml;
+
+    const overflowHtml = extraTags.map(function (tag) {
+      return '<li>' + tag + '</li>';
+    }).join('');
+    return visibleHtml
+      + '<details class="project-card-tag-overflow" onclick="event.stopPropagation()">'
+      + '<summary aria-label="Show ' + extraTags.length + ' more tags">+' + extraTags.length + '</summary>'
+      + '<ul>' + overflowHtml + '</ul></details>';
+  }
+
+  function buildCardLinks(links) {
+    const visibleLinks = links.slice(0, 2);
+    const extraLinks = links.slice(2);
+    const visibleHtml = visibleLinks.map(function (link) {
+      return '<a href="' + link.url + '" target="_blank" onclick="event.stopPropagation()">' + link.label + '</a>';
+    }).join('');
+
+    if (!extraLinks.length) return visibleHtml;
+
+    const overflowHtml = extraLinks.map(function (link) {
+      return '<li><a href="' + link.url + '" target="_blank" onclick="event.stopPropagation()">' + link.label + '</a></li>';
+    }).join('');
+    return visibleHtml
+      + '<details class="project-card-link-overflow" onclick="event.stopPropagation()">'
+      + '<summary aria-label="Show ' + extraLinks.length + ' more links">+' + extraLinks.length + ' more</summary>'
+      + '<ul>' + overflowHtml + '</ul></details>';
   }
 
   /**

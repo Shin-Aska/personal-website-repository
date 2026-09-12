@@ -263,6 +263,7 @@
 }
 
 .mode-card .project-card {
+  --project-card-height: 480px;
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(12px);
   border-radius: 20px;
@@ -272,6 +273,9 @@
   transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
   cursor: pointer;
   position: relative;
+  height: var(--project-card-height);
+  display: flex;
+  flex-direction: column;
 }
 
 .mode-card .project-card:hover {
@@ -283,12 +287,18 @@
 .mode-card .project-card-image {
   width: 100%;
   height: 180px;
+  aspect-ratio: 16 / 9;
   object-fit: cover;
+  flex: 0 0 auto;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .mode-card .project-card-content {
   padding: 20px;
+  display: flex;
+  flex: 1;
+  min-height: 0;
+  flex-direction: column;
 }
 
 .mode-card .project-card-header {
@@ -296,6 +306,7 @@
   justify-content: space-between;
   align-items: flex-start;
   margin-bottom: 12px;
+  min-height: 3.15rem;
 }
 
 .mode-card .project-card-title {
@@ -303,9 +314,28 @@
   font-weight: 600;
   margin: 0;
   line-height: 1.3;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
 }
 
-.mode-card .project-card-type {
+.mode-card .project-card-tags,
+.mode-card .project-card-links {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.mode-card .project-card-tags {
+  margin-bottom: 12px;
+  min-height: 1.75rem;
+}
+
+.mode-card .project-card-tag,
+.mode-card .project-card-tag-overflow summary {
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -313,6 +343,52 @@
   background: rgba(0, 0, 0, 0.1);
   border-radius: 20px;
   white-space: nowrap;
+}
+
+.mode-card .project-card-tag {
+  flex: 1 1 0;
+  min-inline-size: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mode-card .project-card-tag-overflow,
+.mode-card .project-card-link-overflow {
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.mode-card .project-card-tag-overflow summary,
+.mode-card .project-card-link-overflow summary {
+  cursor: pointer;
+  list-style: none;
+}
+
+.mode-card .project-card-tag-overflow summary::-webkit-details-marker,
+.mode-card .project-card-link-overflow summary::-webkit-details-marker {
+  display: none;
+}
+
+.mode-card .project-card-tag-overflow ul,
+.mode-card .project-card-link-overflow ul {
+  position: absolute;
+  z-index: 2;
+  right: 0;
+  bottom: calc(100% + 8px);
+  width: max-content;
+  max-width: min(18rem, calc(100vw - 3rem));
+  margin: 0;
+  padding: 8px;
+  list-style: none;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 10px;
+  background: var(--bg-color, #0f2038);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3);
+}
+
+.mode-card .project-card-tag-overflow li,
+.mode-card .project-card-link-overflow li {
+  padding: 4px 6px;
 }
 
 .mode-card .project-card-desc {
@@ -333,6 +409,7 @@
   align-items: center;
   padding-top: 16px;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: auto;
 }
 
 .mode-card .project-card-status {
@@ -373,16 +450,17 @@
   box-shadow: 0 0 8px #f87171;
 }
 
-.mode-card .project-card-links {
-  display: flex;
-  gap: 12px;
-}
-
 .mode-card .project-card-links a {
   color: var(--link-color);
   font-size: 0.85rem;
   text-decoration: none;
   transition: color 0.2s ease;
+}
+
+.mode-card .project-card-link-overflow summary {
+  color: var(--link-color);
+  font-size: 0.85rem;
+  white-space: nowrap;
 }
 
 .mode-card .project-card-links a:hover {
@@ -854,6 +932,28 @@
     grid-template-columns: 1fr;
     gap: 16px;
   }
+
+  .mode-card .project-card {
+    --project-card-height: 500px;
+  }
+
+  .mode-card .project-card-tags {
+    gap: 4px;
+  }
+
+  .mode-card .project-card-tag,
+  .mode-card .project-card-tag-overflow summary {
+    max-inline-size: 7.5rem;
+    overflow: hidden;
+    padding: 3px 6px;
+    font-size: 0.65rem;
+    letter-spacing: 0.05em;
+    text-overflow: ellipsis;
+  }
+
+  .mode-card .project-card-tag-overflow summary {
+    max-inline-size: none;
+  }
   
   .mode-original .project-detail {
     padding: 20px;
@@ -901,7 +1001,8 @@
     backdrop-filter: none;
   }
 
-  .mode-card .project-card-type,
+  .mode-card .project-card-tag,
+  .mode-card .project-card-tag-overflow summary,
   .mode-original .projects-list-table th {
     background: rgba(0, 0, 0, 0.08);
   }
