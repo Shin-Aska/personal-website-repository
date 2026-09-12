@@ -561,9 +561,6 @@
     renderProjects.forEach(project => {
       const statusClass = project.status === 'Active' || project.status === 'Completed' 
         ? 'status-active' : 'status-hiatus';
-      const linksHtml = project.links.map(l => 
-        `<a href="${l.url}" target="_blank" onclick="event.stopPropagation()">${l.label}</a>`
-      ).join(' ');
       const compactLinksHtml = buildCardLinks(project.links);
       const tagsHtml = buildCardTags(project.tags || [project.type].filter(Boolean));
 
@@ -584,6 +581,14 @@
         </div>
       `;
 
+      const titleAction = document.createElement('button');
+      titleAction.type = 'button';
+      titleAction.textContent = project.name;
+      titleAction.title = project.name;
+      card.querySelector('.project-card-title').replaceChildren(titleAction);
+      card.querySelectorAll('.project-card-tag, .project-card-links > a').forEach(element => {
+        element.title = element.textContent;
+      });
       card.addEventListener('click', () => openCardModal(project));
       grid.appendChild(card);
     });

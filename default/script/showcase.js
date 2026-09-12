@@ -207,6 +207,29 @@
     // utility-list: Name, Type, Link (with <ul class="utility-links">)
     parseGoodiesItems(source) {
       const items = [];
+      const descriptions = {
+        'flare': 'A fantasy action RPG with an isometric world, monsters to fight, and equipment to discover. Follow an exile on a journey back to Empyrean.',
+        'warzone 2100': 'Command a force in a post-nuclear world. Research technology and combine weapons, bodies, and propulsion to design your own units.',
+        '0 a.d': 'Build an ancient civilization, gather resources, and lead armies into battle in this historical real-time strategy game.',
+        '0 a.d.': 'Build an ancient civilization, gather resources, and lead armies into battle in this historical real-time strategy game.',
+        'openredalert': 'Classic strategy rebuilt with OpenRA. Play Red Alert, Tiberian Dawn, or Dune 2000 with modern controls and multiplayer support.',
+        'supertuxkart': 'An arcade kart racer with colorful tracks, power-ups, and open-source mascots. Race against the computer or other players.',
+        'battle for wesnoth': 'A turn-based fantasy strategy game. Recruit an army, use terrain to your advantage, and guide your units through campaigns and battles.',
+        'supertux': 'A side-scrolling platform adventure starring Tux. Run, jump, and collect power-ups as you explore icy landscapes and other worlds.',
+        'openttd': 'Build a transport company with railways, roads, ships, and aircraft. Connect towns and industries as your network grows.',
+        'endless sky': 'A space trading and combat game where you start with a small ship. Take jobs, explore star systems, and build a fleet.',
+        'shattered pixel dungeon': 'A turn-based dungeon crawler with randomized floors, equipment, and enemies. Choose a hero and learn to survive each new descent.',
+        'freedroidrpg': 'An isometric science-fiction RPG about a conflict between humans and robots, combining combat, exploration, and dialogue.',
+        'mari0': 'A puzzle platformer that combines Super Mario Bros. with a portal gun. Rethink familiar levels by linking spaces with portals.',
+        'sonic robo blast 2': 'A fan-made 3D Sonic platformer. Explore large levels, collect rings, and race through obstacles with classic Sonic-style movement.',
+        "l'abbaye des morts": 'A retro exploration platformer set in an abandoned abbey. Uncover its secrets in a compact adventure inspired by the ZX Spectrum era.',
+        'handwritten letter recognition': 'A neural-network project for recognizing handwritten letters, with a draft research paper and a Python implementation.',
+        'image similarity finder': 'An image-processing project for finding similar images. Includes the implementation paper and a C#/.NET download for Windows.',
+        'video summarizer': 'An image and video processing project for summarizing video, with an implementation paper and a C#/.NET Windows download.',
+        'customized programming language': 'A compiler-theory project exploring a custom programming language. The Windows download contains the binary implementation.',
+        'introduction to image processing to a statistician': 'An introductory presentation on image processing for a statistics audience, available in OpenDocument and PowerPoint formats.',
+        'basics of latex: the de facto standard for publishing mathematical researches': 'Presentation slides introducing LaTeX for mathematical research and publishing, available as a PDF.'
+      };
 
       // Image base path
       const imageBasePath = this.config.imageBasePath || 'images/goodies/';
@@ -259,6 +282,7 @@
 
           // Derive image from name
           const nameLower = name.toLowerCase();
+          const description = normalizeWhitespace(row.dataset.description || descriptions[nameLower] || '');
           let image = '';
           if (imageMap[nameLower]) {
             image = imageBasePath + imageMap[nameLower];
@@ -267,7 +291,7 @@
           }
 
           // Build details HTML
-          let detailsHtml = '';
+          let detailsHtml = description ? `<p>${description}</p>` : '';
           if (platform) detailsHtml += `<p><strong>Platform:</strong> ${platform}</p>`;
           if (genre) detailsHtml += `<p><strong>Genre:</strong> ${genre}</p>`;
           if (links.length) {
@@ -278,14 +302,14 @@
             detailsHtml += '</ul>';
           }
 
-          const searchText = normalizeWhitespace([name, platform, genre, 'games'].join(' ')).toLowerCase();
+          const searchText = normalizeWhitespace([name, platform, genre, description, 'games'].join(' ')).toLowerCase();
 
           items.push({
             id,
             name,
             type: genre || 'Game',
             image,
-            description: '',
+            description,
             date: '',
             dateValue: '',
             url: '',
@@ -298,7 +322,7 @@
             category: 'games',
             platform,
             genre,
-            tags: [genre, platform, 'Game'].filter(Boolean)
+            tags: [genre, platform].filter(Boolean)
           });
         });
       }
@@ -320,6 +344,11 @@
           const linksCell = cells[2];
           const links = Array.from(linksCell.querySelectorAll('a')).map(a => ({
             label: normalizeWhitespace(a.textContent),
+            shortLabel: normalizeWhitespace(a.textContent)
+              .replace(/^Download Implementation.*$/i, 'Implementation')
+              .replace(/^Draft Research Paper$/i, 'Research paper')
+              .replace(/^Implementation Paper$/i, 'Paper')
+              .replace(/^Presentation/i, 'Slides'),
             url: a.getAttribute('href') || ''
           }));
 
@@ -328,6 +357,7 @@
 
           // Derive image from name
           const nameLower = name.toLowerCase();
+          const description = normalizeWhitespace(row.dataset.description || descriptions[nameLower] || '');
           let image = '';
           if (imageMap[nameLower]) {
             image = imageBasePath + imageMap[nameLower];
@@ -336,7 +366,7 @@
           }
 
           // Build details HTML
-          let detailsHtml = '';
+          let detailsHtml = description ? `<p>${description}</p>` : '';
           if (type) detailsHtml += `<p><strong>Type:</strong> ${type}</p>`;
           if (links.length) {
             detailsHtml += '<p><strong>Downloads:</strong></p><ul>';
@@ -346,14 +376,14 @@
             detailsHtml += '</ul>';
           }
 
-          const searchText = normalizeWhitespace([name, type, 'utilities'].join(' ')).toLowerCase();
+          const searchText = normalizeWhitespace([name, type, description, 'utilities'].join(' ')).toLowerCase();
 
           items.push({
             id,
             name,
             type: type || 'Utility',
             image,
-            description: '',
+            description,
             date: '',
             dateValue: '',
             url: '',
@@ -366,7 +396,7 @@
             category: 'utilities',
             platform: type,
             genre: '',
-            tags: [type, 'Utility'].filter(Boolean)
+            tags: [type].filter(Boolean)
           });
         });
       }
@@ -881,20 +911,11 @@
         const statusClass = item.status === 'Active' || item.status === 'Completed'
           ? 'status-active' : item.status ? 'status-hiatus' : '';
 
-        // Build links HTML
-        let linksHtml = '';
-        if (this.config.type === 'blog' && item.url) {
-          linksHtml = `<a href="${item.url}" onclick="event.stopPropagation()">Read More</a>`;
-        } else {
-          linksHtml = item.links.map(l =>
-            `<a href="${l.url}" target="_blank" onclick="event.stopPropagation()">${l.label}</a>`
-          ).join(' ');
-        }
         const cardLinks = this.config.type === 'blog' && item.url
           ? [{ label: 'Read More', url: item.url, target: '' }]
           : item.links;
         const tags = item.tags || [item.type].filter(Boolean);
-        linksHtml = this.buildCardLinks(cardLinks);
+        const linksHtml = this.buildCardLinks(cardLinks);
         const tagsHtml = this.buildCardTags(tags);
 
         // Build meta info (date for blog, status for projects)
@@ -921,6 +942,21 @@
             </div>
           </div>
         `;
+
+        const title = card.querySelector('.showcase-card-title');
+        const titleAction = document.createElement(item.url && this.config.cardClickBehavior === 'link' ? 'a' : 'button');
+        titleAction.textContent = item.name;
+        titleAction.title = item.name;
+        if (titleAction.tagName === 'A') titleAction.href = item.url;
+        else titleAction.type = 'button';
+        title.replaceChildren(titleAction);
+        card.querySelectorAll('.showcase-card-tag').forEach(element => {
+          element.title = element.textContent;
+        });
+        card.querySelectorAll('.showcase-card-links > a').forEach((element, index) => {
+          element.title = cardLinks[index].label;
+          element.setAttribute('aria-label', cardLinks[index].label);
+        });
 
         // Handle card click behavior
         if (this.config.cardClickBehavior === 'link' && item.url) {
@@ -974,7 +1010,7 @@
       const extraLinks = links.slice(2);
       const visibleHtml = visibleLinks.map(function (link) {
         const target = link.target === '' ? '' : ' target="_blank"';
-        return '<a href="' + link.url + '"' + target + ' onclick="event.stopPropagation()">' + link.label + '</a>';
+        return '<a href="' + link.url + '"' + target + ' onclick="event.stopPropagation()">' + (link.shortLabel || link.label) + '</a>';
       }).join('');
 
       if (!extraLinks.length) return visibleHtml;

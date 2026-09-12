@@ -1,5 +1,16 @@
 # Personal Guide Design System
 
+## Default site catalog cards
+
+Projects, Goodies, and Blog retain the default site's sky/sea palette and independent content. Catalog cards use the existing Philosopher typeface for readable titles and copy, with natural-width sentence-case metadata. Game cards explain what the game is; utility cards explain the available resource. Descriptions also appear in details and search.
+
+- Geometry: 500px fixed Goodies/Blog cards and 520px Projects cards (including their status row); 16:9 media; 16px content padding; 24px grid gap (16px on smaller screens); 12px surface radius. Columns start at 280px and cards cap at 400px so media cannot consume the text area. Descriptions must not shrink into partially clipped lines.
+- Typography: 1.3rem/1.25 titles (two lines), 0.95rem/1.5 descriptions (three lines), 0.75rem/1.4 tags, 0.8rem/1.35 actions. Tags do not stretch to fill empty space.
+- Surface: existing theme surface and text colors, one subtle border; hover lifts 3px with a 180ms ease-out transition. No card scaling. Keyboard focus uses the existing link accent.
+- Actions: an aligned bottom footer, up to two direct links with ellipsis and full-label tooltips, and a compact `+N more` disclosure. Metadata overflow remains a `+N` disclosure. Menus retain full labels and wrap within their card; disclosures must remain visible and keyboard reachable.
+- Accessibility: 44px action targets, visible focus, reduced-motion support, readable contrast in both existing theme modes. Long titles retain their full text via tooltips and the detail view.
+- QA surface: real Games, Utilities, Projects, and Blog cards at 375px, 768px, and 1280px, including long titles, download overflow, and descriptions.
+
 ## 1. Atmosphere & Identity
 
 The guides feel like carefully preserved field manuals: warm paper, archival ink, restrained heraldic color, and practical controls layered over dense reference material. Ultima V's signature is a resistance dossier in amber, wine, and forest tones, with Lora headings and textured parchment making progress tools feel native to Britannia rather than like a generic dashboard.
