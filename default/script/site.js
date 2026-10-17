@@ -41,6 +41,11 @@ function webglAvailable() {
 }
 
 $( document ).ready(function() {
+	// This site's older jQuery does not recognize async functions as callbacks.
+	initializeSite().catch(function(error) {
+		console.error("Unable to initialize the site:", error);
+	});
+	async function initializeSite() {
 	var storedBackgroundTheme = getStoredBackgroundTheme();
 	if (storedBackgroundTheme === "sky" && window.legacySky) {
 		window.sky = window.legacySky;
@@ -218,10 +223,24 @@ $( document ).ready(function() {
 	}
 
 	try {
-		sky.init();
+		await Promise.resolve(window.sky.init());
 	}
 	catch (ex) {
-		window.location = window.location.href.replace(window.location.hostname, "classic.richardorilla.website");
+		if (window.sky === window.sea && window.legacySky) {
+			// FFT needs float render targets; older GPUs can still use the sky.
+			window.sea.destroy();
+			window.sky = window.legacySky;
+			try {
+				await Promise.resolve(window.sky.init());
+				storeBackgroundTheme("sky");
+			} catch (fallbackError) {
+				goClassic();
+				return;
+			}
+		} else {
+			goClassic();
+			return;
+		}
 	}
 
 	initPerformanceMonitor();
@@ -303,5 +322,6 @@ $( document ).ready(function() {
 		}(codeBlocks[i], btn));
 
 		pre.appendChild(btn);
+	}
 	}
 });

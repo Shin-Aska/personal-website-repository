@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sea renderer comparison</title>
+  <link rel="stylesheet" href="css/sea-compare.css">
+  <script defer src="script/sea.js"></script>
+  <script defer src="script/sea-gerstner.js"></script>
+  <script defer src="script/sea-compare.js"></script>
+</head>
+<body data-theme="dark">
+  <div id="ocean" aria-hidden="true"></div>
+  <div id="readability" aria-hidden="true" hidden></div>
+  <main class="panel">
+    <p class="eyebrow">Ocean comparison</p>
+    <h1>One sea, two approaches.</h1>
+    <p class="intro">Compare the existing ocean with a simpler wind-driven FFT surface. Blur starts off.</p>
+    <form id="controls">
+      <label>Renderer
+        <select id="renderer" name="renderer">
+          <option value="fft">FFT · Current sea theme</option>
+          <option value="original">Original · Gerstner</option>
+        </select>
+      </label>
+      <div class="settings">
+        <label>Lighting
+          <select id="theme" name="theme">
+            <option value="dark">Sunset</option>
+            <option value="light">Daylight</option>
+          </select>
+        </label>
+        <label>FFT grid
+          <select id="resolution" name="resolution">
+            <option value="128">128 × 128</option>
+            <option value="256">256 × 256</option>
+          </select>
+        </label>
+      </div>
+      <div class="toggles">
+        <label><input id="blur" name="blur" type="checkbox"> Readability blur</label>
+        <label><input id="animate" name="animate" type="checkbox" checked> Animate</label>
+      </div>
+      <details id="fft-settings" open>
+        <summary>FFT parameters</summary>
+        <fieldset id="fft-parameters" aria-label="FFT parameters"></fieldset>
+        <p class="note">Height controls wave size. Wind controls the wave pattern; patch size sets its repeating area. Daylight keeps the original theme’s lower waves.</p>
+        <button id="reset-fft" type="button">Reset FFT parameters</button>
+      </details>
+    </form>
+    <p id="status" role="status">Preparing the ocean…</p>
+    <p id="error" role="alert" hidden></p>
+    <details open>
+      <summary>Performance comparison</summary>
+      <table>
+        <thead><tr><th scope="col">Renderer</th><th scope="col">FPS</th><th scope="col">GPU / frame</th></tr></thead>
+        <tbody id="measurements"></tbody>
+      </table>
+      <p class="note">Only one renderer runs at a time. Results use a rolling average after warm-up. GPU time includes the FFT and drawing, but excludes the CSS blur. FPS is capped by the display.</p>
+    </details>
+    <p id="description" class="note"></p>
+    <a class="back" href="index.html">← Back to the website</a>
+  </main>
+</body>
+</html>
