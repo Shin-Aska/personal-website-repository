@@ -202,12 +202,14 @@ h1, h2, h3, h4 {
     max-height: 50vh;
 }
 
-.gemini-response {
-    white-space: pre-wrap;
-    background-color: #FBF1D3;
-    border-left: 4px solid #D97706;
-    border-radius: 0.25rem;
-    margin-top: 1rem;
+/* Colours for the shared assistant (css/assistant.css). */
+.u6-seer-modal {
+    --assistant-accent: #b45309;
+    --assistant-surface: #fffdf3;
+    --assistant-text: #382d24;
+}
+
+.guide-assistant-message {
     font-family: 'Marcellus', serif;
 }
 
@@ -233,15 +235,15 @@ h1, h2, h3, h4 {
 }
 
 .seer-tone-option,
-.seer-spoiler-option {
+#seer-spoiler-select {
     transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
     color: #92400e;
 }
 
 .seer-tone-option:hover,
 .seer-tone-option:focus,
-.seer-spoiler-option:hover,
-.seer-spoiler-option:focus {
+#seer-spoiler-select:hover,
+#seer-spoiler-select:focus {
     border-color: #d97706;
     color: #78350f;
 }
@@ -379,28 +381,6 @@ body.u6-seer-modal-open {
     line-height: 1.5;
 }
 
-.u6-seer-modal__tabs {
-    display: flex;
-    gap: 0.25rem;
-    padding: 0.75rem 1.25rem 0;
-    border-bottom: 1px solid rgba(133, 77, 14, 0.16);
-}
-
-.u6-seer-modal__tabs button {
-    padding: 0.6rem 0.85rem;
-    border: 1px solid transparent;
-    border-bottom: 2px solid transparent;
-    background: transparent;
-    color: rgba(56, 45, 36, 0.65);
-    font-weight: 700;
-    cursor: pointer;
-}
-
-.u6-seer-modal__tabs button[aria-selected="true"] {
-    border-bottom-color: #b45309;
-    color: #78350f;
-}
-
 .u6-seer-modal__view {
     max-height: calc(100vh - 14.5rem);
     overflow-y: auto;
@@ -408,12 +388,11 @@ body.u6-seer-modal-open {
 }
 
 .u6-seer-hints {
-    padding: 1rem;
-    border: 1px solid rgba(133, 77, 14, 0.18);
-    border-left: 4px solid #d97706;
-    border-radius: 0.7rem;
-    background: rgba(255, 253, 243, 0.86);
     color: #382d24;
+}
+
+.u6-seer-hints p {
+    margin: 0;
 }
 
 .u6-seer-hints ul {
@@ -431,7 +410,7 @@ body.u6-seer-modal-open {
 
 .u6-seer-modal__controls {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: minmax(0, 1fr);
     gap: 0.7rem;
     margin-bottom: 0.85rem;
 }
@@ -470,8 +449,9 @@ body.u6-seer-modal-open {
     display: flex;
     flex-direction: column;
     gap: 0.55rem;
-    min-height: 9rem;
-    max-height: 15rem;
+    min-height: 6rem;
+    max-height: 20rem;
+    margin-top: 0.75rem;
     overflow-y: auto;
     padding: 0.75rem;
     border: 1px solid rgba(133, 77, 14, 0.18);
@@ -2409,3 +2389,8 @@ body.u6-seer-modal-open {
         animation: none;
     }
 }
+
+#seer-spoiler-select { padding: .45rem .65rem; border: 1px solid #b88a45; border-radius: .35rem; }
+#seer-general-hints p { white-space: pre-wrap; }
+
+.u6-seer-modal__panel > .u6-seer-modal__controls { padding: .75rem 1.4rem 0; }

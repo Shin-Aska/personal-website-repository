@@ -13,6 +13,8 @@ from urllib.error import HTTPError, URLError
 from urllib.parse import urlsplit, urlunsplit
 from urllib.request import Request, urlopen
 
+from tools.build_offline_manifest import offline_uploads
+
 
 class FTPPublishingError(RuntimeError):
     """Raised when an FTP upload or public preview verification fails."""
@@ -301,6 +303,9 @@ class FTPPublisher:
             for index, (local_path, remote_path) in enumerate(upload_files, start=1):
                 if progress:
                     progress(f"FTP upload {index}/{len(upload_files)}")
+                self._upload_one(ftp, local_path, remote_path, progress=progress)
+            # Announce new asset versions only after the actual files are verified.
+            for local_path, remote_path in offline_uploads(upload_files):
                 self._upload_one(ftp, local_path, remote_path, progress=progress)
             self._close(ftp)
         except ftplib.all_errors as exc:

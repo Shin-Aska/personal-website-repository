@@ -1,0 +1,1315 @@
+{
+  "schemaVersion": 1,
+  "description": "Albion simulation round: realistic player messages at Gentle, Balanced and Direct, each fix with a positive and a negative (lower level or an unsupported restriction).",
+  "questions": [
+    {
+      "id": "sim-alb-001",
+      "gameId": "albion",
+      "text": "Where is Danu's Light?",
+      "options": {
+        "spoiler": "balanced"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Beloveno weapon shop"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-alb-002",
+      "gameId": "albion",
+      "text": "Where is Danu's Light?",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "clarify",
+        "absent": [
+          "Beloveno",
+          "weapon shop"
+        ]
+      }
+    },
+    {
+      "id": "sim-alb-003",
+      "gameId": "albion",
+      "text": "What does the Shadowsword do?",
+      "options": {
+        "spoiler": "balanced"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Cursed"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-alb-004",
+      "gameId": "albion",
+      "text": "What does the Shadowsword do?",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "clarify",
+        "absent": [
+          "Cursed",
+          "Damage"
+        ]
+      }
+    },
+    {
+      "id": "sim-alb-005",
+      "gameId": "albion",
+      "text": "where to get the power amulet",
+      "options": {
+        "spoiler": "balanced"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Arjano"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-alb-006",
+      "gameId": "albion",
+      "text": "How much damage does the bolt rifle do",
+      "options": {
+        "spoiler": "balanced"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Damage: 18"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-alb-007",
+      "gameId": "albion",
+      "text": "shadow sword location",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Treasure Cave"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-alb-008",
+      "gameId": "albion",
+      "text": "Where is the Shadowsword on Mars?",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": "decline",
+        "absent": [
+          "Treasure Cave"
+        ]
+      }
+    },
+    {
+      "id": "sim-alb-009",
+      "gameId": "albion",
+      "text": "yo how do i get the pistol lol",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "service area"
+        ],
+        "absent": [
+          "COM",
+          "1042",
+          "Stimdrinks",
+          "console"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-alb-010",
+      "gameId": "albion",
+      "text": "yo how do i get the pistol lol",
+      "options": {
+        "spoiler": "balanced"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "damaged console"
+        ],
+        "absent": [
+          "Stimdrinks"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-alb-011",
+      "gameId": "albion",
+      "text": "yo how do i get the pistol lol",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Stimdrinks"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-alb-012",
+      "gameId": "albion",
+      "text": "How do I get the gun for free?",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": "decline",
+        "absent": [
+          "Stimdrinks"
+        ]
+      }
+    },
+    {
+      "id": "sim-alb-013",
+      "gameId": "albion",
+      "text": "Where is the monster eye?",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "mixed-goods shop"
+        ],
+        "absent": [
+          "Rifrako",
+          "Aballon",
+          "450"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-alb-014",
+      "gameId": "albion",
+      "text": "Where is the monster eye?",
+      "options": {
+        "spoiler": "balanced"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Rifrako",
+          "Aballon"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-alb-015",
+      "gameId": "albion",
+      "text": "Where is the monster eye on Mars?",
+      "options": {
+        "spoiler": "balanced"
+      },
+      "expected": {
+        "decision": "decline",
+        "absent": [
+          "Rifrako"
+        ]
+      }
+    },
+    {
+      "id": "sim-alb-016",
+      "gameId": "albion",
+      "text": "How do I get the monster eye?",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "mixed-goods shop"
+        ],
+        "absent": [
+          "Rifrako"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-alb-017",
+      "gameId": "albion",
+      "text": "where can i get a dreamshield",
+      "options": {
+        "spoiler": "balanced"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Aballon"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-alb-018",
+      "gameId": "albion",
+      "text": "where can i get a dreamshield",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "village merchant"
+        ],
+        "absent": [
+          "Rifrako",
+          "Aballon"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-alb-019",
+      "gameId": "albion",
+      "text": "What does the dreamshield do",
+      "options": {
+        "spoiler": "balanced"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "12 Prot"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-alb-020",
+      "gameId": "albion",
+      "text": "What does the dreamshield do",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "decline",
+        "absent": [
+          "Prot",
+          "Sleep Spores"
+        ]
+      }
+    },
+    {
+      "id": "sim-alb-021",
+      "gameId": "albion",
+      "text": "Can Khunag leave the party?",
+      "options": {
+        "spoiler": "balanced"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Can leave the party: yes"
+        ],
+        "absent": [
+          "Renegade"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-alb-022",
+      "gameId": "albion",
+      "text": "Can Khunag leave the party?",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Can leave the party: yes",
+          "Renegade mage"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-alb-023",
+      "gameId": "albion",
+      "text": "Can Khunag leave the party?",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "decline",
+        "absent": [
+          "yes"
+        ]
+      }
+    },
+    {
+      "id": "sim-alb-024",
+      "gameId": "albion",
+      "text": "When does Rainer leave?",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Leaves mid-game"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-alb-025",
+      "gameId": "albion",
+      "text": "Can Harriet leave the party?",
+      "options": {
+        "spoiler": "balanced"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Can leave the party: no"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-alb-026",
+      "gameId": "albion",
+      "text": "Can Rainer leave the party on Mars?",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": "decline",
+        "absent": [
+          "Leaves mid-game"
+        ]
+      }
+    },
+    {
+      "id": "sim-alb-027",
+      "gameId": "albion",
+      "text": "How do I beat Krondir?",
+      "options": {
+        "spoiler": "balanced"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Meat and Trii"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-alb-028",
+      "gameId": "albion",
+      "text": "How do I beat Krondir?",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "clarify",
+        "absent": [
+          "Meat",
+          "Trii"
+        ]
+      }
+    },
+    {
+      "id": "sim-alb-029",
+      "gameId": "albion",
+      "text": "What is Animal 3?",
+      "options": {
+        "spoiler": "balanced"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Demon"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-alb-030",
+      "gameId": "albion",
+      "text": "how do i beat animal 3",
+      "options": {
+        "spoiler": "balanced"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "demon-banishing"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-alb-031",
+      "gameId": "albion",
+      "text": "how do i beat animal 3",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "clarify",
+        "absent": [
+          "demon-banishing",
+          "357"
+        ]
+      }
+    },
+    {
+      "id": "sim-alb-032",
+      "gameId": "albion",
+      "text": "Tell me about the service robots",
+      "options": {
+        "spoiler": "balanced"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Machine"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-alb-033",
+      "gameId": "albion",
+      "text": "How do I kill the AI Housing",
+      "options": {
+        "spoiler": "balanced"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Thorn Snare"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-alb-034",
+      "gameId": "albion",
+      "text": "How do I kill the AI Housing",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "clarify",
+        "absent": [
+          "Thorn Snare",
+          "4500"
+        ]
+      }
+    },
+    {
+      "id": "sim-alb-035",
+      "gameId": "albion",
+      "text": "kamulos stats",
+      "options": {
+        "spoiler": "balanced"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "HP: 650"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-alb-036",
+      "gameId": "albion",
+      "text": "What is Kamulos weak to",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "clarify",
+        "absent": [
+          "Thorn Snare",
+          "650"
+        ]
+      }
+    },
+    {
+      "id": "sim-alb-037",
+      "gameId": "albion",
+      "text": "Where can I learn Goddess's Wrath",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Drannagh",
+          "Harriet"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-alb-038",
+      "gameId": "albion",
+      "text": "Where do I learn Demon Exodus",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Roves"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-alb-039",
+      "gameId": "albion",
+      "text": "What is Recuperation?",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Rest without sleeping or food"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-alb-040",
+      "gameId": "albion",
+      "text": "Where can I learn Goddess's Wrath on Mars",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "decline",
+        "absent": [
+          "Drannagh"
+        ]
+      }
+    },
+    {
+      "id": "sim-alb-041",
+      "gameId": "albion",
+      "text": "What is in Jirinaar?",
+      "options": {
+        "spoiler": "balanced"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Rabir (Weapon Smith)"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-alb-042",
+      "gameId": "albion",
+      "text": "What is in Jirinaar?",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "clarify",
+        "absent": [
+          "Weapon Smith",
+          "Battle Trainer"
+        ]
+      }
+    },
+    {
+      "id": "sim-alb-043",
+      "gameId": "albion",
+      "text": "Where is Jirinaar?",
+      "options": {
+        "spoiler": "balanced"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Nakiridaani"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-alb-044",
+      "gameId": "albion",
+      "text": "What stats does the Former's Building give?",
+      "options": {
+        "spoiler": "balanced"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Strength +10"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-alb-045",
+      "gameId": "albion",
+      "text": "Where is Arjano on Mars?",
+      "options": {
+        "spoiler": "balanced"
+      },
+      "expected": {
+        "decision": "decline",
+        "absent": [
+          "Library"
+        ]
+      }
+    },
+    {
+      "id": "sim-alb-046",
+      "gameId": "albion",
+      "text": "Where is Rabir?",
+      "options": {
+        "spoiler": "balanced"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Weapon Smith",
+          "110%"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-alb-047",
+      "gameId": "albion",
+      "text": "Where is Rabir?",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "clarify",
+        "absent": [
+          "Weapon Smith"
+        ]
+      }
+    },
+    {
+      "id": "sim-alb-048",
+      "gameId": "albion",
+      "text": "Who is Rejira?",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Blue Healing Potions"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-alb-049",
+      "gameId": "albion",
+      "text": "Where is Edjiir?",
+      "options": {
+        "spoiler": "balanced"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "information broker"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-alb-050",
+      "gameId": "albion",
+      "text": "Where is King Tharnos?",
+      "options": {
+        "spoiler": "balanced"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Klouta"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-alb-051",
+      "gameId": "albion",
+      "text": "How do I get past security?",
+      "options": {
+        "spoiler": "balanced"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "service level"
+        ],
+        "absent": [
+          "wall cabinet"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-alb-052",
+      "gameId": "albion",
+      "text": "What is the secret word?",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Umajo Danu"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-alb-053",
+      "gameId": "albion",
+      "text": "What is the secret word?",
+      "options": {
+        "spoiler": "balanced"
+      },
+      "expected": {
+        "decision": "clarify",
+        "absent": [
+          "Umajo Danu",
+          "mine shaft"
+        ]
+      }
+    },
+    {
+      "id": "sim-alb-054",
+      "gameId": "albion",
+      "text": "How do I get Porenoil?",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Merdger"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-alb-055",
+      "gameId": "albion",
+      "text": "How do I get Porenoil?",
+      "options": {
+        "spoiler": "balanced"
+      },
+      "expected": {
+        "decision": "clarify",
+        "absent": [
+          "Merdger",
+          "dehydration"
+        ]
+      }
+    },
+    {
+      "id": "sim-alb-056",
+      "gameId": "albion",
+      "text": "Where do I get the Metalmagic Scroll?",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Kossotto"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-alb-057",
+      "gameId": "albion",
+      "text": "What are the ship codes?",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "1712"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-alb-058",
+      "gameId": "albion",
+      "text": "What are the ship codes?",
+      "options": {
+        "spoiler": "balanced"
+      },
+      "expected": {
+        "decision": "decline",
+        "absent": [
+          "1712",
+          "4312"
+        ]
+      }
+    },
+    {
+      "id": "sim-alb-059",
+      "gameId": "albion",
+      "text": "What's the code for the COM room?",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "1042"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-alb-060",
+      "gameId": "albion",
+      "text": "What's the code for the COM room?",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "crew conversation"
+        ],
+        "absent": [
+          "1042"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-alb-061",
+      "gameId": "albion",
+      "text": "What's the code for the COM room on Mars?",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": "decline",
+        "absent": [
+          "1042"
+        ]
+      }
+    },
+    {
+      "id": "sim-alb-062",
+      "gameId": "albion",
+      "text": "What do I need to enter Kenget Kamulos?",
+      "options": {
+        "spoiler": "balanced"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Khunag"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-alb-063",
+      "gameId": "albion",
+      "text": "What do I need to enter Kenget Kamulos?",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "clarify",
+        "absent": [
+          "Khunag"
+        ]
+      }
+    },
+    {
+      "id": "sim-alb-064",
+      "gameId": "albion",
+      "text": "How do I get Herras's key?",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "reward"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-alb-065",
+      "gameId": "albion",
+      "text": "Tell me about the third chapter",
+      "options": {
+        "spoiler": "balanced"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Gratogel"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-alb-066",
+      "gameId": "albion",
+      "text": "Tell me about the third chapter",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "clarify",
+        "absent": [
+          "Gratogel"
+        ]
+      }
+    },
+    {
+      "id": "sim-alb-067",
+      "gameId": "albion",
+      "text": "Where is Rifrako?",
+      "options": {
+        "spoiler": "balanced"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Aballon"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-alb-068",
+      "gameId": "albion",
+      "text": "Where is Rifrako?",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "clarify",
+        "absent": [
+          "Aballon"
+        ]
+      }
+    },
+    {
+      "id": "sim-alb-070",
+      "gameId": "albion",
+      "text": "How do I sell the Pistol?",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": "decline",
+        "absent": [
+          "Stimdrinks"
+        ]
+      }
+    },
+    {
+      "id": "sim-alb-071",
+      "gameId": "albion",
+      "text": "Can I sell the pistol?",
+      "options": {
+        "spoiler": "balanced"
+      },
+      "expected": {
+        "decision": "decline",
+        "absent": [
+          "Canisters"
+        ]
+      }
+    },
+    {
+      "id": "sim-alb-072",
+      "gameId": "albion",
+      "text": "How much does training cost?",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "2.5G per point"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-alb-073",
+      "gameId": "albion",
+      "text": "What is the cheapest training?",
+      "options": {
+        "spoiler": "balanced"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "cheapest in game"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-alb-074",
+      "gameId": "albion",
+      "text": "How much does training cost on Mars?",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": "decline",
+        "absent": [
+          "2.5G"
+        ]
+      }
+    },
+    {
+      "id": "sim-alb-069",
+      "gameId": "albion",
+      "text": "What stats does the Former's Building give on Mars?",
+      "options": {
+        "spoiler": "balanced"
+      },
+      "expected": {
+        "decision": "decline",
+        "absent": [
+          "Strength +10"
+        ]
+      }
+    }
+  ],
+  "dialogues": [
+    {
+      "id": "sim-alb-dlg-items",
+      "gameId": "albion",
+      "turns": [
+        {
+          "text": "Where is the pistol?",
+          "options": {
+            "spoiler": "balanced"
+          },
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "console"
+            ]
+          }
+        },
+        {
+          "text": "What about the dreamshield?",
+          "options": {
+            "spoiler": "balanced"
+          },
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Aballon"
+            ]
+          }
+        },
+        {
+          "text": "And the monster eye?",
+          "options": {
+            "spoiler": "balanced"
+          },
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Rifrako"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "sim-alb-dlg-spell",
+      "gameId": "albion",
+      "turns": [
+        {
+          "text": "What does Thorn Snare do?",
+          "options": {
+            "spoiler": "gentle"
+          },
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Immobilizes"
+            ]
+          }
+        },
+        {
+          "text": "Where do I learn it?",
+          "options": {
+            "spoiler": "gentle"
+          },
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Fasiir"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "sim-alb-dlg-leave",
+      "gameId": "albion",
+      "turns": [
+        {
+          "text": "Who is Rainer?",
+          "options": {
+            "spoiler": "balanced"
+          },
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Xenobiologist"
+            ]
+          }
+        },
+        {
+          "text": "Can he leave the party?",
+          "options": {
+            "spoiler": "balanced"
+          },
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Can leave the party"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "sim-alb-dlg-eye",
+      "gameId": "albion",
+      "turns": [
+        {
+          "text": "Where is the monster eye?",
+          "options": {
+            "spoiler": "direct"
+          },
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Rifrako"
+            ]
+          }
+        },
+        {
+          "text": "How much does it cost?",
+          "options": {
+            "spoiler": "direct"
+          },
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Buy the Monster Eye"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

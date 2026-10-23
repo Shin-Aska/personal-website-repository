@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="css/assistant-consent.css">
+    <script type="module" src="js/assistant/bootstrap.js"></script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
@@ -18,10 +21,10 @@
         - Reagent Price Finder: Report Info -> Reagent price table. Goal -> Find the cheapest vendor for each reagent. Viz -> Interactive Bar Chart (Chart.js). Interaction -> Dropdown selects a reagent, chart updates with vendor prices. Justification -> Instantly highlights the most economical choice, a primary user goal. Library -> Chart.js.
         - Equipment & Quests Lookup: Report Info -> Large data tables. Goal -> Organize and enable quick filtering/searching. Viz -> Interactive HTML tables/lists. Interaction -> Dropdown filters by location/type. Justification -> Standard, effective UI for large datasets. Library -> Vanilla JS.
         - Main Quest Walkthrough: Report Info -> Linear text walkthrough. Goal -> Provide guidance without spoilers. Viz -> Collapsible accordion UI. Interaction -> Click to expand steps. Justification -> Prevents accidental spoilers, crucial for narrative games. Library -> Vanilla JS.
-        - AI-Powered Features: Report Info -> Character & Quest data. Goal -> Provide dynamic, creative content. Viz -> Modal window with text. Interaction -> Button click triggers Gemini API call. Justification -> Adds engaging, context-aware content (backstories, hints, strategy, lore) that goes beyond static data. Library -> Vanilla JS Fetch API.
     -->
     <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
-    <link rel="stylesheet" href="css/Ultima7.css">
+    <link rel="stylesheet" href="css/Ultima7.css?v=20261020-local">
+    <script src="offline.js?v=3" defer></script>
 </head>
 <body class="antialiased">
     <div class="w-full bg-gray-100 text-gray-700">
@@ -343,21 +346,21 @@
 
     </main>
 
-    <!-- AI Response Modal -->
+    <!-- Local Sage and authored companion journal modal -->
     <div id="ai-modal" class="fixed inset-0 bg-black bg-opacity-75 flex justify-center items-center z-50 hidden">
         <div class="bg-[#2d3748] p-4 md:p-5 rounded-xl shadow-2xl max-w-lg w-11/12 relative border-2 border-color">
-            <button id="close-ai-modal" class="absolute top-2 right-3 text-2xl font-bold">&times;</button>
-            <h3 id="ai-modal-title" class="text-2xl font-bold mb-2 accent-text">✨ AI Assistant</h3>
+            <button id="close-ai-modal" aria-label="Close guide dialog" class="absolute top-2 right-3 text-2xl font-bold">&times;</button>
+            <h3 id="ai-modal-title" class="text-2xl font-bold mb-2 accent-text">Guide assistant</h3>
             <div id="ai-modal-content">
                 <div id="ai-loader" class="flex justify-center items-center py-6">
                     <div class="animate-spin rounded-full h-16 w-16 border-b-4 border-[#c53030]"></div>
                 </div>
-                <p id="ai-response-text" class="text-md whitespace-pre-wrap"></p>
+                <div id="ai-response-text" class="text-md whitespace-pre-wrap"></div>
             </div>
         </div>
     </div>
 <script src="js/leaflet.js"></script>
 <script src="js/Ultima7Markers.js"></script>
-<script src="js/Ultima7.js"></script>
+<script src="js/Ultima7.js?v=20261020-local"></script>
 </body>
 </html>

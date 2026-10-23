@@ -716,42 +716,6 @@ window.ULTIMA7_MAP_CONFIG = {
     markers: Array.isArray(window.ULTIMA7_MARKERS) ? window.ULTIMA7_MARKERS : []
 };
 
-// Helpful, spoiler-light offline hints to ensure useful guidance without relying entirely on the AI
-const OFFLINE_HINTS = {
-    "The Trinsic Murders": "• Check the stables for a golden key and speak with Spark about what he saw.\n• Question Gilberto at the healer and note the ship 'Crown Jewel'.\n• Pass Mayor Finnigan’s quiz to get the password 'Blackbird' to leave Trinsic.",
-    "Infiltrating the Fellowship": "• Deliver Batlin’s sealed package to Elynor in Minoc first.\n• Return at 9 PM for the service, then accept the 'funds' errand to Destard (it’s a trap).\n• Bring supplies—Destard isn’t deserted.",
-    "The Quest for the Time Lord": "• Bring honey from the Bee Cave to befriend the emps.\n• Ask Trellek for help and get a wisp whistle.\n• Use the whistle near the Deep Forest wisp and prepare to fetch Alagner’s notebook.",
-    "The Answers to Life and Death": "• Reach Skara Brae (Séance helps) and speak to Mordra the necromancer.\n• Free Rowena from Horance’s influence, then craft a Soul Cage and resolve the Well of Souls.\n• Caine will share what Alagner needs.",
-    "Destroying the Guardian's Generators": "• Order matters: Tetrahedron (Deceit) → Sphere (Despise) → Cube (Meditation Retreat).\n• You’ll need: blackrock for Penumbra, the Ethereal Ring (from Lord Draxinusom in Terfin), Nicodemus’s Hourglass, and Caddellite helms (Zorn in Minoc).\n• Mark & Recall save lots of time.",
-    "The Isle of the Avatar and Final Battle": "• Use the Cube prism to unmask conspirators, then recover the needed key in Buccaneer’s Den.\n• On the Isle, place all three prisms on their pedestals to disable the beam.\n• Use Rudyom’s Wand on the Black Gate—no big battle needed there.",
-
-    // Side quests
-    "Free Weston!": "• Visit the jail in Castle British and speak with Weston.\n• Bring his case to Lord British directly for judgment.\n• You don’t need to sneak anything—just ask for clemency.",
-    "Who Stole the Poison?": "• Talk to Morfin in Paws to start.\n• Search Morfin’s house for a key, then check the Shelter’s locked chest.\n• Confront the boy who seems nervous; return the vial to Morfin.",
-    "Where Does Patterson go at Night?": "• Attend the 9 PM Fellowship meeting in Britain.\n• After it ends, quietly follow Patterson.\n• Confront him at his destination and hear him out.",
-    "Miranda's Law": "• Get Miranda’s bill signed by Lord Heather in Cove.\n• He’s often at the healer’s.\n• Return the signed bill to Miranda in Britain.",
-    "Nastassia's Father": "• In Cove, agree to seek news for Nastassia.\n• Ask the Emps in the Deep Forest, starting with Trellek.\n• Bring the answer back to her.",
-    "Owen the Shipwright, Hero or Fraud?": "• In Minoc, look for plans/evidence about Owen’s ships.\n• Show them to a skilled tinker for an expert opinion.\n• Present the findings to Mayor Burnside.",
-    "The Honor Flag": "• Talk to Sprellic in Jhelom and hear his story.\n• Either duel as his champion or ask Kliftin about making a replacement.\n• Resolve it peacefully if you can.",
-    "Blorn's Accusations": "• Hear Blorn out in Vesper.\n• Speak to Lap-Lem to get the other side of the story.\n• Confront Blorn about the missing amulet and return it.",
-    "Where does Catherine Go?": "• Watch Yvella’s daughter around noon.\n• Follow her to the gargoyle quarter—observe quietly.\n• Keeping her trust is the kindest outcome.",
-    "Balayna's Doubts": "• Balayna confides concerns about Rankin in Moonglow.\n• Consider the consequences before reporting anything.\n• Sometimes discretion is the safer path.",
-    "Brion's Orrery": "• Ask Brion at the Observatory about his missing part.\n• Buy the crystal from Addom at the tavern (20 gold).\n• Deliver it back so he can power the orrery.",
-    "Who wants to destroy the Shrine?": "• In Terfin, speak with Teregus.\n• Search Sarpling’s quarters for a note.\n• Confront Runeb with the evidence and be ready for a fight.",
-    "Mysterious Monk": "• At Empath Abbey, a monk named Kreg asks about invisibility.\n• Check records in Yew to confirm identities.\n• Prepare for a confrontation once you expose him.",
-    "Who Defaced Lord British?": "• In Serpent’s Hold, gather forensics (stone chips, blood).\n• Consult Lady Leigh and Lady Tory for leads.\n• Report your findings to Lord John‑Paul.",
-    "Tory's Baby": "• Search the Shrine of Honour (around 142S, 9W).\n• Harpies may be present—clear them out.\n• Return the baby to Tory in the Keep.",
-
-    "How to get to the Isle of Fire": "• Talk to Lord British about the tremors.\n• He grants the Golden Ankh ship (anchored at Vesper) and a crystal.\n• Sail south from Vesper; circle the largest unstable isle; enter the northern cove and land.",
-    "Doors are broken?": "• If Castle of Fire doors won't open, it's a known bug (flying over the Isle of the Avatar triggers it).\n• Workaround: reload an earlier save or use Cheat Mode's Hack Mover to slide the doors.",
-    "Castle of Fire": "• Meet Erethian (west rooms) for lore on Tests and the Shrine.\n• Love: secret wall in Erethian's room to a Moongate.\n• Courage: right-side Moongate. Truth statue teleports you.",
-    "Test of Truth": "• 'Only appearances are deceptive' → look for a hood.\n• 'North is the way'—walk through a hidden passage to the true locket.\n• Optional: Keys to Truth area has loot (Glass Sword, Ring), beware traps.",
-    "Test of Love": "• Read Bollux's book; collect the scroll.\n• Use well bucket + pickaxe at the Stone of Castambre to get 'blood'.\n• Perform the ritual, place heart, repeat to aid both golems, receive Talisman.",
-    "Test of Courage": "• In main hall: avoid the lich by interrupting the summoner or using indirect spells.\n• Sleep potions on dragons; gather magic armor; solve helmet swap puzzle; defeat Dracothraxus for the Ether Gem.",
-    "Forging the Black Sword": "• Ask Erethian about the artifact; approach Arcadion with Ether Gem at the mirror.\n• Heat the blade (bright red), hammer until sharp, then bind the daemon to complete the sword.",
-    "Finale": "• Return to Dracothraxus and use the Black Sword's power.\n• Assemble two lenses and Talismans of Principle on the Dark Core (pie-like order).\n• Report to Lord British for the stat reward."
-};
-
 // Hardcoded, non‑AI companion backstories
 const BACKSTORIES = {
     "Iolo": "Strings hum beneath my fingers as I travel once more with the Avatar. Britain changes, but a good bow and a good song never fail. If danger comes, I’ll whistle before the arrow flies—and jest after. A merry heart steadies the hand.",
@@ -775,58 +739,45 @@ document.addEventListener('DOMContentLoaded', () => {
     const aiModalTitle = document.getElementById('ai-modal-title');
 
     let reagentChart = null;
-    // Handcrafted prompts loaded from prompts/ultima7_prompts.json
-    let QUEST_PROMPTS = {};
-    // Simple in-memory chat history keyed by quest title/name
-    const questChatHistory = {};
+    // Shared browser-only advice; no party-plan values become player facts.
+    let sagePromise;
+    let sageView = null;
+    let sageLevel = 'gentle';
+    let modalRevision = 0;
 
-    // --- Gemini API Integration ---
-    async function callGemini(prompt, maxRetries = 3) {
-        const apiUrl = '/php/llm.php'; // local PHP proxy
-        const payload = { contents: [{ role: "user", parts: [{ text: prompt }] }] };
-
-        let delay = 1000;
-        for (let i = 0; i < maxRetries; i++) {
-            try {
-                const response = await fetch(apiUrl, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
-
-                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-                const result = await response.json();
-
-                if (result.candidates?.[0]?.content?.parts?.[0]?.text) {
-                    return result.candidates[0].content.parts[0].text;
-                } else {
-                    throw new Error("Invalid response structure from Gemini API");
-                }
-            } catch (error) {
-                console.warn(`API call attempt ${i + 1} failed. Retrying in ${delay}ms...`, error);
-                if (i < maxRetries - 1) {
-                    await new Promise(r => setTimeout(r, delay));
-                    delay *= 2;
-                } else {
-                    return "My apologies, Avatar. My connection to the ethereal plane is weak. Please try again shortly.";
-                }
-            }
+    function ensureSage() {
+        if (!sagePromise) {
+            sagePromise = Promise.all([
+                import('./assistant/adapters/ultima7.js'),
+                import('./assistant/ui.js')
+            ]).then(async ([adapter, ui]) => ({
+                assistant: await adapter.createUltima7Assistant({ data: DB, questRoutes: QUEST_TO_ATLAS,
+                    markers: Array.isArray(window.ULTIMA7_MARKERS) ? window.ULTIMA7_MARKERS : [] }),
+                questId: adapter.ultima7QuestId,
+                createView: ui.createView
+            })).catch(error => { sagePromise = null; throw error; });
         }
+        return sagePromise;
     }
 
     function showAiModal() {
+        modalRevision += 1;
+        if (sageView) { sageView.destroy(); sageView = null; }
+        aiModalTitle.textContent = 'Guide assistant';
         aiResponseText.textContent = '';
         aiLoader.style.display = 'flex';
         aiModal.classList.remove('hidden');
     }
 
     function hideAiModal() {
+        modalRevision += 1;
+        if (sageView) { sageView.destroy(); sageView = null; }
         aiModal.classList.add('hidden');
     }
 
-    function displayAiResponse(text, title = '✨ AI Assistant') {
-        // Allow a small badge in the title (e.g., non‑spoiler)
-        aiModalTitle.innerHTML = title;
+    function displayAiResponse(text, title = 'Guide assistant') {
+        aiModalTitle.textContent = title;
+        aiResponseText.style.whiteSpace = 'pre-wrap';
         aiResponseText.textContent = text;
         aiLoader.style.display = 'none';
     }
@@ -1335,11 +1286,17 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     async function handleGetQuestHint(quest) {
-        // Open modal and show quest-specific chat inside it
         showAiModal();
-        const key = quest.title || quest.name;
-        await ensurePromptsLoaded();
-        openQuestChatInModal(key, quest);
+        const revision = modalRevision;
+        try {
+            const local = await ensureSage();
+            if (revision !== modalRevision || aiModal.classList.contains('hidden')) return;
+            openQuestChatInModal(quest.title || quest.name, local);
+        } catch (error) {
+            if (revision !== modalRevision) return;
+            aiLoader.style.display = 'none';
+            aiResponseText.textContent = 'The local advice files could not be loaded. Reload the page to retry. The written quest guide remains available.';
+        }
     }
 
     function initQuests() {
@@ -1484,167 +1441,74 @@ document.addEventListener('DOMContentLoaded', () => {
         locationFilter.addEventListener('change', (e) => renderSideQuests(e.target.value));
         renderSideQuests();
 
-        // (Modal chat now handles prompt loading on demand)
+        // The Sage loads its static local knowledge on first use.
     }
 
-    async function loadQuestPrompts() {
-        try {
-            const res = await fetch('prompts/ultima7_prompts.json', { cache: 'no-store' });
-            if (!res.ok) throw new Error(`Failed to load prompts: ${res.status}`);
-            return await res.json();
-        } catch (e) {
-            console.warn('[prompts] Load failed, falling back to dynamic context.', e);
-            return {};
-        }
-    }
-
-    function extractContext(template) {
-        const match = template.match(/<context>[\s\S]*?<\/context>/i);
-        return match ? match[0] : template;
-    }
-
-    async function ensurePromptsLoaded() {
-        if (Object.keys(QUEST_PROMPTS || {}).length > 0) return;
-        QUEST_PROMPTS = await loadQuestPrompts();
-    }
-
-    function defaultQuestTemplate(key) {
-        return `
-        <context>
-        You are a helpful guide for Ultima VII: The Black Gate. The player is currently on quest: ${key}
-        Try to research the quest and provide a helpful and if possible detailed hints.
-        </context>
-        <query>
-        User's question here
-        </query>`;
-    }
-
-    function openQuestChatInModal(key, quest) {
-        const badge = "<span class='ml-2 align-middle text-[10px] px-2 py-0.5 rounded bg-yellow-200/20 text-yellow-100 border border-yellow-300/40'>AI powered</span>";
-        aiModalTitle.innerHTML = `✨ ${key} ${badge}`;
-
-        const offlineHint = OFFLINE_HINTS[key] || 'No offline hint available.';
-        const template = QUEST_PROMPTS[key] || defaultQuestTemplate(key);
-
-        // Tabs: General Hints | Advice
+    function openQuestChatInModal(key, local) {
+        const entityId = local.questId(key);
+        const context = () => ({ contextId: entityId, entityIds: [entityId], tone: 'sage' });
+        aiModalTitle.textContent = 'Sage';
+        aiResponseText.style.whiteSpace = 'normal';
+        // This markup contains authored UI only; all answers and user text use
+        // textContent inside the shared view.
         aiResponseText.innerHTML = `
-            <div class="flex flex-col max-h-[75vh] min-h-0">
-                <div id="modal-tabbar" class="flex gap-2 border-b border-color mb-3">
-                    <button id="modal-tab-hints" class="px-3 py-1 rounded-t bg-[#1a202c] text-sm font-semibold border border-color border-b-0 text-[#f6e05e]">General Hints</button>
-                    <button id="modal-tab-advice" class="px-3 py-1 rounded-t text-sm font-semibold border border-transparent hover:border-color text-gray-400">Advice</button>
+            <div class="sage-panel">
+                <p class="text-xs text-gray-400">Local guide advice. Coverage follows the written guide; uncertain or conflicting details are withheld.</p>
+                <label class="sage-spoiler-label">Help level
+                    <select class="sage-spoiler" aria-label="Sage help level">
+                        <option value="gentle">Nudge</option>
+                        <option value="balanced">Hint</option>
+                        <option value="direct">Full answer</option>
+                    </select>
+                </label>
+                <section class="sage-general-hints ga-intro" aria-label="Hint for this quest">
+                    <p class="ga-intro-title">Hint for this quest</p>
+                    <div class="sage-general-text" aria-live="polite"></div>
+                </section>
+                <div class="sage-messages" aria-label="Sage conversation" aria-live="polite"></div>
+                <div class="sage-input-row">
+                    <input class="sage-input" aria-label="Question for the Sage" placeholder="Ask a follow-up about this quest or any guide topic…" />
+                    <button class="sage-send ai-button" type="button">Send</button>
                 </div>
-                
-                <section id="tab-hints" class="h-full overflow-auto min-h-0">
-                    <div class="rounded bg-[#102a43]/40 p-3 border border-color text-[13px] whitespace-pre-wrap">${offlineHint.replace(/</g,'&lt;')}</div>
-                    <div class="mt-3 rounded bg-[#0f1720]/60 p-2 border border-color text-[12px]">Tip: For more help, switch to the Advice tab and ask the Sage for guidance.</div>
-                </section>
-                <section id="tab-advice" class="hidden h-full flex flex-col min-h-0 overflow-hidden">
-                    <div id="modal-quest-chat-messages" class="flex-1 min-h-40 overflow-y-auto bg-[#0f1720] border border-color rounded p-3 text-sm space-y-2"></div>
-                    <div class="flex gap-2 mt-3">
-                        <input id="modal-quest-chat-input" class="flex-1 bg-[#1a202c] border border-color rounded px-3 py-2 text-sm" placeholder="Ask the Sage for advice…" />
-                        <button id="modal-quest-chat-send" class="ai-button font-bold px-4 py-2 rounded">Send</button>
-                    </div>
-                </section>
-            </div>
-        `;
+            </div>`;
+        const panel = aiResponseText.querySelector('.sage-panel');
+        const select = panel.querySelector('.sage-spoiler');
+        const hints = panel.querySelector('.sage-general-text');
+        select.value = sageLevel;
+        local.assistant.setPolicy(sageLevel);
+        function refreshHints() {
+            sageLevel = select.value;
+            local.assistant.setPolicy(sageLevel);
+            const description = local.assistant.describeContext(key, sageLevel);
+            aiModalTitle.textContent = description ? `Sage — ${description.title}` : 'Sage';
+            hints.textContent = description?.text || 'No authored hint is available at this help level. Try Hint or Full answer.';
+        }
+        sageView = local.createView({
+            assistant: local.assistant,
+            messages: panel.querySelector('.sage-messages'),
+            input: panel.querySelector('.sage-input'),
+            sendButton: panel.querySelector('.sage-send'),
+            spoilerSelect: select,
+            controlsBefore: hints.parentElement,
+            getContext: context,
+            // Quest routes plus "Show on the atlas" buttons for atlas subjects (people, places, monsters, services).
+            actions: new Proxy(Object.fromEntries(Object.entries(QUEST_TO_ATLAS).map(([key, route]) => [
+                `quest-map:${key}`, () => { hideAiModal(); route.marker ? openAtlasMarker(route.marker) : openAtlasSearch(route.search); }
+            ])), {
+                get(routes, id) {
+                    if (typeof id === 'string' && id.startsWith('atlas:')) return () => { hideAiModal(); openAtlasMarker(id.slice(6)); };
+                    if (typeof id === 'string' && id.startsWith('atlas-search:')) return () => { hideAiModal(); openAtlasSearch(id.slice(13)); };
+                    return routes[id];
+                }
+            })
+        });
+        select.addEventListener('change', refreshHints);
+        refreshHints();
         aiLoader.style.display = 'none';
-
-        // Wire tab handlers
-        const tabHintsBtn = document.getElementById('modal-tab-hints');
-        const tabAdviceBtn = document.getElementById('modal-tab-advice');
-        const tabHints = document.getElementById('tab-hints');
-        const tabAdvice = document.getElementById('tab-advice');
-
-        function switchModalTab(which) {
-            const active = ['bg-[#1a202c]','border','border-color','border-b-0','text-[#f6e05e]'];
-            const inactive = ['bg-transparent','border','border-transparent','text-gray-400'];
-            const setActive = (btn) => { btn.classList.add(...active); btn.classList.remove(...inactive); };
-            const setInactive = (btn) => { btn.classList.remove(...active); btn.classList.add(...inactive); };
-            if (which === 'hints') {
-                tabHints.classList.remove('hidden');
-                tabAdvice.classList.add('hidden');
-                setActive(tabHintsBtn);
-                setInactive(tabAdviceBtn);
-            } else {
-                tabAdvice.classList.remove('hidden');
-                tabHints.classList.add('hidden');
-                setActive(tabAdviceBtn);
-                setInactive(tabHintsBtn);
-            }
-        }
-        tabHintsBtn.addEventListener('click', () => switchModalTab('hints'));
-        tabAdviceBtn.addEventListener('click', () => switchModalTab('advice'));
-        switchModalTab('hints');
-
-        // Chat wiring
-        const msgEl  = document.getElementById('modal-quest-chat-messages');
-        const inputEl= document.getElementById('modal-quest-chat-input');
-        const sendBtn= document.getElementById('modal-quest-chat-send');
-
-        // Greet user in chat panel
-        appendChat(msgEl, 'assistant', `How can I help you with "${key}", Avatar?`);
-
-        function send() {
-            sendQuestChatMessageForKey(key, inputEl, msgEl, sendBtn);
-            // auto-switch to Advice tab when sending from Hints (in case user clicks Enter there later)
-            switchModalTab('advice');
-        }
-        sendBtn.addEventListener('click', send);
-        if (inputEl) {
-            inputEl.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); send(); }
-            });
-        }
+        panel.querySelector('.sage-input').focus();
     }
 
-    async function sendQuestChatMessageForKey(key, inputEl, msgEl, sendBtn) {
-        const userMsg = inputEl.value.trim();
-        if (!userMsg) return;
-        appendChat(msgEl, 'user', userMsg);
-        inputEl.value = '';
-
-        // Disable input and show typing indicator
-        if (sendBtn) { sendBtn.disabled = true; sendBtn.classList.add('opacity-50','cursor-not-allowed'); }
-        inputEl.disabled = true;
-        inputEl.classList.add('opacity-75');
-        const thinkingEl = document.createElement('div');
-        thinkingEl.id = 'modal-typing-indicator';
-        thinkingEl.className = 'text-xs text-gray-400 italic';
-        thinkingEl.textContent = 'Sage is thinking…';
-        msgEl.appendChild(thinkingEl);
-        msgEl.scrollTop = msgEl.scrollHeight;
-
-        let template = QUEST_PROMPTS[key] || defaultQuestTemplate(key);
-        const hist = questChatHistory[key] || [];
-        const transcript = hist.map(h => `${h.role === 'user' ? 'User' : 'Assistant'}: ${h.text}`).join('\n');
-        const mergedQuery = (transcript ? `Prior transcript (most recent last):\n${transcript}\n\n` : '') + `User: ${userMsg}`;
-        const finalPrompt = template.replace(/<query>[\s\S]*?<\/query>/i, `<query>\n${mergedQuery}\n<\/query>`);
-
-        // Call LLM and append
-        const reply = await callGemini(finalPrompt);
-        if (thinkingEl && thinkingEl.parentNode) thinkingEl.remove();
-        appendChat(msgEl, 'assistant', reply);
-
-        hist.push({ role: 'user', text: userMsg });
-        hist.push({ role: 'assistant', text: reply });
-        questChatHistory[key] = hist.slice(-10);
-
-        // Re-enable input and send button
-        inputEl.disabled = false;
-        inputEl.classList.remove('opacity-75');
-        if (sendBtn) { sendBtn.disabled = false; sendBtn.classList.remove('opacity-50','cursor-not-allowed'); }
-        inputEl.focus();
-    }
-
-    function appendChat(container, role, text) {
-        const bubble = document.createElement('div');
-        bubble.className = role === 'user' ? 'bg-[#1a202c] p-2 rounded self-end' : 'bg-[#102a43] p-2 rounded';
-        bubble.textContent = (role === 'user' ? 'You: ' : 'Sage: ') + text;
-        container.appendChild(bubble);
-        container.scrollTop = container.scrollHeight;
-    }
-
-    // (Modal chat now handles prompt loading on demand)
+    // The Sage loads its static local knowledge on first use.
 
     initPartyBuilder();
     initArmory();

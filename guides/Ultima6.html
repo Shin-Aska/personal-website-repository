@@ -2,6 +2,9 @@
 <html lang="en">
 
 <head>
+    <link rel="stylesheet" href="css/assistant-consent.css">
+    <script type="module" src="js/assistant/bootstrap.js"></script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
@@ -20,11 +23,12 @@
         - Character Virtues: Report Info -> Starting attribute bonuses. Goal -> Allow players to plan their character build. Viz/Method -> Interactive bar chart (Chart.js). Interaction -> Hovering over bars shows precise stat bonuses. Justification -> A chart is more engaging and easier to compare than a static table.
         - Companion Roster: Report Info -> Companion stats and roles. Goal -> Help players build their ideal party. Viz/Method -> A filterable and sortable HTML table. Interaction -> Users can sort by STR, DEX, INT, or Level. Justification -> An interactive table is superior to a static list for comparing multiple attributes.
         - Quest Walkthrough: Report Info -> Linear steps for major quests. Goal -> Guide players through the game's narrative. Viz/Method -> Accordion-style collapsible sections. Interaction -> Clicking a quest title expands to show the detailed steps. Justification -> Prevents overwhelming the user with a wall of text.
-        - AI Backstory Generator (Gemini): Goal -> Enhance roleplaying immersion. Viz/Method -> Button-triggered text generation. Interaction -> User selects virtues and clicks a button. Justification -> Creates personalized, creative content that connects the player to their character.
-        - Contextual Seer (Gemini): Goal -> Provide dynamic, on-demand help without breaking the player's flow. Viz/Method -> Quest- and Atlas-bound hint modal with a continuing advice conversation. Interaction -> A Hint or Seer counsel action opens general guidance first, then passes the exact source context into follow-up questions.
+        - Authored Virtue Vignette: Goal -> Enhance roleplaying immersion. Viz/Method -> Bounded authored text composition. Interaction -> User selects virtues and clicks a button. Justification -> Composes clearly labeled roleplaying fiction that connects the player to their character.
+        - Local Contextual Seer: Goal -> Provide dynamic, on-demand help without breaking the player's flow. Viz/Method -> Quest- and Atlas-bound hint modal with a continuing advice conversation. Interaction -> A Hint or Seer counsel action opens general guidance first, then passes the exact source context into follow-up questions.
     -->
     <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
-    <link rel="stylesheet" href="css/Ultima6.css?v=20260831a">
+    <link rel="stylesheet" href="css/Ultima6.css?v=local-counsel-v1">
+    <script src="offline.js?v=3" defer></script>
 </head>
 
 <body class="antialiased">
@@ -168,10 +172,10 @@
                             <div>
                                 <p class="u6-briefing__kicker">Personal record</p>
                                 <h4>The Avatar's Chronicle</h4>
-                                <p>Select up to three defining virtues and let Britannia's bards compose your chronicle.</p>
+                                <p>Select up to three virtues to assemble an authored roleplaying vignette. This is fiction, not canonical game history.</p>
                             </div>
                             <div id="virtue-selection" class="flex flex-wrap gap-4"></div>
-                            <button id="generate-chronicle" type="button">✨ Generate My Avatar's Chronicle</button>
+                            <button id="generate-chronicle" type="button">✨ Compose My Avatar's Chronicle</button>
                             <div id="chronicle-output"></div>
                         </div>
                     </section>
@@ -453,21 +457,6 @@
                 <p id="seer-modal-summary"></p>
             </header>
 
-            <div class="u6-seer-modal__tabs" role="tablist" aria-label="Seer counsel views">
-                <button id="seer-tab-hints" type="button" role="tab" aria-selected="true"
-                    aria-controls="seer-hints-panel" data-seer-tab="hints">General hints</button>
-                <button id="seer-tab-advice" type="button" role="tab" aria-selected="false"
-                    aria-controls="seer-advice-panel" data-seer-tab="advice">Ask the Seer</button>
-            </div>
-
-            <section id="seer-hints-panel" class="u6-seer-modal__view" role="tabpanel"
-                aria-labelledby="seer-tab-hints">
-                <div id="seer-general-hints" class="u6-seer-hints"></div>
-                <p class="u6-seer-modal__tip">Need a tailored answer? Open <strong>Ask the Seer</strong>; this exact quest step or map location is already attached.</p>
-            </section>
-
-            <section id="seer-advice-panel" class="u6-seer-modal__view hidden" role="tabpanel"
-                aria-labelledby="seer-tab-advice">
                 <div class="u6-seer-modal__controls">
                     <fieldset>
                         <legend>Voice</legend>
@@ -477,20 +466,23 @@
                             <button type="button" class="seer-tone-option" data-tone="cryptic">Cryptic</button>
                         </div>
                     </fieldset>
-                    <fieldset>
-                        <legend>Spoilers</legend>
-                        <div id="seer-spoiler-options" class="u6-seer-choice-row">
-                            <button type="button" class="seer-spoiler-option" data-spoiler="light" data-default="true">Gentle</button>
-                            <button type="button" class="seer-spoiler-option" data-spoiler="balanced">Balanced</button>
-                            <button type="button" class="seer-spoiler-option" data-spoiler="direct">Direct</button>
-                        </div>
-                    </fieldset>
                 </div>
 
+            <!-- One view: the help level, this step's hint, then the conversation about it. -->
+            <section id="seer-counsel-panel" class="u6-seer-modal__view" aria-label="Seer counsel">
+                <select id="seer-spoiler-select" aria-label="Help level">
+                    <option value="gentle">Nudge</option>
+                    <option value="balanced">Hint</option>
+                    <option value="direct">Full answer</option>
+                </select>
+                <div class="ga-intro u6-seer-intro">
+                    <p class="ga-intro-title">Hint for this step</p>
+                    <div id="seer-general-hints" class="u6-seer-hints"></div>
+                </div>
                 <div id="seer-chat-messages" class="u6-seer-chat" aria-live="polite"></div>
                 <div class="u6-seer-composer">
                     <label for="seer-query" class="sr-only">Ask the Seer about this context</label>
-                    <textarea id="seer-query" rows="2" placeholder="Ask about this quest step or location…"></textarea>
+                    <textarea id="seer-query" rows="2" placeholder="Ask a follow-up about this quest step or location…"></textarea>
                     <button id="ask-seer" type="button">Send</button>
                 </div>
             </section>
@@ -499,8 +491,7 @@
 
     <script src="js/leaflet.js"></script>
     <script src="js/Ultima6Atlas.js?v=game-npcs"></script>
-    <link rel="stylesheet" href="styles.css">
-    <script src="js/Ultima6.js?v=briefing-r1"></script>
+    <script src="js/Ultima6.js?v=local-counsel-v1"></script>
 </body>
 
 </html>

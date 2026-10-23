@@ -1,0 +1,2115 @@
+{
+  "gameId": "starcraft",
+  "coverage": "Existing Brood War advanced-AI setup guide only; no generated strategies or current software-release claims.",
+  "entities": [
+    {
+      "id": "schnail",
+      "title": "SCHNAIL",
+      "aliases": [
+        "Starcraft Human and AI League",
+        "SCHNAIL client",
+        "SCHNAIL league"
+      ],
+      "facts": [
+        {
+          "id": "requirements",
+          "relation": "prerequisites",
+          "selector": "#schnail-requirements ol",
+          "gentle": "The guide lists an account and Java JRE for SCHNAIL. SCHNAIL includes its own game installation.",
+          "balanced": "The guide lists a SCHNAIL account, the client download and Java JRE. Its setup section says no separate StarCraft installation is required."
+        },
+        {
+          "id": "download",
+          "relation": "acquisition",
+          "selector": "#schnail-requirements li:nth-child(2)",
+          "gentle": "The guide points to the downloads page on the SCHNAIL website; it requires an account.",
+          "balanced": "Register on the SCHNAIL website, then use its downloads page. The guide's Getting Started section contains the existing link.",
+          "answers": [
+            "location"
+          ]
+        },
+        {
+          "id": "setup",
+          "relation": "use",
+          "selector": "#schnail-setup ol",
+          "gentle": "Use the SCHNAIL client to sign in and choose an opponent. The first launch downloads its game files.",
+          "balanced": "Follow the SCHNAIL Setup Guide: install and launch the client, sign in, then choose an opponent. No separate game installation is needed."
+        },
+        {
+          "id": "own-game",
+          "relation": "prerequisites",
+          "selector": "#schnail-setup .text-blue-700",
+          "answers": [
+            "explanation",
+            "use",
+            "hint",
+            "prerequisites"
+          ],
+          "gentle": "The client includes its own version of Brood War, so the game is not installed separately.",
+          "balanced": "The guide's setup note: this client includes its own version of Starcraft: Brood War, so the game is not installed separately.",
+          "standalone": {
+            "title": "SCHNAIL includes its own game",
+            "aliases": [
+              "separate install",
+              "separate installation",
+              "separate starcraft install",
+              "separate starcraft installation",
+              "separate game install",
+              "separate game installation",
+              "own version of starcraft",
+              "own version of brood war",
+              "own copy of starcraft",
+              "own copy of brood war",
+              "install the game separately",
+              "installed separately"
+            ],
+            "slots": {
+              "N": [
+                "SCHNAIL",
+                "the client"
+              ],
+              "V": [
+                "own",
+                "install",
+                "need",
+                "buy",
+                "have",
+                "get",
+                "download"
+              ],
+              "G": [
+                "starcraft",
+                "brood war",
+                "starcraft brood war",
+                "the game",
+                "a copy of starcraft",
+                "a copy of brood war",
+                "a separate copy of starcraft",
+                "starcraft installed",
+                "brood war installed"
+              ],
+              "R": [
+                "need",
+                "needs",
+                "require",
+                "requires",
+                "use",
+                "uses",
+                "include",
+                "includes"
+              ]
+            },
+            "phrases": [
+              "{V} {G} for {N}",
+              "{N} {R} {G}",
+              "{N} {R} a separate install",
+              "{N} {R} a separate installation",
+              "{N} {R} a separate starcraft install",
+              "{N} {R} a separate game install",
+              "{N} separate install",
+              "{N} separate installation",
+              "{N} separate starcraft install",
+              "{N} own game",
+              "{N} own version of starcraft",
+              "{N} own copy of starcraft",
+              "{N} own starcraft",
+              "{N} game installation"
+            ]
+          }
+        },
+        {
+          "id": "first-launch",
+          "relation": "hint",
+          "selector": "#getting-started > .bg-blue-50 .text-blue-700",
+          "answers": [
+            "explanation"
+          ],
+          "standalone": {
+            "title": "SCHNAIL first launch",
+            "aliases": [
+              "first launch",
+              "first time launching",
+              "first run",
+              "first time launch",
+              "initial launch",
+              "downloading game files",
+              "downloads game files",
+              "necessary game files"
+            ],
+            "slots": {
+              "N": [
+                "SCHNAIL",
+                "the client",
+                "it"
+              ],
+              "S": [
+                "is slow on first launch",
+                "takes forever on first launch",
+                "takes a long time on first launch",
+                "takes forever the first time",
+                "is slow the first time",
+                "hangs on first launch",
+                "is stuck on first launch",
+                "is stuck downloading",
+                "is downloading something",
+                "is downloading files",
+                "is downloading game files",
+                "is downloading at launch",
+                "is downloading something at launch",
+                "takes forever to launch the first time",
+                "first launch takes forever",
+                "first launch is slow",
+                "first launch takes long",
+                "first launch takes a long time",
+                "first launch takes ages",
+                "takes forever to start",
+                "takes ages to start",
+                "takes a long time to start",
+                "is slow to start",
+                "is taking forever",
+                "is taking a long time",
+                "is taking ages"
+              ],
+              "W": [
+                "the first time i launch",
+                "the first time i start",
+                "the first time i run",
+                "first time launching",
+                "first time running",
+                "first time starting",
+                "when i first launch",
+                "when i first start",
+                "when i first run",
+                "on first launch of",
+                "at first launch of"
+              ]
+            },
+            "phrases": [
+              "{N} {S}",
+              "{W} {N}",
+              "{N} first launch",
+              "{N} first run",
+              "{N} first start",
+              "{N} first time",
+              "{N} downloading game files",
+              "{N} downloads game files",
+              "{N} takes a while to start"
+            ]
+          },
+          "gentle": "The guide notes that the first SCHNAIL launch may take a while because it downloads game files.",
+          "balanced": "The guide's note: the first launch might take some time as it downloads the necessary game files."
+        },
+        {
+          "id": "features",
+          "relation": "explanation",
+          "selector": "#schnail-setup ul",
+          "gentle": "SCHNAIL is the guide's client-based option for playing advanced Brood War opponents.",
+          "balanced": "The guide describes SCHNAIL (Starcraft Human and AI League) as a client with its own game installation and matchmaking. An initial login needs an internet connection."
+        },
+        {
+          "id": "pros-cons",
+          "relation": "comparison",
+          "selector": "#getting-started .grid > div:nth-child(1) .pros-cons",
+          "gentle": "The guide rates SCHNAIL as the most realistic option; its drawback is an internet login.",
+          "balanced": "Pros listed: more realistic AI, better micro and macro, game integration, active community. Cons: internet needed for the first login; the AI then plays over the local network."
+        },
+        {
+          "id": "antivirus",
+          "relation": "remedy",
+          "selector": "#troubleshooting .space-y-4 > div:nth-child(1)",
+          "gentle": "If antivirus blocks SCHNAIL, check the quarantine and allow the program.",
+          "balanced": "Check the antivirus quarantine for the SCHNAIL executable and add an exception for its installation folder. If needed, the guide says to temporarily disable the antivirus during installation, then add the exception.",
+          "answers": [
+            "hint",
+            "explanation",
+            "use"
+          ],
+          "standalone": {
+            "title": "Antivirus blocking SCHNAIL",
+            "aliases": [
+              "quarantine",
+              "quarantined",
+              "false positive",
+              "antivirus warning",
+              "exception list",
+              "antivirus exception",
+              "avast",
+              "norton",
+              "mcafee",
+              "kaspersky",
+              "malwarebytes",
+              "bitdefender",
+              "virus scanner",
+              "anti-virus",
+              "anti virus",
+              "antivrus",
+              "exception",
+              "exceptions",
+              "an exception",
+              "add an exception"
+            ],
+            "slots": {
+              "AV": [
+                "antivirus",
+                "windows defender",
+                "defender"
+              ],
+              "N": [
+                "SCHNAIL",
+                "the SCHNAIL client",
+                "the client",
+                "it",
+                "the SCHNAIL exe",
+                "the SCHNAIL executable"
+              ],
+              "V": [
+                "is blocking",
+                "blocks",
+                "blocked",
+                "keeps blocking",
+                "flagged",
+                "deleted",
+                "keeps deleting",
+                "quarantined",
+                "keeps removing",
+                "removed",
+                "removes"
+              ],
+              "PV": [
+                "blocked",
+                "flagged",
+                "deleted",
+                "quarantined"
+              ],
+              "BRAND": [
+                "avast",
+                "norton",
+                "mcafee",
+                "malwarebytes"
+              ],
+              "BV": [
+                "blocks",
+                "blocked",
+                "flagged",
+                "deleted",
+                "quarantined"
+              ],
+              "NP": [
+                "SCHNAIL",
+                "the SCHNAIL client",
+                "the client",
+                "it",
+                "the SCHNAIL exe",
+                "the SCHNAIL executable"
+              ],
+              "G": [
+                "gets",
+                "was",
+                "keeps getting"
+              ]
+            },
+            "phrases": [
+              "{AV}",
+              "{AV} {V} {NP}",
+              "{N} {PV} by {AV}",
+              "{NP} {G} {PV} by {AV}",
+              "{NP} is {PV} by {AV}",
+              "{NP} is {PV} by my {AV}",
+              "{N} {AV}",
+              "{BRAND} {BV} {NP}",
+              "{N} got quarantined",
+              "{N} was quarantined",
+              "{N} got flagged",
+              "{N} got blocked",
+              "{N} got deleted",
+              "{N} was blocked",
+              "{N} was flagged",
+              "{N} was deleted",
+              "{AV} problem",
+              "{AV} problems",
+              "{AV} exception for {NP}",
+              "{AV} to allow {NP}",
+              "{AV} allow {NP}",
+              "{AV} accept {NP}",
+              "{AV} ignore {NP}",
+              "{AV} trust {NP}",
+              "allow {NP} in {AV}",
+              "allow {NP} through {AV}",
+              "add {NP} to {AV}",
+              "whitelist {NP}",
+              "{NP} whitelist",
+              "whitelisting {NP}",
+              "exception for {NP}",
+              "add an exception for {NP}",
+              "{NP} exception"
+            ],
+            "keepInParent": true
+          }
+        },
+        {
+          "id": "internet",
+          "relation": "prerequisites",
+          "selector": "#troubleshooting .text-yellow-700",
+          "gentle": "SCHNAIL needs internet only to log in.",
+          "balanced": "An internet connection is needed only for the initial SCHNAIL login; play then runs over the local network.",
+          "aliases": [
+            "internet",
+            "internet connection"
+          ]
+        },
+        {
+          "id": "offline",
+          "relation": "prerequisites",
+          "selector": "#troubleshooting .text-yellow-700",
+          "answers": [
+            "explanation",
+            "hint",
+            "use"
+          ],
+          "standalone": {
+            "title": "SCHNAIL offline play",
+            "aliases": [
+              "schnail offline",
+              "offline schnail"
+            ],
+            "slots": {
+              "N": [
+                "SCHNAIL",
+                "the client"
+              ]
+            },
+            "phrases": [
+              "{N} offline",
+              "{N} work offline",
+              "{N} works offline",
+              "{N} working offline",
+              "{N} without internet",
+              "{N} without an internet connection",
+              "{N} without the internet",
+              "{N} without wifi",
+              "{N} need internet",
+              "{N} needs internet",
+              "{N} require internet",
+              "{N} requires internet",
+              "{N} online only",
+              "{N} online",
+              "{N} always online",
+              "{N} internet",
+              "{N} internet connection",
+              "{N} no internet",
+              "{N} lan",
+              "{N} local network",
+              "play {N} offline",
+              "play {N} without internet",
+              "play {N} without an internet connection",
+              "is {N} online",
+              "is {N} offline",
+              "{N} login",
+              "{N} log in",
+              "{N} needs a connection",
+              "internet for {N}",
+              "internet connection for {N}",
+              "internet to play {N}",
+              "internet to run {N}"
+            ]
+          },
+          "gentle": "SCHNAIL needs internet only to log in; after that play runs over the local network.",
+          "balanced": "An internet connection is needed only for the initial SCHNAIL login; play then runs over the local network."
+        },
+        {
+          "id": "website",
+          "relation": "location",
+          "selector": "#schnail-setup ol > li:nth-child(1)",
+          "answers": [
+            "explanation",
+            "hint",
+            "prerequisites",
+            "acquisition",
+            "use"
+          ],
+          "standalone": {
+            "title": "SCHNAIL website and account",
+            "aliases": [
+              "an account",
+              "account",
+              "register",
+              "registration",
+              "register an account",
+              "create an account",
+              "sign up",
+              "signup",
+              "sign-up",
+              "log in",
+              "login",
+              "logging in",
+              "credentials",
+              "your credentials",
+              "website",
+              "schnail com",
+              "www.schnail.com",
+              "schnail.com",
+              "url",
+              "downloads page",
+              "download page",
+              "schnail downloads page"
+            ],
+            "slots": {
+              "N": [
+                "SCHNAIL",
+                "the client"
+              ]
+            },
+            "phrases": [
+              "{N} website",
+              "{N} site",
+              "{N} url",
+              "{N} link",
+              "{N} web page",
+              "{N} webpage",
+              "{N} homepage",
+              "{N} account",
+              "{N} accounts",
+              "{N} registration",
+              "{N} sign up",
+              "{N} signup",
+              "{N} login",
+              "{N} log in",
+              "{N} credentials",
+              "{N} downloads page",
+              "{N} download page",
+              "account for {N}",
+              "an account for {N}",
+              "an account on {N}",
+              "register for {N}",
+              "register on {N}",
+              "register with {N}",
+              "register at {N}",
+              "registering for {N}",
+              "sign up for {N}",
+              "signing up for {N}",
+              "create an account for {N}",
+              "create a {N} account",
+              "make a {N} account",
+              "make an account for {N}",
+              "log in to {N}",
+              "log into {N}",
+              "login to {N}",
+              "login for {N}",
+              "logging in to {N}",
+              "sign in to {N}",
+              "signing in to {N}",
+              "{N} sign in",
+              "{N} username",
+              "{N} password",
+              "{N} free account",
+              "{N} signup page"
+            ]
+          },
+          "gentle": "The guide has you register an account on the SCHNAIL website and log in; its downloads page needs that account.",
+          "balanced": "The guide has you register an account and log in on the SCHNAIL website (www.schnail.com), download the client from www.schnail.com/#/downloads, then launch the client and log in with your credentials."
+        }
+      ]
+    },
+    {
+      "id": "bwai",
+      "title": "BWAILauncher",
+      "aliases": [
+        "BWAI Launcher",
+        "BWAI",
+        "offline launcher",
+        "BW AI Launcher"
+      ],
+      "facts": [
+        {
+          "id": "requirements",
+          "relation": "prerequisites",
+          "selector": "#bwai-setup .text-yellow-700",
+          "conflict": true,
+          "gentle": "The guide has a compatibility discrepancy: its prerequisites mention original or Remastered, but the setup section requires a separate Brood War 1.16.1 installation. Check the exact edition before proceeding.",
+          "balanced": "The setup section requires a separate Brood War 1.16.1 installation, while the earlier prerequisites also mention Remastered. These sources conflict, so this assistant cannot confirm BWAILauncher support for Remastered.",
+          "editions": [
+            "remastered",
+            "1.16.1"
+          ]
+        },
+        {
+          "id": "download",
+          "relation": "acquisition",
+          "selector": "#bwai-setup ol > li:nth-child(2)",
+          "edition": "1.16.1",
+          "gentle": "The guide links the BWAILauncher GitHub repository in its setup section.",
+          "balanced": "Use the BWAILauncher GitHub link in the setup section. The listed target installation is Brood War 1.16.1.",
+          "answers": [
+            "location"
+          ]
+        },
+        {
+          "id": "setup",
+          "relation": "use",
+          "selector": "#bwai-setup ol",
+          "edition": "1.16.1",
+          "gentle": "For Brood War 1.16.1, put BWAILauncher in the game directory and launch through it. If detection fails, check the path to Starcraft.exe.",
+          "balanced": "For Brood War 1.16.1, extract BWAILauncher into the game directory and run BWAILauncher.exe. In its settings, select Starcraft.exe if automatic detection fails; then save and restart."
+        },
+        {
+          "id": "detection",
+          "relation": "remedy",
+          "selector": "#bwai-setup ol > li:nth-child(5)",
+          "edition": "1.16.1",
+          "answers": [
+            "hint",
+            "use",
+            "explanation",
+            "location"
+          ],
+          "standalone": {
+            "title": "BWAILauncher does not detect Starcraft",
+            "aliases": [
+              "can't find starcraft.exe",
+              "select starcraft.exe",
+              "starcraft.exe path",
+              "path to starcraft.exe",
+              "point to starcraft.exe"
+            ],
+            "slots": {
+              "N": [
+                "BWAILauncher",
+                "BWAI",
+                "launcher"
+              ],
+              "V": [
+                "doesn't detect",
+                "can't detect",
+                "won't detect",
+                "not detecting",
+                "fails to detect",
+                "can't find",
+                "couldn't find",
+                "doesn't find",
+                "won't find",
+                "not finding",
+                "fails to find",
+                "isn't detecting",
+                "doesn't see",
+                "can't see",
+                "won't see",
+                "not seeing",
+                "isn't seeing",
+                "is not finding",
+                "doesn't recognize",
+                "not recognizing",
+                "can't locate",
+                "unable to find",
+                "unable to detect",
+                "keeps asking for",
+                "keeps asking for the",
+                "asks for",
+                "fails to locate"
+              ]
+            },
+            "phrases": [
+              "{N} {V}",
+              "point {N} to starcraft.exe",
+              "point {N} at starcraft.exe",
+              "{N} starcraft.exe",
+              "{N} game path",
+              "{N} paths section",
+              "starcraft path in {N}",
+              "the starcraft path in {N}",
+              "game path in {N}",
+              "path in {N}",
+              "{N} path",
+              "{N} starcraft path",
+              "{N} settings",
+              "settings in {N}",
+              "{N} settings button",
+              "{N} configuration",
+              "{N} config",
+              "{N} game section",
+              "{N} detect",
+              "{N} auto detect",
+              "{N} automatic detection",
+              "automatic detection in {N}",
+              "{N} browse",
+              "{N} select starcraft.exe",
+              "change the path in {N}",
+              "set the path in {N}",
+              "set the starcraft path in {N}",
+              "change the starcraft path in {N}",
+              "select the game path in {N}"
+            ],
+            "keepInParent": true
+          },
+          "gentle": "If BWAILauncher does not detect your Starcraft installation, the guide says to set the path to Starcraft.exe in the launcher settings.",
+          "balanced": "If BWAILauncher does not detect your Starcraft installation automatically: open its settings, go to the “Game” or “Paths” section, select your Starcraft.exe file, then save the settings and restart the launcher."
+        },
+        {
+          "id": "portable",
+          "relation": "explanation",
+          "selector": "#bwai-setup ul.mb-4",
+          "edition": "1.16.1",
+          "answers": [
+            "use",
+            "hint"
+          ],
+          "gentle": "The guide says BWAILauncher works with portable Starcraft installations.",
+          "balanced": "The guide says BWAILauncher works well with portable Starcraft installations: extract it into the portable Starcraft directory, point it to the Starcraft.exe in that directory, and settings stay in the same folder.",
+          "standalone": {
+            "title": "BWAILauncher portable install",
+            "aliases": [
+              "portable install",
+              "portable installation",
+              "portable version",
+              "portable starcraft"
+            ],
+            "slots": {
+              "N": [
+                "BWAILauncher",
+                "BWAI Launcher",
+                "BWAI",
+                "launcher",
+                "the launcher"
+              ]
+            },
+            "phrases": [
+              "{N} portable",
+              "{N} on a portable install",
+              "{N} on portable install",
+              "{N} on a portable installation",
+              "{N} on portable installation",
+              "{N} on a portable starcraft",
+              "{N} with portable starcraft",
+              "{N} with a portable install",
+              "{N} with a portable installation",
+              "{N} portable install",
+              "{N} portable installation",
+              "{N} portable version",
+              "{N} portable starcraft",
+              "{N} on a portable version",
+              "portable {N}"
+            ]
+          }
+        },
+        {
+          "id": "features",
+          "relation": "explanation",
+          "selector": "#bwai-setup > ul:last-child",
+          "edition": "1.16.1",
+          "gentle": "BWAILauncher is the guide's offline option that replaces the standard single-player AI.",
+          "balanced": "The guide says BWAILauncher replaces the standard single-player AI and works offline. Its setup instructions target Brood War 1.16.1."
+        },
+        {
+          "id": "pros-cons",
+          "relation": "comparison",
+          "selector": "#getting-started .grid > div:nth-child(2) .pros-cons",
+          "gentle": "The guide rates BWAILauncher as the easy offline option, with less realistic AI.",
+          "balanced": "Pros listed: no internet needed, replaces the standard single-player AI, easier initial setup, good offline. Cons: less realistic AI, standard micro that can be exploited, limited strategic depth."
+        },
+        {
+          "id": "tips",
+          "relation": "hint",
+          "selector": "#bwai-setup > ul:last-child",
+          "edition": "1.16.1",
+          "answers": [
+            "explanation",
+            "use"
+          ],
+          "gentle": "The guide has a short tips list for BWAILauncher, including trying different difficulty settings.",
+          "balanced": "Tips listed: it replaces the standard AI so you can use it in single-player mode; the AI is more challenging than the default but has micro-management limitations; try different difficulty settings; and check the GitHub repository for updates and community support.",
+          "standalone": {
+            "title": "BWAILauncher tips",
+            "aliases": [
+              "difficulty settings",
+              "challenge level"
+            ],
+            "slots": {
+              "N": [
+                "BWAILauncher",
+                "BWAI Launcher",
+                "BWAI",
+                "launcher",
+                "the launcher"
+              ]
+            },
+            "phrases": [
+              "{N} tips",
+              "tips for {N}",
+              "{N} tip",
+              "{N} difficulty",
+              "{N} difficulty settings",
+              "difficulty in {N}",
+              "difficulty settings in {N}",
+              "difficulty of {N}",
+              "{N} challenge level",
+              "{N} advice"
+            ]
+          }
+        },
+        {
+          "id": "offline",
+          "relation": "explanation",
+          "selector": "#getting-started .grid > div:nth-child(2) .pros-cons ul.mb-3",
+          "edition": "1.16.1",
+          "answers": [
+            "prerequisites",
+            "hint",
+            "use"
+          ],
+          "standalone": {
+            "title": "BWAILauncher offline play",
+            "aliases": [
+              "bwailauncher offline",
+              "offline bwailauncher",
+              "bwai offline"
+            ],
+            "slots": {
+              "N": [
+                "BWAILauncher",
+                "the launcher"
+              ]
+            },
+            "phrases": [
+              "{N} offline",
+              "{N} work offline",
+              "{N} works offline",
+              "{N} working offline",
+              "{N} without internet",
+              "{N} without an internet connection",
+              "{N} without the internet",
+              "{N} need internet",
+              "{N} needs internet",
+              "{N} require internet",
+              "{N} requires internet",
+              "{N} online only",
+              "{N} online",
+              "{N} always online",
+              "{N} internet",
+              "{N} internet connection",
+              "{N} no internet",
+              "play {N} offline",
+              "play {N} without internet",
+              "play {N} without an internet connection",
+              "is {N} online",
+              "is {N} offline",
+              "internet for {N}",
+              "internet connection for {N}"
+            ]
+          },
+          "gentle": "The guide lists BWAILauncher as the option that needs no internet connection.",
+          "balanced": "The guide's BWAILauncher pros: no internet connection required, replaces the standard single-player AI, easier to set up initially, and good for offline play."
+        }
+      ]
+    },
+    {
+      "id": "remastered-map",
+      "title": "Remastered SCM Map",
+      "aliases": [
+        "Remastered map",
+        "SCM map",
+        "integrated map",
+        "BWAPI integrated SCM map",
+        "map",
+        "maps folder",
+        "BWAPI map",
+        "the SCM map archive",
+        "remastred map",
+        "remasterd map",
+        "remaster map",
+        "remastred scm map",
+        "remasterd scm map",
+        "remaster scm map",
+        "map download",
+        "map archive",
+        "bwapiscr.zip",
+        "bwapi scr map"
+      ],
+      "facts": [
+        {
+          "id": "requirements",
+          "relation": "prerequisites",
+          "selector": "#remastered-requirements ol",
+          "edition": "remastered",
+          "gentle": "The map route in this guide requires StarCraft Remastered and the integrated SCM map.",
+          "balanced": "The guide lists StarCraft Remastered and its integrated SCM map download. It says this route works without a version downgrade."
+        },
+        {
+          "id": "download",
+          "relation": "acquisition",
+          "selector": "#remastered-setup ol > li:nth-child(2)",
+          "edition": "remastered",
+          "gentle": "The Remastered SCM Map setup section contains the guide's map download links.",
+          "balanced": "Find the map archive links in Remastered SCM Map Setup Guide. The guide provides Proton Drive and a direct download.",
+          "answers": [
+            "location"
+          ]
+        },
+        {
+          "id": "setup",
+          "relation": "use",
+          "selector": "#remastered-setup ol",
+          "edition": "remastered",
+          "gentle": "In Remastered, use the integrated map through a Custom Game and select Use Map Settings.",
+          "balanced": "Extract the archive into Documents\\StarCraft\\Maps, open Single Player → Custom Game, select the map, then select Use Map Settings rather than Melee."
+        },
+        {
+          "id": "extract-location",
+          "relation": "location",
+          "selector": "#remastered-setup ol > li:nth-child(3)",
+          "edition": "remastered",
+          "gentle": "The guide has you extract the map archive into the StarCraft Maps folder under Documents.",
+          "balanced": "Extract the downloaded ZIP file to your StarCraft maps folder, typically Documents\\StarCraft\\Maps."
+        },
+        {
+          "id": "no-downgrade",
+          "relation": "prerequisites",
+          "selector": "#remastered-setup .text-blue-700",
+          "edition": "remastered",
+          "answers": [
+            "explanation",
+            "hint"
+          ],
+          "gentle": "The guide says the Remastered method works natively, without version downgrades.",
+          "balanced": "The guide's note: this method works natively with StarCraft Remastered without needing version downgrades.",
+          "standalone": {
+            "title": "Remastered downgrade",
+            "aliases": [
+              "version downgrade",
+              "version downgrades",
+              "downgrade to use the remastered map"
+            ],
+            "slots": {
+              "R": [
+                "Remastered",
+                "the Remastered map",
+                "the SCM map",
+                "the map",
+                "starcraft remastered"
+              ]
+            },
+            "phrases": [
+              "{R} need a downgrade",
+              "{R} needs a downgrade",
+              "{R} need to downgrade",
+              "{R} needs to downgrade",
+              "{R} require a downgrade",
+              "{R} requires a downgrade",
+              "{R} requires downgrading",
+              "{R} need downgrading",
+              "{R} version downgrade",
+              "downgrade {R}",
+              "downgrade for {R}",
+              "downgrade to use {R}",
+              "downgrading {R}",
+              "downgrading for {R}",
+              "{R} downgrade",
+              "{R} downgrades",
+              "need a downgrade for {R}",
+              "need to downgrade for {R}",
+              "downgrade before {R}"
+            ]
+          }
+        },
+        {
+          "id": "features",
+          "relation": "explanation",
+          "selector": "#remastered-setup .text-blue-700",
+          "edition": "remastered",
+          "gentle": "This guide's Remastered option uses an integrated map without an external launcher.",
+          "balanced": "The integrated SCM map runs in StarCraft Remastered. It requires Use Map Settings, and its coverage is limited to the provided maps."
+        },
+        {
+          "id": "mode-check",
+          "relation": "hint",
+          "selector": "#remastered-setup ol > li:nth-child(7)",
+          "edition": "remastered",
+          "gentle": "Check the map's Game Type setting. This guide's integrated map needs Use Map Settings.",
+          "balanced": "The guide says you must select Use Map Settings as the Game Type. If the integrated map's AI is not working in Remastered, check that first: a standard Melee game will not work, and the guide does not establish a cause for other failures.",
+          "answers": [
+            "hint",
+            "explanation",
+            "use",
+            "prerequisites"
+          ],
+          "standalone": {
+            "title": "Remastered map AI not working",
+            "aliases": [
+              "map AI not working",
+              "Melee",
+              "standard Melee",
+              "Use Map Settings",
+              "Game Type",
+              "wrong Game Type"
+            ],
+            "slots": {
+              "AI": [
+                "map ai",
+                "the ai",
+                "ai",
+                "the ai opponent",
+                "ai opponent",
+                "the computer"
+              ],
+              "V": [
+                "not working",
+                "isn't working",
+                "doesn't work",
+                "won't work",
+                "does nothing",
+                "doesn't do anything",
+                "not doing anything",
+                "isn't doing anything",
+                "not responding",
+                "sits there",
+                "sits idle",
+                "is idle",
+                "stands still",
+                "stays still",
+                "doesn't move",
+                "not moving",
+                "not building",
+                "not attacking",
+                "doesn't attack"
+              ],
+              "V2": [
+                "not working",
+                "isn't working",
+                "doesn't work",
+                "does nothing",
+                "doesn't do anything",
+                "sits there",
+                "stands still",
+                "isn't doing anything"
+              ],
+              "P": [
+                "on the map",
+                "in the map",
+                "on the scm map",
+                "on the remastered map",
+                "in remastered"
+              ]
+            },
+            "phrases": [
+              "{AI} {V}",
+              "{AI} {V2} {P}"
+            ],
+            "keepInParent": true
+          }
+        },
+        {
+          "id": "pros-cons",
+          "relation": "comparison",
+          "selector": "#getting-started .grid > div:nth-child(3) .pros-cons",
+          "gentle": "The guide rates the Remastered map as the simplest setup, limited to its own maps.",
+          "balanced": "Pros listed: works directly in StarCraft Remastered, no external launcher, easy setup. Cons: requires Use Map Settings mode and only the provided integrated maps.",
+          "edition": "remastered"
+        },
+        {
+          "id": "links",
+          "relation": "acquisition",
+          "selector": "#remastered-setup ol > li:nth-child(2)",
+          "edition": "remastered",
+          "answers": [
+            "location",
+            "hint",
+            "use",
+            "explanation"
+          ],
+          "standalone": {
+            "title": "Remastered map download links",
+            "aliases": [
+              "Proton Drive",
+              "Proton Drive link",
+              "proton drive links",
+              "direct download",
+              "the direct download",
+              "direct download link",
+              "map download link",
+              "map download links",
+              "map archive",
+              "map archive link",
+              "bwapiscr.zip"
+            ],
+            "slots": {
+              "M": [
+                "map",
+                "SCM map",
+                "Remastered map",
+                "integrated map"
+              ]
+            },
+            "phrases": [
+              "{M} download link",
+              "{M} download links",
+              "{M} archive",
+              "{M} zip",
+              "{M} proton drive",
+              "{M} direct download",
+              "download link for the {M}",
+              "download links for the {M}",
+              "link to the {M}",
+              "links to the {M}",
+              "where to get the {M}",
+              "direct download for the {M}",
+              "direct download of the {M}",
+              "direct download link for the {M}",
+              "proton drive for the {M}",
+              "proton drive link for the {M}",
+              "proton drive link to the {M}"
+            ]
+          },
+          "gentle": "The guide's Remastered setup lists a Proton Drive link and a direct download for the map archive.",
+          "balanced": "The guide provides two places to download the BWAPI integrated SCM map archive: Proton Drive or a direct download."
+        }
+      ]
+    },
+    {
+      "id": "bwapi-loading",
+      "title": "BWAPI Not Loading",
+      "aliases": [
+        "BWAPI Not Loading",
+        "BWAPI not working",
+        "BWAPI fails to load",
+        "BWAPI won't load",
+        "BWAPI problem",
+        "BWAPI problems",
+        "BWAPI issue",
+        "BWAPI issues",
+        "BWAPI error",
+        "BWAPI errors",
+        "BWAPI error message",
+        "BWAPI error messages",
+        "BWAPI console",
+        "BWAPI version",
+        "BWAPI versions",
+        "compatible version of BWAPI",
+        "BWAPI compatibility",
+        "BWAPI files",
+        "BWAPI directories",
+        "BWAPI doesn't work",
+        "BWAPI doesnt work",
+        "BWAPI does not work",
+        "BWAPI isn't working",
+        "BWAPI isnt working",
+        "BWAPI is not working",
+        "BWAPI isn't loading",
+        "BWAPI isnt loading",
+        "BWAPI is not loading",
+        "BWAPI does not load",
+        "BWAPI doesn't load",
+        "BWAPI doesnt load",
+        "BWAPI wont load",
+        "BWAPI not loading",
+        "BWAPI failed to load",
+        "BWAPI not starting",
+        "BWAPI isn't starting",
+        "BWAPI not showing up",
+        "BWAPI isn't showing up",
+        "BWAPI not detected",
+        "BWAPI missing",
+        "BWAPI broken",
+        "BWAPI install not working"
+      ],
+      "facts": [
+        {
+          "id": "checks",
+          "relation": "hint",
+          "selector": "#bwapi-loading-checks ul",
+          "gentle": "Check the exact game and BWAPI versions, file locations and console error messages. The guide does not identify a definite cause.",
+          "balanced": "The guide suggests checking game/BWAPI version compatibility, file locations and console error messages. Consult the existing BWAPI documentation link for version-specific instructions; an unexplained failure is not evidence of a particular bug.",
+          "answers": [
+            "remedy",
+            "explanation",
+            "use",
+            "location"
+          ],
+          "editions": [
+            "remastered",
+            "1.16.1"
+          ]
+        }
+      ],
+      "kind": "qa"
+    },
+    {
+      "id": "java",
+      "title": "Java",
+      "kind": "setup",
+      "aliases": [
+        "Java",
+        "Java JRE",
+        "JRE",
+        "JDK",
+        "Java JDK",
+        "Liberica",
+        "Liberica Java",
+        "Liberica JRE",
+        "Liberica JDK",
+        "bell-sw",
+        "which java",
+        "what java",
+        "java version",
+        "java versions",
+        "java 21",
+        "jdk 21",
+        "install java",
+        "installing java",
+        "download java",
+        "get java",
+        "java installer",
+        "java download",
+        "do i need java",
+        "need java",
+        "needs java",
+        "java required",
+        "is java required",
+        "is java needed",
+        "java needed",
+        "java requirement",
+        "java requirements",
+        "java is required",
+        "require java",
+        "requires java",
+        "java for SCHNAIL",
+        "java for the client",
+        "java to run SCHNAIL",
+        "java to run the client",
+        "java to use SCHNAIL",
+        "java to use the client",
+        "java with SCHNAIL",
+        "java with the client",
+        "java in SCHNAIL",
+        "java in the client",
+        "java to play SCHNAIL",
+        "java to play the client",
+        "java to launch SCHNAIL",
+        "java to launch the client",
+        "SCHNAIL need java",
+        "SCHNAIL needs java",
+        "SCHNAIL require java",
+        "SCHNAIL requires java",
+        "SCHNAIL use java",
+        "SCHNAIL uses java",
+        "SCHNAIL run on java",
+        "SCHNAIL needs the java",
+        "SCHNAIL requires the java",
+        "SCHNAIL need the java",
+        "the client need java",
+        "the client needs java",
+        "the client require java",
+        "the client requires java",
+        "the client use java",
+        "the client uses java",
+        "the client run on java",
+        "the client needs the java",
+        "the client requires the java",
+        "the client need the java",
+        "what java do i need for SCHNAIL",
+        "which java do i need for SCHNAIL",
+        "what java does SCHNAIL need",
+        "which java does SCHNAIL need",
+        "what java version for SCHNAIL",
+        "which java version for SCHNAIL",
+        "what java for SCHNAIL",
+        "which java for SCHNAIL",
+        "what version of java for SCHNAIL",
+        "java version for SCHNAIL",
+        "java versions for SCHNAIL",
+        "what java SCHNAIL needs",
+        "what java version does SCHNAIL need",
+        "what java version SCHNAIL needs",
+        "which java version does SCHNAIL need",
+        "do i need java for SCHNAIL",
+        "is java needed for SCHNAIL",
+        "is java required for SCHNAIL",
+        "does SCHNAIL need java",
+        "does SCHNAIL require java",
+        "what java do i need for the client",
+        "which java do i need for the client",
+        "what java does the client need",
+        "which java does the client need",
+        "what java version for the client",
+        "which java version for the client",
+        "what java for the client",
+        "which java for the client",
+        "what version of java for the client",
+        "java version for the client",
+        "java versions for the client",
+        "what java the client needs",
+        "what java version does the client need",
+        "what java version the client needs",
+        "which java version does the client need",
+        "do i need java for the client",
+        "is java needed for the client",
+        "is java required for the client",
+        "does the client need java",
+        "does the client require java"
+      ],
+      "facts": [
+        {
+          "id": "recommended",
+          "relation": "use",
+          "selector": "#schnail-requirements li:nth-child(3)",
+          "answers": [
+            "prerequisites",
+            "explanation",
+            "hint"
+          ],
+          "gentle": "SCHNAIL needs a Java JRE; the guide recommends Liberica Java.",
+          "balanced": "The guide asks you to install Java JRE and recommends Liberica Java: “Liberica Java releases from bell-sw.com” in the prerequisites and “Liberica Java JDK 21 LTS” in the setup steps."
+        },
+        {
+          "id": "download",
+          "relation": "acquisition",
+          "selector": "#schnail-requirements li:nth-child(3)",
+          "answers": [
+            "location"
+          ],
+          "gentle": "The guide links the Liberica Java downloads on bell-sw.com.",
+          "balanced": "The guide links the Liberica Java downloads on bell-sw.com for the Java JRE that SCHNAIL needs."
+        }
+      ]
+    },
+    {
+      "id": "ai-options",
+      "title": "AI options",
+      "aliases": [
+        "ai options",
+        "ai solutions",
+        "ai solution",
+        "which ai",
+        "options",
+        "solutions",
+        "choices",
+        "best option",
+        "best options",
+        "easiest option",
+        "simplest option",
+        "best ai solution",
+        "best setup",
+        "easiest setup",
+        "simplest setup",
+        "best solution",
+        "easiest way",
+        "what to choose",
+        "which to choose",
+        "available options",
+        "my options",
+        "my choices",
+        "three options",
+        "the three options",
+        "offline",
+        "offline play",
+        "play offline",
+        "no internet",
+        "without internet",
+        "which offline",
+        "best offline option"
+      ],
+      "facts": [
+        {
+          "id": "comparison",
+          "relation": "comparison",
+          "general": true,
+          "editions": [
+            "remastered",
+            "1.16.1"
+          ],
+          "selector": "#getting-started .grid",
+          "gentle": "The guide compares three options: SCHNAIL (most realistic, online login), BWAILauncher (offline, simpler AI) and the Remastered map (easiest, limited maps).",
+          "balanced": "SCHNAIL: realistic AI and active community, internet for first login. BWAILauncher: offline and easy, but less realistic AI with exploitable micro. Remastered SCM Map: no launcher and easy, but Use Map Settings only and limited maps.",
+          "answers": [
+            "explanation",
+            "hint"
+          ]
+        }
+      ],
+      "kind": "qa"
+    },
+    {
+      "id": "game-crash",
+      "title": "Game crashes on launch",
+      "aliases": [
+        "crash",
+        "crashes",
+        "crashing",
+        "game crashes",
+        "game crash",
+        "crash on launch",
+        "crashes on launch",
+        "crashing on launch",
+        "won't start",
+        "will not start",
+        "graphics drivers",
+        "video drivers",
+        "drivers",
+        "compatibility mode",
+        "launch crash",
+        "launch crashes",
+        "startup crash",
+        "startup crashes",
+        "crash at launch",
+        "crash at startup",
+        "crash on startup",
+        "crash when starting",
+        "the game crashes",
+        "the game crashing",
+        "the game keeps crashing",
+        "the game crashes on launch",
+        "the game crashes at launch",
+        "the game crashes on startup",
+        "the game crashes at startup",
+        "the game crashes when starting",
+        "the game crashes when i start it",
+        "the game crashed",
+        "the game won't start",
+        "the game wont start",
+        "the game will not start",
+        "the game doesn't start",
+        "the game doesnt start",
+        "the game not starting",
+        "the game won't launch",
+        "the game wont launch",
+        "the game doesn't launch",
+        "the game not launching",
+        "the game fails to start",
+        "the game crashing on launch",
+        "the game crashing on startup",
+        "the game crashing at launch",
+        "the game crashing at startup",
+        "the game crashing when starting",
+        "the game crashes when launching",
+        "the game crashes after launch",
+        "the game crashed on launch",
+        "the game crashed at startup",
+        "game crashing",
+        "game keeps crashing",
+        "game crashes on launch",
+        "game crashes at launch",
+        "game crashes on startup",
+        "game crashes at startup",
+        "game crashes when starting",
+        "game crashes when i start it",
+        "game crashed",
+        "game won't start",
+        "game wont start",
+        "game will not start",
+        "game doesn't start",
+        "game doesnt start",
+        "game not starting",
+        "game won't launch",
+        "game wont launch",
+        "game doesn't launch",
+        "game not launching",
+        "game fails to start",
+        "game crashing on launch",
+        "game crashing on startup",
+        "game crashing at launch",
+        "game crashing at startup",
+        "game crashing when starting",
+        "game crashes when launching",
+        "game crashes after launch",
+        "game crashed on launch",
+        "game crashed at startup",
+        "starcraft crashes",
+        "starcraft crashing",
+        "starcraft keeps crashing",
+        "starcraft crashes on launch",
+        "starcraft crashes at launch",
+        "starcraft crashes on startup",
+        "starcraft crashes at startup",
+        "starcraft crashes when starting",
+        "starcraft crashes when i start it",
+        "starcraft crashed",
+        "starcraft won't start",
+        "starcraft wont start",
+        "starcraft will not start",
+        "starcraft doesn't start",
+        "starcraft doesnt start",
+        "starcraft not starting",
+        "starcraft won't launch",
+        "starcraft wont launch",
+        "starcraft doesn't launch",
+        "starcraft not launching",
+        "starcraft fails to start",
+        "starcraft crashing on launch",
+        "starcraft crashing on startup",
+        "starcraft crashing at launch",
+        "starcraft crashing at startup",
+        "starcraft crashing when starting",
+        "starcraft crashes when launching",
+        "starcraft crashes after launch",
+        "starcraft crashed on launch",
+        "starcraft crashed at startup",
+        "brood war crashes",
+        "brood war crashing",
+        "brood war keeps crashing",
+        "brood war crashes on launch",
+        "brood war crashes at launch",
+        "brood war crashes on startup",
+        "brood war crashes at startup",
+        "brood war crashes when starting",
+        "brood war crashes when i start it",
+        "brood war crashed",
+        "brood war won't start",
+        "brood war wont start",
+        "brood war will not start",
+        "brood war doesn't start",
+        "brood war doesnt start",
+        "brood war not starting",
+        "brood war won't launch",
+        "brood war wont launch",
+        "brood war doesn't launch",
+        "brood war not launching",
+        "brood war fails to start",
+        "brood war crashing on launch",
+        "brood war crashing on startup",
+        "brood war crashing at launch",
+        "brood war crashing at startup",
+        "brood war crashing when starting",
+        "brood war crashes when launching",
+        "brood war crashes after launch",
+        "brood war crashed on launch",
+        "brood war crashed at startup",
+        "schnail crashes",
+        "schnail crashing",
+        "schnail keeps crashing",
+        "schnail crashes on launch",
+        "schnail crashes at launch",
+        "schnail crashes on startup",
+        "schnail crashes at startup",
+        "schnail crashes when starting",
+        "schnail crashes when i start it",
+        "schnail crashed",
+        "schnail won't start",
+        "schnail wont start",
+        "schnail will not start",
+        "schnail doesn't start",
+        "schnail doesnt start",
+        "schnail not starting",
+        "schnail won't launch",
+        "schnail wont launch",
+        "schnail doesn't launch",
+        "schnail not launching",
+        "schnail fails to start",
+        "schnail crashing on launch",
+        "schnail crashing on startup",
+        "schnail crashing at launch",
+        "schnail crashing at startup",
+        "schnail crashing when starting",
+        "schnail crashes when launching",
+        "schnail crashes after launch",
+        "schnail crashed on launch",
+        "schnail crashed at startup",
+        "bwailauncher crashes",
+        "bwailauncher crashing",
+        "bwailauncher keeps crashing",
+        "bwailauncher crashes on launch",
+        "bwailauncher crashes at launch",
+        "bwailauncher crashes on startup",
+        "bwailauncher crashes at startup",
+        "bwailauncher crashes when starting",
+        "bwailauncher crashes when i start it",
+        "bwailauncher crashed",
+        "bwailauncher won't start",
+        "bwailauncher wont start",
+        "bwailauncher will not start",
+        "bwailauncher doesn't start",
+        "bwailauncher doesnt start",
+        "bwailauncher not starting",
+        "bwailauncher won't launch",
+        "bwailauncher wont launch",
+        "bwailauncher doesn't launch",
+        "bwailauncher not launching",
+        "bwailauncher fails to start",
+        "bwailauncher crashing on launch",
+        "bwailauncher crashing on startup",
+        "bwailauncher crashing at launch",
+        "bwailauncher crashing at startup",
+        "bwailauncher crashing when starting",
+        "bwailauncher crashes when launching",
+        "bwailauncher crashes after launch",
+        "bwailauncher crashed on launch",
+        "bwailauncher crashed at startup",
+        "it crashes",
+        "it crashing",
+        "it keeps crashing",
+        "it crashes on launch",
+        "it crashes at launch",
+        "it crashes on startup",
+        "it crashes at startup",
+        "it crashes when starting",
+        "it crashes when i start it",
+        "it crashed",
+        "it won't start",
+        "it wont start",
+        "it will not start",
+        "it doesn't start",
+        "it doesnt start",
+        "it not starting",
+        "it won't launch",
+        "it wont launch",
+        "it doesn't launch",
+        "it not launching",
+        "it fails to start",
+        "it crashing on launch",
+        "it crashing on startup",
+        "it crashing at launch",
+        "it crashing at startup",
+        "it crashing when starting",
+        "it crashes when launching",
+        "it crashes after launch",
+        "it crashed on launch",
+        "it crashed at startup"
+      ],
+      "facts": [
+        {
+          "id": "fixes",
+          "relation": "remedy",
+          "selector": "#troubleshooting .space-y-4 > div:nth-child(2)",
+          "gentle": "If the game crashes when starting, the guide suggests the latest graphics drivers and compatibility mode.",
+          "balanced": "If the game crashes when starting: ensure the latest graphics drivers are installed, try running the game in compatibility mode, verify that your system meets the minimum requirements, and visit the SCHNAIL Discord Server for support.",
+          "answers": [
+            "hint",
+            "prerequisites",
+            "use",
+            "explanation"
+          ],
+          "editions": [
+            "remastered",
+            "1.16.1"
+          ]
+        }
+      ],
+      "kind": "qa"
+    },
+    {
+      "id": "steamhammer",
+      "title": "Steamhammer",
+      "aliases": [
+        "steamhammer",
+        "steam hammer",
+        "steamhammer bot",
+        "steamhammer ai",
+        "steamhammer github",
+        "steamhamer"
+      ],
+      "facts": [
+        {
+          "id": "about",
+          "relation": "explanation",
+          "selector": "#resources .space-y-4 > div:nth-child(1)",
+          "gentle": "Steamhammer is an example open-source Brood War bot listed in the guide. Who made it: the guide credits Dave Churchill.",
+          "balanced": "The guide lists Steamhammer as a strong open-source Brood War AI with a GitHub link. Who made it: the guide credits Dave Churchill.",
+          "answers": [
+            "location",
+            "acquisition",
+            "hint"
+          ],
+          "methods": [
+            "download"
+          ],
+          "editions": [
+            "remastered",
+            "1.16.1"
+          ]
+        }
+      ],
+      "kind": "qa"
+    },
+    {
+      "id": "ualbertabot",
+      "title": "UAlbertaBot",
+      "aliases": [
+        "ualbertabot",
+        "ualberta bot",
+        "ualberta",
+        "ualbertabot github",
+        "ualberta bot github",
+        "uab"
+      ],
+      "facts": [
+        {
+          "id": "about",
+          "relation": "explanation",
+          "selector": "#resources .space-y-4 > div:nth-child(2)",
+          "gentle": "UAlbertaBot is an example StarCraft AI framework listed in the guide. Who made it: the guide credits Dave Churchill and Steve Gelly.",
+          "balanced": "The guide lists UAlbertaBot as a StarCraft AI development framework with a GitHub link. Who made it: the guide credits Dave Churchill and Steve Gelly.",
+          "answers": [
+            "location",
+            "acquisition",
+            "hint"
+          ],
+          "methods": [
+            "download"
+          ],
+          "editions": [
+            "remastered",
+            "1.16.1"
+          ]
+        }
+      ],
+      "kind": "qa"
+    },
+    {
+      "id": "support",
+      "title": "Community support",
+      "aliases": [
+        "support",
+        "community support",
+        "discord",
+        "discord server",
+        "schnail discord",
+        "bwapi discussions",
+        "where to get help",
+        "get support",
+        "community",
+        "get help",
+        "more help",
+        "need help",
+        "ask questions",
+        "ask a question",
+        "ask for help",
+        "forum",
+        "forums",
+        "help with schnail",
+        "help for schnail",
+        "support for schnail",
+        "schnail help",
+        "schnail support",
+        "schnail community",
+        "schnail questions",
+        "schnail forum",
+        "schnail discord invite",
+        "schnail discord link",
+        "schnail discord server",
+        "discord for schnail",
+        "help with bwapi",
+        "help for bwapi",
+        "support for bwapi",
+        "bwapi help",
+        "bwapi support",
+        "bwapi community",
+        "bwapi questions",
+        "ask about schnail",
+        "ask about bwapi",
+        "ask for help with schnail",
+        "ask for help with bwapi",
+        "ask questions about schnail",
+        "ask questions about bwapi"
+      ],
+      "facts": [
+        {
+          "id": "links",
+          "relation": "hint",
+          "selector": "#troubleshooting .bg-blue-50 .text-blue-700",
+          "gentle": "The guide points to the SCHNAIL Discord and BWAPI GitHub Discussions for support.",
+          "balanced": "For more help, the guide names the SCHNAIL Discord Server and the BWAPI GitHub Discussions.",
+          "answers": [
+            "location",
+            "explanation",
+            "hint"
+          ],
+          "editions": [
+            "remastered",
+            "1.16.1"
+          ]
+        },
+        {
+          "id": "community",
+          "relation": "explanation",
+          "selector": "#resources .grid > div:nth-child(2)",
+          "answers": [
+            "location",
+            "hint"
+          ],
+          "gentle": "The guide's Community list names a GitHub Discussions page, a subreddit and a Starcraft AI Discord.",
+          "balanced": "Community links in the guide: BWAPI GitHub Discussions, the r/broodwar Subreddit and the Starcraft AI Discord.",
+          "editions": [
+            "remastered",
+            "1.16.1"
+          ],
+          "standalone": {
+            "title": "Community links",
+            "aliases": [
+              "subreddit",
+              "reddit",
+              "r/broodwar",
+              "starcraft ai discord",
+              "ai discord",
+              "community links",
+              "community list",
+              "where do people discuss",
+              "bwapi github discussions",
+              "github discussions",
+              "discussions"
+            ],
+            "slots": {
+              "N": [
+                "BWAPI"
+              ]
+            },
+            "phrases": [
+              "{N} discussions",
+              "{N} github discussions"
+            ]
+          }
+        }
+      ],
+      "kind": "qa"
+    },
+    {
+      "id": "documentation",
+      "title": "Documentation links",
+      "kind": "qa",
+      "aliases": [
+        "documentation",
+        "docs",
+        "doc",
+        "wiki",
+        "manual",
+        "official documentation",
+        "bwapi documentation",
+        "bwapi docs",
+        "bwapi wiki",
+        "bwapi official documentation",
+        "schnail documentation",
+        "schnail docs"
+      ],
+      "facts": [
+        {
+          "id": "links",
+          "relation": "location",
+          "selector": "#resources .grid > div:nth-child(1)",
+          "answers": [
+            "hint",
+            "explanation",
+            "use"
+          ],
+          "gentle": "The guide's Additional Resources page lists documentation for BWAPI and SCHNAIL.",
+          "balanced": "Documentation links in the guide: BWAPI Official Documentation, BWAPI Wiki and SCHNAIL Documentation.",
+          "editions": [
+            "remastered",
+            "1.16.1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "example-bots",
+      "title": "Example bots",
+      "kind": "qa",
+      "aliases": [
+        "example bots",
+        "example bot",
+        "bot",
+        "ai bots",
+        "other bots",
+        "other ai bots",
+        "open source bots",
+        "open-source bots",
+        "bot implementations",
+        "bot examples",
+        "example ais",
+        "sample bots",
+        "what bots",
+        "which bots",
+        "some bots",
+        "any bots",
+        "bots to play",
+        "bots to learn from"
+      ],
+      "facts": [
+        {
+          "id": "list",
+          "relation": "explanation",
+          "selector": "#resources .space-y-8 > div:nth-child(2)",
+          "answers": [
+            "location",
+            "hint"
+          ],
+          "gentle": "The guide's Example Bots list has two open-source bot implementations to learn from.",
+          "balanced": "Example Bots, listed as open-source implementations to learn from: Steamhammer and UAlbertaBot.",
+          "editions": [
+            "remastered",
+            "1.16.1"
+          ]
+        }
+      ]
+    }
+  ],
+  "migration": {
+    "source": "guides/StarcraftBWAPI.html inline systemWithContext and static guide sections",
+    "facts": "Reused static guide sections through DOM selectors; compatibility discrepancy retained explicitly.",
+    "persona": "Adjutant tone is an authored wrapper; no variable facts.",
+    "discarded": [
+      "model persona instructions",
+      "Markdown generation instructions",
+      "URL hallucination instruction",
+      "transcript prompt",
+      "retry chain"
+    ],
+    "review": "extracted"
+  },
+  "research": [
+    {
+      "id": "what-is-bwapi",
+      "entityId": "starcraft:bwapi",
+      "title": "BWAPI",
+      "aliases": [
+        "BWAPI framework",
+        "Brood War API",
+        "BWAPI library"
+      ],
+      "relation": "explanation",
+      "text": "BWAPI is a free, open-source C++ framework for writing AI bots that play StarCraft: Brood War; its setup expects the game updated to version 1.16.1.",
+      "sources": [
+        {
+          "label": "BWAPI repository README",
+          "url": "https://github.com/bwapi/bwapi",
+          "checkedAt": "2026-10-20"
+        }
+      ]
+    }
+  ],
+  "researchReview": "Outside research: authored one-to-three-sentence summaries of the cited pages, checked on the listed date. Shown with an \"outside research\" label; the guide’s own facts win when both exist. Not independently play-tested.",
+  "narrativeFacts": [
+    {
+      "key": "sc-narrative:schnail-summary",
+      "selector": "#getting-started .grid > div:first-child"
+    },
+    {
+      "key": "sc-narrative:schnail-own-game",
+      "selector": "#schnail-setup .text-blue-700"
+    },
+    {
+      "key": "sc-narrative:schnail-first-launch",
+      "selector": "#getting-started > .bg-blue-50 .text-blue-700"
+    },
+    {
+      "key": "sc-narrative:schnail-antivirus",
+      "selector": "#troubleshooting .space-y-4 > div:first-child"
+    },
+    {
+      "key": "sc-narrative:bwai-purpose",
+      "selector": "#bwai-setup h4:nth-of-type(3) + ul > li:first-child"
+    },
+    {
+      "key": "sc-narrative:bwai-detection",
+      "selector": "#bwai-setup ol > li:nth-child(5)"
+    },
+    {
+      "key": "sc-narrative:bwai-steps",
+      "selector": "#bwai-setup ol"
+    },
+    {
+      "key": "sc-narrative:remastered-steps",
+      "selector": "#remastered-setup ol"
+    },
+    {
+      "key": "sc-narrative:remastered-outcome",
+      "selector": "#remastered-setup ol > li:nth-child(7)"
+    },
+    {
+      "key": "sc-narrative:bwapi-loading",
+      "selector": "#bwapi-loading-checks"
+    }
+  ],
+  "narratives": [
+    {
+      "id": "schnail-summary",
+      "entityId": "starcraft:schnail",
+      "kind": "setup",
+      "title": "SCHNAIL",
+      "aliases": [
+        "SCHNAIL client",
+        "Starcraft Human and AI League"
+      ],
+      "minSpoiler": "direct",
+      "from": [
+        "sc-narrative:schnail-summary",
+        "sc-narrative:schnail-own-game"
+      ],
+      "narrative": {
+        "aspect": "summary",
+        "subjects": [
+          "SCHNAIL"
+        ],
+        "context": []
+      }
+    },
+    {
+      "id": "schnail-first-launch-cause",
+      "entityId": "starcraft:schnail",
+      "kind": "setup",
+      "title": "SCHNAIL",
+      "aliases": [
+        "SCHNAIL client",
+        "first launch"
+      ],
+      "minSpoiler": "direct",
+      "from": [
+        "sc-narrative:schnail-first-launch"
+      ],
+      "narrative": {
+        "aspect": "cause",
+        "subjects": [
+          "first launch"
+        ],
+        "context": [
+          "game files"
+        ],
+        "predicate": "take some time",
+        "status": "hedged"
+      }
+    },
+    {
+      "id": "schnail-antivirus-sequence",
+      "entityId": "starcraft:schnail",
+      "kind": "setup",
+      "title": "Antivirus Blocking SCHNAIL",
+      "aliases": [
+        "antivirus",
+        "SCHNAIL antivirus"
+      ],
+      "minSpoiler": "direct",
+      "from": [
+        "sc-narrative:schnail-antivirus"
+      ],
+      "narrative": {
+        "aspect": "sequence",
+        "subjects": [
+          "antivirus"
+        ],
+        "context": [
+          "SCHNAIL"
+        ],
+        "predicate": "add",
+        "sequenceMode": "steps"
+      }
+    },
+    {
+      "id": "bwai-purpose",
+      "entityId": "starcraft:bwai",
+      "kind": "setup",
+      "title": "BWAILauncher",
+      "aliases": [
+        "BWAI launcher"
+      ],
+      "minSpoiler": "direct",
+      "from": [
+        "sc-narrative:bwai-purpose"
+      ],
+      "narrative": {
+        "aspect": "purpose",
+        "subjects": [
+          "BWAILauncher"
+        ],
+        "context": [
+          "single-player mode"
+        ]
+      }
+    },
+    {
+      "id": "bwai-detection-method",
+      "entityId": "starcraft:bwai",
+      "kind": "setup",
+      "title": "BWAILauncher",
+      "aliases": [
+        "BWAI launcher",
+        "Starcraft.exe detection"
+      ],
+      "minSpoiler": "direct",
+      "from": [
+        "sc-narrative:bwai-detection"
+      ],
+      "narrative": {
+        "aspect": "method",
+        "subjects": [
+          "BWAILauncher"
+        ],
+        "context": [
+          "Starcraft.exe"
+        ],
+        "predicate": "select"
+      }
+    },
+    {
+      "id": "remastered-map-method",
+      "entityId": "starcraft:remastered-map",
+      "kind": "setup",
+      "title": "Remastered SCM Map",
+      "aliases": [
+        "Remastered map",
+        "BWAPI map"
+      ],
+      "minSpoiler": "direct",
+      "from": [
+        "sc-narrative:remastered-steps"
+      ],
+      "narrative": {
+        "aspect": "method",
+        "subjects": [
+          "BWAPI map"
+        ],
+        "context": [
+          "StarCraft Remastered",
+          "Use Map Settings"
+        ],
+        "predicate": "select"
+      },
+      "editions": [
+        "remastered"
+      ]
+    },
+    {
+      "id": "remastered-map-outcome",
+      "entityId": "starcraft:remastered-map",
+      "kind": "setup",
+      "title": "Remastered SCM Map",
+      "aliases": [
+        "Remastered map",
+        "Use Map Settings"
+      ],
+      "minSpoiler": "direct",
+      "from": [
+        "sc-narrative:remastered-outcome"
+      ],
+      "narrative": {
+        "aspect": "outcome",
+        "subjects": [
+          "standard Melee game"
+        ],
+        "context": [
+          "The AI"
+        ],
+        "predicate": "will not function properly"
+      },
+      "editions": [
+        "remastered"
+      ]
+    },
+    {
+      "id": "bwapi-loading-method",
+      "entityId": "starcraft:bwapi-loading",
+      "kind": "qa",
+      "title": "BWAPI Not Loading",
+      "aliases": [
+        "BWAPI not loading"
+      ],
+      "minSpoiler": "direct",
+      "from": [
+        "sc-narrative:bwapi-loading"
+      ],
+      "narrative": {
+        "aspect": "method",
+        "subjects": [
+          "BWAPI"
+        ],
+        "context": [
+          "the game"
+        ],
+        "predicate": "Check"
+      }
+    }
+  ]
+}

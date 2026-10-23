@@ -1,0 +1,2354 @@
+{
+  "schemaVersion": 1,
+  "description": "Phase 1 knowledge expansion: guide content that the assistant previously ignored (tips, reference tables, trade, lore Q&A, cheats, reagents, side-quest details, chapter summaries), indexed by authored overlay topics. Negative cases cover spoiler tiers, restrictions, editions and the AN SANCT conflict.",
+  "questions": [
+    {
+      "id": "kn-u5-01",
+      "gameId": "ultima5",
+      "text": "How do I counter being possessed?",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "AN XEN EX"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0,
+        "recordIds": [
+          "ultima5:topic:charm:remedy"
+        ]
+      }
+    },
+    {
+      "id": "kn-u5-02",
+      "gameId": "ultima5",
+      "text": "What if one of my companions gets charmed?",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "charmed"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "kn-u5-03",
+      "gameId": "ultima5",
+      "text": "How do I cure poison?",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "An Nox"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "kn-u5-04",
+      "gameId": "ultima5",
+      "text": "How can I revive a dead companion?",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "In Mani Corp"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "kn-u5-05",
+      "gameId": "ultima5",
+      "text": "How do I get rid of magic fields?",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "An Grav"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "kn-u5-06",
+      "gameId": "ultima5",
+      "text": "Which moon phase goes to Minoc?",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Moon phase 5: Minoc"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "kn-u5-07",
+      "gameId": "ultima5",
+      "text": "Where can I get free reagents?",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Spiritwood"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "kn-u5-08",
+      "gameId": "ultima5",
+      "text": "How do I make money early?",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "bridge trolls"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "kn-u5-09",
+      "gameId": "ultima5",
+      "text": "How do I get out of Jhelom at night?",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "tower route"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "kn-u5-10",
+      "gameId": "ultima5",
+      "text": "What reagents does An Nox need?",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Ginseng, Garlic"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "kn-u5-11",
+      "gameId": "ultima5",
+      "text": "How do I protect against enemy magic?",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "In An"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "kn-u5-12",
+      "gameId": "ultima5",
+      "text": "What is Valor's word of power?",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "INOPIA"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "kn-u5-neg-01",
+      "gameId": "ultima5",
+      "text": "What is the mantra of Honesty?",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": [
+          "answer",
+          "decline"
+        ],
+        "absent": [
+          "AHM",
+          "FALLAX"
+        ]
+      },
+      "split": "negative"
+    },
+    {
+      "id": "kn-u5-neg-02",
+      "gameId": "ultima5",
+      "text": "How do I counter being possessed on the Amiga?",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "decline"
+      },
+      "split": "negative"
+    },
+    {
+      "id": "kn-u5-neg-03",
+      "gameId": "ultima5",
+      "text": "How do I cure poison for free?",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "decline"
+      },
+      "split": "negative"
+    },
+    {
+      "id": "kn-u5-neg-04",
+      "gameId": "ultima5",
+      "text": "What does AN SANCT do?",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": [
+          "clarify",
+          "decline"
+        ],
+        "absent": [
+          "reduces incoming damage",
+          "Unlocks doors"
+        ]
+      },
+      "split": "negative"
+    },
+    {
+      "id": "kn-alb-01",
+      "gameId": "albion",
+      "text": "How do I get past security?",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "wall cabinet"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "kn-alb-02",
+      "gameId": "albion",
+      "text": "Where should I sell my loot?",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Umajo shops: Sell 130%"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "kn-alb-03",
+      "gameId": "albion",
+      "text": "How can I make money?",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Rejira"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "kn-alb-04",
+      "gameId": "albion",
+      "text": "Where can I find Fasiir?",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Jirinaar"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "kn-alb-05",
+      "gameId": "albion",
+      "text": "How do I counter Kamulos?",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Thorn Snare"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "kn-alb-06",
+      "gameId": "albion",
+      "text": "Who is Khunag?",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "REQUIRED for Kenget Kamulos"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "kn-alb-neg-01",
+      "gameId": "albion",
+      "text": "How do I sell the pistol?",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": "decline"
+      },
+      "split": "negative"
+    },
+    {
+      "id": "kn-alb-neg-02",
+      "gameId": "albion",
+      "text": "How do I get past security?",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Security cares about what you carry"
+        ],
+        "absent": [
+          "wall cabinet",
+          "1042"
+        ]
+      },
+      "split": "negative",
+      "note": "Changed on purpose in the Albion simulation round: 'security' is now an alias of the Gentle 'Passing security' objective, so the Gentle hint answers directly instead of offering it as a choice. The spoiler guard (no 'wall cabinet') is unchanged."
+    },
+    {
+      "id": "kn-alb-neg-03",
+      "gameId": "albion",
+      "text": "Who is Khunag?",
+      "options": {
+        "spoiler": "balanced"
+      },
+      "expected": {
+        "decision": "answer",
+        "absent": [
+          "REQUIRED"
+        ]
+      },
+      "split": "negative"
+    },
+    {
+      "id": "kn-u6-01",
+      "gameId": "ultima6",
+      "text": "What do trolls lack?",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Endurance"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "kn-u6-02",
+      "gameId": "ultima6",
+      "text": "How do I fend off rotworms?",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Torch"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "kn-u6-03",
+      "gameId": "ultima6",
+      "text": "What bonus does the Shrine of Valor give?",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "+3 Strength"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "kn-u6-04",
+      "gameId": "ultima6",
+      "text": "How do I open the cheat menu?",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "spam"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "kn-u6-05",
+      "gameId": "ultima6",
+      "text": "What cheats are there?",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Pirate Gold Refill"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "kn-u6-06",
+      "gameId": "ultima6",
+      "text": "How do I duplicate items?",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Animate"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "kn-u6-07",
+      "gameId": "ultima6",
+      "text": "How do I use the C64 cheat menu?",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Commodore"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "kn-u6-neg-01",
+      "gameId": "ultima6",
+      "text": "Where do trolls live?",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": [
+          "clarify",
+          "decline"
+        ],
+        "absent": [
+          "Endurance"
+        ]
+      },
+      "split": "negative"
+    },
+    {
+      "id": "kn-u6-neg-02",
+      "gameId": "ultima6",
+      "text": "How do I open the cheat menu on the SNES?",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "decline"
+      },
+      "split": "negative"
+    },
+    {
+      "id": "kn-u7-01",
+      "gameId": "ultima7",
+      "text": "Where is the cheapest black pearl?",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Rudyom (Cove) at 5 gold"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "kn-u7-02",
+      "gameId": "ultima7",
+      "text": "Who sells nightshade?",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Nicodemus"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "kn-u7-03",
+      "gameId": "ultima7",
+      "text": "Who gives the Free Weston! quest?",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Weston in Paws"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "kn-u7-04",
+      "gameId": "ultima7",
+      "text": "What's the reward for Free Weston!?",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "20 XP"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "kn-u7-05",
+      "gameId": "ultima7",
+      "text": "What is the threat level of slimes?",
+      "options": {
+        "spoiler": "balanced"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Controlled"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "kn-u7-neg-01",
+      "gameId": "ultima7",
+      "text": "Who gives the Free Weston! quest?",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": [
+          "clarify",
+          "decline"
+        ],
+        "absent": [
+          "Paws"
+        ]
+      },
+      "split": "negative"
+    },
+    {
+      "id": "kn-u7-neg-02",
+      "gameId": "ultima7",
+      "text": "Where can I buy black pearls for 1 gold?",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "decline"
+      },
+      "split": "negative"
+    },
+    {
+      "id": "kn-aq-01",
+      "gameId": "alqadim",
+      "text": "What happens in chapter 1?",
+      "options": {
+        "spoiler": "balanced"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Sinbar"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "kn-aq-02",
+      "gameId": "alqadim",
+      "text": "How dangerous are hyenas?",
+      "options": {
+        "spoiler": "balanced"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Danger: Low"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "kn-aq-neg-01",
+      "gameId": "alqadim",
+      "text": "What happens in chapter 1?",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": [
+          "clarify",
+          "decline"
+        ],
+        "absent": [
+          "Sinbar"
+        ]
+      },
+      "split": "negative"
+    },
+    {
+      "id": "kn-cmp-01",
+      "gameId": "albion",
+      "text": "Which is better, the Pistol or the Bolt-Rifle?",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": "decline",
+        "absent": [
+          "better than"
+        ]
+      },
+      "split": "negative"
+    },
+    {
+      "id": "kn-r-u5-01",
+      "gameId": "ultima5",
+      "text": "How do I level up?",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Not in this guide",
+          "Lord British"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "kn-r-u5-02",
+      "gameId": "ultima5",
+      "text": "How do I wake a sleeping companion?",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Not in this guide",
+          "AN ZU"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "kn-r-u6-01",
+      "gameId": "ultima6",
+      "text": "How do I level up?",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Not in this guide",
+          "meditating at a shrine"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "kn-r-u7-01",
+      "gameId": "ultima7",
+      "text": "How do training points work?",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Not in this guide",
+          "three training points"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "kn-r-alb-01",
+      "gameId": "albion",
+      "text": "How do I cure poison?",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Not in this guide",
+          "Heal poisoning"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "kn-r-alb-02",
+      "gameId": "albion",
+      "text": "Is there an insanity antidote?",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Not in this guide",
+          "does not describe their effects"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "kn-r-u6-02",
+      "gameId": "ultima6",
+      "text": "How do I cure poison?",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Not in this guide",
+          "red potion cures poison"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "kn-r-u7-02",
+      "gameId": "ultima7",
+      "text": "How do I cure poison?",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Not in this guide",
+          "red potion cures all poisons"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "kn-r-aq-01",
+      "gameId": "alqadim",
+      "text": "How do I save progress?",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Not in this guide",
+          "Options menu and selecting Save Game"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "kn-r-neg-01",
+      "gameId": "ultima7",
+      "text": "How do I level up in Serpent Isle?",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "decline"
+      },
+      "split": "negative"
+    },
+    {
+      "id": "kn-r-neg-02",
+      "gameId": "alqadim",
+      "text": "How do I cure poison?",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": [
+          "clarify",
+          "decline"
+        ],
+        "absent": [
+          "Not in this guide"
+        ]
+      },
+      "split": "negative"
+    },
+    {
+      "id": "kn-r-neg-03",
+      "gameId": "ultima5",
+      "text": "How do I counter being possessed?",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "answer",
+        "absent": [
+          "Not in this guide"
+        ]
+      },
+      "split": "negative"
+    },
+    {
+      "id": "kn-r-u6-neg-01",
+      "gameId": "ultima6",
+      "text": "How do I use Cure?",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Cures poison on a single target"
+        ],
+        "absent": [
+          "Not in this guide"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      },
+      "split": "negative"
+    },
+    {
+      "id": "kn-r-aq-neg-01",
+      "gameId": "alqadim",
+      "text": "How do I save in Dark Sun?",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": [
+          "clarify",
+          "decline"
+        ],
+        "absent": [
+          "Not in this guide"
+        ]
+      },
+      "split": "negative"
+    },
+    {
+      "id": "kn-u5-cond-01",
+      "gameId": "ultima5",
+      "text": "Avatar got possessed and is now against the party",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "AN XEN EX"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0,
+        "recordIds": [
+          "ultima5:topic:charm:remedy"
+        ]
+      },
+      "note": "Reported by the site owner: was split into two parts and read as acquisition."
+    },
+    {
+      "id": "kn-u5-cond-02",
+      "gameId": "ultima5",
+      "text": "Iolo is attacking the party",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "AN XEN EX"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "kn-u5-cond-03",
+      "gameId": "ultima5",
+      "text": "Shamino got charmed",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "AN XEN EX"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "kn-u5-cond-04",
+      "gameId": "ultima5",
+      "text": "I got poisoned",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "An Nox"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "kn-u5-cond-05",
+      "gameId": "ultima5",
+      "text": "My companion is dead",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "In Mani Corp"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "kn-u5-cond-06",
+      "gameId": "ultima5",
+      "text": "Jaana is asleep, how do I wake her?",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "AN ZU"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "kn-u5-cond-neg-01",
+      "gameId": "ultima5",
+      "text": "Avatar got possessed on Mars",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "decline",
+        "stateChangeCount": 0
+      },
+      "split": "negative"
+    },
+    {
+      "id": "kn-u5-cond-neg-02",
+      "gameId": "ultima5",
+      "text": "I got the Grapple and it is now against the party",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": [
+          "answer",
+          "clarify",
+          "decline"
+        ],
+        "stateChangeCount": 0
+      },
+      "split": "negative"
+    },
+    {
+      "id": "kn-alb-cond-01",
+      "gameId": "albion",
+      "text": "Sira got poisoned",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Heal poisoning"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "kn-alb-cond-neg-01",
+      "gameId": "albion",
+      "text": "Where is the pistol and is it useful?",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": "answer",
+        "parts": [
+          "answer",
+          "clarify"
+        ]
+      },
+      "split": "negative"
+    },
+    {
+      "id": "cv-alb-01",
+      "gameId": "albion",
+      "text": "What are Sira's stats?",
+      "options": {
+        "spoiler": "balanced"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Strength 39/45",
+          "Iskai (Dji-Kas)"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "cv-alb-02",
+      "gameId": "albion",
+      "text": "Can Tom use guns?",
+      "options": {
+        "spoiler": "balanced"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "firearms (guns): yes"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "cv-alb-03",
+      "gameId": "albion",
+      "text": "Where is Rabir?",
+      "options": {
+        "spoiler": "balanced"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Jirinaar"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "cv-alb-04",
+      "gameId": "albion",
+      "text": "What happens in the Gratogel chapter?",
+      "options": {
+        "spoiler": "balanced"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "King Tharnos"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "cv-alb-05",
+      "gameId": "albion",
+      "text": "What is act 3 about?",
+      "options": {
+        "spoiler": "balanced"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Dji-Cantos"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "cv-alb-06",
+      "gameId": "albion",
+      "text": "How do I fight Kamulos?",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "EXP: 3000"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "cv-alb-neg-01",
+      "gameId": "albion",
+      "text": "Can Drirr use guns?",
+      "options": {
+        "spoiler": "balanced"
+      },
+      "expected": {
+        "decision": "decline",
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "cv-alb-neg-02",
+      "gameId": "albion",
+      "text": "Is Jiris a pilot?",
+      "options": {
+        "spoiler": "balanced"
+      },
+      "expected": {
+        "decision": [
+          "clarify",
+          "decline"
+        ],
+        "stateChangeCount": 0,
+        "absent": [
+          "Pilot"
+        ]
+      }
+    },
+    {
+      "id": "cv-alb-neg-03",
+      "gameId": "albion",
+      "text": "Where is Rabir?",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": [
+          "clarify",
+          "decline"
+        ],
+        "stateChangeCount": 0,
+        "absent": [
+          "Jirinaar"
+        ]
+      }
+    },
+    {
+      "id": "cv-u5-01",
+      "gameId": "ultima5",
+      "text": "What are Jaana's stats?",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Intelligence 21"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "cv-u5-02",
+      "gameId": "ultima5",
+      "text": "Where can I find a healer?",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Minoc"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "cv-u5-03",
+      "gameId": "ultima5",
+      "text": "Where can I buy a horse?",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Paws"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "cv-u5-04",
+      "gameId": "ultima5",
+      "text": "Who is Chuckles?",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Lord British's Castle"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "cv-u5-neg-01",
+      "gameId": "ultima5",
+      "text": "Where is Alistair the Bard?",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": [
+          "clarify",
+          "decline"
+        ],
+        "stateChangeCount": 0,
+        "absent": [
+          "Lord British's Castle"
+        ]
+      }
+    },
+    {
+      "id": "cv-u5-neg-02",
+      "gameId": "ultima5",
+      "text": "Where can I find a healer on the Amiga?",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "decline",
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "cv-u6-01",
+      "gameId": "ultima6",
+      "text": "What are Iolo's stats?",
+      "options": {
+        "spoiler": "balanced"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Dexterity 26"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "cv-u6-02",
+      "gameId": "ultima6",
+      "text": "What is the reward for The Merchants' Circuit?",
+      "options": {
+        "spoiler": "balanced"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Repeatable gold"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "cv-u6-neg-01",
+      "gameId": "ultima6",
+      "text": "What is the reward for The Merchants' Circuit?",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": [
+          "clarify",
+          "decline"
+        ],
+        "stateChangeCount": 0,
+        "absent": [
+          "Repeatable gold"
+        ]
+      }
+    },
+    {
+      "id": "cv-u7-01",
+      "gameId": "ultima7",
+      "text": "Who is Batlin?",
+      "options": {
+        "spoiler": "balanced"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Leader of the Fellowship"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "cv-u7-02",
+      "gameId": "ultima7",
+      "text": "Where can I find a trainer?",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Buccaneer's Den"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "cv-u7-03",
+      "gameId": "ultima7",
+      "text": "Where are the cyclops?",
+      "options": {
+        "spoiler": "balanced"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Minoc Cave"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "cv-u7-04",
+      "gameId": "ultima7",
+      "text": "What are Dupre's stats?",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Combat 18"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "cv-u7-05",
+      "gameId": "ultima7",
+      "text": "Where are the clues in Paws?",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "floorboards"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "cv-u7-neg-01",
+      "gameId": "ultima7",
+      "text": "Who is Batlin?",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": [
+          "clarify",
+          "decline"
+        ],
+        "stateChangeCount": 0,
+        "absent": [
+          "Fellowship"
+        ]
+      }
+    },
+    {
+      "id": "cv-u7-neg-02",
+      "gameId": "ultima7",
+      "text": "Where are the clues in Paws?",
+      "options": {
+        "spoiler": "balanced"
+      },
+      "expected": {
+        "decision": [
+          "clarify",
+          "decline",
+          "answer"
+        ],
+        "stateChangeCount": 0,
+        "absent": [
+          "floorboards"
+        ]
+      }
+    },
+    {
+      "id": "cv-aq-01",
+      "gameId": "alqadim",
+      "text": "Where is Zubakon?",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Bandar al-Sa'adat"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "cv-aq-02",
+      "gameId": "alqadim",
+      "text": "Where can I find the Caliph?",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Caliph's Palace"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "cv-aq-neg-01",
+      "gameId": "alqadim",
+      "text": "Where is the Corsair?",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": [
+          "clarify",
+          "decline"
+        ],
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sp-u5-01",
+      "gameId": "ultima5",
+      "text": "Who is Saduj?",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Bard, level 4",
+          "help level is Full answer"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0,
+        "absent": [
+          "spy",
+          "Judas",
+          "betray"
+        ]
+      },
+      "note": "Reported by the site owner: previously no answer at Gentle."
+    },
+    {
+      "id": "sp-u5-02",
+      "gameId": "ultima5",
+      "text": "Where is Saduj?",
+      "options": {
+        "spoiler": "balanced"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Lord British's Castle"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0,
+        "absent": [
+          "spy"
+        ]
+      }
+    },
+    {
+      "id": "sp-u5-03",
+      "gameId": "ultima5",
+      "text": "Who is Saduj?",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "spy for Blackthorn"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sp-u6-01",
+      "gameId": "ultima6",
+      "text": "Who is Dupre?",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Fighter"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "adv-u5-01",
+      "gameId": "ultima5",
+      "text": "Who is Saduj? should I join him to the party?",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Do not recruit"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0,
+        "absent": [
+          "Not answered",
+          "Part 2"
+        ]
+      },
+      "note": "Reported by the site owner: the advice part was listed as an unanswered Part 2."
+    },
+    {
+      "id": "adv-u5-02",
+      "gameId": "ultima5",
+      "text": "Who is Saduj? should I join him to the party?",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Bard, level 4"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0,
+        "absent": [
+          "spy",
+          "Not answered"
+        ]
+      }
+    },
+    {
+      "id": "adv-u5-03",
+      "gameId": "ultima5",
+      "text": "Should I recruit Jaana?",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "essential early recruit"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "adv-u5-04",
+      "gameId": "ultima5",
+      "text": "Who is Saduj? Tell me more",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Do not recruit"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0,
+        "absent": [
+          "Not answered"
+        ]
+      }
+    },
+    {
+      "id": "adv-neg-01",
+      "gameId": "ultima5",
+      "text": "Who is Saduj? Can I trust him?",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Not answered: “can i trust him”"
+        ]
+      },
+      "split": "negative"
+    },
+    {
+      "id": "adv-neg-03",
+      "gameId": "ultima5",
+      "text": "Should I recruit Saduj on the C64?",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": "decline"
+      },
+      "split": "negative"
+    },
+    {
+      "id": "adv-alb-01",
+      "gameId": "albion",
+      "text": "Should I recruit Khunag?",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "REQUIRED for Kenget Kamulos"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "adv-alb-02",
+      "gameId": "albion",
+      "text": "Who is Rainer? should I keep him in the party?",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Leaves mid-game"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0,
+        "absent": [
+          "Not answered"
+        ]
+      }
+    },
+    {
+      "id": "adv-alb-03",
+      "gameId": "albion",
+      "text": "Should I recruit Khunag?",
+      "options": {
+        "spoiler": "balanced"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "help level is Full answer"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0,
+        "absent": [
+          "REQUIRED"
+        ]
+      }
+    },
+    {
+      "id": "adv-u6-01",
+      "gameId": "ultima6",
+      "text": "Should I recruit Seggallion?",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "strongest pure fighter"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "adv-u7-01",
+      "gameId": "ultima7",
+      "text": "Should I take Sentri into my party?",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Will not join if party size"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "adv-u7-02",
+      "gameId": "ultima7",
+      "text": "Who is Spark? should I join him to the party?",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Fastest growth"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0,
+        "absent": [
+          "Not answered"
+        ]
+      }
+    },
+    {
+      "id": "adv-aq-neg-01",
+      "gameId": "alqadim",
+      "text": "Should I recruit Zubakon?",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": [
+          "clarify",
+          "decline"
+        ]
+      },
+      "split": "negative"
+    },
+    {
+      "id": "adv-neg-04",
+      "gameId": "ultima6",
+      "text": "Should I recruit Seggallion for free?",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "decline"
+      },
+      "split": "negative"
+    },
+    {
+      "id": "sug-u5-01",
+      "gameId": "ultima5",
+      "text": "Who is Toshixz",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Did you mean Toshi?",
+          "If so:",
+          "Starts at a low level"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      },
+      "note": "Requested by the site owner: suggest a similar name instead of a bare decline."
+    },
+    {
+      "id": "sug-u5-02",
+      "gameId": "ultima5",
+      "text": "Who is Lord Michel?",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Did you mean Lord Michael?"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sug-u5-03",
+      "gameId": "ultima5",
+      "text": "Who is Shamno?",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Did you mean Shamino?"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sug-alb-01",
+      "gameId": "albion",
+      "text": "Who is Siobahn?",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Did you mean Siobhan?"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sug-neg-01",
+      "gameId": "ultima5",
+      "text": "Who is Toshixz on Mars?",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": [
+          "clarify",
+          "decline"
+        ],
+        "absent": [
+          "Toshi"
+        ]
+      },
+      "split": "negative"
+    },
+    {
+      "id": "sug-neg-02",
+      "gameId": "albion",
+      "text": "Who is Siobahn?",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "note": "Changed 20 Oct 2026 at the owner's choice: Albion characters now follow Ultima V tiering (race and role at Gentle, notes at Direct), so the name is no longer hidden at Gentle. The Direct notes must still not appear.",
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Did you mean Siobhan?",
+          "appear when the help level is Full answer"
+        ]
+      },
+      "split": "negative"
+    },
+    {
+      "id": "sug-neg-03",
+      "gameId": "ultima7",
+      "text": "What is love?",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": [
+          "clarify",
+          "decline"
+        ],
+        "absent": [
+          "Did you mean"
+        ]
+      },
+      "split": "negative"
+    },
+    {
+      "id": "sug-neg-04",
+      "gameId": "albion",
+      "text": "Where is Darth Vader?",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": [
+          "clarify",
+          "decline"
+        ],
+        "absent": [
+          "Did you mean"
+        ]
+      },
+      "split": "negative"
+    },
+    {
+      "id": "sug-u6-01",
+      "gameId": "ultima6",
+      "text": "Who is Shamnio?",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Did you mean Shamino?"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0,
+        "absent": [
+          "Selected map context"
+        ]
+      }
+    },
+    {
+      "id": "sug-u6-02",
+      "gameId": "ultima6",
+      "text": "What does the Storm Clok do?",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Did you mean Storm Cloak?",
+          "Disables Magic"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sug-u7-01",
+      "gameId": "ultima7",
+      "text": "Who is Spork?",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Did you mean Spark?"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sug-aq-01",
+      "gameId": "alqadim",
+      "text": "Where is Zubakonn?",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Did you mean Zubakon?"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sug-aq-02",
+      "gameId": "alqadim",
+      "text": "Where is the Ship Orbb?",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Did you mean Ship Orb?",
+          "Deadman's Reef"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    }
+  ],
+  "dialogues": [
+    {
+      "id": "kn-dlg-u5-condition-followups",
+      "gameId": "ultima5",
+      "turns": [
+        {
+          "text": "How do I cure poison?",
+          "options": {
+            "spoiler": "gentle"
+          },
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "An Nox"
+            ],
+            "sourceRequired": true,
+            "stateChangeCount": 0
+          }
+        },
+        {
+          "text": "What about being charmed?",
+          "options": {
+            "spoiler": "gentle"
+          },
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "AN XEN EX"
+            ],
+            "sourceRequired": true,
+            "stateChangeCount": 0
+          }
+        },
+        {
+          "text": "And what reagents does it need?",
+          "options": {
+            "spoiler": "gentle"
+          },
+          "expected": {
+            "decision": [
+              "clarify",
+              "decline"
+            ],
+            "stateChangeCount": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "kn-dlg-alb-selling",
+      "gameId": "albion",
+      "turns": [
+        {
+          "text": "Where should I sell my loot?",
+          "options": {
+            "spoiler": "gentle"
+          },
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Rabir"
+            ],
+            "sourceRequired": true,
+            "stateChangeCount": 0
+          }
+        },
+        {
+          "text": "How do I sell it?",
+          "options": {
+            "spoiler": "gentle"
+          },
+          "expected": {
+            "decision": [
+              "clarify",
+              "decline"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "kn-dlg-sc-research",
+      "gameId": "starcraft",
+      "browserOnly": true,
+      "turns": [
+        {
+          "text": "What is BWAPI?",
+          "options": {
+            "spoiler": "gentle"
+          },
+          "expected": {
+            "decision": "answer",
+            "recordIds": [
+              "starcraft:research:what-is-bwapi:explanation"
+            ]
+          }
+        },
+        {
+          "text": "Which is better, SCHNAIL or BWAILauncher?",
+          "options": {
+            "spoiler": "balanced"
+          },
+          "expected": {
+            "decision": "answer",
+            "parts": [
+              "answer",
+              "answer"
+            ],
+            "recordIds": [
+              "starcraft:schnail:pros-cons",
+              "starcraft:bwai:pros-cons"
+            ]
+          }
+        },
+        {
+          "text": "How do I fix antivirus blocking SCHNAIL?",
+          "options": {
+            "spoiler": "balanced"
+          },
+          "expected": {
+            "decision": "answer",
+            "recordIds": [
+              "starcraft:schnail:antivirus"
+            ]
+          }
+        },
+        {
+          "text": "Does SCHNAIL need an internet connection?",
+          "options": {
+            "spoiler": "balanced"
+          },
+          "expected": {
+            "decision": "answer",
+            "recordIds": [
+              "starcraft:schnail:internet"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "sug-dlg-u5-followup",
+      "gameId": "ultima5",
+      "turns": [
+        {
+          "text": "Who is Toshixz",
+          "options": {
+            "spoiler": "direct"
+          },
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Did you mean Toshi?"
+            ],
+            "sourceRequired": true,
+            "stateChangeCount": 0
+          }
+        },
+        {
+          "text": "Where is he?",
+          "options": {
+            "spoiler": "direct"
+          },
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Empath Abbey"
+            ],
+            "sourceRequired": true,
+            "stateChangeCount": 0
+          }
+        },
+        {
+          "text": "I already did that",
+          "options": {
+            "spoiler": "direct"
+          },
+          "expected": {
+            "decision": "clarify",
+            "stateChangeCount": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "sug-dlg-u7-partial-choice",
+      "gameId": "ultima7",
+      "turns": [
+        {
+          "text": "Who is Mario?",
+          "options": {
+            "spoiler": "direct"
+          },
+          "expected": {
+            "decision": "clarify",
+            "contains": [
+              "Did you mean one of these?"
+            ]
+          }
+        },
+        {
+          "text": "yes",
+          "options": {
+            "spoiler": "direct"
+          },
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "De Maria"
+            ],
+            "sourceRequired": true,
+            "stateChangeCount": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "sug-dlg-sc",
+      "gameId": "starcraft",
+      "browserOnly": true,
+      "turns": [
+        {
+          "text": "What is SCHNIAL?",
+          "options": {
+            "spoiler": "gentle"
+          },
+          "expected": {
+            "decision": "answer",
+            "recordIds": [
+              "starcraft:schnail:features"
+            ]
+          }
+        },
+        {
+          "text": "How do I set up BWAILuncher?",
+          "options": {
+            "spoiler": "gentle"
+          },
+          "expected": {
+            "decision": "answer",
+            "recordIds": [
+              "starcraft:bwai:setup"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -511,8 +511,9 @@ let atlasHashRead = false;
 let atlasHoverCardPinned = false;
 let atlasRenderPromise = Promise.resolve();
 let pendingWalkthroughAtlasTarget = null;
-let aiHistory = [];
-let questPrompts = {};
+let currentGenieChapter = 1;
+let genieViews = {};
+let geniePromise;
 
 const ATLAS_CHART_SIZES = {
     'map_testing_grounds.png': [1024, 1024],
@@ -845,6 +846,8 @@ function toggleChapter(id) {
     if (panel.classList.contains('hidden')) {
         panel.classList.remove('hidden');
         btn.classList.add('active');
+        currentGenieChapter = id;
+        Object.values(genieViews).forEach(view => view.refresh());
         btn.querySelector('.chevron').style.transform = 'rotate(180deg)';
     } else {
         panel.classList.add('hidden');
@@ -1819,184 +1822,73 @@ function resetGamblingBounds() {
     document.getElementById('gambling-result-log').innerHTML = '<span class="text-[var(--aq-text-muted)] italic">Enter parameters above and calculate.</span>';
 }
 
-// AI Genie Counsel integration
-async function callGeminiFunction(prompt, maxRetries = 3) {
-    const apiUrl = '/php/llm.php';
-    const payload = { contents: [{ role: "user", parts: [{ text: prompt }] }] };
-
-    let delay = 1000;
-    for (let i = 0; i < maxRetries; i++) {
-        try {
-            const response = await fetch(apiUrl, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(payload)
-            });
-
-            if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-            const result = await response.json();
-
-            const text = result?.candidates?.[0]?.content?.parts?.[0]?.text;
-            if (text) return text;
-            throw new Error('Invalid response structure from Gemini API');
-        } catch (error) {
-            console.warn(`API call attempt ${i + 1} failed. Retrying in ${delay}ms...`, error);
-            if (i < maxRetries - 1) {
-                await new Promise(r => setTimeout(r, delay));
-                delay *= 2;
-            } else {
-                throw error;
+// Both Genie surfaces use explicit references; document APIs are never patched.
+function ensureGenieViews() {
+    if (!geniePromise) {
+        geniePromise = Promise.all([
+            import('./assistant/adapters/alqadim.js'),
+            import('./assistant/ui.js')
+        ]).then(async ([adapter, ui]) => {
+            const assistant = await adapter.createAlQadimAssistant({ data: DB, getQuestState: () => questState, chapterRoutes: CHAPTER_ATLAS_ROUTES,
+                atlas: window.ALQADIM_ATLAS_DATA || null });
+            const getContext = () => {
+                const id = adapter.alqadimChapterId(currentGenieChapter);
+                return { contextId: id, entityIds: [id], tone: 'genie',
+                    label: DB.chapters.find(chapter => chapter.id === currentGenieChapter)?.title };
+            };
+            for (const surface of ['sidebar', 'tab']) {
+                const suffix = surface === 'tab' ? '-tab' : '';
+                const messages = document.getElementById(`walkthrough-ai-body${suffix}`);
+                const input = document.getElementById(`walkthrough-ai-input${suffix}`);
+                const sendButton = document.getElementById(`walkthrough-ai-send${suffix}`);
+                if (messages && input && sendButton) {
+                    messages.textContent = '';
+                    genieViews[surface] = ui.createView({ assistant, messages, input, sendButton, getContext,
+                        actions: Object.fromEntries([...new Set(Object.values(CHAPTER_ATLAS_ROUTES).flat())]
+                            .map(worldId => [`chapter-map:${worldId}`, () => openWalkthroughAtlas(worldId)])) });
+                }
             }
-        }
+            return { assistant, getContext };
+        }).catch(error => {
+            geniePromise = null;
+            for (const suffix of ['', '-tab']) {
+                const messages = document.getElementById(`walkthrough-ai-body${suffix}`);
+                if (messages) messages.textContent = 'The local advice files could not be loaded. Reload the page to retry. The written walkthrough remains available.';
+            }
+            throw error;
+        });
     }
+    return geniePromise;
 }
 
-async function loadQuestPrompts() {
+async function sendGenieMessage(surface) {
+    const suffix = surface === 'tab' ? '-tab' : '';
+    const input = document.getElementById(`walkthrough-ai-input${suffix}`);
+    const text = input?.value;
+    if (!text?.trim()) return null;
+    const chapter = currentGenieChapter;
     try {
-        const res = await fetch('prompts/alqadim_prompts.json');
-        if (res.ok) {
-            questPrompts = await res.json();
+        await ensureGenieViews();
+        if (chapter === currentGenieChapter && input.isConnected && input.value === text) {
+            return genieViews[surface]?.send();
         }
-    } catch (e) {
-        console.warn('Failed to load prompts JSON context:', e);
-    }
+        const message = document.createElement('p');
+        message.setAttribute('role', 'status');
+        message.textContent = 'The chapter or question changed while the local guide loaded. Send the current question again.';
+        document.getElementById(`walkthrough-ai-body${suffix}`)?.appendChild(message);
+    } catch { /* Local loading errors are displayed without clearing the question. */ }
+    return null;
 }
 
-function appendAiMessage(role, text) {
-    const body = document.getElementById('walkthrough-ai-body');
-    if (!body) return;
+function sendAiMessage() { return sendGenieMessage('sidebar'); }
+function sendAiMessageTab() { return sendGenieMessage('tab'); }
 
-    const el = document.createElement('div');
-    el.className = `flex flex-col gap-1 w-full ${role === 'user' ? 'items-end' : 'items-start'}`;
-
-    const label = document.createElement('span');
-    label.className = 'text-[10px] text-gray-500 font-semibold px-2';
-    label.textContent = role === 'user' ? 'You (Corsair)' : '🔮 Genie\'s Counsel';
-
-    const bubble = document.createElement('div');
-    bubble.className = `message ${role}`;
-
-    // Use marked if available, otherwise fallback
-    if (window.marked && role === 'ai') {
-        bubble.innerHTML = marked.parse(text);
-    } else {
-        bubble.textContent = text;
-    }
-
-    el.appendChild(label);
-    el.appendChild(bubble);
-    body.appendChild(el);
-
-    body.scrollTop = body.scrollHeight;
-}
-
-function showAiTyping() {
-    const body = document.getElementById('walkthrough-ai-body');
-    if (!body) return;
-
-    const el = document.createElement('div');
-    el.id = 'ai-typing-indicator';
-    el.className = 'flex flex-col gap-1 w-full items-start';
-
-    const label = document.createElement('span');
-    label.className = 'text-[10px] text-gray-500 font-semibold px-2';
-    label.textContent = '🔮 Genie\'s Counsel';
-
-    const bubble = document.createElement('div');
-    bubble.className = 'message ai typing-indicator';
-    bubble.innerHTML = `
-        <span class="typing-dot"></span>
-        <span class="typing-dot"></span>
-        <span class="typing-dot"></span>
-    `;
-
-    el.appendChild(label);
-    el.appendChild(bubble);
-    body.appendChild(el);
-    body.scrollTop = body.scrollHeight;
-}
-
-function hideAiTyping() {
-    const el = document.getElementById('ai-typing-indicator');
-    if (el) el.remove();
-}
-
-async function sendAiMessage() {
-    const input = document.getElementById('walkthrough-ai-input');
-    const sendBtn = document.getElementById('walkthrough-ai-send');
-    if (!input || !sendBtn) return;
-
-    const text = input.value.trim();
-    if (!text) return;
-
-    // Append user message
-    appendAiMessage('user', text);
-    input.value = '';
-
-    // Disable input
-    input.disabled = true;
-    sendBtn.disabled = true;
-    showAiTyping();
-
-    aiHistory.push({ role: 'user', content: text });
-
-    // Determine current chapter context
-    // Find first active accordion chapter, or fallback to chapter 1
-    let chapterContext = 'Graduating From the Academy';
-    const activeHeaders = document.querySelectorAll('.chapter-header.active');
-    if (activeHeaders.length > 0) {
-        const titleEl = activeHeaders[0].querySelector('h3');
-        if (titleEl) chapterContext = titleEl.textContent;
-    }
-
-    // Load prompt context
-    if (Object.keys(questPrompts).length === 0) {
-        await loadQuestPrompts();
-    }
-
-    const template = questPrompts[chapterContext] || `
-        <context>
-        You are the Genie's Counsel, a mystical but practical AI guide helping the Corsair through the Arabian Nights game Al-Qadim: The Genie's Curse.
-        Current Chapter: ${chapterContext}
-        </context>
-        <query>User Query</query>
-    `;
-
-    // Construct merged prompt
-    const recent = aiHistory.slice(-6);
-    const transcript = recent.map(m => `${m.role === 'user' ? 'User' : 'Assistant'}: ${m.content}`).join('\n');
-    const finalPrompt = `${template.replace('<query>User Query</query>', '')}
-    
-<transcript>
-${transcript}
-</transcript>
-    
-Please respond to the user's latest query above, staying in character as a mystical genie, keeping hints clear, structured, and helpful.`;
-
+async function clearAiChat() {
     try {
-        const reply = await callGeminiFunction(finalPrompt);
-        hideAiTyping();
-        appendAiMessage('ai', reply);
-        aiHistory.push({ role: 'assistant', content: reply });
-    } catch (e) {
-        console.error('LLM API Call failed:', e);
-        hideAiTyping();
-        appendAiMessage('ai', "My apologies, master. The sands of time are clouded and my connection to the ethereal plane is broken. Please consult your scimitar and try again.");
-    } finally {
-        input.disabled = false;
-        sendBtn.disabled = false;
-        input.focus();
-    }
-}
-
-function clearAiChat() {
-    const body = document.getElementById('walkthrough-ai-body');
-    if (body) {
-        body.innerHTML = `
-            <p class="text-[var(--aq-text-muted)] italic text-center py-8">Genie terminal online. Select a chapter in the walkthrough to update context, then ask the Genie for wisdom.</p>
-        `;
-    }
-    aiHistory = [];
+        const local = await ensureGenieViews();
+        local.assistant.resetSession();
+        Object.values(genieViews).forEach(view => view.refresh());
+    } catch { /* Loading errors are shown in both explicit surfaces. */ }
 }
 
 // Global binding
@@ -2010,6 +1902,7 @@ window.revealAtlasLocation = revealAtlasLocation;
 window.calculateGamblingGuess = calculateGamblingGuess;
 window.resetGamblingBounds = resetGamblingBounds;
 window.sendAiMessage = sendAiMessage;
+window.sendAiMessageTab = sendAiMessageTab;
 window.clearAiChat = clearAiChat;
 window.updateGamblingBounds = updateGamblingBounds;
 
@@ -2022,16 +1915,6 @@ document.addEventListener('DOMContentLoaded', () => {
     renderBestiary();
     updateProgressBar();
 
-    // Bind AI send trigger
-    const aiInput = document.getElementById('walkthrough-ai-input');
-    if (aiInput) {
-        aiInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
-                sendAiMessage();
-            }
-        });
-    }
-
-    // Preload prompts
-    loadQuestPrompts();
+    // The shared view binds click and keyboard events to each explicit surface.
+    ensureGenieViews().catch(() => {});
 });

@@ -1126,23 +1126,16 @@ const gameData = {
             tone: "pragmatic",
             spoiler: "light",
             activeContext: null,
-            conversations: new Map(),
+            assistant: null,
+            view: null,
+            loading: null,
+            uiRevision: 0,
+            inputRevision: 0,
             returnFocus: null
         };
 
-        const seerToneDirectives = {
-            pragmatic: "Respond like a seasoned Britannian tactician: grounded, specific, and focused on actionable steps.",
-            visionary: "Speak with lyrical foresight, weaving thematic connections and encouragement while still giving useful direction.",
-            cryptic: "Answer in enigmatic hints and allegory while keeping guidance decipherable with careful thought."
-        };
-
-        const seerSpoilerDirectives = {
-            light: "Offer gentle nudges only; reveal no explicit solutions unless absolutely necessary.",
-            balanced: "Provide a blend of hints and clear answers; reveal solutions when vital to progress.",
-            direct: "State solutions plainly and walk the player through the necessary steps."
-        };
-
         function setSeerTone(tone) {
+            seerState.uiRevision += 1;
             seerState.tone = tone;
             document.querySelectorAll('.seer-tone-option').forEach(button => {
                 const isTarget = button.dataset.tone === tone;
@@ -1155,15 +1148,13 @@ const gameData = {
         }
 
         function setSeerSpoiler(spoiler) {
-            seerState.spoiler = spoiler;
-            document.querySelectorAll('.seer-spoiler-option').forEach(button => {
-                const isTarget = button.dataset.spoiler === spoiler;
-                button.setAttribute('aria-pressed', isTarget ? 'true' : 'false');
-                button.classList.toggle('seer-option-selected', isTarget);
-                if (!isTarget) {
-                    button.classList.remove('seer-option-selected');
-                }
-            });
+            seerState.uiRevision += 1;
+            seerState.spoiler = ['light', 'gentle', 'balanced', 'direct'].includes(spoiler) ? spoiler : 'light';
+            const select = document.getElementById('seer-spoiler-select');
+            if (select) select.value = seerState.spoiler === 'light' ? 'gentle' : seerState.spoiler;
+            seerState.assistant?.setPolicy(seerState.spoiler);
+            renderSeerContext();
+            seerState.view?.refresh();
         }
 
         gameData.pcItemList = parsePcItemList(gameData.pcItemListRaw || "");
@@ -1305,47 +1296,74 @@ const gameData = {
             return { quest, section };
         }
 
-        function appendSeerMessage(role, text, { thinking = false } = {}) {
-            const chat = document.getElementById('seer-chat-messages');
-            if (!chat) {
-                return null;
+        // Keep the original lexical data and progress sets in scope for the module bridge.
+        async function ensureSeerView() {
+            if (seerState.view) return seerState.view;
+            if (!seerState.loading) {
+                seerState.loading = Promise.all([
+                    import('./assistant/adapters/ultima6.js'),
+                    import('./assistant/ui.js')
+                ]).then(async ([adapter, ui]) => {
+                    const validMain = new Set(allQuestObjectives().map(objective => objective.key));
+                    const validSide = new Set((gameData.sideQuests || []).map(quest => britanniaSlug(quest.title)));
+                    const assistant = await adapter.createUltima6Assistant({
+                        gameData,
+                        atlas: window.BRITANNIA_MAP_CONFIG || {},
+                        questRoutes: britanniaQuestRoutes(),
+                        getProgress: () => [
+                            ...[...questProgress].filter(id => validMain.has(id)).map(id => ({
+                                id: `ultima6:completed:${id}`, value: true, temporal: 'historical',
+                                source: { file: questProgressStorageKey, locator: id, review: 'player-reported' }
+                            })),
+                            ...[...sideQuestProgress].filter(id => validSide.has(id)).map(id => ({
+                                id: `ultima6:side-completed:${id}`, value: true, temporal: 'historical',
+                                source: { file: sideQuestProgressStorageKey, locator: id, review: 'player-reported' }
+                            }))
+                        ]
+                    });
+                    seerState.assistant = assistant;
+                    seerState.view = ui.createView({
+                        assistant,
+                        messages: document.getElementById('seer-chat-messages'),
+                        input: document.getElementById('seer-query'),
+                        sendButton: document.getElementById('ask-seer'),
+                        spoilerSelect: document.getElementById('seer-spoiler-select'),
+                        controlsBefore: document.querySelector('.u6-seer-intro'),
+                        bindEvents: false,
+                        getContext: () => ({
+                            contextId: seerState.activeContext?.key || 'general',
+                            entityIds: seerState.activeContext ? [`ultima6:${seerState.activeContext.key}`] : [],
+                            spoiler: seerState.spoiler,
+                            tone: seerState.tone
+                        })
+                    });
+                    assistant.setPolicy(seerState.spoiler);
+                    renderSeerContext();
+                    return seerState.view;
+                }).catch(error => {
+                    seerState.loading = null;
+                    throw error;
+                });
             }
-            const message = document.createElement('div');
-            message.className = `u6-seer-chat__message u6-seer-chat__message--${role}${thinking ? ' u6-seer-chat__message--thinking' : ''}`;
-            message.textContent = text;
-            chat.appendChild(message);
-            chat.scrollTop = chat.scrollHeight;
-            return message;
+            return seerState.loading;
         }
 
-        function renderSeerConversation() {
-            const chat = document.getElementById('seer-chat-messages');
+        function renderSeerContext() {
             const context = seerState.activeContext;
-            if (!chat || !context) {
-                return;
-            }
-            chat.innerHTML = '';
-            const conversation = seerState.conversations.get(context.key) || [];
-            if (!conversation.length) {
-                appendSeerMessage('seer', `What remains unclear about ${context.title}, Avatar?`);
-                return;
-            }
-            conversation.forEach(message => appendSeerMessage(message.role, message.text));
+            if (!context) return;
+            const safe = seerState.assistant?.describeContext(context.key, seerState.spoiler);
+            document.getElementById('seer-modal-title').textContent = `✨ ${safe?.title || 'Seer counsel'}`;
+            document.getElementById('seer-modal-summary').textContent = 'Local guide counsel · selected quest or map context · no generated facts';
+            const paragraph = document.createElement('p');
+            paragraph.textContent = safe?.text || 'Loading the local guide hints…';
+            document.getElementById('seer-general-hints').replaceChildren(paragraph);
         }
 
-        function setSeerModalTab(tabName) {
-            const hintsButton = document.getElementById('seer-tab-hints');
-            const adviceButton = document.getElementById('seer-tab-advice');
-            const hintsPanel = document.getElementById('seer-hints-panel');
-            const advicePanel = document.getElementById('seer-advice-panel');
-            const showAdvice = tabName === 'advice';
-            hintsButton?.setAttribute('aria-selected', String(!showAdvice));
-            adviceButton?.setAttribute('aria-selected', String(showAdvice));
-            hintsPanel?.classList.toggle('hidden', showAdvice);
-            advicePanel?.classList.toggle('hidden', !showAdvice);
-            if (showAdvice) {
-                document.getElementById('seer-query')?.focus();
-            }
+        function showSeerLoadError() {
+            const hints = document.getElementById('seer-general-hints');
+            const paragraph = document.createElement('p');
+            paragraph.textContent = 'The local hint files could not be loaded. The walkthrough and atlas remain available; reopen counsel after the files are available.';
+            hints?.replaceChildren(paragraph);
         }
 
         function openSeerModal(context, sourceElement = null) {
@@ -1356,21 +1374,16 @@ const gameData = {
             if (!modal || !title || !summary || !hints || !context) {
                 return;
             }
+            seerState.uiRevision += 1;
+            // Moving through an inert context clears reference/action slots while
+            // preserving the bounded history of a reopened topic.
+            seerState.assistant?.activate('seer-closed');
             seerState.activeContext = context;
             seerState.returnFocus = sourceElement || document.activeElement;
-            title.textContent = `✨ ${context.title}`;
-            summary.textContent = context.summary;
-            hints.innerHTML = '';
-            const list = document.createElement('ul');
-            (context.hints?.length ? context.hints : ['Ask the Seer for tailored guidance about this context.']).forEach(hint => {
-                const item = document.createElement('li');
-                item.textContent = hint;
-                list.appendChild(item);
-            });
-            hints.appendChild(list);
+            renderSeerContext();
             document.getElementById('seer-query').value = '';
-            renderSeerConversation();
-            setSeerModalTab('hints');
+            document.getElementById('seer-chat-messages').replaceChildren();
+            ensureSeerView().then(view => view.refresh()).catch(showSeerLoadError);
             modal.classList.remove('hidden');
             document.body.classList.add('u6-seer-modal-open');
             document.getElementById('close-seer-modal')?.focus();
@@ -1381,6 +1394,8 @@ const gameData = {
             if (!modal || modal.classList.contains('hidden')) {
                 return;
             }
+            seerState.uiRevision += 1;
+            seerState.assistant?.activate('seer-closed');
             modal.classList.add('hidden');
             document.body.classList.remove('u6-seer-modal-open');
             if (seerState.returnFocus && document.contains(seerState.returnFocus)) {
@@ -2293,11 +2308,9 @@ const gameData = {
                 closeSeerModal();
             }
         });
-        document.querySelectorAll('[data-seer-tab]').forEach(button => {
-            button.addEventListener('click', () => setSeerModalTab(button.dataset.seerTab));
-        });
+        seerQuery?.addEventListener('input', () => { seerState.inputRevision += 1; });
         seerQuery?.addEventListener('keydown', event => {
-            if (event.key === 'Enter' && !event.shiftKey) {
+            if (event.key === 'Enter' && !event.shiftKey && !event.isComposing) {
                 event.preventDefault();
                 askTheSeer();
             }
@@ -2330,7 +2343,7 @@ const gameData = {
         });
 
         const toneButtons = document.querySelectorAll('.seer-tone-option');
-        const spoilerButtons = document.querySelectorAll('.seer-spoiler-option');
+        const spoilerSelect = document.getElementById('seer-spoiler-select');
 
         const defaultTone = Array.from(toneButtons).find(button => button.dataset.default === 'true');
         if (defaultTone) {
@@ -2340,13 +2353,8 @@ const gameData = {
             button.addEventListener('click', () => setSeerTone(button.dataset.tone));
         });
 
-        const defaultSpoiler = Array.from(spoilerButtons).find(button => button.dataset.default === 'true');
-        if (defaultSpoiler) {
-            setSeerSpoiler(defaultSpoiler.dataset.spoiler);
-        }
-        spoilerButtons.forEach(button => {
-            button.addEventListener('click', () => setSeerSpoiler(button.dataset.spoiler));
-        });
+        setSeerSpoiler('light');
+        spoilerSelect?.addEventListener('change', () => setSeerSpoiler(spoilerSelect.value));
 
         setupKeywordHintButtons();
     }
@@ -2437,116 +2445,50 @@ const gameData = {
         renderCompanionTable(sortedData);
     }
 
-    async function requestGeminiText(prompt) {
-        const payload = { contents: [{ role: "user", parts: [{ text: prompt }] }] };
-        const apiUrl = '/php/llm.php';
-        const response = await fetch(apiUrl, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(payload)
-        });
-        if (!response.ok) {
-            throw new Error(`API call failed with status: ${response.status}`);
-        }
-        const result = await response.json();
-        const text = result.candidates?.[0]?.content?.parts?.[0]?.text;
-        if (!text) {
-            throw new Error("Invalid response structure from API.");
-        }
-        return text;
-    }
-
-    async function callGeminiAPI(prompt, outputElement) {
-        outputElement.innerHTML = '<div class="flex justify-center"><div class="loader"></div></div>';
-        try {
-            const text = await requestGeminiText(prompt);
-            const response = document.createElement('div');
-            response.className = 'gemini-response';
-            response.textContent = text;
-            outputElement.replaceChildren(response);
-        } catch (error) {
-            console.error("Error calling Gemini API:", error);
-            const response = document.createElement('div');
-            response.className = 'gemini-response text-red-800';
-            response.textContent = "The ethereal winds are turbulent. The seer's voice cannot be heard at this time. Please try again later.";
-            outputElement.replaceChildren(response);
-        }
-    }
-
+    // An authored, bounded roleplaying vignette; it makes no claim about game history.
     function generateChronicle() {
-        const selectedVirtues = Array.from(document.querySelectorAll('input[name="virtue"]:checked')).map(cb => cb.value);
-        if (selectedVirtues.length === 0) {
-            alert("Please select at least one virtue to generate your chronicle.");
-            return;
-        }
-        const prompt = `Write a short, epic backstory for a heroic Avatar in the fantasy world of Britannia from the game Ultima VI. The story should be about 150 words and written in the style of a classic fantasy novel. The Avatar's character is defined by these core virtues: ${selectedVirtues.join(', ')}. Explain how their past experiences led them to embody these specific virtues.`;
-        const outputElement = document.getElementById('chronicle-output');
-        callGeminiAPI(prompt, outputElement);
+        const passages = {
+            Valor: 'When a frightened traveller faltered, the Avatar stood beside them and faced the danger with steady resolve.',
+            Compassion: 'At the roadside, the Avatar paused to tend a stranger, choosing kindness over a quicker journey.',
+            Honesty: 'When an easy lie promised comfort, the Avatar spoke plainly and accepted the cost of the truth.',
+            Spirituality: 'In a quiet hour beneath the stars, the Avatar reflected on how each small choice shaped the person they would become.',
+            Sacrifice: 'The Avatar shared their last provisions with someone in greater need and continued with an empty pack.',
+            Honor: 'The Avatar kept a difficult promise long after its witness had gone.',
+            Justice: 'Before judging a quarrel, the Avatar listened to both accounts and sought a fair remedy.',
+            Humility: 'The Avatar accepted help without claiming special favor and thanked those whose work made the journey possible.'
+        };
+        const virtues = [...new Set(Array.from(document.querySelectorAll('input[name="virtue"]:checked')).map(input => input.value))]
+            .filter(virtue => Object.hasOwn(passages, virtue)).slice(0, 3);
+        const output = document.getElementById('chronicle-output');
+        const label = document.createElement('p');
+        label.textContent = 'Roleplaying fiction — assembled from authored virtue vignettes; not canonical game events.';
+        const story = document.createElement('p');
+        story.textContent = virtues.length
+            ? `${virtues.map(virtue => passages[virtue]).join(' ')} These remembered choices would guide the Avatar on the road ahead.`
+            : 'Select one to three virtues to compose a vignette.';
+        output.replaceChildren(label, story);
     }
 
     async function askTheSeer() {
-        const queryField = document.getElementById('seer-query');
-        const sendButton = document.getElementById('ask-seer');
-        const context = seerState.activeContext;
-        const query = queryField?.value || '';
-        if (!query.trim()) {
-            alert("You must first pose a question to the seer.");
-            return;
-        }
-        if (!context) {
-            return;
-        }
-        const conversation = seerState.conversations.get(context.key) || [];
-        conversation.push({ role: 'user', text: query.trim() });
-        seerState.conversations.set(context.key, conversation);
-        appendSeerMessage('user', query.trim());
-        queryField.value = '';
-        queryField.disabled = true;
-        sendButton.disabled = true;
-        const thinking = appendSeerMessage('seer', 'The Seer studies the signs…', { thinking: true });
-
-        const transcript = conversation.slice(-7).map(message => `${message.role === 'user' ? 'Player' : 'Seer'}: ${message.text}`).join('\n');
-        const toneDirective = seerToneDirectives[seerState.tone] || seerToneDirectives.pragmatic;
-        const spoilerDirective = seerSpoilerDirectives[seerState.spoiler] || seerSpoilerDirectives.light;
-        const prompt = `You are a far-seeing seer in Ultima VI: The False Prophet. Ground your guidance in this quest context (use it to inform your answer; do not just restate it):
-
-- Act I — Liberate the Shrines: find each Rune and mantra, cleanse the eight shrines, and collect the Moonstones.
-- Act II — Prophecy & Pirates: take the Gargish book to Mariah; assemble Captain Hawkins’s nine map pieces (Shame, Wrong/Covetous, Ant Mound, shipwreck at ~71S 15E, Serpent’s Hold trade for a Magic Shield, Dagger Isle hermit, gypsies north of Paws, Trinsic mayor “Gordon”, plus Homer) to reach the Pirate Cave and recover the silver tablet; return the Storm Cloak to Homer.
-- Act III — Gargoyle Realm: through Hythloth meet Captain Johne, recruit Beh Lem, wear the Amulet of Submission before Lord Draxinusom; build the balloon to reach the Shrine of Singularity, learn UN, OR, US and chant UNORUS.
-- Final Ritual: recover the Vortex Cube at Stonegate; repair the Gargoyle lens and obtain the Britannian lens (glass sword → Ephemerides); at the Codex, set each lens halfway between its flame and the Codex, load all eight Moonstones into the Cube, then use it.
-
-Active ${context.type} context: ${context.title}
-${context.details}
-
-Tone directive: ${toneDirective}
-Spoiler directive: ${spoilerDirective}
-
-Answer in 2–3 short paragraphs, stay in-character, and keep language vivid yet concise. Offer optional alternatives when helpful.
-
-Conversation (most recent last):
-${transcript}`;
-
+        const input = document.getElementById('seer-query');
+        const query = input?.value;
+        const contextKey = seerState.activeContext?.key;
+        const uiRevision = seerState.uiRevision;
+        const inputRevision = seerState.inputRevision;
+        const stillCurrent = () => seerState.activeContext?.key === contextKey
+            && seerState.uiRevision === uiRevision && seerState.inputRevision === inputRevision
+            && input?.value === query
+            && !document.getElementById('seer-modal')?.classList.contains('hidden');
+        if (!query?.trim() || !contextKey || !stillCurrent()) return;
         try {
-            const reply = await requestGeminiText(prompt);
-            thinking?.remove();
-            conversation.push({ role: 'seer', text: reply });
-            seerState.conversations.set(context.key, conversation.slice(-10));
-            if (seerState.activeContext?.key === context.key) {
-                appendSeerMessage('seer', reply);
-            }
+            const view = await ensureSeerView();
+            if (stillCurrent()) view.send();
         } catch (error) {
-            console.error("Error calling Gemini API:", error);
-            thinking?.remove();
-            const fallback = "The ethereal winds are turbulent. I cannot answer at this time; keep the general hints close and try again shortly.";
-            conversation.push({ role: 'seer', text: fallback });
-            seerState.conversations.set(context.key, conversation.slice(-10));
-            if (seerState.activeContext?.key === context.key) {
-                appendSeerMessage('seer', fallback);
-            }
-        } finally {
-            queryField.disabled = false;
-            sendButton.disabled = false;
-            queryField.focus();
+            if (!stillCurrent()) return;
+            showSeerLoadError();
+            const message = document.createElement('p');
+            message.textContent = 'The local counsel files are unavailable. No question has been sent to a remote service.';
+            document.getElementById('seer-chat-messages').replaceChildren(message);
         }
     }
 

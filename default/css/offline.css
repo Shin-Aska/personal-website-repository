@@ -1,0 +1,31 @@
+/* Quiet, theme-aware reading status. Text remains the live-region label. */
+#offline-reading-status {
+    position: fixed;
+    left: max(12px, env(safe-area-inset-left));
+    bottom: max(12px, env(safe-area-inset-bottom));
+    z-index: 1000;
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+    box-sizing: border-box;
+    max-width: calc(100vw - 24px);
+    padding: .45rem .7rem;
+    border: 1px solid color-mix(in srgb, currentColor 20%, transparent);
+    border-radius: 999px;
+    color: var(--text-color, #122a3e);
+    background: var(--bg-color, #d9efff);
+    background: color-mix(in srgb, var(--bg-color, #d9efff) 88%, transparent);
+    box-shadow: 0 2px 12px #0000000a;
+    backdrop-filter: blur(10px);
+    font: 500 .72rem/1.35 system-ui, sans-serif;
+    letter-spacing: .01em;
+    pointer-events: none;
+}
+.offline-status-label { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.offline-status-mark { position: relative; width: 1em; height: 1em; flex: 0 0 1em; border: 1.3px solid currentColor; border-radius: 50%; opacity: .8; }
+#offline-reading-status[data-state="ready"] .offline-status-mark::after { content: ""; position: absolute; left: .22em; top: .17em; width: .3em; height: .43em; border: solid currentColor; border-width: 0 1.3px 1.3px 0; transform: rotate(45deg); }
+#offline-reading-status[data-state="saving"] .offline-status-mark { border-right-color: transparent; animation: offline-status-turn 1s linear infinite; }
+#offline-reading-status[data-state="partial"] .offline-status-mark::after { content: "!"; position: absolute; inset: -.1em 0 0; text-align: center; font-size: .85em; font-weight: 700; }
+@keyframes offline-status-turn { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { #offline-reading-status[data-state="saving"] .offline-status-mark { animation: none; } }
+@media print { #offline-reading-status { display: none; } }

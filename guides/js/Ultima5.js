@@ -1565,16 +1565,28 @@ function setupEventListeners() {
         });
     }
 
-    // Seer AI: bind ask button if present
+    // Browser-only Seer: keep the existing button and keyboard entry point
     const askSeerBtn = document.getElementById('ask-seer');
     if (askSeerBtn) {
         askSeerBtn.addEventListener('click', askTheSeer);
+        document.getElementById('seer-query')?.addEventListener('input', () => { ultima5SeerInputRevision += 1; });
+        document.getElementById('seer-query')?.addEventListener('keydown', event => {
+            if (event.key === 'Enter' && !event.shiftKey && !event.isComposing) {
+                event.preventDefault();
+                askTheSeer();
+            }
+        });
+        ensureUltima5Seer().catch(showUltima5SeerLoadError);
     }
 }
 
 function showUltima5Section(targetId) {
     const target = document.getElementById(targetId);
     if (!target || !target.classList.contains('content-section')) return;
+    if (!target.classList.contains('active')) {
+        ultima5SeerUiRevision += 1;
+        ultima5SeerAssistant?.activate(targetId === 'counsel' ? 'general' : `guide-section:${targetId}`);
+    }
 
     document.querySelectorAll('.nav-link').forEach(navLink => {
         const active = navLink.getAttribute('href') === `#${targetId}`;
@@ -2303,64 +2315,95 @@ function initializeTableSorting() {
 // Call this after the DOM is loaded
 document.addEventListener('DOMContentLoaded', initializeTableSorting);
 
-// --- AI Seer (Gemini) Integration ---
-async function callGeminiAPI(prompt, outputElement) {
-    if (!outputElement) return;
-    outputElement.innerHTML = '<div class="flex justify-center"><div class="loader"></div></div>';
+// --- Browser-only Seer integration ---
+let ultima5SeerView = null;
+let ultima5SeerLoading = null;
+let ultima5SeerAssistant = null;
+let ultima5SeerUiRevision = 0;
+let ultima5SeerInputRevision = 0;
 
-    const payload = { contents: [{ role: 'user', parts: [{ text: prompt }] }] };
-    const apiUrl = '/php/llm.php';
-
-    try {
-        const response = await fetch(apiUrl, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(payload)
-        });
-        if (!response.ok) {
-            throw new Error(`API call failed with status: ${response.status}`);
+function ultima5SeerProgress() {
+    const main = readUltima5StoredSet(ULTIMA5_PROGRESS_STORAGE_KEY);
+    const side = readUltima5StoredSet(ULTIMA5_SIDEQUEST_STORAGE_KEY);
+    const kit = readUltima5StoredSet(ULTIMA5_SUPPLY_STORAGE_KEY);
+    const facts = [];
+    const report = (id, storageKey, legacyId) => facts.push({
+        id, value: true, temporal: 'historical',
+        source: { file: storageKey, locator: legacyId, review: 'player-reported' }
+    });
+    ultima5GrandQuestChapters.flatMap(chapter => chapter.objectives).forEach(objective => {
+        if (objective.progress.length && objective.progress.every(item => (item.store === 'main' ? main : side).has(item.id))) {
+            report(`ultima5:completed:${objective.id}`, 'derived-legacy-checklist', objective.progress.map(item => `${item.store}:${item.id}`).join(','));
         }
-        const result = await response.json();
-        const text = result?.candidates?.[0]?.content?.parts?.[0]?.text;
-        if (!text) throw new Error('Invalid response structure from API.');
-        outputElement.innerHTML = `<div class="gemini-response">${text}</div>`;
-    } catch (err) {
-        console.error('Gemini API error:', err);
-        outputElement.innerHTML = `<div class="gemini-response text-red-700">The seer is silent for now. Please try again shortly.</div>`;
-    }
+    });
+    ultima5SideQuests.forEach(quest => {
+        if (side.has(quest.id)) report(`ultima5:side-completed:${quest.id}`, ULTIMA5_SIDEQUEST_STORAGE_KEY, quest.id);
+    });
+    // Even equipment checks are historical reports, never proof of current possession.
+    new Set(Array.from(document.querySelectorAll('[data-u5-supply]')).map(input => input.dataset.u5Supply)).forEach(id => {
+        if (kit.has(id)) report(`ultima5:kit-reported:${id}`, ULTIMA5_SUPPLY_STORAGE_KEY, id);
+    });
+    return facts;
 }
 
-function askTheSeer() {
-    const textarea = document.getElementById('seer-query');
-    const outputElement = document.getElementById('seer-response');
-    if (!textarea || !outputElement) return;
-    const query = textarea.value.trim();
-    if (!query) {
-        alert('Please enter a question for the seer.');
-        return;
+async function ensureUltima5Seer() {
+    if (ultima5SeerView) return ultima5SeerView;
+    if (!ultima5SeerLoading) {
+        ultima5SeerLoading = Promise.all([
+            import('./assistant/adapters/ultima5.js'),
+            import('./assistant/ui.js')
+        ]).then(async ([adapter, ui]) => {
+            const assistant = await adapter.createUltima5Assistant({
+                chapters: ultima5GrandQuestChapters,
+                sideQuests: ultima5SideQuests,
+                companions: companionData,
+                spells: spellData,
+                tips: commonTips,
+                words: wordData,
+                moongates: moongatePhaseData,
+                atlas: window.ULTIMA5_ATLAS_CONFIG || {},
+                getProgress: ultima5SeerProgress
+            });
+            ultima5SeerAssistant = assistant;
+            ultima5SeerView = ui.createView({
+                assistant,
+                messages: document.getElementById('seer-response'),
+                input: document.getElementById('seer-query'),
+                sendButton: document.getElementById('ask-seer'),
+                bindEvents: false,
+                getContext: () => ({ contextId: 'general', scope: 'campaign' })
+            });
+            ultima5SeerView.preparationMs = assistant.preparationMs;
+            const selectedSection = document.querySelector('.content-section.active')?.id;
+            if (selectedSection !== 'counsel') assistant.activate(`guide-section:${selectedSection || 'closed'}`);
+            return ultima5SeerView;
+        }).catch(error => {
+            ultima5SeerLoading = null;
+            throw error;
+        });
     }
+    return ultima5SeerLoading;
+}
 
-    // Build common tips section from shared data
-    const tipsSection = commonTips.map(t => `  • ${t.replaceAll('\n', ' ')}`).join('\n');
+function showUltima5SeerLoadError() {
+    const message = document.createElement('p');
+    message.textContent = 'The local counsel files could not be loaded. The guide and saved progress remain available. No question has been sent to a remote service.';
+    document.getElementById('seer-response')?.replaceChildren(message);
+}
 
-    const prompt = `You are a seer in Ultima V: Warriors of Destiny. Provide precise, practical guidance grounded in Ultima V mechanics and quest flow. Use the following context as background knowledge; use it to inform your answer without restating it verbatim.
-
-- Campaign order: opening party, mobility, and key tools → eight Shrine and Codex cycles → three Shards and Shadowlords → Lord British’s Regalia → Shame → Underworld → central Underworld → VERAMOCOR → Doom → Lord British.
-- Shrines & VERAMOCOR: Each shrine loop is: learn mantra → meditate 3x → visit the Codex on the Isle of the Avatar → return and meditate to complete. Recommended: complete each Shrine → Codex → Shrine cycle before accepting another Shrine quest. Multiple shrine quests can remain pending, and the Codex may resolve a different virtue than the one most recently visited. Completing all eight reveals VERAMOCOR for Dungeon Doom.
-- Mantras (who to ask): Honesty—Malifora (Moonglow) → AHM. Compassion—Greyson (Britain inn; say BRITISH) → MU. Valor—Trian → Thorne (Jhelom) → RA. Justice—Pay Jeremy → Chamfort (Resistance; password DAWN) → BEH. Sacrifice—Rew (Minoc) → CAH. Honor—Gruman (Trinsic) → SUMM. Spirituality—Saul → Kindor (ask SHRINE; answer Y) → OM. Humility—Shirita → Wartow (answers: BRITISH, N, N, N, Y) → LUM.
-- Words of Power (dungeons): Deceit—Malik → Malifora → FALLAX. Despise—Annon → VILIS. Destard—Zachariah (Moonglow) → Goeth (Jhelom; ask for "DROW") → INOPIA. Wrong—Terrence (Britain) → join Resistance (DAWN) → Felespar (Yew) → MALUM. Covetous—Rew (Minoc) → Fiona (Minoc; DAWN) → AVIDUS. Shame—Woolfe (Trinsic) → Sindar → INFAMA. Hythloth—Kaiko (New Magincia) → Hassad (Blackthorn’s dungeon; ref KAIKO) → IGNAVUS. Doom—after all shrine quests, speak VERAMOCOR.
-- Shadowlords: Names are Faulinei (Falsehood), Astaroth (Hatred), Nosfentor (Cowardice). Shards lie via Deceit, Wrong/Covetous, and Hythloth respectively. Use AN GRAV to dispel magical fields during the shard expeditions. In the castles’ sacred flame rooms (Lycaeum, Empath Abbey, Serpent’s Hold), stand one tile south, shout the name, wait a turn, then use the shard as it stands on the flame.
-- Regalia: After destroying all three Shadowlords, recover the Sceptre, Crown, and Amulet; the Sandalwood Box should already be safe from the opening. Sceptre—Stonegate (Grapple, Skull Keys, Magic Carpet). Use a skull key, answer the demon’s riddle ("WELL"), ride the carpet over fire pits and trapdoors, and grab the Sceptre (dispels fields). Crown—Blackthorn’s rooftop: outrun guards on the Magic Carpet, climb to L3, skull key the center room, take crown, fly off roof (capture risk can erase a companion). Amulet—Underworld: quick route is the waterfall east of Skara Brae (junctions D → L → D), then southeast through swamp/mountain pass to the burial ground; exit via VAS REL POR or intentional death. Sandalwood Box—Castle Britannia: play Stones on the harpsichord (6-7-8-9-8-7-8-7-6-7-6-5-3).
-- Key Tools: Grapple from Lord Michael (Empath Abbey). Skull keys from Shenstone’s stump in Minoc (refill daily by re-entering). Magic Carpet—bring a Skull Key or AN SANCT to Castle Britannia, climb to Lord British’s private rooftop room, unlock the magic door, and take it; it crosses shallow water, swamp, brush, and hills, but mountains still require the Grapple and rough sea is dangerous. Magic Axe is top-tier (find one in Jhelom’s stump; buy more in Yew).
-- Underworld tips: Use IN POR (Blink), especially around Hythloth’s shard area; use the Magic Carpet to cross swamps/shallow water/low hills.
-- Doom: Enter Dungeon Shame with INFAMA and descend to the Underworld, then follow the path to the central Underworld. Use the Amulet to pierce the darkness and reveal Doom, speak VERAMOCOR to enter, use the Sceptre to remove ethereal walls, and keep the Crown ready. Find Lord British and free him with the Sandalwood Box.
-
-- Controls & UI (from the manual): Move with keypad 8/2/6/4 (N/S/E/W). Diagonals are for aiming in combat only. In 3D dungeons, tap Enter/Period to turn around. Core commands: A Attack (then direction), B Board, C Cast (type spell syllables), E Enter, G Get (dir), H Hole up (camp/rest), I Ignite torch, J Jimmy lock, K Klimb, L Look (dir), M Mix reagents, N New Order (swap party), O Open, P Push, Q Quit & Save, R Ready (equip), S Search (dir), T Talk, U Use, V View (bird’s‑eye, needs item), X X‑it, Y Yell (sails/say text), Z Z‑Stats (E/W pages; N/S scroll).
-- Lore & conversation: Ask residents about NAME/JOB and relevant keywords; some info requires prior references (e.g., Resistance password DAWN). Talk to people more than once; attitudes can change.
-
- - Common player tips:\n${tipsSection}
-
-Answer in 2–3 short paragraphs, in-character and actionable, with clear hints and options (avoid unnecessary spoilers). Player’s question: "${query}"`;
-
-    callGeminiAPI(prompt, outputElement);
+async function askTheSeer() {
+    const input = document.getElementById('seer-query');
+    const query = input?.value;
+    const uiRevision = ultima5SeerUiRevision;
+    const inputRevision = ultima5SeerInputRevision;
+    const stillCurrent = () => input?.value === query
+        && ultima5SeerUiRevision === uiRevision && ultima5SeerInputRevision === inputRevision
+        && document.getElementById('counsel')?.classList.contains('active');
+    if (!query?.trim() || !stillCurrent()) return;
+    try {
+        const view = await ensureUltima5Seer();
+        if (stillCurrent()) view.send();
+    } catch (error) {
+        if (stillCurrent()) showUltima5SeerLoadError();
+    }
 }

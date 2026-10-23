@@ -2,6 +2,9 @@
 <html lang="en">
 
 <head>
+    <link rel="stylesheet" href="css/assistant-consent.css">
+    <script type="module" src="js/assistant/bootstrap.js"></script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
@@ -60,6 +63,7 @@
             background-color: rgba(34, 255, 153, 0.06);
         }
     </style>
+    <script src="offline.js?v=3" defer></script>
 </head>
 
 <body class="sc-theme sc-bc-bg">
@@ -101,7 +105,7 @@
                                 data-lucide="book" class="h-5 w-5"></i> <span class="font-medium">Resources</span></a>
                     </li>
                     <li><a href="#ai-assistant" class="nav-link flex items-center gap-3 p-3 rounded-lg"><i
-                                data-lucide="bot" class="h-5 w-5"></i> <span class="font-medium">AI Assistant</span></a>
+                                data-lucide="bot" class="h-5 w-5"></i> <span class="font-medium">Local Adjutant</span></a>
                     </li>
                 </ul>
             </nav>
@@ -247,7 +251,7 @@
                     <h2 class="text-3xl font-bold text-primary mb-6">Getting Started with Advanced AI</h2>
                     <div class="space-y-8">
                         <!-- SCHNAIL Prerequisites -->
-                        <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <div id="schnail-requirements" class="bg-white p-6 rounded-lg shadow-lg">
                             <h3 class="text-2xl font-semibold mb-4 text-primary">SCHNAIL Prerequisites</h3>
                             <ol class="list-decimal pl-6 space-y-3">
                                 <li class="flex items-start">
@@ -266,7 +270,7 @@
                                         <a href="https://www.schnail.com/#/downloads" target="_blank"
                                             class="text-blue-600 hover:underline">their downloads page</a> (requires
                                         account, see <a href="#setup"
-                                            onclick="document.querySelector('[href=&quot;#setup&quot;]').click(); document.querySelector('#schnai-setup').scrollIntoView({ behavior: 'smooth' }); return false;"
+                                            onclick="document.querySelector('[href=&quot;#setup&quot;]').click(); document.querySelector('#schnail-setup').scrollIntoView({ behavior: 'smooth' }); return false;"
                                             class="text-blue-600 hover:underline">SCHNAIL Setup Guide</a> for more
                                         information)
                                     </div>
@@ -284,7 +288,7 @@
                         </div>
 
                         <!-- BWAILauncher Prerequisites -->
-                        <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <div id="bwai-requirements" class="bg-white p-6 rounded-lg shadow-lg">
                             <h3 class="text-2xl font-semibold mb-4 text-primary">BWAILauncher Prerequisites</h3>
                             <ol class="list-decimal pl-6 space-y-3">
                                 <li class="flex items-start">
@@ -314,7 +318,7 @@
                     </div>
 
                     <!-- Remastered SCM Map Prerequisites -->
-                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <div id="remastered-requirements" class="bg-white p-6 rounded-lg shadow-lg">
                         <h3 class="text-2xl font-semibold mb-4 text-primary">Remastered SCM Map Prerequisites</h3>
                         <ol class="list-decimal pl-6 space-y-3">
                             <li class="flex items-start">
@@ -365,7 +369,7 @@
                     <h2 class="text-3xl font-bold text-primary mb-8 border-b-2 border-primary pb-2">Setup Guides</h2>
 
                     <div id="ai-setup" class="bg-white p-6 rounded-lg shadow-lg mb-8">
-                        <div id="schnai-setup" class="bg-white p-6 rounded-lg shadow-lg">
+                        <div id="schnail-setup" class="bg-white p-6 rounded-lg shadow-lg">
                             <h3 class="text-2xl font-semibold mb-4 text-primary">SCHNAIL Setup Guide</h3>
                             <div class="space-y-6">
                                 <div class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded-r mb-6">
@@ -583,7 +587,7 @@
                                     </ul>
                                 </div>
 
-                                <div>
+                                <div id="bwapi-loading-checks">
                                     <h4 class="font-semibold text-lg">BWAPI Not Loading</h4>
                                     <p class="text-gray-700 mt-1">If BWAPI isn't loading with the game:</p>
                                     <ul class="list-disc pl-5 mt-2 space-y-1">
@@ -719,7 +723,7 @@
                 </section>
 
                 <section id="ai-assistant" class="content-section hidden">
-                    <h2 class="text-3xl font-bold text-[#22ff99] mb-8 border-b-2 border-[#22ff99] pb-2">Tactical Advisor
+                    <h2 class="text-3xl font-bold text-[#22ff99] mb-8 border-b-2 border-[#22ff99] pb-2">Local Setup Adjutant
                     </h2>
                     <div class="space-y-6">
                         <div
@@ -737,19 +741,42 @@
                                         class="h-3 w-3 bg-[#22ff99] rounded-full animate-pulse shadow-[0_0_8px_#22ff99]">
                                     </div>
                                     <div>
-                                        <h3 class="text-lg font-bold text-[#22ff99] tracking-widest uppercase">Adjutant
-                                            Online</h3>
-                                        <p class="text-xs text-[#22ff99]/60 font-mono">System Ready // Waiting for input
+                                        <h3 class="text-lg font-bold text-[#22ff99] tracking-widest uppercase">Local Adjutant</h3>
+                                        <p class="text-xs text-[#22ff99]/60 font-mono">Authored guide knowledge // Runs in your browser
                                         </p>
                                     </div>
                                 </div>
                                 <button type="button" onclick="scAiClear()"
                                     class="p-2 text-[#22ff99]/70 hover:text-[#22ff99] hover:bg-[#22ff99]/10 rounded transition-colors"
-                                    title="Clear Comms">
+                                    title="Reset local session" aria-label="Reset local session">
                                     <i data-lucide="trash-2" class="h-4 w-4"></i>
                                 </button>
                             </div>
 
+                            <div id="sc-assistant-options" class="p-4 flex flex-wrap gap-3 text-sm text-[#22ff99]">
+                                <label>Topic
+                                    <select id="sc-assistant-topic" class="bg-black text-[#22ff99] border rounded p-1">
+                                        <option value="">Choose in your question</option>
+                                        <option value="schnail">SCHNAIL</option>
+                                        <option value="bwai">BWAILauncher</option>
+                                        <option value="remastered-map">Remastered SCM Map</option>
+                                        <option value="bwapi-loading">BWAPI Not Loading</option>
+                                    </select>
+                                </label>
+                                <label>Help level
+                                    <select id="sc-assistant-spoiler" class="bg-black text-[#22ff99] border rounded p-1">
+                                        <option value="gentle">Nudge</option>
+                                        <option value="balanced">Hint</option>
+                                        <option value="direct">Full answer</option>
+                                    </select>
+                                </label>
+                                <label>Tone
+                                    <select id="sc-assistant-tone" class="bg-black text-[#22ff99] border rounded p-1">
+                                        <option value="plain">Plain</option>
+                                        <option value="adjutant">Adjutant</option>
+                                    </select>
+                                </label>
+                            </div>
                             <!-- Chat Area -->
                             <div id="sc-ai-chat"
                                 class="h-96 overflow-y-auto p-4 space-y-4 bg-black/20 scrollbar-thin scrollbar-thumb-[#22ff99]/20 scrollbar-track-transparent">
@@ -764,14 +791,15 @@
                                 <div class="relative flex gap-2">
                                     <input id="sc-ai-input" type="text"
                                         class="flex-1 bg-black/30 border border-[#22ff99]/30 text-[#22ff99] placeholder-[#22ff99]/30 rounded-md px-4 py-3 focus:outline-none focus:border-[#22ff99] focus:ring-1 focus:ring-[#22ff99] font-mono text-sm transition-all"
-                                        placeholder="Transmit orders..." onkeypress="if(event.key==='Enter')scAiSend()">
+                                        placeholder="Ask about SCHNAIL, BWAILauncher or the Remastered map..." aria-label="Question for the local Adjutant"
+                                        onkeydown="if(event.key==='Enter' &amp;&amp; !event.shiftKey &amp;&amp; !event.isComposing){event.preventDefault();scAiSend()}">
                                     <button id="sc-ai-send" type="button" onclick="scAiSend()"
                                         class="px-6 py-2 bg-[#22ff99]/10 border border-[#22ff99]/50 text-[#22ff99] hover:bg-[#22ff99] hover:text-black font-bold uppercase tracking-wider text-xs rounded transition-all focus:outline-none focus:ring-2 focus:ring-[#22ff99] shadow-[0_0_10px_rgba(34,255,153,0.1)] hover:shadow-[0_0_15px_rgba(34,255,153,0.6)]">
                                         Send
                                     </button>
                                 </div>
                                 <p class="text-[10px] text-[#22ff99]/30 mt-2 font-mono text-center">
-                                    :: SECURE CONNECTION ESTABLISHED ::
+                                    :: ANSWERS USE THIS GUIDE ONLY · NO INFERENCE SERVICE ::
                                 </p>
                             </div>
                         </div>
@@ -831,202 +859,66 @@
             }
         });
 
-        let scAiHistory = [];
+        let scLocalController = null;
+        let scLocalReady = null;
+        let scInteractionRevision = 0;
+        const scInput = document.getElementById('sc-ai-input');
+        const scTopic = document.getElementById('sc-assistant-topic');
+        // These listeners exist before module/JSON preparation. An old send
+        // cannot consume replacement text or a different topic after loading.
+        scInput.addEventListener('input', () => { scInteractionRevision++; });
+        ['sc-assistant-topic', 'sc-assistant-spoiler', 'sc-assistant-tone'].forEach(id => {
+            document.getElementById(id).addEventListener('change', () => { scInteractionRevision++; });
+        });
+        document.querySelectorAll('#main-nav .nav-link').forEach(link => {
+            link.addEventListener('click', () => { scInteractionRevision++; });
+        });
 
-        async function scCallGemini(prompt, maxRetries = 3) {
-            const apiUrl = '/php/llm.php';
-            const payload = { contents: [{ role: 'user', parts: [{ text: prompt }] }] };
-            let delay = 1000;
-            for (let i = 0; i < maxRetries; i++) {
-                try {
-                    const response = await fetch(apiUrl, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(payload)
+        function loadScAssistant() {
+            if (!scLocalReady) {
+                scLocalReady = import('./js/assistant/adapters/starcraft.js')
+                    .then(module => module.mountStarcraftAssistant(document))
+                    .then(controller => {
+                        scLocalController = controller;
+                        return controller;
+                    })
+                    .catch(() => {
+                        scLocalReady = null;
+                        const message = document.createElement('p');
+                        message.textContent = 'The local guide could not be loaded. Reload the page to try again. No question was sent to a service.';
+                        document.getElementById('sc-ai-chat').replaceChildren(message);
+                        return null;
                     });
-                    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-                    const result = await response.json();
-                    const text = result?.candidates?.[0]?.content?.parts?.[0]?.text;
-                    if (text) return text;
-                    throw new Error('Invalid response structure from Gemini API');
-                } catch (error) {
-                    if (i < maxRetries - 1) {
-                        await new Promise(r => setTimeout(r, delay));
-                        delay *= 2;
-                    } else {
-                        throw error;
-                    }
-                }
             }
+            return scLocalReady;
         }
 
-        function parseMarkdown(text) {
-            // Basic Markdown Parser
-            if (!text) return '';
-
-            // Escape HTML
-            let html = text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-
-            // Bold
-            html = html.replace(/\*\*(.*?)\*\*/g, '<strong class="text-white">$1</strong>');
-
-            // Italic
-            html = html.replace(/\*(.*?)\*/g, '<em>$1</em>');
-
-            // Code blocks
-            html = html.replace(/```([\s\S]*?)```/g, '<div class="bg-black/80 border border-[#22ff99]/30 rounded p-2 my-2 overflow-x-auto"><code class="font-mono text-xs text-[#22ff99]">$1</code></div>');
-
-            // Inline code
-            html = html.replace(/`([^`]+)`/g, '<code class="bg-black/50 text-[#22ff99] px-1 rounded font-mono text-xs">$1</code>');
-
-            // Header - we'll just bold them for chat
-            html = html.replace(/^#{1,6}\s+(.*)$/gm, '<strong class="text-lg text-white block mt-2 mb-1">$1</strong>');
-
-            // Lists
-            // Simple dash replacement
-            html = html.replace(/^\s*-\s+(.*)$/gm, '<div class="flex items-start ml-1"><span class="mr-2 text-[#22ff99]">•</span><span>$1</span></div>');
-            // Numbered lists (simple)
-            html = html.replace(/^\s*\d+\.\s+(.*)$/gm, '<div class="flex items-start ml-1"><span class="mr-2 text-[#22ff99]">»</span><span>$1</span></div>');
-
-            // Newlines to <br> (but not inside the divs we just made)
-            html = html.replace(/\n/g, '<br>');
-
-            // Cleanup extra BRs around divs
-            html = html.replace(/<br><div/g, '<div');
-            html = html.replace(/<\/div><br>/g, '</div>');
-
-            return html;
-        }
-
-        function scAppendMessage(role, text) {
-            const chat = document.getElementById('sc-ai-chat');
-            if (!chat) return;
-
-            const isUser = role === 'user';
-            const wrap = document.createElement('div');
-            wrap.className = `mb-4 flex ${isUser ? 'justify-end' : 'justify-start'}`;
-
-            const bubble = document.createElement('div');
-            // User: Dark Green with bright text
-            // AI: Transparent Black with bright green text (Terminal style)
-
-            if (isUser) {
-                // User: "Transmission" style
-                bubble.className = "bg-[#0f3d2e] border border-[#22ff99]/40 text-[#b5ffd9] max-w-[85%] rounded-lg rounded-tr-none px-4 py-3 text-sm leading-relaxed shadow-[0_4px_12px_rgba(0,0,0,0.3)]";
+        window.scAiSend = async function () {
+            const query = scInput.value;
+            if (!query.trim()) return null;
+            const topic = scTopic.value;
+            const requestRevision = scInteractionRevision;
+            const previousController = scLocalController;
+            const assistantRevision = previousController?.assistant.revision;
+            const controller = await loadScAssistant();
+            if (!controller || requestRevision !== scInteractionRevision ||
+                query !== scInput.value || topic !== scTopic.value ||
+                (previousController && assistantRevision !== controller.assistant.revision)) return null;
+            return controller.view.send();
+        };
+        window.scAiClear = function () {
+            scInteractionRevision++;
+            scInput.value = '';
+            if (scLocalController) {
+                scLocalController.assistant.resetSession();
+                scLocalController.view.refresh();
             } else {
-                // AI: Terminal
-                bubble.className = "bg-black/60 border border-[#22ff99]/30 text-[#22ff99] hover:bg-black/70 transition-colors backdrop-blur-sm max-w-[90%] rounded-lg rounded-tl-none px-4 py-3 text-sm leading-relaxed font-mono shadow-[0_0_15px_rgba(34,255,153,0.05)]";
+                document.getElementById('sc-ai-chat').textContent = 'Local session reset. Guide preparation is still in progress.';
             }
-
-            bubble.innerHTML = parseMarkdown(text);
-            wrap.appendChild(bubble);
-
-            chat.appendChild(wrap);
-            chat.scrollTop = chat.scrollHeight;
-        }
-
-        async function scAiSend() {
-            const input = document.getElementById('sc-ai-input');
-            const btn = document.getElementById('sc-ai-send');
-            const query = input?.value?.trim();
-            if (!query) return;
-
-            input.value = '';
-            const chat = document.getElementById('sc-ai-chat');
-            // Remove placeholder
-            if (chat && chat.textContent.includes('CHANNEL OPEN')) {
-                chat.innerHTML = '';
-            }
-
-            scAppendMessage('user', query);
-            scAiHistory.push({ role: 'user', content: query });
-
-            // Loading UI
-            if (btn) {
-                btn.disabled = true;
-                const originalText = btn.innerText;
-                btn.innerHTML = '<span class="animate-pulse">...</span>';
-
-                // Add loading indicator to chat
-                const loadId = 'sc-ai-loading-' + Date.now();
-                const loadWrap = document.createElement('div');
-                loadWrap.id = loadId;
-                loadWrap.className = 'mb-4 flex justify-start';
-                loadWrap.innerHTML = `
-                    <div class="bg-black/60 border border-[#22ff99]/20 text-[#22ff99] rounded-lg rounded-tl-none px-4 py-3 font-mono text-xs flex items-center gap-2">
-                        <span class="animate-pulse">PROCESSING DATA...</span>
-                        <span class="w-1.5 h-1.5 bg-[#22ff99] rounded-full animate-bounce"></span>
-                        <span class="w-1.5 h-1.5 bg-[#22ff99] rounded-full animate-bounce" style="animation-delay: 0.1s"></span>
-                        <span class="w-1.5 h-1.5 bg-[#22ff99] rounded-full animate-bounce" style="animation-delay: 0.2s"></span>
-                    </div>`;
-                chat.appendChild(loadWrap);
-                chat.scrollTop = chat.scrollHeight;
-
-                try {
-                    const recent = scAiHistory
-                        .filter(m => m && (m.role === 'user' || m.role === 'assistant') && typeof m.content === 'string')
-                        .slice(-10);
-
-                    const systemWithContext = `You are a Tactical Advisor (Adjutant) for a StarCraft: Brood War advanced AI guide.
-                    
-                    PERSONA:
-                    - You are a military computer system: Efficient, precise, "StarCraft" flavored.
-                    - Use terms like "Commander", "deployment", "configuration", "hostile entities" (for bugs).
-                    
-                    FORMATTING:
-                    - Use **Bold** for key terms/buttons.
-                    - Use Lists for steps.
-                    - Use \`Code\` for filenames or commands.
-                    
-                    KNOWLEDGE BASE:
-                    - SCHNAIL: Requires Java, account, has own BW install.
-                    - BWAILauncher: Offline, requires BW 1.16.1, replaces standard AI.
-                    - Remastered SCM Map: For Remastered players, use the BWAPI integrated SCM map. Play in "Use Map Settings" mode.
-                    - Remastered vs 1.16.1: VITAL distinction. Always ask if unsure.
-                    
-                    Do not hallucinate URLs. Use known ones from the guide (schnail.com, GitHub, https://drive.proton.me/urls/55AMBJ5FN4#BB7pM4E3tZeE, https://www.richardorilla.website/files/bwapiscr.zip).`;
-
-                    const transcript = recent
-                        .map(m => `${m.role === 'user' ? 'Commander' : 'Adjutant'}: ${m.content}`)
-                        .join('\n');
-
-                    const prompt = `${systemWithContext}\n\n[INCOMING TRANSMISSION]\n${transcript}\n\nCommander: ${query}\n`;
-
-                    const text = await scCallGemini(prompt);
-
-                    // Remove loading
-                    document.getElementById(loadId)?.remove();
-
-                    scAppendMessage('assistant', text);
-                    scAiHistory.push({ role: 'assistant', content: text });
-                } catch (error) {
-                    document.getElementById(loadId)?.remove();
-                    const msg = ':: ALERT :: COMMS INTERFERENCE DETECTED. PLEASE RETRY.';
-                    scAppendMessage('assistant', msg);
-                } finally {
-                    btn.disabled = false;
-                    btn.innerText = 'SEND';
-                    input.focus();
-                }
-            }
-        }
-
-        function scAiClear() {
-            scAiHistory = [];
-            const chat = document.getElementById('sc-ai-chat');
-            if (chat) {
-                chat.innerHTML = `
-                    <div class="text-[#22ff99]/40 font-mono text-center py-10 text-sm">
-                        &lt; CHANNEL OPEN &gt;<br>
-                        Awaiting instructions, Commander.
-                    </div>`;
-            }
-            const input = document.getElementById('sc-ai-input');
-            if (input) input.value = '';
-        }
-
-        window.scAiSend = scAiSend;
-        window.scAiClear = scAiClear;
+            scInput.focus();
+        };
+        // Eager local preparation makes subsequent questions work disconnected.
+        loadScAssistant();
     </script>
 </body>
 

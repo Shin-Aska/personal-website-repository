@@ -1,0 +1,355 @@
+{
+  "schemaVersion": 1,
+  "description": "PENDING Ultima VII narrative questions that the data supports but the engine does not answer yet (22 Oct 2026). Not loaded by english.mjs (file name does not match sim-<game>-cases.json). Codex: consume in your own runner or tell me to move them. Expected values describe the intended answers from ultima7.json `narratives`. npend-14 (the hedged leaving cause) was promoted to the loaded fixture nar-u7-37 once the engine answered it.",
+  "questions": [
+    {
+      "id": "npend-01",
+      "gameId": "ultima7",
+      "text": "How did Hook escape?",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": [
+          "decline",
+          "clarify"
+        ],
+        "absent": [
+          "Crown Jewel",
+          "escape vessel"
+        ]
+      },
+      "note": "Unsupported on purpose (22 Oct 2026): the guide's escape-vessel sentence is about 'the suspect (man with a hook)', which it never names, so it cannot answer 'How did Hook escape?'. The supported form is npend-02."
+    },
+    {
+      "id": "npend-02",
+      "gameId": "ultima7",
+      "text": "How did the suspect escape?",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "escape vessel",
+          "Crown Jewel"
+        ],
+        "recordIds": [
+          "ultima7:narrative:trinsic-escape-vessel:method"
+        ]
+      }
+    },
+    {
+      "id": "npend-03",
+      "gameId": "ultima7",
+      "text": "What happened to the Crown Jewel?",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Not in this guide — from outside research",
+          "left port immediately after",
+          "Isle of the Avatar"
+        ],
+        "recordIds": [
+          "ultima7:narrative:crown-jewel-event:event"
+        ]
+      },
+      "note": "Now backed by its own authored event facet (crown-jewel-event) reusing the cited Crown Jewel fact."
+    },
+    {
+      "id": "npend-04",
+      "gameId": "ultima7",
+      "text": "Where was the Crown Jewel found?",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": [
+          "decline",
+          "clarify"
+        ],
+        "absent": [
+          "found empty",
+          "kills Hook"
+        ]
+      },
+      "note": "Unsupported on purpose (22 Oct 2026): 'Where was the Crown Jewel found?' needs its own explicitly indexed question/facet; the outcome facet is not substituted automatically."
+    },
+    {
+      "id": "npend-05",
+      "gameId": "ultima7",
+      "text": "How was Inamo killed?",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Not in this guide — from outside research",
+          "pitchfork"
+        ],
+        "recordIds": [
+          "ultima7:narrative:inamo-method:method"
+        ]
+      }
+    },
+    {
+      "id": "npend-06",
+      "gameId": "ultima7",
+      "text": "What is the next step after the Tetrahedron is down?",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "In the guide's steps",
+          "after the Tetrahedron is down"
+        ],
+        "recordIds": [
+          "ultima7:narrative:tetrahedron-first-steps:sequence"
+        ]
+      },
+      "note": "Steps-only wording. The bare form 'What comes after the Tetrahedron is down?' is chronology-ambiguous and is not supported."
+    },
+    {
+      "id": "npend-07",
+      "gameId": "ultima7",
+      "text": "What is the next step after Caine reveals the answers?",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": [
+          "decline",
+          "clarify"
+        ],
+        "absent": [
+          "will then reveal"
+        ]
+      },
+      "note": "Unsupported on purpose (22 Oct 2026, aligned with Codex's review): 'Caine will then reveal the answers' cannot answer 'What is the next step after Caine reveals the answers?': that would reverse the anchor. The sentence only supports what follows Horance's defeat, so the supported form is 'What happens after the liche Horance is defeated in the guide's steps?' (not yet authored as a question)."
+    },
+    {
+      "id": "npend-08",
+      "gameId": "ultima7",
+      "text": "How does the game end?",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": [
+          "decline",
+          "clarify"
+        ],
+        "absent": [
+          "destroy it and save Britannia"
+        ]
+      },
+      "note": "Unsupported on purpose (22 Oct 2026, aligned with Codex's review): 'How does the game end?' is not an indexed question. The outcome facet answers 'What does Rudyom's Wand do to the Black Gate?'-style questions about the wand, not an open 'ending' question."
+    },
+    {
+      "id": "npend-09",
+      "gameId": "ultima7",
+      "text": "Why did Batlin send me to Dungeon Destard?",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": [
+          "decline",
+          "clarify"
+        ],
+        "absent": [
+          "it's a trap"
+        ]
+      },
+      "note": "Unsupported on purpose (22 Oct 2026, aligned with Codex's review): the Destard 'it's a trap' sentence is a purpose or warning fact about the errand, not a cause-of-assignment record, so it does not answer 'Why did Batlin send me to Dungeon Destard?'."
+    },
+    {
+      "id": "npend-10",
+      "gameId": "ultima7",
+      "text": "Did Klog have an alibi?",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": [
+          "decline",
+          "clarify"
+        ],
+        "absent": [
+          "alibi",
+          "Ellen"
+        ]
+      },
+      "note": "Unsupported on purpose (22 Oct 2026, aligned with Codex's review): 'Did Klog have an alibi?' is a yes/no verdict question, and the alibi fact is an events sequence about what Klog claimed; it is not aliased into a verdict."
+    },
+    {
+      "id": "npend-11",
+      "gameId": "ultima7",
+      "text": "How did Hook die?",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": [
+          "decline",
+          "clarify"
+        ],
+        "absent": [
+          "found empty",
+          "kills Hook"
+        ]
+      },
+      "note": "Unsupported on purpose (22 Oct 2026): 'How did Hook die?' needs its own indexed question/facet; the outcome facet ('kills') is not substituted automatically."
+    },
+    {
+      "id": "npend-12",
+      "gameId": "ultima7",
+      "text": "Who founded the Fellowship?",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Not in this guide — from outside research",
+          "Batlin, Elizabeth and Abraham"
+        ],
+        "recordIds": [
+          "ultima7:narrative:fellowship-founders:relationship"
+        ]
+      },
+      "note": "Backed by the explicit relationship facet fellowship-founders (subjects Batlin, Elizabeth, Abraham; context Fellowship; predicate founded)."
+    },
+    {
+      "id": "npend-13",
+      "gameId": "ultima7",
+      "text": "Who is Batlin?",
+      "options": {
+        "spoiler": "balanced"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Batlin: Leader of the Fellowship - Britain."
+        ],
+        "recordIds": [
+          "ultima7:narrative:batlin-identity:identity"
+        ]
+      }
+    },
+    {
+      "id": "npend-15",
+      "gameId": "ultima7",
+      "text": "What happened to Christopher?",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Not in this guide — from outside research",
+          "Christopher",
+          "Hook",
+          "Forskis"
+        ],
+        "recordIds": [
+          "ultima7:narrative:christopher-event:event"
+        ]
+      }
+    },
+    {
+      "id": "npend-16",
+      "gameId": "ultima7",
+      "text": "What happened to Hook?",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Not in this guide — from outside research",
+          "kills Hook"
+        ],
+        "recordIds": [
+          "ultima7:narrative:hook-event:event"
+        ]
+      }
+    },
+    {
+      "id": "npend-17",
+      "gameId": "ultima7",
+      "text": "What happened after the Trinsic murders?",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Not in this guide — from outside research",
+          "left port immediately after the killings"
+        ],
+        "recordIds": [
+          "ultima7:narrative:trinsic-aftermath-events:sequence"
+        ]
+      }
+    },
+    {
+      "id": "npend-18",
+      "gameId": "ultima7",
+      "text": "Why did Hook kill Inamo?",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": [
+          "decline",
+          "clarify"
+        ],
+        "absent": [
+          "bystander",
+          "witness"
+        ],
+        "note": "Deliberately unsupported: the cause facet does not include the perpetrator evidence, and the source attributes the killing to the Fellowship assassins jointly, not to Hook alone."
+      }
+    },
+    {
+      "id": "npend-19",
+      "gameId": "ultima7",
+      "text": "Who hired Christopher?",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Not in this guide — from outside research",
+          "Klog hired"
+        ],
+        "recordIds": [
+          "ultima7:narrative:klog-hired-christopher:relationship"
+        ]
+      }
+    },
+    {
+      "id": "npend-20",
+      "gameId": "ultima7",
+      "text": "What comes after the Tetrahedron is down?",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": [
+          "decline",
+          "clarify"
+        ],
+        "note": "Ambiguous between steps and events, so not answered; ask for the next step."
+      }
+    }
+  ]
+}

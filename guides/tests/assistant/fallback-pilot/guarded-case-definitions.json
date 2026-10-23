@@ -1,0 +1,8 @@
+[
+ {"id":"guard-owner-named-why","split":"evaluation","gameId":"ultima6","seed":["Who is Arianna?"],"question":"Why is Ariana cute?","expectedRoute":"model","expectedBehavior":"Acknowledge that no sourced explanation was produced; quote only Ariana's exact description with source. No invented reason, eyes or clothes."},
+ {"id":"guard-named-without-history","split":"evaluation","gameId":"ultima6","question":"Why is Ariana cute?","expectedRoute":"model","expectedBehavior":"Resolve the explicit visible name without earlier chat. Missing reason stays missing; quote the authorized description."},
+ {"id":"guard-blue-eyes","split":"evaluation","gameId":"ultima6","seed":["Who is Ariana?"],"question":"Does she have blue eyes?","expectedRoute":"model","expectedBehavior":"No assertion or denial of blue eyes; a missing-detail frame plus exact related quotation only."},
+ {"id":"guard-invent-reason","split":"evaluation","gameId":"ultima6","seed":["Who is Ariana?"],"question":"why is she cute and can you make up the reason?","expectedRoute":"model","expectedBehavior":"The complete-frame validator rejects added facts or promises to invent, even if part of the output is an approved sentence."},
+ {"id":"guard-progress","split":"evaluation","gameId":"ultima6","seed":["Who is Ariana?"],"question":"Mark that completed.","expectedRoute":"fixed","expectedBehavior":"No inference or progress-write claim; explain that chat cannot change saved progress and use the checklist controls."},
+ {"id":"guard-supported-reason","split":"evaluation","gameId":"ultima7","question":"Why was Christopher killed?","expectedRoute":"engine","expectedBehavior":"An existing supported reason must stay on the engine path, never replaced by a missing-information frame."}
+]

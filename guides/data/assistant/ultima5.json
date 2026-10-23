@@ -1,0 +1,2632 @@
+{
+  "schemaVersion": 1,
+  "gameId": "ultima5",
+  "review": "authored from existing guide; not independently verified",
+  "pageFacts": [
+    {
+      "key": "page:shrine-loop",
+      "text": "1) Learn the Mantra from NPCs in the virtue's city. 2) Meditate at the shrine using the mantra for three cycles. 3) Visit the Codex on the Isle of the Avatar to receive guidance. 4) Return & Complete by meditating again to gain stats.",
+      "source": {
+        "file": "guides/Ultima5.html",
+        "locator": "section#shrines, the four shrine-loop cards",
+        "review": "extracted"
+      }
+    },
+    {
+      "key": "page:mantras-words",
+      "text": "These \"passwords\" are essential for progressing through the game. Mantras are used at the Shrines of Virtue, while Words of Power unlock the dungeons.",
+      "source": {
+        "file": "guides/Ultima5.html",
+        "locator": "Mantras & Words of Power panel, introduction",
+        "review": "extracted"
+      }
+    },
+    {
+      "key": "page:doom-word",
+      "text": "Completing all eight shrine quests grants the Word of Power for Doom: VERAMOCOR.",
+      "source": {
+        "file": "guides/Ultima5.html",
+        "locator": "section#shrines, closing sentence",
+        "review": "extracted"
+      }
+    }
+  ],
+  "gentleHints": {
+    "opening-party": "Balance healing, utility magic, and ranged fighting before a long expedition. A planned party is not proof of recruitment.",
+    "opening-grapple": "Ask about climbing equipment when speaking to people at the Abbey.",
+    "opening-hms-cape": "Explore the shipwright’s premises carefully; useful plans may not be on open display.",
+    "opening-raid-kit": "Plan for locked doors, recovery, and retreat before committing to the castle.",
+    "opening-castle-raid": "Watch the guards and search the private rooms carefully. Music can reward patient investigation.",
+    "shadow-faulinei": "Match the opposing principle with the shard you recover. The final confrontation depends on more than ordinary attacks.",
+    "shadow-astaroth": "There is more than one route toward this shard. Keep the destination and its matching sacred flame distinct.",
+    "shadow-nosfentor": "Prepare for a difficult descent, then bring what you recover back to the appropriate sacred flame.",
+    "regalia-sceptre": "Bring tools for difficult terrain and sealed doors. Listen carefully when challenged.",
+    "regalia-crown": "Plan your escape before entering the guarded fortress.",
+    "regalia-amulet": "The expedition left evidence below Britannia. Prepare a way out before descending.",
+    "doom-rescue": "Review the royal artifacts, supplies, and pilgrimage before committing to the final descent.",
+    "side-magic-carpet": "Search the castle’s private upper rooms and prepare for a magical lock.",
+    "side-grapple": "Ask about climbing equipment at the Abbey.",
+    "side-jaana": "A hidden route in town can lead to a captive companion.",
+    "side-resistance-party": "Think about the roles your party still needs; recruitment is separate from planning.",
+    "side-skull-keys": "Investigate Minoc at night. The guide does not establish one consistent cache refresh schedule.",
+    "side-glass-swords": "Search the mountains carefully and reserve powerful single-use weapons for dangerous encounters.",
+    "side-hms-cape": "A shipwright’s plans can improve an existing vessel.",
+    "side-magic-axe": "Explore the town’s less obvious paths before buying expensive equipment.",
+    "side-reagents": "Some rare reagents can be gathered in the wild. Watch the time as well as the place.",
+    "side-navigation": "Seek sailors and coastal residents who may help you navigate.",
+    "side-mystic-arms": "A prepared Underworld expedition can include a search for optional equipment.",
+    "shrine-honesty": "Learn the local mantra, follow the shrine’s instruction, and return after receiving counsel. Keep each pilgrimage’s stage separate.",
+    "shrine-compassion": "Learn the local mantra, follow the shrine’s instruction, and return after receiving counsel. Keep each pilgrimage’s stage separate.",
+    "shrine-valor": "Learn the local mantra, follow the shrine’s instruction, and return after receiving counsel. Keep each pilgrimage’s stage separate.",
+    "shrine-justice": "Learn the local mantra, follow the shrine’s instruction, and return after receiving counsel. Keep each pilgrimage’s stage separate.",
+    "shrine-sacrifice": "Learn the local mantra, follow the shrine’s instruction, and return after receiving counsel. Keep each pilgrimage’s stage separate.",
+    "shrine-honor": "Learn the local mantra, follow the shrine’s instruction, and return after receiving counsel. Keep each pilgrimage’s stage separate.",
+    "shrine-spirituality": "The town where you learn a mantra need not be where its shrine lies. Pay attention to moongates and timing.",
+    "shrine-humility": "Learn the local mantra, follow the shrine’s instruction, and return after receiving counsel. Keep each pilgrimage’s stage separate."
+  },
+  "excludedConflicts": [
+    {
+      "topic": "AN SANCT",
+      "reason": "spellData calls it unlocking; commonTips calls it damage reduction. No confident spell record imported."
+    },
+    {
+      "topic": "Skull Key cache refresh",
+      "reason": "commonTips says immediate re-entry; side and Grand Quest say a later day. Refresh claims omitted from Seer records."
+    },
+    {
+      "topic": "AN TYM reagent recipe",
+      "reason": "spellData and commonTips disagree about garlic versus ginseng; spell recipes excluded while effect/circle remain."
+    }
+  ],
+  "fieldKitIds": [
+    "keys",
+    "raid-lockpicks",
+    "raid-recovery",
+    "raid-save",
+    "carpet",
+    "grapple",
+    "frigate",
+    "navigation-tools",
+    "underworld-food",
+    "underworld-light",
+    "underworld-spells",
+    "shadowlords-defeated",
+    "royal-artifacts",
+    "veramocor",
+    "doom-level",
+    "doom-supplies"
+  ],
+  "safeTitles": {
+    "opening-party": "Prepare the party",
+    "opening-grapple": "Climbing equipment",
+    "opening-hms-cape": "Improve sea travel",
+    "opening-raid-kit": "Castle preparations",
+    "opening-castle-raid": "Explore the private chambers",
+    "shadow-faulinei": "Confront falsehood",
+    "shadow-astaroth": "Confront hatred",
+    "shadow-nosfentor": "Confront cowardice",
+    "regalia-sceptre": "Recover the first royal artifact",
+    "regalia-crown": "Recover the second royal artifact",
+    "regalia-amulet": "Recover the third royal artifact",
+    "doom-rescue": "Prepare the final rescue",
+    "shrine-honesty": "Shrine of Honesty",
+    "shrine-compassion": "Shrine of Compassion",
+    "shrine-valor": "Shrine of Valor",
+    "shrine-justice": "Shrine of Justice",
+    "shrine-sacrifice": "Shrine of Sacrifice",
+    "shrine-honor": "Shrine of Honor",
+    "shrine-spirituality": "Shrine of Spirituality",
+    "shrine-humility": "Shrine of Humility"
+  },
+  "topics": [
+    {
+      "id": "charm",
+      "title": "Charm and possession",
+      "aliases": [
+        "charm",
+        "charmed",
+        "charming",
+        "possession",
+        "possessed",
+        "possess",
+        "mind control",
+        "mind controlled",
+        "charmed ally",
+        "charmed companion",
+        "charmed party member",
+        "against the party",
+        "against my party",
+        "against us",
+        "attacking the party",
+        "attacking my party",
+        "attacking us",
+        "attacks the party",
+        "turned against",
+        "turned on the party",
+        "fighting the party",
+        "hostile ally",
+        "hostile companion",
+        "charm is wrecking my party"
+      ],
+      "relation": "remedy",
+      "answers": [
+        "combat",
+        "hint"
+      ],
+      "from": [
+        "tip:1"
+      ],
+      "references": [
+        {
+          "label": "Ultima Codex: Charm (Ultima V entry, quoting the Book of Lore)",
+          "url": "https://wiki.ultimacodex.com/wiki/Charm",
+          "checkedAt": "2026-10-20",
+          "supports": "AN XEN EX reagents and that it can bring back charmed party members; does not mention IN ZU or the Crown for charm."
+        }
+      ]
+    },
+    {
+      "id": "poison",
+      "title": "Poison",
+      "aliases": [
+        "poison",
+        "poisoned",
+        "poisoning"
+      ],
+      "relation": "remedy",
+      "answers": [
+        "combat",
+        "hint",
+        "use",
+        "explanation"
+      ],
+      "from": [
+        "spell:An Nox"
+      ]
+    },
+    {
+      "id": "healing",
+      "title": "Healing",
+      "aliases": [
+        "heal",
+        "healing",
+        "hurt",
+        "wounded",
+        "injured",
+        "injuries",
+        "low health",
+        "hit points",
+        "hp",
+        "free healer",
+        "heals",
+        "heal my party",
+        "heal the party"
+      ],
+      "relation": "remedy",
+      "answers": [
+        "hint",
+        "use",
+        "explanation"
+      ],
+      "from": [
+        "spell:Mani",
+        "spell:Vas Mani",
+        "tip:18"
+      ]
+    },
+    {
+      "id": "death",
+      "title": "Dead companions",
+      "aliases": [
+        "dead",
+        "death",
+        "died",
+        "dead companion",
+        "dead party member",
+        "dead ally",
+        "resurrection",
+        "resurrect",
+        "revive"
+      ],
+      "relation": "remedy",
+      "answers": [
+        "hint",
+        "use",
+        "explanation"
+      ],
+      "from": [
+        "spell:In Mani Corp"
+      ]
+    },
+    {
+      "id": "darkness",
+      "title": "Darkness",
+      "aliases": [
+        "dark",
+        "darkness",
+        "light",
+        "torch",
+        "torches",
+        "dark dungeon",
+        "dark dungeons"
+      ],
+      "relation": "remedy",
+      "answers": [
+        "hint",
+        "use",
+        "explanation"
+      ],
+      "from": [
+        "spell:In Lor",
+        "spell:Vas Lor"
+      ]
+    },
+    {
+      "id": "fields",
+      "title": "Magical fields",
+      "aliases": [
+        "magic field",
+        "magical field",
+        "magic fields",
+        "magical fields",
+        "force field",
+        "force fields",
+        "energy field",
+        "energy fields",
+        "fire field",
+        "poison field",
+        "sleep field",
+        "fields"
+      ],
+      "relation": "remedy",
+      "answers": [
+        "hint",
+        "use",
+        "explanation"
+      ],
+      "from": [
+        "spell:An Grav",
+        "outcome:regalia-sceptre"
+      ]
+    },
+    {
+      "id": "enemy-magic",
+      "title": "Enemy magic",
+      "aliases": [
+        "enemy magic",
+        "enemy spells",
+        "enemy spellcasters",
+        "hostile magic",
+        "magic attacks",
+        "fear"
+      ],
+      "relation": "remedy",
+      "answers": [
+        "combat",
+        "hint",
+        "use",
+        "explanation"
+      ],
+      "from": [
+        "spell:In An",
+        "outcome:regalia-crown"
+      ]
+    },
+    {
+      "id": "shadowlord-towns",
+      "title": "Shadowlord-afflicted towns",
+      "aliases": [
+        "shadowlord influence",
+        "afflicted city",
+        "afflicted town",
+        "afflicted cities",
+        "hostile npcs",
+        "hostile townspeople",
+        "shadowlord days",
+        "shadowlord day",
+        "townspeople are hostile",
+        "everyone is hostile",
+        "npcs are hostile",
+        "town is hostile",
+        "city is hostile",
+        "hostile town",
+        "city is afflicted",
+        "town is afflicted",
+        "afflicted",
+        "safe haven",
+        "safe from the shadowlords",
+        "where is safe"
+      ],
+      "relation": "hint",
+      "answers": [
+        "remedy"
+      ],
+      "from": [
+        "tip:15",
+        "tip:8"
+      ]
+    },
+    {
+      "id": "doom-preparation",
+      "title": "Preparing for the final descent",
+      "aliases": [
+        "final descent",
+        "doom preparation",
+        "preparing for doom",
+        "an tym",
+        "stop time"
+      ],
+      "relation": "hint",
+      "answers": [
+        "use"
+      ],
+      "from": [
+        "tip:0"
+      ],
+      "minSpoiler": "balanced"
+    },
+    {
+      "id": "free-reagents",
+      "title": "Free reagents",
+      "aliases": [
+        "free reagents",
+        "reagent farming",
+        "farm reagents",
+        "nightshade",
+        "mandrake",
+        "mandrake root"
+      ],
+      "relation": "acquisition",
+      "answers": [
+        "location",
+        "hint",
+        "explanation"
+      ],
+      "from": [
+        "tip:3"
+      ]
+    },
+    {
+      "id": "sextant",
+      "title": "Sextant",
+      "aliases": [
+        "sextant"
+      ],
+      "relation": "acquisition",
+      "answers": [
+        "location",
+        "hint",
+        "explanation"
+      ],
+      "from": [
+        "tip:4"
+      ]
+    },
+    {
+      "id": "spyglass",
+      "title": "Spyglass",
+      "aliases": [
+        "spyglass",
+        "telescope"
+      ],
+      "relation": "acquisition",
+      "answers": [
+        "location",
+        "hint",
+        "explanation"
+      ],
+      "from": [
+        "tip:4"
+      ]
+    },
+    {
+      "id": "moonstones",
+      "title": "Moonstones",
+      "aliases": [
+        "moonstone",
+        "moonstones",
+        "relocate moongates",
+        "move moongates",
+        "moving moongates",
+        "bury a moonstone",
+        "bury moonstones",
+        "dig up a moonstone",
+        "dig up moonstones",
+        "move a moongate",
+        "relocate a moongate",
+        "move moongate",
+        "relocate moongate",
+        "what is a moonstone",
+        "what are moonstones"
+      ],
+      "relation": "hint",
+      "answers": [
+        "use",
+        "location",
+        "explanation"
+      ],
+      "from": [
+        "tip:5"
+      ]
+    },
+    {
+      "id": "shrine-of-spirituality",
+      "title": "Shrine of Spirituality",
+      "aliases": [
+        "shrine of spirituality",
+        "spirituality shrine",
+        "ethereal void",
+        "learn om",
+        "om mantra",
+        "mantra om",
+        "where do i learn om",
+        "where to learn om",
+        "how do i get om",
+        "midnight moongate",
+        "midnight moongate shrine"
+      ],
+      "relation": "location",
+      "answers": [
+        "hint",
+        "explanation",
+        "acquisition"
+      ],
+      "from": [
+        "tip:6"
+      ]
+    },
+    {
+      "id": "frigate",
+      "title": "Frigate",
+      "aliases": [
+        "frigate",
+        "ship",
+        "pirate ship",
+        "boat",
+        "pirate ships",
+        "pirates",
+        "pirate",
+        "capture a ship",
+        "capture a pirate ship",
+        "sail"
+      ],
+      "relation": "acquisition",
+      "answers": [
+        "hint",
+        "location",
+        "explanation",
+        "use"
+      ],
+      "from": [
+        "tip:7"
+      ]
+    },
+    {
+      "id": "combat-tips",
+      "title": "Combat tips",
+      "aliases": [
+        "combat tips",
+        "active player",
+        "funnel xp",
+        "halberd",
+        "halberds",
+        "tips for combat",
+        "combat advice",
+        "fighting tips"
+      ],
+      "relation": "hint",
+      "answers": [
+        "combat",
+        "use",
+        "explanation"
+      ],
+      "from": [
+        "tip:9"
+      ]
+    },
+    {
+      "id": "glass-swords",
+      "title": "Glass swords",
+      "aliases": [
+        "glass sword",
+        "glass swords",
+        "serpent's spine cache",
+        "dragons",
+        "dragon",
+        "balrons",
+        "balron",
+        "serpent's spine",
+        "serpents spine",
+        "the serpent's spine"
+      ],
+      "relation": "hint",
+      "answers": [
+        "acquisition",
+        "location",
+        "use",
+        "combat",
+        "explanation"
+      ],
+      "from": [
+        "tip:10"
+      ]
+    },
+    {
+      "id": "early-gold",
+      "title": "Early gold and experience",
+      "aliases": [
+        "gold",
+        "money",
+        "early gold",
+        "xp",
+        "experience",
+        "farming",
+        "bridge trolls",
+        "grind",
+        "make money",
+        "making money",
+        "earn gold",
+        "get rich",
+        "get gold",
+        "get money"
+      ],
+      "relation": "hint",
+      "answers": [
+        "acquisition",
+        "explanation"
+      ],
+      "from": [
+        "tip:11"
+      ]
+    },
+    {
+      "id": "food",
+      "title": "Food",
+      "aliases": [
+        "food",
+        "free food",
+        "meals",
+        "free meals",
+        "rations",
+        "hungry",
+        "starving"
+      ],
+      "relation": "acquisition",
+      "answers": [
+        "hint",
+        "location",
+        "explanation"
+      ],
+      "from": [
+        "tip:12"
+      ]
+    },
+    {
+      "id": "karma",
+      "title": "Karma",
+      "aliases": [
+        "karma",
+        "shop prices",
+        "cheaper prices",
+        "lower prices",
+        "raise karma",
+        "increase karma",
+        "karma up",
+        "boost karma"
+      ],
+      "relation": "hint",
+      "answers": [
+        "acquisition",
+        "explanation",
+        "use"
+      ],
+      "from": [
+        "tip:13"
+      ]
+    },
+    {
+      "id": "gems",
+      "title": "Gems",
+      "aliases": [
+        "gem",
+        "gems",
+        "peer gem",
+        "mapping",
+        "map view"
+      ],
+      "relation": "acquisition",
+      "answers": [
+        "use",
+        "hint",
+        "location",
+        "explanation"
+      ],
+      "from": [
+        "tip:14"
+      ]
+    },
+    {
+      "id": "jhelom-night",
+      "title": "Leaving Jhelom at night",
+      "aliases": [
+        "jhelom at night",
+        "jhelom after dark",
+        "leave jhelom",
+        "leaving jhelom",
+        "closed gates",
+        "gates are closed"
+      ],
+      "relation": "hint",
+      "answers": [
+        "remedy"
+      ],
+      "from": [
+        "tip:16"
+      ]
+    },
+    {
+      "id": "hms-cape-use",
+      "title": "HMS Cape plans",
+      "aliases": [
+        "make my ship faster",
+        "make my frigate faster",
+        "ship faster",
+        "frigate faster",
+        "faster ship",
+        "faster frigate",
+        "frigate speed",
+        "upgrade my ship",
+        "upgrade a frigate",
+        "upgrade my frigate",
+        "double frigate speed",
+        "increase ship speed"
+      ],
+      "relation": "use",
+      "answers": [],
+      "from": [
+        "tip:2"
+      ],
+      "entityId": "ultima5:item:hms-cape-plans"
+    },
+    {
+      "id": "fast-travel",
+      "title": "Fast travel",
+      "aliases": [
+        "fast travel",
+        "fast-travel",
+        "gate travel",
+        "pocket watch",
+        "travel faster",
+        "faster travel",
+        "quick travel",
+        "travel quickly",
+        "travel fast"
+      ],
+      "relation": "hint",
+      "answers": [
+        "use",
+        "explanation"
+      ],
+      "from": [
+        "tip:20",
+        "moongate:1",
+        "moongate:2",
+        "moongate:3",
+        "moongate:4",
+        "moongate:5",
+        "moongate:6",
+        "moongate:7",
+        "moongate:8"
+      ]
+    },
+    {
+      "id": "moongates",
+      "title": "Moongate destinations",
+      "aliases": [
+        "moongate",
+        "moongates",
+        "moon phase",
+        "moon phases",
+        "moongate phases",
+        "moongate destinations",
+        "trammel",
+        "felucca"
+      ],
+      "relation": "explanation",
+      "answers": [
+        "location",
+        "hint",
+        "use"
+      ],
+      "from": [
+        "moongate:1",
+        "moongate:2",
+        "moongate:3",
+        "moongate:4",
+        "moongate:5",
+        "moongate:6",
+        "moongate:7",
+        "moongate:8"
+      ]
+    },
+    {
+      "id": "moon-phase-1",
+      "title": "Moon phase 1",
+      "aliases": [
+        "moon phase 1",
+        "moongate phase 1",
+        "phase 1",
+        "1st moon phase",
+        "1st moongate phase",
+        "1st phase",
+        "first moon phase",
+        "first phase",
+        "moon phase one",
+        "phase one",
+        "moongate to Moonglow",
+        "moongate for Moonglow",
+        "moongate goes to Moonglow",
+        "moongate that goes to Moonglow",
+        "moongate takes you to Moonglow",
+        "Moonglow moongate",
+        "moon phase for Moonglow",
+        "gate to Moonglow",
+        "moongate phase for Moonglow",
+        "phase for Moonglow"
+      ],
+      "relation": "explanation",
+      "answers": [
+        "location",
+        "hint"
+      ],
+      "from": [
+        "moongate:1"
+      ]
+    },
+    {
+      "id": "moon-phase-2",
+      "title": "Moon phase 2",
+      "aliases": [
+        "moon phase 2",
+        "moongate phase 2",
+        "phase 2",
+        "2nd moon phase",
+        "2nd moongate phase",
+        "2nd phase",
+        "second moon phase",
+        "second phase",
+        "moon phase two",
+        "phase two",
+        "moongate to Britain",
+        "moongate for Britain",
+        "moongate goes to Britain",
+        "moongate that goes to Britain",
+        "moongate takes you to Britain",
+        "Britain moongate",
+        "moon phase for Britain",
+        "gate to Britain",
+        "moongate phase for Britain",
+        "phase for Britain"
+      ],
+      "relation": "explanation",
+      "answers": [
+        "location",
+        "hint"
+      ],
+      "from": [
+        "moongate:2"
+      ]
+    },
+    {
+      "id": "moon-phase-3",
+      "title": "Moon phase 3",
+      "aliases": [
+        "moon phase 3",
+        "moongate phase 3",
+        "phase 3",
+        "3rd moon phase",
+        "3rd moongate phase",
+        "3rd phase",
+        "third moon phase",
+        "third phase",
+        "moon phase three",
+        "phase three",
+        "moongate to Jhelom",
+        "moongate for Jhelom",
+        "moongate goes to Jhelom",
+        "moongate that goes to Jhelom",
+        "moongate takes you to Jhelom",
+        "Jhelom moongate",
+        "moon phase for Jhelom",
+        "gate to Jhelom",
+        "moongate phase for Jhelom",
+        "phase for Jhelom"
+      ],
+      "relation": "explanation",
+      "answers": [
+        "location",
+        "hint"
+      ],
+      "from": [
+        "moongate:3"
+      ]
+    },
+    {
+      "id": "moon-phase-4",
+      "title": "Moon phase 4",
+      "aliases": [
+        "moon phase 4",
+        "moongate phase 4",
+        "phase 4",
+        "4th moon phase",
+        "4th moongate phase",
+        "4th phase",
+        "fourth moon phase",
+        "fourth phase",
+        "moon phase four",
+        "phase four",
+        "moongate to Yew",
+        "moongate for Yew",
+        "moongate goes to Yew",
+        "moongate that goes to Yew",
+        "moongate takes you to Yew",
+        "Yew moongate",
+        "moon phase for Yew",
+        "gate to Yew",
+        "moongate phase for Yew",
+        "phase for Yew"
+      ],
+      "relation": "explanation",
+      "answers": [
+        "location",
+        "hint"
+      ],
+      "from": [
+        "moongate:4"
+      ]
+    },
+    {
+      "id": "moon-phase-5",
+      "title": "Moon phase 5",
+      "aliases": [
+        "moon phase 5",
+        "moongate phase 5",
+        "phase 5",
+        "5th moon phase",
+        "5th moongate phase",
+        "5th phase",
+        "fifth moon phase",
+        "fifth phase",
+        "moon phase five",
+        "phase five",
+        "moongate to Minoc",
+        "moongate for Minoc",
+        "moongate goes to Minoc",
+        "moongate that goes to Minoc",
+        "moongate takes you to Minoc",
+        "Minoc moongate",
+        "moon phase for Minoc",
+        "gate to Minoc",
+        "moongate phase for Minoc",
+        "phase for Minoc"
+      ],
+      "relation": "explanation",
+      "answers": [
+        "location",
+        "hint"
+      ],
+      "from": [
+        "moongate:5"
+      ]
+    },
+    {
+      "id": "moon-phase-6",
+      "title": "Moon phase 6",
+      "aliases": [
+        "moon phase 6",
+        "moongate phase 6",
+        "phase 6",
+        "6th moon phase",
+        "6th moongate phase",
+        "6th phase",
+        "sixth moon phase",
+        "sixth phase",
+        "moon phase six",
+        "phase six",
+        "moongate to Trinsic",
+        "moongate for Trinsic",
+        "moongate goes to Trinsic",
+        "moongate that goes to Trinsic",
+        "moongate takes you to Trinsic",
+        "Trinsic moongate",
+        "moon phase for Trinsic",
+        "gate to Trinsic",
+        "moongate phase for Trinsic",
+        "phase for Trinsic"
+      ],
+      "relation": "explanation",
+      "answers": [
+        "location",
+        "hint"
+      ],
+      "from": [
+        "moongate:6"
+      ]
+    },
+    {
+      "id": "moon-phase-7",
+      "title": "Moon phase 7",
+      "aliases": [
+        "moon phase 7",
+        "moongate phase 7",
+        "phase 7",
+        "7th moon phase",
+        "7th moongate phase",
+        "7th phase",
+        "seventh moon phase",
+        "seventh phase",
+        "moon phase seven",
+        "phase seven",
+        "moongate to Skara Brae",
+        "moongate for Skara Brae",
+        "moongate goes to Skara Brae",
+        "moongate that goes to Skara Brae",
+        "moongate takes you to Skara Brae",
+        "Skara Brae moongate",
+        "moon phase for Skara Brae",
+        "gate to Skara Brae",
+        "moongate phase for Skara Brae",
+        "phase for Skara Brae"
+      ],
+      "relation": "explanation",
+      "answers": [
+        "location",
+        "hint"
+      ],
+      "from": [
+        "moongate:7"
+      ]
+    },
+    {
+      "id": "moon-phase-8",
+      "title": "Moon phase 8",
+      "aliases": [
+        "moon phase 8",
+        "moongate phase 8",
+        "phase 8",
+        "8th moon phase",
+        "8th moongate phase",
+        "8th phase",
+        "eighth moon phase",
+        "eighth phase",
+        "moon phase eight",
+        "phase eight",
+        "moongate to New Magincia",
+        "moongate for New Magincia",
+        "moongate goes to New Magincia",
+        "moongate that goes to New Magincia",
+        "moongate takes you to New Magincia",
+        "New Magincia moongate",
+        "moon phase for New Magincia",
+        "gate to New Magincia",
+        "moongate phase for New Magincia",
+        "phase for New Magincia"
+      ],
+      "relation": "explanation",
+      "answers": [
+        "location",
+        "hint"
+      ],
+      "from": [
+        "moongate:8"
+      ]
+    },
+    {
+      "id": "circle-1",
+      "title": "Circle 1 spells",
+      "aliases": [
+        "circle 1",
+        "1st circle",
+        "first circle",
+        "circle one",
+        "1st circle spells",
+        "first circle spells",
+        "circle 1 spells",
+        "circle one spells",
+        "level 1 spells",
+        "1st level spells",
+        "lowest circle",
+        "lowest level spells",
+        "first spells"
+      ],
+      "relation": "explanation",
+      "answers": [
+        "hint",
+        "use"
+      ],
+      "from": [
+        "spell:An Nox",
+        "spell:Mani",
+        "spell:Grav Por",
+        "spell:In Lor"
+      ]
+    },
+    {
+      "id": "circle-3",
+      "title": "Circle 3 spells",
+      "aliases": [
+        "circle 3",
+        "3rd circle",
+        "third circle",
+        "circle three",
+        "3rd circle spells",
+        "third circle spells",
+        "circle 3 spells",
+        "circle three spells",
+        "level 3 spells",
+        "3rd level spells"
+      ],
+      "relation": "explanation",
+      "answers": [
+        "hint",
+        "use"
+      ],
+      "from": [
+        "spell:In Por",
+        "spell:Vas Lor"
+      ]
+    },
+    {
+      "id": "circle-4",
+      "title": "Circle 4 spells",
+      "aliases": [
+        "circle 4",
+        "4th circle",
+        "fourth circle",
+        "circle four",
+        "4th circle spells",
+        "fourth circle spells",
+        "circle 4 spells",
+        "circle four spells",
+        "level 4 spells",
+        "4th level spells"
+      ],
+      "relation": "explanation",
+      "answers": [
+        "hint",
+        "use"
+      ],
+      "from": [
+        "spell:An Grav",
+        "spell:Des Por / Uus Por"
+      ]
+    },
+    {
+      "id": "circle-5",
+      "title": "Circle 5 spells",
+      "aliases": [
+        "circle 5",
+        "5th circle",
+        "fifth circle",
+        "circle five",
+        "5th circle spells",
+        "fifth circle spells",
+        "circle 5 spells",
+        "circle five spells",
+        "level 5 spells",
+        "5th level spells"
+      ],
+      "relation": "explanation",
+      "answers": [
+        "hint",
+        "use"
+      ],
+      "from": [
+        "spell:In Zu",
+        "spell:Vas Mani"
+      ]
+    },
+    {
+      "id": "circle-6",
+      "title": "Circle 6 spells",
+      "aliases": [
+        "circle 6",
+        "6th circle",
+        "sixth circle",
+        "circle six",
+        "6th circle spells",
+        "sixth circle spells",
+        "circle 6 spells",
+        "circle six spells",
+        "level 6 spells",
+        "6th level spells"
+      ],
+      "relation": "explanation",
+      "answers": [
+        "hint",
+        "use"
+      ],
+      "from": [
+        "spell:In An"
+      ]
+    },
+    {
+      "id": "circle-7",
+      "title": "Circle 7 spells",
+      "aliases": [
+        "circle 7",
+        "7th circle",
+        "seventh circle",
+        "circle seven",
+        "7th circle spells",
+        "seventh circle spells",
+        "circle 7 spells",
+        "circle seven spells",
+        "level 7 spells",
+        "7th level spells"
+      ],
+      "relation": "explanation",
+      "answers": [
+        "hint",
+        "use"
+      ],
+      "from": [
+        "spell:Sanct Lor"
+      ]
+    },
+    {
+      "id": "circle-8",
+      "title": "Circle 8 spells",
+      "aliases": [
+        "circle 8",
+        "8th circle",
+        "eighth circle",
+        "circle eight",
+        "8th circle spells",
+        "eighth circle spells",
+        "circle 8 spells",
+        "circle eight spells",
+        "level 8 spells",
+        "8th level spells",
+        "highest circle",
+        "highest circle spell",
+        "highest level spell",
+        "top circle",
+        "last circle"
+      ],
+      "relation": "explanation",
+      "answers": [
+        "hint",
+        "use"
+      ],
+      "from": [
+        "spell:Vas Rel Por",
+        "spell:An Tym",
+        "spell:In Mani Corp"
+      ]
+    },
+    {
+      "id": "invisibility",
+      "title": "Invisibility",
+      "aliases": [
+        "invisible",
+        "invisibility",
+        "become invisible",
+        "turn invisible",
+        "make me invisible",
+        "makes me invisible",
+        "makes the party invisible",
+        "render invisible"
+      ],
+      "relation": "explanation",
+      "answers": [
+        "use",
+        "hint"
+      ],
+      "from": [
+        "spell:Sanct Lor"
+      ]
+    },
+    {
+      "id": "reveal-coordinates",
+      "title": "Reveal coordinates",
+      "aliases": [
+        "reveal coordinates",
+        "reveals coordinates",
+        "reveals the coordinates",
+        "show coordinates",
+        "my coordinates",
+        "party coordinates",
+        "where am i",
+        "current coordinates"
+      ],
+      "relation": "explanation",
+      "answers": [
+        "use",
+        "hint"
+      ],
+      "from": [
+        "spell:In Wis"
+      ]
+    },
+    {
+      "id": "short-teleport",
+      "title": "Short-range teleport",
+      "aliases": [
+        "blink",
+        "teleport",
+        "short teleport",
+        "short-range teleport",
+        "blink spell",
+        "teleport spell"
+      ],
+      "relation": "explanation",
+      "answers": [
+        "use",
+        "hint"
+      ],
+      "from": [
+        "spell:In Por"
+      ]
+    },
+    {
+      "id": "sleep-spell",
+      "title": "Sleep spell",
+      "aliases": [
+        "put enemies to sleep",
+        "puts enemies to sleep",
+        "enemies to sleep",
+        "sleep spell",
+        "sleep enemies"
+      ],
+      "relation": "explanation",
+      "answers": [
+        "use",
+        "hint"
+      ],
+      "from": [
+        "spell:In Zu"
+      ]
+    },
+    {
+      "id": "dungeon-levels",
+      "title": "Dungeon level spells",
+      "aliases": [
+        "go up a dungeon level",
+        "go down a dungeon level",
+        "up a dungeon level",
+        "down a dungeon level",
+        "ascend a dungeon",
+        "descend a dungeon",
+        "ascend dungeon",
+        "descend dungeon",
+        "climb a dungeon level",
+        "leave a dungeon",
+        "get out of a dungeon",
+        "dungeon exit",
+        "dungeon level",
+        "dungeon levels"
+      ],
+      "relation": "explanation",
+      "answers": [
+        "use",
+        "hint"
+      ],
+      "from": [
+        "spell:Des Por / Uus Por"
+      ]
+    },
+    {
+      "id": "attack-spell",
+      "title": "Attack spell",
+      "aliases": [
+        "attack spell",
+        "damage spell",
+        "offensive spell",
+        "energy bolt",
+        "minor energy bolt",
+        "magic missile",
+        "spell to attack"
+      ],
+      "relation": "explanation",
+      "answers": [
+        "use",
+        "hint"
+      ],
+      "from": [
+        "spell:Grav Por"
+      ]
+    },
+    {
+      "id": "resistance-password",
+      "title": "Resistance password",
+      "aliases": [
+        "resistance password",
+        "the password",
+        "password",
+        "dawn",
+        "dawn password",
+        "secret password",
+        "what is dawn"
+      ],
+      "relation": "explanation",
+      "answers": [
+        "use",
+        "hint",
+        "acquisition",
+        "location"
+      ],
+      "from": [
+        "summary:shrine-justice"
+      ],
+      "minSpoiler": "balanced"
+    },
+    {
+      "id": "shadowlords",
+      "title": "The three Shadowlords",
+      "aliases": [
+        "shadowlords",
+        "shadowlord",
+        "the shadowlords",
+        "three shadowlords",
+        "the three shadows",
+        "three shadows",
+        "who are the shadowlords",
+        "what are the shadowlords"
+      ],
+      "relation": "explanation",
+      "answers": [
+        "hint"
+      ],
+      "minSpoiler": "balanced",
+      "from": [
+        "title:shadow-faulinei",
+        "title:shadow-astaroth",
+        "title:shadow-nosfentor"
+      ]
+    },
+    {
+      "id": "eight-virtues",
+      "title": "The eight virtues",
+      "aliases": [
+        "eight virtues",
+        "the eight virtues",
+        "8 virtues",
+        "all the virtues",
+        "all eight virtues"
+      ],
+      "relation": "explanation",
+      "answers": [
+        "hint"
+      ],
+      "from": [
+        "virtue:Honesty",
+        "virtue:Compassion",
+        "virtue:Valor",
+        "virtue:Justice",
+        "virtue:Sacrifice",
+        "virtue:Honor",
+        "virtue:Spirituality",
+        "virtue:Humility"
+      ]
+    },
+    {
+      "id": "shrine-loop",
+      "title": "How the shrines work",
+      "aliases": [
+        "how the shrines work",
+        "shrine loop",
+        "shrine cycle",
+        "how shrines work",
+        "meditate",
+        "meditating",
+        "meditation",
+        "the codex",
+        "codex",
+        "isle of the avatar",
+        "how do i do the shrines",
+        "how to do the shrines",
+        "how to restore the shrines",
+        "restore the shrines",
+        "restoring the shrines",
+        "shrines",
+        "the shrines",
+        "virtue shrines",
+        "shrine quests",
+        "shrine quest"
+      ],
+      "relation": "hint",
+      "answers": [
+        "use",
+        "acquisition",
+        "explanation"
+      ],
+      "from": [
+        "page:shrine-loop"
+      ]
+    },
+    {
+      "id": "shrine-chapter",
+      "title": "Restoring the eight shrines",
+      "aliases": [
+        "shrine pilgrimage",
+        "pilgrimage",
+        "eight shrines",
+        "restore the eight shrines"
+      ],
+      "relation": "hint",
+      "answers": [
+        "use",
+        "acquisition",
+        "explanation"
+      ],
+      "from": [
+        "chapter:shrines"
+      ]
+    },
+    {
+      "id": "mantras-words",
+      "title": "Mantras and Words of Power",
+      "aliases": [
+        "mantras",
+        "a mantra",
+        "words of power",
+        "a word of power",
+        "the words of power",
+        "what is a mantra",
+        "what are mantras",
+        "what is a word of power",
+        "what are words of power",
+        "passwords"
+      ],
+      "relation": "explanation",
+      "answers": [
+        "use",
+        "hint"
+      ],
+      "from": [
+        "page:mantras-words"
+      ]
+    },
+    {
+      "id": "doom-word",
+      "title": "The Word of Power for Doom",
+      "aliases": [
+        "VERAMOCOR",
+        "word of power for Doom",
+        "Doom's word of power",
+        "Doom word of power",
+        "password for Doom",
+        "doom password"
+      ],
+      "relation": "explanation",
+      "answers": [
+        "use",
+        "acquisition",
+        "hint",
+        "location"
+      ],
+      "minSpoiler": "direct",
+      "from": [
+        "page:doom-word"
+      ]
+    }
+  ],
+  "topicReview": "Topics index existing Ultima5.js facts (commonTips, spellData, objective outcomes, moongatePhaseData); their answers are those facts verbatim. Tip 19 (AN SANCT) is excluded because its effect conflicts with spellData.",
+  "research": [
+    {
+      "id": "leveling",
+      "title": "Gaining levels",
+      "aliases": [
+        "level up",
+        "leveling",
+        "levelling",
+        "gain levels",
+        "gain a level",
+        "new level",
+        "level advancement",
+        "levels"
+      ],
+      "relation": "hint",
+      "answers": [
+        "use",
+        "explanation",
+        "acquisition"
+      ],
+      "text": "Ultima V grants earned levels only while the party rests: after reaching the experience needed, hole up and camp for the maximum number of hours, and the spirit of Lord British may appear to grant the level. It takes some luck. Each new level adds 30 hit points, and the attribute increases are chosen fairly randomly.",
+      "sources": [
+        {
+          "label": "Ultima Codex: Character advancement",
+          "url": "https://wiki.ultimacodex.com/wiki/Character_advancement",
+          "checkedAt": "2026-10-20"
+        }
+      ]
+    },
+    {
+      "id": "an-zu",
+      "title": "An Zu (Awaken)",
+      "aliases": [
+        "an zu",
+        "awaken",
+        "asleep",
+        "sleeping",
+        "sleep",
+        "wake",
+        "sleeping party member",
+        "sleeping companion",
+        "sleeping ally",
+        "party member is asleep",
+        "someone is asleep",
+        "companion is asleep",
+        "ally is asleep",
+        "my party is asleep",
+        "someone in my party is asleep"
+      ],
+      "relation": "remedy",
+      "answers": [
+        "use",
+        "hint"
+      ],
+      "text": "AN ZU (first circle; Garlic and Ginseng) awakens a sleeping companion. It works only on members of the caster’s own party and wakes one person per casting.",
+      "sources": [
+        {
+          "label": "Ultima Codex: An Zu (quoting the Ultima V Book of Lore)",
+          "url": "https://wiki.ultimacodex.com/wiki/An_Zu",
+          "checkedAt": "2026-10-20"
+        }
+      ]
+    }
+  ],
+  "researchReview": "Outside research: authored one-to-three-sentence summaries of the cited pages, checked on the listed date. Shown with an \"outside research\" label; the guide’s own facts win when both exist. Not independently play-tested.",
+  "aliases": {
+    "shrine-honesty": [
+      "Shrine of Honesty",
+      "Honesty shrine"
+    ],
+    "shrine-compassion": [
+      "Shrine of Compassion",
+      "Compassion shrine"
+    ],
+    "shrine-valor": [
+      "Shrine of Valor",
+      "Valor shrine"
+    ],
+    "shrine-justice": [
+      "Shrine of Justice",
+      "Justice shrine"
+    ],
+    "shrine-sacrifice": [
+      "Shrine of Sacrifice",
+      "Sacrifice shrine"
+    ],
+    "shrine-honor": [
+      "Shrine of Honor",
+      "Honor shrine"
+    ],
+    "shrine-humility": [
+      "Shrine of Humility",
+      "Humility shrine"
+    ],
+    "shadow-faulinei": [
+      "Faulinei",
+      "Shadowlord of Falsehood"
+    ],
+    "shadow-astaroth": [
+      "Astaroth",
+      "Shadowlord of Hatred"
+    ],
+    "shadow-nosfentor": [
+      "Nosfentor",
+      "Shadowlord of Cowardice"
+    ],
+    "doom-rescue": [
+      "rescue Lord British",
+      "free Lord British",
+      "free the king",
+      "final rescue",
+      "enter Doom"
+    ],
+    "side-jaana": [
+      "free Jaana",
+      "rescue Jaana",
+      "save Jaana",
+      "Jaana rescue"
+    ],
+    "side-magic-axe": [
+      "Magic Axe",
+      "Jhelom Magic Axe"
+    ],
+    "side-mystic-arms": [
+      "Mystic Arms"
+    ],
+    "side-glass-swords": [
+      "Glass Sword cache"
+    ],
+    "side-resistance-party": [
+      "Resistance party"
+    ],
+    "side-reagents": [
+      "reagent run"
+    ],
+    "opening-party": [
+      "recommended party",
+      "recommended field party",
+      "field party",
+      "best party",
+      "good party",
+      "ideal party",
+      "party setup",
+      "party composition",
+      "who to recruit",
+      "who should i recruit",
+      "who should i recruit first",
+      "who to recruit first",
+      "what party should i take",
+      "which party should i take"
+    ],
+    "opening-castle-raid": [
+      "castle raid",
+      "raid the castle",
+      "raid Lord British's castle",
+      "sneak into the castle",
+      "sneak into Lord British's castle",
+      "steal the carpet",
+      "steal the Magic Carpet"
+    ],
+    "regalia-sceptre": [
+      "Stonegate"
+    ]
+  },
+  "spellAliases": {
+    "In Por": [
+      "Blink"
+    ],
+    "Vas Rel Por": [
+      "Gate Travel"
+    ]
+  },
+  "hintAnswers": {
+    "shrine-honesty": [
+      "use",
+      "acquisition"
+    ],
+    "shrine-compassion": [
+      "use",
+      "acquisition"
+    ],
+    "shrine-valor": [
+      "use",
+      "acquisition"
+    ],
+    "shrine-justice": [
+      "use",
+      "acquisition"
+    ],
+    "shrine-sacrifice": [
+      "use",
+      "acquisition"
+    ],
+    "shrine-honor": [
+      "use",
+      "acquisition"
+    ],
+    "shrine-humility": [
+      "use",
+      "acquisition"
+    ],
+    "shrine-spirituality": [
+      "use",
+      "acquisition"
+    ],
+    "shadow-faulinei": [
+      "acquisition"
+    ],
+    "shadow-astaroth": [
+      "acquisition"
+    ],
+    "shadow-nosfentor": [
+      "acquisition"
+    ],
+    "doom-rescue": [
+      "use",
+      "acquisition"
+    ],
+    "side-magic-axe": [
+      "acquisition"
+    ],
+    "side-mystic-arms": [
+      "acquisition"
+    ],
+    "side-glass-swords": [
+      "acquisition"
+    ],
+    "side-jaana": [
+      "acquisition",
+      "use"
+    ],
+    "opening-party": [
+      "advice"
+    ],
+    "opening-castle-raid": [
+      "use",
+      "acquisition"
+    ],
+    "regalia-sceptre": [
+      "use"
+    ]
+  },
+  "companionAliases": {
+    "Saduj": [
+      "Judas",
+      "the traitor",
+      "traitor",
+      "the spy",
+      "who betrays the party",
+      "betrays the party",
+      "betray the party"
+    ],
+    "Gwenno": [
+      "Iolo's wife"
+    ]
+  },
+  "companionGroups": [
+    {
+      "id": "best-mage",
+      "title": "Strongest mage",
+      "aliases": [
+        "best mage",
+        "strongest mage",
+        "most powerful mage",
+        "powerful mage",
+        "best mages",
+        "strongest mages",
+        "most powerful mages"
+      ],
+      "members": [
+        "Johne",
+        "Mariah"
+      ]
+    },
+    {
+      "id": "best-fighter",
+      "title": "Strongest fighter",
+      "aliases": [
+        "best fighter",
+        "strongest fighter",
+        "best fighters",
+        "top fighter",
+        "top-tier fighter",
+        "best front line",
+        "best melee fighter"
+      ],
+      "members": [
+        "Geoffrey",
+        "Gorn"
+      ]
+    },
+    {
+      "id": "best-archer",
+      "title": "Best archer",
+      "aliases": [
+        "best archer",
+        "archer",
+        "who is the best archer",
+        "which companion is an archer",
+        "archers"
+      ],
+      "members": [
+        "Shamino"
+      ]
+    },
+    {
+      "id": "companions-to-avoid",
+      "title": "Companion to avoid",
+      "aliases": [
+        "who should i not recruit",
+        "who not to recruit",
+        "companion to avoid",
+        "companions to avoid",
+        "who to avoid",
+        "do not recruit",
+        "not to recruit",
+        "which companion should i avoid",
+        "which companions should i avoid",
+        "companion i should avoid",
+        "who should i avoid",
+        "which companion is bad"
+      ],
+      "members": [
+        "Saduj"
+      ],
+      "answers": [
+        "hint",
+        "advice"
+      ]
+    }
+  ],
+  "gentleAliases": {
+    "opening-party": [
+      "best party",
+      "recommended party",
+      "field party",
+      "who should i recruit first",
+      "who to recruit first",
+      "what party should i take"
+    ]
+  },
+  "stepTopics": [
+    {
+      "id": "harpsichord",
+      "title": "Harpsichord",
+      "objective": "opening-castle-raid",
+      "steps": [
+        4
+      ],
+      "relation": "use",
+      "aliases": [
+        "harpsichord",
+        "play the harpsichord",
+        "the harpsichord",
+        "secret wall",
+        "the secret wall",
+        "secret room",
+        "notes for the sandalwood box",
+        "notes for the box",
+        "sandalwood box notes",
+        "box notes",
+        "harpsichord notes",
+        "what song do i play",
+        "which song do i play",
+        "what notes do i play",
+        "Stones",
+        "play Stones"
+      ],
+      "answers": [
+        "acquisition",
+        "hint",
+        "location",
+        "explanation"
+      ]
+    },
+    {
+      "id": "word-fallax",
+      "title": "FALLAX (word of power)",
+      "objective": "shadow-faulinei",
+      "steps": [
+        0
+      ],
+      "aliases": [
+        "FALLAX",
+        "the word FALLAX"
+      ]
+    },
+    {
+      "id": "word-malum-avidus",
+      "title": "MALUM and AVIDUS (words of power)",
+      "objective": "shadow-astaroth",
+      "steps": [
+        0
+      ],
+      "aliases": [
+        "MALUM",
+        "AVIDUS",
+        "the word MALUM",
+        "the word AVIDUS"
+      ]
+    },
+    {
+      "id": "word-ignavus",
+      "title": "IGNAVUS (word of power)",
+      "objective": "shadow-nosfentor",
+      "steps": [
+        0
+      ],
+      "aliases": [
+        "IGNAVUS",
+        "the word IGNAVUS"
+      ]
+    },
+    {
+      "id": "flame-of-truth",
+      "title": "Flame of Truth",
+      "objective": "shadow-faulinei",
+      "steps": [
+        2,
+        3
+      ],
+      "aliases": [
+        "Flame of Truth",
+        "the Flame of Truth",
+        "shout FAULINEI"
+      ]
+    },
+    {
+      "id": "flame-of-love",
+      "title": "Flame of Love",
+      "objective": "shadow-astaroth",
+      "steps": [
+        2,
+        3
+      ],
+      "aliases": [
+        "Flame of Love",
+        "the Flame of Love",
+        "shout ASTAROTH"
+      ]
+    },
+    {
+      "id": "flame-of-courage",
+      "title": "Flame of Courage",
+      "objective": "shadow-nosfentor",
+      "steps": [
+        2,
+        3
+      ],
+      "aliases": [
+        "Flame of Courage",
+        "the Flame of Courage",
+        "shout NOSFENTOR"
+      ]
+    },
+    {
+      "id": "demon-riddle",
+      "title": "The demon's riddle",
+      "objective": "regalia-sceptre",
+      "steps": [
+        1
+      ],
+      "aliases": [
+        "demon's riddle",
+        "demon riddle",
+        "answer the demon",
+        "the demon at Stonegate",
+        "demon at Stonegate",
+        "answer to the riddle",
+        "riddle",
+        "what does the demon ask",
+        "Stonegate demon"
+      ]
+    },
+    {
+      "id": "doom-entrance",
+      "title": "Doom's entrance",
+      "objective": "doom-rescue",
+      "steps": [
+        2
+      ],
+      "aliases": [
+        "Doom's entrance",
+        "Doom entrance",
+        "entrance to Doom",
+        "reveal Doom entrance",
+        "find Doom entrance",
+        "speak VERAMOCOR"
+      ]
+    },
+    {
+      "id": "doom-finale",
+      "title": "The final level of Doom",
+      "objective": "doom-rescue",
+      "steps": [
+        4,
+        5
+      ],
+      "aliases": [
+        "Lord British's mirror",
+        "the mirror",
+        "hidden pit",
+        "Orb of the Moons",
+        "the Orb",
+        "final level of Doom",
+        "Doom final level",
+        "last level of Doom"
+      ]
+    }
+  ],
+  "wordSteps": {
+    "Honesty": {
+      "objective": "shadow-faulinei",
+      "step": 0
+    },
+    "Justice": {
+      "objective": "shadow-astaroth",
+      "step": 0
+    },
+    "Sacrifice": {
+      "objective": "shadow-astaroth",
+      "step": 0
+    },
+    "Spirituality": {
+      "objective": "shadow-nosfentor",
+      "step": 0
+    },
+    "Honor": {
+      "objective": "doom-rescue",
+      "step": 1
+    }
+  },
+  "narratives": [
+    {
+      "id": "opening-party",
+      "entityId": "ultima5:objective:opening-party",
+      "kind": "objective",
+      "title": "Assemble the recommended field party",
+      "aliases": [
+        "recommended field party"
+      ],
+      "minSpoiler": "balanced",
+      "from": [
+        "outcome:opening-party"
+      ],
+      "narrative": {
+        "aspect": "outcome",
+        "subjects": [
+          "six-person party"
+        ],
+        "context": [
+          "healing",
+          "utility magic",
+          "ranged pressure"
+        ],
+        "predicate": "resilient"
+      }
+    },
+    {
+      "id": "opening-grapple",
+      "entityId": "ultima5:objective:opening-grapple",
+      "kind": "objective",
+      "title": "Secure the Grapple",
+      "aliases": [],
+      "minSpoiler": "balanced",
+      "from": [
+        "outcome:opening-grapple"
+      ],
+      "narrative": {
+        "aspect": "outcome",
+        "subjects": [
+          "mountain peaks"
+        ],
+        "context": [
+          "Underworld routes"
+        ],
+        "predicate": "traversable"
+      }
+    },
+    {
+      "id": "opening-hms-cape",
+      "entityId": "ultima5:objective:opening-hms-cape",
+      "kind": "objective",
+      "title": "Steal the HMS Cape plans",
+      "aliases": [
+        "HMS Cape plans"
+      ],
+      "minSpoiler": "balanced",
+      "from": [
+        "title:opening-hms-cape",
+        "outcome:opening-hms-cape"
+      ],
+      "narrative": {
+        "aspect": "outcome",
+        "subjects": [
+          "HMS Cape"
+        ],
+        "context": [
+          "frigate"
+        ],
+        "predicate": "Using"
+      }
+    },
+    {
+      "id": "opening-castle-raid",
+      "entityId": "ultima5:objective:opening-castle-raid",
+      "kind": "objective",
+      "title": "Raid Lord British’s third-floor chambers",
+      "aliases": [
+        "Sandalwood Box"
+      ],
+      "minSpoiler": "balanced",
+      "from": [
+        "summary:opening-castle-raid"
+      ],
+      "narrative": {
+        "aspect": "summary",
+        "subjects": [
+          "Magic Carpet"
+        ],
+        "context": [
+          "Sandalwood Box"
+        ]
+      }
+    },
+    {
+      "id": "shrine-honesty",
+      "entityId": "ultima5:objective:shrine-honesty",
+      "kind": "shrine",
+      "title": "Restore the Shrine of Honesty",
+      "aliases": [
+        "Honesty shrine"
+      ],
+      "minSpoiler": "balanced",
+      "from": [
+        "outcome:shrine-honesty"
+      ],
+      "narrative": {
+        "aspect": "outcome",
+        "subjects": [
+          "Honesty"
+        ],
+        "context": [],
+        "predicate": "restored"
+      }
+    },
+    {
+      "id": "shrine-compassion",
+      "entityId": "ultima5:objective:shrine-compassion",
+      "kind": "shrine",
+      "title": "Restore the Shrine of Compassion",
+      "aliases": [
+        "Compassion shrine"
+      ],
+      "minSpoiler": "balanced",
+      "from": [
+        "outcome:shrine-compassion"
+      ],
+      "narrative": {
+        "aspect": "outcome",
+        "subjects": [
+          "Compassion"
+        ],
+        "context": [],
+        "predicate": "restored"
+      }
+    },
+    {
+      "id": "shrine-valor",
+      "entityId": "ultima5:objective:shrine-valor",
+      "kind": "shrine",
+      "title": "Restore the Shrine of Valor",
+      "aliases": [
+        "Valor shrine"
+      ],
+      "minSpoiler": "balanced",
+      "from": [
+        "outcome:shrine-valor"
+      ],
+      "narrative": {
+        "aspect": "outcome",
+        "subjects": [
+          "Valor"
+        ],
+        "context": [],
+        "predicate": "restored"
+      }
+    },
+    {
+      "id": "shrine-justice",
+      "entityId": "ultima5:objective:shrine-justice",
+      "kind": "shrine",
+      "title": "Restore the Shrine of Justice",
+      "aliases": [
+        "Justice shrine"
+      ],
+      "minSpoiler": "balanced",
+      "from": [
+        "outcome:shrine-justice"
+      ],
+      "narrative": {
+        "aspect": "outcome",
+        "subjects": [
+          "Justice"
+        ],
+        "context": [],
+        "predicate": "restored"
+      }
+    },
+    {
+      "id": "shrine-sacrifice",
+      "entityId": "ultima5:objective:shrine-sacrifice",
+      "kind": "shrine",
+      "title": "Restore the Shrine of Sacrifice",
+      "aliases": [
+        "Sacrifice shrine"
+      ],
+      "minSpoiler": "balanced",
+      "from": [
+        "outcome:shrine-sacrifice"
+      ],
+      "narrative": {
+        "aspect": "outcome",
+        "subjects": [
+          "Sacrifice"
+        ],
+        "context": [],
+        "predicate": "restored"
+      }
+    },
+    {
+      "id": "shrine-honor",
+      "entityId": "ultima5:objective:shrine-honor",
+      "kind": "shrine",
+      "title": "Restore the Shrine of Honor",
+      "aliases": [
+        "Honor shrine"
+      ],
+      "minSpoiler": "balanced",
+      "from": [
+        "outcome:shrine-honor"
+      ],
+      "narrative": {
+        "aspect": "outcome",
+        "subjects": [
+          "Honor"
+        ],
+        "context": [],
+        "predicate": "restored"
+      }
+    },
+    {
+      "id": "shrine-spirituality",
+      "entityId": "ultima5:objective:shrine-spirituality",
+      "kind": "shrine",
+      "title": "Restore the Shrine of Spirituality",
+      "aliases": [
+        "Spirituality shrine"
+      ],
+      "minSpoiler": "balanced",
+      "from": [
+        "outcome:shrine-spirituality"
+      ],
+      "narrative": {
+        "aspect": "outcome",
+        "subjects": [
+          "Spirituality"
+        ],
+        "context": [],
+        "predicate": "restored"
+      }
+    },
+    {
+      "id": "shrine-humility",
+      "entityId": "ultima5:objective:shrine-humility",
+      "kind": "shrine",
+      "title": "Restore the Shrine of Humility",
+      "aliases": [
+        "Humility shrine"
+      ],
+      "minSpoiler": "balanced",
+      "from": [
+        "outcome:shrine-humility"
+      ],
+      "narrative": {
+        "aspect": "outcome",
+        "subjects": [
+          "Humility"
+        ],
+        "context": [],
+        "predicate": "completed"
+      }
+    },
+    {
+      "id": "shadow-faulinei",
+      "entityId": "ultima5:objective:shadow-faulinei",
+      "kind": "objective",
+      "title": "Banish Faulinei, Shadowlord of Falsehood",
+      "aliases": [
+        "Faulinei"
+      ],
+      "minSpoiler": "balanced",
+      "from": [
+        "outcome:shadow-faulinei"
+      ],
+      "narrative": {
+        "aspect": "outcome",
+        "subjects": [
+          "Faulinei"
+        ],
+        "context": [
+          "Falsehood"
+        ],
+        "predicate": "destroyed"
+      }
+    },
+    {
+      "id": "shadow-astaroth",
+      "entityId": "ultima5:objective:shadow-astaroth",
+      "kind": "objective",
+      "title": "Banish Astaroth, Shadowlord of Hatred",
+      "aliases": [
+        "Astaroth"
+      ],
+      "minSpoiler": "balanced",
+      "from": [
+        "outcome:shadow-astaroth"
+      ],
+      "narrative": {
+        "aspect": "outcome",
+        "subjects": [
+          "Astaroth"
+        ],
+        "context": [
+          "Hatred"
+        ],
+        "predicate": "destroyed"
+      }
+    },
+    {
+      "id": "shadow-nosfentor",
+      "entityId": "ultima5:objective:shadow-nosfentor",
+      "kind": "objective",
+      "title": "Banish Nosfentor, Shadowlord of Cowardice",
+      "aliases": [
+        "Nosfentor"
+      ],
+      "minSpoiler": "balanced",
+      "from": [
+        "outcome:shadow-nosfentor"
+      ],
+      "narrative": {
+        "aspect": "outcome",
+        "subjects": [
+          "Nosfentor"
+        ],
+        "context": [
+          "Cowardice"
+        ],
+        "predicate": "destroyed"
+      }
+    },
+    {
+      "id": "regalia-sceptre",
+      "entityId": "ultima5:objective:regalia-sceptre",
+      "kind": "objective",
+      "title": "Recover the Sceptre",
+      "aliases": [],
+      "minSpoiler": "balanced",
+      "from": [
+        "title:regalia-sceptre",
+        "outcome:regalia-sceptre"
+      ],
+      "narrative": {
+        "aspect": "outcome",
+        "subjects": [
+          "Sceptre"
+        ],
+        "context": [
+          "magical field"
+        ],
+        "predicate": "dispel"
+      }
+    },
+    {
+      "id": "regalia-crown",
+      "entityId": "ultima5:objective:regalia-crown",
+      "kind": "objective",
+      "title": "Recover the Crown",
+      "aliases": [],
+      "minSpoiler": "balanced",
+      "from": [
+        "outcome:regalia-crown"
+      ],
+      "narrative": {
+        "aspect": "outcome",
+        "subjects": [
+          "Crown"
+        ],
+        "context": [
+          "enemy magic"
+        ],
+        "predicate": "protection"
+      }
+    },
+    {
+      "id": "regalia-amulet",
+      "entityId": "ultima5:objective:regalia-amulet",
+      "kind": "objective",
+      "title": "Recover the Amulet",
+      "aliases": [],
+      "minSpoiler": "balanced",
+      "from": [
+        "title:regalia-amulet",
+        "outcome:regalia-amulet"
+      ],
+      "narrative": {
+        "aspect": "outcome",
+        "subjects": [
+          "Amulet"
+        ],
+        "context": [
+          "darkness",
+          "Dungeon Doom"
+        ],
+        "predicate": "pierced"
+      }
+    },
+    {
+      "id": "doom-rescue",
+      "entityId": "ultima5:objective:doom-rescue",
+      "kind": "objective",
+      "title": "Enter Doom and free the king",
+      "aliases": [
+        "Lord British",
+        "Doom rescue"
+      ],
+      "minSpoiler": "balanced",
+      "from": [
+        "outcome:doom-rescue"
+      ],
+      "narrative": {
+        "aspect": "outcome",
+        "subjects": [
+          "Lord British"
+        ],
+        "context": [
+          "tyranny"
+        ],
+        "predicate": "returns"
+      }
+    },
+    {
+      "id": "gwenno-identity",
+      "entityId": "ultima5:companion:gwenno",
+      "kind": "companion",
+      "title": "Gwenno",
+      "aliases": [
+        "Iolo’s wife"
+      ],
+      "minSpoiler": "direct",
+      "from": [
+        "companion:Gwenno"
+      ],
+      "narrative": {
+        "aspect": "relationship",
+        "subjects": [
+          "Gwenno"
+        ],
+        "context": [
+          "Iolo"
+        ],
+        "predicate": "wife"
+      }
+    },
+    {
+      "id": "saduj-identity",
+      "entityId": "ultima5:companion:saduj",
+      "kind": "companion",
+      "title": "Saduj",
+      "aliases": [
+        "Blackthorn’s spy"
+      ],
+      "minSpoiler": "direct",
+      "from": [
+        "companion:Saduj"
+      ],
+      "narrative": {
+        "aspect": "identity",
+        "subjects": [
+          "Saduj"
+        ],
+        "context": [
+          "Blackthorn"
+        ]
+      }
+    },
+    {
+      "id": "sandalwood-method",
+      "entityId": "ultima5:objective:opening-castle-raid",
+      "kind": "objective",
+      "title": "Raid Lord British’s third-floor chambers",
+      "aliases": [
+        "Sandalwood Box secret wall"
+      ],
+      "minSpoiler": "direct",
+      "from": [
+        "step:opening-castle-raid:4"
+      ],
+      "narrative": {
+        "aspect": "method",
+        "subjects": [
+          "Sandalwood Box"
+        ],
+        "context": [
+          "harpsichord"
+        ],
+        "predicate": "play Stones"
+      }
+    },
+    {
+      "id": "faulinei-sequence",
+      "entityId": "ultima5:objective:shadow-faulinei",
+      "kind": "objective",
+      "title": "Banish Faulinei, Shadowlord of Falsehood",
+      "aliases": [
+        "Faulinei banishing steps"
+      ],
+      "minSpoiler": "direct",
+      "from": [
+        "step:shadow-faulinei:3"
+      ],
+      "narrative": {
+        "aspect": "sequence",
+        "subjects": [
+          "Shard of Falsehood"
+        ],
+        "context": [
+          "Faulinei",
+          "flame"
+        ],
+        "predicate": "use",
+        "sequenceMode": "steps"
+      }
+    },
+    {
+      "id": "compassion-sequence",
+      "entityId": "ultima5:objective:shrine-compassion",
+      "kind": "shrine",
+      "title": "Restore the Shrine of Compassion",
+      "aliases": [
+        "Compassion shrine instructions"
+      ],
+      "minSpoiler": "direct",
+      "from": [
+        "step:shrine-compassion:0"
+      ],
+      "narrative": {
+        "aspect": "sequence",
+        "subjects": [
+          "Greyson"
+        ],
+        "context": [
+          "Compassion"
+        ],
+        "predicate": "ask",
+        "sequenceMode": "steps"
+      }
+    },
+    {
+      "id": "doom-summary",
+      "entityId": "ultima5:objective:doom-rescue",
+      "kind": "objective",
+      "title": "Enter Doom and free the king",
+      "aliases": [
+        "Doom rescue"
+      ],
+      "minSpoiler": "direct",
+      "from": [
+        "summary:doom-rescue",
+        "outcome:doom-rescue"
+      ],
+      "narrative": {
+        "aspect": "summary",
+        "subjects": [
+          "Lord British"
+        ],
+        "context": [
+          "royal set"
+        ]
+      }
+    },
+    {
+      "id": "frigate-upgrade-method",
+      "entityId": "ultima5:objective:opening-hms-cape",
+      "kind": "objective",
+      "title": "Steal the HMS Cape plans",
+      "aliases": [
+        "frigate upgrade method"
+      ],
+      "minSpoiler": "direct",
+      "from": [
+        "step:opening-hms-cape:3"
+      ],
+      "narrative": {
+        "aspect": "method",
+        "subjects": [
+          "frigate"
+        ],
+        "context": [
+          "plans"
+        ],
+        "predicate": "upgrade"
+      }
+    }
+  ]
+}

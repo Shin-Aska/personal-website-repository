@@ -1,0 +1,2259 @@
+{
+  "schemaVersion": 1,
+  "description": "Ultima VI simulated-player round (21 Oct 2026): exact messages that were wrongly declined or wrongly answered before the data fixes, each with negatives. See the simulation report for before/after.",
+  "questions": [
+    {
+      "id": "sim-u6-roles-01",
+      "gameId": "ultima6",
+      "text": "best fighter?",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "The strongest pure fighter",
+          "Primary frontline tank"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-u6-roles-02",
+      "gameId": "ultima6",
+      "text": "whats the strongest companion",
+      "options": {
+        "spoiler": "balanced"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Seggallion: Fighter. The strongest pure fighter."
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-u6-roles-03",
+      "gameId": "ultima6",
+      "text": "which companion is best for magic",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Excellent dedicated spellcaster"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-u6-roles-04",
+      "gameId": "ultima6",
+      "text": "who should I take in my party",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Primary frontline tank"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-u6-roles-05",
+      "gameId": "ultima6",
+      "text": "who's the tank",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Dupre: Fighter. Primary frontline tank."
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-u6-roles-neg-01",
+      "gameId": "ultima6",
+      "split": "negative",
+      "text": "who is the best fighter for free",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": "decline",
+        "noChoices": true
+      }
+    },
+    {
+      "id": "sim-u6-party-01",
+      "gameId": "ultima6",
+      "text": "How many companions can I have?",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "up to eight members"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-u6-party-02",
+      "gameId": "ultima6",
+      "text": "how many people can be in my party",
+      "options": {
+        "spoiler": "balanced"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "up to eight members"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-u6-party-neg-01",
+      "gameId": "ultima6",
+      "split": "negative",
+      "text": "How many companions can I have on Mars?",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": "decline",
+        "noChoices": true
+      }
+    },
+    {
+      "id": "sim-u6-where-comp-01",
+      "gameId": "ultima6",
+      "text": "Where is Jaana?",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Yew",
+          "Coordinates: X"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-u6-where-comp-02",
+      "gameId": "ultima6",
+      "text": "yo where do i find Seggallion lol",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Serpent's Hold",
+          "Coordinates: X"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-u6-where-comp-03",
+      "gameId": "ultima6",
+      "split": "negative",
+      "text": "Where is Jaana?",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "decline",
+        "absent": [
+          "Yew",
+          "Coordinates"
+        ],
+        "noChoices": true
+      }
+    },
+    {
+      "id": "sim-u6-shrine-01",
+      "gameId": "ultima6",
+      "text": "What does the Valor shrine give me",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "+3 Strength"
+        ],
+        "absent": [
+          "Mantra",
+          "RA."
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-u6-shrine-02",
+      "gameId": "ultima6",
+      "text": "What does the Valor shrine give me",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "+3 Strength",
+          "Mantra: RA"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-u6-shrine-03",
+      "gameId": "ultima6",
+      "text": "What's the mantra for Valor",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Mantra: RA"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-u6-shrine-04",
+      "gameId": "ultima6",
+      "split": "negative",
+      "text": "What's the mantra for Valor",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "decline",
+        "absent": [
+          "RA",
+          "Mantra: "
+        ],
+        "noChoices": true
+      }
+    },
+    {
+      "id": "sim-u6-shrine-05",
+      "gameId": "ultima6",
+      "split": "negative",
+      "text": "what is the mantra of the shrine of justice",
+      "options": {
+        "spoiler": "balanced"
+      },
+      "expected": {
+        "decision": "decline",
+        "absent": [
+          "BEH"
+        ],
+        "noChoices": true
+      }
+    },
+    {
+      "id": "sim-u6-shrine-06",
+      "gameId": "ultima6",
+      "text": "What does the shrine of spirituality do",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "+1 Str, +1 Dex, +1 Int"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-u6-shrine-07",
+      "gameId": "ultima6",
+      "text": "tell me about humility",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "No bonus"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-u6-shrine-08",
+      "gameId": "ultima6",
+      "text": "what virtue boosts intelligence",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Shrine of Honesty bonus: +3 Intelligence"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-u6-shrine-09",
+      "gameId": "ultima6",
+      "text": "what are the 8 virtues",
+      "options": {
+        "spoiler": "balanced"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Shrine of Humility bonus: No bonus"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-u6-shrine-10",
+      "gameId": "ultima6",
+      "text": "do I need to meditate at shrines",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Meditate at cleansed shrines for permanent attribute growth"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-u6-shrine-11",
+      "gameId": "ultima6",
+      "text": "what are the mantras",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Mantra: RA",
+          "Mantra: MU"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-u6-shrine-12",
+      "gameId": "ultima6",
+      "split": "negative",
+      "text": "what are the mantras",
+      "options": {
+        "spoiler": "balanced"
+      },
+      "expected": {
+        "decision": "clarify",
+        "absent": [
+          "Mantra: RA"
+        ]
+      }
+    },
+    {
+      "id": "sim-u6-shrine-neg-01",
+      "gameId": "ultima6",
+      "split": "negative",
+      "text": "what does the shrine of valor do on Mars",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": "decline",
+        "noChoices": true
+      }
+    },
+    {
+      "id": "sim-u6-shrine-hint-01",
+      "gameId": "ultima6",
+      "text": "hint for the compassion shrine",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "those close to her"
+        ],
+        "absent": [
+          "Ariana",
+          "Conservatory"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-u6-shrine-hint-02",
+      "gameId": "ultima6",
+      "text": "hint for the compassion shrine",
+      "options": {
+        "spoiler": "balanced"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Ariana's trust"
+        ],
+        "absent": [
+          "Conservatory"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-u6-shrine-hint-03",
+      "gameId": "ultima6",
+      "text": "hint for the compassion shrine",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Conservatory"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-u6-shrine-hint-04",
+      "gameId": "ultima6",
+      "text": "I'm stuck on Honor in Trinsic",
+      "options": {
+        "spoiler": "balanced"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Borrow the rune on trust"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-u6-shrine-hint-05",
+      "gameId": "ultima6",
+      "text": "I'm stuck at the humility shrine",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Listen to the villagers"
+        ],
+        "absent": [
+          "Conor"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-u6-shrine-hint-06",
+      "gameId": "ultima6",
+      "text": "stuck on the shrine of valor",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "smaller than the Avatar"
+        ],
+        "absent": [
+          "Sherry",
+          "mouse"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-u6-shrine-rune-01",
+      "gameId": "ultima6",
+      "text": "how do I get the rune for the shrine of Justice",
+      "options": {
+        "spoiler": "balanced"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Expose Boskin's lie"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-u6-shrine-rune-02",
+      "gameId": "ultima6",
+      "text": "how do I get the rune for the shrine of Justice",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Slaughtered Lamb"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-u6-shrine-rune-03",
+      "gameId": "ultima6",
+      "text": "how do I get the rune for the shrine of Justice",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "decline",
+        "absent": [
+          "Boskin"
+        ],
+        "noChoices": true
+      }
+    },
+    {
+      "id": "sim-u6-shrine-rune-04",
+      "gameId": "ultima6",
+      "text": "how do I get the rune in Jhelom",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Sherry",
+          "mouse hole"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-u6-shrine-quest-01",
+      "gameId": "ultima6",
+      "text": "How do I finish the Shrine of Sacrifice quest",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "crafted instrument"
+        ],
+        "absent": [
+          "PANPIPES",
+          "Selganor"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-u6-shrine-quest-02",
+      "gameId": "ultima6",
+      "text": "How do I finish the Shrine of Sacrifice quest",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "PANPIPES"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-u6-shrine-ctx-01",
+      "gameId": "ultima6",
+      "text": "Any hints for this quest?",
+      "options": {
+        "spoiler": "balanced",
+        "contextId": "atlas:marker:Shrine of Valor",
+        "entityIds": [
+          "ultima6:atlas:marker:Shrine of Valor"
+        ]
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "selected marker"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-u6-shrine-ctx-02",
+      "gameId": "ultima6",
+      "text": "Any hints for this quest?",
+      "options": {
+        "spoiler": "direct",
+        "contextId": "atlas:marker:Shrine of Valor",
+        "entityIds": [
+          "ultima6:atlas:marker:Shrine of Valor"
+        ]
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Mantra: RA"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-u6-shrine-ctx-03",
+      "gameId": "ultima6",
+      "text": "Any hints for this quest?",
+      "options": {
+        "spoiler": "direct",
+        "contextId": "atlas:marker:Dungeon Shame",
+        "entityIds": [
+          "ultima6:atlas:marker:Dungeon Shame"
+        ]
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Old Ybarra"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-u6-shrine-codex-01",
+      "gameId": "ultima6",
+      "text": "where is the codex shrine",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Coordinates: X 39B"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-u6-shrine-codex-02",
+      "gameId": "ultima6",
+      "split": "negative",
+      "text": "Where is the Shrine of the Codex",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "clarify",
+        "absent": [
+          "39B",
+          "Coordinates"
+        ]
+      }
+    },
+    {
+      "id": "sim-u6-spell-01",
+      "gameId": "ultima6",
+      "text": "Tell me about Kill",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Circle 7",
+          "Instantly kills"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-u6-spell-02",
+      "gameId": "ultima6",
+      "text": "whats telekinesis for",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Manipulates distant objects"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-u6-spell-03",
+      "gameId": "ultima6",
+      "text": "What is Death Wind",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Circle 8"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-u6-spell-04",
+      "gameId": "ultima6",
+      "text": "which spell kills multiple enemies",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Death Wind, a circle 8 spell"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-u6-spell-05",
+      "gameId": "ultima6",
+      "text": "what spell cures poison",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Cure, a circle 1 spell"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-u6-spell-06",
+      "gameId": "ultima6",
+      "text": "which spell opens locked chests",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Unlock Magic, a circle 2 spell"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-u6-spell-07",
+      "gameId": "ultima6",
+      "text": "what is the highest circle",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Death Wind, a circle 8 spell",
+          "Kill, a circle 7 spell"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-u6-spell-08",
+      "gameId": "ultima6",
+      "text": "what removes magical fields",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "clarify",
+        "contains": [
+          "Dispel Field"
+        ]
+      }
+    },
+    {
+      "id": "sim-u6-spell-neg-02",
+      "gameId": "ultima6",
+      "split": "negative",
+      "text": "which spell kills multiple enemies on Mars",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": "decline",
+        "noChoices": true
+      }
+    },
+    {
+      "id": "sim-u6-spell-neg-01",
+      "gameId": "ultima6",
+      "split": "negative",
+      "text": "what reagents does Heal need",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": "decline",
+        "noChoices": true
+      }
+    },
+    {
+      "id": "sim-u6-equip-01",
+      "gameId": "ultima6",
+      "text": "where is the mystic sword",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Avatar's chamber"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-u6-equip-02",
+      "gameId": "ultima6",
+      "split": "negative",
+      "text": "where is the mystic sword",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "decline",
+        "absent": [
+          "Avatar's chamber",
+          "Lycaeum"
+        ],
+        "noChoices": true
+      }
+    },
+    {
+      "id": "sim-u6-equip-03",
+      "gameId": "ultima6",
+      "text": "magic armor where to buy",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Sold in Trinsic"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-u6-equip-04",
+      "gameId": "ultima6",
+      "text": "Where can I get the Magic Helmet",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Pirate Cave"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-u6-equip-neg-01",
+      "gameId": "ultima6",
+      "split": "negative",
+      "text": "where is the storm cloak on Mars",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": "decline",
+        "noChoices": true
+      }
+    },
+    {
+      "id": "sim-u6-cheat-01",
+      "gameId": "ultima6",
+      "text": "how do I teleport",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "ALT-2-1-4"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-u6-cheat-02",
+      "gameId": "ultima6",
+      "text": "can I dupe gear?",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "clarify",
+        "contains": [
+          "Animate-Clone Duplication"
+        ],
+        "absent": [
+          "Dupre"
+        ]
+      }
+    },
+    {
+      "id": "sim-u6-cheat-03",
+      "gameId": "ultima6",
+      "text": "Is there a way to see my coordinates?",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "ALT-2-1-3"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-u6-cheat-04",
+      "gameId": "ultima6",
+      "text": "is there a cheat for infinite gold",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Pirate Gold Refill"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-u6-cheat-05",
+      "gameId": "ultima6",
+      "text": "how do I farm gold in the pirate cave",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Pirate Gold Refill",
+          "respawned"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-u6-cheat-06",
+      "gameId": "ultima6",
+      "text": "list the cheats",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Cheats in this guide",
+          "Pirate Gold Refill"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-u6-cheat-07",
+      "gameId": "ultima6",
+      "text": "How do I raise my karma",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Infinite Karma Loop"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-u6-cheat-08",
+      "gameId": "ultima6",
+      "text": "What are the item IDs for the cheat menu",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Get Items to spawn equipment by ID",
+          "search by ID or item name"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-u6-cheat-neg-01",
+      "gameId": "ultima6",
+      "split": "negative",
+      "text": "what is item 81 in the cheat menu",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": "decline",
+        "noChoices": true
+      }
+    },
+    {
+      "id": "sim-u6-lore-01",
+      "gameId": "ultima6",
+      "text": "what makes you sleep from a tangle vine",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Pods"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-u6-lore-02",
+      "gameId": "ultima6",
+      "text": "what are wisps mistaken for",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Firefly"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-u6-lore-03",
+      "gameId": "ultima6",
+      "text": "how were headless made",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Wizard"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-u6-lore-04",
+      "gameId": "ultima6",
+      "text": "what are the answers to the passage questions",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Endurance",
+          "Kinetic propellant",
+          "Tomb walls"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-u6-lore-05",
+      "gameId": "ultima6",
+      "text": "what are the magic syllables",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Illusion",
+          "Danger/Trap/Harm"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-u6-lore-06",
+      "gameId": "ultima6",
+      "text": "I need the answers to the Mariah questions",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Illusion"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-u6-lore-07",
+      "gameId": "ultima6",
+      "text": "what is the meaning of Hur",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Wind"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-u6-lore-neg-01",
+      "gameId": "ultima6",
+      "split": "negative",
+      "text": "what are wisps mistaken for on Mars",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": "decline",
+        "noChoices": true
+      }
+    },
+    {
+      "id": "sim-u6-story-01",
+      "gameId": "ultima6",
+      "text": "who is the false prophet",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Gargoyles have seized Britannia"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-u6-story-02",
+      "gameId": "ultima6",
+      "text": "how are my starting stats decided",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "seven questions determine your starting attributes"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-u6-quest-26",
+      "gameId": "ultima6",
+      "text": "what is the ethereal void",
+      "options": {
+        "spoiler": "balanced"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "shrine in the Ethereal Void"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-u6-start-01",
+      "gameId": "ultima6",
+      "text": "how do I start the game",
+      "options": {
+        "spoiler": "balanced"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Lord British tasks you with reclaiming the eight runes"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-u6-start-02",
+      "gameId": "ultima6",
+      "text": "what do I do first",
+      "options": {
+        "spoiler": "balanced"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "reclaiming the eight runes"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-u6-start-03",
+      "gameId": "ultima6",
+      "text": "how do I finish the game",
+      "options": {
+        "spoiler": "balanced"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Recover the Vortex Cube, forge twin lenses"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-u6-start-04",
+      "gameId": "ultima6",
+      "text": "what is the final ritual",
+      "options": {
+        "spoiler": "balanced"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "present them correctly at the Codex"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-u6-start-05",
+      "gameId": "ultima6",
+      "text": "what's the main quest",
+      "options": {
+        "spoiler": "balanced"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Act II: Prophecy & Pirates",
+          "Act I: Liberating the Shrines"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-u6-start-06",
+      "gameId": "ultima6",
+      "split": "negative",
+      "text": "what's the main quest",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "clarify",
+        "absent": [
+          "Prophecy & Pirates"
+        ]
+      }
+    },
+    {
+      "id": "sim-u6-quest-01",
+      "gameId": "ultima6",
+      "text": "how do I join the thieves guild",
+      "options": {
+        "spoiler": "balanced"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Earn Budo's trust"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-u6-quest-02",
+      "gameId": "ultima6",
+      "text": "how do I join the thieves guild",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Budo",
+          "belt"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-u6-quest-03",
+      "gameId": "ultima6",
+      "text": "what do I do with the Gargish tome",
+      "options": {
+        "spoiler": "balanced"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Deliver the book to Mariah"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-u6-quest-04",
+      "gameId": "ultima6",
+      "split": "negative",
+      "text": "what do I do with the Gargish tome",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "clarify",
+        "absent": [
+          "Mariah",
+          "Homer"
+        ]
+      }
+    },
+    {
+      "id": "sim-u6-quest-05",
+      "gameId": "ultima6",
+      "text": "how do I get the balloon plans",
+      "options": {
+        "spoiler": "balanced"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Collect every component"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-u6-quest-06",
+      "gameId": "ultima6",
+      "text": "how do I get the balloon plans",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Sutek's catacombs"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-u6-quest-07",
+      "gameId": "ultima6",
+      "text": "how do I learn Gargish",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Captain Johne"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-u6-quest-08",
+      "gameId": "ultima6",
+      "text": "how do I use the Codex",
+      "options": {
+        "spoiler": "balanced"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "align the lenses"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-u6-quest-09",
+      "gameId": "ultima6",
+      "text": "what are the twin lenses",
+      "options": {
+        "spoiler": "balanced"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Repair the gargoyle lens"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-u6-quest-10",
+      "gameId": "ultima6",
+      "text": "how do I get the vortex cube",
+      "options": {
+        "spoiler": "balanced"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Negotiate with the cyclopes of Stonegate"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-u6-quest-11",
+      "gameId": "ultima6",
+      "text": "how do I get the vortex cube",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Stonegate (10N 37E)"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-u6-quest-12",
+      "gameId": "ultima6",
+      "split": "negative",
+      "text": "where is the vortex cube",
+      "options": {
+        "spoiler": "balanced"
+      },
+      "expected": {
+        "decision": "decline",
+        "absent": [
+          "Coordinates"
+        ],
+        "noChoices": true
+      }
+    },
+    {
+      "id": "sim-u6-quest-13",
+      "gameId": "ultima6",
+      "text": "where is the vortex cube",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Z 4"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-u6-quest-14",
+      "gameId": "ultima6",
+      "text": "I am stuck in the pirate cave",
+      "options": {
+        "spoiler": "balanced"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "silver tablet half"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-u6-quest-15",
+      "gameId": "ultima6",
+      "text": "how do I get the silver tablet",
+      "options": {
+        "spoiler": "balanced"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "silver tablet half"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-u6-quest-16",
+      "gameId": "ultima6",
+      "text": "what do I do with the hawkins map",
+      "options": {
+        "spoiler": "balanced"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "nine fragments"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-u6-quest-17",
+      "gameId": "ultima6",
+      "text": "what is the Lycaeum library quest",
+      "options": {
+        "spoiler": "balanced"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Recover three unusual books",
+          "Gems, gold, and a valuable clue"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-u6-quest-18",
+      "gameId": "ultima6",
+      "text": "what do I do with The Wizard of Oz",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "twenty gems"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-u6-quest-19",
+      "gameId": "ultima6",
+      "text": "what is chuckles' quest",
+      "options": {
+        "spoiler": "balanced"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "scavenger hunt"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-u6-quest-20",
+      "gameId": "ultima6",
+      "text": "tell me about the merchants circuit",
+      "options": {
+        "spoiler": "balanced"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "travelling trade route",
+          "Repeatable gold"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-u6-quest-21",
+      "gameId": "ultima6",
+      "text": "how do I get the rings from Dungeon Deceit",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Reveal"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-u6-quest-22",
+      "gameId": "ultima6",
+      "text": "what's in the Heroes' Hole",
+      "options": {
+        "spoiler": "balanced"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Heroes' Hole"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-u6-quest-23",
+      "gameId": "ultima6",
+      "text": "what are the side quests",
+      "options": {
+        "spoiler": "balanced"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Chuckles' Trail of Clues",
+          "The Merchants' Circuit"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-u6-quest-24",
+      "gameId": "ultima6",
+      "split": "negative",
+      "text": "what are the side quests",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "clarify",
+        "absent": [
+          "Chuckles"
+        ]
+      }
+    },
+    {
+      "id": "sim-u6-quest-25",
+      "gameId": "ultima6",
+      "text": "how do i make money",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Pirate Gold Refill"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-u6-quest-neg-01",
+      "gameId": "ultima6",
+      "split": "negative",
+      "text": "how do I join the thieves guild on Mars",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": "decline",
+        "noChoices": true
+      }
+    },
+    {
+      "id": "sim-u6-quest-neg-02",
+      "gameId": "ultima6",
+      "split": "negative",
+      "text": "how do I get the balloon plans for free",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": "decline",
+        "noChoices": true
+      }
+    },
+    {
+      "id": "sim-u6-dungeon-01",
+      "gameId": "ultima6",
+      "text": "where is Destard",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Northwest of Trinsic",
+          "Coordinates: X 120"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-u6-dungeon-02",
+      "gameId": "ultima6",
+      "split": "negative",
+      "text": "where is Destard",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "clarify",
+        "absent": [
+          "Trinsic",
+          "Coordinates"
+        ]
+      }
+    },
+    {
+      "id": "sim-u6-dungeon-03",
+      "gameId": "ultima6",
+      "text": "How do I get through Hythloth",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Captain Johne",
+          "Coordinates"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-u6-dungeon-04",
+      "gameId": "ultima6",
+      "text": "what do I do in Dungeon Shame",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Old Ybarra"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-u6-dungeon-05",
+      "gameId": "ultima6",
+      "text": "where is the ant mound",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Drylands, south of Shrine of Sacrifice",
+          "Coordinates"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-u6-dungeon-06",
+      "gameId": "ultima6",
+      "text": "what dungeons are there",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Dungeon Hythloth",
+          "Sutek's Castle"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-u6-dungeon-07",
+      "gameId": "ultima6",
+      "text": "where is Despise",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Northeast of Castle Britannia"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-u6-dungeon-08",
+      "gameId": "ultima6",
+      "text": "how do I get the dragon egg",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": "clarify"
+      }
+    },
+    {
+      "id": "sim-u6-atlas-01",
+      "gameId": "ultima6",
+      "text": "who is Nystul",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "a concerned looking mage"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-u6-atlas-02",
+      "gameId": "ultima6",
+      "split": "negative",
+      "text": "who is Nystul",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "clarify",
+        "absent": [
+          "mage"
+        ]
+      }
+    },
+    {
+      "id": "sim-u6-atlas-03",
+      "gameId": "ultima6",
+      "text": "who is Selganor",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "tuning a lute"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-u6-atlas-04",
+      "gameId": "ultima6",
+      "text": "who is Homer",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "shifty-eyed"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-u6-atlas-05",
+      "gameId": "ultima6",
+      "text": "where is Lord Britishs castle",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Coordinates: X"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-u6-atlas-06",
+      "gameId": "ultima6",
+      "text": "where is the Hall of Knowledge",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Z 5"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "sim-u6-atlas-07",
+      "gameId": "ultima6",
+      "text": "what is Dungeon Hythloth",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Britannian entrance to Hythloth"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    }
+  ],
+  "dialogues": [
+    {
+      "id": "sim-u6-dlg-companion-followups",
+      "gameId": "ultima6",
+      "turns": [
+        {
+          "text": "Where is Jaana?",
+          "options": {
+            "spoiler": "direct"
+          },
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Yew"
+            ],
+            "sourceRequired": true,
+            "stateChangeCount": 0
+          }
+        },
+        {
+          "text": "what about Julia",
+          "options": {
+            "spoiler": "direct"
+          },
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Minoc"
+            ],
+            "sourceRequired": true,
+            "stateChangeCount": 0
+          }
+        },
+        {
+          "text": "and her stats?",
+          "options": {
+            "spoiler": "direct"
+          },
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Dexterity 18"
+            ],
+            "sourceRequired": true,
+            "stateChangeCount": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "sim-u6-dlg-spell-followups",
+      "gameId": "ultima6",
+      "turns": [
+        {
+          "text": "Tell me about Kill",
+          "options": {
+            "spoiler": "gentle"
+          },
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Circle 7"
+            ],
+            "sourceRequired": true,
+            "stateChangeCount": 0
+          }
+        },
+        {
+          "text": "and Death Wind",
+          "options": {
+            "spoiler": "gentle"
+          },
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Circle 8"
+            ],
+            "sourceRequired": true,
+            "stateChangeCount": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "sim-u6-dlg-item-followups",
+      "gameId": "ultima6",
+      "turns": [
+        {
+          "text": "Where is the Mystic Sword?",
+          "options": {
+            "spoiler": "direct"
+          },
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Lycaeum"
+            ],
+            "sourceRequired": true,
+            "stateChangeCount": 0
+          }
+        },
+        {
+          "text": "what does it do",
+          "options": {
+            "spoiler": "direct"
+          },
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "24-30 Dmg"
+            ],
+            "sourceRequired": true,
+            "stateChangeCount": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "sim-u6-dlg-shrine-followups",
+      "gameId": "ultima6",
+      "turns": [
+        {
+          "text": "whats the mantra for Honor",
+          "options": {
+            "spoiler": "direct"
+          },
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Mantra: SUMM"
+            ],
+            "sourceRequired": true,
+            "stateChangeCount": 0
+          }
+        },
+        {
+          "text": "and for Sacrifice",
+          "options": {
+            "spoiler": "direct"
+          },
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Mantra: CAH"
+            ],
+            "sourceRequired": true,
+            "stateChangeCount": 0
+          }
+        },
+        {
+          "text": "what about Valor",
+          "options": {
+            "spoiler": "direct"
+          },
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Mantra: RA"
+            ],
+            "sourceRequired": true,
+            "stateChangeCount": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "sim-u6-dlg-shrine-quest",
+      "gameId": "ultima6",
+      "turns": [
+        {
+          "text": "hint for the compassion shrine",
+          "options": {
+            "spoiler": "balanced"
+          },
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Ariana's trust"
+            ],
+            "sourceRequired": true,
+            "stateChangeCount": 0
+          }
+        },
+        {
+          "text": "I meant the justice shrine",
+          "options": {
+            "spoiler": "balanced"
+          },
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Boskin"
+            ],
+            "sourceRequired": true,
+            "stateChangeCount": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "sim-u6-dlg-cheat-followups",
+      "gameId": "ultima6",
+      "turns": [
+        {
+          "text": "how do I teleport",
+          "options": {
+            "spoiler": "gentle"
+          },
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "ALT-2-1-4"
+            ],
+            "sourceRequired": true,
+            "stateChangeCount": 0
+          }
+        },
+        {
+          "text": "and the duplication one?",
+          "options": {
+            "spoiler": "gentle"
+          },
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Animate"
+            ],
+            "sourceRequired": true,
+            "stateChangeCount": 0
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SmolLM2 fallback trial</title>
+<style>
+body{font:16px/1.5 system-ui,sans-serif;max-width:850px;margin:32px auto;padding:0 20px;background:#111827;color:#e5e7eb}
+button,select{font:inherit;padding:8px;margin:4px 8px 4px 0}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#1f2937;padding:16px;border-radius:8px}
+small{color:#cbd5e1}.status{color:#93c5fd}#raw{min-height:60px}
+</style>
+<h1>SmolLM2 fallback trial</h1>
+<p>Experimental, unverified model responses. Live guides do not use this trial.</p>
+<p><small>CPU WebAssembly · SmolLM2-135M q8 · recent chat and authorized excerpts · no saved-progress changes</small></p>
+<p id="status" class="status" role="status">Preparing trial cases…</p>
+<select id="cases" aria-label="Trial case"></select>
+<button id="load" type="button">Load local model</button>
+<button id="run" type="button" disabled>Run selected case</button>
+<h2>Latest visitor message</h2><pre id="question"></pre>
+<h2>Reply after guardrails</h2><pre id="reply" aria-live="polite">Choose a guarded trial case to see the checked reply.</pre>
+<details><summary>Raw experimental model output (unverified)</summary><pre id="raw"></pre></details>
+<pre id="metrics"></pre>
+<details><summary>Supplied chat, guide passages and prompt</summary><pre id="context"></pre></details>
+<script type="module" src="./runner.js"></script>
+</html>

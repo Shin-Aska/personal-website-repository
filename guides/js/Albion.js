@@ -856,37 +856,6 @@ function getQuestHint(groupId, itemId) {
 
 const QUEST_STORAGE_KEY = 'albion.questLog.v1';
 
-async function callGeminiFunction(prompt, maxRetries = 3) {
-    const apiUrl = '/php/llm.php';
-    const payload = { contents: [{ role: "user", parts: [{ text: prompt }] }] };
-
-    let delay = 1000;
-    for (let i = 0; i < maxRetries; i++) {
-        try {
-            const response = await fetch(apiUrl, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(payload)
-            });
-
-            if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-            const result = await response.json();
-
-            const text = result?.candidates?.[0]?.content?.parts?.[0]?.text;
-            if (text) return text;
-            throw new Error('Invalid response structure from Gemini API');
-        } catch (error) {
-            console.warn(`API call attempt ${i + 1} failed. Retrying in ${delay}ms...`, error);
-            if (i < maxRetries - 1) {
-                await new Promise(r => setTimeout(r, delay));
-                delay *= 2;
-            } else {
-                throw error;
-            }
-        }
-    }
-}
-
 const QUEST_OPEN_GROUPS_KEY = 'albion.questOpenGroups.v1';
 let questOpenGroups = new Set();
 
@@ -2006,6 +1975,11 @@ function renderScreenshots() {
 }
 
 function activateAlbionSection(target, scrollBehavior = 'smooth') {
+    const previous = document.querySelector('.content-section.active')?.id;
+    if (previous && previous !== target) {
+        albionTopicRevision++;
+        albionAssistant?.resetTopic(walkthroughAiActiveChapterId || 'default');
+    }
     document.querySelectorAll('.nav-button').forEach(button => {
         button.classList.toggle('active', button.dataset.target === target);
     });
@@ -2452,276 +2426,62 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
-// ==================== WALKTHROUGH AI (Claude Integration) ====================
-
+// ==================== LOCAL WALKTHROUGH ASSISTANT ====================
+// The classic guide owns its lexical data and navigation callbacks. Only these
+// explicit references cross into the browser module; no window.DB assumption.
 let walkthroughAiActiveChapterId = null;
-let walkthroughAiHistory = [];
+let albionAssistantView = null;
+let albionAssistant = null;
+let albionAssistantLoad = null;
+let albionTopicRevision = 0;
 
+function ensureAlbionAssistant() {
+    if (!albionAssistantLoad) albionAssistantLoad = Promise.all([
+        import('./assistant/adapters/albion.js'), import('./assistant/ui.js')
+    ]).then(async ([adapter, ui]) => {
+        albionAssistant = await adapter.createAlbionAssistant({ DB, questLog: QUEST_LOG,
+            questHints: QUEST_HINTS, tradeHints: ALBION_TRADE_HINTS, movements: ALBION_CAMPAIGN_MOVEMENTS,
+            atlas: window.ALBION_ATLAS_CONFIG || null, getQuestState: loadQuestState });
+        albionAssistantView = ui.createView({ assistant: albionAssistant,
+            messages: document.getElementById('walkthrough-ai-body'),
+            input: document.getElementById('walkthrough-ai-input'),
+            sendButton: document.getElementById('walkthrough-ai-send'), bindEvents: false,
+            getContext: () => ({ contextId: walkthroughAiActiveChapterId || 'default', tone: 'terminal',
+                label: DB.chapters.find(chapter => chapter.id === walkthroughAiActiveChapterId)?.title }),
+            actions: { 'albion:map:beegle': () => openWalkthroughAtlasStop('toronto-intro', 2) }
+        });
+        return albionAssistantView;
+    }).catch(error => {
+        albionAssistantLoad = null;
+        const body = document.getElementById('walkthrough-ai-body');
+        if (body) body.textContent = 'The local guide files could not be loaded. Reload the page to retry.';
+        throw error;
+    });
+    return albionAssistantLoad;
+}
 function resetWalkthroughAi() {
-    const body = document.getElementById('walkthrough-ai-body');
+    albionTopicRevision++;
+    albionAssistant?.resetTopic(walkthroughAiActiveChapterId || 'default');
     const input = document.getElementById('walkthrough-ai-input');
-    if (body) {
-        body.innerHTML = `<p class="text-gray-400 italic text-center py-8">AI terminal online. Ask about your current chapter.</p>`;
-    }
     if (input) input.value = '';
-    walkthroughAiHistory = [];
 }
-
 function setWalkthroughAiActiveChapter(chapterId) {
+    if (walkthroughAiActiveChapterId !== (chapterId || null)) albionTopicRevision++;
     walkthroughAiActiveChapterId = chapterId || null;
+    albionAssistantView?.refresh();
 }
-
-function appendWalkthroughAiMessage(role, content) {
-    const body = document.getElementById('walkthrough-ai-body');
-    if (!body) return;
-
-    const wrap = document.createElement('div');
-    wrap.className = `walkthrough-ai-msg ${role}`;
-    wrap.innerHTML = `<div class="walkthrough-ai-msg-inner"></div>`;
-
-    // Parse markdown if available
-    const htmlContent = (typeof marked !== 'undefined') ? marked.parse(content) : content;
-    wrap.querySelector('.walkthrough-ai-msg-inner').innerHTML = htmlContent;
-
-    // Style adjustments for markdown content
-    if (typeof marked !== 'undefined') {
-        const inner = wrap.querySelector('.walkthrough-ai-msg-inner');
-        // Simple fix for list styling within the chat
-        inner.querySelectorAll('ul, ol').forEach(list => list.classList.add('list-inside', 'pl-1'));
-        inner.querySelectorAll('ul').forEach(list => list.classList.add('list-disc'));
-        inner.querySelectorAll('ol').forEach(list => list.classList.add('list-decimal'));
-        inner.querySelectorAll('p').forEach(p => p.classList.add('mb-2', 'last:mb-0'));
-        inner.querySelectorAll('strong').forEach(s => s.classList.add('font-bold', 'text-white'));
-    }
-
-    body.appendChild(wrap);
-    body.scrollTop = body.scrollHeight;
-}
-
-function showWalkthroughAiTyping() {
-    const body = document.getElementById('walkthrough-ai-body');
-    if (!body || document.getElementById('walkthrough-ai-typing')) return;
-
-    const typing = document.createElement('div');
-    typing.id = 'walkthrough-ai-typing';
-    typing.className = 'walkthrough-ai-typing';
-    typing.innerHTML = `
-        <div class="walkthrough-ai-typing-dot"></div>
-        <div class="walkthrough-ai-typing-dot"></div>
-        <div class="walkthrough-ai-typing-dot"></div>
-    `;
-    body.appendChild(typing);
-    body.scrollTop = body.scrollHeight;
-}
-
-function hideWalkthroughAiTyping() {
-    const typing = document.getElementById('walkthrough-ai-typing');
-    if (typing) typing.remove();
-}
-
-function getWalkthroughAiChapterContext() {
-    if (!walkthroughAiActiveChapterId) return null;
-    const chapter = (DB.chapters || []).find(c => c && c.id === walkthroughAiActiveChapterId);
-    if (!chapter) return null;
-
-    const tips = Array.isArray(chapter.tips) ? chapter.tips.slice(0, 10) : [];
-    const questGroup = (QUEST_LOG || []).find(g => g && g.id === chapter.id);
-    const questState = loadQuestState();
-    const checklist = (questGroup?.items || []).map(item => ({
-        id: item.id,
-        text: item.text,
-        done: !!questState?.[chapter.id]?.[item.id]
-    }));
-    const remaining = checklist.filter(i => !i.done).map(i => i.text).slice(0, 10);
-    return {
-        id: chapter.id,
-        title: chapter.title,
-        subtitle: chapter.subtitle,
-        summary: chapter.summary,
-        tips,
-        newMembers: chapter.newMembers || null,
-        requiredMember: chapter.requiredMember || null,
-        optionalMember: chapter.optionalMember || null,
-        keyItems: chapter.keyItems || null,
-        keyCode: chapter.keyCode || null,
-        codes: chapter.codes || null,
-        secretWord: chapter.secretWord || null,
-        reward: chapter.reward || null,
-        goddessFlowers: chapter.goddessFlowers || null,
-        flowerBonus: chapter.flowerBonus || null,
-        checklist,
-        remaining
-    };
-}
-
-function getWalkthroughAiProgressSnapshot(ctx) {
-    const state = loadQuestState();
-    const overall = computeQuestProgress(state);
-
-    if (!ctx) {
-        return {
-            overall,
-            chapter: null,
-            likelyStuck: null
-        };
-    }
-
-    const checklist = Array.isArray(ctx.checklist) ? ctx.checklist : [];
-    const doneCount = checklist.filter(i => i && i.done).length;
-    const totalCount = checklist.length;
-    const percent = totalCount ? Math.round((doneCount / totalCount) * 100) : 0;
-
-    const isOptionalText = (text) => {
-        const t = String(text || '');
-        return t.startsWith('Optional:') || t.startsWith('Strongly recommended:');
-    };
-
-    const completedItems = checklist
-        .filter(i => i && i.done)
-        .map(i => ({
-            id: i.id,
-            text: i.text,
-            hint: getQuestHint(ctx.id, i.id)
-        }));
-
-    const remainingItems = checklist
-        .filter(i => i && !i.done)
-        .map(i => ({
-            id: i.id,
-            text: i.text,
-            hint: getQuestHint(ctx.id, i.id),
-            optional: isOptionalText(i.text)
-        }));
-
-    const remainingRequired = remainingItems.filter(i => !i.optional);
-    const remainingOptional = remainingItems.filter(i => i.optional);
-
-    const likelyStuck = (remainingRequired[0] || remainingOptional[0] || null);
-
-    return {
-        overall,
-        chapter: {
-            doneCount,
-            totalCount,
-            percent,
-            completedItems: completedItems.slice(0, 8),
-            remainingRequired: remainingRequired.slice(0, 10),
-            remainingOptional: remainingOptional.slice(0, 10)
-        },
-        likelyStuck
-    };
-}
-
 async function walkthroughAiSend() {
-    const input = document.getElementById('walkthrough-ai-input');
-    const sendBtn = document.getElementById('walkthrough-ai-send');
-    const query = input?.value?.trim();
-    if (!query) return;
-
-    input.value = '';
-    appendWalkthroughAiMessage('user', query);
-    walkthroughAiHistory.push({ role: 'user', content: query });
-
-    if (sendBtn) sendBtn.disabled = true;
-
-    const ctx = getWalkthroughAiChapterContext();
-    const snapshot = getWalkthroughAiProgressSnapshot(ctx);
-    const ctxText = ctx
-        ? `CURRENT CHAPTER: ${ctx.title} — ${ctx.subtitle}\nSummary: ${ctx.summary}\nTips: ${ctx.tips.join(' | ') || '(none)'}\nPlayer note: If your progress differs from this checklist, tell me what you already did.`
-        : `CURRENT CHAPTER: (none selected). The user may be browsing multiple chapters.`;
-
+    const revision = albionTopicRevision;
+    const query = document.getElementById('walkthrough-ai-input')?.value;
     try {
-        const recent = walkthroughAiHistory
-            .filter(m => m && (m.role === 'user' || m.role === 'assistant') && typeof m.content === 'string')
-            .slice(-10);
-
-        const completedLines = (snapshot?.chapter?.completedItems || [])
-            .slice(0, 8)
-            .map(i => `- [x] ${i.text}${i.hint ? `\n  hint: ${i.hint}` : ''}`)
-            .join('\n');
-
-        const remainingRequiredLines = (snapshot?.chapter?.remainingRequired || [])
-            .slice(0, 8)
-            .map(i => `- [ ] ${i.text}${i.hint ? `\n  hint: ${i.hint}` : ''}`)
-            .join('\n');
-
-        const remainingOptionalLines = (snapshot?.chapter?.remainingOptional || [])
-            .slice(0, 6)
-            .map(i => `- [ ] ${i.text}${i.hint ? `\n  hint: ${i.hint}` : ''}`)
-            .join('\n');
-
-        const likelyLine = snapshot.likelyStuck
-            ? `- ${snapshot.likelyStuck.text}${snapshot.likelyStuck.hint ? `\n  hint: ${snapshot.likelyStuck.hint}` : ''}`
-            : '- Chapter checklist appears complete.';
-
-        const progressText = ctx
-            ? `PROGRESS SNAPSHOT:\n- Overall: ${snapshot.overall.done}/${snapshot.overall.total} (${snapshot.overall.percent}%)\n- This chapter: ${snapshot.chapter.doneCount}/${snapshot.chapter.totalCount} (${snapshot.chapter.percent}%)\n\nCOMPLETED (this chapter):\n${completedLines || '- (none)'}\n\nUNFINISHED (priority):\n${remainingRequiredLines || '- (none)'}\n\nUNFINISHED (optional):\n${remainingOptionalLines || '- (none)'}\n\nLIKELY NEXT / WHERE PLAYER MAY BE STUCK:\n${likelyLine}\n`
-            : `PROGRESS SNAPSHOT:\n- Overall: ${snapshot.overall.done}/${snapshot.overall.total} (${snapshot.overall.percent}%)\n- Current chapter: (none selected)\n`;
-
-        const systemWithContext = `You are the Toronto spaceship's onboard AI assisting the crew during Albion (1995).
-
-GOAL:
-- Give practical, playable guidance: next steps, item locations, party advice, and combat tactics.
-- Use the current chapter summary and the player's checklist progress to suggest what to do next.
-- Infer where the player is likely stuck from the first unfinished checklist items.
-- If the user asks for spoilers, answer directly but keep it short.
-
-WHAT YOU CAN HELP WITH:
-- Where to go next in the current chapter.
-- Specific item locations (keys, codes, quest items) and what they're used for.
-- Party planning (who to bring, why, and when characters are required).
-- Combat advice (formation, spell choices, common threats).
-- Money/training strategies (when it’s worth grinding, and common exploits).
-
-WHAT YOU SHOULD ASK FOR (IF MISSING):
-- Which chapter you're on (open it in the walkthrough if possible).
-- Your current party members.
-- Any blockers (locked door, missing NPC, can’t trigger event, running out of rations/gold).
-
-GAME FACTS:
-- Albion is a 1995 RPG by Blue Byte with 2D/3D hybrid gameplay.
-- Turn-based tactical combat with row positioning.
-- Four magic schools: Iskai (Dji-Kas), Druid/Celtic, Kenget Kamulos, Dji-Cantos.
-- Party size up to 6 from 9 characters.
-
-STYLE:
-- Not mystical. Not prophetic. Sound like a ship terminal / mission computer.
-- Use short, numbered steps when giving directions.
-- If you need more context, ask 1 clarifying question.
-
-OUTPUT FORMAT:
-- Prefer 3–8 bullet steps for "what to do next".
-- Call out 1–2 common mistakes to avoid if relevant.
-- Use Markdown formatting (bold key items, lists for steps).
-
-${ctxText}
-
-${progressText}`;
-
-        const transcript = recent
-            .map(m => `${m.role === 'user' ? 'User' : 'Assistant'}: ${m.content}`)
-            .join('\n');
-        const prompt = `${systemWithContext}\n\n<query>\n${transcript ? `Prior transcript (most recent last):\n${transcript}\n\n` : ''}User: ${query}\n</query>`;
-
-        showWalkthroughAiTyping();
-        const text = await callGeminiFunction(prompt);
-        hideWalkthroughAiTyping();
-
-        appendWalkthroughAiMessage('ai', text);
-        walkthroughAiHistory.push({ role: 'assistant', content: text });
-    } catch (error) {
-        hideWalkthroughAiTyping();
-        console.error('Walkthrough AI error:', error);
-        const msg = 'AI proxy unavailable. Please try again in a moment.';
-        appendWalkthroughAiMessage('ai', msg);
-        walkthroughAiHistory.push({ role: 'assistant', content: msg });
-    } finally {
-        if (sendBtn) sendBtn.disabled = false;
-    }
+        const view = await ensureAlbionAssistant();
+        if (revision === albionTopicRevision && query === document.getElementById('walkthrough-ai-input')?.value)
+            return view.send();
+    } catch { /* Visible local-file error above. */ }
 }
-
 window.walkthroughAiSend = walkthroughAiSend;
 window.resetWalkthroughAi = resetWalkthroughAi;
+document.addEventListener('DOMContentLoaded', () => { ensureAlbionAssistant().catch(() => {}); });
 
 // ==================== SCREENSHOT MODAL ====================
 

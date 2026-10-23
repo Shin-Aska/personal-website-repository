@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "runtime": "native-browser-javascript",
+  "knowledgeOwner": "existing guide objects and HTML; overlays contain metadata and authored hint variants",
+  "network": "static GET delivery only; no question processing or inference endpoint",
+  "defaultSpoiler": "gentle",
+  "limits": { "contextsPerGame": 8, "messagesPerContext": 12, "entitiesPerContext": 6, "pendingClarifications": 1, "lastActions": 1, "detailedClaims": 64, "ruleDepth": 20, "ruleNodes": 200 },
+  "games": [
+    { "id": "albion", "adapter": "js/assistant/adapters/albion.js", "overlay": "data/assistant/albion.json", "legacyKeys": ["albion.questLog.v1"], "coverage": "33 objectives, selected reference relations, current-party entry requirement, diagnostics and alternative route" },
+    { "id": "ultima6", "adapter": "js/assistant/adapters/ultima6.js", "overlay": "data/assistant/ultima6.json", "legacyKeys": ["ultima6-grand-quest-progress-v1", "ultima6-side-quest-progress-v1"], "coverage": "quest, side quest, marker and layer Seer contexts; reference relations; authored virtue fiction" },
+    { "id": "ultima7", "adapter": "js/assistant/adapters/ultima7.js", "overlay": "data/assistant/ultima7.json", "legacyKeys": ["ultima7-party-plan"], "coverage": "29 Sage quests and reference relations; party plan never imported as membership; authored journals retained" },
+    { "id": "alqadim", "adapter": "js/assistant/adapters/alqadim.js", "overlay": "data/assistant/alqadim.json", "legacyKeys": ["alqadim.questState.v1"], "coverage": "19 chapters, both Genie surfaces, combat, selected items and shops" },
+    { "id": "ultima5", "adapter": "js/assistant/adapters/ultima5.js", "overlay": "data/assistant/ultima5.json", "legacyKeys": ["ultima5-campaign-progress-v2", "ultima5-sidequest-progress-v1", "ultima5-field-kit-v2"], "coverage": "campaign and side quests, historical field kit reports, selected references and atlas" },
+    { "id": "starcraft", "adapter": "js/assistant/adapters/starcraft.js", "overlay": "data/assistant/starcraft.json", "legacyKeys": [], "coverage": "14 authored setup/troubleshooting relationships; compatibility conflict withheld" }
+  ],
+  "proxy": { "trackedPath": "guides/php/llm.php", "localStatus": "410 tombstone", "productionAbsoluteRoute": "/php/llm.php", "deploymentMappingVerified": false }
+}

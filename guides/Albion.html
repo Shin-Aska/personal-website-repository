@@ -2,15 +2,18 @@
 <html lang="en">
 
 <head>
+    <link rel="stylesheet" href="css/assistant-consent.css">
+    <script type="module" src="js/assistant/bootstrap.js"></script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <title>Albion (1995) — Interactive Guide</title>
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script src="js/tailwind.js"></script>
     <link rel="stylesheet" href="css/fonts.css">
     <link rel="stylesheet" href="css/leaflet.css">
     <link rel="stylesheet" href="css/Albion.css?v=20260904-atlas-links2">
+    <script src="offline.js?v=3" defer></script>
 </head>
 
 <body class="antialiased">
@@ -211,18 +214,15 @@
                         <!-- Populated by JS -->
                     </div>
                 </div>
-                <aside class="albion-card p-6 walkthrough-ai" aria-label="Walkthrough AI assistant">
+                <aside class="albion-card p-6 walkthrough-ai" aria-label="Local walkthrough assistant">
                     <div class="flex items-start justify-between gap-4 mb-4">
                         <div>
-                            <h3 class="text-xl font-bold" style="color: var(--albion-accent-blue)">Toronto Ship AI</h3>
-                            <p class="text-xs text-gray-500">Ask for next steps, item locations, party comps, or battle
-                                tactics.</p>
+                            <h3 class="text-xl font-bold" style="color: var(--albion-accent-blue)">Toronto Guide Terminal</h3>
+                            <p class="text-xs text-gray-500">Hints and answers from this guide. Open a chapter, then ask “What now?” — or name any person, place or item.</p>
                         </div>
-                        <button type="button" class="walkthrough-ai-clear" onclick="resetWalkthroughAi()">Clear</button>
                     </div>
                     <div id="walkthrough-ai-body" class="walkthrough-ai-body">
-                        <p class="text-gray-400 italic text-center py-8">AI terminal online. Ask about your current
-                            chapter.</p>
+                        <p class="text-gray-400 italic text-center py-8">Local terminal ready. Ask about your current chapter.</p>
                     </div>
                     <div class="walkthrough-ai-input">
                         <input type="text" class="walkthrough-ai-text" id="walkthrough-ai-input"
@@ -410,7 +410,7 @@
     <script src="js/leaflet.js"></script>
     <script src="js/AlbionAtlasData.js"></script>
     <script src="js/AlbionMarkers.js"></script>
-    <script src="js/Albion.js?v=20260904-atlas-links3"></script>
+    <script src="js/Albion.js?v=20261020-local-assistant"></script>
 </body>
 
 </html>

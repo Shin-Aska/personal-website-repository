@@ -283,6 +283,8 @@ input[type="checkbox"]:checked + .checkbox-custom::after {
 
 /* AI Panel Interface */
 .walkthrough-ai {
+    /* Colours for the shared assistant (css/assistant.css). */
+    --assistant-accent: var(--aq-accent-purple);
     height: calc(100vh - 200px);
     max-height: 700px;
     display: flex;
@@ -1879,6 +1881,8 @@ input[type="checkbox"]:checked + .checkbox-custom { border-color: var(--aq-sourc
 
 #walkthrough .walkthrough-ai,
 #genie .walkthrough-ai {
+    --assistant-accent: var(--aq-source-oxblood);
+    --assistant-surface: rgba(255, 250, 235, 0.85);
     border-color: rgba(111, 36, 39, 0.34);
     background: rgba(247, 237, 207, 0.78);
     box-shadow: 0 10px 26px rgba(74, 45, 23, 0.15);
@@ -2233,4 +2237,17 @@ input[type="checkbox"]:checked + .checkbox-custom { border-color: var(--aq-sourc
 @media (max-width: 700px) {
     .chapter-atlas-route { grid-template-columns: 1fr; }
     .chapter-atlas-route__links button { min-height: 2.75rem; }
+}
+
+/* Shared local guide controls inherit the existing Genie panel palette. */
+.walkthrough-ai select { color: var(--aq-text); background: var(--aq-bg, #0f1720); border: 1px solid #59617b; border-radius: .35rem; padding: .4rem; max-width: 100%; }
+.walkthrough-ai button:focus-visible, .walkthrough-ai input:focus-visible, .walkthrough-ai select:focus-visible { outline: 2px solid var(--aq-accent-gold, #e5c16c); outline-offset: 2px; }
+.walkthrough-ai-body { overflow-wrap: anywhere; }
+/* Let the question input shrink inside the nested mobile Genie cards. */
+.walkthrough-ai-input { min-width: 0; }
+.walkthrough-ai-text { min-width: 0; }
+@media (max-width: 480px) {
+    #genie #main-ai-wrapper { padding: .75rem; }
+    #genie .walkthrough-ai-input { flex-wrap: wrap; }
+    #genie .walkthrough-ai-send { width: 100%; }
 }

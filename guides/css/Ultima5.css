@@ -2104,13 +2104,35 @@ select:focus {
     pointer-events: none;
 }
 
-.gemini-response {
-    white-space: pre-wrap;
-    padding: 1rem;
-    border-left: 4px solid #d97706;
-    border-radius: 0.25rem;
-    margin-top: 1rem;
-    background-color: #fbf1d3;
+/* Colours for the shared assistant (css/assistant.css). */
+.u5-seer-chamber {
+    --assistant-accent: #92400e;
+    --assistant-surface: #fbf1d3;
+    --assistant-text: #3b2a1a;
+}
+
+.u5-seer-log {
+    max-height: 28rem;
+    overflow-y: auto;
+}
+
+.u5-seer-composer {
+    display: flex;
+    gap: 0.5rem;
+    align-items: stretch;
+}
+
+.u5-seer-composer textarea {
+    flex: 1;
+    min-width: 0;
+    resize: vertical;
+}
+
+@media (max-width: 480px) {
+    .u5-seer-composer { flex-direction: column; }
+}
+
+.guide-assistant-message {
     font-family: 'U5 Lora', Georgia, serif;
 }
 

@@ -1,0 +1,401 @@
+{
+  "schemaVersion": 1,
+  "description": "PENDING Ultima VII story-question cases (not loaded by english.mjs: the file name does not match sim-<game>-cases.json). They describe the intended behaviour once the engine answers 'story' relationships from the six records in ultima7.json `stories`. Codex: move these into your own story test file or rename this file to sim-ultima7story-cases.json when the engine side is ready. Data facts: the guide names NO murderer and NO murder victim; its only suspect clue is 'the suspect (man with a hook) and his escape vessel (the Crown Jewel)'; its only explicit victim is Lap-Lem in the side quest Blorn's Accusations; the atlas gives Fellowship leaders and Great Council/Guild members. UPDATED 21 Oct 2026 for the cited-research story records (Hook, Forskis, Inamo, Christopher).",
+  "questions": [
+    {
+      "id": "story-u7-01",
+      "gameId": "ultima7",
+      "text": "Who is the suspect in the Trinsic murders?",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "man with a hook"
+        ],
+        "recordIds": [
+          "ultima7:story:trinsic-suspect:suspect"
+        ],
+        "sourceRequired": true,
+        "stateChangeCount": 0
+      }
+    },
+    {
+      "id": "story-u7-02",
+      "gameId": "ultima7",
+      "text": "Who is the murderer?",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Not in this guide — from outside research",
+          "Hook",
+          "Forskis",
+          "Fellowship assassins"
+        ],
+        "absent": [
+          "Hook is"
+        ],
+        "recordIds": [
+          "ultima7:story:trinsic-killers:perpetrator"
+        ],
+        "sourceRequired": true
+      },
+      "note": "Changed on purpose (21 Oct 2026): Direct now has cited outside research (Ultima Codex: Inamo killed in the ritual murder of Christopher by the Fellowship assassins Hook and Forskis), so murderer, murder-victim and killer questions get that attributed answer; the guide's own suspect clue stays a separate suspect record. The missing-relationship reply is now the neutral 'I don't have a sourced answer…' wording."
+    },
+    {
+      "id": "story-u7-03",
+      "gameId": "ultima7",
+      "text": "Who was the murder victim?",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Not in this guide — from outside research",
+          "Inamo",
+          "Christopher"
+        ],
+        "absent": [
+          "Lap-Lem"
+        ],
+        "recordIds": [
+          "ultima7:story:trinsic-murder-victims:victim"
+        ]
+      },
+      "note": "Changed on purpose (21 Oct 2026): Direct now has cited outside research (Ultima Codex: Inamo killed in the ritual murder of Christopher by the Fellowship assassins Hook and Forskis), so murderer, murder-victim and killer questions get that attributed answer; the guide's own suspect clue stays a separate suspect record. The missing-relationship reply is now the neutral 'I don't have a sourced answer…' wording."
+    },
+    {
+      "id": "story-u7-04",
+      "gameId": "ultima7",
+      "text": "Who killed Christopher?",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Not in this guide — from outside research",
+          "Hook",
+          "Forskis"
+        ],
+        "absent": [
+          "man with a hook"
+        ],
+        "recordIds": [
+          "ultima7:story:trinsic-killers:perpetrator"
+        ]
+      },
+      "note": "Changed on purpose (21 Oct 2026): Direct now has cited outside research (Ultima Codex: Inamo killed in the ritual murder of Christopher by the Fellowship assassins Hook and Forskis), so murderer, murder-victim and killer questions get that attributed answer; the guide's own suspect clue stays a separate suspect record. The missing-relationship reply is now the neutral 'I don't have a sourced answer…' wording."
+    },
+    {
+      "id": "story-u7-05",
+      "gameId": "ultima7",
+      "text": "Is Hook the murderer?",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": [
+          "decline",
+          "clarify"
+        ],
+        "absent": [
+          "Yes"
+        ]
+      }
+    },
+    {
+      "id": "story-u7-06",
+      "gameId": "ultima7",
+      "text": "Who is the victim?",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": "clarify",
+        "contains": [
+          "Which event"
+        ]
+      },
+      "note": "Changed on purpose (21 Oct 2026): Direct now has cited outside research (Ultima Codex: Inamo killed in the ritual murder of Christopher by the Fellowship assassins Hook and Forskis), so murderer, murder-victim and killer questions get that attributed answer; the guide's own suspect clue stays a separate suspect record. The missing-relationship reply is now the neutral 'I don't have a sourced answer…' wording."
+    },
+    {
+      "id": "story-u7-07",
+      "gameId": "ultima7",
+      "text": "Who is the victim in Blorn's Accusations?",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Lap-Lem"
+        ]
+      }
+    },
+    {
+      "id": "story-u7-08",
+      "gameId": "ultima7",
+      "text": "Who is the perpetrator in Blorn's Accusations?",
+      "options": {
+        "spoiler": "direct"
+      },
+      "expected": {
+        "decision": [
+          "decline",
+          "clarify"
+        ],
+        "absent": [
+          "Blorn is",
+          "Lap-Lem was"
+        ]
+      }
+    },
+    {
+      "id": "story-u7-09",
+      "gameId": "ultima7",
+      "text": "Who is the leader of the Fellowship?",
+      "options": {
+        "spoiler": "balanced"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Batlin"
+        ],
+        "recordIds": [
+          "ultima7:story:fellowship-leader:leader"
+        ]
+      }
+    },
+    {
+      "id": "story-u7-10",
+      "gameId": "ultima7",
+      "text": "Who are the Fellowship branch leaders?",
+      "options": {
+        "spoiler": "balanced"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Elynor",
+          "Klog",
+          "Quan",
+          "Danag"
+        ],
+        "recordIds": [
+          "ultima7:story:fellowship-branch-leaders:leader"
+        ]
+      }
+    },
+    {
+      "id": "story-u7-11",
+      "gameId": "ultima7",
+      "text": "Who are the members of the Great Council?",
+      "options": {
+        "spoiler": "balanced"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Miranda",
+          "Inwisloklem"
+        ],
+        "recordIds": [
+          "ultima7:story:great-council-members:member"
+        ]
+      }
+    },
+    {
+      "id": "story-u7-12",
+      "gameId": "ultima7",
+      "text": "Who are the members of the Guild?",
+      "options": {
+        "spoiler": "balanced"
+      },
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Gladstone",
+          "Seara",
+          "Xanthia"
+        ],
+        "recordIds": [
+          "ultima7:story:guild-members:member"
+        ]
+      }
+    },
+    {
+      "id": "story-u7-13",
+      "gameId": "ultima7",
+      "text": "Who is the leader of the Guild?",
+      "options": {
+        "spoiler": "balanced"
+      },
+      "expected": {
+        "decision": [
+          "decline",
+          "clarify"
+        ],
+        "absent": [
+          "Gladstone",
+          "Seara",
+          "Xanthia"
+        ]
+      }
+    },
+    {
+      "id": "story-u7-14",
+      "gameId": "ultima7",
+      "text": "Who is the leader of the Great Council?",
+      "options": {
+        "spoiler": "balanced"
+      },
+      "expected": {
+        "decision": [
+          "decline",
+          "clarify"
+        ],
+        "absent": [
+          "Miranda",
+          "Inwisloklem"
+        ]
+      }
+    },
+    {
+      "id": "story-u7-15",
+      "gameId": "ultima7",
+      "text": "Who is the suspect in the Trinsic murders?",
+      "options": {
+        "spoiler": "balanced"
+      },
+      "expected": {
+        "decision": "clarify",
+        "contains": [
+          "sourced answer"
+        ],
+        "absent": [
+          "Forskis",
+          "Hook",
+          "man with a hook"
+        ]
+      },
+      "note": "Changed on purpose (21 Oct 2026): Direct now has cited outside research (Ultima Codex: Inamo killed in the ritual murder of Christopher by the Fellowship assassins Hook and Forskis), so murderer, murder-victim and killer questions get that attributed answer; the guide's own suspect clue stays a separate suspect record. The missing-relationship reply is now the neutral 'I don't have a sourced answer…' wording."
+    },
+    {
+      "id": "story-u7-16",
+      "gameId": "ultima7",
+      "text": "Who is the victim?",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "clarify",
+        "contains": [
+          "sourced answer"
+        ],
+        "absent": [
+          "Forskis",
+          "Hook",
+          "Lap-Lem"
+        ]
+      },
+      "note": "Changed on purpose (21 Oct 2026): Direct now has cited outside research (Ultima Codex: Inamo killed in the ritual murder of Christopher by the Fellowship assassins Hook and Forskis), so murderer, murder-victim and killer questions get that attributed answer; the guide's own suspect clue stays a separate suspect record. The missing-relationship reply is now the neutral 'I don't have a sourced answer…' wording."
+    },
+    {
+      "id": "story-u7-17",
+      "gameId": "ultima7",
+      "text": "Who is the leader of the Fellowship?",
+      "options": {
+        "spoiler": "gentle"
+      },
+      "expected": {
+        "decision": "clarify",
+        "contains": [
+          "sourced answer"
+        ],
+        "absent": [
+          "Batlin",
+          "Forskis",
+          "Hook"
+        ]
+      },
+      "note": "Changed on purpose (21 Oct 2026): Direct now has cited outside research (Ultima Codex: Inamo killed in the ritual murder of Christopher by the Fellowship assassins Hook and Forskis), so murderer, murder-victim and killer questions get that attributed answer; the guide's own suspect clue stays a separate suspect record. The missing-relationship reply is now the neutral 'I don't have a sourced answer…' wording."
+    },
+    {
+      "id": "story-u7-18",
+      "gameId": "ultima7",
+      "text": "Who is the leader of the Fellowship on Mars?",
+      "options": {
+        "spoiler": "balanced"
+      },
+      "expected": {
+        "decision": [
+          "decline",
+          "clarify"
+        ],
+        "absent": [
+          "Batlin"
+        ]
+      }
+    }
+  ],
+  "dialogues": [
+    {
+      "id": "story-u7-dlg-01",
+      "gameId": "ultima7",
+      "turns": [
+        {
+          "text": "Tell me about the Trinsic murders",
+          "options": {
+            "spoiler": "direct"
+          },
+          "expected": {
+            "decision": [
+              "answer",
+              "clarify"
+            ]
+          }
+        },
+        {
+          "text": "Who is the murderer?",
+          "options": {
+            "spoiler": "direct"
+          },
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Not in this guide — from outside research",
+              "Hook",
+              "Forskis"
+            ]
+          }
+        },
+        {
+          "text": "Who is the victim?",
+          "options": {
+            "spoiler": "direct"
+          },
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Not in this guide — from outside research",
+              "Inamo",
+              "Christopher"
+            ],
+            "absent": [
+              "Lap-Lem"
+            ],
+            "note": "In the Trinsic conversation a victim follow-up stays on the Trinsic murders; the guide's own text names no murder victim, the cited research names Inamo and Christopher, and Blorn's Accusations must not answer."
+          }
+        }
+      ],
+      "note": "Changed on purpose (21 Oct 2026): Direct now has cited outside research (Ultima Codex: Inamo killed in the ritual murder of Christopher by the Fellowship assassins Hook and Forskis), so murderer, murder-victim and killer questions get that attributed answer; the guide's own suspect clue stays a separate suspect record. The missing-relationship reply is now the neutral 'I don't have a sourced answer…' wording."
+    }
+  ]
+}

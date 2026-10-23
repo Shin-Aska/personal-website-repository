@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="css/assistant-consent.css">
+    <script type="module" src="js/assistant/bootstrap.js"></script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
@@ -18,7 +21,8 @@
     <!-- Visualization & Content Choices: Companion Stats -> Goal: Compare -> Viz: Interactive Bar Chart (Chart.js) -> Interaction: Filter by STR/INT/DEX -> Justification: Visual comparison is faster than reading a table for identifying top-tier characters. Quest Walkthroughs -> Goal: Inform/Organize -> Presentation: Tabbed/Card-based HTML/CSS layout -> Interaction: Click to reveal steps -> Justification: Breaks down dense text into a clear, step-by-step process, reducing cognitive load. Reference Tables (Spells/Words) -> Goal: Inform/Organize -> Presentation: HTML Table -> Interaction: Search/Filter (JS) -> Justification: Allows for immediate lookup of specific data points without manual scrolling. -->
     <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
     <link rel="stylesheet" href="css/leaflet.css">
-    <link rel="stylesheet" href="css/Ultima5.css?v=20260901b">
+    <link rel="stylesheet" href="css/Ultima5.css?v=local-counsel-v1">
+    <script src="offline.js?v=3" defer></script>
 </head>
 <body>
     <div class="u5-backbar">
@@ -158,16 +162,18 @@
                         <div>
                             <p class="u5-kicker">Private counsel</p>
                             <h2>Consult with the Seer</h2>
-                            <p>Ask for a gentle hint, an efficient route, or a precise reminder when Britannia has you at an impasse.</p>
+                            <p>Ask for a gentle hint or a practical reminder from the authored guide.</p>
                         </div>
                     </header>
                     <div class="u5-seer-chamber bg-white p-6 rounded-lg shadow">
                         <div class="u5-seer-chamber__sigil" aria-hidden="true">✦</div>
-                        <p class="mb-6">Lost in the Underworld, stumped by a puzzle, or unsure which quest to tackle next? Ask the seer for practical guidance grounded in Ultima V’s mechanics and quest flow.</p>
-                        <label for="seer-query" class="block text-lg font-semibold text-yellow-900 mb-2">What guidance do you seek?</label>
-                        <textarea id="seer-query" rows="4" class="w-full p-2 border border-amber-300 rounded-md bg-white focus:ring-amber-500 focus:border-amber-500" placeholder="e.g., Fastest route to Stonegate? Best way to get skull keys? Where do I find the Amulet?"></textarea>
-                        <button id="ask-seer" class="mt-4 bg-yellow-800 hover:bg-yellow-900 text-white font-bold py-2 px-4 rounded transition-colors duration-300">Ask the Seer</button>
-                        <div id="seer-response" class="mt-6"></div>
+                        <p class="mb-4">Ask freely worded questions about this guide’s quests, equipment, spells, companions, and atlas. Answers come from the written guide and start as a Nudge; choose Hint or Full answer when you want more.</p>
+                        <div id="seer-response" class="u5-seer-log"></div>
+                        <label for="seer-query" class="block font-semibold text-yellow-900 mt-4 mb-2">What guidance do you seek?</label>
+                        <div class="u5-seer-composer">
+                            <textarea id="seer-query" rows="2" class="w-full p-2 border border-amber-300 rounded-md bg-white focus:ring-amber-500 focus:border-amber-500" placeholder="e.g., How do I get the Grapple? Where is Jaana? How do I use In Lor?"></textarea>
+                            <button id="ask-seer" class="bg-yellow-800 hover:bg-yellow-900 text-white font-bold py-2 px-4 rounded transition-colors duration-300">Ask the Seer</button>
+                        </div>
                     </div>
                 </section>
 
@@ -850,6 +856,6 @@
 
     <script src="js/leaflet.js"></script>
     <script src="js/Ultima5AtlasData.js?v=20260829g"></script>
-    <script src="js/Ultima5.js?v=20260905a"></script>
+    <script src="js/Ultima5.js?v=local-counsel-v1"></script>
 </body>
 </html>

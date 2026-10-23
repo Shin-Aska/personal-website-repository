@@ -2,16 +2,19 @@
 <html lang="en">
 
 <head>
+    <link rel="stylesheet" href="css/assistant-consent.css">
+    <script type="module" src="js/assistant/bootstrap.js"></script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta name="description" content="An interactive Al-Qadim: The Genie's Curse guide with a cluebook-aligned atlas, campaign checklist, combat reference, bestiary, and original source books.">
     <title>Al-Qadim: The Genie's Curse — Interactive Guide</title>
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script src="js/tailwind.js"></script>
     <link rel="stylesheet" href="css/fonts.css">
     <link rel="stylesheet" href="css/leaflet.css">
-    <link rel="stylesheet" href="css/AlQadim.css?v=20260902a">
+    <link rel="stylesheet" href="css/AlQadim.css?v=20261020-local">
+    <script src="offline.js?v=3" defer></script>
 </head>
 
 <body class="antialiased">
@@ -275,14 +278,13 @@
                     </div>
                 </div>
 
-                <!-- AI Sidebar -->
-                <aside class="aq-card p-5 walkthrough-ai rounded-lg" aria-label="Genie's Counsel AI Assistant">
+                <!-- Browser-only Genie Counsel -->
+                <aside class="aq-card p-5 walkthrough-ai rounded-lg" aria-label="Genie's Counsel local guide">
                     <div class="flex items-start justify-between gap-4 mb-4 border-b border-gray-800/80 pb-3">
                         <div>
                             <h3 class="text-lg font-bold text-[var(--aq-accent-purple)]">🔮 Genie's Counsel</h3>
                             <p class="text-[10px] text-[var(--aq-text-muted)] mt-0.5">Ask questions about keys, puzzle hints, and paths.</p>
                         </div>
-                        <button type="button" class="walkthrough-ai-clear text-[var(--aq-text-muted)] hover:text-red-400 font-semibold" onclick="clearAiChat()">Clear</button>
                     </div>
 
                     <div id="walkthrough-ai-body" class="walkthrough-ai-body space-y-4 pr-1 mb-4 flex flex-col justify-start">
@@ -290,7 +292,7 @@
                     </div>
 
                     <div class="walkthrough-ai-input">
-                        <input type="text" class="walkthrough-ai-text" id="walkthrough-ai-input" placeholder="Ask the Genie..." />
+                        <input type="text" class="walkthrough-ai-text" id="walkthrough-ai-input" onkeydown="if (event.key === 'Enter' &amp;&amp; !event.isComposing) { event.preventDefault(); sendAiMessage(); }" aria-label="Question for the Genie in the walkthrough" placeholder="Ask the Genie..." />
                         <button class="walkthrough-ai-send" id="walkthrough-ai-send" onclick="sendAiMessage()">Ask</button>
                     </div>
                 </aside>
@@ -498,7 +500,7 @@
             <div class="text-center mb-6">
                 <h2 class="text-4xl font-bold mb-2 text-gradient">Genie's Counsel</h2>
                 <p class="text-sm text-[var(--aq-text-muted)] max-w-2xl mx-auto">
-                    A dedicated consulting panel to converse with the magical genie assistant. Ask for advice on riddles, passwords, or puzzle solutions.
+                    A dedicated consulting panel to converse with the magical genie assistant. Ask for authored hints and facts covered by this guide.
                 </p>
             </div>
 
@@ -515,18 +517,17 @@
                         <div class="flex items-start justify-between gap-4 mb-4 border-b border-gray-800 pb-3">
                             <div>
                                 <h3 class="text-lg font-bold text-[var(--aq-accent-purple)]">🔮 Chat Terminal</h3>
-                                <p class="text-[10px] text-gray-500 mt-0.5">Offline mode available; queries are proxied via LLM.</p>
+                                <p class="text-[10px] text-gray-500 mt-0.5">Answers use guide facts in your browser. No inference service.</p>
                             </div>
-                            <button type="button" class="walkthrough-ai-clear text-[var(--aq-text-muted)] hover:text-red-400 font-semibold" onclick="clearAiChat()">Clear History</button>
                         </div>
 
                         <div id="walkthrough-ai-body-tab" class="walkthrough-ai-body space-y-4 pr-1 mb-4 flex flex-col justify-start min-h-[300px]">
-                            <!-- Mirroring the sidebar chat body -->
-                            <p class="text-[var(--aq-text-muted)] italic text-center py-8">Ask the Genie anything about Al-Qadim's maps, items, or quests.</p>
+                            <!-- Independent view with explicit references -->
+                            <p class="text-[var(--aq-text-muted)] italic text-center py-8">Ask about the guide's chapters, items, combat moves, and creatures. Some disputed details are withheld.</p>
                         </div>
 
                         <div class="walkthrough-ai-input">
-                            <input type="text" class="walkthrough-ai-text" id="walkthrough-ai-input-tab" placeholder="Type your query..." />
+                            <input type="text" class="walkthrough-ai-text" id="walkthrough-ai-input-tab" onkeydown="if (event.key === 'Enter' &amp;&amp; !event.isComposing) { event.preventDefault(); sendAiMessageTab(); }" aria-label="Question for the Genie" placeholder="Type your query..." />
                             <button class="walkthrough-ai-send" id="walkthrough-ai-send-tab" onclick="sendAiMessageTab()">Send</button>
                         </div>
                     </div>
@@ -536,57 +537,9 @@
 
     </main>
 
-    <!-- Map input/send mirror logic for full tab chat -->
-    <script>
-        // Mirror message handler for the second chat panel in Tab 5
-        function sendAiMessageTab() {
-            const tabInput = document.getElementById('walkthrough-ai-input-tab');
-            const mainInput = document.getElementById('walkthrough-ai-input');
-            if (tabInput && mainInput) {
-                mainInput.value = tabInput.value;
-                // Temporarily swap body container ref in JS state so messages render to full tab body
-                const originalBody = document.getElementById('walkthrough-ai-body');
-                const tabBody = document.getElementById('walkthrough-ai-body-tab');
-                
-                // Swap targets
-                Object.defineProperty(document, 'getElementById', {
-                    value: function(id) {
-                        if (id === 'walkthrough-ai-body') return tabBody;
-                        if (id === 'walkthrough-ai-input') return tabInput;
-                        if (id === 'walkthrough-ai-send') return document.getElementById('walkthrough-ai-send-tab');
-                        return HTMLElement.prototype.cloneNode ? document.querySelector('#' + id) || originalGetElementById(id) : originalGetElementById(id);
-                    },
-                    configurable: true
-                });
-
-                sendAiMessage().then(() => {
-                    // Restore original
-                    Object.defineProperty(document, 'getElementById', {
-                        value: originalGetElementById,
-                        configurable: true
-                    });
-                });
-                tabInput.value = '';
-            }
-        }
-        const originalGetElementById = document.getElementById.bind(document);
-
-        // Bind enter key on Tab chat input
-        document.addEventListener('DOMContentLoaded', () => {
-            const tabInput = document.getElementById('walkthrough-ai-input-tab');
-            if (tabInput) {
-                tabInput.addEventListener('keypress', (e) => {
-                    if (e.key === 'Enter') {
-                        sendAiMessageTab();
-                    }
-                });
-            }
-        });
-    </script>
-
     <script src="js/leaflet.js"></script>
     <script src="js/AlQadimAtlasData.js"></script>
-    <script src="js/AlQadim.js?v=20260902a"></script>
+    <script src="js/AlQadim.js?v=20261020-local"></script>
 </body>
 
 </html>

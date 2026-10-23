@@ -1,0 +1,247 @@
+/* Shared look for the local guide assistant in every guide.
+   Pages theme it by setting these on an ancestor:
+   --assistant-accent   selected help level, your messages, chips
+   --assistant-surface  guide reply background
+   --assistant-text     reply text (defaults to the surrounding colour)
+   --assistant-muted    notes and sources */
+
+.guide-assistant-controls,
+.guide-assistant-log,
+.ga-intro {
+    --ga-accent: var(--assistant-accent, #3b82f6);
+    --ga-line: color-mix(in srgb, currentColor 18%, transparent);
+    --ga-muted: var(--assistant-muted, color-mix(in srgb, currentColor 65%, transparent));
+}
+
+.guide-assistant-controls {
+    display: grid;
+    gap: 0.4rem;
+    margin: 0 0 0.6rem;
+    font-size: 0.85rem;
+    line-height: 1.35;
+}
+
+.ga-context {
+    font-size: 0.8rem;
+    color: var(--ga-muted);
+}
+
+.ga-context strong {
+    color: var(--assistant-text, inherit);
+    font-weight: 600;
+}
+
+.ga-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+}
+
+.ga-level {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.15rem;
+    padding: 0.15rem;
+    border: 1px solid var(--ga-line);
+    border-radius: 999px;
+}
+
+.ga-level-title {
+    padding: 0 0.45rem 0 0.4rem;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ga-muted);
+}
+
+.guide-assistant-controls .ga-level-option {
+    padding: 0.3rem 0.75rem;
+    border: 0;
+    border-radius: 999px;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    font-size: 0.82rem;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.guide-assistant-controls .ga-level-option:hover {
+    background: color-mix(in srgb, var(--ga-accent) 14%, transparent);
+}
+
+.guide-assistant-controls .ga-level-option[aria-checked="true"] {
+    background: var(--ga-accent);
+    color: var(--assistant-on-accent, #fff);
+    font-weight: 600;
+}
+
+.ga-tools {
+    display: inline-flex;
+    gap: 0.25rem;
+}
+
+.guide-assistant-controls .ga-tool {
+    padding: 0.25rem 0.5rem;
+    border: 0;
+    border-radius: 0.4rem;
+    background: transparent;
+    color: var(--ga-muted);
+    font: inherit;
+    font-size: 0.78rem;
+    cursor: pointer;
+}
+
+.guide-assistant-controls .ga-tool:hover {
+    color: inherit;
+    background: color-mix(in srgb, currentColor 8%, transparent);
+}
+
+.guide-assistant-controls button:focus-visible,
+.guide-assistant-log button:focus-visible {
+    outline: 2px solid var(--ga-accent);
+    outline-offset: 2px;
+}
+
+.guide-assistant-controls .ga-level-note {
+    margin: 0;
+    font-size: 0.76rem;
+    color: var(--ga-muted);
+}
+
+/* The page's own spoiler select stays in the document (scripts and checks
+   read it) but the help buttons replace it on screen. */
+.ga-replaced {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip-path: inset(50%) !important;
+    white-space: nowrap !important;
+}
+
+.guide-assistant-log .ga-empty {
+    margin: 0;
+    padding: 0.75rem;
+    font-size: 0.85rem;
+    color: var(--ga-muted);
+}
+
+.guide-assistant-log .guide-assistant-message.walkthrough-ai-msg {
+    display: block;
+    box-sizing: border-box;
+    max-width: 100%;
+    margin: 0.6rem 0;
+    padding: 0.55rem 0.75rem;
+    border: 1px solid var(--ga-line);
+    border-left-width: 1px;
+    border-radius: 0.7rem;
+    background: var(--assistant-surface, color-mix(in srgb, currentColor 6%, transparent));
+    color: var(--assistant-text, inherit);
+    line-height: 1.5;
+    white-space: normal;
+}
+
+.guide-assistant-log .guide-assistant-message.walkthrough-ai-msg.user {
+    margin-left: auto;
+    width: fit-content;
+    max-width: 85%;
+    background: color-mix(in srgb, var(--ga-accent) 16%, transparent);
+    border-color: color-mix(in srgb, var(--ga-accent) 35%, transparent);
+}
+
+.guide-assistant-log .ga-msg-head {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-bottom: 0.15rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: var(--ga-muted);
+}
+
+.guide-assistant-log .ga-msg-head strong {
+    font-weight: 700;
+}
+
+.guide-assistant-log .ga-msg-level {
+    padding: 0 0.4rem;
+    border: 1px solid color-mix(in srgb, var(--ga-accent) 45%, transparent);
+    border-radius: 999px;
+    font-size: 0.65rem;
+    text-transform: none;
+    letter-spacing: 0;
+}
+
+.guide-assistant-log .ga-msg-text {
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+.guide-assistant-log .ga-hidden .ga-msg-text {
+    font-style: italic;
+    color: var(--ga-muted);
+}
+
+.guide-assistant-log .ga-msg-source {
+    display: block;
+    margin-top: 0.4rem;
+    font-size: 0.72rem;
+    color: var(--ga-muted);
+    overflow-wrap: anywhere;
+}
+
+.guide-assistant-log .ga-msg-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    margin-top: 0.5rem;
+}
+
+.guide-assistant-log .ga-chip {
+    padding: 0.3rem 0.65rem;
+    border: 1px solid color-mix(in srgb, var(--ga-accent) 45%, transparent);
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--ga-accent) 8%, transparent);
+    color: inherit;
+    font: inherit;
+    font-size: 0.8rem;
+    text-align: left;
+    cursor: pointer;
+}
+
+.guide-assistant-log .ga-chip:hover {
+    background: color-mix(in srgb, var(--ga-accent) 22%, transparent);
+}
+
+.guide-assistant-log .ga-chip-action {
+    font-weight: 600;
+}
+
+/* A guide-authored hint shown above the conversation (Sage, Seer). */
+.ga-intro {
+    padding: 0.7rem 0.85rem;
+    border: 1px solid var(--ga-line);
+    border-left: 4px solid var(--ga-accent);
+    border-radius: 0.7rem;
+    background: var(--assistant-surface, color-mix(in srgb, currentColor 6%, transparent));
+}
+
+.ga-intro-title {
+    margin: 0 0 0.3rem;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ga-muted);
+}
+
+@media (max-width: 480px) {
+    .ga-row { justify-content: flex-start; }
+    .guide-assistant-controls .ga-level-option { padding: 0.3rem 0.55rem; }
+}

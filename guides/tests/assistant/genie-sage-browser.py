@@ -1,0 +1,115 @@
+from browser_consent_fixture import CONSENT_FIXTURE
+import asyncio,json,re,pathlib
+from playwright.async_api import async_playwright
+OUT=pathlib.Path('guides/tests/assistant/results'); OUT.mkdir(parents=True,exist_ok=True)
+async def main():
+ async with async_playwright() as p:
+  browser=await p.chromium.launch(executable_path='/usr/bin/google-chrome',headless=True,args=['--no-sandbox'])
+  ctx=await browser.new_context(service_workers='block', viewport={'width':1280,'height':900})
+  await ctx.add_init_script(script=CONSENT_FIXTURE)
+  await ctx.add_init_script("localStorage.setItem('alqadim.questState.v1',JSON.stringify({ch1_1:true,ch1_2:false}));localStorage.setItem('ultima7-party-plan','[0,2]');")
+  requests=[];attempts=[];errors=[];checks=[]
+  async def route(r):
+   url=r.request.url
+   if re.search(r'(?:/php/llm\.php|generativelanguage|generateContent|gemini|openai\.com|anthropic\.com|huggingface|webllm|\.gguf|\.onnx|\.safetensors)',url,re.I): attempts.append(url.split('?')[0]);await r.abort()
+   else: await r.continue_()
+  def log_request(req):
+   requests.append({'method':req.method,'path':req.url.split('127.0.0.1:8766')[-1].split('?')[0],'hasQuery':'?' in req.url,'hasBody':req.post_data is not None})
+  ctx.on('request',log_request)
+  await ctx.route('**/*',route)
+  page=await ctx.new_page()
+  await page.route('**/offline.js*', lambda r: r.fulfill(status=200, content_type='text/javascript', body='// Site-worker bootstrap isolated in legacy assistant tests.'))
+  page.on('pageerror',lambda e:errors.append(str(e)))
+  await page.goto('http://127.0.0.1:8766/guides/AlQadim.html',wait_until='networkidle')
+  await page.wait_for_function('Object.keys(genieViews).length===2')
+  stale=await page.evaluate("""async()=>{const input=document.getElementById('walkthrough-ai-input');input.value='Where is Ship Orb?';const pending=sendAiMessage();input.value='How do I use Sunfire?';await pending;return {input:input.value,body:document.getElementById('walkthrough-ai-body').textContent};}""")
+  checks.append({'id':'genie-rejects-changed-question','passed':stale['input']=='How do I use Sunfire?' and 'Send the current question again' in stale['body'] and 'You:' not in stale['body']})
+  aqbefore=await page.evaluate("localStorage.getItem('alqadim.questState.v1')")
+  await page.locator('button[data-target="genie"]').click()
+  await page.locator('#main-ai-wrapper select').select_option('direct')
+  levels=await page.locator('.guide-assistant-controls select').evaluate_all('(nodes)=>nodes.map(n=>n.value)')
+  checks.append({'id':'shared-genie-spoiler-controls','passed':levels==['direct','direct']})
+  await page.locator('#walkthrough-ai-input-tab').fill('Give me a hint');await page.locator('#walkthrough-ai-send-tab').click()
+  await page.get_by_role('button',name='Open chapter map 1 (full detail)',exact=True).last.click()
+  await page.wait_for_function("document.getElementById('atlas').classList.contains('active')")
+  checks.append({'id':'genie-direct-map-action','passed':True})
+  await page.locator('button[data-target="walkthrough"]').click();await page.locator('#chapter-content-2').evaluate('(panel)=>panel.previousElementSibling.click()')
+  await page.locator('#walkthrough-ai-input').fill('Give me a hint');await page.locator('#walkthrough-ai-send').click()
+  checks.append({'id':'genie-selected-chapter-context','passed':'Family Sword of Honor' in await page.locator('#walkthrough-ai-body').inner_text()})
+  checks.append({'id':'genie-saved-progress-preserved','passed':aqbefore==await page.evaluate("localStorage.getItem('alqadim.questState.v1')")})
+  await page.locator('.guide-assistant-controls select').first.select_option('gentle')
+  await page.locator('button[data-target="genie"]').click()
+  await page.set_viewport_size({'width':390,'height':844})
+  await page.locator('#main-ai-wrapper').scroll_into_view_if_needed()
+  await page.screenshot(path='/tmp/genie-mobile.png',full_page=False)
+  checks.append({'id':'genie-mobile-no-horizontal-overflow','passed':await page.evaluate('document.documentElement.scrollWidth<=innerWidth')})
+  await page.set_viewport_size({'width':1280,'height':900})
+  await page.goto('http://127.0.0.1:8766/guides/Ultima7.html',wait_until='networkidle')
+  before=await page.evaluate("localStorage.getItem('ultima7-party-plan')")
+  await page.locator('button[data-target="party"]').click() if await page.locator('button[data-target="party"]').count() else await page.locator('button[data-target="party-builder"]').click()
+  await page.locator('#generate-backstory-btn').click();journal=await page.locator('#ai-response-text').inner_text()
+  checks.append({'id':'authored-companion-journal','passed':'Strings hum beneath my fingers' in journal})
+  await page.locator('#close-ai-modal').click()
+  await page.locator('button[data-target="quests"]').click();await page.locator('.quest-item').first.click();await page.locator('.get-main-quest-hint').first.click();await page.wait_for_selector('.sage-input')
+  await page.screenshot(path='/tmp/sage-modal.png')
+  await page.locator('.sage-spoiler').select_option('direct')
+  await page.locator('.sage-input').fill('Give me a hint');await page.locator('.sage-send').click()
+  await page.get_by_role('button',name='Open quest map (full detail)',exact=True).click()
+  checks.append({'id':'sage-direct-map-action','passed':await page.locator('#atlas').evaluate('(el)=>el.classList.contains("active")')})
+  checks.append({'id':'party-plan-preserved','passed':before==await page.evaluate("localStorage.getItem('ultima7-party-plan')")})
+  await page.locator('button[data-target="quests"]').click()
+  # The final main-quest title contains story details; lower tiers use its safe label.
+  await page.locator('.get-main-quest-hint').last.evaluate('(el)=>el.click()')
+  await page.wait_for_selector('.sage-input')
+  await page.locator('.sage-spoiler').select_option('gentle')
+  checks.append({'id':'sage-gentle-header-policy','passed':await page.locator('#ai-modal-title').inner_text()=='Sage — Main quest 6'})
+  await page.locator('.sage-spoiler').select_option('direct')
+  checks.append({'id':'sage-direct-header-policy','passed':'The Isle of the Avatar' in await page.locator('#ai-modal-title').inner_text()})
+  await page.locator('.sage-spoiler').select_option('balanced')
+  checks.append({'id':'sage-lowered-header-policy','passed':await page.locator('#ai-modal-title').inner_text()=='Sage — Main quest 6'})
+  await page.locator('#close-ai-modal').click();await page.locator('.get-main-quest-hint').last.evaluate('(el)=>el.click()');await page.wait_for_selector('.sage-input')
+  checks.append({'id':'sage-reopened-header-policy','passed':await page.locator('#ai-modal-title').inner_text()=='Sage — Main quest 6'})
+  # Fail the static knowledge delivery itself, with inference routes still blocked.
+  fail=await browser.new_context(service_workers='block');fail.on('request',log_request);await fail.route('**/*',route)
+  await fail.add_init_script(script=CONSENT_FIXTURE)
+  await fail.route('**/data/assistant/*.json',lambda r:r.abort())
+  fp=await fail.new_page()
+  await fp.route('**/offline.js*', lambda r: r.fulfill(status=200, content_type='text/javascript', body='// Site-worker bootstrap isolated in legacy assistant tests.'))
+  fp.on('pageerror',lambda e:errors.append(str(e)));await fp.goto('http://127.0.0.1:8766/guides/AlQadim.html',wait_until='networkidle')
+  checks.append({'id':'genie-static-load-failure','passed':'could not be loaded' in await fp.locator('#walkthrough-ai-body').inner_text() and 'could not be loaded' in await fp.locator('#walkthrough-ai-body-tab').inner_text()})
+  await fp.goto('http://127.0.0.1:8766/guides/Ultima7.html',wait_until='networkidle');await fp.locator('button[data-target="quests"]').click();await fp.locator('.quest-item').first.click();await fp.locator('.get-main-quest-hint').first.click();await fp.wait_for_function("document.getElementById('ai-response-text').textContent.includes('could not be loaded')")
+  checks.append({'id':'sage-static-load-failure','passed':True})
+  # Malformed static JSON and missing adapter modules fail locally as well.
+  for mode in ['invalid-json', 'module-rejection']:
+   broken=await browser.new_context(service_workers='block');broken.on('request',log_request);await broken.route('**/*',route)
+   await broken.add_init_script(script=CONSENT_FIXTURE)
+   pattern='**/data/assistant/*.json' if mode=='invalid-json' else '**/js/assistant/adapters/*.js'
+   async def break_delivery(r):
+    if mode=='invalid-json': await r.fulfill(status=200,content_type='application/json',body='{')
+    else: await r.abort()
+   await broken.route(pattern,break_delivery)
+   bp=await broken.new_page()
+   await bp.route('**/offline.js*', lambda r: r.fulfill(status=200, content_type='text/javascript', body='// Site-worker bootstrap isolated in legacy assistant tests.'))
+   bp.on('pageerror',lambda e:errors.append(str(e)));await bp.goto('http://127.0.0.1:8766/guides/AlQadim.html',wait_until='networkidle')
+   checks.append({'id':'genie-'+mode,'passed':'could not be loaded' in await bp.locator('#walkthrough-ai-body').inner_text() and 'could not be loaded' in await bp.locator('#walkthrough-ai-body-tab').inner_text()})
+   await bp.goto('http://127.0.0.1:8766/guides/Ultima7.html',wait_until='networkidle');await bp.locator('button[data-target="quests"]').click();await bp.locator('.quest-item').first.click();await bp.locator('.get-main-quest-hint').first.click();await bp.wait_for_function("document.getElementById('ai-response-text').textContent.includes('could not be loaded')")
+   checks.append({'id':'sage-'+mode,'passed':True})
+   # Reopening after knowledge delivery recovers uses the same local route.
+   # A failed module import is cached by browsers; a reload is required.
+   await broken.unroute(pattern,break_delivery)
+   if mode=='invalid-json':
+    await bp.locator('#close-ai-modal').click();await bp.locator('.get-main-quest-hint').first.click();await bp.wait_for_selector('.sage-input')
+    checks.append({'id':'sage-static-json-retry','passed':True})
+   else:
+    await bp.reload(wait_until='networkidle');await bp.locator('button[data-target="quests"]').click();await bp.locator('.quest-item').first.click();await bp.locator('.get-main-quest-hint').first.click();await bp.wait_for_selector('.sage-input')
+    checks.append({'id':'sage-module-reload-recovery','passed':True})
+   await broken.close()
+  previous=json.loads(pathlib.Path('guides/tests/assistant/results/genie-sage-variants.json').read_text())
+  fixtures=json.loads(pathlib.Path('guides/tests/assistant/results/genie-sage-fixtures.json').read_text())
+  report={'date':'2026-10-20','browser':browser.version,'device':'Linux desktop host; headless system Google Chrome, 1280x900 and 390x844 viewport','checks':checks,'variantChecks':{'ultima7':{'passed':sum(r['decision']=='answer' for r in previous['ultima7']['results']),'total':87},'alqadim':{'passed':sum(r['decision']=='answer' for r in previous['alqadim']['results']),'total':57}},'fixtures':{'passed':sum(r['passed'] for r in fixtures),'total':len(fixtures)},'previousUI':{'bothGenieSurfaces':bool(previous['sidebar'] and previous['tab']),'unsafeTextRenderedSafely':previous['safe'],'offlineGenie':'solar flame' in previous['offline'],'offlineSage':'Blue Boar Tavern' in previous['offlineSage'],'loweredSageSpoilers':'Blackbird' not in previous['lowerSage'],'loweredGenieSpoilers':'starting equipment' not in previous['lower']},'inferenceAttempts':attempts+previous['attempts'],'pageErrors':errors+previous['errors'],'requestLog':requests,'previousRequestLog':previous['requests']}
+  (OUT/'genie-sage-browser.json').write_text(json.dumps(report,indent=2)+'\n')
+  print(json.dumps({k:v for k,v in report.items() if 'RequestLog' not in k and k!='requestLog'},indent=2))
+  await browser.close()
+  assert all(check['passed'] for check in checks), 'A Genie/Sage UI gate failed.'
+  assert not report['inferenceAttempts'] and not report['pageErrors'], 'A network or page error gate failed.'
+asyncio.run(main())

@@ -1226,3 +1226,17 @@ button.u7-party-slot:hover {
     gap: 0.5rem;
     line-height: 1.4;
 }
+
+/* Browser-only Sage: keep controls usable inside the existing guide modal. */
+.sage-panel { display: flex; flex-direction: column; gap: .75rem; max-height: 75vh; overflow: auto; white-space: normal; }
+.sage-spoiler-label { display: flex; align-items: center; gap: .6rem; font-size: .875rem; }
+.sage-spoiler, .sage-input { background: #1a202c; color: #f7fafc; border: 1px solid #718096; border-radius: .35rem; padding: .5rem; }
+.sage-panel { --assistant-accent: #d69e2e; --assistant-on-accent: #1a202c; --assistant-surface: #102a43; }
+.sage-general-hints { flex: 0 1 auto; max-height: 28vh; overflow-y: auto; }
+.sage-general-text { white-space: pre-wrap; }
+.sage-messages { flex: 1 1 12rem; min-height: 8rem; overflow-y: auto; overflow-wrap: anywhere; }
+.sage-input-row { display: flex; gap: .5rem; }
+.sage-input { min-width: 0; flex: 1; }
+.sage-send { padding: .5rem 1rem; border-radius: .35rem; }
+.sage-panel button:focus-visible, .sage-panel input:focus-visible, .sage-panel select:focus-visible { outline: 2px solid #f6e05e; outline-offset: 2px; }
+@media (max-width: 480px) { .sage-input-row { flex-wrap: wrap; } .sage-send { width: 100%; } }

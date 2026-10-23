@@ -1,0 +1,239 @@
+{
+  "schemaVersion": 1,
+  "description": "Natural English paraphrases, multi-part questions, follow-ups and negative grounding cases. Written after the language.js design but before its first execution; the first-run report is retained separately. StarCraft cases run in the browser against the page's real DOM-extracted adapter (english-browser.py); the others run in Node (english.mjs). 'expected.parts' lists per-subquestion decisions in order.",
+  "questions": [
+    { "id": "en-alb-01", "gameId": "albion", "text": "Any idea where I can find the pistol?", "options": { "spoiler": "direct" },
+      "expected": { "decision": "answer", "recordIds": ["albion:item:pistol:location"], "contains": ["COM room"], "sourceRequired": true, "stateChangeCount": 0 } },
+    { "id": "en-alb-02", "gameId": "albion", "text": "I need to get my hands on a pistol", "options": { "spoiler": "direct" },
+      "expected": { "decision": "answer", "recordIds": ["albion:item:pistol:acquisition"], "contains": ["damaged console"], "stateChangeCount": 0 } },
+    { "id": "en-alb-03", "gameId": "albion", "text": "Can you point me towards the pistol?", "options": { "spoiler": "direct" },
+      "expected": { "decision": "answer", "recordIds": ["albion:item:pistol:location"] } },
+    { "id": "en-alb-04", "gameId": "albion", "text": "Where can I buy the Dreamshield and what does it do?", "options": { "spoiler": "direct" },
+      "expected": { "decision": "answer", "parts": ["answer", "answer"], "recordIds": ["albion:item:dreamshield:acquisition", "albion:item:dreamshield:use"], "contains": ["Rifrako", "Sleep Spores"], "sourceRequired": true } },
+    { "id": "en-alb-05", "gameId": "albion", "text": "Where would I find the Bolt-Rifle?", "options": { "spoiler": "direct" },
+      "expected": { "decision": "answer", "contains": ["Umajo"] } },
+    { "id": "en-alb-06", "gameId": "albion", "text": "Do you happen to know where Siobhan can be found?", "options": { "spoiler": "direct" },
+      "expected": { "decision": "answer", "contains": ["Beloveno"] } },
+    { "id": "en-alb-07", "gameId": "albion", "text": "What's the Power Amulet good for?", "options": { "spoiler": "direct" },
+      "expected": { "decision": "answer", "recordIds": ["albion:item:power-amulet:use"], "contains": ["+50 Str"] } },
+    { "id": "en-alb-08", "gameId": "albion", "text": "How would I go about recruiting Sira?", "options": { "spoiler": "direct" },
+      "expected": { "decision": "answer", "recordIds": ["albion:character:sira:acquisition"], "contains": ["Bradir"] } },
+    { "id": "en-alb-09", "gameId": "albion", "text": "Is there a way to get hold of the Monster Eye?", "options": { "spoiler": "direct" },
+      "expected": { "decision": "answer", "contains": ["Rifrako"] } },
+    { "id": "en-alb-10", "gameId": "albion", "text": "Hey there! Where's the gun?", "options": { "spoiler": "direct" },
+      "expected": { "decision": "answer", "recordIds": ["albion:item:pistol:location"] } },
+    { "id": "en-alb-11", "gameId": "albion", "text": "How do I beat Kamulos?", "options": { "spoiler": "direct" },
+      "expected": { "decision": "answer", "contains": ["Thorn Snare"] } },
+    { "id": "en-alb-12", "gameId": "albion", "text": "Got any tips for taking down the Service Robot?", "options": { "spoiler": "direct" },
+      "expected": { "decision": "answer", "recordIds": ["albion:enemy:service-robot:combat"] } },
+    { "id": "en-alb-13", "gameId": "albion", "text": "Who is Tom and where can I find him?", "options": { "spoiler": "direct" },
+      "expected": { "decision": "answer", "parts": ["answer", "answer"], "recordIds": ["albion:character:tom-driscoll:explanation", "albion:character:tom-driscoll:location"] } },
+    { "id": "en-alb-neg-01", "gameId": "albion", "split": "negative", "text": "Any idea where I can find the pistol on Mars?", "options": { "spoiler": "direct" },
+      "expected": { "decision": "decline", "absent": ["COM room"] } },
+    { "id": "en-alb-neg-02", "gameId": "albion", "split": "negative", "text": "I need to get my hands on a free pistol", "options": { "spoiler": "direct" },
+      "expected": { "decision": "decline", "absent": ["console"] } },
+    { "id": "en-alb-neg-03", "gameId": "albion", "split": "negative", "text": "Can you point me towards the pistol in Albion Online?", "options": { "spoiler": "direct" },
+      "expected": { "decision": "decline" } },
+    { "id": "en-alb-neg-04", "gameId": "albion", "split": "negative", "text": "Where are the two pistols?", "options": { "spoiler": "direct" },
+      "expected": { "decision": "decline" } },
+    { "id": "en-alb-neg-05", "gameId": "albion", "split": "negative", "text": "Where can I buy the Pistol and what does it do?", "options": { "spoiler": "direct" },
+      "expected": { "decision": "answer", "parts": ["decline", "answer"], "recordIds": ["albion:item:pistol:use"], "contains": ["not answered", "Damage: 30"], "absent": ["console"] } },
+    { "id": "en-alb-neg-06", "gameId": "albion", "split": "negative", "text": "Where is the pistol, and how do I sell it?", "options": { "spoiler": "direct" },
+      "expected": { "decision": "answer", "parts": ["answer", "decline"], "contains": ["COM room", "not answered"] } },
+    { "id": "en-alb-neg-07", "gameId": "albion", "split": "negative", "text": "Where is the lightsaber and what does the pistol do?", "options": { "spoiler": "direct" },
+      "expected": { "decision": "answer", "parts": ["clarify", "answer"], "recordIds": ["albion:item:pistol:use"] } },
+    { "id": "en-alb-neg-08", "gameId": "albion", "split": "negative", "text": "Where is it, what is it, how do I use it, and how do I get it?", "options": { "spoiler": "direct" },
+      "expected": { "decision": "clarify" } },
+    { "id": "en-alb-neg-09", "gameId": "albion", "split": "negative", "text": "Where can't I find the pistol?", "options": { "spoiler": "direct" },
+      "expected": { "decision": "decline" } },
+    { "id": "en-alb-neg-10", "gameId": "albion", "split": "negative", "text": "Where is the Dreamshield cheapest?", "options": { "spoiler": "direct" },
+      "expected": { "decision": "decline" } },
+    { "id": "en-alb-neg-11", "gameId": "albion", "split": "negative", "text": "Which is better, the Pistol or the Bolt-Rifle?", "options": { "spoiler": "direct" },
+      "expected": { "decision": ["clarify", "decline"], "absent": ["better than", "Damage"] } },
+    { "id": "en-alb-neg-12", "gameId": "albion", "split": "negative", "text": "I got the pistol, now what?", "options": { "spoiler": "direct" },
+      "expected": { "decision": "clarify", "stateChangeCount": 0 } },
+    { "id": "en-alb-neg-13", "gameId": "albion", "split": "negative", "text": "If I had the Dreamshield, where should I go next?", "options": { "spoiler": "direct" },
+      "expected": { "decision": "clarify", "stateChangeCount": 0 } },
+    { "id": "en-alb-neg-14", "gameId": "albion", "split": "negative", "text": "Where is the pistol after the ending?", "options": { "spoiler": "direct" },
+      "expected": { "decision": "decline" } },
+    { "id": "en-alb-neg-15", "gameId": "albion", "split": "negative", "text": "Where is Pistol without going to the COM room?", "options": { "spoiler": "direct" },
+      "expected": { "decision": "decline" } },
+    { "id": "en-alb-neg-16", "gameId": "albion", "split": "negative", "text": "What does the shield with sleep spores do?", "options": { "spoiler": "gentle" },
+      "expected": { "decision": "clarify", "absent": ["Dreamshield", "Sleep Spores (20)"] } },
+
+    { "id": "en-u6-01", "gameId": "ultima6", "text": "What does the Storm Cloak do?", "options": { "spoiler": "gentle" },
+      "expected": { "decision": "answer", "recordIds": ["ultima6:item:storm-cloak:explanation:reference"], "contains": ["Disables Magic"] } },
+    { "id": "en-u6-02", "gameId": "ultima6", "text": "What do Swamp Boots do, and where can I get them?", "options": { "spoiler": "balanced" },
+      "expected": { "decision": "answer", "parts": ["answer", "decline"], "contains": ["Negates Poison", "not answered"], "absent": ["Utomo"] } },
+    { "id": "en-u6-03", "gameId": "ultima6", "text": "Any idea where Utomo sells swamp boots?", "options": { "spoiler": "direct" },
+      "expected": { "decision": "answer", "contains": ["Utomo"] } },
+    { "id": "en-u6-04", "gameId": "ultima6", "text": "Who's Dupre?", "options": { "spoiler": "balanced" },
+      "expected": { "decision": "answer", "contains": ["Fighter"] } },
+    { "id": "en-u6-05", "gameId": "ultima6", "text": "Where can I pick up the Glass Sword?", "options": { "spoiler": "direct" },
+      "expected": { "decision": "answer", "contains": ["Minoc"] } },
+    { "id": "en-u6-06", "gameId": "ultima6", "text": "What spell circle is Dispel Field, and what does it do?", "options": { "spoiler": "gentle" },
+      "expected": { "decision": "answer", "contains": ["magical fields"] } },
+    { "id": "en-u6-neg-01", "gameId": "ultima6", "split": "negative", "text": "What does the Storm Cloak do underwater?", "options": { "spoiler": "direct" },
+      "expected": { "decision": "decline" } },
+    { "id": "en-u6-neg-02", "gameId": "ultima6", "split": "negative", "text": "How do I use the Storm Cloak in Serpent Isle?", "options": { "spoiler": "direct" },
+      "expected": { "decision": "decline" } },
+    { "id": "en-u6-neg-03", "gameId": "ultima6", "split": "negative", "text": "Where can I buy the Storm Cloak?", "options": { "spoiler": "direct" },
+      "expected": { "decision": "decline", "absent": ["Pirate Cave"] } },
+
+    { "id": "en-u5-01", "gameId": "ultima5", "text": "Could you tell me how to get my hands on the grapple?", "options": { "spoiler": "direct" },
+      "expected": { "decision": "answer", "recordIds": ["ultima5:item:grapple:acquisition"], "contains": ["Lord Michael"] } },
+    { "id": "en-u5-02", "gameId": "ultima5", "text": "Where might I find Jaana?", "options": { "spoiler": "direct" },
+      "expected": { "decision": "answer", "contains": ["Yew"] } },
+    { "id": "en-u5-03", "gameId": "ultima5", "text": "What does the crown do and where is it?", "options": { "spoiler": "direct" },
+      "expected": { "decision": "answer", "parts": ["answer", "answer"], "contains": ["enemy magic", "rooftop"] } },
+    { "id": "en-u5-neg-01", "gameId": "ultima5", "split": "negative", "text": "Is Saduj trustworthy?", "options": { "spoiler": "direct" },
+      "expected": { "decision": "clarify", "absent": ["spy"] } },
+    { "id": "en-u5-neg-02", "gameId": "ultima5", "split": "negative", "text": "Where is the Crown on the moon?", "options": { "spoiler": "direct" },
+      "expected": { "decision": "decline" } },
+    { "id": "en-u5-neg-03", "gameId": "ultima5", "split": "negative", "text": "Where can I find the grapple in version 2?", "options": { "spoiler": "direct" },
+      "expected": { "decision": "decline" } },
+
+    { "id": "en-u7-01", "gameId": "ultima7", "text": "Where might I find Shamino?", "options": { "spoiler": "gentle" },
+      "expected": { "decision": "answer", "contains": ["Blue Boar"] } },
+    { "id": "en-u7-02", "gameId": "ultima7", "text": "Any tips for fighting liches?", "options": { "spoiler": "balanced" },
+      "expected": { "decision": "answer", "contains": ["Magebane"] } },
+    { "id": "en-u7-03", "gameId": "ultima7", "text": "What's Magebane good for, and where is it?", "options": { "spoiler": "direct" },
+      "expected": { "decision": "answer", "parts": ["answer", "answer"], "contains": ["Drains Mana", "Stonegate"] } },
+    { "id": "en-u7-04", "gameId": "ultima7", "text": "Tell me about Spark", "options": { "spoiler": "gentle" },
+      "expected": { "decision": "answer", "contains": ["Fastest growth"] } },
+    { "id": "en-u7-neg-01", "gameId": "ultima7", "split": "negative", "text": "How do I recruit Shamino for free?", "options": { "spoiler": "direct" },
+      "expected": { "decision": "decline" } },
+    { "id": "en-u7-neg-02", "gameId": "ultima7", "split": "negative", "text": "Which is the best weapon?", "options": { "spoiler": "direct" },
+      "expected": { "decision": ["clarify", "decline"] } },
+    { "id": "en-u7-neg-03", "gameId": "ultima7", "split": "negative", "text": "Where's Magebane, and what does it do?", "options": { "spoiler": "balanced" },
+      "expected": { "decision": "answer", "parts": ["decline", "answer"], "absent": ["Stonegate"] } },
+
+    { "id": "en-aq-01", "gameId": "alqadim", "text": "I need to get my hands on the Ship Orb", "options": { "spoiler": "direct" },
+      "expected": { "decision": "answer", "contains": ["helm cabin"] } },
+    { "id": "en-aq-02", "gameId": "alqadim", "text": "How much is a Healing Potion?", "options": { "spoiler": "balanced" },
+      "expected": { "decision": "answer", "contains": ["50 Gold"] } },
+    { "id": "en-aq-03", "gameId": "alqadim", "text": "What is the Key of Bone used for?", "options": { "spoiler": "direct" },
+      "expected": { "decision": "answer", "contains": ["secret passage"] } },
+    { "id": "en-aq-04", "gameId": "alqadim", "text": "Where is the Key of Bone and how do I get it?", "options": { "spoiler": "direct" },
+      "expected": { "decision": "answer", "parts": ["answer", "answer"], "contains": ["Baker"] } },
+    { "id": "en-aq-05", "gameId": "alqadim", "text": "How do I fight a hyena and where do they live?", "options": { "spoiler": "direct" },
+      "expected": { "decision": "answer", "parts": ["answer", "answer"], "contains": ["Desert Plains"] } },
+    { "id": "en-aq-neg-01", "gameId": "alqadim", "split": "negative", "text": "Where is the Gilded Dove and what does it do?", "options": { "spoiler": "direct" },
+      "expected": { "decision": "decline", "parts": ["decline", "decline"], "contains": ["conflict"], "sourceRequired": true } },
+    { "id": "en-aq-neg-02", "gameId": "alqadim", "split": "negative", "text": "How much is a Healing Potion in Zaratan?", "options": { "spoiler": "balanced" },
+      "expected": { "decision": "decline", "absent": ["50 Gold"] } },
+    { "id": "en-aq-neg-03", "gameId": "alqadim", "split": "negative", "text": "What are the prerequisites for chapter 4?", "options": { "spoiler": "direct" },
+      "expected": { "decision": ["decline", "clarify"] } }
+  ],
+  "dialogues": [
+    { "id": "en-dlg-alb-subject-correction", "gameId": "albion", "turns": [
+      { "text": "Where can I buy the Dreamshield?", "options": { "spoiler": "direct" }, "expected": { "decision": "answer", "recordIds": ["albion:item:dreamshield:acquisition"] } },
+      { "text": "Sorry, I meant the Monster Eye—who do I buy that from?", "options": { "spoiler": "direct" }, "expected": { "decision": "answer", "recordIds": ["albion:item:monster-eye:acquisition"], "contains": ["Rifrako"], "stateChangeCount": 0 } },
+      { "text": "And what does it do?", "options": { "spoiler": "direct" }, "expected": { "decision": "clarify", "absent": ["Sleep Spores"] } }
+    ] },
+    { "id": "en-dlg-alb-ellipsis", "gameId": "albion", "turns": [
+      { "text": "Where is the pistol?", "options": { "spoiler": "direct" }, "expected": { "decision": "answer" } },
+      { "text": "And its effect?", "options": { "spoiler": "direct" }, "expected": { "decision": "answer", "recordIds": ["albion:item:pistol:use"] } },
+      { "text": "What about the Bolt-Rifle?", "options": { "spoiler": "direct" }, "expected": { "decision": "answer", "recordIds": ["albion:item:bolt-rifle:use"], "contains": ["Bolts"] } },
+      { "text": "Where?", "options": { "spoiler": "direct" }, "expected": { "decision": "answer", "recordIds": ["albion:item:bolt-rifle:location"] } }
+    ] },
+    { "id": "en-dlg-alb-multi-no-arbitrary-completion", "gameId": "albion", "turns": [
+      { "text": "How do I get the pistol and what does it do?", "options": { "spoiler": "direct" }, "expected": { "decision": "answer", "parts": ["answer", "answer"] } },
+      { "text": "I already did that", "options": { "spoiler": "direct" }, "expected": { "decision": "clarify", "stateChangeCount": 0 } },
+      { "text": "smaller hint", "options": { "spoiler": "direct" }, "expected": { "decision": "clarify" } }
+    ] },
+    { "id": "en-dlg-alb-descriptive-confirm", "gameId": "albion", "turns": [
+      { "text": "What does the shield with sleep spores do?", "options": { "spoiler": "direct" }, "expected": { "decision": "clarify", "absent": ["12 Prot"] } },
+      { "text": "yes", "options": { "spoiler": "direct" }, "expected": { "decision": "answer", "recordIds": ["albion:item:dreamshield:use"] } }
+    ] },
+    { "id": "en-dlg-alb-meant-not-report", "gameId": "albion", "turns": [
+      { "text": "Where is the pistol?", "options": { "spoiler": "direct" }, "expected": { "decision": "answer" } },
+      { "text": "No, I meant the Dreamshield", "options": { "spoiler": "direct" }, "expected": { "decision": "answer", "recordIds": ["albion:item:dreamshield:location"], "stateChangeCount": 0 } },
+      { "text": "I have it", "options": { "spoiler": "direct" }, "expected": { "decision": "correction", "stateChangeCount": 1 } }
+    ] },
+    { "id": "en-dlg-alb-what-about-pending", "gameId": "albion", "turns": [
+      { "text": "Where is Pistol and Dreamshield?", "options": { "spoiler": "direct" }, "expected": { "decision": "clarify" } },
+      { "text": "What about the Dreamshield?", "options": { "spoiler": "direct" }, "expected": { "decision": "answer", "recordIds": ["albion:item:dreamshield:location"] } }
+    ] },
+    { "id": "en-dlg-alb-frame-two-relations", "gameId": "albion", "turns": [
+      { "text": "Who is Tom and where can I find him?", "options": { "spoiler": "direct" }, "expected": { "decision": "answer", "parts": ["answer", "answer"] } },
+      { "text": "What about Khunag?", "options": { "spoiler": "direct" }, "expected": { "decision": "answer", "recordIds": ["albion:character:khunag:explanation", "albion:character:khunag:location"] } },
+      { "text": "Where is he?", "options": { "spoiler": "direct" }, "expected": { "decision": "answer", "recordIds": ["albion:character:khunag:location"] } }
+    ] },
+    { "id": "en-dlg-alb-reset-clears-frame", "gameId": "albion", "turns": [
+      { "text": "Where is the pistol?", "options": { "spoiler": "direct" }, "expected": { "decision": "answer" } },
+      { "text": "reset topic", "options": { "spoiler": "direct" }, "expected": { "decision": "reset" } },
+      { "text": "What about the Dreamshield?", "options": { "spoiler": "direct" }, "expected": { "decision": "clarify", "absent": ["Rifrako"] } },
+      { "text": "And its effect?", "options": { "spoiler": "direct" }, "expected": { "decision": "answer", "recordIds": ["albion:item:dreamshield:use"] } }
+    ] },
+    { "id": "en-dlg-alb-topic-change-clears", "gameId": "albion", "turns": [
+      { "text": "Where is the pistol?", "options": { "spoiler": "direct", "contextId": "toronto-intro" }, "expected": { "decision": "answer" } },
+      { "text": "Dreamshield?", "options": { "spoiler": "direct", "contextId": "gratogel" }, "expected": { "decision": "clarify" } },
+      { "text": "Where?", "options": { "spoiler": "direct", "contextId": "gratogel" }, "expected": { "decision": "answer", "recordIds": ["albion:item:dreamshield:location"] } },
+      { "text": "And how do I use it?", "options": { "spoiler": "direct", "contextId": "toronto-intro" }, "expected": { "decision": "clarify" } }
+    ] },
+    { "id": "en-dlg-alb-ambiguous-it", "gameId": "albion", "turns": [
+      { "text": "Where is the pistol and where is the Dreamshield?", "options": { "spoiler": "direct" }, "expected": { "decision": "answer", "parts": ["answer", "answer"] } },
+      { "text": "What does it do?", "options": { "spoiler": "direct" }, "expected": { "decision": "clarify" } },
+      { "text": "Dreamshield", "options": { "spoiler": "direct" }, "expected": { "decision": "answer", "recordIds": ["albion:item:dreamshield:use"] } }
+    ] },
+    { "id": "en-dlg-alb-ellipsis-keeps-restriction", "gameId": "albion", "turns": [
+      { "text": "Where is the pistol on Mars?", "options": { "spoiler": "direct" }, "expected": { "decision": "decline" } },
+      { "text": "What about the Dreamshield?", "options": { "spoiler": "direct" }, "expected": { "decision": "decline", "absent": ["Rifrako"] } },
+      { "text": "Where is the Dreamshield?", "options": { "spoiler": "direct" }, "expected": { "decision": "answer", "recordIds": ["albion:item:dreamshield:location"] } }
+    ] },
+    { "id": "en-dlg-alb-choice-keeps-edition", "gameId": "albion", "turns": [
+      { "text": "Where is Pistol and Dreamshield in Albion Online?", "options": { "spoiler": "direct" }, "expected": { "decision": "clarify" } },
+      { "text": "Dreamshield", "options": { "spoiler": "direct" }, "expected": { "decision": "decline", "absent": ["Rifrako"] } }
+    ] },
+    { "id": "en-dlg-alb-no-suggestion-for-restricted-description", "gameId": "albion", "turns": [
+      { "text": "Where is the best shield with sleep spores?", "options": { "spoiler": "direct" }, "expected": { "decision": "clarify", "absent": ["Dreamshield"] } },
+      { "text": "yes", "options": { "spoiler": "direct" }, "expected": { "decision": "clarify" } }
+    ] },
+    { "id": "en-dlg-u6-companions", "gameId": "ultima6", "turns": [
+      { "text": "Where's Jaana?", "options": { "spoiler": "direct" }, "expected": { "decision": "answer", "contains": ["Yew"] } },
+      { "text": "And who is she?", "options": { "spoiler": "direct" }, "expected": { "decision": "answer", "contains": ["Druid"] } },
+      { "text": "What about Katrina?", "options": { "spoiler": "direct" }, "expected": { "decision": "answer", "contains": ["Farmer"] } }
+    ] },
+    { "id": "en-dlg-u6-context-hint", "gameId": "ultima6", "turns": [
+      { "text": "Any hints for this quest?", "options": { "spoiler": "direct", "contextId": "quest:act-i-liberating-the-shrines:sacrifice-minoc", "entityIds": ["ultima6:quest:act-i-liberating-the-shrines:sacrifice-minoc"] }, "expected": { "decision": "answer" } },
+      { "text": "Could you make that a bit gentler?", "options": { "spoiler": "direct", "contextId": "quest:act-i-liberating-the-shrines:sacrifice-minoc" }, "expected": { "decision": "answer" } }
+    ] },
+    { "id": "en-dlg-u5-meant", "gameId": "ultima5", "turns": [
+      { "text": "How do I get the Sandalwood Box?", "options": { "spoiler": "direct" }, "expected": { "decision": "answer" } },
+      { "text": "Sorry, I meant the Magic Carpet", "options": { "spoiler": "direct" }, "expected": { "decision": "answer", "recordIds": ["ultima5:item:magic-carpet:acquisition"], "stateChangeCount": 0 } },
+      { "text": "Where is it?", "options": { "spoiler": "direct" }, "expected": { "decision": "answer", "recordIds": ["ultima5:item:magic-carpet:location"] } }
+    ] },
+    { "id": "en-dlg-u7-combat-followups", "gameId": "ultima7", "turns": [
+      { "text": "How do I beat dragons?", "options": { "spoiler": "balanced" }, "expected": { "decision": "answer", "contains": ["Glass Sword"] } },
+      { "text": "What about liches?", "options": { "spoiler": "balanced" }, "expected": { "decision": "answer", "contains": ["Magebane"] } },
+      { "text": "And slimes?", "options": { "spoiler": "balanced" }, "expected": { "decision": "answer", "contains": ["duplicate"] } }
+    ] },
+    { "id": "en-dlg-u7-typed-choice", "gameId": "ultima7", "turns": [
+      { "text": "Where are Iolo and Dupre?", "options": { "spoiler": "direct" }, "expected": { "decision": "clarify" } },
+      { "text": "Dupre", "options": { "spoiler": "direct" }, "expected": { "decision": "answer", "contains": ["Jhelom"] } }
+    ] },
+    { "id": "en-dlg-aq-meant-with-question", "gameId": "alqadim", "turns": [
+      { "text": "Where is the Ship Orb?", "options": { "spoiler": "direct" }, "expected": { "decision": "answer" } },
+      { "text": "Sorry, I meant the Key of Bone—how do I get it?", "options": { "spoiler": "direct" }, "expected": { "decision": "answer", "recordIds": ["alqadim:item:key-of-bone:acquisition"], "stateChangeCount": 0 } },
+      { "text": "What does it do?", "options": { "spoiler": "direct" }, "expected": { "decision": "answer", "recordIds": ["alqadim:item:key-of-bone:use"] } }
+    ] },
+    { "id": "en-dlg-aq-combat", "gameId": "alqadim", "turns": [
+      { "text": "How do I deal with hornets?", "options": { "spoiler": "balanced" }, "expected": { "decision": "answer", "contains": ["sling"] } },
+      { "text": "What about a thorn bush?", "options": { "spoiler": "balanced" }, "expected": { "decision": "answer", "contains": ["volleys"] } }
+    ] },
+    { "id": "en-dlg-sc-setup", "gameId": "starcraft", "browserOnly": true, "turns": [
+      { "text": "What is SCHNAIL?", "options": { "spoiler": "gentle" }, "expected": { "decision": "answer", "recordIds": ["starcraft:schnail:features"] } },
+      { "text": "And how do I set it up?", "options": { "spoiler": "gentle" }, "expected": { "decision": "answer", "recordIds": ["starcraft:schnail:setup"] } },
+      { "text": "What about BWAILauncher?", "options": { "spoiler": "gentle" }, "expected": { "decision": "answer", "recordIds": ["starcraft:bwai:setup"] } },
+      { "text": "Sorry, I meant the Remastered map", "options": { "spoiler": "gentle" }, "expected": { "decision": "answer", "recordIds": ["starcraft:remastered-map:setup"], "stateChangeCount": 0 } }
+    ] },
+    { "id": "en-dlg-sc-multi", "gameId": "starcraft", "browserOnly": true, "turns": [
+      { "text": "Where can I download SCHNAIL and what do I need for it?", "options": { "spoiler": "balanced" }, "expected": { "decision": "answer", "parts": ["answer", "answer"], "recordIds": ["starcraft:schnail:download", "starcraft:schnail:requirements"] } },
+      { "text": "Any idea how I'd go about setting up BWAILauncher?", "options": { "spoiler": "balanced" }, "expected": { "decision": "answer", "recordIds": ["starcraft:bwai:setup"] } },
+      { "text": "How do I install BWAILauncher on a Mac?", "options": { "spoiler": "balanced" }, "expected": { "decision": "decline" } },
+      { "text": "Can you give me a hint about the map AI not working?", "options": { "spoiler": "balanced" }, "expected": { "decision": "answer", "recordIds": ["starcraft:remastered-map:mode-check"] } },
+      { "text": "Where do I find the Protoss mothership?", "options": { "spoiler": "balanced" }, "expected": { "decision": "clarify" } }
+    ] }
+  ]
+}
