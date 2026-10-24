@@ -1,0 +1,1265 @@
+{
+  "scope": "eight source-authored RPG review branches; regression evidence, not holdout accuracy",
+  "turns": 89,
+  "passed": 89,
+  "authoringCorrections": [
+    {
+      "game": "ultima5",
+      "turn": "ultima5-pilgrimage-hints-and-name-recovery:1",
+      "originalQuestion": "How do I restore the Shrine of Honesty?",
+      "question": "Give me a hint for the Shrine of Honesty",
+      "reason": "Gentle exposes a hint, not the how-to use/acquisition relation; explicitly asking for the supported hint preserves its original semantic claims."
+    },
+    {
+      "game": "ultima6",
+      "turn": "ultima6-valor-hints-location-ceiling-and-correction:1",
+      "originalQuestion": "How do I get the rune for the Shrine of Valor?",
+      "question": "Give me a hint for the Shrine of Valor",
+      "reason": "Gentle acquisition properly declines; explicitly asking for the declared hint is positive objective coverage. No refusal was reclassified as factual success."
+    },
+    {
+      "game": "ultima5",
+      "turns": [
+        "ultima5-pilgrimage-hints-and-name-recovery:10",
+        "ultima5-pilgrimage-hints-and-name-recovery:12"
+      ],
+      "reason": "An identity request uses companion:gwenno:explanation, not the relationship narrative. Both native texts contain the wife claim; the exact oracle now asserts the intended identity relation."
+    },
+    {
+      "game": "ultima6",
+      "turns": [
+        "ultima6-valor-hints-location-ceiling-and-correction:5",
+        "ultima6-valor-hints-location-ceiling-and-correction:9"
+      ],
+      "reason": "How-to acquisition selects the declared :use relation, not :hint. Both derive from gameData.quests[0].sections[2]; claims and ceilings are unchanged."
+    }
+  ],
+  "results": [
+    {
+      "id": "albion-security-hints-and-subject-recovery",
+      "gameId": "albion",
+      "families": [
+        "objectives",
+        "travel",
+        "mechanics",
+        "continuity",
+        "topics",
+        "names",
+        "boundaries",
+        "unsupported"
+      ],
+      "passed": true,
+      "turns": [
+        {
+          "id": "albion-security-hints-and-subject-recovery:1",
+          "question": "How do I get past security?",
+          "spoiler": "gentle",
+          "expected": "answer",
+          "decision": "answer",
+          "recordIds": [
+            "albion:objective:toronto-intro:hide-weapon:hint"
+          ],
+          "text": "Security cares about what you carry. Look for safe storage before approaching the checkpoint.",
+          "passed": true,
+          "problems": []
+        },
+        {
+          "id": "albion-security-hints-and-subject-recovery:2",
+          "question": "How do I get the Pistol?",
+          "spoiler": "gentle",
+          "expected": "answer",
+          "decision": "answer",
+          "recordIds": [
+            "albion:item:pistol:acquisition"
+          ],
+          "text": "Inspect damaged equipment in the ship's service area.",
+          "passed": true,
+          "problems": []
+        },
+        {
+          "id": "albion-security-hints-and-subject-recovery:3",
+          "question": "Where is it?",
+          "spoiler": "gentle",
+          "expected": "answer",
+          "decision": "answer",
+          "recordIds": [
+            "albion:item:pistol:location"
+          ],
+          "text": "Look in the ship\u2019s service area for damaged equipment.",
+          "passed": true,
+          "problems": []
+        },
+        {
+          "id": "albion-security-hints-and-subject-recovery:4",
+          "question": "Where is Dreamshield?",
+          "spoiler": "gentle",
+          "expected": "answer",
+          "decision": "answer",
+          "recordIds": [
+            "albion:item:dreamshield:location"
+          ],
+          "text": "A village merchant offers a particularly useful shield.",
+          "passed": true,
+          "problems": []
+        },
+        {
+          "id": "albion-security-hints-and-subject-recovery:5",
+          "question": "What does it do?",
+          "spoiler": "gentle",
+          "expected": "no-answer",
+          "decision": "clarify",
+          "recordIds": [],
+          "text": "The current subject has no supported use answer at this help level. Name another subject.",
+          "passed": true,
+          "problems": []
+        },
+        {
+          "id": "albion-security-hints-and-subject-recovery:6",
+          "question": "How do I get past security?",
+          "spoiler": "balanced",
+          "expected": "answer",
+          "decision": "answer",
+          "recordIds": [
+            "albion:objective:toronto-intro:hide-weapon:hint"
+          ],
+          "text": "Use storage on the ship's service level before passing security.",
+          "passed": true,
+          "problems": []
+        },
+        {
+          "id": "albion-security-hints-and-subject-recovery:7",
+          "question": "What does dream shield do?",
+          "spoiler": "balanced",
+          "expected": "answer",
+          "decision": "answer",
+          "recordIds": [
+            "albion:item:dreamshield:use"
+          ],
+          "text": "Shield. 12 Prot, Sleep Spores (20).",
+          "passed": true,
+          "problems": []
+        },
+        {
+          "id": "albion-security-hints-and-subject-recovery:8",
+          "question": "Where is it?",
+          "spoiler": "balanced",
+          "expected": "answer",
+          "decision": "answer",
+          "recordIds": [
+            "albion:item:dreamshield:location"
+          ],
+          "text": "Dreamshield: Rifrako's (Aballon).",
+          "passed": true,
+          "problems": []
+        },
+        {
+          "id": "albion-security-hints-and-subject-recovery:9",
+          "question": "How are Sira and Melthas related?",
+          "spoiler": "balanced",
+          "expected": "no-answer",
+          "decision": "decline",
+          "recordIds": [],
+          "text": "I don't have a sourced answer to that relationship question in the available records.",
+          "passed": true,
+          "problems": []
+        },
+        {
+          "id": "albion-security-hints-and-subject-recovery:10",
+          "question": "How are Sira and Melthas related?",
+          "spoiler": "direct",
+          "expected": "answer",
+          "decision": "answer",
+          "recordIds": [
+            "albion:narrative:sira-melthas-party-link:relationship"
+          ],
+          "text": "Sira \u2014 Relationship:\nSira: Iskai mage specializing in frost and snare magic. Always leaves with Melthas.",
+          "passed": true,
+          "problems": []
+        },
+        {
+          "id": "albion-security-hints-and-subject-recovery:11",
+          "question": "Who is mel thas?",
+          "spoiler": "direct",
+          "expected": "answer",
+          "decision": "answer",
+          "recordIds": [
+            "albion:character:melthas:explanation"
+          ],
+          "text": "Human. Druid Mage. Druid who can communicate through Iskai trii. Demon-banishing specialist.",
+          "passed": true,
+          "problems": []
+        },
+        {
+          "id": "albion-security-hints-and-subject-recovery:12",
+          "question": "Why did he murder Sira?",
+          "spoiler": "direct",
+          "expected": "no-answer",
+          "decision": "decline",
+          "recordIds": [],
+          "text": "I don't have a sourced answer to that relationship question in the available records.",
+          "passed": true,
+          "problems": []
+        },
+        {
+          "id": "albion-security-hints-and-subject-recovery:13",
+          "question": "Who is TOMDRISCOLL?",
+          "spoiler": "gentle",
+          "expected": "answer",
+          "decision": "answer",
+          "recordIds": [
+            "albion:character:tom-driscoll:explanation"
+          ],
+          "text": "Human. Pilot / Fighter. The guide's notes on this character appear when the help level is Full answer.",
+          "passed": true,
+          "problems": []
+        }
+      ]
+    },
+    {
+      "id": "albion-maini-explanation-and-unavailable-causes",
+      "gameId": "albion",
+      "families": [
+        "relationships",
+        "objectives",
+        "lore",
+        "continuity",
+        "topics",
+        "boundaries",
+        "unsupported"
+      ],
+      "passed": true,
+      "turns": [
+        {
+          "id": "albion-maini-explanation-and-unavailable-causes:1",
+          "question": "What is Maini about?",
+          "spoiler": "balanced",
+          "expected": "answer",
+          "decision": "answer",
+          "recordIds": [
+            "albion:chapter:maini:explanation"
+          ],
+          "text": "Maini \u2014 Iskai & Human Conflict (Preventing Assassination): Prevent Herras's assassination, confront Kontos at the shrine. Stops: Beloveno (Main city and residence entrances); Beloveno Town Hall (Herras and the council); Kariah (Khunag investigation); Srimalinar (Information-gathering stop); Edjirr (Purchase the assassination information); Kontos (Shrine confrontation).",
+          "passed": true,
+          "problems": []
+        },
+        {
+          "id": "albion-maini-explanation-and-unavailable-causes:2",
+          "question": "Why does Harriet replace Rainer?",
+          "spoiler": "balanced",
+          "expected": "no-answer",
+          "decision": "decline",
+          "recordIds": [],
+          "text": "I don't have a sourced answer to that relationship question in the available records.",
+          "passed": true,
+          "problems": []
+        },
+        {
+          "id": "albion-maini-explanation-and-unavailable-causes:3",
+          "question": "What is Maini about?",
+          "spoiler": "balanced",
+          "expected": "answer",
+          "decision": "answer",
+          "recordIds": [
+            "albion:chapter:maini:explanation"
+          ],
+          "text": "Maini \u2014 Iskai & Human Conflict (Preventing Assassination): Prevent Herras's assassination, confront Kontos at the shrine. Stops: Beloveno (Main city and residence entrances); Beloveno Town Hall (Herras and the council); Kariah (Khunag investigation); Srimalinar (Information-gathering stop); Edjirr (Purchase the assassination information); Kontos (Shrine confrontation).",
+          "passed": true,
+          "problems": []
+        },
+        {
+          "id": "albion-maini-explanation-and-unavailable-causes:4",
+          "question": "How are Sira and Melthas related?",
+          "spoiler": "balanced",
+          "expected": "no-answer",
+          "decision": "decline",
+          "recordIds": [],
+          "text": "I don't have a sourced answer to that relationship question in the available records.",
+          "passed": true,
+          "problems": []
+        },
+        {
+          "id": "albion-maini-explanation-and-unavailable-causes:5",
+          "question": "Summarize Maini",
+          "spoiler": "balanced",
+          "expected": "answer",
+          "decision": "answer",
+          "recordIds": [
+            "albion:narrative:maini-summary:summary"
+          ],
+          "text": "Maini \u2014 Preventing Assassination \u2014 Summary:\nPrevent Herras's assassination, confront Kontos at the shrine.",
+          "passed": true,
+          "problems": []
+        },
+        {
+          "id": "albion-maini-explanation-and-unavailable-causes:6",
+          "question": "What is Maini about on Mars?",
+          "spoiler": "balanced",
+          "expected": "no-answer",
+          "decision": "decline",
+          "recordIds": [],
+          "text": "The guide does not support that additional detail or restriction for this subject.",
+          "passed": true,
+          "problems": []
+        },
+        {
+          "id": "albion-maini-explanation-and-unavailable-causes:7",
+          "question": "What about Umajo?",
+          "spoiler": "balanced",
+          "expected": "no-answer",
+          "decision": "clarify",
+          "recordIds": [],
+          "text": "Which of these do you mean?",
+          "passed": true,
+          "problems": []
+        },
+        {
+          "id": "albion-maini-explanation-and-unavailable-causes:8",
+          "question": "What is Maini about?",
+          "spoiler": "balanced",
+          "expected": "answer",
+          "decision": "answer",
+          "recordIds": [
+            "albion:chapter:maini:explanation"
+          ],
+          "text": "Maini \u2014 Iskai & Human Conflict (Preventing Assassination): Prevent Herras's assassination, confront Kontos at the shrine. Stops: Beloveno (Main city and residence entrances); Beloveno Town Hall (Herras and the council); Kariah (Khunag investigation); Srimalinar (Information-gathering stop); Edjirr (Purchase the assassination information); Kontos (Shrine confrontation).",
+          "passed": true,
+          "problems": []
+        },
+        {
+          "id": "albion-maini-explanation-and-unavailable-causes:9",
+          "question": "What is Iskai magic?",
+          "spoiler": "gentle",
+          "expected": "answer",
+          "decision": "answer",
+          "recordIds": [
+            "albion:topic:magic-iskai:explanation"
+          ],
+          "text": "Iskai (Dji-Kas): practitioner Sira; reagent Trifalai Seed (1.2G each); training: Fasiir in Dji-Kas guild (Jirinaar). Visit Fasiir before leaving Jirinaar; this is the documented free spell-training stop for Sira.",
+          "passed": true,
+          "problems": []
+        },
+        {
+          "id": "albion-maini-explanation-and-unavailable-causes:10",
+          "question": "How are Sira and Melthas related?",
+          "spoiler": "direct",
+          "expected": "answer",
+          "decision": "answer",
+          "recordIds": [
+            "albion:narrative:sira-melthas-party-link:relationship"
+          ],
+          "text": "Sira \u2014 Relationship:\nSira: Iskai mage specializing in frost and snare magic. Always leaves with Melthas.",
+          "passed": true,
+          "problems": []
+        },
+        {
+          "id": "albion-maini-explanation-and-unavailable-causes:11",
+          "question": "How are Sira and Melthas related?",
+          "spoiler": "gentle",
+          "expected": "no-answer",
+          "decision": "decline",
+          "recordIds": [],
+          "text": "I don't have a sourced answer to that relationship question in the available records.",
+          "passed": true,
+          "problems": []
+        }
+      ]
+    },
+    {
+      "id": "ultima5-pilgrimage-hints-and-name-recovery",
+      "gameId": "ultima5",
+      "families": [
+        "objectives",
+        "travel",
+        "mechanics",
+        "continuity",
+        "topics",
+        "names",
+        "boundaries",
+        "unsupported"
+      ],
+      "passed": true,
+      "turns": [
+        {
+          "id": "ultima5-pilgrimage-hints-and-name-recovery:1",
+          "question": "Give me a hint for the Shrine of Honesty",
+          "spoiler": "gentle",
+          "expected": "answer",
+          "decision": "answer",
+          "recordIds": [
+            "ultima5:objective:shrine-honesty:hint"
+          ],
+          "text": "Learn the local mantra, follow the shrine\u2019s instruction, and return after receiving counsel. Keep each pilgrimage\u2019s stage separate.",
+          "passed": true,
+          "problems": []
+        },
+        {
+          "id": "ultima5-pilgrimage-hints-and-name-recovery:2",
+          "question": "What is the outcome of the Honesty shrine?",
+          "spoiler": "gentle",
+          "expected": "no-answer",
+          "decision": "decline",
+          "recordIds": [],
+          "text": "I don't have a sourced answer to that question in the available records.",
+          "passed": true,
+          "problems": []
+        },
+        {
+          "id": "ultima5-pilgrimage-hints-and-name-recovery:3",
+          "question": "Who is Gwe nno?",
+          "spoiler": "gentle",
+          "expected": "answer",
+          "decision": "answer",
+          "recordIds": [
+            "ultima5:companion:gwenno:explanation"
+          ],
+          "text": "Gwenno: Bard, level 3. The guide's notes on this companion appear when the help level is Full answer.",
+          "passed": true,
+          "problems": []
+        },
+        {
+          "id": "ultima5-pilgrimage-hints-and-name-recovery:4",
+          "question": "How is she related to Iolo?",
+          "spoiler": "gentle",
+          "expected": "no-answer",
+          "decision": "decline",
+          "recordIds": [],
+          "text": "I don't have a sourced answer to that relationship question in the available records.",
+          "passed": true,
+          "problems": []
+        },
+        {
+          "id": "ultima5-pilgrimage-hints-and-name-recovery:5",
+          "question": "How do I restore the Shrine of Honesty?",
+          "spoiler": "balanced",
+          "expected": "answer",
+          "decision": "answer",
+          "recordIds": [
+            "ultima5:objective:shrine-honesty:hint"
+          ],
+          "text": "Ask Malifora for the mantra. The mantra is AHM.",
+          "passed": true,
+          "problems": []
+        },
+        {
+          "id": "ultima5-pilgrimage-hints-and-name-recovery:6",
+          "question": "What is the outcome of the Honesty shrine?",
+          "spoiler": "balanced",
+          "expected": "answer",
+          "decision": "answer",
+          "recordIds": [
+            "ultima5:narrative:shrine-honesty:outcome"
+          ],
+          "text": "Restore the Shrine of Honesty \u2014 Outcome:\nHonesty restored and its attribute lesson completed.",
+          "passed": true,
+          "problems": []
+        },
+        {
+          "id": "ultima5-pilgrimage-hints-and-name-recovery:7",
+          "question": "Who is GWE NNO?",
+          "spoiler": "balanced",
+          "expected": "answer",
+          "decision": "answer",
+          "recordIds": [
+            "ultima5:companion:gwenno:explanation"
+          ],
+          "text": "Gwenno: Bard, level 3. The guide's notes on this companion appear when the help level is Full answer.",
+          "passed": true,
+          "problems": []
+        },
+        {
+          "id": "ultima5-pilgrimage-hints-and-name-recovery:8",
+          "question": "Where is she?",
+          "spoiler": "balanced",
+          "expected": "answer",
+          "decision": "answer",
+          "recordIds": [
+            "ultima5:companion:gwenno:location"
+          ],
+          "text": "Britain",
+          "passed": true,
+          "problems": []
+        },
+        {
+          "id": "ultima5-pilgrimage-hints-and-name-recovery:9",
+          "question": "How is Gwenno related to Iolo?",
+          "spoiler": "direct",
+          "expected": "answer",
+          "decision": "answer",
+          "recordIds": [
+            "ultima5:narrative:gwenno-identity:relationship"
+          ],
+          "text": "Gwenno \u2014 Relationship:\nGwenno: Bard, level 3. Strength 17, Intelligence 17, Dexterity 22. A well-rounded bard, Iolo's wife. A good addition to the party if another bard is needed.",
+          "passed": true,
+          "problems": []
+        },
+        {
+          "id": "ultima5-pilgrimage-hints-and-name-recovery:10",
+          "question": "Who is Gwe nno?",
+          "spoiler": "direct",
+          "expected": "answer",
+          "decision": "answer",
+          "recordIds": [
+            "ultima5:companion:gwenno:explanation"
+          ],
+          "text": "Bard. A well-rounded bard, Iolo's wife. A good addition to the party if another bard is needed.",
+          "passed": true,
+          "problems": []
+        },
+        {
+          "id": "ultima5-pilgrimage-hints-and-name-recovery:11",
+          "question": "How is she related to Iolo in Ultima IX?",
+          "spoiler": "direct",
+          "expected": "no-answer",
+          "decision": "decline",
+          "recordIds": [],
+          "text": "I don't have a sourced answer to that relationship question in the available records.",
+          "passed": true,
+          "problems": []
+        },
+        {
+          "id": "ultima5-pilgrimage-hints-and-name-recovery:12",
+          "question": "Who is Gwenno?",
+          "spoiler": "direct",
+          "expected": "answer",
+          "decision": "answer",
+          "recordIds": [
+            "ultima5:companion:gwenno:explanation"
+          ],
+          "text": "Bard. A well-rounded bard, Iolo's wife. A good addition to the party if another bard is needed.",
+          "passed": true,
+          "problems": []
+        }
+      ]
+    },
+    {
+      "id": "ultima6-valor-hints-location-ceiling-and-correction",
+      "gameId": "ultima6",
+      "families": [
+        "objectives",
+        "travel",
+        "mechanics",
+        "continuity",
+        "topics",
+        "names",
+        "boundaries",
+        "unsupported"
+      ],
+      "passed": true,
+      "turns": [
+        {
+          "id": "ultima6-valor-hints-location-ceiling-and-correction:1",
+          "question": "Give me a hint for the Shrine of Valor",
+          "spoiler": "gentle",
+          "expected": "answer",
+          "decision": "answer",
+          "recordIds": [
+            "ultima6:quest:act-i-liberating-the-shrines:valor-jhelom:hint"
+          ],
+          "text": "Consider whether someone much smaller than the Avatar could reach a place the party cannot.",
+          "passed": true,
+          "problems": []
+        },
+        {
+          "id": "ultima6-valor-hints-location-ceiling-and-correction:2",
+          "question": "Who is Sh erry?",
+          "spoiler": "gentle",
+          "expected": "answer",
+          "decision": "answer",
+          "recordIds": [
+            "ultima6:atlas:marker:Sherry:explanation:reference"
+          ],
+          "text": "Mouse. Quest-specific utility.",
+          "passed": true,
+          "problems": []
+        },
+        {
+          "id": "ultima6-valor-hints-location-ceiling-and-correction:3",
+          "question": "Where is she?",
+          "spoiler": "gentle",
+          "expected": "no-answer",
+          "decision": "clarify",
+          "recordIds": [],
+          "text": "The current subject has no supported location answer at this help level. Name another subject.",
+          "passed": true,
+          "problems": []
+        },
+        {
+          "id": "ultima6-valor-hints-location-ceiling-and-correction:4",
+          "question": "What about Jaana?",
+          "spoiler": "gentle",
+          "expected": "no-answer",
+          "decision": "decline",
+          "recordIds": [],
+          "text": "The local guide has no supported location answer for this subject at the selected help level. It can tell you what it is, its stats or a hint.",
+          "passed": true,
+          "problems": []
+        },
+        {
+          "id": "ultima6-valor-hints-location-ceiling-and-correction:5",
+          "question": "How do I get the rune for the Shrine of Valor?",
+          "spoiler": "balanced",
+          "expected": "answer",
+          "decision": "answer",
+          "recordIds": [
+            "ultima6:quest:act-i-liberating-the-shrines:valor-jhelom:use"
+          ],
+          "text": "Recruit Sherry the mouse to slip behind the tavern walls and retrieve the rune.",
+          "passed": true,
+          "problems": []
+        },
+        {
+          "id": "ultima6-valor-hints-location-ceiling-and-correction:6",
+          "question": "Who is Sherry?",
+          "spoiler": "balanced",
+          "expected": "answer",
+          "decision": "answer",
+          "recordIds": [
+            "ultima6:narrative:sherry-identity:identity"
+          ],
+          "text": "Sherry \u2014 Identity:\nSherry: Mouse. Quest-specific utility.",
+          "passed": true,
+          "problems": []
+        },
+        {
+          "id": "ultima6-valor-hints-location-ceiling-and-correction:7",
+          "question": "Where is she?",
+          "spoiler": "balanced",
+          "expected": "no-answer",
+          "decision": "clarify",
+          "recordIds": [],
+          "text": "The current subject has no supported location answer at this help level. Name another subject.",
+          "passed": true,
+          "problems": []
+        },
+        {
+          "id": "ultima6-valor-hints-location-ceiling-and-correction:8",
+          "question": "Where is Sh erry?",
+          "spoiler": "direct",
+          "expected": "answer",
+          "decision": "answer",
+          "recordIds": [
+            "ultima6:atlas:marker:Sherry:location"
+          ],
+          "text": "Castle Britannia. Coordinates: X 121, Y 17C, Z 0.",
+          "passed": true,
+          "problems": []
+        },
+        {
+          "id": "ultima6-valor-hints-location-ceiling-and-correction:9",
+          "question": "How do I get the rune for the Shrine of Valor?",
+          "spoiler": "direct",
+          "expected": "answer",
+          "decision": "answer",
+          "recordIds": [
+            "ultima6:quest:act-i-liberating-the-shrines:valor-jhelom:use"
+          ],
+          "text": "In Castle Britannia's kitchen, pick up cheese, offer it to Sherry, and invite her to JOIN.\nTravel to the Sword and Keg in Jhelom, position Sherry at the mouse hole, and switch control to her.\nEnter the mouse hole as Sherry to grab the rune, then regroup with the party.\nCleanse the Shrine of Valor atop the Serpent's Spine by chanting RA and taking the Moonstone.",
+          "passed": true,
+          "problems": []
+        },
+        {
+          "id": "ultima6-valor-hints-location-ceiling-and-correction:10",
+          "question": "reset topic",
+          "spoiler": "direct",
+          "expected": "reset",
+          "decision": "reset",
+          "recordIds": [],
+          "text": "Conversation reset.",
+          "passed": true,
+          "problems": []
+        },
+        {
+          "id": "ultima6-valor-hints-location-ceiling-and-correction:11",
+          "question": "Where is she?",
+          "spoiler": "direct",
+          "expected": "no-answer",
+          "decision": "clarify",
+          "recordIds": [],
+          "text": "Which guide objective or named subject do you mean? Open its guide section or name it.",
+          "passed": true,
+          "problems": []
+        },
+        {
+          "id": "ultima6-valor-hints-location-ceiling-and-correction:12",
+          "question": "Who is Sherry?",
+          "spoiler": "direct",
+          "expected": "answer",
+          "decision": "answer",
+          "recordIds": [
+            "ultima6:narrative:sherry-identity:identity"
+          ],
+          "text": "Sherry \u2014 Identity:\nSherry: Mouse. Quest-specific utility.",
+          "passed": true,
+          "problems": []
+        }
+      ]
+    },
+    {
+      "id": "ultima6-invasion-cause-and-unsupported-motives",
+      "gameId": "ultima6",
+      "families": [
+        "relationships",
+        "lore",
+        "continuity",
+        "topics",
+        "boundaries",
+        "unsupported"
+      ],
+      "passed": true,
+      "turns": [
+        {
+          "id": "ultima6-invasion-cause-and-unsupported-motives:1",
+          "question": "Why are the gargoyles attacking?",
+          "spoiler": "gentle",
+          "expected": "answer",
+          "decision": "answer",
+          "recordIds": [
+            "ultima6:topic:premise:explanation"
+          ],
+          "text": "Gargoyles have seized Britannia's shrines because their dying world names the Avatar as its destroyer. Recover the stolen Codex, learn the truth behind the invasion, and end a war that cannot be solved by conquest alone.\nGargoyles occupy the shrines while Britannia answers them with fear and steel. Behind the invasion lies the stolen Codex, a collapsing homeland, and a conflict that cannot be solved by conquest alone.",
+          "passed": true,
+          "problems": []
+        },
+        {
+          "id": "ultima6-invasion-cause-and-unsupported-motives:2",
+          "question": "Why do the gargoyles fear the Avatar?",
+          "spoiler": "gentle",
+          "expected": "no-answer",
+          "decision": "clarify",
+          "recordIds": [],
+          "text": "What would you like to know: location, acquisition, use, stats, combat, a counter or cure, prerequisites, or a hint?\n\nThe closest guide text I found (it may not answer your question):\n\u2022 The premise: Gargoyles have seized Britannia's shrines because their dying world names the Avatar as its destroyer.\n\u2022 The premise: Gargoyles occupy the shrines while Britannia answers them with fear and steel.",
+          "passed": true,
+          "problems": []
+        },
+        {
+          "id": "ultima6-invasion-cause-and-unsupported-motives:3",
+          "question": "Why are the gargoyles attacking?",
+          "spoiler": "balanced",
+          "expected": "answer",
+          "decision": "answer",
+          "recordIds": [
+            "ultima6:topic:premise:explanation"
+          ],
+          "text": "Gargoyles have seized Britannia's shrines because their dying world names the Avatar as its destroyer. Recover the stolen Codex, learn the truth behind the invasion, and end a war that cannot be solved by conquest alone.\nGargoyles occupy the shrines while Britannia answers them with fear and steel. Behind the invasion lies the stolen Codex, a collapsing homeland, and a conflict that cannot be solved by conquest alone.",
+          "passed": true,
+          "problems": []
+        },
+        {
+          "id": "ultima6-invasion-cause-and-unsupported-motives:4",
+          "question": "Why did Lord British order the gargoyles to invade?",
+          "spoiler": "balanced",
+          "expected": "no-answer",
+          "decision": "decline",
+          "recordIds": [],
+          "text": "I don't have a sourced answer to that relationship question in the available records.",
+          "passed": true,
+          "problems": []
+        },
+        {
+          "id": "ultima6-invasion-cause-and-unsupported-motives:5",
+          "question": "What is Ultima VI about?",
+          "spoiler": "balanced",
+          "expected": "answer",
+          "decision": "answer",
+          "recordIds": [
+            "ultima6:topic:premise:explanation"
+          ],
+          "text": "Gargoyles have seized Britannia's shrines because their dying world names the Avatar as its destroyer. Recover the stolen Codex, learn the truth behind the invasion, and end a war that cannot be solved by conquest alone.\nGargoyles occupy the shrines while Britannia answers them with fear and steel. Behind the invasion lies the stolen Codex, a collapsing homeland, and a conflict that cannot be solved by conquest alone.",
+          "passed": true,
+          "problems": []
+        },
+        {
+          "id": "ultima6-invasion-cause-and-unsupported-motives:6",
+          "question": "What is Gargish?",
+          "spoiler": "balanced",
+          "expected": "no-answer",
+          "decision": "clarify",
+          "recordIds": [],
+          "text": "No guide subject has that name. These entries contain all of those words; choose one only if it is what you meant.",
+          "passed": true,
+          "problems": []
+        },
+        {
+          "id": "ultima6-invasion-cause-and-unsupported-motives:7",
+          "question": "Why are the gargoyles attacking?",
+          "spoiler": "direct",
+          "expected": "answer",
+          "decision": "answer",
+          "recordIds": [
+            "ultima6:topic:premise:explanation"
+          ],
+          "text": "Gargoyles have seized Britannia's shrines because their dying world names the Avatar as its destroyer. Recover the stolen Codex, learn the truth behind the invasion, and end a war that cannot be solved by conquest alone.\nGargoyles occupy the shrines while Britannia answers them with fear and steel. Behind the invasion lies the stolen Codex, a collapsing homeland, and a conflict that cannot be solved by conquest alone.",
+          "passed": true,
+          "problems": []
+        },
+        {
+          "id": "ultima6-invasion-cause-and-unsupported-motives:8",
+          "question": "What is Ultima VI about?",
+          "spoiler": "direct",
+          "expected": "answer",
+          "decision": "answer",
+          "recordIds": [
+            "ultima6:topic:premise:explanation"
+          ],
+          "text": "Gargoyles have seized Britannia's shrines because their dying world names the Avatar as its destroyer. Recover the stolen Codex, learn the truth behind the invasion, and end a war that cannot be solved by conquest alone.\nGargoyles occupy the shrines while Britannia answers them with fear and steel. Behind the invasion lies the stolen Codex, a collapsing homeland, and a conflict that cannot be solved by conquest alone.",
+          "passed": true,
+          "problems": []
+        },
+        {
+          "id": "ultima6-invasion-cause-and-unsupported-motives:9",
+          "question": "reset topic",
+          "spoiler": "direct",
+          "expected": "reset",
+          "decision": "reset",
+          "recordIds": [],
+          "text": "Conversation reset.",
+          "passed": true,
+          "problems": []
+        },
+        {
+          "id": "ultima6-invasion-cause-and-unsupported-motives:10",
+          "question": "Why are they attacking?",
+          "spoiler": "direct",
+          "expected": "no-answer",
+          "decision": "clarify",
+          "recordIds": [],
+          "text": "Which person, subject or event do you mean?",
+          "passed": true,
+          "problems": []
+        }
+      ]
+    },
+    {
+      "id": "ultima7-time-lord-quest-hints-and-identity-switch",
+      "gameId": "ultima7",
+      "families": [
+        "objectives",
+        "travel",
+        "mechanics",
+        "continuity",
+        "topics",
+        "names",
+        "boundaries",
+        "unsupported"
+      ],
+      "passed": true,
+      "turns": [
+        {
+          "id": "ultima7-time-lord-quest-hints-and-identity-switch:1",
+          "question": "How do I complete Main quest 3?",
+          "spoiler": "gentle",
+          "expected": "answer",
+          "decision": "answer",
+          "recordIds": [
+            "ultima7:quest:the-quest-for-the-time-lord:hint"
+          ],
+          "text": "Listen to the forest's inhabitants and consider what might earn their trust.",
+          "passed": true,
+          "problems": []
+        },
+        {
+          "id": "ultima7-time-lord-quest-hints-and-identity-switch:2",
+          "question": "Who is the Time Lord?",
+          "spoiler": "gentle",
+          "expected": "no-answer",
+          "decision": "clarify",
+          "recordIds": [],
+          "text": "I could not find that in this guide at the current help level. It may not be covered, or it may need a higher help level (Hint or Full answer); naming the subject differently can also help.",
+          "passed": true,
+          "problems": []
+        },
+        {
+          "id": "ultima7-time-lord-quest-hints-and-identity-switch:3",
+          "question": "How do I complete Main quest 3?",
+          "spoiler": "balanced",
+          "expected": "answer",
+          "decision": "answer",
+          "recordIds": [
+            "ultima7:quest:the-quest-for-the-time-lord:hint"
+          ],
+          "text": "Bring honey from the Bee Cave to the emps in the Deep Forest, then ask about communicating with the wisp.",
+          "passed": true,
+          "problems": []
+        },
+        {
+          "id": "ultima7-time-lord-quest-hints-and-identity-switch:4",
+          "question": "Who is time lord?",
+          "spoiler": "balanced",
+          "expected": "answer",
+          "decision": "answer",
+          "recordIds": [
+            "ultima7:research:time-lord-identity:explanation"
+          ],
+          "text": "Not in this guide \u2014 from outside research: In Ultima VII: The Black Gate, the Time Lord is a being whose work is to keep time flowing smoothly through space. He helps the Avatar oppose the Guardian.",
+          "passed": true,
+          "problems": []
+        },
+        {
+          "id": "ultima7-time-lord-quest-hints-and-identity-switch:5",
+          "question": "What does he want?",
+          "spoiler": "balanced",
+          "expected": "answer",
+          "decision": "answer",
+          "recordIds": [
+            "ultima7:narrative:time-lord-purpose:purpose"
+          ],
+          "text": "Time Lord \u2014 Purpose:\nNot in this guide \u2014 from outside research: The Time Lord wants the Avatar to free him and help oppose the Guardian.",
+          "passed": true,
+          "problems": []
+        },
+        {
+          "id": "ultima7-time-lord-quest-hints-and-identity-switch:6",
+          "question": "How do I complete the Time Lord quest?",
+          "spoiler": "direct",
+          "expected": "answer",
+          "decision": "answer",
+          "recordIds": [
+            "ultima7:quest:the-quest-for-the-time-lord:hint"
+          ],
+          "text": "Follow the gypsy's advice. Go to the Deep Forest and find the silent wisp. Get honey from the Bee Cave to bribe the emps. Negotiate with the emps to get a wisp whistle. Use the whistle to communicate with the wisp, who demands Alagner's notebook from New Magincia in exchange for information.",
+          "passed": true,
+          "problems": []
+        },
+        {
+          "id": "ultima7-time-lord-quest-hints-and-identity-switch:7",
+          "question": "Who is TIME LORD?",
+          "spoiler": "direct",
+          "expected": "answer",
+          "decision": "answer",
+          "recordIds": [
+            "ultima7:research:time-lord-identity:explanation"
+          ],
+          "text": "Not in this guide \u2014 from outside research: In Ultima VII: The Black Gate, the Time Lord is a being whose work is to keep time flowing smoothly through space. He helps the Avatar oppose the Guardian.",
+          "passed": true,
+          "problems": []
+        },
+        {
+          "id": "ultima7-time-lord-quest-hints-and-identity-switch:8",
+          "question": "Using only this guide, who is he?",
+          "spoiler": "direct",
+          "expected": "no-answer",
+          "decision": "decline",
+          "recordIds": [],
+          "text": "I do not have a sourced identity description for this subject at this help level. Ask \u201cTell me about\u201d the subject for its guide context, or ask for its location.",
+          "passed": true,
+          "problems": []
+        },
+        {
+          "id": "ultima7-time-lord-quest-hints-and-identity-switch:9",
+          "question": "What does he want?",
+          "spoiler": "direct",
+          "expected": "no-answer",
+          "decision": "decline",
+          "recordIds": [],
+          "text": "I don't have a sourced answer to that question in the available records.",
+          "passed": true,
+          "problems": []
+        },
+        {
+          "id": "ultima7-time-lord-quest-hints-and-identity-switch:10",
+          "question": "reset topic",
+          "spoiler": "direct",
+          "expected": "reset",
+          "decision": "reset",
+          "recordIds": [],
+          "text": "Conversation reset.",
+          "passed": true,
+          "problems": []
+        },
+        {
+          "id": "ultima7-time-lord-quest-hints-and-identity-switch:11",
+          "question": "Who is timelord?",
+          "spoiler": "direct",
+          "expected": "answer",
+          "decision": "answer",
+          "recordIds": [
+            "ultima7:research:time-lord-identity:explanation"
+          ],
+          "text": "Not in this guide \u2014 from outside research: In Ultima VII: The Black Gate, the Time Lord is a being whose work is to keep time flowing smoothly through space. He helps the Avatar oppose the Guardian.",
+          "passed": true,
+          "problems": []
+        }
+      ]
+    },
+    {
+      "id": "alqadim-oasis-hints-and-location-recovery",
+      "gameId": "alqadim",
+      "families": [
+        "objectives",
+        "travel",
+        "mechanics",
+        "continuity",
+        "topics",
+        "names",
+        "boundaries",
+        "unsupported"
+      ],
+      "passed": true,
+      "turns": [
+        {
+          "id": "alqadim-oasis-hints-and-location-recovery:1",
+          "question": "How do I complete Chapter 3?",
+          "spoiler": "gentle",
+          "expected": "answer",
+          "decision": "answer",
+          "recordIds": [
+            "alqadim:chapter:3:hint"
+          ],
+          "text": "Explore the oasis carefully. Plants and people there can both offer useful leads.",
+          "passed": true,
+          "problems": []
+        },
+        {
+          "id": "alqadim-oasis-hints-and-location-recovery:2",
+          "question": "What does Lightning Bolt do?",
+          "spoiler": "gentle",
+          "expected": "answer",
+          "decision": "answer",
+          "recordIds": [
+            "alqadim:shard:lightning-bolt:use"
+          ],
+          "text": "Strikes every target in its path and can ricochet from walls\u2014even back toward the caster. Range: 100 yd. Damage: 6\u201336 per target.",
+          "passed": true,
+          "problems": []
+        },
+        {
+          "id": "alqadim-oasis-hints-and-location-recovery:3",
+          "question": "Where is it?",
+          "spoiler": "gentle",
+          "expected": "no-answer",
+          "decision": "clarify",
+          "recordIds": [],
+          "text": "The current subject has no supported location answer at this help level. Name another subject.",
+          "passed": true,
+          "problems": []
+        },
+        {
+          "id": "alqadim-oasis-hints-and-location-recovery:4",
+          "question": "What about Water Blast?",
+          "spoiler": "gentle",
+          "expected": "no-answer",
+          "decision": "decline",
+          "recordIds": [],
+          "text": "The local guide has no supported location answer for this subject at the selected help level. It can tell you what it does or what it is.",
+          "passed": true,
+          "problems": []
+        },
+        {
+          "id": "alqadim-oasis-hints-and-location-recovery:5",
+          "question": "What does Water Blast do?",
+          "spoiler": "gentle",
+          "expected": "answer",
+          "decision": "answer",
+          "recordIds": [
+            "alqadim:shard:water-blast:use"
+          ],
+          "text": "A fast-moving shot of water that seeks its target like a magic missile. Range: 60 yd. Damage: 2\u201312.",
+          "passed": true,
+          "problems": []
+        },
+        {
+          "id": "alqadim-oasis-hints-and-location-recovery:6",
+          "question": "How do I complete Chapter 3?",
+          "spoiler": "balanced",
+          "expected": "answer",
+          "decision": "answer",
+          "recordIds": [
+            "alqadim:chapter:3:hint"
+          ],
+          "text": "Look for purple berries among the oasis bushes, and speak to the mermaid at the pool.",
+          "passed": true,
+          "problems": []
+        },
+        {
+          "id": "alqadim-oasis-hints-and-location-recovery:7",
+          "question": "What does light ning bolt do?",
+          "spoiler": "balanced",
+          "expected": "answer",
+          "decision": "answer",
+          "recordIds": [
+            "alqadim:shard:lightning-bolt:use"
+          ],
+          "text": "Strikes every target in its path and can ricochet from walls\u2014even back toward the caster. Range: 100 yd. Damage: 6\u201336 per target.",
+          "passed": true,
+          "problems": []
+        },
+        {
+          "id": "alqadim-oasis-hints-and-location-recovery:8",
+          "question": "What are its stats?",
+          "spoiler": "balanced",
+          "expected": "answer",
+          "decision": "answer",
+          "recordIds": [
+            "alqadim:shard:lightning-bolt:use"
+          ],
+          "text": "Strikes every target in its path and can ricochet from walls\u2014even back toward the caster. Range: 100 yd. Damage: 6\u201336 per target.",
+          "passed": true,
+          "problems": []
+        },
+        {
+          "id": "alqadim-oasis-hints-and-location-recovery:9",
+          "question": "How do I complete Chapter 3?",
+          "spoiler": "direct",
+          "expected": "answer",
+          "decision": "answer",
+          "recordIds": [
+            "alqadim:chapter:3:hint"
+          ],
+          "text": "Travel to the Western Desert Oasis.\nFend off hyenas and thorn bushes.\nCollect the Purple Berries from the oasis bushes.\nConverse with the mermaid at the pool and accept her quest.\nOptional: Defeat the giant boar roaming the oasis outskirts for XP.\nChecklist order is not a modeled prerequisite.",
+          "passed": true,
+          "problems": []
+        },
+        {
+          "id": "alqadim-oasis-hints-and-location-recovery:10",
+          "question": "What does LIGHTNINGBOLT do?",
+          "spoiler": "direct",
+          "expected": "answer",
+          "decision": "answer",
+          "recordIds": [
+            "alqadim:shard:lightning-bolt:use"
+          ],
+          "text": "Strikes every target in its path and can ricochet from walls\u2014even back toward the caster. Range: 100 yd. Damage: 6\u201336 per target.",
+          "passed": true,
+          "problems": []
+        },
+        {
+          "id": "alqadim-oasis-hints-and-location-recovery:11",
+          "question": "What does it do in the SNES edition?",
+          "spoiler": "direct",
+          "expected": "no-answer",
+          "decision": "decline",
+          "recordIds": [],
+          "text": "This guide does not support the edition or version named in your question.",
+          "passed": true,
+          "problems": []
+        },
+        {
+          "id": "alqadim-oasis-hints-and-location-recovery:12",
+          "question": "What does Lightning Bolt do?",
+          "spoiler": "direct",
+          "expected": "answer",
+          "decision": "answer",
+          "recordIds": [
+            "alqadim:shard:lightning-bolt:use"
+          ],
+          "text": "Strikes every target in its path and can ricochet from walls\u2014even back toward the caster. Range: 100 yd. Damage: 6\u201336 per target.",
+          "passed": true,
+          "problems": []
+        }
+      ]
+    },
+    {
+      "id": "alqadim-experience-explanation-and-guide-only-boundary",
+      "gameId": "alqadim",
+      "families": [
+        "relationships",
+        "mechanics",
+        "continuity",
+        "topics",
+        "boundaries",
+        "unsupported"
+      ],
+      "passed": true,
+      "turns": [
+        {
+          "id": "alqadim-experience-explanation-and-guide-only-boundary:1",
+          "question": "What are experience points?",
+          "spoiler": "balanced",
+          "expected": "answer",
+          "decision": "answer",
+          "recordIds": [
+            "alqadim:research:experience-levels:explanation"
+          ],
+          "text": "Not in this guide \u2014 from outside research: Per the original rule book, the hero earns experience for solving puzzles, achieving goals and killing monsters, and gains hit points automatically at each new level. Experience needed: level 2 at 2,000; level 3 at 4,000; level 4 at 8,000; level 5 at 16,000; level 6 at 32,000; level 7 at 64,000; level 8 at 125,000; level 9 at 250,000. The hero starts as a second-level corsair, and View Stats in the menu shows the current experience total.",
+          "passed": true,
+          "problems": []
+        },
+        {
+          "id": "alqadim-experience-explanation-and-guide-only-boundary:2",
+          "question": "How do I level up?",
+          "spoiler": "balanced",
+          "expected": "answer",
+          "decision": "answer",
+          "recordIds": [
+            "alqadim:research:experience-levels:explanation"
+          ],
+          "text": "Not in this guide \u2014 from outside research: Per the original rule book, the hero earns experience for solving puzzles, achieving goals and killing monsters, and gains hit points automatically at each new level. Experience needed: level 2 at 2,000; level 3 at 4,000; level 4 at 8,000; level 5 at 16,000; level 6 at 32,000; level 7 at 64,000; level 8 at 125,000; level 9 at 250,000. The hero starts as a second-level corsair, and View Stats in the menu shows the current experience total.",
+          "passed": true,
+          "problems": []
+        },
+        {
+          "id": "alqadim-experience-explanation-and-guide-only-boundary:3",
+          "question": "What are hit points?",
+          "spoiler": "balanced",
+          "expected": "answer",
+          "decision": "answer",
+          "recordIds": [
+            "alqadim:research:hit-points:explanation"
+          ],
+          "text": "Not in this guide \u2014 from outside research: In the original rule book, hit points are shown by the red health bar at the top of the screen; at zero the hero dies and you must start a new game or load a saved one. Health comes back by drinking a healing potion or visiting places where healing is available, and the maximum only goes up by gaining a level. View Stats in the menu shows the numeric maximum.",
+          "passed": true,
+          "problems": []
+        },
+        {
+          "id": "alqadim-experience-explanation-and-guide-only-boundary:4",
+          "question": "Using only this guide, what are experience points?",
+          "spoiler": "balanced",
+          "expected": "no-answer",
+          "decision": "decline",
+          "recordIds": [],
+          "text": "The local guide has no supported stats answer for this subject at the selected help level. It can tell you how to get it, what it does, what it is, what it requires or a hint.",
+          "passed": true,
+          "problems": []
+        },
+        {
+          "id": "alqadim-experience-explanation-and-guide-only-boundary:5",
+          "question": "What about hit points?",
+          "spoiler": "balanced",
+          "expected": "no-answer",
+          "decision": "decline",
+          "recordIds": [],
+          "text": "The local guide has no supported stats answer for this subject at the selected help level. It can tell you what it does, what it is or a hint.",
+          "passed": true,
+          "problems": []
+        },
+        {
+          "id": "alqadim-experience-explanation-and-guide-only-boundary:6",
+          "question": "reset topic",
+          "spoiler": "balanced",
+          "expected": "reset",
+          "decision": "reset",
+          "recordIds": [],
+          "text": "Conversation reset.",
+          "passed": true,
+          "problems": []
+        },
+        {
+          "id": "alqadim-experience-explanation-and-guide-only-boundary:7",
+          "question": "How do I level up?",
+          "spoiler": "gentle",
+          "expected": "answer",
+          "decision": "answer",
+          "recordIds": [
+            "alqadim:research:experience-levels:explanation"
+          ],
+          "text": "Not in this guide \u2014 from outside research: Per the original rule book, the hero earns experience for solving puzzles, achieving goals and killing monsters, and gains hit points automatically at each new level. Experience needed: level 2 at 2,000; level 3 at 4,000; level 4 at 8,000; level 5 at 16,000; level 6 at 32,000; level 7 at 64,000; level 8 at 125,000; level 9 at 250,000. The hero starts as a second-level corsair, and View Stats in the menu shows the current experience total.",
+          "passed": true,
+          "problems": []
+        },
+        {
+          "id": "alqadim-experience-explanation-and-guide-only-boundary:8",
+          "question": "What are hit points?",
+          "spoiler": "direct",
+          "expected": "answer",
+          "decision": "answer",
+          "recordIds": [
+            "alqadim:research:hit-points:explanation"
+          ],
+          "text": "Not in this guide \u2014 from outside research: In the original rule book, hit points are shown by the red health bar at the top of the screen; at zero the hero dies and you must start a new game or load a saved one. Health comes back by drinking a healing potion or visiting places where healing is available, and the maximum only goes up by gaining a level. View Stats in the menu shows the numeric maximum.",
+          "passed": true,
+          "problems": []
+        }
+      ]
+    }
+  ]
+}
