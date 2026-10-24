@@ -33,6 +33,7 @@ export function buildTopicRecords(gameId, topics = [], facts) {
             id: `${gameId}:topic:${topic.id}:${relation}`, entityId, title: topic.title,
             aliases: [...(topic.aliases || [])], kind: topic.kind || 'topic', relation,
             answers: [...(topic.answers || [])], scope: topic.scope || 'reference',
+            ...(topic.identity === false ? { identity: false } : {}),
             acquisitionMethods: [...(topic.acquisitionMethods || [])],
             minSpoiler: level, requires: null, editions: topic.editions || [],
             conflict: Boolean(topic.conflict || parts.some(part => part.conflict)),
@@ -283,6 +284,8 @@ export function buildResearchRecords(gameId, research = [], overlayFile) {
         return {
             id: `${gameId}:research:${entry.id}:${relation}`, entityId: entry.entityId || `${gameId}:research:${entry.id}`,
             title: entry.title, aliases: [...(entry.aliases || [])], kind: 'research', relation,
+            // What a subject is is separate from where its evidence came from.
+            ...(['npc', 'character', 'place', 'organization'].includes(entry.subjectKind) ? { subjectKind: entry.subjectKind } : {}),
             answers: [...(entry.answers || [])], scope: 'reference', minSpoiler: level, requires: null,
             acquisitionMethods: [...(entry.acquisitionMethods || [])], editions: entry.editions || [], conflict: false,
             variants: { [level]: { text: entry.text } },

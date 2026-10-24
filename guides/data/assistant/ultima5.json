@@ -29,6 +29,15 @@
         "locator": "section#shrines, closing sentence",
         "review": "extracted"
       }
+    },
+    {
+      "key": "page:shadowlords-identity",
+      "text": "Above, the three Shadowlords bend cities toward Falsehood, Hatred, and Cowardice while Blackthorn's regime punishes virtue without choice.",
+      "source": {
+        "file": "guides/Ultima5.html",
+        "locator": "#avatar .u5-story-card--feature p:nth-of-type(2), second sentence",
+        "review": "extracted"
+      }
     }
   ],
   "gentleHints": {
@@ -1383,7 +1392,8 @@
         "title:shadow-faulinei",
         "title:shadow-astaroth",
         "title:shadow-nosfentor"
-      ]
+      ],
+      "identity": false
     },
     {
       "id": "eight-virtues",
@@ -1573,6 +1583,26 @@
           "label": "Ultima Codex: An Zu (quoting the Ultima V Book of Lore)",
           "url": "https://wiki.ultimacodex.com/wiki/An_Zu",
           "checkedAt": "2026-10-20"
+        }
+      ]
+    },
+    {
+      "id": "lord-british-identity",
+      "entityId": "ultima5:npc:lord-british",
+      "title": "Lord British",
+      "aliases": [
+        "the king of Britannia",
+        "Britannia's king"
+      ],
+      "subjectKind": "npc",
+      "relation": "explanation",
+      "minSpoiler": "gentle",
+      "text": "Lord British is the king of Britannia. The Book of Lore describes him sharing government with a Great Council representing the eight major towns.",
+      "sources": [
+        {
+          "label": "Ultima V original manual, The Book of Lore: Government (printed pages 8–9)",
+          "url": "https://c64sets.com/ultima5/u5_the_book_of_lore.pdf",
+          "checkedAt": "2026-10-24"
         }
       ]
     }
@@ -2046,6 +2076,33 @@
     }
   },
   "narratives": [
+    {
+      "id": "shadowlords-identity",
+      "entityId": "ultima5:topic:shadowlords",
+      "kind": "topic",
+      "title": "Shadowlords",
+      "aliases": [
+        "Shadowlord",
+        "the Shadowlords",
+        "three Shadowlords",
+        "who are the Shadowlords",
+        "what are the Shadowlords"
+      ],
+      "minSpoiler": "balanced",
+      "from": [
+        "page:shadowlords-identity",
+        "identity:shadow-faulinei",
+        "identity:shadow-astaroth",
+        "identity:shadow-nosfentor"
+      ],
+      "narrative": {
+        "aspect": "identity",
+        "subjects": [
+          "Shadowlords"
+        ],
+        "context": []
+      }
+    },
     {
       "id": "opening-party",
       "entityId": "ultima5:objective:opening-party",

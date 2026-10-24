@@ -47,6 +47,8 @@ export function authorize(record, ceiling) {
         title: value.title || record.title,
         aliases: [...(value.aliases || record.aliases || [])],
         kind: record.kind, relation: record.relation, scope: record.scope,
+        ...(record.subjectKind ? { subjectKind: record.subjectKind } : {}),
+        ...(record.identity === false ? { identity: false } : {}),
         // Adapter-declared extra relationships this fact answers (e.g. an
         // equipment statistics entry that is also its effect description).
         answers: [...(record.answers || [])],

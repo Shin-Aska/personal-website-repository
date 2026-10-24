@@ -124,6 +124,22 @@ export function buildAlQadimRecords(data, overlay, chapterRoutes = {}, atlas = n
             .forEach(objective => facts.push([`obj:${objective.id}`, objective.text, source(`DB.chapters[${index}].${chapter.required.includes(objective) ? 'required' : 'optional'}[id=${objective.id}]`)]));
     });
     (overlay.pageFacts || []).forEach(fact => facts.push([`pf:${fact.id}`, fact.text, { file: 'guides/AlQadim.html', locator: fact.locator, review: 'extracted' }]));
+    // Reviewed identity phrases inside quest text. Extract the stated role,
+    // keeping the original spoiler ceiling and source; directions are context.
+    const family = data.chapters.find(chapter => chapter.id === 2)?.required.find(o => o.id === 'ch2_2');
+    const prison = data.chapters.find(chapter => chapter.id === 16);
+    if (family?.text.includes('Mother (Jessamin)')) facts.push(['identity:jessamin', 'Mother (Jessamin)',
+        source('DB.chapters[id=2].required[id=ch2_2].text (identity phrase)'), { minSpoiler: 'direct' }]);
+    if (prison?.summary.includes('your brother Tarik')) facts.push(['identity:tarik', 'your brother Tarik',
+        source('DB.chapters[id=16].summary (identity phrase)'), { minSpoiler: 'direct' }]);
+    for (const [id, chapterId, objectiveId, phrase] of [
+        ['kara', 19, 'ch19_2', 'the rogue genie Kara'],
+        ['pangar', 12, 'ch12_4', 'the cyclops Pangar-Bek']
+    ]) {
+        const objective = data.chapters.find(chapter => chapter.id === chapterId)?.required.find(o => o.id === objectiveId);
+        if (objective?.text.includes(phrase)) facts.push([`identity:${id}`, phrase,
+            source(`DB.chapters[id=${chapterId}].required[id=${objectiveId}].text (identity phrase)`), { minSpoiler: 'direct' }]);
+    }
     const factIndex = factMap(facts);
     records.push(...buildTopicRecords('alqadim', (overlay.topics || []).map(topic => ({ ...topic, overlayFile: 'guides/data/assistant/alqadim.json' })), factIndex));
     records.push(...buildNarrativeRecords('alqadim', (overlay.narratives || []).map(definition => ({ ...definition, overlayFile: 'guides/data/assistant/alqadim.json' })), factIndex));

@@ -1,0 +1,2719 @@
+{
+  "schemaVersion": 1,
+  "gameId": "ultima6",
+  "review": "Semantic expectations authored from the written Ultima VI guide data, page indexes and reviewed cited research before execution; not inferred from assistant output.",
+  "basis": [
+    "guides/js/Ultima6.js: gameData.companions, equipment, spells, shrines, quests, sideQuests, dungeons and passage",
+    "guides/js/Ultima6Atlas.js: named markers and shrine metadata",
+    "guides/data/assistant/ultima6.json: pageFacts, topics, narratives and cited research",
+    "guides/Ultima6.html: #avatar .u6-briefing-hero__copy p; #avatar .u6-briefing-card--feature p",
+    "guides/data/assistant/ultima6.json: topics[id=premise]"
+  ],
+  "dialogues": [
+    {
+      "id": "ultima6-starting-companions",
+      "families": [
+        "lore",
+        "mechanics",
+        "continuity",
+        "travel"
+      ],
+      "spoiler": "gentle",
+      "turns": [
+        {
+          "text": "Who is Iolo?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Bard",
+              "ranged"
+            ],
+            "entityIds": [
+              "ultima6:atlas:marker:Iolo"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What are his stats?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Strength 20",
+              "Dexterity 26"
+            ],
+            "entityIds": [
+              "ultima6:atlas:marker:Iolo"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What about Shamino?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Strength 18",
+              "Intelligence 19"
+            ],
+            "entityIds": [
+              "ultima6:atlas:marker:Shamino"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Who is he?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Ranger",
+              "fighter/mage"
+            ],
+            "entityIds": [
+              "ultima6:atlas:marker:Shamino"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What about Dupre?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Fighter",
+              "frontline"
+            ],
+            "entityIds": [
+              "ultima6:atlas:marker:Dupre"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What are his stats?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Strength 26",
+              "Intelligence 17"
+            ],
+            "entityIds": [
+              "ultima6:atlas:marker:Dupre"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "How do I recruit him?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Recruitment:"
+            ]
+          }
+        },
+        {
+          "text": "Who is his daughter?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": []
+          }
+        }
+      ]
+    },
+    {
+      "id": "ultima6-yew-to-minoc",
+      "families": [
+        "lore",
+        "travel",
+        "continuity",
+        "mechanics"
+      ],
+      "spoiler": "direct",
+      "turns": [
+        {
+          "text": "Who is Jaana?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Druid",
+              "spellcaster"
+            ],
+            "entityIds": [
+              "ultima6:atlas:marker:Jaana"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Where is she?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Yew",
+              "Coordinates"
+            ],
+            "entityIds": [
+              "ultima6:atlas:marker:Jaana"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What about Julia?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Minoc",
+              "Coordinates"
+            ],
+            "entityIds": [
+              "ultima6:atlas:marker:Julia"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Who is she?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Tinker",
+              "secondary fighter"
+            ],
+            "entityIds": [
+              "ultima6:atlas:marker:Julia"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What are her stats?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Strength 21",
+              "Intelligence 17"
+            ],
+            "entityIds": [
+              "ultima6:atlas:marker:Julia"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What about Gwenno?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Dexterity 21",
+              "Intelligence 17"
+            ],
+            "entityIds": [
+              "ultima6:atlas:marker:Gwenno"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Where is she?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Minoc"
+            ],
+            "entityIds": [
+              "ultima6:atlas:marker:Gwenno"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Why did she kill Julia?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Gwenno killed"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "ultima6-distant-fighters",
+      "families": [
+        "lore",
+        "travel",
+        "continuity",
+        "mechanics"
+      ],
+      "spoiler": "direct",
+      "turns": [
+        {
+          "text": "Who is Katrina?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Farmer",
+              "starting level"
+            ],
+            "entityIds": [
+              "ultima6:atlas:marker:Katrina"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Where is she?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "New Magincia"
+            ],
+            "entityIds": [
+              "ultima6:atlas:marker:Katrina"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What about Seggallion?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Serpent"
+            ],
+            "entityIds": [
+              "ultima6:atlas:marker:Seggallion"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Who is he?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "strongest pure fighter"
+            ],
+            "entityIds": [
+              "ultima6:atlas:marker:Seggallion"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What are his stats?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Strength 28",
+              "Intelligence 20"
+            ],
+            "entityIds": [
+              "ultima6:atlas:marker:Seggallion"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What about Sentri?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Strength 26",
+              "Intelligence 16"
+            ],
+            "entityIds": [
+              "ultima6:atlas:marker:Sentri"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Where is he?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Serpent"
+            ],
+            "entityIds": [
+              "ultima6:atlas:marker:Sentri"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "How do I recruit him?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Recruitment:"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "ultima6-mouse-and-gargoyle",
+      "families": [
+        "lore",
+        "mechanics",
+        "continuity",
+        "names",
+        "boundaries"
+      ],
+      "spoiler": "balanced",
+      "turns": [
+        {
+          "text": "Who is Sherry?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Mouse",
+              "utility"
+            ],
+            "entityIds": [
+              "ultima6:atlas:marker:Sherry"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What are her stats?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Strength 1",
+              "Dexterity 27"
+            ],
+            "entityIds": [
+              "ultima6:atlas:marker:Sherry"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Who is Beh Lem?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Gargoyle",
+              "final act"
+            ],
+            "entityIds": [
+              "ultima6:atlas:marker:Beh Lem"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What are his stats?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Intelligence 26",
+              "Dexterity 24"
+            ],
+            "entityIds": [
+              "ultima6:atlas:marker:Beh Lem"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Who is Behlem?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Gargoyle"
+            ],
+            "entityIds": [
+              "ultima6:atlas:marker:Beh Lem"
+            ],
+            "source": "guide",
+            "absent": [
+              "Did you mean"
+            ]
+          }
+        },
+        {
+          "text": "Where is he?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Gargoyle Realm"
+            ]
+          }
+        },
+        {
+          "text": "Where is Beh Lem?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Gargoyle Realm",
+              "Coordinates"
+            ],
+            "entityIds": [
+              "ultima6:atlas:marker:Beh Lem"
+            ],
+            "source": "guide"
+          },
+          "options": {
+            "spoiler": "direct"
+          }
+        },
+        {
+          "text": "Why did he destroy Britannia?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Beh Lem destroyed"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "ultima6-sword-shopping",
+      "families": [
+        "mechanics",
+        "travel",
+        "continuity",
+        "boundaries"
+      ],
+      "spoiler": "gentle",
+      "turns": [
+        {
+          "text": "What does Enilno do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "2H Sword",
+              "130 Dmg"
+            ],
+            "entityIds": [
+              "ultima6:item:enilno"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What about the Mystic Sword?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "1H Sword",
+              "24-30 Dmg"
+            ],
+            "entityIds": [
+              "ultima6:item:mystic-sword"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What about the Glass Sword?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "255 Dmg",
+              "1 use"
+            ],
+            "entityIds": [
+              "ultima6:item:glass-sword"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Where is it?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Minoc"
+            ]
+          }
+        },
+        {
+          "text": "Where is the Glass Sword?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Crafted in Minoc"
+            ],
+            "entityIds": [
+              "ultima6:item:glass-sword"
+            ],
+            "source": "guide"
+          },
+          "options": {
+            "spoiler": "direct"
+          }
+        },
+        {
+          "text": "Where is Enilno?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "level 3 of Hythloth"
+            ],
+            "entityIds": [
+              "ultima6:item:enilno"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Where is the Mystic Sword?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Avatar's chamber",
+              "Lycaeum"
+            ],
+            "entityIds": [
+              "ultima6:item:mystic-sword"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Where is it on Mars?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Avatar's chamber"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "ultima6-armour-and-cloak",
+      "families": [
+        "mechanics",
+        "travel",
+        "continuity",
+        "unsupported"
+      ],
+      "spoiler": "direct",
+      "turns": [
+        {
+          "text": "What does Magic Armour do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "+10 Armor"
+            ],
+            "entityIds": [
+              "ultima6:item:magic-armour"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Where can I buy it?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Sold in Trinsic"
+            ],
+            "entityIds": [
+              "ultima6:item:magic-armour"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What does the Magic Helm do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "+5 Armor"
+            ],
+            "entityIds": [
+              "ultima6:item:magic-helm"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Where can I get it?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Trinsic",
+              "Pirate Cave"
+            ],
+            "entityIds": [
+              "ultima6:item:magic-helm"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What does the Storm Cloak do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Disables Magic"
+            ],
+            "entityIds": [
+              "ultima6:item:storm-cloak"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Where is it?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Pirate Cave",
+              "Swamp Cave"
+            ],
+            "entityIds": [
+              "ultima6:item:storm-cloak"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Where can I buy it?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Sold in Trinsic"
+            ]
+          }
+        },
+        {
+          "text": "What does it do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Disables Magic"
+            ],
+            "entityIds": [
+              "ultima6:item:storm-cloak"
+            ],
+            "source": "guide"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ultima6-boots-and-crossbow",
+      "families": [
+        "mechanics",
+        "travel",
+        "continuity",
+        "names"
+      ],
+      "spoiler": "direct",
+      "turns": [
+        {
+          "text": "What does the Triple Crossbow do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "30 Dmg"
+            ],
+            "entityIds": [
+              "ultima6:item:triple-crossbow"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Where do I get it?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Gwenneth",
+              "Iolo"
+            ],
+            "entityIds": [
+              "ultima6:item:triple-crossbow"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Where do I buy it?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Sold by Gwenneth"
+            ]
+          }
+        },
+        {
+          "text": "What do Swamp Boots do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Negates Poison",
+              "+2 Armor"
+            ],
+            "entityIds": [
+              "ultima6:item:swamp-boots"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Where can I buy them?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Utomo",
+              "Yew"
+            ],
+            "entityIds": [
+              "ultima6:item:swamp-boots"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What do swampboots do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Negates Poison"
+            ],
+            "entityIds": [
+              "ultima6:item:swamp-boots"
+            ],
+            "source": "guide",
+            "absent": [
+              "Did you mean"
+            ]
+          }
+        },
+        {
+          "text": "Can I buy them for free?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Sold by Utomo"
+            ]
+          }
+        },
+        {
+          "text": "What does the Triple Crossbow do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "30 Dmg"
+            ],
+            "entityIds": [
+              "ultima6:item:triple-crossbow"
+            ],
+            "source": "guide"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ultima6-early-spells",
+      "families": [
+        "mechanics",
+        "continuity",
+        "topics",
+        "unsupported"
+      ],
+      "spoiler": "gentle",
+      "turns": [
+        {
+          "text": "What does Heal do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Restores HP",
+              "single target"
+            ],
+            "entityIds": [
+              "ultima6:spell:heal-great-heal"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What does Cure do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Cures poison"
+            ],
+            "entityIds": [
+              "ultima6:spell:cure"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What about Unlock Magic?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "locked doors/chests"
+            ],
+            "entityIds": [
+              "ultima6:spell:unlock-magic"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What about Dispel Field?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Removes magical fields"
+            ],
+            "entityIds": [
+              "ultima6:spell:dispel-field"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What about Telekinesis?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Manipulates distant objects"
+            ],
+            "entityIds": [
+              "ultima6:spell:telekinesis"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What about Great Light?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Illuminates dark dungeons"
+            ],
+            "entityIds": [
+              "ultima6:spell:great-light"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What reagents does it need?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Sulfurous Ash"
+            ]
+          }
+        },
+        {
+          "text": "What does Cure do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Cures poison"
+            ],
+            "entityIds": [
+              "ultima6:spell:cure"
+            ],
+            "source": "guide"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ultima6-advanced-spells",
+      "families": [
+        "mechanics",
+        "names",
+        "continuity",
+        "boundaries"
+      ],
+      "spoiler": "gentle",
+      "turns": [
+        {
+          "text": "What does Invisibility All do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "entire party invisible",
+              "circle 7"
+            ],
+            "entityIds": [
+              "ultima6:spell:invisibility-all"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What about Death Wind?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "multiple enemies",
+              "circle 8"
+            ],
+            "entityIds": [
+              "ultima6:spell:death-wind"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What about Kill?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "single non-immune enemy"
+            ],
+            "entityIds": [
+              "ultima6:spell:kill"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What are its stats?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "circle 7",
+              "single non-immune"
+            ],
+            "entityIds": [
+              "ultima6:spell:kill"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What does deathwind do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "multiple enemies"
+            ],
+            "entityIds": [
+              "ultima6:spell:death-wind"
+            ],
+            "source": "guide",
+            "absent": [
+              "Did you mean"
+            ]
+          }
+        },
+        {
+          "text": "What does it do in the SNES edition?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Kills multiple enemies"
+            ]
+          }
+        },
+        {
+          "text": "What about Kill?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Instantly kills"
+            ]
+          }
+        },
+        {
+          "text": "What does Invisibility All do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "entire party invisible"
+            ],
+            "entityIds": [
+              "ultima6:spell:invisibility-all"
+            ],
+            "source": "guide"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ultima6-virtue-bonuses",
+      "families": [
+        "lore",
+        "mechanics",
+        "continuity",
+        "boundaries"
+      ],
+      "spoiler": "gentle",
+      "turns": [
+        {
+          "text": "What does the Shrine of Valor give me?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "+3 Strength"
+            ],
+            "entityIds": [
+              "ultima6:atlas:place:Shrine of Valor"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What about the Shrine of Compassion?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "+3 Dexterity"
+            ],
+            "entityIds": [
+              "ultima6:atlas:place:Shrine of Compassion"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What about the Shrine of Honesty?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "+3 Intelligence"
+            ],
+            "entityIds": [
+              "ultima6:atlas:place:Shrine of Honesty"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What about the Shrine of Sacrifice?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "+1 Strength",
+              "+1 Dexterity"
+            ],
+            "entityIds": [
+              "ultima6:atlas:place:Shrine of Sacrifice"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What about the Shrine of Honor?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "+1 Strength",
+              "+1 Intelligence"
+            ],
+            "entityIds": [
+              "ultima6:atlas:place:Shrine of Honor"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What about the Shrine of Justice?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "+1 Dexterity",
+              "+1 Intelligence"
+            ],
+            "entityIds": [
+              "ultima6:atlas:place:Shrine of Justice"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What about the Shrine of Humility?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "No bonus"
+            ],
+            "entityIds": [
+              "ultima6:atlas:place:Shrine of Humility"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What is the mantra for Valor?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Mantra: RA"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "ultima6-mantras-and-lowering",
+      "families": [
+        "lore",
+        "mechanics",
+        "boundaries",
+        "continuity"
+      ],
+      "spoiler": "direct",
+      "turns": [
+        {
+          "text": "What is the mantra for Valor?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Mantra: RA"
+            ],
+            "entityIds": [
+              "ultima6:atlas:place:Shrine of Valor"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What is the mantra for Compassion?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Mantra: MU"
+            ],
+            "entityIds": [
+              "ultima6:atlas:place:Shrine of Compassion"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What is the mantra for Honesty?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Mantra: AHM"
+            ],
+            "entityIds": [
+              "ultima6:atlas:place:Shrine of Honesty"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What is the mantra for Sacrifice?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Mantra: CAH"
+            ],
+            "entityIds": [
+              "ultima6:atlas:place:Shrine of Sacrifice"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What is the mantra for Honor?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Mantra: SUMM"
+            ],
+            "entityIds": [
+              "ultima6:atlas:place:Shrine of Honor"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What is the mantra for Justice?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Mantra: BEH"
+            ],
+            "entityIds": [
+              "ultima6:atlas:place:Shrine of Justice"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What is the mantra for Justice?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Mantra: BEH"
+            ]
+          },
+          "options": {
+            "spoiler": "gentle"
+          },
+          "historyAbsent": [
+            "Mantra: BEH",
+            "Mantra: SUMM",
+            "Mantra: CAH"
+          ]
+        },
+        {
+          "text": "What is the Shrine of Humility?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "No bonus"
+            ],
+            "entityIds": [
+              "ultima6:atlas:place:Shrine of Humility"
+            ],
+            "source": "guide"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ultima6-passage-creatures",
+      "families": [
+        "lore",
+        "mechanics",
+        "topics",
+        "unsupported"
+      ],
+      "spoiler": "gentle",
+      "turns": [
+        {
+          "text": "What doth Trolls Lack?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Endurance"
+            ],
+            "entityIds": [
+              "ultima6:qa:what-doth-trolls-lack"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What part of the tangle vine doth put one to sleep?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Pods"
+            ],
+            "entityIds": [
+              "ultima6:qa:what-part-of-the-tangle-vine-doth-put-one-to-sleep"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "How wert the headlesses produced?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Wizard"
+            ],
+            "entityIds": [
+              "ultima6:qa:how-wert-the-headlesses-produced"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What valued item canst one find near the spawning grounds of Hydras?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Nightshade"
+            ],
+            "entityIds": [
+              "ultima6:qa:what-valued-item-canst-one-find-near-the-spawning-grounds-of-hydras"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "How canst one fend off Rotworms?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Torch"
+            ],
+            "entityIds": [
+              "ultima6:qa:how-canst-one-fend-off-rotworms"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "How doth Sea Serpents attack?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Fireballs"
+            ],
+            "entityIds": [
+              "ultima6:qa:how-doth-sea-serpents-attack"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What creature art Wisps oft mistaken for?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Firefly"
+            ],
+            "entityIds": [
+              "ultima6:qa:what-creature-art-wisps-oft-mistaken-for"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What are wisps mistaken for on Mars?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Firefly"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "ultima6-syllables-and-alchemy",
+      "families": [
+        "lore",
+        "mechanics",
+        "topics",
+        "unsupported"
+      ],
+      "spoiler": "gentle",
+      "turns": [
+        {
+          "text": "What does the magic syllable 'Zu' mean?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Sleep"
+            ],
+            "entityIds": [
+              "ultima6:qa:what-does-the-magic-syllable-zu-mean"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What does the magic syllable 'Quas' mean?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Illusion"
+            ],
+            "entityIds": [
+              "ultima6:qa:what-does-the-magic-syllable-quas-mean"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What does the magic syllable 'Hur' mean?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Wind"
+            ],
+            "entityIds": [
+              "ultima6:qa:what-does-the-magic-syllable-hur-mean"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What does the magic syllable 'Jux' mean?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Danger/Trap/Harm"
+            ],
+            "entityIds": [
+              "ultima6:qa:what-does-the-magic-syllable-jux-mean"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What does the magic syllable 'Ort' mean?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Magic"
+            ],
+            "entityIds": [
+              "ultima6:qa:what-does-the-magic-syllable-ort-mean"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What kind of fork should Mandrake Roots be prepared with?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Silver"
+            ],
+            "entityIds": [
+              "ultima6:qa:what-kind-of-fork-should-mandrake-roots-be-prepared-with"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Where does Sulfurous Ash come from?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Volcanic Eruptions"
+            ],
+            "entityIds": [
+              "ultima6:qa:where-does-sulfurous-ash-come-from"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Where does Sulfurous Ash come from in Ultima IX?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Volcanic Eruptions"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "ultima6-merchant-route",
+      "families": [
+        "objectives",
+        "relationships",
+        "continuity",
+        "travel"
+      ],
+      "spoiler": "balanced",
+      "turns": [
+        {
+          "text": "Summarize the Merchants' Circuit",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "steady supply of gold"
+            ],
+            "entityIds": [
+              "ultima6:side-quest:the-merchants-circuit"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What is the next step?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Carry grain"
+            ]
+          }
+        },
+        {
+          "text": "Summarize the Merchants' Circuit",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "steady supply of gold"
+            ],
+            "entityIds": [
+              "ultima6:side-quest:the-merchants-circuit"
+            ],
+            "source": "guide"
+          },
+          "options": {
+            "spoiler": "direct"
+          }
+        },
+        {
+          "text": "What is the next step?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Linda",
+              "Grison",
+              "Cullen"
+            ],
+            "entityIds": [
+              "ultima6:side-quest:the-merchants-circuit"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What is the next step on Mars?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Linda",
+              "Grison"
+            ]
+          }
+        },
+        {
+          "text": "Summarize the Merchants' Circuit",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "steady supply of gold"
+            ],
+            "entityIds": [
+              "ultima6:side-quest:the-merchants-circuit"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Who is Iolo?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Bard"
+            ],
+            "entityIds": [
+              "ultima6:atlas:marker:Iolo"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What is the next step?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Carry grain"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "ultima6-library-errands",
+      "families": [
+        "objectives",
+        "travel",
+        "continuity",
+        "unsupported"
+      ],
+      "spoiler": "direct",
+      "turns": [
+        {
+          "text": "Summarize the Lycaeum Library errands",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "three unusual books"
+            ],
+            "entityIds": [
+              "ultima6:side-quest:errands-of-the-lycaeum-library"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "How do I complete the Lycaeum Library errands?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Wizard of Oz",
+              "twenty gems",
+              "Dr. Cat",
+              "150 gold"
+            ],
+            "entityIds": [
+              "ultima6:side-quest:errands-of-the-lycaeum-library"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What do I do with The Wizard of Oz?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Lord British",
+              "twenty gems"
+            ],
+            "entityIds": [
+              "ultima6:side-quest:errands-of-the-lycaeum-library"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Can I sell The Wizard of Oz on Mars?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "twenty gems"
+            ]
+          }
+        },
+        {
+          "text": "Summarize Chuckles' Trail of Clues",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "scavenger hunt",
+              "Smith"
+            ],
+            "entityIds": [
+              "ultima6:side-quest:chuckles-trail-of-clues"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "How do I complete it?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Nystul",
+              "Iolo's Hut",
+              "Smith"
+            ],
+            "entityIds": [
+              "ultima6:side-quest:chuckles-trail-of-clues"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Summarize the Merchants' Circuit",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "steady supply of gold"
+            ],
+            "entityIds": [
+              "ultima6:side-quest:the-merchants-circuit"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Why did Chuckles kill Smith?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Chuckles killed"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "ultima6-premise-and-acts",
+      "families": [
+        "lore",
+        "objectives",
+        "relationships",
+        "topics"
+      ],
+      "spoiler": "balanced",
+      "turns": [
+        {
+          "text": "What is Ultima VI about?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "dying world",
+              "Avatar",
+              "stolen Codex"
+            ],
+            "entityIds": [
+              "ultima6:topic:premise"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Summarize Act I: Liberating the Shrines",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "eight runes",
+              "Lord British"
+            ],
+            "entityIds": [
+              "ultima6:quest:act-i-liberating-the-shrines:overview"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Summarize Act II: Prophecy & Pirates",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Mariah",
+              "silver tablet",
+              "Hawkins"
+            ],
+            "entityIds": [
+              "ultima6:quest:act-ii-prophecy-pirates:overview"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Summarize Act III: Realm of the Gargoyles",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Hythloth",
+              "Singularity"
+            ],
+            "entityIds": [
+              "ultima6:quest:act-iii-realm-of-the-gargoyles:overview"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Summarize the Final Ritual",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Vortex Cube",
+              "twin lenses",
+              "Codex"
+            ],
+            "entityIds": [
+              "ultima6:quest:final-ritual:overview"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Why did Iolo kill Lord British?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Iolo killed"
+            ]
+          }
+        },
+        {
+          "text": "Who is Iolo?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Bard",
+              "ranged"
+            ],
+            "entityIds": [
+              "ultima6:atlas:marker:Iolo"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What is the outcome?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Lord British returns"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "ultima6-dungeon-itinerary",
+      "families": [
+        "travel",
+        "objectives",
+        "mechanics",
+        "continuity"
+      ],
+      "spoiler": "direct",
+      "turns": [
+        {
+          "text": "Where is Destard?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Northwest of Trinsic",
+              "Coordinates"
+            ],
+            "entityIds": [
+              "ultima6:atlas:marker:Dungeon Destard"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "How do I get through Hythloth?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Captain Johne",
+              "Gargish"
+            ],
+            "entityIds": [
+              "ultima6:atlas:marker:Dungeon Hythloth"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Where is it?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Isle of the Avatar"
+            ],
+            "entityIds": [
+              "ultima6:atlas:marker:Dungeon Hythloth"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What do I do in Dungeon Shame?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Old Ybarra",
+              "map piece"
+            ],
+            "entityIds": [
+              "ultima6:atlas:marker:Dungeon Shame"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Where is it?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "West of Britannia"
+            ],
+            "entityIds": [
+              "ultima6:atlas:marker:Dungeon Shame"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Where is the Ant Mound?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Drylands",
+              "Shrine of Sacrifice"
+            ],
+            "entityIds": [
+              "ultima6:atlas:marker:Ant Mound"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Where is it in Ultima V?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Drylands"
+            ]
+          }
+        },
+        {
+          "text": "Where is Destard?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Northwest of Trinsic"
+            ],
+            "entityIds": [
+              "ultima6:atlas:marker:Dungeon Destard"
+            ],
+            "source": "guide"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ultima6-rune-hunt",
+      "families": [
+        "objectives",
+        "mechanics",
+        "continuity",
+        "relationships"
+      ],
+      "spoiler": "direct",
+      "turns": [
+        {
+          "text": "How do I get the rune in Jhelom?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Sherry",
+              "mouse hole"
+            ],
+            "entityIds": [
+              "ultima6:quest:act-i-liberating-the-shrines:valor-jhelom"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Who is Sherry?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Mouse"
+            ],
+            "entityIds": [
+              "ultima6:atlas:marker:Sherry"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Why did she steal the rune?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Sherry stole"
+            ]
+          }
+        },
+        {
+          "text": "How do I finish the Shrine of Sacrifice quest?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "PANPIPES",
+              "STONES",
+              "Selganor"
+            ],
+            "entityIds": [
+              "ultima6:quest:act-i-liberating-the-shrines:sacrifice-minoc"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Who is Julia?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Tinker"
+            ],
+            "entityIds": [
+              "ultima6:atlas:marker:Julia"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "How do I get the rune for the Shrine of Justice?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Lenora",
+              "Boskin",
+              "Slaughtered Lamb"
+            ],
+            "entityIds": [
+              "ultima6:quest:act-i-liberating-the-shrines:justice-yew"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "How do I get the rune for the Shrine of Compassion?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Ariana",
+              "Anya",
+              "Blue Boar"
+            ],
+            "entityIds": [
+              "ultima6:quest:act-i-liberating-the-shrines:compassion-britain"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "How do I get that rune for free on Mars?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Blue Boar",
+              "Conservatory"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "ultima6-status-and-sources",
+      "families": [
+        "mechanics",
+        "boundaries",
+        "continuity",
+        "unsupported"
+      ],
+      "spoiler": "gentle",
+      "turns": [
+        {
+          "text": "How do I cure poisoning?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Cure",
+              "Cures poison on a single target"
+            ],
+            "entityIds": [
+              "ultima6:spell:cure"
+            ],
+            "source": "guide",
+            "absent": [
+              "outside research:"
+            ]
+          },
+          "note": "Source review correction: gameData.spells[1] explicitly says Cure cures poison, and its adapter declares remedy. Guide evidence takes precedence over research."
+        },
+        {
+          "text": "How do I cure poisoning using only this guide?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Cure",
+              "Cures poison on a single target"
+            ],
+            "entityIds": [
+              "ultima6:spell:cure"
+            ],
+            "source": "guide",
+            "absent": [
+              "outside research:"
+            ]
+          },
+          "note": "Source review correction: gameData.spells[1] explicitly says Cure cures poison, and its adapter declares remedy. Guide evidence takes precedence over research."
+        },
+        {
+          "text": "What about paralysis?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "outside research:"
+            ]
+          }
+        },
+        {
+          "text": "reset topic",
+          "expected": {
+            "decision": "reset"
+          }
+        },
+        {
+          "text": "How do I cure paralysis?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Dispel Magic",
+              "Garlic and Ginseng"
+            ],
+            "entityIds": [
+              "ultima6:research:poison-and-status-cures"
+            ],
+            "source": "research"
+          }
+        },
+        {
+          "text": "How do I wake a sleeping companion?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "blue potion",
+              "Dispel Magic"
+            ],
+            "entityIds": [
+              "ultima6:research:poison-and-status-cures"
+            ],
+            "source": "research"
+          }
+        },
+        {
+          "text": "What does Cure do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Cures poison"
+            ],
+            "entityIds": [
+              "ultima6:spell:cure"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Where can I buy it?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": []
+          }
+        }
+      ]
+    },
+    {
+      "id": "ultima6-names-reset-and-restrictions",
+      "families": [
+        "names",
+        "topics",
+        "continuity",
+        "boundaries",
+        "unsupported"
+      ],
+      "spoiler": "balanced",
+      "turns": [
+        {
+          "text": "Who is Sh erry?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Mouse"
+            ],
+            "entityIds": [
+              "ultima6:atlas:marker:Sherry"
+            ],
+            "source": "guide",
+            "absent": [
+              "Did you mean"
+            ]
+          }
+        },
+        {
+          "text": "What are her stats?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Dexterity 27"
+            ],
+            "entityIds": [
+              "ultima6:atlas:marker:Sherry"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Who is Shaminno?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Ranger"
+            ],
+            "entityIds": [
+              "ultima6:atlas:marker:Shamino"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "yes Shamino",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Ranger"
+            ],
+            "entityIds": [
+              "ultima6:atlas:marker:Shamino"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Where is he on Mars?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Permanent"
+            ]
+          }
+        },
+        {
+          "text": "What about Iolo?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Permanent"
+            ]
+          }
+        },
+        {
+          "text": "Who is Iolo?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Bard"
+            ],
+            "entityIds": [
+              "ultima6:atlas:marker:Iolo"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "reset topic",
+          "expected": {
+            "decision": "reset"
+          }
+        },
+        {
+          "text": "Who is he?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Core ranged damage dealer"
+            ]
+          }
+        },
+        {
+          "text": "Who is Beh Lem?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Gargoyle"
+            ],
+            "entityIds": [
+              "ultima6:atlas:marker:Beh Lem"
+            ],
+            "source": "guide"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ultima6-valor-hints-location-ceiling-and-correction",
+      "families": [
+        "objectives",
+        "travel",
+        "mechanics",
+        "continuity",
+        "topics",
+        "names",
+        "boundaries",
+        "unsupported"
+      ],
+      "spoiler": "gentle",
+      "review": "Source-authored before replay: gameData.quests[0].sections[2] has distinct Gentle/Balanced/Direct Valor hints, and marker:Sherry defines Direct location only. Gentle/Balanced exact-location positives are inapplicable under current policy; explicit refusals, restriction continuity and Direct recovery are tested.",
+      "turns": [
+        {
+          "text": "Give me a hint for the Shrine of Valor",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "someone much smaller",
+              "party cannot"
+            ],
+            "entityIds": [
+              "ultima6:quest:act-i-liberating-the-shrines:valor-jhelom"
+            ],
+            "source": "guide",
+            "recordIds": [
+              "ultima6:quest:act-i-liberating-the-shrines:valor-jhelom:hint"
+            ],
+            "absent": [
+              "Sherry",
+              "mouse hole",
+              "cheese"
+            ],
+            "sourceLocators": [
+              "gentleHints"
+            ]
+          },
+          "note": "Review correction before acceptance: acquisition is withheld at Gentle; explicitly request the supported hint rather than accepting a refusal as positive quest coverage. Claims remain unchanged."
+        },
+        {
+          "text": "Who is Sh erry?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Mouse",
+              "utility"
+            ],
+            "entityIds": [
+              "ultima6:atlas:marker:Sherry"
+            ],
+            "source": "guide",
+            "recordIds": [
+              "ultima6:atlas:marker:Sherry:explanation:reference"
+            ],
+            "sourceLocators": [
+              "gameData.companions[10]"
+            ]
+          }
+        },
+        {
+          "text": "Where is she?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Castle Britannia",
+              "Coordinates"
+            ]
+          }
+        },
+        {
+          "text": "What about Jaana?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Yew",
+              "Coordinates"
+            ]
+          }
+        },
+        {
+          "text": "How do I get the rune for the Shrine of Valor?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Sherry",
+              "tavern walls",
+              "rune"
+            ],
+            "entityIds": [
+              "ultima6:quest:act-i-liberating-the-shrines:valor-jhelom"
+            ],
+            "source": "guide",
+            "recordIds": [
+              "ultima6:quest:act-i-liberating-the-shrines:valor-jhelom:use"
+            ],
+            "absent": [
+              "cheese",
+              "Sword and Keg"
+            ],
+            "sourceLocators": [
+              "gameData.quests[0].sections[2]"
+            ]
+          },
+          "options": {
+            "spoiler": "balanced"
+          },
+          "note": "Exact-record source review: identity selects the companion explanation; a how-to acquisition selects the declared use relation. The native source and semantic claims are unchanged."
+        },
+        {
+          "text": "Who is Sherry?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Mouse",
+              "utility"
+            ],
+            "entityIds": [
+              "ultima6:atlas:marker:Sherry"
+            ],
+            "source": "guide",
+            "recordIds": [
+              "ultima6:narrative:sherry-identity:identity"
+            ],
+            "sourceLocators": [
+              "gameData.companions[10]"
+            ]
+          }
+        },
+        {
+          "text": "Where is she?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Castle Britannia",
+              "Coordinates"
+            ]
+          }
+        },
+        {
+          "text": "Where is Sh erry?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Castle Britannia",
+              "X 121",
+              "Y 17C"
+            ],
+            "entityIds": [
+              "ultima6:atlas:marker:Sherry"
+            ],
+            "source": "guide",
+            "recordIds": [
+              "ultima6:atlas:marker:Sherry:location"
+            ],
+            "sourceLocators": [
+              "gameData.companions[10].location; marker:Sherry"
+            ]
+          },
+          "options": {
+            "spoiler": "direct"
+          }
+        },
+        {
+          "text": "How do I get the rune for the Shrine of Valor?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "cheese",
+              "Sword and Keg",
+              "mouse hole"
+            ],
+            "entityIds": [
+              "ultima6:quest:act-i-liberating-the-shrines:valor-jhelom"
+            ],
+            "source": "guide",
+            "recordIds": [
+              "ultima6:quest:act-i-liberating-the-shrines:valor-jhelom:use"
+            ],
+            "sourceLocators": [
+              "gameData.quests[0].sections[2]"
+            ]
+          },
+          "note": "Exact-record source review: identity selects the companion explanation; a how-to acquisition selects the declared use relation. The native source and semantic claims are unchanged."
+        },
+        {
+          "text": "reset topic",
+          "expected": {
+            "decision": "reset"
+          }
+        },
+        {
+          "text": "Where is she?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Castle Britannia",
+              "Coordinates"
+            ]
+          }
+        },
+        {
+          "text": "Who is Sherry?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Mouse"
+            ],
+            "entityIds": [
+              "ultima6:atlas:marker:Sherry"
+            ],
+            "source": "guide",
+            "recordIds": [
+              "ultima6:narrative:sherry-identity:identity"
+            ],
+            "sourceLocators": [
+              "gameData.companions[10]"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "ultima6-invasion-cause-and-unsupported-motives",
+      "spoiler": "gentle",
+      "families": [
+        "relationships",
+        "lore",
+        "continuity",
+        "topics",
+        "boundaries",
+        "unsupported"
+      ],
+      "turns": [
+        {
+          "text": "Why are the gargoyles attacking?",
+          "options": {
+            "spoiler": "gentle"
+          },
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "because their dying world names the Avatar as its destroyer",
+              "stolen Codex"
+            ],
+            "entityIds": [
+              "ultima6:topic:premise"
+            ],
+            "recordIds": [
+              "ultima6:topic:premise:explanation"
+            ],
+            "source": "guide",
+            "sourceLocators": [
+              "#avatar .u6-briefing-hero__copy p; #avatar .u6-briefing-card--feature p"
+            ]
+          }
+        },
+        {
+          "text": "Why do the gargoyles fear the Avatar?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "fear the Avatar because",
+              "are afraid because"
+            ]
+          }
+        },
+        {
+          "text": "Why are the gargoyles attacking?",
+          "options": {
+            "spoiler": "balanced"
+          },
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "because their dying world names the Avatar as its destroyer",
+              "collapsing homeland"
+            ],
+            "entityIds": [
+              "ultima6:topic:premise"
+            ],
+            "recordIds": [
+              "ultima6:topic:premise:explanation"
+            ],
+            "source": "guide",
+            "sourceLocators": [
+              "#avatar .u6-briefing-hero__copy p; #avatar .u6-briefing-card--feature p"
+            ]
+          }
+        },
+        {
+          "text": "Why did Lord British order the gargoyles to invade?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Lord British ordered"
+            ]
+          }
+        },
+        {
+          "text": "What is Ultima VI about?",
+          "options": {
+            "spoiler": "balanced"
+          },
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Recover the stolen Codex",
+              "end a war"
+            ],
+            "entityIds": [
+              "ultima6:topic:premise"
+            ],
+            "recordIds": [
+              "ultima6:topic:premise:explanation"
+            ],
+            "source": "guide",
+            "sourceLocators": [
+              "#avatar .u6-briefing-hero__copy p; #avatar .u6-briefing-card--feature p"
+            ]
+          }
+        },
+        {
+          "text": "What is Gargish?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Gargish is"
+            ]
+          }
+        },
+        {
+          "text": "Why are the gargoyles attacking?",
+          "options": {
+            "spoiler": "direct"
+          },
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "because their dying world names the Avatar as its destroyer",
+              "stolen Codex"
+            ],
+            "entityIds": [
+              "ultima6:topic:premise"
+            ],
+            "recordIds": [
+              "ultima6:topic:premise:explanation"
+            ],
+            "source": "guide",
+            "sourceLocators": [
+              "#avatar .u6-briefing-hero__copy p; #avatar .u6-briefing-card--feature p"
+            ]
+          }
+        },
+        {
+          "text": "What is Ultima VI about?",
+          "options": {
+            "spoiler": "direct"
+          },
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Recover the stolen Codex",
+              "cannot be solved by conquest alone"
+            ],
+            "entityIds": [
+              "ultima6:topic:premise"
+            ],
+            "recordIds": [
+              "ultima6:topic:premise:explanation"
+            ],
+            "source": "guide",
+            "sourceLocators": [
+              "#avatar .u6-briefing-hero__copy p; #avatar .u6-briefing-card--feature p"
+            ]
+          }
+        },
+        {
+          "text": "reset topic",
+          "expected": {
+            "decision": "reset"
+          }
+        },
+        {
+          "text": "Why are they attacking?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "because their dying world names the Avatar as its destroyer"
+            ]
+          }
+        }
+      ],
+      "review": "Draft authored from native Ultima6.html briefing causal sentence and declared premise aliases before replay. Fear/emotion and an order by Lord British are not asserted by that source. These are causes, not procedures."
+    }
+  ],
+  "oracleReviewNotes": [
+    "Two initial poison expectations incorrectly required external research/a guide-only refusal. Reviewed the preexisting Cure spell and changed both to require the guide answer. Paralysis and sleeping-companion source boundaries remain independently checked."
+  ]
+}

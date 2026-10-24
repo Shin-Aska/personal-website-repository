@@ -621,15 +621,17 @@
     },
     {
       "id": "sim-u7-name-burnside",
+      "note": "Atlas-only names no longer answer identity questions with marker metadata. Burnside's borrowed Finnigan description remains excluded.",
       "gameId": "ultima7",
       "text": "Who is Burnside?",
       "options": {
         "spoiler": "balanced"
       },
       "expected": {
-        "decision": "answer",
+        "decision": "decline",
         "contains": [
-          "npc on the guide's atlas"
+          "sourced identity description",
+          "location"
         ],
         "absent": [
           "Finnigan",
@@ -766,15 +768,17 @@
     },
     {
       "id": "sim-u7-place-covetous",
+      "note": "An empty dungeon marker supports an atlas lookup, but contains no explanation of the place.",
       "gameId": "ultima7",
       "text": "what is covetous",
       "options": {
         "spoiler": "gentle"
       },
       "expected": {
-        "decision": "answer",
+        "decision": "decline",
         "contains": [
-          "Covetous"
+          "sourced identity description",
+          "location"
         ],
         "stateChangeCount": 0
       }
@@ -2606,7 +2610,7 @@
       "expected": {
         "decision": "answer",
         "contains": [
-          "Not in this guide — from outside research",
+          "Not in this guide \u2014 from outside research",
           "Inamo",
           "Hook",
           "Forskis"
@@ -2628,7 +2632,7 @@
       "expected": {
         "decision": "answer",
         "contains": [
-          "Not in this guide — from outside research",
+          "Not in this guide \u2014 from outside research",
           "Christopher",
           "Hook",
           "Forskis"
@@ -2650,7 +2654,7 @@
       "expected": {
         "decision": "answer",
         "contains": [
-          "Not in this guide — from outside research",
+          "Not in this guide \u2014 from outside research",
           "Hook",
           "Forskis"
         ],
@@ -2671,7 +2675,7 @@
       "expected": {
         "decision": "answer",
         "contains": [
-          "Not in this guide — from outside research",
+          "Not in this guide \u2014 from outside research",
           "Inamo",
           "Christopher",
           "Hook",
@@ -2694,7 +2698,7 @@
       "expected": {
         "decision": "answer",
         "contains": [
-          "Not in this guide — from outside research",
+          "Not in this guide \u2014 from outside research",
           "Inamo",
           "Christopher"
         ],
@@ -2715,7 +2719,7 @@
       "expected": {
         "decision": "answer",
         "contains": [
-          "Not in this guide — from outside research",
+          "Not in this guide \u2014 from outside research",
           "Inamo",
           "Christopher"
         ],
@@ -2736,7 +2740,7 @@
       "expected": {
         "decision": "answer",
         "contains": [
-          "Not in this guide — from outside research",
+          "Not in this guide \u2014 from outside research",
           "Inamo",
           "Christopher"
         ],
@@ -2792,7 +2796,7 @@
           "man with a hook"
         ],
         "absent": [
-          "Not in this guide — from outside research"
+          "Not in this guide \u2014 from outside research"
         ],
         "recordIds": [
           "ultima7:story:trinsic-suspect:suspect"
@@ -2900,7 +2904,7 @@
         "sourceRequired": true,
         "stateChangeCount": 0,
         "contains": [
-          "Not in this guide — from outside research",
+          "Not in this guide \u2014 from outside research",
           "different accounts",
           "likely an unexpected bystander",
           "apparently so that he could not witness",
@@ -2910,7 +2914,7 @@
           "ultima7:narrative:inamo-motive:cause"
         ]
       },
-      "note": "Changed on purpose (22 Oct 2026): the disputed Inamo-motive narrative now answers 'Why was Inamo killed?' with three separately attributed Ultima Codex accounts and a no-single-answer lead-in. The negatives that must stay: wrong action, unrelated person, SNES, guide-only, restrictions and hidden-below-Direct (nar-u7-12…26)."
+      "note": "Changed on purpose (22 Oct 2026): the disputed Inamo-motive narrative now answers 'Why was Inamo killed?' with three separately attributed Ultima Codex accounts and a no-single-answer lead-in. The negatives that must stay: wrong action, unrelated person, SNES, guide-only, restrictions and hidden-below-Direct (nar-u7-12\u202626)."
     },
     {
       "id": "res-u7-17",
@@ -3005,7 +3009,7 @@
         "sourceRequired": true,
         "stateChangeCount": 0,
         "contains": [
-          "Not in this guide — from outside research",
+          "Not in this guide \u2014 from outside research",
           "different accounts",
           "likely an unexpected bystander",
           "apparently so that he could not witness",
@@ -3028,7 +3032,7 @@
         "sourceRequired": true,
         "stateChangeCount": 0,
         "contains": [
-          "Not in this guide — from outside research",
+          "Not in this guide \u2014 from outside research",
           "silence him",
           "sensitivity of the operation"
         ],
@@ -3054,7 +3058,7 @@
         "sourceRequired": true,
         "stateChangeCount": 0,
         "contains": [
-          "Not in this guide — from outside research",
+          "Not in this guide \u2014 from outside research",
           "former pirate",
           "Forskis"
         ],
@@ -3075,7 +3079,7 @@
         "sourceRequired": true,
         "stateChangeCount": 0,
         "contains": [
-          "Not in this guide — from outside research",
+          "Not in this guide \u2014 from outside research",
           "Batlin, Elizabeth and Abraham founded"
         ],
         "recordIds": [
@@ -3095,7 +3099,7 @@
         "sourceRequired": true,
         "stateChangeCount": 0,
         "contains": [
-          "Not in this guide — from outside research",
+          "Not in this guide \u2014 from outside research",
           "criminal cult",
           "Guardian"
         ],
@@ -3120,7 +3124,7 @@
           "Crown Jewel"
         ],
         "absent": [
-          "Not in this guide — from outside research",
+          "Not in this guide \u2014 from outside research",
           "Codex"
         ],
         "recordIds": [
@@ -3141,7 +3145,7 @@
           "Investigate the ritualistic murder in the stables."
         ],
         "absent": [
-          "Not in this guide — from outside research"
+          "Not in this guide \u2014 from outside research"
         ],
         "recordIds": [
           "ultima7:narrative:trinsic-event:event"
@@ -3163,7 +3167,7 @@
           "Spark: Christopher's son."
         ],
         "absent": [
-          "Not in this guide — from outside research"
+          "Not in this guide \u2014 from outside research"
         ],
         "recordIds": [
           "ultima7:narrative:spark-christopher:relationship"
@@ -3220,7 +3224,7 @@
         "sourceRequired": true,
         "stateChangeCount": 0,
         "contains": [
-          "Not in this guide — from outside research",
+          "Not in this guide \u2014 from outside research",
           "hired"
         ],
         "recordIds": [
@@ -3570,7 +3574,7 @@
         "sourceRequired": true,
         "stateChangeCount": 0,
         "contains": [
-          "Not in this guide — from outside research",
+          "Not in this guide \u2014 from outside research",
           "Batlin, Elizabeth and Abraham"
         ],
         "recordIds": [
@@ -3590,7 +3594,7 @@
         "sourceRequired": true,
         "stateChangeCount": 0,
         "contains": [
-          "Not in this guide — from outside research",
+          "Not in this guide \u2014 from outside research",
           "left port immediately after",
           "Isle of the Avatar"
         ],
@@ -3611,7 +3615,7 @@
         "sourceRequired": true,
         "stateChangeCount": 0,
         "contains": [
-          "Not in this guide — from outside research",
+          "Not in this guide \u2014 from outside research",
           "Klog hired"
         ],
         "recordIds": [
@@ -3705,7 +3709,7 @@
         "sourceRequired": true,
         "stateChangeCount": 0,
         "contains": [
-          "Not in this guide — from outside research",
+          "Not in this guide \u2014 from outside research",
           "tentative account",
           "apparently",
           "either finished the order"

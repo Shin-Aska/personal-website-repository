@@ -1,0 +1,2833 @@
+{
+  "schemaVersion": 1,
+  "gameId": "ultima5",
+  "review": "Fixed claims authored from Ultima5.js and reviewed cited overlay research before running; no expectations generated from assistant output.",
+  "basis": [
+    "guides/js/Ultima5.js: companionData, spellData, wordData, commonTips, ultima5GrandQuestChapters, ultima5SideQuests",
+    "guides/data/assistant/ultima5.json: topics, narratives, research"
+  ],
+  "dialogues": [
+    {
+      "id": "ultima5-starting-friends",
+      "families": [
+        "lore",
+        "mechanics",
+        "continuity",
+        "travel"
+      ],
+      "spoiler": "gentle",
+      "turns": [
+        {
+          "text": "Who is Iolo?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Bard",
+              "level 3"
+            ],
+            "entityIds": [
+              "ultima5:companion:iolo"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What are his stats?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Strength 19",
+              "Dexterity 21"
+            ],
+            "entityIds": [
+              "ultima5:companion:iolo"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What about Shamino?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Strength 20",
+              "Dexterity 22"
+            ],
+            "entityIds": [
+              "ultima5:companion:shamino"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Who is he?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Fighter",
+              "level 2"
+            ],
+            "entityIds": [
+              "ultima5:companion:shamino"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Where is he?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "starting party"
+            ]
+          }
+        },
+        {
+          "text": "Where is Shamino?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "starting party"
+            ],
+            "entityIds": [
+              "ultima5:companion:shamino"
+            ],
+            "source": "guide"
+          },
+          "options": {
+            "spoiler": "balanced"
+          }
+        },
+        {
+          "text": "What about Iolo?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "starting party"
+            ],
+            "entityIds": [
+              "ultima5:companion:iolo"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "How do I recruit him?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Recruitment:"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "ultima5-mage-circuit",
+      "families": [
+        "lore",
+        "travel",
+        "continuity",
+        "mechanics"
+      ],
+      "spoiler": "balanced",
+      "turns": [
+        {
+          "text": "Who is Jaana?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Mage",
+              "level 2"
+            ],
+            "entityIds": [
+              "ultima5:companion:jaana"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Where is she?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Yew"
+            ],
+            "entityIds": [
+              "ultima5:companion:jaana"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What about Mariah?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Lycaeum"
+            ],
+            "entityIds": [
+              "ultima5:companion:mariah"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What are her stats?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Intelligence 22",
+              "Dexterity 20"
+            ],
+            "entityIds": [
+              "ultima5:companion:mariah"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What about Johne?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Intelligence 24"
+            ],
+            "entityIds": [
+              "ultima5:companion:johne"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Where is he?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Ararat",
+              "Underworld"
+            ],
+            "entityIds": [
+              "ultima5:companion:johne"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "How do I recruit him?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Recruitment:"
+            ]
+          }
+        },
+        {
+          "text": "Who is Johne?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Mage",
+              "level 3"
+            ],
+            "entityIds": [
+              "ultima5:companion:johne"
+            ],
+            "source": "guide"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ultima5-bards-and-abbey",
+      "families": [
+        "lore",
+        "travel",
+        "topics",
+        "continuity"
+      ],
+      "spoiler": "balanced",
+      "turns": [
+        {
+          "text": "Who is Julia?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Bard",
+              "level 2"
+            ],
+            "entityIds": [
+              "ultima5:companion:julia"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Where is she?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Empath Abbey"
+            ],
+            "entityIds": [
+              "ultima5:companion:julia"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What about Toshi?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Empath Abbey"
+            ],
+            "entityIds": [
+              "ultima5:companion:toshi"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Who is he?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Bard",
+              "level 1"
+            ],
+            "entityIds": [
+              "ultima5:companion:toshi"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What are his stats?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Strength 17",
+              "Dexterity 21"
+            ],
+            "entityIds": [
+              "ultima5:companion:toshi"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What about Gwenno?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Strength 17",
+              "Dexterity 22"
+            ],
+            "entityIds": [
+              "ultima5:companion:gwenno"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Where is she?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Britain"
+            ],
+            "entityIds": [
+              "ultima5:companion:gwenno"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Who is her father?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Gwenno's father"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "ultima5-border-fighters",
+      "families": [
+        "lore",
+        "travel",
+        "mechanics",
+        "continuity"
+      ],
+      "spoiler": "balanced",
+      "turns": [
+        {
+          "text": "Who is Dupre?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Fighter",
+              "level 3"
+            ],
+            "entityIds": [
+              "ultima5:companion:dupre"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Where is he?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Bordermarch"
+            ],
+            "entityIds": [
+              "ultima5:companion:dupre"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What about Sentri?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Bordermarch"
+            ],
+            "entityIds": [
+              "ultima5:companion:sentri"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What are his stats?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Strength 23",
+              "Intelligence 19"
+            ],
+            "entityIds": [
+              "ultima5:companion:sentri"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What about Geoffrey?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Strength 24",
+              "Intelligence 16"
+            ],
+            "entityIds": [
+              "ultima5:companion:geoffrey"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Where is he?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Buccaneer"
+            ],
+            "entityIds": [
+              "ultima5:companion:geoffrey"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Who is he?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Fighter",
+              "level 3"
+            ],
+            "entityIds": [
+              "ultima5:companion:geoffrey"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Why did Geoffrey betray Dupre?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Geoffrey betrayed"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "ultima5-distant-recruits",
+      "families": [
+        "lore",
+        "travel",
+        "mechanics",
+        "continuity"
+      ],
+      "spoiler": "balanced",
+      "turns": [
+        {
+          "text": "Who is Katrina?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Fighter",
+              "level 5"
+            ],
+            "entityIds": [
+              "ultima5:companion:katrina"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Where is she?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "New Magincia"
+            ],
+            "entityIds": [
+              "ultima5:companion:katrina"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What about Gorn?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Blackthorn"
+            ],
+            "entityIds": [
+              "ultima5:companion:gorn"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Who is he?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Fighter",
+              "level 2"
+            ],
+            "entityIds": [
+              "ultima5:companion:gorn"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What are his stats?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Intelligence 15"
+            ],
+            "entityIds": [
+              "ultima5:companion:gorn"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What about Maxwell?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Strength 21",
+              "Intelligence 14"
+            ],
+            "entityIds": [
+              "ultima5:companion:maxwell"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Where is he?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Serpent"
+            ],
+            "entityIds": [
+              "ultima5:companion:maxwell"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Where is he in Ultima VII?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Serpent's Hold"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "ultima5-family-relationship",
+      "families": [
+        "lore",
+        "relationships",
+        "continuity",
+        "topics"
+      ],
+      "spoiler": "direct",
+      "turns": [
+        {
+          "text": "Who is Gwenno?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Iolo's wife"
+            ],
+            "entityIds": [
+              "ultima5:companion:gwenno"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Who is Iolo?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Bard",
+              "starting companion"
+            ],
+            "entityIds": [
+              "ultima5:companion:iolo"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "How are they related?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Gwenno",
+              "Iolo's wife"
+            ],
+            "entityIds": [
+              "ultima5:companion:gwenno"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Who is he?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": []
+          }
+        },
+        {
+          "text": "Who is Gwenno?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Iolo's wife"
+            ],
+            "entityIds": [
+              "ultima5:companion:gwenno"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Where is she?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Britain"
+            ],
+            "entityIds": [
+              "ultima5:companion:gwenno"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Why did she marry Iolo?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "because"
+            ]
+          }
+        },
+        {
+          "text": "How is Gwenno related to Iolo?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Iolo's wife"
+            ],
+            "entityIds": [
+              "ultima5:companion:gwenno"
+            ],
+            "source": "guide"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ultima5-traitor-spoilers",
+      "families": [
+        "lore",
+        "boundaries",
+        "continuity",
+        "topics"
+      ],
+      "spoiler": "direct",
+      "turns": [
+        {
+          "text": "Who is Blackthorn's spy?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Saduj",
+              "spy for Blackthorn",
+              "Judas"
+            ],
+            "entityIds": [
+              "ultima5:companion:saduj"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Who is he?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "spy for Blackthorn"
+            ],
+            "entityIds": [
+              "ultima5:companion:saduj"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Where is he?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Lord British"
+            ],
+            "entityIds": [
+              "ultima5:companion:saduj"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Who is Blackthorn's spy?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Judas",
+              "spy for Blackthorn"
+            ]
+          },
+          "options": {
+            "spoiler": "gentle"
+          },
+          "historyAbsent": [
+            "spy for Blackthorn",
+            "Judas"
+          ]
+        },
+        {
+          "text": "Who is Saduj?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Bard",
+              "level 4"
+            ],
+            "entityIds": [
+              "ultima5:companion:saduj"
+            ],
+            "source": "guide",
+            "absent": [
+              "spy",
+              "Judas",
+              "betray"
+            ]
+          }
+        },
+        {
+          "text": "What are his stats?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Strength 21",
+              "Dexterity 26"
+            ],
+            "entityIds": [
+              "ultima5:companion:saduj"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Who is his daughter?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": []
+          }
+        },
+        {
+          "text": "Who is Saduj?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "spy for Blackthorn"
+            ],
+            "entityIds": [
+              "ultima5:companion:saduj"
+            ],
+            "source": "guide"
+          },
+          "options": {
+            "spoiler": "direct"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ultima5-poison-and-sleep",
+      "families": [
+        "mechanics",
+        "boundaries",
+        "continuity",
+        "unsupported"
+      ],
+      "spoiler": "gentle",
+      "turns": [
+        {
+          "text": "How do I cure poison?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "An Nox",
+              "Ginseng",
+              "Garlic"
+            ],
+            "entityIds": [
+              "ultima5:topic:poison"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What does An Nox do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Cures poison",
+              "Circle 1"
+            ],
+            "entityIds": [
+              "ultima5:spell:an-nox"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What does In Zu do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Puts enemies to sleep",
+              "Nightshade"
+            ],
+            "entityIds": [
+              "ultima5:spell:in-zu"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "How do I wake a sleeping companion?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "AN ZU",
+              "only on members"
+            ],
+            "entityIds": [
+              "ultima5:research:an-zu"
+            ],
+            "source": "research"
+          }
+        },
+        {
+          "text": "How do I wake a sleeping companion using only this guide?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "outside research:"
+            ]
+          }
+        },
+        {
+          "text": "reset topic",
+          "expected": {
+            "decision": "reset"
+          }
+        },
+        {
+          "text": "How do I wake a sleeping companion?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "AN ZU",
+              "wakes one person"
+            ],
+            "entityIds": [
+              "ultima5:research:an-zu"
+            ],
+            "source": "research"
+          }
+        },
+        {
+          "text": "Can I wake a sleeping dragon?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "works on a dragon"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "ultima5-healing-and-death",
+      "families": [
+        "mechanics",
+        "continuity",
+        "names",
+        "unsupported"
+      ],
+      "spoiler": "gentle",
+      "turns": [
+        {
+          "text": "What does Mani do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Heals minor damage",
+              "Spider Silk"
+            ],
+            "entityIds": [
+              "ultima5:spell:mani"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What about Vas Mani?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "large amount",
+              "Mandrake Root"
+            ],
+            "entityIds": [
+              "ultima5:spell:vas-mani"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What are its stats?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Circle 5",
+              "Reagents"
+            ],
+            "entityIds": [
+              "ultima5:spell:vas-mani"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What does In Mani Corp do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Resurrects a dead companion",
+              "Circle 8"
+            ],
+            "entityIds": [
+              "ultima5:spell:in-mani-corp"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Where do I buy it?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Buy In Mani Corp"
+            ]
+          }
+        },
+        {
+          "text": "What does inmanicorp do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Resurrects"
+            ],
+            "entityIds": [
+              "ultima5:spell:in-mani-corp"
+            ],
+            "source": "guide",
+            "absent": [
+              "Did you mean"
+            ]
+          }
+        },
+        {
+          "text": "What does it do on Mars?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Resurrects a dead companion"
+            ]
+          }
+        },
+        {
+          "text": "What does Mani do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Heals minor damage"
+            ],
+            "entityIds": [
+              "ultima5:spell:mani"
+            ],
+            "source": "guide"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ultima5-light-and-invisibility",
+      "families": [
+        "mechanics",
+        "continuity",
+        "names",
+        "boundaries"
+      ],
+      "spoiler": "gentle",
+      "turns": [
+        {
+          "text": "What does In Lor do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Creates light",
+              "Sulfurous Ash"
+            ],
+            "entityIds": [
+              "ultima5:spell:in-lor"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What about Vas Lor?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "long-lasting light",
+              "Mandrake Root"
+            ],
+            "entityIds": [
+              "ultima5:spell:vas-lor"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What about Sanct Lor?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "party invisible",
+              "Nightshade"
+            ],
+            "entityIds": [
+              "ultima5:spell:sanct-lor"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What are its stats?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Circle 7",
+              "Blood Moss"
+            ],
+            "entityIds": [
+              "ultima5:spell:sanct-lor"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What does An Sanct do?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Unlocks doors",
+              "reduces incoming damage"
+            ]
+          }
+        },
+        {
+          "text": "What does sanctlor do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "party invisible"
+            ],
+            "entityIds": [
+              "ultima5:spell:sanct-lor"
+            ],
+            "source": "guide",
+            "absent": [
+              "Did you mean"
+            ]
+          }
+        },
+        {
+          "text": "What does it do in the SNES edition?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "party invisible"
+            ]
+          }
+        },
+        {
+          "text": "What does In Lor do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Creates light"
+            ],
+            "entityIds": [
+              "ultima5:spell:in-lor"
+            ],
+            "source": "guide"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ultima5-travel-magic",
+      "families": [
+        "mechanics",
+        "continuity",
+        "names",
+        "unsupported"
+      ],
+      "spoiler": "gentle",
+      "turns": [
+        {
+          "text": "What does In Wis do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "coordinates",
+              "Nightshade"
+            ],
+            "entityIds": [
+              "ultima5:spell:in-wis"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What about In Por?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Blink",
+              "Blood Moss"
+            ],
+            "entityIds": [
+              "ultima5:spell:in-por"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What about Vas Rel Por?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Gate Travel",
+              "Mandrake Root"
+            ],
+            "entityIds": [
+              "ultima5:spell:vas-rel-por"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What are its stats?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Circle 8",
+              "Black Pearl"
+            ],
+            "entityIds": [
+              "ultima5:spell:vas-rel-por"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What does vasrelpor do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Gate Travel"
+            ],
+            "entityIds": [
+              "ultima5:spell:vas-rel-por"
+            ],
+            "source": "guide",
+            "absent": [
+              "Did you mean"
+            ]
+          }
+        },
+        {
+          "text": "Can I buy it for free?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Gate Travel"
+            ]
+          }
+        },
+        {
+          "text": "What about In Por?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Blink"
+            ]
+          }
+        },
+        {
+          "text": "What does In Wis do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "coordinates"
+            ],
+            "entityIds": [
+              "ultima5:spell:in-wis"
+            ],
+            "source": "guide"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ultima5-dungeon-spells",
+      "families": [
+        "mechanics",
+        "continuity",
+        "boundaries",
+        "unsupported"
+      ],
+      "spoiler": "gentle",
+      "turns": [
+        {
+          "text": "What does An Grav do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Dispels magical fields",
+              "Black Pearl"
+            ],
+            "entityIds": [
+              "ultima5:spell:an-grav"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What about Des Por?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Descend/Ascend",
+              "Spider Silk"
+            ],
+            "entityIds": [
+              "ultima5:spell:des-por-uus-por"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What about In An?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Negates enemy magic",
+              "Garlic"
+            ],
+            "entityIds": [
+              "ultima5:spell:in-an"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What about An Tym?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Stops time in combat",
+              "disagree"
+            ],
+            "entityIds": [
+              "ultima5:spell:an-tym"
+            ],
+            "source": "guide",
+            "absent": [
+              "Ginseng, Blood Moss",
+              "Garlic, Blood Moss"
+            ]
+          }
+        },
+        {
+          "text": "What reagents does it need?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "disagree"
+            ],
+            "entityIds": [
+              "ultima5:spell:an-tym"
+            ],
+            "source": "guide",
+            "absent": [
+              "Ginseng, Blood Moss",
+              "Garlic, Blood Moss"
+            ]
+          }
+        },
+        {
+          "text": "What does Grav Por do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Minor energy bolt",
+              "Black Pearl"
+            ],
+            "entityIds": [
+              "ultima5:spell:grav-por"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What does it do for free?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Minor energy bolt"
+            ]
+          }
+        },
+        {
+          "text": "What does An Grav do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Dispels magical fields"
+            ],
+            "entityIds": [
+              "ultima5:spell:an-grav"
+            ],
+            "source": "guide"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ultima5-virtue-discovery",
+      "families": [
+        "lore",
+        "travel",
+        "boundaries",
+        "continuity"
+      ],
+      "spoiler": "gentle",
+      "turns": [
+        {
+          "text": "What is Honesty?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Moonglow"
+            ],
+            "entityIds": [
+              "ultima5:virtue:honesty"
+            ],
+            "source": "guide",
+            "absent": [
+              "AHM",
+              "FALLAX",
+              "Deceit"
+            ]
+          }
+        },
+        {
+          "text": "What about Compassion?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Britain"
+            ],
+            "entityIds": [
+              "ultima5:virtue:compassion"
+            ],
+            "source": "guide",
+            "absent": [
+              "MU.",
+              "VILIS",
+              "Despise"
+            ]
+          }
+        },
+        {
+          "text": "What about Valor?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Jhelom"
+            ],
+            "entityIds": [
+              "ultima5:virtue:valor"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What about Justice?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Yew"
+            ],
+            "entityIds": [
+              "ultima5:virtue:justice"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What is the dungeon for Justice?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Wrong",
+              "BEH"
+            ]
+          }
+        },
+        {
+          "text": "What is the dungeon for Justice?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Wrong"
+            ],
+            "entityIds": [
+              "ultima5:virtue:justice"
+            ],
+            "source": "guide",
+            "absent": [
+              "BEH",
+              "MALUM"
+            ]
+          },
+          "options": {
+            "spoiler": "balanced"
+          }
+        },
+        {
+          "text": "What is the mantra for Justice?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "BEH",
+              "MALUM"
+            ]
+          }
+        },
+        {
+          "text": "What is the mantra for Justice?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Mantra: BEH",
+              "MALUM"
+            ],
+            "entityIds": [
+              "ultima5:virtue:justice"
+            ],
+            "source": "guide"
+          },
+          "options": {
+            "spoiler": "direct"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ultima5-later-virtues",
+      "families": [
+        "lore",
+        "travel",
+        "mechanics",
+        "continuity"
+      ],
+      "spoiler": "direct",
+      "turns": [
+        {
+          "text": "What is Sacrifice?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Minoc",
+              "Covetous",
+              "Mantra: CAH"
+            ],
+            "entityIds": [
+              "ultima5:virtue:sacrifice"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What about Honor?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Trinsic",
+              "Shame",
+              "Mantra: SUMM"
+            ],
+            "entityIds": [
+              "ultima5:virtue:honor"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What about Spirituality?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Skara Brae",
+              "Hythloth",
+              "Mantra: OM"
+            ],
+            "entityIds": [
+              "ultima5:virtue:spirituality"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What about Humility?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "New Magincia",
+              "Mantra: LUM"
+            ],
+            "entityIds": [
+              "ultima5:virtue:humility"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "How do I get the mantra for Honor?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Gruman",
+              "SUMM"
+            ],
+            "entityIds": [
+              "ultima5:virtue:honor"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "How do I get the mantra for Sacrifice?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Rew",
+              "CAH"
+            ],
+            "entityIds": [
+              "ultima5:virtue:sacrifice"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What is Honesty?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Mantra: AHM",
+              "FALLAX"
+            ],
+            "entityIds": [
+              "ultima5:virtue:honesty"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What is Compassion?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Mantra: MU",
+              "VILIS"
+            ],
+            "entityIds": [
+              "ultima5:virtue:compassion"
+            ],
+            "source": "guide"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ultima5-pilgrimage",
+      "families": [
+        "objectives",
+        "relationships",
+        "continuity",
+        "topics"
+      ],
+      "spoiler": "direct",
+      "turns": [
+        {
+          "text": "What is the outcome of the Humility shrine?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Humility restored",
+              "full pilgrimage"
+            ],
+            "entityIds": [
+              "ultima5:objective:shrine-humility"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What is the outcome of the Honesty shrine?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Honesty restored"
+            ],
+            "entityIds": [
+              "ultima5:objective:shrine-honesty"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What is the outcome of the Valor shrine?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Valor restored"
+            ],
+            "entityIds": [
+              "ultima5:objective:shrine-valor"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What is the outcome of the Compassion shrine?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Compassion restored"
+            ],
+            "entityIds": [
+              "ultima5:objective:shrine-compassion"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What is the next step?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Greyson",
+              "Record the mantra MU"
+            ],
+            "entityIds": [
+              "ultima5:objective:shrine-compassion"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What is the next step after the Compassion shrine asks Greyson?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Record the mantra MU"
+            ]
+          }
+        },
+        {
+          "text": "What is the outcome of the Justice shrine?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Justice restored"
+            ],
+            "entityIds": [
+              "ultima5:objective:shrine-justice"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What happened in the Justice shrine?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Justice was restored"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "ultima5-royal-regalia",
+      "families": [
+        "objectives",
+        "relationships",
+        "continuity",
+        "travel"
+      ],
+      "spoiler": "direct",
+      "turns": [
+        {
+          "text": "What is the outcome for the Crown?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Protection from enemy magic"
+            ],
+            "entityIds": [
+              "ultima5:objective:regalia-crown"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Where is it?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Blackthorn",
+              "rooftop"
+            ],
+            "entityIds": [
+              "ultima5:objective:regalia-crown"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What is the outcome for the Sceptre?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "dispel every magical field"
+            ],
+            "entityIds": [
+              "ultima5:objective:regalia-sceptre"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What is the outcome of magical fields?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "dispel every magical field"
+            ]
+          }
+        },
+        {
+          "text": "What is the outcome for the Amulet?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "darkness hiding Dungeon Doom"
+            ],
+            "entityIds": [
+              "ultima5:objective:regalia-amulet"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Where is it?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Southeast Underworld"
+            ],
+            "entityIds": [
+              "ultima5:objective:regalia-amulet"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What is the outcome of darkness?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Dungeon Doom can be pierced"
+            ]
+          }
+        },
+        {
+          "text": "What is the outcome for the Crown?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Protection from enemy magic"
+            ],
+            "entityIds": [
+              "ultima5:objective:regalia-crown"
+            ],
+            "source": "guide"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ultima5-castle-and-doom",
+      "families": [
+        "objectives",
+        "mechanics",
+        "relationships",
+        "continuity"
+      ],
+      "spoiler": "direct",
+      "turns": [
+        {
+          "text": "What is the method for the Sandalwood Box?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "play Stones",
+              "secret wall opens"
+            ],
+            "entityIds": [
+              "ultima5:objective:opening-castle-raid"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What does the Sandalwood Box do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Lord British",
+              "Dungeon Doom"
+            ],
+            "entityIds": [
+              "ultima5:item:sandalwood-box"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Where is it?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Castle Britannia",
+              "private suite"
+            ],
+            "entityIds": [
+              "ultima5:item:sandalwood-box"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "How do I play the harpsichord?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "6-7-8-9-8-7-8-7-6-7-6-5-3"
+            ],
+            "entityIds": [
+              "ultima5:topic:harpsichord"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Summarize the Doom rescue",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "full royal set",
+              "Lord British returns"
+            ],
+            "entityIds": [
+              "ultima5:objective:doom-rescue"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What is the outcome?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Lord British returns",
+              "tyranny collapses"
+            ],
+            "entityIds": [
+              "ultima5:objective:doom-rescue"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Why did Lord British betray the Avatar?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Lord British betrayed"
+            ]
+          }
+        },
+        {
+          "text": "Summarize the Doom rescue",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "full royal set"
+            ],
+            "entityIds": [
+              "ultima5:objective:doom-rescue"
+            ],
+            "source": "guide"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ultima5-navigation-tools",
+      "families": [
+        "mechanics",
+        "travel",
+        "topics",
+        "continuity"
+      ],
+      "spoiler": "gentle",
+      "turns": [
+        {
+          "text": "How do I get a sextant?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "David",
+              "Greyhaven"
+            ],
+            "entityIds": [
+              "ultima5:topic:sextant"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What about a spyglass?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Seggallion",
+              "Farthing"
+            ],
+            "entityIds": [
+              "ultima5:topic:spyglass"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What does it do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Coordinates and scouting"
+            ],
+            "entityIds": [
+              "ultima5:topic:spyglass"
+            ],
+            "source": "guide"
+          },
+          "options": {
+            "spoiler": "balanced"
+          }
+        },
+        {
+          "text": "What about the sextant?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Coordinates and scouting"
+            ],
+            "entityIds": [
+              "ultima5:topic:sextant"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What are moonstones?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "relocate moongates"
+            ],
+            "entityIds": [
+              "ultima5:topic:moonstones"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What does the moongate do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Moon phase 1: Moonglow",
+              "Moon phase 8: New Magincia"
+            ],
+            "entityIds": [
+              "ultima5:topic:moongates"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Where does the 5th moon phase go?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Moon phase 5: Minoc"
+            ],
+            "entityIds": [
+              "ultima5:topic:moon-phase-5"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Where does the 5th moon phase go on Mars?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Moon phase 5: Minoc"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "ultima5-shadowlords",
+      "families": [
+        "lore",
+        "mechanics",
+        "relationships",
+        "continuity"
+      ],
+      "spoiler": "direct",
+      "turns": [
+        {
+          "text": "Who are the Shadowlords?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Faulinei",
+              "Astaroth",
+              "Nosfentor"
+            ],
+            "entityIds": [
+              "ultima5:topic:shadowlords"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "How do I defeat Faulinei?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Shard of Falsehood",
+              "FAULINEI"
+            ],
+            "entityIds": [
+              "ultima5:objective:shadow-faulinei"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What is the next step?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Wait one turn",
+              "Shard of Falsehood"
+            ],
+            "entityIds": [
+              "ultima5:objective:shadow-faulinei"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What is the outcome?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "permanently destroyed",
+              "Falsehood"
+            ],
+            "entityIds": [
+              "ultima5:objective:shadow-faulinei"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What is the outcome of banishing Astaroth?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "permanently destroyed",
+              "Hatred"
+            ],
+            "entityIds": [
+              "ultima5:objective:shadow-astaroth"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What is the outcome of banishing Nosfentor?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "permanently destroyed",
+              "Cowardice"
+            ],
+            "entityIds": [
+              "ultima5:objective:shadow-nosfentor"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Why did Faulinei kill Iolo?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Faulinei killed"
+            ]
+          }
+        },
+        {
+          "text": "Who is Iolo?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Bard"
+            ],
+            "entityIds": [
+              "ultima5:companion:iolo"
+            ],
+            "source": "guide"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ultima5-names-and-reset",
+      "families": [
+        "names",
+        "topics",
+        "boundaries",
+        "continuity",
+        "unsupported"
+      ],
+      "spoiler": "balanced",
+      "turns": [
+        {
+          "text": "Who is Gwe nno?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Bard",
+              "level 3"
+            ],
+            "entityIds": [
+              "ultima5:companion:gwenno"
+            ],
+            "source": "guide",
+            "absent": [
+              "Did you mean"
+            ]
+          }
+        },
+        {
+          "text": "Where is she?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Britain"
+            ],
+            "entityIds": [
+              "ultima5:companion:gwenno"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Where is she on Mars?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Britain"
+            ]
+          }
+        },
+        {
+          "text": "What about Jaana?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Yew"
+            ]
+          }
+        },
+        {
+          "text": "Where is Jaana?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Yew"
+            ],
+            "entityIds": [
+              "ultima5:companion:jaana"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "reset topic",
+          "expected": {
+            "decision": "reset"
+          }
+        },
+        {
+          "text": "Where is she?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Yew"
+            ]
+          }
+        },
+        {
+          "text": "Who is Janna?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Mage",
+              "level 2"
+            ],
+            "entityIds": [
+              "ultima5:companion:jaana"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "yes Jaana",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Mage",
+              "level 2"
+            ],
+            "entityIds": [
+              "ultima5:companion:jaana"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What are her stats?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Strength 15",
+              "Intelligence 21"
+            ],
+            "entityIds": [
+              "ultima5:companion:jaana"
+            ],
+            "source": "guide"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ultima5-king-identity-and-sources",
+      "families": [
+        "lore",
+        "relationships",
+        "continuity",
+        "boundaries",
+        "topics",
+        "unsupported"
+      ],
+      "spoiler": "gentle",
+      "turns": [
+        {
+          "text": "Who is Lord British?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "king of Britannia",
+              "Great Council"
+            ],
+            "entityIds": [
+              "ultima5:npc:lord-british"
+            ],
+            "source": "research"
+          }
+        },
+        {
+          "text": "Who is he?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "king of Britannia"
+            ],
+            "entityIds": [
+              "ultima5:npc:lord-british"
+            ],
+            "source": "research"
+          }
+        },
+        {
+          "text": "Using only this guide, who is Lord British?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "tyranny collapses",
+              "outside research:"
+            ]
+          }
+        },
+        {
+          "text": "What is a Shadowlord?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Faulinei"
+            ]
+          }
+        },
+        {
+          "text": "What is a Shadowlord?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "bend cities",
+              "Faulinei",
+              "Astaroth",
+              "Nosfentor"
+            ],
+            "entityIds": [
+              "ultima5:topic:shadowlords"
+            ],
+            "source": "guide"
+          },
+          "options": {
+            "spoiler": "balanced"
+          }
+        },
+        {
+          "text": "Who are they?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "bend cities",
+              "Nosfentor"
+            ],
+            "entityIds": [
+              "ultima5:topic:shadowlords"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Why did they kill Iolo?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Shadowlords killed Iolo"
+            ]
+          }
+        },
+        {
+          "text": "Who is Lord British?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "king of Britannia"
+            ],
+            "entityIds": [
+              "ultima5:npc:lord-british"
+            ],
+            "source": "research"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ultima5-identity-rescue-and-outcome",
+      "families": [
+        "lore",
+        "relationships",
+        "continuity",
+        "boundaries",
+        "topics",
+        "unsupported"
+      ],
+      "spoiler": "direct",
+      "turns": [
+        {
+          "text": "Who is Lord British?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "king of Britannia"
+            ],
+            "entityIds": [
+              "ultima5:npc:lord-british"
+            ],
+            "source": "research"
+          }
+        },
+        {
+          "text": "How do I rescue Lord British?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "enter Dungeon Shame",
+              "Sandalwood Box"
+            ],
+            "entityIds": [
+              "ultima5:objective:doom-rescue"
+            ],
+            "source": "guide"
+          },
+          "note": "Source wording checked: the existing rescue hint names Dungeon Shame and Doom’s entrance rather than the contiguous phrase Dungeon Doom."
+        },
+        {
+          "text": "What is the outcome of the Doom rescue?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Lord British returns",
+              "tyranny collapses"
+            ],
+            "entityIds": [
+              "ultima5:objective:doom-rescue"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Who is Lord British?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "king of Britannia"
+            ],
+            "entityIds": [
+              "ultima5:npc:lord-british"
+            ],
+            "source": "research"
+          }
+        },
+        {
+          "text": "What is a Shadowlord?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "bend cities",
+              "Faulinei"
+            ],
+            "entityIds": [
+              "ultima5:topic:shadowlords"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "How do I defeat Faulinei?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Shard of Falsehood",
+              "Flame of Truth"
+            ],
+            "entityIds": [
+              "ultima5:objective:shadow-faulinei"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Who is Lord British in Ultima VII?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Great Council"
+            ]
+          }
+        },
+        {
+          "text": "Who is Lord British?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "king of Britannia"
+            ],
+            "entityIds": [
+              "ultima5:npc:lord-british"
+            ],
+            "source": "research"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ultima5-pilgrimage-hints-and-name-recovery",
+      "families": [
+        "objectives",
+        "travel",
+        "mechanics",
+        "continuity",
+        "topics",
+        "names",
+        "boundaries",
+        "unsupported"
+      ],
+      "spoiler": "gentle",
+      "review": "Source-authored before replay from ultima5GrandQuestChapters objective=shrine-honesty and gentleHints.shrine-honesty; outcome is independently declared at Balanced. Gwenno identity/relationship is companionData[5]; the wife detail is Direct-only. Tests all three levels with recovery from an unsupported edition.",
+      "turns": [
+        {
+          "text": "Give me a hint for the Shrine of Honesty",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Learn the local mantra",
+              "return after receiving counsel"
+            ],
+            "entityIds": [
+              "ultima5:objective:shrine-honesty"
+            ],
+            "source": "guide",
+            "recordIds": [
+              "ultima5:objective:shrine-honesty:hint"
+            ],
+            "absent": [
+              "AHM",
+              "Malifora"
+            ],
+            "sourceLocators": [
+              "gentleHints.shrine-honesty"
+            ]
+          },
+          "note": "Review correction before acceptance: a Gentle how-to restore question clarified because this level only exposes a hint; explicitly request that supported hint. Claims remain unchanged."
+        },
+        {
+          "text": "What is the outcome of the Honesty shrine?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Honesty restored"
+            ]
+          }
+        },
+        {
+          "text": "Who is Gwe nno?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Bard",
+              "level 3"
+            ],
+            "entityIds": [
+              "ultima5:companion:gwenno"
+            ],
+            "source": "guide",
+            "recordIds": [
+              "ultima5:companion:gwenno:explanation"
+            ],
+            "absent": [
+              "Iolo's wife"
+            ],
+            "sourceLocators": [
+              "companionData[5]"
+            ]
+          }
+        },
+        {
+          "text": "How is she related to Iolo?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Iolo's wife"
+            ]
+          }
+        },
+        {
+          "text": "How do I restore the Shrine of Honesty?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Malifora",
+              "AHM"
+            ],
+            "entityIds": [
+              "ultima5:objective:shrine-honesty"
+            ],
+            "source": "guide",
+            "recordIds": [
+              "ultima5:objective:shrine-honesty:hint"
+            ],
+            "sourceLocators": [
+              "ultima5GrandQuestChapters objective=shrine-honesty"
+            ]
+          },
+          "options": {
+            "spoiler": "balanced"
+          }
+        },
+        {
+          "text": "What is the outcome of the Honesty shrine?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Honesty restored",
+              "attribute lesson completed"
+            ],
+            "entityIds": [
+              "ultima5:objective:shrine-honesty"
+            ],
+            "source": "guide",
+            "recordIds": [
+              "ultima5:narrative:shrine-honesty:outcome"
+            ],
+            "sourceLocators": [
+              "ultima5GrandQuestChapters objective=shrine-honesty.outcome"
+            ]
+          }
+        },
+        {
+          "text": "Who is GWE NNO?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Bard",
+              "level 3"
+            ],
+            "entityIds": [
+              "ultima5:companion:gwenno"
+            ],
+            "source": "guide",
+            "recordIds": [
+              "ultima5:companion:gwenno:explanation"
+            ],
+            "sourceLocators": [
+              "companionData[5]"
+            ]
+          }
+        },
+        {
+          "text": "Where is she?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Britain"
+            ],
+            "entityIds": [
+              "ultima5:companion:gwenno"
+            ],
+            "source": "guide",
+            "recordIds": [
+              "ultima5:companion:gwenno:location"
+            ],
+            "sourceLocators": [
+              "companionData[5].Location"
+            ]
+          }
+        },
+        {
+          "text": "How is Gwenno related to Iolo?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Iolo's wife"
+            ],
+            "entityIds": [
+              "ultima5:companion:gwenno"
+            ],
+            "source": "guide",
+            "recordIds": [
+              "ultima5:narrative:gwenno-identity:relationship"
+            ],
+            "sourceLocators": [
+              "companionData[5]"
+            ]
+          },
+          "options": {
+            "spoiler": "direct"
+          }
+        },
+        {
+          "text": "Who is Gwe nno?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Iolo's wife"
+            ],
+            "entityIds": [
+              "ultima5:companion:gwenno"
+            ],
+            "source": "guide",
+            "recordIds": [
+              "ultima5:companion:gwenno:explanation"
+            ],
+            "sourceLocators": [
+              "companionData[5]"
+            ]
+          },
+          "note": "Exact-record source review: identity selects the companion explanation; a how-to acquisition selects the declared use relation. The native source and semantic claims are unchanged."
+        },
+        {
+          "text": "How is she related to Iolo in Ultima IX?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Iolo's wife"
+            ]
+          }
+        },
+        {
+          "text": "Who is Gwenno?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Iolo's wife"
+            ],
+            "entityIds": [
+              "ultima5:companion:gwenno"
+            ],
+            "source": "guide",
+            "recordIds": [
+              "ultima5:companion:gwenno:explanation"
+            ],
+            "sourceLocators": [
+              "companionData[5]"
+            ]
+          },
+          "note": "Exact-record source review: identity selects the companion explanation; a how-to acquisition selects the declared use relation. The native source and semantic claims are unchanged."
+        }
+      ]
+    }
+  ]
+}

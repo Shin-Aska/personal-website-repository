@@ -94,9 +94,10 @@ const ENEMY_KINDS = new Set(['enemy', 'bestiary', 'monster']);
 // Item statistics live in their use/effect records; a character's stats
 // never come from anything but a stats record.
 const PEOPLE_KINDS = new Set(['character', 'companion', 'npc']);
+const isPerson = record => PEOPLE_KINDS.has(record.subjectKind || record.kind);
 const relates = (record, intent) => record.relation === intent || record.answers?.includes(intent)
     || (intent === 'remedy' && record.relation === 'combat' && ENEMY_KINDS.has(record.kind))
-    || (intent === 'stats' && !PEOPLE_KINDS.has(record.kind) && (record.relation === 'use' || record.answers?.includes('use')));
+    || (intent === 'stats' && !isPerson(record) && (record.relation === 'use' || record.answers?.includes('use')));
 const stem = word => word.length > 4 ? word.replace(/(?:ies)$/, 'y').replace(/(?:ing|ed|es|s)$/, '').replace(/([b-df-hj-km-np-rt-z])\1$/, '$1') : word;
 // An agent noun ("murderer") names the same thing as the guide's base word ("murder").
 const agentBase = word => { const base = stem(word).replace(/(?:er|or)$/, ''); return base.length >= 5 && base !== stem(word) ? base : null; };
@@ -175,7 +176,7 @@ export function createAssistant({ gameId, records, getProgress, predicates = [],
     function clearTopic(c) {
         c.fallbackMessages = [];
         c.entities = []; c.pending = null; c.lastAction = null; c.lastRecord = null;
-        c.lastRecords = []; c.frame = null;
+        c.lastRecords = []; c.frame = null; c.recentSubjects = [];
     }
     function context(id = active) {
         if (!contexts.has(id)) {
@@ -208,7 +209,30 @@ export function createAssistant({ gameId, records, getProgress, predicates = [],
     // What the question's wording expects its subject to be ("who is" a person, "cast" a spell, "beat" a monster).
     const expectedGroup = (q, intent) => /\bwho(?:'s| is| are| was)?\b/.test(q) ? 'person' : /\b(?:cast|casting)\b/.test(q) ? 'spell'
         : intent === 'combat' ? 'monster' : /\b(?:get to|travel to|reach|go to|head to|route to)\b/.test(q) ? 'place' : null;
-    const resolve = (text, opts, expect = null) => resolveEntities(text, visible, opts.scope || opts.contextId, { ignore: SCAFFOLD, vocabulary: nameFreeVocabulary(), known: knownWords(), expect });
+    const resolve = (text, opts, expect = null, intent = null, identity = false) => {
+        const settings = { ignore: SCAFFOLD, vocabulary: nameFreeVocabulary(), known: knownWords(), expect };
+        const found = resolveEntities(text, visible, opts.scope || opts.contextId, settings);
+        const supports = r => relates(r, intent) && (!identity || r.identity !== false);
+        // Page scope breaks identity ties, but cannot hide the same literal
+        // subject's reference when only that reference answers the question.
+        // Uncertain spellings still require their normal clarification.
+        if (intent && found.length === 1 && found[0].match === 'exact' && !found[0].spacing) {
+            const all = resolveEntities(text, visible, null, settings);
+            if (all.every(m => m.match === 'exact' && !m.spacing)) {
+                // An explicitly named item owns its facts even when its name
+                // is also an alias on the open quest. Scope cannot turn an
+                // item's use into that quest's general instructions.
+                const named = all.filter(m => visible.some(r => r.entityId === m.id
+                    && normalize(r.title) === normalize(m.alias) && supports(r)));
+                if (named.length === 1) return named;
+                if (!visible.some(r => r.entityId === found[0].id && supports(r))
+                    && all.some(m => visible.some(r => r.entityId === m.id && supports(r)))) return all;
+            }
+        }
+        return found;
+    };
+    const parseQuestion = (text, opts) => parse(text, { editions: knownEditions,
+        names: resolve(text, opts).filter(hit => hit.match === 'exact').map(hit => hit.alias) });
     // The guide's words minus words that are themselves (parts of) names.
     let nameFree = null, nameFreeFor = null;
     const nameFreeVocabulary = () => {
@@ -224,7 +248,12 @@ export function createAssistant({ gameId, records, getProgress, predicates = [],
     const titleOf = (id, matchedName) => {
         const own = visible.filter(r => r.entityId === id);
         const named = matchedName && own.find(r => [r.title, ...r.aliases].some(n => tokens(n).join(' ') === matchedName));
-        return (named || own.find(r => r.title && r.aliases.includes(r.title)) || own[0])?.title;
+        // A quest hint can share a person's entity ID while its title is an
+        // instruction ("Recruit Sira after confronting Bradir"). Implicit
+        // references need the authorized profile name, not that instruction.
+        return (named || own.find(r => r.relation === 'explanation')
+            || own.find(r => r.title && r.aliases.includes(r.title))
+            || own.find(r => !['hint', 'story', 'narrative'].includes(r.relation)) || own[0])?.title;
     };
     // The page supplies an initial topic. A subject established in this
     // conversation takes precedence, even if it has no visible matching fact.
@@ -259,13 +288,16 @@ export function createAssistant({ gameId, records, getProgress, predicates = [],
     // Restrictions are carried only when the earlier subject was resolved, so
     // an unrecognised subject name is never mistaken for a restriction.
     const frameOf = parts => parts.filter(p => p.intent && p.intent !== 'unsupported')
-        .map(({ intent, method, carry, story, narrative }) => ({ intent, method: method || null, carry: carry || null,
+        .map(({ intent, method, carry, story, narrative, guideOnly, identityRequest }) => ({ intent, method: method || null, carry: carry || null,
+            ...(identityRequest ? { identityRequest: true } : {}),
+            ...(guideOnly ? { guideOnly: true } : {}),
             ...(intent === 'story' && story ? { story: { ...story } } : {}),
             ...(intent === 'narrative' && narrative ? { narrative: { ...narrative } } : {}) })).slice(0, MAX_PARTS);
     const carryOf = (part, nameTerms, identity = new Set()) => {
         const inherited = part.inherited || {};
         const editionsHere = [...new Set([...part.editions, ...(inherited.editions || [])])];
         return {
+            ...(part.guideOnly || inherited.guideOnly ? { guideOnly: true } : {}),
             extra: [...new Set([...materialTerms(part.q, nameTerms, editionsHere), ...(inherited.extra || [])])],
             editions: editionsHere,
             numbers: [...new Set([...tokens(part.q).filter(t => NUMBER.test(t) && !editionsHere.includes(t) && !identity.has(t)),
@@ -275,7 +307,7 @@ export function createAssistant({ gameId, records, getProgress, predicates = [],
     function choices(c, candidates, intent, frame = {}, text = 'Which of these do you mean?') {
         const options = [...new Map(candidates.map(r => [r.entityId, r])).values()].slice(0, 6);
         if (!options.length) return result('clarify', 'Which guide objective or named subject do you mean? Open its guide section or name it.');
-        c.entities = options.map(r => r.entityId);
+        c.entities = frame.unconfirmedSubject ? [] : options.map(r => r.entityId);
         c.lastAction = null;
         c.lastRecord = null;
         c.lastRecords = [];
@@ -431,17 +463,17 @@ export function createAssistant({ gameId, records, getProgress, predicates = [],
     // Descriptive retrieval only proposes subjects whose authorised entry
     // contains every material word. Wording alone never answers: the visitor
     // must choose a subject, and the chosen fact then passes every check.
-    function describe(terms, intent) {
+    function describe(terms, intent, guideOnly = false) {
         if (!terms.length || terms.length > 6 || terms.some(t => t.length < 3)) return [];
         const found = [];
-        for (const { record, score } of index.search(terms.concat(terms.map(agentBase).filter(Boolean)).join(' '), () => true)) {
+        for (const { record, score } of index.search(terms.concat(terms.map(agentBase).filter(Boolean)).join(' '), r => !guideOnly || r.source?.review !== 'external-research')) {
             if (score <= 0 || found.length >= 4) break;
             if (found.includes(record.entityId) || record.kind === 'qa') continue;
             const words = new Set(tokens([record.title, ...record.aliases, record.text].join(' ')).map(stem));
             if (terms.every(t => hasWord(words, t)) && visible.some(r => r.entityId === record.entityId && relates(r, intent)))
                 found.push(record.entityId);
         }
-        return visible.filter(r => found.includes(r.entityId) && relates(r, intent))
+        return visible.filter(r => found.includes(r.entityId) && relates(r, intent) && (!guideOnly || r.source?.review !== 'external-research'))
             .sort((a, b) => found.indexOf(a.entityId) - found.indexOf(b.entityId));
     }
     // When no rule understood the question, the guide sentences visible at this
@@ -644,7 +676,15 @@ export function createAssistant({ gameId, records, getProgress, predicates = [],
             && visible.some(r => r.entityId === hit.id && r.kind === 'qa' && r.source.index?.review === 'authored-index')))
             return null;
         let request = { ...part.narrative }, query = request.query || '', scoped = false;
-        if (request.contextual) {
+        let pairIds = null;
+        if (request.pair) {
+            if (subject) return result('clarify', 'Which two subjects do you mean? Name both so I can check their relationship.');
+            pairIds = c.recentSubjects.filter(id => visible.some(record => record.entityId === id));
+            if (pairIds.length !== 2) return result('clarify', 'Which two subjects do you mean? Name both so I can check their relationship.');
+            query = pairIds.map(id => titleOf(id)).join(' and ');
+            request = { ...request, query, contextual: false };
+            part.inherited = c.frame?.parts?.length === 1 ? c.frame.parts[0].carry || null : null;
+        } else if (request.contextual) {
             const previous = c.frame?.parts;
             if (previous?.length > 1) { part.intent = 'narrative'; return result('clarify', 'Which subject or event do you want explained?'); }
             const frame = previous?.[0], prior = frame?.narrative || frame?.story;
@@ -652,9 +692,29 @@ export function createAssistant({ gameId, records, getProgress, predicates = [],
                 query = prior.query || '';
                 request = { ...request, query, guideOnly: request.guideOnly || prior.guideOnly,
                     predicateHint: prior.predicateHint || (frame.story?.crime ? 'killed' : undefined) };
+                // Moving from an outcome to instructions (or vice versa)
+                // asks a new facet of the subject. Its old predicate, such as
+                // "restored", cannot constrain steps whose predicate is "ask".
+                if (frame.narrative && ['sequence', 'outcome'].includes(request.aspect) && request.aspect !== prior.aspect)
+                    request.predicateHint = undefined;
                 part.inherited = frame.carry || null;
+                // Facets of one established subject can have different names
+                // (a chapter summary and its code sequence, for example).
+                // Carry the grounded identity, not the old facet's title.
+                // Story-role follow-ups still keep their named participants.
+                if (frame.narrative && c.entities.length === 1
+                    && visible.some(r => c.lastRecords.includes(r.id) && r.narrative && r.entityId === c.entities[0])) {
+                    subject = { id: c.entities[0], queryTerms: [] };
+                    query = ''; scoped = true;
+                }
             } else if (c.entities.length === 1) { query = titleOf(c.entities[0]) || ''; scoped = Boolean(query); }
             else query = '';
+        }
+        // A spacing-only identity match is equally exact for narrative facets.
+        // Replace only the matched name span, leaving every qualifier intact.
+        for (const hit of resolve(query, opts).filter(hit => hit.spacing)) {
+            const phrase = hit.queryTerms.map(word => word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('[\\s&/]+');
+            query = query.replace(new RegExp(`(^|[^\\p{L}\\p{N}])${phrase}(?=$|[^\\p{L}\\p{N}])`, 'gu'), (_, prefix) => prefix + hit.alias);
         }
         if (part.guideOnly || GUIDE_STORY_SOURCE.test(query)) request.guideOnly = true;
         query = query.replace(GUIDE_STORY_SOURCE, ' ').trim();
@@ -678,7 +738,7 @@ export function createAssistant({ gameId, records, getProgress, predicates = [],
             const subjects = [...new Set(visible.filter(r => c.lastRecords.includes(r.id) && r.narrative)
                 .flatMap(r => r.narrative.subjects))];
             const refers = personal && subjects.length === 1 ? subjects
-                : c.entities.length === 1 && (!personal || visible.some(r => r.entityId === c.entities[0] && PEOPLE_KINDS.has(r.kind)))
+                : c.entities.length === 1 && (!personal || visible.some(r => r.entityId === c.entities[0] && isPerson(r)))
                     ? [titleOf(c.entities[0])] : [];
             if (refers.length !== 1 || !refers[0]) { part.intent = 'narrative'; return result('clarify', 'Which person, subject or event do you mean?'); }
             query = tokens(query).map(t => PRONOUN_TOKEN.test(t) ? refers[0] : t).join(' ');
@@ -688,15 +748,23 @@ export function createAssistant({ gameId, records, getProgress, predicates = [],
         const inherited = part.inherited || { extra: [], editions: [], numbers: [] };
         const editionsHere = [...new Set([...(part.editions || []), ...(inherited.editions || [])])];
         const extra = inherited.extra || [];
+        const retainMissingRestrictions = () => {
+            const named = resolve(query, opts).filter(hit => hit.match === 'exact');
+            const qualifiedCurrent = c.entities.length === 1 && /^(?:on|in|at|for|without|before|after|only|not)\b/.test(query);
+            if (named.length || scoped || part.pronoun || request.contextual || qualifiedCurrent)
+                part.carry = carryOf({ ...part, q: query }, named.flatMap(hit => hit.queryTerms),
+                    new Set(named.flatMap(hit => tokens(hit.alias))));
+        };
         const unavailable = () => {
             part.intent = 'narrative';
+            retainMissingRestrictions();
             const note = scoped ? topicNote(c, opts) : '';
             rememberNamedSubject(query, opts, c);
             return decline((RELATIONAL_ASPECTS.has(request.aspect) ? NARRATIVE_MISSING : NARRATIVE_MISSING_PLAIN) + note);
         };
         if (/\b(?:not|never|no|cannot|can't|didn't|doesn't|don't)\b/.test(query)
             || extra.some(t => /^(?:not|never|no)$/.test(t)) || RESTRICTION.test(part.q)) {
-            if (identity) return null;
+            if (identity) { retainMissingRestrictions(); return null; }
             return unavailable();
         }
         let pool = narratives.filter(r => r.narrative.aspect === request.aspect
@@ -712,7 +780,7 @@ export function createAssistant({ gameId, records, getProgress, predicates = [],
             const selected = pool.find(r => r.id === request.selectedId);
             pool = selected ? pool.filter(r => narrativeScope(r) === narrativeScope(selected)) : [];
         }
-        const people = [...new Set(visible.filter(r => PEOPLE_KINDS.has(r.kind) && !['story', 'narrative'].includes(r.relation))
+        const people = [...new Set(visible.filter(r => isPerson(r) && !['story', 'narrative'].includes(r.relation))
             .flatMap(r => [r.title, ...r.aliases]))];
         const namedPeople = people.filter(name => phraseIn(query, name));
         // In an explicit sequence request, "after" is the temporal operator.
@@ -725,8 +793,9 @@ export function createAssistant({ gameId, records, getProgress, predicates = [],
             const meta = record.narrative;
             const focusNames = [...meta.subjects, record.title, ...record.aliases];
             const connected = [...meta.subjects, ...meta.context];
-            if (namedPeople.some(name => !connected.some(other => normalize(other) === normalize(name))
-                && !focusNames.some(other => normalize(other) === normalize(name)))) return [];
+            const personName = name => normalize(name).replace(/^the /, '');
+            if (namedPeople.some(name => !connected.some(other => personName(other) === personName(name))
+                && !focusNames.some(other => personName(other) === personName(name)))) return [];
             // Asking why/how A killed B cannot turn a victim's causal fact
             // into evidence that the victim killed somebody else. Require
             // that direction in an authorized role or the source sentence.
@@ -806,7 +875,10 @@ export function createAssistant({ gameId, records, getProgress, predicates = [],
             return [{ record, needsScope, specificity: focusHits.length + fragments.length,
                 remaining: remaining.filter(t => !predicate.includes(t)), numbers }];
         });
-        if (!fitting.length) return identity ? null : unavailable();
+        if (!fitting.length) {
+            if (identity) { retainMissingRestrictions(); return null; }
+            return unavailable();
+        }
         part.intent = 'narrative';
         part.carry = { extra: [...new Set(fitting.flatMap(f => f.remaining))], editions: editionsHere,
             numbers: [...new Set(fitting.flatMap(f => f.numbers))] };
@@ -865,7 +937,11 @@ export function createAssistant({ gameId, records, getProgress, predicates = [],
         const top = LEVELS[Math.max(...replies.map(reply => LEVELS.indexOf(reply.level)))];
         const first = candidates[0];
         part.narrative.predicateHint = first.narrative.predicate || request.predicateHint;
-        c.entities = [first.entityId]; c.pending = null; c.lastAction = null;
+        if (!pairIds && request.aspect === 'relationship' && !request.directed) {
+            const asked = resolve(query, opts).filter(hit => hit.match === 'exact');
+            if (asked.length === 2) pairIds = asked.map(hit => hit.id);
+        }
+        c.entities = pairIds || [first.entityId]; c.pending = null; c.lastAction = null;
         c.lastRecords = ids; c.lastRecord = ids.length === 1 ? ids[0] : null; c.lastLevel = top;
         return result('answer', `${first.title} — ${NARRATIVE_LABELS[request.aspect]}:\n`
             + [...new Set(rendered)].join('\n\n'), {
@@ -920,7 +996,7 @@ export function createAssistant({ gameId, records, getProgress, predicates = [],
             let referents;
             if (personal) {
                 referents = [...new Set(visible.filter(r => c.lastRecords.includes(r.id) && r.story).flatMap(r => r.story.people))];
-                if (!referents.length && c.entities.length === 1 && visible.some(r => r.entityId === c.entities[0] && PEOPLE_KINDS.has(r.kind)))
+                if (!referents.length && c.entities.length === 1 && visible.some(r => r.entityId === c.entities[0] && isPerson(r)))
                     referents = [titleOf(c.entities[0])];
             } else referents = c.entities.length === 1 ? [titleOf(c.entities[0])] : [];
             if (referents.length !== 1 || !referents[0]) return result('clarify', 'Which person or event do you mean?');
@@ -939,7 +1015,7 @@ export function createAssistant({ gameId, records, getProgress, predicates = [],
         // that direction in context. Its occurrence in people never reverses
         // a killer/victim, leader/member, or suspect relationship.
         const personNames = [...new Set([...stories.flatMap(r => r.story.people),
-            ...visible.filter(r => PEOPLE_KINDS.has(r.kind)).flatMap(r => [r.title, ...r.aliases])])];
+            ...visible.filter(r => isPerson(r)).flatMap(r => [r.title, ...r.aliases])])];
         const peopleNamed = personNames.filter(name => phraseIn(query, name));
         const recognized = [];
         const fitting = pool.map(record => {
@@ -1001,7 +1077,7 @@ export function createAssistant({ gameId, records, getProgress, predicates = [],
             if (ids.length) candidates = candidates.filter(r => focus.some(f => f.entityId === r.entityId
                 // A visible person's authored participation can focus their
                 // event. The requested role still comes from its own record.
-                || (PEOPLE_KINDS.has(f.kind) && [...r.story.people, ...r.story.context]
+                || (isPerson(f) && [...r.story.people, ...r.story.context]
                     .some(name => normalize(name) === normalize(f.title)))
                 // A topic that quotes the role's own source sentence ("The
                 // suspect and the Crown Jewel") is the same account.
@@ -1083,20 +1159,54 @@ export function createAssistant({ gameId, records, getProgress, predicates = [],
     }
     function respondPartInner(part, opts, c, { subject = null, skipMaterial = false, multi = false } = {}) {
         if (part.report) return result('clarify', 'A progress report inside a longer message is not applied. Send it on its own; nothing was changed.');
+        part.identityRequest ||= part.intent === 'explanation' && part.narrative?.aspect === 'identity';
+        // A descriptive search result is a proposal, not an established topic.
+        // "Who is he?" cannot silently confirm an entry suggested for another name.
+        if (!subject && c.pending?.frame?.unconfirmedSubject
+            && (part.pronoun || part.narrative?.contextual || (part.story && !part.story.query))) {
+            const pending = c.pending;
+            return choices(c, visible.filter(record => pending.ids.includes(record.entityId)), pending.intent, pending.frame,
+                'Which subject do you mean? Choose an entry or name it; the suggested entries are not a confirmed match.');
+        }
+        // A pronoun can ask a new relationship while keeping the same
+        // qualified subject: an unsupported platform cannot disappear when
+        // "install it" becomes "download it". A freshly named request starts
+        // its own frame, as do resets and guide-context changes.
+        if (!multi && part.pronoun && !part.inherited && c.frame?.parts?.length === 1 && !resolve(part.core, opts).length) {
+            const carry = c.frame.parts[0].carry;
+            // After a sourced answer, a new explicit question may change its
+            // predicate ("use guns" -> "leave the party"). Failed details
+            // remain unresolved; source, version and number constraints also
+            // survive a new relationship after a successful answer.
+            part.inherited = carry ? { ...carry, extra: c.messages.at(-1)?.decision === 'answer'
+                ? carry.extra.filter(term => RESTRICTIVE.test(term)) : carry.extra } : null;
+        }
+        if (part.inherited?.guideOnly || (part.pronoun && c.frame?.parts?.length === 1 && c.frame.parts[0].guideOnly)) part.guideOnly = true;
         const narrative = narrativeReply(part, opts, c, { subject });
         if (narrative) return narrative;
         let intent = part.intent;
+        const supports = record => relates(record, intent) && (!part.identityRequest || record.identity !== false);
         const story = storyReply(part, opts, c, { subject });
         if (story) return story;
-        if (RESTRICTION.test(part.q))
+        if (RESTRICTION.test(part.q)) {
+            // Reject the condition before overview or other early answers,
+            // but establish a newly named subject before the next "it".
+            const named = subject ? [subject] : resolve(part.core, opts, expectedGroup(part.q, intent), intent, part.identityRequest);
+            const target = named.length === 1 ? named[0] : !named.length && part.pronoun && c.entities.length === 1
+                ? { id: c.entities[0], queryTerms: tokens(part.q).filter(t => PRONOUN_TOKEN.test(t)) } : null;
+            if (target) {
+                c.entities = [target.id]; c.pending = null; c.lastAction = null; c.lastRecord = null; c.lastRecords = [];
+                part.carry = carryOf(part, target.queryTerms || []);
+            } else clearTopic(c);
             return decline('The guide does not model that restriction well enough to answer it reliably. Ask about the requirement or subject separately.');
+        }
         // Story replies keep their event as context. A later "Where is he?"
         // may refer to a named participant, never to that event's location.
         if (!subject && part.pronoun && /\b(?:he|she|him|her|his|they|them|their)\b/.test(part.core)
             && c.lastRecords.some(id => byId.get(id)?.relation === 'story') && !resolve(part.core, opts).length) {
             const people = [...new Set(visible.filter(r => c.lastRecords.includes(r.id) && r.story).flatMap(r => r.story.people))];
             const referents = people.length === 1 ? resolve(people[0], opts, 'person')
-                .filter(hit => visible.some(r => r.entityId === hit.id && PEOPLE_KINDS.has(r.kind))) : [];
+                .filter(hit => visible.some(r => r.entityId === hit.id && isPerson(r))) : [];
             if (referents.length !== 1) return result('clarify', 'Which person do you mean?');
             subject = { ...referents[0], queryTerms: tokens(part.core).filter(t => PRONOUN_TOKEN.test(t)) };
         }
@@ -1106,7 +1216,21 @@ export function createAssistant({ gameId, records, getProgress, predicates = [],
             if (!stated.length) return listKind(part, c);
             intent = 'explanation'; part.intent = intent;
         }
-        let matched = subject ? [subject] : resolve(part.core, opts, expectedGroup(part.q, part.intent));
+        let matched = subject ? [subject] : resolve(part.core, opts, expectedGroup(part.q, part.intent), intent, part.identityRequest);
+        // In "How do I cure poisoning?", Cure is the action, even though a
+        // spell has that exact name. Prefer its explicit guide remedy when
+        // its text supports the condition; otherwise resolve the condition.
+        // Normal source, edition, number and material checks still follow.
+        const remedyVerb = !subject && intent === 'remedy' && matched.length > 1
+            && part.core.match(/^how (?:do|can|could|should) (?:i|we) (cure|heal|revive|resurrect|awaken)\s+(.+)$/);
+        if (remedyVerb) {
+            const verbs = matched.filter(m => normalize(m.alias) === remedyVerb[1]);
+            const targets = matched.filter(m => !verbs.includes(m));
+            const native = verbs.filter(m => visible.some(r => r.entityId === m.id && relates(r, intent)
+                && r.source?.review !== 'external-research' && covers(r, materialTerms(part.q, m.queryTerms, part.editions))));
+            if (native.length === 1) matched = native;
+            else if (verbs.length && targets.length) matched = targets;
+        }
         // "Batlin's package" is about the package when the package is a guide
         // subject of its own. The owner is accepted as a name, not checked as a
         // restriction, only when the package's own guide passage names them.
@@ -1131,11 +1255,12 @@ export function createAssistant({ gameId, records, getProgress, predicates = [],
         }
         // A subject's own name never chooses the relationship: in "How do I
         // use Cure?" the spell's name is not a request to cure something.
-        // Only when the subject lacks the detected relationship: "Shamino got
-        // charmed" keeps counter/cure even though "charmed" is the name.
+        // Explicit effect/use grammar also wins when the named spell has a
+        // remedy record. "Shamino got charmed" still asks for a counter/cure.
         if (!subject && matched.length === 1 && matched[0].match === 'exact' && intent
-            && !visible.some(r => r.entityId === matched[0].id && relates(r, intent))) {
-            const name = new RegExp(`(^|\\s)${matched[0].queryTerms.map(t => t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('\\s+')}(?=\\s|$)`);
+            && (!visible.some(r => r.entityId === matched[0].id && relates(r, intent))
+                || /^what (?:does|do)\b.+\bdo(?:\b.*)?$|^how (?:do|can|could|should) (?:i|we) (?:use|cast)\b/.test(part.core))) {
+            const name = new RegExp(`(^|\\s)${matched[0].queryTerms.map(t => t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('[\\s&/]+')}(?=\\s|$)`);
             const unnamed = part.q.replace(name, ' ');
             if (unnamed !== part.q) {
                 // "What should I do about the Trinsic Murders?" asks for a hint when the subject has no cure.
@@ -1172,7 +1297,7 @@ export function createAssistant({ gameId, records, getProgress, predicates = [],
         // Lore questions ("What doth Trolls lack?") name one question-and-answer entry.
         if (!intent && matched.length === 1) {
             const own = visible.filter(r => r.entityId === matched[0].id);
-            if (own.length === 1 && own[0].kind === 'qa') intent = own[0].relation;
+            if (own.length === 1 && own[0].kind === 'qa') intent = part.intent = own[0].relation;
             else if (HOW_TO.test(remainder(part.q, matched[0].queryTerms, part.editions))) { intent = 'use'; part.intent = 'use'; }
         }
         // A subject that the guide records for exactly one relationship needs no "what do you want to know?" menu.
@@ -1208,7 +1333,8 @@ export function createAssistant({ gameId, records, getProgress, predicates = [],
         const partEditions = [...new Set([...part.editions, ...inherited.editions])].filter(e => !tokens(e).every(t => nameWords.has(t)));
         const loose = materialTerms(part.q, [], partEditions);
         let candidates = null;
-        if (!matched.length && ['hint', 'prerequisites'].includes(intent) && (!part.pronoun || (opts.entityIds || []).length)) {
+        if (!matched.length && ['hint', 'prerequisites'].includes(intent)
+            && (!part.pronoun || (!c.entities.length && (opts.entityIds || []).length))) {
             candidates = contextual(intent, part, opts);
             if (!candidates.length) candidates = null;
         }
@@ -1233,7 +1359,7 @@ export function createAssistant({ gameId, records, getProgress, predicates = [],
         }
         // Pronouns and elliptical follow-ups ("Where?") use the current subject.
         if (!matched.length && !candidates && (part.pronoun || (!loose.length && c.entities.length))) {
-            const compatible = c.entities.filter(id => visible.some(r => r.entityId === id && relates(r, intent)));
+            const compatible = c.entities.filter(id => visible.some(r => r.entityId === id && supports(r)));
             if (compatible.length === 1) matched = [{ id: compatible[0], match: 'pronoun',
                 queryTerms: tokens(part.q).filter(token => PRONOUN_TOKEN.test(token)) }];
             // Within one message the referent was just named, so a missing
@@ -1249,11 +1375,15 @@ export function createAssistant({ gameId, records, getProgress, predicates = [],
             // "Where does Utomo sell Swamp Boots?": when only one named subject
             // has the requested relationship, the other names stay material
             // terms that its fact must contain.
-            const related = matched.filter(m => visible.some(r => r.entityId === m.id && relates(r, intent)));
+            const related = matched.filter(m => visible.some(r => r.entityId === m.id && supports(r)));
             // Subjects sharing a name ("Finnigan") are told apart by the question's other words ("password").
             const sameName = matched.every(m => m.queryTerms.join(' ') === matched[0].queryTerms.join(' '));
+            // Which fact is available cannot decide which uncertain spelling the visitor meant.
+            if (sameName && matched.every(m => m.match === 'typo' || m.spacing))
+                return choices(c, visible.filter(r => matched.some(m => m.id === r.entityId)), intent,
+                    { parts: [{ intent, method: part.method, carry: carryOf(part, matched[0].queryTerms) }] });
             const needed = related.length > 1 && (sameName || intent !== 'comparison') ? materialTerms(part.q, matched.flatMap(m => m.queryTerms), part.editions) : [];
-            const fitting = needed.length ? related.filter(m => visible.some(r => r.entityId === m.id && relates(r, intent) && covers(r, needed))) : [];
+            const fitting = needed.length ? related.filter(m => visible.some(r => r.entityId === m.id && supports(r) && covers(r, needed))) : [];
             // "Antivirus blocking SCHNAIL" already contains the name SCHNAIL: the more specific subject wins.
             const holds = (m, o) => ` ${tokens(titleOf(m.id) || '').join(' ')} `.includes(` ${o.queryTerms.join(' ')} `);
             const specific = related.length > 1 && intent !== 'comparison' ? related.filter(m => related.some(o => o !== m && holds(m, o))) : [];
@@ -1271,7 +1401,7 @@ export function createAssistant({ gameId, records, getProgress, predicates = [],
                 return decline('The guide does not compare these subjects. Ask about each one separately.');
         }
         // Offering a choice between subjects that none can answer is a dead end.
-        if (matched.length > 1 && !matched.some(m => visible.some(r => r.entityId === m.id && relates(r, intent))))
+        if (matched.length > 1 && !matched.some(m => visible.some(r => r.entityId === m.id && supports(r))))
             return decline(`The local guide has no supported ${intent} answer for this subject at the selected help level.`);
         if (matched.length > 1) return choices(c, visible.filter(r => matched.some(m => m.id === r.entityId)), intent,
             { parts: [{ intent, method: part.method, carry: carryOf(part, matched.flatMap(m => m.queryTerms)) }] });
@@ -1287,7 +1417,11 @@ export function createAssistant({ gameId, records, getProgress, predicates = [],
         if (explicit && c.entities[0] !== explicit) {
             c.entities = [explicit]; c.pending = null; c.lastAction = null; c.lastRecord = null; c.lastRecords = [];
         }
-        if (explicit) candidates = index.search(part.q, r => r.entityId === explicit && relates(r, intent)).map(x => x.record);
+        // Preserve restrictions even if a method, source or edition check
+        // declines before a fact is selected; later follow-ups still inherit them.
+        const identityNumbers = new Set(matched[0]?.match === 'exact' ? tokens(matched[0].alias) : []);
+        if (explicit) part.carry = carryOf(part, skipMaterial ? tokens(part.q) : matched[0]?.queryTerms || [], identityNumbers);
+        if (explicit) candidates = index.search(part.q, r => r.entityId === explicit && supports(r)).map(x => x.record);
         else if (!candidates) {
             const restricted = loose.some(t => RESTRICTIVE.test(t)) || partEditions.length
                 || inherited.extra.length || tokens(part.q).some(t => NUMBER.test(t));
@@ -1306,8 +1440,8 @@ export function createAssistant({ gameId, records, getProgress, predicates = [],
             if (guess) return choices(c, visible.filter(r => guess.ranked.some(x => x.id === r.entityId)), intent,
                 { parts: [{ intent, method: part.method, carry: carryOf(part, guess.ranked[0].span) }] },
                 `I don't know anything about “${guess.typed}”. Did you mean one of these?`);
-            const found = loose.length && !restricted ? describe(loose, intent) : [];
-            if (found.length) return choices(c, found, intent, { parts: [{ intent, method: part.method }] },
+            const found = loose.length && !restricted ? describe(loose, intent, part.guideOnly) : [];
+            if (found.length) return choices(c, found, intent, { unconfirmedSubject: true, parts: [{ intent, method: part.method, guideOnly: part.guideOnly }] },
                 'No guide subject has that name. These entries contain all of those words; choose one only if it is what you meant.');
             c.entities = []; c.lastAction = null; c.lastRecord = null; c.lastRecords = []; c.pending = null;
             // "Which companion is the best tank?": the guide does not rank things, but it can list that kind.
@@ -1327,6 +1461,7 @@ export function createAssistant({ gameId, records, getProgress, predicates = [],
             candidates = index.search(part.q, r => r.entityId === explicit && relates(r, 'hint')).map(x => x.record)
                 .filter(r => !part.guideOnly || r.source?.review !== 'external-research');
         if (!candidates.length) {
+            if (part.identityRequest) return decline('I do not have a sourced identity description for this subject at this help level. Ask “Tell me about” the subject for its guide context, or ask for its location.');
             const offered = explicit ? offeredFor(explicit, intent) : '';
             return decline(`The local guide has no supported ${intent} answer for this subject at the selected help level.${offered ? ` It can tell you ${offered}.` : ''}`);
         }
@@ -1368,10 +1503,8 @@ export function createAssistant({ gameId, records, getProgress, predicates = [],
             }
         }
         // Material numerical constraints cannot be erased by lexical relevance.
-        const identityNumbers = new Set(matched[0]?.match === 'exact' ? tokens(matched[0].alias) : []);
         const numbers = [...new Set([...tokens(part.q).filter(t => NUMBER.test(t)
             && !partEditions.includes(t) && !identityNumbers.has(t)), ...inherited.numbers])];
-        if (explicit) part.carry = carryOf(part, skipMaterial ? tokens(part.q) : matched[0]?.queryTerms || [], identityNumbers);
         if (numbers.length) {
             candidates = candidates.filter(r => numbers.every(n => tokens(r.text).includes(n)));
             if (!candidates.length) return decline('The guide does not support those numeric constraints for this answer.');
@@ -1396,8 +1529,8 @@ export function createAssistant({ gameId, records, getProgress, predicates = [],
                     const place = PLACE_KINDS.has(visible.find(r => r.entityId === explicit)?.kind)
                         && new RegExp(`\\b(?:in|at|near|around|from|inside|within)\\s+(?:the\\s+)?${matched[0].queryTerms.map(t => t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('\\s+')}\\b`).test(part.q);
                     const plain = place && !skipMaterial && !inherited.extra.length && !partEditions.length && material.every(term => !RESTRICTIVE.test(term) && !NUMBER.test(term));
-                    const near = plain ? describe([...new Set([...matched[0].queryTerms, ...material])], intent).filter(r => r.entityId !== explicit) : [];
-                    if (near.length) return choices(c, near, intent, { parts: [{ intent, method: part.method }] },
+                    const near = plain ? describe([...new Set([...matched[0].queryTerms, ...material])], intent, part.guideOnly).filter(r => r.entityId !== explicit) : [];
+                    if (near.length) return choices(c, near, intent, { unconfirmedSubject: true, parts: [{ intent, method: part.method, guideOnly: part.guideOnly }] },
                         'No single entry records that for this subject. These entries contain all of those words; choose one only if it is what you meant.');
                     return decline('The guide does not support that additional detail or restriction for this subject.');
                 }
@@ -1421,7 +1554,11 @@ export function createAssistant({ gameId, records, getProgress, predicates = [],
         const distinct = [...new Set(candidates.map(r => r.entityId))];
         if (distinct.length > 1) return choices(c, candidates, intent, { parts: [{ intent, method, carry: carryOf(part, []) }] },
             sectionSteps ? 'Which step would you like a hint for?' : undefined);
-        return answerRecord(candidates[0], c, opts.tone);
+        // Effects can supply item statistics when no dedicated stats exist.
+        // A native stats record is more specific, even when a pronoun makes
+        // the effect text score higher in lexical retrieval.
+        const exactStats = intent === 'stats' && candidates.find(record => record.relation === 'stats');
+        return answerRecord(exactStats || candidates[0], c, opts.tone);
     }
     // Combine separately grounded answers. Every component keeps its own
     // records, sources and conflict handling; the message carries the highest
@@ -1487,8 +1624,19 @@ export function createAssistant({ gameId, records, getProgress, predicates = [],
             delete reply.topicOnly;
             return reply;
         }
+        let previousPart = null, previousReply = null;
         const replies = parts.map(part => {
+            // Inside one message, "it" refers to the part just processed.
+            // A fresh named first part replaces the previous message's
+            // restrictions before a later part asks about its effect.
+            if (previousPart && part.pronoun && !part.inherited && !resolve(part.core, opts).length) {
+                const carry = previousPart.carry;
+                part.inherited = carry ? { ...carry, extra: previousReply.decision === 'answer'
+                    ? carry.extra.filter(term => RESTRICTIVE.test(term)) : carry.extra } : null;
+                part.guideOnly ||= Boolean(previousPart.guideOnly);
+            }
             const reply = respondPart(part, opts, c, { ...shared, multi: true });
+            previousPart = part; previousReply = reply;
             return { ...reply, subject: reply.decision === 'answer' || reply.topicOnly || part.intent ? c.entities[0] : null };
         });
         const frame = frameOf(parts);
@@ -1496,10 +1644,13 @@ export function createAssistant({ gameId, records, getProgress, predicates = [],
         return compose(parts, replies, c);
     }
     const subjectPart = (part, fp, preserveStory = false) => ({ ...part, intent: fp.intent, method: fp.method, pronoun: false, report: false,
-        ...(fp.story ? { story: { ...fp.story, query: preserveStory ? fp.story.query : part.core || part.q || '' } } : {}),
+        identityRequest: Boolean(fp.identityRequest),
+        guideOnly: Boolean(part.guideOnly || fp.guideOnly),
+        ...(fp.story ? { story: { ...fp.story, query: preserveStory ? fp.story.query : part.followUp || part.core || part.q || '' } } : {}),
         ...(fp.narrative ? { narrative: { ...fp.narrative, contextual: false,
             selectedId: preserveStory ? fp.narrative.selectedId : undefined,
-            query: preserveStory ? fp.narrative.query : part.core || part.q || '' } } : {}),
+            query: preserveStory ? fp.narrative.query : part.followUp || part.core || part.q || '' } }
+            : fp.identityRequest ? { narrative: { aspect: 'identity', query: part.followUp || part.core || part.q || '' } } : {}),
         inherited: fp.carry || null, carry: null });
     // A button or typed reply to "which one?" applies the pending question.
     function choose(id, opts, c, part, button) {
@@ -1548,6 +1699,16 @@ export function createAssistant({ gameId, records, getProgress, predicates = [],
     }
     // "What about X?", "And X?" or a bare name reuse the last relationships.
     function followUp(part, matched, opts, c) {
+        // "Mantra of Humility" -> "what about Spirituality?" may have no
+        // standalone Spirituality profile. A complete, exact indexed name
+        // formed with the previous prefix is still a grounded identity.
+        const named = c.frame.parts.length === 1 && !c.frame.parts[0].story && !c.frame.parts[0].narrative
+            ? composeIndexedFollowUp(c.entities[0], part.followUp || part.core) : null;
+        if (named) return runParts(c.frame.parts.map(fp => subjectPart(part, fp)), opts, c, { subject: named });
+        // Let the normal relationship checks distinguish a shrine's reference
+        // from a same-named quest. If both can answer, that path still asks.
+        if (matched.length > 1 && c.frame.parts.length === 1 && !c.frame.parts[0].story && !c.frame.parts[0].narrative)
+            return runParts(c.frame.parts.map(fp => subjectPart(part, fp)), opts, c);
         if (matched.length > 1) return choices(c, visible.filter(r => matched.some(m => m.id === r.entityId)),
             c.frame.parts[0].intent, { parts: c.frame.parts.map(fp => ({ ...fp,
                 ...(fp.story ? { story: { ...fp.story, query: part.followUp || part.core || part.q } } : {}),
@@ -1578,6 +1739,20 @@ export function createAssistant({ gameId, records, getProgress, predicates = [],
         }
         return ownersCache;
     };
+    function composeIndexedFollowUp(previousId, phrase) {
+        if (!previousId || !phrase) return null;
+        const typed = tokens(phrase).map(possessive), found = new Map();
+        for (const alias of new Set(visible.filter(r => r.entityId === previousId).flatMap(r => [r.title, ...r.aliases]))) {
+            const words = tokens(alias).map(possessive);
+            const at = words.findLastIndex(word => ['in', 'at', 'of', 'near', 'from'].includes(word));
+            if (at < 1 || at === words.length - 1) continue;
+            const name = [...words.slice(0, at + 1), ...typed].join(' ');
+            for (const id of owners().get(name) || []) found.set(id, name);
+        }
+        if (found.size !== 1) return null;
+        const [id, alias] = [...found][0];
+        return { id, alias, queryTerms: tokens(phrase), match: 'composed', scopes: new Set() };
+    }
     function composeFollowUp(previousId, next, opts) {
         if (!previousId || previousId === next.id) return null;
         const kindOf = id => visible.find(r => r.entityId === id)?.kind;
@@ -1604,6 +1779,18 @@ export function createAssistant({ gameId, records, getProgress, predicates = [],
         return tried ? 'missing' : null;
     }
     function single(part, opts, c) {
+        // A complete, reviewed Q&A question is a fresh request, even when its
+        // older English wording has no modern intent keyword. It cannot be
+        // a bare name inheriting an unrelated earlier location/effect request.
+        const exactQuestion = /^(?:who|what|where|when|why|how|which)\b/.test(part.core)
+            && visible.filter(r => !['story', 'narrative'].includes(r.relation) && r.source.index?.review === 'authored-index'
+                && [r.title, ...r.aliases].some(name => normalize(name).replace(/[?!.]+$/, '') === normalize(part.core)));
+        if (exactQuestion?.length === 1) part = { ...part, intent: exactQuestion[0].relation };
+        if (part.followUp && c.frame?.parts?.length && part.intent && !part.story && !part.narrative) {
+            const named = resolve(part.followUp, opts);
+            if (named.length && named.every(m => m.match === 'exact')
+                && !detectIntent(remainder(part.followUp, named.flatMap(m => m.queryTerms)))) part = { ...part, intent: null };
+        }
         if (pendingFresh(c) && c.pending.narrative && !part.narrative && !part.story) {
             const selection = visible.filter(r => c.pending.ids.includes(r.id) && [r.title, r.narrative.predicate || '',
                 `${r.title} — ${r.narrative.subjects.join(', ')}: ${r.narrative.predicate || NARRATIVE_LABELS[r.narrative.aspect]}`]
@@ -1611,7 +1798,13 @@ export function createAssistant({ gameId, records, getProgress, predicates = [],
             if (selection.length === 1) return choose(selection[0].id, opts, c, part, false);
         }
         if (!part.intent && !part.narrative && !part.story) {
-            const matched = resolve(part.followUp || part.core, opts);
+            const affirmed = part.core.replace(/^(?:yes|yeah|yep|yup|correct|right|exactly)[,!.]*\s+/, '');
+            const matched = resolve(part.followUp || affirmed, opts, null, c.frame?.parts?.length === 1 ? c.frame.parts[0].intent : null);
+            // "Yes, a Time Lord" confirms the current subject and keeps the
+            // original relationship. Extra qualifiers still need their normal checks.
+            if (affirmed !== part.core && matched.length === 1 && !remainder(affirmed, matched[0].queryTerms)
+                && (c.entities.includes(matched[0].id) || (pendingFresh(c) && c.pending.ids.includes(matched[0].id))))
+                part = { ...part, q: affirmed, core: affirmed, followUp: null };
             if (pendingFresh(c) && matched.length === 1 && c.pending.ids.includes(matched[0].id))
                 return choose(matched[0].id, opts, c, part, false);
             // Only the name itself ("Dreamshield?"), not "How do I <name>?".
@@ -1625,7 +1818,7 @@ export function createAssistant({ gameId, records, getProgress, predicates = [],
         const raw = String(text ?? '');
         if (!raw.trim()) return result('clarify', 'Type a question about the current guide.');
         if (raw.length > 2000) return result('clarify', 'Please ask one short question at a time (up to 2,000 characters).');
-        const p = parse(raw, { editions: knownEditions });
+        const p = parseQuestion(raw, opts);
         rawText = raw;
         if (!p.q) return result('clarify', 'Type a question about the current guide.');
         // A choice button carries its own identity; its label is not reinterpreted.
@@ -1663,8 +1856,17 @@ export function createAssistant({ gameId, records, getProgress, predicates = [],
         if (p.correction) return correct(p, c);
         if (/\b(?:don't|do not|not)\s+(?:tell|show|give|reveal|explain)\b/.test(p.q))
             return result('clarify', 'Understood. Ask for the specific information you do want, or select Gentle for a smaller hint.');
-        if (p.hypothetical)
+        if (p.hypothetical) {
+            // Merely supposing ownership of the exact current subject does
+            // not assert progress or erase that subject. A different or
+            // qualified hypothetical must not leave the old referent active.
+            const ownership = p.parts[0]?.q.match(/^if i (?:have|had) (?:the )?(.+)$/);
+            const named = ownership ? resolve(ownership[1], opts) : [];
+            const samePlainSubject = named.length === 1 && c.entities.length === 1 && named[0].id === c.entities[0]
+                && normalize(ownership[1]) === normalize(named[0].queryTerms.join(' '));
+            if (!samePlainSubject) clearTopic(c);
             return result('clarify', 'That condition is not established as your current progress. Ask about the named prerequisite, or state a current fact explicitly; no progress was changed.');
+        }
         if (p.affirm) {
             if (pendingFresh(c) && c.pending.ids.length === 1)
                 return choose(c.pending.ids[0], opts, c, { q: p.q, core: p.q, editions: [], pronoun: false, report: false }, false);
@@ -1688,6 +1890,13 @@ export function createAssistant({ gameId, records, getProgress, predicates = [],
             const c = activate(opts.contextId);
             revision++;
             const reply = respond(text, opts, c);
+            // Keep only recent, established subjects; names merely mentioned in
+            // answer prose and unconfirmed search candidates never enter this list.
+            if (!c.pending && c.entities.length === 1 && visible.some(record => record.entityId === c.entities[0]))
+                c.recentSubjects = [c.entities[0], ...c.recentSubjects.filter(id => id !== c.entities[0])].slice(0, 2);
+            else if (!c.pending && c.entities.length === 2 && c.entities.every(id => reply.recordIds.some(recordId => byId.get(recordId)?.entityId === id)))
+                c.recentSubjects = [...new Set([...c.entities, ...c.recentSubjects])].slice(0, 2);
+            else if (!c.entities.length) c.recentSubjects = [];
             if (reply.decision !== 'answer') c.lastAction = null;
             c.messages.push({ role: 'user', text: String(text).slice(0, 2000), level: ceiling },
                 { role: 'assistant', ...reply });
@@ -1702,13 +1911,13 @@ export function createAssistant({ gameId, records, getProgress, predicates = [],
             if (opts.spoiler) api.setPolicy(opts.spoiler);
             const c = activate(opts.contextId);
             const history = [...c.fallbackMessages];
-            const restrictedFrame=(c.frame?.parts||[]).some(p=>p.story?.guideOnly||p.narrative?.guideOnly
+            const restrictedFrame=(c.frame?.parts||[]).some(p=>p.guideOnly||p.carry?.guideOnly||p.story?.guideOnly||p.narrative?.guideOnly
                 ||p.carry?.extra?.length||p.carry?.editions?.length||p.carry?.numbers?.length);
             let baseline;
             holdNotifications++;
             try { baseline = api.answer(text, {...opts, ...(opts.expectedRevision === undefined ? {} : {expectedRevision:revision})}); }
             finally { holdNotifications--; }
-            const parsed = parse(text, {editions:knownEditions});
+            const parsed = parseQuestion(text, opts);
             // Do not soften an unsupported past event into a related factual
             // quotation: that can appear to accept the event's presupposition.
             const pastEvent=q=>/\bwhy (?:did|was|were|had)\b|\bwhat (?:made|caused)\b/i.test(q||'');
@@ -1746,7 +1955,10 @@ export function createAssistant({ gameId, records, getProgress, predicates = [],
             const next = level(value);
             if (next === ceiling) return;
             ceiling = next; revision++; rebuild();
-            for (const c of contexts.values()) { c.pending = null; c.lastAction = null; }
+            for (const c of contexts.values()) {
+                c.pending = null; c.lastAction = null;
+                c.recentSubjects = c.recentSubjects.filter(id => visible.some(record => record.entityId === id));
+            }
             notify();
         },
         activate(id) { activate(id); notify(); },

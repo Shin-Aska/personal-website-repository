@@ -60,7 +60,200 @@ Each topic context tracks grounded subjects, one pending clarification, the last
 
 Entity names/curated aliases win before conservative typo candidates. Question vocabulary is never treated as a misspelled name. Numeric/version tokens and tokens shorter than four characters are never automatically fuzzed; lengths 4–7 allow one edit, longer tokens at most two.
 
+Spacing-only name differences (23 October 2026) resolve silently across the shared
+engine: `timelord`, `Time Lord`, and `time lo rd` have identical letters. Matching
+uses complete token spans of up to four words against visible proper names, and
+keeps the actual typed tokens for restriction checks. Literal spellings win over
+other names with the same compact letters; ambiguous spacing or typo matches ask
+for a choice rather than choosing whichever subject has an answer. Genuine
+misspellings retain the existing uncertainty cue. A named confirmation such as
+`yes a time lord` reuses the current question and its material, edition, numeric
+and source restrictions. Guide-only restrictions also survive pronoun follow-ups
+and remain ineligible for model fallback.
+
+Ultima VII atlas entries with no actual description now answer location requests
+only. The Time Lord has a separate, balanced-level identity note, paraphrased from
+his Black Gate dialogue (`name`, `job`, and `crisis`) and labeled as outside
+research with its transcript citation. It shares the existing NPC identity,
+preserving the atlas action and the Gentle spoiler boundary. Burnside and
+Covetous identity fixtures intentionally now expect a decline with the available
+location relationship; an empty marker no longer counts as an explanation.
+
+Validation for this change: 25 focused name/conversation tests, 933 standalone
+tests, original 203/203, English 1058/1058, and real-browser English 351/351 with
+no external requests or page errors. The 13,311-question typo benchmark improves
+recovery from 90.1% to 90.3%, with the same rounded wrong-subject rate (0.36%),
+zero ordinary-word suggestions, and zero hidden-name leaks. Its preexisting one
+gibberish suggestion remains. The browser includes the exact three-turn Time
+Lord conversation and guide-only follow-ups, and verifies unchanged saved progress.
+
+### Core lore and recent subjects (23 October 2026)
+
+Ultima VII now has cited profiles for the Guardian, Avatar and Britannia, plus
+reviewed narrative facets for the Guardian's goal, the Time Lord's request, and
+their opposition. Guardian and Time Lord lore stays at Balanced; Avatar and
+Britannia definitions are available at Gentle. These are short paraphrases of
+Black Gate dialogue and the original manual, with no later-game revelations or
+new route advice. Ultima VII now builds 725 records, including 33 narrative facets.
+
+Research profiles can declare `subjectKind` (`npc`, `character`, `place`, or
+`organization`) independently of their evidence kind. They retain `kind:research`
+and external attribution while person pronouns use the declared subject type.
+The narrative identity invariant checks that effective subject type and still
+requires an existing profile, matching entity ID and grounded source claims.
+
+Each conversation keeps at most two recent established subject IDs. Explicit
+questions change the current subject; names merely mentioned in prose do not.
+`How are they related?`, `What is their relationship?` and equivalent connection
+wording request an authored relationship between those two subjects. A successful
+pair answer leaves a singular `he` ambiguous. Reset, panel/context changes and
+spoiler reductions clear or filter that memory. Material, numeric, edition and
+guide-only restrictions survive; restrictions are now captured before early
+method/source/edition declines as well as after successful candidate selection.
+
+Descriptive matches are marked unconfirmed and cannot become a pronoun's subject
+until the visitor selects one. Implicit follow-ups reoffer the pending choices;
+the optional model cannot bypass them. Guide-only descriptive searches exclude
+outside research. This fixes the previous Guardian failure where a Time Lord
+search suggestion became the answer to `Who is he?` without confirmation.
+
+Validation: `lore-context.test.mjs` adds 22 checks; all standalone tests pass
+955/955, original 203/203, English 1058/1058, real-browser English 369/369, and
+the Ultima VII page-fact/spoiler checker passes. The 13,311-case typo benchmark
+retains 90.3% recovery and 48 wrong subjects (0.36%), with no new ordinary-word
+suggestions or hidden-name leaks. Browser checks include the complete lore chain,
+ambiguous pronouns, unconfirmed suggestions and unchanged saved progress.
+
 The weighted inverted index uses BM25-style `k1=1.2`, `b=0.75`; alias/name evidence has greater weight than prose. Scores are not probabilities and never establish identity or the requested relationship by themselves. Buying, recruiting and downloading require explicit acquisition-method metadata; companion combat strengths cannot answer how to defeat that companion.
+
+### Ultima VII trivia acceptance (23 October 2026)
+
+The owner requested a real UI check of `Who is Lord British?` and substantially
+more trivia coverage. The initial browser answer was only `Lord British: The
+king.`; `Who is he?` then failed because the source atlas uses a castle marker.
+`atlasSubjectKinds` now declares his conversational type as NPC while preserving
+`ultima7:place:lord-british`, the existing atlas action, marker icon and coordinates.
+Reviewed narrative facets add his identity, rule of Britannia and friendship with
+the Avatar from his original game dialogue. Guide-only questions retain the
+guide's original king description. A Black Gate identity facet similarly describes
+the portal without substituting the destruction walkthrough for a definition.
+Ultima VII now builds 729 records, including 37 narrative facets.
+
+`trivia-ultima7-cases.json` contains 100 hand-authored questions (78 factual and
+22 unsupported/edition/spoiler checks), plus 10 conversations / 40 follow-up turns.
+Coverage includes people, companions, lore, places, magic, artifacts, virtues and
+story relationships. Expected claims and subject IDs are fixed independently of
+engine output. Mantra assertions include the actual `Mantra:` value; answers must
+retain authorized records and the correct guide/research attribution.
+`trivia-ultima7.test.mjs` adds 115 tests, including all help levels, map identity
+preservation and the selected-quest regression. `trivia-ultima7-browser.py` reuses
+the corpus through the real controls and records 142 replies (including two
+offline checks), sources and saved-progress equality. Its report is
+`evidence/trivia-ultima7-browser.json`. The rendered message `data-decision`
+attribute lets browser tests distinguish an answer from a polite refusal or
+model-framed related quote without treating mere reply availability as success.
+
+The expanded corpus exposed and fixed three other interpretation gaps: narrative
+facets now honor exact spacing-only names; a `the Guardian` alias no longer blocks
+the `Guardian` purpose facet; and `Heal & Cure`'s own name does not trigger remedy
+intent instead of the requested effect. The real UI also caught a stale page
+selection: `What is he hiding?` after Lord British returned the Trinsic quest hint.
+Pronoun hint/prerequisite requests now retain an established conversational subject
+before considering the section open behind chat. Bare section-hint behavior stays
+covered by the existing checklist tests.
+
+Validation: standalone 1070/1070, original 203/203, English 1058/1058, shared browser
+369/369, trivia browser 142/142, page-fact/spoiler check passed. Browser runs record
+no external requests, page errors or saved-progress changes. The 13,311-case typo
+benchmark remains at 90.3% recovery, 48 wrong subjects (0.36%), no ordinary-word
+suggestions or hidden-name leaks; its one preexisting gibberish suggestion remains.
+
+### Sustained all-games conversation campaign (23 October 2026, active)
+
+The owner expanded the objective from a Ultima VII question count to sustained
+conversation coverage across all six guides. Scope, acceptance criteria and
+current evidence are in [`assistant-conversation-goal.md`](assistant-conversation-goal.md).
+The first two new corpora contain 40 conversations and 326 visitor turns across
+Albion and Ultima V. Facts, subject IDs and provenance expectations were authored
+independently of replies. Coverage reports separate factual turns, other turns,
+distinct subjects, record IDs and requested relationships; overlapping records
+are not independent facts. All six guides remain in the report, with missing
+campaigns explicitly pending. Family/help-level review and native-model campaign
+verification remain open.
+
+An explicit native `stats` record now outranks an equivalent effect record after
+normal authorization and restriction checks, including a pronoun-only question.
+Exact authorized names are supplied to the parser to protect literal name spans
+while stripping request framing: `Toronto Again` keeps `Again`, while `summarize
+Maini again` still strips that filler. The return chapter has an authored short
+alias matching its existing title. Hidden names are not supplied to parsing.
+
+Contextual narrative follow-ups now retain an established facet's entity when
+another facet of that entity uses a different title. Source/material/edition/
+numeric constraints still carry. Outcome/step transitions drop an incompatible
+old facet predicate while preserving those constraints; story-role participants
+retain their existing handling. Short `What is the outcome?` / `What is its
+outcome?` requests use the current grounded subject and require an authored facet.
+Implicit subject names prefer an authorized profile to a shared recruitment hint
+whose title is an instruction. No new relationship or inverse is inferred.
+
+Albion adds one reviewed Direct relationship from `DB.characters[3].name/notes`:
+Sira always leaves with Melthas. This supplies both explicit pair questions and
+`How are they related?`; lower-tier, false motive and unsupported family questions
+remain declines. Albion now builds 394 records, including 15 narrative facets.
+
+Validation: campaign Node 326/326, campaign browser 330/330, standalone 1131/1131,
+original 203/203, English 1058/1058, shared browser 369/369. The campaign browser
+uses the existing consent/worker fixture and checks actual rendered decisions,
+semantic claims, attribution, spoiler-hidden history, offline follow-ups and
+unchanged storage, with zero external requests or page errors. These passing
+cases are regression evidence, not blind accuracy or completion of the active goal.
+
+### Second sustained campaign pass (24 October 2026, active)
+
+The five RPG guides now have 100 conversations / 815 visitor turns, with 825
+actual UI replies including offline follow-ups. The latest campaign report records
+641 factual turns, 315 distinct subject IDs and 493 distinct record IDs; overlapping
+claims and variants mean those record counts are not independent facts. StarCraft,
+the family/help matrix and native-model campaign verification remain pending.
+
+Explicit effect/use questions now interpret action words inside a spell's name
+correctly even when that spell also supports a remedy relationship. `What does
+Cure do?` leaves a `use` frame for `What about Unlock Magic?`; `Kill` can similarly
+be a spell name in a follow-up. In `How do I cure poisoning?`, the action word
+does not force a subject ambiguity: the native Cure record wins when its guide
+text supports the condition, with normal source/restriction checks still applied.
+
+A reviewed complete question title or alias can request its declared relationship
+without borrowing an older frame, including Ultima VI's manual questions and
+Al-Qadim's move/save controls. Nonindexed descriptive searches still require their
+normal confirmation. Two old clarification fixtures intentionally now demand the
+exact answer/source record and carry explanatory notes. Al-Qadim's existing cited
+save-game note adds two complete-question aliases; no new research claims were added.
+
+Same-named quest/shrine follow-ups use the existing relationship checks before
+asking which entry; page scope cannot hide a literal reference that alone answers
+the question. This retry is limited to literal exact matches, with uncertain
+spellings retaining their normal handling. A unique complete indexed name can
+also be reconstructed from a prior locative prefix: `Mantra of Humility` followed
+by `What about Spirituality?` selects the reviewed `Mantra of Spirituality` entry.
+New/inherited restrictions remain, and no match means no inferred fact. Explicit
+two-person relationships retain both established subjects so a subsequent singular
+pronoun stays ambiguous.
+
+Validation: standalone 1201/1201, focused conversation regressions 26/26, original
+203/203, English 1058/1058, shared UI 369/369, campaign Node 815/815 and campaign
+UI 825/825. Both page-fact checkers and the unchanged typo benchmark pass. UI runs
+use the consent/worker fixture and record no external requests, page errors or
+saved-progress changes. Cache metadata is current.
+
+Fresh lore probes separately expose open identity meaning defects: Ultima V's
+Lord British identity currently returns a rescue outcome, a Shadowlord definition
+returns objective titles, and several Al-Qadim identities return procedures. These
+are not accepted answers or passing campaign coverage. Exact evidence, knowledge
+gaps and next actions are in
+[`assistant-conversation-gaps.md`](assistant-conversation-gaps.md). The full goal
+remains active until these and the remaining verification work are handled.
 
 Examples within Albion coverage (Direct):
 
@@ -1115,3 +1308,104 @@ private rollback files are in the package above (`deployment-acceptance.json`).
 No tests or diagnostic outputs were uploaded.
 
 Knowledge remains limited to reviewed existing content and authored overlays. Many relationships/prerequisites are unmodeled, facts may vary by edition, and conflicting source material is withheld. There is no claim to cover every game question or match an LLM's open-ended conversational breadth. In-browser neural models were piloted separately: SmolLM2 and Bonsai were rejected for answer quality, and Bonsai also for replies taking minutes. Those original unrestricted pilots were removed. The subsequent owner-approved constrained SmolLM2 integration described above is now used after visitor consent; unrestricted factual generation remains excluded. Firefox, mobile hardware and production performance/compression remain unmeasured. The deployed guide PHP route was checked only for its inactive 410 response.
+
+## All-games conversation campaign: 24 October 2026
+
+The owner authorized parallel implementation/review/verification agents. The
+sustained corpus now has 132 conversations / 1,097 visitor turns across all six
+guides. Its current semantic/provenance results and independent 180-cell
+family/help review are recorded in `docs/assistant-conversation-goal.md` and
+`docs/assistant-conversation-coverage.md`; the remaining factual boundaries are in
+`docs/assistant-conversation-gaps.md`. These are regression-development results,
+not independent game-fact counts or blind accuracy.
+
+Topic metadata may declare `identity: false` when the indexed text describes an
+interaction rather than who/what the subject is. Authorization retains that
+metadata, identity requests filter it, and the single-question frame carries the
+identity meaning through pronouns and subject follow-ups. Explicit context and
+location requests retain their own supported routes. Ultima V's rescue outcome
+is not a king's profile; the new game-specific Lord British note cites the
+original Book of Lore. Its Shadowlord identity extracts the guide's influence
+sentence and the three name/power phrases. Al-Qadim extracts stated Mother,
+brother, rogue-genie and cyclops phrases without their surrounding imperatives.
+The absence of a biography now produces an identity-specific boundary.
+
+Scope resolution considers eligible identity meaning and a uniquely matching
+literal record title before accepting a quest alias from the open page. This
+fixes Lord British and Sandalwood Box in the actual Ultima V counsel panel.
+Spacing recovery also removes a shorter contained parent name when a longer
+literal alias already covers those exact typed words, such as a spaced portable
+BWAILauncher question.
+
+Explicit pronoun questions after a rejected detail retain the prior frame's
+restrictions even when the requested relationship changes. A successful answer's
+predicate can change (guns -> leave the party), while source, edition and number
+constraints remain. Within a multipart message, a pronoun inherits from its
+preceding part, so an older message's Mars condition cannot contaminate a fresh
+named Sceptre request. Early restriction refusals establish the new subject and
+carry before declining; ungrounded conditions cannot leave an old Sceptre answer
+available for a Crown question. Hypothetical reports never assert progress.
+
+StarCraft adds narrowly reviewed aliases/QA indexes over unchanged DOM facts,
+including setup versus purpose, separate installation, first-launch cause,
+portable files, source compatibility, support and examples. Its compatibility
+record visibly cites both conflicting guide locations at every help tier.
+Existing guide claims remain attributed to the guide; the campaign does not
+independently verify the Steamhammer creator credit or untested difficulty advice.
+
+The shared campaign checker now accepts optional exact record IDs, source locators
+and citation URLs, verifies sources belong to authorized selected records, and
+requires both provenance classes for a mixed answer. Disputed narrative accounts
+may display only their declared individual claim sources. A transparent test-only
+WeakMap observer captures the assistant registered by production `createView`,
+including private page closures; it changes neither routing nor rendering. Actual
+UI replies and their history/record/source identities are checked together.
+Native verification uses a separate transparent real-Worker observer and the
+already approved pinned assets; fixture-worker results are labeled separately.
+
+Final verification for this campaign passes standalone 1,245/1,245, original
+203/203, English 1,058/1,058, shared browser 370/370, RPG Node 936/936, StarCraft
+live-DOM snapshot 161/161 and current complete UI 1,109/1,109. Both page-fact
+checkers pass. The 13,311-case typo benchmark retains 90.3% recovery, 48 wrong
+subjects, zero ordinary-word suggestions and hidden-name leaks, and one preexisting
+gibberish suggestion. Cache metadata has been regenerated and verified.
+
+The real-worker full campaign passes all 1,097 authored turns (1,188 total checked
+turns). Its engine snapshot precedes the final narrow ownership-hypothetical
+correction: an exact unqualified current subject remains available without
+reporting possession; qualified or different hypotheticals clear the old context.
+Current-code all-six native probes plus 22 guard turns pass 113/113, with 54/54
+structural checks. Both runs have 34 genuine worker results, comprising 16 accepted
+framing replies and 18 discarded after help/topic/actual guide-context changes.
+Source snapshots, the exact final patch, current complete UI results and the
+baseline/current distinction are reconciled in
+`guides/tests/assistant/evidence/conversation-final-acceptance.json`. No remote
+question requests, page errors, progress changes, installs or publication.
+
+## Chat scrolling follow-up, 24 October 2026
+
+A reported Ultima VI Full answer dialog clipped its composer after longer chats.
+Its panel had a viewport cap, while the counsel body independently estimated its
+height without accounting for the header and Voice controls. At 1280×900 the
+body extended to y=920 while the clipped panel ended at y=834. The panel is now a
+flex column, with a shrinkable, scrollable body using the actual remaining space
+and dynamic viewport caps. Its input and Send button remain reachable.
+
+The cross-guide review also found Al-Qadim's walkthrough sidebar squeezing its
+conversation to 12px or zero on short screens. A minimum card/log height keeps a
+usable conversation area while the surrounding page scrolls. The dedicated
+Genie tab and the other four games needed no production layout changes.
+
+`guides/tests/assistant/chat-layout-browser.py` passes 42/42 combinations: seven
+chat surfaces (both Al-Qadim views) at six desktop, phone and short landscape
+sizes. It uses Full answer, eight initial UI turns per surface, then another real
+send at every size: 98 actual sends. Checks cover message reachability, card
+clipping, input/Send hit testing, Ultima VI wheel scrolling and modal bounds,
+unchanged storage, static requests and stable source hashes. There are no external
+requests or page errors. The shared English browser suite also passes 370/370.
+These layout checks use the consent/worker fixture, not native inference.
+
+The failing baseline geometry and final proof are in `evidence/chat-layout-*`.
+The two stylesheet cache hashes were regenerated and verified. No conversation
+engine, factual sources, saved-progress formats, installs or published files were
+changed by this follow-up. All changes remain local.

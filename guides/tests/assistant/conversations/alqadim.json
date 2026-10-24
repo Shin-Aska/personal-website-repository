@@ -1,0 +1,2902 @@
+{
+  "schemaVersion": 1,
+  "gameId": "alqadim",
+  "review": "Authored semantic expectations from AlQadim.js, substantive guide indexes, atlas locations and existing cited rule-book research before execution. Conflicted item effects remain unsupported; no answer generated from test output.",
+  "basis": [
+    "guides/js/AlQadim.js: DB.combatMoves, moonstoneShards, bestiary, keyItems, shops and chapters",
+    "guides/js/AlQadimAtlasData.js: allowlisted NPC world locations",
+    "guides/data/assistant/alqadim.json: reviewed topics, narratives, conflicts and cited rule-book research",
+    "guides/data/assistant/alqadim.json: research[id=experience-levels], research[id=hit-points]"
+  ],
+  "dialogues": [
+    {
+      "id": "alqadim-sword-training",
+      "families": [
+        "mechanics",
+        "continuity",
+        "names",
+        "lore"
+      ],
+      "spoiler": "gentle",
+      "turns": [
+        {
+          "text": "How do I use Quick Swing?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "fast scimitar strike",
+              "action button"
+            ],
+            "entityIds": [
+              "alqadim:combat:quick-swing"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What about Wide Swing?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "left and right",
+              "second action circle"
+            ],
+            "entityIds": [
+              "alqadim:combat:wide-swing"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What about Full-Circle Swing?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "behind",
+              "third action circle"
+            ],
+            "entityIds": [
+              "alqadim:combat:full-circle-swing"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "How do I learn it?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Zubakon",
+              "later progression"
+            ],
+            "entityIds": [
+              "alqadim:combat:full-circle-swing"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What about Wide Swing?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Zubakon",
+              "eligible"
+            ],
+            "entityIds": [
+              "alqadim:combat:wide-swing"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Who is Zubakon?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "teach the later swings"
+            ],
+            "entityIds": [
+              "alqadim:npc:zubakon"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "How do I do a Wide Swing?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "left and right"
+            ],
+            "entityIds": [
+              "alqadim:combat:wide-swing"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Can I learn it for free before level 1?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Zubakon"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "alqadim-shards-and-ricochets",
+      "families": [
+        "mechanics",
+        "continuity",
+        "names",
+        "unsupported"
+      ],
+      "spoiler": "gentle",
+      "turns": [
+        {
+          "text": "What does Cone of Cold do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "freezes",
+              "10 yd"
+            ],
+            "entityIds": [
+              "alqadim:shard:cone-of-cold"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What about Flame Arrow?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "fire",
+              "20 yd"
+            ],
+            "entityIds": [
+              "alqadim:shard:flame-arrow"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What about Lightning Bolt?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "ricochet",
+              "back toward the caster",
+              "100 yd"
+            ],
+            "entityIds": [
+              "alqadim:shard:lightning-bolt"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What are its stats?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "6\u201336 per target",
+              "100 yd"
+            ],
+            "entityIds": [
+              "alqadim:shard:lightning-bolt"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What about Magic Missile?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "6\u201315 total",
+              "120 yd"
+            ],
+            "entityIds": [
+              "alqadim:shard:magic-missile"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What does lightningbolt do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "ricochet"
+            ],
+            "entityIds": [
+              "alqadim:shard:lightning-bolt"
+            ],
+            "source": "guide",
+            "absent": [
+              "Did you mean"
+            ]
+          }
+        },
+        {
+          "text": "Where do I buy it?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": []
+          }
+        },
+        {
+          "text": "What does Cone of Cold do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "freezes"
+            ],
+            "entityIds": [
+              "alqadim:shard:cone-of-cold"
+            ],
+            "source": "guide"
+          }
+        }
+      ]
+    },
+    {
+      "id": "alqadim-sun-and-water-shards",
+      "families": [
+        "mechanics",
+        "continuity",
+        "names",
+        "boundaries"
+      ],
+      "spoiler": "gentle",
+      "turns": [
+        {
+          "text": "What does Sundazzle do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "temporarily blind",
+              "No damage"
+            ],
+            "entityIds": [
+              "alqadim:shard:sundazzle"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What about Sunfire?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "never damaged by his own blast",
+              "70 yd"
+            ],
+            "entityIds": [
+              "alqadim:shard:sunfire"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What about Sunscorch?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "curves around obstacles",
+              "metal"
+            ],
+            "entityIds": [
+              "alqadim:shard:sunscorch"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What about Water Blast?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "water",
+              "2\u201312"
+            ],
+            "entityIds": [
+              "alqadim:shard:water-blast"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What are its stats?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "60 yd",
+              "2\u201312"
+            ],
+            "entityIds": [
+              "alqadim:shard:water-blast"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What does it do on Mars?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "fast-moving shot of water"
+            ]
+          }
+        },
+        {
+          "text": "What about Sunfire?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "explosive ball"
+            ]
+          }
+        },
+        {
+          "text": "What does Sundazzle do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "No damage"
+            ],
+            "entityIds": [
+              "alqadim:shard:sundazzle"
+            ],
+            "source": "guide"
+          }
+        }
+      ]
+    },
+    {
+      "id": "alqadim-desert-beasts",
+      "families": [
+        "mechanics",
+        "travel",
+        "continuity",
+        "boundaries"
+      ],
+      "spoiler": "balanced",
+      "turns": [
+        {
+          "text": "How do I defeat a Hyena?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Easily defeated",
+              "Low"
+            ],
+            "entityIds": [
+              "alqadim:bestiary:hyena"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What about a Thorn Bush?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "between volleys"
+            ],
+            "entityIds": [
+              "alqadim:bestiary:thorn-bush"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What about an Air Elemental?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "finish spinning"
+            ],
+            "entityIds": [
+              "alqadim:bestiary:air-elemental"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What about a Giant Boar?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Dodge sideways",
+              "from behind"
+            ],
+            "entityIds": [
+              "alqadim:bestiary:giant-boar"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Where is it?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Western Desert"
+            ]
+          }
+        },
+        {
+          "text": "Where is the Giant Boar?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Oasis Outskirts"
+            ],
+            "entityIds": [
+              "alqadim:bestiary:giant-boar"
+            ],
+            "source": "guide"
+          },
+          "options": {
+            "spoiler": "direct"
+          },
+          "note": "Location wording corrected against the preexisting DB.bestiary Giant Boar entry: Oasis Outskirts."
+        },
+        {
+          "text": "How do I defeat Hornets?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "sling",
+              "Magic Missile"
+            ],
+            "entityIds": [
+              "alqadim:bestiary:hornets"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "How do I defeat them without weapons?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Magic Missile"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "alqadim-undead-and-slime",
+      "families": [
+        "mechanics",
+        "travel",
+        "continuity",
+        "unsupported"
+      ],
+      "spoiler": "balanced",
+      "turns": [
+        {
+          "text": "How do I defeat Zombie & Skeleton?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Keep distance",
+              "strongest available sword swing"
+            ],
+            "entityIds": [
+              "alqadim:bestiary:zombie-skeleton"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What about Acid Slime?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "green residue",
+              "range"
+            ],
+            "entityIds": [
+              "alqadim:bestiary:acid-slime"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What about Fire Elemental?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Immune to fire",
+              "Water Blast"
+            ],
+            "entityIds": [
+              "alqadim:bestiary:fire-elemental"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What about Hag?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "columns",
+              "cooldown"
+            ],
+            "entityIds": [
+              "alqadim:bestiary:hag"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What about Scaly-Horned Ogre?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Evade heavy clubs"
+            ],
+            "entityIds": [
+              "alqadim:bestiary:scaly-horned-ogre"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What about Cyclops & Ettin?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "hit once",
+              "Giant Strength"
+            ],
+            "entityIds": [
+              "alqadim:bestiary:cyclops-ettin"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "How do I defeat it in the SNES edition?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Giant Strength"
+            ]
+          }
+        },
+        {
+          "text": "How do I defeat Acid Slime?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "green residue"
+            ],
+            "entityIds": [
+              "alqadim:bestiary:acid-slime"
+            ],
+            "source": "guide"
+          }
+        }
+      ]
+    },
+    {
+      "id": "alqadim-family-sword-and-berries",
+      "families": [
+        "mechanics",
+        "travel",
+        "objectives",
+        "continuity"
+      ],
+      "spoiler": "direct",
+      "turns": [
+        {
+          "text": "What is the Family Sword of Honor?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "cannot harm allies or innocents"
+            ],
+            "entityIds": [
+              "alqadim:item:family-sword-of-honor"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "How do I get it?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Aliya",
+              "Zubin"
+            ],
+            "entityIds": [
+              "alqadim:item:family-sword-of-honor"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Where is it?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Zaratan"
+            ],
+            "entityIds": [
+              "alqadim:item:family-sword-of-honor"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What are Purple Berries for?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "cure Babazar's daughter"
+            ],
+            "entityIds": [
+              "alqadim:item:purple-berries"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Where are they?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Western Desert Oasis"
+            ],
+            "entityIds": [
+              "alqadim:item:purple-berries"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "How do I get them?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "oasis bushes"
+            ],
+            "entityIds": [
+              "alqadim:item:purple-berries"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Can I buy them?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": []
+          }
+        },
+        {
+          "text": "What does the Family Sword of Honor do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "cannot harm allies"
+            ],
+            "entityIds": [
+              "alqadim:item:family-sword-of-honor"
+            ],
+            "source": "guide"
+          }
+        }
+      ]
+    },
+    {
+      "id": "alqadim-sea-and-tower-tools",
+      "families": [
+        "mechanics",
+        "travel",
+        "objectives",
+        "continuity"
+      ],
+      "spoiler": "direct",
+      "turns": [
+        {
+          "text": "What does the Ship Orb do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "restores the corsair ship"
+            ],
+            "entityIds": [
+              "alqadim:item:ship-orb"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Where is it?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Deadman's Reef"
+            ],
+            "entityIds": [
+              "alqadim:item:ship-orb"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "How do I get it?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "helm cabin"
+            ],
+            "entityIds": [
+              "alqadim:item:ship-orb"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What does the Enchanted Mirror do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Reflects magical light beams"
+            ],
+            "entityIds": [
+              "alqadim:item:enchanted-mirror"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Where is it?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Mage's Tower"
+            ],
+            "entityIds": [
+              "alqadim:item:enchanted-mirror"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What does the Mermaid's Message do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "mermaid's assistance"
+            ],
+            "entityIds": [
+              "alqadim:item:mermaid-s-message"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Where is it?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Reef of the Dead"
+            ],
+            "entityIds": [
+              "alqadim:item:mermaid-s-message"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Where is it in Ultima VII?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Reef of the Dead"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "alqadim-efreet-diplomacy",
+      "families": [
+        "mechanics",
+        "objectives",
+        "relationships",
+        "continuity"
+      ],
+      "spoiler": "direct",
+      "turns": [
+        {
+          "text": "What does the Bottle of Eternal Emptiness do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Traps the Efreet agent"
+            ],
+            "entityIds": [
+              "alqadim:item:bottle-of-eternal-emptiness"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "How do I get it?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "center of volcanic Isle of Senat"
+            ],
+            "entityIds": [
+              "alqadim:item:bottle-of-eternal-emptiness"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What is the method for trapping the Efreet agent?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "in the bottle"
+            ],
+            "entityIds": [
+              "alqadim:objective:ch10_2"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What does the Efreet Potion do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "immunity",
+              "death flames"
+            ],
+            "entityIds": [
+              "alqadim:item:efreet-potion"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Where is it?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Marid Lord"
+            ],
+            "entityIds": [
+              "alqadim:item:efreet-potion"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What are Hottest Coals for?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "required by the Efreet Lord"
+            ],
+            "entityIds": [
+              "alqadim:item:hottest-coals"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Where are they?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Isle of Senat"
+            ],
+            "entityIds": [
+              "alqadim:item:hottest-coals"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Why did the Marid Lord kill the Efreet Lord?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Marid Lord killed"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "alqadim-journal-and-bone-key",
+      "families": [
+        "mechanics",
+        "travel",
+        "objectives",
+        "continuity"
+      ],
+      "spoiler": "direct",
+      "turns": [
+        {
+          "text": "What does the Key of Bone do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "castle kitchen cellars"
+            ],
+            "entityIds": [
+              "alqadim:item:key-of-bone"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "How do I get it?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Baker",
+              "market"
+            ],
+            "entityIds": [
+              "alqadim:item:key-of-bone"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What does the Vizier's Journal do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "incriminating evidence",
+              "betrayal"
+            ],
+            "entityIds": [
+              "alqadim:item:vizier-s-journal"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Where is it?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Castle Private Chambers"
+            ],
+            "entityIds": [
+              "alqadim:item:vizier-s-journal"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "How do I get it?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Vizier's desk"
+            ],
+            "entityIds": [
+              "alqadim:item:vizier-s-journal"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Summarize Chapter 14",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "private quarters",
+              "journal",
+              "conspiracy"
+            ],
+            "entityIds": [
+              "alqadim:chapter:14"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Why did the Baker write the Vizier's Journal?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Baker wrote"
+            ]
+          }
+        },
+        {
+          "text": "What does the Key of Bone do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "secret passage"
+            ],
+            "entityIds": [
+              "alqadim:item:key-of-bone"
+            ],
+            "source": "guide"
+          }
+        }
+      ]
+    },
+    {
+      "id": "alqadim-potion-shopping",
+      "families": [
+        "mechanics",
+        "travel",
+        "continuity",
+        "boundaries"
+      ],
+      "spoiler": "balanced",
+      "turns": [
+        {
+          "text": "Where can I buy a Healing Potion?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Supernatural Emporium",
+              "50 Gold"
+            ],
+            "entityIds": [
+              "alqadim:shop-item:healing-potion"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What about Extra Healing Potion?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "120 Gold"
+            ],
+            "entityIds": [
+              "alqadim:shop-item:extra-healing-potion"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What about Giant Strength Potion?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "150 Gold"
+            ],
+            "entityIds": [
+              "alqadim:shop-item:giant-strength-potion"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What about Invulnerability Potion?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "200 Gold"
+            ],
+            "entityIds": [
+              "alqadim:shop-item:invulnerability-potion"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What does it do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Temporary defense buff"
+            ],
+            "entityIds": [
+              "alqadim:shop-item:invulnerability-potion"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Where is the Supernatural Emporium?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Capital City"
+            ],
+            "entityIds": [
+              "alqadim:shop:supernatural-emporium"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What is the cheapest potion?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": []
+          }
+        },
+        {
+          "text": "Where can I buy a Healing Potion?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "50 Gold"
+            ],
+            "entityIds": [
+              "alqadim:shop-item:healing-potion"
+            ],
+            "source": "guide"
+          }
+        }
+      ]
+    },
+    {
+      "id": "alqadim-currency-and-gems",
+      "families": [
+        "mechanics",
+        "travel",
+        "continuity",
+        "unsupported"
+      ],
+      "spoiler": "balanced",
+      "turns": [
+        {
+          "text": "What is Gold to Gem Exchange?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "compact gems"
+            ],
+            "entityIds": [
+              "alqadim:shop-item:gold-to-gem-exchange"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Where do I get it?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Office of Trade",
+              "11 Gold -> 1 Gem"
+            ],
+            "entityIds": [
+              "alqadim:shop-item:gold-to-gem-exchange"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What about Gem to Gold Exchange?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "1 Gem -> 10 Gold"
+            ],
+            "entityIds": [
+              "alqadim:shop-item:gem-to-gold-exchange"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What does it do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "spendable gold coin"
+            ],
+            "entityIds": [
+              "alqadim:shop-item:gem-to-gold-exchange"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Where is the Office of Trade?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Capital City"
+            ],
+            "entityIds": [
+              "alqadim:shop:office-of-trade"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Where can I buy a Polished Sapphire?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Ingrid",
+              "150 Gold"
+            ],
+            "entityIds": [
+              "alqadim:shop-item:polished-sapphire"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What does it do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "trade gem"
+            ],
+            "entityIds": [
+              "alqadim:shop-item:polished-sapphire"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Can I buy it for free?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "150 Gold"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "alqadim-homecoming-and-banishment",
+      "families": [
+        "lore",
+        "objectives",
+        "relationships",
+        "continuity"
+      ],
+      "spoiler": "balanced",
+      "turns": [
+        {
+          "text": "Summarize Chapter 2",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "family",
+              "bazaar dispute",
+              "peace treaty"
+            ],
+            "entityIds": [
+              "alqadim:chapter:2"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Summarize Chapter 3",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "purple berries",
+              "mermaid"
+            ],
+            "entityIds": [
+              "alqadim:chapter:3"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Summarize Chapter 4",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "mermaid's sister",
+              "Ship Orb"
+            ],
+            "entityIds": [
+              "alqadim:chapter:4"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Summarize Chapter 5",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Sorcerer's Tower",
+              "Acid Dungeon"
+            ],
+            "entityIds": [
+              "alqadim:chapter:5"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What is the outcome of Muliban's accusation?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "family's banishment"
+            ]
+          }
+        },
+        {
+          "text": "What is the outcome of the genie Muliban's accusation?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "family's banishment"
+            ],
+            "entityIds": [
+              "alqadim:objective:ch2_6"
+            ],
+            "source": "guide"
+          },
+          "options": {
+            "spoiler": "direct"
+          }
+        },
+        {
+          "text": "What is the outcome of the family's banishment?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "resulting in your family"
+            ]
+          }
+        },
+        {
+          "text": "Why did Zubin betray the family?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Zubin betrayed"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "alqadim-islands-and-library",
+      "families": [
+        "lore",
+        "objectives",
+        "relationships",
+        "topics"
+      ],
+      "spoiler": "balanced",
+      "turns": [
+        {
+          "text": "Summarize Chapter 8",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Island of Shibaz",
+              "Flying Carpet"
+            ],
+            "entityIds": [
+              "alqadim:chapter:8"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Summarize Chapter 9",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "library maze",
+              "Genie Lords"
+            ],
+            "entityIds": [
+              "alqadim:chapter:9"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Summarize Chapter 10",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Efreet agent",
+              "Efreet Potion"
+            ],
+            "entityIds": [
+              "alqadim:chapter:10"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Summarize Chapter 11",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "palace kitchen",
+              "Key of Bone"
+            ],
+            "entityIds": [
+              "alqadim:chapter:11"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Summarize Chapter 12",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Pangar-Bek",
+              "to safety"
+            ],
+            "entityIds": [
+              "alqadim:chapter:12"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Summarize Chapter 13",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Zubin's cell",
+              "Nameless Ones"
+            ],
+            "entityIds": [
+              "alqadim:chapter:13"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What happened in the library maze on Mars?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Genie Lords"
+            ]
+          }
+        },
+        {
+          "text": "Summarize Chapter 8",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Flying Carpet"
+            ],
+            "entityIds": [
+              "alqadim:chapter:8"
+            ],
+            "source": "guide"
+          }
+        }
+      ]
+    },
+    {
+      "id": "alqadim-prison-and-voice",
+      "families": [
+        "lore",
+        "objectives",
+        "relationships",
+        "topics"
+      ],
+      "spoiler": "balanced",
+      "turns": [
+        {
+          "text": "Summarize Chapter 15",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "elemental guardians",
+              "three password keys"
+            ],
+            "entityIds": [
+              "alqadim:chapter:15"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Summarize Chapter 16",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "mercenary captain",
+              "brother Tarik"
+            ],
+            "entityIds": [
+              "alqadim:chapter:16"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Summarize Chapter 17",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Aballat Isle",
+              "restore his speech"
+            ],
+            "entityIds": [
+              "alqadim:chapter:17"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Summarize Chapter 18",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "three magic neck pieces",
+              "teleporters"
+            ],
+            "entityIds": [
+              "alqadim:chapter:18"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Summarize Chapter 19",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Kara",
+              "Vizier",
+              "lift the curse"
+            ],
+            "entityIds": [
+              "alqadim:chapter:19"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Why did Tarik betray the Vizier?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Tarik betrayed"
+            ]
+          }
+        },
+        {
+          "text": "Summarize the prison dungeons",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "brother Tarik"
+            ],
+            "entityIds": [
+              "alqadim:chapter:16"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What happened to Tarik in the Outer Planes?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Tarik was killed"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "alqadim-town-guidance",
+      "families": [
+        "lore",
+        "travel",
+        "continuity",
+        "topics"
+      ],
+      "spoiler": "direct",
+      "turns": [
+        {
+          "text": "Tell me about Zubakon",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "teach the later swings"
+            ],
+            "entityIds": [
+              "alqadim:npc:zubakon"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Where is he?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "shop with no sign"
+            ],
+            "entityIds": [
+              "alqadim:npc:zubakon"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Tell me about Babazar",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "sick daughter",
+              "purple desert berries"
+            ],
+            "entityIds": [
+              "alqadim:npc:babazar"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Tell me about Jessamin",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Mother",
+              "family gift"
+            ],
+            "entityIds": [
+              "alqadim:npc:jessamin"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Where is she?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Zaratan"
+            ],
+            "entityIds": [
+              "alqadim:npc:jessamin"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Tell me about Aliya",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "peace treaty"
+            ],
+            "entityIds": [
+              "alqadim:npc:aliya"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Where is she?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Zaratan"
+            ],
+            "entityIds": [
+              "alqadim:npc:aliya"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Who is her daughter?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": []
+          }
+        }
+      ]
+    },
+    {
+      "id": "alqadim-manual-basics",
+      "families": [
+        "lore",
+        "mechanics",
+        "continuity",
+        "topics"
+      ],
+      "spoiler": "gentle",
+      "turns": [
+        {
+          "text": "How do I save the game?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Options menu",
+              "nine saved games"
+            ],
+            "entityIds": [
+              "alqadim:research:saving-and-difficulty"
+            ],
+            "source": "research"
+          }
+        },
+        {
+          "text": "How do I move?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "right mouse button",
+              "left button"
+            ],
+            "entityIds": [
+              "alqadim:research:controls"
+            ],
+            "source": "research"
+          }
+        },
+        {
+          "text": "How do I open the menu?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "genie's lamp",
+              "Esc"
+            ],
+            "entityIds": [
+              "alqadim:research:controls"
+            ],
+            "source": "research"
+          }
+        },
+        {
+          "text": "How do I level up?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "solving puzzles",
+              "hit points automatically"
+            ],
+            "entityIds": [
+              "alqadim:research:experience-levels"
+            ],
+            "source": "research"
+          }
+        },
+        {
+          "text": "What are hit points?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "red health bar",
+              "zero"
+            ],
+            "entityIds": [
+              "alqadim:research:hit-points"
+            ],
+            "source": "research"
+          }
+        },
+        {
+          "text": "What are gold and gems?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "ten gold",
+              "merchants prefer gold"
+            ],
+            "entityIds": [
+              "alqadim:research:gold-and-gems"
+            ],
+            "source": "research"
+          }
+        },
+        {
+          "text": "How do I unlock new sword moves?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Weapons Master",
+              "experience levels"
+            ],
+            "entityIds": [
+              "alqadim:research:new-sword-moves"
+            ],
+            "source": "research"
+          }
+        },
+        {
+          "text": "How do I save the game in the SNES edition?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "nine saved games"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "alqadim-manual-monsters",
+      "families": [
+        "lore",
+        "mechanics",
+        "continuity",
+        "names"
+      ],
+      "spoiler": "gentle",
+      "turns": [
+        {
+          "text": "What is a ghoul?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "undead scavenger",
+              "paralyse"
+            ],
+            "entityIds": [
+              "alqadim:research:ghoul"
+            ],
+            "source": "research"
+          }
+        },
+        {
+          "text": "What is a mummy?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "weakness is flame"
+            ],
+            "entityIds": [
+              "alqadim:research:mummy"
+            ],
+            "source": "research"
+          }
+        },
+        {
+          "text": "What is a huge spider?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "six-foot",
+              "poison is weaker"
+            ],
+            "entityIds": [
+              "alqadim:research:huge-spider"
+            ],
+            "source": "research"
+          }
+        },
+        {
+          "text": "What is a great ghul?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "turn invisible",
+              "can still damage"
+            ],
+            "entityIds": [
+              "alqadim:research:great-ghul"
+            ],
+            "source": "research"
+          }
+        },
+        {
+          "text": "What is a nas nas?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "one-armed",
+              "evil wizards"
+            ],
+            "entityIds": [
+              "alqadim:research:nas-nas"
+            ],
+            "source": "research"
+          }
+        },
+        {
+          "text": "What is an ogrima?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "ogre mage",
+              "regeneration"
+            ],
+            "entityIds": [
+              "alqadim:research:ogrima"
+            ],
+            "source": "research"
+          }
+        },
+        {
+          "text": "What is a debbi?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "baboon",
+              "hyena"
+            ],
+            "entityIds": [
+              "alqadim:research:debbi"
+            ],
+            "source": "research"
+          }
+        },
+        {
+          "text": "What is a werehyena?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "lycanthrope",
+              "afraid of fire"
+            ],
+            "entityIds": [
+              "alqadim:research:werehyena"
+            ],
+            "source": "research"
+          }
+        }
+      ]
+    },
+    {
+      "id": "alqadim-research-boundaries",
+      "families": [
+        "lore",
+        "boundaries",
+        "continuity",
+        "unsupported"
+      ],
+      "spoiler": "gentle",
+      "turns": [
+        {
+          "text": "What are the game controls?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "right mouse button"
+            ],
+            "entityIds": [
+              "alqadim:research:controls"
+            ],
+            "source": "research"
+          }
+        },
+        {
+          "text": "Using only this guide, what are the game controls?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "outside research:"
+            ]
+          }
+        },
+        {
+          "text": "What about experience points?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "outside research:"
+            ]
+          }
+        },
+        {
+          "text": "reset topic",
+          "expected": {
+            "decision": "reset"
+          }
+        },
+        {
+          "text": "What is an ammut?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "crocodile",
+              "hippopotamus",
+              "lioness"
+            ],
+            "entityIds": [
+              "alqadim:research:ammut"
+            ],
+            "source": "research"
+          }
+        },
+        {
+          "text": "What does Quick Swing do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "fast scimitar strike"
+            ],
+            "entityIds": [
+              "alqadim:combat:quick-swing"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Using only this guide, what is an ammut?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "outside research:"
+            ]
+          }
+        },
+        {
+          "text": "What about a ghoul?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "outside research:"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "alqadim-spoilers-and-recovery",
+      "families": [
+        "boundaries",
+        "names",
+        "topics",
+        "continuity"
+      ],
+      "spoiler": "direct",
+      "turns": [
+        {
+          "text": "What does Ship Orb do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "corsair ship"
+            ],
+            "entityIds": [
+              "alqadim:item:ship-orb"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What does it do?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "corsair ship"
+            ]
+          },
+          "options": {
+            "spoiler": "gentle"
+          },
+          "historyAbsent": [
+            "corsair ship"
+          ]
+        },
+        {
+          "text": "What does Magic Missile do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Three missiles"
+            ],
+            "entityIds": [
+              "alqadim:shard:magic-missile"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What about Waterblast?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "shot of water"
+            ],
+            "entityIds": [
+              "alqadim:shard:water-blast"
+            ],
+            "source": "guide",
+            "absent": [
+              "Did you mean"
+            ]
+          }
+        },
+        {
+          "text": "What does it do on Mars?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "shot of water"
+            ]
+          }
+        },
+        {
+          "text": "What about Sunfire?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "explosive ball"
+            ]
+          }
+        },
+        {
+          "text": "What does Sunfire do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "never damaged by his own blast"
+            ],
+            "entityIds": [
+              "alqadim:shard:sunfire"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "reset topic",
+          "expected": {
+            "decision": "reset"
+          }
+        },
+        {
+          "text": "What does it do?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "solar flame"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "alqadim-conflicts-and-false-premises",
+      "families": [
+        "unsupported",
+        "boundaries",
+        "topics",
+        "continuity"
+      ],
+      "spoiler": "direct",
+      "turns": [
+        {
+          "text": "What does Gilded Dove do?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [],
+            "conflict": true
+          }
+        },
+        {
+          "text": "Where is it?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [],
+            "conflict": true
+          }
+        },
+        {
+          "text": "What does Wisest Snake do?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [],
+            "conflict": true
+          }
+        },
+        {
+          "text": "Where is Idrid's Veil?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [],
+            "conflict": true
+          }
+        },
+        {
+          "text": "How do I defeat the Nameless One?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [],
+            "conflict": true
+          }
+        },
+        {
+          "text": "What does Ship Orb do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "corsair ship"
+            ],
+            "entityIds": [
+              "alqadim:item:ship-orb"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Why did the Ship Orb assassinate Zubin?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Ship Orb assassinated"
+            ]
+          }
+        },
+        {
+          "text": "What does the Enchanted Mirror do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Reflects magical light"
+            ],
+            "entityIds": [
+              "alqadim:item:enchanted-mirror"
+            ],
+            "source": "guide"
+          }
+        }
+      ]
+    },
+    {
+      "id": "alqadim-identity-versus-interaction",
+      "families": [
+        "lore",
+        "relationships",
+        "continuity",
+        "boundaries",
+        "topics",
+        "unsupported"
+      ],
+      "spoiler": "direct",
+      "turns": [
+        {
+          "text": "Who is the Caliph?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Request an audience"
+            ]
+          }
+        },
+        {
+          "text": "Tell me about the Caliph",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "audience",
+              "Vizier"
+            ],
+            "entityIds": [
+              "alqadim:npc:caliph"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Who is the Vizier?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Submit to",
+              "Infiltrate",
+              "Defeat"
+            ]
+          }
+        },
+        {
+          "text": "Tell me about the Vizier",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "mind scan",
+              "private apartments"
+            ],
+            "entityIds": [
+              "alqadim:npc:vizier"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Who is Aliya?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Meet Aliya",
+              "Bring Aliya"
+            ]
+          }
+        },
+        {
+          "text": "Where is she?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Zaratan"
+            ],
+            "entityIds": [
+              "alqadim:npc:aliya"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Who is Tarik?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "your brother Tarik"
+            ],
+            "entityIds": [
+              "alqadim:npc:your-brother"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Who is he?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "your brother Tarik"
+            ],
+            "entityIds": [
+              "alqadim:npc:your-brother"
+            ],
+            "source": "guide"
+          }
+        }
+      ]
+    },
+    {
+      "id": "alqadim-family-identity-boundaries",
+      "families": [
+        "lore",
+        "relationships",
+        "continuity",
+        "boundaries",
+        "topics",
+        "unsupported"
+      ],
+      "spoiler": "direct",
+      "turns": [
+        {
+          "text": "Who is Jessamin?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Mother (Jessamin)"
+            ],
+            "entityIds": [
+              "alqadim:npc:jessamin"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Who is she?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Mother (Jessamin)"
+            ],
+            "entityIds": [
+              "alqadim:npc:jessamin"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Where is she?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Zaratan"
+            ],
+            "entityIds": [
+              "alqadim:npc:jessamin"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Who is Tarik?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "your brother Tarik"
+            ],
+            "entityIds": [
+              "alqadim:npc:your-brother"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Who is he?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "your brother Tarik"
+            ],
+            "entityIds": [
+              "alqadim:npc:your-brother"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Who is Tarik on Mars?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "your brother Tarik"
+            ]
+          }
+        },
+        {
+          "text": "What about Jessamin?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Mother (Jessamin)"
+            ]
+          }
+        },
+        {
+          "text": "Who is Jessamin?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Mother (Jessamin)"
+            ]
+          },
+          "options": {
+            "spoiler": "gentle"
+          },
+          "historyAbsent": [
+            "Mother (Jessamin)",
+            "your brother Tarik"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "alqadim-oasis-hints-and-location-recovery",
+      "families": [
+        "objectives",
+        "travel",
+        "mechanics",
+        "continuity",
+        "topics",
+        "names",
+        "boundaries",
+        "unsupported"
+      ],
+      "spoiler": "gentle",
+      "review": "Source-authored before replay: DB.chapters[2] plus chapters[3] variants and DB.moonstoneShards[2/7]. No Gentle location record exists for Lightning Bolt; refuses location and keeps that intent in an elliptical follow-up, then recovers from a complete use question. Balanced/Direct spelling repairs exercise the same documented mechanics, not independent new facts.",
+      "turns": [
+        {
+          "text": "How do I complete Chapter 3?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Explore the oasis carefully",
+              "Plants and people"
+            ],
+            "entityIds": [
+              "alqadim:chapter:3"
+            ],
+            "source": "guide",
+            "recordIds": [
+              "alqadim:chapter:3:hint"
+            ],
+            "absent": [
+              "Purple Berries",
+              "mermaid"
+            ],
+            "sourceLocators": [
+              "chapters[3]"
+            ]
+          }
+        },
+        {
+          "text": "What does Lightning Bolt do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "ricochet",
+              "100 yd"
+            ],
+            "entityIds": [
+              "alqadim:shard:lightning-bolt"
+            ],
+            "source": "guide",
+            "recordIds": [
+              "alqadim:shard:lightning-bolt:use"
+            ],
+            "sourceLocators": [
+              "DB.moonstoneShards[2]"
+            ]
+          }
+        },
+        {
+          "text": "Where is it?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Isle",
+              "shop",
+              "100 yd"
+            ]
+          }
+        },
+        {
+          "text": "What about Water Blast?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "60 yd",
+              "2\u201312"
+            ]
+          }
+        },
+        {
+          "text": "What does Water Blast do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "shot of water",
+              "60 yd"
+            ],
+            "entityIds": [
+              "alqadim:shard:water-blast"
+            ],
+            "source": "guide",
+            "recordIds": [
+              "alqadim:shard:water-blast:use"
+            ],
+            "sourceLocators": [
+              "DB.moonstoneShards[7]"
+            ]
+          }
+        },
+        {
+          "text": "How do I complete Chapter 3?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "purple berries",
+              "oasis bushes",
+              "mermaid"
+            ],
+            "entityIds": [
+              "alqadim:chapter:3"
+            ],
+            "source": "guide",
+            "recordIds": [
+              "alqadim:chapter:3:hint"
+            ],
+            "sourceLocators": [
+              "chapters[3]"
+            ]
+          },
+          "options": {
+            "spoiler": "balanced"
+          }
+        },
+        {
+          "text": "What does light ning bolt do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "ricochet",
+              "6\u201336"
+            ],
+            "entityIds": [
+              "alqadim:shard:lightning-bolt"
+            ],
+            "source": "guide",
+            "recordIds": [
+              "alqadim:shard:lightning-bolt:use"
+            ],
+            "sourceLocators": [
+              "DB.moonstoneShards[2]"
+            ]
+          }
+        },
+        {
+          "text": "What are its stats?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "100 yd",
+              "6\u201336"
+            ],
+            "entityIds": [
+              "alqadim:shard:lightning-bolt"
+            ],
+            "source": "guide",
+            "recordIds": [
+              "alqadim:shard:lightning-bolt:use"
+            ],
+            "sourceLocators": [
+              "DB.moonstoneShards[2]"
+            ]
+          }
+        },
+        {
+          "text": "How do I complete Chapter 3?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Purple Berries",
+              "mermaid",
+              "Western Desert Oasis"
+            ],
+            "entityIds": [
+              "alqadim:chapter:3"
+            ],
+            "source": "guide",
+            "recordIds": [
+              "alqadim:chapter:3:hint"
+            ],
+            "sourceLocators": [
+              "DB.chapters[2]"
+            ]
+          },
+          "options": {
+            "spoiler": "direct"
+          }
+        },
+        {
+          "text": "What does LIGHTNINGBOLT do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "ricochet",
+              "100 yd"
+            ],
+            "entityIds": [
+              "alqadim:shard:lightning-bolt"
+            ],
+            "source": "guide",
+            "recordIds": [
+              "alqadim:shard:lightning-bolt:use"
+            ],
+            "sourceLocators": [
+              "DB.moonstoneShards[2]"
+            ]
+          }
+        },
+        {
+          "text": "What does it do in the SNES edition?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "ricochet"
+            ]
+          }
+        },
+        {
+          "text": "What does Lightning Bolt do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "ricochet"
+            ],
+            "entityIds": [
+              "alqadim:shard:lightning-bolt"
+            ],
+            "source": "guide",
+            "recordIds": [
+              "alqadim:shard:lightning-bolt:use"
+            ],
+            "sourceLocators": [
+              "DB.moonstoneShards[2]"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "alqadim-experience-explanation-and-guide-only-boundary",
+      "spoiler": "balanced",
+      "families": [
+        "relationships",
+        "mechanics",
+        "continuity",
+        "topics",
+        "boundaries",
+        "unsupported"
+      ],
+      "turns": [
+        {
+          "text": "What are experience points?",
+          "options": {
+            "spoiler": "balanced"
+          },
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "earns experience for solving puzzles, achieving goals and killing monsters",
+              "gains hit points automatically at each new level"
+            ],
+            "entityIds": [
+              "alqadim:research:experience-levels"
+            ],
+            "recordIds": [
+              "alqadim:research:experience-levels:explanation"
+            ],
+            "source": "research",
+            "sourceLocators": [
+              "Al-Qadim: The Genie's Curse rule book (SSI, 1994), MOCAGH copy; wording checked 21 October 2026 against the same manual shipped with this guide (alqadim/al-qadim_manual_PDF.pdf)"
+            ],
+            "sourceUrls": [
+              "https://www.mocagh.org/ssi/alqadim-manual.pdf"
+            ]
+          }
+        },
+        {
+          "text": "How do I level up?",
+          "options": {
+            "spoiler": "balanced"
+          },
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "solving puzzles",
+              "hit points automatically"
+            ],
+            "entityIds": [
+              "alqadim:research:experience-levels"
+            ],
+            "recordIds": [
+              "alqadim:research:experience-levels:explanation"
+            ],
+            "source": "research",
+            "sourceLocators": [
+              "Al-Qadim: The Genie's Curse rule book (SSI, 1994), MOCAGH copy; wording checked 21 October 2026 against the same manual shipped with this guide (alqadim/al-qadim_manual_PDF.pdf)"
+            ],
+            "sourceUrls": [
+              "https://www.mocagh.org/ssi/alqadim-manual.pdf"
+            ]
+          }
+        },
+        {
+          "text": "What are hit points?",
+          "options": {
+            "spoiler": "balanced"
+          },
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "at zero the hero dies",
+              "maximum only goes up by gaining a level"
+            ],
+            "entityIds": [
+              "alqadim:research:hit-points"
+            ],
+            "recordIds": [
+              "alqadim:research:hit-points:explanation"
+            ],
+            "source": "research",
+            "sourceLocators": [
+              "Al-Qadim: The Genie's Curse rule book (SSI, 1994), MOCAGH copy; wording checked 21 October 2026 against the same manual shipped with this guide (alqadim/al-qadim_manual_PDF.pdf)"
+            ],
+            "sourceUrls": [
+              "https://www.mocagh.org/ssi/alqadim-manual.pdf"
+            ]
+          }
+        },
+        {
+          "text": "Using only this guide, what are experience points?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "outside research:",
+              "gains hit points automatically"
+            ]
+          }
+        },
+        {
+          "text": "What about hit points?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "outside research:",
+              "maximum only goes up by gaining a level"
+            ]
+          }
+        },
+        {
+          "text": "reset topic",
+          "expected": {
+            "decision": "reset"
+          }
+        },
+        {
+          "text": "How do I level up?",
+          "options": {
+            "spoiler": "gentle"
+          },
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "earns experience for solving puzzles, achieving goals and killing monsters",
+              "gains hit points automatically at each new level"
+            ],
+            "entityIds": [
+              "alqadim:research:experience-levels"
+            ],
+            "recordIds": [
+              "alqadim:research:experience-levels:explanation"
+            ],
+            "source": "research",
+            "sourceLocators": [
+              "Al-Qadim: The Genie's Curse rule book (SSI, 1994), MOCAGH copy; wording checked 21 October 2026 against the same manual shipped with this guide (alqadim/al-qadim_manual_PDF.pdf)"
+            ],
+            "sourceUrls": [
+              "https://www.mocagh.org/ssi/alqadim-manual.pdf"
+            ]
+          }
+        },
+        {
+          "text": "What are hit points?",
+          "options": {
+            "spoiler": "direct"
+          },
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "at zero the hero dies",
+              "maximum only goes up by gaining a level"
+            ],
+            "entityIds": [
+              "alqadim:research:hit-points"
+            ],
+            "recordIds": [
+              "alqadim:research:hit-points:explanation"
+            ],
+            "source": "research",
+            "sourceLocators": [
+              "Al-Qadim: The Genie's Curse rule book (SSI, 1994), MOCAGH copy; wording checked 21 October 2026 against the same manual shipped with this guide (alqadim/al-qadim_manual_PDF.pdf)"
+            ],
+            "sourceUrls": [
+              "https://www.mocagh.org/ssi/alqadim-manual.pdf"
+            ]
+          }
+        }
+      ],
+      "review": "Draft authored from existing reviewed rule-book experience and hit-point notes before replay. Causal mechanism: puzzles/goals/kills earn XP; a new level automatically increases HP; only gaining a level increases maximum HP. No quest procedure is treated as a motive. Outside-research scope must persist until reset."
+    }
+  ],
+  "oracleReviewNotes": [
+    "Corrected the Giant Boar location against its unchanged source field: Oasis Outskirts, not Desert. The two manual-control failures are implementation regressions, not weakened expectations."
+  ]
+}

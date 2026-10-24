@@ -13,6 +13,22 @@ const definitions = overlay.narratives;
 const records = allRecords.alqadim.filter(record => record.narrative);
 const make = () => createAssistant({ gameId: 'alqadim', records: allRecords.alqadim });
 const objectiveFacts = new Map();
+// New identities extract role phrases, not the surrounding imperative. Check
+// the source independently before including them in the expected fact map.
+assert.ok(aq.DB.chapters.find(c => c.id === 2).required.find(o => o.id === 'ch2_2').text.includes('Mother (Jessamin)'));
+assert.ok(aq.DB.chapters.find(c => c.id === 16).summary.includes('your brother Tarik'));
+objectiveFacts.set('identity:jessamin', { text: 'Mother (Jessamin)', minSpoiler: 'direct',
+    source: { file: 'guides/js/AlQadim.js', locator: 'DB.chapters[id=2].required[id=ch2_2].text (identity phrase)', review: 'extracted' } });
+objectiveFacts.set('identity:tarik', { text: 'your brother Tarik', minSpoiler: 'direct',
+    source: { file: 'guides/js/AlQadim.js', locator: 'DB.chapters[id=16].summary (identity phrase)', review: 'extracted' } });
+for (const [key, chapterId, objectiveId, phrase] of [
+    ['kara', 19, 'ch19_2', 'the rogue genie Kara'],
+    ['pangar', 12, 'ch12_4', 'the cyclops Pangar-Bek']
+]) {
+    assert.ok(aq.DB.chapters.find(c => c.id === chapterId).required.find(o => o.id === objectiveId).text.includes(phrase));
+    objectiveFacts.set(`identity:${key}`, { text: phrase, minSpoiler: 'direct',
+        source: { file: 'guides/js/AlQadim.js', locator: `DB.chapters[id=${chapterId}].required[id=${objectiveId}].text (identity phrase)`, review: 'extracted' } });
+}
 for (const [index, chapter] of aq.DB.chapters.entries()) {
     if (chapter.summary) objectiveFacts.set(`chapter-summary:${chapter.id}`, {
         text: chapter.summary, source: { file: 'guides/js/AlQadim.js', locator: `DB.chapters[${index}].summary`, review: 'extracted' }
@@ -55,6 +71,7 @@ test('source phrases, spoiler levels and authored fact order validate without dr
 });
 
 test('chapter plans remain summaries; only explicit goal and procedural facets use other aspects', () => {
+    assert.equal(records.filter(record => record.narrative.aspect === 'identity').length, 4);
     assert.equal(records.filter(record => record.narrative.aspect === 'summary').length, 16);
     assert.equal(records.filter(record => record.narrative.aspect === 'purpose').length, 2);
     assert.equal(records.filter(record => record.narrative.aspect === 'method').length, 2);

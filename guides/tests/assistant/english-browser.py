@@ -103,6 +103,22 @@ DIALOGUES = {
         ('direct', "What's Magebane good for, and where is it?", ['Drains Mana', 'Stonegate'], []),
         ('direct', 'How do I beat dragons?', ['Glass Sword'], []),
         ('direct', 'What about liches?', ['Magebane'], []),
+        ('balanced', 'What is a timelord?', ['keep time flowing smoothly through space', 'mithyr.com'], ['Did you mean', 'npc on the guide']),
+        ('balanced', 'yes a time lord', ['keep time flowing smoothly through space'], ['What would you like', 'Did you mean']),
+        ('balanced', 'what is it?', ['keep time flowing smoothly through space'], ['npc on the guide']),
+        ('balanced', 'What is a guardian?', ['hostile being from another dimension', 'mithyr.com'], ['No guide subject', 'choose one only']),
+        ('balanced', 'Who is he?', ['hostile being from another dimension'], ['keep time flowing smoothly']),
+        ('balanced', 'What does he want?', ['power and domination'], ['free him']),
+        ('balanced', 'How are they related?', ['are opponents'], []),
+        ('balanced', 'Who is he?', ['Which person'], ['outside research:']),
+        ('balanced', 'What is the Avatar?', ["champion of the Eight Virtues"], ['No guide subject']),
+        ('balanced', 'What is Britannia?', ['realm ruled by Lord British'], ['No guide subject']),
+        ('balanced', 'What is a champion?', ['These entries contain'], []),
+        ('balanced', 'Who is he?', ['not a confirmed match'], ['outside research:']),
+        # Identity-specific decline replaces the older generic explanation wording.
+        ('balanced', 'Using only the guide, what is timelord?', ['sourced identity description'], ['outside research:']),
+        ('balanced', 'yes a time lord', ['sourced identity description'], ['outside research:']),
+        ('balanced', 'what is it?', ['sourced identity description'], ['outside research:']),
     ],
     'alqadim': [
         ('direct', 'I need to get my hands on the Ship Orb', ['helm cabin'], []),
@@ -125,7 +141,8 @@ OFFLINE = {
     'ultima5': ('direct', 'Where is the Sceptre and what does it do?', ['Stonegate', 'dispel']),
     'ultima7': ('gentle', 'Where might I find Iolo?', ['Trinsic']),
     'alqadim': ('direct', 'What about the Ship Orb?', ["Deadman's Reef", 'corsair ship']),
-    'starcraft': ('gentle', 'How do I set it up?', ['Custom Game']),
+    # A fresh named request ends the prior unsupported Mac restriction.
+    'starcraft': ('gentle', 'How do I set up the Remastered SCM map?', ['Custom Game']),
 }
 
 # Outside research must render with its label and a plain-text citation.
@@ -237,6 +254,10 @@ with sync_playwright() as p:
         spoiler, text, present = OFFLINE[game]
         page.locator(s['spoiler']).first.select_option(spoiler)
         context.set_offline(True)
+        if game == 'starcraft':
+            restricted = ask(page, s, 'How do I set it up?')
+            check('starcraft: offline pronoun retains the unsupported Mac restriction',
+                  'does not support' in restricted and 'Custom Game' not in restricted, restricted)
         reply = ask(page, s, text)
         context.set_offline(False)
         transcript.append({'spoiler': spoiler, 'question': text, 'reply': reply, 'offline': True})

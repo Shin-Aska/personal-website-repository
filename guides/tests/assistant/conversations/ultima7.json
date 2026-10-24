@@ -1,0 +1,2544 @@
+{
+  "schemaVersion": 1,
+  "gameId": "ultima7",
+  "review": "Hand-authored extended conversations from Ultima7.js, reviewed atlas descriptions and existing cited dialogue/research facets. Expected claims and source domains were fixed before execution, never derived from assistant replies.",
+  "basis": [
+    "guides/js/Ultima7.js: DB.companions, equipment, spells, virtue quests and main quests",
+    "guides/js/Ultima7Markers.js: substantive NPC descriptions and authored family relationships",
+    "guides/data/assistant/ultima7.json: reviewed narrative/story facets and cited research"
+  ],
+  "dialogues": [
+    {
+      "id": "ultima7-royal-friendship",
+      "families": [
+        "lore",
+        "relationships",
+        "continuity",
+        "names"
+      ],
+      "spoiler": "gentle",
+      "turns": [
+        {
+          "text": "Who is Lord British?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "rules Britannia",
+              "king",
+              "Earth"
+            ],
+            "entityIds": [
+              "ultima7:place:lord-british"
+            ],
+            "source": "research"
+          }
+        },
+        {
+          "text": "Who is he?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "rules Britannia",
+              "Avatar"
+            ],
+            "entityIds": [
+              "ultima7:place:lord-british"
+            ],
+            "source": "research"
+          }
+        },
+        {
+          "text": "Who is the Avatar?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Britannia"
+            ],
+            "entityIds": [
+              "ultima7:character:avatar"
+            ],
+            "source": "research"
+          },
+          "note": "Canonical identity corrected against the avatar-identity overlay definition (character, not NPC)."
+        },
+        {
+          "text": "How are they related?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "old friend",
+              "Earth"
+            ],
+            "entityIds": [
+              "ultima7:place:lord-british"
+            ],
+            "source": "research"
+          }
+        },
+        {
+          "text": "Who is he?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": []
+          }
+        },
+        {
+          "text": "Who rules Britannia?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Lord British",
+              "king"
+            ],
+            "entityIds": [
+              "ultima7:place:lord-british"
+            ],
+            "source": "research"
+          }
+        },
+        {
+          "text": "Who is lordbritish?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "rules Britannia"
+            ],
+            "entityIds": [
+              "ultima7:place:lord-british"
+            ],
+            "source": "research",
+            "absent": [
+              "Did you mean"
+            ]
+          }
+        },
+        {
+          "text": "Who is his daughter?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Lord British's daughter"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "ultima7-time-lord-and-guardian",
+      "families": [
+        "lore",
+        "relationships",
+        "continuity",
+        "names",
+        "boundaries"
+      ],
+      "spoiler": "balanced",
+      "turns": [
+        {
+          "text": "What is a timelord?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "keep time flowing",
+              "Guardian"
+            ],
+            "entityIds": [
+              "ultima7:npc:time-lord"
+            ],
+            "source": "research",
+            "absent": [
+              "Did you mean",
+              "I don't know"
+            ]
+          }
+        },
+        {
+          "text": "yes a time lord",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "keep time flowing"
+            ],
+            "entityIds": [
+              "ultima7:npc:time-lord"
+            ],
+            "source": "research"
+          }
+        },
+        {
+          "text": "What is a guardian?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "hostile being from another dimension",
+              "Britannia"
+            ],
+            "entityIds": [
+              "ultima7:npc:guardian"
+            ],
+            "source": "research"
+          },
+          "note": "Text assertion corrected against the cited Guardian note, which says powerful, hostile being."
+        },
+        {
+          "text": "What does he want?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "power and domination",
+              "Britannia"
+            ],
+            "entityIds": [
+              "ultima7:npc:guardian"
+            ],
+            "source": "research"
+          }
+        },
+        {
+          "text": "How are they related?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "opponents",
+              "trapped"
+            ],
+            "entityIds": [
+              "ultima7:npc:time-lord"
+            ],
+            "source": "research"
+          }
+        },
+        {
+          "text": "Who is he?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": []
+          }
+        },
+        {
+          "text": "Who is the Time Lord?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "keep time flowing"
+            ],
+            "entityIds": [
+              "ultima7:npc:time-lord"
+            ],
+            "source": "research"
+          }
+        },
+        {
+          "text": "What does he want?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "free him",
+              "oppose the Guardian"
+            ],
+            "entityIds": [
+              "ultima7:npc:time-lord"
+            ],
+            "source": "research"
+          }
+        },
+        {
+          "text": "Who is the Guardian?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "powerful being"
+            ]
+          },
+          "options": {
+            "spoiler": "gentle"
+          },
+          "historyAbsent": [
+            "power and domination",
+            "has trapped him"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ultima7-royal-court",
+      "families": [
+        "lore",
+        "travel",
+        "continuity",
+        "topics"
+      ],
+      "spoiler": "balanced",
+      "turns": [
+        {
+          "text": "Who is Lord British?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "rules Britannia"
+            ],
+            "entityIds": [
+              "ultima7:place:lord-british"
+            ],
+            "source": "research"
+          }
+        },
+        {
+          "text": "Who is Chuckles?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Court jester"
+            ],
+            "entityIds": [
+              "ultima7:npc:chuckles"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Who is he?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Court jester"
+            ],
+            "entityIds": [
+              "ultima7:npc:chuckles"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Who is Nystul?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Royal magician"
+            ],
+            "entityIds": [
+              "ultima7:npc:nystul"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Who is he?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Royal magician"
+            ],
+            "entityIds": [
+              "ultima7:npc:nystul"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Who is Geoffrey?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Captain of the guard"
+            ],
+            "entityIds": [
+              "ultima7:npc:geoffrey"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Who is he?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Captain of the guard"
+            ],
+            "entityIds": [
+              "ultima7:npc:geoffrey"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Why did he assassinate Lord British?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Geoffrey assassinated"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "ultima7-archer-tour",
+      "families": [
+        "lore",
+        "travel",
+        "mechanics",
+        "continuity"
+      ],
+      "spoiler": "gentle",
+      "turns": [
+        {
+          "text": "Who is Iolo?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Bard"
+            ],
+            "entityIds": [
+              "ultima7:companion:iolo"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Where is he?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Trinsic"
+            ],
+            "entityIds": [
+              "ultima7:companion:iolo"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What about Shamino?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Blue Boar"
+            ],
+            "entityIds": [
+              "ultima7:companion:shamino"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Who is he?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Ranger"
+            ],
+            "entityIds": [
+              "ultima7:companion:shamino"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What are his stats?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "21",
+              "19"
+            ],
+            "entityIds": [
+              "ultima7:companion:shamino"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Where is Tseramed?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Bee Cave"
+            ],
+            "entityIds": [
+              "ultima7:companion:tseramed"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Who is he?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Ranger"
+            ],
+            "entityIds": [
+              "ultima7:companion:tseramed"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "How do I recruit him?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Recruitment:"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "ultima7-companions-and-services",
+      "families": [
+        "lore",
+        "travel",
+        "mechanics",
+        "continuity"
+      ],
+      "spoiler": "gentle",
+      "turns": [
+        {
+          "text": "Who is Dupre?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Paladin"
+            ],
+            "entityIds": [
+              "ultima7:companion:dupre"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Where is he?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Bunk and Stool"
+            ],
+            "entityIds": [
+              "ultima7:companion:dupre"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What about Sentri?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Training Hall"
+            ],
+            "entityIds": [
+              "ultima7:companion:sentri"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Who is he?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Trainer"
+            ],
+            "entityIds": [
+              "ultima7:companion:sentri"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Who is Jaana?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Druid"
+            ],
+            "entityIds": [
+              "ultima7:companion:jaana"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Where is she?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Cove"
+            ],
+            "entityIds": [
+              "ultima7:companion:jaana"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What about Julia?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Minoc"
+            ],
+            "entityIds": [
+              "ultima7:companion:julia"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Who is she?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Tinker"
+            ],
+            "entityIds": [
+              "ultima7:companion:julia"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Where is Katrina?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "New Magincia"
+            ],
+            "entityIds": [
+              "ultima7:companion:katrina"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Who is she?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Shepherd"
+            ],
+            "entityIds": [
+              "ultima7:companion:katrina"
+            ],
+            "source": "guide"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ultima7-spark-and-christopher",
+      "families": [
+        "lore",
+        "relationships",
+        "travel",
+        "continuity"
+      ],
+      "spoiler": "balanced",
+      "turns": [
+        {
+          "text": "Who is Spark?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Fighter"
+            ],
+            "entityIds": [
+              "ultima7:companion:spark"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Where is he?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Christopher's House"
+            ],
+            "entityIds": [
+              "ultima7:companion:spark"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Who is Christopher?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Blacksmith"
+            ],
+            "entityIds": [
+              "ultima7:npc:christopher"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "How are Spark and Christopher related?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Christopher's son"
+            ],
+            "entityIds": [
+              "ultima7:companion:spark"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Who is he?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": []
+          }
+        },
+        {
+          "text": "Who is Christopher?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Blacksmith"
+            ],
+            "entityIds": [
+              "ultima7:npc:christopher"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Why did he kill Inamo?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Christopher killed Inamo"
+            ]
+          }
+        },
+        {
+          "text": "How are Spark and Christopher related?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Christopher's son"
+            ],
+            "entityIds": [
+              "ultima7:companion:spark"
+            ],
+            "source": "guide"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ultima7-trinsic-investigation",
+      "families": [
+        "objectives",
+        "lore",
+        "relationships",
+        "continuity",
+        "boundaries"
+      ],
+      "spoiler": "direct",
+      "turns": [
+        {
+          "text": "Summarize the Trinsic Murders",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "crime scene",
+              "Crown Jewel"
+            ],
+            "entityIds": [
+              "ultima7:quest:the-trinsic-murders"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Who is the suspect in the Trinsic Murders?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "suspect",
+              "man with a hook"
+            ],
+            "entityIds": [
+              "ultima7:quest:the-trinsic-murders"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Who killed Inamo?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Hook",
+              "Forskis",
+              "Inamo"
+            ],
+            "entityIds": [
+              "ultima7:quest:the-trinsic-murders"
+            ],
+            "source": "research"
+          }
+        },
+        {
+          "text": "Who were the victims in the Trinsic Murders?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Inamo",
+              "Christopher"
+            ],
+            "entityIds": [
+              "ultima7:quest:the-trinsic-murders"
+            ],
+            "source": "research"
+          }
+        },
+        {
+          "text": "Why was Inamo killed?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "different accounts",
+              "no single explanation"
+            ],
+            "entityIds": [
+              "ultima7:npc:inamo"
+            ],
+            "source": "research"
+          }
+        },
+        {
+          "text": "How was Inamo killed?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "pitchfork"
+            ],
+            "entityIds": [
+              "ultima7:npc:inamo"
+            ],
+            "source": "research"
+          }
+        },
+        {
+          "text": "Why did Christopher kill Inamo?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Christopher killed Inamo"
+            ]
+          }
+        },
+        {
+          "text": "What happened to Christopher?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Hook",
+              "Forskis"
+            ],
+            "entityIds": [
+              "ultima7:npc:christopher"
+            ],
+            "source": "research"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ultima7-hook-and-escape",
+      "families": [
+        "lore",
+        "relationships",
+        "continuity",
+        "topics"
+      ],
+      "spoiler": "direct",
+      "turns": [
+        {
+          "text": "Who is Hook?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "former pirate",
+              "assassin",
+              "Forskis"
+            ],
+            "entityIds": [
+              "ultima7:topic:hook"
+            ],
+            "source": "research"
+          }
+        },
+        {
+          "text": "What happened to Hook?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Avatar kills Hook",
+              "Black Gate chamber"
+            ],
+            "entityIds": [
+              "ultima7:topic:hook"
+            ],
+            "source": "research"
+          }
+        },
+        {
+          "text": "What is the outcome for Hook?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Avatar kills Hook"
+            ],
+            "entityIds": [
+              "ultima7:topic:hook"
+            ],
+            "source": "research"
+          }
+        },
+        {
+          "text": "What happened to the Crown Jewel?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "left port immediately",
+              "found empty"
+            ],
+            "entityIds": [
+              "ultima7:topic:suspect"
+            ],
+            "source": "research"
+          }
+        },
+        {
+          "text": "What happened next after the killings in Trinsic?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Crown Jewel",
+              "left port"
+            ],
+            "entityIds": [
+              "ultima7:quest:the-trinsic-murders"
+            ],
+            "source": "research"
+          }
+        },
+        {
+          "text": "Why did Spark kill Hook?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Spark killed Hook"
+            ]
+          }
+        },
+        {
+          "text": "Who is Hook?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "former pirate"
+            ],
+            "entityIds": [
+              "ultima7:topic:hook"
+            ],
+            "source": "research"
+          }
+        },
+        {
+          "text": "Who is his father?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": []
+          }
+        }
+      ]
+    },
+    {
+      "id": "ultima7-fellowship-origins",
+      "families": [
+        "lore",
+        "relationships",
+        "continuity",
+        "boundaries"
+      ],
+      "spoiler": "direct",
+      "turns": [
+        {
+          "text": "Who founded the Fellowship?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Batlin",
+              "Elizabeth",
+              "Abraham"
+            ],
+            "entityIds": [
+              "ultima7:org:fellowship"
+            ],
+            "source": "research"
+          }
+        },
+        {
+          "text": "What does the Fellowship want?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Guardian",
+              "seize power"
+            ],
+            "entityIds": [
+              "ultima7:org:fellowship"
+            ],
+            "source": "research"
+          }
+        },
+        {
+          "text": "Who is Batlin?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Leader of the Fellowship"
+            ],
+            "entityIds": [
+              "ultima7:npc:batlin"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Who is he?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Leader of the Fellowship"
+            ],
+            "entityIds": [
+              "ultima7:npc:batlin"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Who leads the Fellowship?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Batlin"
+            ],
+            "entityIds": [
+              "ultima7:org:fellowship"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Did Lord British found the Fellowship?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Lord British founded"
+            ]
+          }
+        },
+        {
+          "text": "What is the Fellowship?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Batlin",
+              "Elizabeth",
+              "Abraham"
+            ],
+            "entityIds": [
+              "ultima7:org:fellowship"
+            ],
+            "source": "research"
+          }
+        },
+        {
+          "text": "Who founded it in Ultima IX?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Batlin, Elizabeth and Abraham"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "ultima7-klog-and-blacksmith",
+      "families": [
+        "lore",
+        "relationships",
+        "continuity",
+        "topics"
+      ],
+      "spoiler": "direct",
+      "turns": [
+        {
+          "text": "Who is Klog?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Fellowship branch"
+            ],
+            "entityIds": [
+              "ultima7:npc:klog"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Who hired Christopher?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Klog hired",
+              "blackrock pedestals"
+            ],
+            "entityIds": [
+              "ultima7:npc:klog"
+            ],
+            "source": "research"
+          }
+        },
+        {
+          "text": "Who is Ellen?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Wife of Klog"
+            ],
+            "entityIds": [
+              "ultima7:npc:ellen"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "How are Ellen and Klog related?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Wife of Klog"
+            ],
+            "entityIds": [
+              "ultima7:npc:ellen"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Why was Christopher killed?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "silence him",
+              "leave the group"
+            ],
+            "entityIds": [
+              "ultima7:quest:the-trinsic-murders"
+            ],
+            "source": "research"
+          }
+        },
+        {
+          "text": "Why did Klog hire Christopher on Mars?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "blackrock pedestals"
+            ]
+          }
+        },
+        {
+          "text": "Who is Finnigan?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Mayor of Trinsic"
+            ],
+            "entityIds": [
+              "ultima7:npc:finnigan"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Who is he?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Mayor of Trinsic"
+            ],
+            "entityIds": [
+              "ultima7:npc:finnigan"
+            ],
+            "source": "guide"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ultima7-townsfolk",
+      "families": [
+        "lore",
+        "travel",
+        "continuity",
+        "unsupported"
+      ],
+      "spoiler": "balanced",
+      "turns": [
+        {
+          "text": "Who is Finnigan?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Mayor of Trinsic"
+            ],
+            "entityIds": [
+              "ultima7:npc:finnigan"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Who is Gilberto?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "night shift guard"
+            ],
+            "entityIds": [
+              "ultima7:npc:gilberto"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Who is he?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "night shift guard"
+            ],
+            "entityIds": [
+              "ultima7:npc:gilberto"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Who is Rudyom?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Mage and provisioner"
+            ],
+            "entityIds": [
+              "ultima7:npc:rudyom"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Who is Penumbra?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Mage"
+            ],
+            "entityIds": [
+              "ultima7:npc:penumbra"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Who is Erethian?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Scholar"
+            ],
+            "entityIds": [
+              "ultima7:npc:erethian"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Who is Weston?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Prisoner"
+            ],
+            "entityIds": [
+              "ultima7:npc:weston"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Why did he become king?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Weston became king"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "ultima7-gypsy-families",
+      "families": [
+        "lore",
+        "relationships",
+        "continuity",
+        "unsupported"
+      ],
+      "spoiler": "balanced",
+      "turns": [
+        {
+          "text": "Who is Jergi?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "King of the gypsies",
+              "Frederico"
+            ],
+            "entityIds": [
+              "ultima7:npc:jergi"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "How are Jergi and Frederico related?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "brother of Frederico"
+            ],
+            "entityIds": [
+              "ultima7:npc:jergi"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Who is Tania?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Wife of Frederico"
+            ],
+            "entityIds": [
+              "ultima7:npc:tania"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "How are Tania and Frederico related?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Wife of Frederico"
+            ],
+            "entityIds": [
+              "ultima7:npc:tania"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Who is Sasha?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "son of Frederico and Tania"
+            ],
+            "entityIds": [
+              "ultima7:npc:sasha"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What is the relationship between Sasha and Tania?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "son of Frederico and Tania"
+            ],
+            "entityIds": [
+              "ultima7:npc:sasha"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Who is Sasha's daughter?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": []
+          }
+        },
+        {
+          "text": "Why did Tania kill Frederico?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Tania killed"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "ultima7-weapon-effects",
+      "families": [
+        "mechanics",
+        "continuity",
+        "names",
+        "unsupported"
+      ],
+      "spoiler": "balanced",
+      "turns": [
+        {
+          "text": "What does Magebane do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Drains Mana"
+            ],
+            "entityIds": [
+              "ultima7:equipment:magebane"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What about the Glass Sword?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "1 use"
+            ],
+            "entityIds": [
+              "ultima7:equipment:glass-sword"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What about the Hoe of Destruction?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Very High Damage"
+            ],
+            "entityIds": [
+              "ultima7:equipment:hoe-of-destruction"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What about the Death Scythe?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "High Damage"
+            ],
+            "entityIds": [
+              "ultima7:equipment:death-scythe"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What about the Juggernaut Hammer?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Ranged"
+            ],
+            "entityIds": [
+              "ultima7:equipment:juggernaut-hammer"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What about the Triple Crossbow?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "3 Bolts"
+            ],
+            "entityIds": [
+              "ultima7:equipment:triple-crossbow"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What about the Sword of Defense?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Armor Value"
+            ],
+            "entityIds": [
+              "ultima7:equipment:sword-of-defense"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "How much does it cost?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Armor Value"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "ultima7-artifact-hunt",
+      "families": [
+        "mechanics",
+        "travel",
+        "continuity",
+        "names"
+      ],
+      "spoiler": "direct",
+      "turns": [
+        {
+          "text": "Where is Magebane?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Stonegate"
+            ],
+            "entityIds": [
+              "ultima7:equipment:magebane"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What does it do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Drains Mana"
+            ],
+            "entityIds": [
+              "ultima7:equipment:magebane"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Where is the Hoe of Destruction?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Mack's Shed"
+            ],
+            "entityIds": [
+              "ultima7:equipment:hoe-of-destruction"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What about the Glass Sword?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Isle of Avatar"
+            ],
+            "entityIds": [
+              "ultima7:equipment:glass-sword"
+            ],
+            "source": "guide"
+          },
+          "note": "Location wording corrected against DB.equipment: Isle of Avatar."
+        },
+        {
+          "text": "What about the Death Scythe?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Skara Brae"
+            ],
+            "entityIds": [
+              "ultima7:equipment:death-scythe"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What about the Juggernaut Hammer?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Serpent's Hold"
+            ],
+            "entityIds": [
+              "ultima7:equipment:juggernaut-hammer"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What about the Magic Bow?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Deep Forest"
+            ],
+            "entityIds": [
+              "ultima7:equipment:magic-bow"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Can I buy it for free?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Deep Forest"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "ultima7-practical-spells",
+      "families": [
+        "mechanics",
+        "continuity",
+        "names",
+        "unsupported"
+      ],
+      "spoiler": "gentle",
+      "turns": [
+        {
+          "text": "What does Mark & Recall do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "reusable return point"
+            ],
+            "entityIds": [
+              "ultima7:spell:mark-recall"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What about Unlock Magic?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "magically sealed doors"
+            ],
+            "entityIds": [
+              "ultima7:spell:unlock-magic"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What about Heal & Cure?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "party recovery"
+            ],
+            "entityIds": [
+              "ultima7:spell:heal-cure"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What about Mass Might?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "party's strength"
+            ],
+            "entityIds": [
+              "ultima7:spell:mass-might"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What about Armageddon?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "nearly every NPC",
+              "breaks most quests"
+            ],
+            "entityIds": [
+              "ultima7:spell:armageddon"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Where do I learn it on Mars?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": []
+          }
+        },
+        {
+          "text": "What does heal cure do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "party recovery"
+            ],
+            "entityIds": [
+              "ultima7:spell:heal-cure"
+            ],
+            "source": "guide",
+            "absent": [
+              "Did you mean"
+            ]
+          }
+        },
+        {
+          "text": "What does it do in the SNES edition?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "party recovery"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "ultima7-investigation-magic",
+      "families": [
+        "mechanics",
+        "objectives",
+        "continuity",
+        "boundaries"
+      ],
+      "spoiler": "direct",
+      "turns": [
+        {
+          "text": "What does Seance do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "spirits of Skara Brae"
+            ],
+            "entityIds": [
+              "ultima7:spell:seance"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What about Destroy Trap?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Tetrahedron Generator"
+            ],
+            "entityIds": [
+              "ultima7:spell:destroy-trap"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What does Mark & Recall do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "reusable return point"
+            ],
+            "entityIds": [
+              "ultima7:spell:mark-recall"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What does Heal & Cure do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "party recovery"
+            ],
+            "entityIds": [
+              "ultima7:spell:heal-cure"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What does Seance do?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "spirits of Skara Brae"
+            ]
+          },
+          "options": {
+            "spoiler": "gentle"
+          },
+          "historyAbsent": [
+            "spirits of Skara Brae",
+            "Tetrahedron Generator"
+          ]
+        },
+        {
+          "text": "What about Destroy Trap?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Tetrahedron Generator"
+            ]
+          }
+        },
+        {
+          "text": "What does Unlock Magic do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "magically sealed doors"
+            ],
+            "entityIds": [
+              "ultima7:spell:unlock-magic"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What does Mark & Recall do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "reusable return point"
+            ],
+            "entityIds": [
+              "ultima7:spell:mark-recall"
+            ],
+            "source": "guide"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ultima7-virtue-mantras",
+      "families": [
+        "lore",
+        "mechanics",
+        "topics",
+        "boundaries"
+      ],
+      "spoiler": "gentle",
+      "turns": [
+        {
+          "text": "What is the mantra for Humility?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Mantra: LUM"
+            ],
+            "entityIds": [
+              "ultima7:topic:mantra-humility"
+            ],
+            "source": "guide"
+          },
+          "note": "Expected identity corrected against the adapter's reviewed shrine-mantra Q&A IDs; the assertion still requires the exact mantra."
+        },
+        {
+          "text": "What about Spirituality?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Mantra: OM"
+            ],
+            "entityIds": [
+              "ultima7:topic:mantra-spirituality"
+            ],
+            "source": "guide"
+          },
+          "note": "Expected identity corrected against the adapter's reviewed shrine-mantra Q&A IDs; the assertion still requires the exact mantra."
+        },
+        {
+          "text": "What about Honesty?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Mantra: AHM"
+            ],
+            "entityIds": [
+              "ultima7:topic:mantra-honesty"
+            ],
+            "source": "guide"
+          },
+          "note": "Expected identity corrected against the adapter's reviewed shrine-mantra Q&A IDs; the assertion still requires the exact mantra."
+        },
+        {
+          "text": "What about Justice?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Mantra: BEH"
+            ],
+            "entityIds": [
+              "ultima7:topic:mantra-justice"
+            ],
+            "source": "guide"
+          },
+          "note": "Expected identity corrected against the adapter's reviewed shrine-mantra Q&A IDs; the assertion still requires the exact mantra."
+        },
+        {
+          "text": "What about Compassion?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Mantra: MU"
+            ],
+            "entityIds": [
+              "ultima7:topic:mantra-compassion"
+            ],
+            "source": "guide"
+          },
+          "note": "Expected identity corrected against the adapter's reviewed shrine-mantra Q&A IDs; the assertion still requires the exact mantra."
+        },
+        {
+          "text": "What about Honor?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Mantra: SUMM"
+            ],
+            "entityIds": [
+              "ultima7:topic:mantra-honor"
+            ],
+            "source": "guide"
+          },
+          "note": "Expected identity corrected against the adapter's reviewed shrine-mantra Q&A IDs; the assertion still requires the exact mantra."
+        },
+        {
+          "text": "What about Valor?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Mantra: RA"
+            ],
+            "entityIds": [
+              "ultima7:topic:mantra-valor"
+            ],
+            "source": "guide"
+          },
+          "note": "Expected identity corrected against the adapter's reviewed shrine-mantra Q&A IDs; the assertion still requires the exact mantra."
+        },
+        {
+          "text": "What about Sacrifice?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Mantra: CAH"
+            ],
+            "entityIds": [
+              "ultima7:topic:mantra-sacrifice"
+            ],
+            "source": "guide"
+          },
+          "note": "Expected identity corrected against the adapter's reviewed shrine-mantra Q&A IDs; the assertion still requires the exact mantra."
+        },
+        {
+          "text": "What is the mantra for Compassion in Ultima IX?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Mantra: MU"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "ultima7-black-gate-and-generators",
+      "families": [
+        "objectives",
+        "lore",
+        "relationships",
+        "continuity"
+      ],
+      "spoiler": "direct",
+      "turns": [
+        {
+          "text": "What is the Black Gate?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "black moongate",
+              "Guardian"
+            ],
+            "entityIds": [
+              "ultima7:topic:black-gate"
+            ],
+            "source": "research"
+          }
+        },
+        {
+          "text": "What is the outcome of destroying the Black Gate?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Rudyom's Wand",
+              "save Britannia"
+            ],
+            "entityIds": [
+              "ultima7:quest:the-isle-of-the-avatar-and-final-battle"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Who is the Guardian?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "hostile being from another dimension"
+            ],
+            "entityIds": [
+              "ultima7:npc:guardian"
+            ],
+            "source": "research"
+          },
+          "note": "Text assertion corrected against the cited Guardian note, which says powerful, hostile being."
+        },
+        {
+          "text": "What does he want?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "power and domination"
+            ],
+            "entityIds": [
+              "ultima7:npc:guardian"
+            ],
+            "source": "research"
+          }
+        },
+        {
+          "text": "What is he hiding?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "crime scene"
+            ]
+          }
+        },
+        {
+          "text": "What is the next step after the Tetrahedron is down?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Hourglass of Nicodemus",
+              "enchanted"
+            ],
+            "entityIds": [
+              "ultima7:quest:destroying-the-guardian-s-generators"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Who is Lord British?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "rules Britannia"
+            ],
+            "entityIds": [
+              "ultima7:place:lord-british"
+            ],
+            "source": "research"
+          }
+        },
+        {
+          "text": "What is he hiding?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Rudyom's Wand",
+              "crime scene"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "ultima7-guide-only-lore",
+      "families": [
+        "lore",
+        "boundaries",
+        "continuity",
+        "unsupported"
+      ],
+      "spoiler": "balanced",
+      "turns": [
+        {
+          "text": "Using only this guide, who is Lord British?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "king"
+            ],
+            "entityIds": [
+              "ultima7:place:lord-british"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Who is he?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "king"
+            ],
+            "entityIds": [
+              "ultima7:place:lord-british"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What is he hiding?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "crime scene"
+            ]
+          }
+        },
+        {
+          "text": "Using only this guide, who is the Time Lord?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "outside research:"
+            ]
+          }
+        },
+        {
+          "text": "Who is he?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "outside research:"
+            ]
+          }
+        },
+        {
+          "text": "reset topic",
+          "expected": {
+            "decision": "reset"
+          }
+        },
+        {
+          "text": "Who is the Time Lord?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "keep time flowing"
+            ],
+            "entityIds": [
+              "ultima7:npc:time-lord"
+            ],
+            "source": "research"
+          }
+        },
+        {
+          "text": "Who is he?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "keep time flowing"
+            ],
+            "entityIds": [
+              "ultima7:npc:time-lord"
+            ],
+            "source": "research"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ultima7-restrictions-and-recovery",
+      "families": [
+        "names",
+        "topics",
+        "boundaries",
+        "continuity",
+        "unsupported"
+      ],
+      "spoiler": "balanced",
+      "turns": [
+        {
+          "text": "Who is Lord British on Mars?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "rules Britannia"
+            ]
+          }
+        },
+        {
+          "text": "What about Batlin?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Leader of the Fellowship"
+            ]
+          }
+        },
+        {
+          "text": "Who is Batlin?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Leader of the Fellowship"
+            ],
+            "entityIds": [
+              "ultima7:npc:batlin"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Who is he in the SNES edition?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Leader of the Fellowship"
+            ]
+          }
+        },
+        {
+          "text": "What about Finnigan?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Mayor of Trinsic"
+            ]
+          }
+        },
+        {
+          "text": "Who is Finnigan?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Mayor of Trinsic"
+            ],
+            "entityIds": [
+              "ultima7:npc:finnigan"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "reset topic",
+          "expected": {
+            "decision": "reset"
+          }
+        },
+        {
+          "text": "Who is he?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Mayor of Trinsic"
+            ]
+          }
+        },
+        {
+          "text": "Who is lordbritish?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "rules Britannia"
+            ],
+            "entityIds": [
+              "ultima7:place:lord-british"
+            ],
+            "source": "research",
+            "absent": [
+              "Did you mean"
+            ]
+          }
+        },
+        {
+          "text": "Who is he?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "rules Britannia"
+            ],
+            "entityIds": [
+              "ultima7:place:lord-british"
+            ],
+            "source": "research"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ultima7-time-lord-quest-hints-and-identity-switch",
+      "families": [
+        "objectives",
+        "travel",
+        "mechanics",
+        "continuity",
+        "topics",
+        "names",
+        "boundaries",
+        "unsupported"
+      ],
+      "spoiler": "gentle",
+      "review": "Source-authored before replay: DB.mainQuest[2] and reviewed quests[The Quest for the Time Lord] variants distinguish quest hints from identity; existing research[time-lord-identity] and time-lord-purpose narrative retain their explicit outside-research provenance. No new source claims or source re-verification.",
+      "turns": [
+        {
+          "text": "How do I complete Main quest 3?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "forest's inhabitants",
+              "earn their trust"
+            ],
+            "entityIds": [
+              "ultima7:quest:the-quest-for-the-time-lord"
+            ],
+            "source": "guide",
+            "recordIds": [
+              "ultima7:quest:the-quest-for-the-time-lord:hint"
+            ],
+            "absent": [
+              "Bee Cave",
+              "honey",
+              "notebook"
+            ],
+            "sourceLocators": [
+              "quests[\"The Quest for the Time Lord\"]"
+            ]
+          }
+        },
+        {
+          "text": "Who is the Time Lord?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "keep time flowing"
+            ]
+          }
+        },
+        {
+          "text": "How do I complete Main quest 3?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "honey",
+              "Bee Cave",
+              "emps"
+            ],
+            "entityIds": [
+              "ultima7:quest:the-quest-for-the-time-lord"
+            ],
+            "source": "guide",
+            "recordIds": [
+              "ultima7:quest:the-quest-for-the-time-lord:hint"
+            ],
+            "absent": [
+              "notebook"
+            ],
+            "sourceLocators": [
+              "quests[\"The Quest for the Time Lord\"]"
+            ]
+          },
+          "options": {
+            "spoiler": "balanced"
+          }
+        },
+        {
+          "text": "Who is time lord?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "keep time flowing"
+            ],
+            "entityIds": [
+              "ultima7:npc:time-lord"
+            ],
+            "source": "research",
+            "recordIds": [
+              "ultima7:research:time-lord-identity:explanation"
+            ],
+            "sourceLocators": [
+              "Ultima VII dialogue transcript: The Time Lord (name, job and crisis)"
+            ],
+            "sourceUrls": [
+              "https://mithyr.com/Ultima/7.0_VII_TheBlackGate/Script/libNPC148.htm"
+            ]
+          }
+        },
+        {
+          "text": "What does he want?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "free him",
+              "oppose the Guardian"
+            ],
+            "entityIds": [
+              "ultima7:npc:time-lord"
+            ],
+            "source": "research",
+            "recordIds": [
+              "ultima7:narrative:time-lord-purpose:purpose"
+            ],
+            "sourceLocators": [
+              "Ultima VII dialogue transcript: The Time Lord (crisis)"
+            ],
+            "sourceUrls": [
+              "https://mithyr.com/Ultima/7.0_VII_TheBlackGate/Script/libNPC148.htm"
+            ]
+          }
+        },
+        {
+          "text": "How do I complete the Time Lord quest?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "wisp whistle",
+              "Alagner's notebook"
+            ],
+            "entityIds": [
+              "ultima7:quest:the-quest-for-the-time-lord"
+            ],
+            "source": "guide",
+            "recordIds": [
+              "ultima7:quest:the-quest-for-the-time-lord:hint"
+            ],
+            "sourceLocators": [
+              "DB.mainQuest[2]"
+            ]
+          },
+          "options": {
+            "spoiler": "direct"
+          }
+        },
+        {
+          "text": "Who is TIME LORD?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "keep time flowing"
+            ],
+            "entityIds": [
+              "ultima7:npc:time-lord"
+            ],
+            "source": "research",
+            "recordIds": [
+              "ultima7:research:time-lord-identity:explanation"
+            ],
+            "sourceLocators": [
+              "Ultima VII dialogue transcript: The Time Lord (name, job and crisis)"
+            ],
+            "sourceUrls": [
+              "https://mithyr.com/Ultima/7.0_VII_TheBlackGate/Script/libNPC148.htm"
+            ]
+          }
+        },
+        {
+          "text": "Using only this guide, who is he?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "outside research:",
+              "keep time flowing"
+            ]
+          }
+        },
+        {
+          "text": "What does he want?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "free him"
+            ]
+          }
+        },
+        {
+          "text": "reset topic",
+          "expected": {
+            "decision": "reset"
+          }
+        },
+        {
+          "text": "Who is timelord?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "keep time flowing"
+            ],
+            "entityIds": [
+              "ultima7:npc:time-lord"
+            ],
+            "source": "research",
+            "recordIds": [
+              "ultima7:research:time-lord-identity:explanation"
+            ],
+            "sourceLocators": [
+              "Ultima VII dialogue transcript: The Time Lord (name, job and crisis)"
+            ],
+            "sourceUrls": [
+              "https://mithyr.com/Ultima/7.0_VII_TheBlackGate/Script/libNPC148.htm"
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "oracleReviewNotes": [
+    "Corrected guessed identity IDs for Avatar and shrine mantras against their declared overlay/adapter identities. Corrected two phrase requirements against their unchanged source wording (powerful, hostile being; Isle of Avatar). All semantic factual requirements remain, and first-run failures are retained."
+  ]
+}

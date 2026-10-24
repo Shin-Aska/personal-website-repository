@@ -1,0 +1,2816 @@
+{
+  "schemaVersion": 1,
+  "gameId": "albion",
+  "review": "Fixed semantic expectations authored from Albion.js guide data and reviewed cited overlay research before running the campaign. Not generated from assistant replies.",
+  "basis": [
+    "guides/js/Albion.js: DB.characters, DB.equipment, DB.magic, DB.locations, DB.bestiary, QUEST_HINTS",
+    "guides/data/assistant/albion.json: topics, narratives, research",
+    "guides/js/Albion.js: DB.chapters[3]",
+    "guides/data/assistant/albion.json: narratives[id=maini-summary]",
+    "guides/js/Albion.js: DB.magic[0]",
+    "guides/data/assistant/albion.json: topics[id=magic-iskai], narratives[id=sira-melthas-party-link]"
+  ],
+  "dialogues": [
+    {
+      "id": "albion-opening-crew",
+      "families": [
+        "lore",
+        "continuity",
+        "mechanics",
+        "topics"
+      ],
+      "spoiler": "gentle",
+      "turns": [
+        {
+          "text": "Who is Tom Driscoll?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Human",
+              "Pilot"
+            ],
+            "entityIds": [
+              "albion:character:tom-driscoll"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Who is he?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Pilot"
+            ],
+            "entityIds": [
+              "albion:character:tom-driscoll"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What about Rainer?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Xenobiologist"
+            ],
+            "entityIds": [
+              "albion:character:rainer-hofstedt"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Who is he?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Xenobiologist"
+            ],
+            "entityIds": [
+              "albion:character:rainer-hofstedt"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What are his stats?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Intelligence 76/90",
+              "Dexterity 80/90"
+            ],
+            "entityIds": [
+              "albion:character:rainer-hofstedt"
+            ],
+            "source": "guide"
+          },
+          "options": {
+            "spoiler": "balanced"
+          }
+        },
+        {
+          "text": "Can he use guns?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "firearms (guns): yes"
+            ],
+            "entityIds": [
+              "albion:character:rainer-hofstedt"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What about Tom?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "firearms (guns): yes"
+            ],
+            "entityIds": [
+              "albion:character:tom-driscoll"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Can he leave the party?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Can leave the party: no"
+            ],
+            "entityIds": [
+              "albion:character:tom-driscoll"
+            ],
+            "source": "guide"
+          }
+        }
+      ]
+    },
+    {
+      "id": "albion-rainer-and-harriet",
+      "families": [
+        "lore",
+        "relationships",
+        "continuity",
+        "travel"
+      ],
+      "spoiler": "direct",
+      "turns": [
+        {
+          "text": "Who is Rainer Hofstedt?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Xenobiologist"
+            ],
+            "entityIds": [
+              "albion:character:rainer-hofstedt"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Where is he?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Toronto, beginning"
+            ],
+            "entityIds": [
+              "albion:character:rainer-hofstedt"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Can he leave the party?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Can leave the party: yes"
+            ],
+            "entityIds": [
+              "albion:character:rainer-hofstedt"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Who is Harriet?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Dji-Cantos Mage",
+              "teleportation"
+            ],
+            "entityIds": [
+              "albion:character:harriet"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Where is she?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Dji-Cantos",
+              "replaces Rainer"
+            ],
+            "entityIds": [
+              "albion:character:harriet"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Can she leave the party?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Can leave the party: no"
+            ],
+            "entityIds": [
+              "albion:character:harriet"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What are her stats?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Magic talent 75/99"
+            ],
+            "entityIds": [
+              "albion:character:harriet"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Why did Harriet kill Rainer?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Harriet killed",
+              "Rainer was killed"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "albion-mage-partners",
+      "families": [
+        "lore",
+        "travel",
+        "relationships",
+        "continuity",
+        "unsupported"
+      ],
+      "spoiler": "direct",
+      "turns": [
+        {
+          "text": "Who is Sira?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Dji-Kas Mage"
+            ],
+            "entityIds": [
+              "albion:character:sira"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Where is she?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Jirinaar",
+              "Bradir"
+            ],
+            "entityIds": [
+              "albion:character:sira"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What about Melthas?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Gratogel",
+              "Druid"
+            ],
+            "entityIds": [
+              "albion:character:melthas"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Who is he?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Druid Mage",
+              "trii"
+            ],
+            "entityIds": [
+              "albion:character:melthas"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Can he leave the party?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Can leave the party: yes"
+            ],
+            "entityIds": [
+              "albion:character:melthas"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Who is Sira?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Always leaves with Melthas"
+            ],
+            "entityIds": [
+              "albion:character:sira"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Can she leave the party?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Always leaves with Melthas"
+            ],
+            "entityIds": [
+              "albion:character:sira"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Why did she betray Melthas?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Sira betrayed"
+            ]
+          }
+        },
+        {
+          "text": "What is the relationship between Sira and Melthas?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Sira",
+              "Always leaves with Melthas"
+            ],
+            "entityIds": [
+              "albion:character:sira"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "How are they related?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Always leaves with Melthas"
+            ],
+            "entityIds": [
+              "albion:character:sira"
+            ],
+            "source": "guide"
+          }
+        }
+      ]
+    },
+    {
+      "id": "albion-warrior-choice",
+      "families": [
+        "lore",
+        "mechanics",
+        "relationships",
+        "continuity"
+      ],
+      "spoiler": "direct",
+      "turns": [
+        {
+          "text": "Who is Siobhan?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Warrior",
+              "+4 base damage"
+            ],
+            "entityIds": [
+              "albion:character:siobhan"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Where is she?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Beloveno",
+              "her house"
+            ],
+            "entityIds": [
+              "albion:character:siobhan"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What are her stats?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Strength 60/90",
+              "close 99"
+            ],
+            "entityIds": [
+              "albion:character:siobhan"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What about Khunag?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Magic talent 99/99",
+              "close 40"
+            ],
+            "entityIds": [
+              "albion:character:khunag"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Who is he?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Renegade mage",
+              "REQUIRED"
+            ],
+            "entityIds": [
+              "albion:character:khunag"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Where is he?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Beloveno",
+              "Kariah"
+            ],
+            "entityIds": [
+              "albion:character:khunag"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "How do I recruit him?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Recruitment",
+              "Beloveno"
+            ],
+            "entityIds": [
+              "albion:character:khunag"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Can I recruit him on Mars?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Recruitment: Beloveno"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "albion-pistol-shopping",
+      "families": [
+        "mechanics",
+        "travel",
+        "continuity",
+        "unsupported"
+      ],
+      "spoiler": "balanced",
+      "turns": [
+        {
+          "text": "Where is the Pistol?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "damaged console",
+              "COM room"
+            ],
+            "entityIds": [
+              "albion:item:pistol"
+            ],
+            "source": "guide"
+          },
+          "note": "Corrected authored expectation after source review: the Balanced location variant in adapters/albion.js gives the damaged-console clue rather than the Direct Toronto wording."
+        },
+        {
+          "text": "What does it do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Canisters",
+              "Damage: 30"
+            ],
+            "entityIds": [
+              "albion:item:pistol"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Can I buy it?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Sleep Spores"
+            ]
+          }
+        },
+        {
+          "text": "Where is the Pistol?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "damaged console",
+              "COM room"
+            ],
+            "entityIds": [
+              "albion:item:pistol"
+            ],
+            "source": "guide"
+          },
+          "note": "Corrected authored expectation after source review: the Balanced location variant in adapters/albion.js gives the damaged-console clue rather than the Direct Toronto wording."
+        },
+        {
+          "text": "Where is it on Mars?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Toronto COM room"
+            ]
+          }
+        },
+        {
+          "text": "What about the Dreamshield?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Aballon"
+            ]
+          }
+        },
+        {
+          "text": "Where is the Dreamshield?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Aballon"
+            ],
+            "entityIds": [
+              "albion:item:dreamshield"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What does it do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "12 Prot",
+              "Sleep Spores (20)"
+            ],
+            "entityIds": [
+              "albion:item:dreamshield"
+            ],
+            "source": "guide"
+          }
+        }
+      ]
+    },
+    {
+      "id": "albion-shield-name-repair",
+      "families": [
+        "names",
+        "continuity",
+        "topics",
+        "travel"
+      ],
+      "spoiler": "balanced",
+      "turns": [
+        {
+          "text": "What does dream shield do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Sleep Spores (20)"
+            ],
+            "entityIds": [
+              "albion:item:dreamshield"
+            ],
+            "source": "guide",
+            "absent": [
+              "Did you mean",
+              "I don't know"
+            ]
+          }
+        },
+        {
+          "text": "Where is it?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Aballon"
+            ],
+            "entityIds": [
+              "albion:item:dreamshield"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Where is Dreamshiel?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Aballon"
+            ],
+            "entityIds": [
+              "albion:item:dreamshield"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "yes Dreamshield",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Aballon"
+            ],
+            "entityIds": [
+              "albion:item:dreamshield"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What does it do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "12 Prot"
+            ],
+            "entityIds": [
+              "albion:item:dreamshield"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Sorry, I meant Shadowsword",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Cursed: -30 LP",
+              "Damage: 25"
+            ],
+            "entityIds": [
+              "albion:item:shadowsword"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Where is it?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Treasure Cave"
+            ],
+            "entityIds": [
+              "albion:item:shadowsword"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What is its price?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Sleep Spores"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "albion-cursed-treasure",
+      "families": [
+        "mechanics",
+        "travel",
+        "topics",
+        "unsupported"
+      ],
+      "spoiler": "balanced",
+      "turns": [
+        {
+          "text": "What does Shadowsword do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Cursed: -30 LP",
+              "-50 Stamina"
+            ],
+            "entityIds": [
+              "albion:item:shadowsword"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Where is it?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Treasure Cave (Maini)"
+            ],
+            "entityIds": [
+              "albion:item:shadowsword"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Where is the Power Amulet?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Arjano / Kounos"
+            ],
+            "entityIds": [
+              "albion:item:power-amulet"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What does it do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "+25 LP",
+              "+50 Str"
+            ],
+            "entityIds": [
+              "albion:item:power-amulet"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What about the Thief's Amulet?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "+30 Dex",
+              "+30 Lockpick"
+            ],
+            "entityIds": [
+              "albion:item:thief-s-amulet"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Where is it?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Kenget Kamulos"
+            ],
+            "entityIds": [
+              "albion:item:thief-s-amulet"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "How much does it cost?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "+30 Dex"
+            ]
+          }
+        },
+        {
+          "text": "What does the Serpent Staff do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "10 Prot",
+              "+25 SP"
+            ],
+            "entityIds": [
+              "albion:item:serpent-staff"
+            ],
+            "source": "guide"
+          }
+        }
+      ]
+    },
+    {
+      "id": "albion-armory",
+      "families": [
+        "mechanics",
+        "travel",
+        "continuity",
+        "names"
+      ],
+      "spoiler": "balanced",
+      "turns": [
+        {
+          "text": "What does Danu's Light do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "+20 Speed",
+              "Damage: 14"
+            ],
+            "entityIds": [
+              "albion:item:danu-s-light"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Where is it?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Beloveno weapon shop"
+            ],
+            "entityIds": [
+              "albion:item:danu-s-light"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What about the Bolt-Rifle?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Umajo weapon guild"
+            ],
+            "entityIds": [
+              "albion:item:bolt-rifle"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What does it do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "uses Bolts",
+              "Damage: 18"
+            ],
+            "entityIds": [
+              "albion:item:bolt-rifle"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What about the Iskai Lance?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Drirr only",
+              "Damage: 18"
+            ],
+            "entityIds": [
+              "albion:item:iskai-lance"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Where is it?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Snird"
+            ],
+            "entityIds": [
+              "albion:item:iskai-lance"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What does Lugh's Hand Helmet do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "20 Prot",
+              "+35 Luck"
+            ],
+            "entityIds": [
+              "albion:item:lugh-s-hand-helmet"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Where is it?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Kenget Kamulos"
+            ],
+            "entityIds": [
+              "albion:item:lugh-s-hand-helmet"
+            ],
+            "source": "guide"
+          }
+        }
+      ]
+    },
+    {
+      "id": "albion-iskai-magic",
+      "families": [
+        "mechanics",
+        "continuity",
+        "names",
+        "travel"
+      ],
+      "spoiler": "gentle",
+      "turns": [
+        {
+          "text": "What does Thorn Snare do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Immobilizes",
+              "16 SP"
+            ],
+            "entityIds": [
+              "albion:spell:thorn-snare"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Where do I learn it?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Fasiir",
+              "Jirinaar"
+            ],
+            "entityIds": [
+              "albion:spell:thorn-snare"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What are its stats?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Spell level 12",
+              "16 SP"
+            ],
+            "entityIds": [
+              "albion:spell:thorn-snare"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What about Frost Avalanche?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Spell level 9",
+              "30 SP"
+            ],
+            "entityIds": [
+              "albion:spell:frost-avalanche"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What does it do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Freezes all enemies",
+              "Trifalai Seed"
+            ],
+            "entityIds": [
+              "albion:spell:frost-avalanche"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What about Fungification?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "disintegrate",
+              "24 SP"
+            ],
+            "entityIds": [
+              "albion:spell:fungification"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Where do I learn it?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Fasiir",
+              "Spell level 15"
+            ],
+            "entityIds": [
+              "albion:spell:fungification"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Can I learn it without Trifalai Seeds?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "free spell-training stop"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "albion-druid-magic",
+      "families": [
+        "mechanics",
+        "continuity",
+        "travel",
+        "boundaries"
+      ],
+      "spoiler": "gentle",
+      "turns": [
+        {
+          "text": "What does Demon Exodus do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "ALL demon-type",
+              "70 SP"
+            ],
+            "entityIds": [
+              "albion:spell:demon-exodus"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Where do I learn it?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Roves",
+              "Arjano library"
+            ],
+            "entityIds": [
+              "albion:spell:demon-exodus"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What about Magic Shield?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Roves",
+              "Spell level 8"
+            ],
+            "entityIds": [
+              "albion:spell:magic-shield"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What does it do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "M-R and Protection",
+              "25 SP"
+            ],
+            "entityIds": [
+              "albion:spell:magic-shield"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What about Berserk?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "20% LP",
+              "12 SP"
+            ],
+            "entityIds": [
+              "albion:spell:berserk"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What are its stats?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Spell level 7",
+              "12 SP"
+            ],
+            "entityIds": [
+              "albion:spell:berserk"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What are its stats in Albion Online?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Spell level 7"
+            ]
+          }
+        },
+        {
+          "text": "What does Magic Shield do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "M-R and Protection"
+            ],
+            "entityIds": [
+              "albion:spell:magic-shield"
+            ],
+            "source": "guide"
+          }
+        }
+      ]
+    },
+    {
+      "id": "albion-later-magic",
+      "families": [
+        "mechanics",
+        "lore",
+        "continuity",
+        "names"
+      ],
+      "spoiler": "gentle",
+      "turns": [
+        {
+          "text": "What does Thunderstorm do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Damage all enemies",
+              "35 SP"
+            ],
+            "entityIds": [
+              "albion:spell:thunderstorm"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Where do I learn it?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Kenget Kamulos",
+              "Khunag"
+            ],
+            "entityIds": [
+              "albion:spell:thunderstorm"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What does Steal Magic do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Drain SP",
+              "15 SP"
+            ],
+            "entityIds": [
+              "albion:spell:steal-magic"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What about Steal Life?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Drain LP",
+              "15 SP"
+            ],
+            "entityIds": [
+              "albion:spell:steal-life"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What does Lifebringer do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Heals entire party",
+              "60 SP"
+            ],
+            "entityIds": [
+              "albion:spell:lifebringer"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Where do I learn it?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Drannagh",
+              "Harriet"
+            ],
+            "entityIds": [
+              "albion:spell:lifebringer"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What about Recuperation?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Drannagh",
+              "Spell level 4"
+            ],
+            "entityIds": [
+              "albion:spell:recuperation"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What does it do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Rest without sleeping or food",
+              "10 SP"
+            ],
+            "entityIds": [
+              "albion:spell:recuperation"
+            ],
+            "source": "guide"
+          }
+        }
+      ]
+    },
+    {
+      "id": "albion-merchants",
+      "families": [
+        "travel",
+        "mechanics",
+        "continuity",
+        "unsupported"
+      ],
+      "spoiler": "balanced",
+      "turns": [
+        {
+          "text": "Where can I sell loot?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Rabir",
+              "110%",
+              "Umajo",
+              "130%"
+            ],
+            "entityIds": [
+              "albion:topic:selling-loot"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Where is Rabir?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Jirinaar"
+            ],
+            "entityIds": [
+              "albion:topic:npc-rabir"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What about Winion?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Vanello"
+            ],
+            "entityIds": [
+              "albion:topic:npc-winion"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What about Rifrako?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Aballon"
+            ],
+            "entityIds": [
+              "albion:topic:npc-rifrako"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Why did he kill Rabir?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Rifrako killed"
+            ]
+          }
+        },
+        {
+          "text": "Where is Edjiir?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Srimalinar"
+            ],
+            "entityIds": [
+              "albion:topic:npc-edjiir"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What about King Tharnos?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Klouta"
+            ],
+            "entityIds": [
+              "albion:topic:npc-tharnos"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "How old is he?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "years old"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "albion-island-geography",
+      "families": [
+        "lore",
+        "travel",
+        "continuity",
+        "topics"
+      ],
+      "spoiler": "balanced",
+      "turns": [
+        {
+          "text": "What is Jirinaar?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Capital",
+              "Nakiridaani"
+            ],
+            "entityIds": [
+              "albion:location:jirinaar"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Where is it?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Nakiridaani"
+            ],
+            "entityIds": [
+              "albion:location:jirinaar"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What about Vanello?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Gratogel"
+            ],
+            "entityIds": [
+              "albion:location:vanello"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What is it?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Winion",
+              "Tamno"
+            ],
+            "entityIds": [
+              "albion:location:vanello"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What is Arjano?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Druid Complex",
+              "Library"
+            ],
+            "entityIds": [
+              "albion:location:arjano"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Where is it?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Gratogel"
+            ],
+            "entityIds": [
+              "albion:location:arjano"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What about Beloveno?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Maini"
+            ],
+            "entityIds": [
+              "albion:location:beloveno"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What is it?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Council House",
+              "Siobhan"
+            ],
+            "entityIds": [
+              "albion:location:beloveno"
+            ],
+            "source": "guide"
+          }
+        }
+      ]
+    },
+    {
+      "id": "albion-maini-intrigue",
+      "families": [
+        "objectives",
+        "relationships",
+        "continuity",
+        "unsupported"
+      ],
+      "spoiler": "direct",
+      "turns": [
+        {
+          "text": "Summarize Maini",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Prevent Herras",
+              "Kontos"
+            ],
+            "entityIds": [
+              "albion:chapter:maini"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What is the next step?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Kariah",
+              "Melthas",
+              "Edjiir"
+            ],
+            "entityIds": [
+              "albion:chapter:maini"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Why did Joe assassinate Herras?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Joe assassinated"
+            ]
+          }
+        },
+        {
+          "text": "Who is Joe Bernard?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Technician"
+            ],
+            "entityIds": [
+              "albion:character:joe-bernard"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What is the next step?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Timed sequence: talk to Herras"
+            ]
+          }
+        },
+        {
+          "text": "Summarize Maini",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Prevent Herras"
+            ],
+            "entityIds": [
+              "albion:chapter:maini"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What happened in Maini?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Herras was assassinated"
+            ]
+          }
+        },
+        {
+          "text": "What is the next step in the Maini sequence?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Kariah",
+              "Edjiir"
+            ],
+            "entityIds": [
+              "albion:chapter:maini"
+            ],
+            "source": "guide"
+          }
+        }
+      ]
+    },
+    {
+      "id": "albion-return-toronto",
+      "families": [
+        "objectives",
+        "relationships",
+        "topics",
+        "boundaries"
+      ],
+      "spoiler": "direct",
+      "turns": [
+        {
+          "text": "Summarize Umajo",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Navigate desert",
+              "Toronto"
+            ],
+            "entityIds": [
+              "albion:chapter:umajo"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What is the method for the path to Toronto?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Ohl a Jewel",
+              "coastline"
+            ],
+            "entityIds": [
+              "albion:route:toronto"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Summarize Toronto Again",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "DDT",
+              "evidence"
+            ],
+            "entityIds": [
+              "albion:chapter:toronto-return"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What is the next step?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "1001",
+              "1712",
+              "4312"
+            ],
+            "entityIds": [
+              "albion:chapter:toronto-return"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What is the next step on Mars?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "1001",
+              "1712",
+              "4312"
+            ]
+          }
+        },
+        {
+          "text": "What about Maini?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Timed sequence"
+            ]
+          }
+        },
+        {
+          "text": "Summarize Maini",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Prevent Herras"
+            ],
+            "entityIds": [
+              "albion:chapter:maini"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Summarize Toronto Again",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "DDT",
+              "evidence"
+            ],
+            "entityIds": [
+              "albion:chapter:toronto-return"
+            ],
+            "source": "guide"
+          }
+        }
+      ]
+    },
+    {
+      "id": "albion-final-encounters",
+      "families": [
+        "mechanics",
+        "relationships",
+        "topics",
+        "objectives"
+      ],
+      "spoiler": "direct",
+      "turns": [
+        {
+          "text": "How do I defeat Kamulos?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Thorn Snare",
+              "non-Frost",
+              "650"
+            ],
+            "entityIds": [
+              "albion:enemy:kamulos"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What are its stats?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "650",
+              "3000"
+            ],
+            "entityIds": [
+              "albion:enemy:kamulos"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What about the Service Robot?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "174"
+            ],
+            "entityIds": [
+              "albion:enemy:service-robot"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "How do I defeat it?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Bring Joe",
+              "repair"
+            ],
+            "entityIds": [
+              "albion:enemy:service-robot"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What is the outcome of AI Housing?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "not meant to be killed",
+              "party member falls"
+            ],
+            "entityIds": [
+              "albion:enemy:ai-housing"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Why did Joe build AI Housing?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Joe built"
+            ]
+          }
+        },
+        {
+          "text": "Who is Joe?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Technician"
+            ],
+            "entityIds": [
+              "albion:character:joe-bernard"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Where is he?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Dji-Cantos",
+              "optional"
+            ],
+            "entityIds": [
+              "albion:character:joe-bernard"
+            ],
+            "source": "guide"
+          }
+        }
+      ]
+    },
+    {
+      "id": "albion-cure-research",
+      "families": [
+        "mechanics",
+        "boundaries",
+        "continuity",
+        "unsupported"
+      ],
+      "spoiler": "gentle",
+      "turns": [
+        {
+          "text": "How do I cure poisoning?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Heal poisoning",
+              "spell level 5"
+            ],
+            "entityIds": [
+              "albion:research:dji-kas-cures"
+            ],
+            "source": "research"
+          }
+        },
+        {
+          "text": "How do I cure poisoning using only this guide?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Not in this guide \u2014 from outside research:"
+            ]
+          }
+        },
+        {
+          "text": "What about blindness?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Not in this guide \u2014 from outside research:"
+            ]
+          }
+        },
+        {
+          "text": "reset topic",
+          "expected": {
+            "decision": "reset"
+          }
+        },
+        {
+          "text": "How do I cure blindness?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Heal blindness",
+              "spell level 5"
+            ],
+            "entityIds": [
+              "albion:research:dji-kas-cures"
+            ],
+            "source": "research"
+          }
+        },
+        {
+          "text": "What are antidotes?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Poison antidote",
+              "does not describe their effects"
+            ],
+            "entityIds": [
+              "albion:research:antidotes"
+            ],
+            "source": "research"
+          }
+        },
+        {
+          "text": "Where do I buy them?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Buy the Poison antidote"
+            ]
+          }
+        },
+        {
+          "text": "What does Lifebringer do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Heals entire party"
+            ],
+            "entityIds": [
+              "albion:spell:lifebringer"
+            ],
+            "source": "guide"
+          }
+        }
+      ]
+    },
+    {
+      "id": "albion-help-level-changes",
+      "families": [
+        "boundaries",
+        "names",
+        "continuity",
+        "topics"
+      ],
+      "spoiler": "direct",
+      "turns": [
+        {
+          "text": "Where is the Shadowsword?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Treasure Cave"
+            ],
+            "entityIds": [
+              "albion:item:shadowsword"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What does it do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Cursed: -30 LP"
+            ],
+            "entityIds": [
+              "albion:item:shadowsword"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What does it do?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Cursed: -30 LP",
+              "Treasure Cave"
+            ]
+          },
+          "options": {
+            "spoiler": "gentle"
+          },
+          "historyAbsent": [
+            "Cursed: -30 LP",
+            "Treasure Cave"
+          ]
+        },
+        {
+          "text": "Where is it?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Treasure Cave"
+            ]
+          }
+        },
+        {
+          "text": "Who is Sira?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Dji-Kas Mage"
+            ],
+            "entityIds": [
+              "albion:character:sira"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What does Thorn Snare do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Immobilizes"
+            ],
+            "entityIds": [
+              "albion:spell:thorn-snare"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What does Shadowsword do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Cursed: -30 LP"
+            ],
+            "entityIds": [
+              "albion:item:shadowsword"
+            ],
+            "source": "guide"
+          },
+          "options": {
+            "spoiler": "balanced"
+          }
+        },
+        {
+          "text": "Where is it?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Treasure Cave"
+            ],
+            "entityIds": [
+              "albion:item:shadowsword"
+            ],
+            "source": "guide"
+          }
+        }
+      ]
+    },
+    {
+      "id": "albion-persistent-restrictions",
+      "families": [
+        "unsupported",
+        "boundaries",
+        "continuity",
+        "topics"
+      ],
+      "spoiler": "balanced",
+      "turns": [
+        {
+          "text": "Where is the Pistol in Albion Online?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Toronto COM room"
+            ]
+          }
+        },
+        {
+          "text": "What about Dreamshield?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Aballon"
+            ]
+          }
+        },
+        {
+          "text": "Where is Dreamshield?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Aballon"
+            ],
+            "entityIds": [
+              "albion:item:dreamshield"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What does it do for free?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Sleep Spores"
+            ]
+          }
+        },
+        {
+          "text": "What about Shadowsword?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Cursed: -30 LP"
+            ]
+          }
+        },
+        {
+          "text": "What does Shadowsword do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Cursed: -30 LP"
+            ],
+            "entityIds": [
+              "albion:item:shadowsword"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Where are the two Shadowswords?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Treasure Cave"
+            ]
+          }
+        },
+        {
+          "text": "What about the Power Amulet?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Arjano / Kounos"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "albion-reset-and-long-chat",
+      "families": [
+        "topics",
+        "continuity",
+        "names",
+        "unsupported"
+      ],
+      "spoiler": "balanced",
+      "turns": [
+        {
+          "text": "Who is Drirr?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Iskai",
+              "Hunter"
+            ],
+            "entityIds": [
+              "albion:character:drirr"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What are his stats?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Speed 56/99"
+            ],
+            "entityIds": [
+              "albion:character:drirr"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "reset topic",
+          "expected": {
+            "decision": "reset"
+          }
+        },
+        {
+          "text": "Who is he?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Stiriik"
+            ]
+          }
+        },
+        {
+          "text": "Who is Sira?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Dji-Kas Mage"
+            ],
+            "entityIds": [
+              "albion:character:sira"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Who is Melthas?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Druid Mage"
+            ],
+            "entityIds": [
+              "albion:character:melthas"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "How are they related?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": []
+          }
+        },
+        {
+          "text": "Who is Tom Driscoll?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Pilot"
+            ],
+            "entityIds": [
+              "albion:character:tom-driscoll"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "Who is he?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Pilot"
+            ],
+            "entityIds": [
+              "albion:character:tom-driscoll"
+            ],
+            "source": "guide"
+          }
+        },
+        {
+          "text": "What does th orn snare do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Immobilizes"
+            ],
+            "entityIds": [
+              "albion:spell:thorn-snare"
+            ],
+            "source": "guide",
+            "absent": [
+              "Did you mean"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "albion-security-hints-and-subject-recovery",
+      "families": [
+        "objectives",
+        "travel",
+        "mechanics",
+        "continuity",
+        "topics",
+        "names",
+        "boundaries",
+        "unsupported"
+      ],
+      "spoiler": "gentle",
+      "review": "Source-authored before replay: hide-weapon gentle/balanced variants, Pistol/Dreamshield source and help ceilings, DB.characters[4] and reviewed Sira/Melthas narrative. Tests quest hints and low-level location hints separately from solution disclosure; no new knowledge.",
+      "turns": [
+        {
+          "text": "How do I get past security?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Security cares about what you carry",
+              "safe storage"
+            ],
+            "entityIds": [
+              "albion:objective:toronto-intro:hide-weapon"
+            ],
+            "source": "guide",
+            "recordIds": [
+              "albion:objective:toronto-intro:hide-weapon:hint"
+            ],
+            "absent": [
+              "wall cabinet",
+              "Canisters"
+            ],
+            "sourceLocators": [
+              "objectives.hide-weapon[0]"
+            ]
+          }
+        },
+        {
+          "text": "How do I get the Pistol?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Inspect damaged equipment",
+              "ship's service area"
+            ],
+            "entityIds": [
+              "albion:item:pistol"
+            ],
+            "source": "guide",
+            "recordIds": [
+              "albion:item:pistol:acquisition"
+            ],
+            "sourceLocators": [
+              "objectives.pistol[0]"
+            ]
+          }
+        },
+        {
+          "text": "Where is it?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "service area",
+              "damaged equipment"
+            ],
+            "entityIds": [
+              "albion:item:pistol"
+            ],
+            "source": "guide",
+            "recordIds": [
+              "albion:item:pistol:location"
+            ],
+            "sourceLocators": [
+              "DB.equipment[5].location"
+            ]
+          }
+        },
+        {
+          "text": "Where is Dreamshield?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "village merchant",
+              "useful shield"
+            ],
+            "entityIds": [
+              "albion:item:dreamshield"
+            ],
+            "source": "guide",
+            "recordIds": [
+              "albion:item:dreamshield:location"
+            ],
+            "absent": [
+              "Aballon"
+            ],
+            "sourceLocators": [
+              "DB.equipment[6].location"
+            ]
+          }
+        },
+        {
+          "text": "What does it do?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Sleep Spores",
+              "12 Prot"
+            ]
+          }
+        },
+        {
+          "text": "How do I get past security?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "storage",
+              "ship's service level"
+            ],
+            "entityIds": [
+              "albion:objective:toronto-intro:hide-weapon"
+            ],
+            "source": "guide",
+            "recordIds": [
+              "albion:objective:toronto-intro:hide-weapon:hint"
+            ],
+            "absent": [
+              "wall cabinet"
+            ],
+            "sourceLocators": [
+              "objectives.hide-weapon[1]"
+            ]
+          },
+          "options": {
+            "spoiler": "balanced"
+          }
+        },
+        {
+          "text": "What does dream shield do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "12 Prot",
+              "Sleep Spores (20)"
+            ],
+            "entityIds": [
+              "albion:item:dreamshield"
+            ],
+            "source": "guide",
+            "recordIds": [
+              "albion:item:dreamshield:use"
+            ],
+            "sourceLocators": [
+              "DB.equipment[6].effect"
+            ]
+          }
+        },
+        {
+          "text": "Where is it?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Aballon"
+            ],
+            "entityIds": [
+              "albion:item:dreamshield"
+            ],
+            "source": "guide",
+            "recordIds": [
+              "albion:item:dreamshield:location"
+            ],
+            "sourceLocators": [
+              "DB.equipment[6].location"
+            ]
+          }
+        },
+        {
+          "text": "How are Sira and Melthas related?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Always leaves with Melthas"
+            ]
+          }
+        },
+        {
+          "text": "How are Sira and Melthas related?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Always leaves with Melthas"
+            ],
+            "entityIds": [
+              "albion:character:sira"
+            ],
+            "source": "guide",
+            "recordIds": [
+              "albion:narrative:sira-melthas-party-link:relationship"
+            ],
+            "sourceLocators": [
+              "DB.characters[3].name/notes"
+            ]
+          },
+          "options": {
+            "spoiler": "direct"
+          }
+        },
+        {
+          "text": "Who is mel thas?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Druid Mage",
+              "trii"
+            ],
+            "entityIds": [
+              "albion:character:melthas"
+            ],
+            "source": "guide",
+            "recordIds": [
+              "albion:character:melthas:explanation"
+            ],
+            "sourceLocators": [
+              "DB.characters[4].role/notes"
+            ]
+          }
+        },
+        {
+          "text": "Why did he murder Sira?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Melthas murdered Sira"
+            ]
+          }
+        },
+        {
+          "text": "Who is TOMDRISCOLL?",
+          "options": {
+            "spoiler": "gentle"
+          },
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Human",
+              "Pilot"
+            ],
+            "entityIds": [
+              "albion:character:tom-driscoll"
+            ],
+            "recordIds": [
+              "albion:character:tom-driscoll:explanation"
+            ],
+            "source": "guide",
+            "sourceLocators": [
+              "DB.characters[0].role/notes"
+            ],
+            "absent": [
+              "Permanent party member"
+            ]
+          },
+          "historyAbsent": [
+            "Always leaves with Melthas",
+            "Demon-banishing specialist"
+          ],
+          "note": "Source-reviewed Gentle Tom identity tests capitalization and joined-name repair after a Direct false-premise branch. The relationship and specialist notes must leave visible history when the help level drops."
+        }
+      ]
+    },
+    {
+      "id": "albion-maini-explanation-and-unavailable-causes",
+      "spoiler": "balanced",
+      "families": [
+        "relationships",
+        "objectives",
+        "lore",
+        "continuity",
+        "topics",
+        "boundaries",
+        "unsupported"
+      ],
+      "turns": [
+        {
+          "text": "What is Maini about?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Prevent Herras's assassination",
+              "confront Kontos at the shrine"
+            ],
+            "entityIds": [
+              "albion:chapter:maini"
+            ],
+            "recordIds": [
+              "albion:chapter:maini:explanation"
+            ],
+            "source": "guide",
+            "sourceLocators": [
+              "DB.chapters[3]"
+            ]
+          }
+        },
+        {
+          "text": "Why does Harriet replace Rainer?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "replaces Rainer because"
+            ]
+          }
+        },
+        {
+          "text": "What is Maini about?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Prevent Herras's assassination",
+              "confront Kontos at the shrine"
+            ],
+            "entityIds": [
+              "albion:chapter:maini"
+            ],
+            "recordIds": [
+              "albion:chapter:maini:explanation"
+            ],
+            "source": "guide",
+            "sourceLocators": [
+              "DB.chapters[3]"
+            ]
+          }
+        },
+        {
+          "text": "How are Sira and Melthas related?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Always leaves with Melthas"
+            ]
+          }
+        },
+        {
+          "text": "Summarize Maini",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Prevent Herras's assassination",
+              "confront Kontos at the shrine"
+            ],
+            "entityIds": [
+              "albion:chapter:maini"
+            ],
+            "recordIds": [
+              "albion:narrative:maini-summary:summary"
+            ],
+            "source": "guide",
+            "sourceLocators": [
+              "DB.chapters[3].summary"
+            ]
+          }
+        },
+        {
+          "text": "What is Maini about on Mars?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Prevent Herras's assassination"
+            ]
+          }
+        },
+        {
+          "text": "What about Umajo?",
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "find path to Toronto"
+            ]
+          }
+        },
+        {
+          "text": "What is Maini about?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Prevent Herras's assassination",
+              "confront Kontos at the shrine"
+            ],
+            "entityIds": [
+              "albion:chapter:maini"
+            ],
+            "recordIds": [
+              "albion:chapter:maini:explanation"
+            ],
+            "source": "guide",
+            "sourceLocators": [
+              "DB.chapters[3]"
+            ]
+          }
+        },
+        {
+          "text": "What is Iskai magic?",
+          "options": {
+            "spoiler": "gentle"
+          },
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "practitioner Sira",
+              "Trifalai Seed",
+              "Fasiir"
+            ],
+            "entityIds": [
+              "albion:topic:magic-iskai"
+            ],
+            "recordIds": [
+              "albion:topic:magic-iskai:explanation"
+            ],
+            "source": "guide",
+            "sourceLocators": [
+              "DB.magic[0]"
+            ]
+          }
+        },
+        {
+          "text": "How are Sira and Melthas related?",
+          "options": {
+            "spoiler": "direct"
+          },
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Always leaves with Melthas"
+            ],
+            "entityIds": [
+              "albion:character:sira"
+            ],
+            "recordIds": [
+              "albion:narrative:sira-melthas-party-link:relationship"
+            ],
+            "source": "guide",
+            "sourceLocators": [
+              "DB.characters[3].name/notes"
+            ]
+          }
+        },
+        {
+          "text": "How are Sira and Melthas related?",
+          "options": {
+            "spoiler": "gentle"
+          },
+          "historyAbsent": [
+            "Always leaves with Melthas"
+          ],
+          "expected": {
+            "decision": "no-answer",
+            "absent": [
+              "Always leaves with Melthas"
+            ]
+          }
+        }
+      ],
+      "review": "Draft authored from DB.chapters[3] and the existing reviewed maini-summary. The source explicitly supplies chapter goals; no procedure is treated as a cause. Harriet/Rainer motivation remains unsupported, and the party-link relationship remains Direct-only. The natural goal-in-Maini wording is a separately documented unindexed purpose phrasing limitation; this branch asks the declared explanation and summary. Additional Gentle explanation is the already authored magic-school concept: practitioner Sira, reagent Trifalai Seed and trainer Fasiir, native DB.magic[0]. The Direct party relationship is independently declared; it is withheld again after the final Gentle reduction."
+    }
+  ],
+  "oracleReviewNotes": [
+    "The first run had two overly strict Pistol location expectations; corrected against the preexisting Balanced variant, preserving the requested subject and relationship. Other failures remain implementation regressions."
+  ]
+}

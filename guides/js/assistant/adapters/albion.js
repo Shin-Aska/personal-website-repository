@@ -29,6 +29,8 @@ export function albionFacts({ DB, tradeHints = [] }) {
 }
 export function albionNarrativeFacts({ DB, questHints }) {
     return factMap([
+        ...DB.characters.map((character, index) => [`narrative:character:${slug(character.name)}`,
+            `${character.name}: ${character.notes}`, source(`DB.characters[${index}].name/notes`), { minSpoiler: 'direct' }]),
         ...DB.chapters.map((chapter, index) => [`narrative:chapter:${chapter.id}`, chapter.summary,
             source(`DB.chapters[${index}].summary`), { minSpoiler: 'balanced' }]),
         ['narrative:maini-sequence', questHints.maini['assassination-sequence'], source('QUEST_HINTS.maini.assassination-sequence'), { minSpoiler: 'direct' }],

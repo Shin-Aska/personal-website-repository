@@ -276,9 +276,26 @@ function editionStatement(core, known) {
     return !tokens(rest).filter(word => !EDITION_FILLER.has(word)).length && editionsIn(m[1], known).length > 0;
 }
 
-function stripFrames(q) {
+function stripFrames(q, names = []) {
+    // Authorized literal names may contain ordinary request framing, such as
+    // "Toronto Again". Protect only those exact spans while removing filler.
+    // The standalone parser remains independent of guide data; its caller
+    // supplies names already resolved at the current spoiler ceiling.
+    const spans = [];
+    let marker = '\uE000';
+    while (q.includes(marker)) marker += '\uE000';
+    for (const name of [...new Set(names.map(normalize))].sort((a, b) => b.length - a.length)) {
+        if (!name) continue;
+        const pattern = new RegExp(`(^|[^\\p{L}\\p{N}])${escape(name).replaceAll(' ', '\\s+')}(?=$|[^\\p{L}\\p{N}])`, 'gu');
+        q = q.replace(pattern, (whole, prefix) => {
+            const key = `${marker}${spans.length}\uE001`;
+            spans.push([key, whole.slice(prefix.length)]);
+            return prefix + key;
+        });
+    }
     let previous;
     do { previous = q; q = q.replace(FRAME_RE, ' '); } while (q !== previous);
+    for (const [key, name] of spans) q = q.split(key).join(name);
     return squash(q);
 }
 
@@ -399,6 +416,7 @@ const NARRATIVE_QUESTIONS = [
     ['cause', /^why ((?:didn't|doesn't|wasn't|weren't|isn't|aren't) .+)$/],
     ['method', /^how did ((?!(?:i|we|you)\b).+)$/],
     ['method', /^(?:what (?:is|was)|what's) (?:(?:the|a) )?method (?:for|of) (.+)$/],
+    ['outcome', /^(?:what (?:is|are|was|were)|what's) (?:(?:the|a|an|its|their) )?(?:outcomes?|results?|consequences?)(?: (?:of|for) (?:it|that|this|them))?$/],
     ['outcome', /^(?:(?:what (?:is|are|was|were)|what's) )?(?:(?:the|a|an) )?(?:outcomes?|results?|consequences?) (?:of|for) (.+)$/],
     ['relationship', /^(?:what (?:is|are|was|were)|what's) (?:(?:the|a|an) )?(?:relationship|relation|connection) between (.+ and .+)$/],
     ['relationship', /^how (?:is|are|was|were) (.+ and .+?) related(?: (.*))?$/],
@@ -430,7 +448,10 @@ export function narrativeQuestion(text) {
         return frame ? { ...frame, query: squash(`${frame.query} ${sourcePrefix[1]}`),
             ...(frame.contextual ? { guideOnly: true } : {}) } : null;
     }
-    if (/^why(?: (?:is|was) that)?$/.test(q)) return { aspect: 'cause', query: '', contextual: true };    // The target is the person whose relation was requested, not the
+    if (/^why(?: (?:is|was) that)?$/.test(q)) return { aspect: 'cause', query: '', contextual: true };
+    if (/^(?:how are (?:they|those two|these two) related|what(?: is|'s) (?:their (?:relationship|connection)|the (?:relationship|connection) between them))$/.test(q))
+        return { aspect: 'relationship', query: '', contextual: true, pair: true };
+    // The target is the person whose relation was requested, not the
     // requested relative. Only an authored directed relationship may answer
     // it; the reader never turns son into father or reverses a friendship.
     const possessive = q.match(NARRATIVE_POSSESSIVE), of = q.match(NARRATIVE_OF);
@@ -476,11 +497,14 @@ export function materialTerms(text, matchedTerms = [], editions = []) {
         && !/^\d+(?:[.-]\d+)*$/.test(t));
 }
 
-function makePart(text, known) {
+function makePart(text, known, names = []) {
     const q = trimEnd(text);
-    const framed = squash(stripFrames(q));
+    const framed = squash(stripFrames(q, names));
     const core = framed.replace(/^(?:and|also|plus|then|but|so)\s+/, '');
-    const followUp = !detectIntent(q) ? framed.match(FOLLOW_UP)?.[1] : null;
+    // A subject such as the spell Kill or Cure can also be an action word.
+    // The engine decides whether those words are an explicit new question or
+    // the name following "what about"; keep the follow-up phrase available.
+    const followUp = framed.match(FOLLOW_UP)?.[1] || null;
     return {
         q, core,
         // A statement such as "I got the Pistol" inside a compound message is
@@ -510,7 +534,7 @@ const NEWCOMER = /^(?:(?:hi|hey|hello|ok|okay|so|well),?\s+)?(?:i(?:'m| am) new(
 // step, so they take the canonical "what now" form.
 const START_HERE = /^(?:(?:so|ok|okay|and|well|then),?\s+)?(?:what (?:(?:should|do|can|must) (?:i|we) |to )do|where (?:do|should|can) (?:i|we) (?:start|begin)|how (?:do|should|can) (?:i|we) (?:start|begin)|what now)(?: (?:here|now|next|then))?$/;
 const STATEMENT_SPLIT = new RegExp(SPLIT.source.replaceAll(QUESTION_START, STATEMENT_START));
-export function splitParts(q, known = []) {
+export function splitParts(q, known = [], names = []) {
     // The comma in "According to the guide, why ...?" introduces the
     // question, rather than separating it from its source restriction.
     const sourceAware = q.replace(GUIDE_QUESTION_PREFIX, '$1 $2');
@@ -518,7 +542,7 @@ export function splitParts(q, known = []) {
     const asked = segments.filter(segment => !NEWCOMER.test(segment));
     segments = (asked.length ? asked : segments.map(() => 'what now'))
         .map(segment => START_HERE.test(segment) ? 'what now' : segment);
-    return segments.map(segment => makePart(segment, known)).filter(part => part.core && !isDiscourseOnly(part));
+    return segments.map(segment => makePart(segment, known, names)).filter(part => part.core && !isDiscourseOnly(part));
 }
 
 function isReport(q, raw) {
@@ -535,7 +559,7 @@ function isReport(q, raw) {
  * progress report; `subject` is "I meant X"), the primary `intent` and up to
  * MAX_PARTS clearly separated subquestions. Nothing here consults guide data.
  */
-export function parse(text, { editions = [] } = {}) {
+export function parse(text, { editions = [], names = [] } = {}) {
     const raw = String(text || '');
     // An em dash or spaced en dash separates clauses in English prose.
     let q = normalize(raw.replace(/\s*—\s*|\s+–\s+/g, '; ')).replace(/\bi've\b/g, 'i have')
@@ -565,16 +589,16 @@ export function parse(text, { editions = [] } = {}) {
     const subject = q.match(SUBJECT_CORRECTION);
     if (subject) {
         const [head, ...tail] = subject[1].split(/\s*(?:[,;:?!]+|\.(?=\s))\s*/);
-        const subjectPart = makePart(head, editions);
+        const subjectPart = makePart(head, editions, names);
         // "I mean, where is it?" is a question, not a change of subject.
         if (!subjectPart.intent) {
-            const rest = splitParts(tail.join('; '), editions);
+            const rest = splitParts(tail.join('; '), editions, names);
             return { ...base, subject: { q: trimEnd(head), core: subjectPart.core.replace(/^(?:the|a|an)\s+/, '') }, parts: sourced(rest.slice(0, MAX_PARTS)),
                 tooMany: rest.length > MAX_PARTS, intent: rest[0]?.intent || null };
         }
     }
     base.correction = isReport(q, normalize(raw));
-    let parts = splitParts(q, editions);
+    let parts = splitParts(q, editions, names);
     const context = parts.filter(part => part.editionContext);
     if (context.length && context.length < parts.length) {
         const named = [...new Set(context.flatMap(part => part.editions))];

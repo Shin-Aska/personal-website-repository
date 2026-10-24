@@ -131,8 +131,8 @@ function entityTable(records, ignore) {
             if (/\s[\/&]\s|\w\/\w/.test(alias)) for (const part of alias.split(/\s*[\/&]\s*/)) if (part.length >= 4 && part !== alias && !/^(?:the|a|an|of)\s/i.test(part) && !ignore.has(part.trim().toLowerCase())) e.aliases.add(part.trim());
         }
         if (r.scope) e.scopes.add(r.scope);
-        if (!NOT_NAMES.has(r.kind)) e.nameLike = true;
-        const group = kindGroup(r.kind);
+        if (!NOT_NAMES.has(r.subjectKind || r.kind)) e.nameLike = true;
+        const group = kindGroup(r.subjectKind || r.kind);
         if (group) (e.groups ||= new Set()).add(group);
         entities.set(e.id, e);
     }
@@ -141,13 +141,24 @@ function entityTable(records, ignore) {
         const seen = new Set();
         for (const alias of [...e.aliases]) { note(alias); const n = info.get(alias).norm; if (seen.has(n)) e.aliases.delete(alias); else seen.add(n); }
     }
-    const table = { ignore, entities, info };
+    // Spacing variants use identical letters, never edit-distance guesses.
+    // Keep all owners so a compact spelling cannot silently choose between names.
+    const spacing = new Map();
+    for (const e of entities.values()) if (e.nameLike) for (const alias of e.aliases) {
+        const a = info.get(alias);
+        if (a.length > 4) continue;
+        const compact = a.tokens.map(possessive).join('');
+        if (compact.length < 4) continue;
+        if (!spacing.has(compact)) spacing.set(compact, []);
+        spacing.get(compact).push({ ...e, alias, length: a.length });
+    }
+    const table = { ignore, entities, info, spacing };
     tableCache.set(records, table);
     return table;
 }
 // Identity is resolved separately; scores can never establish identity by themselves.
 export function resolveEntities(query, records, scope, { ignore = new Set(), vocabulary = new Set(), known = null, expect = null } = {}) {
-    const { entities, info } = entityTable(records, ignore);
+    const { entities, info, spacing } = entityTable(records, ignore);
     const queryTokens = tokens(query), queryFolded = foldTokens(queryTokens), queryNorm = foldedNorm(queryFolded);
     let hits = [];
     for (const e of entities.values()) for (const alias of e.aliases) {
@@ -158,6 +169,20 @@ export function resolveEntities(query, records, scope, { ignore = new Set(), voc
         const typed = queryFolded.slice(before, before + a.length).flatMap(x => x.from);
         const same = typed.length === a.tokens.length && typed.every((t, i) => possessive(t) === possessive(a.tokens[i]));
         hits.push({ ...e, alias, queryTerms: same ? a.tokens : typed, length: a.length, match: 'exact' });
+    }
+    const literalHits = [...hits];
+    for (let i = 0; i < queryTokens.length; i++) {
+        let compact = '';
+        for (let size = 1; size <= 4 && i + size <= queryTokens.length; size++) {
+            compact += possessive(queryTokens[i + size - 1]);
+            const typed = queryTokens.slice(i, i + size);
+            // An existing literal name wins over another name with different spacing.
+            if (literalHits.some(hit => hit.queryTerms.map(possessive).join(' ') === typed.map(possessive).join(' '))) continue;
+            for (const candidate of spacing.get(compact) || []) {
+                if (info.get(candidate.alias).tokens.map(possessive).join(' ') === typed.map(possessive).join(' ')) continue;
+                hits.push({ ...candidate, queryTerms: typed, match: 'exact', spacing: true });
+            }
+        }
     }
     // A misspelt name of two to four words ("Vas Main" for Vas Mani): every word must match, exactly or by close
     // spelling, with exactly one word misspelt and at least one word typed correctly.
@@ -188,7 +213,8 @@ export function resolveEntities(query, records, scope, { ignore = new Set(), voc
         // "Kamulos" in "Kenget Kamulos" is not an additional subject.
         const longest = Math.max(...hits.map(h => h.length));
         hits = hits.filter(h => h.length === longest || !hits.some(other =>
-            other.length > h.length && contains(other.alias, h.alias)));
+            other.length > h.length && (contains(other.alias, h.alias)
+                || (h.spacing && contains(other.queryTerms.join(' '), h.queryTerms.join(' '))))));
     } else {
         // Question vocabulary ("where", "find") is never a misspelt name.
         // A word the guide itself uses ("love", "magic") is not a misspelt name.

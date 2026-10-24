@@ -117,6 +117,7 @@ export function createView({ assistant, messages, input, sendButton, getContext 
             const user = message.role === 'user';
             const block = put('div', undefined, messages,
                 `walkthrough-ai-msg ${user ? 'user' : 'ai'} guide-assistant-message${message.decision === 'hidden' ? ' ga-hidden' : ''}`);
+            if (!user) block.dataset.decision = message.decision;
             const head = put('div', undefined, block, 'ga-msg-head');
             put('strong', user ? 'You' : 'Guide', head);
             // Which help level produced an answer, so a short reply is not mistaken for all there is.

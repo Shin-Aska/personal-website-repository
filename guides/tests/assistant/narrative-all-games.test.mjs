@@ -16,7 +16,9 @@ for (const gameId of Object.keys(allRecords)) test(`${gameId}: every authored na
     for (const definition of definitions) {
         const r = facets.find(r => r.id === `${gameId}:narrative:${definition.id}:${definition.narrative.aspect}`);
         assert.ok(r, definition.id);
-        assert.ok(records.some(old => !old.narrative && old.entityId === r.entityId && old.kind === r.kind), r.id);
+        // A cited lore profile keeps kind=research for provenance, with its
+        // independently declared subject type used for the identity match.
+        assert.ok(records.some(old => !old.narrative && old.entityId === r.entityId && (old.subjectKind || old.kind) === r.kind), r.id);
         assert.equal(r.variants[r.minSpoiler].text, r.source.claims.map(c => c.text).join('\n'));
         assert.ok(r.source.claims.length >= 1 && r.source.claims.length <= 4);
         assert.equal(r.source.index.review, 'authored-index');

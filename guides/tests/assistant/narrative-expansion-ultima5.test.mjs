@@ -40,7 +40,11 @@ test('all declared facts and narrative phrases validate; every answer quotes the
         assert.equal(record.source.index.locator, `narratives[id=${definition.id}]`);
         assert.equal(record.source.locator, parts.map(part => part.source.locator).join('; '));
         assert.deepEqual(record.source.claims.map(claim => claim.text), parts.map(part => part.text));
-        assert.ok(parts.every(part => part.source.file === 'guides/js/Ultima5.js'));
+        assert.ok(parts.every(part => ['guides/js/Ultima5.js', 'guides/Ultima5.html'].includes(part.source.file)));
+        if (definition.id === 'shadowlords-identity') {
+            assert.equal(parts[0].source.file, 'guides/Ultima5.html');
+            assert.ok(fs.readFileSync(new URL('../../Ultima5.html', import.meta.url), 'utf8').includes(parts[0].text));
+        }
         assert.ok(authorize(record, definition.minSpoiler));
         for (const level of ['gentle', 'balanced', 'direct']) {
             if (['gentle', 'balanced', 'direct'].indexOf(level) < ['gentle', 'balanced', 'direct'].indexOf(definition.minSpoiler))
@@ -52,7 +56,7 @@ test('all declared facts and narrative phrases validate; every answer quotes the
 test('the facets include varied aspects and procedural sequences are explicitly walkthrough steps', () => {
     const counts = Object.fromEntries([...new Set(records.map(record => record.narrative.aspect))]
         .map(aspect => [aspect, records.filter(record => record.narrative.aspect === aspect).length]));
-    assert.deepEqual(counts, { outcome: 18, summary: 2, relationship: 1, identity: 1, method: 2, sequence: 2 });
+    assert.deepEqual(counts, { identity: 2, outcome: 18, summary: 2, relationship: 1, method: 2, sequence: 2 });
     assert.ok(records.filter(record => record.narrative.aspect === 'sequence')
         .every(record => record.narrative.sequenceMode === 'steps'));
     assert.ok(!records.some(record => record.narrative.status === 'disputed' || record.narrative.status === 'hedged'));

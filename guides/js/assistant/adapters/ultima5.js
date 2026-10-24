@@ -26,6 +26,8 @@ export function ultima5Facts({ chapters, spells = [], tips = [], words = [], moo
         ...objectives.map(objective => [`outcome:${objective.id}`, objective.outcome, source(`ultima5GrandQuestChapters objective=${objective.id}.outcome`)]),
         ...objectives.map(objective => [`summary:${objective.id}`, objective.summary, source(`ultima5GrandQuestChapters objective=${objective.id}.summary`)]),
         ...objectives.map(objective => [`title:${objective.id}`, objective.title, source(`ultima5GrandQuestChapters objective=${objective.id}.title`)]),
+        ...objectives.filter(objective => /^shadow-/.test(objective.id)).map(objective =>
+            [`identity:${objective.id}`, objective.title.replace(/^Banish /, ''), source(`ultima5GrandQuestChapters objective=${objective.id}.title`)]),
         ...objectives.flatMap(objective => objective.steps.map((step, i) => [`step:${objective.id}:${i}`, clean(step), source(`ultima5GrandQuestChapters objective=${objective.id}.steps[${i}]`)])),
         ...chapters.filter(chapter => chapter.summary).map(chapter => [`chapter:${chapter.id}`, chapter.summary, source(`ultima5GrandQuestChapters chapter=${chapter.id}.summary`)]),
         // Page text outside the data arrays (shrine-loop cards, Mantras panel, closing sentence) lives in the overlay's pageFacts.
@@ -347,6 +349,8 @@ export function buildUltima5Records({ chapters, sideQuests, companions, spells, 
     records.push(...buildTopicRecords('ultima5', (overlay.topics || []).map(topic => ({ ...topic, overlayFile: 'guides/data/assistant/ultima5.json' })), facts));
     records.push(...buildNarrativeRecords('ultima5', (overlay.narratives || []).map(definition => ({ ...definition, overlayFile: 'guides/data/assistant/ultima5.json' })), facts));
     records.push(...buildResearchRecords('ultima5', overlay.research, 'guides/data/assistant/ultima5.json'));
+    // This is the rescue's outcome, not a description of the king.
+    for (const record of records) if (record.id === 'ultima5:objective:doom-rescue:explanation') record.identity = false;
     (atlas.markers || []).forEach((marker, index) => {
         const position = marker.position || {};
         if (!Number.isFinite(position.x) || !Number.isFinite(position.y)) return;

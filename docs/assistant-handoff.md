@@ -1,6 +1,6 @@
 # Handoff: local guide assistants (for the next agent)
 
-Repository: `/mnt/internal-hdd/Development/personal-website-repository`. Written 20 October 2026; latest behavior and verification refreshed 23 October 2026. Read this first, then `docs/game-assistant.md` (the full design and test record). Neither file is committed.
+Repository: `/mnt/internal-hdd/Development/personal-website-repository`. Written 20 October 2026; latest behavior and verification refreshed 24 October 2026. Read this first, then `docs/game-assistant.md` (the full design and test record). Neither file is committed. The bounded all-games conversation audit is now complete; see the latest integrated campaign section at the end and `docs/assistant-conversation-goal.md` for current evidence.
 
 ## What this is
 
@@ -719,6 +719,163 @@ are ready. Its initial raw failure is retained and the final smoke record states
 that guide/main portions were separate runs. The initial CDN failure is also
 retained. Final aggregate: `deployment-acceptance.json` in the private package.
 
+## Time Lord conversation and silent name spacing (23 October, local only)
+
+Spacing-only differences now resolve silently in the shared resolver, including
+joined and split proper names. Literal names win; ambiguous spacing/typo matches
+keep all candidate subjects regardless of which relationship is answerable.
+Named confirmations (`yes a time lord`) retain the original question and its
+restrictions. Guide-only restrictions persist through those confirmations and
+pronoun follow-ups, including the asynchronous fallback gate.
+
+Empty Ultima VII atlas labels are no longer identity answers. A cited Time Lord
+identity note uses his Black Gate dialogue, attaches to `ultima7:npc:time-lord`,
+and stays at Balanced. The existing atlas location/action remains available.
+Burnside/Covetous positive metadata-answer fixtures intentionally became explicit
+declines with notes; their atlas locations remain supported.
+
+New tests: `name-spacing.test.mjs` (25), plus the exact reported conversation and
+guide-only follow-ups in `english-browser.py`. Checks: standalone 933/933,
+original 203/203, English 1058/1058, browser 351/351; no external browser requests,
+page errors or saved-progress changes. Typo benchmark: 13,311 cases, recovery
+90.1% -> 90.3%, rounded wrong-subject rate unchanged at 0.36%, zero ordinary-word
+suggestions/hidden-name leaks, one unchanged gibberish suggestion. No install,
+commit or publication was performed.
+
+## Core lore and recent-topic follow-ups (23 October, local only)
+
+The owner's Time Lord -> Guardian example now resolves each character directly.
+Three new cited profiles (Guardian, Avatar, Britannia) and three authored facets
+(Guardian goal, Time Lord request, Time Lord/Guardian opposition) bring Ultima VII
+to 725 records / 33 narrative facets. Sources are the original Black Gate dialogue
+transcripts and manual, with normal research labels and spoiler ceilings.
+
+`buildResearchRecords` accepts a separate `subjectKind`; authorization preserves
+it, entity matching uses it, and person-pronoun handling recognizes it without
+changing `kind:research` or evidence precedence. The shared narrative invariant
+still requires an existing profile, now matching its effective subject type.
+
+The shared engine remembers at most two recent established subject IDs, allowing
+`How are they related?` and equivalent relationship/connection follow-ups only
+when an authored relationship supports them. Mentions in prose do not establish
+topics. A two-subject answer makes singular pronouns ambiguous; reset, context
+changes and spoiler reductions clear/filter the pair. Source/material/numeric/
+edition restrictions survive, including early edition declines.
+
+Descriptive search candidates remain unconfirmed until selected. Pronouns and
+implicit questions reoffer those choices instead of silently adopting a suggested
+subject; guide-only searches exclude research candidates. This also blocks the
+model from turning such proposals into asserted topics.
+
+Validation: new `lore-context.test.mjs` 22/22; standalone 955/955, original 203/203,
+English 1058/1058, browser 369/369, page-fact/spoiler check passed. Browser checks
+include the reported chain, goals, plural relationships, ambiguous pronouns and
+unconfirmed searches, with no external requests/page errors/progress changes.
+Typo benchmark remains 90.3% recovery, 48/13,311 wrong subjects (0.36%), zero
+ordinary-word suggestions/hidden-name leaks; its one prior gibberish suggestion
+remains. No installs, commits or publication. Cache metadata must accompany any
+later publication of these local changes.
+
+## Ultima VII trivia and Lord British (23 October, local only)
+
+The owner asked to use the Ultima VII UI and ask `Who is Lord British?`, then add
+many trivia tests. The original UI replied only `The king.` and failed `Who is
+he?` because his atlas marker is a castle. An overlay `atlasSubjectKinds` entry now
+marks him conversationally as NPC while preserving his historical place ID,
+marker/action and coordinates. Three dialogue-sourced facets cover identity,
+rule of Britannia and friendship with the Avatar; guide-only identity still uses
+the guide's original king line. A new Black Gate identity facet describes the
+portal without revealing its destruction steps. Total: 729 U7 records / 37 facets.
+
+New `trivia-ultima7-cases.json`: 100 hand-authored questions (78 factual, 22 safety,
+edition and spoiler cases), 10 dialogues / 40 turns. `trivia-ultima7.test.mjs`
+adds 115 tests; `trivia-ultima7-browser.py` replays every case through the UI plus
+two offline checks, retaining `evidence/trivia-ultima7-browser.json` (142 replies).
+The UI exposes each assistant message's actual decision in `data-decision` so a
+refusal or related quote cannot masquerade as a factual answer in browser tests.
+
+The corpus exposed fixes for spacing-only names in narrative matching, the
+`the Guardian` alias in purpose questions, and ampersands/slashes inside spell
+names such as `Heal & Cure`. The browser found `What is he hiding?` after Lord
+British answered from the Trinsic quest behind chat; pronoun hint/prerequisite
+requests now keep the established conversational subject. The corresponding
+Node regression supplies that selected page context explicitly.
+
+Validation: standalone 1070/1070, original 203/203, English 1058/1058, shared browser
+369/369, trivia browser 142/142, U7 page-fact/spoiler check passed. No external
+browser requests, page errors or saved-progress changes. Typo recovery/wrong
+subjects remain 90.3% / 48 of 13,311 (0.36%), with zero ordinary-word suggestions
+or hidden-name leaks and the same one prior gibberish suggestion. A manual IAB
+replay with the real pinned local model also verified Lord British -> `Who is he?`.
+The latest local cache metadata includes these changes. No packages installed,
+commits, pushes or publication performed.
+
+## Active all-games conversation goal (23 October 2026)
+
+The owner replaced simply growing the 100-question Ultima VII trivia suite with
+an explicit goal of extensive conversations across all six guides. The active
+goal and acceptance criteria are recorded in
+[`assistant-conversation-goal.md`](assistant-conversation-goal.md). Start with an
+inventory of existing coverage, then test sustained conversations across the ten
+behavior families. The initial minimum is 20 distinct conversations per guide,
+normally 8–15 visitor turns, with additional branches driven by gaps. Track
+subjects, relationships, help levels and transitions separately from raw counts;
+do not count refusals or paraphrases as additional factual coverage. The existing
+Ultima VII work remains local and must be preserved.
+
+The first execution pass added `conversations/albion.json` (20 chats / 164 visitor
+turns) and `conversations/ultima5.json` (20 / 162). Campaign Node 326/326 and UI
+330/330 pass, including four offline follow-ups. It fixed native spell-stat
+selection, exact names containing framing words, continuity between differently
+named narrative facets, predicate carry between outcomes/steps, short outcome
+requests, and a person's implicit name being taken from a recruitment instruction.
+Albion's reviewed Sira/Melthas party link is now a Direct narrative facet from
+existing character notes; Albion builds 394 records / 15 facets. Existing lower
+spoiler ceilings and unsupported family/motive questions remain covered.
+
+First-pass standalone 1131/1131, original 203/203, English 1058/1058 and shared browser 369/369
+pass. Campaign browser runs use the explicit consent/worker fixture, preserve
+storage and make no external requests. Native-model campaign checks, the four
+remaining games and the family/help-level matrix are still pending; the goal is
+active. The dedicated goal document contains commands, coverage counts, evidence,
+initial failures and next steps. The inventory distinguishes the RPG suites'
+short chats from StarCraft's existing long technical conversations. Cache metadata
+was regenerated. The refreshed asset report includes consent/model-runtime code:
+engine/adapter gzip remains over the owner's accepted soft 50 KiB target, while
+the active first-use totals remain below 250 KiB. No installs or publication.
+
+### Second campaign pass (24 October, current)
+
+Ultima VI (20 chats / 162 turns), Ultima VII (20 / 166) and Al-Qadim (20 / 161)
+now join the campaign: 100 chats / 815 turns across five games. Node 815/815 and
+real UI 825/825 pass, including ten offline turns; all storage is unchanged and
+there are no external requests/page errors. Native-model campaign checks and the
+family/help matrix remain pending. StarCraft's new campaign is not authored yet.
+
+Shared fixes cover Cure/Kill as spell names versus action verbs, complete authored
+questions versus bare subject follow-ups, relationship-aware selection among
+same-named quest/shrine entries, page scope hiding a valid reference, exact indexed
+prefix composition for mantra follow-ups, and explicit pairs keeping singular
+pronouns ambiguous. Complete reviewed full-question aliases now answer even when
+the generic parser has no intent word. `sq-aq-095` and `sim-u6-spell-08` intentionally
+now require direct factual answers with their exact source records; notes explain
+why. New fixture oracle corrections are also documented with the unchanged sources
+and first-run evidence. Al-Qadim adds two aliases to its existing save-game note.
+
+Current validation: standalone 1201/1201, focused regressions 26/26, original
+203/203, English 1058/1058, shared browser 369/369, both page-fact checkers, unchanged
+13,311-case typo metrics. Cache metadata is regenerated and checked. No installs,
+commits, pushes or publication. The loopback server is still live on port 8766
+(revalidate before use; process 2315643 at this handoff).
+
+**Next priority:** a separate fresh-topic audit exposed identity answers returning
+outcomes/task lists/procedures: Ultima V `Who is Lord British?` and `What is a
+Shadowlord?`, and Al-Qadim `Who is the Caliph / Vizier / Aliya / Tarik?`. These are
+open meaning defects, not accepted limitations. Read `assistant-conversation-gaps.md`
+and `evidence/conversation-lore-gap-probes.json`; fix and regress them before any
+completion claim. Then finish StarCraft, the coverage matrix and native-model
+campaign verification. Passing the five current corpora does not finish the goal.
+
 ## Open items / suggested next steps
 
 1. ~~Re-measure performance and heap~~ done 21 Oct 2026 after the simulation round (see the docs table; the browser is now Chrome 156).
@@ -740,3 +897,109 @@ retained. Final aggregate: `deployment-acceptance.json` in the private package.
 ## Working style the owner responded well to
 
 Reproduce the reported message exactly, show the root cause plainly, fix it at the shared-engine level, add the exact message as a regression case (with negatives), run all suites, update the docs, and report outcomes candidly, including limits and design choices that are theirs to overrule.
+
+## Latest integrated campaign, 24 October 2026
+
+Read `docs/assistant-conversation-goal.md`, the independent
+`docs/assistant-conversation-coverage.md` and
+`docs/assistant-conversation-gaps.md` for the current all-games audit. The owner
+explicitly authorized subagents to speed this work; StarCraft, coverage review
+and native verification were delegated independently while shared-engine fixes
+were integrated here. The local corpus contains 132 conversations /1,097 visitor
+turns (837 factual, 260 structural). Per-game counts and source/subject coverage
+are in the goal document. No installs, new model downloads, commits, pushes or
+publication were performed for this campaign. Preserve all local changes.
+
+Identity requests no longer accept procedures merely because a matching person's
+name occurs there. Reviewed game-specific Lord British/Shadowlord identities and
+four Al-Qadim role phrases are indexed separately; unsupported biographies
+honestly decline and offer context/location. Exact literal subjects keep their
+own facts when the selected page's quest uses the same name as an alias.
+StarCraft now has a complete sustained technical campaign and bounded source
+indexes for the questions it exposed. The shared restriction, pronoun, multipart,
+name-spacing and early-decline paths have targeted cross-game regressions.
+
+The 180-cell family/help review is complete with explicit narrow location ceilings,
+not whole-game/family exemptions. Original gaps in low-level objective and
+explanation testing were filled with reviewed hints, invasion cause, experience/HP
+mechanism, and Albion concept/chapter explanations. Missing biographies/motives,
+recruitment policy and known guide conflicts remain the explicit boundaries in
+the gaps document. Source-backed utterance counts are not independent facts or
+blind accuracy. Further knowledge expansion needs source review, rather than
+more paraphrases or inferred prerequisites.
+
+Actual UI campaign and native-worker evidence are separate artifacts. Native
+`conversation-native-completed.json` records the full 132-dialogue campaign and
+real chapter/quest/topic transitions against a stable runtime snapshot. The final
+narrow same-subject ownership-hypothetical correction is preserved as
+`conversation-native-hypothetical-followup.patch`; `conversation-native-current.json`
+checks the current runtime across all six with explicit same/new/qualified-subject
+regressions. Use final acceptance evidence and its hashes; interrupted/earlier
+oracle-failure native reports are retained solely as history. The model selects
+approved conversational wording; every factual quotation still comes from
+program-selected authorized source records. Do not report 1,097 neural factual
+inferences.
+
+Reproduction uses the already available Node runtime and Playwright/Chrome;
+install nothing. Regenerate cache metadata after runtime/data changes. The
+loopback server on 8766 was started for this work and is not a deployed service.
+
+Final acceptance: standalone 1,245/1,245, original 203/203, English 1,058/1,058,
+shared browser 370/370, current campaign UI 1,109/1,109; full native baseline
+1,188/1,188 and current native probe/guard run 113/113. The final acceptance JSON
+reconciles source hashes and preserves the native snapshot boundary explicitly.
+The original ownership-hypothetical regression passes: the exact unqualified
+current subject remains available without applying a possession report; new or
+qualified hypothetical subjects cannot recover older facts.
+
+The owned loopback server on port 8766 was stopped after final acceptance; restart
+it explicitly for browser reproduction. No deployed service was changed.
+
+## Chat scrolling follow-up, 24 October 2026
+
+A reported Ultima VI Full answer dialog clipped its composer after longer chats.
+Its panel had a viewport cap, while the counsel body independently estimated its
+height without accounting for the header and Voice controls. At 1280×900 the
+body extended to y=920 while the clipped panel ended at y=834. The panel is now a
+flex column, with a shrinkable, scrollable body using the actual remaining space
+and dynamic viewport caps. Its input and Send button remain reachable.
+
+The cross-guide review also found Al-Qadim's walkthrough sidebar squeezing its
+conversation to 12px or zero on short screens. A minimum card/log height keeps a
+usable conversation area while the surrounding page scrolls. The dedicated
+Genie tab and the other four games needed no production layout changes.
+
+`guides/tests/assistant/chat-layout-browser.py` passes 42/42 combinations: seven
+chat surfaces (both Al-Qadim views) at six desktop, phone and short landscape
+sizes. It uses Full answer, eight initial UI turns per surface, then another real
+send at every size: 98 actual sends. Checks cover message reachability, card
+clipping, input/Send hit testing, Ultima VI wheel scrolling and modal bounds,
+unchanged storage, static requests and stable source hashes. There are no external
+requests or page errors. The shared English browser suite also passes 370/370.
+These layout checks use the consent/worker fixture, not native inference.
+
+The failing baseline geometry and final proof are in `evidence/chat-layout-*`.
+The two stylesheet cache hashes were regenerated and verified. No conversation
+engine, factual sources, saved-progress formats, installs or published files were
+changed by this follow-up. All changes remain local.
+
+## Conversation and layout publication, 24 October 2026
+
+The owner subsequently requested FTP upload followed by a relevant local commit.
+Publication is complete: 18 changed guide runtime assets plus two reconciled
+cache metadata files, all under `/guides`. Full FTP binary SHA-256 readback and
+public HTTPS verification pass for all 20. All 778 untouched production manifest
+entries are preserved; the local checkout manifest intentionally remains distinct.
+The live chat layout run passes 42/42 combinations and 98 sends using real service
+workers, controlled reloads and the approved consent/worker fixture. Progress is
+unchanged, with no page errors or tested question text in requests. Standalone
+regressions pass 1,245/1,245 again.
+
+Read [`assistant-release-20261024.md`](assistant-release-20261024.md) and its
+linked sanitized evidence for the exact release scope, hashes and cache freshness
+boundary. The established mappings remain `guides/` → `/guides`, `default/` →
+`/personal-website`, `classic/` → `/site6`. No default/Classic changes or model
+binaries were uploaded. Credentials, rollback backups and raw deployment logs
+remain outside Git. Only canonical final evidence is versioned; intermediate
+first/round/probe/failure reports referenced in older notes remain local. No Git
+push is part of this request.

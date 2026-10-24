@@ -305,6 +305,16 @@ input[type="checkbox"]:checked + .checkbox-custom::after {
     scrollbar-color: rgba(159, 122, 234, 0.2) transparent;
 }
 
+/* On short screens the walkthrough's viewport-sized card must grow with its
+   controls instead of squeezing the conversation out of view. The page scrolls. */
+#walkthrough .walkthrough-ai {
+    min-height: 32rem;
+}
+
+#walkthrough .walkthrough-ai-body {
+    min-height: 8rem;
+}
+
 .walkthrough-ai-body::-webkit-scrollbar {
     width: 6px;
 }

@@ -59,15 +59,20 @@ function buildStarcraftGuideRecords(root, overlay) {
         const extracted = sourceText(root, fact.selector);
         if (!extracted) return [];
         const direct = fact.conflict ? fact.balanced : extracted;
+        // A compatibility discrepancy is itself sourced. Preserve both guide
+        // locations and label the provenance as conflicting at every help tier.
+        const locator = fact.conflict && fact.conflictingSelectors?.length
+            ? fact.conflictingSelectors.join('; ') : fact.selector;
         const authoredSource = field => ({
             file: 'guides/data/assistant/starcraft.json',
             locator: `entities[${entityIndex}].facts[${factIndex}].${field}`,
-            review: 'authored-from-guide',
+            review: fact.conflict ? 'conflicting' : 'authored-from-guide',
             basedOn: {
                 file: 'guides/StarcraftBWAPI.html',
-                locator: fact.selector,
+                locator,
                 review: 'extracted'
-            }
+            },
+            ...(fact.answers?.length ? { index: { file: 'guides/data/assistant/starcraft.json', locator: `entities[${entityIndex}].facts[${factIndex}].answers`, review: 'authored-index' } } : {})
         });
         // A problem statement ("BWAILauncher doesn't detect my game") has no question word, so a fact
         // marked standalone is its own single-record entry that answers by itself.
@@ -77,7 +82,7 @@ function buildStarcraftGuideRecords(root, overlay) {
             entityId: alone ? `starcraft:${entity.id}-${fact.id}` : `starcraft:${entity.id}`,
             title: alone ? alone.title : entity.title,
             aliases: alone ? [alone.title, ...expandAliases(alone)] : [...entity.aliases, ...(fact.aliases || [])],
-            kind: alone || entity.kind === 'qa' ? 'qa' : 'setup',
+            kind: fact.kind || (alone || entity.kind === 'qa' ? 'qa' : 'setup'),
             relation: fact.relation,
             answers: [...(fact.answers || [])],
             acquisitionMethods: fact.relation === 'acquisition' ? ['download'] : [...(fact.methods || [])],
@@ -93,8 +98,8 @@ function buildStarcraftGuideRecords(root, overlay) {
             },
             source: {
                 file: 'guides/StarcraftBWAPI.html',
-                locator: fact.selector,
-                review: 'extracted',
+                locator,
+                review: fact.conflict ? 'conflicting' : 'extracted',
                 ...(fact.answers?.length ? { index: { file: 'guides/data/assistant/starcraft.json', locator: `entities[${entityIndex}].facts[${factIndex}].answers`, review: 'authored-index' } } : {}),
                 ...(fact.conflict ? { note: 'Conflicts with #bwai-requirements; no hard compatibility rule.' } : {})
             }

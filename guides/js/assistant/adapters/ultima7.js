@@ -131,7 +131,8 @@ export function buildUltima7Records(data, overlay, questRoutes = {}, markers = [
     // companion, item, creature or quest keep their existing records.
     // A name that already belongs to a companion, item, creature or quest is kept. A free-standing fact that merely
     // mentions a person (Finnigan's gate password) is not that person, so it must not swallow their atlas location.
-    const known = new Set(records.filter(record => record.kind !== 'fact').flatMap(record => [record.title, ...(record.aliases || [])]).map(name => String(name).toLowerCase()));
+    // Research attached to an atlas NPC supplements its identity without swallowing its marker.
+    const known = new Set(records.filter(record => record.kind !== 'fact' && !record.entityId.startsWith('ultima7:npc:')).flatMap(record => [record.title, ...(record.aliases || [])]).map(name => String(name).toLowerCase()));
     const bareDetail = marker => plain(marker.description).replace(new RegExp(`^${marker.name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\s*`, 'i'), '').replace(/[.\s]+$/, '').toLowerCase();
     const npcDetails = new Map(markers.filter(marker => marker.type === 'npc' && marker.name).map(marker => [marker.name.toLowerCase(), bareDetail(marker)]));
     const groups = new Map();
@@ -225,7 +226,7 @@ export function buildUltima7Records(data, overlay, questRoutes = {}, markers = [
         // A place that shares a quest's name (Castle of Fire) keeps answering only where it is; the quest answers what it is.
         const ownsQuestName = !questEntity && records.some(record => record.entityId === ultima7QuestId(group.name));
         if (questEntity) entityId = questEntity;
-        else if (records.some(record => record.entityId === entityId)) continue;
+        else if (records.some(record => record.entityId === entityId && record.kind !== 'research')) continue;
         const count = group.indexes.length > 1 ? `${group.indexes.length} markers` : 'one marker';
         const text = group.details.length ? `${group.name}: ${group.details.join('; ')}.` : `${group.name}: ${group.type} on the guide's atlas (${count}).`;
         const plural = /s$/i.test(group.name) ? [] : [`${group.name}s`];
@@ -235,8 +236,11 @@ export function buildUltima7Records(data, overlay, questRoutes = {}, markers = [
         const virtue = shrine && !/^codex$/i.test(shrine) ? [`${shrine} shrine`, ...(overlay.shrineSpellings?.[shrine] ? [`Shrine of ${overlay.shrineSpellings[shrine]}`, `${overlay.shrineSpellings[shrine]} shrine`] : [])] : [];
         const groupAliases = (overlay.groupAliases?.[`${group.kind}:${group.name}`] || []);
         records.push({ id: `${entityId}:${questEntity ? 'atlas' : 'location'}`, entityId, title: group.name, aliases: [group.name, ...plural, ...(group.extraAliases || []), ...virtue, ...groupAliases], kind: questEntity ? 'quest' : group.kind, relation: 'location',
-            // An atlas line is the guide's description of its subject, so it also answers "what is it" (a shrine's line is also its mantra).
-            answers: shrine ? ['explanation', 'use'] : ownsQuestName ? [] : ['explanation'], scope: 'ultima7', minSpoiler: group.level, requires: null,
+            // A castle icon may represent a person (Lord British). Keep its
+            // atlas identity/action while using the reviewed conversational type.
+            ...(overlay.atlasSubjectKinds?.[group.name] ? { subjectKind: overlay.atlasSubjectKinds[group.name] } : {}),
+            // Only an actual description answers "what is it"; a marker's name/type is location metadata.
+            answers: shrine ? ['explanation', 'use'] : ownsQuestName || !group.details.length ? [] : ['explanation'], scope: 'ultima7', minSpoiler: group.level, requires: null,
             variants: { [group.level]: { text, actions: [{ id: `atlas:${group.name}`, label: 'Show on the atlas' }] } },
             source: { file: 'guides/js/Ultima7Markers.js', locator: `ULTIMA7_MARKERS[${group.indexes.slice(0, 6).join(',')}${group.indexes.length > 6 ? ',…' : ''}]`, review: 'extracted',
                 index: { file: 'guides/js/assistant/adapters/ultima7.js', locator: 'atlas marker grouping', review: 'authored-index' } } });
@@ -349,7 +353,8 @@ export function buildUltima7Records(data, overlay, questRoutes = {}, markers = [
     for (const person of atlasNpcs.values()) if (person.details.length)
         facts.set(`atlas:${person.name}`, { text: `${person.name}: ${person.details.join('; ')}.`, minSpoiler: 'balanced',
             source: { file: 'guides/js/Ultima7Markers.js', locator: `ULTIMA7_MARKERS[${person.indexes.slice(0, 4).join(',')}]` } });
-    for (const entry of (overlay.research || []).filter(entry => entry.storyOnly && entry.text && entry.sources?.length))
+    // Reviewed research can supply explicit narrative facets as well as profiles.
+    for (const entry of (overlay.research || []).filter(entry => entry.text && entry.sources?.length))
         facts.set(`research:${entry.id}`, { text: entry.text, minSpoiler: entry.minSpoiler || 'gentle',
             source: { file: entry.sources[0].url, locator: entry.sources.map(source => source.label).join('; '), review: 'external-research', references: entry.sources.map(source => ({ ...source })) } });
     for (const fact of facts.values()) fact.source.review ||= 'extracted';

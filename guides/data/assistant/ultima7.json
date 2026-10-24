@@ -2,6 +2,9 @@
   "schemaVersion": 1,
   "gameId": "ultima7",
   "review": "authored-from-existing-guide; extraction only, not independent verification",
+  "atlasSubjectKinds": {
+    "Lord British": "npc"
+  },
   "quests": {
     "The Trinsic Murders": {
       "gentle": "Start with the crime scene and compare the witnesses' accounts. Report what you can establish before trying to leave town.",
@@ -370,6 +373,131 @@
     "Quest prerequisite graphs are unmodeled."
   ],
   "research": [
+    {
+      "id": "lore-black-gate-identity",
+      "storyOnly": true,
+      "title": "Black Gate's identity",
+      "minSpoiler": "balanced",
+      "text": "The Black Gate is a black moongate being built so the Guardian can enter Britannia from another dimension.",
+      "sources": [{
+        "label": "Ultima VII dialogue transcript: Xorinia (exchange and Black Gate)",
+        "url": "https://mithyr.com/Ultima/7.0_VII_TheBlackGate/Script/libNPC256.htm",
+        "checkedAt": "2026-10-23"
+      }]
+    },
+    {
+      "id": "lore-lord-british-identity",
+      "storyOnly": true,
+      "title": "Lord British's identity",
+      "minSpoiler": "gentle",
+      "text": "Lord British rules Britannia as its king. He is an old friend of the Avatar and shares the Avatar's original homeland, Earth.",
+      "sources": [{
+        "label": "Ultima VII dialogue transcript: Lord British (name, job and homeland)",
+        "url": "https://mithyr.com/Ultima/7.0_VII_TheBlackGate/Script/libNPC023.htm",
+        "checkedAt": "2026-10-23"
+      }]
+    },
+    {
+      "id": "guardian-identity",
+      "entityId": "ultima7:npc:guardian",
+      "title": "Guardian",
+      "aliases": ["the Guardian"],
+      "subjectKind": "npc",
+      "relation": "explanation",
+      "minSpoiler": "balanced",
+      "text": "In Ultima VII: The Black Gate, the Guardian is a powerful, hostile being from another dimension. He seeks domination and control of Britannia, and the Time Lord urges the Avatar to oppose him.",
+      "sources": [{
+        "label": "Ultima VII dialogue transcript: The Time Lord (crisis and The Guardian)",
+        "url": "https://mithyr.com/Ultima/7.0_VII_TheBlackGate/Script/libNPC148.htm",
+        "checkedAt": "2026-10-23"
+      }]
+    },
+    {
+      "id": "avatar-identity",
+      "entityId": "ultima7:character:avatar",
+      "title": "Avatar",
+      "aliases": ["the Avatar"],
+      "subjectKind": "character",
+      "relation": "explanation",
+      "minSpoiler": "gentle",
+      "text": "The Avatar is Britannia's champion of the Eight Virtues. In Ultima VII, Lord British recognizes the Avatar as an old friend who, like him, originally came from Earth.",
+      "sources": [{
+        "label": "Ultima VII manual: The Book of Fellowship (the Eight Virtues and the Quest of the Avatar)",
+        "url": "https://bootstrike.com/Ultima7bg/Online/manual.php",
+        "checkedAt": "2026-10-23"
+      }, {
+        "label": "Ultima VII dialogue transcript: Lord British (homeland)",
+        "url": "https://mithyr.com/Ultima/7.0_VII_TheBlackGate/Script/libNPC023.htm",
+        "checkedAt": "2026-10-23"
+      }]
+    },
+    {
+      "id": "britannia-identity",
+      "entityId": "ultima7:place:britannia",
+      "title": "Britannia",
+      "aliases": [],
+      "subjectKind": "place",
+      "relation": "explanation",
+      "minSpoiler": "gentle",
+      "text": "Britannia is the realm ruled by Lord British, where the Avatar returns in Ultima VII: The Black Gate. It is a different world from Earth, the original homeland of Lord British and the Avatar.",
+      "sources": [{
+        "label": "Ultima VII dialogue transcript: Lord British (job, homeland and Britannia)",
+        "url": "https://mithyr.com/Ultima/7.0_VII_TheBlackGate/Script/libNPC023.htm",
+        "checkedAt": "2026-10-23"
+      }]
+    },
+    {
+      "id": "lore-guardian-purpose",
+      "storyOnly": true,
+      "title": "Guardian's goal",
+      "minSpoiler": "balanced",
+      "text": "The Guardian wants power and domination: he conquers other worlds and has turned his attention to Britannia.",
+      "sources": [{
+        "label": "Ultima VII dialogue transcript: Xorinia (exchange)",
+        "url": "https://mithyr.com/Ultima/7.0_VII_TheBlackGate/Script/libNPC256.htm",
+        "checkedAt": "2026-10-23"
+      }]
+    },
+    {
+      "id": "lore-time-lord-purpose",
+      "storyOnly": true,
+      "title": "Time Lord's request",
+      "minSpoiler": "balanced",
+      "text": "The Time Lord wants the Avatar to free him and help oppose the Guardian.",
+      "sources": [{
+        "label": "Ultima VII dialogue transcript: The Time Lord (crisis)",
+        "url": "https://mithyr.com/Ultima/7.0_VII_TheBlackGate/Script/libNPC148.htm",
+        "checkedAt": "2026-10-23"
+      }]
+    },
+    {
+      "id": "lore-time-lord-guardian",
+      "storyOnly": true,
+      "title": "Time Lord and Guardian",
+      "minSpoiler": "balanced",
+      "text": "The Time Lord and the Guardian are opponents: the Time Lord asks the Avatar to fight the Guardian, who has trapped him.",
+      "sources": [{
+        "label": "Ultima VII dialogue transcript: The Time Lord (crisis)",
+        "url": "https://mithyr.com/Ultima/7.0_VII_TheBlackGate/Script/libNPC148.htm",
+        "checkedAt": "2026-10-23"
+      }]
+    },
+    {
+      "id": "time-lord-identity",
+      "entityId": "ultima7:npc:time-lord",
+      "title": "Time Lord",
+      "aliases": [],
+      "relation": "explanation",
+      "minSpoiler": "balanced",
+      "text": "In Ultima VII: The Black Gate, the Time Lord is a being whose work is to keep time flowing smoothly through space. He helps the Avatar oppose the Guardian.",
+      "sources": [
+        {
+          "label": "Ultima VII dialogue transcript: The Time Lord (name, job and crisis)",
+          "url": "https://mithyr.com/Ultima/7.0_VII_TheBlackGate/Script/libNPC148.htm",
+          "checkedAt": "2026-10-23"
+        }
+      ]
+    },
     {
       "id": "leveling",
       "title": "Gaining levels and training",
@@ -2320,6 +2448,76 @@
     }
   ],
   "narratives": [
+    {
+      "id": "black-gate-identity",
+      "entityId": "ultima7:topic:black-gate",
+      "kind": "qa",
+      "title": "Black Gate",
+      "aliases": [],
+      "minSpoiler": "balanced",
+      "from": ["research:lore-black-gate-identity"],
+      "narrative": { "aspect": "identity", "subjects": ["Black Gate"], "context": ["Guardian", "Britannia"] }
+    },
+    {
+      "id": "lord-british-avatar-relationship",
+      "entityId": "ultima7:place:lord-british",
+      "kind": "npc",
+      "title": "Lord British",
+      "aliases": [],
+      "minSpoiler": "gentle",
+      "from": ["research:lore-lord-british-identity"],
+      "narrative": { "aspect": "relationship", "subjects": ["Lord British", "Avatar"], "context": ["Earth"], "predicate": "friend" }
+    },
+    {
+      "id": "lord-british-identity",
+      "entityId": "ultima7:place:lord-british",
+      "kind": "npc",
+      "title": "Lord British",
+      "aliases": ["king of Britannia", "ruler of Britannia", "Britannia's king"],
+      "minSpoiler": "gentle",
+      "from": ["research:lore-lord-british-identity"],
+      "narrative": { "aspect": "identity", "subjects": ["Lord British"], "context": ["Britannia", "Avatar", "Earth"] }
+    },
+    {
+      "id": "lord-british-rules",
+      "entityId": "ultima7:place:lord-british",
+      "kind": "npc",
+      "title": "Lord British",
+      "aliases": [],
+      "minSpoiler": "gentle",
+      "from": ["research:lore-lord-british-identity"],
+      "narrative": { "aspect": "relationship", "subjects": ["Lord British"], "context": ["Britannia"], "predicate": "rules" }
+    },
+    {
+      "id": "guardian-purpose",
+      "entityId": "ultima7:npc:guardian",
+      "kind": "npc",
+      "title": "Guardian",
+      "aliases": [],
+      "minSpoiler": "balanced",
+      "from": ["research:lore-guardian-purpose"],
+      "narrative": { "aspect": "purpose", "subjects": ["Guardian"], "context": ["Britannia"] }
+    },
+    {
+      "id": "time-lord-purpose",
+      "entityId": "ultima7:npc:time-lord",
+      "kind": "npc",
+      "title": "Time Lord",
+      "aliases": [],
+      "minSpoiler": "balanced",
+      "from": ["research:lore-time-lord-purpose"],
+      "narrative": { "aspect": "purpose", "subjects": ["Time Lord"], "context": ["Avatar", "Guardian"] }
+    },
+    {
+      "id": "time-lord-guardian-relationship",
+      "entityId": "ultima7:npc:time-lord",
+      "kind": "npc",
+      "title": "Time Lord",
+      "aliases": [],
+      "minSpoiler": "balanced",
+      "from": ["research:lore-time-lord-guardian"],
+      "narrative": { "aspect": "relationship", "subjects": ["Time Lord", "Guardian"], "context": ["Avatar"], "predicate": "opponents" }
+    },
     {
       "id": "batlin-identity",
       "entityId": "ultima7:npc:batlin",

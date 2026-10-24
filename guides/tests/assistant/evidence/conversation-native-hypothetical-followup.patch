@@ -1,0 +1,18 @@
+--- a/guides/js/assistant/engine.js
++++ b/guides/js/assistant/engine.js
+@@ -1857,7 +1857,14 @@
+         if (/\b(?:don't|do not|not)\s+(?:tell|show|give|reveal|explain)\b/.test(p.q))
+             return result('clarify', 'Understood. Ask for the specific information you do want, or select Gentle for a smaller hint.');
+         if (p.hypothetical) {
+-            clearTopic(c);
++            // Merely supposing ownership of the exact current subject does
++            // not assert progress or erase that subject. A different or
++            // qualified hypothetical must not leave the old referent active.
++            const ownership = p.parts[0]?.q.match(/^if i (?:have|had) (?:the )?(.+)$/);
++            const named = ownership ? resolve(ownership[1], opts) : [];
++            const samePlainSubject = named.length === 1 && c.entities.length === 1 && named[0].id === c.entities[0]
++                && normalize(ownership[1]) === normalize(named[0].queryTerms.join(' '));
++            if (!samePlainSubject) clearTopic(c);
+             return result('clarify', 'That condition is not established as your current progress. Ask about the named prerequisite, or state a current fact explicitly; no progress was changed.');
+         }
+         if (p.affirm) {

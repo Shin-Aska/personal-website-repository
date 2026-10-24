@@ -61,7 +61,10 @@
               "own copy of starcraft",
               "own copy of brood war",
               "install the game separately",
-              "installed separately"
+              "installed separately",
+              "Do I need a separate StarCraft installation for SCHNAIL",
+              "Does SCHNAIL need a separate game installation",
+              "Do I need a separate game installation for SCHNAIL"
             ],
             "slots": {
               "N": [
@@ -134,7 +137,9 @@
               "initial launch",
               "downloading game files",
               "downloads game files",
-              "necessary game files"
+              "necessary game files",
+              "Why does SCHNAIL take so long on its first launch",
+              "Why is SCHNAIL slow on first launch"
             ],
             "slots": {
               "N": [
@@ -530,6 +535,10 @@
           "editions": [
             "remastered",
             "1.16.1"
+          ],
+          "conflictingSelectors": [
+            "#bwai-requirements ol",
+            "#bwai-setup .text-yellow-700"
           ]
         },
         {
@@ -575,7 +584,9 @@
               "N": [
                 "BWAILauncher",
                 "BWAI",
-                "launcher"
+                "launcher",
+                "BWAI Launcher",
+                "BW AI Launcher"
               ],
               "V": [
                 "doesn't detect",
@@ -604,7 +615,9 @@
                 "keeps asking for",
                 "keeps asking for the",
                 "asks for",
-                "fails to locate"
+                "fails to locate",
+                "cannot detect",
+                "cannot find"
               ]
             },
             "phrases": [
@@ -641,7 +654,7 @@
             "keepInParent": true
           },
           "gentle": "If BWAILauncher does not detect your Starcraft installation, the guide says to set the path to Starcraft.exe in the launcher settings.",
-          "balanced": "If BWAILauncher does not detect your Starcraft installation automatically: open its settings, go to the “Game” or “Paths” section, select your Starcraft.exe file, then save the settings and restart the launcher."
+          "balanced": "If BWAILauncher does not detect your Starcraft installation automatically: open its settings, go to the \u201cGame\u201d or \u201cPaths\u201d section, select your Starcraft.exe file, then save the settings and restart the launcher."
         },
         {
           "id": "portable",
@@ -668,7 +681,8 @@
                 "BWAI Launcher",
                 "BWAI",
                 "launcher",
-                "the launcher"
+                "the launcher",
+                "BW AI Launcher"
               ]
             },
             "phrases": [
@@ -797,6 +811,46 @@
           },
           "gentle": "The guide lists BWAILauncher as the option that needs no internet connection.",
           "balanced": "The guide's BWAILauncher pros: no internet connection required, replaces the standard single-player AI, easier to set up initially, and good for offline play."
+        },
+        {
+          "id": "purpose",
+          "relation": "explanation",
+          "selector": "#bwai-setup h4:nth-of-type(3) + ul > li:first-child",
+          "answers": [
+            "use",
+            "hint"
+          ],
+          "standalone": {
+            "title": "BWAILauncher purpose",
+            "aliases": [
+              "What is BWAILauncher for",
+              "What is BWAI Launcher for",
+              "What is BW AI Launcher for"
+            ]
+          },
+          "gentle": "The guide says BWAILauncher replaces the standard single-player AI.",
+          "balanced": "BWAILauncher replaces the standard AI, so you can use it in single-player mode."
+        },
+        {
+          "id": "compatibility",
+          "relation": "prerequisites",
+          "selector": "#bwai-setup .text-yellow-700",
+          "conflictingSelectors": [
+            "#bwai-requirements ol",
+            "#bwai-setup .text-yellow-700"
+          ],
+          "answers": [
+            "explanation"
+          ],
+          "conflict": true,
+          "standalone": {
+            "title": "BWAILauncher compatibility discrepancy",
+            "aliases": [
+              "Do those sources prove Remastered compatibility"
+            ]
+          },
+          "gentle": "The guide has a compatibility discrepancy: its prerequisites mention original or Remastered, but the setup section requires a separate Brood War 1.16.1 installation. Check the exact edition before proceeding.",
+          "balanced": "The setup section requires a separate Brood War 1.16.1 installation, while the earlier prerequisites also mention Remastered. These sources conflict, so this assistant cannot confirm BWAILauncher support for Remastered."
         }
       ]
     },
@@ -849,7 +903,7 @@
           "selector": "#remastered-setup ol",
           "edition": "remastered",
           "gentle": "In Remastered, use the integrated map through a Custom Game and select Use Map Settings.",
-          "balanced": "Extract the archive into Documents\\StarCraft\\Maps, open Single Player → Custom Game, select the map, then select Use Map Settings rather than Melee."
+          "balanced": "Extract the archive into Documents\\StarCraft\\Maps, open Single Player \u2192 Custom Game, select the map, then select Use Map Settings rather than Melee."
         },
         {
           "id": "extract-location",
@@ -883,7 +937,9 @@
                 "the Remastered map",
                 "the SCM map",
                 "the map",
-                "starcraft remastered"
+                "starcraft remastered",
+                "the Remastered SCM map",
+                "Remastered SCM map"
               ]
             },
             "phrases": [
@@ -928,7 +984,8 @@
             "hint",
             "explanation",
             "use",
-            "prerequisites"
+            "prerequisites",
+            "remedy"
           ],
           "standalone": {
             "title": "Remastered map AI not working",
@@ -938,7 +995,9 @@
               "standard Melee",
               "Use Map Settings",
               "Game Type",
-              "wrong Game Type"
+              "wrong Game Type",
+              "What happens if I use standard Melee",
+              "The Remastered map AI is not working in Melee"
             ],
             "slots": {
               "AI": [
@@ -1255,7 +1314,7 @@
             "hint"
           ],
           "gentle": "SCHNAIL needs a Java JRE; the guide recommends Liberica Java.",
-          "balanced": "The guide asks you to install Java JRE and recommends Liberica Java: “Liberica Java releases from bell-sw.com” in the prerequisites and “Liberica Java JDK 21 LTS” in the setup steps."
+          "balanced": "The guide asks you to install Java JRE and recommends Liberica Java: \u201cLiberica Java releases from bell-sw.com\u201d in the prerequisites and \u201cLiberica Java JDK 21 LTS\u201d in the setup steps."
         },
         {
           "id": "download",
@@ -1625,7 +1684,8 @@
         "ualberta",
         "ualbertabot github",
         "ualberta bot github",
-        "uab"
+        "uab",
+        "U Alberta Bot"
       ],
       "facts": [
         {
@@ -1707,7 +1767,8 @@
           "answers": [
             "location",
             "explanation",
-            "hint"
+            "hint",
+            "acquisition"
           ],
           "editions": [
             "remastered",
@@ -1816,7 +1877,8 @@
         "some bots",
         "any bots",
         "bots to play",
-        "bots to learn from"
+        "bots to learn from",
+        "What example bots are listed"
       ],
       "facts": [
         {
@@ -1871,7 +1933,7 @@
       ]
     }
   ],
-  "researchReview": "Outside research: authored one-to-three-sentence summaries of the cited pages, checked on the listed date. Shown with an \"outside research\" label; the guide’s own facts win when both exist. Not independently play-tested.",
+  "researchReview": "Outside research: authored one-to-three-sentence summaries of the cited pages, checked on the listed date. Shown with an \"outside research\" label; the guide\u2019s own facts win when both exist. Not independently play-tested.",
   "narrativeFacts": [
     {
       "key": "sc-narrative:schnail-summary",
@@ -1944,7 +2006,8 @@
       "title": "SCHNAIL",
       "aliases": [
         "SCHNAIL client",
-        "first launch"
+        "first launch",
+        "slow the first time"
       ],
       "minSpoiler": "direct",
       "from": [
