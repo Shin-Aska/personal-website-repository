@@ -1,0 +1,1960 @@
+{
+  "schemaVersion": 1,
+  "suite": "independently-authored-source-first-96-20261025",
+  "authoringBoundary": "Three source-first pairs authored independently without executing these conversations or inspecting the new semantic-fields native results. Authors know existing source code and older observed corpora; no unseen statistical evaluation claim. Original child-source coordinates and full useful-claim expectations preserved unchanged.",
+  "frozenParts": [
+    {
+      "path": "guides/tests/assistant/knowledge-fresh-ultima5-ultima6-20261025.json",
+      "sha256": "d43db3605bf168beaadb68b64fbd2386043ea37659e0cc03123fd6300c09eb15"
+    },
+    {
+      "path": "guides/tests/assistant/knowledge-fresh-albion-alqadim-20261025.json",
+      "sha256": "c1fa29bec0266eaa26a419dd0cbbc6133618e07524b0e197c60f88c13acbfaf9"
+    },
+    {
+      "path": "guides/tests/assistant/knowledge-fresh-ultima7-starcraft-20261025.json",
+      "sha256": "55b12198502d24c4e2274dbb10be05b17678af22881a129ee0189380a78221de"
+    }
+  ],
+  "dialogues": [
+    {
+      "id": "fresh-u5-sceptre-entry-and-crossing",
+      "gameId": "ultima5",
+      "turns": [
+        {
+          "text": "Why should I clear out the Shadowlords before collecting the Sceptre?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Banish the Shadowlords first",
+              "cannot reclaim the Sceptre later"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=regalia-sceptre.steps[0]",
+              "review": "extracted"
+            },
+            "requiredUsefulClaim": "Banish the Shadowlords before retrieval so they cannot reclaim the Sceptre later; do not assert that the player has already done so.",
+            "sourceWitness": "Banish the Shadowlords first so they cannot reclaim the Sceptre later."
+          }
+        },
+        {
+          "text": "At Stonegate, what opens the central door, and what answer gets me past the demon?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Skull Key",
+              "WELL"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=regalia-sceptre.steps[1]",
+              "review": "extracted"
+            },
+            "requiredUsefulClaim": "Use a Skull Key for the center door and answer the demon’s riddle with WELL. The Grapple is the recorded approach tool.",
+            "sourceWitness": "Reach Stonegate with the Grapple, unlock the center door with a Skull Key, and answer the demon’s riddle with WELL."
+          }
+        },
+        {
+          "text": "Beyond that door, how should I cross the pits and trapdoors to pick it up?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Magic Carpet",
+              "fire pits and trapdoors",
+              "take the Sceptre"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=regalia-sceptre.steps[2]",
+              "review": "extracted"
+            },
+            "requiredUsefulClaim": "Ride the Magic Carpet over the fire pits and trapdoors, take the Sceptre, and leave before the tower becomes crowded.",
+            "sourceWitness": "Ride the Magic Carpet over the fire pits and trapdoors, take the Sceptre, and leave before the tower becomes crowded."
+          }
+        },
+        {
+          "text": "Which metal is the Sceptre made from?",
+          "expected": {
+            "decision": "not-answer",
+            "boundary": "The cited retrieval instructions and approved source facts do not identify the Sceptre’s construction material. A function, route or pickup instruction cannot establish a metal."
+          }
+        }
+      ]
+    },
+    {
+      "id": "fresh-u5-faulinei-lead-to-flame",
+      "gameId": "ultima5",
+      "turns": [
+        {
+          "text": "For the Faulinei expedition, who teaches the dungeon word after Malik points me onward, and what is the word?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Malifora",
+              "FALLAX"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=shadow-faulinei.steps[0]",
+              "review": "extracted"
+            },
+            "requiredUsefulClaim": "Malik leads to Malifora, from whom the player learns FALLAX. Do not swap the teacher and the intermediary.",
+            "sourceWitness": "Learn FALLAX from Malifora after Malik points you to her."
+          }
+        },
+        {
+          "text": "I mean summoning him at the Lycaeum next: where do I stand, and what do I shout?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "one tile south",
+              "Flame of Truth",
+              "FAULINEI"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=shadow-faulinei.steps[2]",
+              "review": "extracted"
+            },
+            "requiredUsefulClaim": "At the Lycaeum stand one tile south of the Flame of Truth and shout FAULINEI.",
+            "sourceWitness": "At the Lycaeum, stand one tile south of the Flame of Truth and shout FAULINEI."
+          }
+        },
+        {
+          "text": "After shouting his name, when should I use the Shard of Falsehood?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Wait one turn",
+              "when Faulinei stands on the flame"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=shadow-faulinei.steps[3]",
+              "review": "extracted"
+            },
+            "requiredUsefulClaim": "Wait one turn and use the Shard of Falsehood when Faulinei stands on the flame; merely having the Shard is not the timed use instruction.",
+            "sourceWitness": "Wait one turn, then use the Shard of Falsehood when Faulinei stands on the flame."
+          }
+        },
+        {
+          "text": "How many real-world seconds does that one-turn wait last?",
+          "expected": {
+            "decision": "not-answer",
+            "boundary": "The source specifies one game turn but gives no real-world duration or conversion to seconds. No exact duration may be invented."
+          }
+        }
+      ]
+    },
+    {
+      "id": "fresh-u5-party-growth-and-replacement",
+      "gameId": "ultima5",
+      "turns": [
+        {
+          "text": "Which companions should I keep at the beginning, and who needs healing before roadside combat?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Iolo and Shamino",
+              "heal Shamino"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=opening-party.steps[0]",
+              "review": "extracted"
+            },
+            "requiredUsefulClaim": "Keep Iolo and Shamino while the party is small and heal Shamino before road fights.",
+            "sourceWitness": "Keep Iolo and Shamino while the party is small; heal Shamino before taking road fights."
+          }
+        },
+        {
+          "text": "I want Julia as the next replacement. Where do I recruit her?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Empath Abbey",
+              "upstairs"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=opening-party.steps[2]",
+              "review": "extracted"
+            },
+            "requiredUsefulClaim": "Recruit Julia upstairs at Empath Abbey; retain Julia as the explicit new recruitment subject.",
+            "sourceWitness": "Follow the road to Empath Abbey and recruit Julia upstairs. She is the strongest practical early replacement when the party begins to fill."
+          }
+        },
+        {
+          "text": "For the planned full roster, give me the six names and the later mage replacement for Julia.",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Avatar, Iolo, Jaana, Julia, Gwenno, and Mariah",
+              "Johne can replace Julia"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=opening-party.steps[4]",
+              "review": "extracted"
+            },
+            "requiredUsefulClaim": "Give the recommended six-person roster and identify Johne as the later replacement for Julia. The source’s optional Shamino-at-an-inn instruction may also be quoted.",
+            "sourceWitness": "Aim for Avatar, Iolo, Jaana, Julia, Gwenno, and Mariah. If you need space, leave Shamino at an inn; later, Johne can replace Julia for an even more magic-heavy endgame party."
+          }
+        },
+        {
+          "text": "Which member of that recommended six has the highest Luck score?",
+          "expected": {
+            "decision": "not-answer",
+            "boundary": "The approved party and companion sources provide no Luck statistic. The roster and other recorded attributes cannot establish a Luck ranking."
+          }
+        }
+      ]
+    },
+    {
+      "id": "fresh-u5-honor-meditation-humility-correction",
+      "gameId": "ultima5",
+      "turns": [
+        {
+          "text": "Who supplies the Honor mantra, and what condition should I meet before asking?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Gruman",
+              "karma is high enough",
+              "SUMM"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=shrine-honor.steps[0]",
+              "review": "extracted"
+            },
+            "requiredUsefulClaim": "Ask Gruman when karma is high enough; the Honor mantra is SUMM. Do not invent a numeric karma threshold.",
+            "sourceWitness": "Ask Gruman when your karma is high enough. Record the mantra SUMM."
+          }
+        },
+        {
+          "text": "For that shrine’s meditation, which word do I use and how long should I meditate?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "SUMM",
+              "three cycles"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=shrine-honor.steps[1]",
+              "review": "extracted"
+            },
+            "requiredUsefulClaim": "At the Shrine of Honor speak the virtue name and meditate using SUMM for three cycles.",
+            "sourceWitness": "Visit the Shrine of Honor, speak the virtue name, and meditate with SUMM for three cycles."
+          }
+        },
+        {
+          "text": "Correction—I am asking about Humility’s completion bonus now: what attributes does that shrine add?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "no attribute bonus"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=shrine-humility.steps[3]",
+              "review": "extracted"
+            },
+            "requiredUsefulClaim": "The Shrine of Humility grants no attribute bonus on completion; do not carry Honor’s attribute outcome into the corrected Humility subject.",
+            "sourceWitness": "Return to the Shrine of Humility and meditate again to complete the quest; this shrine grants no attribute bonus."
+          }
+        },
+        {
+          "text": "Is the floor of the Humility shrine granite or basalt?",
+          "expected": {
+            "decision": "not-answer",
+            "boundary": "The guide does not identify the shrine floor’s stone type. Neither the shrine’s name nor its lack of an attribute bonus supplies a construction material."
+          }
+        }
+      ]
+    },
+    {
+      "id": "fresh-u6-panpipes-performance-chain",
+      "gameId": "ultima6",
+      "turns": [
+        {
+          "text": "I need panpipes for the Sacrifice task. Who supplies the wood, how is it prepared, and who makes the instrument?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Ben west of Yew",
+              "cut it into a board",
+              "Julia",
+              "PANPIPES"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[0].sections[4].steps[0]",
+              "review": "extracted"
+            },
+            "requiredUsefulClaim": "Buy a yew log from Ben west of Yew, cut it into a board and ask Julia to craft PANPIPES; keep supplier, preparation and maker roles distinct.",
+            "sourceWitness": "Buy a yew log from Ben west of Yew, cut it into a board, and ask Julia to craft `PANPIPES`."
+          }
+        },
+        {
+          "text": "And who teaches the tune, what song topic should I use, and what is its number sequence?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Gwenno",
+              "STONES",
+              "6789878767653"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[0].sections[4].steps[1]",
+              "review": "extracted"
+            },
+            "requiredUsefulClaim": "Ask Gwenno about STONES to learn the numeric tune 6789878767653.",
+            "sourceWitness": "Ask Gwenno about the song `STONES` to learn the numeric tune 6789878767653."
+          }
+        },
+        {
+          "text": "Who do I perform it for, and where, to earn the rune?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Selganor",
+              "Artisan Guild",
+              "receive the rune"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[0].sections[4].steps[2]",
+              "review": "extracted"
+            },
+            "requiredUsefulClaim": "Perform the established tune for Selganor inside the Artisan Guild to receive the rune. Gwenno is the tune teacher, not the performance recipient.",
+            "sourceWitness": "Perform the tune for Selganor inside the Artisan Guild to receive the rune."
+          }
+        },
+        {
+          "text": "What tempo in beats per minute does that tune require?",
+          "expected": {
+            "decision": "not-answer",
+            "boundary": "The source gives a numeric tune sequence, not a musical tempo. It does not establish any beats-per-minute value."
+          }
+        }
+      ]
+    },
+    {
+      "id": "fresh-u6-balloon-plans-cloth-and-assembly",
+      "gameId": "ultima6",
+      "turns": [
+        {
+          "text": "Where should I look for the balloon plans, including the coordinates?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Sutek's catacombs",
+              "65S 52E"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[2].sections[2].steps[0]",
+              "review": "extracted"
+            },
+            "requiredUsefulClaim": "Recover the balloon plans from Sutek’s catacombs at 65S 52E.",
+            "sourceWitness": "Recover the balloon plans from Sutek's catacombs at 65S 52E."
+          }
+        },
+        {
+          "text": "For the balloon cloth, how much spidersilk is needed, and who turns it into thread and cloth?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "40 spidersilk",
+              "Arbeth in Paws",
+              "Charlotte in New Magincia"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[2].sections[2].steps[1]",
+              "review": "extracted"
+            },
+            "requiredUsefulClaim": "Gather 40 spidersilk; Arbeth in Paws spins the thread, then Charlotte in New Magincia weaves the cloth. Do not swap the two workers or cities.",
+            "sourceWitness": "Gather 40 spidersilk, have Arbeth in Paws spin thread, and Charlotte in New Magincia weave cloth."
+          }
+        },
+        {
+          "text": "Once every component is in my inventory, what do I do with the plans, and what burner items must I collect?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "rope and a large pot",
+              "USE the plans once all parts are in your inventory"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[2].sections[2].steps[3]",
+              "review": "extracted"
+            },
+            "requiredUsefulClaim": "Collect rope and a large pot for the burner, then USE the plans once all parts are in inventory. Treat the question’s inventory condition hypothetically, without claiming to observe it.",
+            "sourceWitness": "Collect rope and a large pot for the burner, then `USE` the plans once all parts are in your inventory."
+          }
+        },
+        {
+          "text": "Can I replace those 40 spidersilk with hemp and keep the same recipe?",
+          "expected": {
+            "decision": "not-answer",
+            "boundary": "The approved recipe specifies spidersilk and provides no hemp substitution or equivalence rule. A supported recipe cannot establish an alternate ingredient."
+          }
+        }
+      ]
+    },
+    {
+      "id": "fresh-u6-map-trades-and-bonn-correction",
+      "gameId": "ultima6",
+      "turns": [
+        {
+          "text": "Where do I meet Ybarra for his map piece, and what does he accept in exchange?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Ybarra in Dungeon Shame",
+              "Trade food"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[1].sections[2].steps[0]",
+              "review": "extracted"
+            },
+            "requiredUsefulClaim": "Find Ybarra in Dungeon Shame and trade food for his map piece.",
+            "sourceWitness": "Trade food to Ybarra in Dungeon Shame for his map piece."
+          }
+        },
+        {
+          "text": "Actually, the next trade I meant is Morchella’s. Where is she, and what should I bring for her shard?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "east of Serpent's Hold",
+              "MAGIC SHIELD"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[1].sections[2].steps[4]",
+              "review": "extracted"
+            },
+            "requiredUsefulClaim": "Morchella is east of Serpent’s Hold and trades her shard for a MAGIC SHIELD. Do not carry over Ybarra’s food requirement.",
+            "sourceWitness": "Trade Morchella east of Serpent's Hold a `MAGIC SHIELD` for her shard."
+          }
+        },
+        {
+          "text": "With Bonn, am I trading something or moving an object? Where does his fragment hide?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Bonn's harpsichord on Dagger Isle",
+              "cellar ladder and fragment"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[1].sections[2].steps[5]",
+              "review": "extracted"
+            },
+            "requiredUsefulClaim": "Move Bonn’s harpsichord on Dagger Isle to expose the cellar ladder and fragment; this is an object-moving instruction rather than one of the preceding trades.",
+            "sourceWitness": "Move Bonn's harpsichord on Dagger Isle to reveal a cellar ladder and fragment."
+          }
+        },
+        {
+          "text": "What is the weight in kilograms of Bonn’s harpsichord?",
+          "expected": {
+            "decision": "not-answer",
+            "boundary": "The source identifies the object and moving it but gives no weight or unit conversion. No kilogram figure can be inferred from its being movable."
+          }
+        }
+      ]
+    },
+    {
+      "id": "fresh-u6-red-blue-lens-role-placement",
+      "gameId": "ultima6",
+      "turns": [
+        {
+          "text": "For the broken red gargoyle lens, where is it recovered and who handles the repair?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Hall of Knowledge",
+              "Lor-wis-lem"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[3].sections[1].steps[0]",
+              "review": "extracted"
+            },
+            "requiredUsefulClaim": "Retrieve the broken red lens from the Hall of Knowledge and deliver it to Lor-wis-lem the lens grinder.",
+            "sourceWitness": "Retrieve the broken red lens from the Hall of Knowledge and deliver it to Lor-wis-lem the lens grinder."
+          }
+        },
+        {
+          "text": "Switch to the blue human lens: who makes that one, what do I bring, and which topics do I mention?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "glass sword",
+              "Ephemerides in Moonglow",
+              "LENS and SWORD",
+              "blue Britannian lens"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[3].sections[1].steps[1]",
+              "review": "extracted"
+            },
+            "requiredUsefulClaim": "Take a glass sword to Ephemerides in Moonglow, discuss LENS and SWORD, and receive the blue Britannian lens. Keep its maker and input distinct from the red lens repair.",
+            "sourceWitness": "Take a glass sword to Ephemerides in Moonglow, discuss `LENS` and `SWORD`, and receive the blue Britannian lens."
+          }
+        },
+        {
+          "text": "At the Codex, which side gets the Britannian lens and which gets the gargoyle lens?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Britannian lens between the left flame and the Codex",
+              "gargoyle lens between the right flame and the Codex"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[3].sections[2].steps[1]",
+              "review": "extracted"
+            },
+            "requiredUsefulClaim": "Place the Britannian lens between the left flame and the Codex and the gargoyle lens between the right flame and the Codex; both directed placements are required.",
+            "sourceWitness": "Set the Britannian lens between the left flame and the Codex, and the gargoyle lens between the right flame and the Codex."
+          }
+        },
+        {
+          "text": "What exact angle in degrees should I set each of those lenses to?",
+          "expected": {
+            "decision": "not-answer",
+            "boundary": "The source specifies relative placement between flames and the Codex, but no angular settings in degrees. Directional placement does not establish an exact angle."
+          }
+        }
+      ]
+    },
+    {
+      "id": "albion-fresh-weapon-tradeoffs",
+      "gameId": "albion",
+      "turns": [
+        {
+          "text": "Point me to the location listed for Shadowsword.",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Treasure Cave",
+              "Maini"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "DB.equipment[1].location",
+              "review": "extracted"
+            },
+            "sourceRecordIds": [
+              "albion:item:shadowsword:location"
+            ],
+            "factIds": [
+              "shadowsword-location"
+            ],
+            "requiredUsefulClaim": "Locate Shadowsword in Treasure Cave on Maini, without asserting pickup or ownership.",
+            "sourceWitness": "Treasure Cave (Maini)"
+          }
+        },
+        {
+          "text": "What penalties come with that weapon?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "-30 LP",
+              "-50 Stamina"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "DB.equipment[1].effect",
+              "review": "extracted"
+            },
+            "sourceRecordIds": [
+              "albion:item:shadowsword:use"
+            ],
+            "factIds": [
+              "shadowsword-effect"
+            ],
+            "requiredUsefulClaim": "State that Shadowsword is cursed and carries -30 LP and -50 Stamina; do not calculate a party member's resulting totals.",
+            "sourceWitness": "Cursed: -30 LP, -50 Stamina"
+          }
+        },
+        {
+          "text": "Switch to Danu's Light: which bonuses does that weapon give?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "+10 LP",
+              "+20 Speed",
+              "+5 Prot"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "DB.equipment[2].effect",
+              "review": "extracted"
+            },
+            "sourceRecordIds": [
+              "albion:item:danu-s-light:use"
+            ],
+            "factIds": [
+              "danu-s-light-effect"
+            ],
+            "requiredUsefulClaim": "Give Danu's Light's three recorded bonuses, keeping them distinct from Shadowsword's curse.",
+            "sourceWitness": "+10 LP, +20 Speed, +5 Prot"
+          }
+        },
+        {
+          "text": "Is this sword equipped on Tom in my save at the moment?",
+          "expected": {
+            "decision": "not-answer",
+            "boundary": "The source lists static weapon properties and locations. It supplies no observation of the player's current equipment or save state."
+          }
+        }
+      ]
+    },
+    {
+      "id": "albion-fresh-warrior-and-mage",
+      "gameId": "albion",
+      "turns": [
+        {
+          "text": "Tell me what sets Siobhan's basic damage apart.",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Natural +4 base damage"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "DB.characters[5].notes",
+              "review": "extracted"
+            },
+            "sourceRecordIds": [
+              "albion:character:siobhan:explanation"
+            ],
+            "factIds": [
+              "siobhan-notes"
+            ],
+            "requiredUsefulClaim": "Identify the recorded natural +4 base-damage bonus; a claim about current damage totals or every possible build is unnecessary.",
+            "sourceWitness": "The most powerful warrior in the game. Natural +4 base damage."
+          }
+        },
+        {
+          "text": "Where is her recruitment meeting place listed?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Beloveno",
+              "her house"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "DB.characters[5].joinLocation",
+              "review": "extracted"
+            },
+            "sourceRecordIds": [
+              "albion:character:siobhan:location"
+            ],
+            "factIds": [
+              "siobhan-recruitment-place"
+            ],
+            "requiredUsefulClaim": "Give Siobhan's documented recruitment location as her house in Beloveno, without asserting present recruitability or party membership.",
+            "sourceWitness": "Beloveno, her house"
+          }
+        },
+        {
+          "text": "Now Khunag: what motive do his character notes give, and where do they mark him as required?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "revenge",
+              "Kenget Kamulos"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "DB.characters[6].notes",
+              "review": "extracted"
+            },
+            "sourceRecordIds": [
+              "albion:character:khunag:explanation"
+            ],
+            "factIds": [
+              "khunag-notes"
+            ],
+            "requiredUsefulClaim": "Identify Khunag as a renegade seeking revenge on his order and preserve the stated requirement for Kenget Kamulos.",
+            "sourceWitness": "Renegade mage seeking revenge on his order. REQUIRED for Kenget Kamulos."
+          }
+        },
+        {
+          "text": "After choosing Khunag, is Siobhan available for me to recruit in my current save?",
+          "expected": {
+            "decision": "not-answer",
+            "boundary": "The guide gives a documented initial choice, but this question requires the player's current save and recruitment state. The conversation provides no such observation."
+          }
+        }
+      ]
+    },
+    {
+      "id": "albion-fresh-regional-trading",
+      "gameId": "albion",
+      "turns": [
+        {
+          "text": "Quote Rabir's selling and buying percentages in Jirinaar.",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "110%",
+              "132%"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "DB.trade[0]",
+              "review": "extracted"
+            },
+            "sourceRecordIds": [
+              "albion:topic:selling-loot:sell"
+            ],
+            "factIds": [
+              "trade-rabir-jirinaar"
+            ],
+            "requiredUsefulClaim": "Assign Sell 110% and Buy 132% to Rabir in Jirinaar, without reversing the two directions.",
+            "sourceWitness": "Rabir (Jirinaar): Sell 110%, Buy 132%. Best documented early buyer."
+          }
+        },
+        {
+          "text": "For Gratogel instead, what selling percentage does Winion's table row give?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "125%"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "DB.trade[1]",
+              "review": "extracted"
+            },
+            "sourceRecordIds": [
+              "albion:topic:selling-loot:sell"
+            ],
+            "factIds": [
+              "trade-winion-vanello"
+            ],
+            "requiredUsefulClaim": "Give Winion in Vanello the recorded Sell 125% rate; do not substitute his Buy 150% rate.",
+            "sourceWitness": "Winion (Vanello): Sell 125%, Buy 150%. Best documented Gratogel rate."
+          }
+        },
+        {
+          "text": "Move on to Umajo shops: give both trade percentages there.",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "130%",
+              "156%"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "DB.trade[2]",
+              "review": "extracted"
+            },
+            "sourceRecordIds": [
+              "albion:topic:selling-loot:sell"
+            ],
+            "factIds": [
+              "trade-umajo-shops"
+            ],
+            "requiredUsefulClaim": "Assign Sell 130% and Buy 156% to Umajo shops, keeping the trade directions distinct.",
+            "sourceWitness": "Umajo shops: Sell 130%, Buy 156%. Highest documented sell rate."
+          }
+        },
+        {
+          "text": "How much gold will those shops pay for everything I am carrying?",
+          "expected": {
+            "decision": "not-answer",
+            "boundary": "Static multipliers do not supply the current inventory, item base prices, quantities, or a supported total sale value. Do not derive or invent a transaction total."
+          }
+        }
+      ]
+    },
+    {
+      "id": "albion-fresh-toronto-return-route",
+      "gameId": "albion",
+      "turns": [
+        {
+          "text": "Lay out the two documented approaches for reaching Toronto.",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Ohl",
+              "Jewel",
+              "stones to coastline then south",
+              "cave entrance"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "QUEST_HINTS[\"umajo\"][\"find-path\"]",
+              "review": "extracted"
+            },
+            "sourceRecordIds": [
+              "albion:objective:umajo:find-path:hint"
+            ],
+            "factIds": [
+              "find-path"
+            ],
+            "requiredUsefulClaim": "Present both source alternatives: pay Ohl a Jewel via the Miner's Guild meeting schedule, or take the stones-to-coastline-then-south route to the cave entrance.",
+            "sourceWitness": "To reach Toronto: either pay Ohl a Jewel (meet via the Miner’s Guild schedule) or follow the “stones to coastline then south” route to the cave entrance."
+          }
+        },
+        {
+          "text": "After the reactor scene, where does the guide tell me to take the footage?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Dji-Cantos",
+              "evidence/video footage",
+              "payout"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "QUEST_HINTS[\"toronto-return\"][\"evidence\"]",
+              "review": "extracted"
+            },
+            "sourceRecordIds": [
+              "albion:objective:toronto-return:evidence:hint"
+            ],
+            "factIds": [
+              "evidence"
+            ],
+            "requiredUsefulClaim": "Direct the post-reactor evidence/video footage back to Dji-Cantos for the payout and further finale progress, without claiming the reactor scene has occurred.",
+            "sourceWitness": "After the reactor scene, return to Dji-Cantos with the evidence/video footage for the payout and to progress toward the finale."
+          }
+        },
+        {
+          "text": "For the final trip, which technician does the guide recommend to reduce robot trouble?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Joe",
+              "Service Robot",
+              "electronics"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "QUEST_HINTS[\"finale\"][\"bring-joe\"]",
+              "review": "extracted"
+            },
+            "sourceRecordIds": [
+              "albion:objective:finale:bring-joe:hint"
+            ],
+            "factIds": [
+              "bring-joe"
+            ],
+            "requiredUsefulClaim": "Identify Joe as strongly recommended for reducing most Service Robot grind and safely handling electronics, without converting the recommendation into a hard entry prerequisite.",
+            "sourceWitness": "Joe is strongly recommended: he prevents most of the Service Robot grind and handles electronics safely."
+          }
+        },
+        {
+          "text": "Has Joe already repaired the circuits in my playthrough?",
+          "expected": {
+            "decision": "not-answer",
+            "boundary": "The source describes Joe's general benefit but records no player-specific completed repair or current progress."
+          }
+        }
+      ]
+    },
+    {
+      "id": "alqadim-fresh-elemental-and-shards",
+      "gameId": "alqadim",
+      "turns": [
+        {
+          "text": "What tactic does the guide recommend against a Fire Elemental?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Immune to fire",
+              "Water Blast",
+              "Oil of Fire Invulnerability"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.bestiary[7].strategy/danger",
+              "review": "extracted"
+            },
+            "sourceRecordIds": [
+              "alqadim:bestiary:fire-elemental:combat"
+            ],
+            "factIds": [
+              "enemy-fire-elemental"
+            ],
+            "requiredUsefulClaim": "Preserve its fire immunity and the two documented alternatives: Water Blast shards or Oil of Fire Invulnerability.",
+            "sourceWitness": "Immune to fire. Apply Water Blast shards or Oil of Fire Invulnerability."
+          }
+        },
+        {
+          "text": "What sort of projectile is Water Blast, and what range is listed?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "seeks its target",
+              "60 yd"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.moonstoneShards[7]",
+              "review": "extracted"
+            },
+            "sourceRecordIds": [
+              "alqadim:shard:water-blast:use"
+            ],
+            "factIds": [
+              "shard-water-blast"
+            ],
+            "requiredUsefulClaim": "Describe Water Blast as a fast-moving seeking shot of water, like a magic missile, with a listed range of 60 yd.",
+            "sourceWitness": "A fast-moving shot of water that seeks its target like a magic missile. Range: 60 yd. Damage: 2–12."
+          }
+        },
+        {
+          "text": "Instead, give me Flame Arrow's damage line.",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "1–6 + 4–24 fire"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.moonstoneShards[1]",
+              "review": "extracted"
+            },
+            "sourceRecordIds": [
+              "alqadim:shard:flame-arrow:use"
+            ],
+            "factIds": [
+              "shard-flame-arrow"
+            ],
+            "requiredUsefulClaim": "Give the recorded Flame Arrow damage components 1–6 plus 4–24 fire, retaining the source condition that the larger damage applies to creatures affected by flame.",
+            "sourceWitness": "A fiery bolt whose larger damage applies to creatures affected by flame. Range: 20 yd. Damage: 1–6 + 4–24 fire."
+          }
+        },
+        {
+          "text": "Which of those shards will kill the particular enemy in front of me with one shot?",
+          "expected": {
+            "decision": "not-answer",
+            "boundary": "The conversation supplies no observed target identity, HP, resistances or current state, and the source does not establish this one-shot outcome for the player's encounter."
+          }
+        }
+      ]
+    },
+    {
+      "id": "alqadim-fresh-kitchen-and-key",
+      "gameId": "alqadim",
+      "turns": [
+        {
+          "text": "Where is Sumie described during the return to the castle?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "kitchen",
+              "orange",
+              "fireplace"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.chapters[10].required[id=ch11_2]",
+              "review": "extracted"
+            },
+            "sourceRecordIds": [
+              "alqadim:objective:ch11_2:hint"
+            ],
+            "factIds": [
+              "ch11_2"
+            ],
+            "requiredUsefulClaim": "Locate Sumie in the kitchen, wearing orange near the fireplace; do not move her to a shop or infer a current position in the save.",
+            "sourceWitness": "Meet Sumie in the kitchen (wearing orange near fireplace)."
+          }
+        },
+        {
+          "text": "For that visit, which office supplies the baker referral?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Office of Trade",
+              "baker referral"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.chapters[10].required[id=ch11_3]",
+              "review": "extracted"
+            },
+            "sourceRecordIds": [
+              "alqadim:objective:ch11_3:hint"
+            ],
+            "factIds": [
+              "ch11_3"
+            ],
+            "requiredUsefulClaim": "Direct the player to the Office of Trade for the baker referral; do not treat the referral itself as the Key of Bone.",
+            "sourceWitness": "Visit the Office of Trade to receive the baker referral."
+          }
+        },
+        {
+          "text": "What passage is the Key of Bone supposed to open?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "secret passage",
+              "castle kitchen cellars"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.keyItems[11].description",
+              "review": "extracted"
+            },
+            "sourceRecordIds": [
+              "alqadim:item:key-of-bone:use"
+            ],
+            "factIds": [
+              "item-key-of-bone-use"
+            ],
+            "requiredUsefulClaim": "State that the Key of Bone opens the secret passage in the castle kitchen cellars.",
+            "sourceWitness": "Opens the secret passage in the castle kitchen cellars."
+          }
+        },
+        {
+          "text": "What exact password does Sumie say before opening the cellar?",
+          "expected": {
+            "decision": "not-answer",
+            "boundary": "The source describes returning to Sumie and unlocking the cellar door. It records no literal password spoken by her; do not fabricate dialogue."
+          }
+        }
+      ]
+    },
+    {
+      "id": "alqadim-fresh-old-dungeon-escort",
+      "gameId": "alqadim",
+      "turns": [
+        {
+          "text": "Where does the Old Dungeon hide its first-room key?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "behind a boulder",
+              "first room"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.chapters[11].required[id=ch12_2]",
+              "review": "extracted"
+            },
+            "sourceRecordIds": [
+              "alqadim:objective:ch12_2:hint"
+            ],
+            "factIds": [
+              "ch12_2"
+            ],
+            "requiredUsefulClaim": "Locate the hidden key behind a boulder in the first room of the Old Dungeon; do not imply it was already collected.",
+            "sourceWitness": "Retrieve the hidden key behind a boulder in the first room."
+          }
+        },
+        {
+          "text": "What hazards does the running advice there tell me to time?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "poison",
+              "flame vents"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.chapters[11].required[id=ch12_3]",
+              "review": "extracted"
+            },
+            "sourceRecordIds": [
+              "alqadim:objective:ch12_3:hint"
+            ],
+            "factIds": [
+              "ch12_3"
+            ],
+            "requiredUsefulClaim": "Report that the documented run must be timed past poison and flame vents, without inventing a timing interval.",
+            "sourceWitness": "Time your run past the poison and flame vents."
+          }
+        },
+        {
+          "text": "Who is the cyclops to be escorted, and where should I take him?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Pangar-Bek",
+              "dungeon exit"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.chapters[11].required[id=ch12_4]",
+              "review": "extracted"
+            },
+            "sourceRecordIds": [
+              "alqadim:objective:ch12_4:hint"
+            ],
+            "factIds": [
+              "ch12_4"
+            ],
+            "requiredUsefulClaim": "Identify the escort subject as the cyclops Pangar-Bek and the destination as the dungeon exit; do not reverse that role or substitute a different rescued character.",
+            "sourceWitness": "Locate and escort the cyclops Pangar-Bek to the dungeon exit."
+          }
+        },
+        {
+          "text": "Give me the exact delay in seconds between those vent bursts.",
+          "expected": {
+            "decision": "not-answer",
+            "boundary": "The source says to time the run but provides no numeric vent cycle or delay. A precise duration must be withheld."
+          }
+        }
+      ]
+    },
+    {
+      "id": "alqadim-fresh-journal-to-mirror",
+      "gameId": "alqadim",
+      "turns": [
+        {
+          "text": "Where should I search for the Vizier's conspiracy journal?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Vizier's desk"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.chapters[13].required[id=ch14_3]",
+              "review": "extracted"
+            },
+            "sourceRecordIds": [
+              "alqadim:objective:ch14_3:hint"
+            ],
+            "factIds": [
+              "ch14_3"
+            ],
+            "requiredUsefulClaim": "Direct the search to the Vizier's desk for his conspiracy journal, without asserting the item is in inventory.",
+            "sourceWitness": "Search the Vizier's desk to retrieve his conspiracy journal."
+          }
+        },
+        {
+          "text": "What evidence is that journal described as containing?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Vizier's betrayal"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.keyItems[12].description",
+              "review": "extracted"
+            },
+            "sourceRecordIds": [
+              "alqadim:item:vizier-s-journal:use"
+            ],
+            "factIds": [
+              "item-vizier-s-journal-use"
+            ],
+            "requiredUsefulClaim": "State that the journal contains incriminating evidence detailing the Vizier's betrayal; do not invent a literal quotation from its pages.",
+            "sourceWitness": "Contains incriminating evidence detailing the Vizier's betrayal."
+          }
+        },
+        {
+          "text": "Change to the Enchanted Mirror: what job does that item do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Reflects magical light beams",
+              "optics puzzles"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.keyItems[4].description",
+              "review": "extracted"
+            },
+            "sourceRecordIds": [
+              "alqadim:item:enchanted-mirror:use"
+            ],
+            "factIds": [
+              "item-enchanted-mirror-use"
+            ],
+            "requiredUsefulClaim": "Give the Enchanted Mirror's documented function of reflecting magical light beams to solve optics puzzles.",
+            "sourceWitness": "Reflects magical light beams to solve optics puzzles."
+          }
+        },
+        {
+          "text": "What metal is the frame of that mirror made from?",
+          "expected": {
+            "decision": "not-answer",
+            "boundary": "The source names an enchanted mirror and its optics function, but supplies no frame construction material or metal identity."
+          }
+        }
+      ]
+    },
+    {
+      "id": "fresh-u7-tseramed-guide-profile",
+      "gameId": "ultima7",
+      "turns": [
+        {
+          "text": "Where does the guide place Tseramed when I go looking for him?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/js/Ultima7.js",
+              "locator": "DB.companions[5].location",
+              "review": "extracted"
+            },
+            "contains": [
+              "Yew",
+              "near Bee Cave"
+            ],
+            "requiredUsefulClaim": "Locate Tseramed at Yew, near the Bee Cave; this is his guide location, not a live position.",
+            "sourceWitness": "Yew, near Bee Cave",
+            "fullFieldValues": {
+              "location": "Yew, near Bee Cave"
+            }
+          }
+        },
+        {
+          "text": "How is his fighting role and main focus described?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/js/Ultima7.js",
+              "locator": "DB.companions[5]",
+              "review": "extracted"
+            },
+            "contains": [
+              "Fighter (Ranger)",
+              "Wilderness archer"
+            ],
+            "requiredUsefulClaim": "Describe Tseramed as a Fighter (Ranger) whose listed focus is Wilderness archer.",
+            "sourceWitness": [
+              "Fighter (Ranger)",
+              "Wilderness archer"
+            ],
+            "fullFieldValues": {
+              "name": "Tseramed",
+              "role": "Fighter (Ranger)",
+              "focus": "Wilderness archer"
+            },
+            "proofFields": [
+              {
+                "file": "guides/js/Ultima7.js",
+                "locator": "DB.companions[5].role",
+                "review": "extracted"
+              },
+              {
+                "file": "guides/js/Ultima7.js",
+                "locator": "DB.companions[5].focus",
+                "review": "extracted"
+              }
+            ]
+          }
+        },
+        {
+          "text": "What starting Strength, Dexterity, Intelligence and Combat does Tseramed have in that table?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/js/Ultima7.js",
+              "locator": "DB.companions[5].str/dex/int/com",
+              "review": "extracted"
+            },
+            "contains": [
+              "Strength 16",
+              "Dexterity 17",
+              "Intelligence 18",
+              "Combat 12"
+            ],
+            "requiredUsefulClaim": "Give all four listed Tseramed values with correct attribute bindings: Strength 16, Dexterity 17, Intelligence 18, Combat 12.",
+            "sourceWitness": "str: 16, dex: 17, int: 18, com: 12",
+            "fullFieldValues": {
+              "Strength": 16,
+              "Dexterity": 17,
+              "Intelligence": 18,
+              "Combat": 12
+            },
+            "proofFields": [
+              {
+                "file": "guides/js/Ultima7.js",
+                "locator": "DB.companions[5].str",
+                "review": "extracted"
+              },
+              {
+                "file": "guides/js/Ultima7.js",
+                "locator": "DB.companions[5].dex",
+                "review": "extracted"
+              },
+              {
+                "file": "guides/js/Ultima7.js",
+                "locator": "DB.companions[5].int",
+                "review": "extracted"
+              },
+              {
+                "file": "guides/js/Ultima7.js",
+                "locator": "DB.companions[5].com",
+                "review": "extracted"
+              }
+            ]
+          }
+        },
+        {
+          "text": "Is he waiting beside the Bee Cave in my current save?",
+          "expected": {
+            "decision": "not-answer",
+            "boundary": "The guide gives a static location but cannot observe Tseramed's position, party membership, or the player's current save."
+          }
+        }
+      ]
+    },
+    {
+      "id": "fresh-u7-serpents-hold-equipment",
+      "gameId": "ultima7",
+      "turns": [
+        {
+          "text": "What location and coordinates are listed for the Juggernaut Hammer?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/js/Ultima7.js",
+              "locator": "DB.equipment[1].location",
+              "review": "extracted"
+            },
+            "contains": [
+              "157S/53E",
+              "Serpent's Hold Armoury"
+            ],
+            "requiredUsefulClaim": "Identify the Juggernaut Hammer at 157S/53E in Serpent's Hold Armoury.",
+            "sourceWitness": "157S/53E (Serpent's Hold Armoury)",
+            "fullFieldValues": {
+              "name": "Juggernaut Hammer",
+              "location": "157S/53E (Serpent's Hold Armoury)"
+            }
+          }
+        },
+        {
+          "text": "What weapon type and effect does the guide assign to that hammer?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/js/Ultima7.js",
+              "locator": "DB.equipment[1]",
+              "review": "extracted"
+            },
+            "contains": [
+              "2H Weapon",
+              "High Damage, Ranged"
+            ],
+            "requiredUsefulClaim": "Give the Juggernaut Hammer's complete listed type, 2H Weapon, and effect, High Damage, Ranged; do not omit its ranged property.",
+            "sourceWitness": [
+              "2H Weapon",
+              "High Damage, Ranged"
+            ],
+            "fullFieldValues": {
+              "name": "Juggernaut Hammer",
+              "type": "2H Weapon",
+              "effect": "High Damage, Ranged"
+            },
+            "proofFields": [
+              {
+                "file": "guides/js/Ultima7.js",
+                "locator": "DB.equipment[1].type",
+                "review": "extracted"
+              },
+              {
+                "file": "guides/js/Ultima7.js",
+                "locator": "DB.equipment[1].effect",
+                "review": "extracted"
+              }
+            ]
+          }
+        },
+        {
+          "text": "What site and protective effect are listed for the Sword of Defense?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/js/Ultima7.js",
+              "locator": "DB.equipment[8].location",
+              "review": "extracted"
+            },
+            "contains": [
+              "157S/53E",
+              "Serpent's Hold Armoury",
+              "Adds to Armor Value"
+            ],
+            "requiredUsefulClaim": "Locate the Sword of Defense at 157S/53E in Serpent's Hold Armoury and state that it adds to Armor Value; do not replace its protective effect with generic damage.",
+            "sourceWitness": [
+              "157S/53E (Serpent's Hold Armoury)",
+              "Adds to Armor Value"
+            ],
+            "fullFieldValues": {
+              "name": "Sword of Defense",
+              "location": "157S/53E (Serpent's Hold Armoury)",
+              "effect": "Adds to Armor Value"
+            },
+            "allSources": [
+              {
+                "file": "guides/js/Ultima7.js",
+                "locator": "DB.equipment[8].location",
+                "review": "extracted"
+              },
+              {
+                "file": "guides/js/Ultima7.js",
+                "locator": "DB.equipment[8]",
+                "review": "extracted"
+              }
+            ],
+            "proofFields": [
+              {
+                "file": "guides/js/Ultima7.js",
+                "locator": "DB.equipment[8].location",
+                "review": "extracted"
+              },
+              {
+                "file": "guides/js/Ultima7.js",
+                "locator": "DB.equipment[8].effect",
+                "review": "extracted"
+              }
+            ]
+          }
+        },
+        {
+          "text": "How many durability points remain on my Juggernaut Hammer right now?",
+          "expected": {
+            "decision": "not-answer",
+            "boundary": "Neither the equipment table nor current conversation supplies a durability statistic or the player's current item state."
+          }
+        }
+      ]
+    },
+    {
+      "id": "fresh-u7-brion-crystal-transaction",
+      "gameId": "ultima7",
+      "turns": [
+        {
+          "text": "In Brion's orrery quest, which adventurer sells the special crystal?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/js/Ultima7.js",
+              "locator": "DB.sideQuests[10].walkthrough",
+              "review": "extracted"
+            },
+            "contains": [
+              "Addom"
+            ],
+            "requiredUsefulClaim": "Identify the adventurer Addom as the seller of the special crystal for Brion.",
+            "sourceWitness": "Buy a special crystal from the adventurer Addom for 20 gold and give it to Brion so he can power the observatory's orrery.",
+            "fullFieldValues": {
+              "seller": "Addom",
+              "sellerRole": "adventurer",
+              "object": "special crystal"
+            }
+          }
+        },
+        {
+          "text": "What should I pay for the crystal, and who gets it afterward?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/js/Ultima7.js",
+              "locator": "DB.sideQuests[10].walkthrough",
+              "review": "extracted"
+            },
+            "contains": [
+              "20 gold",
+              "Brion"
+            ],
+            "requiredUsefulClaim": "Give the exact price, 20 gold, and tell the player to give the crystal to Brion to power the observatory's orrery.",
+            "sourceWitness": "Buy a special crystal from the adventurer Addom for 20 gold and give it to Brion so he can power the observatory's orrery.",
+            "fullFieldValues": {
+              "price": "20 gold",
+              "recipient": "Brion",
+              "purpose": "power the observatory's orrery"
+            }
+          }
+        },
+        {
+          "text": "What outcome does the reward field list for finishing that errand?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/js/Ultima7.js",
+              "locator": "DB.sideQuests[10].reward",
+              "review": "extracted"
+            },
+            "contains": [
+              "Brion activates the orrery"
+            ],
+            "requiredUsefulClaim": "State the explicit reward/outcome: Brion activates the orrery, rather than inventing XP, gold or equipment.",
+            "sourceWitness": "Brion activates the orrery",
+            "fullFieldValues": {
+              "reward": "Brion activates the orrery"
+            }
+          }
+        },
+        {
+          "text": "Does the guide say that crystal is quartz?",
+          "expected": {
+            "decision": "not-answer",
+            "boundary": "The walkthrough calls it a special crystal but never identifies its mineral composition; do not infer quartz from 'crystal'."
+          }
+        }
+      ]
+    },
+    {
+      "id": "fresh-u7-utility-and-warning-spells",
+      "gameId": "ultima7",
+      "turns": [
+        {
+          "text": "What practical travel benefit does Mark & Recall provide?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/js/Ultima7.js",
+              "locator": "DB.spells[2].description",
+              "review": "extracted"
+            },
+            "contains": [
+              "reusable return point",
+              "cross-map travel",
+              "supply runs"
+            ],
+            "requiredUsefulClaim": "Explain that Mark & Recall creates a reusable return point, reducing cross-map travel and supply runs.",
+            "sourceWitness": "Creates a reusable return point, dramatically reducing cross-map travel and supply runs.",
+            "fullFieldValues": {
+              "benefit": "Creates a reusable return point, dramatically reducing cross-map travel and supply runs."
+            }
+          }
+        },
+        {
+          "text": "Which obstacles can Unlock Magic open that ordinary keys cannot handle?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/js/Ultima7.js",
+              "locator": "DB.spells[3].description",
+              "review": "extracted"
+            },
+            "contains": [
+              "magically sealed doors and containers",
+              "ordinary keys"
+            ],
+            "requiredUsefulClaim": "Identify magically sealed doors and containers as the objects Unlock Magic opens beyond ordinary keys.",
+            "sourceWitness": "Opens magically sealed doors and containers that ordinary keys cannot address.",
+            "fullFieldValues": {
+              "objects": "magically sealed doors and containers",
+              "limitationOfOrdinaryKeys": "ordinary keys cannot address"
+            }
+          }
+        },
+        {
+          "text": "What is the stated danger of treating Armageddon as a normal field spell?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/js/Ultima7.js",
+              "locator": "DB.spells[6].description",
+              "review": "extracted"
+            },
+            "contains": [
+              "nearly every NPC",
+              "breaks most quests",
+              "not a normal field spell"
+            ],
+            "requiredUsefulClaim": "Retain the qualified warning: Armageddon kills nearly every NPC in Britannia and breaks most quests; the guide treats it as a curiosity rather than a normal field spell.",
+            "sourceWitness": "Kills nearly every NPC in Britannia and breaks most quests. Keep it as a curiosity, not a normal field spell.",
+            "fullFieldValues": {
+              "victims": "nearly every NPC in Britannia",
+              "questEffect": "breaks most quests",
+              "guidance": "Keep it as a curiosity, not a normal field spell."
+            }
+          }
+        },
+        {
+          "text": "What exact blast radius in tiles does this page give Armageddon?",
+          "expected": {
+            "decision": "not-answer",
+            "boundary": "The spell description gives broad NPC/quest consequences but no numerical radius, tile count, or formula."
+          }
+        }
+      ]
+    },
+    {
+      "id": "fresh-sc-bwapi-load-diagnostics",
+      "gameId": "starcraft",
+      "turns": [
+        {
+          "text": "If BWAPI is not loading, what version-compatibility check does the guide list?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#bwapi-loading-checks ul",
+              "review": "extracted"
+            },
+            "contains": [
+              "compatible version of BWAPI",
+              "Starcraft version"
+            ],
+            "requiredUsefulClaim": "Tell the player to check that BWAPI is compatible with the installed StarCraft version; this source does not establish a universal supported version or certify the player's installation.",
+            "sourceWitness": "Make sure you're using a compatible version of BWAPI with your Starcraft version; Check that all BWAPI files are in the correct directories; Look for error messages in the game's console output; Consult the BWAPI documentation for version-specific instructions",
+            "fullFieldValues": {
+              "check": "Make sure you're using a compatible version of BWAPI with your Starcraft version"
+            },
+            "proofFields": [
+              {
+                "file": "guides/StarcraftBWAPI.html",
+                "locator": "#bwapi-loading-checks li:nth-child(1)",
+                "review": "extracted"
+              }
+            ]
+          }
+        },
+        {
+          "text": "Where should I look for messages about that BWAPI loading failure?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#bwapi-loading-checks li:nth-child(3)",
+              "review": "extracted"
+            },
+            "contains": [
+              "game's console output"
+            ],
+            "requiredUsefulClaim": "Identify the game's console output as the place to look for error messages.",
+            "sourceWitness": "Look for error messages in the game's console output",
+            "fullFieldValues": {
+              "errorOutput": "game's console output"
+            }
+          }
+        },
+        {
+          "text": "And what placement check is specified for the BWAPI files?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#bwapi-loading-checks li:nth-child(2)",
+              "review": "extracted"
+            },
+            "contains": [
+              "all BWAPI files",
+              "correct directories"
+            ],
+            "requiredUsefulClaim": "Tell the player to check that all BWAPI files are in the correct directories, without inventing an exact directory or claiming they are correctly installed.",
+            "sourceWitness": "Check that all BWAPI files are in the correct directories",
+            "fullFieldValues": {
+              "filePlacementCheck": "Check that all BWAPI files are in the correct directories"
+            }
+          }
+        },
+        {
+          "text": "Which exact Windows registry value does the guide tell me to change for this loading problem?",
+          "expected": {
+            "decision": "not-answer",
+            "boundary": "The loading checklist discusses version compatibility, directories, console output and documentation; it specifies no Windows registry key or value."
+          }
+        }
+      ]
+    },
+    {
+      "id": "fresh-sc-purplewave-build-and-project",
+      "gameId": "starcraft",
+      "turns": [
+        {
+          "text": "What does the reviewed PurpleWave README say is needed to build the source, and what does the package command produce?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/data/assistant/knowledge/starcraft.json",
+              "locator": "facts[62]",
+              "review": "external-research",
+              "references": [
+                {
+                  "label": "PurpleWave source build primary source",
+                  "url": "https://github.com/dgant/PurpleWave",
+                  "checkedAt": "2026-10-24"
+                }
+              ]
+            },
+            "contains": [
+              "Maven",
+              "initialized submodules",
+              "mvn clean package",
+              "target/PurpleWave-1.0.jar",
+              "not a prebuilt-download promise"
+            ],
+            "requiredUsefulClaim": "Give Maven with initialized submodules, the exact mvn clean package command and target/PurpleWave-1.0.jar output; preserve that this is source-build guidance, not a prebuilt-download promise.",
+            "sourceWitness": "Outside research: PurpleWave’s README uses Maven with initialized submodules; mvn clean package produces target/PurpleWave-1.0.jar. This is source-build guidance, not a prebuilt-download promise.",
+            "fullFieldValues": {
+              "buildTool": "Maven",
+              "prerequisite": "initialized submodules",
+              "command": "mvn clean package",
+              "output": "target/PurpleWave-1.0.jar",
+              "qualification": "source-build guidance, not a prebuilt-download promise"
+            }
+          }
+        },
+        {
+          "text": "For running its JAR, what working folder and three data directories are described, and how is the IDE folder qualified?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/data/assistant/knowledge/starcraft.json",
+              "locator": "facts[63]",
+              "review": "external-research",
+              "references": [
+                {
+                  "label": "PurpleWave working directory primary source",
+                  "url": "https://github.com/dgant/PurpleWave",
+                  "checkedAt": "2026-10-24"
+                }
+              ]
+            },
+            "contains": [
+              "StarCraft directory",
+              "bwapi-data/AI",
+              "bwapi-data/read",
+              "bwapi-data/write",
+              "sibling bw directory",
+              "must match the local installation"
+            ],
+            "requiredUsefulClaim": "Give the StarCraft working directory and all three bwapi-data paths; distinguish the IDE's sibling bw directory and retain that it must match the local installation.",
+            "sourceWitness": "Outside research: PurpleWave’s JAR instructions run from the StarCraft directory and use bwapi-data/AI, bwapi-data/read and bwapi-data/write. Its IDE configuration points to a sibling bw directory that must match the local installation.",
+            "fullFieldValues": {
+              "workingDirectory": "StarCraft directory",
+              "dataDirectories": [
+                "bwapi-data/AI",
+                "bwapi-data/read",
+                "bwapi-data/write"
+              ],
+              "IDE": "sibling bw directory that must match the local installation"
+            }
+          }
+        },
+        {
+          "text": "Where does that project invite questions, and what license and derivative-bot policy are recorded?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/data/assistant/knowledge/starcraft.json",
+              "locator": "facts[64]",
+              "review": "external-research",
+              "references": [
+                {
+                  "label": "PurpleWave project support primary source",
+                  "url": "https://github.com/dgant/PurpleWave",
+                  "checkedAt": "2026-10-24"
+                }
+              ]
+            },
+            "contains": [
+              "GitHub issues",
+              "MIT license",
+              "encourages derivative bots"
+            ],
+            "requiredUsefulClaim": "Identify GitHub issues for questions, the MIT license, and encouragement of derivative bots; remain bounded to the reviewed README.",
+            "sourceWitness": "Outside research: PurpleWave’s README invites questions through GitHub issues. The project uses the MIT license and encourages derivative bots.",
+            "fullFieldValues": {
+              "questions": "GitHub issues",
+              "license": "MIT license",
+              "derivativePolicy": "encourages derivative bots"
+            }
+          }
+        },
+        {
+          "text": "Can you give the exact absolute folder where my PurpleWave JAR is installed now?",
+          "expected": {
+            "decision": "not-answer",
+            "boundary": "The source describes relative/working-directory requirements but cannot observe the player's machine or provide its current absolute installation path."
+          }
+        }
+      ]
+    },
+    {
+      "id": "fresh-sc-schnail-automation-scope",
+      "gameId": "starcraft",
+      "turns": [
+        {
+          "text": "For SCHNAIL, what does the guide say can make the first launch take some time?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#getting-started > .bg-blue-50 .text-blue-700",
+              "review": "extracted"
+            },
+            "contains": [
+              "first launch",
+              "downloads necessary game files"
+            ],
+            "requiredUsefulClaim": "Explain that the first launch might take some time because it downloads necessary game files; preserve might rather than asserting a measured delay.",
+            "sourceWitness": "Note: The first launch might take some time as it downloads necessary game files.",
+            "fullFieldValues": {
+              "event": "first launch",
+              "qualification": "might take some time",
+              "cause": "downloads necessary game files"
+            }
+          }
+        },
+        {
+          "text": "What setup work does the client itself perform on the game files?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#schnail-setup ol > li:nth-child(7)",
+              "review": "extracted"
+            },
+            "contains": [
+              "automatically download and set up the game files"
+            ],
+            "requiredUsefulClaim": "Say that the SCHNAIL client automatically downloads and sets up the game files; do not substitute Java installation or account registration.",
+            "sourceWitness": "The client will automatically download and set up the game files",
+            "fullFieldValues": {
+              "automation": "automatically download and set up the game files"
+            }
+          }
+        },
+        {
+          "text": "Are automatic updates described for the client alone, or for the game too?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#schnail-setup ul > li:nth-child(2)",
+              "review": "extracted"
+            },
+            "contains": [
+              "Automatic updates for both client and game"
+            ],
+            "requiredUsefulClaim": "Retain both recipients of the recorded automatic updates: client and game.",
+            "sourceWitness": "Automatic updates for both client and game",
+            "fullFieldValues": {
+              "feature": "Automatic updates",
+              "targets": [
+                "client",
+                "game"
+              ]
+            }
+          }
+        },
+        {
+          "text": "How many minutes will that first download take on my internet connection?",
+          "expected": {
+            "decision": "not-answer",
+            "boundary": "The static guide gives no download duration, network speed, download size, or measurement of the player's connection."
+          }
+        }
+      ]
+    },
+    {
+      "id": "fresh-sc-ualberta-historical-client",
+      "gameId": "starcraft",
+      "turns": [
+        {
+          "text": "In the reviewed UAlbertaBot instructions, is execution through a client program or a module library?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/data/assistant/knowledge/starcraft.json",
+              "locator": "facts[56]",
+              "review": "external-research",
+              "references": [
+                {
+                  "label": "UAlbertaBot executable mode primary source",
+                  "url": "https://github.com/davechurchill/ualbertabot",
+                  "checkedAt": "2026-10-24"
+                }
+              ]
+            },
+            "contains": [
+              "client EXE instead of a module DLL",
+              "first game after starting that EXE"
+            ],
+            "requiredUsefulClaim": "Identify a client EXE rather than a module DLL and retain the first-game-after-start limitation attached to that execution mode.",
+            "sourceWitness": "Outside research: UAlbertaBot’s README uses a client EXE instead of a module DLL and warns that the bot works only for the first game after starting that EXE, limiting AUTO_RESTART.",
+            "fullFieldValues": {
+              "executionMode": "client EXE instead of a module DLL",
+              "limit": "only for the first game after starting that EXE",
+              "affectedFeature": "AUTO_RESTART"
+            }
+          }
+        },
+        {
+          "text": "What limitation does that impose on AUTO_RESTART across games?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/data/assistant/knowledge/starcraft.json",
+              "locator": "facts[56]",
+              "review": "external-research",
+              "references": [
+                {
+                  "label": "UAlbertaBot executable mode primary source",
+                  "url": "https://github.com/davechurchill/ualbertabot",
+                  "checkedAt": "2026-10-24"
+                }
+              ]
+            },
+            "contains": [
+              "only for the first game after starting that EXE",
+              "limiting AUTO_RESTART"
+            ],
+            "requiredUsefulClaim": "Explain that the bot works only for the first game after starting its EXE, which limits AUTO_RESTART; do not promise repeated games or infer a fix.",
+            "sourceWitness": "Outside research: UAlbertaBot’s README uses a client EXE instead of a module DLL and warns that the bot works only for the first game after starting that EXE, limiting AUTO_RESTART.",
+            "fullFieldValues": {
+              "limit": "only for the first game after starting that EXE",
+              "affectedFeature": "AUTO_RESTART"
+            }
+          }
+        },
+        {
+          "text": "From when does the README say active maintenance stopped, and how should its toolchain guidance be treated?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/data/assistant/knowledge/starcraft.json",
+              "locator": "facts[57]",
+              "review": "external-research",
+              "references": [
+                {
+                  "label": "UAlbertaBot maintenance notice primary source",
+                  "url": "https://github.com/davechurchill/ualbertabot",
+                  "checkedAt": "2026-10-24"
+                }
+              ]
+            },
+            "contains": [
+              "not been actively maintained since early 2021",
+              "documented historical instructions",
+              "rather than assuming current toolchain support"
+            ],
+            "requiredUsefulClaim": "Give early 2021 as the recorded maintenance cutoff and advise using documented historical instructions rather than assuming current toolchain support.",
+            "sourceWitness": "Outside research: the repository README states UAlbertaBot has not been actively maintained since early 2021. Use its documented historical instructions rather than assuming current toolchain support.",
+            "fullFieldValues": {
+              "maintenance": "not been actively maintained since early 2021",
+              "guidance": "Use its documented historical instructions rather than assuming current toolchain support."
+            }
+          }
+        },
+        {
+          "text": "What exact date has its next official release been promised for?",
+          "expected": {
+            "decision": "not-answer",
+            "boundary": "The reviewed maintenance notice states a historical lack of active maintenance; it provides no promised future release or release date."
+          }
+        }
+      ]
+    }
+  ]
+}

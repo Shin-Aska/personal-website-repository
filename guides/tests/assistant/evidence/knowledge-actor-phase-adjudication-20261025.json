@@ -1,0 +1,222 @@
+{
+  "schemaVersion": 1,
+  "kind": "changed-useful-claim-review-observed-actor-phases",
+  "checkedAt": "2026-10-24T23:20:25.091044+00:00",
+  "reports": [
+    {
+      "report": "guides/tests/assistant/evidence/knowledge-blind-browser-native-40.json",
+      "sha256": "68dce8651d44e7164be7905aba417235083c7cbd7676a734cf659507b385ff2f",
+      "passed": 85,
+      "total": 96
+    },
+    {
+      "report": "guides/tests/assistant/evidence/knowledge-blind-browser-fresh-20261025-29.json",
+      "sha256": "6977764600fd0c7e926d7fb1bfcec64f1c908ec3db2f3b887c0c7d649b01a635",
+      "passed": 48,
+      "total": 76
+    }
+  ],
+  "scope": "All changed rendered answers/citations in native96 and observed76 versus checkpoint07; other replies are identical. All unchanged48 independently compared in review07. Frozen oracles unchanged; this is observed regression evidence, not unseen evaluation.",
+  "totals": {
+    "changedTurns": 11,
+    "completeSupportedChangedClaims": 9,
+    "stillIncompleteChangedTurns": 2,
+    "strictCitationOnlyFailuresAmongCompleteChangedClaims": 1
+  },
+  "rows": [
+    {
+      "gameId": "alqadim",
+      "dialogueId": "alqadim-blind-what-source-supplies",
+      "turn": 2,
+      "text": "Who am I supposed to escort to the exit?",
+      "priorDecision": "clarify",
+      "decision": "answer",
+      "strictPassed": true,
+      "requiredUsefulClaim": "Cyclops Pangar-Bek.",
+      "rendered": "Pangar-Bek:\nLocate and escort the cyclops Pangar-Bek to the dungeon exit.",
+      "citations": [
+        "Source: existing guide; extracted. guides/js/AlQadim.js \u2014 DB.chapters[11].required[id=ch12_4]"
+      ],
+      "adjudication": "complete-supported-claim",
+      "note": "Full literal objective identifies Pangar-Bek and dungeon exit, with no escort-completion or detailed rescue-mechanism claim.",
+      "problems": []
+    },
+    {
+      "gameId": "albion",
+      "dialogueId": "albion-blind-toronto-pistol",
+      "turn": 1,
+      "text": "How do I get the Pistol before leaving Toronto?",
+      "priorDecision": "answer",
+      "decision": "answer",
+      "strictPassed": true,
+      "requiredUsefulClaim": "Examine damaged COM console for pistol canisters.",
+      "rendered": "In the COM room, examine the damaged console to get the Pistol + Canisters; grab the extra Stimdrinks from the east drawer.",
+      "citations": [
+        "Source: existing guide; extracted. guides/js/Albion.js \u2014 QUEST_HINTS[\"toronto-intro\"][\"pistol\"]"
+      ],
+      "adjudication": "complete-supported-claim",
+      "note": "Complete damaged-console pickup procedure with Pistol and Canisters; exact objective-hint citation replaces location-only field.",
+      "problems": []
+    },
+    {
+      "gameId": "albion",
+      "dialogueId": "albion-blind-toronto-pistol",
+      "turn": 3,
+      "text": "How do I get it past security?",
+      "priorDecision": "answer",
+      "decision": "answer",
+      "strictPassed": true,
+      "requiredUsefulClaim": "Hide pistol and canisters service wall cabinet before security.",
+      "rendered": "After looting the COM room, hide the Pistol + Canisters in the wall cabinet on the service level before passing security.",
+      "citations": [
+        "Source: existing guide; extracted. guides/js/Albion.js \u2014 QUEST_HINTS[\"toronto-intro\"][\"hide-weapon\"]"
+      ],
+      "adjudication": "complete-supported-claim",
+      "note": "Full same-object storage procedure retains the after-looting premise, wall cabinet, service level and before-passing-security relation; no possession or success claim.",
+      "problems": []
+    },
+    {
+      "gameId": "ultima6",
+      "dialogueId": "u6-family-permission",
+      "turn": 3,
+      "text": "And what word do I chant when cleansing that shrine?",
+      "priorDecision": "clarify",
+      "decision": "decline",
+      "strictPassed": false,
+      "requiredUsefulClaim": "Use MU at the Compassion shrine.",
+      "rendered": "I do not have a complete sourced answer for that requested role.",
+      "citations": [],
+      "adjudication": "still-incomplete",
+      "note": "Remains source-answerable but incomplete. Non-answer wording changed; this is not counted as a useful-claim gain.",
+      "problems": [
+        "Expected answer; observed decline",
+        "Missing exact fixed source citation: guides/js/Ultima6.js \u2014 gameData.quests[0].sections[0]",
+        "Missing fixed answer substring: MU"
+      ]
+    },
+    {
+      "gameId": "ultima6",
+      "dialogueId": "u6-making-music",
+      "turn": 1,
+      "text": "For the Sacrifice rune, who turns the wooden board into panpipes?",
+      "priorDecision": "decline",
+      "decision": "answer",
+      "strictPassed": true,
+      "requiredUsefulClaim": "Julia crafts PANPIPES from the board.",
+      "rendered": "Julia:\nBuy a yew log from Ben west of Yew, cut it into a board, and ask Julia to craft PANPIPES.",
+      "citations": [
+        "Source: existing guide; extracted. guides/js/Ultima6.js \u2014 gameData.quests[0].sections[4].steps[0]"
+      ],
+      "adjudication": "complete-supported-claim",
+      "note": "Complete immediate yew-log purchase/cutting and Julia PANPIPES source proves converter/output and material reading without a co-occurrence alias.",
+      "problems": []
+    },
+    {
+      "gameId": "ultima6",
+      "dialogueId": "u6-making-music",
+      "turn": 2,
+      "text": "Where is the raw wood obtained?",
+      "priorDecision": "clarify",
+      "decision": "answer",
+      "strictPassed": true,
+      "requiredUsefulClaim": "Buy a yew log from Ben west of Yew.",
+      "rendered": "Buy a yew log from Ben west of Yew, cut it into a board, and ask Julia to craft PANPIPES.",
+      "citations": [
+        "Source: existing guide; extracted. guides/js/Ultima6.js \u2014 gameData.quests[0].sections[4].steps[0]"
+      ],
+      "adjudication": "complete-supported-claim",
+      "note": "Complete source specifies Ben west of Yew and the yew log, with actual procurement action retained.",
+      "problems": []
+    },
+    {
+      "gameId": "ultima6",
+      "dialogueId": "u6-making-music",
+      "turn": 3,
+      "text": "Whose song should I learn, and who hears the performance to award the rune?",
+      "priorDecision": "decline",
+      "decision": "answer",
+      "strictPassed": false,
+      "requiredUsefulClaim": "Learn STONES from Gwenno and perform it for Selganor to receive the rune.",
+      "rendered": "Gwenno:\nAsk Gwenno about the song STONES to learn the numeric tune 6789878767653.\n\nSelganor:\nAsk Gwenno about the song STONES to learn the numeric tune 6789878767653.\nPerform the tune for Selganor inside the Artisan Guild to receive the rune.",
+      "citations": [
+        "Source: existing guide; extracted. guides/js/Ultima6.js \u2014 gameData.quests[0].sections[4].steps[1]; guides/js/Ultima6.js \u2014 gameData.quests[0].sections[4].steps[2]"
+      ],
+      "adjudication": "complete-supported-claim",
+      "note": "Every requested claim present: Gwenno teaches STONES; Selganor in Artisan Guild receives performance for rune. Both exact child-step citations are valid authorized sources, but frozen strict oracle still requests parent-section citation. No parent/child citation equivalence or oracle edit.",
+      "problems": [
+        "Missing exact fixed source citation: guides/js/Ultima6.js \u2014 gameData.quests[0].sections[4]"
+      ]
+    },
+    {
+      "gameId": "ultima7",
+      "dialogueId": "u7-forging-and-binding",
+      "turn": 1,
+      "text": "How is the Black Sword forged in Forge of Virtue?",
+      "priorDecision": "clarify",
+      "decision": "answer",
+      "strictPassed": true,
+      "requiredUsefulClaim": "Heat and hammer the blade until sharp, then bind the daemon to make the Black Sword.",
+      "rendered": "Heat and hammer the blade at the forge until it's sharp, then bind the daemon to forge the Black Sword.",
+      "citations": [
+        "Source: existing guide; extracted. guides/js/Ultima7.js \u2014 DB.virtueQuests[6]"
+      ],
+      "adjudication": "complete-supported-claim",
+      "note": "Entire literal heat/hammer/sharp/bind recipe, with supported expansion scope and exact virtue quest citation; no finishing-Courage-use substitution.",
+      "problems": []
+    },
+    {
+      "gameId": "ultima7",
+      "dialogueId": "u7-forging-and-binding",
+      "turn": 3,
+      "text": "Who do I ask about the artifact of power?",
+      "priorDecision": "clarify",
+      "decision": "answer",
+      "strictPassed": true,
+      "requiredUsefulClaim": "Ask Erethian about the artifact of power.",
+      "rendered": "Erethian:\nAsk Erethian about the artifact of power. Free Arcadion into the Ether Gem via the mirror. Heat and hammer the blade at the forge until it's sharp, then bind the daemon to forge the Black Sword.",
+      "citations": [
+        "Source: existing guide; extracted. guides/js/Ultima7.js \u2014 DB.virtueQuests[6]"
+      ],
+      "adjudication": "complete-supported-claim",
+      "note": "Source explicitly says ask Erethian about the artifact; additional full original method is retained, with no artifact identity/acquisition inference.",
+      "problems": []
+    },
+    {
+      "gameId": "alqadim",
+      "dialogueId": "aq-ship-restoration",
+      "turn": 3,
+      "text": "Who am I rescuing on the Reef of the Dead?",
+      "priorDecision": "decline",
+      "decision": "answer",
+      "strictPassed": true,
+      "requiredUsefulClaim": "Rescue the mermaid's sister on the Reef of the Dead.",
+      "rendered": "Mermaid sister:\nRescue the mermaid's sister locked in the stone cell.",
+      "citations": [
+        "Source: existing guide; extracted. guides/js/AlQadim.js \u2014 DB.chapters[3].required[id=ch4_2]"
+      ],
+      "adjudication": "complete-supported-claim",
+      "note": "Literal captive mermaid sister and stone cell objective retained; no party membership or rescue mechanism invented.",
+      "problems": []
+    },
+    {
+      "gameId": "albion",
+      "dialogueId": "ab-toronto-supplies",
+      "turn": 3,
+      "text": "How can I carry them past security?",
+      "priorDecision": "clarify",
+      "decision": "decline",
+      "strictPassed": false,
+      "requiredUsefulClaim": "Hide the Pistol and Canisters in the service-level wall cabinet before security.",
+      "rendered": "The available sources do not establish that requested field under those restrictions.",
+      "citations": [],
+      "adjudication": "still-incomplete",
+      "note": "Remains source-answerable but incomplete. Non-answer wording changed; this is not counted as a useful-claim gain.",
+      "problems": [
+        "Expected answer; observed decline",
+        "Missing exact fixed source citation: guides/js/Albion.js \u2014 QUEST_HINTS[\"toronto-intro\"][\"hide-weapon\"]",
+        "Missing fixed answer substring: wall cabinet",
+        "Missing fixed answer substring: service level"
+      ]
+    }
+  ]
+}

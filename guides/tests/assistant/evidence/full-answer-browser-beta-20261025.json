@@ -1,0 +1,4667 @@
+{
+  "schemaVersion": 1,
+  "scope": "Seven production surfaces; prototype lab separately verified by its owner",
+  "workerFixture": true,
+  "realNativeInference": false,
+  "fixture": "browser_consent_fixture.py / browser-consent-fixture.js",
+  "oracleBasis": "Existing reviewed narrative-all-games-cases.json, current trusted record loader, approved StarCraft source snapshot",
+  "oracles": {
+    "albion": {
+      "gameId": "albion",
+      "question": "What is the method for the path to Toronto?",
+      "spoiler": "direct",
+      "recordId": "albion:narrative:toronto-route-method:method",
+      "contains": [
+        "pay Ohl a Jewel",
+        "coastline"
+      ],
+      "sourceOracle": {
+        "record": {
+          "id": "albion:narrative:toronto-route-method:method",
+          "entityId": "albion:route:toronto",
+          "title": "The path to Toronto",
+          "aliases": [
+            "Toronto route",
+            "reach Toronto"
+          ],
+          "kind": "route",
+          "relation": "narrative",
+          "scope": "reference",
+          "narrative": {
+            "aspect": "method",
+            "subjects": [
+              "To reach Toronto"
+            ],
+            "context": [
+              "pay Ohl a Jewel"
+            ],
+            "status": "recorded",
+            "predicate": "reach"
+          },
+          "minSpoiler": "direct",
+          "requires": null,
+          "editions": [],
+          "conflict": false,
+          "variants": {
+            "direct": {
+              "text": "To reach Toronto: either pay Ohl a Jewel (meet via the Miner\u2019s Guild schedule) or follow the \u201cstones to coastline then south\u201d route to the cave entrance."
+            }
+          },
+          "source": {
+            "file": "guides/js/Albion.js",
+            "locator": "QUEST_HINTS.umajo.find-path",
+            "review": "extracted",
+            "index": {
+              "file": "guides/data/assistant/albion.json",
+              "locator": "narratives[id=toronto-route-method]",
+              "review": "authored-index"
+            },
+            "claims": [
+              {
+                "text": "To reach Toronto: either pay Ohl a Jewel (meet via the Miner\u2019s Guild schedule) or follow the \u201cstones to coastline then south\u201d route to the cave entrance.",
+                "source": {
+                  "file": "guides/js/Albion.js",
+                  "locator": "QUEST_HINTS.umajo.find-path",
+                  "review": "extracted"
+                }
+              }
+            ]
+          }
+        },
+        "gentleAuthorized": false,
+        "directAuthorized": true
+      }
+    },
+    "ultima5": {
+      "gameId": "ultima5",
+      "question": "What is the method for the Sandalwood Box?",
+      "spoiler": "direct",
+      "recordId": "ultima5:narrative:sandalwood-method:method",
+      "contains": [
+        "play Stones",
+        "secret wall opens"
+      ],
+      "sourceOracle": {
+        "record": {
+          "id": "ultima5:narrative:sandalwood-method:method",
+          "entityId": "ultima5:objective:opening-castle-raid",
+          "title": "Raid Lord British\u2019s third-floor chambers",
+          "aliases": [
+            "Sandalwood Box secret wall"
+          ],
+          "kind": "objective",
+          "relation": "narrative",
+          "scope": "reference",
+          "narrative": {
+            "aspect": "method",
+            "subjects": [
+              "Sandalwood Box"
+            ],
+            "context": [
+              "harpsichord"
+            ],
+            "status": "recorded",
+            "predicate": "play Stones"
+          },
+          "minSpoiler": "direct",
+          "requires": null,
+          "editions": [],
+          "conflict": false,
+          "variants": {
+            "direct": {
+              "text": "Stand at the harpsichord and play Stones as 6-7-8-9-8-7-8-7-6-7-6-5-3. The secret wall opens; enter and take the Sandalwood Box."
+            }
+          },
+          "source": {
+            "file": "guides/js/Ultima5.js",
+            "locator": "ultima5GrandQuestChapters objective=opening-castle-raid.steps[4]",
+            "review": "extracted",
+            "index": {
+              "file": "guides/data/assistant/ultima5.json",
+              "locator": "narratives[id=sandalwood-method]",
+              "review": "authored-index"
+            },
+            "claims": [
+              {
+                "text": "Stand at the harpsichord and play Stones as 6-7-8-9-8-7-8-7-6-7-6-5-3. The secret wall opens; enter and take the Sandalwood Box.",
+                "source": {
+                  "file": "guides/js/Ultima5.js",
+                  "locator": "ultima5GrandQuestChapters objective=opening-castle-raid.steps[4]",
+                  "review": "extracted"
+                }
+              }
+            ]
+          }
+        },
+        "gentleAuthorized": false,
+        "directAuthorized": true
+      }
+    },
+    "ultima6": {
+      "gameId": "ultima6",
+      "question": "What is the next step in the Merchants' Circuit?",
+      "spoiler": "direct",
+      "recordId": "ultima6:narrative:merchants-sequence:sequence",
+      "contains": [
+        "In the guide's steps",
+        "then bring his flour back"
+      ],
+      "sourceOracle": {
+        "record": {
+          "id": "ultima6:narrative:merchants-sequence:sequence",
+          "entityId": "ultima6:side-quest:the-merchants-circuit",
+          "title": "The Merchants' Circuit",
+          "aliases": [
+            "Merchants' Circuit",
+            "trade route steps"
+          ],
+          "kind": "objective",
+          "relation": "narrative",
+          "scope": "reference",
+          "narrative": {
+            "aspect": "sequence",
+            "subjects": [
+              "grain"
+            ],
+            "context": [
+              "Linda",
+              "Grison",
+              "Cullen"
+            ],
+            "status": "recorded",
+            "predicate": "bring",
+            "sequenceMode": "steps"
+          },
+          "minSpoiler": "direct",
+          "requires": null,
+          "editions": [],
+          "conflict": false,
+          "variants": {
+            "direct": {
+              "text": "Carry grain from Linda in Britain to Grison in Paws, then bring his flour back to Cullen in Britain."
+            }
+          },
+          "source": {
+            "file": "guides/js/Ultima6.js",
+            "locator": "gameData.sideQuests[0].steps[0]",
+            "review": "extracted",
+            "index": {
+              "file": "guides/data/assistant/ultima6.json",
+              "locator": "narratives[id=merchants-sequence]",
+              "review": "authored-index"
+            },
+            "claims": [
+              {
+                "text": "Carry grain from Linda in Britain to Grison in Paws, then bring his flour back to Cullen in Britain.",
+                "source": {
+                  "file": "guides/js/Ultima6.js",
+                  "locator": "gameData.sideQuests[0].steps[0]",
+                  "review": "extracted"
+                }
+              }
+            ]
+          }
+        },
+        "gentleAuthorized": false,
+        "directAuthorized": true
+      }
+    },
+    "ultima7": {
+      "gameId": "ultima7",
+      "question": "Why was Inamo killed?",
+      "spoiler": "direct",
+      "recordId": "ultima7:narrative:inamo-motive:cause",
+      "contains": [
+        "different accounts",
+        "no single explanation"
+      ],
+      "sourceOracle": {
+        "record": {
+          "id": "ultima7:narrative:inamo-motive:cause",
+          "entityId": "ultima7:npc:inamo",
+          "title": "Inamo",
+          "aliases": [],
+          "kind": "npc",
+          "relation": "narrative",
+          "scope": "reference",
+          "narrative": {
+            "aspect": "cause",
+            "subjects": [
+              "Inamo"
+            ],
+            "context": [],
+            "status": "disputed",
+            "predicate": "killed"
+          },
+          "minSpoiler": "direct",
+          "requires": null,
+          "editions": [],
+          "conflict": false,
+          "variants": {
+            "direct": {
+              "text": "The Ultima Codex's Inamo article says Inamo was likely an unexpected bystander when he was killed.\nThe Ultima Codex's Christopher article says Inamo was killed apparently so that he could not witness the crime.\nThe Ultima Codex's Klog article describes Inamo as a gargoyle killed to silence a witness."
+            }
+          },
+          "source": {
+            "file": "https://wiki.ultimacodex.com/index.php?title=Inamo&oldid=154876, https://wiki.ultimacodex.com/wiki/Christopher, https://wiki.ultimacodex.com/wiki/Klog",
+            "locator": "Inamo \u2014 The Codex of Ultima Wisdom; Christopher \u2014 The Codex of Ultima Wisdom; Klog \u2014 The Codex of Ultima Wisdom",
+            "review": "external-research",
+            "index": {
+              "file": "guides/data/assistant/ultima7.json",
+              "locator": "narratives[id=inamo-motive]",
+              "review": "authored-index"
+            },
+            "claims": [
+              {
+                "text": "The Ultima Codex's Inamo article says Inamo was likely an unexpected bystander when he was killed.",
+                "source": {
+                  "file": "https://wiki.ultimacodex.com/index.php?title=Inamo&oldid=154876",
+                  "locator": "Inamo \u2014 The Codex of Ultima Wisdom",
+                  "review": "external-research",
+                  "references": [
+                    {
+                      "label": "Inamo \u2014 The Codex of Ultima Wisdom",
+                      "url": "https://wiki.ultimacodex.com/index.php?title=Inamo&oldid=154876",
+                      "checkedAt": "2026-10-21"
+                    }
+                  ]
+                }
+              },
+              {
+                "text": "The Ultima Codex's Christopher article says Inamo was killed apparently so that he could not witness the crime.",
+                "source": {
+                  "file": "https://wiki.ultimacodex.com/wiki/Christopher",
+                  "locator": "Christopher \u2014 The Codex of Ultima Wisdom",
+                  "review": "external-research",
+                  "references": [
+                    {
+                      "label": "Christopher \u2014 The Codex of Ultima Wisdom",
+                      "url": "https://wiki.ultimacodex.com/wiki/Christopher",
+                      "checkedAt": "2026-10-21"
+                    }
+                  ]
+                }
+              },
+              {
+                "text": "The Ultima Codex's Klog article describes Inamo as a gargoyle killed to silence a witness.",
+                "source": {
+                  "file": "https://wiki.ultimacodex.com/wiki/Klog",
+                  "locator": "Klog \u2014 The Codex of Ultima Wisdom",
+                  "review": "external-research",
+                  "references": [
+                    {
+                      "label": "Klog \u2014 The Codex of Ultima Wisdom",
+                      "url": "https://wiki.ultimacodex.com/wiki/Klog",
+                      "checkedAt": "2026-10-22"
+                    }
+                  ]
+                }
+              }
+            ],
+            "references": [
+              {
+                "label": "Inamo \u2014 The Codex of Ultima Wisdom",
+                "url": "https://wiki.ultimacodex.com/index.php?title=Inamo&oldid=154876",
+                "checkedAt": "2026-10-21"
+              },
+              {
+                "label": "Christopher \u2014 The Codex of Ultima Wisdom",
+                "url": "https://wiki.ultimacodex.com/wiki/Christopher",
+                "checkedAt": "2026-10-21"
+              },
+              {
+                "label": "Klog \u2014 The Codex of Ultima Wisdom",
+                "url": "https://wiki.ultimacodex.com/wiki/Klog",
+                "checkedAt": "2026-10-22"
+              }
+            ]
+          }
+        },
+        "gentleAuthorized": false,
+        "directAuthorized": true
+      }
+    },
+    "alqadim": {
+      "gameId": "alqadim",
+      "question": "What is the method for getting the Family Sword of Honor?",
+      "spoiler": "direct",
+      "recordId": "alqadim:narrative:ch2_1:method",
+      "contains": [
+        "speak with Zubin"
+      ],
+      "sourceOracle": {
+        "record": {
+          "id": "alqadim:narrative:ch2_1:method",
+          "entityId": "alqadim:objective:ch2_1",
+          "title": "Meet Aliya at the gates and speak with Zubin to get the Family Sword of Honor",
+          "aliases": [],
+          "kind": "objective",
+          "relation": "narrative",
+          "scope": "reference",
+          "narrative": {
+            "aspect": "method",
+            "subjects": [
+              "Family Sword of Honor"
+            ],
+            "context": [
+              "Zubin"
+            ],
+            "status": "recorded",
+            "predicate": "get"
+          },
+          "minSpoiler": "direct",
+          "requires": null,
+          "editions": [],
+          "conflict": false,
+          "variants": {
+            "direct": {
+              "text": "Meet Aliya at the gates and speak with Zubin to get the Family Sword of Honor."
+            }
+          },
+          "source": {
+            "file": "guides/js/AlQadim.js",
+            "locator": "DB.chapters[1].required[id=ch2_1]",
+            "review": "extracted",
+            "index": {
+              "file": "guides/data/assistant/alqadim.json",
+              "locator": "narratives[id=ch2_1]",
+              "review": "authored-index"
+            },
+            "claims": [
+              {
+                "text": "Meet Aliya at the gates and speak with Zubin to get the Family Sword of Honor.",
+                "source": {
+                  "file": "guides/js/AlQadim.js",
+                  "locator": "DB.chapters[1].required[id=ch2_1]",
+                  "review": "extracted"
+                }
+              }
+            ]
+          }
+        },
+        "gentleAuthorized": false,
+        "directAuthorized": true
+      }
+    },
+    "starcraft": {
+      "gameId": "starcraft",
+      "question": "Summarize SCHNAIL",
+      "spoiler": "direct",
+      "recordId": "starcraft:narrative:schnail-summary:summary",
+      "contains": [
+        "More realistic AI behavior",
+        "includes its own version"
+      ],
+      "sourceOracle": {
+        "record": {
+          "id": "starcraft:narrative:schnail-summary:summary",
+          "entityId": "starcraft:schnail",
+          "title": "SCHNAIL",
+          "aliases": [
+            "SCHNAIL client",
+            "Starcraft Human and AI League"
+          ],
+          "kind": "setup",
+          "relation": "narrative",
+          "scope": "reference",
+          "narrative": {
+            "aspect": "summary",
+            "subjects": [
+              "SCHNAIL"
+            ],
+            "context": [],
+            "status": "recorded"
+          },
+          "minSpoiler": "direct",
+          "requires": null,
+          "editions": [],
+          "conflict": false,
+          "variants": {
+            "direct": {
+              "text": "SCHNAIL; Pros: More realistic AI behavior; Better micro and macro management; Seamless integration with the game; Active community and regular updates; Cons: Requires internet connection for initial login; AI plays over local network after login; View Setup Guide\nNote: SCHNAIL includes its own version of Starcraft: Brood War, so you don't need to install the game separately."
+            }
+          },
+          "source": {
+            "file": "guides/StarcraftBWAPI.html",
+            "locator": "#getting-started .grid > div:first-child; #schnail-setup .text-blue-700",
+            "review": "extracted",
+            "index": {
+              "file": "guides/data/assistant/starcraft.json",
+              "locator": "narratives[id=schnail-summary]",
+              "review": "authored-index"
+            },
+            "claims": [
+              {
+                "text": "SCHNAIL; Pros: More realistic AI behavior; Better micro and macro management; Seamless integration with the game; Active community and regular updates; Cons: Requires internet connection for initial login; AI plays over local network after login; View Setup Guide",
+                "source": {
+                  "file": "guides/StarcraftBWAPI.html",
+                  "locator": "#getting-started .grid > div:first-child",
+                  "review": "extracted"
+                }
+              },
+              {
+                "text": "Note: SCHNAIL includes its own version of Starcraft: Brood War, so you don't need to install the game separately.",
+                "source": {
+                  "file": "guides/StarcraftBWAPI.html",
+                  "locator": "#schnail-setup .text-blue-700",
+                  "review": "extracted"
+                }
+              }
+            ]
+          }
+        },
+        "gentleAuthorized": false,
+        "directAuthorized": true
+      }
+    }
+  },
+  "checks": [
+    {
+      "id": "albion-desktop-default-and-history",
+      "passed": false,
+      "error": "{'expectedSource': {'file': 'guides/js/Albion.js', 'locator': 'QUEST_HINTS.umajo.find-path', 'review': 'extracted', 'index': {'file': 'guides/data/assistant/albion.json', 'locator': 'narratives[id=toronto-route-method]', 'review': 'authored-index'}, 'claims': [{'text': 'To reach Toronto: either pay Ohl a Jewel (meet via the Miner\u2019s Guild schedule) or follow the \u201cstones to coastline then south\u201d route to the cave entrance.', 'source': {'file': 'guides/js/Albion.js', 'locator': 'QUEST_HINTS.umajo.find-path', 'review': 'extracted'}}]}, 'citation': 'Source: existing guide; extracted. guides/js/Albion.js \u2014 QUEST_HINTS[\"umajo\"][\"find-path\"]'}"
+    },
+    {
+      "id": "ultima5-desktop-default-and-history",
+      "passed": false,
+      "error": "{'missing': 'play Stones', 'rendered': 'Leave by the same upper route. Keep the Carpet with the active party and retain the Box until Lord British uses it in Dungeon Doom.'}"
+    },
+    {
+      "id": "ultima6-desktop-default-and-history",
+      "passed": false,
+      "error": "{'rendered': 'The available sources do not cover every requested field of that subject.', 'decision': 'decline'}"
+    },
+    {
+      "id": "ultima7-desktop-default-and-history",
+      "passed": false,
+      "error": "{'rendered': 'The available sources do not cover every requested field of that subject.', 'decision': 'decline'}"
+    },
+    {
+      "id": "alqadim-desktop-default-and-history",
+      "passed": true,
+      "evidence": {
+        "viewport": [
+          1280,
+          900
+        ],
+        "sends": 5,
+        "composer": {
+          "input": {
+            "width": 701.3125,
+            "height": 39,
+            "visibleWidth": 701.3125,
+            "visibleHeight": 39,
+            "hit": true,
+            "point": {
+              "x": 601.65625,
+              "y": 748.296875
+            }
+          },
+          "send": {
+            "width": 68.6875,
+            "height": 39,
+            "visibleWidth": 68.6875,
+            "visibleHeight": 39,
+            "hit": true,
+            "point": {
+              "x": 994.65625,
+              "y": 748.296875
+            }
+          }
+        },
+        "scroll": {
+          "oldest": {
+            "top": 256.15625,
+            "bottom": 700.15625,
+            "scrollTop": 0,
+            "clientHeight": 444,
+            "scrollHeight": 943,
+            "count": 10,
+            "first": {
+              "top": 265.75,
+              "bottom": 329,
+              "height": 63.25,
+              "clientHeight": 61,
+              "scrollHeight": 61
+            },
+            "last": {
+              "top": 1102.3125,
+              "bottom": 1189.21875,
+              "height": 86.90625,
+              "clientHeight": 85,
+              "scrollHeight": 85
+            },
+            "cards": [
+              {
+                "top": 265.75,
+                "bottom": 329,
+                "height": 63.25,
+                "clientHeight": 61,
+                "scrollHeight": 61
+              },
+              {
+                "top": 348.1875,
+                "bottom": 435.09375,
+                "height": 86.90625,
+                "clientHeight": 85,
+                "scrollHeight": 85
+              },
+              {
+                "top": 454.28125,
+                "bottom": 517.53125,
+                "height": 63.25,
+                "clientHeight": 61,
+                "scrollHeight": 61
+              },
+              {
+                "top": 536.71875,
+                "bottom": 623.625,
+                "height": 86.90625,
+                "clientHeight": 85,
+                "scrollHeight": 85
+              },
+              {
+                "top": 642.8125,
+                "bottom": 706.0625,
+                "height": 63.25,
+                "clientHeight": 61,
+                "scrollHeight": 61
+              },
+              {
+                "top": 725.25,
+                "bottom": 812.15625,
+                "height": 86.90625,
+                "clientHeight": 85,
+                "scrollHeight": 85
+              },
+              {
+                "top": 831.34375,
+                "bottom": 894.59375,
+                "height": 63.25,
+                "clientHeight": 61,
+                "scrollHeight": 61
+              },
+              {
+                "top": 913.78125,
+                "bottom": 1000.6875,
+                "height": 86.90625,
+                "clientHeight": 85,
+                "scrollHeight": 85
+              },
+              {
+                "top": 1019.875,
+                "bottom": 1083.125,
+                "height": 63.25,
+                "clientHeight": 61,
+                "scrollHeight": 61
+              },
+              {
+                "top": 1102.3125,
+                "bottom": 1189.21875,
+                "height": 86.90625,
+                "clientHeight": 85,
+                "scrollHeight": 85
+              }
+            ]
+          },
+          "newest": {
+            "top": 256.15625,
+            "bottom": 700.15625,
+            "scrollTop": 499,
+            "clientHeight": 444,
+            "scrollHeight": 943,
+            "count": 10,
+            "first": {
+              "top": -233.25,
+              "bottom": -170,
+              "height": 63.25,
+              "clientHeight": 61,
+              "scrollHeight": 61
+            },
+            "last": {
+              "top": 603.3125,
+              "bottom": 690.21875,
+              "height": 86.90625,
+              "clientHeight": 85,
+              "scrollHeight": 85
+            },
+            "cards": [
+              {
+                "top": -233.25,
+                "bottom": -170,
+                "height": 63.25,
+                "clientHeight": 61,
+                "scrollHeight": 61
+              },
+              {
+                "top": -150.8125,
+                "bottom": -63.90625,
+                "height": 86.90625,
+                "clientHeight": 85,
+                "scrollHeight": 85
+              },
+              {
+                "top": -44.71875,
+                "bottom": 18.53125,
+                "height": 63.25,
+                "clientHeight": 61,
+                "scrollHeight": 61
+              },
+              {
+                "top": 37.71875,
+                "bottom": 124.625,
+                "height": 86.90625,
+                "clientHeight": 85,
+                "scrollHeight": 85
+              },
+              {
+                "top": 143.8125,
+                "bottom": 207.0625,
+                "height": 63.25,
+                "clientHeight": 61,
+                "scrollHeight": 61
+              },
+              {
+                "top": 226.25,
+                "bottom": 313.15625,
+                "height": 86.90625,
+                "clientHeight": 85,
+                "scrollHeight": 85
+              },
+              {
+                "top": 332.34375,
+                "bottom": 395.59375,
+                "height": 63.25,
+                "clientHeight": 61,
+                "scrollHeight": 61
+              },
+              {
+                "top": 414.78125,
+                "bottom": 501.6875,
+                "height": 86.90625,
+                "clientHeight": 85,
+                "scrollHeight": 85
+              },
+              {
+                "top": 520.875,
+                "bottom": 584.125,
+                "height": 63.25,
+                "clientHeight": 61,
+                "scrollHeight": 61
+              },
+              {
+                "top": 603.3125,
+                "bottom": 690.21875,
+                "height": 86.90625,
+                "clientHeight": 85,
+                "scrollHeight": 85
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "alqadim-phone-composer-and-scroll",
+      "passed": true,
+      "evidence": {
+        "viewport": [
+          390,
+          844
+        ],
+        "sends": 1,
+        "composer": {
+          "input": {
+            "width": 216,
+            "height": 39,
+            "visibleWidth": 216,
+            "visibleHeight": 39,
+            "hit": true,
+            "point": {
+              "x": 195,
+              "y": 674.921875
+            }
+          },
+          "send": {
+            "width": 216,
+            "height": 39,
+            "visibleWidth": 216,
+            "visibleHeight": 39,
+            "hit": true,
+            "point": {
+              "x": 195,
+              "y": 721.921875
+            }
+          }
+        },
+        "scroll": {
+          "oldest": {
+            "top": 321.15625,
+            "bottom": 626.15625,
+            "scrollTop": 0,
+            "clientHeight": 305,
+            "scrollHeight": 1914,
+            "count": 12,
+            "first": {
+              "top": 330.75,
+              "bottom": 442,
+              "height": 111.25,
+              "clientHeight": 109,
+              "scrollHeight": 109
+            },
+            "last": {
+              "top": 2056.5,
+              "bottom": 2225.9375,
+              "height": 169.4375,
+              "clientHeight": 167,
+              "scrollHeight": 167
+            },
+            "cards": [
+              {
+                "top": 330.75,
+                "bottom": 442,
+                "height": 111.25,
+                "clientHeight": 109,
+                "scrollHeight": 109
+              },
+              {
+                "top": 461.1875,
+                "bottom": 630.625,
+                "height": 169.4375,
+                "clientHeight": 167,
+                "scrollHeight": 167
+              },
+              {
+                "top": 649.8125,
+                "bottom": 761.0625,
+                "height": 111.25,
+                "clientHeight": 109,
+                "scrollHeight": 109
+              },
+              {
+                "top": 780.25,
+                "bottom": 949.6875,
+                "height": 169.4375,
+                "clientHeight": 167,
+                "scrollHeight": 167
+              },
+              {
+                "top": 968.875,
+                "bottom": 1080.125,
+                "height": 111.25,
+                "clientHeight": 109,
+                "scrollHeight": 109
+              },
+              {
+                "top": 1099.3125,
+                "bottom": 1268.75,
+                "height": 169.4375,
+                "clientHeight": 167,
+                "scrollHeight": 167
+              },
+              {
+                "top": 1287.9375,
+                "bottom": 1399.1875,
+                "height": 111.25,
+                "clientHeight": 109,
+                "scrollHeight": 109
+              },
+              {
+                "top": 1418.375,
+                "bottom": 1587.8125,
+                "height": 169.4375,
+                "clientHeight": 167,
+                "scrollHeight": 167
+              },
+              {
+                "top": 1607,
+                "bottom": 1718.25,
+                "height": 111.25,
+                "clientHeight": 109,
+                "scrollHeight": 109
+              },
+              {
+                "top": 1737.4375,
+                "bottom": 1906.875,
+                "height": 169.4375,
+                "clientHeight": 167,
+                "scrollHeight": 167
+              },
+              {
+                "top": 1926.0625,
+                "bottom": 2037.3125,
+                "height": 111.25,
+                "clientHeight": 109,
+                "scrollHeight": 109
+              },
+              {
+                "top": 2056.5,
+                "bottom": 2225.9375,
+                "height": 169.4375,
+                "clientHeight": 167,
+                "scrollHeight": 167
+              }
+            ]
+          },
+          "newest": {
+            "top": 321.15625,
+            "bottom": 626.15625,
+            "scrollTop": 1609,
+            "clientHeight": 305,
+            "scrollHeight": 1914,
+            "count": 12,
+            "first": {
+              "top": -1278.25,
+              "bottom": -1167,
+              "height": 111.25,
+              "clientHeight": 109,
+              "scrollHeight": 109
+            },
+            "last": {
+              "top": 447.5,
+              "bottom": 616.9375,
+              "height": 169.4375,
+              "clientHeight": 167,
+              "scrollHeight": 167
+            },
+            "cards": [
+              {
+                "top": -1278.25,
+                "bottom": -1167,
+                "height": 111.25,
+                "clientHeight": 109,
+                "scrollHeight": 109
+              },
+              {
+                "top": -1147.8125,
+                "bottom": -978.375,
+                "height": 169.4375,
+                "clientHeight": 167,
+                "scrollHeight": 167
+              },
+              {
+                "top": -959.1875,
+                "bottom": -847.9375,
+                "height": 111.25,
+                "clientHeight": 109,
+                "scrollHeight": 109
+              },
+              {
+                "top": -828.75,
+                "bottom": -659.3125,
+                "height": 169.4375,
+                "clientHeight": 167,
+                "scrollHeight": 167
+              },
+              {
+                "top": -640.125,
+                "bottom": -528.875,
+                "height": 111.25,
+                "clientHeight": 109,
+                "scrollHeight": 109
+              },
+              {
+                "top": -509.6875,
+                "bottom": -340.25,
+                "height": 169.4375,
+                "clientHeight": 167,
+                "scrollHeight": 167
+              },
+              {
+                "top": -321.0625,
+                "bottom": -209.8125,
+                "height": 111.25,
+                "clientHeight": 109,
+                "scrollHeight": 109
+              },
+              {
+                "top": -190.625,
+                "bottom": -21.1875,
+                "height": 169.4375,
+                "clientHeight": 167,
+                "scrollHeight": 167
+              },
+              {
+                "top": -2,
+                "bottom": 109.25,
+                "height": 111.25,
+                "clientHeight": 109,
+                "scrollHeight": 109
+              },
+              {
+                "top": 128.4375,
+                "bottom": 297.875,
+                "height": 169.4375,
+                "clientHeight": 167,
+                "scrollHeight": 167
+              },
+              {
+                "top": 317.0625,
+                "bottom": 428.3125,
+                "height": 111.25,
+                "clientHeight": 109,
+                "scrollHeight": 109
+              },
+              {
+                "top": 447.5,
+                "bottom": 616.9375,
+                "height": 169.4375,
+                "clientHeight": 167,
+                "scrollHeight": 167
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "alqadim-reset-reopen-context-retains-full-answers",
+      "passed": false,
+      "error": "{'rendered': 'Which previous hint should I make gentler?', 'decision': 'clarify'}"
+    },
+    {
+      "id": "alqadim-walkthrough-desktop-default-and-history",
+      "passed": true,
+      "evidence": {
+        "viewport": [
+          1280,
+          900
+        ],
+        "sends": 5,
+        "composer": {
+          "input": {
+            "width": 228.90625,
+            "height": 39,
+            "visibleWidth": 228.90625,
+            "visibleHeight": 39,
+            "hit": true,
+            "point": {
+              "x": 1000.78125,
+              "y": 450.296875
+            }
+          },
+          "send": {
+            "width": 59.75,
+            "height": 39,
+            "visibleWidth": 59.75,
+            "visibleHeight": 39,
+            "hit": true,
+            "point": {
+              "x": 1153.109375,
+              "y": 450.296875
+            }
+          }
+        },
+        "scroll": {
+          "oldest": {
+            "top": 228.15625,
+            "bottom": 672.15625,
+            "scrollTop": 0,
+            "clientHeight": 444,
+            "scrollHeight": 1475,
+            "count": 10,
+            "first": {
+              "top": 237.75,
+              "bottom": 325,
+              "height": 87.25,
+              "clientHeight": 85,
+              "scrollHeight": 85
+            },
+            "last": {
+              "top": 1524.4375,
+              "bottom": 1693.875,
+              "height": 169.4375,
+              "clientHeight": 167,
+              "scrollHeight": 167
+            },
+            "cards": [
+              {
+                "top": 237.75,
+                "bottom": 325,
+                "height": 87.25,
+                "clientHeight": 85,
+                "scrollHeight": 85
+              },
+              {
+                "top": 344.1875,
+                "bottom": 513.625,
+                "height": 169.4375,
+                "clientHeight": 167,
+                "scrollHeight": 167
+              },
+              {
+                "top": 532.8125,
+                "bottom": 620.0625,
+                "height": 87.25,
+                "clientHeight": 85,
+                "scrollHeight": 85
+              },
+              {
+                "top": 639.25,
+                "bottom": 808.6875,
+                "height": 169.4375,
+                "clientHeight": 167,
+                "scrollHeight": 167
+              },
+              {
+                "top": 827.875,
+                "bottom": 915.125,
+                "height": 87.25,
+                "clientHeight": 85,
+                "scrollHeight": 85
+              },
+              {
+                "top": 934.3125,
+                "bottom": 1103.75,
+                "height": 169.4375,
+                "clientHeight": 167,
+                "scrollHeight": 167
+              },
+              {
+                "top": 1122.9375,
+                "bottom": 1210.1875,
+                "height": 87.25,
+                "clientHeight": 85,
+                "scrollHeight": 85
+              },
+              {
+                "top": 1229.375,
+                "bottom": 1398.8125,
+                "height": 169.4375,
+                "clientHeight": 167,
+                "scrollHeight": 167
+              },
+              {
+                "top": 1418,
+                "bottom": 1505.25,
+                "height": 87.25,
+                "clientHeight": 85,
+                "scrollHeight": 85
+              },
+              {
+                "top": 1524.4375,
+                "bottom": 1693.875,
+                "height": 169.4375,
+                "clientHeight": 167,
+                "scrollHeight": 167
+              }
+            ]
+          },
+          "newest": {
+            "top": 228.15625,
+            "bottom": 672.15625,
+            "scrollTop": 1031,
+            "clientHeight": 444,
+            "scrollHeight": 1475,
+            "count": 10,
+            "first": {
+              "top": -793.25,
+              "bottom": -706,
+              "height": 87.25,
+              "clientHeight": 85,
+              "scrollHeight": 85
+            },
+            "last": {
+              "top": 493.4375,
+              "bottom": 662.875,
+              "height": 169.4375,
+              "clientHeight": 167,
+              "scrollHeight": 167
+            },
+            "cards": [
+              {
+                "top": -793.25,
+                "bottom": -706,
+                "height": 87.25,
+                "clientHeight": 85,
+                "scrollHeight": 85
+              },
+              {
+                "top": -686.8125,
+                "bottom": -517.375,
+                "height": 169.4375,
+                "clientHeight": 167,
+                "scrollHeight": 167
+              },
+              {
+                "top": -498.1875,
+                "bottom": -410.9375,
+                "height": 87.25,
+                "clientHeight": 85,
+                "scrollHeight": 85
+              },
+              {
+                "top": -391.75,
+                "bottom": -222.3125,
+                "height": 169.4375,
+                "clientHeight": 167,
+                "scrollHeight": 167
+              },
+              {
+                "top": -203.125,
+                "bottom": -115.875,
+                "height": 87.25,
+                "clientHeight": 85,
+                "scrollHeight": 85
+              },
+              {
+                "top": -96.6875,
+                "bottom": 72.75,
+                "height": 169.4375,
+                "clientHeight": 167,
+                "scrollHeight": 167
+              },
+              {
+                "top": 91.9375,
+                "bottom": 179.1875,
+                "height": 87.25,
+                "clientHeight": 85,
+                "scrollHeight": 85
+              },
+              {
+                "top": 198.375,
+                "bottom": 367.8125,
+                "height": 169.4375,
+                "clientHeight": 167,
+                "scrollHeight": 167
+              },
+              {
+                "top": 387,
+                "bottom": 474.25,
+                "height": 87.25,
+                "clientHeight": 85,
+                "scrollHeight": 85
+              },
+              {
+                "top": 493.4375,
+                "bottom": 662.875,
+                "height": 169.4375,
+                "clientHeight": 167,
+                "scrollHeight": 167
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "alqadim-walkthrough-phone-composer-and-scroll",
+      "passed": true,
+      "evidence": {
+        "viewport": [
+          390,
+          844
+        ],
+        "sends": 1,
+        "composer": {
+          "input": {
+            "width": 184.25,
+            "height": 39,
+            "visibleWidth": 184.25,
+            "visibleHeight": 39,
+            "hit": true,
+            "point": {
+              "x": 161.125,
+              "y": 421.921875
+            }
+          },
+          "send": {
+            "width": 59.75,
+            "height": 39,
+            "visibleWidth": 59.75,
+            "visibleHeight": 39,
+            "hit": true,
+            "point": {
+              "x": 291.125,
+              "y": 421.921875
+            }
+          }
+        },
+        "scroll": {
+          "oldest": {
+            "top": 227.78125,
+            "bottom": 615.78125,
+            "scrollTop": 0,
+            "clientHeight": 388,
+            "scrollHeight": 1914,
+            "count": 12,
+            "first": {
+              "top": 237.375,
+              "bottom": 348.625,
+              "height": 111.25,
+              "clientHeight": 109,
+              "scrollHeight": 109
+            },
+            "last": {
+              "top": 1963.125,
+              "bottom": 2132.5625,
+              "height": 169.4375,
+              "clientHeight": 167,
+              "scrollHeight": 167
+            },
+            "cards": [
+              {
+                "top": 237.375,
+                "bottom": 348.625,
+                "height": 111.25,
+                "clientHeight": 109,
+                "scrollHeight": 109
+              },
+              {
+                "top": 367.8125,
+                "bottom": 537.25,
+                "height": 169.4375,
+                "clientHeight": 167,
+                "scrollHeight": 167
+              },
+              {
+                "top": 556.4375,
+                "bottom": 667.6875,
+                "height": 111.25,
+                "clientHeight": 109,
+                "scrollHeight": 109
+              },
+              {
+                "top": 686.875,
+                "bottom": 856.3125,
+                "height": 169.4375,
+                "clientHeight": 167,
+                "scrollHeight": 167
+              },
+              {
+                "top": 875.5,
+                "bottom": 986.75,
+                "height": 111.25,
+                "clientHeight": 109,
+                "scrollHeight": 109
+              },
+              {
+                "top": 1005.9375,
+                "bottom": 1175.375,
+                "height": 169.4375,
+                "clientHeight": 167,
+                "scrollHeight": 167
+              },
+              {
+                "top": 1194.5625,
+                "bottom": 1305.8125,
+                "height": 111.25,
+                "clientHeight": 109,
+                "scrollHeight": 109
+              },
+              {
+                "top": 1325,
+                "bottom": 1494.4375,
+                "height": 169.4375,
+                "clientHeight": 167,
+                "scrollHeight": 167
+              },
+              {
+                "top": 1513.625,
+                "bottom": 1624.875,
+                "height": 111.25,
+                "clientHeight": 109,
+                "scrollHeight": 109
+              },
+              {
+                "top": 1644.0625,
+                "bottom": 1813.5,
+                "height": 169.4375,
+                "clientHeight": 167,
+                "scrollHeight": 167
+              },
+              {
+                "top": 1832.6875,
+                "bottom": 1943.9375,
+                "height": 111.25,
+                "clientHeight": 109,
+                "scrollHeight": 109
+              },
+              {
+                "top": 1963.125,
+                "bottom": 2132.5625,
+                "height": 169.4375,
+                "clientHeight": 167,
+                "scrollHeight": 167
+              }
+            ]
+          },
+          "newest": {
+            "top": 227.78125,
+            "bottom": 615.78125,
+            "scrollTop": 1526,
+            "clientHeight": 388,
+            "scrollHeight": 1914,
+            "count": 12,
+            "first": {
+              "top": -1288.625,
+              "bottom": -1177.375,
+              "height": 111.25,
+              "clientHeight": 109,
+              "scrollHeight": 109
+            },
+            "last": {
+              "top": 437.125,
+              "bottom": 606.5625,
+              "height": 169.4375,
+              "clientHeight": 167,
+              "scrollHeight": 167
+            },
+            "cards": [
+              {
+                "top": -1288.625,
+                "bottom": -1177.375,
+                "height": 111.25,
+                "clientHeight": 109,
+                "scrollHeight": 109
+              },
+              {
+                "top": -1158.1875,
+                "bottom": -988.75,
+                "height": 169.4375,
+                "clientHeight": 167,
+                "scrollHeight": 167
+              },
+              {
+                "top": -969.5625,
+                "bottom": -858.3125,
+                "height": 111.25,
+                "clientHeight": 109,
+                "scrollHeight": 109
+              },
+              {
+                "top": -839.125,
+                "bottom": -669.6875,
+                "height": 169.4375,
+                "clientHeight": 167,
+                "scrollHeight": 167
+              },
+              {
+                "top": -650.5,
+                "bottom": -539.25,
+                "height": 111.25,
+                "clientHeight": 109,
+                "scrollHeight": 109
+              },
+              {
+                "top": -520.0625,
+                "bottom": -350.625,
+                "height": 169.4375,
+                "clientHeight": 167,
+                "scrollHeight": 167
+              },
+              {
+                "top": -331.4375,
+                "bottom": -220.1875,
+                "height": 111.25,
+                "clientHeight": 109,
+                "scrollHeight": 109
+              },
+              {
+                "top": -201,
+                "bottom": -31.5625,
+                "height": 169.4375,
+                "clientHeight": 167,
+                "scrollHeight": 167
+              },
+              {
+                "top": -12.375,
+                "bottom": 98.875,
+                "height": 111.25,
+                "clientHeight": 109,
+                "scrollHeight": 109
+              },
+              {
+                "top": 118.0625,
+                "bottom": 287.5,
+                "height": 169.4375,
+                "clientHeight": 167,
+                "scrollHeight": 167
+              },
+              {
+                "top": 306.6875,
+                "bottom": 417.9375,
+                "height": 111.25,
+                "clientHeight": 109,
+                "scrollHeight": 109
+              },
+              {
+                "top": 437.125,
+                "bottom": 606.5625,
+                "height": 169.4375,
+                "clientHeight": 167,
+                "scrollHeight": 167
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "alqadim-walkthrough-reset-reopen-context-retains-full-answers",
+      "passed": false,
+      "error": "{'rendered': 'Which previous hint should I make gentler?', 'decision': 'clarify'}"
+    },
+    {
+      "id": "starcraft-desktop-default-and-history",
+      "passed": false,
+      "error": "{'rendered': 'I could not identify that subject in the available sources.', 'decision': 'decline'}"
+    },
+    {
+      "id": "legacy-gentle-selector-and-context-cannot-lower-real-full-answer",
+      "passed": true,
+      "evidence": {
+        "text": "YouWhat is the method for the Sandalwood Box?GuideRaid Lord British\u2019s third-floor chambers \u2014 Method:\nStand at the harpsichord and play Stones as 6-7-8-9-8-7-8-7-6-7-6-5-3. The secret wall opens; enter and take the Sandalwood Box.Source: existing guide; extracted. guides/js/Ultima5.js \u2014 ultima5GrandQuestChapters objective=opening-castle-raid.steps[4]",
+        "reply": {
+          "role": "assistant",
+          "decision": "answer",
+          "text": "Raid Lord British\u2019s third-floor chambers \u2014 Method:\nStand at the harpsichord and play Stones as 6-7-8-9-8-7-8-7-6-7-6-5-3. The secret wall opens; enter and take the Sandalwood Box.",
+          "recordIds": [
+            "ultima5:narrative:sandalwood-method:method"
+          ],
+          "sources": [
+            {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=opening-castle-raid.steps[4]",
+              "review": "extracted",
+              "index": {
+                "file": "guides/data/assistant/ultima5.json",
+                "locator": "narratives[id=sandalwood-method]",
+                "review": "authored-index"
+              },
+              "claims": [
+                {
+                  "text": "Stand at the harpsichord and play Stones as 6-7-8-9-8-7-8-7-6-7-6-5-3. The secret wall opens; enter and take the Sandalwood Box.",
+                  "source": {
+                    "file": "guides/js/Ultima5.js",
+                    "locator": "ultima5GrandQuestChapters objective=opening-castle-raid.steps[4]",
+                    "review": "extracted"
+                  }
+                }
+              ]
+            }
+          ],
+          "actions": [],
+          "choices": [],
+          "stateChanges": [],
+          "revision": 3,
+          "level": "direct",
+          "title": "Raid Lord British\u2019s third-floor chambers"
+        },
+        "selectorAttached": false
+      }
+    },
+    {
+      "id": "seven-surface-storage-network-source-and-server-boundaries",
+      "passed": false,
+      "error": "{'alqadim': True, 'alqadim-walkthrough': True}"
+    }
+  ],
+  "failures": [
+    {
+      "id": "albion-desktop-default-and-history",
+      "error": "{'expectedSource': {'file': 'guides/js/Albion.js', 'locator': 'QUEST_HINTS.umajo.find-path', 'review': 'extracted', 'index': {'file': 'guides/data/assistant/albion.json', 'locator': 'narratives[id=toronto-route-method]', 'review': 'authored-index'}, 'claims': [{'text': 'To reach Toronto: either pay Ohl a Jewel (meet via the Miner\u2019s Guild schedule) or follow the \u201cstones to coastline then south\u201d route to the cave entrance.', 'source': {'file': 'guides/js/Albion.js', 'locator': 'QUEST_HINTS.umajo.find-path', 'review': 'extracted'}}]}, 'citation': 'Source: existing guide; extracted. guides/js/Albion.js \u2014 QUEST_HINTS[\"umajo\"][\"find-path\"]'}"
+    },
+    {
+      "id": "ultima5-desktop-default-and-history",
+      "error": "{'missing': 'play Stones', 'rendered': 'Leave by the same upper route. Keep the Carpet with the active party and retain the Box until Lord British uses it in Dungeon Doom.'}"
+    },
+    {
+      "id": "ultima6-desktop-default-and-history",
+      "error": "{'rendered': 'The available sources do not cover every requested field of that subject.', 'decision': 'decline'}"
+    },
+    {
+      "id": "ultima7-desktop-default-and-history",
+      "error": "{'rendered': 'The available sources do not cover every requested field of that subject.', 'decision': 'decline'}"
+    },
+    {
+      "id": "alqadim-reset-reopen-context-retains-full-answers",
+      "error": "{'rendered': 'Which previous hint should I make gentler?', 'decision': 'clarify'}"
+    },
+    {
+      "id": "alqadim-walkthrough-reset-reopen-context-retains-full-answers",
+      "error": "{'rendered': 'Which previous hint should I make gentler?', 'decision': 'clarify'}"
+    },
+    {
+      "id": "starcraft-desktop-default-and-history",
+      "error": "{'rendered': 'I could not identify that subject in the available sources.', 'decision': 'decline'}"
+    },
+    {
+      "id": "seven-surface-storage-network-source-and-server-boundaries",
+      "error": "{'alqadim': True, 'alqadim-walkthrough': True}"
+    }
+  ],
+  "replies": [
+    {
+      "surface": "alqadim",
+      "viewport": [
+        1280,
+        900
+      ],
+      "question": "What is the method for getting the Family Sword of Honor?",
+      "rendered": "Meet Aliya at the gates and speak with Zubin to get the Family Sword of Honor.",
+      "decision": "answer",
+      "citation": "Source: existing guide; extracted. guides/js/AlQadim.js \u2014 DB.chapters[1].required[id=ch2_1]",
+      "expectedRecordId": "alqadim:narrative:ch2_1:method",
+      "recordIdObservation": "Not exposed by current production UI; canonical oracle ID plus actual rendered source provenance checked.",
+      "directOnlyOracle": true
+    },
+    {
+      "surface": "alqadim",
+      "viewport": [
+        1280,
+        900
+      ],
+      "question": "What is the method for getting the Family Sword of Honor?",
+      "rendered": "Meet Aliya at the gates and speak with Zubin to get the Family Sword of Honor.",
+      "decision": "answer",
+      "citation": "Source: existing guide; extracted. guides/js/AlQadim.js \u2014 DB.chapters[1].required[id=ch2_1]",
+      "expectedRecordId": "alqadim:narrative:ch2_1:method",
+      "recordIdObservation": "Not exposed by current production UI; canonical oracle ID plus actual rendered source provenance checked.",
+      "directOnlyOracle": true
+    },
+    {
+      "surface": "alqadim",
+      "viewport": [
+        1280,
+        900
+      ],
+      "question": "What is the method for getting the Family Sword of Honor?",
+      "rendered": "Meet Aliya at the gates and speak with Zubin to get the Family Sword of Honor.",
+      "decision": "answer",
+      "citation": "Source: existing guide; extracted. guides/js/AlQadim.js \u2014 DB.chapters[1].required[id=ch2_1]",
+      "expectedRecordId": "alqadim:narrative:ch2_1:method",
+      "recordIdObservation": "Not exposed by current production UI; canonical oracle ID plus actual rendered source provenance checked.",
+      "directOnlyOracle": true
+    },
+    {
+      "surface": "alqadim",
+      "viewport": [
+        1280,
+        900
+      ],
+      "question": "What is the method for getting the Family Sword of Honor?",
+      "rendered": "Meet Aliya at the gates and speak with Zubin to get the Family Sword of Honor.",
+      "decision": "answer",
+      "citation": "Source: existing guide; extracted. guides/js/AlQadim.js \u2014 DB.chapters[1].required[id=ch2_1]",
+      "expectedRecordId": "alqadim:narrative:ch2_1:method",
+      "recordIdObservation": "Not exposed by current production UI; canonical oracle ID plus actual rendered source provenance checked.",
+      "directOnlyOracle": true
+    },
+    {
+      "surface": "alqadim",
+      "viewport": [
+        1280,
+        900
+      ],
+      "question": "What is the method for getting the Family Sword of Honor?",
+      "rendered": "Meet Aliya at the gates and speak with Zubin to get the Family Sword of Honor.",
+      "decision": "answer",
+      "citation": "Source: existing guide; extracted. guides/js/AlQadim.js \u2014 DB.chapters[1].required[id=ch2_1]",
+      "expectedRecordId": "alqadim:narrative:ch2_1:method",
+      "recordIdObservation": "Not exposed by current production UI; canonical oracle ID plus actual rendered source provenance checked.",
+      "directOnlyOracle": true
+    },
+    {
+      "surface": "alqadim",
+      "viewport": [
+        390,
+        844
+      ],
+      "question": "What is the method for getting the Family Sword of Honor?",
+      "rendered": "Meet Aliya at the gates and speak with Zubin to get the Family Sword of Honor.",
+      "decision": "answer",
+      "citation": "Source: existing guide; extracted. guides/js/AlQadim.js \u2014 DB.chapters[1].required[id=ch2_1]",
+      "expectedRecordId": "alqadim:narrative:ch2_1:method",
+      "recordIdObservation": "Not exposed by current production UI; canonical oracle ID plus actual rendered source provenance checked.",
+      "directOnlyOracle": true
+    },
+    {
+      "surface": "alqadim-walkthrough",
+      "viewport": [
+        1280,
+        900
+      ],
+      "question": "What is the method for getting the Family Sword of Honor?",
+      "rendered": "Meet Aliya at the gates and speak with Zubin to get the Family Sword of Honor.",
+      "decision": "answer",
+      "citation": "Source: existing guide; extracted. guides/js/AlQadim.js \u2014 DB.chapters[1].required[id=ch2_1]",
+      "expectedRecordId": "alqadim:narrative:ch2_1:method",
+      "recordIdObservation": "Not exposed by current production UI; canonical oracle ID plus actual rendered source provenance checked.",
+      "directOnlyOracle": true
+    },
+    {
+      "surface": "alqadim-walkthrough",
+      "viewport": [
+        1280,
+        900
+      ],
+      "question": "What is the method for getting the Family Sword of Honor?",
+      "rendered": "Meet Aliya at the gates and speak with Zubin to get the Family Sword of Honor.",
+      "decision": "answer",
+      "citation": "Source: existing guide; extracted. guides/js/AlQadim.js \u2014 DB.chapters[1].required[id=ch2_1]",
+      "expectedRecordId": "alqadim:narrative:ch2_1:method",
+      "recordIdObservation": "Not exposed by current production UI; canonical oracle ID plus actual rendered source provenance checked.",
+      "directOnlyOracle": true
+    },
+    {
+      "surface": "alqadim-walkthrough",
+      "viewport": [
+        1280,
+        900
+      ],
+      "question": "What is the method for getting the Family Sword of Honor?",
+      "rendered": "Meet Aliya at the gates and speak with Zubin to get the Family Sword of Honor.",
+      "decision": "answer",
+      "citation": "Source: existing guide; extracted. guides/js/AlQadim.js \u2014 DB.chapters[1].required[id=ch2_1]",
+      "expectedRecordId": "alqadim:narrative:ch2_1:method",
+      "recordIdObservation": "Not exposed by current production UI; canonical oracle ID plus actual rendered source provenance checked.",
+      "directOnlyOracle": true
+    },
+    {
+      "surface": "alqadim-walkthrough",
+      "viewport": [
+        1280,
+        900
+      ],
+      "question": "What is the method for getting the Family Sword of Honor?",
+      "rendered": "Meet Aliya at the gates and speak with Zubin to get the Family Sword of Honor.",
+      "decision": "answer",
+      "citation": "Source: existing guide; extracted. guides/js/AlQadim.js \u2014 DB.chapters[1].required[id=ch2_1]",
+      "expectedRecordId": "alqadim:narrative:ch2_1:method",
+      "recordIdObservation": "Not exposed by current production UI; canonical oracle ID plus actual rendered source provenance checked.",
+      "directOnlyOracle": true
+    },
+    {
+      "surface": "alqadim-walkthrough",
+      "viewport": [
+        1280,
+        900
+      ],
+      "question": "What is the method for getting the Family Sword of Honor?",
+      "rendered": "Meet Aliya at the gates and speak with Zubin to get the Family Sword of Honor.",
+      "decision": "answer",
+      "citation": "Source: existing guide; extracted. guides/js/AlQadim.js \u2014 DB.chapters[1].required[id=ch2_1]",
+      "expectedRecordId": "alqadim:narrative:ch2_1:method",
+      "recordIdObservation": "Not exposed by current production UI; canonical oracle ID plus actual rendered source provenance checked.",
+      "directOnlyOracle": true
+    },
+    {
+      "surface": "alqadim-walkthrough",
+      "viewport": [
+        390,
+        844
+      ],
+      "question": "What is the method for getting the Family Sword of Honor?",
+      "rendered": "Meet Aliya at the gates and speak with Zubin to get the Family Sword of Honor.",
+      "decision": "answer",
+      "citation": "Source: existing guide; extracted. guides/js/AlQadim.js \u2014 DB.chapters[1].required[id=ch2_1]",
+      "expectedRecordId": "alqadim:narrative:ch2_1:method",
+      "recordIdObservation": "Not exposed by current production UI; canonical oracle ID plus actual rendered source provenance checked.",
+      "directOnlyOracle": true
+    }
+  ],
+  "storageUnchanged": {
+    "alqadim": true,
+    "alqadim-walkthrough": true
+  },
+  "storageWrites": {
+    "albion": [
+      {
+        "method": "setItem",
+        "key": "guide-assistant.preference.v1"
+      }
+    ],
+    "ultima5": [
+      {
+        "method": "setItem",
+        "key": "guide-assistant.preference.v1"
+      }
+    ],
+    "ultima6": [
+      {
+        "method": "setItem",
+        "key": "guide-assistant.preference.v1"
+      }
+    ],
+    "ultima7": [
+      {
+        "method": "setItem",
+        "key": "guide-assistant.preference.v1"
+      }
+    ],
+    "alqadim": [
+      {
+        "method": "setItem",
+        "key": "guide-assistant.preference.v1"
+      }
+    ],
+    "alqadim-walkthrough": [
+      {
+        "method": "setItem",
+        "key": "guide-assistant.preference.v1"
+      }
+    ],
+    "starcraft": [
+      {
+        "method": "setItem",
+        "key": "guide-assistant.preference.v1"
+      }
+    ]
+  },
+  "pageErrors": [],
+  "requests": [
+    {
+      "url": "http://127.0.0.1:44503/guides/Albion.html",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/css/assistant-consent.css",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/bootstrap.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/tailwind.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/css/fonts.css",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/css/leaflet.css",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/css/Albion.css",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/images/albion/briefing-hero.webp",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/leaflet.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/model-runtime.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/intent-runtime.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/consent.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/model-download.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/AlbionAtlasData.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/AlbionMarkers.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/Albion.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/fonts/inter-v19-latin-regular.woff2",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/fonts/lora-v36-latin-700.woff2",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/fonts/inter-v19-latin-600.woff2",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/fonts/inter-v19-latin-900.woff2",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/fonts/inter-v19-latin-800.woff2",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/fonts/lora-v36-latin-regular.woff2",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/fonts/inter-v19-latin-700.woff2",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/adapters/albion.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/ui.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/guide-assistant.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/topics.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/css/assistant.css",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/local-assistant/profile.json",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/local-assistant/intent/profile.json",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/engine.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/dialogue.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/source-responses.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/knowledge.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/policy.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/retrieval.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/language.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/consultation.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/factual-property-requests.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/software-capabilities.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/resource-condition-requests.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/sequence-field-requests.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/descriptive-reference-requests.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/question-source-attribution.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/named-source-fields.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/rules.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/fallback-context.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/fallback-guard.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/source-field-index.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/request-frame.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/source-field-router.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/source-field-guard.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/source-field-arguments.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/knowledge-graph.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/recorded-conditions.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/requested-measurements.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/source-contexts.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/static-property-conditions.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/source-preambles.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/source-location-context.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/procedural-requests.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/method-assertions.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/scene-transition-preambles.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/bundle-references.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/procedure-phase-fields.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/data/assistant/albion.json",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/data/assistant/consultation-catalog.json",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/data/assistant/knowledge/albion.json",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/data/assistant/knowledge/albion-embeddings.json",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/fonts/inter-v19-latin-italic.woff2",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/fonts/inter-v19-latin-700italic.woff2",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/intent-worker.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/model-download.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/intent-head.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/local-assistant/intent/files/7135149f7cffa1a573466c6e4d8423ed73b62fd2332c575bf738a0d033f70df7.bin",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/local-assistant/intent/files/da0e79933b9ed51798a3ae27893d3c5fa4a201126cef75586296df9b4d2c62a0.bin",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/local-assistant/intent/files/9261e7d79b44c8195c1cada2b453e55b00aeb81e907a6664974b4d7776172ab3.bin",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/local-assistant/intent/files/b6d346be366a7d1d48332dbc9fdf3bf8960b5d879522b7799ddba59e76237ee3.bin",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/local-assistant/intent/files/07eced375cec144d27c900241f3e339478dec958f92fddbc551f295c992038a3.bin",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/local-assistant/intent/files/7f4b29b4f81642ad87533b14758761b8859e5deb8717081893ac512006ea99c2.bin",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/local-assistant/intent/files/8bdaa80935c394b9c614e00c7b829303b05df133447f901c98c56ebf90d672b6.bin",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/local-assistant/intent/files/979c196a92df490124802e61fcc5fad787fc535ee69ff0eae64784355a8f6bfb.bin",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/local-assistant/files/08fb86ec433c78bfb032c5d84a68b8e8e5a8d81268fa39e24314179a5767a5b9.bin",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/local-assistant/files/9d41eaeb98b753f4fb40fd7ab6d37d86f37f31b08f78446a8a83327beb7f68f0.bin",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/local-assistant/files/b870ce8426a85ac994ef80359c3a01cd79d01ae49cf19f8a98d24810bbc7b4f4.bin",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/local-assistant/files/aa5002b70e789798da263f5f99c62bd3e8fcd0c119258a493c40c180648365fa.bin",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/Ultima5.html",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/css/assistant-consent.css",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/bootstrap.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/tailwind.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/chart.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/lucide.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/css/leaflet.css",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/css/Ultima5.css",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/images/Ultima5box.jpg",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/images/ultima5-briefing-hero.webp",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/model-runtime.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/intent-runtime.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/consent.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/model-download.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/leaflet.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/Ultima5AtlasData.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/Ultima5.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/images/paper-texture2.jpg",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/fonts/lora-v36-latin-700.woff2",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/images/U5GameWorld.png",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/fonts/inter-v19-latin-700.woff2",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/fonts/lora-v36-latin-regular.woff2",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/fonts/inter-v19-latin-regular.woff2",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/adapters/ultima5.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/ui.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/local-assistant/profile.json",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/guide-assistant.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/topics.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/local-assistant/intent/profile.json",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/css/assistant.css",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/images/Ultima5box.jpg",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/engine.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/dialogue.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/source-responses.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/knowledge.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/policy.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/retrieval.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/language.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/consultation.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/factual-property-requests.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/software-capabilities.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/resource-condition-requests.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/sequence-field-requests.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/descriptive-reference-requests.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/question-source-attribution.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/named-source-fields.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/rules.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/fallback-context.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/fallback-guard.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/source-field-index.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/request-frame.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/source-field-router.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/source-field-guard.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/source-field-arguments.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/knowledge-graph.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/recorded-conditions.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/requested-measurements.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/source-contexts.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/static-property-conditions.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/source-preambles.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/source-location-context.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/procedural-requests.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/method-assertions.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/scene-transition-preambles.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/bundle-references.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/procedure-phase-fields.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/data/assistant/ultima5.json",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/data/assistant/consultation-catalog.json",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/data/assistant/knowledge/ultima5.json",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/data/assistant/knowledge/ultima5-embeddings.json",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/images/Ultima5box.jpg",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/intent-worker.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/model-download.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/intent-head.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/Ultima6.html",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/css/assistant-consent.css",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/bootstrap.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/tailwind.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/chart.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/css/fonts.css",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/css/leaflet.css",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/css/Ultima6.css",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/images/Ultima6box.jpg",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/images/ultima6-briefing-hero.webp",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/model-runtime.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/intent-runtime.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/consent.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/model-download.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/leaflet.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/Ultima6Atlas.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/Ultima6.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/images/paper-texture.jpg",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/images/U6GameWorld.png",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/local-assistant/profile.json",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/local-assistant/intent/profile.json",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/adapters/ultima6.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/ui.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/guide-assistant.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/topics.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/css/assistant.css",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/engine.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/dialogue.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/source-responses.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/knowledge.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/policy.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/retrieval.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/language.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/consultation.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/factual-property-requests.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/software-capabilities.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/resource-condition-requests.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/sequence-field-requests.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/descriptive-reference-requests.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/question-source-attribution.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/named-source-fields.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/rules.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/fallback-context.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/fallback-guard.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/source-field-index.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/request-frame.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/source-field-router.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/source-field-guard.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/source-field-arguments.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/knowledge-graph.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/recorded-conditions.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/requested-measurements.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/source-contexts.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/static-property-conditions.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/source-preambles.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/source-location-context.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/procedural-requests.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/method-assertions.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/scene-transition-preambles.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/bundle-references.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/procedure-phase-fields.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/data/assistant/ultima6.json",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/data/assistant/consultation-catalog.json",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/data/assistant/knowledge/ultima6.json",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/data/assistant/knowledge/ultima6-embeddings.json",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/intent-worker.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/model-download.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/intent-head.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/Ultima7.html",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/css/assistant-consent.css",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/bootstrap.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/tailwind.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/chart.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/css/fonts.css",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/css/leaflet.css",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/css/Ultima7.css",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/images/ultima7-briefing-hero.webp",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/leaflet.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/model-runtime.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/intent-runtime.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/consent.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/model-download.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/Ultima7Markers.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/Ultima7.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/fonts/lora-v36-latin-regular.woff2",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/images/U7PWorldMap.jpg",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/fonts/inter-v19-latin-regular.woff2",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/fonts/lora-v36-latin-700.woff2",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/fonts/inter-v19-latin-600.woff2",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/fonts/inter-v19-latin-800.woff2",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/fonts/inter-v19-latin-700.woff2",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/images/ultima7-portraits/avatar.png",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/images/ultima7-portraits/iolo.png",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/local-assistant/profile.json",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/local-assistant/intent/profile.json",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/adapters/ultima7.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/ui.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/guide-assistant.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/policy.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/topics.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/css/assistant.css",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/engine.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/dialogue.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/source-responses.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/knowledge.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/retrieval.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/language.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/consultation.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/factual-property-requests.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/software-capabilities.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/resource-condition-requests.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/sequence-field-requests.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/descriptive-reference-requests.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/question-source-attribution.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/named-source-fields.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/rules.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/fallback-context.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/fallback-guard.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/source-field-index.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/request-frame.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/source-field-router.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/source-field-guard.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/source-field-arguments.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/knowledge-graph.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/recorded-conditions.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/requested-measurements.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/source-contexts.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/static-property-conditions.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/source-preambles.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/source-location-context.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/procedural-requests.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/method-assertions.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/scene-transition-preambles.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/bundle-references.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/procedure-phase-fields.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/data/assistant/ultima7.json",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/data/assistant/consultation-catalog.json",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/data/assistant/knowledge/ultima7.json",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/data/assistant/knowledge/ultima7-embeddings.json",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/intent-worker.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/model-download.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/intent-head.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/AlQadim.html",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/css/assistant-consent.css",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/bootstrap.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/tailwind.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/css/fonts.css",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/css/leaflet.css",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/css/AlQadim.css",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/images/alqadim/art_genie_lamp_reimagined.png",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/images/alqadim/briefing-hero.webp",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/model-runtime.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/intent-runtime.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/consent.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/model-download.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/images/alqadim/corsair-field-manual.webp",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/images/alqadim/screenshot_inventory_remastered.png",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/images/alqadim/art_chessboard_reimagined.png",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/leaflet.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/AlQadimAtlasData.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/AlQadim.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/images/alqadim/art_nameless_one_reimagined.png",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/images/alqadim/sourcebook-parchment.webp",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/fonts/lora-v36-latin-700.woff2",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/fonts/inter-v19-latin-regular.woff2",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/fonts/lora-v36-latin-regular.woff2",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/fonts/lora-v36-latin-600.woff2",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/fonts/inter-v19-latin-900.woff2",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/fonts/inter-v19-latin-800.woff2",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/fonts/inter-v19-latin-700.woff2",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/adapters/alqadim.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/ui.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/guide-assistant.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/topics.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/css/assistant.css",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/local-assistant/profile.json",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/local-assistant/intent/profile.json",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/engine.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/dialogue.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/source-responses.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/knowledge.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/policy.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/retrieval.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/language.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/consultation.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/factual-property-requests.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/software-capabilities.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/resource-condition-requests.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/sequence-field-requests.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/descriptive-reference-requests.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/question-source-attribution.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/named-source-fields.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/rules.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/fallback-context.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/fallback-guard.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/source-field-index.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/request-frame.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/source-field-router.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/source-field-guard.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/source-field-arguments.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/knowledge-graph.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/recorded-conditions.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/requested-measurements.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/source-contexts.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/static-property-conditions.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/source-preambles.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/source-location-context.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/procedural-requests.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/method-assertions.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/scene-transition-preambles.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/bundle-references.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/procedure-phase-fields.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/data/assistant/alqadim.json",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/data/assistant/consultation-catalog.json",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/data/assistant/knowledge/alqadim.json",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/data/assistant/knowledge/alqadim-embeddings.json",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/fonts/inter-v19-latin-600.woff2",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/intent-worker.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/model-download.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/intent-head.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/AlQadim.html",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/css/assistant-consent.css",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/bootstrap.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/tailwind.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/css/fonts.css",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/css/leaflet.css",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/css/AlQadim.css",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/images/alqadim/art_genie_lamp_reimagined.png",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/images/alqadim/briefing-hero.webp",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/model-runtime.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/intent-runtime.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/consent.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/model-download.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/images/alqadim/corsair-field-manual.webp",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/images/alqadim/screenshot_inventory_remastered.png",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/images/alqadim/art_chessboard_reimagined.png",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/leaflet.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/AlQadimAtlasData.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/AlQadim.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/images/alqadim/art_nameless_one_reimagined.png",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/images/alqadim/sourcebook-parchment.webp",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/fonts/lora-v36-latin-700.woff2",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/fonts/inter-v19-latin-regular.woff2",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/fonts/lora-v36-latin-regular.woff2",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/fonts/lora-v36-latin-600.woff2",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/fonts/inter-v19-latin-900.woff2",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/fonts/inter-v19-latin-800.woff2",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/fonts/inter-v19-latin-700.woff2",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/adapters/alqadim.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/ui.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/guide-assistant.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/topics.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/css/assistant.css",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/local-assistant/profile.json",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/local-assistant/intent/profile.json",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/engine.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/dialogue.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/source-responses.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/knowledge.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/policy.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/retrieval.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/language.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/consultation.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/factual-property-requests.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/software-capabilities.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/resource-condition-requests.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/sequence-field-requests.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/descriptive-reference-requests.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/question-source-attribution.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/named-source-fields.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/rules.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/fallback-context.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/fallback-guard.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/source-field-index.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/request-frame.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/source-field-router.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/source-field-guard.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/source-field-arguments.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/knowledge-graph.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/recorded-conditions.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/requested-measurements.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/source-contexts.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/static-property-conditions.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/source-preambles.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/source-location-context.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/procedural-requests.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/method-assertions.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/scene-transition-preambles.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/bundle-references.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/procedure-phase-fields.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/data/assistant/alqadim.json",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/data/assistant/consultation-catalog.json",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/data/assistant/knowledge/alqadim.json",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/data/assistant/knowledge/alqadim-embeddings.json",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/fonts/inter-v19-latin-600.woff2",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/fonts/inter-v19-latin-600italic.woff2",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/intent-worker.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/model-download.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/intent-head.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/StarcraftBWAPI.html",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/css/assistant-consent.css",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/bootstrap.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/tailwind.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/chart.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/lucide.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/css/Starcraft.css",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/images/Starcraftbox.jpg",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/images/liberica_jre.png",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/model-runtime.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/intent-runtime.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/consent.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/model-download.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/images/schnai_mainui.png",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/images/schnai_gameplay.png",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/images/starcraft-bc-bg.jpg",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/adapters/starcraft.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/guide-assistant.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/ui.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/topics.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/local-assistant/profile.json",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/local-assistant/intent/profile.json",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/engine.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/dialogue.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/source-responses.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/knowledge.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/policy.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/retrieval.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/language.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/consultation.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/factual-property-requests.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/software-capabilities.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/resource-condition-requests.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/sequence-field-requests.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/descriptive-reference-requests.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/question-source-attribution.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/named-source-fields.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/rules.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/fallback-context.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/fallback-guard.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/source-field-index.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/request-frame.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/source-field-router.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/source-field-guard.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/source-field-arguments.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/knowledge-graph.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/recorded-conditions.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/requested-measurements.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/source-contexts.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/static-property-conditions.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/source-preambles.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/source-location-context.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/procedural-requests.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/method-assertions.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/scene-transition-preambles.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/bundle-references.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/procedure-phase-fields.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/css/assistant.css",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/data/assistant/starcraft.json",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/data/assistant/consultation-catalog.json",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/data/assistant/knowledge/starcraft.json",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/data/assistant/knowledge/starcraft-embeddings.json",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/intent-worker.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/model-download.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/intent-head.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/tests/assistant/",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/engine.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/policy.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/retrieval.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/rules.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/model-runtime.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/fallback-context.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/fallback-guard.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/language.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/topics.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/source-preambles.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/scene-transition-preambles.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/js/assistant/ui.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44503/guides/css/assistant.css",
+      "method": "GET",
+      "hasBody": false
+    }
+  ],
+  "blockedRequests": [],
+  "sourceHashesBefore": {
+    "guides/AlQadim.html": "a3a46b58e9d4f5130f7e804208e919f9513fd9d923df4484d8d7b00d5d76761b",
+    "guides/Albion.html": "fe71ab0c58c947ef3eabf3690ad7dcaffebb066f5538729a013977deda1f6978",
+    "guides/StarcraftBWAPI.html": "f43b3fcfbffddaadf2b4bf951b16652a9d1133d726b7efe06357f9a7cb925983",
+    "guides/Ultima5.html": "c419f66b8a99902351736c024a2230899ec21cdb4ab7af971c58f547b69a2212",
+    "guides/Ultima6.html": "f64c4728cd19b042ccea6c7aa7398aea50b955f7fa3ad177168a937149fd30c2",
+    "guides/Ultima7.html": "dfc1ef95f254d5f5e905910353081704e04e491c284041b9d8c706b93de1a405",
+    "guides/css/AlQadim.css": "c29271988579dedcf94b160312ca16c0f8e0994b75e1eef52033021232f00e92",
+    "guides/css/Albion.css": "4a66562119a9843a9241f13abd7d42ed990a308babe7c1a657c0dddd2712e1bb",
+    "guides/css/Starcraft.css": "a682aa3e68b90d9badd29b82f6ca4fbb1f609de22c7edfc36edad2b38e35a036",
+    "guides/css/Ultima5.css": "944beebb213134d7c8c1d70ed1ddcffeb23a0bc9c83f4b3246de1069e2116ab3",
+    "guides/css/Ultima6.css": "853833987d3471fdf758dd3f6671938dff987d9a63ff237725fbc47af9abe13b",
+    "guides/css/Ultima7.css": "4448a986d73473bd4444cc7a2d300ff3b359278c41d9c3a12ec86aa35a5ac71a",
+    "guides/css/assistant-consent.css": "75fc193a045ce2ac0f2937dbf7263eeca7a3d0d278b34ac28dfe948107d2dd95",
+    "guides/css/assistant.css": "c7cf671a906009f14cd8d33b4fb9567f80af090b418fd462884106150ed8dc03",
+    "guides/css/fonts.css": "39217afc105185c4edd31a75422dee29a9f03a068aa89415b963b13cb7329ce7",
+    "guides/css/index.css": "7022da3fe5e4f2790aad8465911e921c8aef0c4b93231cc5069b5f713edb27eb",
+    "guides/css/leaflet.css": "a7837102824184820dfa198d1ebcd109ff6d0ff9a2672a074b9a1b4d147d04c6",
+    "guides/css/offline.css": "71355c6e53c5dd70ce36cb47ef011e63c0865c10a7f2d77d02931625b1ea4614",
+    "guides/data/assistant/albion.json": "b3b219ccb434c450189e97404b4c06a3bbc8334dc581bea55bc4a70213851404",
+    "guides/data/assistant/alqadim.json": "f0f15243ea3b27701d97b3ab369a108ef46e93ec5f780f6e1fd1bf5e69bf2b77",
+    "guides/data/assistant/consultation-catalog.json": "96d5b392afabfcbd9f59007ce17fa7ce20a8874b3cacf0248ae349bc93889cca",
+    "guides/data/assistant/manifest.json": "d2ad011aa0d0c733b9c35a9e1afc70a01f8eef0cbfc04de0eaf45a90824d9ee4",
+    "guides/data/assistant/starcraft.json": "0dc5925ca67adfc434b5366213a5e05e11cbf869f1d0aa71e4daa6d16ae2dfc0",
+    "guides/data/assistant/ultima5.json": "bbd6a3a33133bc1aca80ac7a19cea5011e19c9f33869582355d7fd60f0f0d24e",
+    "guides/data/assistant/ultima6.json": "67b3bf1e8e935df279bec2f11cf698ba721f5d8e169f1a050fefa4ee66b5ad05",
+    "guides/data/assistant/ultima7.json": "9b5c29c25936ccfd20ca9b704df57d45c1f7142a2014b09630f8e2f2aee10871",
+    "guides/js/AlQadim.js": "269798843206f12b76163c65b04301be278652115fbdbd46596f13f3ae7b5e5e",
+    "guides/js/AlQadimAtlasData.js": "82abbb86cafad98655e4bacfdd28e8ba96fba7f747da44b30aaa9364a37e747e",
+    "guides/js/Albion.js": "4adba84eca7af2436731b7053e3167a909f57f85edc611c6287411af84e4b1ca",
+    "guides/js/AlbionAtlasData.js": "b5a96b06ee31e94eba95df1cec41c2b564576e1170a3065b61e9f5db7890dcc8",
+    "guides/js/AlbionMarkers.js": "1de190722be16721a0ff3ff3a50b2c1298706bc33629dd223ed673f63cfbc27b",
+    "guides/js/Ultima5.js": "e2699ed2d8aca9bf3465c7dcd262461f5fca59f1fb4cbd41361e0f5c5a96dae5",
+    "guides/js/Ultima5AtlasData.js": "1292346505cb26d534154b317d7beee7bb186f8dda2d9316127912111bfb72a2",
+    "guides/js/Ultima6.js": "a0b07db60d7c30ac19bb64b56fa26b1428a6437f437f087eb2d75109afae4898",
+    "guides/js/Ultima6Atlas.js": "c83db308efae81f2868d5b4954d679d24e81b83b226d4e4548699668f98d8e88",
+    "guides/js/Ultima7.js": "c3cd92659e5e959c6d172ba38d56ba85148729b82185768557cb595e3bfb6085",
+    "guides/js/Ultima7Markers.js": "9103499a31be5bd132959ff268aa0149b90ec310a7f1098fbed1fc25a2de1f2e",
+    "guides/js/assistant/adapters/albion.js": "df3993cb351cf9f5e4ade03d8bcfdfc3477c00f4fb39922b9e8cc8d4e255e70b",
+    "guides/js/assistant/adapters/alqadim.js": "fa65928d9011011a12095cd4bbf37a56bfed3b91559ce6aa8097a991b111065c",
+    "guides/js/assistant/adapters/starcraft.js": "b4a11908b121a545fd810c4f8ae09404c210ab0607f70e9121a145a8aea6063e",
+    "guides/js/assistant/adapters/ultima5.js": "3aa64babe0f83ecc713f5d9a665b8ba7a4e7dbfce557a8cff22778a6170cf95a",
+    "guides/js/assistant/adapters/ultima6.js": "d99a14171975b88fff97d7e0ff9a39ac1e07abfed425706732827d6d4fe5e480",
+    "guides/js/assistant/adapters/ultima7.js": "5140505e9fe04a864e950afab671519f31ef24ac6a9b2e91b7c3853c1cf1e7c3",
+    "guides/js/assistant/bootstrap.js": "022aff4f7c2f93fc5c74da9b6457c6a53ee5eb2c072bf90970eca95ef3855608",
+    "guides/js/assistant/bundle-references.js": "7f1b26d1b66cd8a5c225d10e09dcad1e7886833115f4c064186a214e64986746",
+    "guides/js/assistant/consent.js": "cd83de63e5ec28425fad9eef36d597eec48ec839cb48e93569a568571f1e4b98",
+    "guides/js/assistant/consultation.js": "413afbcdae0843ee276390abe0c810ee76ce8b1437df797ede2261eea1f6b85d",
+    "guides/js/assistant/descriptive-reference-requests.js": "1b96861fd652ac875caa663aecf18691563291180c3899e5e0e99df3b69e275a",
+    "guides/js/assistant/dialogue.js": "8fa6449a825030b928a7b179cdf358f4a769ce9df1e1bdf290cfa818e6937680",
+    "guides/js/assistant/engine.js": "e558f38682a413f9e94a85de0dcc217e29f73320f2863b18d1a0a3d55278cca1",
+    "guides/js/assistant/factual-property-requests.js": "3eee2e045f641ea641fc0b5a0eac906d1e897f6b7a69a5dd14d54eda3a1a5391",
+    "guides/js/assistant/fallback-context.js": "73c2638570035a73683cdd83b2eac5133d577892aef3613539ebb80c0481cb73",
+    "guides/js/assistant/fallback-guard.js": "8ac7766576c0fa39a9f8eb1d8130687f5dec2d93ed3793b1ab32a416502eb4dc",
+    "guides/js/assistant/frame-tokens.js": "9f225b8d13b2082f45af7f1ec7ca5b56900733383537123d7dab05baa95f511b",
+    "guides/js/assistant/guide-assistant.js": "3cb383e9989d466330fcb8a04161c7816b943c823080e1aca4be777244729665",
+    "guides/js/assistant/intent-head.js": "23e428fedd405946199beb1e55641281bdae078e3d8ea6e448d0ac0acc1a39a7",
+    "guides/js/assistant/intent-runtime.js": "3187389f1a763a0f0234e2379205dc7c6763895b5292b59e36c903a5b908029f",
+    "guides/js/assistant/intent-worker.js": "246895c7ee6e5c70dd98cec48235768bbbc8bbeeeea994e5028e41ceb26d8119",
+    "guides/js/assistant/knowledge-graph.js": "9d56040bdcaf20757fc74250de7a59240d035d2d78c43a79afda9c8a9853add2",
+    "guides/js/assistant/knowledge.js": "e7516fdbe58578b6dfb6f96f78a33a034d703dff97b74985dbe2decba7ae4353",
+    "guides/js/assistant/language.js": "f5dd1e7492e51a4d2696132e04d7e482d1bec388656ba5b65f7ecf7a774bd158",
+    "guides/js/assistant/method-assertions.js": "af2baf1b5b82bb90bc52fb2de532a25ce5636f56c8d18fc950440e20bffccbf8",
+    "guides/js/assistant/model-download.js": "1a9f1be1319d9219507a140e4eae6ad6ea2cbb348b19771c7261d1a52432a6a1",
+    "guides/js/assistant/model-runtime.js": "c6331135f75b3ab5f094e6b7020567b19f2b22286105dc51eba190917e98fdd1",
+    "guides/js/assistant/model-worker.js": "5f490d60ae8b991ae64d523d16c683d11a8995283353cfb534f0d3529ce0d6fc",
+    "guides/js/assistant/named-source-fields.js": "01be64708979000a2bef5cf7350711e288321dcb0eced236ca9e58f19f1ccae0",
+    "guides/js/assistant/policy.js": "df44eea0b5eec7dae01deb0ab4c179873cb5f271ae1a3d87ed89a630cb87aec3",
+    "guides/js/assistant/procedural-requests.js": "9d5fd00d418dcca978f45f5f0540264367f345938cc968d7fc57fd2bcf5d6dd3",
+    "guides/js/assistant/procedure-phase-fields.js": "cfe12698b43d87fa314d4226527cf36289834bf0f5dd18c0face0e04eba0b82a",
+    "guides/js/assistant/question-source-attribution.js": "ba2ad08ed24fe0e7c805cfb6584e7542e9e273e6311fc211991cbb5a1484e661",
+    "guides/js/assistant/recorded-conditions.js": "e081dd84810466b52540445b1c780b8297e6932cefad445fab620359b686a89e",
+    "guides/js/assistant/request-frame.js": "08356a3e740e6d38f0eba00c55397add82fd25ddbc0ce32c05690a003b2f2eb4",
+    "guides/js/assistant/requested-measurements.js": "306478afc82de4e52e29ce0f604b433ea5f5d22e2a330a53d41cc7d8bdccd3f6",
+    "guides/js/assistant/resource-condition-requests.js": "391815392b00782968d49612bc2f2a94ffc6cbe141429298b927f818d6571116",
+    "guides/js/assistant/retrieval.js": "1ff4e7fe4ef670bde94ca3cac6935fd73c2fa831c98a06d1fdc35cc5e48ce132",
+    "guides/js/assistant/rules.js": "3c2edda7907d22a78d022abd9e1fded1ad70103056129325f44d2cc8be78ef74",
+    "guides/js/assistant/scene-transition-preambles.js": "17ed5579286e36a6eab38235cc5816178225644700140379d1c7d0d32e4f0597",
+    "guides/js/assistant/sequence-field-requests.js": "e7d45f727857b29a1467f2c140f38635d10ba0ceb32840bdba7a135a3fbdd30b",
+    "guides/js/assistant/software-capabilities.js": "b2b8586501f8279d072d0a0f0a2286a9ebad8f4d06b5fdc46ff4b380c70c8ba4",
+    "guides/js/assistant/source-contexts.js": "0aea9648a948b346fea93e7fdc65abd013589979bae33cf99d81bf31028ecb99",
+    "guides/js/assistant/source-field-arguments.js": "a770e03e886b07ad200a43d1a9cc8ebcf1451d9500eb8b92de7d651fc83b71a5",
+    "guides/js/assistant/source-field-guard.js": "2e916cbeff86f0419120e9fd4dcf89467c4bd6830033ad8d080d0769efefb11f",
+    "guides/js/assistant/source-field-index.js": "b71914f21f66b880f78097f8304fba2f1a00241445025a82d99243733101bf81",
+    "guides/js/assistant/source-field-router.js": "3e2678557d656ddb943ea68247f4be75ffdc34643ddb6666da28328e17164a39",
+    "guides/js/assistant/source-location-context.js": "7660b7b38b53b44d8a24a3ae2b600fa796690e8a8f1fd340ea993a6580148558",
+    "guides/js/assistant/source-preambles.js": "bd989c5b9f6b6f565745f5d3044612aa46af2b8034d998c363967a7e181c402e",
+    "guides/js/assistant/source-responses.js": "543d39de10177858da8cfa8bef8bf9f4b91f9daeed2d44f8a217f1b7ff86e041",
+    "guides/js/assistant/static-property-conditions.js": "357896e3d7dffdd0cac913f5afa6e5aa0dde1ed76498db8eeff69228ccf718ab",
+    "guides/js/assistant/topics.js": "cae60c918f936d1429713f076420e32c1fc72a89d371b47f7b1958b81e852d39",
+    "guides/js/assistant/ui.js": "d75176fca259ceb47493529cf01b114fce45f45c07444b6de67dd7f68f97092d",
+    "guides/js/chart.js": "e0059220c10bff95fdb7f5b77b9bfffba68b3ccf4eab4f7398ee7aef3cffca2b",
+    "guides/js/index.js": "0feb3e548e54dd42b171533aebd0931a77cdb0f5b5c51ce2d733814e8cdae557",
+    "guides/js/leaflet.js": "85d455b4522415f6badc42a0e7d17c919d100347d6b8958bd0dc738fdecd6d50",
+    "guides/js/lucide.js": "9dac1057f358d159e8ce1e46f259df2b0cb4a19281de7cf8c9ffb29c7a2226f6",
+    "guides/js/tailwind.js": "7afa0afd2536044695e7e674298bc0dda9af94475e4e07d0575feccfa796c74f",
+    "guides/tests/assistant/browser-consent-fixture.js": "824ec886ed266ada0d40fe2f7142995cd8252f7629b395ee4be9037dea63b89f",
+    "guides/tests/assistant/browser_conversation_observer.py": "b3a5d1ebaea8cc1cc4e9ef351518c791cf9e682f349e79ecfd8851c80e70197b",
+    "guides/tests/assistant/full-answer-browser.py": "14c72f2b0e3ff540f13cf2019c8eeba8a4e758251cb33c03ab191bf5c4fa97ae",
+    "guides/tests/assistant/narrative-all-games-cases.json": "7b2b4c58f5c799e942077a08740e68f324097ee302e0c41f86db8d59dfe2e2fc"
+  },
+  "screenshots": [],
+  "loopbackPort": 44503,
+  "browser": "156.0.8078.47",
+  "serverClosed": true,
+  "sourceHashesAfter": {
+    "guides/AlQadim.html": "a3a46b58e9d4f5130f7e804208e919f9513fd9d923df4484d8d7b00d5d76761b",
+    "guides/Albion.html": "fe71ab0c58c947ef3eabf3690ad7dcaffebb066f5538729a013977deda1f6978",
+    "guides/StarcraftBWAPI.html": "f43b3fcfbffddaadf2b4bf951b16652a9d1133d726b7efe06357f9a7cb925983",
+    "guides/Ultima5.html": "c419f66b8a99902351736c024a2230899ec21cdb4ab7af971c58f547b69a2212",
+    "guides/Ultima6.html": "f64c4728cd19b042ccea6c7aa7398aea50b955f7fa3ad177168a937149fd30c2",
+    "guides/Ultima7.html": "dfc1ef95f254d5f5e905910353081704e04e491c284041b9d8c706b93de1a405",
+    "guides/css/AlQadim.css": "c29271988579dedcf94b160312ca16c0f8e0994b75e1eef52033021232f00e92",
+    "guides/css/Albion.css": "4a66562119a9843a9241f13abd7d42ed990a308babe7c1a657c0dddd2712e1bb",
+    "guides/css/Starcraft.css": "a682aa3e68b90d9badd29b82f6ca4fbb1f609de22c7edfc36edad2b38e35a036",
+    "guides/css/Ultima5.css": "944beebb213134d7c8c1d70ed1ddcffeb23a0bc9c83f4b3246de1069e2116ab3",
+    "guides/css/Ultima6.css": "853833987d3471fdf758dd3f6671938dff987d9a63ff237725fbc47af9abe13b",
+    "guides/css/Ultima7.css": "4448a986d73473bd4444cc7a2d300ff3b359278c41d9c3a12ec86aa35a5ac71a",
+    "guides/css/assistant-consent.css": "75fc193a045ce2ac0f2937dbf7263eeca7a3d0d278b34ac28dfe948107d2dd95",
+    "guides/css/assistant.css": "c7cf671a906009f14cd8d33b4fb9567f80af090b418fd462884106150ed8dc03",
+    "guides/css/fonts.css": "39217afc105185c4edd31a75422dee29a9f03a068aa89415b963b13cb7329ce7",
+    "guides/css/index.css": "7022da3fe5e4f2790aad8465911e921c8aef0c4b93231cc5069b5f713edb27eb",
+    "guides/css/leaflet.css": "a7837102824184820dfa198d1ebcd109ff6d0ff9a2672a074b9a1b4d147d04c6",
+    "guides/css/offline.css": "71355c6e53c5dd70ce36cb47ef011e63c0865c10a7f2d77d02931625b1ea4614",
+    "guides/data/assistant/albion.json": "b3b219ccb434c450189e97404b4c06a3bbc8334dc581bea55bc4a70213851404",
+    "guides/data/assistant/alqadim.json": "f0f15243ea3b27701d97b3ab369a108ef46e93ec5f780f6e1fd1bf5e69bf2b77",
+    "guides/data/assistant/consultation-catalog.json": "96d5b392afabfcbd9f59007ce17fa7ce20a8874b3cacf0248ae349bc93889cca",
+    "guides/data/assistant/manifest.json": "d2ad011aa0d0c733b9c35a9e1afc70a01f8eef0cbfc04de0eaf45a90824d9ee4",
+    "guides/data/assistant/starcraft.json": "0dc5925ca67adfc434b5366213a5e05e11cbf869f1d0aa71e4daa6d16ae2dfc0",
+    "guides/data/assistant/ultima5.json": "bbd6a3a33133bc1aca80ac7a19cea5011e19c9f33869582355d7fd60f0f0d24e",
+    "guides/data/assistant/ultima6.json": "67b3bf1e8e935df279bec2f11cf698ba721f5d8e169f1a050fefa4ee66b5ad05",
+    "guides/data/assistant/ultima7.json": "9b5c29c25936ccfd20ca9b704df57d45c1f7142a2014b09630f8e2f2aee10871",
+    "guides/js/AlQadim.js": "269798843206f12b76163c65b04301be278652115fbdbd46596f13f3ae7b5e5e",
+    "guides/js/AlQadimAtlasData.js": "82abbb86cafad98655e4bacfdd28e8ba96fba7f747da44b30aaa9364a37e747e",
+    "guides/js/Albion.js": "4adba84eca7af2436731b7053e3167a909f57f85edc611c6287411af84e4b1ca",
+    "guides/js/AlbionAtlasData.js": "b5a96b06ee31e94eba95df1cec41c2b564576e1170a3065b61e9f5db7890dcc8",
+    "guides/js/AlbionMarkers.js": "1de190722be16721a0ff3ff3a50b2c1298706bc33629dd223ed673f63cfbc27b",
+    "guides/js/Ultima5.js": "e2699ed2d8aca9bf3465c7dcd262461f5fca59f1fb4cbd41361e0f5c5a96dae5",
+    "guides/js/Ultima5AtlasData.js": "1292346505cb26d534154b317d7beee7bb186f8dda2d9316127912111bfb72a2",
+    "guides/js/Ultima6.js": "a0b07db60d7c30ac19bb64b56fa26b1428a6437f437f087eb2d75109afae4898",
+    "guides/js/Ultima6Atlas.js": "c83db308efae81f2868d5b4954d679d24e81b83b226d4e4548699668f98d8e88",
+    "guides/js/Ultima7.js": "c3cd92659e5e959c6d172ba38d56ba85148729b82185768557cb595e3bfb6085",
+    "guides/js/Ultima7Markers.js": "9103499a31be5bd132959ff268aa0149b90ec310a7f1098fbed1fc25a2de1f2e",
+    "guides/js/assistant/adapters/albion.js": "df3993cb351cf9f5e4ade03d8bcfdfc3477c00f4fb39922b9e8cc8d4e255e70b",
+    "guides/js/assistant/adapters/alqadim.js": "fa65928d9011011a12095cd4bbf37a56bfed3b91559ce6aa8097a991b111065c",
+    "guides/js/assistant/adapters/starcraft.js": "b4a11908b121a545fd810c4f8ae09404c210ab0607f70e9121a145a8aea6063e",
+    "guides/js/assistant/adapters/ultima5.js": "3aa64babe0f83ecc713f5d9a665b8ba7a4e7dbfce557a8cff22778a6170cf95a",
+    "guides/js/assistant/adapters/ultima6.js": "d99a14171975b88fff97d7e0ff9a39ac1e07abfed425706732827d6d4fe5e480",
+    "guides/js/assistant/adapters/ultima7.js": "5140505e9fe04a864e950afab671519f31ef24ac6a9b2e91b7c3853c1cf1e7c3",
+    "guides/js/assistant/bootstrap.js": "022aff4f7c2f93fc5c74da9b6457c6a53ee5eb2c072bf90970eca95ef3855608",
+    "guides/js/assistant/bundle-references.js": "7f1b26d1b66cd8a5c225d10e09dcad1e7886833115f4c064186a214e64986746",
+    "guides/js/assistant/consent.js": "cd83de63e5ec28425fad9eef36d597eec48ec839cb48e93569a568571f1e4b98",
+    "guides/js/assistant/consultation.js": "413afbcdae0843ee276390abe0c810ee76ce8b1437df797ede2261eea1f6b85d",
+    "guides/js/assistant/descriptive-reference-requests.js": "1b96861fd652ac875caa663aecf18691563291180c3899e5e0e99df3b69e275a",
+    "guides/js/assistant/dialogue.js": "8fa6449a825030b928a7b179cdf358f4a769ce9df1e1bdf290cfa818e6937680",
+    "guides/js/assistant/engine.js": "e558f38682a413f9e94a85de0dcc217e29f73320f2863b18d1a0a3d55278cca1",
+    "guides/js/assistant/factual-property-requests.js": "3eee2e045f641ea641fc0b5a0eac906d1e897f6b7a69a5dd14d54eda3a1a5391",
+    "guides/js/assistant/fallback-context.js": "73c2638570035a73683cdd83b2eac5133d577892aef3613539ebb80c0481cb73",
+    "guides/js/assistant/fallback-guard.js": "8ac7766576c0fa39a9f8eb1d8130687f5dec2d93ed3793b1ab32a416502eb4dc",
+    "guides/js/assistant/frame-tokens.js": "9f225b8d13b2082f45af7f1ec7ca5b56900733383537123d7dab05baa95f511b",
+    "guides/js/assistant/guide-assistant.js": "3cb383e9989d466330fcb8a04161c7816b943c823080e1aca4be777244729665",
+    "guides/js/assistant/intent-head.js": "23e428fedd405946199beb1e55641281bdae078e3d8ea6e448d0ac0acc1a39a7",
+    "guides/js/assistant/intent-runtime.js": "3187389f1a763a0f0234e2379205dc7c6763895b5292b59e36c903a5b908029f",
+    "guides/js/assistant/intent-worker.js": "246895c7ee6e5c70dd98cec48235768bbbc8bbeeeea994e5028e41ceb26d8119",
+    "guides/js/assistant/knowledge-graph.js": "9d56040bdcaf20757fc74250de7a59240d035d2d78c43a79afda9c8a9853add2",
+    "guides/js/assistant/knowledge.js": "e7516fdbe58578b6dfb6f96f78a33a034d703dff97b74985dbe2decba7ae4353",
+    "guides/js/assistant/language.js": "f5dd1e7492e51a4d2696132e04d7e482d1bec388656ba5b65f7ecf7a774bd158",
+    "guides/js/assistant/method-assertions.js": "af2baf1b5b82bb90bc52fb2de532a25ce5636f56c8d18fc950440e20bffccbf8",
+    "guides/js/assistant/model-download.js": "1a9f1be1319d9219507a140e4eae6ad6ea2cbb348b19771c7261d1a52432a6a1",
+    "guides/js/assistant/model-runtime.js": "c6331135f75b3ab5f094e6b7020567b19f2b22286105dc51eba190917e98fdd1",
+    "guides/js/assistant/model-worker.js": "5f490d60ae8b991ae64d523d16c683d11a8995283353cfb534f0d3529ce0d6fc",
+    "guides/js/assistant/named-source-fields.js": "01be64708979000a2bef5cf7350711e288321dcb0eced236ca9e58f19f1ccae0",
+    "guides/js/assistant/policy.js": "df44eea0b5eec7dae01deb0ab4c179873cb5f271ae1a3d87ed89a630cb87aec3",
+    "guides/js/assistant/procedural-requests.js": "9d5fd00d418dcca978f45f5f0540264367f345938cc968d7fc57fd2bcf5d6dd3",
+    "guides/js/assistant/procedure-phase-fields.js": "cfe12698b43d87fa314d4226527cf36289834bf0f5dd18c0face0e04eba0b82a",
+    "guides/js/assistant/question-source-attribution.js": "ba2ad08ed24fe0e7c805cfb6584e7542e9e273e6311fc211991cbb5a1484e661",
+    "guides/js/assistant/recorded-conditions.js": "e081dd84810466b52540445b1c780b8297e6932cefad445fab620359b686a89e",
+    "guides/js/assistant/request-frame.js": "08356a3e740e6d38f0eba00c55397add82fd25ddbc0ce32c05690a003b2f2eb4",
+    "guides/js/assistant/requested-measurements.js": "306478afc82de4e52e29ce0f604b433ea5f5d22e2a330a53d41cc7d8bdccd3f6",
+    "guides/js/assistant/resource-condition-requests.js": "391815392b00782968d49612bc2f2a94ffc6cbe141429298b927f818d6571116",
+    "guides/js/assistant/retrieval.js": "1ff4e7fe4ef670bde94ca3cac6935fd73c2fa831c98a06d1fdc35cc5e48ce132",
+    "guides/js/assistant/rules.js": "3c2edda7907d22a78d022abd9e1fded1ad70103056129325f44d2cc8be78ef74",
+    "guides/js/assistant/scene-transition-preambles.js": "17ed5579286e36a6eab38235cc5816178225644700140379d1c7d0d32e4f0597",
+    "guides/js/assistant/sequence-field-requests.js": "e7d45f727857b29a1467f2c140f38635d10ba0ceb32840bdba7a135a3fbdd30b",
+    "guides/js/assistant/software-capabilities.js": "b2b8586501f8279d072d0a0f0a2286a9ebad8f4d06b5fdc46ff4b380c70c8ba4",
+    "guides/js/assistant/source-contexts.js": "0aea9648a948b346fea93e7fdc65abd013589979bae33cf99d81bf31028ecb99",
+    "guides/js/assistant/source-field-arguments.js": "a770e03e886b07ad200a43d1a9cc8ebcf1451d9500eb8b92de7d651fc83b71a5",
+    "guides/js/assistant/source-field-guard.js": "2e916cbeff86f0419120e9fd4dcf89467c4bd6830033ad8d080d0769efefb11f",
+    "guides/js/assistant/source-field-index.js": "b71914f21f66b880f78097f8304fba2f1a00241445025a82d99243733101bf81",
+    "guides/js/assistant/source-field-router.js": "3e2678557d656ddb943ea68247f4be75ffdc34643ddb6666da28328e17164a39",
+    "guides/js/assistant/source-location-context.js": "7660b7b38b53b44d8a24a3ae2b600fa796690e8a8f1fd340ea993a6580148558",
+    "guides/js/assistant/source-preambles.js": "bd989c5b9f6b6f565745f5d3044612aa46af2b8034d998c363967a7e181c402e",
+    "guides/js/assistant/source-responses.js": "543d39de10177858da8cfa8bef8bf9f4b91f9daeed2d44f8a217f1b7ff86e041",
+    "guides/js/assistant/static-property-conditions.js": "357896e3d7dffdd0cac913f5afa6e5aa0dde1ed76498db8eeff69228ccf718ab",
+    "guides/js/assistant/topics.js": "cae60c918f936d1429713f076420e32c1fc72a89d371b47f7b1958b81e852d39",
+    "guides/js/assistant/ui.js": "d75176fca259ceb47493529cf01b114fce45f45c07444b6de67dd7f68f97092d",
+    "guides/js/chart.js": "e0059220c10bff95fdb7f5b77b9bfffba68b3ccf4eab4f7398ee7aef3cffca2b",
+    "guides/js/index.js": "0feb3e548e54dd42b171533aebd0931a77cdb0f5b5c51ce2d733814e8cdae557",
+    "guides/js/leaflet.js": "85d455b4522415f6badc42a0e7d17c919d100347d6b8958bd0dc738fdecd6d50",
+    "guides/js/lucide.js": "9dac1057f358d159e8ce1e46f259df2b0cb4a19281de7cf8c9ffb29c7a2226f6",
+    "guides/js/tailwind.js": "7afa0afd2536044695e7e674298bc0dda9af94475e4e07d0575feccfa796c74f",
+    "guides/tests/assistant/browser-consent-fixture.js": "824ec886ed266ada0d40fe2f7142995cd8252f7629b395ee4be9037dea63b89f",
+    "guides/tests/assistant/browser_conversation_observer.py": "b3a5d1ebaea8cc1cc4e9ef351518c791cf9e682f349e79ecfd8851c80e70197b",
+    "guides/tests/assistant/full-answer-browser.py": "14c72f2b0e3ff540f13cf2019c8eeba8a4e758251cb33c03ab191bf5c4fa97ae",
+    "guides/tests/assistant/narrative-all-games-cases.json": "7b2b4c58f5c799e942077a08740e68f324097ee302e0c41f86db8d59dfe2e2fc"
+  },
+  "sourceFilesUnchangedDuringRun": true,
+  "onlyStaticGets": true,
+  "passed": 5,
+  "betaSmoke": {
+    "tag": "beta-20261025",
+    "existingRunner": "guides/tests/assistant/full-answer-browser.py",
+    "existingRunnerSha256": "14c72f2b0e3ff540f13cf2019c8eeba8a4e758251cb33c03ab191bf5c4fa97ae",
+    "temporaryWrapper": "/tmp/beta-chat-layout-20261025.py",
+    "temporaryWrapperSha256": "f34eb366a054bb9b1d5630909f069da1043e903d92000db9b1990bf2b6f90ee9",
+    "qualification": "One existing source/UI suite, same original questions/oracles/approved worker fixture; expansion observations added only at its existing reopen step. No new corpus or native semantic acceptance claim.",
+    "expandedChecks": [],
+    "allSevenExpandedSurfacesPassed": false,
+    "allSixGames": [],
+    "productionOrOracleChanges": false
+  }
+}

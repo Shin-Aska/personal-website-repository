@@ -1,0 +1,2883 @@
+{
+  "schemaVersion": 1,
+  "gameId": "alqadim",
+  "reviewedAt": "2026-10-24",
+  "dialogues": [
+    {
+      "id": "academy-trial",
+      "turns": [
+        {
+          "text": "How do I initiate the Sinbar trial?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Speak with Master Sinbar"
+            ],
+            "notContains": [],
+            "factIds": [
+              "ch1_1"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.chapters[0].required[id=ch1_1]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I avoid the disintegrator field?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "stay close to walls"
+            ],
+            "notContains": [],
+            "factIds": [
+              "ch1_2"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.chapters[0].required[id=ch1_2]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I get starting equipment?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "final chest"
+            ],
+            "notContains": [],
+            "factIds": [
+              "ch1_5"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.chapters[0].required[id=ch1_5]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Where does the Academy teleporter lead?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "northern teleporter",
+              "Zaratan"
+            ],
+            "notContains": [],
+            "factIds": [
+              "ch1_6"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.chapters[0].required[id=ch1_6]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Have I already graduated from the academy?",
+          "expected": {
+            "decision": "not-answer",
+            "contains": [],
+            "notContains": [
+              "You have graduated"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "sword-giver-and-function",
+      "turns": [
+        {
+          "text": "How do I get the Family Sword of Honor?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Zubin",
+              "Family Sword of Honor"
+            ],
+            "notContains": [],
+            "factIds": [
+              "ch2_1"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.chapters[1].required[id=ch2_1]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Who gives it?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Zubin"
+            ],
+            "notContains": [],
+            "factIds": [
+              "ch2_1"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.chapters[1].required[id=ch2_1]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "What does the Family Sword of Honor do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "cannot harm allies or innocents"
+            ],
+            "notContains": [],
+            "factIds": [
+              "item-family-sword-of-honor-use"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.keyItems[0].description",
+              "review": "extracted",
+              "index": {
+                "file": "guides/js/assistant/adapters/alqadim.js",
+                "locator": "use record also answers explanation",
+                "review": "authored-index"
+              }
+            }
+          }
+        },
+        {
+          "text": "Is it in my inventory already?",
+          "expected": {
+            "decision": "not-answer",
+            "contains": [],
+            "notContains": [
+              "You have the Family Sword"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "family-and-treaty",
+      "turns": [
+        {
+          "text": "Who is Jessamin?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Mother (Jessamin)"
+            ],
+            "notContains": [],
+            "factIds": [
+              "ch2_2"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.chapters[1].required[id=ch2_2]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I negotiate the Haroon abi Wassab treaty?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Bring Aliya",
+              "Haroon abi Wassab"
+            ],
+            "notContains": [],
+            "factIds": [
+              "ch2_4"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.chapters[1].required[id=ch2_4]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I sign the Qadi peace treaty?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Swear the oath with Aliya",
+              "before Haroon"
+            ],
+            "notContains": [],
+            "factIds": [
+              "ch2_5"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.chapters[1].required[id=ch2_5]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "What is the outcome of the Muliban accusation?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "family's banishment"
+            ],
+            "notContains": [],
+            "factIds": [
+              "ch2_6"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.chapters[1].required[id=ch2_6]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Why did Zubin betray the family?",
+          "expected": {
+            "decision": "not-answer",
+            "contains": [],
+            "notContains": [
+              "Zubin betrayed"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "berries-quest-and-location",
+      "turns": [
+        {
+          "text": "What does Babazar need?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "purple desert berries",
+              "sick daughter"
+            ],
+            "notContains": [],
+            "factIds": [
+              "ch2_3"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.chapters[1].required[id=ch2_3]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Where are Purple Berries?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Western Desert Oasis"
+            ],
+            "notContains": [],
+            "factIds": [
+              "berries-location"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.keyItems[1].location",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I get them?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "oasis bushes"
+            ],
+            "notContains": [],
+            "factIds": [
+              "ch3_3"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.chapters[2].required[id=ch3_3]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Have I cured Babazar daughter already?",
+          "expected": {
+            "decision": "not-answer",
+            "contains": [],
+            "notContains": [
+              "You cured"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "oasis-rescues",
+      "turns": [
+        {
+          "text": "How do I start the Oasis mermaid quest?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "mermaid at the pool"
+            ],
+            "notContains": [],
+            "factIds": [
+              "ch3_4"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.chapters[2].required[id=ch3_4]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Where is the Mermaid sister?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "locked in the stone cell"
+            ],
+            "notContains": [],
+            "factIds": [
+              "ch4_2"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.chapters[3].required[id=ch4_2]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I rescue her?",
+          "expected": {
+            "decision": "not-answer",
+            "contains": [],
+            "notContains": [
+              "use the Key of Bone on her cell",
+              "stone cell opens with the Ship Orb"
+            ]
+          },
+          "sourceGap": {
+            "factId": "ch4_2",
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.chapters[3].required[id=ch4_2]",
+              "review": "extracted"
+            },
+            "reason": "The source states her stone-cell location, not how to release her."
+          }
+        },
+        {
+          "text": "What is the Mermaid sister true name?",
+          "expected": {
+            "decision": "not-answer",
+            "contains": [],
+            "notContains": []
+          }
+        }
+      ]
+    },
+    {
+      "id": "ship-orb",
+      "turns": [
+        {
+          "text": "How do I get the Ship Orb?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "helm cabin"
+            ],
+            "notContains": [],
+            "factIds": [
+              "ch4_5"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.chapters[3].required[id=ch4_5]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "What does it do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Powers and restores",
+              "navigation"
+            ],
+            "notContains": [],
+            "factIds": [
+              "item-ship-orb-use"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.keyItems[5].description",
+              "review": "extracted",
+              "index": {
+                "file": "guides/js/assistant/adapters/alqadim.js",
+                "locator": "use record also answers explanation",
+                "review": "authored-index"
+              }
+            }
+          }
+        },
+        {
+          "text": "Where is the Ship Orb?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "helm cabin"
+            ],
+            "notContains": [],
+            "factIds": [
+              "ch4_5"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.chapters[3].required[id=ch4_5]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Does my ship already work?",
+          "expected": {
+            "decision": "not-answer",
+            "contains": [],
+            "notContains": [
+              "Your ship is restored"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "hold-and-dock",
+      "turns": [
+        {
+          "text": "How do I deal with the Dock dark mage?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Defeat the dark mage",
+              "dock entrance"
+            ],
+            "notContains": [],
+            "factIds": [
+              "ch4_3"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.chapters[3].required[id=ch4_3]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I clear the Rotting Ship's Hold?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "clear all zombies"
+            ],
+            "notContains": [],
+            "factIds": [
+              "ch4_4"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.chapters[3].required[id=ch4_4]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I get hidden healing potions from the Rotting Ship's Hold barrels?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Smash barrels",
+              "healing potions"
+            ],
+            "notContains": [],
+            "factIds": [
+              "ch4_7"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.chapters[3].optional[id=ch4_7]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "What is the dock mage name?",
+          "expected": {
+            "decision": "not-answer",
+            "contains": [],
+            "notContains": []
+          }
+        }
+      ]
+    },
+    {
+      "id": "acid-and-tower",
+      "turns": [
+        {
+          "text": "How do I defeat the Acid Slime King?",
+          "expected": {
+            "decision": "not-answer",
+            "contains": [],
+            "notContains": [
+              "neutralize the pool first to defeat",
+              "King is vulnerable to Water Blast"
+            ]
+          },
+          "sourceGap": {
+            "factId": "ch5_4",
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.chapters[4].required[id=ch5_4]",
+              "review": "extracted"
+            },
+            "reason": "The toxic pool is neutralized as a consequence of defeating the King; no defeat tactic is supplied."
+          }
+        },
+        {
+          "text": "What does the Enchanted Mirror do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Reflects magical light beams"
+            ],
+            "notContains": [],
+            "factIds": [
+              "item-enchanted-mirror-use"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.keyItems[4].description",
+              "review": "extracted",
+              "index": {
+                "file": "guides/js/assistant/adapters/alqadim.js",
+                "locator": "use record also answers explanation",
+                "review": "authored-index"
+              }
+            }
+          }
+        },
+        {
+          "text": "How do I receive the Captured tower mage blessing?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Free the captured tower mage"
+            ],
+            "notContains": [],
+            "factIds": [
+              "ch5_6"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.chapters[4].required[id=ch5_6]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I solve the Tower Level 2 tile puzzle?",
+          "expected": {
+            "decision": "not-answer",
+            "contains": [],
+            "notContains": [
+              "step on plates 2, 4, 1",
+              "press the tiles clockwise"
+            ]
+          },
+          "sourceGap": {
+            "factId": "ch5_7",
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.chapters[4].optional[id=ch5_7]",
+              "review": "extracted"
+            },
+            "reason": "The source identifies an optional Level 2 puzzle and item reward, but gives no tile solution."
+          }
+        },
+        {
+          "text": "Do I need to retrieve the mirror before solving the optics puzzle?",
+          "expected": {
+            "decision": "not-answer",
+            "contains": [],
+            "notContains": []
+          }
+        }
+      ]
+    },
+    {
+      "id": "zubakon-training",
+      "turns": [
+        {
+          "text": "Where is Zubakon?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "shop with no sign"
+            ],
+            "notContains": [],
+            "factIds": [
+              "ch6_4"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.chapters[5].optional[id=ch6_4]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "What does he require for later swings?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "experience makes you eligible"
+            ],
+            "notContains": [],
+            "factIds": [
+              "page-zubakon"
+            ],
+            "source": {
+              "file": "guides/AlQadim.html",
+              "locator": "Scimitar discipline",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Who teaches Wide Swing?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Zubakon",
+              "becoming eligible"
+            ],
+            "notContains": [],
+            "factIds": [
+              "swing-wide-swing"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.combatMoves[1]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Who teaches Full-Circle Swing?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Zubakon",
+              "later progression"
+            ],
+            "notContains": [],
+            "factIds": [
+              "swing-full-circle-swing"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.combatMoves[2]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Have I learned Full-Circle Swing?",
+          "expected": {
+            "decision": "not-answer",
+            "contains": [],
+            "notContains": []
+          }
+        }
+      ]
+    },
+    {
+      "id": "caliph-honesty",
+      "turns": [
+        {
+          "text": "How do I request the Caliph audience?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "via the Vizier"
+            ],
+            "notContains": [],
+            "factIds": [
+              "ch7_1"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.chapters[6].required[id=ch7_1]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I handle the Vizier mind scan?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Submit"
+            ],
+            "notContains": [],
+            "factIds": [
+              "ch7_2"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.chapters[6].required[id=ch7_2]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I answer the Caliph questions?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "absolute honesty"
+            ],
+            "notContains": [],
+            "factIds": [
+              "ch7_3"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.chapters[6].required[id=ch7_3]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "What are the exact words to every mind scan question?",
+          "expected": {
+            "decision": "not-answer",
+            "contains": [],
+            "notContains": []
+          }
+        }
+      ]
+    },
+    {
+      "id": "shibaz-library",
+      "turns": [
+        {
+          "text": "How do I find Shibaz Hermit guidance?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Hermit's hut"
+            ],
+            "notContains": [],
+            "factIds": [
+              "ch8_2"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.chapters[7].required[id=ch8_2]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I get the Flying Carpet?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "harpy nest"
+            ],
+            "notContains": [],
+            "factIds": [
+              "ch8_3"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.chapters[7].required[id=ch8_3]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Where is it?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "harpy nest"
+            ],
+            "notContains": [],
+            "factIds": [
+              "ch8_3"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.chapters[7].required[id=ch8_3]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I open the Hags riddle Library path?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "hags' riddle"
+            ],
+            "notContains": [],
+            "factIds": [
+              "ch8_4"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.chapters[7].required[id=ch8_4]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "What is the answer to the hags riddle?",
+          "expected": {
+            "decision": "not-answer",
+            "contains": [],
+            "notContains": []
+          }
+        }
+      ]
+    },
+    {
+      "id": "library-and-destination-boundary",
+      "turns": [
+        {
+          "text": "How do I navigate Library levels?",
+          "expected": {
+            "decision": "not-answer",
+            "contains": [],
+            "notContains": [
+              "take the northeast staircase",
+              "left, right, left"
+            ]
+          },
+          "sourceGap": {
+            "factId": "ch9_2",
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.chapters[8].required[id=ch9_2]",
+              "review": "extracted"
+            },
+            "reason": "The source gives the L1-to-L3 extent, not directions through the maze."
+          }
+        },
+        {
+          "text": "Is the Genie Lords destination definitely Senat?",
+          "expected": {
+            "decision": "not-answer",
+            "contains": [],
+            "notContains": [
+              "definitely Senat"
+            ]
+          }
+        },
+        {
+          "text": "How do I get the Bottle of Eternal Emptiness?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "center of volcanic Isle of Senat"
+            ],
+            "notContains": [],
+            "factIds": [
+              "ch10_1"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.chapters[9].required[id=ch10_1]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Where is it?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "center of volcanic Isle of Senat"
+            ],
+            "notContains": [],
+            "factIds": [
+              "ch10_1"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.chapters[9].required[id=ch10_1]",
+              "review": "extracted"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "efreet-bottle-and-potion",
+      "turns": [
+        {
+          "text": "How do I trap the Efreet agent?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Trap the Efreet agent in the bottle"
+            ],
+            "notContains": [],
+            "factIds": [
+              "ch10_2"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.chapters[9].required[id=ch10_2]",
+              "review": "extracted"
+            },
+            "alternativeAnswers": [
+              {
+                "factIds": [
+                  "item-bottle-of-eternal-emptiness-use"
+                ],
+                "source": {
+                  "file": "guides/js/AlQadim.js",
+                  "locator": "DB.keyItems[9].description",
+                  "review": "extracted"
+                },
+                "contains": [
+                  "Bottle of Eternal Emptiness",
+                  "Traps the Efreet agent"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "text": "What does the Efreet Potion do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "immunity",
+              "chessboard death flames"
+            ],
+            "notContains": [],
+            "factIds": [
+              "item-efreet-potion-use"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.keyItems[10].description",
+              "review": "extracted",
+              "index": {
+                "file": "guides/js/assistant/adapters/alqadim.js",
+                "locator": "use record also answers explanation",
+                "review": "authored-index"
+              }
+            }
+          }
+        },
+        {
+          "text": "How do I use it?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Drink the potion",
+              "cross the South chessboard path"
+            ],
+            "notContains": [],
+            "factIds": [
+              "ch10_7"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.chapters[9].required[id=ch10_7]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Who gives the Efreet Potion?",
+          "expected": {
+            "decision": "not-answer",
+            "contains": [],
+            "notContains": []
+          }
+        },
+        {
+          "text": "What should I trade to the Dao Lord for the Storyteller?",
+          "expected": {
+            "decision": "not-answer",
+            "contains": [],
+            "notContains": []
+          }
+        }
+      ]
+    },
+    {
+      "id": "chessboard-routes",
+      "turns": [
+        {
+          "text": "What is the Marid Lord path route?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Down 5",
+              "East 3",
+              "Up 1"
+            ],
+            "notContains": [],
+            "factIds": [
+              "page-coords-north"
+            ],
+            "source": {
+              "file": "guides/AlQadim.html",
+              "locator": "Island of Senat Diplomatic Gauntlet, Quick Coordinates Reference",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "What is the Djinn Lords path route?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "West 5",
+              "Up 3",
+              "East 1"
+            ],
+            "notContains": [],
+            "factIds": [
+              "page-coords-east"
+            ],
+            "source": {
+              "file": "guides/AlQadim.html",
+              "locator": "Island of Senat Diplomatic Gauntlet, Quick Coordinates Reference",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "What is the Dao Lord path route?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "East 5",
+              "Down 3",
+              "West 1"
+            ],
+            "notContains": [],
+            "factIds": [
+              "page-coords-west"
+            ],
+            "source": {
+              "file": "guides/AlQadim.html",
+              "locator": "Island of Senat Diplomatic Gauntlet, Quick Coordinates Reference",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "What is the Efreet Lord path route?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "North 5",
+              "East 3",
+              "South 1"
+            ],
+            "notContains": [],
+            "factIds": [
+              "page-coords-south"
+            ],
+            "source": {
+              "file": "guides/AlQadim.html",
+              "locator": "Island of Senat Diplomatic Gauntlet, Quick Coordinates Reference",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Can I skip the potion and cross the death flames safely?",
+          "expected": {
+            "decision": "not-answer",
+            "contains": [],
+            "notContains": []
+          }
+        }
+      ]
+    },
+    {
+      "id": "sumie-baker-key",
+      "turns": [
+        {
+          "text": "Where is Sumie?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "kitchen",
+              "orange near fireplace"
+            ],
+            "notContains": [],
+            "factIds": [
+              "ch11_2"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.chapters[10].required[id=ch11_2]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Who do I return to for the kitchen cellar door?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Return to Sumie",
+              "kitchen cellar door"
+            ],
+            "notContains": [],
+            "factIds": [
+              "ch11_5"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.chapters[10].required[id=ch11_5]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I get the Office of Trade baker referral?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Office of Trade",
+              "baker referral"
+            ],
+            "notContains": [],
+            "factIds": [
+              "ch11_3"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.chapters[10].required[id=ch11_3]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Who gives the Key of Bone?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Baker in the market"
+            ],
+            "notContains": [],
+            "factIds": [
+              "ch11_4"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.chapters[10].required[id=ch11_4]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "What does it open?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "secret passage",
+              "castle kitchen cellars"
+            ],
+            "notContains": [],
+            "factIds": [
+              "item-key-of-bone-use"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.keyItems[11].description",
+              "review": "extracted",
+              "index": {
+                "file": "guides/js/assistant/adapters/alqadim.js",
+                "locator": "use record also answers explanation",
+                "review": "authored-index"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "old-dungeon-rescue",
+      "turns": [
+        {
+          "text": "How do I get the Old Dungeon hidden key?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "behind a boulder",
+              "first room"
+            ],
+            "notContains": [],
+            "factIds": [
+              "ch12_2"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.chapters[11].required[id=ch12_2]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I pass the Old Dungeon vents?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Time your run",
+              "poison and flame vents"
+            ],
+            "notContains": [],
+            "factIds": [
+              "ch12_3"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.chapters[11].required[id=ch12_3]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I rescue Pangar-Bek?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "cyclops Pangar-Bek",
+              "dungeon exit"
+            ],
+            "notContains": [],
+            "factIds": [
+              "ch12_4"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.chapters[11].required[id=ch12_4]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Where do I take him?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "dungeon exit"
+            ],
+            "notContains": [],
+            "factIds": [
+              "ch12_4"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.chapters[11].required[id=ch12_4]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Is Pangar-Bek already safe?",
+          "expected": {
+            "decision": "not-answer",
+            "contains": [],
+            "notContains": []
+          }
+        }
+      ]
+    },
+    {
+      "id": "new-dungeon-and-journal",
+      "turns": [
+        {
+          "text": "How do I enter the New Dungeon?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Stealth Section",
+              "Do not get caught"
+            ],
+            "notContains": [],
+            "factIds": [
+              "ch13_1"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.chapters[12].required[id=ch13_1]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I pass the New Dungeon pressure plates?",
+          "expected": {
+            "decision": "not-answer",
+            "contains": [],
+            "notContains": [
+              "walk only on the blue plates",
+              "disable every plate with the Key of Bone"
+            ]
+          },
+          "sourceGap": {
+            "factId": "ch13_2",
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.chapters[12].required[id=ch13_2]",
+              "review": "extracted"
+            },
+            "reason": "The source repeats the bypass objective without a pressure-plate procedure."
+          }
+        },
+        {
+          "text": "How do I hear the Zubin cell revelation?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Zubin's cell"
+            ],
+            "notContains": [],
+            "factIds": [
+              "ch13_3"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.chapters[12].required[id=ch13_3]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I get the Vizier's Journal?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Vizier's desk",
+              "conspiracy journal"
+            ],
+            "notContains": [],
+            "factIds": [
+              "ch14_3"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.chapters[13].required[id=ch14_3]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "What does it contain?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "incriminating evidence",
+              "Vizier's betrayal"
+            ],
+            "notContains": [],
+            "factIds": [
+              "item-vizier-s-journal-use"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.keyItems[12].description",
+              "review": "extracted",
+              "index": {
+                "file": "guides/js/assistant/adapters/alqadim.js",
+                "locator": "use record also answers explanation",
+                "review": "authored-index"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "alkatraz-password",
+      "turns": [
+        {
+          "text": "How do I get the Al'Katraz password?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "three elemental shrines"
+            ],
+            "notContains": [],
+            "factIds": [
+              "ch15_3"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.chapters[14].required[id=ch15_3]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "What does Al'Katraz Prison Dungeon require?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "using the password"
+            ],
+            "notContains": [],
+            "factIds": [
+              "ch16_1"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.chapters[15].required[id=ch16_1]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I get Prison keys?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Defeat the Mercenary Captain"
+            ],
+            "notContains": [],
+            "factIds": [
+              "ch16_3"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.chapters[15].required[id=ch16_3]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Who gives them?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Mercenary Captain"
+            ],
+            "notContains": [],
+            "factIds": [
+              "ch16_3"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.chapters[15].required[id=ch16_3]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "What is the literal prison password?",
+          "expected": {
+            "decision": "not-answer",
+            "contains": [],
+            "notContains": []
+          }
+        }
+      ]
+    },
+    {
+      "id": "tarik-and-aballat",
+      "turns": [
+        {
+          "text": "How do I rescue Tarik?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "escort him back to the ship"
+            ],
+            "notContains": [],
+            "factIds": [
+              "ch16_4"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.chapters[15].required[id=ch16_4]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Where do I take him?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "back to the ship"
+            ],
+            "notContains": [],
+            "factIds": [
+              "ch16_4"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.chapters[15].required[id=ch16_4]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I converse with the Sand genies?",
+          "expected": {
+            "decision": "not-answer",
+            "contains": [],
+            "notContains": [
+              "choose the third dialogue option",
+              "offer the Wisest Snake to the sand genies"
+            ]
+          },
+          "sourceGap": {
+            "factId": "ch17_2",
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.chapters[16].required[id=ch17_2]",
+              "review": "extracted"
+            },
+            "reason": "The source says to converse, but supplies no dialogue choices or negotiation procedure."
+          }
+        },
+        {
+          "text": "How do I get the Voice-trapping bottles?",
+          "expected": {
+            "decision": "not-answer",
+            "contains": [],
+            "notContains": [
+              "buy the bottles from Zubakon",
+              "voice bottles are behind the first-room boulder"
+            ]
+          },
+          "sourceGap": {
+            "factId": "ch17_3",
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.chapters[16].required[id=ch17_3]",
+              "review": "extracted"
+            },
+            "reason": "The source says to locate the bottles, but supplies no location or acquisition procedure."
+          }
+        },
+        {
+          "text": "How do I restore Tarik voice?",
+          "expected": {
+            "decision": "not-answer",
+            "contains": [],
+            "notContains": [
+              "drink the Efreet Potion to restore Tarik",
+              "destroy the bottles in numerical order"
+            ]
+          },
+          "sourceGap": {
+            "factId": "ch17_4",
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.chapters[16].required[id=ch17_4]",
+              "review": "extracted"
+            },
+            "reason": "The source states the restoration objective without restoration mechanics."
+          }
+        },
+        {
+          "text": "Did I restore his voice already?",
+          "expected": {
+            "decision": "not-answer",
+            "contains": [],
+            "notContains": []
+          }
+        }
+      ]
+    },
+    {
+      "id": "al-naqqil-necklaces",
+      "turns": [
+        {
+          "text": "How do I evade Al-Naqqil teleporter traps?",
+          "expected": {
+            "decision": "not-answer",
+            "contains": [],
+            "notContains": [
+              "place each necklace into its matching teleporter",
+              "the leftmost teleporter is always safe"
+            ]
+          },
+          "sourceGap": {
+            "factId": "ch18_2",
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.chapters[17].required[id=ch18_2]",
+              "review": "extracted"
+            },
+            "reason": "The source states an evasion objective without a safe route or teleporter procedure."
+          }
+        },
+        {
+          "text": "How do I get Magic necklaces?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Defeat the three Nameless mages"
+            ],
+            "notContains": [],
+            "factIds": [
+              "ch18_3"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.chapters[17].required[id=ch18_3]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Who gives them?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "three Nameless mages",
+              "magic necklaces"
+            ],
+            "notContains": [],
+            "factIds": [
+              "ch18_3"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.chapters[17].required[id=ch18_3]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I open the Outer Planes gateway?",
+          "expected": {
+            "decision": "not-answer",
+            "contains": [],
+            "notContains": [
+              "place all three necklaces in the gateway",
+              "insert the necklaces in red, blue, green order"
+            ]
+          },
+          "sourceGap": {
+            "factId": "ch18_4",
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.chapters[17].required[id=ch18_4]",
+              "review": "extracted"
+            },
+            "reason": "The source states the gateway-opening objective without its opening mechanism or necklace dependency."
+          }
+        },
+        {
+          "text": "Which necklace belongs in each teleporter?",
+          "expected": {
+            "decision": "not-answer",
+            "contains": [],
+            "notContains": []
+          }
+        }
+      ]
+    },
+    {
+      "id": "finale-boundaries",
+      "turns": [
+        {
+          "text": "What is the Floating platform grids route?",
+          "expected": {
+            "decision": "not-answer",
+            "contains": [],
+            "notContains": [
+              "north 5, east 3, south 1",
+              "jump onto the third platform on the left"
+            ]
+          },
+          "sourceGap": {
+            "factId": "ch19_1",
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.chapters[18].required[id=ch19_1]",
+              "review": "extracted"
+            },
+            "reason": "The source states that the grids must be crossed, but supplies no platform route."
+          }
+        },
+        {
+          "text": "How do I defeat Kara?",
+          "expected": {
+            "decision": "not-answer",
+            "contains": [],
+            "notContains": [
+              "Kara is immune to fire",
+              "cast Water Blast three times"
+            ]
+          },
+          "sourceGap": {
+            "factId": "ch19_2",
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.chapters[18].required[id=ch19_2]",
+              "review": "extracted"
+            },
+            "reason": "The source identifies Kara as a rogue genie and states a defeat objective, but supplies no boss tactics."
+          }
+        },
+        {
+          "text": "How do I handle the Magical shield orbs?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Destroy the magical shield orbs"
+            ],
+            "notContains": [],
+            "factIds": [
+              "ch19_3"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.chapters[18].required[id=ch19_3]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I defeat the Vizier finale?",
+          "expected": {
+            "decision": "not-answer",
+            "contains": [],
+            "notContains": [
+              "destroy the shield orbs before attacking the Vizier",
+              "cast Sunfire exactly three times"
+            ]
+          },
+          "sourceGap": {
+            "factId": "ch19_4",
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.chapters[18].required[id=ch19_4]",
+              "review": "extracted"
+            },
+            "reason": "The source states defeat and curse-cleansing objectives, but supplies no attack procedure or shield-orb dependency order."
+          }
+        },
+        {
+          "text": "What exact spell sequence makes the Vizier invulnerable?",
+          "expected": {
+            "decision": "not-answer",
+            "contains": [],
+            "notContains": []
+          }
+        }
+      ]
+    },
+    {
+      "id": "scimitar-controls",
+      "turns": [
+        {
+          "text": "What does Quick Swing do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "fast scimitar strike",
+              "Click the action button"
+            ],
+            "notContains": [],
+            "factIds": [
+              "swing-quick-swing"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.combatMoves[0]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "What does Wide Swing do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "left and right",
+              "second action circle"
+            ],
+            "notContains": [],
+            "factIds": [
+              "swing-wide-swing"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.combatMoves[1]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "What does Full-Circle Swing do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "360-degree",
+              "behind",
+              "third action circle"
+            ],
+            "notContains": [],
+            "factIds": [
+              "swing-full-circle-swing"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.combatMoves[2]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I use Scimitar facing?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Press Alt",
+              "unlock when surrounded"
+            ],
+            "notContains": [],
+            "factIds": [
+              "page-face"
+            ],
+            "source": {
+              "file": "guides/AlQadim.html",
+              "locator": "The combat rhythm, 01 Face the threat",
+              "review": "extracted"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "combat-rhythm",
+      "turns": [
+        {
+          "text": "Explain Combat rhythm.",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "real time",
+              "three action circles"
+            ],
+            "notContains": [],
+            "factIds": [
+              "page-real-time"
+            ],
+            "source": {
+              "file": "guides/AlQadim.html",
+              "locator": "The combat rhythm",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I use Sword swing controls?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Hold the action button longer",
+              "lights orange"
+            ],
+            "notContains": [],
+            "factIds": [
+              "page-swing"
+            ],
+            "source": {
+              "file": "guides/AlQadim.html",
+              "locator": "The combat rhythm, 02 Choose the swing",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I use Left hand weapon?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "seeking sling",
+              "Fire with Space"
+            ],
+            "notContains": [],
+            "factIds": [
+              "page-hand"
+            ],
+            "source": {
+              "file": "guides/AlQadim.html",
+              "locator": "The combat rhythm, 04 Switch the left hand",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "What is the Starting Corsair?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "second-level seafaring warrior"
+            ],
+            "notContains": [],
+            "factIds": [
+              "page-start"
+            ],
+            "source": {
+              "file": "guides/AlQadim.html",
+              "locator": "Player field manual, lead paragraph",
+              "review": "extracted"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "combat-survival",
+      "turns": [
+        {
+          "text": "How do I manage Sword recovery?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "brief readying pause",
+              "make space"
+            ],
+            "notContains": [],
+            "factIds": [
+              "page-recovery"
+            ],
+            "source": {
+              "file": "guides/AlQadim.html",
+              "locator": "The combat rhythm, 03 Respect recovery",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I use Sword charge timing?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Charge before contact"
+            ],
+            "notContains": [],
+            "factIds": [
+              "page-charge"
+            ],
+            "source": {
+              "file": "guides/AlQadim.html",
+              "locator": "Hu’rakan’s field notes",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I Hit and withdraw?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "one blow",
+              "back away"
+            ],
+            "notContains": [],
+            "factIds": [
+              "page-withdraw"
+            ],
+            "source": {
+              "file": "guides/AlQadim.html",
+              "locator": "Hu’rakan’s field notes",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I use Combat pause?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Opening the menu pauses combat",
+              "healing potion"
+            ],
+            "notContains": [],
+            "factIds": [
+              "page-pause"
+            ],
+            "source": {
+              "file": "guides/AlQadim.html",
+              "locator": "Hu’rakan’s field notes",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I use Combat movement?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Keep moving",
+              "harder to hit"
+            ],
+            "notContains": [],
+            "factIds": [
+              "page-moving"
+            ],
+            "source": {
+              "file": "guides/AlQadim.html",
+              "locator": "Hu’rakan’s field notes",
+              "review": "extracted"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "moonstone-controls",
+      "turns": [
+        {
+          "text": "How do I use Moonstone shard controls?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "One shard or the sling",
+              "Press Space"
+            ],
+            "notContains": [],
+            "factIds": [
+              "page-shard-rules"
+            ],
+            "source": {
+              "file": "guides/AlQadim.html",
+              "locator": "Moonstone arsenal, shard rules",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "What happens to Moonstone shard charges?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "One shot spends one charge",
+              "breaks apart"
+            ],
+            "notContains": [],
+            "factIds": [
+              "page-shard-charges"
+            ],
+            "source": {
+              "file": "guides/AlQadim.html",
+              "locator": "Moonstone arsenal",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Does buying shards give infinite charges?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "One shot spends one charge",
+              "breaks apart"
+            ],
+            "notContains": [
+              "Shards have infinite charges"
+            ],
+            "factIds": [
+              "page-shard-charges"
+            ],
+            "source": {
+              "file": "guides/AlQadim.html",
+              "locator": "Moonstone arsenal",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I recharge a broken shard?",
+          "expected": {
+            "decision": "not-answer",
+            "contains": [],
+            "notContains": []
+          }
+        }
+      ]
+    },
+    {
+      "id": "shard-values-one",
+      "turns": [
+        {
+          "text": "What does Cone of Cold do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Range: 10 yd",
+              "Damage: 12–30"
+            ],
+            "notContains": [],
+            "factIds": [
+              "shard-cone-of-cold"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.moonstoneShards[0]",
+              "review": "extracted",
+              "index": {
+                "file": "guides/js/assistant/adapters/alqadim.js",
+                "locator": "use record also answers explanation",
+                "review": "authored-index"
+              }
+            }
+          }
+        },
+        {
+          "text": "What does Flame Arrow do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Range: 20 yd",
+              "4–24 fire"
+            ],
+            "notContains": [],
+            "factIds": [
+              "shard-flame-arrow"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.moonstoneShards[1]",
+              "review": "extracted",
+              "index": {
+                "file": "guides/js/assistant/adapters/alqadim.js",
+                "locator": "use record also answers explanation",
+                "review": "authored-index"
+              }
+            }
+          }
+        },
+        {
+          "text": "What does Lightning Bolt do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "ricochet from walls",
+              "back toward the caster"
+            ],
+            "notContains": [],
+            "factIds": [
+              "shard-lightning-bolt"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.moonstoneShards[2]",
+              "review": "extracted",
+              "index": {
+                "file": "guides/js/assistant/adapters/alqadim.js",
+                "locator": "use record also answers explanation",
+                "review": "authored-index"
+              }
+            }
+          }
+        },
+        {
+          "text": "What does Magic Missile do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Three missiles",
+              "nearest visible enemy",
+              "120 yd"
+            ],
+            "notContains": [],
+            "factIds": [
+              "shard-magic-missile"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.moonstoneShards[3]",
+              "review": "extracted",
+              "index": {
+                "file": "guides/js/assistant/adapters/alqadim.js",
+                "locator": "use record also answers explanation",
+                "review": "authored-index"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "shard-values-two",
+      "turns": [
+        {
+          "text": "What does Sundazzle do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "temporarily blind",
+              "No damage"
+            ],
+            "notContains": [],
+            "factIds": [
+              "shard-sundazzle"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.moonstoneShards[4]",
+              "review": "extracted",
+              "index": {
+                "file": "guides/js/assistant/adapters/alqadim.js",
+                "locator": "use record also answers explanation",
+                "review": "authored-index"
+              }
+            }
+          }
+        },
+        {
+          "text": "What does Sunfire do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "never damaged by his own blast",
+              "70 yd"
+            ],
+            "notContains": [],
+            "factIds": [
+              "shard-sunfire"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.moonstoneShards[5]",
+              "review": "extracted",
+              "index": {
+                "file": "guides/js/assistant/adapters/alqadim.js",
+                "locator": "use record also answers explanation",
+                "review": "authored-index"
+              }
+            }
+          }
+        },
+        {
+          "text": "What does Sunscorch do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "curves around obstacles",
+              "2–8 metal"
+            ],
+            "notContains": [],
+            "factIds": [
+              "shard-sunscorch"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.moonstoneShards[6]",
+              "review": "extracted",
+              "index": {
+                "file": "guides/js/assistant/adapters/alqadim.js",
+                "locator": "use record also answers explanation",
+                "review": "authored-index"
+              }
+            }
+          }
+        },
+        {
+          "text": "What does Water Blast do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "seeks its target",
+              "2–12"
+            ],
+            "notContains": [],
+            "factIds": [
+              "shard-water-blast"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.moonstoneShards[7]",
+              "review": "extracted",
+              "index": {
+                "file": "guides/js/assistant/adapters/alqadim.js",
+                "locator": "use record also answers explanation",
+                "review": "authored-index"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "enemy-counterplay",
+      "turns": [
+        {
+          "text": "How do I fight the Air Elemental?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "after they finish spinning"
+            ],
+            "notContains": [],
+            "factIds": [
+              "enemy-air-elemental"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.bestiary[2].strategy/danger",
+              "review": "extracted",
+              "index": {
+                "file": "guides/js/assistant/adapters/alqadim.js",
+                "locator": "combat record also answers explanation",
+                "review": "authored-index"
+              }
+            }
+          }
+        },
+        {
+          "text": "How do I fight the Giant Boar?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Dodge sideways",
+              "strike from behind"
+            ],
+            "notContains": [],
+            "factIds": [
+              "enemy-giant-boar"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.bestiary[3].strategy/danger",
+              "review": "extracted",
+              "index": {
+                "file": "guides/js/assistant/adapters/alqadim.js",
+                "locator": "combat record also answers explanation",
+                "review": "authored-index"
+              }
+            }
+          }
+        },
+        {
+          "text": "How do I fight Acid Slime?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Do not stand in green residue",
+              "range"
+            ],
+            "notContains": [],
+            "factIds": [
+              "enemy-acid-slime"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.bestiary[6].strategy/danger",
+              "review": "extracted",
+              "index": {
+                "file": "guides/js/assistant/adapters/alqadim.js",
+                "locator": "combat record also answers explanation",
+                "review": "authored-index"
+              }
+            }
+          }
+        },
+        {
+          "text": "How do I fight the Fire Elemental?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Immune to fire",
+              "Water Blast"
+            ],
+            "notContains": [],
+            "factIds": [
+              "enemy-fire-elemental"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.bestiary[7].strategy/danger",
+              "review": "extracted",
+              "index": {
+                "file": "guides/js/assistant/adapters/alqadim.js",
+                "locator": "combat record also answers explanation",
+                "review": "authored-index"
+              }
+            }
+          }
+        },
+        {
+          "text": "How do I fight the Hag?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "behind columns",
+              "cooldown"
+            ],
+            "notContains": [],
+            "factIds": [
+              "enemy-hag"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.bestiary[8].strategy/danger",
+              "review": "extracted",
+              "index": {
+                "file": "guides/js/assistant/adapters/alqadim.js",
+                "locator": "combat record also answers explanation",
+                "review": "authored-index"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "enemy-heavy-and-conflicts",
+      "turns": [
+        {
+          "text": "How do I fight the Scaly-Horned Ogre?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Evade heavy clubs",
+              "before closing"
+            ],
+            "notContains": [],
+            "factIds": [
+              "enemy-scaly-horned-ogre"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.bestiary[9].strategy/danger",
+              "review": "extracted",
+              "index": {
+                "file": "guides/js/assistant/adapters/alqadim.js",
+                "locator": "combat record also answers explanation",
+                "review": "authored-index"
+              }
+            }
+          }
+        },
+        {
+          "text": "How do I fight Cyclops & Ettin?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "hit once",
+              "Giant Strength"
+            ],
+            "notContains": [],
+            "factIds": [
+              "enemy-cyclops-ettin"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.bestiary[10].strategy/danger",
+              "review": "extracted",
+              "index": {
+                "file": "guides/js/assistant/adapters/alqadim.js",
+                "locator": "combat record also answers explanation",
+                "review": "authored-index"
+              }
+            }
+          }
+        },
+        {
+          "text": "How do I use Idrid Veil against the Nameless One?",
+          "expected": {
+            "decision": "not-answer",
+            "contains": [],
+            "notContains": []
+          }
+        },
+        {
+          "text": "Where can I get the Gilded Dove?",
+          "expected": {
+            "decision": "not-answer",
+            "contains": [],
+            "notContains": []
+          }
+        },
+        {
+          "text": "Are Ingrid Veil and Idrid Veil definitely the same item?",
+          "expected": {
+            "decision": "not-answer",
+            "contains": [],
+            "notContains": []
+          }
+        }
+      ]
+    },
+    {
+      "id": "sources-editions-and-unknown",
+      "turns": [
+        {
+          "text": "Explain Guide source policy.",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "original manual",
+              "cluebook is the location authority"
+            ],
+            "notContains": [],
+            "factIds": [
+              "page-sources"
+            ],
+            "source": {
+              "file": "guides/AlQadim.html",
+              "locator": "Source policy",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Explain Mechanics source policy.",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Mechanics and spell values",
+              "official cluebook"
+            ],
+            "notContains": [],
+            "factIds": [
+              "page-sources-2"
+            ],
+            "source": {
+              "file": "guides/AlQadim.html",
+              "locator": "Field manual footnote",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I get the Ship Orb in the SNES version?",
+          "expected": {
+            "decision": "not-answer",
+            "contains": [],
+            "notContains": []
+          }
+        },
+        {
+          "text": "Where is the Obsidian Kite?",
+          "expected": {
+            "decision": "not-answer",
+            "contains": [],
+            "notContains": []
+          }
+        },
+        {
+          "text": "What does it do?",
+          "expected": {
+            "decision": "not-answer",
+            "contains": [],
+            "notContains": []
+          }
+        },
+        {
+          "text": "Have I defeated Kara?",
+          "expected": {
+            "decision": "not-answer",
+            "contains": [],
+            "notContains": []
+          }
+        }
+      ]
+    },
+    {
+      "id": "source-objectives-and-extents",
+      "review": "Positive objectives, extents and effects are distinct from the preserved unsupported procedure questions. Derived only from fixed local source witnesses.",
+      "turns": [
+        {
+          "text": "What is the Mermaid sister rescue objective?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Rescue the mermaid's sister",
+              "stone cell"
+            ],
+            "notContains": [],
+            "factIds": [
+              "ch4_2"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.chapters[3].required[id=ch4_2]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "What is the Acid Slime King objective and its outcome?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Defeat the Acid Slime King",
+              "neutralize the toxic pool"
+            ],
+            "notContains": [],
+            "factIds": [
+              "ch5_4"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.chapters[4].required[id=ch5_4]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "What is the Tower Level 2 tile puzzle objective and reward?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "optional pressure-plate tile puzzle",
+              "Level 2 for items"
+            ],
+            "notContains": [],
+            "factIds": [
+              "ch5_7"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.chapters[4].optional[id=ch5_7]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Which Library levels does the guide cover?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "L1 to L3"
+            ],
+            "notContains": [],
+            "factIds": [
+              "ch9_2"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.chapters[8].required[id=ch9_2]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "What is the New Dungeon pressure plates objective?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Bypass the security pressure plates"
+            ],
+            "notContains": [],
+            "factIds": [
+              "ch13_2"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.chapters[12].required[id=ch13_2]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "What is the Sand genies objective?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Converse with the sand genies"
+            ],
+            "notContains": [],
+            "factIds": [
+              "ch17_2"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.chapters[16].required[id=ch17_2]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "What is the Voice-trapping bottles objective?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Locate the voice-trapping bottles"
+            ],
+            "notContains": [],
+            "factIds": [
+              "ch17_3"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.chapters[16].required[id=ch17_3]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "What is the Tarik voice objective?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Restore Tarik's voice"
+            ],
+            "notContains": [],
+            "factIds": [
+              "ch17_4"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.chapters[16].required[id=ch17_4]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "What is the Al-Naqqil teleporter traps objective?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Evade the teleporter traps"
+            ],
+            "notContains": [],
+            "factIds": [
+              "ch18_2"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.chapters[17].required[id=ch18_2]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "What is the Outer Planes gateway objective?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Open the gateway to the Outer Planes"
+            ],
+            "notContains": [],
+            "factIds": [
+              "ch18_4"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.chapters[17].required[id=ch18_4]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "What is the Floating platform grids objective?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Cross the floating platform grids"
+            ],
+            "notContains": [],
+            "factIds": [
+              "ch19_1"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.chapters[18].required[id=ch19_1]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "What is the Kara objective?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Defeat the rogue genie Kara"
+            ],
+            "notContains": [],
+            "factIds": [
+              "ch19_2"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.chapters[18].required[id=ch19_2]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "What is the Vizier finale objective?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Defeat the Vizier and cleanse the Genie's Curse"
+            ],
+            "notContains": [],
+            "factIds": [
+              "ch19_4"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.chapters[18].required[id=ch19_4]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "What does the Bottle of Eternal Emptiness do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Traps the Efreet agent",
+              "clearing the chessboard path"
+            ],
+            "notContains": [],
+            "factIds": [
+              "item-bottle-of-eternal-emptiness-use"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.keyItems[9].description",
+              "review": "extracted"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

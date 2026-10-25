@@ -234,16 +234,13 @@ h1, h2, h3, h4 {
     transform: translate(-50%, 0);
 }
 
-.seer-tone-option,
-#seer-spoiler-select {
+.seer-tone-option {
     transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
     color: #92400e;
 }
 
 .seer-tone-option:hover,
-.seer-tone-option:focus,
-#seer-spoiler-select:hover,
-#seer-spoiler-select:focus {
+.seer-tone-option:focus {
     border-color: #d97706;
     color: #78350f;
 }
@@ -2398,7 +2395,23 @@ body.u6-seer-modal-open {
     }
 }
 
-#seer-spoiler-select { padding: .45rem .65rem; border: 1px solid #b88a45; border-radius: .35rem; }
 #seer-general-hints p { white-space: pre-wrap; }
 
 .u6-seer-modal__panel > .u6-seer-modal__controls { flex-shrink: 0; padding: .75rem 1.4rem 0; }
+
+/* Keep counsel useful for long answers, with the step text tucked away. */
+.u6-seer-modal__panel {
+    width: min(64rem, 100%);
+    height: min(56rem, calc(100dvh - 2rem));
+    max-height: calc(100dvh - 2rem);
+}
+.u6-seer-modal__view { display: flex; flex-direction: column; flex: 1; gap: .6rem; overflow: hidden; }
+.u6-seer-modal__view .guide-assistant-controls { flex-shrink: 0; margin: 0; }
+.u6-seer-intro { flex-shrink: 0; max-height: 24dvh; overflow: auto; }
+.u6-seer-chat { flex: 1 1 0; min-height: 8rem; max-height: none; margin: 0; overscroll-behavior: contain; }
+.u6-seer-composer { flex-shrink: 0; margin-top: 0; }
+@media (max-width: 600px) {
+    .u6-seer-modal { padding: .4rem; }
+    .u6-seer-modal__panel { height: calc(100dvh - .8rem); max-height: calc(100dvh - .8rem); }
+    .u6-seer-modal__view { padding: .75rem; }
+}

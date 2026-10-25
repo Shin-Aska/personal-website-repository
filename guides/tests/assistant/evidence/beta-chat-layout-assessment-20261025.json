@@ -1,0 +1,820 @@
+{
+  "schemaVersion": 1,
+  "tag": "beta-20261025",
+  "scope": "Bounded final frozen-production UI smoke; no production, model, asset or frozen oracle edits; no publication or staging.",
+  "commands": {
+    "initialSemanticSmoke": "python3 /tmp/beta-chat-layout-20261025.py --tag beta-20261025 --node /home/richard/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node > /tmp/beta-chat-layout-20261025.log 2>&1",
+    "semanticFreeLayoutSmoke": "python3 /tmp/beta-semantic-free-layout-20261025.py > /tmp/beta-semantic-free-layout-20261025.log 2>&1"
+  },
+  "artifacts": [
+    {
+      "path": "guides/tests/assistant/evidence/full-answer-browser-beta-20261025.json",
+      "sha256": "55011233ce6681fbc120bf822c12d0fb97ed04b4321281f714a92f9b05d0b26e"
+    },
+    {
+      "path": "guides/tests/assistant/evidence/chat-layout-beta-20261025.json",
+      "sha256": "9560d707db132e6e30c47e64ca2a2a4f68768a346871d95d20074488c888aca1"
+    },
+    {
+      "path": "/tmp/beta-chat-layout-20261025.py",
+      "sha256": "f34eb366a054bb9b1d5630909f069da1043e903d92000db9b1990bf2b6f90ee9"
+    },
+    {
+      "path": "/tmp/beta-semantic-free-layout-20261025.py",
+      "sha256": "5a927e6acb4a6df275240fbb2475f7d62454a13c08b00a9ad79399b90391c2ff"
+    }
+  ],
+  "initialSemanticSmoke": {
+    "passed": 5,
+    "checks": 13,
+    "sixGameUiCoverageComplete": false,
+    "failureAdjudication": [
+      {
+        "id": "albion-desktop-default-and-history",
+        "surface": "albion",
+        "category": "strict-citation-oracle-mismatch",
+        "reason": "Complete route claim passed phrase assertions. Displayed QUEST_HINTS[\"umajo\"][\"find-path\"] is the same child as frozen QUEST_HINTS.umajo.find-path; equivalent coordinate notation, no missing route claim.",
+        "observedFailure": {
+          "expectedSource": {
+            "file": "guides/js/Albion.js",
+            "locator": "QUEST_HINTS.umajo.find-path",
+            "review": "extracted",
+            "index": {
+              "file": "guides/data/assistant/albion.json",
+              "locator": "narratives[id=toronto-route-method]",
+              "review": "authored-index"
+            },
+            "claims": [
+              {
+                "text": "To reach Toronto: either pay Ohl a Jewel (meet via the Miner’s Guild schedule) or follow the “stones to coastline then south” route to the cave entrance.",
+                "source": {
+                  "file": "guides/js/Albion.js",
+                  "locator": "QUEST_HINTS.umajo.find-path",
+                  "review": "extracted"
+                }
+              }
+            ]
+          },
+          "citation": "Source: existing guide; extracted. guides/js/Albion.js — QUEST_HINTS[\"umajo\"][\"find-path\"]"
+        },
+        "frozenOracle": {
+          "gameId": "albion",
+          "question": "What is the method for the path to Toronto?",
+          "spoiler": "direct",
+          "recordId": "albion:narrative:toronto-route-method:method",
+          "contains": [
+            "pay Ohl a Jewel",
+            "coastline"
+          ],
+          "sourceOracle": {
+            "record": {
+              "id": "albion:narrative:toronto-route-method:method",
+              "entityId": "albion:route:toronto",
+              "title": "The path to Toronto",
+              "aliases": [
+                "Toronto route",
+                "reach Toronto"
+              ],
+              "kind": "route",
+              "relation": "narrative",
+              "scope": "reference",
+              "narrative": {
+                "aspect": "method",
+                "subjects": [
+                  "To reach Toronto"
+                ],
+                "context": [
+                  "pay Ohl a Jewel"
+                ],
+                "status": "recorded",
+                "predicate": "reach"
+              },
+              "minSpoiler": "direct",
+              "requires": null,
+              "editions": [],
+              "conflict": false,
+              "variants": {
+                "direct": {
+                  "text": "To reach Toronto: either pay Ohl a Jewel (meet via the Miner’s Guild schedule) or follow the “stones to coastline then south” route to the cave entrance."
+                }
+              },
+              "source": {
+                "file": "guides/js/Albion.js",
+                "locator": "QUEST_HINTS.umajo.find-path",
+                "review": "extracted",
+                "index": {
+                  "file": "guides/data/assistant/albion.json",
+                  "locator": "narratives[id=toronto-route-method]",
+                  "review": "authored-index"
+                },
+                "claims": [
+                  {
+                    "text": "To reach Toronto: either pay Ohl a Jewel (meet via the Miner’s Guild schedule) or follow the “stones to coastline then south” route to the cave entrance.",
+                    "source": {
+                      "file": "guides/js/Albion.js",
+                      "locator": "QUEST_HINTS.umajo.find-path",
+                      "review": "extracted"
+                    }
+                  }
+                ]
+              }
+            },
+            "gentleAuthorized": false,
+            "directAuthorized": true
+          }
+        },
+        "acceptedRepliesRecordedBeforeFailure": []
+      },
+      {
+        "id": "ultima5-desktop-default-and-history",
+        "surface": "ultima5",
+        "category": "wrong-phase-incomplete-method",
+        "reason": "Actual later exit/retention instructions omit requested harpsichord Stones sequence, secret wall and acquisition. Real answer-quality limitation.",
+        "observedFailure": {
+          "missing": "play Stones",
+          "rendered": "Leave by the same upper route. Keep the Carpet with the active party and retain the Box until Lord British uses it in Dungeon Doom."
+        },
+        "frozenOracle": {
+          "gameId": "ultima5",
+          "question": "What is the method for the Sandalwood Box?",
+          "spoiler": "direct",
+          "recordId": "ultima5:narrative:sandalwood-method:method",
+          "contains": [
+            "play Stones",
+            "secret wall opens"
+          ],
+          "sourceOracle": {
+            "record": {
+              "id": "ultima5:narrative:sandalwood-method:method",
+              "entityId": "ultima5:objective:opening-castle-raid",
+              "title": "Raid Lord British’s third-floor chambers",
+              "aliases": [
+                "Sandalwood Box secret wall"
+              ],
+              "kind": "objective",
+              "relation": "narrative",
+              "scope": "reference",
+              "narrative": {
+                "aspect": "method",
+                "subjects": [
+                  "Sandalwood Box"
+                ],
+                "context": [
+                  "harpsichord"
+                ],
+                "status": "recorded",
+                "predicate": "play Stones"
+              },
+              "minSpoiler": "direct",
+              "requires": null,
+              "editions": [],
+              "conflict": false,
+              "variants": {
+                "direct": {
+                  "text": "Stand at the harpsichord and play Stones as 6-7-8-9-8-7-8-7-6-7-6-5-3. The secret wall opens; enter and take the Sandalwood Box."
+                }
+              },
+              "source": {
+                "file": "guides/js/Ultima5.js",
+                "locator": "ultima5GrandQuestChapters objective=opening-castle-raid.steps[4]",
+                "review": "extracted",
+                "index": {
+                  "file": "guides/data/assistant/ultima5.json",
+                  "locator": "narratives[id=sandalwood-method]",
+                  "review": "authored-index"
+                },
+                "claims": [
+                  {
+                    "text": "Stand at the harpsichord and play Stones as 6-7-8-9-8-7-8-7-6-7-6-5-3. The secret wall opens; enter and take the Sandalwood Box.",
+                    "source": {
+                      "file": "guides/js/Ultima5.js",
+                      "locator": "ultima5GrandQuestChapters objective=opening-castle-raid.steps[4]",
+                      "review": "extracted"
+                    }
+                  }
+                ]
+              }
+            },
+            "gentleAuthorized": false,
+            "directAuthorized": true
+          }
+        },
+        "acceptedRepliesRecordedBeforeFailure": []
+      },
+      {
+        "id": "ultima6-desktop-default-and-history",
+        "surface": "ultima6",
+        "category": "source-present-unanswered",
+        "reason": "Source explicitly records Linda-to-Grison grain delivery and flour return to Cullen. Runtime declines; whole recorded sequence absent. Presentation-prefix expectation is secondary.",
+        "observedFailure": {
+          "rendered": "The available sources do not cover every requested field of that subject.",
+          "decision": "decline"
+        },
+        "frozenOracle": {
+          "gameId": "ultima6",
+          "question": "What is the next step in the Merchants' Circuit?",
+          "spoiler": "direct",
+          "recordId": "ultima6:narrative:merchants-sequence:sequence",
+          "contains": [
+            "In the guide's steps",
+            "then bring his flour back"
+          ],
+          "sourceOracle": {
+            "record": {
+              "id": "ultima6:narrative:merchants-sequence:sequence",
+              "entityId": "ultima6:side-quest:the-merchants-circuit",
+              "title": "The Merchants' Circuit",
+              "aliases": [
+                "Merchants' Circuit",
+                "trade route steps"
+              ],
+              "kind": "objective",
+              "relation": "narrative",
+              "scope": "reference",
+              "narrative": {
+                "aspect": "sequence",
+                "subjects": [
+                  "grain"
+                ],
+                "context": [
+                  "Linda",
+                  "Grison",
+                  "Cullen"
+                ],
+                "status": "recorded",
+                "predicate": "bring",
+                "sequenceMode": "steps"
+              },
+              "minSpoiler": "direct",
+              "requires": null,
+              "editions": [],
+              "conflict": false,
+              "variants": {
+                "direct": {
+                  "text": "Carry grain from Linda in Britain to Grison in Paws, then bring his flour back to Cullen in Britain."
+                }
+              },
+              "source": {
+                "file": "guides/js/Ultima6.js",
+                "locator": "gameData.sideQuests[0].steps[0]",
+                "review": "extracted",
+                "index": {
+                  "file": "guides/data/assistant/ultima6.json",
+                  "locator": "narratives[id=merchants-sequence]",
+                  "review": "authored-index"
+                },
+                "claims": [
+                  {
+                    "text": "Carry grain from Linda in Britain to Grison in Paws, then bring his flour back to Cullen in Britain.",
+                    "source": {
+                      "file": "guides/js/Ultima6.js",
+                      "locator": "gameData.sideQuests[0].steps[0]",
+                      "review": "extracted"
+                    }
+                  }
+                ]
+              }
+            },
+            "gentleAuthorized": false,
+            "directAuthorized": true
+          }
+        },
+        "acceptedRepliesRecordedBeforeFailure": []
+      },
+      {
+        "id": "ultima7-desktop-default-and-history",
+        "surface": "ultima7",
+        "category": "source-present-unanswered",
+        "reason": "Reviewed source articles record bystander and witness-silencing accounts. Runtime declines instead of presenting distinct accounts with attribution. No invented motive observed.",
+        "observedFailure": {
+          "rendered": "The available sources do not cover every requested field of that subject.",
+          "decision": "decline"
+        },
+        "frozenOracle": {
+          "gameId": "ultima7",
+          "question": "Why was Inamo killed?",
+          "spoiler": "direct",
+          "recordId": "ultima7:narrative:inamo-motive:cause",
+          "contains": [
+            "different accounts",
+            "no single explanation"
+          ],
+          "sourceOracle": {
+            "record": {
+              "id": "ultima7:narrative:inamo-motive:cause",
+              "entityId": "ultima7:npc:inamo",
+              "title": "Inamo",
+              "aliases": [],
+              "kind": "npc",
+              "relation": "narrative",
+              "scope": "reference",
+              "narrative": {
+                "aspect": "cause",
+                "subjects": [
+                  "Inamo"
+                ],
+                "context": [],
+                "status": "disputed",
+                "predicate": "killed"
+              },
+              "minSpoiler": "direct",
+              "requires": null,
+              "editions": [],
+              "conflict": false,
+              "variants": {
+                "direct": {
+                  "text": "The Ultima Codex's Inamo article says Inamo was likely an unexpected bystander when he was killed.\nThe Ultima Codex's Christopher article says Inamo was killed apparently so that he could not witness the crime.\nThe Ultima Codex's Klog article describes Inamo as a gargoyle killed to silence a witness."
+                }
+              },
+              "source": {
+                "file": "https://wiki.ultimacodex.com/index.php?title=Inamo&oldid=154876, https://wiki.ultimacodex.com/wiki/Christopher, https://wiki.ultimacodex.com/wiki/Klog",
+                "locator": "Inamo — The Codex of Ultima Wisdom; Christopher — The Codex of Ultima Wisdom; Klog — The Codex of Ultima Wisdom",
+                "review": "external-research",
+                "index": {
+                  "file": "guides/data/assistant/ultima7.json",
+                  "locator": "narratives[id=inamo-motive]",
+                  "review": "authored-index"
+                },
+                "claims": [
+                  {
+                    "text": "The Ultima Codex's Inamo article says Inamo was likely an unexpected bystander when he was killed.",
+                    "source": {
+                      "file": "https://wiki.ultimacodex.com/index.php?title=Inamo&oldid=154876",
+                      "locator": "Inamo — The Codex of Ultima Wisdom",
+                      "review": "external-research",
+                      "references": [
+                        {
+                          "label": "Inamo — The Codex of Ultima Wisdom",
+                          "url": "https://wiki.ultimacodex.com/index.php?title=Inamo&oldid=154876",
+                          "checkedAt": "2026-10-21"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "text": "The Ultima Codex's Christopher article says Inamo was killed apparently so that he could not witness the crime.",
+                    "source": {
+                      "file": "https://wiki.ultimacodex.com/wiki/Christopher",
+                      "locator": "Christopher — The Codex of Ultima Wisdom",
+                      "review": "external-research",
+                      "references": [
+                        {
+                          "label": "Christopher — The Codex of Ultima Wisdom",
+                          "url": "https://wiki.ultimacodex.com/wiki/Christopher",
+                          "checkedAt": "2026-10-21"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "text": "The Ultima Codex's Klog article describes Inamo as a gargoyle killed to silence a witness.",
+                    "source": {
+                      "file": "https://wiki.ultimacodex.com/wiki/Klog",
+                      "locator": "Klog — The Codex of Ultima Wisdom",
+                      "review": "external-research",
+                      "references": [
+                        {
+                          "label": "Klog — The Codex of Ultima Wisdom",
+                          "url": "https://wiki.ultimacodex.com/wiki/Klog",
+                          "checkedAt": "2026-10-22"
+                        }
+                      ]
+                    }
+                  }
+                ],
+                "references": [
+                  {
+                    "label": "Inamo — The Codex of Ultima Wisdom",
+                    "url": "https://wiki.ultimacodex.com/index.php?title=Inamo&oldid=154876",
+                    "checkedAt": "2026-10-21"
+                  },
+                  {
+                    "label": "Christopher — The Codex of Ultima Wisdom",
+                    "url": "https://wiki.ultimacodex.com/wiki/Christopher",
+                    "checkedAt": "2026-10-21"
+                  },
+                  {
+                    "label": "Klog — The Codex of Ultima Wisdom",
+                    "url": "https://wiki.ultimacodex.com/wiki/Klog",
+                    "checkedAt": "2026-10-22"
+                  }
+                ]
+              }
+            },
+            "gentleAuthorized": false,
+            "directAuthorized": true
+          }
+        },
+        "acceptedRepliesRecordedBeforeFailure": []
+      },
+      {
+        "id": "alqadim-reset-reopen-context-retains-full-answers",
+        "surface": "alqadim",
+        "category": "answer-context-followup-limitation",
+        "reason": "Full Family Sword claim passed desktop and phone sends. Smaller-hint follow-up clarifies before reset/reopen/context actions. This failure does not establish a close/reopen defect.",
+        "observedFailure": {
+          "rendered": "Which previous hint should I make gentler?",
+          "decision": "clarify"
+        },
+        "frozenOracle": {
+          "gameId": "alqadim",
+          "question": "What is the method for getting the Family Sword of Honor?",
+          "spoiler": "direct",
+          "recordId": "alqadim:narrative:ch2_1:method",
+          "contains": [
+            "speak with Zubin"
+          ],
+          "sourceOracle": {
+            "record": {
+              "id": "alqadim:narrative:ch2_1:method",
+              "entityId": "alqadim:objective:ch2_1",
+              "title": "Meet Aliya at the gates and speak with Zubin to get the Family Sword of Honor",
+              "aliases": [],
+              "kind": "objective",
+              "relation": "narrative",
+              "scope": "reference",
+              "narrative": {
+                "aspect": "method",
+                "subjects": [
+                  "Family Sword of Honor"
+                ],
+                "context": [
+                  "Zubin"
+                ],
+                "status": "recorded",
+                "predicate": "get"
+              },
+              "minSpoiler": "direct",
+              "requires": null,
+              "editions": [],
+              "conflict": false,
+              "variants": {
+                "direct": {
+                  "text": "Meet Aliya at the gates and speak with Zubin to get the Family Sword of Honor."
+                }
+              },
+              "source": {
+                "file": "guides/js/AlQadim.js",
+                "locator": "DB.chapters[1].required[id=ch2_1]",
+                "review": "extracted",
+                "index": {
+                  "file": "guides/data/assistant/alqadim.json",
+                  "locator": "narratives[id=ch2_1]",
+                  "review": "authored-index"
+                },
+                "claims": [
+                  {
+                    "text": "Meet Aliya at the gates and speak with Zubin to get the Family Sword of Honor.",
+                    "source": {
+                      "file": "guides/js/AlQadim.js",
+                      "locator": "DB.chapters[1].required[id=ch2_1]",
+                      "review": "extracted"
+                    }
+                  }
+                ]
+              }
+            },
+            "gentleAuthorized": false,
+            "directAuthorized": true
+          }
+        },
+        "acceptedRepliesRecordedBeforeFailure": [
+          {
+            "surface": "alqadim",
+            "viewport": [
+              1280,
+              900
+            ],
+            "question": "What is the method for getting the Family Sword of Honor?",
+            "rendered": "Meet Aliya at the gates and speak with Zubin to get the Family Sword of Honor.",
+            "decision": "answer",
+            "citation": "Source: existing guide; extracted. guides/js/AlQadim.js — DB.chapters[1].required[id=ch2_1]",
+            "expectedRecordId": "alqadim:narrative:ch2_1:method",
+            "recordIdObservation": "Not exposed by current production UI; canonical oracle ID plus actual rendered source provenance checked.",
+            "directOnlyOracle": true
+          },
+          {
+            "surface": "alqadim",
+            "viewport": [
+              1280,
+              900
+            ],
+            "question": "What is the method for getting the Family Sword of Honor?",
+            "rendered": "Meet Aliya at the gates and speak with Zubin to get the Family Sword of Honor.",
+            "decision": "answer",
+            "citation": "Source: existing guide; extracted. guides/js/AlQadim.js — DB.chapters[1].required[id=ch2_1]",
+            "expectedRecordId": "alqadim:narrative:ch2_1:method",
+            "recordIdObservation": "Not exposed by current production UI; canonical oracle ID plus actual rendered source provenance checked.",
+            "directOnlyOracle": true
+          },
+          {
+            "surface": "alqadim",
+            "viewport": [
+              1280,
+              900
+            ],
+            "question": "What is the method for getting the Family Sword of Honor?",
+            "rendered": "Meet Aliya at the gates and speak with Zubin to get the Family Sword of Honor.",
+            "decision": "answer",
+            "citation": "Source: existing guide; extracted. guides/js/AlQadim.js — DB.chapters[1].required[id=ch2_1]",
+            "expectedRecordId": "alqadim:narrative:ch2_1:method",
+            "recordIdObservation": "Not exposed by current production UI; canonical oracle ID plus actual rendered source provenance checked.",
+            "directOnlyOracle": true
+          },
+          {
+            "surface": "alqadim",
+            "viewport": [
+              1280,
+              900
+            ],
+            "question": "What is the method for getting the Family Sword of Honor?",
+            "rendered": "Meet Aliya at the gates and speak with Zubin to get the Family Sword of Honor.",
+            "decision": "answer",
+            "citation": "Source: existing guide; extracted. guides/js/AlQadim.js — DB.chapters[1].required[id=ch2_1]",
+            "expectedRecordId": "alqadim:narrative:ch2_1:method",
+            "recordIdObservation": "Not exposed by current production UI; canonical oracle ID plus actual rendered source provenance checked.",
+            "directOnlyOracle": true
+          },
+          {
+            "surface": "alqadim",
+            "viewport": [
+              1280,
+              900
+            ],
+            "question": "What is the method for getting the Family Sword of Honor?",
+            "rendered": "Meet Aliya at the gates and speak with Zubin to get the Family Sword of Honor.",
+            "decision": "answer",
+            "citation": "Source: existing guide; extracted. guides/js/AlQadim.js — DB.chapters[1].required[id=ch2_1]",
+            "expectedRecordId": "alqadim:narrative:ch2_1:method",
+            "recordIdObservation": "Not exposed by current production UI; canonical oracle ID plus actual rendered source provenance checked.",
+            "directOnlyOracle": true
+          },
+          {
+            "surface": "alqadim",
+            "viewport": [
+              390,
+              844
+            ],
+            "question": "What is the method for getting the Family Sword of Honor?",
+            "rendered": "Meet Aliya at the gates and speak with Zubin to get the Family Sword of Honor.",
+            "decision": "answer",
+            "citation": "Source: existing guide; extracted. guides/js/AlQadim.js — DB.chapters[1].required[id=ch2_1]",
+            "expectedRecordId": "alqadim:narrative:ch2_1:method",
+            "recordIdObservation": "Not exposed by current production UI; canonical oracle ID plus actual rendered source provenance checked.",
+            "directOnlyOracle": true
+          }
+        ]
+      },
+      {
+        "id": "alqadim-walkthrough-reset-reopen-context-retains-full-answers",
+        "surface": "alqadim-walkthrough",
+        "category": "answer-context-followup-limitation",
+        "reason": "Same full claim passes walkthrough panel; smaller-hint follow-up clarifies before lifecycle actions. Semantic-free suite independently executes these controls.",
+        "observedFailure": {
+          "rendered": "Which previous hint should I make gentler?",
+          "decision": "clarify"
+        },
+        "frozenOracle": null,
+        "acceptedRepliesRecordedBeforeFailure": [
+          {
+            "surface": "alqadim-walkthrough",
+            "viewport": [
+              1280,
+              900
+            ],
+            "question": "What is the method for getting the Family Sword of Honor?",
+            "rendered": "Meet Aliya at the gates and speak with Zubin to get the Family Sword of Honor.",
+            "decision": "answer",
+            "citation": "Source: existing guide; extracted. guides/js/AlQadim.js — DB.chapters[1].required[id=ch2_1]",
+            "expectedRecordId": "alqadim:narrative:ch2_1:method",
+            "recordIdObservation": "Not exposed by current production UI; canonical oracle ID plus actual rendered source provenance checked.",
+            "directOnlyOracle": true
+          },
+          {
+            "surface": "alqadim-walkthrough",
+            "viewport": [
+              1280,
+              900
+            ],
+            "question": "What is the method for getting the Family Sword of Honor?",
+            "rendered": "Meet Aliya at the gates and speak with Zubin to get the Family Sword of Honor.",
+            "decision": "answer",
+            "citation": "Source: existing guide; extracted. guides/js/AlQadim.js — DB.chapters[1].required[id=ch2_1]",
+            "expectedRecordId": "alqadim:narrative:ch2_1:method",
+            "recordIdObservation": "Not exposed by current production UI; canonical oracle ID plus actual rendered source provenance checked.",
+            "directOnlyOracle": true
+          },
+          {
+            "surface": "alqadim-walkthrough",
+            "viewport": [
+              1280,
+              900
+            ],
+            "question": "What is the method for getting the Family Sword of Honor?",
+            "rendered": "Meet Aliya at the gates and speak with Zubin to get the Family Sword of Honor.",
+            "decision": "answer",
+            "citation": "Source: existing guide; extracted. guides/js/AlQadim.js — DB.chapters[1].required[id=ch2_1]",
+            "expectedRecordId": "alqadim:narrative:ch2_1:method",
+            "recordIdObservation": "Not exposed by current production UI; canonical oracle ID plus actual rendered source provenance checked.",
+            "directOnlyOracle": true
+          },
+          {
+            "surface": "alqadim-walkthrough",
+            "viewport": [
+              1280,
+              900
+            ],
+            "question": "What is the method for getting the Family Sword of Honor?",
+            "rendered": "Meet Aliya at the gates and speak with Zubin to get the Family Sword of Honor.",
+            "decision": "answer",
+            "citation": "Source: existing guide; extracted. guides/js/AlQadim.js — DB.chapters[1].required[id=ch2_1]",
+            "expectedRecordId": "alqadim:narrative:ch2_1:method",
+            "recordIdObservation": "Not exposed by current production UI; canonical oracle ID plus actual rendered source provenance checked.",
+            "directOnlyOracle": true
+          },
+          {
+            "surface": "alqadim-walkthrough",
+            "viewport": [
+              1280,
+              900
+            ],
+            "question": "What is the method for getting the Family Sword of Honor?",
+            "rendered": "Meet Aliya at the gates and speak with Zubin to get the Family Sword of Honor.",
+            "decision": "answer",
+            "citation": "Source: existing guide; extracted. guides/js/AlQadim.js — DB.chapters[1].required[id=ch2_1]",
+            "expectedRecordId": "alqadim:narrative:ch2_1:method",
+            "recordIdObservation": "Not exposed by current production UI; canonical oracle ID plus actual rendered source provenance checked.",
+            "directOnlyOracle": true
+          },
+          {
+            "surface": "alqadim-walkthrough",
+            "viewport": [
+              390,
+              844
+            ],
+            "question": "What is the method for getting the Family Sword of Honor?",
+            "rendered": "Meet Aliya at the gates and speak with Zubin to get the Family Sword of Honor.",
+            "decision": "answer",
+            "citation": "Source: existing guide; extracted. guides/js/AlQadim.js — DB.chapters[1].required[id=ch2_1]",
+            "expectedRecordId": "alqadim:narrative:ch2_1:method",
+            "recordIdObservation": "Not exposed by current production UI; canonical oracle ID plus actual rendered source provenance checked.",
+            "directOnlyOracle": true
+          }
+        ]
+      },
+      {
+        "id": "starcraft-desktop-default-and-history",
+        "surface": "starcraft",
+        "category": "source-present-unanswered",
+        "reason": "SCHNAIL summary declines despite explicit known source subject. Recorded pros, login/local-network and included-game installation qualifications are absent.",
+        "observedFailure": {
+          "rendered": "I could not identify that subject in the available sources.",
+          "decision": "decline"
+        },
+        "frozenOracle": {
+          "gameId": "starcraft",
+          "question": "Summarize SCHNAIL",
+          "spoiler": "direct",
+          "recordId": "starcraft:narrative:schnail-summary:summary",
+          "contains": [
+            "More realistic AI behavior",
+            "includes its own version"
+          ],
+          "sourceOracle": {
+            "record": {
+              "id": "starcraft:narrative:schnail-summary:summary",
+              "entityId": "starcraft:schnail",
+              "title": "SCHNAIL",
+              "aliases": [
+                "SCHNAIL client",
+                "Starcraft Human and AI League"
+              ],
+              "kind": "setup",
+              "relation": "narrative",
+              "scope": "reference",
+              "narrative": {
+                "aspect": "summary",
+                "subjects": [
+                  "SCHNAIL"
+                ],
+                "context": [],
+                "status": "recorded"
+              },
+              "minSpoiler": "direct",
+              "requires": null,
+              "editions": [],
+              "conflict": false,
+              "variants": {
+                "direct": {
+                  "text": "SCHNAIL; Pros: More realistic AI behavior; Better micro and macro management; Seamless integration with the game; Active community and regular updates; Cons: Requires internet connection for initial login; AI plays over local network after login; View Setup Guide\nNote: SCHNAIL includes its own version of Starcraft: Brood War, so you don't need to install the game separately."
+                }
+              },
+              "source": {
+                "file": "guides/StarcraftBWAPI.html",
+                "locator": "#getting-started .grid > div:first-child; #schnail-setup .text-blue-700",
+                "review": "extracted",
+                "index": {
+                  "file": "guides/data/assistant/starcraft.json",
+                  "locator": "narratives[id=schnail-summary]",
+                  "review": "authored-index"
+                },
+                "claims": [
+                  {
+                    "text": "SCHNAIL; Pros: More realistic AI behavior; Better micro and macro management; Seamless integration with the game; Active community and regular updates; Cons: Requires internet connection for initial login; AI plays over local network after login; View Setup Guide",
+                    "source": {
+                      "file": "guides/StarcraftBWAPI.html",
+                      "locator": "#getting-started .grid > div:first-child",
+                      "review": "extracted"
+                    }
+                  },
+                  {
+                    "text": "Note: SCHNAIL includes its own version of Starcraft: Brood War, so you don't need to install the game separately.",
+                    "source": {
+                      "file": "guides/StarcraftBWAPI.html",
+                      "locator": "#schnail-setup .text-blue-700",
+                      "review": "extracted"
+                    }
+                  }
+                ]
+              }
+            },
+            "gentleAuthorized": false,
+            "directAuthorized": true
+          }
+        },
+        "acceptedRepliesRecordedBeforeFailure": []
+      },
+      {
+        "id": "seven-surface-storage-network-source-and-server-boundaries",
+        "surface": null,
+        "category": "downstream-incomplete-coverage",
+        "reason": "Prior semantic failures skipped recording storage-unchanged entries for five surfaces. Two Al-Qadim entries true. Incomplete coverage, not an observed prohibited write; source/static-GET/server facts separately retained.",
+        "observedFailure": {
+          "alqadim": true,
+          "alqadim-walkthrough": true
+        },
+        "frozenOracle": null,
+        "acceptedRepliesRecordedBeforeFailure": []
+      }
+    ],
+    "qualification": "Five initial source assertions and two style-followup assertions stopped later lifecycle checks. Do not count this as full six-game UI acceptance. One equivalent-path strict citation failure, six answer limitations, one downstream incomplete-coverage failure."
+  },
+  "finalLayoutSmoke": {
+    "basePassed": 42,
+    "baseChecks": 42,
+    "expandedPassed": 14,
+    "expandedChecks": 14,
+    "lifecyclePassed": 7,
+    "lifecycleChecks": 7,
+    "failures": [],
+    "surfaces": [
+      "albion",
+      "ultima5",
+      "ultima6",
+      "ultima7",
+      "alqadim",
+      "alqadim-walkthrough",
+      "starcraft"
+    ],
+    "viewportCount": 6,
+    "progressUnchanged": {
+      "albion": true,
+      "ultima5": true,
+      "ultima6": true,
+      "ultima7": true,
+      "alqadim": true,
+      "alqadim-walkthrough": true,
+      "starcraft": true
+    },
+    "onlyStaticGets": true,
+    "externalRequests": [],
+    "pageErrors": [],
+    "sourceFilesUnchangedDuringRun": true,
+    "fullAnswerSelectorsAbsent": true,
+    "serverClosed": true,
+    "qualification": "One semantic-free existing layout suite. Actual expansion/send/scroll/close/reopen observations added at its existing page-close step, using unchanged existing conversation fixture questions. No factual answer acceptance or native inference claim."
+  },
+  "visualInspection": {
+    "screenshots": [
+      {
+        "path": "guides/tests/assistant/intent-prototype/results/chat-layout-beta-20261025/ultima6-expanded-390.png",
+        "sha256": "9b46aa8264d1b382aa2c36788f6e9d0e4a883e2a7f021bb1011daf9816de9554"
+      },
+      {
+        "path": "guides/tests/assistant/intent-prototype/results/chat-layout-beta-20261025/ultima7-expanded-390.png",
+        "sha256": "40ff1c98065d16532d8f306c0ab2a3d4af7d2aac54f27dbc2984d729d537feae"
+      },
+      {
+        "path": "guides/tests/assistant/intent-prototype/results/chat-layout-beta-20261025/starcraft-expanded-1280.png",
+        "sha256": "3b572269aa1a6f7d5424536c9ad8f51cb3517f0114ec3563d8daed8c9188e559"
+      }
+    ],
+    "observed": "All three screenshots manually viewed. Desktop expanded StarCraft long reply and phone expanded Ultima VI/VII keep composer and close control visible; natural-height text cards in scroll viewport. No composer clipping or horizontal overflow observed. Offscreen history portions are intentional scroll positions, independently exercised by action/geometry checks."
+  },
+  "conclusion": {
+    "uiLifecycleBetaBlockerDetected": false,
+    "answerQualityLimitationsRemain": true,
+    "nativeInferenceClaim": false,
+    "broaderAnswerGoal": "Deferred; preserve original failed semantic report and frozen source oracles for follow-up."
+  }
+}

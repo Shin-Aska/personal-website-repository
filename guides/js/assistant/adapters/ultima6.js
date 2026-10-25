@@ -1,4 +1,4 @@
-import { createAssistant } from '../engine.js';
+import { createGuideAssistant } from '../guide-assistant.js';
 import { buildNarrativeRecords, buildResearchRecords, buildTopicRecords, factMap } from '../topics.js';
 
 // All long answers are read from the page's existing objects, not a second walkthrough.
@@ -105,6 +105,17 @@ export function buildUltima6Records({ gameData, atlas = {}, overlay, questRoutes
                 `ultima6:completed:${legacyKey}`, { gentle: named.gentle, visible: named.more });
             addWalkthrough(hint, section.heading, section.summary, section.steps || [], `gameData.quests[${qi}].sections[${si}]`);
             addSummary(hint, section.heading, section.summary, `gameData.quests[${qi}].sections[${si}].summary`);
+            // Keyword callouts sometimes contain requirements omitted from the
+            // walkthrough steps (Mariah's missing tablet half, for example).
+            // Preserve their exact text separately instead of inferring a rule.
+            (section.keywords || []).forEach((keyword, ki) => {
+                if (!keyword.helper) return;
+                records.push({ id: `${hint.entityId}:keyword:${ki}`, entityId: hint.entityId,
+                    title: section.heading, aliases: [], kind: 'objective', relation: 'explanation', identity: false,
+                    scope: hint.scope, minSpoiler: 'direct', requires: null,
+                    variants: { direct: variant(keyword.helper.replace(/<br\s*\/?\s*>/gi, '\n'), section.heading) },
+                    source: source(`gameData.quests[${qi}].sections[${si}].keywords[${ki}].helper`) });
+            });
             if (qi === 0) addShrineHint(hint, section, `gameData.quests[${qi}].sections[${si}]`);
         });
         overview.checklist = (quest.sections || []).flatMap(section =>
@@ -307,7 +318,7 @@ export async function createUltima6Assistant(options) {
     const started = performance.now();
     const { records, contexts } = buildUltima6Records({ ...options, overlay });
     const extractionFinished = performance.now();
-    const assistant = createAssistant({ gameId: 'ultima6', records, getProgress: options.getProgress });
+    const assistant = await createGuideAssistant({ gameId: 'ultima6', records, getProgress: options.getProgress });
     assistant.extractionMs = extractionFinished - started;
     assistant.indexPreparationMs = performance.now() - extractionFinished;
     assistant.preparationMs = performance.now() - started;

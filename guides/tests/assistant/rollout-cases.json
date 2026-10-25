@@ -1,0 +1,2818 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Source-backed all-six-game conversation rollout; authored before running this suite; not blind user accuracy",
+  "dialogues": [
+    {
+      "id": "albion-crew-short-followups",
+      "gameId": "albion",
+      "turns": [
+        {
+          "text": "Who exactly is Rainer Hofstedt?",
+          "intent": "identity",
+          "supported": true,
+          "replyContains": [
+            "Xenobiologist"
+          ],
+          "replyAbsent": [],
+          "expectedRecordIds": [
+            "albion:character:rainer-hofstedt:explanation"
+          ],
+          "evidence": [
+            {
+              "recordId": "albion:character:rainer-hofstedt:explanation",
+              "variant": "direct",
+              "quote": "Human. Xenobiologist. Government scientist. Weak combatant. Leaves mid-game.",
+              "source": {
+                "file": "guides/js/Albion.js",
+                "locator": "DB.characters[1].role/notes",
+                "review": "extracted",
+                "index": {
+                  "file": "guides/js/assistant/adapters/albion.js",
+                  "locator": "character notes answer recruitment advice",
+                  "review": "authored-index"
+                }
+              }
+            }
+          ],
+          "entityId": "albion:character:rainer-hofstedt",
+          "entityTitle": "Rainer Hofstedt"
+        },
+        {
+          "text": "his listed location?",
+          "intent": "location",
+          "supported": true,
+          "replyContains": [
+            "Toronto, beginning"
+          ],
+          "replyAbsent": [],
+          "expectedRecordIds": [
+            "albion:character:rainer-hofstedt:location"
+          ],
+          "evidence": [
+            {
+              "recordId": "albion:character:rainer-hofstedt:location",
+              "variant": "direct",
+              "quote": "Recruitment location: Toronto, beginning. This does not establish current party membership.",
+              "source": {
+                "file": "guides/js/Albion.js",
+                "locator": "DB.characters[1].joinLocation",
+                "review": "extracted"
+              }
+            }
+          ],
+          "entityId": "albion:character:rainer-hofstedt",
+          "entityTitle": "Rainer Hofstedt"
+        },
+        {
+          "text": "starting attributes",
+          "intent": "stats",
+          "supported": true,
+          "replyContains": [
+            "Intelligence 76/90",
+            "Dexterity 80/90"
+          ],
+          "replyAbsent": [],
+          "expectedRecordIds": [
+            "albion:character:rainer-hofstedt:stats"
+          ],
+          "evidence": [
+            {
+              "recordId": "albion:character:rainer-hofstedt:stats",
+              "variant": "balanced",
+              "quote": "Rainer Hofstedt stats (base/max): Strength 28/70, Intelligence 76/90, Dexterity 80/90, Speed 11/50, Stamina 35/65, Magic talent 0/0. Combat caps: close 40, long 40, critical 99. Magic school: none. Can use firearms (guns): yes. Can leave the party: yes. Origin: Toronto (Spaceship).",
+              "source": {
+                "file": "guides/js/Albion.js",
+                "locator": "DB.characters[1].stats/combatCaps/magicSchool",
+                "review": "extracted"
+              }
+            }
+          ],
+          "entityId": "albion:character:rainer-hofstedt",
+          "entityTitle": "Rainer Hofstedt"
+        },
+        {
+          "text": "New subject: identify Sira.",
+          "intent": "identity",
+          "supported": true,
+          "replyContains": [
+            "Dji-Kas Mage"
+          ],
+          "replyAbsent": [],
+          "expectedRecordIds": [
+            "albion:character:sira:explanation"
+          ],
+          "evidence": [
+            {
+              "recordId": "albion:character:sira:explanation",
+              "variant": "direct",
+              "quote": "Iskai. Dji-Kas Mage. Iskai mage specializing in frost and snare magic. Always leaves with Melthas.",
+              "source": {
+                "file": "guides/js/Albion.js",
+                "locator": "DB.characters[3].role/notes",
+                "review": "extracted",
+                "index": {
+                  "file": "guides/js/assistant/adapters/albion.js",
+                  "locator": "character notes answer recruitment advice",
+                  "review": "authored-index"
+                }
+              }
+            }
+          ],
+          "entityId": "albion:character:sira",
+          "entityTitle": "Sira"
+        },
+        {
+          "text": "her stat values",
+          "intent": "stats",
+          "supported": true,
+          "replyContains": [
+            "Magic talent 85/85"
+          ],
+          "replyAbsent": [],
+          "expectedRecordIds": [
+            "albion:character:sira:stats"
+          ],
+          "evidence": [
+            {
+              "recordId": "albion:character:sira:stats",
+              "variant": "balanced",
+              "quote": "Sira stats (base/max): Strength 39/45, Intelligence 55/90, Dexterity 58/70, Speed 59/99, Stamina 35/50, Magic talent 85/85. Combat caps: close 70, long 70, critical 99. Magic school: Iskai (Dji-Kas). Can leave the party: yes. Origin: Jirinaar.",
+              "source": {
+                "file": "guides/js/Albion.js",
+                "locator": "DB.characters[3].stats/combatCaps/magicSchool",
+                "review": "extracted"
+              }
+            }
+          ],
+          "entityId": "albion:character:sira",
+          "entityTitle": "Sira"
+        },
+        {
+          "text": "Why did she assassinate Rainer?",
+          "intent": "why",
+          "supported": false,
+          "replyContains": [],
+          "replyAbsent": [],
+          "expectedRecordIds": [],
+          "evidence": [],
+          "entityId": "albion:character:sira",
+          "requireDecline": true,
+          "declineReason": "No indexed assassination motive or event supports this premise."
+        }
+      ]
+    },
+    {
+      "id": "albion-equipment-and-reset",
+      "gameId": "albion",
+      "turns": [
+        {
+          "text": "What is the Dreamshield?",
+          "intent": "identity",
+          "supported": true,
+          "replyContains": [
+            "Shield",
+            "Sleep Spores (20)"
+          ],
+          "replyAbsent": [],
+          "expectedRecordIds": [
+            "albion:item:dreamshield:explanation"
+          ],
+          "evidence": [
+            {
+              "recordId": "albion:item:dreamshield:explanation",
+              "variant": "balanced",
+              "quote": "Dreamshield: Shield. 12 Prot, Sleep Spores (20).",
+              "source": {
+                "file": "guides/js/Albion.js",
+                "locator": "DB.equipment[6]",
+                "review": "extracted"
+              }
+            }
+          ],
+          "entityId": "albion:item:dreamshield",
+          "entityTitle": "Dreamshield"
+        },
+        {
+          "text": "where can it be found",
+          "intent": "location",
+          "supported": true,
+          "replyContains": [
+            "Rifrako's (Aballon)"
+          ],
+          "replyAbsent": [],
+          "expectedRecordIds": [
+            "albion:item:dreamshield:location"
+          ],
+          "evidence": [
+            {
+              "recordId": "albion:item:dreamshield:location",
+              "variant": "balanced",
+              "quote": "Dreamshield: Rifrako's (Aballon).",
+              "source": {
+                "file": "guides/js/Albion.js",
+                "locator": "DB.equipment[6].location",
+                "review": "extracted"
+              }
+            }
+          ],
+          "entityId": "albion:item:dreamshield",
+          "entityTitle": "Dreamshield"
+        },
+        {
+          "text": "how is it used",
+          "intent": "use",
+          "supported": true,
+          "replyContains": [
+            "12 Prot",
+            "Sleep Spores (20)"
+          ],
+          "replyAbsent": [],
+          "expectedRecordIds": [
+            "albion:item:dreamshield:use"
+          ],
+          "evidence": [
+            {
+              "recordId": "albion:item:dreamshield:use",
+              "variant": "balanced",
+              "quote": "Shield. 12 Prot, Sleep Spores (20).",
+              "source": {
+                "file": "guides/js/Albion.js",
+                "locator": "DB.equipment[6].effect",
+                "review": "extracted"
+              }
+            }
+          ],
+          "entityId": "albion:item:dreamshield",
+          "entityTitle": "Dreamshield"
+        },
+        {
+          "text": "Topic reset control",
+          "intent": "unknown",
+          "supported": false,
+          "replyContains": [],
+          "replyAbsent": [],
+          "expectedRecordIds": [],
+          "evidence": [],
+          "action": "resetTopic",
+          "expectedControl": "reset"
+        },
+        {
+          "text": "its location again",
+          "intent": "location",
+          "supported": false,
+          "replyContains": [],
+          "replyAbsent": [],
+          "expectedRecordIds": [],
+          "evidence": [],
+          "requireDecline": true,
+          "declineReason": "No grounded subject remains after actual reset."
+        },
+        {
+          "text": "Where is Captain Heliowisp?",
+          "intent": "location",
+          "supported": false,
+          "replyContains": [],
+          "replyAbsent": [],
+          "expectedRecordIds": [],
+          "evidence": [],
+          "requireDecline": true,
+          "declineReason": "Unindexed subject must not revive Dreamshield or a crew member."
+        }
+      ]
+    },
+    {
+      "id": "albion-pistol-edition-boundary",
+      "gameId": "albion",
+      "turns": [
+        {
+          "text": "Define the Pistol for me.",
+          "intent": "identity",
+          "supported": true,
+          "replyContains": [
+            "Ranged",
+            "Damage: 30"
+          ],
+          "replyAbsent": [],
+          "expectedRecordIds": [
+            "albion:item:pistol:explanation"
+          ],
+          "evidence": [
+            {
+              "recordId": "albion:item:pistol:explanation",
+              "variant": "balanced",
+              "quote": "Pistol: Ranged. +60 LON, uses Canisters. Damage: 30.",
+              "source": {
+                "file": "guides/js/Albion.js",
+                "locator": "DB.equipment[5]",
+                "review": "extracted"
+              }
+            }
+          ],
+          "entityId": "albion:item:pistol",
+          "entityTitle": "Pistol"
+        },
+        {
+          "text": "its use",
+          "intent": "use",
+          "supported": true,
+          "replyContains": [
+            "Canisters"
+          ],
+          "replyAbsent": [],
+          "expectedRecordIds": [
+            "albion:item:pistol:use"
+          ],
+          "evidence": [
+            {
+              "recordId": "albion:item:pistol:use",
+              "variant": "balanced",
+              "quote": "Ranged. +60 LON, uses Canisters. Damage: 30.",
+              "source": {
+                "file": "guides/js/Albion.js",
+                "locator": "DB.equipment[5].effect",
+                "review": "extracted"
+              }
+            }
+          ],
+          "entityId": "albion:item:pistol",
+          "entityTitle": "Pistol"
+        },
+        {
+          "text": "get it how",
+          "intent": "acquisition",
+          "supported": true,
+          "replyContains": [
+            "damaged console",
+            "Pistol + Canisters"
+          ],
+          "replyAbsent": [],
+          "expectedRecordIds": [
+            "albion:item:pistol:acquisition"
+          ],
+          "evidence": [
+            {
+              "recordId": "albion:item:pistol:acquisition",
+              "variant": "direct",
+              "quote": "In the COM room, examine the damaged console to get the Pistol + Canisters; grab the extra Stimdrinks from the east drawer.",
+              "source": {
+                "file": "guides/js/Albion.js",
+                "locator": "QUEST_HINTS.toronto-intro.pistol",
+                "review": "extracted"
+              }
+            }
+          ],
+          "entityId": "albion:item:pistol",
+          "entityTitle": "Pistol"
+        },
+        {
+          "text": "How do I obtain the Pistol in StarCraft II?",
+          "intent": "acquisition",
+          "supported": false,
+          "replyContains": [],
+          "replyAbsent": [],
+          "expectedRecordIds": [],
+          "evidence": [],
+          "entityId": "albion:item:pistol",
+          "requireDecline": true,
+          "declineReason": "Qualified cross-game request is outside Albion source coverage."
+        },
+        {
+          "text": "its acquisition",
+          "intent": "acquisition",
+          "supported": false,
+          "replyContains": [],
+          "replyAbsent": [],
+          "expectedRecordIds": [],
+          "evidence": [],
+          "entityId": "albion:item:pistol",
+          "requireDecline": true,
+          "declineReason": "The unsupported game qualifier must carry into the fragment."
+        },
+        {
+          "text": "New subject in Albion: where is Sira listed?",
+          "intent": "location",
+          "supported": true,
+          "replyContains": [
+            "Jirinaar"
+          ],
+          "replyAbsent": [],
+          "expectedRecordIds": [
+            "albion:character:sira:location"
+          ],
+          "evidence": [
+            {
+              "recordId": "albion:character:sira:location",
+              "variant": "direct",
+              "quote": "Recruitment location: Jirinaar, after confronting Bradir. This does not establish current party membership.",
+              "source": {
+                "file": "guides/js/Albion.js",
+                "locator": "DB.characters[3].joinLocation",
+                "review": "extracted"
+              }
+            }
+          ],
+          "entityId": "albion:character:sira",
+          "entityTitle": "Sira"
+        }
+      ]
+    },
+    {
+      "id": "u5-starting-companions-fragments",
+      "gameId": "ultima5",
+      "turns": [
+        {
+          "text": "Identify Iolo in Ultima V.",
+          "intent": "identity",
+          "supported": true,
+          "replyContains": [
+            "Bard"
+          ],
+          "replyAbsent": [],
+          "expectedRecordIds": [
+            "ultima5:companion:iolo:explanation"
+          ],
+          "evidence": [
+            {
+              "recordId": "ultima5:companion:iolo:explanation",
+              "variant": "direct",
+              "quote": "Bard. A solid starting companion and a capable fighter/bard. His presence is mandatory at the start.",
+              "source": {
+                "file": "guides/js/Ultima5.js",
+                "locator": "companionData[0]",
+                "review": "extracted",
+                "index": {
+                  "file": "guides/js/assistant/adapters/ultima5.js",
+                  "locator": "companion notes answer recruitment advice",
+                  "review": "authored-index"
+                }
+              }
+            }
+          ],
+          "entityId": "ultima5:companion:iolo",
+          "entityTitle": "Iolo"
+        },
+        {
+          "text": "the numbers",
+          "intent": "stats",
+          "supported": true,
+          "replyContains": [
+            "Strength 19",
+            "Dexterity 21"
+          ],
+          "replyAbsent": [],
+          "expectedRecordIds": [
+            "ultima5:companion:iolo:stats"
+          ],
+          "evidence": [
+            {
+              "recordId": "ultima5:companion:iolo:stats",
+              "variant": "gentle",
+              "quote": "Iolo: Bard, level 3. Strength 19, Intelligence 17, Dexterity 21.",
+              "source": {
+                "file": "guides/js/Ultima5.js",
+                "locator": "companionData[0]",
+                "review": "extracted"
+              }
+            }
+          ],
+          "entityId": "ultima5:companion:iolo",
+          "entityTitle": "Iolo"
+        },
+        {
+          "text": "listed location",
+          "intent": "location",
+          "supported": true,
+          "replyContains": [
+            "starting party"
+          ],
+          "replyAbsent": [],
+          "expectedRecordIds": [
+            "ultima5:companion:iolo:location"
+          ],
+          "evidence": [
+            {
+              "recordId": "ultima5:companion:iolo:location",
+              "variant": "balanced",
+              "quote": "This companion is listed in the starting party.",
+              "source": {
+                "file": "guides/js/Ultima5.js",
+                "locator": "companionData[0].Location",
+                "review": "extracted"
+              }
+            }
+          ],
+          "entityId": "ultima5:companion:iolo",
+          "entityTitle": "Iolo"
+        },
+        {
+          "text": "Now who is Jaana?",
+          "intent": "identity",
+          "supported": true,
+          "replyContains": [
+            "Mage"
+          ],
+          "replyAbsent": [],
+          "expectedRecordIds": [
+            "ultima5:companion:jaana:explanation"
+          ],
+          "evidence": [
+            {
+              "recordId": "ultima5:companion:jaana:explanation",
+              "variant": "direct",
+              "quote": "Mage. An essential early recruit. As a mage, her spellcasting ability is invaluable throughout the game.",
+              "source": {
+                "file": "guides/js/Ultima5.js",
+                "locator": "companionData[2]",
+                "review": "extracted",
+                "index": {
+                  "file": "guides/js/assistant/adapters/ultima5.js",
+                  "locator": "companion notes answer recruitment advice",
+                  "review": "authored-index"
+                }
+              }
+            }
+          ],
+          "entityId": "ultima5:companion:jaana",
+          "entityTitle": "Jaana"
+        },
+        {
+          "text": "where is she located",
+          "intent": "location",
+          "supported": true,
+          "replyContains": [
+            "Yew"
+          ],
+          "replyAbsent": [],
+          "expectedRecordIds": [
+            "ultima5:companion:jaana:location"
+          ],
+          "evidence": [
+            {
+              "recordId": "ultima5:companion:jaana:location",
+              "variant": "balanced",
+              "quote": "Yew",
+              "source": {
+                "file": "guides/js/Ultima5.js",
+                "locator": "companionData[2].Location",
+                "review": "extracted"
+              }
+            }
+          ],
+          "entityId": "ultima5:companion:jaana",
+          "entityTitle": "Jaana"
+        },
+        {
+          "text": "her numeric attributes",
+          "intent": "stats",
+          "supported": true,
+          "replyContains": [
+            "Intelligence 21"
+          ],
+          "replyAbsent": [],
+          "expectedRecordIds": [
+            "ultima5:companion:jaana:stats"
+          ],
+          "evidence": [
+            {
+              "recordId": "ultima5:companion:jaana:stats",
+              "variant": "gentle",
+              "quote": "Jaana: Mage, level 2. Strength 15, Intelligence 21, Dexterity 17.",
+              "source": {
+                "file": "guides/js/Ultima5.js",
+                "locator": "companionData[2]",
+                "review": "extracted"
+              }
+            }
+          ],
+          "entityId": "ultima5:companion:jaana",
+          "entityTitle": "Jaana"
+        }
+      ]
+    },
+    {
+      "id": "u5-box-spell-and-qualified-use",
+      "gameId": "ultima5",
+      "turns": [
+        {
+          "text": "Where is the Sandalwood Box kept?",
+          "intent": "location",
+          "supported": true,
+          "replyContains": [
+            "Castle Britannia",
+            "upper private suite"
+          ],
+          "replyAbsent": [],
+          "expectedRecordIds": [
+            "ultima5:item:sandalwood-box:location"
+          ],
+          "evidence": [
+            {
+              "recordId": "ultima5:item:sandalwood-box:location",
+              "variant": "direct",
+              "quote": "Castle Britannia, upper private suite",
+              "source": {
+                "file": "guides/js/Ultima5.js",
+                "locator": "ultima5GrandQuestChapters objective=opening-castle-raid.location",
+                "review": "extracted"
+              }
+            }
+          ],
+          "entityId": "ultima5:item:sandalwood-box",
+          "entityTitle": "Sandalwood Box"
+        },
+        {
+          "text": "what is it used for",
+          "intent": "use",
+          "supported": true,
+          "replyContains": [
+            "Dungeon Doom"
+          ],
+          "replyAbsent": [],
+          "expectedRecordIds": [
+            "ultima5:item:sandalwood-box:use"
+          ],
+          "evidence": [
+            {
+              "recordId": "ultima5:item:sandalwood-box:use",
+              "variant": "direct",
+              "quote": "Leave by the same upper route. Keep the Carpet with the active party and retain the Box until Lord British uses it in Dungeon Doom.",
+              "source": {
+                "file": "guides/js/Ultima5.js",
+                "locator": "ultima5GrandQuestChapters objective=opening-castle-raid.steps[5]",
+                "review": "extracted"
+              }
+            }
+          ],
+          "entityId": "ultima5:item:sandalwood-box",
+          "entityTitle": "Sandalwood Box"
+        },
+        {
+          "text": "Change to In Lor: how is it used?",
+          "intent": "use",
+          "supported": true,
+          "replyContains": [
+            "Creates light",
+            "Sulfurous Ash"
+          ],
+          "replyAbsent": [],
+          "expectedRecordIds": [
+            "ultima5:spell:in-lor:use"
+          ],
+          "evidence": [
+            {
+              "recordId": "ultima5:spell:in-lor:use",
+              "variant": "gentle",
+              "quote": "Circle 1 spell. Creates light. Reagents: Sulfurous Ash.",
+              "source": {
+                "file": "guides/js/Ultima5.js",
+                "locator": "spellData name=In Lor",
+                "review": "extracted",
+                "index": {
+                  "file": "guides/js/assistant/adapters/ultima5.js",
+                  "locator": "spell table entry says what the spell is",
+                  "review": "authored-index"
+                }
+              }
+            }
+          ],
+          "entityId": "ultima5:spell:in-lor",
+          "entityTitle": "In Lor"
+        },
+        {
+          "text": "use of in lor",
+          "intent": "use",
+          "supported": true,
+          "replyContains": [
+            "Creates light"
+          ],
+          "replyAbsent": [],
+          "expectedRecordIds": [
+            "ultima5:spell:in-lor:use"
+          ],
+          "evidence": [
+            {
+              "recordId": "ultima5:spell:in-lor:use",
+              "variant": "gentle",
+              "quote": "Circle 1 spell. Creates light. Reagents: Sulfurous Ash.",
+              "source": {
+                "file": "guides/js/Ultima5.js",
+                "locator": "spellData name=In Lor",
+                "review": "extracted",
+                "index": {
+                  "file": "guides/js/assistant/adapters/ultima5.js",
+                  "locator": "spell table entry says what the spell is",
+                  "review": "authored-index"
+                }
+              }
+            }
+          ],
+          "entityId": "ultima5:spell:in-lor",
+          "entityTitle": "In Lor"
+        },
+        {
+          "text": "How do I use In Lor on Nintendo Switch?",
+          "intent": "use",
+          "supported": false,
+          "replyContains": [],
+          "replyAbsent": [],
+          "expectedRecordIds": [],
+          "evidence": [],
+          "entityId": "ultima5:spell:in-lor",
+          "requireDecline": true,
+          "declineReason": "The platform-qualified procedure is not supported by the guide."
+        },
+        {
+          "text": "usage steps",
+          "intent": "use",
+          "supported": false,
+          "replyContains": [],
+          "replyAbsent": [],
+          "expectedRecordIds": [],
+          "evidence": [],
+          "entityId": "ultima5:spell:in-lor",
+          "requireDecline": true,
+          "declineReason": "The unsupported platform restriction carries into the fragment."
+        }
+      ]
+    },
+    {
+      "id": "u5-research-and-topic-reset",
+      "gameId": "ultima5",
+      "turns": [
+        {
+          "text": "Who is Lord British?",
+          "intent": "identity",
+          "supported": true,
+          "replyContains": [
+            "king of Britannia",
+            "Great Council"
+          ],
+          "replyAbsent": [],
+          "expectedRecordIds": [
+            "ultima5:research:lord-british-identity:explanation"
+          ],
+          "evidence": [
+            {
+              "recordId": "ultima5:research:lord-british-identity:explanation",
+              "variant": "gentle",
+              "quote": "Lord British is the king of Britannia. The Book of Lore describes him sharing government with a Great Council representing the eight major towns.",
+              "source": {
+                "file": "https://c64sets.com/ultima5/u5_the_book_of_lore.pdf",
+                "locator": "Ultima V original manual, The Book of Lore: Government (printed pages 8–9)",
+                "review": "external-research",
+                "references": [
+                  {
+                    "label": "Ultima V original manual, The Book of Lore: Government (printed pages 8–9)",
+                    "url": "https://c64sets.com/ultima5/u5_the_book_of_lore.pdf",
+                    "checkedAt": "2026-10-24"
+                  }
+                ],
+                "index": {
+                  "file": "guides/data/assistant/ultima5.json",
+                  "locator": "research[id=lord-british-identity]",
+                  "review": "authored-index"
+                }
+              }
+            }
+          ],
+          "entityId": "ultima5:npc:lord-british",
+          "entityTitle": "Lord British"
+        },
+        {
+          "text": "Only this guide: who is Lord British?",
+          "intent": "identity",
+          "supported": false,
+          "replyContains": [],
+          "replyAbsent": [],
+          "expectedRecordIds": [],
+          "evidence": [],
+          "entityId": "ultima5:npc:lord-british",
+          "requireDecline": true,
+          "declineReason": "The substantive identity selected here is external research; source restriction must remain active.",
+          "restriction": "guide-only"
+        },
+        {
+          "text": "his identity again",
+          "intent": "identity",
+          "supported": false,
+          "replyContains": [],
+          "replyAbsent": [],
+          "expectedRecordIds": [],
+          "evidence": [],
+          "entityId": "ultima5:npc:lord-british",
+          "requireDecline": true,
+          "declineReason": "Guide-only fragment cannot recover the excluded research.",
+          "restriction": "guide-only"
+        },
+        {
+          "text": "Topic reset control",
+          "intent": "unknown",
+          "supported": false,
+          "replyContains": [],
+          "replyAbsent": [],
+          "expectedRecordIds": [],
+          "evidence": [],
+          "action": "resetTopic",
+          "expectedControl": "reset"
+        },
+        {
+          "text": "where is he now",
+          "intent": "location",
+          "supported": false,
+          "replyContains": [],
+          "replyAbsent": [],
+          "expectedRecordIds": [],
+          "evidence": [],
+          "requireDecline": true,
+          "declineReason": "Actual topic reset clears the previous referent."
+        },
+        {
+          "text": "New topic: give Shamino's attributes.",
+          "intent": "stats",
+          "supported": true,
+          "replyContains": [
+            "Strength 20",
+            "Dexterity 22"
+          ],
+          "replyAbsent": [],
+          "expectedRecordIds": [
+            "ultima5:companion:shamino:stats"
+          ],
+          "evidence": [
+            {
+              "recordId": "ultima5:companion:shamino:stats",
+              "variant": "gentle",
+              "quote": "Shamino: Fighter, level 2. Strength 20, Intelligence 16, Dexterity 22.",
+              "source": {
+                "file": "guides/js/Ultima5.js",
+                "locator": "companionData[1]",
+                "review": "extracted"
+              }
+            }
+          ],
+          "entityId": "ultima5:companion:shamino",
+          "entityTitle": "Shamino"
+        }
+      ]
+    },
+    {
+      "id": "u6-core-party-role-followups",
+      "gameId": "ultima6",
+      "turns": [
+        {
+          "text": "Who is Iolo in this game?",
+          "intent": "identity",
+          "supported": true,
+          "replyContains": [
+            "Bard",
+            "Core ranged"
+          ],
+          "replyAbsent": [],
+          "expectedRecordIds": [
+            "ultima6:narrative:iolo-identity:identity"
+          ],
+          "evidence": [
+            {
+              "recordId": "ultima6:narrative:iolo-identity:identity",
+              "variant": "balanced",
+              "quote": "Iolo: Bard. Core ranged damage dealer.",
+              "source": {
+                "file": "guides/js/Ultima6.js",
+                "locator": "gameData.companions[0]",
+                "review": "extracted",
+                "index": {
+                  "file": "guides/data/assistant/ultima6.json",
+                  "locator": "narratives[id=iolo-identity]",
+                  "review": "authored-index"
+                },
+                "claims": [
+                  {
+                    "text": "Iolo: Bard. Core ranged damage dealer.",
+                    "source": {
+                      "file": "guides/js/Ultima6.js",
+                      "locator": "gameData.companions[0]",
+                      "review": "extracted"
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "entityId": "ultima6:atlas:marker:Iolo",
+          "entityTitle": "Iolo"
+        },
+        {
+          "text": "starting stat line",
+          "intent": "stats",
+          "supported": true,
+          "replyContains": [
+            "Strength 20",
+            "Dexterity 26"
+          ],
+          "replyAbsent": [],
+          "expectedRecordIds": [
+            "ultima6:atlas:marker:Iolo:stats:reference"
+          ],
+          "evidence": [
+            {
+              "recordId": "ultima6:atlas:marker:Iolo:stats:reference",
+              "variant": "gentle",
+              "quote": "Iolo: Bard, level 3. Strength 20, Dexterity 26, Intelligence 17.",
+              "source": {
+                "file": "guides/js/Ultima6.js",
+                "locator": "gameData.companions[0]",
+                "review": "extracted"
+              }
+            }
+          ],
+          "entityId": "ultima6:atlas:marker:Iolo",
+          "entityTitle": "Iolo"
+        },
+        {
+          "text": "his map coordinates",
+          "intent": "location",
+          "supported": true,
+          "replyContains": [
+            "X 133",
+            "Y 162"
+          ],
+          "replyAbsent": [],
+          "expectedRecordIds": [
+            "ultima6:atlas:marker:Iolo:location"
+          ],
+          "evidence": [
+            {
+              "recordId": "ultima6:atlas:marker:Iolo:location",
+              "variant": "direct",
+              "quote": "Coordinates: X 133, Y 162, Z 0.",
+              "source": {
+                "file": "guides/js/Ultima6Atlas.js",
+                "locator": "marker:Iolo",
+                "review": "extracted"
+              }
+            }
+          ],
+          "entityId": "ultima6:atlas:marker:Iolo",
+          "entityTitle": "Iolo"
+        },
+        {
+          "text": "Different subject: explain who Dupre is.",
+          "intent": "identity",
+          "supported": true,
+          "replyContains": [
+            "Fighter",
+            "frontline tank"
+          ],
+          "replyAbsent": [],
+          "expectedRecordIds": [
+            "ultima6:narrative:dupre-identity:identity"
+          ],
+          "evidence": [
+            {
+              "recordId": "ultima6:narrative:dupre-identity:identity",
+              "variant": "balanced",
+              "quote": "Dupre: Fighter. Primary frontline tank.",
+              "source": {
+                "file": "guides/js/Ultima6.js",
+                "locator": "gameData.companions[2]",
+                "review": "extracted",
+                "index": {
+                  "file": "guides/data/assistant/ultima6.json",
+                  "locator": "narratives[id=dupre-identity]",
+                  "review": "authored-index"
+                },
+                "claims": [
+                  {
+                    "text": "Dupre: Fighter. Primary frontline tank.",
+                    "source": {
+                      "file": "guides/js/Ultima6.js",
+                      "locator": "gameData.companions[2]",
+                      "review": "extracted"
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "entityId": "ultima6:atlas:marker:Dupre",
+          "entityTitle": "Dupre"
+        },
+        {
+          "text": "his attributes",
+          "intent": "stats",
+          "supported": true,
+          "replyContains": [
+            "Strength 26",
+            "Intelligence 17"
+          ],
+          "replyAbsent": [],
+          "expectedRecordIds": [
+            "ultima6:atlas:marker:Dupre:stats:reference"
+          ],
+          "evidence": [
+            {
+              "recordId": "ultima6:atlas:marker:Dupre:stats:reference",
+              "variant": "gentle",
+              "quote": "Dupre: Fighter, level 3. Strength 26, Dexterity 20, Intelligence 17.",
+              "source": {
+                "file": "guides/js/Ultima6.js",
+                "locator": "gameData.companions[2]",
+                "review": "extracted"
+              }
+            }
+          ],
+          "entityId": "ultima6:atlas:marker:Dupre",
+          "entityTitle": "Dupre"
+        },
+        {
+          "text": "Why did he murder Iolo?",
+          "intent": "why",
+          "supported": false,
+          "replyContains": [],
+          "replyAbsent": [],
+          "expectedRecordIds": [],
+          "evidence": [],
+          "entityId": "ultima6:atlas:marker:Dupre",
+          "requireDecline": true,
+          "declineReason": "No indexed murder event or motive supports this premise."
+        }
+      ]
+    },
+    {
+      "id": "u6-equipment-and-unrelated-subject",
+      "gameId": "ultima6",
+      "turns": [
+        {
+          "text": "What are Swamp Boots?",
+          "intent": "identity",
+          "supported": true,
+          "replyContains": [
+            "+2 Armor",
+            "Negates Poison"
+          ],
+          "replyAbsent": [],
+          "expectedRecordIds": [
+            "ultima6:item:swamp-boots:explanation:reference"
+          ],
+          "evidence": [
+            {
+              "recordId": "ultima6:item:swamp-boots:explanation:reference",
+              "variant": "gentle",
+              "quote": "Boots; +2 Armor (Negates Poison).",
+              "source": {
+                "file": "guides/js/Ultima6.js",
+                "locator": "gameData.equipment[7]",
+                "review": "extracted"
+              }
+            }
+          ],
+          "entityId": "ultima6:item:swamp-boots",
+          "entityTitle": "Swamp Boots"
+        },
+        {
+          "text": "how can I get them",
+          "intent": "acquisition",
+          "supported": true,
+          "replyContains": [
+            "Utomo in Yew"
+          ],
+          "replyAbsent": [],
+          "expectedRecordIds": [
+            "ultima6:item:swamp-boots:acquisition:reference"
+          ],
+          "evidence": [
+            {
+              "recordId": "ultima6:item:swamp-boots:acquisition:reference",
+              "variant": "direct",
+              "quote": "Sold by Utomo in Yew.",
+              "source": {
+                "file": "guides/js/Ultima6.js",
+                "locator": "gameData.equipment[7].acq",
+                "review": "extracted",
+                "index": {
+                  "file": "guides/js/assistant/adapters/ultima6.js",
+                  "locator": "equipment acquisition text answers \"where is it?\"",
+                  "review": "authored-index"
+                }
+              }
+            }
+          ],
+          "entityId": "ultima6:item:swamp-boots",
+          "entityTitle": "Swamp Boots"
+        },
+        {
+          "text": "Now define Magic Helm.",
+          "intent": "identity",
+          "supported": true,
+          "replyContains": [
+            "Helmet",
+            "+5 Armor"
+          ],
+          "replyAbsent": [],
+          "expectedRecordIds": [
+            "ultima6:item:magic-helm:explanation:reference"
+          ],
+          "evidence": [
+            {
+              "recordId": "ultima6:item:magic-helm:explanation:reference",
+              "variant": "gentle",
+              "quote": "Helmet; +5 Armor.",
+              "source": {
+                "file": "guides/js/Ultima6.js",
+                "locator": "gameData.equipment[6]",
+                "review": "extracted"
+              }
+            }
+          ],
+          "entityId": "ultima6:item:magic-helm",
+          "entityTitle": "Magic Helm"
+        },
+        {
+          "text": "how is it obtained",
+          "intent": "acquisition",
+          "supported": true,
+          "replyContains": [
+            "Trinsic",
+            "Pirate Cave"
+          ],
+          "replyAbsent": [],
+          "expectedRecordIds": [
+            "ultima6:item:magic-helm:acquisition:reference"
+          ],
+          "evidence": [
+            {
+              "recordId": "ultima6:item:magic-helm:acquisition:reference",
+              "variant": "direct",
+              "quote": "Sold in Trinsic; found in Pirate Cave.",
+              "source": {
+                "file": "guides/js/Ultima6.js",
+                "locator": "gameData.equipment[6].acq",
+                "review": "extracted",
+                "index": {
+                  "file": "guides/js/assistant/adapters/ultima6.js",
+                  "locator": "equipment acquisition text answers \"where is it?\"",
+                  "review": "authored-index"
+                }
+              }
+            }
+          ],
+          "entityId": "ultima6:item:magic-helm",
+          "entityTitle": "Magic Helm"
+        },
+        {
+          "text": "Where can I find Major Nebularose?",
+          "intent": "location",
+          "supported": false,
+          "replyContains": [],
+          "replyAbsent": [],
+          "expectedRecordIds": [],
+          "evidence": [],
+          "requireDecline": true,
+          "declineReason": "A new unindexed subject invalidates stale equipment grounding."
+        },
+        {
+          "text": "its exact location",
+          "intent": "location",
+          "supported": false,
+          "replyContains": [],
+          "replyAbsent": [],
+          "expectedRecordIds": [],
+          "evidence": [],
+          "requireDecline": true,
+          "declineReason": "Unknown subject must not fall back to Magic Helm."
+        }
+      ]
+    },
+    {
+      "id": "u6-view-context-and-reset",
+      "gameId": "ultima6",
+      "turns": [
+        {
+          "text": "Where is he?",
+          "intent": "location",
+          "supported": true,
+          "replyContains": [
+            "X 133",
+            "Y 162"
+          ],
+          "replyAbsent": [],
+          "expectedRecordIds": [
+            "ultima6:atlas:marker:Iolo:location"
+          ],
+          "evidence": [
+            {
+              "recordId": "ultima6:atlas:marker:Iolo:location",
+              "variant": "direct",
+              "quote": "Coordinates: X 133, Y 162, Z 0.",
+              "source": {
+                "file": "guides/js/Ultima6Atlas.js",
+                "locator": "marker:Iolo",
+                "review": "extracted"
+              }
+            }
+          ],
+          "entityId": "ultima6:atlas:marker:Iolo",
+          "entityTitle": "Iolo",
+          "pageAction": "u6-marker-iolo",
+          "inputContext": {
+            "contextId": "marker:Iolo",
+            "entityIds": [
+              "ultima6:atlas:marker:Iolo"
+            ],
+            "label": "Iolo"
+          }
+        },
+        {
+          "text": "numeric stats please",
+          "intent": "stats",
+          "supported": true,
+          "replyContains": [
+            "Dexterity 26"
+          ],
+          "replyAbsent": [],
+          "expectedRecordIds": [
+            "ultima6:atlas:marker:Iolo:stats:reference"
+          ],
+          "evidence": [
+            {
+              "recordId": "ultima6:atlas:marker:Iolo:stats:reference",
+              "variant": "gentle",
+              "quote": "Iolo: Bard, level 3. Strength 20, Dexterity 26, Intelligence 17.",
+              "source": {
+                "file": "guides/js/Ultima6.js",
+                "locator": "gameData.companions[0]",
+                "review": "extracted"
+              }
+            }
+          ],
+          "entityId": "ultima6:atlas:marker:Iolo",
+          "entityTitle": "Iolo"
+        },
+        {
+          "text": "Topic reset control",
+          "intent": "unknown",
+          "supported": false,
+          "replyContains": [],
+          "replyAbsent": [],
+          "expectedRecordIds": [],
+          "evidence": [],
+          "action": "resetTopic",
+          "expectedControl": "reset"
+        },
+        {
+          "text": "Who is Captain Nebularose?",
+          "intent": "identity",
+          "supported": false,
+          "replyContains": [],
+          "replyAbsent": [],
+          "expectedRecordIds": [],
+          "evidence": [],
+          "requireDecline": true,
+          "declineReason": "A new unknown subject must not be filled from the still-open Iolo atlas context."
+        },
+        {
+          "text": "Switch to Shamino; identify him.",
+          "intent": "identity",
+          "supported": true,
+          "replyContains": [
+            "Ranger",
+            "fighter/mage"
+          ],
+          "replyAbsent": [],
+          "expectedRecordIds": [
+            "ultima6:narrative:shamino-identity:identity"
+          ],
+          "evidence": [
+            {
+              "recordId": "ultima6:narrative:shamino-identity:identity",
+              "variant": "balanced",
+              "quote": "Shamino: Ranger. Versatile fighter/mage hybrid.",
+              "source": {
+                "file": "guides/js/Ultima6.js",
+                "locator": "gameData.companions[1]",
+                "review": "extracted",
+                "index": {
+                  "file": "guides/data/assistant/ultima6.json",
+                  "locator": "narratives[id=shamino-identity]",
+                  "review": "authored-index"
+                },
+                "claims": [
+                  {
+                    "text": "Shamino: Ranger. Versatile fighter/mage hybrid.",
+                    "source": {
+                      "file": "guides/js/Ultima6.js",
+                      "locator": "gameData.companions[1]",
+                      "review": "extracted"
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "entityId": "ultima6:atlas:marker:Shamino",
+          "entityTitle": "Shamino"
+        },
+        {
+          "text": "the Intelligence score",
+          "intent": "stats",
+          "supported": true,
+          "replyContains": [
+            "Intelligence 19"
+          ],
+          "replyAbsent": [],
+          "expectedRecordIds": [
+            "ultima6:atlas:marker:Shamino:stats:reference"
+          ],
+          "evidence": [
+            {
+              "recordId": "ultima6:atlas:marker:Shamino:stats:reference",
+              "variant": "gentle",
+              "quote": "Shamino: Ranger, level 3. Strength 18, Dexterity 21, Intelligence 19.",
+              "source": {
+                "file": "guides/js/Ultima6.js",
+                "locator": "gameData.companions[1]",
+                "review": "extracted"
+              }
+            }
+          ],
+          "entityId": "ultima6:atlas:marker:Shamino",
+          "entityTitle": "Shamino"
+        }
+      ]
+    },
+    {
+      "id": "aq-orb-location-and-use",
+      "gameId": "alqadim",
+      "turns": [
+        {
+          "text": "Where is the Ship Orb?",
+          "intent": "location",
+          "supported": true,
+          "replyContains": [
+            "Deadman's Reef"
+          ],
+          "replyAbsent": [],
+          "expectedRecordIds": [
+            "alqadim:item:ship-orb:location"
+          ],
+          "evidence": [
+            {
+              "recordId": "alqadim:item:ship-orb:location",
+              "variant": "direct",
+              "quote": "Ship Orb: Deadman's Reef (Wrecked Ship).",
+              "source": {
+                "file": "guides/js/AlQadim.js",
+                "locator": "DB.keyItems[5].location",
+                "review": "extracted"
+              }
+            }
+          ],
+          "entityId": "alqadim:item:ship-orb",
+          "entityTitle": "Ship Orb"
+        },
+        {
+          "text": "its purpose in use",
+          "intent": "use",
+          "supported": true,
+          "replyContains": [
+            "Powers and restores",
+            "corsair ship"
+          ],
+          "replyAbsent": [],
+          "expectedRecordIds": [
+            "alqadim:item:ship-orb:use"
+          ],
+          "evidence": [
+            {
+              "recordId": "alqadim:item:ship-orb:use",
+              "variant": "direct",
+              "quote": "Ship Orb: Powers and restores the corsair ship for navigation.",
+              "source": {
+                "file": "guides/js/AlQadim.js",
+                "locator": "DB.keyItems[5].description",
+                "review": "extracted",
+                "index": {
+                  "file": "guides/js/assistant/adapters/alqadim.js",
+                  "locator": "use record also answers explanation",
+                  "review": "authored-index"
+                }
+              }
+            }
+          ],
+          "entityId": "alqadim:item:ship-orb",
+          "entityTitle": "Ship Orb"
+        },
+        {
+          "text": "how can it be obtained",
+          "intent": "acquisition",
+          "supported": true,
+          "replyContains": [
+            "helm cabin"
+          ],
+          "replyAbsent": [],
+          "expectedRecordIds": [
+            "alqadim:item:ship-orb:acquisition"
+          ],
+          "evidence": [
+            {
+              "recordId": "alqadim:item:ship-orb:acquisition",
+              "variant": "direct",
+              "quote": "Retrieve the Ship Orb from the helm cabin.",
+              "source": {
+                "file": "guides/js/AlQadim.js",
+                "locator": "DB.chapters[3].required[id=ch4_5]",
+                "review": "extracted"
+              }
+            }
+          ],
+          "entityId": "alqadim:item:ship-orb",
+          "entityTitle": "Ship Orb"
+        },
+        {
+          "text": "New topic: location of the Family Sword of Honor?",
+          "intent": "location",
+          "supported": true,
+          "replyContains": [
+            "Zaratan",
+            "Zubin"
+          ],
+          "replyAbsent": [],
+          "expectedRecordIds": [
+            "alqadim:item:family-sword-of-honor:location"
+          ],
+          "evidence": [
+            {
+              "recordId": "alqadim:item:family-sword-of-honor:location",
+              "variant": "direct",
+              "quote": "Family Sword of Honor: Zaratan (Zubin).",
+              "source": {
+                "file": "guides/js/AlQadim.js",
+                "locator": "DB.keyItems[0].location",
+                "review": "extracted"
+              }
+            }
+          ],
+          "entityId": "alqadim:item:family-sword-of-honor",
+          "entityTitle": "Family Sword of Honor"
+        },
+        {
+          "text": "use of that sword",
+          "intent": "use",
+          "supported": true,
+          "replyContains": [
+            "cannot harm allies or innocents"
+          ],
+          "replyAbsent": [],
+          "expectedRecordIds": [
+            "alqadim:item:family-sword-of-honor:use"
+          ],
+          "evidence": [
+            {
+              "recordId": "alqadim:item:family-sword-of-honor:use",
+              "variant": "direct",
+              "quote": "Family Sword of Honor: Magical scimitar that cannot harm allies or innocents. The primary weapon.",
+              "source": {
+                "file": "guides/js/AlQadim.js",
+                "locator": "DB.keyItems[0].description",
+                "review": "extracted",
+                "index": {
+                  "file": "guides/js/assistant/adapters/alqadim.js",
+                  "locator": "use record also answers explanation",
+                  "review": "authored-index"
+                }
+              }
+            }
+          ],
+          "entityId": "alqadim:item:family-sword-of-honor",
+          "entityTitle": "Family Sword of Honor"
+        },
+        {
+          "text": "exact damage value",
+          "intent": "stats",
+          "supported": false,
+          "replyContains": [],
+          "replyAbsent": [],
+          "expectedRecordIds": [],
+          "evidence": [],
+          "entityId": "alqadim:item:family-sword-of-honor",
+          "requireDecline": true,
+          "declineReason": "The indexed effect does not supply an exact numerical damage value."
+        }
+      ]
+    },
+    {
+      "id": "aq-sword-move-subjects-and-spacing",
+      "gameId": "alqadim",
+      "turns": [
+        {
+          "text": "Who is Zubakon?",
+          "intent": "identity",
+          "supported": true,
+          "replyContains": [
+            "teach the later swings"
+          ],
+          "replyAbsent": [],
+          "expectedRecordIds": [
+            "alqadim:topic:zubakon-teaching:explanation"
+          ],
+          "evidence": [
+            {
+              "recordId": "alqadim:topic:zubakon-teaching:explanation",
+              "variant": "gentle",
+              "quote": "Zubakon can teach the later swings once experience makes you eligible.",
+              "source": {
+                "file": "guides/AlQadim.html",
+                "locator": "Scimitar discipline",
+                "review": "extracted",
+                "index": {
+                  "file": "guides/data/assistant/alqadim.json",
+                  "locator": "topics[id=zubakon-teaching]",
+                  "review": "authored-index"
+                }
+              }
+            }
+          ],
+          "entityId": "alqadim:npc:zubakon",
+          "entityTitle": "Zubakon"
+        },
+        {
+          "text": "his location",
+          "intent": "location",
+          "supported": true,
+          "replyContains": [
+            "shop with no sign"
+          ],
+          "replyAbsent": [],
+          "expectedRecordIds": [
+            "alqadim:topic:zubakon-shop:location"
+          ],
+          "evidence": [
+            {
+              "recordId": "alqadim:topic:zubakon-shop:location",
+              "variant": "direct",
+              "quote": "Visit Zubakon at the shop with no sign to learn any new sword swings you are eligible for.",
+              "source": {
+                "file": "guides/js/AlQadim.js",
+                "locator": "DB.chapters[5].optional[id=ch6_4]",
+                "review": "extracted",
+                "index": {
+                  "file": "guides/data/assistant/alqadim.json",
+                  "locator": "topics[id=zubakon-shop]",
+                  "review": "authored-index"
+                }
+              }
+            }
+          ],
+          "entityId": "alqadim:npc:zubakon",
+          "entityTitle": "Zubakon",
+          "answerAlternatives": [
+            {
+              "replyContains": [
+                "shop with no sign"
+              ],
+              "expectedRecordIds": [
+                "alqadim:topic:zubakon-shop:location"
+              ],
+              "evidence": [
+                {
+                  "recordId": "alqadim:topic:zubakon-shop:location",
+                  "variant": "direct",
+                  "quote": "Visit Zubakon at the shop with no sign to learn any new sword swings you are eligible for.",
+                  "source": {
+                    "file": "guides/js/AlQadim.js",
+                    "locator": "DB.chapters[5].optional[id=ch6_4]",
+                    "review": "extracted",
+                    "index": {
+                      "file": "guides/data/assistant/alqadim.json",
+                      "locator": "topics[id=zubakon-shop]",
+                      "review": "authored-index"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "replyContains": [
+                "Bandar al-Sa'adat"
+              ],
+              "expectedRecordIds": [
+                "alqadim:npc:zubakon:location"
+              ],
+              "evidence": [
+                {
+                  "recordId": "alqadim:npc:zubakon:location",
+                  "variant": "direct",
+                  "quote": "Zubakon appears in: Bandar al-Sa'adat.",
+                  "source": {
+                    "file": "guides/js/AlQadimAtlasData.js",
+                    "locator": "ALQADIM_ATLAS_DATA.worlds[24].namedActors[id=98]",
+                    "review": "extracted"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Explain how to use Quick Swing.",
+          "intent": "use",
+          "supported": true,
+          "replyContains": [
+            "action button"
+          ],
+          "replyAbsent": [],
+          "expectedRecordIds": [
+            "alqadim:combat:quick-swing:use"
+          ],
+          "evidence": [
+            {
+              "recordId": "alqadim:combat:quick-swing:use",
+              "variant": "gentle",
+              "quote": "A fast scimitar strike in the direction the Corsair faces—or toward the sword cursor when using the mouse. Click the action button.",
+              "source": {
+                "file": "guides/js/AlQadim.js",
+                "locator": "DB.combatMoves[0]",
+                "review": "extracted",
+                "index": {
+                  "file": "guides/js/assistant/adapters/alqadim.js",
+                  "locator": "use record also answers explanation",
+                  "review": "authored-index"
+                }
+              }
+            }
+          ],
+          "entityId": "alqadim:combat:quick-swing",
+          "entityTitle": "Quick Swing"
+        },
+        {
+          "text": "Now use Full Circle Swing.",
+          "intent": "use",
+          "supported": true,
+          "replyContains": [
+            "third action circle"
+          ],
+          "replyAbsent": [],
+          "expectedRecordIds": [
+            "alqadim:combat:full-circle-swing:use"
+          ],
+          "evidence": [
+            {
+              "recordId": "alqadim:combat:full-circle-swing:use",
+              "variant": "gentle",
+              "quote": "The most powerful swing: a complete 360-degree cut that also catches monsters behind the Corsair. Release when the third action circle lights orange.",
+              "source": {
+                "file": "guides/js/AlQadim.js",
+                "locator": "DB.combatMoves[2]",
+                "review": "extracted",
+                "index": {
+                  "file": "guides/js/assistant/adapters/alqadim.js",
+                  "locator": "use record also answers explanation",
+                  "review": "authored-index"
+                }
+              }
+            }
+          ],
+          "entityId": "alqadim:combat:full-circle-swing",
+          "entityTitle": "Full-Circle Swing"
+        },
+        {
+          "text": "Topic reset control",
+          "intent": "unknown",
+          "supported": false,
+          "replyContains": [],
+          "replyAbsent": [],
+          "expectedRecordIds": [],
+          "evidence": [],
+          "action": "resetTopic",
+          "expectedControl": "reset"
+        },
+        {
+          "text": "how do I use it again",
+          "intent": "use",
+          "supported": false,
+          "replyContains": [],
+          "replyAbsent": [],
+          "expectedRecordIds": [],
+          "evidence": [],
+          "requireDecline": true,
+          "declineReason": "No subject remains after actual reset."
+        }
+      ]
+    },
+    {
+      "id": "aq-conflicted-item-and-guide-only",
+      "gameId": "alqadim",
+      "turns": [
+        {
+          "text": "How do I use Gilded Dove?",
+          "intent": "use",
+          "supported": false,
+          "replyContains": [],
+          "replyAbsent": [],
+          "expectedRecordIds": [],
+          "evidence": [],
+          "entityId": "alqadim:conflict:gilded-dove",
+          "requireDecline": true,
+          "declineReason": "The item effect is explicitly conflicted; a recommendation must not select a favorable variant."
+        },
+        {
+          "text": "its effect",
+          "intent": "use",
+          "supported": false,
+          "replyContains": [],
+          "replyAbsent": [],
+          "expectedRecordIds": [],
+          "evidence": [],
+          "entityId": "alqadim:conflict:gilded-dove",
+          "requireDecline": true,
+          "declineReason": "The same conflict persists into a short effect request."
+        },
+        {
+          "text": "What is a ghoul?",
+          "intent": "identity",
+          "supported": true,
+          "replyContains": [
+            "undead scavenger",
+            "paralyse"
+          ],
+          "replyAbsent": [],
+          "expectedRecordIds": [
+            "alqadim:research:ghoul:explanation"
+          ],
+          "evidence": [
+            {
+              "recordId": "alqadim:research:ghoul:explanation",
+              "variant": "gentle",
+              "quote": "In the original rule book's bestiary the ghoul is an undead scavenger that often appears in packs, and its claws can paralyse a target for a short time. A person killed by ghouls becomes a ghoul unless the body is consumed.",
+              "source": {
+                "file": "https://www.mocagh.org/ssi/alqadim-manual.pdf",
+                "locator": "Al-Qadim: The Genie's Curse rule book (SSI, 1994), MOCAGH copy; wording checked 21 October 2026 against the same manual shipped with this guide (alqadim/al-qadim_manual_PDF.pdf)",
+                "review": "external-research",
+                "references": [
+                  {
+                    "label": "Al-Qadim: The Genie's Curse rule book (SSI, 1994), MOCAGH copy; wording checked 21 October 2026 against the same manual shipped with this guide (alqadim/al-qadim_manual_PDF.pdf)",
+                    "url": "https://www.mocagh.org/ssi/alqadim-manual.pdf",
+                    "checkedAt": "2026-10-21"
+                  }
+                ],
+                "index": {
+                  "file": "guides/data/assistant/alqadim.json",
+                  "locator": "research[id=ghoul]",
+                  "review": "authored-index"
+                }
+              }
+            }
+          ],
+          "entityId": "alqadim:research:ghoul",
+          "entityTitle": "Ghoul"
+        },
+        {
+          "text": "Guide only: what is a ghoul?",
+          "intent": "identity",
+          "supported": false,
+          "replyContains": [],
+          "replyAbsent": [],
+          "expectedRecordIds": [],
+          "evidence": [],
+          "entityId": "alqadim:research:ghoul",
+          "requireDecline": true,
+          "declineReason": "The selected substantive ghoul identity is rule-book research, excluded by guide-only.",
+          "restriction": "guide-only"
+        },
+        {
+          "text": "its identity again",
+          "intent": "identity",
+          "supported": false,
+          "replyContains": [],
+          "replyAbsent": [],
+          "expectedRecordIds": [],
+          "evidence": [],
+          "entityId": "alqadim:research:ghoul",
+          "requireDecline": true,
+          "declineReason": "The source restriction carries into the fragment.",
+          "restriction": "guide-only"
+        },
+        {
+          "text": "New topic: where is the Ship Orb?",
+          "intent": "location",
+          "supported": true,
+          "replyContains": [
+            "Deadman's Reef"
+          ],
+          "replyAbsent": [],
+          "expectedRecordIds": [
+            "alqadim:item:ship-orb:location"
+          ],
+          "evidence": [
+            {
+              "recordId": "alqadim:item:ship-orb:location",
+              "variant": "direct",
+              "quote": "Ship Orb: Deadman's Reef (Wrecked Ship).",
+              "source": {
+                "file": "guides/js/AlQadim.js",
+                "locator": "DB.keyItems[5].location",
+                "review": "extracted"
+              }
+            }
+          ],
+          "entityId": "alqadim:item:ship-orb",
+          "entityTitle": "Ship Orb"
+        }
+      ]
+    },
+    {
+      "id": "u7-ranger-and-bard-references",
+      "gameId": "ultima7",
+      "turns": [
+        {
+          "text": "Identify Shamino for me.",
+          "intent": "identity",
+          "supported": true,
+          "replyContains": [
+            "Ranger"
+          ],
+          "replyAbsent": [],
+          "expectedRecordIds": [
+            "ultima7:companion:shamino:explanation"
+          ],
+          "evidence": [
+            {
+              "recordId": "ultima7:companion:shamino:explanation",
+              "variant": "gentle",
+              "quote": "Shamino: Fighter (Ranger). Focus: Fast ranged damage. Excellent archer due to high Dexterity. Party Builder choices are a plan, not evidence that this companion is currently in your party.",
+              "source": {
+                "file": "guides/js/Ultima7.js",
+                "locator": "DB.companions[1]",
+                "review": "extracted",
+                "index": {
+                  "file": "guides/js/assistant/adapters/ultima7.js",
+                  "locator": "companion notes answer recruitment advice and what-does-he-do questions",
+                  "review": "authored-index"
+                }
+              }
+            }
+          ],
+          "entityId": "ultima7:companion:shamino",
+          "entityTitle": "Shamino"
+        },
+        {
+          "text": "his location in the guide",
+          "intent": "location",
+          "supported": true,
+          "replyContains": [
+            "Blue Boar"
+          ],
+          "replyAbsent": [],
+          "expectedRecordIds": [
+            "ultima7:companion:shamino:location"
+          ],
+          "evidence": [
+            {
+              "recordId": "ultima7:companion:shamino:location",
+              "variant": "gentle",
+              "quote": "The guide lists Shamino at Britain, Blue Boar Tavern. This is a guide location, not a report of their current position.",
+              "source": {
+                "file": "guides/js/Ultima7.js",
+                "locator": "DB.companions[1].location",
+                "review": "extracted"
+              }
+            }
+          ],
+          "entityId": "ultima7:companion:shamino",
+          "entityTitle": "Shamino"
+        },
+        {
+          "text": "starting stats",
+          "intent": "stats",
+          "supported": true,
+          "replyContains": [
+            "Dexterity 21"
+          ],
+          "replyAbsent": [],
+          "expectedRecordIds": [
+            "ultima7:companion:shamino:stats"
+          ],
+          "evidence": [
+            {
+              "recordId": "ultima7:companion:shamino:stats",
+              "variant": "gentle",
+              "quote": "Shamino: Strength 18, Dexterity 21, Intelligence 19, Combat 16. Tags: ranged.",
+              "source": {
+                "file": "guides/js/Ultima7.js",
+                "locator": "DB.companions[1].str/dex/int/com",
+                "review": "extracted"
+              }
+            }
+          ],
+          "entityId": "ultima7:companion:shamino",
+          "entityTitle": "Shamino"
+        },
+        {
+          "text": "Now identify Iolo.",
+          "intent": "identity",
+          "supported": true,
+          "replyContains": [
+            "Bard"
+          ],
+          "replyAbsent": [],
+          "expectedRecordIds": [
+            "ultima7:companion:iolo:explanation"
+          ],
+          "evidence": [
+            {
+              "recordId": "ultima7:companion:iolo:explanation",
+              "variant": "gentle",
+              "quote": "Iolo: Fighter (Bard). Focus: Balanced archer. Joins automatically at the start. Party Builder choices are a plan, not evidence that this companion is currently in your party.",
+              "source": {
+                "file": "guides/js/Ultima7.js",
+                "locator": "DB.companions[0]",
+                "review": "extracted",
+                "index": {
+                  "file": "guides/js/assistant/adapters/ultima7.js",
+                  "locator": "companion notes answer recruitment advice and what-does-he-do questions",
+                  "review": "authored-index"
+                }
+              }
+            }
+          ],
+          "entityId": "ultima7:companion:iolo",
+          "entityTitle": "Iolo"
+        },
+        {
+          "text": "where is he listed",
+          "intent": "location",
+          "supported": true,
+          "replyContains": [
+            "Trinsic"
+          ],
+          "replyAbsent": [],
+          "expectedRecordIds": [
+            "ultima7:companion:iolo:location"
+          ],
+          "evidence": [
+            {
+              "recordId": "ultima7:companion:iolo:location",
+              "variant": "gentle",
+              "quote": "The guide lists Iolo at Trinsic. This is a guide location, not a report of their current position.",
+              "source": {
+                "file": "guides/js/Ultima7.js",
+                "locator": "DB.companions[0].location",
+                "review": "extracted"
+              }
+            }
+          ],
+          "entityId": "ultima7:companion:iolo",
+          "entityTitle": "Iolo"
+        },
+        {
+          "text": "download the companion",
+          "intent": "acquisition",
+          "supported": false,
+          "replyContains": [],
+          "replyAbsent": [],
+          "expectedRecordIds": [],
+          "evidence": [],
+          "entityId": "ultima7:companion:iolo",
+          "requireDecline": true,
+          "declineReason": "A companion biography/location is not a software download facet."
+        }
+      ]
+    },
+    {
+      "id": "u7-time-lord-and-reset",
+      "gameId": "ultima7",
+      "turns": [
+        {
+          "text": "Who is timelord?",
+          "intent": "identity",
+          "supported": true,
+          "replyContains": [
+            "keep time flowing"
+          ],
+          "replyAbsent": [],
+          "expectedRecordIds": [
+            "ultima7:research:time-lord-identity:explanation"
+          ],
+          "evidence": [
+            {
+              "recordId": "ultima7:research:time-lord-identity:explanation",
+              "variant": "balanced",
+              "quote": "In Ultima VII: The Black Gate, the Time Lord is a being whose work is to keep time flowing smoothly through space. He helps the Avatar oppose the Guardian.",
+              "source": {
+                "file": "https://mithyr.com/Ultima/7.0_VII_TheBlackGate/Script/libNPC148.htm",
+                "locator": "Ultima VII dialogue transcript: The Time Lord (name, job and crisis)",
+                "review": "external-research",
+                "references": [
+                  {
+                    "label": "Ultima VII dialogue transcript: The Time Lord (name, job and crisis)",
+                    "url": "https://mithyr.com/Ultima/7.0_VII_TheBlackGate/Script/libNPC148.htm",
+                    "checkedAt": "2026-10-23"
+                  }
+                ],
+                "index": {
+                  "file": "guides/data/assistant/ultima7.json",
+                  "locator": "research[id=time-lord-identity]",
+                  "review": "authored-index"
+                }
+              }
+            }
+          ],
+          "entityId": "ultima7:npc:time-lord",
+          "entityTitle": "Time Lord"
+        },
+        {
+          "text": "Who is the time lord?",
+          "intent": "identity",
+          "supported": true,
+          "replyContains": [
+            "keep time flowing"
+          ],
+          "replyAbsent": [],
+          "expectedRecordIds": [
+            "ultima7:research:time-lord-identity:explanation"
+          ],
+          "evidence": [
+            {
+              "recordId": "ultima7:research:time-lord-identity:explanation",
+              "variant": "balanced",
+              "quote": "In Ultima VII: The Black Gate, the Time Lord is a being whose work is to keep time flowing smoothly through space. He helps the Avatar oppose the Guardian.",
+              "source": {
+                "file": "https://mithyr.com/Ultima/7.0_VII_TheBlackGate/Script/libNPC148.htm",
+                "locator": "Ultima VII dialogue transcript: The Time Lord (name, job and crisis)",
+                "review": "external-research",
+                "references": [
+                  {
+                    "label": "Ultima VII dialogue transcript: The Time Lord (name, job and crisis)",
+                    "url": "https://mithyr.com/Ultima/7.0_VII_TheBlackGate/Script/libNPC148.htm",
+                    "checkedAt": "2026-10-23"
+                  }
+                ],
+                "index": {
+                  "file": "guides/data/assistant/ultima7.json",
+                  "locator": "research[id=time-lord-identity]",
+                  "review": "authored-index"
+                }
+              }
+            }
+          ],
+          "entityId": "ultima7:npc:time-lord",
+          "entityTitle": "Time Lord"
+        },
+        {
+          "text": "Change subjects: who is the Guardian?",
+          "intent": "identity",
+          "supported": true,
+          "replyContains": [
+            "another dimension"
+          ],
+          "replyAbsent": [],
+          "expectedRecordIds": [
+            "ultima7:research:guardian-identity:explanation"
+          ],
+          "evidence": [
+            {
+              "recordId": "ultima7:research:guardian-identity:explanation",
+              "variant": "balanced",
+              "quote": "In Ultima VII: The Black Gate, the Guardian is a powerful, hostile being from another dimension. He seeks domination and control of Britannia, and the Time Lord urges the Avatar to oppose him.",
+              "source": {
+                "file": "https://mithyr.com/Ultima/7.0_VII_TheBlackGate/Script/libNPC148.htm",
+                "locator": "Ultima VII dialogue transcript: The Time Lord (crisis and The Guardian)",
+                "review": "external-research",
+                "references": [
+                  {
+                    "label": "Ultima VII dialogue transcript: The Time Lord (crisis and The Guardian)",
+                    "url": "https://mithyr.com/Ultima/7.0_VII_TheBlackGate/Script/libNPC148.htm",
+                    "checkedAt": "2026-10-23"
+                  }
+                ],
+                "index": {
+                  "file": "guides/data/assistant/ultima7.json",
+                  "locator": "research[id=guardian-identity]",
+                  "review": "authored-index"
+                }
+              }
+            }
+          ],
+          "entityId": "ultima7:npc:guardian",
+          "entityTitle": "Guardian"
+        },
+        {
+          "text": "Topic reset control",
+          "intent": "unknown",
+          "supported": false,
+          "replyContains": [],
+          "replyAbsent": [],
+          "expectedRecordIds": [],
+          "evidence": [],
+          "action": "resetTopic",
+          "expectedControl": "reset"
+        },
+        {
+          "text": "who is he again",
+          "intent": "identity",
+          "supported": false,
+          "replyContains": [],
+          "replyAbsent": [],
+          "expectedRecordIds": [],
+          "evidence": [],
+          "requireDecline": true,
+          "declineReason": "No subject remains after actual reset."
+        },
+        {
+          "text": "Only this guide: identify Lord British.",
+          "intent": "identity",
+          "supported": false,
+          "replyContains": [],
+          "replyAbsent": [],
+          "expectedRecordIds": [],
+          "evidence": [],
+          "entityId": "ultima7:place:lord-british",
+          "requireDecline": true,
+          "declineReason": "The detailed identity facet is cited external research and is unavailable under guide-only.",
+          "restriction": "guide-only"
+        }
+      ]
+    },
+    {
+      "id": "u7-party-consultation-and-use",
+      "gameId": "ultima7",
+      "turns": [
+        {
+          "text": "Which companion should I choose for healing?",
+          "intent": "comparison",
+          "supported": true,
+          "replyContains": [
+            "Jaana",
+            "Healing"
+          ],
+          "replyAbsent": [],
+          "expectedRecordIds": [
+            "ultima7:companion:jaana:explanation"
+          ],
+          "evidence": [
+            {
+              "recordId": "ultima7:companion:jaana:explanation",
+              "variant": "gentle",
+              "quote": "Jaana: Healer (Druid). Focus: Healing and magic. Can periodically heal the party for free. Only companion with innate magic. Party Builder choices are a plan, not evidence that this companion is currently in your party.",
+              "source": {
+                "file": "guides/js/Ultima7.js",
+                "locator": "DB.companions[6]",
+                "review": "extracted",
+                "index": {
+                  "file": "guides/js/assistant/adapters/ultima7.js",
+                  "locator": "companion notes answer recruitment advice and what-does-he-do questions",
+                  "review": "authored-index"
+                }
+              }
+            }
+          ],
+          "entityId": "ultima7:companion:jaana",
+          "entityTitle": "Jaana",
+          "consultation": true
+        },
+        {
+          "text": "her listed location",
+          "intent": "location",
+          "supported": true,
+          "replyContains": [
+            "Cove"
+          ],
+          "replyAbsent": [],
+          "expectedRecordIds": [
+            "ultima7:companion:jaana:location"
+          ],
+          "evidence": [
+            {
+              "recordId": "ultima7:companion:jaana:location",
+              "variant": "gentle",
+              "quote": "The guide lists Jaana at Cove, Healer's Shop. This is a guide location, not a report of their current position.",
+              "source": {
+                "file": "guides/js/Ultima7.js",
+                "locator": "DB.companions[6].location",
+                "review": "extracted"
+              }
+            }
+          ],
+          "entityId": "ultima7:companion:jaana",
+          "entityTitle": "Jaana"
+        },
+        {
+          "text": "What is Seance used for?",
+          "intent": "use",
+          "supported": true,
+          "replyContains": [
+            "spirits of Skara Brae"
+          ],
+          "replyAbsent": [],
+          "expectedRecordIds": [
+            "ultima7:spell:seance:use"
+          ],
+          "evidence": [
+            {
+              "recordId": "ultima7:spell:seance:use",
+              "variant": "direct",
+              "quote": "Required to speak with the spirits of Skara Brae and progress the main investigation.",
+              "source": {
+                "file": "guides/js/Ultima7.js",
+                "locator": "DB.spells[0].description",
+                "review": "extracted"
+              }
+            }
+          ],
+          "entityId": "ultima7:spell:seance",
+          "entityTitle": "Seance"
+        },
+        {
+          "text": "use of this spell",
+          "intent": "use",
+          "supported": true,
+          "replyContains": [
+            "spirits of Skara Brae"
+          ],
+          "replyAbsent": [],
+          "expectedRecordIds": [
+            "ultima7:spell:seance:use"
+          ],
+          "evidence": [
+            {
+              "recordId": "ultima7:spell:seance:use",
+              "variant": "direct",
+              "quote": "Required to speak with the spirits of Skara Brae and progress the main investigation.",
+              "source": {
+                "file": "guides/js/Ultima7.js",
+                "locator": "DB.spells[0].description",
+                "review": "extracted"
+              }
+            }
+          ],
+          "entityId": "ultima7:spell:seance",
+          "entityTitle": "Seance"
+        },
+        {
+          "text": "How do I use Seance in Serpent Isle?",
+          "intent": "use",
+          "supported": false,
+          "replyContains": [],
+          "replyAbsent": [],
+          "expectedRecordIds": [],
+          "evidence": [],
+          "entityId": "ultima7:spell:seance",
+          "requireDecline": true,
+          "declineReason": "Serpent Isle coverage is excluded by the guide."
+        },
+        {
+          "text": "spell usage",
+          "intent": "use",
+          "supported": false,
+          "replyContains": [],
+          "replyAbsent": [],
+          "expectedRecordIds": [],
+          "evidence": [],
+          "entityId": "ultima7:spell:seance",
+          "requireDecline": true,
+          "declineReason": "The unsupported edition constraint carries into the fragment."
+        }
+      ]
+    },
+    {
+      "id": "sc-client-download-and-documents",
+      "gameId": "starcraft",
+      "turns": [
+        {
+          "text": "What is SCHNAIL?",
+          "intent": "identity",
+          "supported": true,
+          "replyContains": [
+            "client"
+          ],
+          "replyAbsent": [],
+          "expectedRecordIds": [
+            "starcraft:schnail:features"
+          ],
+          "evidence": [
+            {
+              "recordId": "starcraft:schnail:features",
+              "variant": "gentle",
+              "quote": "SCHNAIL is the guide's client-based option for playing advanced Brood War opponents.",
+              "source": {
+                "file": "guides/data/assistant/starcraft.json",
+                "locator": "entities[0].facts[5].gentle",
+                "review": "authored-from-guide",
+                "basedOn": {
+                  "file": "guides/StarcraftBWAPI.html",
+                  "locator": "#schnail-setup ul",
+                  "review": "extracted"
+                }
+              }
+            }
+          ],
+          "entityId": "starcraft:schnail",
+          "entityTitle": "SCHNAIL"
+        },
+        {
+          "text": "download link",
+          "intent": "acquisition",
+          "supported": true,
+          "replyContains": [
+            "account"
+          ],
+          "replyAbsent": [],
+          "expectedRecordIds": [
+            "starcraft:schnail:download"
+          ],
+          "evidence": [
+            {
+              "recordId": "starcraft:schnail:download",
+              "variant": "direct",
+              "quote": "2. Download the latest release of SCHNAIL from their downloads page (requires account, see SCHNAIL Setup Guide for more information)",
+              "source": {
+                "file": "guides/StarcraftBWAPI.html",
+                "locator": "#schnail-requirements li:nth-child(2)",
+                "review": "extracted",
+                "index": {
+                  "file": "guides/data/assistant/starcraft.json",
+                  "locator": "entities[0].facts[1].answers",
+                  "review": "authored-index"
+                }
+              }
+            }
+          ],
+          "entityId": "starcraft:schnail",
+          "entityTitle": "SCHNAIL",
+          "expectedUrls": [
+            "https://www.schnail.com/#/downloads"
+          ]
+        },
+        {
+          "text": "installation instructions",
+          "intent": "use",
+          "supported": true,
+          "replyContains": [
+            "Java",
+            "log in"
+          ],
+          "replyAbsent": [],
+          "expectedRecordIds": [
+            "starcraft:schnail:setup"
+          ],
+          "evidence": [
+            {
+              "recordId": "starcraft:schnail:setup",
+              "variant": "direct",
+              "quote": "Register an account at www.schnail.com; Login on the website; Download the latest release of SCHNAIL from www.schnail.com/#/downloads; Download and install Java JRE (Recommended: Liberica Java JDK 21 LTS); Install SCHNAIL (Note: Your antivirus may flag the SCHNAIL client - make sure to allow it to run); Launch the SCHNAIL client and log in with your credentials; The client will automatically download and set up the game files; Start playing against the AI",
+              "source": {
+                "file": "guides/StarcraftBWAPI.html",
+                "locator": "#schnail-setup ol",
+                "review": "extracted"
+              }
+            }
+          ],
+          "entityId": "starcraft:schnail",
+          "entityTitle": "SCHNAIL"
+        },
+        {
+          "text": "prerequisites first",
+          "intent": "prerequisites",
+          "supported": true,
+          "replyContains": [
+            "account",
+            "Java"
+          ],
+          "replyAbsent": [],
+          "expectedRecordIds": [
+            "starcraft:schnail:requirements"
+          ],
+          "evidence": [
+            {
+              "recordId": "starcraft:schnail:requirements",
+              "variant": "direct",
+              "quote": "1. Register an account at SCHNAIL (Starcraft Human and AI League); 2. Download the latest release of SCHNAIL from their downloads page (requires account, see SCHNAIL Setup Guide for more information); 3. Install Java JRE (Recommended: Liberica Java releases from bell-sw.com)",
+              "source": {
+                "file": "guides/StarcraftBWAPI.html",
+                "locator": "#schnail-requirements ol",
+                "review": "extracted"
+              }
+            }
+          ],
+          "entityId": "starcraft:schnail",
+          "entityTitle": "SCHNAIL"
+        },
+        {
+          "text": "documentation link",
+          "intent": "location",
+          "supported": true,
+          "replyContains": [
+            "BWAPI",
+            "SCHNAIL"
+          ],
+          "replyAbsent": [],
+          "expectedRecordIds": [
+            "starcraft:documentation:links"
+          ],
+          "evidence": [
+            {
+              "recordId": "starcraft:documentation:links",
+              "variant": "direct",
+              "quote": "Documentation; BWAPI Official Documentation; BWAPI Wiki; SCHNAIL Documentation",
+              "source": {
+                "file": "guides/StarcraftBWAPI.html",
+                "locator": "#resources .grid > div:nth-child(1)",
+                "review": "extracted",
+                "index": {
+                  "file": "guides/data/assistant/starcraft.json",
+                  "locator": "entities[10].facts[0].answers",
+                  "review": "authored-index"
+                }
+              }
+            }
+          ],
+          "entityId": "starcraft:documentation",
+          "entityTitle": "Documentation links"
+        },
+        {
+          "text": "What exact tournament win rate does SCHNAIL guarantee?",
+          "intent": "stats",
+          "supported": false,
+          "replyContains": [],
+          "replyAbsent": [],
+          "expectedRecordIds": [],
+          "evidence": [],
+          "entityId": "starcraft:schnail",
+          "requireDecline": true,
+          "declineReason": "No guaranteed numerical performance figure is indexed."
+        }
+      ]
+    },
+    {
+      "id": "sc-remastered-consult-and-compatibility",
+      "gameId": "starcraft",
+      "turns": [
+        {
+          "text": "I am playing StarCraft Remastered. Which one is best, do you think?",
+          "intent": "comparison",
+          "supported": true,
+          "replyContains": [
+            "Remastered SCM Map",
+            "Use Map Settings",
+            "SCHNAIL"
+          ],
+          "replyAbsent": [],
+          "expectedRecordIds": [
+            "starcraft:remastered-map:setup",
+            "starcraft:ai-options:comparison"
+          ],
+          "evidence": [
+            {
+              "recordId": "starcraft:remastered-map:setup",
+              "variant": "direct",
+              "quote": "Ensure StarCraft Remastered is installed and updated.; Download the BWAPI integrated SCM map archive from Proton Drive or Direct Download.; Extract the downloaded ZIP file to your StarCraft maps folder (typically Documents\\StarCraft\\Maps).; Launch StarCraft Remastered.; Navigate to Single Player → Custom Game.; Select the extracted BWAPI map.; Crucial Step: Under Game Type, you MUST select \"Use Map Settings\". The AI will not function properly in a standard Melee game.; Start the game and enjoy playing against the advanced AI!",
+              "source": {
+                "file": "guides/StarcraftBWAPI.html",
+                "locator": "#remastered-setup ol",
+                "review": "extracted"
+              },
+              "sourceVariants": [
+                {
+                  "variant": "gentle",
+                  "quote": "In Remastered, use the integrated map through a Custom Game and select Use Map Settings.",
+                  "source": {
+                    "file": "guides/data/assistant/starcraft.json",
+                    "locator": "entities[2].facts[2].gentle",
+                    "review": "authored-from-guide",
+                    "basedOn": {
+                      "file": "guides/StarcraftBWAPI.html",
+                      "locator": "#remastered-setup ol",
+                      "review": "extracted"
+                    }
+                  }
+                },
+                {
+                  "variant": "balanced",
+                  "quote": "Extract the archive into Documents\\StarCraft\\Maps, open Single Player → Custom Game, select the map, then select Use Map Settings rather than Melee.",
+                  "source": {
+                    "file": "guides/data/assistant/starcraft.json",
+                    "locator": "entities[2].facts[2].balanced",
+                    "review": "authored-from-guide",
+                    "basedOn": {
+                      "file": "guides/StarcraftBWAPI.html",
+                      "locator": "#remastered-setup ol",
+                      "review": "extracted"
+                    }
+                  }
+                },
+                {
+                  "variant": "direct",
+                  "quote": "Ensure StarCraft Remastered is installed and updated.; Download the BWAPI integrated SCM map archive from Proton Drive or Direct Download.; Extract the downloaded ZIP file to your StarCraft maps folder (typically Documents\\StarCraft\\Maps).; Launch StarCraft Remastered.; Navigate to Single Player → Custom Game.; Select the extracted BWAPI map.; Crucial Step: Under Game Type, you MUST select \"Use Map Settings\". The AI will not function properly in a standard Melee game.; Start the game and enjoy playing against the advanced AI!",
+                  "source": {
+                    "file": "guides/StarcraftBWAPI.html",
+                    "locator": "#remastered-setup ol",
+                    "review": "extracted"
+                  }
+                }
+              ]
+            },
+            {
+              "recordId": "starcraft:ai-options:comparison",
+              "variant": "direct",
+              "quote": "SCHNAIL; Pros: More realistic AI behavior; Better micro and macro management; Seamless integration with the game; Active community and regular updates; Cons: Requires internet connection for initial login; AI plays over local network after login; View Setup Guide; BWAILauncher; Pros: No internet connection required; Replaces standard single-player AI; Easier to set up initially; Good for offline play; Cons: Less realistic AI behavior; Uses standard AI micro which can be cheesed; Limited strategic depth compared to SCHNAIL; View Setup Guide; Remastered SCM Map; Pros: Works directly with StarCraft Remastered; No external launcher required; Easy setup (just download and play); Cons: Must be played in \"Use Map Settings\" mode; Limited to the provided integrated maps; View Setup Guide",
+              "source": {
+                "file": "guides/StarcraftBWAPI.html",
+                "locator": "#getting-started .grid",
+                "review": "extracted",
+                "index": {
+                  "file": "guides/data/assistant/starcraft.json",
+                  "locator": "entities[5].facts[0].answers",
+                  "review": "authored-index"
+                }
+              },
+              "sourceVariants": [
+                {
+                  "variant": "gentle",
+                  "quote": "The guide compares three options: SCHNAIL (most realistic, online login), BWAILauncher (offline, simpler AI) and the Remastered map (easiest, limited maps).",
+                  "source": {
+                    "file": "guides/data/assistant/starcraft.json",
+                    "locator": "entities[5].facts[0].gentle",
+                    "review": "authored-from-guide",
+                    "basedOn": {
+                      "file": "guides/StarcraftBWAPI.html",
+                      "locator": "#getting-started .grid",
+                      "review": "extracted"
+                    },
+                    "index": {
+                      "file": "guides/data/assistant/starcraft.json",
+                      "locator": "entities[5].facts[0].answers",
+                      "review": "authored-index"
+                    }
+                  }
+                },
+                {
+                  "variant": "balanced",
+                  "quote": "SCHNAIL: realistic AI and active community, internet for first login. BWAILauncher: offline and easy, but less realistic AI with exploitable micro. Remastered SCM Map: no launcher and easy, but Use Map Settings only and limited maps.",
+                  "source": {
+                    "file": "guides/data/assistant/starcraft.json",
+                    "locator": "entities[5].facts[0].balanced",
+                    "review": "authored-from-guide",
+                    "basedOn": {
+                      "file": "guides/StarcraftBWAPI.html",
+                      "locator": "#getting-started .grid",
+                      "review": "extracted"
+                    },
+                    "index": {
+                      "file": "guides/data/assistant/starcraft.json",
+                      "locator": "entities[5].facts[0].answers",
+                      "review": "authored-index"
+                    }
+                  }
+                },
+                {
+                  "variant": "direct",
+                  "quote": "SCHNAIL; Pros: More realistic AI behavior; Better micro and macro management; Seamless integration with the game; Active community and regular updates; Cons: Requires internet connection for initial login; AI plays over local network after login; View Setup Guide; BWAILauncher; Pros: No internet connection required; Replaces standard single-player AI; Easier to set up initially; Good for offline play; Cons: Less realistic AI behavior; Uses standard AI micro which can be cheesed; Limited strategic depth compared to SCHNAIL; View Setup Guide; Remastered SCM Map; Pros: Works directly with StarCraft Remastered; No external launcher required; Easy setup (just download and play); Cons: Must be played in \"Use Map Settings\" mode; Limited to the provided integrated maps; View Setup Guide",
+                  "source": {
+                    "file": "guides/StarcraftBWAPI.html",
+                    "locator": "#getting-started .grid",
+                    "review": "extracted",
+                    "index": {
+                      "file": "guides/data/assistant/starcraft.json",
+                      "locator": "entities[5].facts[0].answers",
+                      "review": "authored-index"
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "entityId": "starcraft:remastered-map",
+          "entityTitle": "Remastered SCM Map",
+          "consultation": true
+        },
+        {
+          "text": "download address for it",
+          "intent": "acquisition",
+          "supported": true,
+          "replyContains": [
+            "Proton Drive"
+          ],
+          "replyAbsent": [],
+          "expectedRecordIds": [
+            "starcraft:remastered-map:download"
+          ],
+          "evidence": [
+            {
+              "recordId": "starcraft:remastered-map:download",
+              "variant": "direct",
+              "quote": "Download the BWAPI integrated SCM map archive from Proton Drive or Direct Download.",
+              "source": {
+                "file": "guides/StarcraftBWAPI.html",
+                "locator": "#remastered-setup ol > li:nth-child(2)",
+                "review": "extracted",
+                "index": {
+                  "file": "guides/data/assistant/starcraft.json",
+                  "locator": "entities[2].facts[1].answers",
+                  "review": "authored-index"
+                }
+              }
+            }
+          ],
+          "entityId": "starcraft:remastered-map",
+          "entityTitle": "Remastered SCM Map",
+          "expectedUrls": [
+            "https://www.richardorilla.website/files/bwapiscr.zip"
+          ]
+        },
+        {
+          "text": "Now install BWAILauncher for Remastered.",
+          "intent": "use",
+          "supported": false,
+          "replyContains": [],
+          "replyAbsent": [],
+          "expectedRecordIds": [],
+          "evidence": [],
+          "entityId": "starcraft:bwai",
+          "requireDecline": true,
+          "declineReason": "The guide cannot confirm Remastered compatibility; setup targets1.16.1."
+        },
+        {
+          "text": "its installation steps",
+          "intent": "use",
+          "supported": false,
+          "replyContains": [],
+          "replyAbsent": [],
+          "expectedRecordIds": [],
+          "evidence": [],
+          "entityId": "starcraft:bwai",
+          "requireDecline": true,
+          "declineReason": "The unresolved Remastered edition constraint must carry."
+        },
+        {
+          "text": "Topic reset control",
+          "intent": "unknown",
+          "supported": false,
+          "replyContains": [],
+          "replyAbsent": [],
+          "expectedRecordIds": [],
+          "evidence": [],
+          "action": "resetTopic",
+          "expectedControl": "reset"
+        },
+        {
+          "text": "its download address",
+          "intent": "acquisition",
+          "supported": false,
+          "replyContains": [],
+          "replyAbsent": [],
+          "expectedRecordIds": [],
+          "evidence": [],
+          "requireDecline": true,
+          "declineReason": "Reset clears which software or map is being requested."
+        }
+      ]
+    },
+    {
+      "id": "sc-bot-spacing-and-source-limits",
+      "gameId": "starcraft",
+      "turns": [
+        {
+          "text": "What is U Alberta Bot?",
+          "intent": "identity",
+          "supported": true,
+          "replyContains": [
+            "framework"
+          ],
+          "replyAbsent": [],
+          "expectedRecordIds": [
+            "starcraft:ualbertabot:about"
+          ],
+          "evidence": [
+            {
+              "recordId": "starcraft:ualbertabot:about",
+              "variant": "direct",
+              "quote": "UAlbertaBot; A Starcraft AI development framework by Dave Churchill and Steve Gelly; View on GitHub",
+              "source": {
+                "file": "guides/StarcraftBWAPI.html",
+                "locator": "#resources .space-y-4 > div:nth-child(2)",
+                "review": "extracted",
+                "index": {
+                  "file": "guides/data/assistant/starcraft.json",
+                  "locator": "entities[8].facts[0].answers",
+                  "review": "authored-index"
+                }
+              }
+            }
+          ],
+          "entityId": "starcraft:ualbertabot",
+          "entityTitle": "UAlbertaBot"
+        },
+        {
+          "text": "Who created it?",
+          "intent": "identity",
+          "supported": true,
+          "replyContains": [
+            "Dave Churchill",
+            "Steve Gelly"
+          ],
+          "replyAbsent": [],
+          "expectedRecordIds": [
+            "starcraft:ualbertabot:about"
+          ],
+          "evidence": [
+            {
+              "recordId": "starcraft:ualbertabot:about",
+              "variant": "direct",
+              "quote": "UAlbertaBot; A Starcraft AI development framework by Dave Churchill and Steve Gelly; View on GitHub",
+              "source": {
+                "file": "guides/StarcraftBWAPI.html",
+                "locator": "#resources .space-y-4 > div:nth-child(2)",
+                "review": "extracted",
+                "index": {
+                  "file": "guides/data/assistant/starcraft.json",
+                  "locator": "entities[8].facts[0].answers",
+                  "review": "authored-index"
+                }
+              }
+            }
+          ],
+          "entityId": "starcraft:ualbertabot",
+          "entityTitle": "UAlbertaBot"
+        },
+        {
+          "text": "Now define BWAPI.",
+          "intent": "identity",
+          "supported": true,
+          "replyContains": [
+            "C++",
+            "Brood War"
+          ],
+          "replyAbsent": [],
+          "expectedRecordIds": [
+            "starcraft:research:what-is-bwapi:explanation"
+          ],
+          "evidence": [
+            {
+              "recordId": "starcraft:research:what-is-bwapi:explanation",
+              "variant": "gentle",
+              "quote": "BWAPI is a free, open-source C++ framework for writing AI bots that play StarCraft: Brood War; its setup expects the game updated to version 1.16.1.",
+              "source": {
+                "file": "https://github.com/bwapi/bwapi",
+                "locator": "BWAPI repository README",
+                "review": "external-research",
+                "references": [
+                  {
+                    "label": "BWAPI repository README",
+                    "url": "https://github.com/bwapi/bwapi",
+                    "checkedAt": "2026-10-20"
+                  }
+                ],
+                "index": {
+                  "file": "guides/data/assistant/starcraft.json",
+                  "locator": "research[id=what-is-bwapi]",
+                  "review": "authored-index"
+                }
+              }
+            }
+          ],
+          "entityId": "starcraft:bwapi",
+          "entityTitle": "BWAPI"
+        },
+        {
+          "text": "Guide only: define BWAPI.",
+          "intent": "identity",
+          "supported": false,
+          "replyContains": [],
+          "replyAbsent": [],
+          "expectedRecordIds": [],
+          "evidence": [],
+          "entityId": "starcraft:bwapi",
+          "requireDecline": true,
+          "declineReason": "The definition is external research and guide-only excludes it.",
+          "restriction": "guide-only"
+        },
+        {
+          "text": "that definition again",
+          "intent": "identity",
+          "supported": false,
+          "replyContains": [],
+          "replyAbsent": [],
+          "expectedRecordIds": [],
+          "evidence": [],
+          "entityId": "starcraft:bwapi",
+          "requireDecline": true,
+          "declineReason": "Guide-only carries forward into the fragment.",
+          "restriction": "guide-only"
+        },
+        {
+          "text": "Where is PhantomAI Platinum?",
+          "intent": "location",
+          "supported": false,
+          "replyContains": [],
+          "replyAbsent": [],
+          "expectedRecordIds": [],
+          "evidence": [],
+          "requireDecline": true,
+          "declineReason": "An unrelated unknown bot must not recover BWAPI or UAlbertaBot grounding."
+        }
+      ]
+    }
+  ],
+  "oracleRevision": 2,
+  "previousRawSHA256": "41fb5ca1d30465a3aa98c8a8d0946f44a3378884deff3cacfadf8a20827f35d1"
+}

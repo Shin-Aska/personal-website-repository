@@ -1,0 +1,156 @@
+{
+  "schema": 1,
+  "checkedAt": "2026-10-24T04:47:57.483Z",
+  "scope": [
+    "starcraft",
+    "ultima7"
+  ],
+  "feature": "Source-backed conditional consultation with contextual follow-up focus",
+  "consultationChecks": {
+    "passed": 23,
+    "total": 23,
+    "failures": []
+  },
+  "evaluationRawSha256": "b469035ec8247e972a04b034a6a2be2b63de4bfd09e1f5adccacd0612f6920bb",
+  "catalogRawSha256": "866a4a54cd660f496d3f993fe47372499806232a0d5717e86ec12c4ddf6a398b",
+  "trainingUnchangedFromFollowupIteration": true,
+  "modelTraining": {
+    "dataset": "followup-v2",
+    "trainingSamples": 180,
+    "validationSamples": 72,
+    "trainingHash": "4c2d736e54be12a752afe5b17c1910a4e5d177e1473667efec5d38bcaaa85243",
+    "validationHash": "968ec7f80b4697cf30c1f0fae5821493086fd5cc40871f8cb0f5cec2bd42c4cd",
+    "headHash": "ca4b05baaf3e5f674267e648c70a1a9aa14a378f19bd1e3fab822ea85134c20e",
+    "encoderFineTuned": false,
+    "headTraining": {
+      "samples": 180,
+      "epochs": 400,
+      "learningRate": 0.8,
+      "l2": 0.001,
+      "seed": 42,
+      "loss": 0.6671667419397713
+    },
+    "fitMs": 674.0999999996275,
+    "thresholds": {
+      "minScore": 0,
+      "minMargin": 0,
+      "abstainAll": false,
+      "selection": {
+        "source": "validation",
+        "samples": 72,
+        "targetAccuracy": 0.9,
+        "minAccepted": 6,
+        "accepted": 72,
+        "accuracy": 0.9444444444444444,
+        "coverage": 1,
+        "candidateLimitPerAxis": 51
+      }
+    },
+    "trainingMetrics": {
+      "total": 180,
+      "correct": 178,
+      "accuracy": 0.9888888888888889,
+      "accepted": 180,
+      "acceptedCorrect": 178,
+      "acceptedAccuracy": 0.9888888888888889,
+      "coverage": 1,
+      "abstained": 0
+    },
+    "validationMetrics": {
+      "total": 72,
+      "correct": 68,
+      "accuracy": 0.9444444444444444,
+      "accepted": 72,
+      "acceptedCorrect": 68,
+      "acceptedAccuracy": 0.9444444444444444,
+      "coverage": 1,
+      "abstained": 0
+    }
+  },
+  "unitChecks": {
+    "passed": 53,
+    "total": 53,
+    "meaning": "Numeric, structural and source-policy contracts; not open-ended reasoning accuracy"
+  },
+  "realBrowserControls": {
+    "passed": true,
+    "checks": 16
+  },
+  "actualUiConsultation": {
+    "question": "I am playing StarCraft Remastered. Which one is the best, do you think?",
+    "answer": "For staying in StarCraft Remastered, I would choose Remastered SCM Map, based on this guide.\n\nThe guide says the Remastered method works natively, without version downgrades.\n\nIn Remastered, use the integrated map through a Custom Game and select Use Map Settings.\n\nThe guide rates the Remastered map as the simplest setup, limited to its own maps.\n\nIf you instead prioritize more realistic AI, consider SCHNAIL.\n\nSCHNAIL is the guide's client-based option for playing advanced Brood War opponents.\n\nThe client includes its own version of Brood War, so the game is not installed separately.\n\nThe guide rates SCHNAIL as the most realistic option; its drawback is an internet login.\n\nSources from this guide (8 passages)",
+    "followup": "download link",
+    "followupUrls": [
+      "https://drive.proton.me/urls/55AMBJ5FN4#BB7pM4E3tZeE",
+      "https://www.richardorilla.website/files/bwapiscr.zip"
+    ]
+  },
+  "boundaries": {
+    "sourceFilesUnchangedDuringRun": true,
+    "storageUnchanged": true,
+    "onlyStaticGets": true,
+    "blockedExternalRequests": [],
+    "pageErrors": [],
+    "consoleErrors": []
+  },
+  "broaderFollowupChecks": {
+    "passed": 25,
+    "total": 65
+  },
+  "sources": {
+    "guides/tests/assistant/intent-prototype/source-responses.test.mjs": "5197ff5360f41004593e4b42e547af9f93211c2c6bde5a154f1e9047bd3693a1",
+    "guides/tests/assistant/intent-prototype/interpreter.mjs": "9eb1163822c969d966eef0ea1cac48eb0e31f1f7080dc8c6b8188f9bf8c4b8ae",
+    "guides/tests/assistant/intent-prototype/consultation.mjs": "95634b4e0f1f6e3edaea4263bf10d857ae3f111dea99539dbec4c2bcffd81c56",
+    "guides/tests/assistant/intent-prototype/consultation.test.mjs": "e14a1bc6106ae2192dc9da32acdd69e189dcdc22db8aa5dbaadf9c5521c9701e",
+    "guides/tests/assistant/intent-prototype/classifier.mjs": "9e073c5227ea40a34d0c5e9914b73d3d1e83e7b4b9f55c2a1fb6c0a0be894162",
+    "guides/tests/assistant/intent-prototype/encoder.mjs": "23c10b180c23001ccdf6a47aac8a3292fab26ba627f483a74440446d9abd9e84",
+    "guides/tests/assistant/intent-prototype/source-responses.mjs": "900268d0dbd3cb7e5937a85d0dab9adf1c8587ed9e2b0abce2b9b931fd8f4ca4",
+    "guides/tests/assistant/intent-prototype/lab.mjs": "9b0bf2f4f551405547a3cbd1c1a36156d84eca719d872d638d8680b7fc95d4e3",
+    "guides/tests/assistant/intent-prototype/classifier.test.mjs": "082e20ee6c2ba38554b9d4b555b6a166172fc00080ed272edc0e40df02dd8ef2",
+    "guides/tests/assistant/intent-prototype/interpreter.test.mjs": "4c39e1870890a6bfcc2fe7902a925b3a6a18924b07917f276753297f2972b11d",
+    "guides/tests/assistant/intent-prototype/embedding-worker.mjs": "74ae0604dff285175fa6c52db35d09f3b7eb6189397efc4ffbe8781cfccbb13f",
+    "guides/tests/assistant/intent-prototype/lab-browser-checks.mjs": "512654f9473d5ea9fcc5172de1e099dd66394250328752b9d305e5ea6465f280",
+    "guides/tests/assistant/intent-prototype/export-ultima7-records.mjs": "689844135a0ed8a2ace257b9e95b71621a354fd0c73bc314c348132405b178c1",
+    "guides/tests/assistant/intent-prototype/consultation-focus.test.mjs": "5a347e2aa88476bfe8814bdcef7427f5ad54212cfa05583363fbafbcac44fcd0",
+    "guides/tests/assistant/intent-prototype/consultation-catalog.json": "866a4a54cd660f496d3f993fe47372499806232a0d5717e86ec12c4ddf6a398b",
+    "guides/tests/assistant/intent-prototype/cases/validation-v2.json": "e54d90a131fd9e1f36bd8467c377425bf0790bf63e392b95d0f3f7b5afc482f7",
+    "guides/tests/assistant/intent-prototype/cases/training-v2.json": "7b6de20db5751ea0d21dcfcacbe6dba1fdf787586a8e6f1af3a5e06ad618b6c8",
+    "guides/tests/assistant/intent-prototype/cases/validation.json": "0a88fd1626fb273deb40e3b7f209a950b2e2944f2b1657d552d0c8f7bb2228b7",
+    "guides/tests/assistant/intent-prototype/cases/followup-evaluation.json": "877827a32d23b0cd1cf0b20a6be30b9b42ab2174a32c453f2c183b833c5938c3",
+    "guides/tests/assistant/intent-prototype/cases/consultation-evaluation.json": "b469035ec8247e972a04b034a6a2be2b63de4bfd09e1f5adccacd0612f6920bb",
+    "guides/tests/assistant/intent-prototype/cases/evaluation.json": "e7612087c82234a809011485110d9ee750a0c7a38f3027951b176df7a7c4df7f",
+    "guides/tests/assistant/intent-prototype/cases/training.json": "473f263180478f6bb509594a0fa25e4db375393776d9f45f2204045314a1d648",
+    "guides/js/assistant/ui.js": "e6740fe2ca415f4e55b71b183f053a0d627741f3252394a03640dce3c1b64005",
+    "guides/js/assistant/rules.js": "3c2edda7907d22a78d022abd9e1fded1ad70103056129325f44d2cc8be78ef74",
+    "guides/js/assistant/engine.js": "080da52cc6800abf2bfc31e29e7725dbca40cc0119b26c813479e8170a7aee13",
+    "guides/js/assistant/retrieval.js": "d40e3d699e419ccee015abbdfe1b901816629af3d0ded9d52f082476b906c7f3",
+    "guides/js/assistant/bootstrap.js": "36507c252a2cb1c74a56ce094f9dbf61221c813ff799a733d114bfc09acac51b",
+    "guides/js/assistant/fallback-guard.js": "8ac7766576c0fa39a9f8eb1d8130687f5dec2d93ed3793b1ab32a416502eb4dc",
+    "guides/js/assistant/consent.js": "f586ad8ab8fb34cf1e08f71115077f87c8df2ce146bf5a0cfb90b5f9712d5dee",
+    "guides/js/assistant/language.js": "f615ac045c6fae7e5ffea26f852c0c50b9985bd43a432d736c0c7948ebbb9e7e",
+    "guides/js/assistant/topics.js": "cae60c918f936d1429713f076420e32c1fc72a89d371b47f7b1958b81e852d39",
+    "guides/js/assistant/frame-tokens.js": "9f225b8d13b2082f45af7f1ec7ca5b56900733383537123d7dab05baa95f511b",
+    "guides/js/assistant/policy.js": "df44eea0b5eec7dae01deb0ab4c179873cb5f271ae1a3d87ed89a630cb87aec3",
+    "guides/js/assistant/model-runtime.js": "c6331135f75b3ab5f094e6b7020567b19f2b22286105dc51eba190917e98fdd1",
+    "guides/js/assistant/model-worker.js": "5f490d60ae8b991ae64d523d16c683d11a8995283353cfb534f0d3529ce0d6fc",
+    "guides/js/assistant/model-download.js": "1a9f1be1319d9219507a140e4eae6ad6ea2cbb348b19771c7261d1a52432a6a1",
+    "guides/js/assistant/fallback-context.js": "73c2638570035a73683cdd83b2eac5133d577892aef3613539ebb80c0481cb73",
+    "guides/js/assistant/adapters/ultima6.js": "761e8fd994e277a81e679c00d64458dabf7cbdba9dfe08286066f52d4dfa9c86",
+    "guides/js/assistant/adapters/ultima5.js": "c629bcd97dc4fab79f7b70e054de1e910434120ce0bb21e0fe8086200b4d2cdf",
+    "guides/js/assistant/adapters/ultima7.js": "cc0474d4a9571dbcce7349b91e144a79d0217c9fb1b9e2bf995e71a092dd7389",
+    "guides/js/assistant/adapters/starcraft.js": "352de741dd9bc2f293b3822c7e8429cb53aa798c66dcaf051fc3d4e3d0bbb37c",
+    "guides/js/assistant/adapters/albion.js": "2bc964d229c805afa38f85fcbd4322c9df43e09008de5d7de5d517fcd047c0be",
+    "guides/js/assistant/adapters/alqadim.js": "547e5694e3982a2d058a82f2a0e111c128748c22b6d5275a7588cf85b193c7c9",
+    "guides/StarcraftBWAPI.html": "5da1260744b5087846463044b60361921c11bc3d115962498c1863e44201b263",
+    "guides/Ultima7.html": "1ab4eb0852664fff8021e8ed32b1c55d7270ad846cf0cac4f15d54fb64e59ac1",
+    "guides/tests/assistant/intent-prototype/assets/profile.json": "eb254faf53e2a995d63cc72b4b26a1c8ecc34a5ea47ddc28d245e78bacdc2b1d"
+  },
+  "rawReportSha256": "d09b5b19e5f2dd852553aceed7126fae30680089109f619fad502e41f778dbf4",
+  "limitations": [
+    "The 23-turn set is authored regression/consultation coverage, not a blind model accuracy estimate.",
+    "Recommendations are conditional inferences from reviewed traits and verified source quotations, not neural factual generation or universal software rankings.",
+    "Only source-backed criteria in six profiles across two games are modeled. Unsupported criteria/editions require clarification.",
+    "The broader 65-turn conversation suite still passes only25 complete behaviors.",
+    "The initial consultation browser run overlapped a source edit and was rejected by its hash stability assertion; the final run uses stable sources."
+  ]
+}

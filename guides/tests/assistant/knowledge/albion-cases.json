@@ -1,0 +1,2107 @@
+{
+  "schemaVersion": 1,
+  "gameId": "albion",
+  "reviewedAt": "2026-10-24",
+  "dialogues": [
+    {
+      "id": "unavailable-external-sources",
+      "turns": [
+        {
+          "text": "What does the official Albion 2026 remake manual say about the Monster Eye?",
+          "expected": {
+            "decision": "not-answer",
+            "notContains": [
+              "official 2026 manual"
+            ]
+          }
+        },
+        {
+          "text": "Quote the developer interview explaining why Kossotto gives the scroll.",
+          "expected": {
+            "decision": "not-answer",
+            "notContains": [
+              "Kossotto gives it because"
+            ]
+          }
+        },
+        {
+          "text": "Does this local guide establish Monster Eye fast-travel mechanics?",
+          "expected": {
+            "decision": "not-answer",
+            "notContains": [
+              "Monster Eye enables fast travel"
+            ]
+          }
+        },
+        {
+          "text": "Does this source prove the exact recharge duration of Goddess’s Flowers?",
+          "expected": {
+            "decision": "not-answer",
+            "notContains": [
+              "recharge every 24 hours"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "com-access-pistol",
+      "turns": [
+        {
+          "text": "How do I get COM access?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Joe",
+              "1042"
+            ],
+            "factIds": [
+              "com-code"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "QUEST_HINTS[\"toronto-intro\"][\"com-code\"]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "And the Pistol?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "damaged console",
+              "Canisters"
+            ],
+            "factIds": [
+              "pistol"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "QUEST_HINTS[\"toronto-intro\"][\"pistol\"]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "What does it use?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Canisters"
+            ],
+            "factIds": [
+              "pistol-effect"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "DB.equipment[5].effect",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Where do I hide the weapon before security?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "wall cabinet",
+              "service level"
+            ],
+            "factIds": [
+              "hide-weapon"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "QUEST_HINTS[\"toronto-intro\"][\"hide-weapon\"]",
+              "review": "extracted"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "anne-and-beegle",
+      "turns": [
+        {
+          "text": "How do I get Anne rations?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "mess hall",
+              "6 times"
+            ],
+            "factIds": [
+              "anne-rations"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "QUEST_HINTS[\"toronto-intro\"][\"anne-rations\"]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Where is Inspector Beegle supplies?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "left cupboard",
+              "north cabinet"
+            ],
+            "factIds": [
+              "beegle-room"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "QUEST_HINTS[\"toronto-intro\"][\"beegle-room\"]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "What is in his north cabinet?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "canisters"
+            ],
+            "factIds": [
+              "beegle-room"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "QUEST_HINTS[\"toronto-intro\"][\"beegle-room\"]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Has my party collected those supplies already?",
+          "expected": {
+            "decision": "not-answer",
+            "notContains": [
+              "already collected"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "drirr-recruitment-combat",
+      "turns": [
+        {
+          "text": "How do I recruit Drirr?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "festival murder",
+              "automatically"
+            ],
+            "factIds": [
+              "recruit-drirr"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "QUEST_HINTS[\"nakiridaani\"][\"recruit-drirr\"]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "What are his combat strengths?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "99 combat caps",
+              "Tail weapon slot"
+            ],
+            "factIds": [
+              "drirr-combat"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "DB.characters[2].strengths/weaknesses",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Where do I get Iskai Lance?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Snird's Armoury"
+            ],
+            "factIds": [
+              "iskai-lance-location"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "DB.equipment[3].location",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "What does the Iskai Lance do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Drirr only",
+              "-6 CLO"
+            ],
+            "factIds": [
+              "iskai-lance-effect"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "DB.equipment[3].effect",
+              "review": "extracted"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "sira-party-link",
+      "turns": [
+        {
+          "text": "How do I recruit Sira?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Bradir",
+              "north wing"
+            ],
+            "factIds": [
+              "recruit-sira"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "QUEST_HINTS[\"nakiridaani\"][\"recruit-sira\"]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Does she leave with Melthas?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Always leaves with Melthas"
+            ],
+            "factIds": [
+              "sira-notes"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "DB.characters[3].notes",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "What are her combat limits?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Light armor only",
+              "Trifalai Seeds"
+            ],
+            "factIds": [
+              "sira-combat"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "DB.characters[3].strengths/weaknesses",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Where does Sira train spells?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Fasiir",
+              "Jirinaar"
+            ],
+            "factIds": [
+              "iskai-training"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "DB.magic[0].freeTraining",
+              "review": "extracted"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "rejira-money",
+      "turns": [
+        {
+          "text": "How do I get Rejira potions?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Blue Healing Potions",
+              "Rabir"
+            ],
+            "factIds": [
+              "rejira-exploit"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "QUEST_HINTS[\"nakiridaani\"][\"rejira-exploit\"]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How does Rejira repeatedly provide them?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Ending conversations",
+              "Dji-Kas Guild"
+            ],
+            "factIds": [
+              "trade-hint-0"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "ALBION_TRADE_HINTS[0].text",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "What are Rabir prices?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "110%",
+              "132%"
+            ],
+            "factIds": [
+              "trade-rabir-jirinaar"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "DB.trade[0]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Where should I sell Krondir drops?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Meat and Trii",
+              "Rabir"
+            ],
+            "factIds": [
+              "trade-hint-2"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "ALBION_TRADE_HINTS[2].text",
+              "review": "extracted"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "former-training",
+      "turns": [
+        {
+          "text": "What stats does Former’s Building give?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "+10",
+              "Speed/Stamina/Strength"
+            ],
+            "factIds": [
+              "formers-stats"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "QUEST_HINTS[\"nakiridaani\"][\"formers-stats\"]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I reach those stat boosts?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "rainbow bushes",
+              "hidden cracked-wall"
+            ],
+            "factIds": [
+              "formers-stats"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "QUEST_HINTS[\"nakiridaani\"][\"formers-stats\"]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How much does Jirinaar training cost?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "2.5G"
+            ],
+            "factIds": [
+              "train-cheap"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "QUEST_HINTS[\"nakiridaani\"][\"train-cheap\"]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Exactly how many stat points did my last save gain?",
+          "expected": {
+            "decision": "not-answer",
+            "notContains": [
+              "your last save gained"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "melthas-demon-spells",
+      "turns": [
+        {
+          "text": "How do I recruit Melthas?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Druid’s hut",
+              "Arjano"
+            ],
+            "factIds": [
+              "recruit-melthas"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "QUEST_HINTS[\"gratogel\"][\"recruit-melthas\"]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "What is his role?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Druid",
+              "Demon-banishing"
+            ],
+            "factIds": [
+              "melthas-notes"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "DB.characters[4].notes",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Where does Melthas get spell scrolls?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Roves",
+              "Arjano library"
+            ],
+            "factIds": [
+              "druid-training"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "DB.magic[1].freeTraining",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "What does Demon Exodus cost and do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "70 SP",
+              "ALL demon-type enemies"
+            ],
+            "factIds": [
+              "demon-exodus-effect"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "DB.magic[1].keySpells[0]; DB.magic[1].reagent",
+              "review": "extracted"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "rifrako-utilities",
+      "turns": [
+        {
+          "text": "Where do I get Monster Eye?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Rifrako",
+              "hard to replace"
+            ],
+            "factIds": [
+              "monster-eye"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "QUEST_HINTS[\"gratogel\"][\"monster-eye\"]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Where is Rifrako?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Aballon",
+              "Gratogel"
+            ],
+            "factIds": [
+              "place-aballon"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "DB.locations[2].locations[3]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "And Dreamshield?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Rifrako",
+              "Aballon"
+            ],
+            "factIds": [
+              "dreamshield"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "QUEST_HINTS[\"gratogel\"][\"dreamshield\"]",
+              "review": "extracted"
+            },
+            "alternativeAnswers": [
+              {
+                "factIds": [
+                  "dreamshield-location"
+                ],
+                "source": {
+                  "file": "guides/js/Albion.js",
+                  "locator": "DB.equipment[6].location",
+                  "review": "extracted"
+                },
+                "contains": [
+                  "Rifrako",
+                  "Aballon"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "text": "What does it do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "12 Prot",
+              "Sleep Spores"
+            ],
+            "factIds": [
+              "dreamshield-effect"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "DB.equipment[6].effect",
+              "review": "extracted"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "gratogel-commerce",
+      "turns": [
+        {
+          "text": "How do I make money with mountain pass bandits?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "ambushes",
+              "Winion"
+            ],
+            "factIds": [
+              "bandits"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "QUEST_HINTS[\"gratogel\"][\"bandits\"]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "What are Winion prices?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "125%",
+              "150%"
+            ],
+            "factIds": [
+              "trade-winion-vanello"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "DB.trade[1]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I get Crystal Throwing Axe?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Music Crystal"
+            ],
+            "factIds": [
+              "music-crystal-trade"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "DB.chapters[2].tips[2]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Where do I farm unlimited Music Crystals?",
+          "expected": {
+            "decision": "not-answer",
+            "notContains": [
+              "unlimited Music Crystals"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "beloveno-choice",
+      "turns": [
+        {
+          "text": "How do I choose Siobhan or Khunag?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Beloveno",
+              "required later"
+            ],
+            "factIds": [
+              "choose-siobhan-or-khunag"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "QUEST_HINTS[\"maini\"][\"choose-siobhan-or-khunag\"]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "What are Siobhan strengths?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Highest damage potential",
+              "99 combat caps"
+            ],
+            "factIds": [
+              "siobhan-combat"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "DB.characters[5].strengths/weaknesses",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "What are Khunag limits?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Weak in physical combat",
+              "permanently"
+            ],
+            "factIds": [
+              "khunag-combat"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "DB.characters[6].strengths/weaknesses",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Can I dismiss Khunag after his chapter?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Leaves permanently if dismissed after his chapter"
+            ],
+            "factIds": [
+              "khunag-combat"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "DB.characters[6].strengths/weaknesses",
+              "review": "extracted"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "assassination-reward",
+      "turns": [
+        {
+          "text": "What is the Herras assassination sequence?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Timed sequence",
+              "Kariah",
+              "Edjiir"
+            ],
+            "factIds": [
+              "assassination-sequence"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "QUEST_HINTS[\"maini\"][\"assassination-sequence\"]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Where is Edjiir?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Srimalinar",
+              "information broker"
+            ],
+            "factIds": [
+              "place-srimalinar"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "DB.locations[3].locations[2]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Where is Melthas’s friend?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Kounos",
+              "Melthas"
+            ],
+            "factIds": [
+              "place-kounos"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "DB.locations[3].locations[1]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I get Herras’s Key?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "After saving Herras",
+              "reward"
+            ],
+            "factIds": [
+              "herras-key"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "QUEST_HINTS[\"maini\"][\"herras-key\"]",
+              "review": "extracted"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "harriet-travel",
+      "turns": [
+        {
+          "text": "How do I recruit Harriet?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "replaces Rainer",
+              "Goddess cave"
+            ],
+            "factIds": [
+              "harriet"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "QUEST_HINTS[\"dji-cantos\"][\"harriet\"]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Why is she important?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "teleportation between islands"
+            ],
+            "factIds": [
+              "harriet-notes"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "DB.characters[7].notes",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Where does Harriet train spells?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Drannagh",
+              "Dji-Cantos"
+            ],
+            "factIds": [
+              "dji-cantos-training"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "DB.magic[3].freeTraining",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Is she currently in my active party?",
+          "expected": {
+            "decision": "not-answer",
+            "notContains": [
+              "currently in your active party"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "flower-recharge",
+      "turns": [
+        {
+          "text": "What do Goddess’s Flowers do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "8 total",
+              "+3",
+              "recharges"
+            ],
+            "factIds": [
+              "flowers"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "QUEST_HINTS[\"dji-cantos\"][\"flowers\"]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Do they recharge?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "recharges over time"
+            ],
+            "factIds": [
+              "flowers"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "QUEST_HINTS[\"dji-cantos\"][\"flowers\"]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Exactly how many minutes is the flower recharge timer?",
+          "expected": {
+            "decision": "not-answer",
+            "notContains": [
+              "60 minutes"
+            ]
+          }
+        },
+        {
+          "text": "What is Dji-Cantos movement about?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Dji-Cantos",
+              "Umajo",
+              "Toronto reactor"
+            ],
+            "factIds": [
+              "movement-3"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "ALBION_CAMPAIGN_MOVEMENTS[2].summary",
+              "review": "extracted"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "porenoil-route",
+      "turns": [
+        {
+          "text": "How do I get Porenoil?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Merdger/Merger",
+              "Equipment Maker"
+            ],
+            "factIds": [
+              "porenoil"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "QUEST_HINTS[\"umajo\"][\"porenoil\"]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "What does it prevent?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "dehydration"
+            ],
+            "factIds": [
+              "porenoil"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "QUEST_HINTS[\"umajo\"][\"porenoil\"]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I reach Toronto from Umajo?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Ohl a Jewel",
+              "coastline then south"
+            ],
+            "factIds": [
+              "find-path"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "QUEST_HINTS[\"umajo\"][\"find-path\"]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Which exact tile is the cave entrance?",
+          "expected": {
+            "decision": "not-answer",
+            "notContains": [
+              "tile 100"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "umajo-selling",
+      "turns": [
+        {
+          "text": "Where should I sell valuable loot?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "130%",
+              "Umajo"
+            ],
+            "factIds": [
+              "umajo-sell"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "QUEST_HINTS[\"umajo\"][\"umajo-sell\"]",
+              "review": "extracted"
+            },
+            "alternativeAnswers": [
+              {
+                "factIds": [
+                  "trade-umajo-shops"
+                ],
+                "source": {
+                  "file": "guides/js/Albion.js",
+                  "locator": "DB.trade[2]",
+                  "review": "extracted"
+                },
+                "contains": [
+                  "Umajo",
+                  "130%"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "text": "Which Umajo buyers have the highest rate?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Jeros",
+              "Zeibe",
+              "Mykonou"
+            ],
+            "factIds": [
+              "trade-hint-1"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "ALBION_TRADE_HINTS[1].text",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "What are Kounos trader prices?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "38%",
+              "Poor place to sell"
+            ],
+            "factIds": [
+              "trade-kounos-trader"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "DB.trade[3]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "What are Riolea prices?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "75%",
+              "100%"
+            ],
+            "factIds": [
+              "trade-riolea-beloveno"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "DB.trade[4]",
+              "review": "extracted"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "toronto-return-codes",
+      "turns": [
+        {
+          "text": "What are Toronto return codes in order?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "1001",
+              "1712",
+              "4312"
+            ],
+            "factIds": [
+              "codes"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "QUEST_HINTS[\"toronto-return\"][\"codes\"]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Where does the first one come from?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "notebook"
+            ],
+            "factIds": [
+              "codes"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "QUEST_HINTS[\"toronto-return\"][\"codes\"]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "And the reversed code-notes?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "4312"
+            ],
+            "factIds": [
+              "codes"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "QUEST_HINTS[\"toronto-return\"][\"codes\"]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "What do I do with the Toronto evidence?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "return to Dji-Cantos",
+              "video footage"
+            ],
+            "factIds": [
+              "evidence"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "QUEST_HINTS[\"toronto-return\"][\"evidence\"]",
+              "review": "extracted"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "kenget-gate-boss",
+      "turns": [
+        {
+          "text": "Who is required to enter Kenget Kamulos?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Khunag in the party"
+            ],
+            "factIds": [
+              "khunag-required"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "QUEST_HINTS[\"kenget-kamulos\"][\"khunag-required\"]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I defeat Kamulos?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "immune to Frost",
+              "Thorn Snare"
+            ],
+            "factIds": [
+              "defeat-kamulos"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "QUEST_HINTS[\"kenget-kamulos\"][\"defeat-kamulos\"]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "What does Thorn Snare do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Immobilizes",
+              "16 SP"
+            ],
+            "factIds": [
+              "thorn-snare-effect"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "DB.magic[0].keySpells[1]; DB.magic[0].reagent",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Can I farm Bolt-Throwers?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "surrender/loop",
+              "Umajo"
+            ],
+            "factIds": [
+              "bolt-throwers"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "QUEST_HINTS[\"kenget-kamulos\"][\"bolt-throwers\"]",
+              "review": "extracted"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "secret-word-scroll",
+      "turns": [
+        {
+          "text": "How do I learn Umajo Danu?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "mine shaft ceremony",
+              "without being seen"
+            ],
+            "factIds": [
+              "umajo-danu"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "QUEST_HINTS[\"equipment-makers\"][\"umajo-danu\"]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "What do I do with it?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Kossotto",
+              "secret word"
+            ],
+            "factIds": [
+              "metalmagic"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "QUEST_HINTS[\"equipment-makers\"][\"metalmagic\"]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Where is the Metalmagic Scroll?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Kossotto"
+            ],
+            "factIds": [
+              "metalmagic"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "QUEST_HINTS[\"equipment-makers\"][\"metalmagic\"]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Can I skip the word by picking Kossotto’s pocket?",
+          "expected": {
+            "decision": "not-answer",
+            "notContains": [
+              "pick Kossotto"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "blue-plate-demonstration",
+      "turns": [
+        {
+          "text": "How do I use the blue floor plate?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "16 Animal 3",
+              "back row",
+              "Demon Exodus"
+            ],
+            "factIds": [
+              "xp-plate"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "QUEST_HINTS[\"equipment-makers\"][\"xp-plate\"]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "What does Demon Exodus destroy?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "ALL demon-type enemies"
+            ],
+            "factIds": [
+              "demon-exodus-effect"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "DB.magic[1].keySpells[0]; DB.magic[1].reagent",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "What makes Animal 3 dangerous?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Fast and critical-hit capable"
+            ],
+            "factIds": [
+              "animal-3-danger"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "DB.bestiary[0].danger",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Does the guide prove that 16 times 357 is exactly 5760?",
+          "expected": {
+            "decision": "not-answer",
+            "notContains": [
+              "16 times 357 is exactly 5760"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "finale-joe",
+      "turns": [
+        {
+          "text": "Why bring Joe to the finale?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Service Robot",
+              "electronics safely"
+            ],
+            "factIds": [
+              "bring-joe"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "QUEST_HINTS[\"finale\"][\"bring-joe\"]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "What do the Service Robot tactics say?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Joe",
+              "repair-gated"
+            ],
+            "factIds": [
+              "service-robot-combat"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "DB.bestiary[2].strategy",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I plant The Seed?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Toronto’s reactor route"
+            ],
+            "factIds": [
+              "plant-seed"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "QUEST_HINTS[\"finale\"][\"plant-seed\"]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "What ends the AI Housing encounter?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "party member falls"
+            ],
+            "factIds": [
+              "ai-housing"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "QUEST_HINTS[\"finale\"][\"ai-housing\"]",
+              "review": "extracted"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "housing-control",
+      "turns": [
+        {
+          "text": "How do I fight AI Housing?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "not meant to be killed",
+              "Thorn Snare"
+            ],
+            "factIds": [
+              "ai-housing"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "QUEST_HINTS[\"finale\"][\"ai-housing\"]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Can I kill it with weapons?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "immune to weapons"
+            ],
+            "factIds": [
+              "ai-housing"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "QUEST_HINTS[\"finale\"][\"ai-housing\"]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "What can hold it?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Thorn Snare"
+            ],
+            "factIds": [
+              "ai-housing"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "QUEST_HINTS[\"finale\"][\"ai-housing\"]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "What exact hidden flag stores its ending trigger?",
+          "expected": {
+            "decision": "not-answer",
+            "notContains": [
+              "ending_trigger_flag"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "weapons-curses",
+      "turns": [
+        {
+          "text": "What does Shadowsword do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Cursed",
+              "-30 LP",
+              "-50 Stamina"
+            ],
+            "factIds": [
+              "shadowsword-effect"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "DB.equipment[1].effect",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Where do I find it?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Treasure Cave"
+            ],
+            "factIds": [
+              "shadowsword-location"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "DB.equipment[1].location",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Where is Treasure Cave?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Below Kounos cliffs"
+            ],
+            "factIds": [
+              "place-treasure-cave"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "DB.locations[3].locations[3]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "What does Danu’s Light give?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "+20 Speed",
+              "+5 Prot"
+            ],
+            "factIds": [
+              "danu-s-light-effect"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "DB.equipment[2].effect",
+              "review": "extracted"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "ranged-equipment",
+      "turns": [
+        {
+          "text": "Where do I get Bolt-Rifle?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Umajo weapon guild"
+            ],
+            "factIds": [
+              "bolt-rifle-location"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "DB.equipment[4].location",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "What ammunition does it use?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Bolts"
+            ],
+            "factIds": [
+              "bolt-rifle-effect"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "DB.equipment[4].effect",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "What does Pistol use?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Canisters"
+            ],
+            "factIds": [
+              "pistol-effect"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "DB.equipment[5].effect",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How many Canisters do I currently have?",
+          "expected": {
+            "decision": "not-answer",
+            "notContains": [
+              "you have 10"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "late-equipment",
+      "turns": [
+        {
+          "text": "What does Gaze of Kamulos do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Spell charges (6)"
+            ],
+            "factIds": [
+              "gaze-of-kamulos-effect"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "DB.equipment[0].effect",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Where is it found?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Kenget Kamulos"
+            ],
+            "factIds": [
+              "gaze-of-kamulos-location"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "DB.equipment[0].location",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "What does Lugh’s Hand Helmet give?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "20 Prot",
+              "+35 Luck"
+            ],
+            "factIds": [
+              "lugh-s-hand-helmet-effect"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "DB.equipment[8].effect",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "What does Thief’s Amulet give?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "+30 Dex",
+              "+30 Lockpick"
+            ],
+            "factIds": [
+              "thief-s-amulet-effect"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "DB.equipment[10].effect",
+              "review": "extracted"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "amulet-staff",
+      "turns": [
+        {
+          "text": "What does Power Amulet give?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "+25 LP",
+              "+50 Str"
+            ],
+            "factIds": [
+              "power-amulet-effect"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "DB.equipment[9].effect",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Where do I find it?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Arjano / Kounos"
+            ],
+            "factIds": [
+              "power-amulet-location"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "DB.equipment[9].location",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Where is Serpent Staff?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Equipment Makers"
+            ],
+            "factIds": [
+              "serpent-staff-location"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "DB.equipment[7].location",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "What does it give?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "10 Prot",
+              "+25 SP"
+            ],
+            "factIds": [
+              "serpent-staff-effect"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "DB.equipment[7].effect",
+              "review": "extracted"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "spell-resources",
+      "turns": [
+        {
+          "text": "What does Frost Avalanche do and cost?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Freezes all enemies",
+              "30 SP",
+              "Trifalai Seed"
+            ],
+            "factIds": [
+              "frost-avalanche-effect"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "DB.magic[0].keySpells[0]; DB.magic[0].reagent",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "What does Fungification do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "disintegrate weakened",
+              "24 SP"
+            ],
+            "factIds": [
+              "fungification-effect"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "DB.magic[0].keySpells[2]; DB.magic[0].reagent",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "What does Magic Shield do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "M-R and Protection",
+              "25 SP"
+            ],
+            "factIds": [
+              "magic-shield-effect"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "DB.magic[1].keySpells[1]; DB.magic[1].reagent",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "What does Berserk cost?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "20% LP",
+              "12 SP"
+            ],
+            "factIds": [
+              "berserk-effect"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "DB.magic[1].keySpells[2]; DB.magic[1].reagent",
+              "review": "extracted"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "kenget-harriet-spells",
+      "turns": [
+        {
+          "text": "What does Thunderstorm do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Damage all enemies",
+              "35 SP"
+            ],
+            "factIds": [
+              "thunderstorm-effect"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "DB.magic[2].keySpells[0]; DB.magic[2].reagent",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "What does Steal Magic do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Drain SP",
+              "15 SP"
+            ],
+            "factIds": [
+              "steal-magic-effect"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "DB.magic[2].keySpells[1]; DB.magic[2].reagent",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "What does Steal Life do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Drain LP",
+              "15 SP"
+            ],
+            "factIds": [
+              "steal-life-effect"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "DB.magic[2].keySpells[2]; DB.magic[2].reagent",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "What does Recuperation do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "without sleeping or food",
+              "10 SP"
+            ],
+            "factIds": [
+              "recuperation-effect"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "DB.magic[3].keySpells[2]; DB.magic[3].reagent",
+              "review": "extracted"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "edition-source-progress-negatives",
+      "turns": [
+        {
+          "text": "What does Lifebringer do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Heals entire party",
+              "60 SP"
+            ],
+            "factIds": [
+              "lifebringer-effect"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "DB.magic[3].keySpells[1]; DB.magic[3].reagent",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "What does Goddess’s Wrath do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "proficiency = count",
+              "160 SP"
+            ],
+            "factIds": [
+              "goddess-s-wrath-effect"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "DB.magic[3].keySpells[0]; DB.magic[3].reagent",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Does the 2026 remaster halve Goddess’s Wrath SP cost?",
+          "expected": {
+            "decision": "not-answer",
+            "notContains": [
+              "80 SP"
+            ]
+          }
+        },
+        {
+          "text": "Does recruiting Harriet prove I finished every Toronto quest?",
+          "expected": {
+            "decision": "not-answer",
+            "notContains": [
+              "every Toronto quest is complete"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,207 @@
+{
+  "schemaVersion": 1,
+  "kind": "owner-scoped-six-game-beta-checkpoint",
+  "checkedAt": "2026-10-25T05:50:32.123251+00:00",
+  "status": "local-beta-candidate",
+  "scopeDecision": {
+    "ownerRequested": "Wind down to an acceptable beta, create a checklist for another AI agent, commit relevant work, and preserve the broader goal for later.",
+    "featureExpansion": "frozen",
+    "broaderGoal": "Develop structured knowledge across all six games, with game-focused agents, so the bot can handle extensive useful conversations.",
+    "broaderGoalStatus": "deferred-incomplete; pause the live goal after the local commit",
+    "broaderGoalAchieved": false,
+    "checklist": "docs/assistant-beta-checklist.md",
+    "notAuthorized": [
+      "FTP upload",
+      "Git push",
+      "model updates/replacements/training",
+      "downloads/installations"
+    ]
+  },
+  "implementation": {
+    "path": "guides/tests/assistant/evidence/knowledge-runtime-checkpoint-20261025-14.json",
+    "sha256": "1bc86b7be991931dcd713d8509c88b75618b490a45efbb9952cf45fce216b62a"
+  },
+  "data": {
+    "facts": 674,
+    "links": 359,
+    "sourceContexts": 24,
+    "fieldEntries": 1154,
+    "structuredEntries": 258,
+    "annotatedFacts": 179,
+    "authoredFields": 445,
+    "compilerIssues": 0
+  },
+  "cleanStagedCheckout": {
+    "path": "guides/tests/assistant/evidence/beta-staged-export-20261025.json",
+    "sha256": "8594eaa5477a0ba617e16cf78f5571126dea1a97625a8b5384589081693d3c25"
+  },
+  "node": {
+    "passed": 2125,
+    "total": 2125,
+    "skipped": 0,
+    "ignoredFilesPresent": false
+  },
+  "python": {
+    "sourceAndEmbeddingChecks": {
+      "passed": 11,
+      "total": 11
+    },
+    "setupChecks": {
+      "passed": 12,
+      "total": 12,
+      "qualification": "Standard-library temporary mocked download fixtures only; no real model downloads."
+    }
+  },
+  "packagedAssets": {
+    "status": "verified",
+    "writes": false,
+    "downloads": 0,
+    "bundleId": "smollm2-135m-q8-12fd25f-frames-v1+minilm-intent-v1",
+    "baseBytes": 161786625,
+    "intentBytes": 24053489
+  },
+  "ui": {
+    "layoutAndLifecycleObservationsPassed": 63,
+    "layoutAndLifecycleObservationsTotal": 63,
+    "baseLayout": [
+      42,
+      42
+    ],
+    "desktopAndPhoneExpansion": [
+      14,
+      14
+    ],
+    "parentCloseReopen": [
+      7,
+      7
+    ],
+    "surfaces": 7,
+    "games": 6,
+    "report": {
+      "path": "guides/tests/assistant/evidence/chat-layout-beta-20261025.json",
+      "sha256": "9560d707db132e6e30c47e64ca2a2a4f68768a346871d95d20074488c888aca1"
+    },
+    "assessment": {
+      "path": "guides/tests/assistant/evidence/beta-chat-layout-assessment-20261025.json",
+      "sha256": "1c800e4729ff0328bcf5da618888778d542b35aba278987169437e6bb0fd35ee"
+    },
+    "semanticSmoke": {
+      "passed": 5,
+      "total": 13,
+      "report": {
+        "path": "guides/tests/assistant/evidence/full-answer-browser-beta-20261025.json",
+        "sha256": "55011233ce6681fbc120bf822c12d0fb97ed04b4321281f714a92f9b05d0b26e"
+      },
+      "qualification": "Failed acceptance evidence retained: one equivalent-locator mismatch, six answer limitations and one downstream coverage failure. The independent layout run supplies all-surface UI coverage, not answer correctness."
+    }
+  },
+  "conversationBaselines": {
+    "fullNative": {
+      "passed": 920,
+      "total": 1005,
+      "unsupportedControls": [
+        216,
+        216
+      ],
+      "wholeRowsIdenticalToCheckpoint13": 1005,
+      "report": {
+        "path": "guides/tests/assistant/evidence/knowledge-browser-arguments-20261025-02.json",
+        "sha256": "7a06cb87893021f9d29c3a5c7e3e8e2c364e49c57b6186010e3aeed7d325281b"
+      },
+      "failureReview": {
+        "path": "guides/tests/assistant/evidence/knowledge-full-corpus-arguments-adjudication-20261025-02.json",
+        "sha256": "01c95390a2fa841a98051cd1346138994d78dff3982fcb43f395983c0e7bdecc"
+      },
+      "remainingGenuineGaps": 24
+    },
+    "observed220": {
+      "passed": 208,
+      "total": 220,
+      "unsupportedControls": [
+        53,
+        53
+      ],
+      "report": {
+        "path": "guides/tests/assistant/evidence/knowledge-observed220-arguments-comparison-20261025-02.json",
+        "sha256": "1be2e2a77dc3b39180b85c2c0e1edf79a2e76d650e912565eae252e7af864195"
+      }
+    },
+    "sourceFirst96": {
+      "strictPassed": 72,
+      "total": 96,
+      "completeUsefulSupportedAnswers": 51,
+      "supportedQuestions": 72,
+      "directCompleteAnswers": 49,
+      "completeUnderClarification": 2,
+      "sourcePresentUnanswered": 21,
+      "unsupportedControls": [
+        24,
+        24
+      ],
+      "review": {
+        "path": "guides/tests/assistant/evidence/knowledge-source-first96-arguments-adjudication-20261025-02.json",
+        "sha256": "0a46ca8d564e979ee50779973daf8005eeec7d25313cb7f6ca6354e67abbaba2"
+      }
+    },
+    "cachedReplay": {
+      "passed": 798,
+      "total": 851,
+      "missingQueries": 0,
+      "incomplete": 0,
+      "report": {
+        "path": "guides/tests/assistant/evidence/beta-exact-replay-20261025.json",
+        "sha256": "255e7685a67de64022beec63be6ab42f71e8291d6f89f603f38b1705ed330609"
+      }
+    },
+    "historicalEnglish": {
+      "passed": 1058,
+      "total": 1058,
+      "report": {
+        "path": "guides/tests/assistant/evidence/beta-baseline-english-20261025.json",
+        "sha256": "973969f72c8967740e39e1f4850bdafa0e013053f0b25c1b83827c909b8bea23"
+      },
+      "rerunInBetaWindDown": false
+    },
+    "historicalOriginal": {
+      "passed": 203,
+      "total": 203,
+      "report": {
+        "path": "guides/tests/assistant/evidence/beta-baseline-original-20261025.json",
+        "sha256": "9059103288d9c9b8e71095e210a3e3a70e8502542c3672942bcac869db0261cb"
+      },
+      "rerunInBetaWindDown": false
+    }
+  },
+  "preservation": {
+    "fixedConversationOraclesUnchanged": true,
+    "all674SourceDocumentsAndVectorsUnchanged": true,
+    "modelProfileHeadAndAssetsUnchangedFromCheckpoint13": true,
+    "newInferenceOrVectors": 0,
+    "offlineFileHashSizeAndVersionChecks": {
+      "assets": 841,
+      "allHashesAndSizesMatch": true,
+      "versionMatches": true,
+      "version": "a7cd16db9e1c5a74ee0b094d83cf1f0c837814af5e59de1a62771df0459a0b8b"
+    },
+    "evidenceScope": {
+      "path": "guides/tests/assistant/evidence/beta-evidence-scope-20261025.json",
+      "sha256": "40ce6a776b1e95eacb9bffdbb85e6a31d453dc4b22f30f9c137e508ad4189a6f"
+    },
+    "excludedHistoricalFiles": "Preserved untouched locally; superseded duplicates are not part of this commit. Older ignored result references are flagged in the scope report.",
+    "portableFixture": "guides/tests/assistant/fixtures/starcraft-query-vectors.json",
+    "portableFixtureQualification": "Two existing exact384-dimensional cached query vectors copied unchanged; no encoding/training/download. Retargeted the existing regression test so a fresh checkout needs no ignored cache."
+  },
+  "secretReview": "guides/tests/assistant/evidence/beta-secret-review-20261025.json",
+  "publication": {
+    "ftpUploaded": false,
+    "pushed": false,
+    "commitMessage": "feat: freeze six-game guide assistant beta",
+    "commitIdentity": "Read git log for this checkpoint commit; no self-referential commit hash embedded."
+  },
+  "remainingAcceptance": [
+    "Owner gameplay beta trial",
+    "Known semantic/answer defects in the full, source-first and semantic-smoke reviews",
+    "Broader six-game conversational reliability deferred for the next authorized agent"
+  ],
+  "qualification": "Controlled beta with explicit defects. No claim of full game knowledge, unseen/statistical acceptance, complete generative inference coverage, low-end device performance or public deployment."
+}

@@ -1,0 +1,29 @@
+# Shared request fields — 25 October 2026
+
+Acceptance is incomplete. This change applies to the shared conversation code used by Albion, Ultima V, Ultima VI, Ultima VII, Al-Qadim and StarCraft. It reuses the pinned models, 674 encoded fact documents and their vectors. It changes syntax, source-field metadata, retrieval and validation; it does not generate game facts.
+
+`request-frame.js` separates the requested subject, fields, selectors, directed arguments, phases, list cardinality and explicit source/edition/condition restrictions. It contains no game or entity names. Complete canonical names take priority over words inside the name, so a name such as Combat Magic is not automatically a combat-stat request. Unsupported finite syntax defers intact to the existing directed readers. Unknown properties and materials remain unsupported rather than receiving an available effect paragraph.
+
+`source-field-index.js` compiles reviewed fields on existing complete witnesses. Original structured source rows can expose their actual labeled properties without creating new fact documents. Merchant percentages require a same-owner, structured trade row and retain selling/buying direction, city, physical location context and exact child provenance. Authored metadata adds specific roles only when the complete original witness directly supports them. The index currently has 1,143 entries, including 258 original structured entries, with zero compiler issues.
+
+`source-field-router.js` requires every requested field and selector before answering a compound. It returns complete original witnesses, never generated prose or clipped conditions. Exact list counts require proved members or covered independent fields, not incidental numbers. Unknown subject modifiers, sources, editions, materials and conditions cannot be dropped. A declared task container is a retrieval scope; it does not turn the quest into a person or infer an item's provider from another nearby step. Explicit named owners and grounded references remain independently checked.
+
+The established directed and phase readers retain priority when they already prove a more precise answer. That decision is probed transactionally, with topic state restored. The new fields fill gaps after those readers rather than replacing a helm-cabin instruction with a general island location, or a drinking instruction with a potion effect. The source-only fallback also receives a field gate. Displayed citations are reconciled with the actual selected complete source records, removing an unrelated secondary StarCraft citation.
+
+## Evidence and limits
+
+The first frozen native field build improved the observed 96-turn source-first suite from 37 to 54 strict passes; all 24 unsupported-question controls held. All complete replies were manually reviewed against original sources: 32 of 72 supported questions received a complete useful claim, compared with 17 before this work. Some complete claims still appear under clarification. The other 40 positives include 39 unanswered questions and one wrong field. This is substantial remaining work, and this now-observed suite is not an unseen or statistical evaluation.
+
+That same first build regressed the known full corpus from 919 to 903 of 1,005. The failed report and all 21 changed full replies are preserved in `knowledge-browser-source-fields-vs-checkpoint12-20261025-01.json`; all 216 unsupported-question controls held. Seven newly declined replies and ten weaker answers motivated the transactional priority repair and source-owner/legacy-proof integration. The 54/96 gain alone is not acceptance. Subsequent results must be read from the latest runtime checkpoint and compared with both baselines.
+
+The parser's fallback repairs are structural: an unknown WHO predicate cannot silently mean provider; a whole installation cannot be answered from one startup phase; bare speech and concrete family-role locations retain their existing directed readers. Existing guards, frozen oracles, saved-game isolation, full-answer defaults and the game UI remain in force. No model updates, training, downloads, installations or publication are part of this work.
+
+## Final verified state for checkpoint13
+
+The repaired frozen build retains the exact 54/96 fresh-suite replies, citations and useful-claim review. The full production corpus is 920/1,005, with no strict or observed useful-claim loss against checkpoint12; only the Faulinei summoning answer changes, gaining a complete sourced response. All 216 negative controls hold. The observed 220-turn suites return 95/96, 66/76 and 47/48, with every previous pass retained and all 53 negatives held. Their only whole-row difference from checkpoint12 is a clearer held negative decline.
+
+The module replay is 798/851, up one, with zero prior pass lost, all 175 negatives, zero missing exact inputs and no incomplete turns. One additional test-only exact context query used the unchanged pinned encoder, bringing the ignored query cache to 989 entries. No source document was encoded. The initial incomplete replay is preserved.
+
+All 2,073 recursive Node contracts and 11 Python checks pass. English 1,058/1,058 and original 203/203 were rerun; their source-engine dependencies have remained unchanged since those runs. All 840 offline asset hashes and the version match. Native execution uses real pinned classification/encoding and the existing generative-worker fixture; it does not claim native generative inference. Every source, network, storage and server-isolation check passes. The original guide sources and all frozen conversation oracles remain unchanged.
+
+The active goal remains incomplete. Further work must improve the 39 supported unanswered requests and the wrong BWAPI placement field, with proper task/participant/object bindings and phase completeness, while retaining the now-verified behavior. No FTP upload, commit or push occurred.

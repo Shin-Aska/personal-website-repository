@@ -1,0 +1,3522 @@
+{
+  "schemaVersion": 1,
+  "kind": "changed-turn-full-rendered-reply-adjudication",
+  "reviewedAt": "2026-10-25T00:17:36.828Z",
+  "scope": "Every changed turn in the two named comparisons, including full rendered before/after replies, full expected metadata, visible citations and resource URLs. Unchanged turns are outside this qualitative review.",
+  "limitations": [
+    "This evaluates complete stored replies against the supplied immutable corpus and local reviewed source witnesses; it does not independently re-fetch the external pages or establish current external facts.",
+    "UI citation observations do not establish internal retrieved fact IDs.",
+    "Strict results are preserved, including the parent-versus-child citation failure; no oracle was edited or treated as passing by this adjudication."
+  ],
+  "comparisons": [
+    {
+      "id": "blind96",
+      "beforePath": "guides/tests/assistant/evidence/knowledge-blind-browser-native-40.json",
+      "afterPath": "guides/tests/assistant/evidence/knowledge-blind-browser-native-42.json",
+      "beforeSha256": "68dce8651d44e7164be7905aba417235083c7cbd7676a734cf659507b385ff2f",
+      "afterSha256": "7ea05c0785fc907b6b316124470fd4ed7f9a07e6ec449715ea3f33c332145b98",
+      "corpusPath": "guides/tests/assistant/knowledge-blind-cases.json",
+      "unchangedCorpusHash": "4dbdf52d7976e370195ed2fa8e6db6528d470266a9e129880a4533ddbc6f2ebb",
+      "turnCount": 96,
+      "strictBeforePassed": 85,
+      "strictAfterPassed": 90,
+      "changedTurns": 5,
+      "finalComparison": {
+        "intermediatePath": "guides/tests/assistant/evidence/knowledge-blind-browser-native-41.json",
+        "finalPath": "guides/tests/assistant/evidence/knowledge-blind-browser-native-42.json",
+        "allFullTurnRowsByteSemanticIdentical": true
+      },
+      "noPriorStrictPassLost": true
+    },
+    {
+      "id": "fresh76",
+      "beforePath": "guides/tests/assistant/evidence/knowledge-blind-browser-fresh-20261025-29.json",
+      "afterPath": "guides/tests/assistant/evidence/knowledge-blind-browser-fresh-20261025-31.json",
+      "beforeSha256": "6977764600fd0c7e926d7fb1bfcec64f1c908ec3db2f3b887c0c7d649b01a635",
+      "afterSha256": "945bbe7625c3b3cff59aba963992cf9003397c3507169578a42caadf263d24a1",
+      "corpusPath": "guides/tests/assistant/knowledge-fresh-cases-20261025.json",
+      "unchangedCorpusHash": "67847abd677579e424d4458f710962a39e8453e9034e7696f1269b4bf4402eb3",
+      "turnCount": 76,
+      "strictBeforePassed": 48,
+      "strictAfterPassed": 55,
+      "changedTurns": 9,
+      "finalComparison": {
+        "intermediatePath": "guides/tests/assistant/evidence/knowledge-blind-browser-fresh-20261025-30.json",
+        "finalPath": "guides/tests/assistant/evidence/knowledge-blind-browser-fresh-20261025-31.json",
+        "allFullTurnRowsByteSemanticIdentical": true
+      },
+      "noPriorStrictPassLost": true
+    }
+  ],
+  "totals": {
+    "comparedTurns": 172,
+    "changedTurns": 14,
+    "unchangedTurns": 158,
+    "strictBeforePassed": 133,
+    "strictAfterPassed": 145,
+    "strictPassGains": 12,
+    "priorStrictPassLosses": 0,
+    "changedAfterCompleteSupportedPositiveStrictPass": 12,
+    "changedAfterCompleteSupportedPositiveCitationOnlyStrictFailure": 1,
+    "changedAfterSafeBoundary": 1,
+    "changedAfterIncompletePositive": 0,
+    "changedAfterWrongSubjectOrField": 0,
+    "changedBeforeUnavailablePositive": 12,
+    "changedBeforeIncompletePositive": 1,
+    "changedBeforeSafeBoundary": 1
+  },
+  "rows": [
+    {
+      "comparisonId": "blind96",
+      "indexZeroBased": 48,
+      "surface": "alqadim",
+      "dialogueId": "alqadim-blind-learning-swordplay",
+      "turn": 1,
+      "fullQuestion": "What makes the Wide Swing different from the basic attack?",
+      "expectedUsefulClaim": "Stronger cut hits front left right; release second orange circle.",
+      "expectedBoundary": null,
+      "fullExpectedMetadata": {
+        "decision": "answer",
+        "factIds": [
+          "alqadim:knowledge:swing-wide-swing"
+        ],
+        "source": {
+          "file": "guides/js/AlQadim.js",
+          "locator": "DB.combatMoves[1]",
+          "review": "extracted"
+        },
+        "sourceRecordIds": [
+          "alqadim:combat:wide-swing:combat"
+        ],
+        "contains": [
+          "stronger cut",
+          "left and right",
+          "second action circle"
+        ],
+        "requiredUsefulClaim": "Stronger cut hits front left right; release second orange circle.",
+        "sourceWitness": "A stronger cut that damages monsters in front of the Corsair and to his left and right. Release when the second action circle lights orange. Learn from Zubakon after becoming eligible."
+      },
+      "before": {
+        "text": "What makes the Wide Swing different from the basic attack?",
+        "expected": {
+          "decision": "answer",
+          "factIds": [
+            "alqadim:knowledge:swing-wide-swing"
+          ],
+          "source": {
+            "file": "guides/js/AlQadim.js",
+            "locator": "DB.combatMoves[1]",
+            "review": "extracted"
+          },
+          "sourceRecordIds": [
+            "alqadim:combat:wide-swing:combat"
+          ],
+          "contains": [
+            "stronger cut",
+            "left and right",
+            "second action circle"
+          ],
+          "requiredUsefulClaim": "Stronger cut hits front left right; release second orange circle.",
+          "sourceWitness": "A stronger cut that damages monsters in front of the Corsair and to his left and right. Release when the second action circle lights orange. Learn from Zubakon after becoming eligible."
+        },
+        "decision": "clarify",
+        "rendered": "Choose one guide-backed goal. That additional condition is not modeled well enough to rank the options safely.",
+        "citations": [],
+        "links": [],
+        "acceptedAnswerBranch": null,
+        "answerBranchProblems": [
+          [
+            "Missing exact fixed source citation: guides/js/AlQadim.js — DB.combatMoves[1]",
+            "Missing fixed answer substring: stronger cut",
+            "Missing fixed answer substring: left and right",
+            "Missing fixed answer substring: second action circle"
+          ]
+        ],
+        "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+        "problems": [
+          "Expected answer; observed clarify",
+          "Missing exact fixed source citation: guides/js/AlQadim.js — DB.combatMoves[1]",
+          "Missing fixed answer substring: stronger cut",
+          "Missing fixed answer substring: left and right",
+          "Missing fixed answer substring: second action circle"
+        ],
+        "passed": false,
+        "surface": "alqadim",
+        "dialogueId": "alqadim-blind-learning-swordplay",
+        "turn": 1
+      },
+      "after": {
+        "text": "What makes the Wide Swing different from the basic attack?",
+        "expected": {
+          "decision": "answer",
+          "factIds": [
+            "alqadim:knowledge:swing-wide-swing"
+          ],
+          "source": {
+            "file": "guides/js/AlQadim.js",
+            "locator": "DB.combatMoves[1]",
+            "review": "extracted"
+          },
+          "sourceRecordIds": [
+            "alqadim:combat:wide-swing:combat"
+          ],
+          "contains": [
+            "stronger cut",
+            "left and right",
+            "second action circle"
+          ],
+          "requiredUsefulClaim": "Stronger cut hits front left right; release second orange circle.",
+          "sourceWitness": "A stronger cut that damages monsters in front of the Corsair and to his left and right. Release when the second action circle lights orange. Learn from Zubakon after becoming eligible."
+        },
+        "decision": "answer",
+        "rendered": "A stronger cut that damages monsters in front of the Corsair and to his left and right. Release when the second action circle lights orange. Learn from Zubakon after becoming eligible.\nA fast scimitar strike in the direction the Corsair faces—or toward the sword cursor when using the mouse. Click the action button. Available at second level.",
+        "citations": [
+          "Source: existing guide; extracted. guides/js/AlQadim.js — DB.combatMoves[1]; guides/js/AlQadim.js — DB.combatMoves[0]"
+        ],
+        "links": [],
+        "acceptedAnswerBranch": 0,
+        "answerBranchProblems": [
+          []
+        ],
+        "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+        "problems": [],
+        "passed": true,
+        "surface": "alqadim",
+        "dialogueId": "alqadim-blind-learning-swordplay",
+        "turn": 1
+      },
+      "priorAfterDialogueTurns": [],
+      "adjudication": {
+        "category": "complete-supported-positive",
+        "requiredUsefulClaimComplete": true,
+        "correctSubjectAndField": true,
+        "visibleCitationsSupportCompleteClaim": true,
+        "actualResources": [],
+        "strictBeforePassed": false,
+        "strictAfterPassed": true,
+        "explanation": "The full Wide Swing and Quick Swing profiles establish the requested difference: stronger front/left/right cut and second orange release versus fast directional click attack. Both complete source profiles are cited; no invented damage amount or ranking is added."
+      },
+      "completeStoredSupportingFacts": [
+        {
+          "id": "swing-wide-swing",
+          "subject": "Wide Swing",
+          "facet": "combat",
+          "aliases": [
+            "Front + both sides",
+            "Release when the second action circle lights orange",
+            "wide attack coverage",
+            "wide swing controls",
+            "second orange action circle"
+          ],
+          "text": "A stronger cut that damages monsters in front of the Corsair and to his left and right. Release when the second action circle lights orange. Learn from Zubakon after becoming eligible.",
+          "witness": "A stronger cut that damages monsters in front of the Corsair and to his left and right. Release when the second action circle lights orange. Learn from Zubakon after becoming eligible.",
+          "source": {
+            "file": "guides/js/AlQadim.js",
+            "locator": "DB.combatMoves[1]",
+            "review": "extracted"
+          },
+          "sourceRecordId": "alqadim:combat:wide-swing:combat",
+          "entityId": "alqadim:knowledge:wide-swing",
+          "answerRelations": [
+            "use",
+            "method",
+            "combat",
+            "acquisition",
+            "prerequisites",
+            "explanation"
+          ],
+          "topicLabels": [
+            "Wide swing coverage",
+            "Wide swing controls"
+          ],
+          "support": {
+            "comparison": [
+              "swing-quick-swing",
+              "swing-full-circle-swing"
+            ],
+            "acquisition": [
+              "ch6_4",
+              "page-zubakon"
+            ],
+            "prerequisites": [
+              "page-zubakon"
+            ]
+          }
+        },
+        {
+          "id": "swing-quick-swing",
+          "subject": "Quick Swing",
+          "facet": "combat",
+          "aliases": [
+            "Front",
+            "Click the action button",
+            "basic attack",
+            "quick attack",
+            "basic swing",
+            "front attack",
+            "quick swing controls"
+          ],
+          "text": "A fast scimitar strike in the direction the Corsair faces—or toward the sword cursor when using the mouse. Click the action button. Available at second level.",
+          "witness": "A fast scimitar strike in the direction the Corsair faces—or toward the sword cursor when using the mouse. Click the action button. Available at second level.",
+          "source": {
+            "file": "guides/js/AlQadim.js",
+            "locator": "DB.combatMoves[0]",
+            "review": "extracted"
+          },
+          "sourceRecordId": "alqadim:combat:quick-swing:combat",
+          "entityId": "alqadim:knowledge:quick-swing",
+          "answerRelations": [
+            "use",
+            "method",
+            "combat",
+            "prerequisites",
+            "explanation"
+          ],
+          "topicLabels": [
+            "Basic attack controls",
+            "Quick attack coverage"
+          ],
+          "support": {
+            "comparison": [
+              "swing-wide-swing",
+              "swing-full-circle-swing"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "comparisonId": "blind96",
+      "indexZeroBased": 80,
+      "surface": "starcraft",
+      "dialogueId": "starcraft-blind-development-identity",
+      "turn": 1,
+      "fullQuestion": "When people say BWAPI, do they mean a ready-made opponent?",
+      "expectedUsefulClaim": "It is open source C++ programming API for Brood War, not prepackaged opponent.",
+      "expectedBoundary": null,
+      "fullExpectedMetadata": {
+        "decision": "answer",
+        "factIds": [
+          "starcraft:knowledge:bwapi-identity"
+        ],
+        "source": {
+          "file": "guides/data/assistant/knowledge/starcraft.json",
+          "locator": "facts[48]",
+          "review": "external-research",
+          "references": [
+            {
+              "label": "BWAPI primary source",
+              "url": "https://github.com/bwapi/bwapi",
+              "checkedAt": "2026-10-24"
+            }
+          ]
+        },
+        "sourceRecordIds": [],
+        "contains": [
+          "C++ framework",
+          "programming API",
+          "not a prepackaged opponent"
+        ],
+        "requiredUsefulClaim": "It is open source C++ programming API for Brood War, not prepackaged opponent.",
+        "sourceWitness": "Outside research: BWAPI is a free, open-source C++ framework for creating AI agents that interact with StarCraft: Brood War. It is a programming API, not a prepackaged opponent client."
+      },
+      "before": {
+        "text": "When people say BWAPI, do they mean a ready-made opponent?",
+        "expected": {
+          "decision": "answer",
+          "factIds": [
+            "starcraft:knowledge:bwapi-identity"
+          ],
+          "source": {
+            "file": "guides/data/assistant/knowledge/starcraft.json",
+            "locator": "facts[48]",
+            "review": "external-research",
+            "references": [
+              {
+                "label": "BWAPI primary source",
+                "url": "https://github.com/bwapi/bwapi",
+                "checkedAt": "2026-10-24"
+              }
+            ]
+          },
+          "sourceRecordIds": [],
+          "contains": [
+            "C++ framework",
+            "programming API",
+            "not a prepackaged opponent"
+          ],
+          "requiredUsefulClaim": "It is open source C++ programming API for Brood War, not prepackaged opponent.",
+          "sourceWitness": "Outside research: BWAPI is a free, open-source C++ framework for creating AI agents that interact with StarCraft: Brood War. It is a programming API, not a prepackaged opponent client."
+        },
+        "decision": "decline",
+        "rendered": "I could not ground every part of that question in the available sources. Unanswered: “do they mean a ready-made opponent”. Ask that part with its subject and restrictions.",
+        "citations": [],
+        "links": [],
+        "acceptedAnswerBranch": null,
+        "answerBranchProblems": [
+          [
+            "Missing exact fixed source citation: guides/data/assistant/knowledge/starcraft.json — facts[48]",
+            "Missing fixed answer substring: C++ framework",
+            "Missing fixed answer substring: programming API",
+            "Missing fixed answer substring: not a prepackaged opponent"
+          ]
+        ],
+        "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+        "problems": [
+          "Expected answer; observed decline",
+          "Missing exact fixed source citation: guides/data/assistant/knowledge/starcraft.json — facts[48]",
+          "Missing fixed answer substring: C++ framework",
+          "Missing fixed answer substring: programming API",
+          "Missing fixed answer substring: not a prepackaged opponent"
+        ],
+        "passed": false,
+        "surface": "starcraft",
+        "dialogueId": "starcraft-blind-development-identity",
+        "turn": 1
+      },
+      "after": {
+        "text": "When people say BWAPI, do they mean a ready-made opponent?",
+        "expected": {
+          "decision": "answer",
+          "factIds": [
+            "starcraft:knowledge:bwapi-identity"
+          ],
+          "source": {
+            "file": "guides/data/assistant/knowledge/starcraft.json",
+            "locator": "facts[48]",
+            "review": "external-research",
+            "references": [
+              {
+                "label": "BWAPI primary source",
+                "url": "https://github.com/bwapi/bwapi",
+                "checkedAt": "2026-10-24"
+              }
+            ]
+          },
+          "sourceRecordIds": [],
+          "contains": [
+            "C++ framework",
+            "programming API",
+            "not a prepackaged opponent"
+          ],
+          "requiredUsefulClaim": "It is open source C++ programming API for Brood War, not prepackaged opponent.",
+          "sourceWitness": "Outside research: BWAPI is a free, open-source C++ framework for creating AI agents that interact with StarCraft: Brood War. It is a programming API, not a prepackaged opponent client."
+        },
+        "decision": "answer",
+        "rendered": "Not in this guide — from outside research: BWAPI is a free, open-source C++ framework for creating AI agents that interact with StarCraft: Brood War. It is a programming API, not a prepackaged opponent client.\nBWAPI repository: https://github.com/bwapi/bwapi",
+        "citations": [
+          "Outside research (not in this guide): BWAPI primary source — https://github.com/bwapi/bwapi (checked 2026-10-24)."
+        ],
+        "links": [
+          "https://github.com/bwapi/bwapi"
+        ],
+        "acceptedAnswerBranch": 0,
+        "answerBranchProblems": [
+          []
+        ],
+        "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+        "problems": [],
+        "passed": true,
+        "surface": "starcraft",
+        "dialogueId": "starcraft-blind-development-identity",
+        "turn": 1
+      },
+      "priorAfterDialogueTurns": [],
+      "adjudication": {
+        "category": "complete-supported-positive",
+        "requiredUsefulClaimComplete": true,
+        "correctSubjectAndField": true,
+        "visibleCitationsSupportCompleteClaim": true,
+        "actualResources": [
+          "https://github.com/bwapi/bwapi"
+        ],
+        "strictBeforePassed": false,
+        "strictAfterPassed": true,
+        "explanation": "The reply answers the category question with both halves of the distinction: C++ API/framework for creating Brood War agents, and not a prepackaged opponent. It labels outside research and supplies the matching reviewed BWAPI repository citation and usable resource."
+      },
+      "completeStoredSupportingFacts": [
+        {
+          "id": "starcraft:knowledge:bwapi-identity",
+          "subject": "BWAPI",
+          "entityId": "starcraft:bwapi",
+          "facet": "identity",
+          "aliases": [
+            "BWAPI",
+            "Brood War API",
+            "Brood War Application Programming Interface",
+            "BWAPI programming API",
+            "BWAPI development framework",
+            "BWAPI packaged opponent distinction"
+          ],
+          "text": "Outside research: BWAPI is a free, open-source C++ framework for creating AI agents that interact with StarCraft: Brood War. It is a programming API, not a prepackaged opponent client.",
+          "witness": "Outside research: BWAPI is a free, open-source C++ framework for creating AI agents that interact with StarCraft: Brood War. It is a programming API, not a prepackaged opponent client.",
+          "source": {
+            "file": "guides/data/assistant/knowledge/starcraft.json",
+            "locator": "facts[48]",
+            "review": "external-research",
+            "references": [
+              {
+                "label": "BWAPI primary source",
+                "url": "https://github.com/bwapi/bwapi",
+                "checkedAt": "2026-10-24"
+              }
+            ]
+          },
+          "researchWitness": {
+            "url": "https://github.com/bwapi/bwapi",
+            "locator": "README",
+            "checkedAt": "2026-10-24",
+            "text": "free and open source C++ framework"
+          },
+          "links": [
+            {
+              "label": "BWAPI repository",
+              "url": "https://github.com/bwapi/bwapi"
+            }
+          ],
+          "answerRelations": [
+            "identity",
+            "explanation",
+            "use",
+            "limitations",
+            "purpose",
+            "comparison"
+          ],
+          "topicLabels": [
+            "BWAPI framework purpose",
+            "BWAPI API and opponent distinction",
+            "BWAPI C++ framework",
+            "BWAPI programming API",
+            "BWAPI prepackaged opponent distinction"
+          ]
+        }
+      ]
+    },
+    {
+      "comparisonId": "blind96",
+      "indexZeroBased": 81,
+      "surface": "starcraft",
+      "dialogueId": "starcraft-blind-development-identity",
+      "turn": 2,
+      "fullQuestion": "Which Brood War version does its quick start target?",
+      "expectedUsefulClaim": "README quick start 1.16.1, not arbitrary Remastered certification.",
+      "expectedBoundary": null,
+      "fullExpectedMetadata": {
+        "decision": "answer",
+        "factIds": [
+          "starcraft:knowledge:bwapi-1161"
+        ],
+        "source": {
+          "file": "guides/data/assistant/knowledge/starcraft.json",
+          "locator": "facts[49]",
+          "review": "external-research",
+          "references": [
+            {
+              "label": "BWAPI quick-start version primary source",
+              "url": "https://github.com/bwapi/bwapi",
+              "checkedAt": "2026-10-24"
+            }
+          ]
+        },
+        "sourceRecordIds": [],
+        "contains": [
+          "1.16.1"
+        ],
+        "requiredUsefulClaim": "README quick start 1.16.1, not arbitrary Remastered certification.",
+        "sourceWitness": "Outside research: the reviewed BWAPI README quick start specifies Brood War 1.16.1. That does not certify arbitrary BWAPI binaries for Remastered."
+      },
+      "before": {
+        "text": "Which Brood War version does its quick start target?",
+        "expected": {
+          "decision": "answer",
+          "factIds": [
+            "starcraft:knowledge:bwapi-1161"
+          ],
+          "source": {
+            "file": "guides/data/assistant/knowledge/starcraft.json",
+            "locator": "facts[49]",
+            "review": "external-research",
+            "references": [
+              {
+                "label": "BWAPI quick-start version primary source",
+                "url": "https://github.com/bwapi/bwapi",
+                "checkedAt": "2026-10-24"
+              }
+            ]
+          },
+          "sourceRecordIds": [],
+          "contains": [
+            "1.16.1"
+          ],
+          "requiredUsefulClaim": "README quick start 1.16.1, not arbitrary Remastered certification.",
+          "sourceWitness": "Outside research: the reviewed BWAPI README quick start specifies Brood War 1.16.1. That does not certify arbitrary BWAPI binaries for Remastered."
+        },
+        "decision": "clarify",
+        "rendered": "Which guide objective or named subject do you mean? Open its guide section or name it.",
+        "citations": [],
+        "links": [],
+        "acceptedAnswerBranch": null,
+        "answerBranchProblems": [
+          [
+            "Missing exact fixed source citation: guides/data/assistant/knowledge/starcraft.json — facts[49]",
+            "Missing fixed answer substring: 1.16.1"
+          ]
+        ],
+        "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+        "problems": [
+          "Expected answer; observed clarify",
+          "Missing exact fixed source citation: guides/data/assistant/knowledge/starcraft.json — facts[49]",
+          "Missing fixed answer substring: 1.16.1"
+        ],
+        "passed": false,
+        "surface": "starcraft",
+        "dialogueId": "starcraft-blind-development-identity",
+        "turn": 2
+      },
+      "after": {
+        "text": "Which Brood War version does its quick start target?",
+        "expected": {
+          "decision": "answer",
+          "factIds": [
+            "starcraft:knowledge:bwapi-1161"
+          ],
+          "source": {
+            "file": "guides/data/assistant/knowledge/starcraft.json",
+            "locator": "facts[49]",
+            "review": "external-research",
+            "references": [
+              {
+                "label": "BWAPI quick-start version primary source",
+                "url": "https://github.com/bwapi/bwapi",
+                "checkedAt": "2026-10-24"
+              }
+            ]
+          },
+          "sourceRecordIds": [],
+          "contains": [
+            "1.16.1"
+          ],
+          "requiredUsefulClaim": "README quick start 1.16.1, not arbitrary Remastered certification.",
+          "sourceWitness": "Outside research: the reviewed BWAPI README quick start specifies Brood War 1.16.1. That does not certify arbitrary BWAPI binaries for Remastered."
+        },
+        "decision": "answer",
+        "rendered": "Not in this guide — from outside research: the reviewed BWAPI README quick start specifies Brood War 1.16.1. That does not certify arbitrary BWAPI binaries for Remastered.\nBWAPI README quick start: https://github.com/bwapi/bwapi",
+        "citations": [
+          "Outside research (not in this guide): BWAPI quick-start version primary source — https://github.com/bwapi/bwapi (checked 2026-10-24)."
+        ],
+        "links": [
+          "https://github.com/bwapi/bwapi"
+        ],
+        "acceptedAnswerBranch": 0,
+        "answerBranchProblems": [
+          []
+        ],
+        "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+        "problems": [],
+        "passed": true,
+        "surface": "starcraft",
+        "dialogueId": "starcraft-blind-development-identity",
+        "turn": 2
+      },
+      "priorAfterDialogueTurns": [
+        {
+          "text": "When people say BWAPI, do they mean a ready-made opponent?",
+          "expected": {
+            "decision": "answer",
+            "factIds": [
+              "starcraft:knowledge:bwapi-identity"
+            ],
+            "source": {
+              "file": "guides/data/assistant/knowledge/starcraft.json",
+              "locator": "facts[48]",
+              "review": "external-research",
+              "references": [
+                {
+                  "label": "BWAPI primary source",
+                  "url": "https://github.com/bwapi/bwapi",
+                  "checkedAt": "2026-10-24"
+                }
+              ]
+            },
+            "sourceRecordIds": [],
+            "contains": [
+              "C++ framework",
+              "programming API",
+              "not a prepackaged opponent"
+            ],
+            "requiredUsefulClaim": "It is open source C++ programming API for Brood War, not prepackaged opponent.",
+            "sourceWitness": "Outside research: BWAPI is a free, open-source C++ framework for creating AI agents that interact with StarCraft: Brood War. It is a programming API, not a prepackaged opponent client."
+          },
+          "decision": "answer",
+          "rendered": "Not in this guide — from outside research: BWAPI is a free, open-source C++ framework for creating AI agents that interact with StarCraft: Brood War. It is a programming API, not a prepackaged opponent client.\nBWAPI repository: https://github.com/bwapi/bwapi",
+          "citations": [
+            "Outside research (not in this guide): BWAPI primary source — https://github.com/bwapi/bwapi (checked 2026-10-24)."
+          ],
+          "links": [
+            "https://github.com/bwapi/bwapi"
+          ],
+          "acceptedAnswerBranch": 0,
+          "answerBranchProblems": [
+            []
+          ],
+          "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+          "problems": [],
+          "passed": true,
+          "surface": "starcraft",
+          "dialogueId": "starcraft-blind-development-identity",
+          "turn": 1
+        }
+      ],
+      "adjudication": {
+        "category": "complete-supported-positive",
+        "requiredUsefulClaimComplete": true,
+        "correctSubjectAndField": true,
+        "visibleCitationsSupportCompleteClaim": true,
+        "actualResources": [
+          "https://github.com/bwapi/bwapi"
+        ],
+        "strictBeforePassed": false,
+        "strictAfterPassed": true,
+        "explanation": "The reply resolves its to the preceding BWAPI topic, states reviewed quick-start target Brood War 1.16.1, and preserves the warning against treating that as arbitrary Remastered certification. The matching repository source and resource are visible."
+      },
+      "completeStoredSupportingFacts": [
+        {
+          "id": "starcraft:knowledge:bwapi-1161",
+          "subject": "BWAPI quick-start version",
+          "entityId": "starcraft:bwapi",
+          "facet": "compatibility",
+          "aliases": [
+            "BWAPI 1.16.1",
+            "BWAPI Remastered",
+            "BWAPI developer quick-start version",
+            "BWAPI quick start target edition"
+          ],
+          "text": "Outside research: the reviewed BWAPI README quick start specifies Brood War 1.16.1. That does not certify arbitrary BWAPI binaries for Remastered.",
+          "witness": "Outside research: the reviewed BWAPI README quick start specifies Brood War 1.16.1. That does not certify arbitrary BWAPI binaries for Remastered.",
+          "source": {
+            "file": "guides/data/assistant/knowledge/starcraft.json",
+            "locator": "facts[49]",
+            "review": "external-research",
+            "references": [
+              {
+                "label": "BWAPI quick-start version primary source",
+                "url": "https://github.com/bwapi/bwapi",
+                "checkedAt": "2026-10-24"
+              }
+            ]
+          },
+          "researchWitness": {
+            "url": "https://github.com/bwapi/bwapi",
+            "locator": "README",
+            "checkedAt": "2026-10-24",
+            "text": "1.16.1"
+          },
+          "links": [
+            {
+              "label": "BWAPI README quick start",
+              "url": "https://github.com/bwapi/bwapi"
+            }
+          ],
+          "qualifiers": [
+            "1.16.1"
+          ],
+          "answerRelations": [
+            "version",
+            "prerequisites",
+            "limitations",
+            "explanation"
+          ],
+          "topicLabels": [
+            "BWAPI quick-start game version",
+            "BWAPI README quick start"
+          ]
+        }
+      ]
+    },
+    {
+      "comparisonId": "blind96",
+      "indexZeroBased": 83,
+      "surface": "starcraft",
+      "dialogueId": "starcraft-blind-development-identity",
+      "turn": 4,
+      "fullQuestion": "Who made that bot according to its own documentation?",
+      "expectedUsefulClaim": "Primary docs name David Churchill; guide additionally Steve Gelly not established.",
+      "expectedBoundary": null,
+      "fullExpectedMetadata": {
+        "decision": "answer",
+        "factIds": [
+          "starcraft:knowledge:ualberta-creator"
+        ],
+        "source": {
+          "file": "guides/data/assistant/knowledge/starcraft.json",
+          "locator": "facts[54]",
+          "review": "external-research",
+          "references": [
+            {
+              "label": "UAlbertaBot authorship primary source",
+              "url": "https://github.com/davechurchill/ualbertabot",
+              "checkedAt": "2026-10-24"
+            },
+            {
+              "label": "UAlbertaBot official wiki",
+              "url": "https://github.com/davechurchill/ualbertabot/wiki",
+              "checkedAt": "2026-10-24"
+            }
+          ]
+        },
+        "sourceRecordIds": [],
+        "contains": [
+          "David Churchill",
+          "do not establish"
+        ],
+        "requiredUsefulClaim": "Primary docs name David Churchill; guide additionally Steve Gelly not established.",
+        "sourceWitness": "Outside research: UAlbertaBot’s README and official wiki identify David Churchill. The guide additionally credits Steve Gelly; the reviewed primary pages do not establish that additional attribution."
+      },
+      "before": {
+        "text": "Who made that bot according to its own documentation?",
+        "expected": {
+          "decision": "answer",
+          "factIds": [
+            "starcraft:knowledge:ualberta-creator"
+          ],
+          "source": {
+            "file": "guides/data/assistant/knowledge/starcraft.json",
+            "locator": "facts[54]",
+            "review": "external-research",
+            "references": [
+              {
+                "label": "UAlbertaBot authorship primary source",
+                "url": "https://github.com/davechurchill/ualbertabot",
+                "checkedAt": "2026-10-24"
+              },
+              {
+                "label": "UAlbertaBot official wiki",
+                "url": "https://github.com/davechurchill/ualbertabot/wiki",
+                "checkedAt": "2026-10-24"
+              }
+            ]
+          },
+          "sourceRecordIds": [],
+          "contains": [
+            "David Churchill",
+            "do not establish"
+          ],
+          "requiredUsefulClaim": "Primary docs name David Churchill; guide additionally Steve Gelly not established.",
+          "sourceWitness": "Outside research: UAlbertaBot’s README and official wiki identify David Churchill. The guide additionally credits Steve Gelly; the reviewed primary pages do not establish that additional attribution."
+        },
+        "decision": "decline",
+        "rendered": "I do not have a sourced person for that relationship.",
+        "citations": [],
+        "links": [],
+        "acceptedAnswerBranch": null,
+        "answerBranchProblems": [
+          [
+            "Missing exact fixed source citation: guides/data/assistant/knowledge/starcraft.json — facts[54]",
+            "Missing fixed answer substring: David Churchill",
+            "Missing fixed answer substring: do not establish"
+          ]
+        ],
+        "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+        "problems": [
+          "Expected answer; observed decline",
+          "Missing exact fixed source citation: guides/data/assistant/knowledge/starcraft.json — facts[54]",
+          "Missing fixed answer substring: David Churchill",
+          "Missing fixed answer substring: do not establish"
+        ],
+        "passed": false,
+        "surface": "starcraft",
+        "dialogueId": "starcraft-blind-development-identity",
+        "turn": 4
+      },
+      "after": {
+        "text": "Who made that bot according to its own documentation?",
+        "expected": {
+          "decision": "answer",
+          "factIds": [
+            "starcraft:knowledge:ualberta-creator"
+          ],
+          "source": {
+            "file": "guides/data/assistant/knowledge/starcraft.json",
+            "locator": "facts[54]",
+            "review": "external-research",
+            "references": [
+              {
+                "label": "UAlbertaBot authorship primary source",
+                "url": "https://github.com/davechurchill/ualbertabot",
+                "checkedAt": "2026-10-24"
+              },
+              {
+                "label": "UAlbertaBot official wiki",
+                "url": "https://github.com/davechurchill/ualbertabot/wiki",
+                "checkedAt": "2026-10-24"
+              }
+            ]
+          },
+          "sourceRecordIds": [],
+          "contains": [
+            "David Churchill",
+            "do not establish"
+          ],
+          "requiredUsefulClaim": "Primary docs name David Churchill; guide additionally Steve Gelly not established.",
+          "sourceWitness": "Outside research: UAlbertaBot’s README and official wiki identify David Churchill. The guide additionally credits Steve Gelly; the reviewed primary pages do not establish that additional attribution."
+        },
+        "decision": "answer",
+        "rendered": "David Churchill:\nNot in this guide — from outside research: UAlbertaBot is David Churchill’s StarCraft AI competition bot. Its repository directs readers to the wiki for full setup documentation.\nNot in this guide — from outside research: UAlbertaBot’s README and official wiki identify David Churchill. The guide additionally credits Steve Gelly; the reviewed primary pages do not establish that additional attribution.\nUAlbertaBot README: https://github.com/davechurchill/ualbertabot\nUAlbertaBot wiki: https://github.com/davechurchill/ualbertabot/wiki",
+        "citations": [
+          "Outside research (not in this guide): UAlbertaBot primary source — https://github.com/davechurchill/ualbertabot (checked 2026-10-24); UAlbertaBot authorship primary source — https://github.com/davechurchill/ualbertabot (checked 2026-10-24); UAlbertaBot official wiki — https://github.com/davechurchill/ualbertabot/wiki (checked 2026-10-24)."
+        ],
+        "links": [
+          "https://github.com/davechurchill/ualbertabot",
+          "https://github.com/davechurchill/ualbertabot/wiki"
+        ],
+        "acceptedAnswerBranch": 0,
+        "answerBranchProblems": [
+          []
+        ],
+        "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+        "problems": [],
+        "passed": true,
+        "surface": "starcraft",
+        "dialogueId": "starcraft-blind-development-identity",
+        "turn": 4
+      },
+      "priorAfterDialogueTurns": [
+        {
+          "text": "When people say BWAPI, do they mean a ready-made opponent?",
+          "expected": {
+            "decision": "answer",
+            "factIds": [
+              "starcraft:knowledge:bwapi-identity"
+            ],
+            "source": {
+              "file": "guides/data/assistant/knowledge/starcraft.json",
+              "locator": "facts[48]",
+              "review": "external-research",
+              "references": [
+                {
+                  "label": "BWAPI primary source",
+                  "url": "https://github.com/bwapi/bwapi",
+                  "checkedAt": "2026-10-24"
+                }
+              ]
+            },
+            "sourceRecordIds": [],
+            "contains": [
+              "C++ framework",
+              "programming API",
+              "not a prepackaged opponent"
+            ],
+            "requiredUsefulClaim": "It is open source C++ programming API for Brood War, not prepackaged opponent.",
+            "sourceWitness": "Outside research: BWAPI is a free, open-source C++ framework for creating AI agents that interact with StarCraft: Brood War. It is a programming API, not a prepackaged opponent client."
+          },
+          "decision": "answer",
+          "rendered": "Not in this guide — from outside research: BWAPI is a free, open-source C++ framework for creating AI agents that interact with StarCraft: Brood War. It is a programming API, not a prepackaged opponent client.\nBWAPI repository: https://github.com/bwapi/bwapi",
+          "citations": [
+            "Outside research (not in this guide): BWAPI primary source — https://github.com/bwapi/bwapi (checked 2026-10-24)."
+          ],
+          "links": [
+            "https://github.com/bwapi/bwapi"
+          ],
+          "acceptedAnswerBranch": 0,
+          "answerBranchProblems": [
+            []
+          ],
+          "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+          "problems": [],
+          "passed": true,
+          "surface": "starcraft",
+          "dialogueId": "starcraft-blind-development-identity",
+          "turn": 1
+        },
+        {
+          "text": "Which Brood War version does its quick start target?",
+          "expected": {
+            "decision": "answer",
+            "factIds": [
+              "starcraft:knowledge:bwapi-1161"
+            ],
+            "source": {
+              "file": "guides/data/assistant/knowledge/starcraft.json",
+              "locator": "facts[49]",
+              "review": "external-research",
+              "references": [
+                {
+                  "label": "BWAPI quick-start version primary source",
+                  "url": "https://github.com/bwapi/bwapi",
+                  "checkedAt": "2026-10-24"
+                }
+              ]
+            },
+            "sourceRecordIds": [],
+            "contains": [
+              "1.16.1"
+            ],
+            "requiredUsefulClaim": "README quick start 1.16.1, not arbitrary Remastered certification.",
+            "sourceWitness": "Outside research: the reviewed BWAPI README quick start specifies Brood War 1.16.1. That does not certify arbitrary BWAPI binaries for Remastered."
+          },
+          "decision": "answer",
+          "rendered": "Not in this guide — from outside research: the reviewed BWAPI README quick start specifies Brood War 1.16.1. That does not certify arbitrary BWAPI binaries for Remastered.\nBWAPI README quick start: https://github.com/bwapi/bwapi",
+          "citations": [
+            "Outside research (not in this guide): BWAPI quick-start version primary source — https://github.com/bwapi/bwapi (checked 2026-10-24)."
+          ],
+          "links": [
+            "https://github.com/bwapi/bwapi"
+          ],
+          "acceptedAnswerBranch": 0,
+          "answerBranchProblems": [
+            []
+          ],
+          "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+          "problems": [],
+          "passed": true,
+          "surface": "starcraft",
+          "dialogueId": "starcraft-blind-development-identity",
+          "turn": 2
+        },
+        {
+          "text": "What about UAlbertaBot itself?",
+          "expected": {
+            "decision": "answer",
+            "factIds": [
+              "starcraft:knowledge:ualberta-identity"
+            ],
+            "source": {
+              "file": "guides/data/assistant/knowledge/starcraft.json",
+              "locator": "facts[53]",
+              "review": "external-research",
+              "references": [
+                {
+                  "label": "UAlbertaBot primary source",
+                  "url": "https://github.com/davechurchill/ualbertabot",
+                  "checkedAt": "2026-10-24"
+                }
+              ]
+            },
+            "sourceRecordIds": [],
+            "contains": [
+              "David Churchill",
+              "competition bot"
+            ],
+            "requiredUsefulClaim": "Churchill StarCraft competition bot, wiki for setup.",
+            "sourceWitness": "Outside research: UAlbertaBot is David Churchill’s StarCraft AI competition bot. Its repository directs readers to the wiki for full setup documentation."
+          },
+          "decision": "answer",
+          "rendered": "Not in this guide — from outside research: UAlbertaBot is David Churchill’s StarCraft AI competition bot. Its repository directs readers to the wiki for full setup documentation.\nUAlbertaBot repository: https://github.com/davechurchill/ualbertabot\nUAlbertaBot wiki: https://github.com/davechurchill/ualbertabot/wiki",
+          "citations": [
+            "Outside research (not in this guide): UAlbertaBot primary source — https://github.com/davechurchill/ualbertabot (checked 2026-10-24)."
+          ],
+          "links": [
+            "https://github.com/davechurchill/ualbertabot",
+            "https://github.com/davechurchill/ualbertabot/wiki"
+          ],
+          "acceptedAnswerBranch": 0,
+          "answerBranchProblems": [
+            []
+          ],
+          "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+          "problems": [],
+          "passed": true,
+          "surface": "starcraft",
+          "dialogueId": "starcraft-blind-development-identity",
+          "turn": 3
+        }
+      ],
+      "adjudication": {
+        "category": "complete-supported-positive",
+        "requiredUsefulClaimComplete": true,
+        "correctSubjectAndField": true,
+        "visibleCitationsSupportCompleteClaim": true,
+        "actualResources": [
+          "https://github.com/davechurchill/ualbertabot",
+          "https://github.com/davechurchill/ualbertabot/wiki"
+        ],
+        "strictBeforePassed": false,
+        "strictAfterPassed": true,
+        "explanation": "After the intervening UAlbertaBot identity answer, that bot remains UAlbertaBot. The reply names David Churchill and explicitly says the reviewed primary pages do not establish the additional Steve Gelly attribution. It cites and links the README and official wiki; the source disagreement is retained rather than silently flattened."
+      },
+      "completeStoredSupportingFacts": [
+        {
+          "id": "starcraft:knowledge:ualberta-identity",
+          "subject": "UAlbertaBot",
+          "entityId": "starcraft:ualbertabot",
+          "facet": "identity",
+          "aliases": [
+            "UAlbertaBot",
+            "U Alberta Bot",
+            "UAB",
+            "UAlbertaBot competition AI"
+          ],
+          "text": "Outside research: UAlbertaBot is David Churchill’s StarCraft AI competition bot. Its repository directs readers to the wiki for full setup documentation.",
+          "witness": "Outside research: UAlbertaBot is David Churchill’s StarCraft AI competition bot. Its repository directs readers to the wiki for full setup documentation.",
+          "source": {
+            "file": "guides/data/assistant/knowledge/starcraft.json",
+            "locator": "facts[53]",
+            "review": "external-research",
+            "references": [
+              {
+                "label": "UAlbertaBot primary source",
+                "url": "https://github.com/davechurchill/ualbertabot",
+                "checkedAt": "2026-10-24"
+              }
+            ]
+          },
+          "researchWitness": {
+            "url": "https://github.com/davechurchill/ualbertabot",
+            "locator": "README",
+            "checkedAt": "2026-10-24",
+            "text": "StarCraft AI Competition Bot"
+          },
+          "links": [
+            {
+              "label": "UAlbertaBot repository",
+              "url": "https://github.com/davechurchill/ualbertabot"
+            },
+            {
+              "label": "UAlbertaBot wiki",
+              "url": "https://github.com/davechurchill/ualbertabot/wiki"
+            }
+          ],
+          "answerRelations": [
+            "identity",
+            "explanation",
+            "documentation",
+            "creator"
+          ],
+          "topicLabels": [
+            "UAlbertaBot project overview"
+          ]
+        },
+        {
+          "id": "starcraft:knowledge:ualberta-creator",
+          "subject": "UAlbertaBot authorship",
+          "entityId": "starcraft:ualbertabot",
+          "facet": "creator",
+          "aliases": [
+            "UAlbertaBot creator",
+            "who made UAlbertaBot",
+            "UAlbertaBot author",
+            "UAlbertaBot David Churchill attribution"
+          ],
+          "text": "Outside research: UAlbertaBot’s README and official wiki identify David Churchill. The guide additionally credits Steve Gelly; the reviewed primary pages do not establish that additional attribution.",
+          "witness": "Outside research: UAlbertaBot’s README and official wiki identify David Churchill. The guide additionally credits Steve Gelly; the reviewed primary pages do not establish that additional attribution.",
+          "source": {
+            "file": "guides/data/assistant/knowledge/starcraft.json",
+            "locator": "facts[54]",
+            "review": "external-research",
+            "references": [
+              {
+                "label": "UAlbertaBot authorship primary source",
+                "url": "https://github.com/davechurchill/ualbertabot",
+                "checkedAt": "2026-10-24"
+              },
+              {
+                "label": "UAlbertaBot official wiki",
+                "url": "https://github.com/davechurchill/ualbertabot/wiki",
+                "checkedAt": "2026-10-24"
+              }
+            ]
+          },
+          "researchWitness": {
+            "url": "https://github.com/davechurchill/ualbertabot",
+            "locator": "README",
+            "checkedAt": "2026-10-24",
+            "text": "David Churchill"
+          },
+          "links": [
+            {
+              "label": "UAlbertaBot README",
+              "url": "https://github.com/davechurchill/ualbertabot"
+            },
+            {
+              "label": "UAlbertaBot wiki",
+              "url": "https://github.com/davechurchill/ualbertabot/wiki"
+            }
+          ],
+          "conflict": true,
+          "answerRelations": [
+            "creator",
+            "limitations",
+            "explanation"
+          ],
+          "topicLabels": [
+            "UAlbertaBot authorship evidence",
+            "UAlbertaBot README and official wiki authorship"
+          ]
+        }
+      ]
+    },
+    {
+      "comparisonId": "blind96",
+      "indexZeroBased": 93,
+      "surface": "starcraft",
+      "dialogueId": "starcraft-blind-bot-families",
+      "turn": 2,
+      "fullQuestion": "Does it use the same Java 21 recommendation as SCHNAIL?",
+      "expectedUsefulClaim": "No: 32bit JDK8 runtime because 32bit BWAPI.",
+      "expectedBoundary": null,
+      "fullExpectedMetadata": {
+        "decision": "answer",
+        "factIds": [
+          "starcraft:knowledge:purplewave-java"
+        ],
+        "source": {
+          "file": "guides/data/assistant/knowledge/starcraft.json",
+          "locator": "facts[61]",
+          "review": "external-research",
+          "references": [
+            {
+              "label": "PurpleWave runtime primary source",
+              "url": "https://github.com/dgant/PurpleWave",
+              "checkedAt": "2026-10-24"
+            }
+          ]
+        },
+        "sourceRecordIds": [],
+        "contains": [
+          "32-bit JDK 8",
+          "32-bit BWAPI"
+        ],
+        "requiredUsefulClaim": "No: 32bit JDK8 runtime because 32bit BWAPI.",
+        "sourceWitness": "Outside research: PurpleWave’s reviewed README requires a 32-bit JDK 8 at runtime because it connects to 32-bit BWAPI. Do not substitute the guide’s SCHNAIL Java 21 recommendation."
+      },
+      "before": {
+        "text": "Does it use the same Java 21 recommendation as SCHNAIL?",
+        "expected": {
+          "decision": "answer",
+          "factIds": [
+            "starcraft:knowledge:purplewave-java"
+          ],
+          "source": {
+            "file": "guides/data/assistant/knowledge/starcraft.json",
+            "locator": "facts[61]",
+            "review": "external-research",
+            "references": [
+              {
+                "label": "PurpleWave runtime primary source",
+                "url": "https://github.com/dgant/PurpleWave",
+                "checkedAt": "2026-10-24"
+              }
+            ]
+          },
+          "sourceRecordIds": [],
+          "contains": [
+            "32-bit JDK 8",
+            "32-bit BWAPI"
+          ],
+          "requiredUsefulClaim": "No: 32bit JDK8 runtime because 32bit BWAPI.",
+          "sourceWitness": "Outside research: PurpleWave’s reviewed README requires a 32-bit JDK 8 at runtime because it connects to 32-bit BWAPI. Do not substitute the guide’s SCHNAIL Java 21 recommendation."
+        },
+        "decision": "clarify",
+        "rendered": "Choose one guide-backed goal. That additional condition is not modeled well enough to rank the options safely.",
+        "citations": [],
+        "links": [],
+        "acceptedAnswerBranch": null,
+        "answerBranchProblems": [
+          [
+            "Missing exact fixed source citation: guides/data/assistant/knowledge/starcraft.json — facts[61]",
+            "Missing fixed answer substring: 32-bit JDK 8",
+            "Missing fixed answer substring: 32-bit BWAPI"
+          ]
+        ],
+        "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+        "problems": [
+          "Expected answer; observed clarify",
+          "Missing exact fixed source citation: guides/data/assistant/knowledge/starcraft.json — facts[61]",
+          "Missing fixed answer substring: 32-bit JDK 8",
+          "Missing fixed answer substring: 32-bit BWAPI"
+        ],
+        "passed": false,
+        "surface": "starcraft",
+        "dialogueId": "starcraft-blind-bot-families",
+        "turn": 2
+      },
+      "after": {
+        "text": "Does it use the same Java 21 recommendation as SCHNAIL?",
+        "expected": {
+          "decision": "answer",
+          "factIds": [
+            "starcraft:knowledge:purplewave-java"
+          ],
+          "source": {
+            "file": "guides/data/assistant/knowledge/starcraft.json",
+            "locator": "facts[61]",
+            "review": "external-research",
+            "references": [
+              {
+                "label": "PurpleWave runtime primary source",
+                "url": "https://github.com/dgant/PurpleWave",
+                "checkedAt": "2026-10-24"
+              }
+            ]
+          },
+          "sourceRecordIds": [],
+          "contains": [
+            "32-bit JDK 8",
+            "32-bit BWAPI"
+          ],
+          "requiredUsefulClaim": "No: 32bit JDK8 runtime because 32bit BWAPI.",
+          "sourceWitness": "Outside research: PurpleWave’s reviewed README requires a 32-bit JDK 8 at runtime because it connects to 32-bit BWAPI. Do not substitute the guide’s SCHNAIL Java 21 recommendation."
+        },
+        "decision": "answer",
+        "rendered": "Not in this guide — from outside research: PurpleWave’s reviewed README requires a 32-bit JDK 8 at runtime because it connects to 32-bit BWAPI. Do not substitute the guide’s SCHNAIL Java 21 recommendation.\nPurpleWave README: https://github.com/dgant/PurpleWave",
+        "citations": [
+          "Outside research (not in this guide): PurpleWave runtime primary source — https://github.com/dgant/PurpleWave (checked 2026-10-24)."
+        ],
+        "links": [
+          "https://github.com/dgant/PurpleWave"
+        ],
+        "acceptedAnswerBranch": 0,
+        "answerBranchProblems": [
+          []
+        ],
+        "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+        "problems": [],
+        "passed": true,
+        "surface": "starcraft",
+        "dialogueId": "starcraft-blind-bot-families",
+        "turn": 2
+      },
+      "priorAfterDialogueTurns": [
+        {
+          "text": "What is PurpleWave?",
+          "expected": {
+            "decision": "answer",
+            "factIds": [
+              "starcraft:knowledge:purplewave-identity"
+            ],
+            "source": {
+              "file": "guides/data/assistant/knowledge/starcraft.json",
+              "locator": "facts[60]",
+              "review": "external-research",
+              "references": [
+                {
+                  "label": "PurpleWave primary source",
+                  "url": "https://github.com/dgant/PurpleWave",
+                  "checkedAt": "2026-10-24"
+                }
+              ]
+            },
+            "sourceRecordIds": [],
+            "contains": [
+              "Scala AI bot",
+              "all three races"
+            ],
+            "requiredUsefulClaim": "Scala Brood War bot supports all three races.",
+            "sourceWitness": "Outside research: PurpleWave is a Scala AI bot for Brood War that can play all three races. It is a separately documented bot, not the guide’s integrated Remastered map."
+          },
+          "decision": "answer",
+          "rendered": "Not in this guide — from outside research: PurpleWave is a Scala AI bot for Brood War that can play all three races. It is a separately documented bot, not the guide’s integrated Remastered map.\nPurpleWave repository: https://github.com/dgant/PurpleWave",
+          "citations": [
+            "Outside research (not in this guide): PurpleWave primary source — https://github.com/dgant/PurpleWave (checked 2026-10-24)."
+          ],
+          "links": [
+            "https://github.com/dgant/PurpleWave"
+          ],
+          "acceptedAnswerBranch": 0,
+          "answerBranchProblems": [
+            []
+          ],
+          "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+          "problems": [],
+          "passed": true,
+          "surface": "starcraft",
+          "dialogueId": "starcraft-blind-bot-families",
+          "turn": 1
+        }
+      ],
+      "adjudication": {
+        "category": "complete-supported-positive",
+        "requiredUsefulClaimComplete": true,
+        "correctSubjectAndField": true,
+        "visibleCitationsSupportCompleteClaim": true,
+        "actualResources": [
+          "https://github.com/dgant/PurpleWave"
+        ],
+        "strictBeforePassed": false,
+        "strictAfterPassed": true,
+        "explanation": "After PurpleWave identity, it remains PurpleWave. The complete literal runtime contrast gives 32-bit JDK 8 because of 32-bit BWAPI and explicitly warns against substituting SCHNAIL Java 21. The outside-research label, reviewed PurpleWave README citation and resource match the requested subject."
+      },
+      "completeStoredSupportingFacts": [
+        {
+          "id": "starcraft:knowledge:purplewave-java",
+          "subject": "PurpleWave runtime",
+          "entityId": "starcraft:purplewave",
+          "facet": "prerequisites",
+          "aliases": [
+            "PurpleWave Java",
+            "PurpleWave JDK",
+            "PurpleWave 32 bit",
+            "PurpleWave Java version",
+            "PurpleWave runtime architecture",
+            "PurpleWave 32-bit JDK 8"
+          ],
+          "text": "Outside research: PurpleWave’s reviewed README requires a 32-bit JDK 8 at runtime because it connects to 32-bit BWAPI. Do not substitute the guide’s SCHNAIL Java 21 recommendation.",
+          "witness": "Outside research: PurpleWave’s reviewed README requires a 32-bit JDK 8 at runtime because it connects to 32-bit BWAPI. Do not substitute the guide’s SCHNAIL Java 21 recommendation.",
+          "source": {
+            "file": "guides/data/assistant/knowledge/starcraft.json",
+            "locator": "facts[61]",
+            "review": "external-research",
+            "references": [
+              {
+                "label": "PurpleWave runtime primary source",
+                "url": "https://github.com/dgant/PurpleWave",
+                "checkedAt": "2026-10-24"
+              }
+            ]
+          },
+          "researchWitness": {
+            "url": "https://github.com/dgant/PurpleWave",
+            "locator": "README",
+            "checkedAt": "2026-10-24",
+            "text": "32-bit JDK 8"
+          },
+          "links": [
+            {
+              "label": "PurpleWave README",
+              "url": "https://github.com/dgant/PurpleWave"
+            }
+          ],
+          "qualifiers": [
+            "8",
+            "32-bit"
+          ],
+          "answerRelations": [
+            "prerequisites",
+            "version",
+            "cause",
+            "comparison"
+          ],
+          "topicLabels": [
+            "PurpleWave Java requirement",
+            "PurpleWave runtime architecture",
+            "PurpleWave README runtime requirement",
+            "PurpleWave and SCHNAIL Java runtime distinction"
+          ],
+          "answerBindings": [
+            {
+              "entityId": "starcraft:purplewave-java-runtime",
+              "relations": [
+                "prerequisites",
+                "version",
+                "cause"
+              ],
+              "mention": "32-bit JDK 8"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "comparisonId": "fresh76",
+      "indexZeroBased": 7,
+      "surface": "ultima5",
+      "dialogueId": "u5-mage-recruiting",
+      "turn": 4,
+      "fullQuestion": "Does that mean Johne is in my active party now?",
+      "expectedUsefulClaim": null,
+      "expectedBoundary": "A recommendation and recruitment location do not establish current party membership.",
+      "fullExpectedMetadata": {
+        "decision": "not-answer",
+        "boundary": "A recommendation and recruitment location do not establish current party membership."
+      },
+      "before": {
+        "text": "Does that mean Johne is in my active party now?",
+        "expected": {
+          "decision": "not-answer",
+          "boundary": "A recommendation and recruitment location do not establish current party membership."
+        },
+        "decision": "clarify",
+        "rendered": "What would you like to know about Johne: where it is, what it is or its stats?",
+        "citations": [],
+        "links": [],
+        "acceptedAnswerBranch": null,
+        "answerBranchProblems": [],
+        "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+        "problems": [],
+        "passed": true,
+        "surface": "ultima5",
+        "dialogueId": "u5-mage-recruiting",
+        "turn": 4
+      },
+      "after": {
+        "text": "Does that mean Johne is in my active party now?",
+        "expected": {
+          "decision": "not-answer",
+          "boundary": "A recommendation and recruitment location do not establish current party membership."
+        },
+        "decision": "decline",
+        "rendered": "The available sources do not establish that complete factual comparison or property under those restrictions.",
+        "citations": [],
+        "links": [],
+        "acceptedAnswerBranch": null,
+        "answerBranchProblems": [],
+        "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+        "problems": [],
+        "passed": true,
+        "surface": "ultima5",
+        "dialogueId": "u5-mage-recruiting",
+        "turn": 4
+      },
+      "priorAfterDialogueTurns": [
+        {
+          "text": "Would Jaana be a worthwhile early recruit for magic?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "companionData[2]",
+              "review": "extracted"
+            },
+            "contains": [
+              "essential early recruit",
+              "spellcasting"
+            ],
+            "requiredUsefulClaim": "The guide recommends Jaana early for her mage spellcasting.",
+            "sourceWitness": "An essential early recruit. As a mage, her spellcasting ability is invaluable throughout the game."
+          },
+          "decision": "clarify",
+          "rendered": "Choose one guide-backed goal. That additional condition is not modeled well enough to rank the options safely.",
+          "citations": [],
+          "links": [],
+          "acceptedAnswerBranch": null,
+          "answerBranchProblems": [
+            [
+              "Missing exact fixed source citation: guides/js/Ultima5.js — companionData[2]",
+              "Missing fixed answer substring: essential early recruit",
+              "Missing fixed answer substring: spellcasting"
+            ]
+          ],
+          "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+          "problems": [
+            "Expected answer; observed clarify",
+            "Missing exact fixed source citation: guides/js/Ultima5.js — companionData[2]",
+            "Missing fixed answer substring: essential early recruit",
+            "Missing fixed answer substring: spellcasting"
+          ],
+          "passed": false,
+          "surface": "ultima5",
+          "dialogueId": "u5-mage-recruiting",
+          "turn": 1
+        },
+        {
+          "text": "Where do I find her?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "companionData[2].Location",
+              "review": "extracted"
+            },
+            "contains": [
+              "Yew"
+            ],
+            "requiredUsefulClaim": "Jaana is listed in Yew.",
+            "sourceWitness": "Location: \"Yew\"",
+            "alternativeAnswers": [
+              {
+                "source": {
+                  "file": "guides/js/Ultima5.js",
+                  "locator": "ultima5SideQuests id=side-jaana",
+                  "review": "extracted"
+                },
+                "contains": [
+                  "Yew"
+                ],
+                "sourceWitness": "Enter the fireplace behind the living area, descend to the hidden jail, unlock the door, and recruit Jaana."
+              }
+            ]
+          },
+          "decision": "clarify",
+          "rendered": "This follow-up inherits a source, edition, negative, numeric, or material constraint. Restate the subject and constraint together; the bare fragment must not be replayed as an unrestricted request.",
+          "citations": [],
+          "links": [],
+          "acceptedAnswerBranch": null,
+          "answerBranchProblems": [
+            [
+              "Missing exact fixed source citation: guides/js/Ultima5.js — companionData[2].Location",
+              "Missing fixed answer substring: Yew"
+            ],
+            [
+              "Missing exact fixed source citation: guides/js/Ultima5.js — ultima5SideQuests id=side-jaana",
+              "Missing fixed answer substring: Yew"
+            ]
+          ],
+          "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+          "problems": [
+            "Expected answer; observed clarify",
+            "Missing exact fixed source citation: guides/js/Ultima5.js — companionData[2].Location",
+            "Missing fixed answer substring: Yew"
+          ],
+          "passed": false,
+          "surface": "ultima5",
+          "dialogueId": "u5-mage-recruiting",
+          "turn": 2
+        },
+        {
+          "text": "I meant the strongest mage for later: who is it, and what makes reaching him difficult?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "companionData[4]",
+              "review": "extracted"
+            },
+            "contains": [
+              "Johne",
+              "wrecked ship",
+              "Underworld"
+            ],
+            "requiredUsefulClaim": "Johne is the strongest mage; reaching his wrecked ship in the Underworld is difficult.",
+            "sourceWitness": "The strongest mage in the game, but he is difficult to reach, located on a wrecked ship in the Underworld.",
+            "alternativeAnswers": [
+              {
+                "source": {
+                  "file": "guides/js/Ultima5.js",
+                  "locator": "companionData[4].Notes",
+                  "review": "extracted"
+                },
+                "contains": [
+                  "Johne",
+                  "wrecked ship",
+                  "Underworld"
+                ],
+                "sourceWitness": "The strongest mage in the game, but he is difficult to reach, located on a wrecked ship in the Underworld."
+              }
+            ]
+          },
+          "decision": "decline",
+          "rendered": "The guide does not support that additional detail or restriction for this subject.",
+          "citations": [],
+          "links": [],
+          "acceptedAnswerBranch": null,
+          "answerBranchProblems": [
+            [
+              "Missing exact fixed source citation: guides/js/Ultima5.js — companionData[4]",
+              "Missing fixed answer substring: Johne",
+              "Missing fixed answer substring: wrecked ship",
+              "Missing fixed answer substring: Underworld"
+            ],
+            [
+              "Missing exact fixed source citation: guides/js/Ultima5.js — companionData[4].Notes",
+              "Missing fixed answer substring: Johne",
+              "Missing fixed answer substring: wrecked ship",
+              "Missing fixed answer substring: Underworld"
+            ]
+          ],
+          "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+          "problems": [
+            "Expected answer; observed decline",
+            "Missing exact fixed source citation: guides/js/Ultima5.js — companionData[4]",
+            "Missing fixed answer substring: Johne",
+            "Missing fixed answer substring: wrecked ship",
+            "Missing fixed answer substring: Underworld"
+          ],
+          "passed": false,
+          "surface": "ultima5",
+          "dialogueId": "u5-mage-recruiting",
+          "turn": 3
+        }
+      ],
+      "adjudication": {
+        "category": "boundary",
+        "requiredUsefulClaimComplete": null,
+        "correctSubjectAndField": true,
+        "visibleCitationsSupportCompleteClaim": null,
+        "actualResources": [],
+        "strictBeforePassed": true,
+        "strictAfterPassed": true,
+        "explanation": "Both replies withhold an assertion about current party membership. The new decline offers no citation or resource and does not convert the previous recommendation/location discussion into evidence that Johne joined. Its generic property wording is less specific than an ideal state explanation, but the tested boundary is preserved."
+      },
+      "completeStoredSupportingFacts": []
+    },
+    {
+      "comparisonId": "fresh76",
+      "indexZeroBased": 8,
+      "surface": "ultima5",
+      "dialogueId": "u5-shrine-passwords",
+      "turn": 1,
+      "fullQuestion": "Are mantras and Words of Power used for the same thing?",
+      "expectedUsefulClaim": "Mantras are used at Shrines of Virtue; Words of Power unlock dungeons.",
+      "expectedBoundary": null,
+      "fullExpectedMetadata": {
+        "decision": "answer",
+        "source": {
+          "file": "guides/Ultima5.html",
+          "locator": "Mantras & Words of Power panel, introduction",
+          "review": "extracted"
+        },
+        "contains": [
+          "Shrines of Virtue",
+          "dungeons"
+        ],
+        "requiredUsefulClaim": "Mantras are used at Shrines of Virtue; Words of Power unlock dungeons.",
+        "sourceWitness": "These \"passwords\" are essential for progressing through the game. Mantras are used at the Shrines of Virtue, while Words of Power unlock the dungeons."
+      },
+      "before": {
+        "text": "Are mantras and Words of Power used for the same thing?",
+        "expected": {
+          "decision": "answer",
+          "source": {
+            "file": "guides/Ultima5.html",
+            "locator": "Mantras & Words of Power panel, introduction",
+            "review": "extracted"
+          },
+          "contains": [
+            "Shrines of Virtue",
+            "dungeons"
+          ],
+          "requiredUsefulClaim": "Mantras are used at Shrines of Virtue; Words of Power unlock dungeons.",
+          "sourceWitness": "These \"passwords\" are essential for progressing through the game. Mantras are used at the Shrines of Virtue, while Words of Power unlock the dungeons."
+        },
+        "decision": "clarify",
+        "rendered": "Choose one guide-backed goal. That additional condition is not modeled well enough to rank the options safely.",
+        "citations": [],
+        "links": [],
+        "acceptedAnswerBranch": null,
+        "answerBranchProblems": [
+          [
+            "Missing exact fixed source citation: guides/Ultima5.html — Mantras & Words of Power panel, introduction",
+            "Missing fixed answer substring: Shrines of Virtue",
+            "Missing fixed answer substring: dungeons"
+          ]
+        ],
+        "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+        "problems": [
+          "Expected answer; observed clarify",
+          "Missing exact fixed source citation: guides/Ultima5.html — Mantras & Words of Power panel, introduction",
+          "Missing fixed answer substring: Shrines of Virtue",
+          "Missing fixed answer substring: dungeons"
+        ],
+        "passed": false,
+        "surface": "ultima5",
+        "dialogueId": "u5-shrine-passwords",
+        "turn": 1
+      },
+      "after": {
+        "text": "Are mantras and Words of Power used for the same thing?",
+        "expected": {
+          "decision": "answer",
+          "source": {
+            "file": "guides/Ultima5.html",
+            "locator": "Mantras & Words of Power panel, introduction",
+            "review": "extracted"
+          },
+          "contains": [
+            "Shrines of Virtue",
+            "dungeons"
+          ],
+          "requiredUsefulClaim": "Mantras are used at Shrines of Virtue; Words of Power unlock dungeons.",
+          "sourceWitness": "These \"passwords\" are essential for progressing through the game. Mantras are used at the Shrines of Virtue, while Words of Power unlock the dungeons."
+        },
+        "decision": "answer",
+        "rendered": "These \"passwords\" are essential for progressing through the game. Mantras are used at the Shrines of Virtue, while Words of Power unlock the dungeons.",
+        "citations": [
+          "Source: existing guide; extracted. guides/Ultima5.html — Mantras & Words of Power panel, introduction"
+        ],
+        "links": [],
+        "acceptedAnswerBranch": 0,
+        "answerBranchProblems": [
+          []
+        ],
+        "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+        "problems": [],
+        "passed": true,
+        "surface": "ultima5",
+        "dialogueId": "u5-shrine-passwords",
+        "turn": 1
+      },
+      "priorAfterDialogueTurns": [],
+      "adjudication": {
+        "category": "complete-supported-positive",
+        "requiredUsefulClaimComplete": true,
+        "correctSubjectAndField": true,
+        "visibleCitationsSupportCompleteClaim": true,
+        "actualResources": [],
+        "strictBeforePassed": false,
+        "strictAfterPassed": true,
+        "explanation": "The full cited introduction explicitly contrasts the two named subjects: mantras at Shrines of Virtue, Words of Power unlocking dungeons. This answers the distinct-use question without inferring a comparison from separate unrelated passages."
+      },
+      "completeStoredSupportingFacts": [
+        {
+          "id": "mantra-word-distinction",
+          "subject": "Mantras and Words of Power",
+          "facet": "definition",
+          "aliases": [
+            "password types",
+            "mantras",
+            "Words of Power",
+            "mantras versus Words of Power",
+            "dungeon words are not shrine mantras"
+          ],
+          "text": "These \"passwords\" are essential for progressing through the game. Mantras are used at the Shrines of Virtue, while Words of Power unlock the dungeons.",
+          "witness": "These \"passwords\" are essential for progressing through the game. Mantras are used at the Shrines of Virtue, while Words of Power unlock the dungeons.",
+          "source": {
+            "file": "guides/Ultima5.html",
+            "locator": "Mantras & Words of Power panel, introduction",
+            "review": "extracted"
+          },
+          "sourceRecordId": "ultima5:topic:mantras-words:explanation",
+          "entityId": "ultima5:knowledge:mantras-and-words-of-power",
+          "answerRelations": [
+            "identity",
+            "explanation",
+            "use"
+          ],
+          "topicLabels": [
+            "Mantra and dungeon password difference"
+          ]
+        }
+      ]
+    },
+    {
+      "comparisonId": "fresh76",
+      "indexZeroBased": 12,
+      "surface": "ultima6",
+      "dialogueId": "u6-family-permission",
+      "turn": 1,
+      "fullQuestion": "How do I get permission to borrow the Compassion rune in Britain?",
+      "expectedUsefulClaim": "Ask Anya at the Blue Boar Tavern about RUNE/PERMISSION and answer YES, then return to Ariana.",
+      "expectedBoundary": null,
+      "fullExpectedMetadata": {
+        "decision": "answer",
+        "source": {
+          "file": "guides/js/Ultima6.js",
+          "locator": "gameData.quests[0].sections[0]",
+          "review": "extracted"
+        },
+        "contains": [
+          "Anya",
+          "Blue Boar",
+          "YES",
+          "Ariana"
+        ],
+        "requiredUsefulClaim": "Ask Anya at the Blue Boar Tavern about RUNE/PERMISSION and answer YES, then return to Ariana.",
+        "sourceWitness": [
+          "Visit Anya at the Blue Boar Tavern, mention `RUNE` or `PERMISSION`, and answer `YES` when asked.",
+          "Return to Ariana, confirm permission, and receive the Rune of Compassion."
+        ]
+      },
+      "before": {
+        "text": "How do I get permission to borrow the Compassion rune in Britain?",
+        "expected": {
+          "decision": "answer",
+          "source": {
+            "file": "guides/js/Ultima6.js",
+            "locator": "gameData.quests[0].sections[0]",
+            "review": "extracted"
+          },
+          "contains": [
+            "Anya",
+            "Blue Boar",
+            "YES",
+            "Ariana"
+          ],
+          "requiredUsefulClaim": "Ask Anya at the Blue Boar Tavern about RUNE/PERMISSION and answer YES, then return to Ariana.",
+          "sourceWitness": [
+            "Visit Anya at the Blue Boar Tavern, mention `RUNE` or `PERMISSION`, and answer `YES` when asked.",
+            "Return to Ariana, confirm permission, and receive the Rune of Compassion."
+          ]
+        },
+        "decision": "answer",
+        "rendered": "Return to Ariana, confirm permission, and receive the Rune of Compassion.",
+        "citations": [
+          "Source: existing guide; extracted. guides/js/Ultima6.js — gameData.quests[0].sections[0].steps[2]"
+        ],
+        "links": [],
+        "acceptedAnswerBranch": null,
+        "answerBranchProblems": [
+          [
+            "Missing exact fixed source citation: guides/js/Ultima6.js — gameData.quests[0].sections[0]",
+            "Missing fixed answer substring: Anya",
+            "Missing fixed answer substring: Blue Boar",
+            "Missing fixed answer substring: YES"
+          ]
+        ],
+        "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+        "problems": [
+          "Missing exact fixed source citation: guides/js/Ultima6.js — gameData.quests[0].sections[0]",
+          "Missing fixed answer substring: Anya",
+          "Missing fixed answer substring: Blue Boar",
+          "Missing fixed answer substring: YES"
+        ],
+        "passed": false,
+        "surface": "ultima6",
+        "dialogueId": "u6-family-permission",
+        "turn": 1
+      },
+      "after": {
+        "text": "How do I get permission to borrow the Compassion rune in Britain?",
+        "expected": {
+          "decision": "answer",
+          "source": {
+            "file": "guides/js/Ultima6.js",
+            "locator": "gameData.quests[0].sections[0]",
+            "review": "extracted"
+          },
+          "contains": [
+            "Anya",
+            "Blue Boar",
+            "YES",
+            "Ariana"
+          ],
+          "requiredUsefulClaim": "Ask Anya at the Blue Boar Tavern about RUNE/PERMISSION and answer YES, then return to Ariana.",
+          "sourceWitness": [
+            "Visit Anya at the Blue Boar Tavern, mention `RUNE` or `PERMISSION`, and answer `YES` when asked.",
+            "Return to Ariana, confirm permission, and receive the Rune of Compassion."
+          ]
+        },
+        "decision": "answer",
+        "rendered": "Meet Ariana at the Conservatory and ask for the RUNE. She needs her mother Anya's permission.\nVisit Anya at the Blue Boar Tavern, mention RUNE or PERMISSION, and answer YES when asked.\nReturn to Ariana, confirm permission, and receive the Rune of Compassion.",
+        "citations": [
+          "Source: existing guide; extracted. guides/js/Ultima6.js — gameData.quests[0].sections[0].steps[0]; guides/js/Ultima6.js — gameData.quests[0].sections[0].steps[1]; guides/js/Ultima6.js — gameData.quests[0].sections[0].steps[2]"
+        ],
+        "links": [],
+        "acceptedAnswerBranch": null,
+        "answerBranchProblems": [
+          [
+            "Missing exact fixed source citation: guides/js/Ultima6.js — gameData.quests[0].sections[0]"
+          ]
+        ],
+        "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+        "problems": [
+          "Missing exact fixed source citation: guides/js/Ultima6.js — gameData.quests[0].sections[0]"
+        ],
+        "passed": false,
+        "surface": "ultima6",
+        "dialogueId": "u6-family-permission",
+        "turn": 1
+      },
+      "priorAfterDialogueTurns": [],
+      "adjudication": {
+        "category": "complete-supported-positive-citation-only-strict-failure",
+        "requiredUsefulClaimComplete": true,
+        "correctSubjectAndField": true,
+        "visibleCitationsSupportCompleteClaim": true,
+        "actualResources": [],
+        "strictBeforePassed": false,
+        "strictAfterPassed": false,
+        "explanation": "Before, the answer supplied only the return-to-Ariana outcome and omitted how to obtain consent. After, the full three-step reply identifies Anya at the Blue Boar, RUNE/PERMISSION, YES, and return to Ariana, completing every required useful claim. The visible citations identify the exact supporting child steps[0], steps[1] and steps[2]. The unchanged oracle demands the parent section locator, so the remaining strict failure is citation-format granularity only. No oracle relaxation is applied."
+      },
+      "completeStoredSupportingFacts": [
+        {
+          "id": "ariana-consent",
+          "subject": "Ariana",
+          "facet": "requirement",
+          "aliases": [
+            "Arianna",
+            "Rune of Compassion",
+            "Compassion rune",
+            "Ariana permission requirement",
+            "RUNE conversation"
+          ],
+          "source": {
+            "file": "guides/js/Ultima6.js",
+            "locator": "gameData.quests[0].sections[0].steps[0]",
+            "review": "extracted"
+          },
+          "text": "Meet Ariana at the Conservatory and ask for the RUNE. She needs her mother Anya's permission.",
+          "witness": "Meet Ariana at the Conservatory and ask for the RUNE. She needs her mother Anya's permission.",
+          "entityId": "ultima6:knowledge:ariana",
+          "sourceRecordId": "ultima6:quest:act-i-liberating-the-shrines:compassion-britain:hint",
+          "answerRelations": [
+            "prerequisites",
+            "location",
+            "method"
+          ],
+          "topicLabels": [
+            "Ariana permission requirement"
+          ],
+          "answerBindings": [
+            {
+              "entityId": "ultima6:knowledge:ariana",
+              "relations": [
+                "prerequisites",
+                "location",
+                "method"
+              ],
+              "mention": "Ariana"
+            }
+          ]
+        },
+        {
+          "id": "anya-permission",
+          "subject": "Anya",
+          "facet": "method",
+          "aliases": [
+            "mother permission",
+            "Anya permission",
+            "Compassion permission",
+            "Anya permission conversation",
+            "Blue Boar Tavern",
+            "RUNE PERMISSION YES"
+          ],
+          "source": {
+            "file": "guides/js/Ultima6.js",
+            "locator": "gameData.quests[0].sections[0].steps[1]",
+            "review": "extracted"
+          },
+          "text": "Visit Anya at the Blue Boar Tavern, mention RUNE or PERMISSION, and answer YES when asked.",
+          "witness": "Visit Anya at the Blue Boar Tavern, mention RUNE or PERMISSION, and answer YES when asked.",
+          "entityId": "ultima6:knowledge:anya",
+          "sourceRecordId": "ultima6:quest:act-i-liberating-the-shrines:compassion-britain:hint",
+          "answerRelations": [
+            "method",
+            "location"
+          ],
+          "topicLabels": [
+            "Anya permission conversation"
+          ],
+          "answerBindings": [
+            {
+              "entityId": "ultima6:knowledge:anya",
+              "relations": [
+                "method",
+                "location"
+              ],
+              "mention": "Anya"
+            }
+          ]
+        },
+        {
+          "id": "ariana-rune",
+          "subject": "Ariana",
+          "facet": "acquisition",
+          "aliases": [
+            "Arianna",
+            "Rune of Compassion",
+            "Compassion rune",
+            "Ariana permission confirmation"
+          ],
+          "source": {
+            "file": "guides/js/Ultima6.js",
+            "locator": "gameData.quests[0].sections[0].steps[2]",
+            "review": "extracted"
+          },
+          "text": "Return to Ariana, confirm permission, and receive the Rune of Compassion.",
+          "witness": "Return to Ariana, confirm permission, and receive the Rune of Compassion.",
+          "entityId": "ultima6:knowledge:ariana",
+          "sourceRecordId": "ultima6:quest:act-i-liberating-the-shrines:compassion-britain:hint",
+          "answerRelations": [
+            "acquisition",
+            "prerequisites",
+            "method"
+          ],
+          "topicLabels": [
+            "Ariana permission confirmation"
+          ],
+          "answerBindings": [
+            {
+              "entityId": "ultima6:knowledge:ariana",
+              "relations": [
+                "acquisition",
+                "prerequisites",
+                "method"
+              ],
+              "mention": "Ariana"
+            },
+            {
+              "entityId": "ultima6:knowledge:compassion-rune",
+              "relations": [
+                "acquisition",
+                "method",
+                "prerequisites"
+              ],
+              "mention": "Rune of Compassion"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "comparisonId": "fresh76",
+      "indexZeroBased": 13,
+      "surface": "ultima6",
+      "dialogueId": "u6-family-permission",
+      "turn": 2,
+      "fullQuestion": "Who do I return to after getting her blessing?",
+      "expectedUsefulClaim": "Return to Ariana and confirm permission to receive the rune.",
+      "expectedBoundary": null,
+      "fullExpectedMetadata": {
+        "decision": "answer",
+        "source": {
+          "file": "guides/js/Ultima6.js",
+          "locator": "gameData.quests[0].sections[0]",
+          "review": "extracted"
+        },
+        "contains": [
+          "Ariana",
+          "permission"
+        ],
+        "requiredUsefulClaim": "Return to Ariana and confirm permission to receive the rune.",
+        "sourceWitness": "Return to Ariana, confirm permission, and receive the Rune of Compassion.",
+        "alternativeAnswers": [
+          {
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[0].sections[0].steps[2]",
+              "review": "extracted"
+            },
+            "sourceWitness": "Return to Ariana, confirm permission, and receive the Rune of Compassion.",
+            "contains": [
+              "Ariana",
+              "permission"
+            ]
+          }
+        ]
+      },
+      "before": {
+        "text": "Who do I return to after getting her blessing?",
+        "expected": {
+          "decision": "answer",
+          "source": {
+            "file": "guides/js/Ultima6.js",
+            "locator": "gameData.quests[0].sections[0]",
+            "review": "extracted"
+          },
+          "contains": [
+            "Ariana",
+            "permission"
+          ],
+          "requiredUsefulClaim": "Return to Ariana and confirm permission to receive the rune.",
+          "sourceWitness": "Return to Ariana, confirm permission, and receive the Rune of Compassion.",
+          "alternativeAnswers": [
+            {
+              "source": {
+                "file": "guides/js/Ultima6.js",
+                "locator": "gameData.quests[0].sections[0].steps[2]",
+                "review": "extracted"
+              },
+              "sourceWitness": "Return to Ariana, confirm permission, and receive the Rune of Compassion.",
+              "contains": [
+                "Ariana",
+                "permission"
+              ]
+            }
+          ]
+        },
+        "decision": "decline",
+        "rendered": "I do not have a complete sourced answer for that requested role.",
+        "citations": [],
+        "links": [],
+        "acceptedAnswerBranch": null,
+        "answerBranchProblems": [
+          [
+            "Missing exact fixed source citation: guides/js/Ultima6.js — gameData.quests[0].sections[0]",
+            "Missing fixed answer substring: Ariana",
+            "Missing fixed answer substring: permission"
+          ],
+          [
+            "Missing exact fixed source citation: guides/js/Ultima6.js — gameData.quests[0].sections[0].steps[2]",
+            "Missing fixed answer substring: Ariana",
+            "Missing fixed answer substring: permission"
+          ]
+        ],
+        "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+        "problems": [
+          "Expected answer; observed decline",
+          "Missing exact fixed source citation: guides/js/Ultima6.js — gameData.quests[0].sections[0]",
+          "Missing fixed answer substring: Ariana",
+          "Missing fixed answer substring: permission"
+        ],
+        "passed": false,
+        "surface": "ultima6",
+        "dialogueId": "u6-family-permission",
+        "turn": 2
+      },
+      "after": {
+        "text": "Who do I return to after getting her blessing?",
+        "expected": {
+          "decision": "answer",
+          "source": {
+            "file": "guides/js/Ultima6.js",
+            "locator": "gameData.quests[0].sections[0]",
+            "review": "extracted"
+          },
+          "contains": [
+            "Ariana",
+            "permission"
+          ],
+          "requiredUsefulClaim": "Return to Ariana and confirm permission to receive the rune.",
+          "sourceWitness": "Return to Ariana, confirm permission, and receive the Rune of Compassion.",
+          "alternativeAnswers": [
+            {
+              "source": {
+                "file": "guides/js/Ultima6.js",
+                "locator": "gameData.quests[0].sections[0].steps[2]",
+                "review": "extracted"
+              },
+              "sourceWitness": "Return to Ariana, confirm permission, and receive the Rune of Compassion.",
+              "contains": [
+                "Ariana",
+                "permission"
+              ]
+            }
+          ]
+        },
+        "decision": "answer",
+        "rendered": "Ariana:\nVisit Anya at the Blue Boar Tavern, mention RUNE or PERMISSION, and answer YES when asked.\nReturn to Ariana, confirm permission, and receive the Rune of Compassion.",
+        "citations": [
+          "Source: existing guide; extracted. guides/js/Ultima6.js — gameData.quests[0].sections[0].steps[1]; guides/js/Ultima6.js — gameData.quests[0].sections[0].steps[2]"
+        ],
+        "links": [],
+        "acceptedAnswerBranch": 1,
+        "answerBranchProblems": [
+          [
+            "Missing exact fixed source citation: guides/js/Ultima6.js — gameData.quests[0].sections[0]"
+          ],
+          []
+        ],
+        "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+        "problems": [],
+        "passed": true,
+        "surface": "ultima6",
+        "dialogueId": "u6-family-permission",
+        "turn": 2
+      },
+      "priorAfterDialogueTurns": [
+        {
+          "text": "How do I get permission to borrow the Compassion rune in Britain?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[0].sections[0]",
+              "review": "extracted"
+            },
+            "contains": [
+              "Anya",
+              "Blue Boar",
+              "YES",
+              "Ariana"
+            ],
+            "requiredUsefulClaim": "Ask Anya at the Blue Boar Tavern about RUNE/PERMISSION and answer YES, then return to Ariana.",
+            "sourceWitness": [
+              "Visit Anya at the Blue Boar Tavern, mention `RUNE` or `PERMISSION`, and answer `YES` when asked.",
+              "Return to Ariana, confirm permission, and receive the Rune of Compassion."
+            ]
+          },
+          "decision": "answer",
+          "rendered": "Meet Ariana at the Conservatory and ask for the RUNE. She needs her mother Anya's permission.\nVisit Anya at the Blue Boar Tavern, mention RUNE or PERMISSION, and answer YES when asked.\nReturn to Ariana, confirm permission, and receive the Rune of Compassion.",
+          "citations": [
+            "Source: existing guide; extracted. guides/js/Ultima6.js — gameData.quests[0].sections[0].steps[0]; guides/js/Ultima6.js — gameData.quests[0].sections[0].steps[1]; guides/js/Ultima6.js — gameData.quests[0].sections[0].steps[2]"
+          ],
+          "links": [],
+          "acceptedAnswerBranch": null,
+          "answerBranchProblems": [
+            [
+              "Missing exact fixed source citation: guides/js/Ultima6.js — gameData.quests[0].sections[0]"
+            ]
+          ],
+          "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+          "problems": [
+            "Missing exact fixed source citation: guides/js/Ultima6.js — gameData.quests[0].sections[0]"
+          ],
+          "passed": false,
+          "surface": "ultima6",
+          "dialogueId": "u6-family-permission",
+          "turn": 1
+        }
+      ],
+      "adjudication": {
+        "category": "complete-supported-positive",
+        "requiredUsefulClaimComplete": true,
+        "correctSubjectAndField": true,
+        "visibleCitationsSupportCompleteClaim": true,
+        "actualResources": [],
+        "strictBeforePassed": false,
+        "strictAfterPassed": true,
+        "explanation": "The complete reply correctly identifies Ariana as the return contact, retains Anya as the consent authority, and states confirm permission to receive the rune. Cited steps[1] and steps[2] support those separate roles; the existing alternative oracle branch accepts the exact step[2] citation."
+      },
+      "completeStoredSupportingFacts": [
+        {
+          "id": "anya-permission",
+          "subject": "Anya",
+          "facet": "method",
+          "aliases": [
+            "mother permission",
+            "Anya permission",
+            "Compassion permission",
+            "Anya permission conversation",
+            "Blue Boar Tavern",
+            "RUNE PERMISSION YES"
+          ],
+          "source": {
+            "file": "guides/js/Ultima6.js",
+            "locator": "gameData.quests[0].sections[0].steps[1]",
+            "review": "extracted"
+          },
+          "text": "Visit Anya at the Blue Boar Tavern, mention RUNE or PERMISSION, and answer YES when asked.",
+          "witness": "Visit Anya at the Blue Boar Tavern, mention RUNE or PERMISSION, and answer YES when asked.",
+          "entityId": "ultima6:knowledge:anya",
+          "sourceRecordId": "ultima6:quest:act-i-liberating-the-shrines:compassion-britain:hint",
+          "answerRelations": [
+            "method",
+            "location"
+          ],
+          "topicLabels": [
+            "Anya permission conversation"
+          ],
+          "answerBindings": [
+            {
+              "entityId": "ultima6:knowledge:anya",
+              "relations": [
+                "method",
+                "location"
+              ],
+              "mention": "Anya"
+            }
+          ]
+        },
+        {
+          "id": "ariana-rune",
+          "subject": "Ariana",
+          "facet": "acquisition",
+          "aliases": [
+            "Arianna",
+            "Rune of Compassion",
+            "Compassion rune",
+            "Ariana permission confirmation"
+          ],
+          "source": {
+            "file": "guides/js/Ultima6.js",
+            "locator": "gameData.quests[0].sections[0].steps[2]",
+            "review": "extracted"
+          },
+          "text": "Return to Ariana, confirm permission, and receive the Rune of Compassion.",
+          "witness": "Return to Ariana, confirm permission, and receive the Rune of Compassion.",
+          "entityId": "ultima6:knowledge:ariana",
+          "sourceRecordId": "ultima6:quest:act-i-liberating-the-shrines:compassion-britain:hint",
+          "answerRelations": [
+            "acquisition",
+            "prerequisites",
+            "method"
+          ],
+          "topicLabels": [
+            "Ariana permission confirmation"
+          ],
+          "answerBindings": [
+            {
+              "entityId": "ultima6:knowledge:ariana",
+              "relations": [
+                "acquisition",
+                "prerequisites",
+                "method"
+              ],
+              "mention": "Ariana"
+            },
+            {
+              "entityId": "ultima6:knowledge:compassion-rune",
+              "relations": [
+                "acquisition",
+                "method",
+                "prerequisites"
+              ],
+              "mention": "Rune of Compassion"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "comparisonId": "fresh76",
+      "indexZeroBased": 14,
+      "surface": "ultima6",
+      "dialogueId": "u6-family-permission",
+      "turn": 3,
+      "fullQuestion": "And what word do I chant when cleansing that shrine?",
+      "expectedUsefulClaim": "Use MU at the Compassion shrine.",
+      "expectedBoundary": null,
+      "fullExpectedMetadata": {
+        "decision": "answer",
+        "source": {
+          "file": "guides/js/Ultima6.js",
+          "locator": "gameData.quests[0].sections[0]",
+          "review": "extracted"
+        },
+        "contains": [
+          "MU"
+        ],
+        "requiredUsefulClaim": "Use MU at the Compassion shrine.",
+        "sourceWitness": "Cleanse the southern shrine using the rune, chant `MU`, take the Moonstone, and meditate.",
+        "alternativeAnswers": [
+          {
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[0].sections[0].steps[3]",
+              "review": "extracted"
+            },
+            "sourceWitness": "Cleanse the southern shrine using the rune, chant `MU`, take the Moonstone, and meditate.",
+            "contains": [
+              "MU"
+            ]
+          }
+        ]
+      },
+      "before": {
+        "text": "And what word do I chant when cleansing that shrine?",
+        "expected": {
+          "decision": "answer",
+          "source": {
+            "file": "guides/js/Ultima6.js",
+            "locator": "gameData.quests[0].sections[0]",
+            "review": "extracted"
+          },
+          "contains": [
+            "MU"
+          ],
+          "requiredUsefulClaim": "Use MU at the Compassion shrine.",
+          "sourceWitness": "Cleanse the southern shrine using the rune, chant `MU`, take the Moonstone, and meditate.",
+          "alternativeAnswers": [
+            {
+              "source": {
+                "file": "guides/js/Ultima6.js",
+                "locator": "gameData.quests[0].sections[0].steps[3]",
+                "review": "extracted"
+              },
+              "sourceWitness": "Cleanse the southern shrine using the rune, chant `MU`, take the Moonstone, and meditate.",
+              "contains": [
+                "MU"
+              ]
+            }
+          ]
+        },
+        "decision": "decline",
+        "rendered": "I do not have a complete sourced answer for that requested role.",
+        "citations": [],
+        "links": [],
+        "acceptedAnswerBranch": null,
+        "answerBranchProblems": [
+          [
+            "Missing exact fixed source citation: guides/js/Ultima6.js — gameData.quests[0].sections[0]",
+            "Missing fixed answer substring: MU"
+          ],
+          [
+            "Missing exact fixed source citation: guides/js/Ultima6.js — gameData.quests[0].sections[0].steps[3]",
+            "Missing fixed answer substring: MU"
+          ]
+        ],
+        "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+        "problems": [
+          "Expected answer; observed decline",
+          "Missing exact fixed source citation: guides/js/Ultima6.js — gameData.quests[0].sections[0]",
+          "Missing fixed answer substring: MU"
+        ],
+        "passed": false,
+        "surface": "ultima6",
+        "dialogueId": "u6-family-permission",
+        "turn": 3
+      },
+      "after": {
+        "text": "And what word do I chant when cleansing that shrine?",
+        "expected": {
+          "decision": "answer",
+          "source": {
+            "file": "guides/js/Ultima6.js",
+            "locator": "gameData.quests[0].sections[0]",
+            "review": "extracted"
+          },
+          "contains": [
+            "MU"
+          ],
+          "requiredUsefulClaim": "Use MU at the Compassion shrine.",
+          "sourceWitness": "Cleanse the southern shrine using the rune, chant `MU`, take the Moonstone, and meditate.",
+          "alternativeAnswers": [
+            {
+              "source": {
+                "file": "guides/js/Ultima6.js",
+                "locator": "gameData.quests[0].sections[0].steps[3]",
+                "review": "extracted"
+              },
+              "sourceWitness": "Cleanse the southern shrine using the rune, chant `MU`, take the Moonstone, and meditate.",
+              "contains": [
+                "MU"
+              ]
+            }
+          ]
+        },
+        "decision": "answer",
+        "rendered": "Cleanse the southern shrine using the rune, chant MU, take the Moonstone, and meditate.",
+        "citations": [
+          "Source: existing guide; extracted. guides/js/Ultima6.js — gameData.quests[0].sections[0].steps[3]"
+        ],
+        "links": [],
+        "acceptedAnswerBranch": 1,
+        "answerBranchProblems": [
+          [
+            "Missing exact fixed source citation: guides/js/Ultima6.js — gameData.quests[0].sections[0]"
+          ],
+          []
+        ],
+        "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+        "problems": [],
+        "passed": true,
+        "surface": "ultima6",
+        "dialogueId": "u6-family-permission",
+        "turn": 3
+      },
+      "priorAfterDialogueTurns": [
+        {
+          "text": "How do I get permission to borrow the Compassion rune in Britain?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[0].sections[0]",
+              "review": "extracted"
+            },
+            "contains": [
+              "Anya",
+              "Blue Boar",
+              "YES",
+              "Ariana"
+            ],
+            "requiredUsefulClaim": "Ask Anya at the Blue Boar Tavern about RUNE/PERMISSION and answer YES, then return to Ariana.",
+            "sourceWitness": [
+              "Visit Anya at the Blue Boar Tavern, mention `RUNE` or `PERMISSION`, and answer `YES` when asked.",
+              "Return to Ariana, confirm permission, and receive the Rune of Compassion."
+            ]
+          },
+          "decision": "answer",
+          "rendered": "Meet Ariana at the Conservatory and ask for the RUNE. She needs her mother Anya's permission.\nVisit Anya at the Blue Boar Tavern, mention RUNE or PERMISSION, and answer YES when asked.\nReturn to Ariana, confirm permission, and receive the Rune of Compassion.",
+          "citations": [
+            "Source: existing guide; extracted. guides/js/Ultima6.js — gameData.quests[0].sections[0].steps[0]; guides/js/Ultima6.js — gameData.quests[0].sections[0].steps[1]; guides/js/Ultima6.js — gameData.quests[0].sections[0].steps[2]"
+          ],
+          "links": [],
+          "acceptedAnswerBranch": null,
+          "answerBranchProblems": [
+            [
+              "Missing exact fixed source citation: guides/js/Ultima6.js — gameData.quests[0].sections[0]"
+            ]
+          ],
+          "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+          "problems": [
+            "Missing exact fixed source citation: guides/js/Ultima6.js — gameData.quests[0].sections[0]"
+          ],
+          "passed": false,
+          "surface": "ultima6",
+          "dialogueId": "u6-family-permission",
+          "turn": 1
+        },
+        {
+          "text": "Who do I return to after getting her blessing?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[0].sections[0]",
+              "review": "extracted"
+            },
+            "contains": [
+              "Ariana",
+              "permission"
+            ],
+            "requiredUsefulClaim": "Return to Ariana and confirm permission to receive the rune.",
+            "sourceWitness": "Return to Ariana, confirm permission, and receive the Rune of Compassion.",
+            "alternativeAnswers": [
+              {
+                "source": {
+                  "file": "guides/js/Ultima6.js",
+                  "locator": "gameData.quests[0].sections[0].steps[2]",
+                  "review": "extracted"
+                },
+                "sourceWitness": "Return to Ariana, confirm permission, and receive the Rune of Compassion.",
+                "contains": [
+                  "Ariana",
+                  "permission"
+                ]
+              }
+            ]
+          },
+          "decision": "answer",
+          "rendered": "Ariana:\nVisit Anya at the Blue Boar Tavern, mention RUNE or PERMISSION, and answer YES when asked.\nReturn to Ariana, confirm permission, and receive the Rune of Compassion.",
+          "citations": [
+            "Source: existing guide; extracted. guides/js/Ultima6.js — gameData.quests[0].sections[0].steps[1]; guides/js/Ultima6.js — gameData.quests[0].sections[0].steps[2]"
+          ],
+          "links": [],
+          "acceptedAnswerBranch": 1,
+          "answerBranchProblems": [
+            [
+              "Missing exact fixed source citation: guides/js/Ultima6.js — gameData.quests[0].sections[0]"
+            ],
+            []
+          ],
+          "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+          "problems": [],
+          "passed": true,
+          "surface": "ultima6",
+          "dialogueId": "u6-family-permission",
+          "turn": 2
+        }
+      ],
+      "adjudication": {
+        "category": "complete-supported-positive",
+        "requiredUsefulClaimComplete": true,
+        "correctSubjectAndField": true,
+        "visibleCitationsSupportCompleteClaim": true,
+        "actualResources": [],
+        "strictBeforePassed": false,
+        "strictAfterPassed": true,
+        "explanation": "The active Compassion quest/shrine context is retained and the full source instruction states chant MU while using the rune, then take the Moonstone and meditate. Cited step[3] is the exact witness and satisfies an unchanged alternative oracle branch."
+      },
+      "completeStoredSupportingFacts": [
+        {
+          "id": "compassion-mantra",
+          "subject": "Shrine of Compassion",
+          "facet": "method",
+          "aliases": [
+            "Compassion mantra",
+            "MU"
+          ],
+          "source": {
+            "file": "guides/js/Ultima6.js",
+            "locator": "gameData.quests[0].sections[0].steps[3]",
+            "review": "extracted"
+          },
+          "text": "Cleanse the southern shrine using the rune, chant MU, take the Moonstone, and meditate.",
+          "witness": "Cleanse the southern shrine using the rune, chant MU, take the Moonstone, and meditate.",
+          "sourceRecordId": "ultima6:quest:act-i-liberating-the-shrines:compassion-britain:hint",
+          "answerRelations": [
+            "use",
+            "method",
+            "acquisition",
+            "sequence"
+          ],
+          "entityId": "ultima6:knowledge:compassion-shrine",
+          "answerBindings": [
+            {
+              "entityId": "ultima6:knowledge:compassion-shrine",
+              "relations": [
+                "use",
+                "method",
+                "sequence"
+              ],
+              "mention": "southern shrine"
+            },
+            {
+              "entityId": "ultima6:knowledge:compassion-rune",
+              "relations": [
+                "use",
+                "method"
+              ],
+              "mention": "rune"
+            },
+            {
+              "entityId": "ultima6:knowledge:mu",
+              "relations": [
+                "method"
+              ],
+              "mention": "MU"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "comparisonId": "fresh76",
+      "indexZeroBased": 38,
+      "surface": "alqadim",
+      "dialogueId": "aq-sword-training",
+      "turn": 3,
+      "fullQuestion": "Does that attack catch enemies behind me too?",
+      "expectedUsefulClaim": "Full-Circle Swing covers 360 degrees and catches monsters behind the Corsair.",
+      "expectedBoundary": null,
+      "fullExpectedMetadata": {
+        "decision": "answer",
+        "source": {
+          "file": "guides/js/AlQadim.js",
+          "locator": "DB.combatMoves[2]",
+          "review": "extracted"
+        },
+        "contains": [
+          "360-degree",
+          "behind"
+        ],
+        "requiredUsefulClaim": "Full-Circle Swing covers 360 degrees and catches monsters behind the Corsair.",
+        "sourceWitness": "a complete 360-degree cut that also catches monsters behind the Corsair."
+      },
+      "before": {
+        "text": "Does that attack catch enemies behind me too?",
+        "expected": {
+          "decision": "answer",
+          "source": {
+            "file": "guides/js/AlQadim.js",
+            "locator": "DB.combatMoves[2]",
+            "review": "extracted"
+          },
+          "contains": [
+            "360-degree",
+            "behind"
+          ],
+          "requiredUsefulClaim": "Full-Circle Swing covers 360 degrees and catches monsters behind the Corsair.",
+          "sourceWitness": "a complete 360-degree cut that also catches monsters behind the Corsair."
+        },
+        "decision": "clarify",
+        "rendered": "What would you like to know: location, acquisition, use, combat, prerequisites, or a hint?",
+        "citations": [],
+        "links": [],
+        "acceptedAnswerBranch": null,
+        "answerBranchProblems": [
+          [
+            "Missing exact fixed source citation: guides/js/AlQadim.js — DB.combatMoves[2]",
+            "Missing fixed answer substring: 360-degree",
+            "Missing fixed answer substring: behind"
+          ]
+        ],
+        "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+        "problems": [
+          "Expected answer; observed clarify",
+          "Missing exact fixed source citation: guides/js/AlQadim.js — DB.combatMoves[2]",
+          "Missing fixed answer substring: 360-degree",
+          "Missing fixed answer substring: behind"
+        ],
+        "passed": false,
+        "surface": "alqadim",
+        "dialogueId": "aq-sword-training",
+        "turn": 3
+      },
+      "after": {
+        "text": "Does that attack catch enemies behind me too?",
+        "expected": {
+          "decision": "answer",
+          "source": {
+            "file": "guides/js/AlQadim.js",
+            "locator": "DB.combatMoves[2]",
+            "review": "extracted"
+          },
+          "contains": [
+            "360-degree",
+            "behind"
+          ],
+          "requiredUsefulClaim": "Full-Circle Swing covers 360 degrees and catches monsters behind the Corsair.",
+          "sourceWitness": "a complete 360-degree cut that also catches monsters behind the Corsair."
+        },
+        "decision": "answer",
+        "rendered": "The most powerful swing: a complete 360-degree cut that also catches monsters behind the Corsair. Release when the third action circle lights orange. Learn from Zubakon after later progression.",
+        "citations": [
+          "Source: existing guide; extracted. guides/js/AlQadim.js — DB.combatMoves[2]"
+        ],
+        "links": [],
+        "acceptedAnswerBranch": 0,
+        "answerBranchProblems": [
+          []
+        ],
+        "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+        "problems": [],
+        "passed": true,
+        "surface": "alqadim",
+        "dialogueId": "aq-sword-training",
+        "turn": 3
+      },
+      "priorAfterDialogueTurns": [
+        {
+          "text": "How do I learn the Full-Circle Swing?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.combatMoves[2].training",
+              "review": "extracted"
+            },
+            "contains": [
+              "Zubakon",
+              "later progression"
+            ],
+            "requiredUsefulClaim": "Learn Full-Circle Swing from Zubakon after later progression.",
+            "sourceWitness": "Learn from Zubakon after later progression"
+          },
+          "decision": "answer",
+          "rendered": "The most powerful swing: a complete 360-degree cut that also catches monsters behind the Corsair. Release when the third action circle lights orange. Learn from Zubakon after later progression.",
+          "citations": [
+            "Source: existing guide; extracted. guides/js/AlQadim.js — DB.combatMoves[2]"
+          ],
+          "links": [],
+          "acceptedAnswerBranch": null,
+          "answerBranchProblems": [
+            [
+              "Missing exact fixed source citation: guides/js/AlQadim.js — DB.combatMoves[2].training"
+            ]
+          ],
+          "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+          "problems": [
+            "Missing exact fixed source citation: guides/js/AlQadim.js — DB.combatMoves[2].training"
+          ],
+          "passed": false,
+          "surface": "alqadim",
+          "dialogueId": "aq-sword-training",
+          "turn": 1
+        },
+        {
+          "text": "When should I release the action button for it?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.combatMoves[2]",
+              "review": "extracted"
+            },
+            "contains": [
+              "third action circle",
+              "orange"
+            ],
+            "requiredUsefulClaim": "Release when the third action circle lights orange.",
+            "sourceWitness": "Release when the third action circle lights orange"
+          },
+          "decision": "answer",
+          "rendered": "The most powerful swing: a complete 360-degree cut that also catches monsters behind the Corsair. Release when the third action circle lights orange. Learn from Zubakon after later progression.",
+          "citations": [
+            "Source: existing guide; extracted. guides/js/AlQadim.js — DB.combatMoves[2]"
+          ],
+          "links": [],
+          "acceptedAnswerBranch": 0,
+          "answerBranchProblems": [
+            []
+          ],
+          "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+          "problems": [],
+          "passed": true,
+          "surface": "alqadim",
+          "dialogueId": "aq-sword-training",
+          "turn": 2
+        }
+      ],
+      "adjudication": {
+        "category": "complete-supported-positive",
+        "requiredUsefulClaimComplete": true,
+        "correctSubjectAndField": true,
+        "visibleCitationsSupportCompleteClaim": true,
+        "actualResources": [],
+        "strictBeforePassed": false,
+        "strictAfterPassed": true,
+        "explanation": "The preceding learned Full-Circle Swing remains that attack. The full cited combat profile explicitly gives a complete 360-degree cut that catches monsters behind the Corsair, satisfying rear coverage without inventing enemy counts, damage amounts, or player training state."
+      },
+      "completeStoredSupportingFacts": [
+        {
+          "id": "swing-full-circle-swing",
+          "subject": "Full-Circle Swing",
+          "facet": "combat",
+          "aliases": [
+            "All sides",
+            "Release when the third action circle lights orange",
+            "full circle attack coverage",
+            "full circle swing controls",
+            "third orange action circle",
+            "attack monsters behind"
+          ],
+          "text": "The most powerful swing: a complete 360-degree cut that also catches monsters behind the Corsair. Release when the third action circle lights orange. Learn from Zubakon after later progression.",
+          "witness": "The most powerful swing: a complete 360-degree cut that also catches monsters behind the Corsair. Release when the third action circle lights orange. Learn from Zubakon after later progression.",
+          "source": {
+            "file": "guides/js/AlQadim.js",
+            "locator": "DB.combatMoves[2]",
+            "review": "extracted"
+          },
+          "sourceRecordId": "alqadim:combat:full-circle-swing:combat",
+          "entityId": "alqadim:knowledge:full-circle-swing",
+          "answerRelations": [
+            "use",
+            "method",
+            "combat",
+            "acquisition",
+            "prerequisites",
+            "explanation"
+          ],
+          "topicLabels": [
+            "Full circle swing coverage",
+            "Full circle swing controls"
+          ],
+          "support": {
+            "comparison": [
+              "swing-quick-swing",
+              "swing-wide-swing"
+            ],
+            "acquisition": [
+              "ch6_4",
+              "page-zubakon"
+            ],
+            "prerequisites": [
+              "page-zubakon"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "comparisonId": "fresh76",
+      "indexZeroBased": 49,
+      "surface": "albion",
+      "dialogueId": "ab-toronto-supplies",
+      "turn": 2,
+      "fullQuestion": "Once inside, where do I find the Pistol and its canisters?",
+      "expectedUsefulClaim": "Examine the damaged COM-room console for the Pistol and Canisters.",
+      "expectedBoundary": null,
+      "fullExpectedMetadata": {
+        "decision": "answer",
+        "source": {
+          "file": "guides/js/Albion.js",
+          "locator": "QUEST_HINTS[\"toronto-intro\"][\"pistol\"]",
+          "review": "extracted"
+        },
+        "contains": [
+          "damaged console",
+          "Pistol",
+          "Canisters"
+        ],
+        "requiredUsefulClaim": "Examine the damaged COM-room console for the Pistol and Canisters.",
+        "sourceWitness": "In the COM room, examine the damaged console to get the Pistol + Canisters"
+      },
+      "before": {
+        "text": "Once inside, where do I find the Pistol and its canisters?",
+        "expected": {
+          "decision": "answer",
+          "source": {
+            "file": "guides/js/Albion.js",
+            "locator": "QUEST_HINTS[\"toronto-intro\"][\"pistol\"]",
+            "review": "extracted"
+          },
+          "contains": [
+            "damaged console",
+            "Pistol",
+            "Canisters"
+          ],
+          "requiredUsefulClaim": "Examine the damaged COM-room console for the Pistol and Canisters.",
+          "sourceWitness": "In the COM room, examine the damaged console to get the Pistol + Canisters"
+        },
+        "decision": "decline",
+        "rendered": "I do not have complete sourced evidence for that relationship under those conditions.",
+        "citations": [],
+        "links": [],
+        "acceptedAnswerBranch": null,
+        "answerBranchProblems": [
+          [
+            "Missing exact fixed source citation: guides/js/Albion.js — QUEST_HINTS[\"toronto-intro\"][\"pistol\"]",
+            "Missing fixed answer substring: damaged console",
+            "Missing fixed answer substring: Pistol",
+            "Missing fixed answer substring: Canisters"
+          ]
+        ],
+        "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+        "problems": [
+          "Expected answer; observed decline",
+          "Missing exact fixed source citation: guides/js/Albion.js — QUEST_HINTS[\"toronto-intro\"][\"pistol\"]",
+          "Missing fixed answer substring: damaged console",
+          "Missing fixed answer substring: Pistol",
+          "Missing fixed answer substring: Canisters"
+        ],
+        "passed": false,
+        "surface": "albion",
+        "dialogueId": "ab-toronto-supplies",
+        "turn": 2
+      },
+      "after": {
+        "text": "Once inside, where do I find the Pistol and its canisters?",
+        "expected": {
+          "decision": "answer",
+          "source": {
+            "file": "guides/js/Albion.js",
+            "locator": "QUEST_HINTS[\"toronto-intro\"][\"pistol\"]",
+            "review": "extracted"
+          },
+          "contains": [
+            "damaged console",
+            "Pistol",
+            "Canisters"
+          ],
+          "requiredUsefulClaim": "Examine the damaged COM-room console for the Pistol and Canisters.",
+          "sourceWitness": "In the COM room, examine the damaged console to get the Pistol + Canisters"
+        },
+        "decision": "answer",
+        "rendered": "In the COM room, examine the damaged console to get the Pistol + Canisters; grab the extra Stimdrinks from the east drawer.",
+        "citations": [
+          "Source: existing guide; extracted. guides/js/Albion.js — QUEST_HINTS[\"toronto-intro\"][\"pistol\"]"
+        ],
+        "links": [],
+        "acceptedAnswerBranch": 0,
+        "answerBranchProblems": [
+          []
+        ],
+        "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+        "problems": [],
+        "passed": true,
+        "surface": "albion",
+        "dialogueId": "ab-toronto-supplies",
+        "turn": 2
+      },
+      "priorAfterDialogueTurns": [
+        {
+          "text": "How do I access the COM room aboard Toronto?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "QUEST_HINTS[\"toronto-intro\"][\"com-code\"]",
+              "review": "extracted"
+            },
+            "contains": [
+              "Joe",
+              "1042"
+            ],
+            "requiredUsefulClaim": "Speak to Joe, use the access ladder north of his room, and enter 1042.",
+            "sourceWitness": "Talk to Joe, then use the access ladder in the room north of Joe’s; key in 1042 to enter the COM/service level access."
+          },
+          "decision": "answer",
+          "rendered": "Talk to Joe, then use the access ladder in the room north of Joe’s; key in 1042 to enter the COM/service level access.",
+          "citations": [
+            "Source: existing guide; extracted. guides/js/Albion.js — QUEST_HINTS[\"toronto-intro\"][\"com-code\"]"
+          ],
+          "links": [],
+          "acceptedAnswerBranch": 0,
+          "answerBranchProblems": [
+            []
+          ],
+          "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+          "problems": [],
+          "passed": true,
+          "surface": "albion",
+          "dialogueId": "ab-toronto-supplies",
+          "turn": 1
+        }
+      ],
+      "adjudication": {
+        "category": "complete-supported-positive",
+        "requiredUsefulClaimComplete": true,
+        "correctSubjectAndField": true,
+        "visibleCitationsSupportCompleteClaim": true,
+        "actualResources": [],
+        "strictBeforePassed": false,
+        "strictAfterPassed": true,
+        "explanation": "The preceding COM access instruction grounds once inside as the COM room. The full cited pickup instruction names the damaged console, Pistol and Canisters together, and retains the independently sourced extra Stimdrinks from the east drawer. It does not infer actual entry or inventory possession."
+      },
+      "completeStoredSupportingFacts": [
+        {
+          "id": "pistol",
+          "subject": "Pistol",
+          "facet": "method",
+          "aliases": [
+            "Get the Pistol from the COM room (cannot be sold; critical later)",
+            "Pistol damaged console",
+            "Pistol and Canisters acquisition"
+          ],
+          "text": "In the COM room, examine the damaged console to get the Pistol + Canisters; grab the extra Stimdrinks from the east drawer.",
+          "witness": "In the COM room, examine the damaged console to get the Pistol + Canisters; grab the extra Stimdrinks from the east drawer.",
+          "source": {
+            "file": "guides/js/Albion.js",
+            "locator": "QUEST_HINTS[\"toronto-intro\"][\"pistol\"]",
+            "review": "extracted"
+          },
+          "sourceRecordId": "albion:item:pistol:hint",
+          "entityId": "albion:knowledge:pistol",
+          "answerRelations": [
+            "acquisition",
+            "location",
+            "method"
+          ],
+          "topicLabels": [
+            "Pistol acquisition procedure"
+          ],
+          "answerBindings": [
+            {
+              "entityId": "albion:knowledge:canisters",
+              "mention": "Canisters",
+              "relations": [
+                "acquisition",
+                "location",
+                "method"
+              ]
+            },
+            {
+              "entityId": "albion:knowledge:pistol-canisters",
+              "mention": "Pistol + Canisters",
+              "relations": [
+                "acquisition",
+                "location",
+                "method"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "comparisonId": "fresh76",
+      "indexZeroBased": 50,
+      "surface": "albion",
+      "dialogueId": "ab-toronto-supplies",
+      "turn": 3,
+      "fullQuestion": "How can I carry them past security?",
+      "expectedUsefulClaim": "Hide the Pistol and Canisters in the service-level wall cabinet before security.",
+      "expectedBoundary": null,
+      "fullExpectedMetadata": {
+        "decision": "answer",
+        "source": {
+          "file": "guides/js/Albion.js",
+          "locator": "QUEST_HINTS[\"toronto-intro\"][\"hide-weapon\"]",
+          "review": "extracted"
+        },
+        "contains": [
+          "wall cabinet",
+          "service level"
+        ],
+        "requiredUsefulClaim": "Hide the Pistol and Canisters in the service-level wall cabinet before security.",
+        "sourceWitness": "hide the Pistol + Canisters in the wall cabinet on the service level before passing security."
+      },
+      "before": {
+        "text": "How can I carry them past security?",
+        "expected": {
+          "decision": "answer",
+          "source": {
+            "file": "guides/js/Albion.js",
+            "locator": "QUEST_HINTS[\"toronto-intro\"][\"hide-weapon\"]",
+            "review": "extracted"
+          },
+          "contains": [
+            "wall cabinet",
+            "service level"
+          ],
+          "requiredUsefulClaim": "Hide the Pistol and Canisters in the service-level wall cabinet before security.",
+          "sourceWitness": "hide the Pistol + Canisters in the wall cabinet on the service level before passing security."
+        },
+        "decision": "decline",
+        "rendered": "The available sources do not establish that requested field under those restrictions.",
+        "citations": [],
+        "links": [],
+        "acceptedAnswerBranch": null,
+        "answerBranchProblems": [
+          [
+            "Missing exact fixed source citation: guides/js/Albion.js — QUEST_HINTS[\"toronto-intro\"][\"hide-weapon\"]",
+            "Missing fixed answer substring: wall cabinet",
+            "Missing fixed answer substring: service level"
+          ]
+        ],
+        "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+        "problems": [
+          "Expected answer; observed decline",
+          "Missing exact fixed source citation: guides/js/Albion.js — QUEST_HINTS[\"toronto-intro\"][\"hide-weapon\"]",
+          "Missing fixed answer substring: wall cabinet",
+          "Missing fixed answer substring: service level"
+        ],
+        "passed": false,
+        "surface": "albion",
+        "dialogueId": "ab-toronto-supplies",
+        "turn": 3
+      },
+      "after": {
+        "text": "How can I carry them past security?",
+        "expected": {
+          "decision": "answer",
+          "source": {
+            "file": "guides/js/Albion.js",
+            "locator": "QUEST_HINTS[\"toronto-intro\"][\"hide-weapon\"]",
+            "review": "extracted"
+          },
+          "contains": [
+            "wall cabinet",
+            "service level"
+          ],
+          "requiredUsefulClaim": "Hide the Pistol and Canisters in the service-level wall cabinet before security.",
+          "sourceWitness": "hide the Pistol + Canisters in the wall cabinet on the service level before passing security."
+        },
+        "decision": "answer",
+        "rendered": "After looting the COM room, hide the Pistol + Canisters in the wall cabinet on the service level before passing security.",
+        "citations": [
+          "Source: existing guide; extracted. guides/js/Albion.js — QUEST_HINTS[\"toronto-intro\"][\"hide-weapon\"]"
+        ],
+        "links": [],
+        "acceptedAnswerBranch": 0,
+        "answerBranchProblems": [
+          []
+        ],
+        "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+        "problems": [],
+        "passed": true,
+        "surface": "albion",
+        "dialogueId": "ab-toronto-supplies",
+        "turn": 3
+      },
+      "priorAfterDialogueTurns": [
+        {
+          "text": "How do I access the COM room aboard Toronto?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "QUEST_HINTS[\"toronto-intro\"][\"com-code\"]",
+              "review": "extracted"
+            },
+            "contains": [
+              "Joe",
+              "1042"
+            ],
+            "requiredUsefulClaim": "Speak to Joe, use the access ladder north of his room, and enter 1042.",
+            "sourceWitness": "Talk to Joe, then use the access ladder in the room north of Joe’s; key in 1042 to enter the COM/service level access."
+          },
+          "decision": "answer",
+          "rendered": "Talk to Joe, then use the access ladder in the room north of Joe’s; key in 1042 to enter the COM/service level access.",
+          "citations": [
+            "Source: existing guide; extracted. guides/js/Albion.js — QUEST_HINTS[\"toronto-intro\"][\"com-code\"]"
+          ],
+          "links": [],
+          "acceptedAnswerBranch": 0,
+          "answerBranchProblems": [
+            []
+          ],
+          "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+          "problems": [],
+          "passed": true,
+          "surface": "albion",
+          "dialogueId": "ab-toronto-supplies",
+          "turn": 1
+        },
+        {
+          "text": "Once inside, where do I find the Pistol and its canisters?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "QUEST_HINTS[\"toronto-intro\"][\"pistol\"]",
+              "review": "extracted"
+            },
+            "contains": [
+              "damaged console",
+              "Pistol",
+              "Canisters"
+            ],
+            "requiredUsefulClaim": "Examine the damaged COM-room console for the Pistol and Canisters.",
+            "sourceWitness": "In the COM room, examine the damaged console to get the Pistol + Canisters"
+          },
+          "decision": "answer",
+          "rendered": "In the COM room, examine the damaged console to get the Pistol + Canisters; grab the extra Stimdrinks from the east drawer.",
+          "citations": [
+            "Source: existing guide; extracted. guides/js/Albion.js — QUEST_HINTS[\"toronto-intro\"][\"pistol\"]"
+          ],
+          "links": [],
+          "acceptedAnswerBranch": 0,
+          "answerBranchProblems": [
+            []
+          ],
+          "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+          "problems": [],
+          "passed": true,
+          "surface": "albion",
+          "dialogueId": "ab-toronto-supplies",
+          "turn": 2
+        }
+      ],
+      "adjudication": {
+        "category": "complete-supported-positive",
+        "requiredUsefulClaimComplete": true,
+        "correctSubjectAndField": true,
+        "visibleCitationsSupportCompleteClaim": true,
+        "actualResources": [],
+        "strictBeforePassed": false,
+        "strictAfterPassed": true,
+        "explanation": "The plural reference retains the complete Pistol-and-Canisters group. The full cited instruction tells the user to hide that group in the service-level wall cabinet before passing security, with no claim that the user has already done so."
+      },
+      "completeStoredSupportingFacts": [
+        {
+          "id": "hide-weapon",
+          "subject": "Toronto security",
+          "facet": "method",
+          "aliases": [
+            "Hide your weapon in the wall cabinet before security",
+            "hiding the Pistol before Toronto security",
+            "Pistol storage before security",
+            "service level wall cabinet"
+          ],
+          "text": "After looting the COM room, hide the Pistol + Canisters in the wall cabinet on the service level before passing security.",
+          "witness": "After looting the COM room, hide the Pistol + Canisters in the wall cabinet on the service level before passing security.",
+          "source": {
+            "file": "guides/js/Albion.js",
+            "locator": "QUEST_HINTS[\"toronto-intro\"][\"hide-weapon\"]",
+            "review": "extracted"
+          },
+          "sourceRecordId": "albion:objective:toronto-intro:hide-weapon:hint",
+          "entityId": "albion:knowledge:toronto-security",
+          "answerRelations": [
+            "method",
+            "sequence",
+            "location",
+            "use"
+          ],
+          "topicLabels": [
+            "Toronto weapon security",
+            "hiding weapons before security",
+            "Pistol security storage"
+          ],
+          "answerBindings": [
+            {
+              "entityId": "albion:knowledge:pistol",
+              "mention": "Pistol",
+              "relations": [
+                "method",
+                "location",
+                "use"
+              ]
+            },
+            {
+              "entityId": "albion:knowledge:canisters",
+              "mention": "Canisters",
+              "relations": [
+                "method",
+                "location",
+                "use"
+              ]
+            },
+            {
+              "entityId": "albion:knowledge:pistol-canisters",
+              "mention": "Pistol + Canisters",
+              "relations": [
+                "method",
+                "location",
+                "use"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "comparisonId": "fresh76",
+      "indexZeroBased": 70,
+      "surface": "starcraft",
+      "dialogueId": "sc-bot-learning-resources",
+      "turn": 3,
+      "fullQuestion": "Where can I read the framework documentation?",
+      "expectedUsefulClaim": "The guide links BWAPI Official Documentation and the BWAPI Wiki.",
+      "expectedBoundary": null,
+      "fullExpectedMetadata": {
+        "decision": "answer",
+        "source": {
+          "file": "guides/StarcraftBWAPI.html",
+          "locator": "#resources .grid > div:nth-child(1)",
+          "review": "extracted"
+        },
+        "contains": [
+          "BWAPI Official Documentation",
+          "BWAPI Wiki"
+        ],
+        "requiredUsefulClaim": "The guide links BWAPI Official Documentation and the BWAPI Wiki.",
+        "sourceWitness": "BWAPI Official Documentation"
+      },
+      "before": {
+        "text": "Where can I read the framework documentation?",
+        "expected": {
+          "decision": "answer",
+          "source": {
+            "file": "guides/StarcraftBWAPI.html",
+            "locator": "#resources .grid > div:nth-child(1)",
+            "review": "extracted"
+          },
+          "contains": [
+            "BWAPI Official Documentation",
+            "BWAPI Wiki"
+          ],
+          "requiredUsefulClaim": "The guide links BWAPI Official Documentation and the BWAPI Wiki.",
+          "sourceWitness": "BWAPI Official Documentation"
+        },
+        "decision": "decline",
+        "rendered": "The guide does not support that additional detail or restriction for this subject.",
+        "citations": [],
+        "links": [],
+        "acceptedAnswerBranch": null,
+        "answerBranchProblems": [
+          [
+            "Missing exact fixed source citation: guides/StarcraftBWAPI.html — #resources .grid > div:nth-child(1)",
+            "Missing fixed answer substring: BWAPI Official Documentation",
+            "Missing fixed answer substring: BWAPI Wiki"
+          ]
+        ],
+        "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+        "problems": [
+          "Expected answer; observed decline",
+          "Missing exact fixed source citation: guides/StarcraftBWAPI.html — #resources .grid > div:nth-child(1)",
+          "Missing fixed answer substring: BWAPI Official Documentation",
+          "Missing fixed answer substring: BWAPI Wiki"
+        ],
+        "passed": false,
+        "surface": "starcraft",
+        "dialogueId": "sc-bot-learning-resources",
+        "turn": 3
+      },
+      "after": {
+        "text": "Where can I read the framework documentation?",
+        "expected": {
+          "decision": "answer",
+          "source": {
+            "file": "guides/StarcraftBWAPI.html",
+            "locator": "#resources .grid > div:nth-child(1)",
+            "review": "extracted"
+          },
+          "contains": [
+            "BWAPI Official Documentation",
+            "BWAPI Wiki"
+          ],
+          "requiredUsefulClaim": "The guide links BWAPI Official Documentation and the BWAPI Wiki.",
+          "sourceWitness": "BWAPI Official Documentation"
+        },
+        "decision": "answer",
+        "rendered": "Documentation; BWAPI Official Documentation; BWAPI Wiki; SCHNAIL Documentation\nBWAPI Official Documentation: https://bwapi.github.io/\nBWAPI Wiki: https://github.com/bwapi/bwapi/wiki",
+        "citations": [
+          "Source: existing guide; extracted. guides/StarcraftBWAPI.html — #resources .grid > div:nth-child(1)"
+        ],
+        "links": [
+          "https://bwapi.github.io/",
+          "https://github.com/bwapi/bwapi/wiki"
+        ],
+        "acceptedAnswerBranch": 0,
+        "answerBranchProblems": [
+          []
+        ],
+        "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+        "problems": [],
+        "passed": true,
+        "surface": "starcraft",
+        "dialogueId": "sc-bot-learning-resources",
+        "turn": 3
+      },
+      "priorAfterDialogueTurns": [
+        {
+          "text": "What open-source example bots does this guide offer for learning?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#resources .space-y-8 > div:nth-child(2)",
+              "review": "extracted"
+            },
+            "contains": [
+              "Steamhammer",
+              "UAlbertaBot"
+            ],
+            "requiredUsefulClaim": "The guide lists Steamhammer and UAlbertaBot as open-source example implementations.",
+            "sourceWitness": "Learn from these open-source bot implementations:"
+          },
+          "decision": "answer",
+          "rendered": "Example bot implementations: Steamhammer, UAlbertaBot.",
+          "citations": [
+            "Source: existing guide; extracted. guides/StarcraftBWAPI.html — #resources .space-y-8 > div:nth-child(2)"
+          ],
+          "links": [],
+          "acceptedAnswerBranch": 0,
+          "answerBranchProblems": [
+            []
+          ],
+          "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+          "problems": [],
+          "passed": true,
+          "surface": "starcraft",
+          "dialogueId": "sc-bot-learning-resources",
+          "turn": 1
+        },
+        {
+          "text": "Who does the guide credit with UAlbertaBot?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#resources .space-y-4 > div:nth-child(2)",
+              "review": "extracted"
+            },
+            "contains": [
+              "Dave Churchill",
+              "Steve Gelly"
+            ],
+            "requiredUsefulClaim": "The guide credits Dave Churchill and Steve Gelly with UAlbertaBot.",
+            "sourceWitness": "A Starcraft AI development framework by Dave\n                                        Churchill\n                                        and Steve Gelly"
+          },
+          "decision": "answer",
+          "rendered": "Not in this guide — from outside research: UAlbertaBot’s README and official wiki identify David Churchill. The guide additionally credits Steve Gelly; the reviewed primary pages do not establish that additional attribution.\nUAlbertaBot README: https://github.com/davechurchill/ualbertabot\nUAlbertaBot wiki: https://github.com/davechurchill/ualbertabot/wiki",
+          "citations": [
+            "Outside research (not in this guide): UAlbertaBot authorship primary source — https://github.com/davechurchill/ualbertabot (checked 2026-10-24); UAlbertaBot official wiki — https://github.com/davechurchill/ualbertabot/wiki (checked 2026-10-24)."
+          ],
+          "links": [
+            "https://github.com/davechurchill/ualbertabot",
+            "https://github.com/davechurchill/ualbertabot/wiki"
+          ],
+          "acceptedAnswerBranch": null,
+          "answerBranchProblems": [
+            [
+              "Missing exact fixed source citation: guides/StarcraftBWAPI.html — #resources .space-y-4 > div:nth-child(2)",
+              "Missing fixed answer substring: Dave Churchill"
+            ]
+          ],
+          "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+          "problems": [
+            "Missing exact fixed source citation: guides/StarcraftBWAPI.html — #resources .space-y-4 > div:nth-child(2)",
+            "Missing fixed answer substring: Dave Churchill"
+          ],
+          "passed": false,
+          "surface": "starcraft",
+          "dialogueId": "sc-bot-learning-resources",
+          "turn": 2
+        }
+      ],
+      "adjudication": {
+        "category": "complete-supported-positive",
+        "requiredUsefulClaimComplete": true,
+        "correctSubjectAndField": true,
+        "visibleCitationsSupportCompleteClaim": true,
+        "actualResources": [
+          "https://bwapi.github.io/",
+          "https://github.com/bwapi/bwapi/wiki"
+        ],
+        "strictBeforePassed": false,
+        "strictAfterPassed": true,
+        "explanation": "The reply resolves framework documentation to BWAPI after the bot/example discussion. It visibly names and supplies both BWAPI Official Documentation and the BWAPI Wiki URLs and cites the actual documentation resource block. The additional SCHNAIL Documentation label is present in that source block; it does not replace either requested BWAPI resource."
+      },
+      "completeStoredSupportingFacts": [
+        {
+          "id": "starcraft:knowledge:bwapi-docs",
+          "subject": "BWAPI documentation",
+          "entityId": "starcraft:bwapi",
+          "facet": "documentation",
+          "aliases": [
+            "BWAPI docs",
+            "BWAPI documentation",
+            "BWAPI wiki",
+            "BWAPI official reference",
+            "BWAPI wiki documentation"
+          ],
+          "text": "Documentation; BWAPI Official Documentation; BWAPI Wiki; SCHNAIL Documentation",
+          "witness": "Documentation; BWAPI Official Documentation; BWAPI Wiki; SCHNAIL Documentation",
+          "source": {
+            "file": "guides/StarcraftBWAPI.html",
+            "locator": "#resources .grid > div:nth-child(1)",
+            "review": "extracted"
+          },
+          "sourceRecordId": "starcraft:documentation:links",
+          "links": [
+            {
+              "label": "BWAPI Official Documentation",
+              "url": "https://bwapi.github.io/"
+            },
+            {
+              "label": "BWAPI Wiki",
+              "url": "https://github.com/bwapi/bwapi/wiki"
+            }
+          ],
+          "answerRelations": [
+            "documentation"
+          ],
+          "topicLabels": [
+            "BWAPI documentation destinations"
+          ],
+          "answerBindings": [
+            {
+              "entityId": "starcraft:bwapi",
+              "relations": [
+                "documentation"
+              ],
+              "mention": "BWAPI"
+            },
+            {
+              "entityId": "starcraft:schnail",
+              "relations": [
+                "documentation"
+              ],
+              "mention": "SCHNAIL Documentation"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

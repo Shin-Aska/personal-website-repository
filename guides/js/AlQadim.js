@@ -1833,7 +1833,7 @@ function ensureGenieViews() {
                 atlas: window.ALQADIM_ATLAS_DATA || null });
             const getContext = () => {
                 const id = adapter.alqadimChapterId(currentGenieChapter);
-                return { contextId: id, entityIds: [id], tone: 'genie',
+                return { contextId: id, entityIds: [id], spoiler: 'direct', tone: 'genie',
                     label: DB.chapters.find(chapter => chapter.id === currentGenieChapter)?.title };
             };
             for (const surface of ['sidebar', 'tab']) {

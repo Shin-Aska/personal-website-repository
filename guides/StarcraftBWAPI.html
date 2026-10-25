@@ -763,13 +763,6 @@
                                         <option value="bwapi-loading">BWAPI Not Loading</option>
                                     </select>
                                 </label>
-                                <label>Help level
-                                    <select id="sc-assistant-spoiler" class="bg-black text-[#22ff99] border rounded p-1">
-                                        <option value="gentle">Nudge</option>
-                                        <option value="balanced">Hint</option>
-                                        <option value="direct">Full answer</option>
-                                    </select>
-                                </label>
                                 <label>Tone
                                     <select id="sc-assistant-tone" class="bg-black text-[#22ff99] border rounded p-1">
                                         <option value="plain">Plain</option>
@@ -867,7 +860,7 @@
         // These listeners exist before module/JSON preparation. An old send
         // cannot consume replacement text or a different topic after loading.
         scInput.addEventListener('input', () => { scInteractionRevision++; });
-        ['sc-assistant-topic', 'sc-assistant-spoiler', 'sc-assistant-tone'].forEach(id => {
+        ['sc-assistant-topic', 'sc-assistant-tone'].forEach(id => {
             document.getElementById(id).addEventListener('change', () => { scInteractionRevision++; });
         });
         document.querySelectorAll('#main-nav .nav-link').forEach(link => {

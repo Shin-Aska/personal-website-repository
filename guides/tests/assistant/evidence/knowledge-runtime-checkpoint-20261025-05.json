@@ -1,0 +1,189 @@
+{
+  "schemaVersion": 1,
+  "kind": "structured-knowledge-runtime-checkpoint",
+  "checkedAt": "2026-10-24T21:22:22.665319+00:00",
+  "goalStatus": "active",
+  "acceptance": "incomplete",
+  "ownerConstraint": "No model updates, replacements, new models, training or downloads. Existing production model/head unchanged. Continue deterministic chat/source-data work only.",
+  "supersedes": "knowledge-runtime-checkpoint-20261025-04.json",
+  "dataCoverageReport": "guides/tests/assistant/evidence/knowledge-data-coverage-20261025-06.json",
+  "data": {
+    "facts": 674,
+    "links": 334,
+    "sourceContexts": 11,
+    "compilerIssues": 0
+  },
+  "contracts": {
+    "passed": 1623,
+    "total": 1623,
+    "scope": "All recursively discovered assistant *.test.mjs; original frozen conversation oracles unchanged.",
+    "log": "/tmp/knowledge-contracts-20261025-21.log"
+  },
+  "legacyEnglish": {
+    "report": "guides/tests/assistant/intent-prototype/results/english-source-preambles-20261025-01.json",
+    "passed": 1058,
+    "total": 1058
+  },
+  "originalRegression": {
+    "report": "guides/tests/assistant/intent-prototype/results/original-source-preambles-20261025-01.json",
+    "passed": 203,
+    "total": 203,
+    "qualification": "Tracked results.json restored byte for byte."
+  },
+  "citationVerifierUnitTests": 4,
+  "offlineManifestUnitTests": 4,
+  "developmentReplay": {
+    "report": "guides/tests/assistant/intent-prototype/results/knowledge-corpus-replay-source-preambles-20261025-02/report.json",
+    "total": 851,
+    "passed": 752,
+    "failed": 99,
+    "incomplete": 0,
+    "sourceStable": true,
+    "missingQueryCount": 0,
+    "negativeBoundaries": [
+      175,
+      175
+    ],
+    "comparisonWithPreviousCheckpoint": "752/851 versus750/851: Hatred and Cowardice use requests now return timing instead of acquisition routes. The two older Trinsic provenance expectations remain failures; no frozen oracle edits.",
+    "sourceCorrectionFailures": [
+      {
+        "game": "ultima7",
+        "text": "How do I investigate the Trinsic crime scene?",
+        "reason": "Old oracle expects DB.mainQuest[0]; answer cites exact DB.mainQuest[0].content."
+      },
+      {
+        "game": "ultima7",
+        "text": "How do I get the Trinsic exit password?",
+        "reason": "Old oracle expects adapter-summary record provenance; answer now quotes and cites the full original Finnigan quiz/password witness."
+      }
+    ]
+  },
+  "nativeObserved96": {
+    "report": "guides/tests/assistant/evidence/knowledge-blind-browser-native-30.json",
+    "sha256": "c997a2f4dff5eb943ee17057c3ab242ff05d2bf7e2a3548d97c033529dea6196",
+    "passed": 82,
+    "total": 96,
+    "negativeBoundaries": [
+      22,
+      22
+    ],
+    "boundaries": {
+      "allTurnsRan": true,
+      "nativeMiniLMEverySurface": true,
+      "storageUnchanged": true,
+      "noSavedGameWrites": true,
+      "noExternalRequests": true,
+      "noPageErrors": true,
+      "onlyStaticGets": true,
+      "sourceStable": true,
+      "serverClosed": true
+    },
+    "allWatchedSourceHashesStillCurrent": true
+  },
+  "nativeObserved76": {
+    "report": "guides/tests/assistant/evidence/knowledge-blind-browser-fresh-20261025-19.json",
+    "sha256": "86e51bfe6fdb608857f64dc94d5149a34fd8995f67dfba30473099ae55dde908",
+    "passed": 43,
+    "total": 76,
+    "negativeBoundaries": [
+      19,
+      19
+    ],
+    "boundaries": {
+      "allTurnsRan": true,
+      "nativeMiniLMEverySurface": true,
+      "storageUnchanged": true,
+      "noSavedGameWrites": true,
+      "noExternalRequests": true,
+      "noPageErrors": true,
+      "onlyStaticGets": true,
+      "sourceStable": true,
+      "serverClosed": true
+    },
+    "allWatchedSourceHashesStillCurrent": true
+  },
+  "nativeIndependent48NowObserved": {
+    "report": "guides/tests/assistant/evidence/knowledge-blind-browser-independent-all-20261025-10.json",
+    "sha256": "b4abeaf03c3591c5b7c2db1e4115aa777315df15d4177ea5cf429343b3ba551e",
+    "passed": 43,
+    "total": 48,
+    "negativeBoundaries": [
+      12,
+      12
+    ],
+    "boundaries": {
+      "allTurnsRan": true,
+      "nativeMiniLMEverySurface": true,
+      "storageUnchanged": true,
+      "noSavedGameWrites": true,
+      "noExternalRequests": true,
+      "noPageErrors": true,
+      "onlyStaticGets": true,
+      "sourceStable": true,
+      "serverClosed": true
+    },
+    "allWatchedSourceHashesStillCurrent": true
+  },
+  "independentFirstExecutionReview": {
+    "report": "guides/tests/assistant/evidence/knowledge-independent-adjudication-20261025.json",
+    "firstStrictPassed": 18,
+    "total": 48,
+    "completeSupportedPositiveClaims": 10,
+    "positiveTurns": 36,
+    "firstNegativeBoundaries": [
+      10,
+      12
+    ],
+    "qualification": "First individual executions, before the measurement fix. Two independently authored source-first suites were concatenated without changing any dialogue oracle. They are now observed regression cases. The post-fix20/48 contains all12 boundary successes; it is not20 complete positive answers."
+  },
+  "citationVerifierQualification": "The exact compound-locator parser correction contributes1 verifier-only pass on stored native-18 replies, with zero changed runtime answers. See knowledge-compound-citation-audit-20261025.json. No parent/child citation equivalence or oracle edits were introduced.",
+  "productionModelFilesUnchanged": {
+    "guides/local-assistant/profile.json": "7fcde9d4b3d8842dc2345159687e845e023ce9049c92deab6d99d494e6ba813d",
+    "guides/local-assistant/intent/profile.json": "786a95a078fcc940f95539837883405257f1a3a896637bb71b8b477be680639e",
+    "guides/local-assistant/intent/head.json": "979c196a92df490124802e61fcc5fad787fc535ee69ff0eae64784355a8f6bfb"
+  },
+  "offline": {
+    "assets": 824,
+    "allHashesMatch": true,
+    "versionMatches": true,
+    "experimentalAssetsExcluded": true,
+    "newSharedModulesIncluded": true,
+    "version": "53a5499395d8c537d77e2cb22a3d503508ec46bcc95da1a6a04793ac3a41d14f"
+  },
+  "publication": {
+    "ftpUploaded": false,
+    "committed": false,
+    "pushed": false
+  },
+  "remainingWork": "Full six-game acceptance remains incomplete. Four source-answerable turns in the reviewed48 remain incomplete: Trinsic leave/password compound, Academy deferred exit, hold barrels/potions, Khunag recruitment/dialogue. Broader native96 retains14 failures, fresh76 retains33, replay851 retains99 strict failures (including known provenance mismatches). Prioritize observed wrong-phase answers such as Swamp Cave preparation and Black Sword forging, directed roles, literal comparisons before consultation and complete source-present compounds. Keep objective-only limitations and all source/edition/material/quantity/state guards. No model updates/downloads/installations or publication.",
+  "previousGoalTurnClassification": "progress",
+  "completeUsefulClaimReview": {
+    "report": "guides/tests/assistant/evidence/knowledge-independent-adjudication-20261025-04.json",
+    "turns": 48,
+    "strictPassed": 43,
+    "positiveTurns": 36,
+    "completeSupportedPositiveClaims": 32,
+    "completeSupportedPositiveClaimsExcludingQualifiedAlternative": 31,
+    "qualifiedAlternativePositiveClaims": 1,
+    "withheldOrIncompletePositiveClaims": 4,
+    "wrongSubjectOrFieldPositiveClaims": 0,
+    "boundaryTurns": 12,
+    "boundariesHeld": 12,
+    "qualification": "Observed regression only.32/36 includes the previously qualified literal Ariana helper operational equivalent (31/36 excluding it); strict43/48 includes12 boundaries. Four source-answerable positives remain incomplete. No wrong-subject/field positive was found in this limited48-turn review; broader known wrong-phase defects remain."
+  },
+  "embeddingReuseUnitTests": 3,
+  "sourceIndexRefresh": {
+    "modelChanged": false,
+    "factDocumentVectorsEncoded": 0,
+    "factDocumentsUnchanged": 674,
+    "metadataRefreshOnly": true,
+    "newIgnoredExactQueryVectors": 1,
+    "totalCachedQueryVectors": 986,
+    "pinnedExistingEncoderOnly": true,
+    "modelDownloads": 0,
+    "installations": 0,
+    "log": "/tmp/knowledge-query-cache-source-preambles-01.log"
+  },
+  "implementationNote": "docs/assistant-knowledge/source-preambles-20261025.md",
+  "currentGoalTurnClassification": "progress"
+}

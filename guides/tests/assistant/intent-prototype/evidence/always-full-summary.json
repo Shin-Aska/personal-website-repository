@@ -1,0 +1,913 @@
+{
+  "schema": 1,
+  "checkedAt": "2026-10-24T05:09:54.156Z",
+  "feature": "Always-full public chat; internal source-tier fixtures retained",
+  "scope": [
+    "ultima7",
+    "starcraft"
+  ],
+  "chatAnswerMode": "direct",
+  "lowerTierChecks": "Internal source-authorization fixtures only; there is no user-facing answer-level control.",
+  "rawReport": "guides/tests/assistant/intent-prototype/results/always-full-complete-20261024.json",
+  "rawReportSha256": "f4cf2c6662f576464e34f8c78f9ddf144ac2d69d143f233dd3e2a2328ebcf874",
+  "realModelInference": true,
+  "model": {
+    "modelId": "Xenova/all-MiniLM-L6-v2",
+    "revision": "751bff37182d3f1213fa05d7196b954e230abad9",
+    "modelBytes": 23916680,
+    "sharedRuntimeBytes": 22528676,
+    "dimensions": 384,
+    "prepareMs": 2629.2999999988824,
+    "realModelInference": true,
+    "encoderFineTuned": false,
+    "remoteModelsAllowed": false,
+    "wasmThreads": 1
+  },
+  "controlChecks": {
+    "passed": 17,
+    "total": 17,
+    "checks": [
+      {
+        "name": "reset: stale ask rejects with AbortError",
+        "passed": true,
+        "details": {
+          "settled": true,
+          "rejected": true,
+          "name": "AbortError",
+          "message": "Discarded an interpretation after the topic or settings changed."
+        }
+      },
+      {
+        "name": "reset: both histories remain empty",
+        "passed": true,
+        "details": {
+          "original": 0,
+          "proposed": 0
+        }
+      },
+      {
+        "name": "reset: no reply card resurrects",
+        "passed": true,
+        "details": {
+          "turns": 0
+        }
+      },
+      {
+        "name": "single answer mode: no answer-level selector or radio appears",
+        "passed": true,
+        "details": {
+          "unexpectedControls": []
+        }
+      },
+      {
+        "name": "single answer mode: no public help-level mutation API remains",
+        "passed": true,
+        "details": {
+          "exposed": false
+        }
+      },
+      {
+        "name": "single answer mode: an actual UI request answers despite legacy lower preferences",
+        "passed": true,
+        "details": {
+          "cardsAdded": 1,
+          "rendered": "Iolo: Fighter (Bard). Focus: Balanced archer. Joins automatically at the start. Party Builder choices are a plan, not evidence that this companion is currently in your party.Source: existing guide. guides/js/Ultima7.js \u2014 DB.companions[0]"
+        }
+      },
+      {
+        "name": "single answer mode: UI requests keep both engines and interpreter at direct",
+        "passed": true,
+        "details": {
+          "original": "direct",
+          "proposed": "direct",
+          "interpreter": "direct",
+          "legacyValue": "gentle"
+        }
+      },
+      {
+        "name": "single answer mode: legacy test preferences leave no controls behind",
+        "passed": true,
+        "details": {
+          "unexpectedControls": 0
+        }
+      },
+      {
+        "name": "game selection: stale ask rejects with AbortError",
+        "passed": true,
+        "details": {
+          "settled": true,
+          "rejected": true,
+          "name": "AbortError",
+          "message": "Discarded an interpretation after the topic or settings changed."
+        }
+      },
+      {
+        "name": "game selection: selector matches the active StarCraft session",
+        "passed": true,
+        "details": {
+          "selected": "starcraft",
+          "active": "starcraft",
+          "selectionWaitMs": 17.100000001490116
+        }
+      },
+      {
+        "name": "game selection: both new histories remain empty",
+        "passed": true,
+        "details": {
+          "original": 0,
+          "proposed": 0
+        }
+      },
+      {
+        "name": "game selection: no old reply card resurrects",
+        "passed": true,
+        "details": {
+          "turns": 0
+        }
+      },
+      {
+        "name": "subject isolation: initial Iolo request establishes a sourced answer",
+        "passed": true,
+        "details": {
+          "status": "ready",
+          "modelIntent": "identity",
+          "routeOrigin": "model",
+          "entity": "Iolo",
+          "decision": "answer",
+          "recordIds": [
+            "ultima7:companion:iolo:explanation"
+          ],
+          "submittedToEngine": "Who is Iolo?",
+          "text": "Iolo: Fighter (Bard). Focus: Balanced archer. Joins automatically at the start. Party Builder choices are a plan, not evidence that this companion is currently in your party."
+        }
+      },
+      {
+        "name": "subject isolation: misspelled Duprae remains nonfactual pending clarification",
+        "passed": true,
+        "details": {
+          "status": "clarify",
+          "modelIntent": "identity",
+          "routeOrigin": "model",
+          "entity": null,
+          "decision": "clarify",
+          "recordIds": [],
+          "submittedToEngine": null,
+          "text": "Did you mean Dupre?"
+        }
+      },
+      {
+        "name": "subject isolation: unresolved pronoun cannot produce a factual answer",
+        "passed": true,
+        "details": {
+          "status": "clarify",
+          "modelIntent": "location",
+          "routeOrigin": "model",
+          "entity": null,
+          "decision": "clarify",
+          "recordIds": [],
+          "submittedToEngine": "Where is he?",
+          "text": "Which guide objective or named subject do you mean? Open its guide section or name it."
+        }
+      },
+      {
+        "name": "subject isolation: unresolved pronoun cannot reuse any Iolo record",
+        "passed": true,
+        "details": {
+          "status": "clarify",
+          "modelIntent": "location",
+          "routeOrigin": "model",
+          "entity": null,
+          "decision": "clarify",
+          "recordIds": [],
+          "submittedToEngine": "Where is he?",
+          "text": "Which guide objective or named subject do you mean? Open its guide section or name it."
+        }
+      },
+      {
+        "name": "subject isolation: an accepted explicit Dupre request restores its sourced answer",
+        "passed": true,
+        "details": {
+          "status": "ready",
+          "modelIntent": "identity",
+          "routeOrigin": "model",
+          "entity": "Dupre",
+          "decision": "answer",
+          "recordIds": [
+            "ultima7:companion:dupre:explanation"
+          ],
+          "submittedToEngine": "Who is Dupre?",
+          "text": "Dupre: Fighter (Paladin). Focus: Front-line anchor. The best front-line tank with the highest starting Strength. Party Builder choices are a plan, not evidence that this companion is currently in your party.",
+          "acceptedByRealModelRoute": true,
+          "condition": "Recovery answer is required when the real-model interpreter accepts the explicit request; this check does not manufacture a label."
+        }
+      }
+    ]
+  },
+  "consultationChecks": {
+    "passed": 23,
+    "total": 23,
+    "failures": []
+  },
+  "actualUiSends": [
+    {
+      "gameId": "ultima7",
+      "text": "Who is Iolo?",
+      "rendered": "Iolo: Fighter (Bard). Focus: Balanced archer. Joins automatically at the start. Party Builder choices are a plan, not evidence that this companion is currently in your party.\n\nSource: existing guide. guides/js/Ultima7.js \u2014 DB.companions[0]\n",
+      "links": []
+    },
+    {
+      "gameId": "ultima7",
+      "text": "where is he?",
+      "rendered": "The guide lists Iolo at Trinsic. This is a guide location, not a report of their current position.\n\nSource: existing guide. guides/js/Ultima7.js \u2014 DB.companions[0].location\n",
+      "links": []
+    },
+    {
+      "gameId": "ultima7",
+      "text": "stats",
+      "rendered": "Iolo: Strength 18, Dexterity 19, Intelligence 20, Combat 19. Tags: ranged.\n\nSource: existing guide. guides/js/Ultima7.js \u2014 DB.companions[0].str/dex/int/com\n",
+      "links": []
+    },
+    {
+      "gameId": "starcraft",
+      "text": "what is schnail",
+      "rendered": "SCHNAIL (Starcraft Human and AI League) is a client for playing Brood War AI opponents.\n\nSource: existing guide. guides/StarcraftBWAPI.html \u2014 #schnail-setup ul\nSource: existing guide. guides/tests/assistant/intent-prototype/source-responses.mjs \u2014 PROTOTYPE_DEFINITIONS[0].variants.direct\n",
+      "links": []
+    },
+    {
+      "gameId": "starcraft",
+      "text": "download link",
+      "rendered": "Download SCHNAIL: https://www.schnail.com/#/downloads\nAccount required.\n\ntheir downloads page\nSource: existing guide. guides/StarcraftBWAPI.html \u2014 #schnail-requirements li:nth-child(2)\n",
+      "links": [
+        "https://www.schnail.com/#/downloads"
+      ]
+    }
+  ],
+  "consultationUiSmoke": {
+    "question": "I am playing StarCraft Remastered. Which one is the best, do you think?",
+    "answer": "For staying in StarCraft Remastered, I would choose Remastered SCM Map, based on this guide.\n\nThe guide says the Remastered method works natively, without version downgrades.\n\nIn Remastered, use the integrated map through a Custom Game and select Use Map Settings.\n\nThe guide rates the Remastered map as the simplest setup, limited to its own maps.\n\nIf you instead prioritize more realistic AI, consider SCHNAIL.\n\nSCHNAIL is the guide's client-based option for playing advanced Brood War opponents.\n\nThe client includes its own version of Brood War, so the game is not installed separately.\n\nThe guide rates SCHNAIL as the most realistic option; its drawback is an internet login.\n\nSources from this guide (8 passages)",
+    "followup": "download link",
+    "followupUrls": [
+      "https://drive.proton.me/urls/55AMBJ5FN4#BB7pM4E3tZeE",
+      "https://www.richardorilla.website/files/bwapiscr.zip"
+    ]
+  },
+  "unitChecks": {
+    "passed": 53,
+    "total": 53,
+    "command": "node --test guides/tests/assistant/intent-prototype/*.test.mjs"
+  },
+  "broaderConversationLimits": {
+    "independentIntent": {
+      "thresholds": {
+        "minScore": 0,
+        "minMargin": 0,
+        "abstainAll": false
+      },
+      "metrics": {
+        "total": 48,
+        "correct": 40,
+        "accuracy": 0.8333333333333334,
+        "accepted": 48,
+        "acceptedCorrect": 40,
+        "acceptedAccuracy": 0.8333333333333334,
+        "coverage": 1,
+        "abstained": 0
+      },
+      "confusions": [
+        {
+          "expected": "identity",
+          "predicted": "identity",
+          "count": 6
+        },
+        {
+          "expected": "location",
+          "predicted": "location",
+          "count": 3
+        },
+        {
+          "expected": "acquisition",
+          "predicted": "use",
+          "count": 1
+        },
+        {
+          "expected": "acquisition",
+          "predicted": "acquisition",
+          "count": 3
+        },
+        {
+          "expected": "use",
+          "predicted": "use",
+          "count": 4
+        },
+        {
+          "expected": "stats",
+          "predicted": "stats",
+          "count": 4
+        },
+        {
+          "expected": "combat",
+          "predicted": "combat",
+          "count": 3
+        },
+        {
+          "expected": "prerequisites",
+          "predicted": "prerequisites",
+          "count": 5
+        },
+        {
+          "expected": "hint",
+          "predicted": "overview",
+          "count": 1
+        },
+        {
+          "expected": "hint",
+          "predicted": "hint",
+          "count": 3
+        },
+        {
+          "expected": "why",
+          "predicted": "why",
+          "count": 4
+        },
+        {
+          "expected": "comparison",
+          "predicted": "combat",
+          "count": 1
+        },
+        {
+          "expected": "overview",
+          "predicted": "overview",
+          "count": 2
+        },
+        {
+          "expected": "unknown",
+          "predicted": "unknown",
+          "count": 2
+        },
+        {
+          "expected": "location",
+          "predicted": "acquisition",
+          "count": 1
+        },
+        {
+          "expected": "location",
+          "predicted": "overview",
+          "count": 1
+        },
+        {
+          "expected": "use",
+          "predicted": "acquisition",
+          "count": 3
+        },
+        {
+          "expected": "comparison",
+          "predicted": "comparison",
+          "count": 1
+        }
+      ],
+      "perCase": [
+        {
+          "id": "u7-id-royal",
+          "text": "Can you explain who Lord British actually is?",
+          "expected": "identity",
+          "predicted": "identity",
+          "score": 0.2428653148701646,
+          "margin": 0.11922933384690151,
+          "accepted": true,
+          "correct": true
+        },
+        {
+          "id": "u7-id-timejoined",
+          "text": "Who is this timelord people mention?",
+          "expected": "identity",
+          "predicted": "identity",
+          "score": 0.5509217063021208,
+          "margin": 0.48143188920235935,
+          "accepted": true,
+          "correct": true
+        },
+        {
+          "id": "u7-id-timespaced",
+          "text": "What sort of person is the time lord?",
+          "expected": "identity",
+          "predicted": "identity",
+          "score": 0.46189445489633996,
+          "margin": 0.3808596067052457,
+          "accepted": true,
+          "correct": true
+        },
+        {
+          "id": "u7-id-hostile",
+          "text": "Identify the Guardian for me, please.",
+          "expected": "identity",
+          "predicted": "identity",
+          "score": 0.18016861067810663,
+          "margin": 0.037924333371244706,
+          "accepted": true,
+          "correct": true
+        },
+        {
+          "id": "u7-location-archer",
+          "text": "In what town can I meet Iolo?",
+          "expected": "location",
+          "predicted": "location",
+          "score": 0.31216455850227254,
+          "margin": 0.17825794762354427,
+          "accepted": true,
+          "correct": true
+        },
+        {
+          "id": "u7-location-ranger",
+          "text": "Point me to Shamino's current location.",
+          "expected": "location",
+          "predicted": "location",
+          "score": 0.3434532460340787,
+          "margin": 0.2026941295640276,
+          "accepted": true,
+          "correct": true
+        },
+        {
+          "id": "u7-acquire-spark",
+          "text": "What is the way to get Spark into my party?",
+          "expected": "acquisition",
+          "predicted": "use",
+          "score": 0.15612173019112402,
+          "margin": 0.02069981793635081,
+          "accepted": true,
+          "correct": false
+        },
+        {
+          "id": "u7-acquire-hammer",
+          "text": "How can I obtain the Juggernaut Hammer?",
+          "expected": "acquisition",
+          "predicted": "acquisition",
+          "score": 0.3746624469493434,
+          "margin": 0.2730053485519146,
+          "accepted": true,
+          "correct": true
+        },
+        {
+          "id": "u7-use-seance",
+          "text": "How am I meant to use Seance in the investigation?",
+          "expected": "use",
+          "predicted": "use",
+          "score": 0.13700782353409235,
+          "margin": 0.0264523710955325,
+          "accepted": true,
+          "correct": true
+        },
+        {
+          "id": "u7-use-wand",
+          "text": "Explain the procedure for using Rudyom's Wand at the Black Gate.",
+          "expected": "use",
+          "predicted": "use",
+          "score": 0.264722644681992,
+          "margin": 0.16161814544598752,
+          "accepted": true,
+          "correct": true
+        },
+        {
+          "id": "u7-stats-shamino",
+          "text": "Give me Shamino's dexterity and intelligence numbers.",
+          "expected": "stats",
+          "predicted": "stats",
+          "score": 0.40943548884543907,
+          "margin": 0.2859116840845095,
+          "accepted": true,
+          "correct": true
+        },
+        {
+          "id": "u7-stats-dupre",
+          "text": "What starting Strength score is listed for Dupre?",
+          "expected": "stats",
+          "predicted": "stats",
+          "score": 0.7900224629261536,
+          "margin": 0.7484102743469502,
+          "accepted": true,
+          "correct": true
+        },
+        {
+          "id": "u7-combat-dragon",
+          "text": "How should I handle Dracothraxus in a fight?",
+          "expected": "combat",
+          "predicted": "combat",
+          "score": 0.5015895784971475,
+          "margin": 0.414439926531467,
+          "accepted": true,
+          "correct": true
+        },
+        {
+          "id": "u7-combat-lich",
+          "text": "What battle tactic works against the Liches?",
+          "expected": "combat",
+          "predicted": "combat",
+          "score": 0.765755803352092,
+          "margin": 0.725500176437288,
+          "accepted": true,
+          "correct": true
+        },
+        {
+          "id": "u7-prereq-sentri",
+          "text": "Is there a party-size condition before Sentri will join?",
+          "expected": "prerequisites",
+          "predicted": "prerequisites",
+          "score": 0.20749104865826293,
+          "margin": 0.0668609509307383,
+          "accepted": true,
+          "correct": true
+        },
+        {
+          "id": "u7-prereq-graph",
+          "text": "Which quests must be finished before I can start Destroying the Guardian's Generators?",
+          "expected": "prerequisites",
+          "predicted": "prerequisites",
+          "score": 0.1707409266112167,
+          "margin": 0.03028614857992251,
+          "accepted": true,
+          "correct": true
+        },
+        {
+          "id": "u7-hint-training",
+          "text": "I need a nudge on improving the party through training.",
+          "expected": "hint",
+          "predicted": "overview",
+          "score": 0.21287801051561245,
+          "margin": 0.05468732269063831,
+          "accepted": true,
+          "correct": false
+        },
+        {
+          "id": "u7-hint-murders",
+          "text": "Offer a small clue for investigating the Trinsic Murders without revealing the solution.",
+          "expected": "hint",
+          "predicted": "hint",
+          "score": 0.24507197931976027,
+          "margin": 0.11672482839367393,
+          "accepted": true,
+          "correct": true
+        },
+        {
+          "id": "u7-why-guardian",
+          "text": "For what reason does the Guardian want to enter Britannia?",
+          "expected": "why",
+          "predicted": "why",
+          "score": 0.2667647853447499,
+          "margin": 0.15650932500653364,
+          "accepted": true,
+          "correct": true
+        },
+        {
+          "id": "u7-why-false",
+          "text": "Why did Lord British murder Shamino?",
+          "expected": "why",
+          "predicted": "why",
+          "score": 0.23196928845147674,
+          "margin": 0.07372129440183223,
+          "accepted": true,
+          "correct": true
+        },
+        {
+          "id": "u7-compare-party",
+          "text": "Weigh Iolo against Dupre as a party member.",
+          "expected": "comparison",
+          "predicted": "combat",
+          "score": 0.16390799586361587,
+          "margin": 0.030055747967895063,
+          "accepted": true,
+          "correct": false
+        },
+        {
+          "id": "u7-overview-trinsic",
+          "text": "Give me a compact outline of the Trinsic Murders quest.",
+          "expected": "overview",
+          "predicted": "overview",
+          "score": 0.42593526490203887,
+          "margin": 0.3256682172625973,
+          "accepted": true,
+          "correct": true
+        },
+        {
+          "id": "u7-unknown-subject",
+          "text": "Where can I find Captain Plumeria?",
+          "expected": "location",
+          "predicted": "location",
+          "score": 0.25607728199032215,
+          "margin": 0.00692084190571185,
+          "accepted": true,
+          "correct": true
+        },
+        {
+          "id": "u7-unknown-chat",
+          "text": "Please write a weather forecast for Manila.",
+          "expected": "unknown",
+          "predicted": "unknown",
+          "score": 0.19536402701892563,
+          "margin": 0.0830065406686439,
+          "accepted": true,
+          "correct": true
+        },
+        {
+          "id": "sc-id-library",
+          "text": "Explain what BWAPI actually refers to.",
+          "expected": "identity",
+          "predicted": "identity",
+          "score": 0.22913531817225338,
+          "margin": 0.09412312832554534,
+          "accepted": true,
+          "correct": true
+        },
+        {
+          "id": "sc-id-client",
+          "text": "What kind of application is SCHNAIL?",
+          "expected": "identity",
+          "predicted": "identity",
+          "score": 0.24196763780834774,
+          "margin": 0.13478630492936558,
+          "accepted": true,
+          "correct": true
+        },
+        {
+          "id": "sc-location-launcher",
+          "text": "Which site is the BWAILauncher download linked from?",
+          "expected": "location",
+          "predicted": "acquisition",
+          "score": 0.34584075651757756,
+          "margin": 0.12188149177905222,
+          "accepted": true,
+          "correct": false
+        },
+        {
+          "id": "sc-location-docs",
+          "text": "Point me to the guide's documentation links section.",
+          "expected": "location",
+          "predicted": "overview",
+          "score": 0.27891997366076227,
+          "margin": 0.06555388004873028,
+          "accepted": true,
+          "correct": false
+        },
+        {
+          "id": "sc-acquire-client",
+          "text": "What steps get me a copy of SCHNAIL?",
+          "expected": "acquisition",
+          "predicted": "acquisition",
+          "score": 0.41077918105126016,
+          "margin": 0.283762385244135,
+          "accepted": true,
+          "correct": true
+        },
+        {
+          "id": "sc-acquire-map",
+          "text": "How can I obtain the Remastered SCM Map archive?",
+          "expected": "acquisition",
+          "predicted": "acquisition",
+          "score": 0.3373147936657028,
+          "margin": 0.0879207192667176,
+          "accepted": true,
+          "correct": true
+        },
+        {
+          "id": "sc-use-client",
+          "text": "Take me through setting up SCHNAIL after I have downloaded it.",
+          "expected": "use",
+          "predicted": "acquisition",
+          "score": 0.20857858981547905,
+          "margin": 0.03437144928800742,
+          "accepted": true,
+          "correct": false
+        },
+        {
+          "id": "sc-use-launcher",
+          "text": "Walk me through BWAILauncher installation for Brood War 1.16.1.",
+          "expected": "use",
+          "predicted": "acquisition",
+          "score": 0.2584325528828528,
+          "margin": 0.13547468768165216,
+          "accepted": true,
+          "correct": false
+        },
+        {
+          "id": "sc-use-map",
+          "text": "How is the integrated SCM map launched in Remastered?",
+          "expected": "use",
+          "predicted": "use",
+          "score": 0.26786390266244925,
+          "margin": 0.14107053634842634,
+          "accepted": true,
+          "correct": true
+        },
+        {
+          "id": "sc-stats-benchmark",
+          "text": "What exact win percentage does SCHNAIL achieve in tournaments?",
+          "expected": "stats",
+          "predicted": "stats",
+          "score": 0.3786492765279098,
+          "margin": 0.2687152071153789,
+          "accepted": true,
+          "correct": true
+        },
+        {
+          "id": "sc-stats-memory",
+          "text": "How many megabytes of RAM does BWAILauncher use?",
+          "expected": "stats",
+          "predicted": "stats",
+          "score": 0.3278574525926689,
+          "margin": 0.23148821552353016,
+          "accepted": true,
+          "correct": true
+        },
+        {
+          "id": "sc-combat-rush",
+          "text": "What opening army should counter a SCHNAIL rush?",
+          "expected": "combat",
+          "predicted": "combat",
+          "score": 0.548687470698844,
+          "margin": 0.4784715083521228,
+          "accepted": true,
+          "correct": true
+        },
+        {
+          "id": "sc-prereq-client",
+          "text": "Before setting up SCHNAIL, which dependencies must I have?",
+          "expected": "prerequisites",
+          "predicted": "prerequisites",
+          "score": 0.5271743455735945,
+          "margin": 0.4529450418310381,
+          "accepted": true,
+          "correct": true
+        },
+        {
+          "id": "sc-prereq-separate",
+          "text": "Am I required to install Brood War separately for SCHNAIL?",
+          "expected": "prerequisites",
+          "predicted": "prerequisites",
+          "score": 0.4326284835193562,
+          "margin": 0.3233325169170675,
+          "accepted": true,
+          "correct": true
+        },
+        {
+          "id": "sc-prereq-conflict",
+          "text": "Does BWAILauncher require 1.16.1 or can it run on Remastered?",
+          "expected": "prerequisites",
+          "predicted": "prerequisites",
+          "score": 0.33829197677400363,
+          "margin": 0.21978686027416353,
+          "accepted": true,
+          "correct": true
+        },
+        {
+          "id": "sc-hint-detection",
+          "text": "The BWAI Launcher cannot see Starcraft.exe; suggest a check.",
+          "expected": "hint",
+          "predicted": "hint",
+          "score": 0.45374210568848705,
+          "margin": 0.36279425633291124,
+          "accepted": true,
+          "correct": true
+        },
+        {
+          "id": "sc-hint-bwapi",
+          "text": "BWAPI fails to appear when the game starts; what can I check first?",
+          "expected": "hint",
+          "predicted": "hint",
+          "score": 0.35974657160324436,
+          "margin": 0.2368356518849722,
+          "accepted": true,
+          "correct": true
+        },
+        {
+          "id": "sc-why-slow",
+          "text": "How come SCHNAIL spends so long on the initial startup?",
+          "expected": "why",
+          "predicted": "why",
+          "score": 0.4124951410655507,
+          "margin": 0.32287604499995415,
+          "accepted": true,
+          "correct": true
+        },
+        {
+          "id": "sc-why-melee",
+          "text": "Why is the Remastered map opponent inactive when I choose Melee?",
+          "expected": "why",
+          "predicted": "why",
+          "score": 0.1833875031136681,
+          "margin": 0.01411799739984368,
+          "accepted": true,
+          "correct": true
+        },
+        {
+          "id": "sc-compare-options",
+          "text": "Contrast SCHNAIL with the BWAI launcher for offline use.",
+          "expected": "comparison",
+          "predicted": "comparison",
+          "score": 0.2509182199746057,
+          "margin": 0.12875954042781196,
+          "accepted": true,
+          "correct": true
+        },
+        {
+          "id": "sc-overview-resources",
+          "text": "Give me an overview of the example bot projects in this guide.",
+          "expected": "overview",
+          "predicted": "overview",
+          "score": 0.4215649789055131,
+          "margin": 0.3006615281887747,
+          "accepted": true,
+          "correct": true
+        },
+        {
+          "id": "sc-unknown-subject",
+          "text": "How do I install NovaBot Deluxe?",
+          "expected": "use",
+          "predicted": "acquisition",
+          "score": 0.3399375542531226,
+          "margin": 0.09999495156710853,
+          "accepted": true,
+          "correct": false
+        },
+        {
+          "id": "sc-unknown-reset",
+          "text": "Clear the conversation subject, please.",
+          "expected": "unknown",
+          "predicted": "unknown",
+          "score": 0.5330683176327883,
+          "margin": 0.45088373987704194,
+          "accepted": true,
+          "correct": true
+        },
+        {
+          "id": "sc-edition-outside",
+          "text": "How do I configure BWAILauncher for StarCraft II?",
+          "expected": "use",
+          "predicted": "use",
+          "score": 0.22407245120435965,
+          "margin": 0.04842161835008707,
+          "accepted": true,
+          "correct": true
+        }
+      ]
+    },
+    "followupPassed": 25,
+    "followupTotal": 65,
+    "caveat": "This answer-mode change does not establish general classifier or conversation readiness. The prototype remains isolated."
+  },
+  "boundaries": {
+    "sourceFilesUnchangedDuringRun": true,
+    "storageUnchanged": true,
+    "onlyStaticGets": true,
+    "blockedExternalRequests": [],
+    "pageErrors": [],
+    "consoleErrors": []
+  },
+  "sourceHashes": {
+    "guides/tests/assistant/intent-prototype/source-responses.test.mjs": "5197ff5360f41004593e4b42e547af9f93211c2c6bde5a154f1e9047bd3693a1",
+    "guides/tests/assistant/intent-prototype/interpreter.mjs": "9eb1163822c969d966eef0ea1cac48eb0e31f1f7080dc8c6b8188f9bf8c4b8ae",
+    "guides/tests/assistant/intent-prototype/consultation.mjs": "95634b4e0f1f6e3edaea4263bf10d857ae3f111dea99539dbec4c2bcffd81c56",
+    "guides/tests/assistant/intent-prototype/consultation.test.mjs": "e14a1bc6106ae2192dc9da32acdd69e189dcdc22db8aa5dbaadf9c5521c9701e",
+    "guides/tests/assistant/intent-prototype/classifier.mjs": "9e073c5227ea40a34d0c5e9914b73d3d1e83e7b4b9f55c2a1fb6c0a0be894162",
+    "guides/tests/assistant/intent-prototype/encoder.mjs": "23c10b180c23001ccdf6a47aac8a3292fab26ba627f483a74440446d9abd9e84",
+    "guides/tests/assistant/intent-prototype/source-responses.mjs": "900268d0dbd3cb7e5937a85d0dab9adf1c8587ed9e2b0abce2b9b931fd8f4ca4",
+    "guides/tests/assistant/intent-prototype/lab.mjs": "6cbe61000919f12c73fa79560621866a745c8d8efd257ab9dc962ec35ed9a88e",
+    "guides/tests/assistant/intent-prototype/classifier.test.mjs": "082e20ee6c2ba38554b9d4b555b6a166172fc00080ed272edc0e40df02dd8ef2",
+    "guides/tests/assistant/intent-prototype/interpreter.test.mjs": "4c39e1870890a6bfcc2fe7902a925b3a6a18924b07917f276753297f2972b11d",
+    "guides/tests/assistant/intent-prototype/embedding-worker.mjs": "74ae0604dff285175fa6c52db35d09f3b7eb6189397efc4ffbe8781cfccbb13f",
+    "guides/tests/assistant/intent-prototype/lab-browser-checks.mjs": "de19dbea46f78e09f3f48450a2995832ccc3857fcc8b71fa93ce1bbb2bb12cc0",
+    "guides/tests/assistant/intent-prototype/export-ultima7-records.mjs": "689844135a0ed8a2ace257b9e95b71621a354fd0c73bc314c348132405b178c1",
+    "guides/tests/assistant/intent-prototype/consultation-focus.test.mjs": "5a347e2aa88476bfe8814bdcef7427f5ad54212cfa05583363fbafbcac44fcd0",
+    "guides/tests/assistant/intent-prototype/consultation-catalog.json": "866a4a54cd660f496d3f993fe47372499806232a0d5717e86ec12c4ddf6a398b",
+    "guides/tests/assistant/intent-prototype/cases/validation-v2.json": "e54d90a131fd9e1f36bd8467c377425bf0790bf63e392b95d0f3f7b5afc482f7",
+    "guides/tests/assistant/intent-prototype/cases/training-v2.json": "7b6de20db5751ea0d21dcfcacbe6dba1fdf787586a8e6f1af3a5e06ad618b6c8",
+    "guides/tests/assistant/intent-prototype/cases/validation.json": "0a88fd1626fb273deb40e3b7f209a950b2e2944f2b1657d552d0c8f7bb2228b7",
+    "guides/tests/assistant/intent-prototype/cases/followup-evaluation.json": "877827a32d23b0cd1cf0b20a6be30b9b42ab2174a32c453f2c183b833c5938c3",
+    "guides/tests/assistant/intent-prototype/cases/consultation-evaluation.json": "b469035ec8247e972a04b034a6a2be2b63de4bfd09e1f5adccacd0612f6920bb",
+    "guides/tests/assistant/intent-prototype/cases/evaluation.json": "e7612087c82234a809011485110d9ee750a0c7a38f3027951b176df7a7c4df7f",
+    "guides/tests/assistant/intent-prototype/cases/training.json": "473f263180478f6bb509594a0fa25e4db375393776d9f45f2204045314a1d648",
+    "guides/tests/assistant/intent-prototype/index.html": "f5ce3196e06e3b65e0ed9722e7c3072e0e3f08ca055c21cdd22be21458ce5aa6",
+    "guides/tests/assistant/intent-prototype/run-browser.py": "cb202c725ebb0423973dba7795c5d315411b7b8023edf7069a769fa500e18243",
+    "guides/js/assistant/ui.js": "a36914679307aa0e5436bd2a26fad7691c41c47875d58ca48a893b62e12f1762",
+    "guides/js/assistant/rules.js": "3c2edda7907d22a78d022abd9e1fded1ad70103056129325f44d2cc8be78ef74",
+    "guides/js/assistant/engine.js": "5b6b708fabdbbb34adacaaec9b986d3fbb4fcf7227e464d513e2cce6163d90a5",
+    "guides/js/assistant/retrieval.js": "d40e3d699e419ccee015abbdfe1b901816629af3d0ded9d52f082476b906c7f3",
+    "guides/js/assistant/bootstrap.js": "36507c252a2cb1c74a56ce094f9dbf61221c813ff799a733d114bfc09acac51b",
+    "guides/js/assistant/fallback-guard.js": "8ac7766576c0fa39a9f8eb1d8130687f5dec2d93ed3793b1ab32a416502eb4dc",
+    "guides/js/assistant/consent.js": "f586ad8ab8fb34cf1e08f71115077f87c8df2ce146bf5a0cfb90b5f9712d5dee",
+    "guides/js/assistant/language.js": "f615ac045c6fae7e5ffea26f852c0c50b9985bd43a432d736c0c7948ebbb9e7e",
+    "guides/js/assistant/topics.js": "cae60c918f936d1429713f076420e32c1fc72a89d371b47f7b1958b81e852d39",
+    "guides/js/assistant/frame-tokens.js": "9f225b8d13b2082f45af7f1ec7ca5b56900733383537123d7dab05baa95f511b",
+    "guides/js/assistant/policy.js": "df44eea0b5eec7dae01deb0ab4c179873cb5f271ae1a3d87ed89a630cb87aec3",
+    "guides/js/assistant/model-runtime.js": "c6331135f75b3ab5f094e6b7020567b19f2b22286105dc51eba190917e98fdd1",
+    "guides/js/assistant/model-worker.js": "5f490d60ae8b991ae64d523d16c683d11a8995283353cfb534f0d3529ce0d6fc",
+    "guides/js/assistant/model-download.js": "1a9f1be1319d9219507a140e4eae6ad6ea2cbb348b19771c7261d1a52432a6a1",
+    "guides/js/assistant/fallback-context.js": "73c2638570035a73683cdd83b2eac5133d577892aef3613539ebb80c0481cb73",
+    "guides/js/assistant/adapters/ultima6.js": "761e8fd994e277a81e679c00d64458dabf7cbdba9dfe08286066f52d4dfa9c86",
+    "guides/js/assistant/adapters/ultima5.js": "c629bcd97dc4fab79f7b70e054de1e910434120ce0bb21e0fe8086200b4d2cdf",
+    "guides/js/assistant/adapters/ultima7.js": "cc0474d4a9571dbcce7349b91e144a79d0217c9fb1b9e2bf995e71a092dd7389",
+    "guides/js/assistant/adapters/starcraft.js": "dd0cc14b3ca145cd13ed7870dbc420bd1dea378f474221ab57ebc5b6e6e4b20a",
+    "guides/js/assistant/adapters/albion.js": "2bc964d229c805afa38f85fcbd4322c9df43e09008de5d7de5d517fcd047c0be",
+    "guides/js/assistant/adapters/alqadim.js": "547e5694e3982a2d058a82f2a0e111c128748c22b6d5275a7588cf85b193c7c9",
+    "guides/StarcraftBWAPI.html": "f43b3fcfbffddaadf2b4bf951b16652a9d1133d726b7efe06357f9a7cb925983",
+    "guides/Ultima7.html": "ac54ffb4cc021316003037f5a04cc66bf44db038c28ef980710d05de09b18dac",
+    "guides/tests/assistant/intent-prototype/assets/profile.json": "eb254faf53e2a995d63cc72b4b26a1c8ecc34a5ea47ddc28d245e78bacdc2b1d"
+  }
+}

@@ -15,6 +15,9 @@ from browser_consent_fixture import CONSENT_FIXTURE
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[2]
 BASE = os.environ.get('ASSISTANT_BASE_URL', 'http://127.0.0.1:8766').rstrip('/')
+REPORT_NAME = os.environ.get('ASSISTANT_LAYOUT_REPORT', 'chat-layout-browser.json')
+if Path(REPORT_NAME).name != REPORT_NAME or not REPORT_NAME.endswith('.json'):
+    raise ValueError('ASSISTANT_LAYOUT_REPORT must be a JSON filename')
 VIEWPORTS = [(1280, 900), (767, 806), (390, 844), (767, 500), (390, 500), (844, 390)]
 SURFACES = {
     'albion': ('Albion.html', "activateAlbionSection('missions','auto');setWalkthroughAiActiveChapter('toronto-intro')", '#walkthrough-ai-input', '#walkthrough-ai-send', '#walkthrough-ai-body'),
@@ -102,9 +105,9 @@ with sync_playwright() as p:
         if open_js:
             page.evaluate(open_js)
         page.locator(input_sel).wait_for(state='visible')
-        # The reported Seer failure uses Full answer, whose long step hint
-        # and source citations need more room than the initial Nudge view.
-        page.get_by_role('radio', name='Full answer', exact=True).filter(visible=True).click()
+        # Full answers are the only chat mode. Their longer instructions and
+        # source citations must fit without adding a help selector.
+        assert page.locator('.ga-level, .ga-msg-level, .ga-replaced').count() == 0
         storage_script = 'JSON.stringify(Object.fromEntries(Object.entries(localStorage).sort()))'
         before_storage = page.evaluate(storage_script)
         fixture = json.loads((HERE / 'conversations' / f'{game}.json').read_text())
@@ -190,13 +193,14 @@ with sync_playwright() as p:
     browser.close()
 
 report = {'browser':browser_version,'worker':'approved consent/worker fixture; production UI and engine; no native model inference',
+    'chatAnswerMode':'direct',
     'initialTurnsPerSurface':8,'additionalUiSendAtEachViewport':True,'surfaces':list(SURFACES),
     'viewportCount':len(VIEWPORTS),'checks':results,'passed':sum(x['passed'] for x in results),
     'failures':failures,'progressUnchanged':progress,'externalRequests':external,'pageErrors':errors,
     'onlyStaticGets':all(r['method']=='GET' and not r['hasBody'] for r in requests),
     'sourceHashesBefore':before_hashes,'sourceHashesAfter':source_hashes()}
 report['sourceFilesUnchangedDuringRun']=report['sourceHashesBefore']==report['sourceHashesAfter']
-(HERE/'evidence/chat-layout-browser.json').write_text(json.dumps(report,indent=2)+'\n')
+(HERE/'evidence'/REPORT_NAME).write_text(json.dumps(report,indent=2)+'\n')
 assert len(results)==len(SURFACES)*len(VIEWPORTS) and not failures, failures
 assert all(progress.values()) and not external and not errors and report['onlyStaticGets'] and report['sourceFilesUnchangedDuringRun'], report
 print(f'Passed {report["passed"]} layout checks across {len(SURFACES)} chat surfaces.',flush=True)

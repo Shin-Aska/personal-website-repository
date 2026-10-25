@@ -1,0 +1,237 @@
+{
+  "schemaVersion": 1,
+  "kind": "structured-knowledge-runtime-checkpoint",
+  "checkedAt": "2026-10-25T00:46:04.502453+00:00",
+  "goalStatus": "active",
+  "acceptance": "incomplete",
+  "ownerConstraint": "No model updates, replacements, new models, training, model/profile/head/setup/asset changes, downloads or installations. Existing pinned production classifier and encoder reused for local tests. No FTP, commit or push.",
+  "supersedes": "knowledge-runtime-checkpoint-20261025-09.json",
+  "dataCoverageReport": "guides/tests/assistant/evidence/knowledge-data-coverage-20261025-11.json",
+  "data": {
+    "facts": 674,
+    "links": 357,
+    "sourceContexts": 19,
+    "compilerIssues": 0
+  },
+  "contracts": {
+    "passed": 1833,
+    "total": 1833,
+    "scope": "All recursively discovered assistant *.test.mjs; every frozen conversation oracle unchanged.",
+    "log": "/tmp/knowledge-contracts-20261025-41.log"
+  },
+  "legacyEnglish": {
+    "report": "guides/tests/assistant/intent-prototype/results/english-property-continuity-20261025-02.json",
+    "passed": 1058,
+    "total": 1058,
+    "qualification": "Reused verified1058/1058 baseline; source engine and parsing dependencies unchanged, all eight listed hashes compared with prior native42. Changed shared knowledge/graph/consultation paths covered by current contracts, native surfaces and replay.",
+    "unchangedDependencyHashes": {
+      "guides/js/assistant/engine.js": "e558f38682a413f9e94a85de0dcc217e29f73320f2863b18d1a0a3d55278cca1",
+      "guides/js/assistant/language.js": "f5dd1e7492e51a4d2696132e04d7e482d1bec388656ba5b65f7ecf7a774bd158",
+      "guides/js/assistant/retrieval.js": "1ff4e7fe4ef670bde94ca3cac6935fd73c2fa831c98a06d1fdc35cc5e48ce132",
+      "guides/js/assistant/rules.js": "3c2edda7907d22a78d022abd9e1fded1ad70103056129325f44d2cc8be78ef74",
+      "guides/js/assistant/policy.js": "df44eea0b5eec7dae01deb0ab4c179873cb5f271ae1a3d87ed89a630cb87aec3",
+      "guides/js/assistant/source-preambles.js": "5e39488f70efc5eec43a027916952c3a31e1dad4373b725dae9ff90c5d5d0973",
+      "guides/js/assistant/scene-transition-preambles.js": "f401be750310bb0a4c91a568967801e84482284eded46eadbc06d46ec7e2149d",
+      "guides/js/assistant/source-responses.js": "7691754f6350f348cabeb95c613c7f18d3fbb7d4f4d0baa115e74fdb2bc4966a"
+    }
+  },
+  "originalRegression": {
+    "report": "guides/tests/assistant/intent-prototype/results/original-property-continuity-20261025-02.json",
+    "passed": 203,
+    "total": 203,
+    "qualification": "Reused verified203/203 baseline for unchanged source-engine dependencies; tracked original results remain restored. Current new paths covered by contracts/native/replay."
+  },
+  "citationVerifierUnitTests": 4,
+  "offlineManifestUnitTests": 4,
+  "embeddingReuseUnitTests": 3,
+  "developmentReplay": {
+    "report": "guides/tests/assistant/intent-prototype/results/knowledge-corpus-replay-capability-roles-20261025-04/report.json",
+    "total": 851,
+    "passed": 757,
+    "failed": 94,
+    "incomplete": 0,
+    "sourceStable": true,
+    "missingQueryCount": 0,
+    "negativeBoundaries": [
+      175,
+      175
+    ],
+    "noPreviousStrictPassLost": true,
+    "comparisonWithPreviousCheckpoint": "757/851 unchanged; all strict statuses identical to property-continuity03, all175 boundaries, zero missing exact inputs. Native observed suites establish new capability/participant conversation improvements.",
+    "sourceCorrectionFailures": [
+      {
+        "game": "ultima7",
+        "text": "How do I investigate the Trinsic crime scene?",
+        "reason": "Old oracle expects DB.mainQuest[0]; answer cites exact DB.mainQuest[0].content."
+      },
+      {
+        "game": "ultima7",
+        "text": "How do I get the Trinsic exit password?",
+        "reason": "Old oracle expects adapter-summary record provenance; answer now quotes and cites the full original Finnigan quiz/password witness."
+      }
+    ]
+  },
+  "productionModelFilesUnchanged": {
+    "guides/local-assistant/profile.json": "7fcde9d4b3d8842dc2345159687e845e023ce9049c92deab6d99d494e6ba813d",
+    "guides/local-assistant/intent/profile.json": "786a95a078fcc940f95539837883405257f1a3a896637bb71b8b477be680639e",
+    "guides/local-assistant/intent/head.json": "979c196a92df490124802e61fcc5fad787fc535ee69ff0eae64784355a8f6bfb"
+  },
+  "frozenConversationOraclesUnchanged": {
+    "knowledge-blind-cases.json": "4dbdf52d7976e370195ed2fa8e6db6528d470266a9e129880a4533ddbc6f2ebb",
+    "knowledge-fresh-cases-20261025.json": "67847abd677579e424d4458f710962a39e8453e9034e7696f1269b4bf4402eb3",
+    "knowledge-independent-ultima-20261025.json": "5193e464b5b16f9aae089442db7e0dcacfd489da937875510b1fac508f38583c",
+    "knowledge-independent-other-20261025.json": "60c58336240b09371d1fc0fb2546606748087ce14f3290951eb615c498a0c2aa",
+    "knowledge-independent-all-20261025.json": "a6c44c5f5ae77f80295bd6c2403369545f9de28afe5920a07d105a40d016b907"
+  },
+  "publication": {
+    "ftpUploaded": false,
+    "committed": false,
+    "pushed": false
+  },
+  "sourceIndexRefresh": {
+    "modelChanged": false,
+    "factDocumentVectorsEncoded": 0,
+    "factDocumentsUnchanged": 674,
+    "metadataRefreshOnly": true,
+    "newIgnoredExactQueryVectors": 0,
+    "totalCachedQueryVectors": 986,
+    "modelDownloads": 0,
+    "installations": 0
+  },
+  "completeUsefulClaimReview": {
+    "report": "guides/tests/assistant/evidence/knowledge-independent-adjudication-20261025-09.json",
+    "reportSha256": "7f525e1fce3c5219eee65104a527a0a852b51d260c8b57d7024c942d435b7277",
+    "turns": 48,
+    "strictPassed": 47,
+    "positiveTurns": 36,
+    "completeSupportedPositiveClaims": 36,
+    "completeSupportedPositiveClaimsExcludingQualifiedAlternative": 35,
+    "qualifiedAlternativePositiveClaims": 1,
+    "withheldOrIncompletePositiveClaims": 0,
+    "wrongSubjectOrFieldPositiveClaims": 0,
+    "boundaryTurns": 12,
+    "boundariesHeld": 12,
+    "qualification": "All48 complete rendered responses, sources, links, useful claim expectations and verdicts identical to prior reviewed report22.36 useful positives including qualified Ariana alternative,35 excluding it;12 boundaries. Strict47/48 retains the alternative failure. Observed set, no exhaustive correctness claim."
+  },
+  "implementationNote": "docs/assistant-knowledge/capability-roles-20261025.md",
+  "previousGoalTurnClassification": "progress",
+  "currentGoalTurnClassification": "progress",
+  "remainingWork": "Six-game acceptance incomplete. Native96 retains1 exact-source training citation failure; observed76 retains15 strict failures (six source-present unanswered conversations and nine provenance/wording differences); cached851 retains94 including provenance differences. Continue U5 travel-topic framing, strongest-mage descriptor and shrine ritual/reward compounds; U6 passage-question source attribution; Al-Qadim Oasis boar combat field from exact base bestiary rather than objective. Then audit wider cached failures and source understanding across full games. Preserve complete literal proofs, explicit role/type/phase, source/edition/material/quantity/state guards, atomic compounds, objective-only limitations and every frozen oracle. Models and publication remain out of scope.",
+  "nativeObserved96": {
+    "report": "guides/tests/assistant/evidence/knowledge-blind-browser-native-46.json",
+    "sha256": "c72030822dd574947154d95e2ba5d07656c74434d4cb69104f94cff4a3cf3180",
+    "passed": 95,
+    "total": 96,
+    "negativeBoundaries": [
+      22,
+      22
+    ],
+    "boundaries": {
+      "allTurnsRan": true,
+      "nativeMiniLMEverySurface": true,
+      "storageUnchanged": true,
+      "noSavedGameWrites": true,
+      "noExternalRequests": true,
+      "noPageErrors": true,
+      "onlyStaticGets": true,
+      "sourceStable": true,
+      "serverClosed": true
+    },
+    "watchedSourceCount": 95,
+    "allWatchedSourceHashesStillCurrent": true,
+    "noPreviousStrictPassLost": true
+  },
+  "nativeObserved76": {
+    "report": "guides/tests/assistant/evidence/knowledge-blind-browser-fresh-20261025-35.json",
+    "sha256": "f8478a3f212a0987720eedbc528c9c0702a4a8a5c47990ff671b82e12508d114",
+    "passed": 61,
+    "total": 76,
+    "negativeBoundaries": [
+      19,
+      19
+    ],
+    "boundaries": {
+      "allTurnsRan": true,
+      "nativeMiniLMEverySurface": true,
+      "storageUnchanged": true,
+      "noSavedGameWrites": true,
+      "noExternalRequests": true,
+      "noPageErrors": true,
+      "onlyStaticGets": true,
+      "sourceStable": true,
+      "serverClosed": true
+    },
+    "watchedSourceCount": 95,
+    "allWatchedSourceHashesStillCurrent": true,
+    "noPreviousStrictPassLost": true
+  },
+  "nativeIndependent48NowObserved": {
+    "report": "guides/tests/assistant/evidence/knowledge-blind-browser-independent-all-20261025-26.json",
+    "sha256": "1451cd76cf745e384b236fd7a142a6b73918f5e9ff62f961b8a4227adce7bf9b",
+    "passed": 47,
+    "total": 48,
+    "negativeBoundaries": [
+      12,
+      12
+    ],
+    "boundaries": {
+      "allTurnsRan": true,
+      "nativeMiniLMEverySurface": true,
+      "storageUnchanged": true,
+      "noSavedGameWrites": true,
+      "noExternalRequests": true,
+      "noPageErrors": true,
+      "onlyStaticGets": true,
+      "sourceStable": true,
+      "serverClosed": true
+    },
+    "watchedSourceCount": 95,
+    "allWatchedSourceHashesStillCurrent": true,
+    "noPreviousStrictPassLost": true
+  },
+  "offline": {
+    "assets": 831,
+    "allHashesMatch": true,
+    "versionMatches": true,
+    "experimentalAssetsExcluded": true,
+    "newSharedModulesIncluded": true,
+    "version": "1cb6d7e59a8a8b81dff6088034ee9d2b3b86e245c176f879cf9f95888e422693"
+  },
+  "independentFirstExecutionReview": {
+    "report": "guides/tests/assistant/evidence/knowledge-independent-adjudication-20261025.json",
+    "firstStrictPassed": 18,
+    "total": 48,
+    "completeSupportedPositiveClaims": 10,
+    "positiveTurns": 36,
+    "firstNegativeBoundaries": [
+      10,
+      12
+    ],
+    "qualification": "First individual executions, before the measurement fix. Two independently authored source-first suites were concatenated without changing any dialogue oracle. They are now observed regression cases. The post-fix20/48 contains all12 boundary successes; it is not20 complete positive answers."
+  },
+  "citationVerifierQualification": "The exact compound-locator parser correction contributes1 verifier-only pass on stored native-18 replies, with zero changed runtime answers. See knowledge-compound-citation-audit-20261025.json. No parent/child citation equivalence or oracle edits were introduced.",
+  "watchedSourceUnionCount": 97,
+  "changedCapabilityRoleUsefulClaimReview": {
+    "report": "guides/tests/assistant/evidence/knowledge-capability-role-adjudication-20261025-02.json",
+    "reportSha256": "71ee3180c09e2a840f8c0470a3b090bc5387ee6e01e3917a3ddfba9140dfa77a",
+    "totals": {
+      "comparedTurns": 220,
+      "changedTurns": 13,
+      "unchangedTurns": 207,
+      "strictBeforePassed": 192,
+      "strictAfterPassed": 203,
+      "strictPassGains": 11,
+      "priorStrictPassLosses": 0,
+      "changedAfterCompleteSupportedPositiveStrictPass": 11,
+      "changedAfterCompleteSupportedPositiveCitationOnlyStrictFailure": 1,
+      "changedAfterCompleteUsefulPositiveTotal": 12,
+      "changedAfterSafeBoundary": 1,
+      "changedAfterExpectedPositiveUnavailable": 0,
+      "changedAfterIncompleteAssertedPositive": 0,
+      "changedAfterWrongSubjectOrField": 0,
+      "changedActualResourceLinks": 0,
+      "unchangedQualitativeCorrectness": "The 207 unchanged rows are outside this changed-turn qualitative review. Identity/stability does not imply correctness."
+    },
+    "qualification": "Every13 changed complete reply/citation/resource reviewed against the full source:12 useful positives (11 strict gains and1 Jaana exact-source failure),1 safe boundary.207 unchanged turns outside this delta qualitative review. Magebane quotes recorded hit trigger, with no new exclusive/carrying-negative claim."
+  }
+}

@@ -1,0 +1,20 @@
+# Source-backed conversation transitions
+
+Checkpoint: `guides/tests/assistant/evidence/knowledge-runtime-checkpoint-20261025-07.json`. The six-game goal remains active and incomplete. No model/profile/head/setup changes, downloads, installations or publication occurred. All674 search documents and the986 cached query vectors are unchanged; only the Ultima VII catalog's metadata hash was refreshed after source-role/link edits.
+
+Four missing useful turns in the observed48-turn conversation suite now answer from existing authorized text:
+
+- Trinsic permission/leave/password quotes the entire Finnigan report, quiz and Blackbird witness. The exit passage keeps outcome and Mayor roles distinct; one literal `report-to` edge supports the next-contact question. No completion is inferred.
+- A deferred Academy departure follows the grounded source scene to the northern teleporter and explicit Zaratan destination. The parser retains the complete phase, origin and destination. Unknown names, modifiers, editions, quantities and source restrictions still fail. An exit destination referenced as “there” cannot reuse the previous scene's exit instructions.
+- A hold resource question follows one authored incoming `provides`/`yields` edge to the breakable source object. The complete primary-owner witness must actually mention smashing/breaking, and every proof must be eligible. It quotes the barrels/hold/potions instruction without asserting inventory.
+- A recruitment method assertion keeps the person and preceding recruitment facet grounded. Only explicit “recruit <same person> via dialogue” proves that assertion; co-mentioned Siobhan cannot inherit Khunag's dialogue method. Necessity, sufficiency and player-party claims remain outside this assertion form.
+
+These are bounded shared readers and proof paths, not game/question aliases. A scene is an editorial source-container scope, not physical containment, required ordering or player progress. The authorization phase reader accepts only bounded action/nominal forms supported by the same grounded source context. Review caught and repaired an arbitrary-noun gap: “after the Trinsic password/escape” must not pass merely because those words occur in the quest. Compounds remain atomic, source-only, and free of state effects.
+
+Validation:1,701/1,701 recursively discovered assistant Node contract tests;11/11 Python citation/offline/vector-reuse tests; legacy English1,058/1,058 and original203/203 rerun against current language routing. The tracked original results file was restored byte for byte. All827 offline asset hashes and the version match; the two new shared readers are included and experiments/tests excluded. Production model hashes and all five frozen conversation oracle hashes match checkpoint06.
+
+Native browser reports: `native-34`82/96; `fresh-20261025-23`43/76; `independent-all-20261025-14`47/48 versus43 previously. All22/19/12 negative boundaries and network/storage/source/isolation checks pass; all91 watched runtime source hashes match final files. The unchanged851 cached corpus remains756/851, all175 negative boundaries, zero missing exact inputs and no lost previous strict pass. No new fact/query vectors were encoded.
+
+Full useful-claim review06 compares every rendered turn and citation: exactly four previous incomplete positive replies changed; the other44 are identical. It records36/36 complete useful positives including the previously qualified Ariana helper,35/36 excluding that alternative, and12/12 boundaries. The strict47/48 retains Ariana's unchanged exact-source/phrase failure. These are observed regressions, not an unseen evaluation or exhaustive understanding claim.
+
+Continue the wider six-game work: direct conversion/escort/actor roles, literal properties/comparisons before consultation, more source-present compounds and procedural forms, and better current-machine unknown-state wording. Preserve objective-only limits, source and edition guards, and frozen oracles. No model work or deployment is authorized by this checkpoint.

@@ -1,0 +1,2797 @@
+{
+  "schemaVersion": 1,
+  "kind": "independent-post-observation-source-adjudication",
+  "reviewedAt": "2026-10-25",
+  "corpusPath": "guides/tests/assistant/knowledge-fresh-cases-20261025.json",
+  "corpusSha256": "67847abd677579e424d4458f710962a39e8453e9034e7696f1269b4bf4402eb3",
+  "observedReport": "guides/tests/assistant/evidence/knowledge-blind-browser-fresh-20261025-03.json",
+  "observedReportSha256": "ad9cdddaed6641435d3263781fc737dbd41a427b2afe4f3ab2c52b721c805658",
+  "firstReport": "guides/tests/assistant/evidence/knowledge-blind-browser-fresh-20261025-01.json",
+  "summary": {
+    "originalStrictPassed": 35,
+    "originalStrictTotal": 76,
+    "sourceReviewedFullAnswers": 17,
+    "expectedSourceBoundaries": 19,
+    "categories": {
+      "useful-partial": 4,
+      "missed-supported-answer": 33,
+      "misrouted-answer": 2,
+      "expected-source-boundary": 19,
+      "full-supported-answer": 15,
+      "equivalent-source-locator": 2,
+      "qualified-attribution-source-mismatch": 1
+    },
+    "failureRootCauses": {
+      "compound": 9,
+      "state-boundary": 1,
+      "relation": 11,
+      "scope": 5,
+      "subject": 9,
+      "data-coverage": 4,
+      "oracle-ambiguity": 1
+    },
+    "rawPositiveWitnessesVerified": 57,
+    "positiveTurns": 57,
+    "strictPassWithIncompleteRequiredClaim": 1,
+    "strictFailWithFullEquivalentLocatorAnswer": 2,
+    "genuineUnsupportedAffirmativeAnswers": 0,
+    "focusedFailureDataGaps": [
+      "u5-mountain-and-sea:2 (partial: peaks present, Underworld outcome missing)",
+      "u6-passage-and-materials:1 (absent focused Wizard passage)",
+      "u6-passage-and-materials:2 (absent focused Pods passage)",
+      "u6-passage-and-materials:3 (absent focused Volcanic Eruptions passage)",
+      "u7-observatory-crystal:3 (partial: solution present, explicit reward omitted)"
+    ],
+    "focusedCoverageNote": "Magebane location also lacks a focused fact but is answered successfully through adapter provenance; focused absence is not necessarily an answer failure. All five failure gaps have raw source data; none requires invented new game facts."
+  },
+  "limits": [
+    "Separate adjudication only: frozen oracle and strict pass/fail totals are unchanged.",
+    "This report reviews observed cases, not holdout generalization. No model, browser, native inference, output, asset or generator rerun was performed.",
+    "Full claim requires every compound part and actual answering behavior; closest-text clarification is useful partial only.",
+    "citationVerified verifies displayed quoted provenance when present; it does not mean the required claim is answered. False for no citations and for attribution source-scope mismatch.",
+    "Raw source existence does not establish focused index coverage or successful retrieval. External attribution uses approved existing review records only; no fresh external verification.",
+    "Root causes are evidence-backed classifications of observed behavior, not instrumented runtime traces."
+  ],
+  "turns": [
+    {
+      "game": "ultima5",
+      "dialogueId": "u5-mountain-and-sea",
+      "turn": 1,
+      "text": "I keep getting blocked by small mountain peaks. How do I obtain the Grapple?",
+      "strictPassed": true,
+      "latestDecision": "answer",
+      "category": "useful-partial",
+      "fullClaimSupported": false,
+      "citationVerified": true,
+      "supportingProof": [
+        {
+          "file": "guides/js/Ultima5.js",
+          "locator": "ultima5GrandQuestChapters objective=opening-grapple.steps",
+          "review": "extracted",
+          "witness": [
+            "Speak with Lord Michael and ask specifically about GRAPPLE."
+          ],
+          "rawWitnessVerified": true
+        }
+      ],
+      "focusedIndexCoverage": "complete",
+      "focusedProofs": [
+        {
+          "file": "guides/data/assistant/knowledge/ultima5.json",
+          "locator": "facts[5]",
+          "id": "michael-location",
+          "source": {
+            "file": "guides/js/Ultima5.js",
+            "locator": "ultima5GrandQuestChapters objective=opening-grapple.steps[0]",
+            "review": "extracted"
+          },
+          "witness": "Find Lord Michael at Empath Abbey: he is in the courtyard by day and retires to the northwest bedroom."
+        },
+        {
+          "file": "guides/data/assistant/knowledge/ultima5.json",
+          "locator": "facts[121]",
+          "id": "grapple-named-giver",
+          "source": {
+            "file": "guides/js/Ultima5.js",
+            "locator": "ultima5GrandQuestChapters objective=opening-grapple",
+            "review": "extracted"
+          },
+          "witness": "Speak with Lord Michael and ask specifically about GRAPPLE.\nTake the Grappling Hook he provides and keep it in the active party’s inventory."
+        }
+      ],
+      "briefReason": "Correct giver and keyword, but required Empath Abbey location is omitted. Strict substring/source checks do not check the complete required claim.",
+      "rootCause": "compound"
+    },
+    {
+      "game": "ultima5",
+      "dialogueId": "u5-mountain-and-sea",
+      "turn": 2,
+      "text": "Once I have it, what routes does it open?",
+      "strictPassed": false,
+      "latestDecision": "clarify",
+      "category": "missed-supported-answer",
+      "fullClaimSupported": false,
+      "citationVerified": false,
+      "supportingProof": [
+        {
+          "file": "guides/js/Ultima5.js",
+          "locator": "ultima5GrandQuestChapters objective=opening-grapple.outcome",
+          "review": "extracted",
+          "witness": [
+            "Small mountain peaks and several Underworld routes become traversable."
+          ],
+          "rawWitnessVerified": true
+        }
+      ],
+      "focusedIndexCoverage": "partial",
+      "focusedProofs": [
+        {
+          "file": "guides/data/assistant/knowledge/ultima5.json",
+          "locator": "facts[84]",
+          "id": "side-grapple",
+          "source": {
+            "file": "guides/js/Ultima5.js",
+            "locator": "ultima5SideQuests id=side-grapple.detail",
+            "review": "extracted"
+          },
+          "witness": "Ask Lord Michael about GRAPPLE. If you want the in-world clue first, ask Bidney in Buccaneer’s Den about climbing; he points you back to the Abbey. The hook opens routes across small peaks."
+        }
+      ],
+      "briefReason": "Hypothetical possession is treated as a current-progress assertion; neither small peaks nor Underworld routes is answered.",
+      "rootCause": "state-boundary",
+      "secondaryRootCauses": [
+        "data-coverage"
+      ]
+    },
+    {
+      "game": "ultima5",
+      "dialogueId": "u5-mountain-and-sea",
+      "turn": 3,
+      "text": "Different travel problem: what do the HMS Cape plans do to a frigate?",
+      "strictPassed": false,
+      "latestDecision": "answer",
+      "category": "misrouted-answer",
+      "fullClaimSupported": false,
+      "citationVerified": true,
+      "supportingProof": [
+        {
+          "file": "guides/js/Ultima5.js",
+          "locator": "ultima5GrandQuestChapters objective=opening-hms-cape.outcome",
+          "review": "extracted",
+          "witness": [
+            "Using the plans on a frigate doubles its speed relative to enemies."
+          ],
+          "rawWitnessVerified": true
+        }
+      ],
+      "focusedIndexCoverage": "complete",
+      "focusedProofs": [
+        {
+          "file": "guides/data/assistant/knowledge/ultima5.json",
+          "locator": "facts[13]",
+          "id": "cape-speed",
+          "source": {
+            "file": "guides/js/Ultima5.js",
+            "locator": "ultima5GrandQuestChapters objective=opening-hms-cape.outcome",
+            "review": "extracted"
+          },
+          "witness": "Using the plans on a frigate doubles its speed relative to enemies."
+        }
+      ],
+      "briefReason": "Cites the first acquisition route step, not the plans’ speed effect.",
+      "rootCause": "relation"
+    },
+    {
+      "game": "ultima5",
+      "dialogueId": "u5-mountain-and-sea",
+      "turn": 4,
+      "text": "Have I already applied those plans to my ship?",
+      "strictPassed": true,
+      "latestDecision": "decline",
+      "category": "expected-source-boundary",
+      "fullClaimSupported": false,
+      "citationVerified": false,
+      "supportingProof": [
+        {
+          "file": "guides/data/assistant/knowledge/ultima5.json",
+          "locator": "facts and entities (scoped guide corpus)",
+          "review": "boundary-scope-audit",
+          "limitation": "Reviewed guide evidence establishes procedures or scoped descriptions; no current player/device evidence is supplied. For unsupported mechanics/editions, no supporting positive witness was found in the scoped sources."
+        }
+      ],
+      "focusedIndexCoverage": "not-applicable",
+      "focusedProofs": [],
+      "briefReason": "Requested state/edition/detail is outside the supplied guide evidence. Response makes no unsupported affirmative claim; generic clarification may still be poor UX.",
+      "rootCause": "state-boundary"
+    },
+    {
+      "game": "ultima5",
+      "dialogueId": "u5-mage-recruiting",
+      "turn": 1,
+      "text": "Would Jaana be a worthwhile early recruit for magic?",
+      "strictPassed": false,
+      "latestDecision": "clarify",
+      "category": "missed-supported-answer",
+      "fullClaimSupported": false,
+      "citationVerified": false,
+      "supportingProof": [
+        {
+          "file": "guides/js/Ultima5.js",
+          "locator": "companionData[2]",
+          "review": "extracted",
+          "witness": [
+            "An essential early recruit. As a mage, her spellcasting ability is invaluable throughout the game."
+          ],
+          "rawWitnessVerified": true
+        }
+      ],
+      "focusedIndexCoverage": "complete",
+      "focusedProofs": [
+        {
+          "file": "guides/data/assistant/knowledge/ultima5.json",
+          "locator": "facts[96]",
+          "id": "companion-jaana",
+          "source": {
+            "file": "guides/js/Ultima5.js",
+            "locator": "companionData[2]",
+            "review": "extracted"
+          },
+          "witness": "Mage. An essential early recruit. As a mage, her spellcasting ability is invaluable throughout the game."
+        }
+      ],
+      "briefReason": "Guide recommendation is refused as unsupported ranking despite explicit Jaana note.",
+      "rootCause": "scope"
+    },
+    {
+      "game": "ultima5",
+      "dialogueId": "u5-mage-recruiting",
+      "turn": 2,
+      "text": "Where do I find her?",
+      "strictPassed": false,
+      "latestDecision": "clarify",
+      "category": "missed-supported-answer",
+      "fullClaimSupported": false,
+      "citationVerified": false,
+      "supportingProof": [
+        {
+          "file": "guides/js/Ultima5.js",
+          "locator": "companionData[2].Location",
+          "review": "extracted",
+          "witness": [
+            "Location: \"Yew\""
+          ],
+          "rawWitnessVerified": true
+        }
+      ],
+      "focusedIndexCoverage": "complete",
+      "focusedProofs": [
+        {
+          "file": "guides/data/assistant/knowledge/ultima5.json",
+          "locator": "facts[1]",
+          "id": "jaana-jail",
+          "source": {
+            "file": "guides/js/Ultima5.js",
+            "locator": "ultima5GrandQuestChapters objective=opening-party.steps[1]",
+            "review": "extracted"
+          },
+          "witness": "In Yew, enter the fireplace behind the living area, descend into the hidden jail, unlock Jaana’s cell, and ask the mage to join."
+        }
+      ],
+      "briefReason": "Bare follow-up is blocked although Jaana is the conversational subject.",
+      "rootCause": "subject"
+    },
+    {
+      "game": "ultima5",
+      "dialogueId": "u5-mage-recruiting",
+      "turn": 3,
+      "text": "I meant the strongest mage for later: who is it, and what makes reaching him difficult?",
+      "strictPassed": false,
+      "latestDecision": "decline",
+      "category": "missed-supported-answer",
+      "fullClaimSupported": false,
+      "citationVerified": false,
+      "supportingProof": [
+        {
+          "file": "guides/js/Ultima5.js",
+          "locator": "companionData[4]",
+          "review": "extracted",
+          "witness": [
+            "The strongest mage in the game, but he is difficult to reach, located on a wrecked ship in the Underworld."
+          ],
+          "rawWitnessVerified": true
+        }
+      ],
+      "focusedIndexCoverage": "complete",
+      "focusedProofs": [
+        {
+          "file": "guides/data/assistant/knowledge/ultima5.json",
+          "locator": "facts[98]",
+          "id": "companion-johne",
+          "source": {
+            "file": "guides/js/Ultima5.js",
+            "locator": "companionData[4]",
+            "review": "extracted"
+          },
+          "witness": "Mage. The strongest mage in the game, but he is difficult to reach, located on a wrecked ship in the Underworld."
+        }
+      ],
+      "briefReason": "Explicit Johne strongest-mage and wrecked-ship difficulty note is available; refusal misses both compound parts.",
+      "rootCause": "scope"
+    },
+    {
+      "game": "ultima5",
+      "dialogueId": "u5-mage-recruiting",
+      "turn": 4,
+      "text": "Does that mean Johne is in my active party now?",
+      "strictPassed": true,
+      "latestDecision": "clarify",
+      "category": "expected-source-boundary",
+      "fullClaimSupported": false,
+      "citationVerified": false,
+      "supportingProof": [
+        {
+          "file": "guides/data/assistant/knowledge/ultima5.json",
+          "locator": "facts and entities (scoped guide corpus)",
+          "review": "boundary-scope-audit",
+          "limitation": "Reviewed guide evidence establishes procedures or scoped descriptions; no current player/device evidence is supplied. For unsupported mechanics/editions, no supporting positive witness was found in the scoped sources."
+        }
+      ],
+      "focusedIndexCoverage": "not-applicable",
+      "focusedProofs": [],
+      "briefReason": "Requested state/edition/detail is outside the supplied guide evidence. Response makes no unsupported affirmative claim; generic clarification may still be poor UX.",
+      "rootCause": "state-boundary"
+    },
+    {
+      "game": "ultima5",
+      "dialogueId": "u5-shrine-passwords",
+      "turn": 1,
+      "text": "Are mantras and Words of Power used for the same thing?",
+      "strictPassed": false,
+      "latestDecision": "clarify",
+      "category": "missed-supported-answer",
+      "fullClaimSupported": false,
+      "citationVerified": false,
+      "supportingProof": [
+        {
+          "file": "guides/Ultima5.html",
+          "locator": "Mantras & Words of Power panel, introduction",
+          "review": "extracted",
+          "witness": [
+            "These \"passwords\" are essential for progressing through the game. Mantras are used at the Shrines of Virtue, while Words of Power unlock the dungeons."
+          ],
+          "rawWitnessVerified": true
+        }
+      ],
+      "focusedIndexCoverage": "complete",
+      "focusedProofs": [
+        {
+          "file": "guides/data/assistant/knowledge/ultima5.json",
+          "locator": "facts[46]",
+          "id": "mantra-word-distinction",
+          "source": {
+            "file": "guides/Ultima5.html",
+            "locator": "Mantras & Words of Power panel, introduction",
+            "review": "extracted"
+          },
+          "witness": "These \"passwords\" are essential for progressing through the game. Mantras are used at the Shrines of Virtue, while Words of Power unlock the dungeons."
+        }
+      ],
+      "briefReason": "The explicit mantra/shrine versus Word/dungeon distinction is treated as an unsupported compound condition.",
+      "rootCause": "compound"
+    },
+    {
+      "game": "ultima5",
+      "dialogueId": "u5-shrine-passwords",
+      "turn": 2,
+      "text": "For the shrine ritual, how many cycles do I meditate, and where do I go for guidance afterward?",
+      "strictPassed": false,
+      "latestDecision": "decline",
+      "category": "missed-supported-answer",
+      "fullClaimSupported": false,
+      "citationVerified": false,
+      "supportingProof": [
+        {
+          "file": "guides/Ultima5.html",
+          "locator": "section#shrines, the four shrine-loop cards",
+          "review": "extracted",
+          "witness": [
+            "1) Learn the Mantra from NPCs in the virtue's city. 2) Meditate at the shrine using the mantra for three cycles. 3) Visit the Codex on the Isle of the Avatar to receive guidance. 4) Return & Complete by meditating again to gain stats."
+          ],
+          "rawWitnessVerified": true
+        }
+      ],
+      "focusedIndexCoverage": "complete",
+      "focusedProofs": [
+        {
+          "file": "guides/data/assistant/knowledge/ultima5.json",
+          "locator": "facts[45]",
+          "id": "shrine-loop",
+          "source": {
+            "file": "guides/Ultima5.html",
+            "locator": "section#shrines, the four shrine-loop cards",
+            "review": "extracted"
+          },
+          "witness": "1) Learn the Mantra from NPCs in the virtue's city. 2) Meditate at the shrine using the mantra for three cycles. 3) Visit the Codex on the Isle of the Avatar to receive guidance. 4) Return & Complete by meditating again to gain stats."
+        }
+      ],
+      "briefReason": "Both three cycles and Codex/Isle destination exist in the indexed shrine-loop fact; neither is delivered.",
+      "rootCause": "compound"
+    },
+    {
+      "game": "ultima5",
+      "dialogueId": "u5-shrine-passwords",
+      "turn": 3,
+      "text": "What does completing all eight shrine quests unlock?",
+      "strictPassed": false,
+      "latestDecision": "clarify",
+      "category": "useful-partial",
+      "fullClaimSupported": false,
+      "citationVerified": true,
+      "supportingProof": [
+        {
+          "file": "guides/Ultima5.html",
+          "locator": "section#shrines, closing sentence",
+          "review": "extracted",
+          "witness": [
+            "Completing all eight shrine quests grants the Word of Power for Doom: VERAMOCOR."
+          ],
+          "rawWitnessVerified": true
+        }
+      ],
+      "focusedIndexCoverage": "complete",
+      "focusedProofs": [
+        {
+          "file": "guides/data/assistant/knowledge/ultima5.json",
+          "locator": "facts[47]",
+          "id": "doom-word",
+          "source": {
+            "file": "guides/Ultima5.html",
+            "locator": "section#shrines, closing sentence",
+            "review": "extracted"
+          },
+          "witness": "Completing all eight shrine quests grants the Word of Power for Doom: VERAMOCOR."
+        }
+      ],
+      "briefReason": "Correct VERAMOCOR proof is displayed only as possibly non-answering closest text with decision clarify; useful partial, not full answer.",
+      "rootCause": "relation"
+    },
+    {
+      "game": "ultima5",
+      "dialogueId": "u5-shrine-passwords",
+      "turn": 4,
+      "text": "What is the equivalent shrine ritual in Ultima V on a fan-made mobile remake?",
+      "strictPassed": true,
+      "latestDecision": "clarify",
+      "category": "expected-source-boundary",
+      "fullClaimSupported": false,
+      "citationVerified": false,
+      "supportingProof": [
+        {
+          "file": "guides/data/assistant/knowledge/ultima5.json",
+          "locator": "facts and entities (scoped guide corpus)",
+          "review": "boundary-scope-audit",
+          "limitation": "Reviewed guide evidence establishes procedures or scoped descriptions; no current player/device evidence is supplied. For unsupported mechanics/editions, no supporting positive witness was found in the scoped sources."
+        }
+      ],
+      "focusedIndexCoverage": "not-applicable",
+      "focusedProofs": [],
+      "briefReason": "Requested state/edition/detail is outside the supplied guide evidence. Response makes no unsupported affirmative claim; generic clarification may still be poor UX.",
+      "rootCause": "scope"
+    },
+    {
+      "game": "ultima6",
+      "dialogueId": "u6-family-permission",
+      "turn": 1,
+      "text": "How do I get permission to borrow the Compassion rune in Britain?",
+      "strictPassed": false,
+      "latestDecision": "answer",
+      "category": "useful-partial",
+      "fullClaimSupported": false,
+      "citationVerified": true,
+      "supportingProof": [
+        {
+          "file": "guides/js/Ultima6.js",
+          "locator": "gameData.quests[0].sections[0]",
+          "review": "extracted",
+          "witness": [
+            "Visit Anya at the Blue Boar Tavern, mention `RUNE` or `PERMISSION`, and answer `YES` when asked.",
+            "Return to Ariana, confirm permission, and receive the Rune of Compassion."
+          ],
+          "rawWitnessVerified": true
+        }
+      ],
+      "focusedIndexCoverage": "complete",
+      "focusedProofs": [
+        {
+          "file": "guides/data/assistant/knowledge/ultima6.json",
+          "locator": "facts[1]",
+          "id": "anya-permission",
+          "source": {
+            "file": "guides/js/Ultima6.js",
+            "locator": "gameData.quests[0].sections[0].steps[1]",
+            "review": "extracted"
+          },
+          "witness": "Visit Anya at the Blue Boar Tavern, mention RUNE or PERMISSION, and answer YES when asked."
+        },
+        {
+          "file": "guides/data/assistant/knowledge/ultima6.json",
+          "locator": "facts[2]",
+          "id": "ariana-rune",
+          "source": {
+            "file": "guides/js/Ultima6.js",
+            "locator": "gameData.quests[0].sections[0].steps[2]",
+            "review": "extracted"
+          },
+          "witness": "Return to Ariana, confirm permission, and receive the Rune of Compassion."
+        }
+      ],
+      "briefReason": "Only return to Ariana is supplied; Anya, Blue Boar, RUNE/PERMISSION and YES are omitted.",
+      "rootCause": "compound"
+    },
+    {
+      "game": "ultima6",
+      "dialogueId": "u6-family-permission",
+      "turn": 2,
+      "text": "Who do I return to after getting her blessing?",
+      "strictPassed": false,
+      "latestDecision": "clarify",
+      "category": "missed-supported-answer",
+      "fullClaimSupported": false,
+      "citationVerified": false,
+      "supportingProof": [
+        {
+          "file": "guides/js/Ultima6.js",
+          "locator": "gameData.quests[0].sections[0]",
+          "review": "extracted",
+          "witness": [
+            "Return to Ariana, confirm permission, and receive the Rune of Compassion."
+          ],
+          "rawWitnessVerified": true
+        }
+      ],
+      "focusedIndexCoverage": "complete",
+      "focusedProofs": [
+        {
+          "file": "guides/data/assistant/knowledge/ultima6.json",
+          "locator": "facts[2]",
+          "id": "ariana-rune",
+          "source": {
+            "file": "guides/js/Ultima6.js",
+            "locator": "gameData.quests[0].sections[0].steps[2]",
+            "review": "extracted"
+          },
+          "witness": "Return to Ariana, confirm permission, and receive the Rune of Compassion."
+        }
+      ],
+      "briefReason": "Ariana return fact and proof-bearing Anya-to-Ariana edge exist; follow-up loses subject.",
+      "rootCause": "subject"
+    },
+    {
+      "game": "ultima6",
+      "dialogueId": "u6-family-permission",
+      "turn": 3,
+      "text": "And what word do I chant when cleansing that shrine?",
+      "strictPassed": false,
+      "latestDecision": "clarify",
+      "category": "missed-supported-answer",
+      "fullClaimSupported": false,
+      "citationVerified": false,
+      "supportingProof": [
+        {
+          "file": "guides/js/Ultima6.js",
+          "locator": "gameData.quests[0].sections[0]",
+          "review": "extracted",
+          "witness": [
+            "Cleanse the southern shrine using the rune, chant `MU`, take the Moonstone, and meditate."
+          ],
+          "rawWitnessVerified": true
+        }
+      ],
+      "focusedIndexCoverage": "complete",
+      "focusedProofs": [
+        {
+          "file": "guides/data/assistant/knowledge/ultima6.json",
+          "locator": "facts[3]",
+          "id": "compassion-mantra",
+          "source": {
+            "file": "guides/js/Ultima6.js",
+            "locator": "gameData.quests[0].sections[0].steps[3]",
+            "review": "extracted"
+          },
+          "witness": "Cleanse the southern shrine using the rune, chant MU, take the Moonstone, and meditate."
+        }
+      ],
+      "briefReason": "MU is in focused compassion-mantra, but the shrine follow-up is not resolved.",
+      "rootCause": "subject"
+    },
+    {
+      "game": "ultima6",
+      "dialogueId": "u6-family-permission",
+      "turn": 4,
+      "text": "Did Ariana already give me the rune in my saved game?",
+      "strictPassed": true,
+      "latestDecision": "decline",
+      "category": "expected-source-boundary",
+      "fullClaimSupported": false,
+      "citationVerified": false,
+      "supportingProof": [
+        {
+          "file": "guides/data/assistant/knowledge/ultima6.json",
+          "locator": "facts and entities (scoped guide corpus)",
+          "review": "boundary-scope-audit",
+          "limitation": "Reviewed guide evidence establishes procedures or scoped descriptions; no current player/device evidence is supplied. For unsupported mechanics/editions, no supporting positive witness was found in the scoped sources."
+        }
+      ],
+      "focusedIndexCoverage": "not-applicable",
+      "focusedProofs": [],
+      "briefReason": "Requested state/edition/detail is outside the supplied guide evidence. Response makes no unsupported affirmative claim; generic clarification may still be poor UX.",
+      "rootCause": "state-boundary"
+    },
+    {
+      "game": "ultima6",
+      "dialogueId": "u6-making-music",
+      "turn": 1,
+      "text": "For the Sacrifice rune, who turns the wooden board into panpipes?",
+      "strictPassed": false,
+      "latestDecision": "clarify",
+      "category": "missed-supported-answer",
+      "fullClaimSupported": false,
+      "citationVerified": false,
+      "supportingProof": [
+        {
+          "file": "guides/js/Ultima6.js",
+          "locator": "gameData.quests[0].sections[4]",
+          "review": "extracted",
+          "witness": [
+            "Buy a yew log from Ben west of Yew, cut it into a board, and ask Julia to craft `PANPIPES`."
+          ],
+          "rawWitnessVerified": true
+        }
+      ],
+      "focusedIndexCoverage": "complete",
+      "focusedProofs": [
+        {
+          "file": "guides/data/assistant/knowledge/ultima6.json",
+          "locator": "facts[16]",
+          "id": "panpipes-makers",
+          "source": {
+            "file": "guides/js/Ultima6.js",
+            "locator": "gameData.quests[0].sections[4].steps[0]",
+            "review": "extracted"
+          },
+          "witness": "Buy a yew log from Ben west of Yew, cut it into a board, and ask Julia to craft PANPIPES."
+        }
+      ],
+      "briefReason": "Explicit Julia craft-from-board fact and directed link exist; relationship routing rejects them.",
+      "rootCause": "relation"
+    },
+    {
+      "game": "ultima6",
+      "dialogueId": "u6-making-music",
+      "turn": 2,
+      "text": "Where is the raw wood obtained?",
+      "strictPassed": false,
+      "latestDecision": "clarify",
+      "category": "missed-supported-answer",
+      "fullClaimSupported": false,
+      "citationVerified": false,
+      "supportingProof": [
+        {
+          "file": "guides/js/Ultima6.js",
+          "locator": "gameData.quests[0].sections[4]",
+          "review": "extracted",
+          "witness": [
+            "Buy a yew log from Ben west of Yew"
+          ],
+          "rawWitnessVerified": true
+        }
+      ],
+      "focusedIndexCoverage": "complete",
+      "focusedProofs": [
+        {
+          "file": "guides/data/assistant/knowledge/ultima6.json",
+          "locator": "facts[16]",
+          "id": "panpipes-makers",
+          "source": {
+            "file": "guides/js/Ultima6.js",
+            "locator": "gameData.quests[0].sections[4].steps[0]",
+            "review": "extracted"
+          },
+          "witness": "Buy a yew log from Ben west of Yew, cut it into a board, and ask Julia to craft PANPIPES."
+        }
+      ],
+      "briefReason": "Ben west of Yew and yew log are explicit in panpipes-makers; context lookup fails.",
+      "rootCause": "subject"
+    },
+    {
+      "game": "ultima6",
+      "dialogueId": "u6-making-music",
+      "turn": 3,
+      "text": "Whose song should I learn, and who hears the performance to award the rune?",
+      "strictPassed": false,
+      "latestDecision": "decline",
+      "category": "missed-supported-answer",
+      "fullClaimSupported": false,
+      "citationVerified": false,
+      "supportingProof": [
+        {
+          "file": "guides/js/Ultima6.js",
+          "locator": "gameData.quests[0].sections[4]",
+          "review": "extracted",
+          "witness": [
+            "Ask Gwenno about the song `STONES` to learn the numeric tune 6789878767653.",
+            "Perform the tune for Selganor inside the Artisan Guild to receive the rune."
+          ],
+          "rawWitnessVerified": true
+        }
+      ],
+      "focusedIndexCoverage": "complete",
+      "focusedProofs": [
+        {
+          "file": "guides/data/assistant/knowledge/ultima6.json",
+          "locator": "facts[17]",
+          "id": "gwenno-song",
+          "source": {
+            "file": "guides/js/Ultima6.js",
+            "locator": "gameData.quests[0].sections[4].steps[1]",
+            "review": "extracted"
+          },
+          "witness": "Ask Gwenno about the song STONES to learn the numeric tune 6789878767653."
+        },
+        {
+          "file": "guides/data/assistant/knowledge/ultima6.json",
+          "locator": "facts[18]",
+          "id": "selganor-rune",
+          "source": {
+            "file": "guides/js/Ultima6.js",
+            "locator": "gameData.quests[0].sections[4].steps[2]",
+            "review": "extracted"
+          },
+          "witness": "Perform the tune for Selganor inside the Artisan Guild to receive the rune."
+        }
+      ],
+      "briefReason": "Gwenno/STONES and Selganor/performance are both indexed; compound routing declines.",
+      "rootCause": "compound"
+    },
+    {
+      "game": "ultima6",
+      "dialogueId": "u6-making-music",
+      "turn": 4,
+      "text": "How much durability do those panpipes lose each time I play Stones?",
+      "strictPassed": true,
+      "latestDecision": "clarify",
+      "category": "expected-source-boundary",
+      "fullClaimSupported": false,
+      "citationVerified": false,
+      "supportingProof": [
+        {
+          "file": "guides/data/assistant/knowledge/ultima6.json",
+          "locator": "facts and entities (scoped guide corpus)",
+          "review": "boundary-scope-audit",
+          "limitation": "Reviewed guide evidence establishes procedures or scoped descriptions; no current player/device evidence is supplied. For unsupported mechanics/editions, no supporting positive witness was found in the scoped sources."
+        }
+      ],
+      "focusedIndexCoverage": "not-applicable",
+      "focusedProofs": [],
+      "briefReason": "Requested state/edition/detail is outside the supplied guide evidence. Response makes no unsupported affirmative claim; generic clarification may still be poor UX.",
+      "rootCause": "scope"
+    },
+    {
+      "game": "ultima6",
+      "dialogueId": "u6-passage-and-materials",
+      "turn": 1,
+      "text": "What produced the headless creatures, according to the passage questions?",
+      "strictPassed": false,
+      "latestDecision": "clarify",
+      "category": "missed-supported-answer",
+      "fullClaimSupported": false,
+      "citationVerified": false,
+      "supportingProof": [
+        {
+          "file": "guides/js/Ultima6.js",
+          "locator": "gameData.passage[2]",
+          "review": "extracted",
+          "witness": [
+            "question: \"How wert the headlesses produced?\", answer: \"Wizard\""
+          ],
+          "rawWitnessVerified": true
+        }
+      ],
+      "focusedIndexCoverage": "absent",
+      "focusedProofs": [],
+      "briefReason": "Raw passage answer Wizard is explicit and adapter-indexed, but no focused passage fact exists.",
+      "rootCause": "data-coverage"
+    },
+    {
+      "game": "ultima6",
+      "dialogueId": "u6-passage-and-materials",
+      "turn": 2,
+      "text": "What part of a tangle vine causes sleep?",
+      "strictPassed": false,
+      "latestDecision": "clarify",
+      "category": "missed-supported-answer",
+      "fullClaimSupported": false,
+      "citationVerified": false,
+      "supportingProof": [
+        {
+          "file": "guides/js/Ultima6.js",
+          "locator": "gameData.passage[1]",
+          "review": "extracted",
+          "witness": [
+            "question: \"What part of the tangle vine doth put one to sleep?\", answer: \"Pods\""
+          ],
+          "rawWitnessVerified": true
+        }
+      ],
+      "focusedIndexCoverage": "absent",
+      "focusedProofs": [],
+      "briefReason": "Raw passage answer Pods is explicit and adapter-indexed, but no focused passage fact exists.",
+      "rootCause": "data-coverage"
+    },
+    {
+      "game": "ultima6",
+      "dialogueId": "u6-passage-and-materials",
+      "turn": 3,
+      "text": "Switching to spell ingredients: where does Sulfurous Ash come from?",
+      "strictPassed": false,
+      "latestDecision": "decline",
+      "category": "missed-supported-answer",
+      "fullClaimSupported": false,
+      "citationVerified": false,
+      "supportingProof": [
+        {
+          "file": "guides/js/Ultima6.js",
+          "locator": "gameData.passage[17]",
+          "review": "extracted",
+          "witness": [
+            "question: \"Where does Sulfurous Ash come from?\", answer: \"Volcanic Eruptions\""
+          ],
+          "rawWitnessVerified": true
+        }
+      ],
+      "focusedIndexCoverage": "absent",
+      "focusedProofs": [],
+      "briefReason": "Raw passage answer Volcanic Eruptions is explicit and adapter-indexed, but no focused passage fact exists.",
+      "rootCause": "data-coverage"
+    },
+    {
+      "game": "ultima6",
+      "dialogueId": "u6-passage-and-materials",
+      "turn": 4,
+      "text": "Can I harvest Sulfurous Ash right where my Avatar is standing now?",
+      "strictPassed": true,
+      "latestDecision": "decline",
+      "category": "expected-source-boundary",
+      "fullClaimSupported": false,
+      "citationVerified": false,
+      "supportingProof": [
+        {
+          "file": "guides/data/assistant/knowledge/ultima6.json",
+          "locator": "facts and entities (scoped guide corpus)",
+          "review": "boundary-scope-audit",
+          "limitation": "Reviewed guide evidence establishes procedures or scoped descriptions; no current player/device evidence is supplied. For unsupported mechanics/editions, no supporting positive witness was found in the scoped sources."
+        }
+      ],
+      "focusedIndexCoverage": "not-applicable",
+      "focusedProofs": [],
+      "briefReason": "Requested state/edition/detail is outside the supplied guide evidence. Response makes no unsupported affirmative claim; generic clarification may still be poor UX.",
+      "rootCause": "scope"
+    },
+    {
+      "game": "ultima7",
+      "dialogueId": "u7-forging-and-binding",
+      "turn": 1,
+      "text": "How is the Black Sword forged in Forge of Virtue?",
+      "strictPassed": false,
+      "latestDecision": "clarify",
+      "category": "missed-supported-answer",
+      "fullClaimSupported": false,
+      "citationVerified": false,
+      "supportingProof": [
+        {
+          "file": "guides/js/Ultima7.js",
+          "locator": "DB.virtueQuests[6]",
+          "review": "extracted",
+          "witness": [
+            "Heat and hammer the blade at the forge until it's sharp, then bind the daemon to forge the Black Sword."
+          ],
+          "rawWitnessVerified": true
+        }
+      ],
+      "focusedIndexCoverage": "complete",
+      "focusedProofs": [
+        {
+          "file": "guides/data/assistant/knowledge/ultima7.json",
+          "locator": "facts[115]",
+          "id": "black-sword-full-method",
+          "source": {
+            "file": "guides/js/Ultima7.js",
+            "locator": "DB.virtueQuests[6]",
+            "review": "extracted"
+          },
+          "witness": "Ask Erethian about the artifact of power. Free Arcadion into the Ether Gem via the mirror. Heat and hammer the blade at the forge until it's sharp, then bind the daemon to forge the Black Sword."
+        }
+      ],
+      "briefReason": "Complete heat/hammer/sharp/bind procedure exists in focused facts; acquisition/method intent is not answered.",
+      "rootCause": "relation"
+    },
+    {
+      "game": "ultima7",
+      "dialogueId": "u7-forging-and-binding",
+      "turn": 2,
+      "text": "Which daemon, and what gem do I put him into?",
+      "strictPassed": false,
+      "latestDecision": "decline",
+      "category": "missed-supported-answer",
+      "fullClaimSupported": false,
+      "citationVerified": false,
+      "supportingProof": [
+        {
+          "file": "guides/js/Ultima7.js",
+          "locator": "DB.virtueQuests[6]",
+          "review": "extracted",
+          "witness": [
+            "Free Arcadion into the Ether Gem via the mirror."
+          ],
+          "rawWitnessVerified": true
+        }
+      ],
+      "focusedIndexCoverage": "complete",
+      "focusedProofs": [
+        {
+          "file": "guides/data/assistant/knowledge/ultima7.json",
+          "locator": "facts[33]",
+          "id": "arcadion-mirror",
+          "source": {
+            "file": "guides/js/Ultima7.js",
+            "locator": "DB.virtueQuests[6]",
+            "review": "extracted"
+          },
+          "witness": "Free Arcadion into the Ether Gem via the mirror."
+        }
+      ],
+      "briefReason": "Arcadion and Ether Gem via mirror are explicit; compound follow-up is rejected.",
+      "rootCause": "compound"
+    },
+    {
+      "game": "ultima7",
+      "dialogueId": "u7-forging-and-binding",
+      "turn": 3,
+      "text": "Who do I ask about the artifact of power?",
+      "strictPassed": false,
+      "latestDecision": "clarify",
+      "category": "useful-partial",
+      "fullClaimSupported": false,
+      "citationVerified": true,
+      "supportingProof": [
+        {
+          "file": "guides/js/Ultima7.js",
+          "locator": "DB.virtueQuests[6]",
+          "review": "extracted",
+          "witness": [
+            "Ask Erethian about the artifact of power."
+          ],
+          "rawWitnessVerified": true
+        }
+      ],
+      "focusedIndexCoverage": "complete",
+      "focusedProofs": [
+        {
+          "file": "guides/data/assistant/knowledge/ultima7.json",
+          "locator": "facts[34]",
+          "id": "black-sword-forging",
+          "source": {
+            "file": "guides/js/Ultima7.js",
+            "locator": "DB.virtueQuests[6]",
+            "review": "extracted"
+          },
+          "witness": "Heat and hammer the blade at the forge until it's sharp, then bind the daemon to forge the Black Sword."
+        }
+      ],
+      "briefReason": "Correct Erethian sentence is labeled closest possibly non-answering text under clarify, not an answered relationship.",
+      "rootCause": "relation"
+    },
+    {
+      "game": "ultima7",
+      "dialogueId": "u7-forging-and-binding",
+      "turn": 4,
+      "text": "Is my current blade sharp enough to bind him yet?",
+      "strictPassed": true,
+      "latestDecision": "decline",
+      "category": "expected-source-boundary",
+      "fullClaimSupported": false,
+      "citationVerified": false,
+      "supportingProof": [
+        {
+          "file": "guides/data/assistant/knowledge/ultima7.json",
+          "locator": "facts and entities (scoped guide corpus)",
+          "review": "boundary-scope-audit",
+          "limitation": "Reviewed guide evidence establishes procedures or scoped descriptions; no current player/device evidence is supplied. For unsupported mechanics/editions, no supporting positive witness was found in the scoped sources."
+        }
+      ],
+      "focusedIndexCoverage": "not-applicable",
+      "focusedProofs": [],
+      "briefReason": "Requested state/edition/detail is outside the supplied guide evidence. Response makes no unsupported affirmative claim; generic clarification may still be poor UX.",
+      "rootCause": "state-boundary"
+    },
+    {
+      "game": "ultima7",
+      "dialogueId": "u7-observatory-crystal",
+      "turn": 1,
+      "text": "Brion needs his orrery powered. Where do I get the special crystal?",
+      "strictPassed": true,
+      "latestDecision": "answer",
+      "category": "full-supported-answer",
+      "fullClaimSupported": true,
+      "citationVerified": true,
+      "supportingProof": [
+        {
+          "file": "guides/js/Ultima7.js",
+          "locator": "DB.sideQuests[10]",
+          "review": "extracted",
+          "witness": [
+            "Buy a special crystal from the adventurer Addom for 20 gold and give it to Brion so he can power the observatory's orrery."
+          ],
+          "rawWitnessVerified": true
+        }
+      ],
+      "focusedIndexCoverage": "complete",
+      "focusedProofs": [
+        {
+          "file": "guides/data/assistant/knowledge/ultima7.json",
+          "locator": "facts[61]",
+          "id": "orrery-crystal",
+          "source": {
+            "file": "guides/js/Ultima7.js",
+            "locator": "DB.sideQuests[10]",
+            "review": "extracted"
+          },
+          "witness": "Buy a special crystal from the adventurer Addom for 20 gold and give it to Brion so he can power the observatory's orrery."
+        }
+      ],
+      "briefReason": "Complete required useful claim is answered and its displayed source supports the claim.",
+      "rootCause": "none"
+    },
+    {
+      "game": "ultima7",
+      "dialogueId": "u7-observatory-crystal",
+      "turn": 2,
+      "text": "Who receives it?",
+      "strictPassed": true,
+      "latestDecision": "answer",
+      "category": "full-supported-answer",
+      "fullClaimSupported": true,
+      "citationVerified": true,
+      "supportingProof": [
+        {
+          "file": "guides/js/Ultima7.js",
+          "locator": "DB.sideQuests[10]",
+          "review": "extracted",
+          "witness": [
+            "give it to Brion so he can power the observatory's orrery."
+          ],
+          "rawWitnessVerified": true
+        }
+      ],
+      "focusedIndexCoverage": "complete",
+      "focusedProofs": [
+        {
+          "file": "guides/data/assistant/knowledge/ultima7.json",
+          "locator": "facts[61]",
+          "id": "orrery-crystal",
+          "source": {
+            "file": "guides/js/Ultima7.js",
+            "locator": "DB.sideQuests[10]",
+            "review": "extracted"
+          },
+          "witness": "Buy a special crystal from the adventurer Addom for 20 gold and give it to Brion so he can power the observatory's orrery."
+        }
+      ],
+      "briefReason": "Complete required useful claim is answered and its displayed source supports the claim.",
+      "rootCause": "none"
+    },
+    {
+      "game": "ultima7",
+      "dialogueId": "u7-observatory-crystal",
+      "turn": 3,
+      "text": "What does the guide list as the reward for helping him?",
+      "strictPassed": false,
+      "latestDecision": "clarify",
+      "category": "missed-supported-answer",
+      "fullClaimSupported": false,
+      "citationVerified": false,
+      "supportingProof": [
+        {
+          "file": "guides/js/Ultima7.js",
+          "locator": "DB.sideQuests[10]",
+          "review": "extracted",
+          "witness": [
+            "reward: \"Brion activates the orrery\""
+          ],
+          "rawWitnessVerified": true
+        }
+      ],
+      "focusedIndexCoverage": "partial",
+      "focusedProofs": [
+        {
+          "file": "guides/data/assistant/knowledge/ultima7.json",
+          "locator": "facts[61]",
+          "id": "orrery-crystal",
+          "source": {
+            "file": "guides/js/Ultima7.js",
+            "locator": "DB.sideQuests[10]",
+            "review": "extracted"
+          },
+          "witness": "Buy a special crystal from the adventurer Addom for 20 gold and give it to Brion so he can power the observatory's orrery."
+        }
+      ],
+      "briefReason": "Raw reward field explicitly states Brion activates the orrery; focused entries retain the solution but omit the explicit reward field.",
+      "rootCause": "data-coverage"
+    },
+    {
+      "game": "ultima7",
+      "dialogueId": "u7-observatory-crystal",
+      "turn": 4,
+      "text": "How many days until that orrery crystal runs out and needs another purchase?",
+      "strictPassed": true,
+      "latestDecision": "decline",
+      "category": "expected-source-boundary",
+      "fullClaimSupported": false,
+      "citationVerified": false,
+      "supportingProof": [
+        {
+          "file": "guides/data/assistant/knowledge/ultima7.json",
+          "locator": "facts and entities (scoped guide corpus)",
+          "review": "boundary-scope-audit",
+          "limitation": "Reviewed guide evidence establishes procedures or scoped descriptions; no current player/device evidence is supplied. For unsupported mechanics/editions, no supporting positive witness was found in the scoped sources."
+        }
+      ],
+      "focusedIndexCoverage": "not-applicable",
+      "focusedProofs": [],
+      "briefReason": "Requested state/edition/detail is outside the supplied guide evidence. Response makes no unsupported affirmative claim; generic clarification may still be poor UX.",
+      "rootCause": "scope"
+    },
+    {
+      "game": "ultima7",
+      "dialogueId": "u7-liches-and-mana",
+      "turn": 1,
+      "text": "What weapon does the guide recommend against liches, and why?",
+      "strictPassed": true,
+      "latestDecision": "answer",
+      "category": "full-supported-answer",
+      "fullClaimSupported": true,
+      "citationVerified": true,
+      "supportingProof": [
+        {
+          "file": "guides/js/Ultima7.js",
+          "locator": "DB.bestiary[2]",
+          "review": "extracted",
+          "witness": [
+            "Drain their mana with Magebane to shut down the part of their arsenal that makes them lethal."
+          ],
+          "rawWitnessVerified": true
+        }
+      ],
+      "focusedIndexCoverage": "complete",
+      "focusedProofs": [
+        {
+          "file": "guides/data/assistant/knowledge/ultima7.json",
+          "locator": "facts[82]",
+          "id": "combat-liches",
+          "source": {
+            "file": "guides/js/Ultima7.js",
+            "locator": "DB.bestiary[2]",
+            "review": "extracted"
+          },
+          "witness": "Liches: Dangerous spellcasters. Drain their mana with Magebane to shut down the part of their arsenal that makes them lethal. The guide recommends magebane. Threat: Severe."
+        }
+      ],
+      "briefReason": "Complete required useful claim is answered and its displayed source supports the claim.",
+      "rootCause": "none"
+    },
+    {
+      "game": "ultima7",
+      "dialogueId": "u7-liches-and-mana",
+      "turn": 2,
+      "text": "Where is Magebane found?",
+      "strictPassed": true,
+      "latestDecision": "answer",
+      "category": "full-supported-answer",
+      "fullClaimSupported": true,
+      "citationVerified": true,
+      "supportingProof": [
+        {
+          "file": "guides/js/Ultima7.js",
+          "locator": "DB.equipment[5].location",
+          "review": "extracted",
+          "witness": [
+            "16N/38E (Stonegate Ruins, in swamp)"
+          ],
+          "rawWitnessVerified": true
+        }
+      ],
+      "focusedIndexCoverage": "absent",
+      "focusedProofs": [],
+      "briefReason": "Complete required useful claim is answered and its displayed source supports the claim.",
+      "rootCause": "none"
+    },
+    {
+      "game": "ultima7",
+      "dialogueId": "u7-liches-and-mana",
+      "turn": 3,
+      "text": "Does it drain mana only when I hit, or just from carrying it?",
+      "strictPassed": false,
+      "latestDecision": "clarify",
+      "category": "missed-supported-answer",
+      "fullClaimSupported": false,
+      "citationVerified": false,
+      "supportingProof": [
+        {
+          "file": "guides/js/Ultima7.js",
+          "locator": "DB.equipment[5]",
+          "review": "extracted",
+          "witness": [
+            "effect: \"Drains Mana on Hit\""
+          ],
+          "rawWitnessVerified": true
+        }
+      ],
+      "focusedIndexCoverage": "complete",
+      "focusedProofs": [
+        {
+          "file": "guides/data/assistant/knowledge/ultima7.json",
+          "locator": "facts[77]",
+          "id": "equipment-magebane",
+          "source": {
+            "file": "guides/js/Ultima7.js",
+            "locator": "DB.equipment[5]",
+            "review": "extracted"
+          },
+          "witness": "Magebane: Drains Mana on Hit. Type: 1H Weapon."
+        }
+      ],
+      "briefReason": "Magebane effect explicitly states on hit; follow-up contrast with carrying fails routing.",
+      "rootCause": "relation"
+    },
+    {
+      "game": "ultima7",
+      "dialogueId": "u7-liches-and-mana",
+      "turn": 4,
+      "text": "How much mana does each hit drain exactly?",
+      "strictPassed": true,
+      "latestDecision": "clarify",
+      "category": "expected-source-boundary",
+      "fullClaimSupported": false,
+      "citationVerified": false,
+      "supportingProof": [
+        {
+          "file": "guides/data/assistant/knowledge/ultima7.json",
+          "locator": "facts and entities (scoped guide corpus)",
+          "review": "boundary-scope-audit",
+          "limitation": "Reviewed guide evidence establishes procedures or scoped descriptions; no current player/device evidence is supplied. For unsupported mechanics/editions, no supporting positive witness was found in the scoped sources."
+        }
+      ],
+      "focusedIndexCoverage": "not-applicable",
+      "focusedProofs": [],
+      "briefReason": "Requested state/edition/detail is outside the supplied guide evidence. Response makes no unsupported affirmative claim; generic clarification may still be poor UX.",
+      "rootCause": "scope"
+    },
+    {
+      "game": "alqadim",
+      "dialogueId": "aq-sword-training",
+      "turn": 1,
+      "text": "How do I learn the Full-Circle Swing?",
+      "strictPassed": false,
+      "latestDecision": "answer",
+      "category": "equivalent-source-locator",
+      "fullClaimSupported": true,
+      "citationVerified": true,
+      "supportingProof": [
+        {
+          "file": "guides/js/AlQadim.js",
+          "locator": "DB.combatMoves[2].training",
+          "review": "extracted",
+          "witness": [
+            "Learn from Zubakon after later progression"
+          ],
+          "rawWitnessVerified": true
+        }
+      ],
+      "focusedIndexCoverage": "complete",
+      "focusedProofs": [
+        {
+          "file": "guides/data/assistant/knowledge/alqadim.json",
+          "locator": "facts[87]",
+          "id": "swing-full-circle-swing",
+          "source": {
+            "file": "guides/js/AlQadim.js",
+            "locator": "DB.combatMoves[2]",
+            "review": "extracted"
+          },
+          "witness": "The most powerful swing: a complete 360-degree cut that also catches monsters behind the Corsair. Release when the third action circle lights orange. Learn from Zubakon after later progression."
+        }
+      ],
+      "briefReason": "Broader DB.combatMoves[2] contains the exact training field; full Zubakon and later-progression claim is answered. Adapter combat record assembles that field.",
+      "rootCause": "source-locator"
+    },
+    {
+      "game": "alqadim",
+      "dialogueId": "aq-sword-training",
+      "turn": 2,
+      "text": "When should I release the action button for it?",
+      "strictPassed": true,
+      "latestDecision": "answer",
+      "category": "full-supported-answer",
+      "fullClaimSupported": true,
+      "citationVerified": true,
+      "supportingProof": [
+        {
+          "file": "guides/js/AlQadim.js",
+          "locator": "DB.combatMoves[2]",
+          "review": "extracted",
+          "witness": [
+            "Release when the third action circle lights orange"
+          ],
+          "rawWitnessVerified": true
+        }
+      ],
+      "focusedIndexCoverage": "complete",
+      "focusedProofs": [
+        {
+          "file": "guides/data/assistant/knowledge/alqadim.json",
+          "locator": "facts[87]",
+          "id": "swing-full-circle-swing",
+          "source": {
+            "file": "guides/js/AlQadim.js",
+            "locator": "DB.combatMoves[2]",
+            "review": "extracted"
+          },
+          "witness": "The most powerful swing: a complete 360-degree cut that also catches monsters behind the Corsair. Release when the third action circle lights orange. Learn from Zubakon after later progression."
+        }
+      ],
+      "briefReason": "Complete required useful claim is answered and its displayed source supports the claim.",
+      "rootCause": "none"
+    },
+    {
+      "game": "alqadim",
+      "dialogueId": "aq-sword-training",
+      "turn": 3,
+      "text": "Does that attack catch enemies behind me too?",
+      "strictPassed": false,
+      "latestDecision": "clarify",
+      "category": "missed-supported-answer",
+      "fullClaimSupported": false,
+      "citationVerified": false,
+      "supportingProof": [
+        {
+          "file": "guides/js/AlQadim.js",
+          "locator": "DB.combatMoves[2]",
+          "review": "extracted",
+          "witness": [
+            "a complete 360-degree cut that also catches monsters behind the Corsair."
+          ],
+          "rawWitnessVerified": true
+        }
+      ],
+      "focusedIndexCoverage": "complete",
+      "focusedProofs": [
+        {
+          "file": "guides/data/assistant/knowledge/alqadim.json",
+          "locator": "facts[87]",
+          "id": "swing-full-circle-swing",
+          "source": {
+            "file": "guides/js/AlQadim.js",
+            "locator": "DB.combatMoves[2]",
+            "review": "extracted"
+          },
+          "witness": "The most powerful swing: a complete 360-degree cut that also catches monsters behind the Corsair. Release when the third action circle lights orange. Learn from Zubakon after later progression."
+        }
+      ],
+      "briefReason": "360-degree/behind-enemies effect is in the same indexed swing witness; follow-up intent is unresolved.",
+      "rootCause": "relation"
+    },
+    {
+      "game": "alqadim",
+      "dialogueId": "aq-sword-training",
+      "turn": 4,
+      "text": "Has my current character earned enough experience for Zubakon to teach it?",
+      "strictPassed": true,
+      "latestDecision": "decline",
+      "category": "expected-source-boundary",
+      "fullClaimSupported": false,
+      "citationVerified": false,
+      "supportingProof": [
+        {
+          "file": "guides/data/assistant/knowledge/alqadim.json",
+          "locator": "facts and entities (scoped guide corpus)",
+          "review": "boundary-scope-audit",
+          "limitation": "Reviewed guide evidence establishes procedures or scoped descriptions; no current player/device evidence is supplied. For unsupported mechanics/editions, no supporting positive witness was found in the scoped sources."
+        }
+      ],
+      "focusedIndexCoverage": "not-applicable",
+      "focusedProofs": [],
+      "briefReason": "Requested state/edition/detail is outside the supplied guide evidence. Response makes no unsupported affirmative claim; generic clarification may still be poor UX.",
+      "rootCause": "state-boundary"
+    },
+    {
+      "game": "alqadim",
+      "dialogueId": "aq-berries-and-family",
+      "turn": 1,
+      "text": "What are the Purple Berries needed for?",
+      "strictPassed": true,
+      "latestDecision": "answer",
+      "category": "full-supported-answer",
+      "fullClaimSupported": true,
+      "citationVerified": true,
+      "supportingProof": [
+        {
+          "file": "guides/js/AlQadim.js",
+          "locator": "DB.keyItems[1].description",
+          "review": "extracted",
+          "witness": [
+            "Medicinal berries needed to cure Babazar's daughter."
+          ],
+          "rawWitnessVerified": true
+        }
+      ],
+      "focusedIndexCoverage": "complete",
+      "focusedProofs": [
+        {
+          "file": "guides/data/assistant/knowledge/alqadim.json",
+          "locator": "facts[111]",
+          "id": "item-purple-berries-use",
+          "source": {
+            "file": "guides/js/AlQadim.js",
+            "locator": "DB.keyItems[1].description",
+            "review": "extracted"
+          },
+          "witness": "Purple Berries: Medicinal berries needed to cure Babazar's daughter."
+        }
+      ],
+      "briefReason": "Complete required useful claim is answered and its displayed source supports the claim.",
+      "rootCause": "none"
+    },
+    {
+      "game": "alqadim",
+      "dialogueId": "aq-berries-and-family",
+      "turn": 2,
+      "text": "How do I collect them?",
+      "strictPassed": true,
+      "latestDecision": "answer",
+      "category": "full-supported-answer",
+      "fullClaimSupported": true,
+      "citationVerified": true,
+      "supportingProof": [
+        {
+          "file": "guides/js/AlQadim.js",
+          "locator": "DB.chapters[2].required[id=ch3_3]",
+          "review": "extracted",
+          "witness": [
+            "Collect the Purple Berries from the oasis bushes."
+          ],
+          "rawWitnessVerified": true
+        }
+      ],
+      "focusedIndexCoverage": "complete",
+      "focusedProofs": [
+        {
+          "file": "guides/data/assistant/knowledge/alqadim.json",
+          "locator": "facts[13]",
+          "id": "ch3_3",
+          "source": {
+            "file": "guides/js/AlQadim.js",
+            "locator": "DB.chapters[2].required[id=ch3_3]",
+            "review": "extracted"
+          },
+          "witness": "Collect the Purple Berries from the oasis bushes."
+        }
+      ],
+      "briefReason": "Complete required useful claim is answered and its displayed source supports the claim.",
+      "rootCause": "none"
+    },
+    {
+      "game": "alqadim",
+      "dialogueId": "aq-berries-and-family",
+      "turn": 3,
+      "text": "Before I leave the oasis, how should I deal with its giant boar?",
+      "strictPassed": false,
+      "latestDecision": "decline",
+      "category": "misrouted-answer",
+      "fullClaimSupported": false,
+      "citationVerified": true,
+      "supportingProof": [
+        {
+          "file": "guides/js/AlQadim.js",
+          "locator": "DB.bestiary[3]",
+          "review": "extracted",
+          "witness": [
+            "Charges in straight lines. Dodge sideways, then strike from behind."
+          ],
+          "rawWitnessVerified": true
+        }
+      ],
+      "focusedIndexCoverage": "complete",
+      "focusedProofs": [
+        {
+          "file": "guides/data/assistant/knowledge/alqadim.json",
+          "locator": "facts[97]",
+          "id": "enemy-giant-boar",
+          "source": {
+            "file": "guides/js/AlQadim.js",
+            "locator": "DB.bestiary[3].strategy/danger",
+            "review": "extracted",
+            "index": {
+              "file": "guides/js/assistant/adapters/alqadim.js",
+              "locator": "combat record also answers explanation",
+              "review": "authored-index"
+            }
+          },
+          "witness": "Giant Boar: Charges in straight lines. Dodge sideways, then strike from behind. Danger: Medium."
+        }
+      ],
+      "briefReason": "The selected objective states defeat for XP; it does not give the requested boar tactic. Correct combat witness exists elsewhere.",
+      "rootCause": "relation"
+    },
+    {
+      "game": "alqadim",
+      "dialogueId": "aq-berries-and-family",
+      "turn": 4,
+      "text": "What dose of Purple Berries should I give a poisoned party member?",
+      "strictPassed": true,
+      "latestDecision": "decline",
+      "category": "expected-source-boundary",
+      "fullClaimSupported": false,
+      "citationVerified": false,
+      "supportingProof": [
+        {
+          "file": "guides/data/assistant/knowledge/alqadim.json",
+          "locator": "facts and entities (scoped guide corpus)",
+          "review": "boundary-scope-audit",
+          "limitation": "Reviewed guide evidence establishes procedures or scoped descriptions; no current player/device evidence is supplied. For unsupported mechanics/editions, no supporting positive witness was found in the scoped sources."
+        }
+      ],
+      "focusedIndexCoverage": "not-applicable",
+      "focusedProofs": [],
+      "briefReason": "Requested state/edition/detail is outside the supplied guide evidence. Response makes no unsupported affirmative claim; generic clarification may still be poor UX.",
+      "rootCause": "scope"
+    },
+    {
+      "game": "alqadim",
+      "dialogueId": "aq-ship-restoration",
+      "turn": 1,
+      "text": "What does the Ship Orb actually do?",
+      "strictPassed": true,
+      "latestDecision": "answer",
+      "category": "full-supported-answer",
+      "fullClaimSupported": true,
+      "citationVerified": true,
+      "supportingProof": [
+        {
+          "file": "guides/js/AlQadim.js",
+          "locator": "DB.keyItems[5].description",
+          "review": "extracted",
+          "witness": [
+            "Powers and restores the corsair ship for navigation."
+          ],
+          "rawWitnessVerified": true
+        }
+      ],
+      "focusedIndexCoverage": "complete",
+      "focusedProofs": [
+        {
+          "file": "guides/data/assistant/knowledge/alqadim.json",
+          "locator": "facts[104]",
+          "id": "item-ship-orb-use",
+          "source": {
+            "file": "guides/js/AlQadim.js",
+            "locator": "DB.keyItems[5].description",
+            "review": "extracted",
+            "index": {
+              "file": "guides/js/assistant/adapters/alqadim.js",
+              "locator": "use record also answers explanation",
+              "review": "authored-index"
+            }
+          },
+          "witness": "Ship Orb: Powers and restores the corsair ship for navigation."
+        }
+      ],
+      "briefReason": "Complete required useful claim is answered and its displayed source supports the claim.",
+      "rootCause": "none"
+    },
+    {
+      "game": "alqadim",
+      "dialogueId": "aq-ship-restoration",
+      "turn": 2,
+      "text": "How do I obtain that orb?",
+      "strictPassed": true,
+      "latestDecision": "answer",
+      "category": "full-supported-answer",
+      "fullClaimSupported": true,
+      "citationVerified": true,
+      "supportingProof": [
+        {
+          "file": "guides/js/AlQadim.js",
+          "locator": "DB.chapters[3].required[id=ch4_5]",
+          "review": "extracted",
+          "witness": [
+            "Retrieve the Ship Orb from the helm cabin."
+          ],
+          "rawWitnessVerified": true
+        }
+      ],
+      "focusedIndexCoverage": "complete",
+      "focusedProofs": [
+        {
+          "file": "guides/data/assistant/knowledge/alqadim.json",
+          "locator": "facts[19]",
+          "id": "ch4_5",
+          "source": {
+            "file": "guides/js/AlQadim.js",
+            "locator": "DB.chapters[3].required[id=ch4_5]",
+            "review": "extracted"
+          },
+          "witness": "Retrieve the Ship Orb from the helm cabin."
+        }
+      ],
+      "briefReason": "Complete required useful claim is answered and its displayed source supports the claim.",
+      "rootCause": "none"
+    },
+    {
+      "game": "alqadim",
+      "dialogueId": "aq-ship-restoration",
+      "turn": 3,
+      "text": "Who am I rescuing on the Reef of the Dead?",
+      "strictPassed": false,
+      "latestDecision": "decline",
+      "category": "missed-supported-answer",
+      "fullClaimSupported": false,
+      "citationVerified": false,
+      "supportingProof": [
+        {
+          "file": "guides/js/AlQadim.js",
+          "locator": "DB.chapters[3].summary",
+          "review": "extracted",
+          "witness": [
+            "rescue the mermaid's sister, and claim the Ship Orb."
+          ],
+          "rawWitnessVerified": true
+        }
+      ],
+      "focusedIndexCoverage": "complete",
+      "focusedProofs": [
+        {
+          "file": "guides/data/assistant/knowledge/alqadim.json",
+          "locator": "facts[16]",
+          "id": "ch4_2",
+          "source": {
+            "file": "guides/js/AlQadim.js",
+            "locator": "DB.chapters[3].required[id=ch4_2]",
+            "review": "extracted"
+          },
+          "witness": "Rescue the mermaid's sister locked in the stone cell."
+        }
+      ],
+      "briefReason": "Mermaid sister rescue is explicit in raw summary and focused ch4_2; relationship routing misses it.",
+      "rootCause": "relation"
+    },
+    {
+      "game": "alqadim",
+      "dialogueId": "aq-ship-restoration",
+      "turn": 4,
+      "text": "Can the mermaid's sister join my party after I free her?",
+      "strictPassed": true,
+      "latestDecision": "decline",
+      "category": "expected-source-boundary",
+      "fullClaimSupported": false,
+      "citationVerified": false,
+      "supportingProof": [
+        {
+          "file": "guides/data/assistant/knowledge/alqadim.json",
+          "locator": "facts and entities (scoped guide corpus)",
+          "review": "boundary-scope-audit",
+          "limitation": "Reviewed guide evidence establishes procedures or scoped descriptions; no current player/device evidence is supplied. For unsupported mechanics/editions, no supporting positive witness was found in the scoped sources."
+        }
+      ],
+      "focusedIndexCoverage": "not-applicable",
+      "focusedProofs": [],
+      "briefReason": "Requested state/edition/detail is outside the supplied guide evidence. Response makes no unsupported affirmative claim; generic clarification may still be poor UX.",
+      "rootCause": "scope"
+    },
+    {
+      "game": "albion",
+      "dialogueId": "ab-toronto-supplies",
+      "turn": 1,
+      "text": "How do I access the COM room aboard Toronto?",
+      "strictPassed": true,
+      "latestDecision": "answer",
+      "category": "full-supported-answer",
+      "fullClaimSupported": true,
+      "citationVerified": true,
+      "supportingProof": [
+        {
+          "file": "guides/js/Albion.js",
+          "locator": "QUEST_HINTS[\"toronto-intro\"][\"com-code\"]",
+          "review": "extracted",
+          "witness": [
+            "Talk to Joe, then use the access ladder in the room north of Joe’s; key in 1042 to enter the COM/service level access."
+          ],
+          "rawWitnessVerified": true
+        }
+      ],
+      "focusedIndexCoverage": "complete",
+      "focusedProofs": [
+        {
+          "file": "guides/data/assistant/knowledge/albion.json",
+          "locator": "facts[1]",
+          "id": "com-code",
+          "source": {
+            "file": "guides/js/Albion.js",
+            "locator": "QUEST_HINTS[\"toronto-intro\"][\"com-code\"]",
+            "review": "extracted"
+          },
+          "witness": "Talk to Joe, then use the access ladder in the room north of Joe’s; key in 1042 to enter the COM/service level access."
+        }
+      ],
+      "briefReason": "Complete required useful claim is answered and its displayed source supports the claim.",
+      "rootCause": "none"
+    },
+    {
+      "game": "albion",
+      "dialogueId": "ab-toronto-supplies",
+      "turn": 2,
+      "text": "Once inside, where do I find the Pistol and its canisters?",
+      "strictPassed": false,
+      "latestDecision": "clarify",
+      "category": "missed-supported-answer",
+      "fullClaimSupported": false,
+      "citationVerified": false,
+      "supportingProof": [
+        {
+          "file": "guides/js/Albion.js",
+          "locator": "QUEST_HINTS[\"toronto-intro\"][\"pistol\"]",
+          "review": "extracted",
+          "witness": [
+            "In the COM room, examine the damaged console to get the Pistol + Canisters"
+          ],
+          "rawWitnessVerified": true
+        }
+      ],
+      "focusedIndexCoverage": "complete",
+      "focusedProofs": [
+        {
+          "file": "guides/data/assistant/knowledge/albion.json",
+          "locator": "facts[2]",
+          "id": "pistol",
+          "source": {
+            "file": "guides/js/Albion.js",
+            "locator": "QUEST_HINTS[\"toronto-intro\"][\"pistol\"]",
+            "review": "extracted"
+          },
+          "witness": "In the COM room, examine the damaged console to get the Pistol + Canisters; grab the extra Stimdrinks from the east drawer."
+        }
+      ],
+      "briefReason": "Pistol and Canisters are both in the damaged-console hint; preface is incorrectly split and compound location declined.",
+      "rootCause": "compound"
+    },
+    {
+      "game": "albion",
+      "dialogueId": "ab-toronto-supplies",
+      "turn": 3,
+      "text": "How can I carry them past security?",
+      "strictPassed": false,
+      "latestDecision": "clarify",
+      "category": "missed-supported-answer",
+      "fullClaimSupported": false,
+      "citationVerified": false,
+      "supportingProof": [
+        {
+          "file": "guides/js/Albion.js",
+          "locator": "QUEST_HINTS[\"toronto-intro\"][\"hide-weapon\"]",
+          "review": "extracted",
+          "witness": [
+            "hide the Pistol + Canisters in the wall cabinet on the service level before passing security."
+          ],
+          "rawWitnessVerified": true
+        }
+      ],
+      "focusedIndexCoverage": "complete",
+      "focusedProofs": [
+        {
+          "file": "guides/data/assistant/knowledge/albion.json",
+          "locator": "facts[0]",
+          "id": "hide-weapon",
+          "source": {
+            "file": "guides/js/Albion.js",
+            "locator": "QUEST_HINTS[\"toronto-intro\"][\"hide-weapon\"]",
+            "review": "extracted"
+          },
+          "witness": "After looting the COM room, hide the Pistol + Canisters in the wall cabinet on the service level before passing security."
+        }
+      ],
+      "briefReason": "Explicit service-level wall-cabinet method is indexed; acquisition/method follow-up is not resolved.",
+      "rootCause": "relation"
+    },
+    {
+      "game": "albion",
+      "dialogueId": "ab-toronto-supplies",
+      "turn": 4,
+      "text": "Is my Pistol safely hidden there already?",
+      "strictPassed": true,
+      "latestDecision": "decline",
+      "category": "expected-source-boundary",
+      "fullClaimSupported": false,
+      "citationVerified": false,
+      "supportingProof": [
+        {
+          "file": "guides/data/assistant/knowledge/albion.json",
+          "locator": "facts and entities (scoped guide corpus)",
+          "review": "boundary-scope-audit",
+          "limitation": "Reviewed guide evidence establishes procedures or scoped descriptions; no current player/device evidence is supplied. For unsupported mechanics/editions, no supporting positive witness was found in the scoped sources."
+        }
+      ],
+      "focusedIndexCoverage": "not-applicable",
+      "focusedProofs": [],
+      "briefReason": "Requested state/edition/detail is outside the supplied guide evidence. Response makes no unsupported affirmative claim; generic clarification may still be poor UX.",
+      "rootCause": "state-boundary"
+    },
+    {
+      "game": "albion",
+      "dialogueId": "ab-freezing-and-seeds",
+      "turn": 1,
+      "text": "What does Frost Avalanche do, and what resource does each cast use?",
+      "strictPassed": false,
+      "latestDecision": "decline",
+      "category": "missed-supported-answer",
+      "fullClaimSupported": false,
+      "citationVerified": false,
+      "supportingProof": [
+        {
+          "file": "guides/js/Albion.js",
+          "locator": "DB.magic[0].keySpells[0]",
+          "review": "extracted",
+          "witness": [
+            "{ name: \"Frost Avalanche\", level: 9, sp: 30, effect: \"Freezes all enemies\" }",
+            "reagent: \"Trifalai Seed (1.2G each)\""
+          ],
+          "rawWitnessVerified": true
+        }
+      ],
+      "focusedIndexCoverage": "complete",
+      "focusedProofs": [
+        {
+          "file": "guides/data/assistant/knowledge/albion.json",
+          "locator": "facts[68]",
+          "id": "iskai-training",
+          "source": {
+            "file": "guides/js/Albion.js",
+            "locator": "DB.magic[0]",
+            "review": "extracted"
+          },
+          "witness": "Iskai (Dji-Kas): practitioner Sira; reagent Trifalai Seed (1.2G each); training: Fasiir in Dji-Kas guild (Jirinaar). Visit Fasiir before leaving Jirinaar; this is the documented free spell-training stop for Sira."
+        },
+        {
+          "file": "guides/data/assistant/knowledge/albion.json",
+          "locator": "facts[69]",
+          "id": "frost-avalanche-effect",
+          "source": {
+            "file": "guides/js/Albion.js",
+            "locator": "DB.magic[0].keySpells[0]; DB.magic[0].reagent",
+            "review": "extracted"
+          },
+          "witness": "Freezes all enemies. Cost: 30 SP. Reagent: Trifalai Seed (1.2G each)."
+        }
+      ],
+      "briefReason": "Frost effect fact includes freezing, 30 SP and Trifalai Seed; compound resource clause is declined.",
+      "rootCause": "compound"
+    },
+    {
+      "game": "albion",
+      "dialogueId": "ab-freezing-and-seeds",
+      "turn": 2,
+      "text": "Who offers the free training for it?",
+      "strictPassed": false,
+      "latestDecision": "decline",
+      "category": "missed-supported-answer",
+      "fullClaimSupported": false,
+      "citationVerified": false,
+      "supportingProof": [
+        {
+          "file": "guides/js/Albion.js",
+          "locator": "DB.magic[0].keySpells[0]; DB.magic[0].freeTraining/routeHint",
+          "review": "extracted",
+          "witness": [
+            "Fasiir in Dji-Kas guild (Jirinaar)"
+          ],
+          "rawWitnessVerified": true
+        }
+      ],
+      "focusedIndexCoverage": "complete",
+      "focusedProofs": [
+        {
+          "file": "guides/data/assistant/knowledge/albion.json",
+          "locator": "facts[68]",
+          "id": "iskai-training",
+          "source": {
+            "file": "guides/js/Albion.js",
+            "locator": "DB.magic[0]",
+            "review": "extracted"
+          },
+          "witness": "Iskai (Dji-Kas): practitioner Sira; reagent Trifalai Seed (1.2G each); training: Fasiir in Dji-Kas guild (Jirinaar). Visit Fasiir before leaving Jirinaar; this is the documented free spell-training stop for Sira."
+        },
+        {
+          "file": "guides/data/assistant/knowledge/albion.json",
+          "locator": "facts[116]",
+          "id": "frost-avalanche-learning",
+          "source": {
+            "file": "guides/js/Albion.js",
+            "locator": "DB.magic[0].keySpells[0]; DB.magic[0].freeTraining/routeHint",
+            "review": "extracted"
+          },
+          "witness": "Learn Frost Avalanche in Iskai (Dji-Kas) magic (practitioner Sira). Spell level 9. Cost: 30 SP. Training: Fasiir in Dji-Kas guild (Jirinaar). Visit Fasiir before leaving Jirinaar; this is the documented free spell-training stop for Sira."
+        }
+      ],
+      "briefReason": "Explicit Fasiir/Jirinaar free-training evidence is available; additional-detail guard blocks it.",
+      "rootCause": "scope"
+    },
+    {
+      "game": "albion",
+      "dialogueId": "ab-freezing-and-seeds",
+      "turn": 3,
+      "text": "What level and SP cost does Thorn Snare have instead?",
+      "strictPassed": false,
+      "latestDecision": "answer",
+      "category": "equivalent-source-locator",
+      "fullClaimSupported": true,
+      "citationVerified": true,
+      "supportingProof": [
+        {
+          "file": "guides/js/Albion.js",
+          "locator": "DB.magic[0].keySpells[1].level/sp",
+          "review": "extracted",
+          "witness": [
+            "{ name: \"Thorn Snare\", level: 12, sp: 16, effect: \"Immobilizes target completely\" }"
+          ],
+          "rawWitnessVerified": true
+        }
+      ],
+      "focusedIndexCoverage": "complete",
+      "focusedProofs": [
+        {
+          "file": "guides/data/assistant/knowledge/albion.json",
+          "locator": "facts[117]",
+          "id": "thorn-snare-learning",
+          "source": {
+            "file": "guides/js/Albion.js",
+            "locator": "DB.magic[0].keySpells[1]; DB.magic[0].freeTraining/routeHint",
+            "review": "extracted"
+          },
+          "witness": "Learn Thorn Snare in Iskai (Dji-Kas) magic (practitioner Sira). Spell level 12. Cost: 16 SP. Training: Fasiir in Dji-Kas guild (Jirinaar). Visit Fasiir before leaving Jirinaar; this is the documented free spell-training stop for Sira."
+        }
+      ],
+      "briefReason": "Level 12 and 16 SP are answered; cited exact keySpells[1] plus school training fields include the narrow level/sp fields.",
+      "rootCause": "source-locator"
+    },
+    {
+      "game": "albion",
+      "dialogueId": "ab-freezing-and-seeds",
+      "turn": 4,
+      "text": "Do I currently have enough Trifalai Seeds to cast Frost Avalanche twice?",
+      "strictPassed": true,
+      "latestDecision": "decline",
+      "category": "expected-source-boundary",
+      "fullClaimSupported": false,
+      "citationVerified": false,
+      "supportingProof": [
+        {
+          "file": "guides/data/assistant/knowledge/albion.json",
+          "locator": "facts and entities (scoped guide corpus)",
+          "review": "boundary-scope-audit",
+          "limitation": "Reviewed guide evidence establishes procedures or scoped descriptions; no current player/device evidence is supplied. For unsupported mechanics/editions, no supporting positive witness was found in the scoped sources."
+        }
+      ],
+      "focusedIndexCoverage": "not-applicable",
+      "focusedProofs": [],
+      "briefReason": "Requested state/edition/detail is outside the supplied guide evidence. Response makes no unsupported affirmative claim; generic clarification may still be poor UX.",
+      "rootCause": "state-boundary"
+    },
+    {
+      "game": "albion",
+      "dialogueId": "ab-linked-companions",
+      "turn": 1,
+      "text": "What happens to Sira if Melthas leaves?",
+      "strictPassed": false,
+      "latestDecision": "clarify",
+      "category": "missed-supported-answer",
+      "fullClaimSupported": false,
+      "citationVerified": false,
+      "supportingProof": [
+        {
+          "file": "guides/js/Albion.js",
+          "locator": "DB.characters[3].role/notes",
+          "review": "extracted",
+          "witness": [
+            "Always leaves with Melthas."
+          ],
+          "rawWitnessVerified": true
+        }
+      ],
+      "focusedIndexCoverage": "complete",
+      "focusedProofs": [
+        {
+          "file": "guides/data/assistant/knowledge/albion.json",
+          "locator": "facts[58]",
+          "id": "sira-notes",
+          "source": {
+            "file": "guides/js/Albion.js",
+            "locator": "DB.characters[3].notes",
+            "review": "extracted"
+          },
+          "witness": "Iskai mage specializing in frost and snare magic. Always leaves with Melthas."
+        }
+      ],
+      "briefReason": "Directed Sira leaves-with Melthas proof exists; two-person question triggers unresolved subject clarification.",
+      "rootCause": "subject"
+    },
+    {
+      "game": "albion",
+      "dialogueId": "ab-linked-companions",
+      "turn": 2,
+      "text": "Why would I bring her into a difficult fight?",
+      "strictPassed": false,
+      "latestDecision": "clarify",
+      "category": "missed-supported-answer",
+      "fullClaimSupported": false,
+      "citationVerified": false,
+      "supportingProof": [
+        {
+          "file": "guides/js/Albion.js",
+          "locator": "DB.characters[3].strengths/weaknesses",
+          "review": "extracted",
+          "witness": [
+            "strengths: [\"Powerful crowd control\", \"Frost/Snare immobilizes enemies\", \"High speed\"]"
+          ],
+          "rawWitnessVerified": true
+        }
+      ],
+      "focusedIndexCoverage": "complete",
+      "focusedProofs": [
+        {
+          "file": "guides/data/assistant/knowledge/albion.json",
+          "locator": "facts[65]",
+          "id": "sira-combat",
+          "source": {
+            "file": "guides/js/Albion.js",
+            "locator": "DB.characters[3].strengths/weaknesses",
+            "review": "extracted"
+          },
+          "witness": "Strengths: Powerful crowd control; Frost/Snare immobilizes enemies; High speed. Limits: Light armor only; Spells require Trifalai Seeds; Linked to Melthas."
+        }
+      ],
+      "briefReason": "Unconfirmed preceding subject prevents Sira strengths/frost-snare fact from being used.",
+      "rootCause": "subject"
+    },
+    {
+      "game": "albion",
+      "dialogueId": "ab-linked-companions",
+      "turn": 3,
+      "text": "How does Melthas help against demons?",
+      "strictPassed": false,
+      "latestDecision": "decline",
+      "category": "missed-supported-answer",
+      "fullClaimSupported": false,
+      "citationVerified": false,
+      "supportingProof": [
+        {
+          "file": "guides/js/Albion.js",
+          "locator": "DB.characters[4].strengths/weaknesses",
+          "review": "extracted",
+          "witness": [
+            "Demon Exodus destroys demon-type monsters"
+          ],
+          "rawWitnessVerified": true
+        }
+      ],
+      "focusedIndexCoverage": "complete",
+      "focusedProofs": [
+        {
+          "file": "guides/data/assistant/knowledge/albion.json",
+          "locator": "facts[59]",
+          "id": "melthas-notes",
+          "source": {
+            "file": "guides/js/Albion.js",
+            "locator": "DB.characters[4].notes",
+            "review": "extracted"
+          },
+          "witness": "Druid who can communicate through Iskai trii. Demon-banishing specialist."
+        },
+        {
+          "file": "guides/data/assistant/knowledge/albion.json",
+          "locator": "facts[73]",
+          "id": "demon-exodus-effect",
+          "source": {
+            "file": "guides/js/Albion.js",
+            "locator": "DB.magic[1].keySpells[0]; DB.magic[1].reagent",
+            "review": "extracted"
+          },
+          "witness": "Destroys ALL demon-type enemies. Cost: 70 SP. Reagent: None."
+        },
+        {
+          "file": "guides/data/assistant/knowledge/albion.json",
+          "locator": "facts[119]",
+          "id": "demon-exodus-learning",
+          "source": {
+            "file": "guides/js/Albion.js",
+            "locator": "DB.magic[1].keySpells[0]; DB.magic[1].freeTraining/routeHint",
+            "review": "extracted"
+          },
+          "witness": "Learn Demon Exodus in Celtic/Mahinos (Druid) magic (practitioner Melthas). Spell level 20. Cost: 70 SP. Training: Buy scrolls from Roves in Arjano library. Arjano's library is the route stop for Melthas's spell scrolls."
+        }
+      ],
+      "briefReason": "Melthas demon-specialist note and Demon Exodus effect/learning owner evidence exist; restrictive subject guard declines.",
+      "rootCause": "scope"
+    },
+    {
+      "game": "albion",
+      "dialogueId": "ab-linked-companions",
+      "turn": 4,
+      "text": "Can I keep Sira when dismissing Melthas in the 2026 console remaster?",
+      "strictPassed": true,
+      "latestDecision": "clarify",
+      "category": "expected-source-boundary",
+      "fullClaimSupported": false,
+      "citationVerified": false,
+      "supportingProof": [
+        {
+          "file": "guides/data/assistant/knowledge/albion.json",
+          "locator": "facts and entities (scoped guide corpus)",
+          "review": "boundary-scope-audit",
+          "limitation": "Reviewed guide evidence establishes procedures or scoped descriptions; no current player/device evidence is supplied. For unsupported mechanics/editions, no supporting positive witness was found in the scoped sources."
+        }
+      ],
+      "focusedIndexCoverage": "not-applicable",
+      "focusedProofs": [],
+      "briefReason": "Requested state/edition/detail is outside the supplied guide evidence. Response makes no unsupported affirmative claim; generic clarification may still be poor UX.",
+      "rootCause": "scope"
+    },
+    {
+      "game": "starcraft",
+      "dialogueId": "sc-client-first-launch",
+      "turn": 1,
+      "text": "For SCHNAIL, do I need to install a separate copy of Brood War?",
+      "strictPassed": false,
+      "latestDecision": "clarify",
+      "category": "missed-supported-answer",
+      "fullClaimSupported": false,
+      "citationVerified": false,
+      "supportingProof": [
+        {
+          "file": "guides/StarcraftBWAPI.html",
+          "locator": "#schnail-setup .text-blue-700",
+          "review": "extracted",
+          "witness": [
+            "you don't need to install the game separately."
+          ],
+          "rawWitnessVerified": true
+        }
+      ],
+      "focusedIndexCoverage": "complete",
+      "focusedProofs": [
+        {
+          "file": "guides/data/assistant/knowledge/starcraft.json",
+          "locator": "facts[5]",
+          "id": "starcraft:knowledge:schnail-own-game",
+          "source": {
+            "file": "guides/StarcraftBWAPI.html",
+            "locator": "#schnail-setup .text-blue-700",
+            "review": "extracted"
+          },
+          "witness": "Note: SCHNAIL includes its own version of Starcraft: Brood War, so you don't need to install the game separately."
+        }
+      ],
+      "briefReason": "SCHNAIL supplied-game witness directly says no separate installation is needed; requirement routing misses it.",
+      "rootCause": "relation"
+    },
+    {
+      "game": "starcraft",
+      "dialogueId": "sc-client-first-launch",
+      "turn": 2,
+      "text": "Why might the first launch be slow?",
+      "strictPassed": true,
+      "latestDecision": "answer",
+      "category": "full-supported-answer",
+      "fullClaimSupported": true,
+      "citationVerified": true,
+      "supportingProof": [
+        {
+          "file": "guides/StarcraftBWAPI.html",
+          "locator": "#getting-started > .bg-blue-50 .text-blue-700",
+          "review": "extracted",
+          "witness": [
+            "The first launch might take some time as it downloads\n                                    necessary game files."
+          ],
+          "rawWitnessVerified": true
+        }
+      ],
+      "focusedIndexCoverage": "complete",
+      "focusedProofs": [
+        {
+          "file": "guides/data/assistant/knowledge/starcraft.json",
+          "locator": "facts[8]",
+          "id": "starcraft:knowledge:schnail-first-launch",
+          "source": {
+            "file": "guides/StarcraftBWAPI.html",
+            "locator": "#getting-started > .bg-blue-50 .text-blue-700",
+            "review": "extracted"
+          },
+          "witness": "Note: The first launch might take some time as it downloads necessary game files."
+        }
+      ],
+      "briefReason": "Complete required useful claim is answered and its displayed source supports the claim.",
+      "rootCause": "none"
+    },
+    {
+      "game": "starcraft",
+      "dialogueId": "sc-client-first-launch",
+      "turn": 3,
+      "text": "After the first login, is play still going over the internet?",
+      "strictPassed": false,
+      "latestDecision": "clarify",
+      "category": "missed-supported-answer",
+      "fullClaimSupported": false,
+      "citationVerified": false,
+      "supportingProof": [
+        {
+          "file": "guides/StarcraftBWAPI.html",
+          "locator": "#troubleshooting .text-yellow-700",
+          "review": "extracted",
+          "witness": [
+            "client login. All gameplay after login happens on your local network, ensuring"
+          ],
+          "rawWitnessVerified": true
+        }
+      ],
+      "focusedIndexCoverage": "complete",
+      "focusedProofs": [
+        {
+          "file": "guides/data/assistant/knowledge/starcraft.json",
+          "locator": "facts[10]",
+          "id": "starcraft:knowledge:schnail-network",
+          "source": {
+            "file": "guides/StarcraftBWAPI.html",
+            "locator": "#troubleshooting .text-yellow-700",
+            "review": "extracted"
+          },
+          "witness": "Note about SCHNAIL: An internet connection is only required for the initial client login. All gameplay after login happens on your local network, ensuring minimal latency and no ongoing internet requirement during play."
+        }
+      ],
+      "briefReason": "Indexed network requirement explicitly distinguishes initial internet login and later local-network play; two-entity clarification blocks it.",
+      "rootCause": "subject"
+    },
+    {
+      "game": "starcraft",
+      "dialogueId": "sc-client-first-launch",
+      "turn": 4,
+      "text": "Which executable did my antivirus quarantine on this computer?",
+      "strictPassed": true,
+      "latestDecision": "clarify",
+      "category": "expected-source-boundary",
+      "fullClaimSupported": false,
+      "citationVerified": false,
+      "supportingProof": [
+        {
+          "file": "guides/data/assistant/knowledge/starcraft.json",
+          "locator": "facts and entities (scoped guide corpus)",
+          "review": "boundary-scope-audit",
+          "limitation": "Reviewed guide evidence establishes procedures or scoped descriptions; no current player/device evidence is supplied. For unsupported mechanics/editions, no supporting positive witness was found in the scoped sources."
+        }
+      ],
+      "focusedIndexCoverage": "not-applicable",
+      "focusedProofs": [],
+      "briefReason": "Requested state/edition/detail is outside the supplied guide evidence. Response makes no unsupported affirmative claim; generic clarification may still be poor UX.",
+      "rootCause": "state-boundary"
+    },
+    {
+      "game": "starcraft",
+      "dialogueId": "sc-remastered-map-route",
+      "turn": 1,
+      "text": "I want the integrated Remastered map route. Where do I extract the ZIP?",
+      "strictPassed": true,
+      "latestDecision": "answer",
+      "category": "full-supported-answer",
+      "fullClaimSupported": true,
+      "citationVerified": true,
+      "supportingProof": [
+        {
+          "file": "guides/StarcraftBWAPI.html",
+          "locator": "#remastered-setup ol > li:nth-child(3)",
+          "review": "extracted",
+          "witness": [
+            "Documents\\StarCraft\\Maps"
+          ],
+          "rawWitnessVerified": true
+        }
+      ],
+      "focusedIndexCoverage": "complete",
+      "focusedProofs": [
+        {
+          "file": "guides/data/assistant/knowledge/starcraft.json",
+          "locator": "facts[32]",
+          "id": "starcraft:knowledge:map-folder",
+          "source": {
+            "file": "guides/StarcraftBWAPI.html",
+            "locator": "#remastered-setup ol > li:nth-child(3)",
+            "review": "extracted"
+          },
+          "witness": "Extract the downloaded ZIP file to your StarCraft maps folder (typically Documents\\StarCraft\\Maps)."
+        },
+        {
+          "file": "guides/data/assistant/knowledge/starcraft.json",
+          "locator": "facts[35]",
+          "id": "starcraft:knowledge:map-setup",
+          "source": {
+            "file": "guides/StarcraftBWAPI.html",
+            "locator": "#remastered-setup ol",
+            "review": "extracted"
+          },
+          "witness": "Ensure StarCraft Remastered is installed and updated.; Download the BWAPI integrated SCM map archive from Proton Drive or Direct Download.; Extract the downloaded ZIP file to your StarCraft maps folder (typically Documents\\StarCraft\\Maps).; Launch StarCraft Remastered.; Navigate to Single Player → Custom Game.; Select the extracted BWAPI map.; Crucial Step: Under Game Type, you MUST select \"Use Map Settings\". The AI will not function properly in a standard Melee game.; Start the game and enjoy playing against the advanced AI!"
+        }
+      ],
+      "briefReason": "Complete required useful claim is answered and its displayed source supports the claim.",
+      "rootCause": "none"
+    },
+    {
+      "game": "starcraft",
+      "dialogueId": "sc-remastered-map-route",
+      "turn": 2,
+      "text": "For that map, which game type do I choose, and why does Melee fail?",
+      "strictPassed": true,
+      "latestDecision": "answer",
+      "category": "full-supported-answer",
+      "fullClaimSupported": true,
+      "citationVerified": true,
+      "supportingProof": [
+        {
+          "file": "guides/StarcraftBWAPI.html",
+          "locator": "#remastered-setup ol > li:nth-child(7)",
+          "review": "extracted",
+          "witness": [
+            "The AI will not function properly in a standard Melee game."
+          ],
+          "rawWitnessVerified": true
+        }
+      ],
+      "focusedIndexCoverage": "complete",
+      "focusedProofs": [
+        {
+          "file": "guides/data/assistant/knowledge/starcraft.json",
+          "locator": "facts[34]",
+          "id": "starcraft:knowledge:map-game-type",
+          "source": {
+            "file": "guides/StarcraftBWAPI.html",
+            "locator": "#remastered-setup ol > li:nth-child(7)",
+            "review": "extracted"
+          },
+          "witness": "Crucial Step: Under Game Type, you MUST select \"Use Map Settings\". The AI will not function properly in a standard Melee game."
+        },
+        {
+          "file": "guides/data/assistant/knowledge/starcraft.json",
+          "locator": "facts[35]",
+          "id": "starcraft:knowledge:map-setup",
+          "source": {
+            "file": "guides/StarcraftBWAPI.html",
+            "locator": "#remastered-setup ol",
+            "review": "extracted"
+          },
+          "witness": "Ensure StarCraft Remastered is installed and updated.; Download the BWAPI integrated SCM map archive from Proton Drive or Direct Download.; Extract the downloaded ZIP file to your StarCraft maps folder (typically Documents\\StarCraft\\Maps).; Launch StarCraft Remastered.; Navigate to Single Player → Custom Game.; Select the extracted BWAPI map.; Crucial Step: Under Game Type, you MUST select \"Use Map Settings\". The AI will not function properly in a standard Melee game.; Start the game and enjoy playing against the advanced AI!"
+        }
+      ],
+      "briefReason": "Complete required useful claim is answered and its displayed source supports the claim.",
+      "rootCause": "none"
+    },
+    {
+      "game": "starcraft",
+      "dialogueId": "sc-remastered-map-route",
+      "turn": 3,
+      "text": "Will I have to downgrade Remastered for this route?",
+      "strictPassed": true,
+      "latestDecision": "answer",
+      "category": "full-supported-answer",
+      "fullClaimSupported": true,
+      "citationVerified": true,
+      "supportingProof": [
+        {
+          "file": "guides/StarcraftBWAPI.html",
+          "locator": "#remastered-setup .text-blue-700",
+          "review": "extracted",
+          "witness": [
+            "This method works natively with StarCraft Remastered without needing version downgrades."
+          ],
+          "rawWitnessVerified": true
+        }
+      ],
+      "focusedIndexCoverage": "complete",
+      "focusedProofs": [
+        {
+          "file": "guides/data/assistant/knowledge/starcraft.json",
+          "locator": "facts[29]",
+          "id": "starcraft:knowledge:map-identity",
+          "source": {
+            "file": "guides/StarcraftBWAPI.html",
+            "locator": "#remastered-setup .text-blue-700",
+            "review": "extracted"
+          },
+          "witness": "Note: This method works natively with StarCraft Remastered without needing version downgrades."
+        }
+      ],
+      "briefReason": "Complete required useful claim is answered and its displayed source supports the claim.",
+      "rootCause": "none"
+    },
+    {
+      "game": "starcraft",
+      "dialogueId": "sc-remastered-map-route",
+      "turn": 4,
+      "text": "Does this same SCM archive also work in StarCraft II?",
+      "strictPassed": true,
+      "latestDecision": "clarify",
+      "category": "expected-source-boundary",
+      "fullClaimSupported": false,
+      "citationVerified": false,
+      "supportingProof": [
+        {
+          "file": "guides/data/assistant/knowledge/starcraft.json",
+          "locator": "facts and entities (scoped guide corpus)",
+          "review": "boundary-scope-audit",
+          "limitation": "Reviewed guide evidence establishes procedures or scoped descriptions; no current player/device evidence is supplied. For unsupported mechanics/editions, no supporting positive witness was found in the scoped sources."
+        }
+      ],
+      "focusedIndexCoverage": "not-applicable",
+      "focusedProofs": [],
+      "briefReason": "Requested state/edition/detail is outside the supplied guide evidence. Response makes no unsupported affirmative claim; generic clarification may still be poor UX.",
+      "rootCause": "scope"
+    },
+    {
+      "game": "starcraft",
+      "dialogueId": "sc-bot-learning-resources",
+      "turn": 1,
+      "text": "What open-source example bots does this guide offer for learning?",
+      "strictPassed": true,
+      "latestDecision": "answer",
+      "category": "full-supported-answer",
+      "fullClaimSupported": true,
+      "citationVerified": true,
+      "supportingProof": [
+        {
+          "file": "guides/StarcraftBWAPI.html",
+          "locator": "#resources .space-y-8 > div:nth-child(2)",
+          "review": "extracted",
+          "witness": [
+            "Learn from these open-source bot implementations:"
+          ],
+          "rawWitnessVerified": true
+        }
+      ],
+      "focusedIndexCoverage": "complete",
+      "focusedProofs": [
+        {
+          "file": "guides/data/assistant/knowledge/starcraft.json",
+          "locator": "facts[47]",
+          "id": "starcraft:knowledge:example-bots",
+          "source": {
+            "file": "guides/StarcraftBWAPI.html",
+            "locator": "#resources .space-y-8 > div:nth-child(2)",
+            "review": "extracted"
+          },
+          "witness": "Example Bots; Learn from these open-source bot implementations: Steamhammer; A strong open-source Starcraft: Brood War AI by Dave Churchill; View on GitHub; UAlbertaBot; A Starcraft AI development framework by Dave Churchill and Steve Gelly; View on GitHub"
+        }
+      ],
+      "briefReason": "Complete required useful claim is answered and its displayed source supports the claim.",
+      "rootCause": "none"
+    },
+    {
+      "game": "starcraft",
+      "dialogueId": "sc-bot-learning-resources",
+      "turn": 2,
+      "text": "Who does the guide credit with UAlbertaBot?",
+      "strictPassed": false,
+      "latestDecision": "answer",
+      "category": "qualified-attribution-source-mismatch",
+      "fullClaimSupported": false,
+      "citationVerified": false,
+      "supportingProof": [
+        {
+          "file": "guides/StarcraftBWAPI.html",
+          "locator": "#resources .space-y-4 > div:nth-child(2)",
+          "review": "extracted",
+          "witness": [
+            "A Starcraft AI development framework by Dave\n                                        Churchill\n                                        and Steve Gelly"
+          ],
+          "rawWitnessVerified": true
+        }
+      ],
+      "focusedIndexCoverage": "complete",
+      "focusedProofs": [
+        {
+          "file": "guides/data/assistant/knowledge/starcraft.json",
+          "locator": "facts[47]",
+          "id": "starcraft:knowledge:example-bots",
+          "source": {
+            "file": "guides/StarcraftBWAPI.html",
+            "locator": "#resources .space-y-8 > div:nth-child(2)",
+            "review": "extracted"
+          },
+          "witness": "Example Bots; Learn from these open-source bot implementations: Steamhammer; A strong open-source Starcraft: Brood War AI by Dave Churchill; View on GitHub; UAlbertaBot; A Starcraft AI development framework by Dave Churchill and Steve Gelly; View on GitHub"
+        }
+      ],
+      "briefReason": "Question asks who the guide credits. Guide explicitly credits Dave Churchill and Steve Gelly; response instead leads with outside David Churchill attribution and caveat. David/Dave alias is declared, but the external citation does not directly cite the guide-credit claim. Qualified useful evidence; no unqualified pass or fabricated unsupported authorship.",
+      "rootCause": "oracle-ambiguity"
+    },
+    {
+      "game": "starcraft",
+      "dialogueId": "sc-bot-learning-resources",
+      "turn": 3,
+      "text": "Where can I read the framework documentation?",
+      "strictPassed": false,
+      "latestDecision": "decline",
+      "category": "missed-supported-answer",
+      "fullClaimSupported": false,
+      "citationVerified": false,
+      "supportingProof": [
+        {
+          "file": "guides/StarcraftBWAPI.html",
+          "locator": "#resources .grid > div:nth-child(1)",
+          "review": "extracted",
+          "witness": [
+            "BWAPI Official Documentation"
+          ],
+          "rawWitnessVerified": true
+        }
+      ],
+      "focusedIndexCoverage": "complete",
+      "focusedProofs": [
+        {
+          "file": "guides/data/assistant/knowledge/starcraft.json",
+          "locator": "facts[43]",
+          "id": "starcraft:knowledge:bwapi-docs",
+          "source": {
+            "file": "guides/StarcraftBWAPI.html",
+            "locator": "#resources .grid > div:nth-child(1)",
+            "review": "extracted"
+          },
+          "witness": "Documentation; BWAPI Official Documentation; BWAPI Wiki; SCHNAIL Documentation"
+        }
+      ],
+      "briefReason": "Guide documentation list explicitly includes BWAPI Official Documentation and BWAPI Wiki; inherited attribution restriction blocks routing.",
+      "rootCause": "scope"
+    },
+    {
+      "game": "starcraft",
+      "dialogueId": "sc-bot-learning-resources",
+      "turn": 4,
+      "text": "Which of those bots wins more often in today's tournament rankings?",
+      "strictPassed": true,
+      "latestDecision": "decline",
+      "category": "expected-source-boundary",
+      "fullClaimSupported": false,
+      "citationVerified": false,
+      "supportingProof": [
+        {
+          "file": "guides/data/assistant/knowledge/starcraft.json",
+          "locator": "facts and entities (scoped guide corpus)",
+          "review": "boundary-scope-audit",
+          "limitation": "Reviewed guide evidence establishes procedures or scoped descriptions; no current player/device evidence is supplied. For unsupported mechanics/editions, no supporting positive witness was found in the scoped sources."
+        }
+      ],
+      "focusedIndexCoverage": "not-applicable",
+      "focusedProofs": [],
+      "briefReason": "Requested state/edition/detail is outside the supplied guide evidence. Response makes no unsupported affirmative claim; generic clarification may still be poor UX.",
+      "rootCause": "scope"
+    },
+    {
+      "game": "starcraft",
+      "dialogueId": "sc-offline-comparison",
+      "turn": 1,
+      "text": "How does BWAILauncher compare with SCHNAIL for AI realism and strategic depth?",
+      "strictPassed": false,
+      "latestDecision": "clarify",
+      "category": "missed-supported-answer",
+      "fullClaimSupported": false,
+      "citationVerified": false,
+      "supportingProof": [
+        {
+          "file": "guides/StarcraftBWAPI.html",
+          "locator": "#getting-started .grid > div:nth-child(2) .pros-cons",
+          "review": "extracted",
+          "witness": [
+            "Less realistic AI behavior",
+            "Limited strategic depth compared to SCHNAIL"
+          ],
+          "rawWitnessVerified": true
+        }
+      ],
+      "focusedIndexCoverage": "complete",
+      "focusedProofs": [
+        {
+          "file": "guides/data/assistant/knowledge/starcraft.json",
+          "locator": "facts[28]",
+          "id": "starcraft:knowledge:bwai-limitations",
+          "source": {
+            "file": "guides/StarcraftBWAPI.html",
+            "locator": "#getting-started .grid > div:nth-child(2) .pros-cons",
+            "review": "extracted"
+          },
+          "witness": "Pros: No internet connection required; Replaces standard single-player AI; Easier to set up initially; Good for offline play; Cons: Less realistic AI behavior; Uses standard AI micro which can be cheesed; Limited strategic depth compared to SCHNAIL"
+        },
+        {
+          "file": "guides/data/assistant/knowledge/starcraft.json",
+          "locator": "facts[38]",
+          "id": "starcraft:knowledge:options-comparison",
+          "source": {
+            "file": "guides/StarcraftBWAPI.html",
+            "locator": "#getting-started .grid",
+            "review": "extracted"
+          },
+          "witness": "SCHNAIL; Pros: More realistic AI behavior; Better micro and macro management; Seamless integration with the game; Active community and regular updates; Cons: Requires internet connection for initial login; AI plays over local network after login; View Setup Guide; BWAILauncher; Pros: No internet connection required; Replaces standard single-player AI; Easier to set up initially; Good for offline play; Cons: Less realistic AI behavior; Uses standard AI micro which can be cheesed; Limited strategic depth compared to SCHNAIL; View Setup Guide; Remastered SCM Map; Pros: Works directly with StarCraft Remastered; No external launcher required; Easy setup (just download and play); Cons: Must be played in \"Use Map Settings\" mode; Limited to the provided integrated maps; View Setup Guide"
+        }
+      ],
+      "briefReason": "Guide directly states less realistic behavior and limited strategic depth compared with SCHNAIL; comparison is declined as unsupported.",
+      "rootCause": "compound"
+    },
+    {
+      "game": "starcraft",
+      "dialogueId": "sc-offline-comparison",
+      "turn": 2,
+      "text": "Can I use BWAILauncher entirely offline?",
+      "strictPassed": false,
+      "latestDecision": "clarify",
+      "category": "missed-supported-answer",
+      "fullClaimSupported": false,
+      "citationVerified": false,
+      "supportingProof": [
+        {
+          "file": "guides/StarcraftBWAPI.html",
+          "locator": "#getting-started .grid > div:nth-child(2) .pros-cons ul.mb-3",
+          "review": "extracted",
+          "witness": [
+            "No internet connection required"
+          ],
+          "rawWitnessVerified": true
+        }
+      ],
+      "focusedIndexCoverage": "complete",
+      "focusedProofs": [
+        {
+          "file": "guides/data/assistant/knowledge/starcraft.json",
+          "locator": "facts[25]",
+          "id": "starcraft:knowledge:bwai-offline",
+          "source": {
+            "file": "guides/StarcraftBWAPI.html",
+            "locator": "#getting-started .grid > div:nth-child(2) .pros-cons ul.mb-3",
+            "review": "extracted"
+          },
+          "witness": "No internet connection required; Replaces standard single-player AI; Easier to set up initially; Good for offline play"
+        },
+        {
+          "file": "guides/data/assistant/knowledge/starcraft.json",
+          "locator": "facts[28]",
+          "id": "starcraft:knowledge:bwai-limitations",
+          "source": {
+            "file": "guides/StarcraftBWAPI.html",
+            "locator": "#getting-started .grid > div:nth-child(2) .pros-cons",
+            "review": "extracted"
+          },
+          "witness": "Pros: No internet connection required; Replaces standard single-player AI; Easier to set up initially; Good for offline play; Cons: Less realistic AI behavior; Uses standard AI micro which can be cheesed; Limited strategic depth compared to SCHNAIL"
+        },
+        {
+          "file": "guides/data/assistant/knowledge/starcraft.json",
+          "locator": "facts[38]",
+          "id": "starcraft:knowledge:options-comparison",
+          "source": {
+            "file": "guides/StarcraftBWAPI.html",
+            "locator": "#getting-started .grid",
+            "review": "extracted"
+          },
+          "witness": "SCHNAIL; Pros: More realistic AI behavior; Better micro and macro management; Seamless integration with the game; Active community and regular updates; Cons: Requires internet connection for initial login; AI plays over local network after login; View Setup Guide; BWAILauncher; Pros: No internet connection required; Replaces standard single-player AI; Easier to set up initially; Good for offline play; Cons: Less realistic AI behavior; Uses standard AI micro which can be cheesed; Limited strategic depth compared to SCHNAIL; View Setup Guide; Remastered SCM Map; Pros: Works directly with StarCraft Remastered; No external launcher required; Easy setup (just download and play); Cons: Must be played in \"Use Map Settings\" mode; Limited to the provided integrated maps; View Setup Guide"
+        }
+      ],
+      "briefReason": "Explicit BWAILauncher no-internet witness exists; subject clarification prevents answering.",
+      "rootCause": "subject"
+    },
+    {
+      "game": "starcraft",
+      "dialogueId": "sc-offline-comparison",
+      "turn": 3,
+      "text": "If it cannot detect Starcraft.exe automatically, how do I point it at the game?",
+      "strictPassed": false,
+      "latestDecision": "clarify",
+      "category": "missed-supported-answer",
+      "fullClaimSupported": false,
+      "citationVerified": false,
+      "supportingProof": [
+        {
+          "file": "guides/StarcraftBWAPI.html",
+          "locator": "#bwai-setup ol > li:nth-child(5)",
+          "review": "extracted",
+          "witness": [
+            "Starcraft.exe",
+            "Save the settings and restart the launcher"
+          ],
+          "rawWitnessVerified": true
+        }
+      ],
+      "focusedIndexCoverage": "complete",
+      "focusedProofs": [
+        {
+          "file": "guides/data/assistant/knowledge/starcraft.json",
+          "locator": "facts[20]",
+          "id": "starcraft:knowledge:bwai-install",
+          "source": {
+            "file": "guides/StarcraftBWAPI.html",
+            "locator": "#bwai-setup ol",
+            "review": "extracted"
+          },
+          "witness": "Ensure you have Starcraft: Brood War installed and updated to version 1.16.1; Download the latest BWAILauncher release from GitHub; Extract the downloaded ZIP file to your Starcraft: Brood War installation directory; Run BWAILauncher.exe; If BWAILauncher doesn't detect your Starcraft installation automatically: Click on the settings/configuration button in the launcher; Navigate to the \"Game\" or \"Paths\" section; Browse to and select your Starcraft.exe file; Save the settings and restart the launcher; Configure your preferred game settings through the launcher interface; Launch the game through BWAILauncher"
+        },
+        {
+          "file": "guides/data/assistant/knowledge/starcraft.json",
+          "locator": "facts[23]",
+          "id": "starcraft:knowledge:bwai-detection",
+          "source": {
+            "file": "guides/StarcraftBWAPI.html",
+            "locator": "#bwai-setup ol > li:nth-child(5)",
+            "review": "extracted"
+          },
+          "witness": "If BWAILauncher doesn't detect your Starcraft installation automatically: Click on the settings/configuration button in the launcher; Navigate to the \"Game\" or \"Paths\" section; Browse to and select your Starcraft.exe file; Save the settings and restart the launcher"
+        },
+        {
+          "file": "guides/data/assistant/knowledge/starcraft.json",
+          "locator": "facts[24]",
+          "id": "starcraft:knowledge:bwai-portable",
+          "source": {
+            "file": "guides/StarcraftBWAPI.html",
+            "locator": "#bwai-setup ul.mb-4",
+            "review": "extracted"
+          },
+          "witness": "Extract BWAILauncher to your portable Starcraft directory; When prompted, point BWAILauncher to the Starcraft.exe in the same directory; All settings will be saved in the same folder, making it fully portable"
+        }
+      ],
+      "briefReason": "Exact launcher settings/Game Paths/Starcraft.exe/save/restart procedure exists; unresolved prior subject blocks it.",
+      "rootCause": "subject"
+    },
+    {
+      "game": "starcraft",
+      "dialogueId": "sc-offline-comparison",
+      "turn": 4,
+      "text": "Is the installation on my computer already version 1.16.1?",
+      "strictPassed": true,
+      "latestDecision": "decline",
+      "category": "expected-source-boundary",
+      "fullClaimSupported": false,
+      "citationVerified": false,
+      "supportingProof": [
+        {
+          "file": "guides/data/assistant/knowledge/starcraft.json",
+          "locator": "facts and entities (scoped guide corpus)",
+          "review": "boundary-scope-audit",
+          "limitation": "Reviewed guide evidence establishes procedures or scoped descriptions; no current player/device evidence is supplied. For unsupported mechanics/editions, no supporting positive witness was found in the scoped sources."
+        }
+      ],
+      "focusedIndexCoverage": "not-applicable",
+      "focusedProofs": [],
+      "briefReason": "Requested state/edition/detail is outside the supplied guide evidence. Response makes no unsupported affirmative claim; generic clarification may still be poor UX.",
+      "rootCause": "state-boundary"
+    }
+  ],
+  "firstVsLatest": {
+    "firstStrictPassed": 33,
+    "latestStrictPassed": 35,
+    "strictNewPasses": [
+      "u7-liches-and-mana:1",
+      "aq-berries-and-family:4",
+      "sc-remastered-map-route:2"
+    ],
+    "strictRegression": [
+      "ab-freezing-and-seeds:1"
+    ],
+    "interpretation": "Observed strict score changes only. First Frost Avalanche turn delivered the effect/cost/resource text but also explicitly left the resource clause unanswered; do not promote its original strict pass into a full semantic answer. First free-training answer was complete with exact assembled spell/school provenance despite strict failure; latest loses it."
+  }
+}

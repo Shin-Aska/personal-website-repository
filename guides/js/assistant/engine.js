@@ -63,13 +63,15 @@ const NARRATIVE_MISSING_PLAIN = "I don't have a sourced answer to that question 
 const RELATIONAL_ASPECTS = new Set(['cause', 'method', 'relationship']);
 const STORY_LABELS = { perpetrator: 'Perpetrator', suspect: 'Suspect', victim: 'Victim', leader: 'Leader', member: 'Member' };
 const CRIME_WORDS = /\b(?:murder\w*|kill(?:ed|er|ers|ing|s)?|homicide)\b/i;
+const NONFATAL_CRIME = /\b(?:attempt(?:ed)?|plan(?:ned|ning)?|prevent(?:ed|ing)?|intend(?:ed)?|alleged(?:ly)?|rumou?red|reportedly|possibly|likely|hypothetical|faked)\b.{0,100}\b(?:murder\w*|kill\w*|assassinat\w*)\b|\b(?:wasn't|weren't|isn't|aren't|hasn't|haven't|hadn't|didn't|doesn't|don't|not|never|nobody)\s+(?:(?:been|be|get|got|ever|actually)\s+)*(?:kill(?:ed)?|murder(?:ed)?)\b|\b(?:survived|survives|still alive|remained alive)\b/i;
+const UNCERTAIN_ROLE = /\b(?:alleged|allegedly|suspected|possibly|possible|likely|perhaps|reportedly|unconfirmed|intended|planned|attempted)\b/i;
 const GUIDE_STORY_SOURCE = GUIDE_SOURCE;
 const phraseIn = (text, phrase) => (` ${tokens(text).map(possessive).join(' ')} `)
     .includes(` ${tokens(phrase).map(possessive).join(' ')} `);
 const METHOD_LABELS = { buy: 'where to buy it', recruit: 'recruitment', download: 'download' };
 // Deliberately the same whether or not the subject exists at a higher
 // spoiler setting, so it never reveals hidden names.
-const UNGROUNDED = 'I could not find that in this guide at the current help level. It may not be covered, or it may need a higher help level (Hint or Full answer); naming the subject differently can also help.';
+const UNGROUNDED = 'I could not find that in this guide. Try naming the subject as it appears in the guide, or ask about another subject.';
 // What the guide can tell about one subject, in the visitor's words. Built only from records visible at the ceiling.
 const OFFERS = [['location', 'where it is'], ['acquisition', 'how to get it'], ['use', 'what it does'], ['explanation', 'what it is'],
     ['stats', 'its stats'], ['combat', 'how to beat it'], ['remedy', 'how to counter or cure it'], ['prerequisites', 'what it requires'],
@@ -398,6 +400,33 @@ export function createAssistant({ gameId, records, getProgress, predicates = [],
         for (const ctx of contexts.values()) { ctx.lastAction = null; ctx.pending = null; ctx.lastRecord = null; ctx.lastRecords = []; }
         return result('correction', `Understood. I will use your current report (${report.value ? 'yes' : 'no'}) for this session. Saved checkboxes are unchanged.`, { stateChanges: [change] });
     }
+    function conversationContextStatement(p, c) {
+        const q = p.q.replace(new RegExp(GUIDE_STORY_SOURCE.source, 'gu'), ' ').replace(/^[,:\s]+|[.!\s]+$/g, '').trim();
+        const statement = q.match(/^i(?:'m| am) (?:now |currently |still )?(?:at|in|on) (.+)$/);
+        if (!statement) return null;
+        const target = statement[1], key = value => tokens(value).map(possessive).join(' ').replace(/^(?:the|a|an) /, '');
+        const named = key(target);
+        const eventIds = new Set(visible.filter(record => ['quest', 'objective', 'chapter', 'act', 'event', 'topic'].includes(record.kind)
+            && (record.story || record.narrative)).map(record => record.entityId));
+        const matches = visible.filter(record => eventIds.has(record.entityId)).flatMap(record => [record.title, ...record.aliases]
+            .filter(alias => key(alias) && (` ${named} `).includes(` ${key(alias)} `))
+            .map(alias => ({ id: record.entityId, alias, length: tokens(alias).length })));
+        if (!matches.length && !/\b(?:quests?|cases?|murders?|massacres?|assassination|investigation|chapters?|events?)\b/.test(target)) return null;
+        const longest = Math.max(0, ...matches.map(match => match.length));
+        const selected = [...new Map(matches.filter(match => match.length === longest).map(match => [match.id, match])).values()];
+        const nameTerms = selected.length === 1 ? tokens(selected[0].alias) : [];
+        const guideOnly = p.parts.some(part => part.guideOnly) || GUIDE_STORY_SOURCE.test(p.q);
+        const carry = carryOf({ q: target, editions: p.editions, guideOnly }, nameTerms);
+        clearTopic(c);
+        c.entities = selected.map(match => match.id);
+        c.frame = { parts: [{ intent: 'explanation', carry, ...(guideOnly ? { guideOnly: true } : {}) }] };
+        const id = selected.length === 1 ? selected[0].id : null;
+        const exact = id && key(selected[0].alias) === named && !carry.editions.length && !carry.numbers.length && !carry.extra.length;
+        return result('clarify', exact ? `I will use ${titleOf(id)} as the conversation topic. No progress was changed.`
+            : 'Please name the exact event or quest and its supported context. No progress was changed.', {
+            conversationContext: { entityId: id, restrictions: { guideOnly, editions: carry.editions, quantities: carry.numbers, material: carry.extra } }
+        });
+    }
     // Generic "what next?" requests are grounded by the selected guide section.
     function contextual(intent, part, opts) {
         const words = materialTerms(part.q, [], part.editions).filter(t => !CONTEXT_WORDS.has(t));
@@ -436,9 +465,9 @@ export function createAssistant({ gameId, records, getProgress, predicates = [],
         const selected = usable(unfinished[0]);
         if (!selected) {
             if (section.completionFact) return result('clarify',
-                'A step-specific hint is not available at this help level. Name a subject or use the guide section for a hint.');
+                'A step-specific hint is not available. Name a subject or use the guide section for a hint.');
             const reply = answerRecord(section, c, opts.tone,
-                `Checklist here (${count}). A step-specific hint is not available at this help level. Section hint:\n`);
+                `Checklist here (${count}). A step-specific hint is not available. Section hint:\n`);
             c.lastAction = null;
             return reply;
         }
@@ -612,7 +641,7 @@ export function createAssistant({ gameId, records, getProgress, predicates = [],
     function overviewOf(entityId, c) {
         const own = visible.filter(r => r.entityId === entityId && r.kind !== 'research');
         const picked = OFFERS.map(([relation]) => [SHORT_LABEL[relation], own.find(r => r.relation === relation)]).filter(([, r]) => r);
-        if (!picked.length) return decline('The local guide has nothing recorded for that subject at the selected help level.');
+        if (!picked.length) return decline('The local guide has nothing recorded for that subject.');
         const top = picked.reduce((high, [, r]) => LEVELS.indexOf(r.level) > LEVELS.indexOf(high) ? r.level : high, 'gentle');
         c.entities = [entityId]; c.lastRecord = null; c.lastRecords = picked.map(([, r]) => r.id); c.lastAction = null; c.pending = null;
         return result('answer', `Everything the guide records about ${titleOf(entityId)}:\n${picked.map(([label, r]) => `${label}: ${r.text}`).join('\n')}`, {
@@ -622,7 +651,7 @@ export function createAssistant({ gameId, records, getProgress, predicates = [],
     function listKind(part, c, key = listGroup(part.q)) {
         const group = LIST_KINDS[key];
         const entries = group ? [...new Map(visible.filter(r => group[0].includes(r.kind) && r.title).map(r => [r.entityId, r])).values()] : [];
-        if (!entries.length) return decline('The local guide has no list of that kind at the selected help level.');
+        if (!entries.length) return decline('The local guide has no list of that kind.');
         c.entities = []; c.lastRecord = null; c.lastRecords = []; c.lastAction = null; c.pending = null;
         const top = entries.reduce((high, r) => LEVELS.indexOf(r.level) > LEVELS.indexOf(high) ? r.level : high, 'gentle');
         const counted = /^how many\b/.test(part.core || part.q);
@@ -963,6 +992,15 @@ export function createAssistant({ gameId, records, getProgress, predicates = [],
             // A visible named subject remains current even if the requested
             // relationship is missing. This uses only authorized exact names.
             const known = rememberNamedSubject(part.story.query || '', opts, c);
+            const pendingQuery = (part.story.query || '').replace(GUIDE_STORY_SOURCE, ' ').trim();
+            // An unsupported new name/event must not revive the older page
+            // selection on a later subjectless role question. Retain every
+            // unresolved word and edition as a constraint on that frame.
+            if (pendingQuery && !part.carry) part.carry = carryOf({ ...part, q: pendingQuery,
+                guideOnly: part.guideOnly || part.story.guideOnly }, known.flatMap(hit => hit.queryTerms));
+            if (!known.length && materialTerms(pendingQuery, [], part.editions).length) {
+                c.entities = []; c.pending = null; c.lastRecord = null; c.lastRecords = []; c.lastAction = null;
+            }
             const title = known.length === 1 ? titleOf(known[0].id) : null;
             return `${title ? `I found the entry for ${title}, but I don't have` : "I don't have"} a sourced answer to that relationship question in the available records.`;
         };
@@ -980,7 +1018,8 @@ export function createAssistant({ gameId, records, getProgress, predicates = [],
         const previous = !subject && implicit && c.frame?.parts.length === 1 ? c.frame.parts[0] : null;
         // A subjectless follow-up keeps the source and material restrictions
         // of the conversation it reuses; a stale page cannot erase them.
-        if ((previous?.story || previous?.narrative)?.guideOnly) part.story = { ...part.story, guideOnly: true };
+        if ((previous?.story || previous?.narrative)?.guideOnly || previous?.guideOnly || previous?.carry?.guideOnly)
+            part.story = { ...part.story, guideOnly: true };
         const inherited = part.inherited || previous?.carry || { extra: [], editions: [], numbers: [] };
         const extra = inherited.extra || [], inheritedNumbers = inherited.numbers || [];
         const editionsHere = [...new Set([...(part.editions || []), ...(inherited.editions || [])])];
@@ -1004,9 +1043,12 @@ export function createAssistant({ gameId, records, getProgress, predicates = [],
         }
         const roles = role === 'participants' ? ['perpetrator', 'victim', 'suspect']
             : role === 'perpetrator' ? ['perpetrator', 'suspect'] : [role];
+        const fatalVictim = crime && (/\b(?:killed|murdered)\b|\bmurder victims?\b/.test(part.core || part.q)
+            || (role === 'victim' && personTarget));
         let pool = stories.filter(r => roles.includes(r.story.role)
             && (!part.story.guideOnly || r.source.review !== 'external-research')
-            && (!crime || CRIME_WORDS.test([r.title, ...r.aliases, r.text, r.story.qualifier || ''].join(' '))));
+            && (!crime || (CRIME_WORDS.test([r.title, ...r.aliases, r.text, r.story.qualifier || ''].join(' '))
+                && (r.story.role !== 'victim' || !fatalVictim || !NONFATAL_CRIME.test([r.title, r.text, r.story.qualifier || ''].join(' '))))));
         if (subject) pool = pool.filter(r => r.entityId === subject.id);
 
         const queryTerms = materialTerms(query, [], editionsHere);
@@ -1058,8 +1100,10 @@ export function createAssistant({ gameId, records, getProgress, predicates = [],
             // Existing authored Q&A indexes remain useful for organizations
             // that have not yet acquired a typed role record.
             const legacy = resolve(part.core, opts);
-            if (role === 'member' && legacy.some(hit => visible.some(r => r.entityId === hit.id && r.kind === 'qa' && r.relation === 'explanation')))
+            if (role === 'member' && legacy.some(hit => visible.some(r => r.entityId === hit.id && r.kind === 'qa' && r.relation === 'explanation'))) {
+                part.intent = 'explanation';
                 return null;
+            }
             part.intent = 'story';
             return decline(unavailable());
         }
@@ -1125,6 +1169,18 @@ export function createAssistant({ gameId, records, getProgress, predicates = [],
         const unsupported = replies.find(reply => reply.decision !== 'answer');
         if (unsupported) { c.lastRecord = null; c.lastRecords = []; return unsupported; }
         let body = [...new Set(replies.map(reply => reply.text))].join('\n');
+        if (role !== 'participants' && ['perpetrator', 'victim', 'suspect'].includes(role)) {
+            const actualRole = suspectOnly ? 'suspect' : role;
+            const names = [...new Set(candidates.filter(record => record.story.role === actualRole
+                && (actualRole === 'suspect' || !UNCERTAIN_ROLE.test(`${record.story.qualifier || ''} ${record.text}`)))
+                .flatMap(record => record.story.people))];
+            if (names.length) {
+                const outside = candidates.every(record => record.source.review === 'external-research');
+                const label = actualRole === 'victim' ? 'Victims' : actualRole === 'perpetrator' ? 'Killers' : 'Suspects';
+                const quoted = outside ? body.replace(/^Not in this guide — from outside research: /gm, '') : body;
+                body = `${outside ? 'Not in this guide — from outside research:\n' : ''}${label}: ${names.join(', ')}\n${quoted}`;
+            }
+        }
         if (role === 'participants' && !suspectOnly) {
             const byRecord = new Map(candidates.map((record, at) => [record.id, replies[at]]));
             const blocks = pairs.map(pair => ({ records: pair.records,
@@ -1188,6 +1244,7 @@ export function createAssistant({ gameId, records, getProgress, predicates = [],
         const supports = record => relates(record, intent) && (!part.identityRequest || record.identity !== false);
         const story = storyReply(part, opts, c, { subject });
         if (story) return story;
+        intent = part.intent;
         if (RESTRICTION.test(part.q)) {
             // Reject the condition before overview or other early answers,
             // but establish a newly named subject before the next "it".
@@ -1366,8 +1423,8 @@ export function createAssistant({ gameId, records, getProgress, predicates = [],
             // relationship is a decline; across turns the visitor may mean
             // something else, so ask.
             else if (!compatible.length && c.entities.length === 1 && titleOf(c.entities[0])) return multi
-                ? decline(`The local guide has no supported ${intent} answer for this subject at the selected help level.`)
-                : result('clarify', `The current subject has no supported ${intent} answer at this help level. Name another subject.`);
+                ? decline(`The local guide has no supported ${intent} answer for this subject.`)
+                : result('clarify', `The current subject has no supported ${intent} answer. Name another subject.`);
             else return choices(c, visible.filter(r => compatible.includes(r.entityId)), intent,
                 { parts: [{ intent, method: part.method, carry: carryOf(part, []) }] });
         }
@@ -1402,7 +1459,7 @@ export function createAssistant({ gameId, records, getProgress, predicates = [],
         }
         // Offering a choice between subjects that none can answer is a dead end.
         if (matched.length > 1 && !matched.some(m => visible.some(r => r.entityId === m.id && supports(r))))
-            return decline(`The local guide has no supported ${intent} answer for this subject at the selected help level.`);
+            return decline(`The local guide has no supported ${intent} answer for this subject.`);
         if (matched.length > 1) return choices(c, visible.filter(r => matched.some(m => m.id === r.entityId)), intent,
             { parts: [{ intent, method: part.method, carry: carryOf(part, matched.flatMap(m => m.queryTerms)) }] });
         const explicit = matched[0]?.id;
@@ -1461,9 +1518,9 @@ export function createAssistant({ gameId, records, getProgress, predicates = [],
             candidates = index.search(part.q, r => r.entityId === explicit && relates(r, 'hint')).map(x => x.record)
                 .filter(r => !part.guideOnly || r.source?.review !== 'external-research');
         if (!candidates.length) {
-            if (part.identityRequest) return decline('I do not have a sourced identity description for this subject at this help level. Ask “Tell me about” the subject for its guide context, or ask for its location.');
+            if (part.identityRequest) return decline('I do not have a sourced identity description for this subject. Ask “Tell me about” the subject for its guide context, or ask for its location.');
             const offered = explicit ? offeredFor(explicit, intent) : '';
-            return decline(`The local guide has no supported ${intent} answer for this subject at the selected help level.${offered ? ` It can tell you ${offered}.` : ''}`);
+            return decline(`The local guide has no supported ${intent} answer for this subject.${offered ? ` It can tell you ${offered}.` : ''}`);
         }
         // The guide's own facts always win over outside research.
         if (candidates.some(r => r.source?.review !== 'external-research'))
@@ -1684,7 +1741,7 @@ export function createAssistant({ gameId, records, getProgress, predicates = [],
             p.parts[0]?.intent || frameParts[0]?.intent || null, { parts: p.parts.length ? frameOf(p.parts) : frameParts });
         if (!matched.length) {
             c.entities = []; c.pending = null; c.lastAction = null; c.lastRecord = null; c.lastRecords = [];
-            return result('clarify', 'I could not match that subject at the selected help level. Please name it as the guide does.');
+            return result('clarify', 'I could not match that subject. Please name it as the guide does.');
         }
         const subject = matched[0];
         const subjectQuery = { q: p.subject.q, core: p.subject.core, editions: p.editions, pronoun: false, report: false };
@@ -1846,6 +1903,15 @@ export function createAssistant({ gameId, records, getProgress, predicates = [],
             ]).has(token));
             if (smallerRemainder.length) return result('clarify', 'Which previous hint should I make gentler? Please name one supported subject.');
             const current = authorize(r, ceiling);
+            // Public chat has one answer mode. Keep the same complete source
+            // answer, including narrative uncertainty and ordered-step labels.
+            if (opts.fullAnswersOnly) {
+                if (!current) return decline('No sourced answer is available for this subject.');
+                if (current.narrative) return narrativeReply({ q: '', core: '', editions: [], pronoun: false,
+                    narrative: { aspect: current.narrative.aspect, sequenceMode: current.narrative.sequenceMode,
+                        selectedId: current.id, query: '' } }, opts, c);
+                return answerRecord(current, c, opts.tone);
+            }
             const rank = Math.min(LEVELS.indexOf(current?.level || 'gentle'),
                 LEVELS.indexOf(c.lastLevel || current?.level || 'gentle'));
             if (!rank) return result('decline', 'That is already the gentlest authored hint for this subject.');
@@ -1853,9 +1919,11 @@ export function createAssistant({ gameId, records, getProgress, predicates = [],
             if (!gentler) return decline('No gentler authored variant is available for this answer.');
             return answerRecord(gentler, c, opts.tone);
         }
+        const statedContext = conversationContextStatement(p, c);
+        if (statedContext) return statedContext;
         if (p.correction) return correct(p, c);
         if (/\b(?:don't|do not|not)\s+(?:tell|show|give|reveal|explain)\b/.test(p.q))
-            return result('clarify', 'Understood. Ask for the specific information you do want, or select Gentle for a smaller hint.');
+            return result('clarify', 'Understood. Ask for the specific information you do want.');
         if (p.hypothetical) {
             // Merely supposing ownership of the exact current subject does
             // not assert progress or erase that subject. A different or
@@ -1884,6 +1952,7 @@ export function createAssistant({ gameId, records, getProgress, predicates = [],
     const api = {
         gameId,
         answer(text, opts = {}) {
+            if (opts.fullAnswersOnly) opts = { ...opts, spoiler: 'direct' };
             if (opts.expectedRevision !== undefined && opts.expectedRevision !== revision)
                 return result('stale', 'The topic or settings changed. Ask again in the current context.');
             if (opts.spoiler && level(opts.spoiler) !== ceiling) api.setPolicy(opts.spoiler);
@@ -1907,6 +1976,7 @@ export function createAssistant({ gameId, records, getProgress, predicates = [],
             return reply;
         },
         async answerAsync(text, opts = {}) {
+            if (opts.fullAnswersOnly) opts = { ...opts, spoiler: 'direct' };
             if (opts.expectedRevision !== undefined && opts.expectedRevision !== revision) return api.answer(text, opts);
             if (opts.spoiler) api.setPolicy(opts.spoiler);
             const c = activate(opts.contextId);
@@ -1969,7 +2039,7 @@ export function createAssistant({ gameId, records, getProgress, predicates = [],
                 if (LEVELS.indexOf(m.level) <= LEVELS.indexOf(ceiling)) return {
                     ...m, choices: m.revision === revision ? m.choices : [], actions: m.revision === revision ? m.actions : []
                 };
-                return { role: m.role, text: 'Earlier message hidden at this help level.', decision: 'hidden',
+                return { role: m.role, text: 'Earlier message hidden.', decision: 'hidden',
                     level: ceiling, actions: [], choices: [], recordIds: [], sources: [] };
             });
         },

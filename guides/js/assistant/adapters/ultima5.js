@@ -1,4 +1,4 @@
-import { createAssistant } from '../engine.js';
+import { createGuideAssistant } from '../guide-assistant.js';
 import { buildNarrativeRecords, buildResearchRecords, buildTopicRecords, factMap } from '../topics.js';
 
 const slug = value => String(value || '').normalize('NFKD').replace(/[^\w\s-]/g, '').trim().toLowerCase().replace(/[\s_-]+/g, '-');
@@ -371,7 +371,7 @@ export async function createUltima5Assistant(options) {
     if (!response.ok) throw new Error('The local Ultima V hint file could not be loaded.');
     const overlay = await response.json();
     const started = performance.now();
-    const assistant = createAssistant({ gameId: 'ultima5', records: buildUltima5Records({ ...options, overlay }), getProgress: options.getProgress });
+    const assistant = await createGuideAssistant({ gameId: 'ultima5', records: buildUltima5Records({ ...options, overlay }), getProgress: options.getProgress });
     assistant.preparationMs = performance.now() - started;
     return assistant;
 }

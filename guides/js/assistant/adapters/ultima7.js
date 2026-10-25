@@ -1,4 +1,4 @@
-import { createAssistant } from '../engine.js';
+import { createGuideAssistant } from '../guide-assistant.js';
 import { authorize } from '../policy.js';
 import { buildNarrativeRecords, buildResearchRecords, buildStoryRecords, buildTopicRecords } from '../topics.js';
 
@@ -377,7 +377,7 @@ export async function createUltima7Assistant({ data, questRoutes = {}, markers =
     if (!response.ok) throw new Error('The local Ultima VII knowledge file could not be loaded.');
     const overlay = await response.json();
     const records = buildUltima7Records(data, overlay, questRoutes, markers);
-    const assistant = createAssistant({ gameId: 'ultima7', records, getProgress: () => [], editions: ['forge of virtue'] });
+    const assistant = await createGuideAssistant({ gameId: 'ultima7', records, getProgress: () => [], editions: ['forge of virtue'] });
     assistant.describeContext = (key, spoiler) => {
         const record = records.find(record => record.id === `${ultima7QuestId(key)}:hint`);
         return record ? authorize(record, spoiler) : null;

@@ -1,4 +1,4 @@
-import { createAssistant } from '../engine.js';
+import { createGuideAssistant } from '../guide-assistant.js';
 import { buildNarrativeRecords, buildResearchRecords, buildTopicRecords, factMap } from '../topics.js';
 
 const slug = value => String(value).normalize('NFKD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
@@ -182,5 +182,5 @@ export async function createAlQadimAssistant({ data, getQuestState, chapterRoute
     const response = await fetch(new URL('../../../data/assistant/alqadim.json', import.meta.url));
     if (!response.ok) throw new Error('The local Al-Qadim knowledge file could not be loaded.');
     const overlay = await response.json();
-    return createAssistant({ gameId: 'alqadim', records: buildAlQadimRecords(data, overlay, chapterRoutes, atlas), getProgress: () => importAlQadimProgress(data, getQuestState()) });
+    return createGuideAssistant({ gameId: 'alqadim', records: buildAlQadimRecords(data, overlay, chapterRoutes, atlas), getProgress: () => importAlQadimProgress(data, getQuestState()) });
 }

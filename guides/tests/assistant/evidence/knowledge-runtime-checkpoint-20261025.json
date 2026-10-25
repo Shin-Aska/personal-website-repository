@@ -1,0 +1,111 @@
+{
+  "schemaVersion": 1,
+  "kind": "structured-knowledge-runtime-checkpoint",
+  "checkedAt": "2026-10-24T17:55:39.329115+00:00",
+  "goalStatus": "active",
+  "acceptance": "incomplete",
+  "ownerConstraint": "No model updates, replacements, new models, training or downloads. Existing production model/head unchanged. Continue deterministic chat/source-data work only.",
+  "dataCoverageReport": "guides/tests/assistant/evidence/knowledge-data-coverage-20261025-02.json",
+  "data": {
+    "facts": 674,
+    "links": 325,
+    "compilerIssues": 0
+  },
+  "contracts": {
+    "passed": 1396,
+    "total": 1396
+  },
+  "legacyEnglish": {
+    "report": "guides/tests/assistant/intent-prototype/results/english-source-index-20261025-02.json",
+    "passed": 1058,
+    "total": 1058
+  },
+  "originalRegression": {
+    "report": "guides/tests/assistant/intent-prototype/results/original-source-index-20261025-02.json",
+    "passed": 203,
+    "total": 203
+  },
+  "citationVerifierUnitTests": 3,
+  "offlineManifestUnitTests": 4,
+  "developmentReplay": {
+    "report": "guides/tests/assistant/intent-prototype/results/knowledge-corpus-replay-source-index-20261025-06/report.json",
+    "total": 851,
+    "passed": 750,
+    "failed": 101,
+    "incomplete": 0,
+    "missingQueryCount": 0,
+    "sourceStable": true,
+    "negativeBoundaries": [
+      175,
+      175
+    ]
+  },
+  "nativeObserved96": {
+    "report": "guides/tests/assistant/evidence/knowledge-blind-browser-native-17.json",
+    "passed": 78,
+    "total": 96,
+    "negativeBoundaries": [
+      22,
+      22
+    ],
+    "boundaries": {
+      "allTurnsRan": true,
+      "nativeMiniLMEverySurface": true,
+      "storageUnchanged": true,
+      "noSavedGameWrites": true,
+      "noExternalRequests": true,
+      "noPageErrors": true,
+      "onlyStaticGets": true,
+      "sourceStable": true,
+      "serverClosed": true
+    }
+  },
+  "nativeFresh76": {
+    "report": "guides/tests/assistant/evidence/knowledge-blind-browser-fresh-20261025-06.json",
+    "passed": 36,
+    "total": 76,
+    "negativeBoundaries": [
+      19,
+      19
+    ],
+    "boundaries": {
+      "allTurnsRan": true,
+      "nativeMiniLMEverySurface": true,
+      "storageUnchanged": true,
+      "noSavedGameWrites": true,
+      "noExternalRequests": true,
+      "noPageErrors": true,
+      "onlyStaticGets": true,
+      "sourceStable": true,
+      "serverClosed": true
+    },
+    "qualification": "First execution was 33/76 with18/19negative boundaries; this latest run is observed regression evidence, not an unseen holdout."
+  },
+  "fullClaimAdjudication": {
+    "report": "guides/tests/assistant/evidence/knowledge-fresh-adjudication-20261025.json",
+    "scope": "Adjudicates the earlier35/76 strict run, not the latest36/76 run. It found17 complete supported positive answers outof57. Counts are not replaced with source-match scores."
+  },
+  "rejectedExperiments": [
+    "docs/assistant-knowledge/source-reader-experiment.md",
+    "docs/assistant-knowledge/local-reader-feasibility.md",
+    "docs/assistant-knowledge/request-field-e2e.md"
+  ],
+  "productionModelFilesUnchanged": {
+    "guides/local-assistant/profile.json": "7fcde9d4b3d8842dc2345159687e845e023ce9049c92deab6d99d494e6ba813d",
+    "guides/local-assistant/intent/profile.json": "786a95a078fcc940f95539837883405257f1a3a896637bb71b8b477be680639e",
+    "guides/local-assistant/intent/head.json": "979c196a92df490124802e61fcc5fad787fc535ee69ff0eae64784355a8f6bfb"
+  },
+  "offline": {
+    "assets": 818,
+    "allHashesMatch": true,
+    "versionMatches": true,
+    "experimentalAssetsExcluded": true,
+    "version": "15573647fa93c90cecf0f1ee34437b00037ea2a1e0afa6399b0af74a27b0479a"
+  },
+  "publication": {
+    "ftpUploaded": false,
+    "committed": false,
+    "pushed": false
+  },
+  "remainingWork": "Source-present misses in actor/object binding, relational conditions, literal assertion matching and topic continuity. No model changes are authorized."
+}

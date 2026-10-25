@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "kind": "structured-knowledge-runtime-checkpoint",
+  "checkedAt": "2026-10-24T18:56:10.730240+00:00",
+  "goalStatus": "active",
+  "acceptance": "incomplete",
+  "ownerConstraint": "No model updates, replacements, new models, training or downloads. Existing production model/head unchanged. Continue deterministic chat/source-data work only.",
+  "supersedes": "knowledge-runtime-checkpoint-20261025.json",
+  "dataCoverageReport": "guides/tests/assistant/evidence/knowledge-data-coverage-20261025-03.json",
+  "data": {
+    "facts": 674,
+    "links": 325,
+    "compilerIssues": 0
+  },
+  "contracts": {
+    "passed": 1544,
+    "total": 1544,
+    "scope": "All recursively discovered assistant *.test.mjs, including prototype policy-only tests; broader scope than the earlier root-only 1396 checkpoint. No new model inference or experiment was run by those prototype policy tests.",
+    "log": "/tmp/knowledge-contracts-20261025-11.log"
+  },
+  "legacyEnglish": {
+    "report": "guides/tests/assistant/intent-prototype/results/english-source-rules-20261025-02.json",
+    "passed": 1058,
+    "total": 1058,
+    "qualification": "The later measurement guard does not change the language/source-engine files used by this suite."
+  },
+  "originalRegression": {
+    "report": "guides/tests/assistant/intent-prototype/results/original-source-rules-20261025-02.json",
+    "passed": 203,
+    "total": 203,
+    "qualification": "Tracked results.json restored byte for byte; later measurement guard leaves these baseline source-engine paths unchanged."
+  },
+  "citationVerifierUnitTests": 4,
+  "offlineManifestUnitTests": 4,
+  "developmentReplay": {
+    "report": "guides/tests/assistant/intent-prototype/results/knowledge-corpus-replay-source-rules-20261025-04/report.json",
+    "total": 851,
+    "passed": 751,
+    "failed": 100,
+    "incomplete": 0,
+    "missingQueryCount": 0,
+    "sourceStable": true,
+    "negativeBoundaries": [
+      175,
+      175
+    ]
+  },
+  "nativeObserved96": {
+    "report": "guides/tests/assistant/evidence/knowledge-blind-browser-native-21.json",
+    "sha256": "7c8482e95f89bf4c84b62d8fa79a65885855d4d5128e5767d3273362985edb3f",
+    "passed": 81,
+    "total": 96,
+    "negativeBoundaries": [
+      22,
+      22
+    ],
+    "boundaries": {
+      "allTurnsRan": true,
+      "nativeMiniLMEverySurface": true,
+      "storageUnchanged": true,
+      "noSavedGameWrites": true,
+      "noExternalRequests": true,
+      "noPageErrors": true,
+      "onlyStaticGets": true,
+      "sourceStable": true,
+      "serverClosed": true
+    }
+  },
+  "nativeObserved76": {
+    "report": "guides/tests/assistant/evidence/knowledge-blind-browser-fresh-20261025-10.json",
+    "sha256": "9160cdd94966a501521adabebb711e8646090431bb55ef2d3f979e6c56115346",
+    "passed": 43,
+    "total": 76,
+    "negativeBoundaries": [
+      19,
+      19
+    ],
+    "boundaries": {
+      "allTurnsRan": true,
+      "nativeMiniLMEverySurface": true,
+      "storageUnchanged": true,
+      "noSavedGameWrites": true,
+      "noExternalRequests": true,
+      "noPageErrors": true,
+      "onlyStaticGets": true,
+      "sourceStable": true,
+      "serverClosed": true
+    }
+  },
+  "nativeIndependent48NowObserved": {
+    "report": "guides/tests/assistant/evidence/knowledge-blind-browser-independent-all-20261025-01.json",
+    "sha256": "dc045c1ca7cd526fa751a1ae7169b1f1a967908e677ed84eb59c1d6859a11eb3",
+    "passed": 20,
+    "total": 48,
+    "negativeBoundaries": [
+      12,
+      12
+    ],
+    "boundaries": {
+      "allTurnsRan": true,
+      "nativeMiniLMEverySurface": true,
+      "storageUnchanged": true,
+      "noSavedGameWrites": true,
+      "noExternalRequests": true,
+      "noPageErrors": true,
+      "onlyStaticGets": true,
+      "sourceStable": true,
+      "serverClosed": true
+    }
+  },
+  "independentFirstExecutionReview": {
+    "report": "guides/tests/assistant/evidence/knowledge-independent-adjudication-20261025.json",
+    "firstStrictPassed": 18,
+    "total": 48,
+    "completeSupportedPositiveClaims": 10,
+    "positiveTurns": 36,
+    "firstNegativeBoundaries": [
+      10,
+      12
+    ],
+    "qualification": "First individual executions, before the measurement fix. Two independently authored source-first suites were concatenated without changing any dialogue oracle. They are now observed regression cases. The post-fix20/48 contains all12 boundary successes; it is not20 complete positive answers."
+  },
+  "citationVerifierQualification": "The exact compound-locator parser correction contributes1 verifier-only pass on stored native-18 replies, with zero changed runtime answers. See knowledge-compound-citation-audit-20261025.json. No parent/child citation equivalence or oracle edits were introduced.",
+  "productionModelFilesUnchanged": {
+    "guides/local-assistant/profile.json": "7fcde9d4b3d8842dc2345159687e845e023ce9049c92deab6d99d494e6ba813d",
+    "guides/local-assistant/intent/profile.json": "786a95a078fcc940f95539837883405257f1a3a896637bb71b8b477be680639e",
+    "guides/local-assistant/intent/head.json": "979c196a92df490124802e61fcc5fad787fc535ee69ff0eae64784355a8f6bfb"
+  },
+  "offline": {
+    "assets": 820,
+    "allHashesMatch": true,
+    "versionMatches": true,
+    "experimentalAssetsExcluded": true,
+    "newSharedModulesIncluded": true,
+    "version": "63e46d0679de39f0d197721f3f3390a30d9f554931a039065e9a480822640998"
+  },
+  "publication": {
+    "ftpUploaded": false,
+    "committed": false,
+    "pushed": false
+  },
+  "remainingWork": "Answerable source-present failures remain in preamble handling, typed subject/answer roles, subject continuity after compound rollback, conditional software requirements and field-specific lookups. Independent first executions exposed3 wrong-subject/field positives. Source counts and contracts do not satisfy the broad goal. No model work is authorized."
+}

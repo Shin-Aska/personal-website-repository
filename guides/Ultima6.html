@@ -18,13 +18,13 @@
     <link rel="stylesheet" href="css/fonts.css">
     <link rel="stylesheet" href="css/leaflet.css">
     <!-- Chosen Palette: Parchment & Ink -->
-    <!-- Application Structure Plan: The application uses task-oriented tabs for character setup, the Grand Quest, reference material, maps, copy-protection answers, and optional cheats. Seer counsel is deliberately embedded in Grand Quest steps and Atlas locations instead of occupying a separate destination, keeping hints and follow-up advice attached to the player's current problem. -->
+    <!-- Application Structure Plan: The application uses task-oriented tabs for character setup, the Grand Quest, reference material, maps, copy-protection answers, and optional cheats. Seer counsel is deliberately embedded in Grand Quest steps and Atlas locations instead of occupying a separate destination, keeping answers and follow-up advice attached to the player's current problem. -->
     <!-- Visualization & Content Choices: 
         - Character Virtues: Report Info -> Starting attribute bonuses. Goal -> Allow players to plan their character build. Viz/Method -> Interactive bar chart (Chart.js). Interaction -> Hovering over bars shows precise stat bonuses. Justification -> A chart is more engaging and easier to compare than a static table.
         - Companion Roster: Report Info -> Companion stats and roles. Goal -> Help players build their ideal party. Viz/Method -> A filterable and sortable HTML table. Interaction -> Users can sort by STR, DEX, INT, or Level. Justification -> An interactive table is superior to a static list for comparing multiple attributes.
         - Quest Walkthrough: Report Info -> Linear steps for major quests. Goal -> Guide players through the game's narrative. Viz/Method -> Accordion-style collapsible sections. Interaction -> Clicking a quest title expands to show the detailed steps. Justification -> Prevents overwhelming the user with a wall of text.
         - Authored Virtue Vignette: Goal -> Enhance roleplaying immersion. Viz/Method -> Bounded authored text composition. Interaction -> User selects virtues and clicks a button. Justification -> Composes clearly labeled roleplaying fiction that connects the player to their character.
-        - Local Contextual Seer: Goal -> Provide dynamic, on-demand help without breaking the player's flow. Viz/Method -> Quest- and Atlas-bound hint modal with a continuing advice conversation. Interaction -> A Hint or Seer counsel action opens general guidance first, then passes the exact source context into follow-up questions.
+        - Local Contextual Seer: Goal -> Provide dynamic, on-demand help without breaking the player's flow. Viz/Method -> Quest- and Atlas-bound counsel modal with a continuing advice conversation. Interaction -> An Ask the Seer action opens guide context first, then passes the exact source context into follow-up questions.
     -->
     <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
     <link rel="stylesheet" href="css/Ultima6.css?v=local-counsel-v1">
@@ -260,7 +260,7 @@
                     </section>
 
                     <p class="u6-quest-journal__tip">Dialogue keyword badges reveal compact conversation prompts.
-                        <strong>Hint</strong> opens Seer counsel already attached to that objective.</p>
+                        <strong>Ask the Seer</strong> opens counsel already attached to that objective.</p>
                     <div id="keyword-helper" class="keyword-helper hidden" role="tooltip" aria-hidden="true">
                         <h3 class="text-xl font-semibold text-amber-900 mb-2 flex items-center gap-2">Quick Guide <span
                                 aria-hidden="true">🗣️</span></h3>
@@ -468,17 +468,12 @@
                     </fieldset>
                 </div>
 
-            <!-- One view: the help level, this step's hint, then the conversation about it. -->
+            <!-- One view: this step's guide context, then the conversation about it. -->
             <section id="seer-counsel-panel" class="u6-seer-modal__view" aria-label="Seer counsel">
-                <select id="seer-spoiler-select" aria-label="Help level">
-                    <option value="gentle">Nudge</option>
-                    <option value="balanced">Hint</option>
-                    <option value="direct">Full answer</option>
-                </select>
-                <div class="ga-intro u6-seer-intro">
-                    <p class="ga-intro-title">Hint for this step</p>
+                <details class="ga-intro u6-seer-intro" aria-label="For this step">
+                    <summary class="ga-intro-title">Step briefing</summary>
                     <div id="seer-general-hints" class="u6-seer-hints"></div>
-                </div>
+                </details>
                 <div id="seer-chat-messages" class="u6-seer-chat" aria-live="polite"></div>
                 <div class="u6-seer-composer">
                     <label for="seer-query" class="sr-only">Ask the Seer about this context</label>

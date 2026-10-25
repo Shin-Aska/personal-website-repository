@@ -1,4 +1,6 @@
 import { normalize, possessive, tokens } from './retrieval.js';
+import {readSourcePreamble} from './source-preambles.js';
+import {allowQuestion as allowSceneTransitionQuestion} from './scene-transition-preambles.js';
 
 // English question interpretation for the local guide assistants.
 //
@@ -195,14 +197,19 @@ const DEMONSTRATIVE = /(?:(\S+)\s+)?\b(?:that|this)\b(?:\s+(\S+))?/g;
 const NOUNISH = new Set(['thing', 'things', 'item', 'stuff', 'one', 'guy', 'person', 'place']);
 const EXISTENTIAL_THERE = /\b(?:is|are|was|were) there\b|\bthere (?:is|are|was|were)\b/g;
 const DISCOURSE = new Set('no nope yes yeah yep ok okay sorry oops actually well hmm hm right sure thanks thank you cool great nice wait so and also oh ah more else anything please'.split(' '));
-const QUESTION_START = String.raw`(?:also\s+)?(?:where|what|what's|whats|how|who|who's|why|when|which|can|could|does|do|did|is|are|should|would|will|tell|give|any|its|it's|their|his|her)\b`;
+// An auxiliary or command needs a following clause: the final "do" in
+// "what does Frost Avalanche cost and do?" is a coordinated predicate.
+// A possessive opens a separate question only with a requested property.
+// "the Pistol and its canisters" is one coordinated object, while "where is
+// the Pistol, and its cost?" asks two properties.
+const QUESTION_START = String.raw`(?:also\s+)?(?:(?:where|what|what's|whats|how|who|who's|whose|why|when|which|any)\b|(?:its|it's|their|his|her)\s+(?:${[...NOUN_INTENTS.keys()].map(escape).join('|')})\b|(?:can|could|does|do|did|is|are|should|would|will|tell|give)\b(?=\s+[^\s?;,.!]))`;
 // "and" only separates subquestions when a new question begins after it. In
 // a statement without "?", "and is now…" continues the same sentence, so only
 // question words split it.
-const STATEMENT_START = String.raw`(?:also\s+)?(?:where|what|what's|whats|how|who|who's|why|when|which)\b`;
+const STATEMENT_START = String.raw`(?:also\s+)?(?:where|what|what's|whats|how|who|who's|whose|why|when|which)\b`;
 // "!" and "." end a subquestion only before a new question, so names such as
 // "Free Weston!" survive.
-const SPLIT = new RegExp(String.raw`\s*(?:[?;]+|[.!]+(?=\s+${QUESTION_START})|[.!]+$|,\s*(?=${QUESTION_START})|,?\s+(?:and|also|plus|then|but)\s+(?=${QUESTION_START}))\s*`);
+const SPLIT = new RegExp(String.raw`\s*(?:[?;]+|[.!]+(?=\s+${QUESTION_START})|[.!]+$|[:,]\s*(?=${QUESTION_START})|,?\s+(?:and|also|plus|then|but)\s+(?=${QUESTION_START}))\s*`);
 
 const REPORT = [
     /^i (?:already |now |just |finally |still |currently |have )*(?:have|got|obtained|acquired|completed|finished|did|done|lost|recruited|beat|defeated|own)\b/,
@@ -315,6 +322,10 @@ function hasPronoun(q) {
 
 export function detectIntent(text) {
     const q = stripFrames(text);
+    // A passive homicide question asks for a story recipient, not an item to
+    // acquire ("got") or a condition to cure ("killed"). Keep the typed role
+    // reader ahead of gameplay cues without changing those ordinary verbs.
+    if (storyQuestion(q)) return 'story';
     for (const [intent, pattern] of INTENTS) {
         // "Is the Shadowsword cursed?" asks about a state; it is not a request for a cure.
         if (intent === 'remedy' && /^(?:is|are|was|were)\b/.test(q) && !/\b(?:cure|counter|remov\w*|fix|undo|revive|prevent\w*|get rid)\b/.test(q)) continue;
@@ -340,7 +351,7 @@ const STORY_QUESTIONS = [
     // Reversing the question reverses the requested role, never the fact.
     ['victim', /^whom? did (.+?) (?:kill|murder)(?: (.*))?$/, 1],
     ['perpetrator', /^who (?:was|were|is|are) (.+?) (?:killed|murdered) by(?: (.*))?$/, 1],
-    ['victim', /^who (?:was|were|is|are) (?:(not|never|only) )?(?:killed|murdered)(?: (.*))?$/],
+    ['perpetrator', /^who (?:did|does|do) (.+?) get (?:killed|murdered) by(?: (.*))?$/, 1],
     ['perpetrator', /^who (?:killed|murdered)(?: (.*))?$/, 1],
     ['perpetrator', /^who (?:(not|never|only) )?committed (?:(?:the|a|an) )?murders?(?: (.*))?$/],
     ['perpetrator', /^who (did not|didn't|does not|doesn't|never) (?:kill|murder)(?: (.*))?$/, 2],
@@ -356,6 +367,20 @@ const STORY_QUESTIONS = [
     ['member', /^who(?: is| are| was| were|'s) (?:(not|never|only) )?(?:(?:the|a|an) )?(?:(not|never|only) )?members?(?: of)?(?: (.*))?$/],
     ['member', /^who(?: is| are| was| were|'s) (?:(?:the|a|an) )?(.+?) members?(?: (.*))?$/]
 ];
+function passiveStoryQuestion(text) {
+    const q = text.replace(/\b(was|were|is|are|has|have|had|did|does|do)n't\b/g, '$1 not');
+    const match = q.match(/^who ((?:[\p{L}]+\s+)*?)(killed|murdered)(?:\s+(.+))?$/u);
+    if (!match) return null;
+    const auxiliary = match[1].trim();
+    // No intervening person is permitted: "who got Vale killed" is a
+    // causative question and cannot be read as "who got killed".
+    if (!/^(?:(?:was|were|is|are|got|gets|get)(?: (?:not|never|only))?|(?:has|have|had)(?: (?:not|never|only))? been|(?:did|does|do)(?: (?:not|never|only))? get)$/.test(auxiliary)) return null;
+    let scope = match[3] || '';
+    const paired = scope.match(/^by (?:who|whom)(?: (.*))?$/);
+    if (paired) scope = paired[1] || '';
+    const restrictions = auxiliary.match(/\b(?:not|never|only)\b/g) || [];
+    return { role: paired ? 'participants' : 'victim', query: squash([...restrictions, scope].join(' ')), crime: true };
+}
 // A bare place, time, or other qualifying clause does not name the person
 // whose role is being asked about. Keep its words in query either way.
 const STORY_CONTEXT_PREFIX = /^(?:in|at|near|by|around|within|outside|inside|on|off|along|across|between|throughout|under|over|below|above|behind|beyond|beside|during|before|after|since|until|while|when|where|for|from|with|without|according to)\b/;
@@ -380,6 +405,8 @@ export function storyQuestion(text) {
     if (!q || q.length > 512 || /[?;]/.test(q)) return null;
     const sourcePrefix = q.match(GUIDE_QUESTION_PREFIX);
     if (sourcePrefix) q = `${sourcePrefix[2]} ${sourcePrefix[1]}`;
+    const passive = passiveStoryQuestion(q);
+    if (passive) return passive;
     for (const [role, pattern, targetCapture] of STORY_QUESTIONS) {
         const match = q.match(pattern);
         if (match) {
@@ -552,6 +579,24 @@ function isReport(q, raw) {
     return REPORT.some(pattern => pattern.test(body));
 }
 
+// A question about the player's current save is not a reference claim in the
+// guide. Inspect the parser's request cores so polite/discourse prefixes cannot
+// turn "So, has my party already ...?" into an identity lookup.
+export function playerStateQuestion(text) {
+    const parsed = parse(text);
+    return parsed.parts.some(part => {
+        const q = trimEnd(part.core);
+        if(/^who (?:am i|are we) (?:currently |now )?controlling$/.test(q))return true;
+        if (/^(?:have|had|did) (?:i|we)\b/.test(q)) return true;
+        if (/^am i\b/.test(q) && !/^am i (?:required|allowed|able|supposed)\b/.test(q)) return true;
+        if (/^(?:do|don't|dont|do not) (?:i|we) (?:already |still |currently )?have\b(?! to\b)/.test(q)) return true;
+        if (/^how (?:many|much) .+? (?:do|does) (?:i|we|my party|our party) (?:already |still |currently )?(?:have(?! to\b)|own|carry|hold)\b/.test(q)) return true;
+        if (/^(?:has|have|is|are|does|do|did|was|were|will|must)\s+(?:my|our)\b/.test(q)) return true;
+        return /^(?:has|have|is|are|does|do|did|was|were|will|must)\b/.test(q)
+            && /\b(?:already|currently|for me|with me|in my (?:party|inventory|save))\b/.test(q);
+    });
+}
+
 /**
  * Parse one visitor message.
  *
@@ -605,4 +650,60 @@ export function parse(text, { editions = [], names = [] } = {}) {
         parts = parts.filter(part => !part.editionContext).map(part => ({ ...part, editions: [...new Set([...part.editions, ...named])] }));
     }
     return { ...base, parts: sourced(parts.slice(0, MAX_PARTS)), tooMany: parts.length > MAX_PARTS, intent: parts[0]?.intent || null };
+}
+
+
+// Decompose factual source lookups without converting a statement, report or
+// progress question into a fact request. A leading context phrase belongs to
+// every question, including unknown names and material/source restrictions.
+// Parts retain their own words; subject binding is the source router's job.
+export function sourceQuestionParts(text, options = {}) {
+    const parsed = parse(text, options);
+    const all = splitParts(parsed.q, options.editions || [], options.names || []);
+    const communicationPhase = part => /^what (?:does|do) .+? (?:ask|demand|request) for once (?:i|we) can speak to (?:it|them)$/.test(part.core);
+    const namingPhase = part => readSourcePreamble(part.core)?.kind==='naming';
+    const entryPhase = part => readSourcePreamble(part.core)?.kind==='entry';
+    const readOnlyConditions = parsed.hypothetical && (all.some(communicationPhase)
+        && all.every(part=>communicationPhase(part) || !/\b(?:if|once|when|after|unless|suppose|assuming|imagine)\b/.test(part.core))
+        || all.filter(namingPhase).length===1 && namingPhase(all[0]) && all.length>1
+            && all.slice(1).every(part=>!part.report && !/\b(?:if|once|when|after|unless|suppose|assuming|imagine)\b/.test(part.core))
+        || entryPhase(all[0]) && all.length>1 && all.slice(1).every(part=>!part.report && /^where\b/.test(part.core)
+            && !/\b(?:if|once|when|after|unless|suppose|assuming|imagine)\b/.test(part.core)));
+    if (parsed.hypothetical && !readOnlyConditions || parsed.subject || parsed.affirm
+        || ['reset', 'smaller'].includes(parsed.intent) || playerStateQuestion(text)) return null;
+    if (!all.length || all.some(part => part.story || /^(?:what now|where (?:do|should) i start)$/.test(part.core))) return null;
+    const isQuestion = part => /^(?:who|whose|what|where|how|why|when|which|can|could|does|do|did|is|are|should|would|will|must|has|have|tell|describe|explain)\b/
+        .test(part.core.replace(GUIDE_SOURCE_ALL, ' ').replace(/^[\s,:]+/, ''));
+    // A topic fragment can introduce a later explicit question. On its own it
+    // remains a follow-up question; no requested clause is silently discarded.
+    const first = all.findIndex((part,index)=>isQuestion(part)
+        && !((readSourcePreamble(part.core)?.kind==='topic' && !part.intent
+            || ['deferred-exit','naming'].includes(readSourcePreamble(part.core)?.kind)) && all.slice(index+1).some(isQuestion)));
+    if (first < 0) return null;
+    const contextParts = all.slice(0, first).filter(part => !part.editionContext);
+    const preambles=contextParts.map(part=>({part,descriptor:readSourcePreamble(part.core)}));
+    const readOnlyContext=preambles.some(({descriptor})=>descriptor?.readOnlyReport || ['entry','naming'].includes(descriptor?.kind));
+    if(parsed.correction && !readOnlyContext || all.some(part=>part.report
+        && !preambles.some(item=>item.part===part && item.descriptor?.readOnlyReport)))return null;
+    // A bare introductory topic or an explicit context preposition is safe to
+    // carry. A separate requested relation remains an unanswered clause.
+    if (contextParts.some(part => /^i (?:want|need|would like) to\b/.test(part.q)
+        || part.intent
+        && !/^(?:for|about|regarding|concerning|as for|in|on|at|with|without)\b/.test(part.core)
+        && !/^i (?:want|am looking for|'m looking for) (?!to\b)\S/.test(part.core)
+        && !readSourcePreamble(part.core))) return null;
+    const questions = all.slice(first).filter(part => !part.editionContext);
+    if (questions.some(part => !isQuestion(part))) return null;
+    if(preambles.some(item=>item.descriptor?.kind==='entry') && questions.some(part=>!/^where (?:do|can|should|is|are)\b/.test(part.core)))return null;
+    const sceneTransitions=preambles.filter(item=>['deferred-exit','departure'].includes(item.descriptor?.kind));
+    if(sceneTransitions.some(item=>questions.some(question=>!allowSceneTransitionQuestion(item.descriptor,question.core))))return null;
+    const context = contextParts.map(part => part.q).join(', ');
+    const singleContext = contextParts.every(part => /^(?:for|about|regarding|concerning|as for|in|on|at|with|without)\b/.test(part.core)
+        || /^i want (?!to\b)/.test(part.q)
+        || /^(?:i'm|i am) (?:planning|searching|looking|following|new to)\b/.test(part.q)
+        || Boolean(readSourcePreamble(part.core))
+        || /^once (?:i'm|i am) (?:in|at) there$/.test(part.core));
+    return { parsed:{...parsed,parts:all}, context, contextParts, preambles, sceneTransitions, singleContext, readOnlyContext, readOnlyConditions, tooMany: questions.length > MAX_PARTS,
+        questions: questions.slice(0, MAX_PARTS).map(part => ({ part, question: part.q,
+            text: context ? `${context}; ${part.q}` : part.q })) };
 }

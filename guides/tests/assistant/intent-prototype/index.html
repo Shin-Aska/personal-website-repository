@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Local intent prototype — Ultima VII and StarCraft</title>
+<style>
+:root{font:16px/1.5 system-ui,sans-serif;color:#e6e7ed;background:#141821;color-scheme:dark}body{max-width:1120px;margin:auto;padding:24px}h1{font-size:1.7rem}p{max-width:85ch}button,select,input{font:inherit;padding:9px;border:1px solid #69758d;border-radius:6px;background:#202839;color:inherit}button{cursor:pointer}button:disabled{opacity:.5;cursor:wait}.bar,form{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin:16px 0}input{flex:1;min-width:220px}#chat{max-height:65vh;overflow:auto}.turn{padding:16px;margin:12px 0;background:#202735;border:1px solid #455069;border-radius:8px}.comparison{display:grid;grid-template-columns:1fr 1fr;gap:16px}.comparison>section{min-width:0}pre{white-space:pre-wrap;overflow-wrap:anywhere;font:13px/1.5 ui-monospace,monospace}small{color:#bbc4d6}#summary{white-space:pre-wrap}#status{border-left:3px solid #70a9ff;padding:8px 12px}label{display:flex;gap:8px;align-items:center}@media(max-width:700px){body{padding:14px}.comparison{grid-template-columns:1fr}}
+</style>
+<style>
+.shared-guide-links{padding:16px;margin:18px 0 24px;border:1px solid #455069;border-radius:10px;background:#1b2534}.shared-guide-links p{margin:0 0 10px}.shared-guide-links div{display:flex;gap:8px;flex-wrap:wrap}.shared-guide-links a{padding:8px 12px;border:1px solid #69758d;border-radius:6px;color:#d1e4ff;text-decoration:none}.shared-guide-links a:hover{background:#293b54}.shared-guide-links a:focus-visible{outline:2px solid #70a9ff;outline-offset:3px}
+</style>
+</head>
+<body>
+<h1>Local intent prototype</h1>
+<nav class="shared-guide-links" aria-label="Local guide chats">
+<p><strong>Try chat in all six guides</strong><br>Open a guide to use the shared conversation features and larger chat views.</p>
+<div><a href="../../../Albion.html">Albion</a><a href="../../../Ultima5.html">Ultima V</a><a href="../../../Ultima6.html">Ultima VI</a><a href="../../../Ultima7.html">Ultima VII</a><a href="../../../AlQadim.html">Al-Qadim</a><a href="../../../StarcraftBWAPI.html">StarCraft</a></div>
+</nav>
+<p>Compare a small learned intent classifier with the existing guide assistant in Ultima VII and StarCraft. This local experiment uses the current guide records, explicit subject memory and sourced answers.</p>
+<p><small>The encoder runs on this device. Prepare the approved model files locally first. Preparing reads about 24 MB of model files and the existing 23 MB browser runtime from the local server. Scores are experimental ranking scores. Training, validation and evaluation examples are separate authored sets.</small></p>
+<div class="bar"><button id="prepare">Prepare local intent model</button><button id="evaluate" disabled>Run evaluation</button><button id="evaluate-followups" disabled>Check conversation follow-ups</button><button id="evaluate-consultations" disabled>Check consultations</button><button id="save" disabled>Save evaluation JSON</button></div>
+<p id="status" role="status" aria-live="polite">Model has not been prepared.</p>
+<div class="bar"><label>Guide <select id="game"><option value="ultima7">Ultima VII</option><option value="starcraft">StarCraft</option></select></label><button id="reset">New topic</button></div>
+<form id="question-form"><input id="question" aria-label="Question for the prototype" maxlength="2000" placeholder="Ask about this guide" disabled><button id="send" disabled>Ask</button></form>
+<div id="chat" role="log" aria-live="polite"></div>
+<h2>Evaluation</h2><p id="summary">No evaluation has run. The model is fitted only to training examples; rejection thresholds use validation examples.</p>
+<script type="module" src="./lab.mjs"></script>
+</body>
+</html>

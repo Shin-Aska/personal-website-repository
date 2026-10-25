@@ -742,8 +742,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Shared browser-only advice; no party-plan values become player facts.
     let sagePromise;
     let sageView = null;
-    let sageLevel = 'gentle';
     let modalRevision = 0;
+    let modalOpener = null;
 
     function ensureSage() {
         if (!sagePromise) {
@@ -761,6 +761,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function showAiModal() {
+        modalOpener = document.activeElement;
+        delete aiModal.dataset.assistantDialog;
+        document.body.classList.remove('sage-chat-open');
         modalRevision += 1;
         if (sageView) { sageView.destroy(); sageView = null; }
         aiModalTitle.textContent = 'Guide assistant';
@@ -773,6 +776,9 @@ document.addEventListener('DOMContentLoaded', () => {
         modalRevision += 1;
         if (sageView) { sageView.destroy(); sageView = null; }
         aiModal.classList.add('hidden');
+        delete aiModal.dataset.assistantDialog;
+        document.body.classList.remove('sage-chat-open');
+        if (modalOpener?.isConnected) modalOpener.focus();
     }
 
     function displayAiResponse(text, title = 'Guide assistant') {
@@ -783,6 +789,17 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     closeAiModalBtn.addEventListener('click', hideAiModal);
+    document.addEventListener('keydown', event => {
+        if (aiModal.classList.contains('hidden')) return;
+        if (document.querySelector('.ga-expanded-dialog[open]')) return;
+        if (event.key === 'Escape') { event.preventDefault(); hideAiModal(); return; }
+        if (event.key !== 'Tab') return;
+        const focusable = [...aiModal.querySelectorAll('button, input, textarea, select, summary, a[href], [tabindex="0"]')]
+            .filter(element => !element.disabled && element.getClientRects().length);
+        const first = focusable[0], last = focusable.at(-1);
+        if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last?.focus(); }
+        else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first?.focus(); }
+    });
     aiModal.addEventListener('click', (e) => {
         if (e.target === aiModal) {
             hideAiModal();
@@ -1336,7 +1353,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
                 <div class="accordion-content px-4 pb-4 text-sm">
                     <p>${contentHtml}</p>
-                    <button data-quest-index="${index}" class="get-main-quest-hint ai-button mt-3 w-full font-bold py-1 px-3 rounded-lg text-xs">✨ Hint</button>
+                    <button data-quest-index="${index}" class="get-main-quest-hint ai-button mt-3 w-full font-bold py-1 px-3 rounded-lg text-xs">✨ Ask the Sage</button>
                 </div>
             `;
             mainQuestAccordion.appendChild(item);
@@ -1378,7 +1395,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
                 <div class="accordion-content px-4 pb-4 text-sm">
                     <p>${contentHtml}</p>
-                    <button data-quest-index="${index}" class="get-virtue-quest-hint ai-button mt-3 w-full font-bold py-1 px-3 rounded-lg text-xs">✨ Hint</button>
+                    <button data-quest-index="${index}" class="get-virtue-quest-hint ai-button mt-3 w-full font-bold py-1 px-3 rounded-lg text-xs">✨ Ask the Sage</button>
                 </div>
             `;
             virtueQuestAccordion.appendChild(item);
@@ -1424,7 +1441,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <p class="text-sm mt-1"><span class="font-semibold">Giver:</span> ${quest.giver}</p>
                     <p class="text-sm"><span class="font-semibold">Reward:</span> ${quest.reward}</p>
                     <p class="text-sm mt-2 bg-[#1a202c] p-2 rounded">${contentHtml}</p>
-                    <button data-quest-name="${quest.name}" class="get-side-quest-hint ai-button mt-3 w-full font-bold py-1 px-3 rounded-lg text-xs">✨ Hint</button>
+                    <button data-quest-name="${quest.name}" class="get-side-quest-hint ai-button mt-3 w-full font-bold py-1 px-3 rounded-lg text-xs">✨ Ask the Sage</button>
                 `;
                 sideQuestList.appendChild(card);
             });
@@ -1446,49 +1463,39 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function openQuestChatInModal(key, local) {
         const entityId = local.questId(key);
-        const context = () => ({ contextId: entityId, entityIds: [entityId], tone: 'sage' });
+        const context = () => ({ contextId: entityId, entityIds: [entityId], spoiler: 'direct', tone: 'sage' });
         aiModalTitle.textContent = 'Sage';
+        aiModal.dataset.assistantDialog = 'true';
+        document.body.classList.add('sage-chat-open');
         aiResponseText.style.whiteSpace = 'normal';
         // This markup contains authored UI only; all answers and user text use
         // textContent inside the shared view.
         aiResponseText.innerHTML = `
             <div class="sage-panel">
-                <p class="text-xs text-gray-400">Local guide advice. Coverage follows the written guide; uncertain or conflicting details are withheld.</p>
-                <label class="sage-spoiler-label">Help level
-                    <select class="sage-spoiler" aria-label="Sage help level">
-                        <option value="gentle">Nudge</option>
-                        <option value="balanced">Hint</option>
-                        <option value="direct">Full answer</option>
-                    </select>
-                </label>
-                <section class="sage-general-hints ga-intro" aria-label="Hint for this quest">
-                    <p class="ga-intro-title">Hint for this quest</p>
+                <p class="sage-description">Ask about this quest or any guide subject. Your conversation stays in this browser.</p>
+                <details class="sage-general-hints ga-intro" aria-label="For this quest">
+                    <summary class="ga-intro-title">Quest briefing</summary>
                     <div class="sage-general-text" aria-live="polite"></div>
-                </section>
+                </details>
                 <div class="sage-messages" aria-label="Sage conversation" aria-live="polite"></div>
                 <div class="sage-input-row">
-                    <input class="sage-input" aria-label="Question for the Sage" placeholder="Ask a follow-up about this quest or any guide topic…" />
+                    <textarea class="sage-input" rows="2" aria-label="Question for the Sage" placeholder="Ask about this quest, a character, a place…"></textarea>
                     <button class="sage-send ai-button" type="button">Send</button>
                 </div>
             </div>`;
         const panel = aiResponseText.querySelector('.sage-panel');
-        const select = panel.querySelector('.sage-spoiler');
         const hints = panel.querySelector('.sage-general-text');
-        select.value = sageLevel;
-        local.assistant.setPolicy(sageLevel);
-        function refreshHints() {
-            sageLevel = select.value;
-            local.assistant.setPolicy(sageLevel);
-            const description = local.assistant.describeContext(key, sageLevel);
+        local.assistant.setPolicy('direct');
+        function refreshContext() {
+            const description = local.assistant.describeContext(key, 'direct');
             aiModalTitle.textContent = description ? `Sage — ${description.title}` : 'Sage';
-            hints.textContent = description?.text || 'No authored hint is available at this help level. Try Hint or Full answer.';
+            hints.textContent = description?.text || 'No authored guide context is available for this quest.';
         }
         sageView = local.createView({
             assistant: local.assistant,
             messages: panel.querySelector('.sage-messages'),
             input: panel.querySelector('.sage-input'),
             sendButton: panel.querySelector('.sage-send'),
-            spoilerSelect: select,
             controlsBefore: hints.parentElement,
             getContext: context,
             // Quest routes plus "Show on the atlas" buttons for atlas subjects (people, places, monsters, services).
@@ -1502,8 +1509,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             })
         });
-        select.addEventListener('change', refreshHints);
-        refreshHints();
+        refreshContext();
         aiLoader.style.display = 'none';
         panel.querySelector('.sage-input').focus();
     }

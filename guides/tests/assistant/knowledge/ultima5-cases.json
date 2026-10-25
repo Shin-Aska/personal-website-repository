@@ -1,0 +1,2836 @@
+{
+  "schemaVersion": 1,
+  "gameId": "ultima5",
+  "reviewedAt": "2026-10-24",
+  "dialogues": [
+    {
+      "id": "grapple-giver-followup",
+      "turns": [
+        {
+          "text": "Who gives me the Grapple?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Lord Michael",
+              "Grappling Hook",
+              "provides"
+            ],
+            "factIds": [
+              "grapple-named-giver"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=opening-grapple",
+              "review": "extracted"
+            },
+            "sourceRecordIds": [
+              "ultima5:objective:opening-grapple:hint"
+            ]
+          }
+        },
+        {
+          "text": "Where is he during the day?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Empath Abbey",
+              "courtyard by day"
+            ],
+            "notContains": [],
+            "factIds": [
+              "michael-location"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=opening-grapple.steps[0]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "What do I ask him about?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Lord Michael",
+              "GRAPPLE"
+            ],
+            "notContains": [],
+            "factIds": [
+              "michael-keyword",
+              "grapple-keyword"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=opening-grapple.steps[1]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Do I already have the hook in my inventory?",
+          "expected": {
+            "decision": "not-answer",
+            "contains": [],
+            "notContains": [
+              "You have the Grapple"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "jaana-recruitment",
+      "turns": [
+        {
+          "text": "How do I recruit Jaana?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Yew",
+              "fireplace",
+              "unlock Jaana"
+            ],
+            "notContains": [],
+            "factIds": [
+              "jaana-jail"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=opening-party.steps[1]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "What is her role?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Mage",
+              "spellcasting ability"
+            ],
+            "notContains": [],
+            "factIds": [
+              "companion-jaana"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "companionData[2]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Where is Jaana held?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "hidden jail"
+            ],
+            "notContains": [],
+            "factIds": [
+              "jaana-jail"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=opening-party.steps[1]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Is she already in my party?",
+          "expected": {
+            "decision": "not-answer",
+            "contains": [],
+            "notContains": [
+              "Jaana is in your party"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "party-recommendation",
+      "turns": [
+        {
+          "text": "Which six party members does the recommended party use?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Avatar, Iolo, Jaana, Julia, Gwenno, and Mariah",
+              "leave Shamino at an inn"
+            ],
+            "notContains": [],
+            "factIds": [
+              "party-six"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=opening-party.steps[4]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I recruit Julia?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Empath Abbey",
+              "upstairs"
+            ],
+            "notContains": [],
+            "factIds": [
+              "julia-upstairs"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=opening-party.steps[2]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I reach Mariah for recruitment?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Lycaeum",
+              "moongate, skiff, frigate, or the Magic Carpet"
+            ],
+            "notContains": [],
+            "factIds": [
+              "gwenno-mariah"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=opening-party.steps[3]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "What is Johne known for?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "strongest mage",
+              "wrecked ship in the Underworld"
+            ],
+            "notContains": [],
+            "factIds": [
+              "companion-johne"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "companionData[4]",
+              "review": "extracted"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "wife-person-transition",
+      "turns": [
+        {
+          "text": "Who is Gwenno?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Iolo's wife",
+              "bard"
+            ],
+            "notContains": [],
+            "factIds": [
+              "companion-gwenno"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "companionData[5]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "What is her role?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "well-rounded bard"
+            ],
+            "notContains": [],
+            "factIds": [
+              "companion-gwenno"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "companionData[5]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Where do I recruit Gwenno?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Gwenno in Britain"
+            ],
+            "notContains": [],
+            "factIds": [
+              "gwenno-mariah"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=opening-party.steps[3]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Did I recruit her already?",
+          "expected": {
+            "decision": "not-answer",
+            "contains": [],
+            "notContains": [
+              "You recruited Gwenno"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "starting-party-and-danger",
+      "turns": [
+        {
+          "text": "How should I handle the starting party?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Keep Iolo and Shamino",
+              "heal Shamino"
+            ],
+            "notContains": [],
+            "factIds": [
+              "party-start"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=opening-party.steps[0]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "What is Shamino known for?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Starts wounded",
+              "archer"
+            ],
+            "notContains": [],
+            "factIds": [
+              "companion-shamino"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "companionData[1]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Who is Saduj?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "spy for Blackthorn",
+              "betray"
+            ],
+            "notContains": [],
+            "factIds": [
+              "companion-saduj"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "companionData[8]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Is Saduj necessarily in my party because I selected his map marker?",
+          "expected": {
+            "decision": "not-answer",
+            "contains": [],
+            "notContains": [
+              "Saduj is in your party"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "cape-plans-locations",
+      "turns": [
+        {
+          "text": "Where do I get the HMS Cape plans?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "East Britanny",
+              "Oaken Oar",
+              "west entrance"
+            ],
+            "notContains": [],
+            "factIds": [
+              "cape-entrance"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=opening-hms-cape.steps[0]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I open the Oaken Oar locked doors?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "eastern room",
+              "lockpicks"
+            ],
+            "notContains": [],
+            "factIds": [
+              "cape-locks"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=opening-hms-cape.steps[1]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I obtain the HMS Cape plans?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Search the drawers",
+              "HMS Cape plans"
+            ],
+            "notContains": [],
+            "factIds": [
+              "cape-drawers"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=opening-hms-cape.steps[2]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "What do they do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "doubles its speed relative to enemies"
+            ],
+            "notContains": [],
+            "factIds": [
+              "cape-speed"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=opening-hms-cape.outcome",
+              "review": "extracted"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "cape-use-vs-acquire",
+      "turns": [
+        {
+          "text": "How do I use the HMS Cape plans?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "obtain a frigate",
+              "use the plans on the ship once"
+            ],
+            "notContains": [],
+            "factIds": [
+              "cape-upgrade"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=opening-hms-cape.steps[3]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Where are those plans?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Oaken Oar"
+            ],
+            "notContains": [],
+            "factIds": [
+              "cape-entrance"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=opening-hms-cape.steps[0]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Did collecting the plans already upgrade my frigate?",
+          "expected": {
+            "decision": "not-answer",
+            "contains": [],
+            "notContains": [
+              "Your frigate has been upgraded"
+            ]
+          }
+        },
+        {
+          "text": "Do HMS Cape plans double my ship speed in the NES edition?",
+          "expected": {
+            "decision": "not-answer",
+            "contains": [],
+            "notContains": [
+              "doubles its speed"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "castle-raid-access",
+      "turns": [
+        {
+          "text": "How do I reach Castle Britannia rooftop?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "perimeter tower stair",
+              "third-floor"
+            ],
+            "notContains": [],
+            "factIds": [
+              "castle-upper-route"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=opening-castle-raid.steps[0]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I deal with the Castle Britannia guard warning?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "retreat down a stair",
+              "try again"
+            ],
+            "notContains": [],
+            "factIds": [
+              "castle-guard"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=opening-castle-raid.steps[1]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I open Lord British chamber?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Skull Key",
+              "magically locked door"
+            ],
+            "notContains": [],
+            "factIds": [
+              "castle-magic-door"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=opening-castle-raid.steps[2]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "What supplies does the Castle raid kit need?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "lockpicks, food, direct healing, poison cure",
+              "hit points"
+            ],
+            "notContains": [],
+            "factIds": [
+              "raid-supplies"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=opening-raid-kit.steps[2]",
+              "review": "extracted"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "carpet-pronoun",
+      "turns": [
+        {
+          "text": "How do I use the Magic Carpet?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "land, water, swamps, brush, and hills",
+              "mountains still require the Grapple"
+            ],
+            "notContains": [],
+            "factIds": [
+              "carpet-terrain"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=opening-castle-raid.steps[3]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Can it cross mountains?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "mountains still require the Grapple"
+            ],
+            "notContains": [],
+            "factIds": [
+              "carpet-terrain"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=opening-castle-raid.steps[3]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Does rough sea damage it or the party?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "rough sea still damages the party"
+            ],
+            "notContains": [],
+            "factIds": [
+              "carpet-terrain"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=opening-castle-raid.steps[3]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Do I have it because the Castle raid checkbox is selected?",
+          "expected": {
+            "decision": "not-answer",
+            "contains": [],
+            "notContains": [
+              "You have the Magic Carpet"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "sandalwood-acquisition-use",
+      "turns": [
+        {
+          "text": "How do I get the Sandalwood Box?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "6-7-8-9-8-7-8-7-6-7-6-5-3",
+              "secret wall opens"
+            ],
+            "notContains": [],
+            "factIds": [
+              "box-stones"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=opening-castle-raid.steps[4]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "What do I use it for?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Lord British’s mirror",
+              "give him the Sandalwood Box"
+            ],
+            "notContains": [],
+            "factIds": [
+              "doom-mirror-box"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=doom-rescue.steps[4]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How long should I keep the Sandalwood Box?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "retain the Box until Lord British uses it in Dungeon Doom"
+            ],
+            "notContains": [],
+            "factIds": [
+              "box-retain"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=opening-castle-raid.steps[5]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Has Lord British already used my Box?",
+          "expected": {
+            "decision": "not-answer",
+            "contains": [],
+            "notContains": [
+              "Lord British has used your Box"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "honesty-mantra-and-codex",
+      "turns": [
+        {
+          "text": "How do I get the Honesty mantra?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Malifora",
+              "AHM"
+            ],
+            "notContains": [],
+            "factIds": [
+              "honesty-mantra"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=shrine-honesty.steps[0]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I meditate at the Shrine of Honesty?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "speak the virtue name",
+              "three cycles"
+            ],
+            "notContains": [],
+            "factIds": [
+              "honesty-meditate"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=shrine-honesty.steps[1]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "When does the Codex pilgrimage need a referral?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "only after the shrine sends you there"
+            ],
+            "notContains": [],
+            "factIds": [
+              "codex-referral"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=shrine-honesty.steps[2]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I complete Honesty after the Codex?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Return to the Shrine of Honesty",
+              "meditate again"
+            ],
+            "notContains": [],
+            "factIds": [
+              "shrine-return"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=shrine-honesty.steps[3]",
+              "review": "extracted"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "compassion-source",
+      "turns": [
+        {
+          "text": "How do I get the Compassion mantra?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Greyson",
+              "British is the rightful ruler",
+              "MU"
+            ],
+            "notContains": [],
+            "factIds": [
+              "compassion-mantra"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=shrine-compassion.steps[0]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I meditate at the Shrine of Compassion?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "MU for three cycles"
+            ],
+            "notContains": [],
+            "factIds": [
+              "compassion-meditate"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=shrine-compassion.steps[1]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "According to this guide, how do I get the Compassion mantra?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Greyson",
+              "MU"
+            ],
+            "notContains": [],
+            "factIds": [
+              "compassion-mantra"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=shrine-compassion.steps[0]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Has the shrine already sent me to the Codex?",
+          "expected": {
+            "decision": "not-answer",
+            "contains": [],
+            "notContains": [
+              "The shrine has sent you"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "valor-and-sacrifice",
+      "turns": [
+        {
+          "text": "How do I get the Valor mantra?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Trian",
+              "Thorne",
+              "RA"
+            ],
+            "notContains": [],
+            "factIds": [
+              "valor-mantra"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=shrine-valor.steps[0]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I meditate at the Shrine of Valor?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "RA for three cycles"
+            ],
+            "notContains": [],
+            "factIds": [
+              "valor-meditate"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=shrine-valor.steps[1]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I get the Sacrifice mantra?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Rew in Minoc",
+              "CAH"
+            ],
+            "notContains": [],
+            "factIds": [
+              "sacrifice-mantra"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=shrine-sacrifice.steps[0]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I meditate at the Shrine of Sacrifice?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "CAH for three cycles"
+            ],
+            "notContains": [],
+            "factIds": [
+              "sacrifice-meditate"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=shrine-sacrifice.steps[1]",
+              "review": "extracted"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "justice-password-distinction",
+      "turns": [
+        {
+          "text": "How do I get the Justice mantra?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Jeremy",
+              "DAWN with Chamfort",
+              "BEH"
+            ],
+            "notContains": [],
+            "factIds": [
+              "justice-mantra"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=shrine-justice.steps[0]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I use the Word of Power for Wrong?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Wrong",
+              "MALUM",
+              "Words of Power unlock the dungeons"
+            ],
+            "notContains": [],
+            "factIds": [
+              "word-wrong"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "wordData[3]",
+              "review": "extracted"
+            },
+            "allFactIds": [
+              "word-wrong",
+              "mantra-word-distinction"
+            ],
+            "sourceRecordIds": [
+              "ultima5:wordofpower:justice:explanation",
+              "ultima5:topic:mantras-words:explanation"
+            ]
+          }
+        },
+        {
+          "text": "What are Mantras and Words of Power?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Mantras are used at the Shrines of Virtue",
+              "Words of Power unlock the dungeons"
+            ],
+            "notContains": [],
+            "factIds": [
+              "mantra-word-distinction"
+            ],
+            "source": {
+              "file": "guides/Ultima5.html",
+              "locator": "Mantras & Words of Power panel, introduction",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I meditate at the Shrine of Justice?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "BEH for three cycles"
+            ],
+            "notContains": [],
+            "factIds": [
+              "justice-meditate"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=shrine-justice.steps[1]",
+              "review": "extracted"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "honor-and-humility",
+      "turns": [
+        {
+          "text": "How do I get the Honor mantra?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Gruman",
+              "karma is high enough",
+              "SUMM"
+            ],
+            "notContains": [],
+            "factIds": [
+              "honor-mantra"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=shrine-honor.steps[0]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I get the Humility mantra?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Shirita",
+              "BRITISH, N, N, N, Y",
+              "LUM"
+            ],
+            "notContains": [],
+            "factIds": [
+              "humility-mantra"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=shrine-humility.steps[0]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "What is the Humility attribute bonus?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "no attribute bonus"
+            ],
+            "notContains": [],
+            "factIds": [
+              "humility-no-bonus"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=shrine-humility.steps[3]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "What exact karma number does Gruman require?",
+          "expected": {
+            "decision": "not-answer",
+            "contains": [],
+            "notContains": [
+              "100 karma",
+              "75 karma"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "spirituality-followups",
+      "turns": [
+        {
+          "text": "How do I reach the Shrine of Spirituality?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "any active moongate",
+              "exactly midnight",
+              "Ethereal Void"
+            ],
+            "notContains": [],
+            "factIds": [
+              "spirituality-midnight"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=shrine-spirituality.steps[1]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I get its mantra?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Saul, then Kindor",
+              "OM"
+            ],
+            "notContains": [],
+            "factIds": [
+              "spirituality-mantra"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=shrine-spirituality.steps[0]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I complete it after visiting the Codex?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "any moongate at exactly midnight again",
+              "meditate with OM"
+            ],
+            "notContains": [],
+            "factIds": [
+              "spirituality-return"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=shrine-spirituality.steps[4]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Must I leave from Skara Brae because I selected its atlas marker?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "any active moongate",
+              "exactly midnight",
+              "do not need to depart from Skara Brae"
+            ],
+            "factIds": [
+              "spirituality-midnight"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=shrine-spirituality.steps[1]",
+              "review": "extracted"
+            },
+            "sourceRecordIds": [
+              "ultima5:objective:shrine-spirituality:hint"
+            ],
+            "notContains": [
+              "must depart from Skara Brae"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "faulinei-identity-route",
+      "turns": [
+        {
+          "text": "Who is Faulinei?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Shadowlord of Falsehood"
+            ],
+            "notContains": [],
+            "factIds": [
+              "faulinei-identity"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=shadow-faulinei.title",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I get Faulinei dungeon word?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "FALLAX",
+              "Malifora",
+              "Malik"
+            ],
+            "notContains": [],
+            "factIds": [
+              "faulinei-word"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=shadow-faulinei.steps[0]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I reach the Shard of Falsehood?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Deceit",
+              "west through the Underworld",
+              "Carpet and Grapple"
+            ],
+            "notContains": [],
+            "factIds": [
+              "faulinei-shard"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=shadow-faulinei.steps[1]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I summon him at the flame?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Lycaeum",
+              "one tile south",
+              "FAULINEI"
+            ],
+            "notContains": [],
+            "factIds": [
+              "faulinei-flame"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=shadow-faulinei.steps[2]",
+              "review": "extracted"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "faulinei-timing",
+      "turns": [
+        {
+          "text": "How do I use the Shard of Falsehood?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Wait one turn",
+              "Faulinei stands on the flame"
+            ],
+            "notContains": [],
+            "factIds": [
+              "faulinei-timing"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=shadow-faulinei.steps[3]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I use the Word of Power for Deceit?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Deceit",
+              "FALLAX",
+              "Words of Power unlock the dungeons"
+            ],
+            "notContains": [],
+            "factIds": [
+              "word-deceit"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "wordData[0]",
+              "review": "extracted"
+            },
+            "allFactIds": [
+              "word-deceit",
+              "mantra-word-distinction"
+            ],
+            "sourceRecordIds": [
+              "ultima5:wordofpower:honesty:explanation",
+              "ultima5:topic:mantras-words:explanation"
+            ]
+          }
+        },
+        {
+          "text": "Where is the Flame of Truth?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "At the Lycaeum",
+              "Flame of Truth"
+            ],
+            "notContains": [],
+            "factIds": [
+              "faulinei-flame"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=shadow-faulinei.steps[2]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Have I already destroyed Faulinei?",
+          "expected": {
+            "decision": "not-answer",
+            "contains": [],
+            "notContains": [
+              "You destroyed Faulinei"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "astaroth-alternative-routes",
+      "turns": [
+        {
+          "text": "Who is Astaroth?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Shadowlord of Hatred"
+            ],
+            "notContains": [],
+            "factIds": [
+              "astaroth-identity"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=shadow-astaroth.title",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I get Astaroth dungeon word?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "MALUM from Felespar",
+              "Fiona",
+              "AVIDUS"
+            ],
+            "notContains": [],
+            "factIds": [
+              "astaroth-word"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=shadow-astaroth.steps[0]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I reach the Shard of Hatred?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "AN GRAV",
+              "Wrong or Covetous",
+              "southwest Underworld labyrinth"
+            ],
+            "notContains": [],
+            "factIds": [
+              "astaroth-shard"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=shadow-astaroth.steps[1]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I use the Shard of Hatred?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Wait one turn",
+              "Astaroth stands on the flame"
+            ],
+            "notContains": [],
+            "factIds": [
+              "astaroth-timing"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=shadow-astaroth.steps[3]",
+              "review": "extracted"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "astaroth-flame-and-words",
+      "turns": [
+        {
+          "text": "How do I summon Astaroth at the flame?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Empath Abbey",
+              "Flame of Love",
+              "ASTAROTH"
+            ],
+            "notContains": [],
+            "factIds": [
+              "astaroth-flame"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=shadow-astaroth.steps[2]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Who teaches MALUM?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Felespar in Yew with DAWN"
+            ],
+            "notContains": [],
+            "factIds": [
+              "astaroth-word"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=shadow-astaroth.steps[0]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Who teaches AVIDUS?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Fiona",
+              "DAWN to learn AVIDUS"
+            ],
+            "notContains": [],
+            "factIds": [
+              "astaroth-word"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=shadow-astaroth.steps[0]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Is Astaroth defeated merely because I recovered the Shard?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "shout ASTAROTH",
+              "Wait one turn",
+              "when Astaroth stands on the flame"
+            ],
+            "factIds": [
+              "astaroth-timing"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=shadow-astaroth.steps[3]",
+              "review": "extracted"
+            },
+            "sourceRecordIds": [
+              "ultima5:objective:shadow-astaroth:hint"
+            ],
+            "allFactIds": [
+              "astaroth-flame",
+              "astaroth-timing"
+            ],
+            "notContains": [
+              "recovering the Shard defeats Astaroth"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "nosfentor-hassad",
+      "turns": [
+        {
+          "text": "Who is Nosfentor?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Shadowlord of Cowardice"
+            ],
+            "notContains": [],
+            "factIds": [
+              "nosfentor-identity"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=shadow-nosfentor.title",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I get Nosfentor dungeon word?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Kaiko",
+              "Hassad",
+              "IGNAVUS"
+            ],
+            "notContains": [],
+            "factIds": [
+              "nosfentor-word"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=shadow-nosfentor.steps[0]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I reach the Shard of Cowardice?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Hythloth",
+              "IN POR",
+              "northeast clearing"
+            ],
+            "notContains": [],
+            "factIds": [
+              "nosfentor-shard"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=shadow-nosfentor.steps[1]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I summon Nosfentor at the flame?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Serpent’s Hold",
+              "Flame of Courage",
+              "NOSFENTOR"
+            ],
+            "notContains": [],
+            "factIds": [
+              "nosfentor-flame"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=shadow-nosfentor.steps[2]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I use the Shard of Cowardice?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Wait one turn",
+              "Nosfentor stands on the flame"
+            ],
+            "notContains": [],
+            "factIds": [
+              "nosfentor-timing"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=shadow-nosfentor.steps[3]",
+              "review": "extracted"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "sceptre-requirements",
+      "turns": [
+        {
+          "text": "Why does Sceptre acquisition need Shadowlords banishment first?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "cannot reclaim the Sceptre later"
+            ],
+            "notContains": [],
+            "factIds": [
+              "sceptre-shadowlords"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=regalia-sceptre.steps[0]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I obtain the Sceptre?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Banish the Shadowlords",
+              "Stonegate",
+              "Grapple",
+              "Skull Key",
+              "WELL",
+              "Magic Carpet",
+              "fire pits and trapdoors",
+              "take the Sceptre"
+            ],
+            "factIds": [
+              "sceptre-acquisition-complete"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=regalia-sceptre",
+              "review": "extracted"
+            },
+            "sourceRecordIds": [
+              "ultima5:objective:regalia-sceptre:hint"
+            ]
+          }
+        },
+        {
+          "text": "What does it do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "dispel every magical field"
+            ],
+            "notContains": [],
+            "factIds": [
+              "sceptre-effect"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=regalia-sceptre.outcome",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I cross Stonegate fire pits and trapdoors?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Magic Carpet",
+              "take the Sceptre"
+            ],
+            "notContains": [],
+            "factIds": [
+              "sceptre-carpet"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=regalia-sceptre.steps[2]",
+              "review": "extracted"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "crown-danger-use",
+      "turns": [
+        {
+          "text": "What does the Crown do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Protection from enemy magic",
+              "when the Crown is worn"
+            ],
+            "notContains": [],
+            "factIds": [
+              "crown-effect"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=regalia-crown.outcome",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I reach the Crown?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Carpet",
+              "levels two and three",
+              "rooftop"
+            ],
+            "notContains": [],
+            "factIds": [
+              "crown-route"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=regalia-crown.steps[1]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I get the Crown from its room?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Skull Key",
+              "fly off the roof"
+            ],
+            "notContains": [],
+            "factIds": [
+              "crown-room"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=regalia-crown.steps[2]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "What does Crown retrieval require for capture safety?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "permanent save",
+              "permanently erase a companion"
+            ],
+            "notContains": [],
+            "factIds": [
+              "crown-capture"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=regalia-crown.steps[0]",
+              "review": "extracted"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "amulet-followups",
+      "turns": [
+        {
+          "text": "How do I reach the Amulet?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "waterfall east of Skara Brae",
+              "Magic Carpet"
+            ],
+            "notContains": [],
+            "factIds": [
+              "amulet-waterfall"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=regalia-amulet.steps[0]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "What are the river directions for it?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Down, Left, then Down",
+              "southeast"
+            ],
+            "notContains": [],
+            "factIds": [
+              "amulet-junctions"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=regalia-amulet.steps[1]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I get it at the burial ground?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Amulet",
+              "burial ground"
+            ],
+            "notContains": [],
+            "factIds": [
+              "amulet-burial"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=regalia-amulet.steps[2]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I use it?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "reveal Doom’s entrance",
+              "VERAMOCOR"
+            ],
+            "notContains": [],
+            "factIds": [
+              "doom-entrance"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=doom-rescue.steps[2]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I escape the Amulet route?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "VAS REL POR",
+              "no return spell remains"
+            ],
+            "notContains": [],
+            "factIds": [
+              "amulet-escape"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=regalia-amulet.steps[3]",
+              "review": "extracted"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "doom-readiness-vs-recommendation",
+      "turns": [
+        {
+          "text": "What are Doom rescue requirements?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "every Shadowlord is gone",
+              "full royal set is in the party"
+            ],
+            "notContains": [],
+            "factIds": [
+              "doom-readiness"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=doom-rescue.summary",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How should I prepare Avatar level for Doom rescue?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "level 8 if possible",
+              "permanent save"
+            ],
+            "notContains": [],
+            "factIds": [
+              "doom-level"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=doom-rescue.steps[0]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I get Doom Word of Power?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Completing all eight shrine quests",
+              "VERAMOCOR"
+            ],
+            "notContains": [],
+            "factIds": [
+              "doom-word"
+            ],
+            "source": {
+              "file": "guides/Ultima5.html",
+              "locator": "section#shrines, closing sentence",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Have I completed all eight shrine quests?",
+          "expected": {
+            "decision": "not-answer",
+            "contains": [],
+            "notContains": [
+              "You have completed all eight"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "doom-rescue-sequence",
+      "turns": [
+        {
+          "text": "How do I travel through Shame for Doom rescue?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Sceptre, Crown, Amulet, and Sandalwood Box",
+              "Sindar for INFAMA"
+            ],
+            "notContains": [],
+            "factIds": [
+              "doom-shame"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=doom-rescue.steps[1]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I use the Sceptre and Crown in Doom?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "dispel ethereal walls",
+              "wear the Crown"
+            ],
+            "notContains": [],
+            "factIds": [
+              "doom-regalia-use"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=doom-rescue.steps[3]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I use the Sandalwood Box in Doom?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "hidden pit",
+              "mirror",
+              "give him the Sandalwood Box"
+            ],
+            "notContains": [],
+            "factIds": [
+              "doom-mirror-box"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=doom-rescue.steps[4]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I use the Orb of the Moons?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "escape the collapsing dungeon"
+            ],
+            "notContains": [],
+            "factIds": [
+              "doom-orb"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=doom-rescue.steps[5]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "What is the Doom rescue outcome?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Lord British returns",
+              "tyranny collapses"
+            ],
+            "notContains": [],
+            "factIds": [
+              "doom-outcome"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=doom-rescue.outcome",
+              "review": "extracted"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "optional-equipment",
+      "turns": [
+        {
+          "text": "How do I claim Jhelom’s Magic Axe?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "push the barrels",
+              "concealed stump",
+              "returning ranged weapon"
+            ],
+            "notContains": [],
+            "factIds": [
+              "side-magic-axe"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5SideQuests id=side-magic-axe.detail",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I raid the Glass Sword Cache?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "hidden valley south of Yew",
+              "Ready each sword"
+            ],
+            "notContains": [],
+            "factIds": [
+              "side-glass-swords"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5SideQuests id=side-glass-swords.detail",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I recover the Mystic Arms?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Hythloth",
+              "far southeast Underworld"
+            ],
+            "notContains": [],
+            "factIds": [
+              "side-mystic-arms"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5SideQuests id=side-mystic-arms.detail",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "What is the exact Mystic Sword damage in the NES edition?",
+          "expected": {
+            "decision": "not-answer",
+            "contains": [],
+            "notContains": [
+              "damage 30",
+              "damage 40"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "optional-supplies-navigation",
+      "turns": [
+        {
+          "text": "How do I stockpile Skull Keys?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Shenstone’s stump at night",
+              "five keys"
+            ],
+            "notContains": [],
+            "factIds": [
+              "side-skull-keys"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5SideQuests id=side-skull-keys.detail",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I establish a Reagent Run?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Nightshade at midnight in Spiritwood",
+              "Mandrake southeast of Minoc"
+            ],
+            "notContains": [],
+            "factIds": [
+              "side-reagents"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5SideQuests id=side-reagents.detail",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I collect the Sextant and Spyglass?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "David at Greyhaven",
+              "Seggallion at Farthing"
+            ],
+            "notContains": [],
+            "factIds": [
+              "side-navigation"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5SideQuests id=side-navigation.detail",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Who gives me the Sextant?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "David at Greyhaven",
+              "free sextant"
+            ],
+            "notContains": [],
+            "factIds": [
+              "navigation-gifts"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "commonTips[4]",
+              "review": "extracted"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "moongates-and-haven",
+      "turns": [
+        {
+          "text": "How do I use Moonstones to move moongates?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "dig up and rebury moonstones",
+              "relocate moongates"
+            ],
+            "notContains": [],
+            "factIds": [
+              "moonstone-relocation"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "commonTips[5]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Where does moongate phase 1 go?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Moonglow"
+            ],
+            "notContains": [],
+            "factIds": [
+              "moongate-1"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "moongatePhaseData[0]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Where does moongate phase 6 go?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Trinsic"
+            ],
+            "notContains": [],
+            "factIds": [
+              "moongate-6"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "moongatePhaseData[5]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Where does moongate phase 8 go?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "New Magincia"
+            ],
+            "notContains": [],
+            "factIds": [
+              "moongate-8"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "moongatePhaseData[7]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do Brittany villages work as a safe haven?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "aren't visited by Shadowlords"
+            ],
+            "notContains": [],
+            "factIds": [
+              "brittany-haven"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "commonTips[8]",
+              "review": "extracted"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "spell-reference",
+      "turns": [
+        {
+          "text": "How do I use An Nox?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Cures poison",
+              "Ginseng, Garlic"
+            ],
+            "notContains": [],
+            "factIds": [
+              "spell-an-nox"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "spellData name=An Nox",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "What does An Grav do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Dispels magical fields"
+            ],
+            "notContains": [],
+            "factIds": [
+              "spell-an-grav"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "spellData name=An Grav",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I use Vas Rel Por?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Circle 8",
+              "Gate Travel"
+            ],
+            "notContains": [],
+            "factIds": [
+              "spell-vas-rel-por"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "spellData name=Vas Rel Por",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "What does In Mani Corp do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Resurrects a dead companion"
+            ],
+            "notContains": [],
+            "factIds": [
+              "spell-in-mani-corp"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "spellData name=In Mani Corp",
+              "review": "extracted"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "disputed-negative-boundaries",
+      "turns": [
+        {
+          "text": "Which exact reagent recipe is correct for AN TYM in this guide?",
+          "expected": {
+            "decision": "not-answer",
+            "contains": [],
+            "notContains": [
+              "Garlic, Blood Moss, Mandrake Root",
+              "Ginseng, Blood Moss, Mandrake"
+            ]
+          }
+        },
+        {
+          "text": "Does AN SANCT definitely unlock doors or definitely reduce damage?",
+          "expected": {
+            "decision": "not-answer",
+            "contains": [],
+            "notContains": [
+              "definitely unlocks",
+              "definitely reduces"
+            ]
+          }
+        },
+        {
+          "text": "Does reentering Minoc immediately definitely replenish Skull Keys?",
+          "expected": {
+            "decision": "not-answer",
+            "contains": [],
+            "notContains": [
+              "immediately replenishes",
+              "exit/re-enter to refresh and repeat"
+            ]
+          }
+        },
+        {
+          "text": "Which DOS patch fixes Skull Key refresh?",
+          "expected": {
+            "decision": "not-answer",
+            "contains": [],
+            "notContains": [
+              "patch 1.2",
+              "patch 1.1"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "unknown-interrupts-context",
+      "turns": [
+        {
+          "text": "What does the Crown do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Protection from enemy magic"
+            ],
+            "notContains": [],
+            "factIds": [
+              "crown-effect"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=regalia-crown.outcome",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Who is the Obsidian Clockmaker in this game?",
+          "expected": {
+            "decision": "not-answer",
+            "contains": [],
+            "notContains": [
+              "Crown",
+              "Blackthorn"
+            ]
+          }
+        },
+        {
+          "text": "Where is he?",
+          "expected": {
+            "decision": "not-answer",
+            "contains": [],
+            "notContains": [
+              "Blackthorn’s Castle",
+              "Empath Abbey"
+            ]
+          }
+        },
+        {
+          "text": "What does his artifact do?",
+          "expected": {
+            "decision": "not-answer",
+            "contains": [],
+            "notContains": [
+              "Protection from enemy magic"
+            ]
+          }
+        },
+        {
+          "text": "What does the Sceptre do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "dispel every magical field"
+            ],
+            "notContains": [],
+            "factIds": [
+              "sceptre-effect"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=regalia-sceptre.outcome",
+              "review": "extracted"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "source-edition-and-progress",
+      "turns": [
+        {
+          "text": "According to this guide, what does the Crown do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "when the Crown is worn"
+            ],
+            "notContains": [],
+            "factIds": [
+              "crown-effect"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=regalia-crown.outcome",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Is the Crown protection identical in every platform release?",
+          "expected": {
+            "decision": "not-answer",
+            "contains": [],
+            "notContains": [
+              "identical in every"
+            ]
+          }
+        },
+        {
+          "text": "Did wearing the Crown complete Doom for me?",
+          "expected": {
+            "decision": "not-answer",
+            "contains": [],
+            "notContains": [
+              "You completed Doom"
+            ]
+          }
+        },
+        {
+          "text": "Who is Lord British’s daughter?",
+          "expected": {
+            "decision": "not-answer",
+            "contains": [],
+            "notContains": [
+              "Gwenno",
+              "Julia"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "pending-shrines-and-remaining-mantras",
+      "turns": [
+        {
+          "text": "How does the Shrine pilgrimage handle multiple pending quests?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Multiple shrine quests can remain pending",
+              "Codex may resolve a different virtue"
+            ],
+            "notContains": [],
+            "factIds": [
+              "shrine-pending"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters chapter=shrines.summary",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I meditate at the Shrine of Honor?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "SUMM for three cycles"
+            ],
+            "notContains": [],
+            "factIds": [
+              "honor-meditate"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=shrine-honor.steps[1]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I meditate at the Shrine of Humility?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "LUM for three cycles"
+            ],
+            "notContains": [],
+            "factIds": [
+              "humility-meditate"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=shrine-humility.steps[1]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I meditate at the Shrine of Spirituality?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "OM for three cycles"
+            ],
+            "notContains": [],
+            "factIds": [
+              "spirituality-meditate"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=shrine-spirituality.steps[2]",
+              "review": "extracted"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "remaining-dungeon-words",
+      "turns": [
+        {
+          "text": "How do I use the Word of Power for Despise?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Despise",
+              "VILIS",
+              "Words of Power unlock the dungeons"
+            ],
+            "notContains": [],
+            "factIds": [
+              "word-despise"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "wordData[1]",
+              "review": "extracted"
+            },
+            "allFactIds": [
+              "word-despise",
+              "mantra-word-distinction"
+            ],
+            "sourceRecordIds": [
+              "ultima5:wordofpower:compassion:explanation",
+              "ultima5:topic:mantras-words:explanation"
+            ]
+          }
+        },
+        {
+          "text": "How do I use the Word of Power for Destard?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Destard",
+              "INOPIA",
+              "Words of Power unlock the dungeons"
+            ],
+            "notContains": [],
+            "factIds": [
+              "word-destard"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "wordData[2]",
+              "review": "extracted"
+            },
+            "allFactIds": [
+              "word-destard",
+              "mantra-word-distinction"
+            ],
+            "sourceRecordIds": [
+              "ultima5:wordofpower:valor:explanation",
+              "ultima5:topic:mantras-words:explanation"
+            ]
+          }
+        },
+        {
+          "text": "How do I use the Word of Power for Covetous?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Covetous",
+              "AVIDUS",
+              "Words of Power unlock the dungeons"
+            ],
+            "notContains": [],
+            "factIds": [
+              "word-covetous"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "wordData[4]",
+              "review": "extracted"
+            },
+            "allFactIds": [
+              "word-covetous",
+              "mantra-word-distinction"
+            ],
+            "sourceRecordIds": [
+              "ultima5:wordofpower:sacrifice:explanation",
+              "ultima5:topic:mantras-words:explanation"
+            ]
+          }
+        },
+        {
+          "text": "How do I use the Word of Power for Shame?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Shame",
+              "INFAMA",
+              "Words of Power unlock the dungeons"
+            ],
+            "notContains": [],
+            "factIds": [
+              "word-shame"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "wordData[5]",
+              "review": "extracted"
+            },
+            "allFactIds": [
+              "word-shame",
+              "mantra-word-distinction"
+            ],
+            "sourceRecordIds": [
+              "ultima5:wordofpower:honor:explanation",
+              "ultima5:topic:mantras-words:explanation"
+            ]
+          }
+        },
+        {
+          "text": "How do I use the Word of Power for Hythloth?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Hythloth",
+              "IGNAVUS",
+              "Words of Power unlock the dungeons"
+            ],
+            "notContains": [],
+            "factIds": [
+              "word-hythloth"
+            ],
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "wordData[6]",
+              "review": "extracted"
+            },
+            "allFactIds": [
+              "word-hythloth",
+              "mantra-word-distinction"
+            ],
+            "sourceRecordIds": [
+              "ultima5:wordofpower:spirituality:explanation",
+              "ultima5:topic:mantras-words:explanation"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

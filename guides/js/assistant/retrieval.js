@@ -106,7 +106,7 @@ function foldTokens(list) {
 // and tokenised a single time instead of on every question.
 const tableCache = new WeakMap();
 // What sort of thing an entry is, for matching the question's expected kind ("who is …" expects a person).
-const GROUPS = { person: ['companion', 'character', 'npc'], item: ['item', 'equipment', 'shop-item', 'reagent', 'treasure'], spell: ['spell', 'shard'],
+const GROUPS = { person: ['person', 'companion', 'character', 'npc'], item: ['item', 'equipment', 'shop-item', 'reagent', 'treasure'], spell: ['spell', 'shard'],
     monster: ['enemy', 'bestiary', 'monster', 'creature'], place: ['place', 'location', 'city', 'site', 'region', 'dungeon', 'castle', 'shrine', 'moongate', 'town'] };
 const GROUP_OF = new Map(Object.entries(GROUPS).flatMap(([group, kinds]) => kinds.map(kind => [kind, group])));
 export const kindGroup = kind => GROUP_OF.get(kind) || null;

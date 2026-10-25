@@ -1,4 +1,9 @@
 export const CONSENT_KEY = 'guide-assistant.preference.v1';
+export function matchesChatBundle(main, intent) {
+    return typeof intent?.id === 'string' && intent.id.length > 0
+        && Number.isFinite(intent.additionalBytes) && intent.additionalBytes > 0
+        && main?.intent?.id === intent.id && main.intent.additionalBytes === intent.additionalBytes;
+}
 export function readChoice(storage, modelId) {
     try {
         const value = JSON.parse(storage.getItem(CONSENT_KEY));

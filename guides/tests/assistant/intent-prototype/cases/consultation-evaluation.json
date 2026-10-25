@@ -1,0 +1,199 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Frozen prototype consultation behavior evaluation; recommendations must be conditional on visible guide evidence, never a universal ranking or a progress action.",
+  "frozenBeforeModelComparison": true,
+  "universalInvariants": ["No automatic party, recruitment, installation, purchase, or progress changes.", "Every factual recommendation cites authorized source record IDs and sources.", "Clarifications make no unsupported factual selection or new source URL."],
+  "dialogues": [
+    {
+      "id": "sc-reported-remastered-best",
+      "gameId": "starcraft",
+      "category": "reported-regression",
+      "turns": [
+        {
+          "id": "reported-best",
+          "text": "I am playing StarCraft Remastered. Which one is the best, do you think?",
+          "options": {"spoiler": "direct"},
+          "expected": {
+            "supported": true,
+            "recommendationEntityId": "starcraft:remastered-map",
+            "sourceRequired": true,
+            "replyContains": ["Remastered", "Use Map Settings", "SCHNAIL"],
+            "replyContainsAny": [["limited", "provided maps", "own maps"], ["native", "directly", "no external launcher", "without a version downgrade"], ["client", "own game", "separate"]],
+            "replyAbsent": ["not answered", "universally best", "always the best", "works in standard Melee"],
+            "noStateChanges": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "sc-context-recommend-download",
+      "gameId": "starcraft",
+      "category": "authored-consultation",
+      "turns": [
+        {
+          "id": "edition-context",
+          "text": "I'm playing Remastered",
+          "expected": {"supported": false, "requireClarify": true, "contextOnly": true, "noStateChanges": true}
+        },
+        {
+          "id": "context-best",
+          "text": "which should I use?",
+          "expected": {
+            "supported": true,
+            "recommendationEntityId": "starcraft:remastered-map",
+            "sourceRequired": true,
+            "replyContains": ["Remastered", "Use Map Settings"],
+            "replyContainsAny": [["limited", "provided maps", "own maps"], ["native", "directly", "no external launcher", "without a version downgrade"]],
+            "noStateChanges": true
+          }
+        },
+        {
+          "id": "recommended-download",
+          "text": "download link",
+          "expected": {
+            "supported": true,
+            "focusEntityId": "starcraft:remastered-map",
+            "sourceRequired": true,
+            "expectedUrls": ["https://drive.proton.me/urls/55AMBJ5FN4#BB7pM4E3tZeE", "https://www.richardorilla.website/files/bwapiscr.zip"],
+            "sourceLinkCount": 2,
+            "absentUrls": ["https://www.schnail.com/#/downloads", "https://github.com/poiuyqwert/BWAILauncher/tree/main"],
+            "noStateChanges": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "sc-changed-preference-tradeoff",
+      "gameId": "starcraft",
+      "category": "authored-consultation",
+      "turns": [
+        {
+          "id": "native-priority",
+          "text": "I use StarCraft Remastered and want the native option with no external launcher. Which would you choose?",
+          "expected": {"supported": true, "recommendationEntityId": "starcraft:remastered-map", "sourceRequired": true, "replyContains": ["Remastered", "Use Map Settings"], "noStateChanges": true}
+        },
+        {
+          "id": "stronger-ai-priority",
+          "text": "Actually, stronger and more realistic AI matters more to me. I can use a separate client and internet login. What would you recommend now?",
+          "expected": {
+            "supported": "conditional-or-clarify",
+            "allowedRecommendationEntityIds": ["starcraft:schnail"],
+            "sourceRequiredWhenAnswer": true,
+            "replyContainsAnyWhenAnswer": [["SCHNAIL"], ["client", "own game", "separate"], ["realistic", "micro", "macro"]],
+            "replyAbsent": ["universally best", "always the best", "SCHNAIL runs inside Remastered", "SCHNAIL uses your Remastered installation"],
+            "noStateChanges": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "sc-unknown-edition-and-unmodeled-ranking",
+      "gameId": "starcraft",
+      "category": "authored-negative",
+      "turns": [
+        {
+          "id": "unknown-edition",
+          "text": "I'm playing the Nebula edition of StarCraft. Which AI option is best for that edition?",
+          "expected": {"supported": false, "requireClarify": true, "noRecommendation": true, "sourceLinkCount": 0, "noStateChanges": true}
+        },
+        {
+          "id": "contradictory-edition",
+          "text": "It is both StarCraft Remastered and only original Brood War 1.16.1, and neither edition can change. Pick the best native option for that same installation.",
+          "expected": {"supported": false, "requireClarify": true, "noRecommendation": true, "sourceLinkCount": 0, "noStateChanges": true}
+        },
+        {
+          "id": "unmodeled-price",
+          "text": "For StarCraft Remastered, which option has the lowest purchase price today?",
+          "expected": {"supported": false, "requireClarify": true, "noRecommendation": true, "replyAbsent": ["cheapest is", "lowest price is", "$0", "all are free"], "sourceLinkCount": 0, "noStateChanges": true}
+        }
+      ]
+    },
+    {
+      "id": "consultation-controls-and-source-isolation",
+      "gameId": "starcraft",
+      "category": "authored-control-isolation",
+      "turns": [
+        {
+          "id": "control-edition-context",
+          "text": "I'm playing StarCraft Remastered.",
+          "expected": {"supported": false, "requireClarify": true, "contextOnly": true, "noStateChanges": true}
+        },
+        {
+          "id": "control-initial-recommendation",
+          "text": "Which should I use for native Remastered play?",
+          "expected": {"supported": true, "recommendationEntityId": "starcraft:remastered-map", "sourceRequired": true, "noStateChanges": true}
+        },
+        {
+          "id": "lower-help-control",
+          "action": "setHelp",
+          "value": "gentle",
+          "expected": {"control": "setHelp", "focusCleared": true, "noStateChanges": true}
+        },
+        {
+          "id": "no-old-direct-link-after-help",
+          "text": "download link",
+          "expected": {"supported": false, "requireClarify": true, "noRecommendation": true, "sourceLinkCount": 0, "noStateChanges": true}
+        },
+        {
+          "id": "topic-reset-control",
+          "action": "resetTopic",
+          "expected": {"control": "resetTopic", "focusCleared": true, "noStateChanges": true}
+        },
+        {
+          "id": "no-preference-after-reset",
+          "text": "Which should I use?",
+          "expected": {"supported": false, "requireClarify": true, "noRecommendation": true, "sourceLinkCount": 0, "noStateChanges": true}
+        },
+        {
+          "id": "guide-only-conditional-selection",
+          "text": "Using only this guide, I play StarCraft Remastered and want its native option. Which should I use?",
+          "options": {"spoiler": "direct"},
+          "expected": {"supported": true, "recommendationEntityId": "starcraft:remastered-map", "sourceRequired": true, "guideOnly": true, "noExternalResearch": true, "replyContains": ["Use Map Settings"], "noStateChanges": true}
+        },
+        {
+          "id": "game-change-control",
+          "action": "setGame",
+          "value": "ultima7",
+          "expected": {"control": "setGame", "focusCleared": true, "editionCleared": true, "noStateChanges": true}
+        },
+        {
+          "id": "no-starcraft-choice-in-ultima",
+          "text": "Which one should I use?",
+          "expected": {"supported": false, "requireClarify": true, "noRecommendation": true, "replyAbsent": ["SCHNAIL", "BWAILauncher", "Use Map Settings"], "sourceLinkCount": 0, "noStateChanges": true}
+        }
+      ]
+    },
+    {
+      "id": "u7-evidence-based-party-consultation",
+      "gameId": "ultima7",
+      "category": "authored-consultation-and-negative",
+      "turns": [
+        {
+          "id": "healing-selection",
+          "text": "Which companion is best for healing?",
+          "expected": {"supported": true, "recommendationEntityId": "ultima7:companion:jaana", "sourceRequired": true, "replyContains": ["Jaana"], "replyContainsAny": [["heal", "healing", "magic"]], "noStateChanges": true}
+        },
+        {
+          "id": "frontline-selection",
+          "text": "And which companion is best as a front-line tank?",
+          "expected": {"supported": true, "recommendationEntityId": "ultima7:companion:dupre", "sourceRequired": true, "replyContains": ["Dupre"], "replyContainsAny": [["Strength", "front-line", "tank"]], "noStateChanges": true}
+        },
+        {
+          "id": "unsupported-morality-ranking",
+          "text": "Is he also morally the best companion?",
+          "expected": {"supported": false, "requireClarify": true, "noRecommendation": true, "replyAbsent": ["Dupre is morally the best", "most virtuous companion"], "noStateChanges": true}
+        },
+        {
+          "id": "unsupported-serpent-isle",
+          "text": "For Serpent Isle, which companion is best for healing?",
+          "expected": {"supported": false, "requireClarify": true, "noRecommendation": true, "sourceLinkCount": 0, "noStateChanges": true}
+        },
+        {
+          "id": "no-automatic-recruitment",
+          "text": "Recruit Jaana automatically and put her in my party now.",
+          "expected": {"supported": false, "noRecommendation": true, "replyAbsent": ["Jaana has joined", "I recruited Jaana", "Jaana is now in your party", "party updated"], "noStateChanges": true}
+        }
+      ]
+    }
+  ]
+}

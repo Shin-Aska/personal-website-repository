@@ -1,0 +1,196 @@
+{
+  "schemaVersion": 1,
+  "kind": "structured-knowledge-runtime-checkpoint",
+  "checkedAt": "2026-10-24T22:36:46.984344+00:00",
+  "goalStatus": "active",
+  "acceptance": "incomplete",
+  "ownerConstraint": "No model updates, replacements, new models, training or downloads. Existing production model/head unchanged. Continue deterministic chat/source-data work only.",
+  "supersedes": "knowledge-runtime-checkpoint-20261025-06.json",
+  "dataCoverageReport": "guides/tests/assistant/evidence/knowledge-data-coverage-20261025-08.json",
+  "data": {
+    "facts": 674,
+    "links": 339,
+    "sourceContexts": 16,
+    "compilerIssues": 0
+  },
+  "contracts": {
+    "passed": 1701,
+    "total": 1701,
+    "scope": "All recursively discovered assistant *.test.mjs; original frozen conversation oracles unchanged.",
+    "log": "/tmp/knowledge-contracts-20261025-27.log"
+  },
+  "legacyEnglish": {
+    "report": "guides/tests/assistant/intent-prototype/results/english-source-transitions-20261025-01.json",
+    "passed": 1058,
+    "total": 1058,
+    "currentTurnQualification": "Rerun against current language/source-question routing; passed."
+  },
+  "originalRegression": {
+    "report": "guides/tests/assistant/intent-prototype/results/original-source-transitions-20261025-01.json",
+    "passed": 203,
+    "total": 203,
+    "qualification": "Tracked results.json restored byte for byte.",
+    "currentTurnQualification": "Rerun against current language/source-question routing; passed."
+  },
+  "citationVerifierUnitTests": 4,
+  "offlineManifestUnitTests": 4,
+  "developmentReplay": {
+    "report": "guides/tests/assistant/intent-prototype/results/knowledge-corpus-replay-source-transitions-20261025-01/report.json",
+    "total": 851,
+    "passed": 756,
+    "failed": 95,
+    "incomplete": 0,
+    "sourceStable": true,
+    "missingQueryCount": 0,
+    "negativeBoundaries": [
+      175,
+      175
+    ],
+    "comparisonWithPreviousCheckpoint": "Unchanged756/851, all175 boundaries; no previous strict pass lost. The four newly fixed contextual conversations are in the separate48-turn observed browser set. Frozen oracles unchanged.",
+    "sourceCorrectionFailures": [
+      {
+        "game": "ultima7",
+        "text": "How do I investigate the Trinsic crime scene?",
+        "reason": "Old oracle expects DB.mainQuest[0]; answer cites exact DB.mainQuest[0].content."
+      },
+      {
+        "game": "ultima7",
+        "text": "How do I get the Trinsic exit password?",
+        "reason": "Old oracle expects adapter-summary record provenance; answer now quotes and cites the full original Finnigan quiz/password witness."
+      }
+    ]
+  },
+  "nativeObserved96": {
+    "report": "guides/tests/assistant/evidence/knowledge-blind-browser-native-34.json",
+    "sha256": "787c40fe505c722506b857053918874fbc0d8f6fccdd335c848c3fb128a4f9cd",
+    "passed": 82,
+    "total": 96,
+    "negativeBoundaries": [
+      22,
+      22
+    ],
+    "boundaries": {
+      "allTurnsRan": true,
+      "nativeMiniLMEverySurface": true,
+      "storageUnchanged": true,
+      "noSavedGameWrites": true,
+      "noExternalRequests": true,
+      "noPageErrors": true,
+      "onlyStaticGets": true,
+      "sourceStable": true,
+      "serverClosed": true
+    },
+    "allWatchedSourceHashesStillCurrent": true
+  },
+  "nativeObserved76": {
+    "report": "guides/tests/assistant/evidence/knowledge-blind-browser-fresh-20261025-23.json",
+    "sha256": "e8532545bd5ecd66f21fb2f5061ca12a703ec319e1669135cde75f25d61f42ff",
+    "passed": 43,
+    "total": 76,
+    "negativeBoundaries": [
+      19,
+      19
+    ],
+    "boundaries": {
+      "allTurnsRan": true,
+      "nativeMiniLMEverySurface": true,
+      "storageUnchanged": true,
+      "noSavedGameWrites": true,
+      "noExternalRequests": true,
+      "noPageErrors": true,
+      "onlyStaticGets": true,
+      "sourceStable": true,
+      "serverClosed": true
+    },
+    "allWatchedSourceHashesStillCurrent": true
+  },
+  "nativeIndependent48NowObserved": {
+    "report": "guides/tests/assistant/evidence/knowledge-blind-browser-independent-all-20261025-14.json",
+    "sha256": "0f5b4533b0cd0afcd887d4160a0b3cb1c9bd7690cdec94ec859e700ca4f08d5c",
+    "passed": 47,
+    "total": 48,
+    "negativeBoundaries": [
+      12,
+      12
+    ],
+    "boundaries": {
+      "allTurnsRan": true,
+      "nativeMiniLMEverySurface": true,
+      "storageUnchanged": true,
+      "noSavedGameWrites": true,
+      "noExternalRequests": true,
+      "noPageErrors": true,
+      "onlyStaticGets": true,
+      "sourceStable": true,
+      "serverClosed": true
+    },
+    "allWatchedSourceHashesStillCurrent": true
+  },
+  "independentFirstExecutionReview": {
+    "report": "guides/tests/assistant/evidence/knowledge-independent-adjudication-20261025.json",
+    "firstStrictPassed": 18,
+    "total": 48,
+    "completeSupportedPositiveClaims": 10,
+    "positiveTurns": 36,
+    "firstNegativeBoundaries": [
+      10,
+      12
+    ],
+    "qualification": "First individual executions, before the measurement fix. Two independently authored source-first suites were concatenated without changing any dialogue oracle. They are now observed regression cases. The post-fix20/48 contains all12 boundary successes; it is not20 complete positive answers."
+  },
+  "citationVerifierQualification": "The exact compound-locator parser correction contributes1 verifier-only pass on stored native-18 replies, with zero changed runtime answers. See knowledge-compound-citation-audit-20261025.json. No parent/child citation equivalence or oracle edits were introduced.",
+  "productionModelFilesUnchanged": {
+    "guides/local-assistant/profile.json": "7fcde9d4b3d8842dc2345159687e845e023ce9049c92deab6d99d494e6ba813d",
+    "guides/local-assistant/intent/profile.json": "786a95a078fcc940f95539837883405257f1a3a896637bb71b8b477be680639e",
+    "guides/local-assistant/intent/head.json": "979c196a92df490124802e61fcc5fad787fc535ee69ff0eae64784355a8f6bfb"
+  },
+  "offline": {
+    "assets": 827,
+    "allHashesMatch": true,
+    "versionMatches": true,
+    "experimentalAssetsExcluded": true,
+    "newSharedModulesIncluded": true,
+    "version": "8e1fff6a284784c20ad2d8a694d4c047ef8e3e84b7474e0d77442f967c5909f6"
+  },
+  "publication": {
+    "ftpUploaded": false,
+    "committed": false,
+    "pushed": false
+  },
+  "remainingWork": "Full six-game acceptance remains incomplete. The four previous missing useful turns in observed48 are now complete, with the qualified Ariana helper retaining the only strict failure. Native96 still has14 failures; fresh76 has33; cached851 has95 including known provenance mismatches. Continue literal conversion/escort/actor roles, factual properties and comparisons before consultation, additional source-present compounds and procedural forms. Refine current-machine unknown-state wording. Preserve objective-only limits and every frozen oracle. No model updates/downloads/installations or publication.",
+  "previousGoalTurnClassification": "progress",
+  "completeUsefulClaimReview": {
+    "report": "guides/tests/assistant/evidence/knowledge-independent-adjudication-20261025-06.json",
+    "turns": 48,
+    "strictPassed": 47,
+    "positiveTurns": 36,
+    "completeSupportedPositiveClaims": 36,
+    "completeSupportedPositiveClaimsExcludingQualifiedAlternative": 35,
+    "qualifiedAlternativePositiveClaims": 1,
+    "withheldOrIncompletePositiveClaims": 0,
+    "wrongSubjectOrFieldPositiveClaims": 0,
+    "boundaryTurns": 12,
+    "boundariesHeld": 12,
+    "qualification": "36/36 useful positive claims in this observed48 including the previously qualified alternative Ariana helper;35/36 excluding that helper. Four prior incomplete positives now have complete source-backed answers. Strict47/48 includes12 boundaries and retains the unchanged Ariana exact-source/phrase failure. No correctness claim outside this reviewed set."
+  },
+  "embeddingReuseUnitTests": 3,
+  "sourceIndexRefresh": {
+    "modelChanged": false,
+    "factDocumentVectorsEncoded": 0,
+    "factDocumentsUnchanged": 674,
+    "metadataRefreshOnly": true,
+    "newIgnoredExactQueryVectors": 0,
+    "totalCachedQueryVectors": 986,
+    "modelDownloads": 0,
+    "installations": 0
+  },
+  "implementationNote": "docs/assistant-knowledge/source-transitions-20261025.md",
+  "currentGoalTurnClassification": "progress",
+  "frozenConversationOraclesUnchanged": {
+    "knowledge-blind-cases.json": "4dbdf52d7976e370195ed2fa8e6db6528d470266a9e129880a4533ddbc6f2ebb",
+    "knowledge-fresh-cases-20261025.json": "67847abd677579e424d4458f710962a39e8453e9034e7696f1269b4bf4402eb3",
+    "knowledge-independent-ultima-20261025.json": "5193e464b5b16f9aae089442db7e0dcacfd489da937875510b1fac508f38583c",
+    "knowledge-independent-other-20261025.json": "60c58336240b09371d1fc0fb2546606748087ce14f3290951eb615c498a0c2aa",
+    "knowledge-independent-all-20261025.json": "a6c44c5f5ae77f80295bd6c2403369545f9de28afe5920a07d105a40d016b907"
+  }
+}

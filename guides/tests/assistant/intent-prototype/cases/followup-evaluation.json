@@ -1,0 +1,1558 @@
+{
+  "schema": 1,
+  "purpose": "follow-up integration and known regression evaluation; separate from frozen v1 classification comparison",
+  "dialogues": [
+    {
+      "id": "sc-reported-download-exchange",
+      "gameId": "starcraft",
+      "category": "reported-regression",
+      "turns": [
+        {
+          "text": "what is schnail",
+          "intent": "identity",
+          "supported": true,
+          "entityTitle": "SCHNAIL",
+          "evidence": [
+            {
+              "recordId": "starcraft:schnail:features",
+              "variant": "balanced",
+              "quote": "The guide describes SCHNAIL (Starcraft Human and AI League) as a client with its own game installation and matchmaking. An initial login needs an internet connection.",
+              "source": {
+                "file": "guides/StarcraftBWAPI.html",
+                "locator": "#schnail-setup ul"
+              }
+            }
+          ],
+          "expectedRecordIds": [
+            "starcraft:schnail:features"
+          ],
+          "replyContains": [
+            "Human and AI League"
+          ],
+          "replyAbsent": [],
+          "expectedUrls": []
+        },
+        {
+          "text": "download link",
+          "intent": "acquisition",
+          "supported": true,
+          "entityTitle": "SCHNAIL",
+          "evidence": [
+            {
+              "recordId": "starcraft:schnail:download",
+              "variant": "direct",
+              "quote": "2. Download the latest release of SCHNAIL from their downloads page (requires account, see SCHNAIL Setup Guide for more information)",
+              "source": {
+                "file": "guides/StarcraftBWAPI.html",
+                "locator": "#schnail-requirements li:nth-child(2)"
+              },
+              "urls": [
+                "https://www.schnail.com/#/downloads"
+              ]
+            }
+          ],
+          "expectedRecordIds": [
+            "starcraft:schnail:download"
+          ],
+          "replyContains": [
+            "account"
+          ],
+          "replyAbsent": [],
+          "expectedUrls": [
+            "https://www.schnail.com/#/downloads"
+          ]
+        },
+        {
+          "text": "download link of schnail",
+          "intent": "acquisition",
+          "supported": true,
+          "entityTitle": "SCHNAIL",
+          "evidence": [
+            {
+              "recordId": "starcraft:schnail:download",
+              "variant": "direct",
+              "quote": "2. Download the latest release of SCHNAIL from their downloads page (requires account, see SCHNAIL Setup Guide for more information)",
+              "source": {
+                "file": "guides/StarcraftBWAPI.html",
+                "locator": "#schnail-requirements li:nth-child(2)"
+              },
+              "urls": [
+                "https://www.schnail.com/#/downloads"
+              ]
+            }
+          ],
+          "expectedRecordIds": [
+            "starcraft:schnail:download"
+          ],
+          "replyContains": [
+            "account"
+          ],
+          "replyAbsent": [],
+          "expectedUrls": [
+            "https://www.schnail.com/#/downloads"
+          ]
+        },
+        {
+          "text": "installation instructions",
+          "intent": "use",
+          "supported": true,
+          "entityTitle": "SCHNAIL",
+          "evidence": [
+            {
+              "recordId": "starcraft:schnail:setup",
+              "variant": "direct",
+              "quote": "Register an account at www.schnail.com; Login on the website; Download the latest release of SCHNAIL from www.schnail.com/#/downloads; Download and install Java JRE (Recommended: Liberica Java JDK 21 LTS); Install SCHNAIL (Note: Your antivirus may flag the SCHNAIL client - make sure to allow it to run); Launch the SCHNAIL client and log in with your credentials; The client will automatically download and set up the game files; Start playing against the AI",
+              "source": {
+                "file": "guides/StarcraftBWAPI.html",
+                "locator": "#schnail-setup ol"
+              }
+            }
+          ],
+          "expectedRecordIds": [
+            "starcraft:schnail:setup"
+          ],
+          "replyContains": [
+            "Java",
+            "log in"
+          ],
+          "replyAbsent": [],
+          "expectedUrls": []
+        },
+        {
+          "text": "necessary prerequisites?",
+          "intent": "prerequisites",
+          "supported": true,
+          "entityTitle": "SCHNAIL",
+          "evidence": [
+            {
+              "recordId": "starcraft:schnail:requirements",
+              "variant": "direct",
+              "quote": "1. Register an account at SCHNAIL (Starcraft Human and AI League); 2. Download the latest release of SCHNAIL from their downloads page (requires account, see SCHNAIL Setup Guide for more information); 3. Install Java JRE (Recommended: Liberica Java releases from bell-sw.com)",
+              "source": {
+                "file": "guides/StarcraftBWAPI.html",
+                "locator": "#schnail-requirements ol"
+              }
+            }
+          ],
+          "expectedRecordIds": [
+            "starcraft:schnail:requirements"
+          ],
+          "replyContains": [
+            "account",
+            "Java"
+          ],
+          "replyAbsent": [],
+          "expectedUrls": []
+        },
+        {
+          "text": "antivirus blocked it; suggestions?",
+          "intent": "hint",
+          "supported": true,
+          "entityTitle": "SCHNAIL",
+          "evidence": [
+            {
+              "recordId": "starcraft:schnail:antivirus-note",
+              "variant": "direct",
+              "quote": "Antivirus Blocking SCHNAIL; If your antivirus is blocking SCHNAIL: Check your antivirus quarantine for the SCHNAIL executable; Add an exception for the SCHNAIL installation directory; If needed, temporarily disable your antivirus during installation then add it on the exception list",
+              "source": {
+                "file": "guides/StarcraftBWAPI.html",
+                "locator": "#troubleshooting .space-y-4 > div:nth-child(1)"
+              }
+            }
+          ],
+          "expectedRecordIds": [
+            "starcraft:schnail:antivirus-note"
+          ],
+          "replyContains": [
+            "quarantine"
+          ],
+          "replyAbsent": [],
+          "expectedUrls": []
+        },
+        {
+          "text": "docs page",
+          "intent": "location",
+          "supported": true,
+          "entityTitle": "Documentation links",
+          "evidence": [
+            {
+              "recordId": "starcraft:documentation:links",
+              "variant": "direct",
+              "quote": "Documentation; BWAPI Official Documentation; BWAPI Wiki; SCHNAIL Documentation",
+              "source": {
+                "file": "guides/StarcraftBWAPI.html",
+                "locator": "#resources .grid > div:nth-child(1)"
+              },
+              "urls": [
+                "https://bwapi.github.io/",
+                "https://github.com/bwapi/bwapi/wiki",
+                "https://www.schnail.com/docs"
+              ]
+            }
+          ],
+          "expectedRecordIds": [
+            "starcraft:documentation:links"
+          ],
+          "replyContains": [
+            "BWAPI",
+            "SCHNAIL"
+          ],
+          "replyAbsent": [],
+          "expectedUrls": [
+            "https://bwapi.github.io/",
+            "https://github.com/bwapi/bwapi/wiki",
+            "https://www.schnail.com/docs"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sc-launcher-short-operations",
+      "gameId": "starcraft",
+      "category": "authored-followup",
+      "turns": [
+        {
+          "text": "Define BWAI Launcher for me.",
+          "intent": "identity",
+          "supported": true,
+          "entityTitle": "BWAILauncher",
+          "evidence": [
+            {
+              "recordId": "starcraft:bwai:features",
+              "variant": "direct",
+              "quote": "BWAILauncher replaces the standard AI, so you can use it in single-player mode; The AI is more challenging than the default but has some limitations in micro-management; Try different difficulty settings to find the right challenge level; Check the GitHub repository for updates and community support",
+              "source": {
+                "file": "guides/StarcraftBWAPI.html",
+                "locator": "#bwai-setup > ul:last-child"
+              }
+            }
+          ],
+          "expectedRecordIds": [
+            "starcraft:bwai:features"
+          ],
+          "replyContains": [
+            "single-player"
+          ],
+          "replyAbsent": [],
+          "expectedUrls": []
+        },
+        {
+          "text": "fetch its package",
+          "intent": "acquisition",
+          "supported": true,
+          "entityTitle": "BWAILauncher",
+          "evidence": [
+            {
+              "recordId": "starcraft:bwai:download",
+              "variant": "direct",
+              "quote": "Download the latest BWAILauncher release from GitHub",
+              "source": {
+                "file": "guides/StarcraftBWAPI.html",
+                "locator": "#bwai-setup ol > li:nth-child(2)"
+              },
+              "urls": [
+                "https://github.com/poiuyqwert/BWAILauncher/tree/main"
+              ]
+            }
+          ],
+          "expectedRecordIds": [
+            "starcraft:bwai:download"
+          ],
+          "replyContains": [
+            "GitHub"
+          ],
+          "replyAbsent": [],
+          "expectedUrls": [
+            "https://github.com/poiuyqwert/BWAILauncher/tree/main"
+          ]
+        },
+        {
+          "text": "set it up on 1.16.1",
+          "intent": "use",
+          "supported": true,
+          "entityTitle": "BWAILauncher",
+          "evidence": [
+            {
+              "recordId": "starcraft:bwai:setup",
+              "variant": "direct",
+              "quote": "Ensure you have Starcraft: Brood War installed and updated to version 1.16.1; Download the latest BWAILauncher release from GitHub; Extract the downloaded ZIP file to your Starcraft: Brood War installation directory; Run BWAILauncher.exe; If BWAILauncher doesn't detect your Starcraft installation automatically: Click on the settings/configuration button in the launcher; Navigate to the \"Game\" or \"Paths\" section; Browse to and select your Starcraft.exe file; Save the settings and restart the launcher; Configure your preferred game settings through the launcher interface; Launch the game through BWAILauncher",
+              "source": {
+                "file": "guides/StarcraftBWAPI.html",
+                "locator": "#bwai-setup ol"
+              }
+            }
+          ],
+          "expectedRecordIds": [
+            "starcraft:bwai:setup"
+          ],
+          "replyContains": [
+            "1.16.1",
+            "Starcraft.exe"
+          ],
+          "replyAbsent": [],
+          "expectedUrls": []
+        },
+        {
+          "text": "the executable is not being detected",
+          "intent": "hint",
+          "supported": true,
+          "entityTitle": "BWAILauncher",
+          "evidence": [
+            {
+              "recordId": "starcraft:bwai:detection-note",
+              "variant": "direct",
+              "quote": "If BWAILauncher doesn't detect your Starcraft installation automatically: Click on the settings/configuration button in the launcher; Navigate to the \"Game\" or \"Paths\" section; Browse to and select your Starcraft.exe file; Save the settings and restart the launcher",
+              "source": {
+                "file": "guides/StarcraftBWAPI.html",
+                "locator": "#bwai-setup ol > li:nth-child(5)"
+              }
+            }
+          ],
+          "expectedRecordIds": [
+            "starcraft:bwai:detection-note"
+          ],
+          "replyContains": [
+            "Starcraft.exe"
+          ],
+          "replyAbsent": [],
+          "expectedUrls": []
+        },
+        {
+          "text": "portable setup",
+          "intent": "use",
+          "supported": true,
+          "entityTitle": "BWAILauncher",
+          "evidence": [
+            {
+              "recordId": "starcraft:bwai:portable",
+              "variant": "balanced",
+              "quote": "The guide says BWAILauncher works well with portable Starcraft installations: extract it into the portable Starcraft directory, point it to the Starcraft.exe in that directory, and settings stay in the same folder.",
+              "source": {
+                "file": "guides/StarcraftBWAPI.html",
+                "locator": "#bwai-setup ul.mb-4"
+              }
+            }
+          ],
+          "expectedRecordIds": [
+            "starcraft:bwai:portable"
+          ],
+          "replyContains": [
+            "Starcraft.exe"
+          ],
+          "replyAbsent": [],
+          "expectedUrls": []
+        },
+        {
+          "text": "requirements for Remastered?",
+          "intent": "prerequisites",
+          "supported": false,
+          "entityTitle": "BWAILauncher",
+          "evidence": [],
+          "declineReason": "The guide records conflicting Remastered versus 1.16.1 compatibility; do not confirm compatibility.",
+          "restriction": "edition:remastered",
+          "expectedRecordIds": [],
+          "replyContains": [],
+          "replyAbsent": [],
+          "expectedUrls": [],
+          "requireDecline": true
+        },
+        {
+          "text": "installation steps",
+          "intent": "use",
+          "supported": false,
+          "entityTitle": "BWAILauncher",
+          "evidence": [],
+          "declineReason": "The unresolved Remastered compatibility constraint carries into this fragment.",
+          "restriction": "edition:remastered",
+          "expectedRecordIds": [],
+          "replyContains": [],
+          "replyAbsent": [],
+          "expectedUrls": [],
+          "requireDecline": true
+        }
+      ]
+    },
+    {
+      "id": "sc-map-short-requests",
+      "gameId": "starcraft",
+      "category": "authored-followup",
+      "turns": [
+        {
+          "text": "Tell me what the Remastered SCM Map is.",
+          "intent": "identity",
+          "supported": true,
+          "entityTitle": "Remastered SCM Map",
+          "evidence": [
+            {
+              "recordId": "starcraft:remastered-map:features",
+              "variant": "gentle",
+              "quote": "This guide's Remastered option uses an integrated map without an external launcher.",
+              "source": {
+                "file": "guides/StarcraftBWAPI.html",
+                "locator": "#remastered-setup .text-blue-700"
+              }
+            }
+          ],
+          "expectedRecordIds": [
+            "starcraft:remastered-map:features"
+          ],
+          "replyContains": [
+            "integrated map",
+            "launcher"
+          ],
+          "replyAbsent": [],
+          "expectedUrls": []
+        },
+        {
+          "text": "archive link",
+          "intent": "acquisition",
+          "supported": true,
+          "entityTitle": "Remastered SCM Map",
+          "evidence": [
+            {
+              "recordId": "starcraft:remastered-map:download",
+              "variant": "direct",
+              "quote": "Download the BWAPI integrated SCM map archive from Proton Drive or Direct Download.",
+              "source": {
+                "file": "guides/StarcraftBWAPI.html",
+                "locator": "#remastered-setup ol > li:nth-child(2)"
+              },
+              "urls": [
+                "https://drive.proton.me/urls/55AMBJ5FN4#BB7pM4E3tZeE",
+                "https://www.richardorilla.website/files/bwapiscr.zip"
+              ]
+            }
+          ],
+          "expectedRecordIds": [
+            "starcraft:remastered-map:download"
+          ],
+          "replyContains": [
+            "Proton Drive"
+          ],
+          "replyAbsent": [],
+          "expectedUrls": [
+            "https://drive.proton.me/urls/55AMBJ5FN4#BB7pM4E3tZeE",
+            "https://www.richardorilla.website/files/bwapiscr.zip"
+          ]
+        },
+        {
+          "text": "extract location",
+          "intent": "location",
+          "supported": true,
+          "entityTitle": "Remastered SCM Map",
+          "evidence": [
+            {
+              "recordId": "starcraft:remastered-map:extract-location",
+              "variant": "direct",
+              "quote": "Extract the downloaded ZIP file to your StarCraft maps folder (typically Documents\\StarCraft\\Maps).",
+              "source": {
+                "file": "guides/StarcraftBWAPI.html",
+                "locator": "#remastered-setup ol > li:nth-child(3)"
+              }
+            }
+          ],
+          "expectedRecordIds": [
+            "starcraft:remastered-map:extract-location"
+          ],
+          "replyContains": [
+            "Maps"
+          ],
+          "replyAbsent": [],
+          "expectedUrls": []
+        },
+        {
+          "text": "launch instructions",
+          "intent": "use",
+          "supported": true,
+          "entityTitle": "Remastered SCM Map",
+          "evidence": [
+            {
+              "recordId": "starcraft:remastered-map:setup",
+              "variant": "direct",
+              "quote": "Ensure StarCraft Remastered is installed and updated.; Download the BWAPI integrated SCM map archive from Proton Drive or Direct Download.; Extract the downloaded ZIP file to your StarCraft maps folder (typically Documents\\StarCraft\\Maps).; Launch StarCraft Remastered.; Navigate to Single Player → Custom Game.; Select the extracted BWAPI map.; Crucial Step: Under Game Type, you MUST select \"Use Map Settings\". The AI will not function properly in a standard Melee game.; Start the game and enjoy playing against the advanced AI!",
+              "source": {
+                "file": "guides/StarcraftBWAPI.html",
+                "locator": "#remastered-setup ol"
+              }
+            }
+          ],
+          "expectedRecordIds": [
+            "starcraft:remastered-map:setup"
+          ],
+          "replyContains": [
+            "Use Map Settings"
+          ],
+          "replyAbsent": [],
+          "expectedUrls": []
+        },
+        {
+          "text": "AI stands still under Melee; advice?",
+          "intent": "hint",
+          "supported": true,
+          "entityTitle": "Remastered SCM Map",
+          "evidence": [
+            {
+              "recordId": "starcraft:remastered-map:mode-check-note",
+              "variant": "direct",
+              "quote": "Crucial Step: Under Game Type, you MUST select \"Use Map Settings\". The AI will not function properly in a standard Melee game.",
+              "source": {
+                "file": "guides/StarcraftBWAPI.html",
+                "locator": "#remastered-setup ol > li:nth-child(7)"
+              }
+            }
+          ],
+          "expectedRecordIds": [
+            "starcraft:remastered-map:mode-check-note"
+          ],
+          "replyContains": [
+            "Use Map Settings"
+          ],
+          "replyAbsent": [],
+          "expectedUrls": []
+        },
+        {
+          "text": "what causes that in Melee?",
+          "intent": "why",
+          "supported": true,
+          "entityTitle": "Remastered SCM Map",
+          "evidence": [
+            {
+              "recordId": "starcraft:narrative:remastered-map-outcome:outcome",
+              "variant": "direct",
+              "quote": "Crucial Step: Under Game Type, you MUST select \"Use Map Settings\". The AI will not function properly in a standard Melee game.",
+              "source": {
+                "file": "guides/StarcraftBWAPI.html",
+                "locator": "#remastered-setup ol > li:nth-child(7)"
+              }
+            }
+          ],
+          "expectedRecordIds": [
+            "starcraft:narrative:remastered-map-outcome:outcome"
+          ],
+          "replyContains": [
+            "Melee"
+          ],
+          "replyAbsent": [],
+          "expectedUrls": []
+        }
+      ]
+    },
+    {
+      "id": "sc-guide-only-and-empty-context",
+      "gameId": "starcraft",
+      "category": "authored-followup",
+      "turns": [
+        {
+          "text": "A definition of BWAPI, please.",
+          "intent": "identity",
+          "supported": true,
+          "entityTitle": "BWAPI",
+          "evidence": [
+            {
+              "recordId": "starcraft:research:what-is-bwapi:explanation",
+              "variant": "gentle",
+              "quote": "BWAPI is a free, open-source C++ framework for writing AI bots that play StarCraft: Brood War; its setup expects the game updated to version 1.16.1.",
+              "source": {
+                "file": "https://github.com/bwapi/bwapi",
+                "locator": "BWAPI repository README"
+              },
+              "urls": [
+                "https://github.com/bwapi/bwapi"
+              ]
+            }
+          ],
+          "expectedRecordIds": [
+            "starcraft:research:what-is-bwapi:explanation"
+          ],
+          "replyContains": [
+            "C++",
+            "Brood War"
+          ],
+          "replyAbsent": [],
+          "expectedUrls": [
+            "https://github.com/bwapi/bwapi"
+          ]
+        },
+        {
+          "text": "Use only the guide: define BWAPI.",
+          "intent": "identity",
+          "supported": false,
+          "entityTitle": "BWAPI",
+          "evidence": [],
+          "declineReason": "The indexed BWAPI definition is external research; documentation links do not supply its identity.",
+          "restriction": "guide-only",
+          "expectedRecordIds": [],
+          "replyContains": [],
+          "replyAbsent": [
+            "free, open-source C++ framework"
+          ],
+          "expectedUrls": [],
+          "requireDecline": true
+        },
+        {
+          "text": "its definition?",
+          "intent": "identity",
+          "supported": false,
+          "entityTitle": "BWAPI",
+          "evidence": [],
+          "declineReason": "The explicit guide-only restriction persists into this fragment.",
+          "restriction": "guide-only",
+          "expectedRecordIds": [],
+          "replyContains": [],
+          "replyAbsent": [
+            "free, open-source C++ framework"
+          ],
+          "expectedUrls": [],
+          "requireDecline": true
+        },
+        {
+          "text": "where is the guide manual?",
+          "intent": "location",
+          "supported": true,
+          "entityTitle": "Documentation links",
+          "evidence": [
+            {
+              "recordId": "starcraft:documentation:links",
+              "variant": "direct",
+              "quote": "Documentation; BWAPI Official Documentation; BWAPI Wiki; SCHNAIL Documentation",
+              "source": {
+                "file": "guides/StarcraftBWAPI.html",
+                "locator": "#resources .grid > div:nth-child(1)"
+              },
+              "urls": [
+                "https://bwapi.github.io/",
+                "https://github.com/bwapi/bwapi/wiki",
+                "https://www.schnail.com/docs"
+              ]
+            }
+          ],
+          "restriction": "guide-only",
+          "expectedRecordIds": [
+            "starcraft:documentation:links"
+          ],
+          "replyContains": [
+            "BWAPI",
+            "SCHNAIL"
+          ],
+          "replyAbsent": [],
+          "expectedUrls": [
+            "https://bwapi.github.io/",
+            "https://github.com/bwapi/bwapi/wiki",
+            "https://www.schnail.com/docs"
+          ]
+        },
+        {
+          "text": "Topic reset control",
+          "intent": "unknown",
+          "supported": false,
+          "evidence": [],
+          "declineReason": "Actual UI reset action; no requested factual answer.",
+          "action": "resetTopic",
+          "expectedRecordIds": [],
+          "replyContains": [],
+          "replyAbsent": [],
+          "expectedUrls": [],
+          "expectedControl": "reset"
+        },
+        {
+          "text": "download URL?",
+          "intent": "acquisition",
+          "supported": false,
+          "evidence": [],
+          "declineReason": "No subject remains after reset. Do not select a download by popularity.",
+          "expectedRecordIds": [],
+          "replyContains": [],
+          "replyAbsent": [],
+          "expectedUrls": [],
+          "requireDecline": true
+        }
+      ]
+    },
+    {
+      "id": "sc-wrong-edition-fragments",
+      "gameId": "starcraft",
+      "category": "authored-followup",
+      "turns": [
+        {
+          "text": "What is SCHNAIL for StarCraft II?",
+          "intent": "identity",
+          "supported": false,
+          "entityTitle": "SCHNAIL",
+          "evidence": [],
+          "declineReason": "The guide concerns StarCraft: Brood War, not a SCHNAIL edition for StarCraft II.",
+          "restriction": "edition:starcraft2",
+          "expectedRecordIds": [],
+          "replyContains": [],
+          "replyAbsent": [
+            "StarCraft II client",
+            "guaranteed compatible"
+          ],
+          "expectedUrls": [],
+          "requireDecline": true
+        },
+        {
+          "text": "installer please",
+          "intent": "acquisition",
+          "supported": false,
+          "entityTitle": "SCHNAIL",
+          "evidence": [],
+          "declineReason": "StarCraft II constraint carries into the short acquisition request.",
+          "restriction": "edition:starcraft2",
+          "expectedRecordIds": [],
+          "replyContains": [],
+          "replyAbsent": [
+            "StarCraft II client",
+            "guaranteed compatible"
+          ],
+          "expectedUrls": [],
+          "requireDecline": true
+        },
+        {
+          "text": "setup steps please",
+          "intent": "use",
+          "supported": false,
+          "entityTitle": "SCHNAIL",
+          "evidence": [],
+          "declineReason": "StarCraft II constraint carries into the setup request.",
+          "restriction": "edition:starcraft2",
+          "expectedRecordIds": [],
+          "replyContains": [],
+          "replyAbsent": [
+            "StarCraft II client",
+            "guaranteed compatible"
+          ],
+          "expectedUrls": [],
+          "requireDecline": true
+        },
+        {
+          "text": "requirements first?",
+          "intent": "prerequisites",
+          "supported": false,
+          "entityTitle": "SCHNAIL",
+          "evidence": [],
+          "declineReason": "Do not replace the unsupported edition with Brood War implicitly.",
+          "restriction": "edition:starcraft2",
+          "expectedRecordIds": [],
+          "replyContains": [],
+          "replyAbsent": [
+            "StarCraft II client",
+            "guaranteed compatible"
+          ],
+          "expectedUrls": [],
+          "requireDecline": true
+        },
+        {
+          "text": "New topic, Brood War only: identify SCHNAIL.",
+          "intent": "identity",
+          "supported": true,
+          "entityTitle": "SCHNAIL",
+          "evidence": [
+            {
+              "recordId": "starcraft:schnail:features",
+              "variant": "balanced",
+              "quote": "The guide describes SCHNAIL (Starcraft Human and AI League) as a client with its own game installation and matchmaking. An initial login needs an internet connection.",
+              "source": {
+                "file": "guides/StarcraftBWAPI.html",
+                "locator": "#schnail-setup ul"
+              }
+            }
+          ],
+          "restriction": "edition:brood-war",
+          "expectedRecordIds": [
+            "starcraft:schnail:features"
+          ],
+          "replyContains": [
+            "Human and AI League"
+          ],
+          "replyAbsent": [],
+          "expectedUrls": []
+        },
+        {
+          "text": "why the initial launch wait?",
+          "intent": "why",
+          "supported": true,
+          "entityTitle": "SCHNAIL",
+          "evidence": [
+            {
+              "recordId": "starcraft:narrative:schnail-first-launch-cause:cause",
+              "variant": "direct",
+              "quote": "Note: The first launch might take some time as it downloads necessary game files.",
+              "source": {
+                "file": "guides/StarcraftBWAPI.html",
+                "locator": "#getting-started > .bg-blue-50 .text-blue-700"
+              }
+            }
+          ],
+          "expectedRecordIds": [
+            "starcraft:narrative:schnail-first-launch-cause:cause"
+          ],
+          "replyContains": [
+            "downloads",
+            "game files"
+          ],
+          "replyAbsent": [],
+          "expectedUrls": []
+        }
+      ]
+    },
+    {
+      "id": "u7-bard-followup-regression",
+      "gameId": "ultima7",
+      "category": "authored-followup",
+      "turns": [
+        {
+          "text": "Explain who Iolo is in this adventure.",
+          "intent": "identity",
+          "supported": true,
+          "entityTitle": "Iolo",
+          "evidence": [
+            {
+              "recordId": "ultima7:companion:iolo:explanation",
+              "variant": "gentle",
+              "quote": "Iolo: Fighter (Bard). Focus: Balanced archer. Joins automatically at the start. Party Builder choices are a plan, not evidence that this companion is currently in your party.",
+              "source": {
+                "file": "guides/js/Ultima7.js",
+                "locator": "DB.companions[0]"
+              }
+            }
+          ],
+          "expectedRecordIds": [
+            "ultima7:companion:iolo:explanation"
+          ],
+          "replyContains": [
+            "Bard"
+          ],
+          "replyAbsent": [],
+          "expectedUrls": []
+        },
+        {
+          "text": "where is he",
+          "intent": "location",
+          "supported": true,
+          "entityTitle": "Iolo",
+          "evidence": [
+            {
+              "recordId": "ultima7:companion:iolo:location",
+              "variant": "gentle",
+              "quote": "The guide lists Iolo at Trinsic. This is a guide location, not a report of their current position.",
+              "source": {
+                "file": "guides/js/Ultima7.js",
+                "locator": "DB.companions[0].location"
+              }
+            }
+          ],
+          "expectedRecordIds": [
+            "ultima7:companion:iolo:location"
+          ],
+          "replyContains": [
+            "Trinsic"
+          ],
+          "replyAbsent": [],
+          "expectedUrls": []
+        },
+        {
+          "text": "stats",
+          "intent": "stats",
+          "supported": true,
+          "entityTitle": "Iolo",
+          "evidence": [
+            {
+              "recordId": "ultima7:companion:iolo:stats",
+              "variant": "gentle",
+              "quote": "Iolo: Strength 18, Dexterity 19, Intelligence 20, Combat 19. Tags: ranged.",
+              "source": {
+                "file": "guides/js/Ultima7.js",
+                "locator": "DB.companions[0].str/dex/int/com"
+              }
+            }
+          ],
+          "expectedRecordIds": [
+            "ultima7:companion:iolo:stats"
+          ],
+          "replyContains": [
+            "Strength 18",
+            "Dexterity 19"
+          ],
+          "replyAbsent": [],
+          "expectedUrls": []
+        },
+        {
+          "text": "and his job?",
+          "intent": "identity",
+          "supported": true,
+          "entityTitle": "Iolo",
+          "evidence": [
+            {
+              "recordId": "ultima7:companion:iolo:explanation",
+              "variant": "gentle",
+              "quote": "Iolo: Fighter (Bard). Focus: Balanced archer. Joins automatically at the start. Party Builder choices are a plan, not evidence that this companion is currently in your party.",
+              "source": {
+                "file": "guides/js/Ultima7.js",
+                "locator": "DB.companions[0]"
+              }
+            }
+          ],
+          "relation": "job",
+          "expectedRecordIds": [
+            "ultima7:companion:iolo:explanation"
+          ],
+          "replyContains": [
+            "Bard"
+          ],
+          "replyAbsent": [],
+          "expectedUrls": []
+        },
+        {
+          "text": "download address",
+          "intent": "acquisition",
+          "supported": false,
+          "entityTitle": "Iolo",
+          "evidence": [],
+          "declineReason": "Iolo is a companion. No indexed download facet exists; a biography must not substitute for acquisition.",
+          "expectedRecordIds": [],
+          "replyContains": [],
+          "replyAbsent": [
+            "Fighter (Bard)",
+            "https://www.schnail.com"
+          ],
+          "expectedUrls": [],
+          "requireDecline": true
+        },
+        {
+          "text": "where is he listed?",
+          "intent": "location",
+          "supported": true,
+          "entityTitle": "Iolo",
+          "evidence": [
+            {
+              "recordId": "ultima7:companion:iolo:location",
+              "variant": "gentle",
+              "quote": "The guide lists Iolo at Trinsic. This is a guide location, not a report of their current position.",
+              "source": {
+                "file": "guides/js/Ultima7.js",
+                "locator": "DB.companions[0].location"
+              }
+            }
+          ],
+          "expectedRecordIds": [
+            "ultima7:companion:iolo:location"
+          ],
+          "replyContains": [
+            "Trinsic"
+          ],
+          "replyAbsent": [],
+          "expectedUrls": []
+        }
+      ]
+    },
+    {
+      "id": "u7-two-companions-fragments",
+      "gameId": "ultima7",
+      "category": "authored-followup",
+      "turns": [
+        {
+          "text": "Give me an identity for Shamino.",
+          "intent": "identity",
+          "supported": true,
+          "entityTitle": "Shamino",
+          "evidence": [
+            {
+              "recordId": "ultima7:companion:shamino:explanation",
+              "variant": "gentle",
+              "quote": "Shamino: Fighter (Ranger). Focus: Fast ranged damage. Excellent archer due to high Dexterity. Party Builder choices are a plan, not evidence that this companion is currently in your party.",
+              "source": {
+                "file": "guides/js/Ultima7.js",
+                "locator": "DB.companions[1]"
+              }
+            }
+          ],
+          "expectedRecordIds": [
+            "ultima7:companion:shamino:explanation"
+          ],
+          "replyContains": [
+            "Ranger"
+          ],
+          "replyAbsent": [],
+          "expectedUrls": []
+        },
+        {
+          "text": "base attributes?",
+          "intent": "stats",
+          "supported": true,
+          "entityTitle": "Shamino",
+          "evidence": [
+            {
+              "recordId": "ultima7:companion:shamino:stats",
+              "variant": "gentle",
+              "quote": "Shamino: Strength 18, Dexterity 21, Intelligence 19, Combat 16. Tags: ranged.",
+              "source": {
+                "file": "guides/js/Ultima7.js",
+                "locator": "DB.companions[1].str/dex/int/com"
+              }
+            }
+          ],
+          "expectedRecordIds": [
+            "ultima7:companion:shamino:stats"
+          ],
+          "replyContains": [
+            "Dexterity 21"
+          ],
+          "replyAbsent": [],
+          "expectedUrls": []
+        },
+        {
+          "text": "listed whereabouts",
+          "intent": "location",
+          "supported": true,
+          "entityTitle": "Shamino",
+          "evidence": [
+            {
+              "recordId": "ultima7:companion:shamino:location",
+              "variant": "gentle",
+              "quote": "The guide lists Shamino at Britain, Blue Boar Tavern. This is a guide location, not a report of their current position.",
+              "source": {
+                "file": "guides/js/Ultima7.js",
+                "locator": "DB.companions[1].location"
+              }
+            }
+          ],
+          "expectedRecordIds": [
+            "ultima7:companion:shamino:location"
+          ],
+          "replyContains": [
+            "Blue Boar"
+          ],
+          "replyAbsent": [],
+          "expectedUrls": []
+        },
+        {
+          "text": "Change to Spark: who is that companion?",
+          "intent": "identity",
+          "supported": true,
+          "entityTitle": "Spark",
+          "evidence": [
+            {
+              "recordId": "ultima7:companion:spark:explanation",
+              "variant": "gentle",
+              "quote": "Spark: Fighter. Focus: Fastest growth. Gains training points at double rate. Huge damage potential. Party Builder choices are a plan, not evidence that this companion is currently in your party.",
+              "source": {
+                "file": "guides/js/Ultima7.js",
+                "locator": "DB.companions[3]"
+              }
+            }
+          ],
+          "expectedRecordIds": [
+            "ultima7:companion:spark:explanation"
+          ],
+          "replyContains": [
+            "Fighter"
+          ],
+          "replyAbsent": [],
+          "expectedUrls": []
+        },
+        {
+          "text": "starting numbers?",
+          "intent": "stats",
+          "supported": true,
+          "entityTitle": "Spark",
+          "evidence": [
+            {
+              "recordId": "ultima7:companion:spark:stats",
+              "variant": "gentle",
+              "quote": "Spark: Strength 14, Dexterity 22, Intelligence 18, Combat 10. Tags: growth.",
+              "source": {
+                "file": "guides/js/Ultima7.js",
+                "locator": "DB.companions[3].str/dex/int/com"
+              }
+            }
+          ],
+          "expectedRecordIds": [
+            "ultima7:companion:spark:stats"
+          ],
+          "replyContains": [
+            "Strength 14",
+            "Combat 10"
+          ],
+          "replyAbsent": [],
+          "expectedUrls": []
+        },
+        {
+          "text": "whereabouts of that companion?",
+          "intent": "location",
+          "supported": true,
+          "entityTitle": "Spark",
+          "evidence": [
+            {
+              "recordId": "ultima7:companion:spark:location",
+              "variant": "gentle",
+              "quote": "The guide lists Spark at Trinsic, Christopher's House. This is a guide location, not a report of their current position.",
+              "source": {
+                "file": "guides/js/Ultima7.js",
+                "locator": "DB.companions[3].location"
+              }
+            }
+          ],
+          "expectedRecordIds": [
+            "ultima7:companion:spark:location"
+          ],
+          "replyContains": [
+            "Christopher's House"
+          ],
+          "replyAbsent": [],
+          "expectedUrls": []
+        }
+      ]
+    },
+    {
+      "id": "u7-spell-use-and-lower-help",
+      "gameId": "ultima7",
+      "category": "authored-followup",
+      "turns": [
+        {
+          "text": "How is Mark & Recall used?",
+          "intent": "use",
+          "supported": true,
+          "entityTitle": "Mark & Recall",
+          "evidence": [
+            {
+              "recordId": "ultima7:spell:mark-recall:use",
+              "variant": "gentle",
+              "quote": "Creates a reusable return point, dramatically reducing cross-map travel and supply runs.",
+              "source": {
+                "file": "guides/js/Ultima7.js",
+                "locator": "DB.spells[2].description"
+              }
+            }
+          ],
+          "expectedRecordIds": [
+            "ultima7:spell:mark-recall:use"
+          ],
+          "replyContains": [
+            "return point"
+          ],
+          "replyAbsent": [],
+          "expectedUrls": []
+        },
+        {
+          "text": "use?",
+          "intent": "use",
+          "supported": true,
+          "entityTitle": "Mark & Recall",
+          "evidence": [
+            {
+              "recordId": "ultima7:spell:mark-recall:use",
+              "variant": "gentle",
+              "quote": "Creates a reusable return point, dramatically reducing cross-map travel and supply runs.",
+              "source": {
+                "file": "guides/js/Ultima7.js",
+                "locator": "DB.spells[2].description"
+              }
+            }
+          ],
+          "expectedRecordIds": [
+            "ultima7:spell:mark-recall:use"
+          ],
+          "replyContains": [
+            "return point"
+          ],
+          "replyAbsent": [],
+          "expectedUrls": []
+        },
+        {
+          "text": "spell location?",
+          "intent": "location",
+          "supported": false,
+          "entityTitle": "Mark & Recall",
+          "evidence": [],
+          "declineReason": "Only the spell use/effect is indexed; no location is supplied.",
+          "expectedRecordIds": [],
+          "replyContains": [],
+          "replyAbsent": [
+            "Creates a reusable return point"
+          ],
+          "expectedUrls": [],
+          "requireDecline": true
+        },
+        {
+          "text": "get this spell?",
+          "intent": "acquisition",
+          "supported": false,
+          "entityTitle": "Mark & Recall",
+          "evidence": [],
+          "declineReason": "No acquisition facet for this spell is indexed; its effect does not prove where to obtain it.",
+          "expectedRecordIds": [],
+          "replyContains": [],
+          "replyAbsent": [
+            "Creates a reusable return point"
+          ],
+          "expectedUrls": [],
+          "requireDecline": true
+        },
+        {
+          "text": "New subject: Destroy Trap usage?",
+          "intent": "use",
+          "supported": true,
+          "entityTitle": "Destroy Trap",
+          "evidence": [
+            {
+              "recordId": "ultima7:spell:destroy-trap:use",
+              "variant": "direct",
+              "quote": "Required to reach the Tetrahedron Generator; also makes trapped containers safer to handle.",
+              "source": {
+                "file": "guides/js/Ultima7.js",
+                "locator": "DB.spells[1].description"
+              }
+            }
+          ],
+          "expectedRecordIds": [
+            "ultima7:spell:destroy-trap:use"
+          ],
+          "replyContains": [
+            "Tetrahedron"
+          ],
+          "replyAbsent": [],
+          "expectedUrls": []
+        },
+        {
+          "text": "And its use again?",
+          "intent": "use",
+          "supported": false,
+          "entityTitle": "Destroy Trap",
+          "evidence": [],
+          "declineReason": "The use facet is direct-only and cannot be returned after help is lowered.",
+          "restriction": "spoiler:gentle",
+          "options": {
+            "spoiler": "gentle"
+          },
+          "expectedRecordIds": [],
+          "replyContains": [],
+          "replyAbsent": [
+            "Tetrahedron"
+          ],
+          "expectedUrls": [],
+          "requireDecline": true
+        }
+      ]
+    },
+    {
+      "id": "u7-source-and-spoiler-fragments",
+      "gameId": "ultima7",
+      "category": "authored-followup",
+      "turns": [
+        {
+          "text": "I want to identify Lord British.",
+          "intent": "identity",
+          "supported": true,
+          "entityTitle": "Lord British",
+          "evidence": [
+            {
+              "recordId": "ultima7:narrative:lord-british-identity:identity",
+              "variant": "gentle",
+              "quote": "Lord British rules Britannia as its king. He is an old friend of the Avatar and shares the Avatar's original homeland, Earth.",
+              "source": {
+                "file": "https://mithyr.com/Ultima/7.0_VII_TheBlackGate/Script/libNPC023.htm",
+                "locator": "Ultima VII dialogue transcript: Lord British (name, job and homeland)"
+              },
+              "urls": [
+                "https://mithyr.com/Ultima/7.0_VII_TheBlackGate/Script/libNPC023.htm"
+              ]
+            }
+          ],
+          "expectedRecordIds": [
+            "ultima7:narrative:lord-british-identity:identity"
+          ],
+          "replyContains": [
+            "king"
+          ],
+          "replyAbsent": [],
+          "expectedUrls": [
+            "https://mithyr.com/Ultima/7.0_VII_TheBlackGate/Script/libNPC023.htm"
+          ]
+        },
+        {
+          "text": "Using guide sources only, identify the Time Lord.",
+          "intent": "identity",
+          "supported": false,
+          "entityTitle": "Time Lord",
+          "evidence": [],
+          "declineReason": "The substantive Time Lord identity is indexed as external research; the guide atlas marker is not a biography.",
+          "restriction": "guide-only",
+          "expectedRecordIds": [],
+          "replyContains": [],
+          "replyAbsent": [
+            "keep time flowing"
+          ],
+          "expectedUrls": [],
+          "requireDecline": true
+        },
+        {
+          "text": "his occupation?",
+          "intent": "identity",
+          "supported": false,
+          "entityTitle": "Time Lord",
+          "evidence": [],
+          "declineReason": "Guide-only remains active. The atlas marker does not state his work.",
+          "restriction": "guide-only",
+          "relation": "job",
+          "expectedRecordIds": [],
+          "replyContains": [],
+          "replyAbsent": [
+            "keep time flowing"
+          ],
+          "expectedUrls": [],
+          "requireDecline": true
+        },
+        {
+          "text": "Allow research again. Different subject: identify the Guardian.",
+          "intent": "identity",
+          "supported": true,
+          "entityTitle": "Guardian",
+          "evidence": [
+            {
+              "recordId": "ultima7:research:guardian-identity:explanation",
+              "variant": "balanced",
+              "quote": "In Ultima VII: The Black Gate, the Guardian is a powerful, hostile being from another dimension. He seeks domination and control of Britannia, and the Time Lord urges the Avatar to oppose him.",
+              "source": {
+                "file": "https://mithyr.com/Ultima/7.0_VII_TheBlackGate/Script/libNPC148.htm",
+                "locator": "Ultima VII dialogue transcript: The Time Lord (crisis and The Guardian)"
+              },
+              "urls": [
+                "https://mithyr.com/Ultima/7.0_VII_TheBlackGate/Script/libNPC148.htm"
+              ]
+            }
+          ],
+          "expectedRecordIds": [
+            "ultima7:research:guardian-identity:explanation"
+          ],
+          "replyContains": [
+            "another dimension"
+          ],
+          "replyAbsent": [],
+          "expectedUrls": [
+            "https://mithyr.com/Ultima/7.0_VII_TheBlackGate/Script/libNPC148.htm"
+          ]
+        },
+        {
+          "text": "identity?",
+          "intent": "identity",
+          "supported": false,
+          "entityTitle": "Guardian",
+          "evidence": [],
+          "declineReason": "The Guardian identity facet is balanced and is unavailable at gentle help.",
+          "restriction": "spoiler:gentle",
+          "options": {
+            "spoiler": "gentle"
+          },
+          "expectedRecordIds": [],
+          "replyContains": [],
+          "replyAbsent": [
+            "hostile being from another dimension"
+          ],
+          "expectedUrls": [],
+          "requireDecline": true
+        },
+        {
+          "text": "Now who is Jaana?",
+          "intent": "identity",
+          "supported": true,
+          "entityTitle": "Jaana",
+          "evidence": [
+            {
+              "recordId": "ultima7:companion:jaana:explanation",
+              "variant": "gentle",
+              "quote": "Jaana: Healer (Druid). Focus: Healing and magic. Can periodically heal the party for free. Only companion with innate magic. Party Builder choices are a plan, not evidence that this companion is currently in your party.",
+              "source": {
+                "file": "guides/js/Ultima7.js",
+                "locator": "DB.companions[6]"
+              }
+            }
+          ],
+          "expectedRecordIds": [
+            "ultima7:companion:jaana:explanation"
+          ],
+          "replyContains": [
+            "Druid"
+          ],
+          "replyAbsent": [],
+          "expectedUrls": []
+        },
+        {
+          "text": "her location on the guide?",
+          "intent": "location",
+          "supported": true,
+          "entityTitle": "Jaana",
+          "evidence": [
+            {
+              "recordId": "ultima7:companion:jaana:location",
+              "variant": "gentle",
+              "quote": "The guide lists Jaana at Cove, Healer's Shop. This is a guide location, not a report of their current position.",
+              "source": {
+                "file": "guides/js/Ultima7.js",
+                "locator": "DB.companions[6].location"
+              }
+            }
+          ],
+          "expectedRecordIds": [
+            "ultima7:companion:jaana:location"
+          ],
+          "replyContains": [
+            "Cove"
+          ],
+          "replyAbsent": [],
+          "expectedUrls": []
+        }
+      ]
+    },
+    {
+      "id": "u7-confirm-reset-and-unknown",
+      "gameId": "ultima7",
+      "category": "authored-followup",
+      "turns": [
+        {
+          "text": "Tell me who Duprae is.",
+          "intent": "identity",
+          "supported": false,
+          "entityTitle": "Dupre",
+          "evidence": [],
+          "declineReason": "A misspelling must produce a real uncertain candidate/pending confirmation before a factual answer.",
+          "transition": "pending",
+          "expectedRecordIds": [],
+          "replyContains": [],
+          "replyAbsent": [],
+          "expectedUrls": [],
+          "requireDecline": true
+        },
+        {
+          "text": "Yes, that is the one.",
+          "intent": "identity",
+          "supported": true,
+          "entityTitle": "Dupre",
+          "evidence": [
+            {
+              "recordId": "ultima7:companion:dupre:explanation",
+              "variant": "gentle",
+              "quote": "Dupre: Fighter (Paladin). Focus: Front-line anchor. The best front-line tank with the highest starting Strength. Party Builder choices are a plan, not evidence that this companion is currently in your party.",
+              "source": {
+                "file": "guides/js/Ultima7.js",
+                "locator": "DB.companions[2]"
+              }
+            }
+          ],
+          "rawIntent": "unknown",
+          "transition": "confirm-pending",
+          "expectedRecordIds": [
+            "ultima7:companion:dupre:explanation"
+          ],
+          "replyContains": [
+            "Paladin"
+          ],
+          "replyAbsent": [],
+          "expectedUrls": []
+        },
+        {
+          "text": "his starting numbers",
+          "intent": "stats",
+          "supported": true,
+          "entityTitle": "Dupre",
+          "evidence": [
+            {
+              "recordId": "ultima7:companion:dupre:stats",
+              "variant": "gentle",
+              "quote": "Dupre: Strength 21, Dexterity 20, Intelligence 18, Combat 18. Tags: frontline.",
+              "source": {
+                "file": "guides/js/Ultima7.js",
+                "locator": "DB.companions[2].str/dex/int/com"
+              }
+            }
+          ],
+          "expectedRecordIds": [
+            "ultima7:companion:dupre:stats"
+          ],
+          "replyContains": [
+            "Strength 21"
+          ],
+          "replyAbsent": [],
+          "expectedUrls": []
+        },
+        {
+          "text": "Topic reset control",
+          "intent": "unknown",
+          "supported": false,
+          "evidence": [],
+          "declineReason": "Actual UI reset action; no factual answer.",
+          "action": "resetTopic",
+          "expectedRecordIds": [],
+          "replyContains": [],
+          "replyAbsent": [],
+          "expectedUrls": [],
+          "expectedControl": "reset"
+        },
+        {
+          "text": "location now",
+          "intent": "location",
+          "supported": false,
+          "evidence": [],
+          "declineReason": "No subject remains after the topic reset.",
+          "expectedRecordIds": [],
+          "replyContains": [],
+          "replyAbsent": [],
+          "expectedUrls": [],
+          "requireDecline": true
+        },
+        {
+          "text": "What is Captain Azuron?",
+          "intent": "identity",
+          "supported": false,
+          "evidence": [],
+          "declineReason": "Captain Azuron is not an indexed subject; do not reuse Dupre.",
+          "expectedRecordIds": [],
+          "replyContains": [],
+          "replyAbsent": [
+            "Paladin",
+            "Trinsic"
+          ],
+          "expectedUrls": [],
+          "requireDecline": true
+        },
+        {
+          "text": "and his employment?",
+          "intent": "identity",
+          "supported": false,
+          "evidence": [],
+          "declineReason": "Unknown-subject state must not fall back to an earlier companion.",
+          "relation": "job",
+          "expectedRecordIds": [],
+          "replyContains": [],
+          "replyAbsent": [],
+          "expectedUrls": [],
+          "requireDecline": true
+        },
+        {
+          "text": "New topic: identify Sentri.",
+          "intent": "identity",
+          "supported": true,
+          "entityTitle": "Sentri",
+          "evidence": [
+            {
+              "recordId": "ultima7:companion:sentri:explanation",
+              "variant": "gentle",
+              "quote": "Sentri: Trainer (Fighter). Focus: Free DEX training. Will not join if party size is > 5. Offers free DEX training. Party Builder choices are a plan, not evidence that this companion is currently in your party.",
+              "source": {
+                "file": "guides/js/Ultima7.js",
+                "locator": "DB.companions[4]"
+              }
+            }
+          ],
+          "expectedRecordIds": [
+            "ultima7:companion:sentri:explanation"
+          ],
+          "replyContains": [
+            "Trainer"
+          ],
+          "replyAbsent": [],
+          "expectedUrls": []
+        }
+      ]
+    }
+  ]
+}

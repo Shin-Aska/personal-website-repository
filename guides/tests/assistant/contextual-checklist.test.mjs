@@ -144,7 +144,7 @@ for (const spoiler of ['gentle', 'balanced']) {
     test(`Al-Qadim ${spoiler} keeps the authorized chapter hint, labelled honestly`, () => {
         const contextId = 'alqadim:chapter:4';
         const r = make('alqadim').answer('hint', { contextId, spoiler });
-        assert.match(r.text, /A step-specific hint is not available at this help level. Section hint:/);
+        assert.match(r.text, /A step-specific hint is not available\. Section hint:/);
         assert.deepEqual(r.recordIds, [`${contextId}:hint`]);
         assert.ok(r.text.includes(authorize(allRecords.alqadim.find(r => r.id === `${contextId}:hint`), spoiler).text));
         assert.doesNotMatch(JSON.stringify(r), /Deadman's Reef|First unticked/);

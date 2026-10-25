@@ -1,0 +1,327 @@
+{
+  "schema": 1,
+  "checkedAt": "2026-10-24T03:54:42.041Z",
+  "scope": [
+    "ultima7",
+    "starcraft"
+  ],
+  "status": "experimental; not accepted for production routing",
+  "model": {
+    "modelId": "Xenova/all-MiniLM-L6-v2",
+    "revision": "751bff37182d3f1213fa05d7196b954e230abad9",
+    "modelBytes": 23916680,
+    "sharedRuntimeBytes": 22528676,
+    "dimensions": 384,
+    "prepareMs": 679.2999999998137,
+    "realModelInference": true,
+    "encoderFineTuned": false,
+    "remoteModelsAllowed": false,
+    "wasmThreads": 1
+  },
+  "fitting": {
+    "trainingSamples": 120,
+    "validationSamples": 36,
+    "trainingHash": "bbd3af0e7194f1c3945f8022bc77003b3f41254df5a2ee33eec4d007ea613dca",
+    "validationHash": "e4098d7be5186686c24039b79cf8760c88834d9d287490df2d886aafc0021018",
+    "headHash": "f8e1d5388f0ac2409f2769b3df18483ff37de346e8fa95c5665bf2f13c57e730",
+    "encoderFineTuned": false,
+    "headTraining": {
+      "samples": 120,
+      "epochs": 400,
+      "learningRate": 0.8,
+      "l2": 0.001,
+      "seed": 42,
+      "loss": 0.6035068928977572
+    },
+    "fitMs": 440.90000000037253,
+    "thresholds": {
+      "minScore": 0,
+      "minMargin": 0,
+      "abstainAll": false,
+      "selection": {
+        "source": "validation",
+        "samples": 36,
+        "targetAccuracy": 0.9,
+        "minAccepted": 6,
+        "accepted": 36,
+        "accuracy": 0.9166666666666666,
+        "coverage": 1,
+        "candidateLimitPerAxis": 51
+      }
+    },
+    "trainingMetrics": {
+      "total": 120,
+      "correct": 120,
+      "accuracy": 1,
+      "accepted": 120,
+      "acceptedCorrect": 120,
+      "acceptedAccuracy": 1,
+      "coverage": 1,
+      "abstained": 0
+    },
+    "validationMetrics": {
+      "total": 36,
+      "correct": 33,
+      "accuracy": 0.9166666666666666,
+      "accepted": 36,
+      "acceptedCorrect": 33,
+      "acceptedAccuracy": 0.9166666666666666,
+      "coverage": 1,
+      "abstained": 0
+    }
+  },
+  "evaluationSha256": "e7612087c82234a809011485110d9ee750a0c7a38f3027951b176df7a7c4df7f",
+  "headUnchangedFromInitial": true,
+  "evaluationUnchangedFromInitial": true,
+  "independentIntentMetrics": {
+    "total": 48,
+    "correct": 41,
+    "accuracy": 0.8541666666666666,
+    "accepted": 48,
+    "acceptedCorrect": 41,
+    "acceptedAccuracy": 0.8541666666666666,
+    "coverage": 1,
+    "abstained": 0
+  },
+  "parserAgreement": {
+    "correct": 28,
+    "total": 48,
+    "caveat": "Mapped raw-parser intent agreement only; aliases, source indexes and full production answer accuracy are separate."
+  },
+  "conversationMetrics": {
+    "dialogueIntentMatches": 38,
+    "dialogueEntityMatches": 27,
+    "dialogueTurns": 47
+  },
+  "independentReplayStatuses": {
+    "protected": 39,
+    "ready": 1,
+    "clarify": 7,
+    "abstain": 1
+  },
+  "singleQuestionInferenceMs": [
+    4.599999999627471,
+    5.1000000005587935,
+    5.5,
+    4.8999999994412065
+  ],
+  "medianSingleQuestionInferenceMs": 5.0,
+  "structuralUnitTests": {
+    "passed": 22,
+    "total": 22,
+    "meaning": "Synthetic numeric and dialogue contract tests; not model accuracy"
+  },
+  "realBrowserControlChecks": {
+    "passed": true,
+    "checks": [
+      {
+        "name": "reset: stale ask rejects with AbortError",
+        "passed": true,
+        "details": {
+          "settled": true,
+          "rejected": true,
+          "name": "AbortError",
+          "message": "Discarded an interpretation after the topic or settings changed."
+        }
+      },
+      {
+        "name": "reset: both histories remain empty",
+        "passed": true,
+        "details": {
+          "original": 0,
+          "proposed": 0
+        }
+      },
+      {
+        "name": "reset: no reply card resurrects",
+        "passed": true,
+        "details": {
+          "turns": 0
+        }
+      },
+      {
+        "name": "spoiler lowering: stale ask rejects with AbortError",
+        "passed": true,
+        "details": {
+          "settled": true,
+          "rejected": true,
+          "name": "AbortError",
+          "message": "Discarded an interpretation after the topic or settings changed."
+        }
+      },
+      {
+        "name": "spoiler lowering: both engine policies remain gentle",
+        "passed": true,
+        "details": {
+          "selected": "gentle",
+          "original": "gentle",
+          "proposed": "gentle"
+        }
+      },
+      {
+        "name": "spoiler lowering: both histories remain empty",
+        "passed": true,
+        "details": {
+          "original": 0,
+          "proposed": 0
+        }
+      },
+      {
+        "name": "spoiler lowering: no reply card resurrects",
+        "passed": true,
+        "details": {
+          "turns": 0
+        }
+      },
+      {
+        "name": "game selection: stale ask rejects with AbortError",
+        "passed": true,
+        "details": {
+          "settled": true,
+          "rejected": true,
+          "name": "AbortError",
+          "message": "Discarded an interpretation after the topic or settings changed."
+        }
+      },
+      {
+        "name": "game selection: selector matches the active StarCraft session",
+        "passed": true,
+        "details": {
+          "selected": "starcraft",
+          "active": "starcraft",
+          "selectionWaitMs": 10.099999999627471
+        }
+      },
+      {
+        "name": "game selection: both new histories remain empty",
+        "passed": true,
+        "details": {
+          "original": 0,
+          "proposed": 0
+        }
+      },
+      {
+        "name": "game selection: no old reply card resurrects",
+        "passed": true,
+        "details": {
+          "turns": 0
+        }
+      }
+    ]
+  },
+  "preparationRetry": {
+    "injectedFailure": "Empty validation response during first preparation only",
+    "headUnpublishedAfterFailure": true,
+    "retrySucceeded": true
+  },
+  "browserBoundaries": {
+    "browser": "156.0.8078.47",
+    "browserAcceptanceComplete": true,
+    "storageUnchanged": true,
+    "blockedExternalRequests": [],
+    "pageErrors": [],
+    "consoleErrors": [],
+    "onlyStaticGets": true,
+    "sourceFilesUnchangedDuringRun": true
+  },
+  "classificationErrors": [
+    {
+      "id": "u7-acquire-spark",
+      "expected": "acquisition",
+      "predicted": "hint",
+      "score": 0.13869645908877468,
+      "margin": 0.0039373814451439115
+    },
+    {
+      "id": "u7-hint-training",
+      "expected": "hint",
+      "predicted": "overview",
+      "score": 0.2695164948599079,
+      "margin": 0.12104750211999446
+    },
+    {
+      "id": "u7-compare-party",
+      "expected": "comparison",
+      "predicted": "combat",
+      "score": 0.17597306971500723,
+      "margin": 0.03148909051666543
+    },
+    {
+      "id": "sc-location-docs",
+      "expected": "location",
+      "predicted": "overview",
+      "score": 0.371431256938333,
+      "margin": 0.20998913010973005
+    },
+    {
+      "id": "sc-use-client",
+      "expected": "use",
+      "predicted": "acquisition",
+      "score": 0.17011141127947899,
+      "margin": 0.004402581994495669
+    },
+    {
+      "id": "sc-use-launcher",
+      "expected": "use",
+      "predicted": "acquisition",
+      "score": 0.18110320449440104,
+      "margin": 0.04164891422939468
+    },
+    {
+      "id": "sc-unknown-subject",
+      "expected": "use",
+      "predicted": "acquisition",
+      "score": 0.31188264111490654,
+      "margin": 0.10914499707886088
+    }
+  ],
+  "reportSha256": "6d177ddcefcf67bba30c4e5bcb6f28358d9f7ae54ef5f215557b96f86ac2816a",
+  "sourceHashes": {
+    "guides/tests/assistant/intent-prototype/interpreter.mjs": "762116d30c16a565a997d3ff28b7a8a6141155e03c7c8c34a888b231a05f1b84",
+    "guides/tests/assistant/intent-prototype/classifier.mjs": "9e073c5227ea40a34d0c5e9914b73d3d1e83e7b4b9f55c2a1fb6c0a0be894162",
+    "guides/tests/assistant/intent-prototype/encoder.mjs": "23c10b180c23001ccdf6a47aac8a3292fab26ba627f483a74440446d9abd9e84",
+    "guides/tests/assistant/intent-prototype/lab.mjs": "8b27b30fac20cdf219ec3c6659b5948911442c624c2d035570493a5996b9999c",
+    "guides/tests/assistant/intent-prototype/classifier.test.mjs": "082e20ee6c2ba38554b9d4b555b6a166172fc00080ed272edc0e40df02dd8ef2",
+    "guides/tests/assistant/intent-prototype/interpreter.test.mjs": "376843d9a7f8c38832b7e26c0d53fec353a050dd4e6d5217d116644913f53dfc",
+    "guides/tests/assistant/intent-prototype/embedding-worker.mjs": "74ae0604dff285175fa6c52db35d09f3b7eb6189397efc4ffbe8781cfccbb13f",
+    "guides/tests/assistant/intent-prototype/lab-browser-checks.mjs": "6e9fc35f7d15e30ec806605c2f9de6392c4616fca820592b8edd1fe36747d333",
+    "guides/tests/assistant/intent-prototype/export-ultima7-records.mjs": "689844135a0ed8a2ace257b9e95b71621a354fd0c73bc314c348132405b178c1",
+    "guides/tests/assistant/intent-prototype/cases/validation.json": "0a88fd1626fb273deb40e3b7f209a950b2e2944f2b1657d552d0c8f7bb2228b7",
+    "guides/tests/assistant/intent-prototype/cases/evaluation.json": "e7612087c82234a809011485110d9ee750a0c7a38f3027951b176df7a7c4df7f",
+    "guides/tests/assistant/intent-prototype/cases/training.json": "473f263180478f6bb509594a0fa25e4db375393776d9f45f2204045314a1d648",
+    "guides/js/assistant/ui.js": "e6740fe2ca415f4e55b71b183f053a0d627741f3252394a03640dce3c1b64005",
+    "guides/js/assistant/rules.js": "3c2edda7907d22a78d022abd9e1fded1ad70103056129325f44d2cc8be78ef74",
+    "guides/js/assistant/engine.js": "080da52cc6800abf2bfc31e29e7725dbca40cc0119b26c813479e8170a7aee13",
+    "guides/js/assistant/retrieval.js": "d40e3d699e419ccee015abbdfe1b901816629af3d0ded9d52f082476b906c7f3",
+    "guides/js/assistant/bootstrap.js": "36507c252a2cb1c74a56ce094f9dbf61221c813ff799a733d114bfc09acac51b",
+    "guides/js/assistant/fallback-guard.js": "8ac7766576c0fa39a9f8eb1d8130687f5dec2d93ed3793b1ab32a416502eb4dc",
+    "guides/js/assistant/consent.js": "f586ad8ab8fb34cf1e08f71115077f87c8df2ce146bf5a0cfb90b5f9712d5dee",
+    "guides/js/assistant/language.js": "f615ac045c6fae7e5ffea26f852c0c50b9985bd43a432d736c0c7948ebbb9e7e",
+    "guides/js/assistant/topics.js": "cae60c918f936d1429713f076420e32c1fc72a89d371b47f7b1958b81e852d39",
+    "guides/js/assistant/frame-tokens.js": "9f225b8d13b2082f45af7f1ec7ca5b56900733383537123d7dab05baa95f511b",
+    "guides/js/assistant/policy.js": "df44eea0b5eec7dae01deb0ab4c179873cb5f271ae1a3d87ed89a630cb87aec3",
+    "guides/js/assistant/model-runtime.js": "c6331135f75b3ab5f094e6b7020567b19f2b22286105dc51eba190917e98fdd1",
+    "guides/js/assistant/model-worker.js": "5f490d60ae8b991ae64d523d16c683d11a8995283353cfb534f0d3529ce0d6fc",
+    "guides/js/assistant/model-download.js": "1a9f1be1319d9219507a140e4eae6ad6ea2cbb348b19771c7261d1a52432a6a1",
+    "guides/js/assistant/fallback-context.js": "73c2638570035a73683cdd83b2eac5133d577892aef3613539ebb80c0481cb73",
+    "guides/js/assistant/adapters/ultima6.js": "761e8fd994e277a81e679c00d64458dabf7cbdba9dfe08286066f52d4dfa9c86",
+    "guides/js/assistant/adapters/ultima5.js": "c629bcd97dc4fab79f7b70e054de1e910434120ce0bb21e0fe8086200b4d2cdf",
+    "guides/js/assistant/adapters/ultima7.js": "cc0474d4a9571dbcce7349b91e144a79d0217c9fb1b9e2bf995e71a092dd7389",
+    "guides/js/assistant/adapters/starcraft.js": "352de741dd9bc2f293b3822c7e8429cb53aa798c66dcaf051fc3d4e3d0bbb37c",
+    "guides/js/assistant/adapters/albion.js": "2bc964d229c805afa38f85fcbd4322c9df43e09008de5d7de5d517fcd047c0be",
+    "guides/js/assistant/adapters/alqadim.js": "547e5694e3982a2d058a82f2a0e111c128748c22b6d5275a7588cf85b193c7c9",
+    "guides/StarcraftBWAPI.html": "5da1260744b5087846463044b60361921c11bc3d115962498c1863e44201b263",
+    "guides/Ultima7.html": "1ab4eb0852664fff8021e8ed32b1c55d7270ad846cf0cac4f15d54fb64e59ac1",
+    "guides/tests/assistant/intent-prototype/assets/profile.json": "eb254faf53e2a995d63cc72b4b26a1c8ecc34a5ea47ddc28d245e78bacdc2b1d"
+  },
+  "limitations": [
+    "Frozen MiniLM encoder; only a small linear classification head is trained. No SetFit encoder fine-tuning.",
+    "Authored held-out language, not blind organic user conversations. Classifier scores are uncalibrated.",
+    "Subject matching and conversation state are explicit code. Safe source replay remains conservative.",
+    "Correct intent does not establish answer correctness or fill missing lore. No production runtime is changed.",
+    "The 36-example validation split selected zero score/margin cutoffs; it rejected none of the 48 test questions despite seven classification errors.",
+    "Only 1/48 independent cases passed canonical rewrite eligibility; the other cases preserve original wording. Intent recognition improvement does not establish end-to-end answer improvement.",
+    "The unchanged frozen evaluation was replayed after structural dialogue/async fixes; it is not a new blind holdout for those fixes.",
+    "Timing covers four uncached short questions on the existing desktop Chrome/CPU WASM, not mobile hardware or first internet download."
+  ]
+}

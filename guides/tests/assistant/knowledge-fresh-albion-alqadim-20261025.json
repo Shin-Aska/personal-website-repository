@@ -1,0 +1,673 @@
+{
+  "schemaVersion": 1,
+  "suite": "fresh-source-conversations-albion-alqadim-20261025",
+  "frozenAt": "2026-10-25T02:09:29.993440+00:00",
+  "oracleAuthorship": "Independently authored from the existing local source records and reviewed manifests before executing this new suite. The author previously worked on runtime and older source/corpus reviews, but did not inspect the new semantic-fields full-browser report or its replies. This is independent source-first authorship, not a statistically unseen evaluation claim.",
+  "validationScope": "Eight four-turn conversations: 24 answerable source claims and eight unsupported boundaries. Review complete useful claims and citations alongside strict phrase/source scores. No oracle changes after first execution.",
+  "sourceHashesAtFreeze": {
+    "guides/data/assistant/knowledge/albion.json": "4b45987f5d86dd2e33487a9bec0e47a2c439390f4c324c99e404023f1b43cfbe",
+    "guides/data/assistant/knowledge/alqadim.json": "139d980e22bbdfcff3500d721b6a7696272d4ecc003806e5ff052842643370a2",
+    "guides/js/Albion.js": "4adba84eca7af2436731b7053e3167a909f57f85edc611c6287411af84e4b1ca",
+    "guides/js/AlQadim.js": "269798843206f12b76163c65b04301be278652115fbdbd46596f13f3ae7b5e5e"
+  },
+  "dialogues": [
+    {
+      "id": "albion-fresh-weapon-tradeoffs",
+      "gameId": "albion",
+      "turns": [
+        {
+          "text": "Point me to the location listed for Shadowsword.",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Treasure Cave",
+              "Maini"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "DB.equipment[1].location",
+              "review": "extracted"
+            },
+            "sourceRecordIds": [
+              "albion:item:shadowsword:location"
+            ],
+            "factIds": [
+              "shadowsword-location"
+            ],
+            "requiredUsefulClaim": "Locate Shadowsword in Treasure Cave on Maini, without asserting pickup or ownership.",
+            "sourceWitness": "Treasure Cave (Maini)"
+          }
+        },
+        {
+          "text": "What penalties come with that weapon?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "-30 LP",
+              "-50 Stamina"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "DB.equipment[1].effect",
+              "review": "extracted"
+            },
+            "sourceRecordIds": [
+              "albion:item:shadowsword:use"
+            ],
+            "factIds": [
+              "shadowsword-effect"
+            ],
+            "requiredUsefulClaim": "State that Shadowsword is cursed and carries -30 LP and -50 Stamina; do not calculate a party member's resulting totals.",
+            "sourceWitness": "Cursed: -30 LP, -50 Stamina"
+          }
+        },
+        {
+          "text": "Switch to Danu's Light: which bonuses does that weapon give?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "+10 LP",
+              "+20 Speed",
+              "+5 Prot"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "DB.equipment[2].effect",
+              "review": "extracted"
+            },
+            "sourceRecordIds": [
+              "albion:item:danu-s-light:use"
+            ],
+            "factIds": [
+              "danu-s-light-effect"
+            ],
+            "requiredUsefulClaim": "Give Danu's Light's three recorded bonuses, keeping them distinct from Shadowsword's curse.",
+            "sourceWitness": "+10 LP, +20 Speed, +5 Prot"
+          }
+        },
+        {
+          "text": "Is this sword equipped on Tom in my save at the moment?",
+          "expected": {
+            "decision": "not-answer",
+            "boundary": "The source lists static weapon properties and locations. It supplies no observation of the player's current equipment or save state."
+          }
+        }
+      ]
+    },
+    {
+      "id": "albion-fresh-warrior-and-mage",
+      "gameId": "albion",
+      "turns": [
+        {
+          "text": "Tell me what sets Siobhan's basic damage apart.",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Natural +4 base damage"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "DB.characters[5].notes",
+              "review": "extracted"
+            },
+            "sourceRecordIds": [
+              "albion:character:siobhan:explanation"
+            ],
+            "factIds": [
+              "siobhan-notes"
+            ],
+            "requiredUsefulClaim": "Identify the recorded natural +4 base-damage bonus; a claim about current damage totals or every possible build is unnecessary.",
+            "sourceWitness": "The most powerful warrior in the game. Natural +4 base damage."
+          }
+        },
+        {
+          "text": "Where is her recruitment meeting place listed?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Beloveno",
+              "her house"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "DB.characters[5].joinLocation",
+              "review": "extracted"
+            },
+            "sourceRecordIds": [
+              "albion:character:siobhan:location"
+            ],
+            "factIds": [
+              "siobhan-recruitment-place"
+            ],
+            "requiredUsefulClaim": "Give Siobhan's documented recruitment location as her house in Beloveno, without asserting present recruitability or party membership.",
+            "sourceWitness": "Beloveno, her house"
+          }
+        },
+        {
+          "text": "Now Khunag: what motive do his character notes give, and where do they mark him as required?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "revenge",
+              "Kenget Kamulos"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "DB.characters[6].notes",
+              "review": "extracted"
+            },
+            "sourceRecordIds": [
+              "albion:character:khunag:explanation"
+            ],
+            "factIds": [
+              "khunag-notes"
+            ],
+            "requiredUsefulClaim": "Identify Khunag as a renegade seeking revenge on his order and preserve the stated requirement for Kenget Kamulos.",
+            "sourceWitness": "Renegade mage seeking revenge on his order. REQUIRED for Kenget Kamulos."
+          }
+        },
+        {
+          "text": "After choosing Khunag, is Siobhan available for me to recruit in my current save?",
+          "expected": {
+            "decision": "not-answer",
+            "boundary": "The guide gives a documented initial choice, but this question requires the player's current save and recruitment state. The conversation provides no such observation."
+          }
+        }
+      ]
+    },
+    {
+      "id": "albion-fresh-regional-trading",
+      "gameId": "albion",
+      "turns": [
+        {
+          "text": "Quote Rabir's selling and buying percentages in Jirinaar.",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "110%",
+              "132%"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "DB.trade[0]",
+              "review": "extracted"
+            },
+            "sourceRecordIds": [
+              "albion:topic:selling-loot:sell"
+            ],
+            "factIds": [
+              "trade-rabir-jirinaar"
+            ],
+            "requiredUsefulClaim": "Assign Sell 110% and Buy 132% to Rabir in Jirinaar, without reversing the two directions.",
+            "sourceWitness": "Rabir (Jirinaar): Sell 110%, Buy 132%. Best documented early buyer."
+          }
+        },
+        {
+          "text": "For Gratogel instead, what selling percentage does Winion's table row give?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "125%"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "DB.trade[1]",
+              "review": "extracted"
+            },
+            "sourceRecordIds": [
+              "albion:topic:selling-loot:sell"
+            ],
+            "factIds": [
+              "trade-winion-vanello"
+            ],
+            "requiredUsefulClaim": "Give Winion in Vanello the recorded Sell 125% rate; do not substitute his Buy 150% rate.",
+            "sourceWitness": "Winion (Vanello): Sell 125%, Buy 150%. Best documented Gratogel rate."
+          }
+        },
+        {
+          "text": "Move on to Umajo shops: give both trade percentages there.",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "130%",
+              "156%"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "DB.trade[2]",
+              "review": "extracted"
+            },
+            "sourceRecordIds": [
+              "albion:topic:selling-loot:sell"
+            ],
+            "factIds": [
+              "trade-umajo-shops"
+            ],
+            "requiredUsefulClaim": "Assign Sell 130% and Buy 156% to Umajo shops, keeping the trade directions distinct.",
+            "sourceWitness": "Umajo shops: Sell 130%, Buy 156%. Highest documented sell rate."
+          }
+        },
+        {
+          "text": "How much gold will those shops pay for everything I am carrying?",
+          "expected": {
+            "decision": "not-answer",
+            "boundary": "Static multipliers do not supply the current inventory, item base prices, quantities, or a supported total sale value. Do not derive or invent a transaction total."
+          }
+        }
+      ]
+    },
+    {
+      "id": "albion-fresh-toronto-return-route",
+      "gameId": "albion",
+      "turns": [
+        {
+          "text": "Lay out the two documented approaches for reaching Toronto.",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Ohl",
+              "Jewel",
+              "stones to coastline then south",
+              "cave entrance"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "QUEST_HINTS[\"umajo\"][\"find-path\"]",
+              "review": "extracted"
+            },
+            "sourceRecordIds": [
+              "albion:objective:umajo:find-path:hint"
+            ],
+            "factIds": [
+              "find-path"
+            ],
+            "requiredUsefulClaim": "Present both source alternatives: pay Ohl a Jewel via the Miner's Guild meeting schedule, or take the stones-to-coastline-then-south route to the cave entrance.",
+            "sourceWitness": "To reach Toronto: either pay Ohl a Jewel (meet via the Miner’s Guild schedule) or follow the “stones to coastline then south” route to the cave entrance."
+          }
+        },
+        {
+          "text": "After the reactor scene, where does the guide tell me to take the footage?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Dji-Cantos",
+              "evidence/video footage",
+              "payout"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "QUEST_HINTS[\"toronto-return\"][\"evidence\"]",
+              "review": "extracted"
+            },
+            "sourceRecordIds": [
+              "albion:objective:toronto-return:evidence:hint"
+            ],
+            "factIds": [
+              "evidence"
+            ],
+            "requiredUsefulClaim": "Direct the post-reactor evidence/video footage back to Dji-Cantos for the payout and further finale progress, without claiming the reactor scene has occurred.",
+            "sourceWitness": "After the reactor scene, return to Dji-Cantos with the evidence/video footage for the payout and to progress toward the finale."
+          }
+        },
+        {
+          "text": "For the final trip, which technician does the guide recommend to reduce robot trouble?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Joe",
+              "Service Robot",
+              "electronics"
+            ],
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "QUEST_HINTS[\"finale\"][\"bring-joe\"]",
+              "review": "extracted"
+            },
+            "sourceRecordIds": [
+              "albion:objective:finale:bring-joe:hint"
+            ],
+            "factIds": [
+              "bring-joe"
+            ],
+            "requiredUsefulClaim": "Identify Joe as strongly recommended for reducing most Service Robot grind and safely handling electronics, without converting the recommendation into a hard entry prerequisite.",
+            "sourceWitness": "Joe is strongly recommended: he prevents most of the Service Robot grind and handles electronics safely."
+          }
+        },
+        {
+          "text": "Has Joe already repaired the circuits in my playthrough?",
+          "expected": {
+            "decision": "not-answer",
+            "boundary": "The source describes Joe's general benefit but records no player-specific completed repair or current progress."
+          }
+        }
+      ]
+    },
+    {
+      "id": "alqadim-fresh-elemental-and-shards",
+      "gameId": "alqadim",
+      "turns": [
+        {
+          "text": "What tactic does the guide recommend against a Fire Elemental?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Immune to fire",
+              "Water Blast",
+              "Oil of Fire Invulnerability"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.bestiary[7].strategy/danger",
+              "review": "extracted"
+            },
+            "sourceRecordIds": [
+              "alqadim:bestiary:fire-elemental:combat"
+            ],
+            "factIds": [
+              "enemy-fire-elemental"
+            ],
+            "requiredUsefulClaim": "Preserve its fire immunity and the two documented alternatives: Water Blast shards or Oil of Fire Invulnerability.",
+            "sourceWitness": "Immune to fire. Apply Water Blast shards or Oil of Fire Invulnerability."
+          }
+        },
+        {
+          "text": "What sort of projectile is Water Blast, and what range is listed?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "seeks its target",
+              "60 yd"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.moonstoneShards[7]",
+              "review": "extracted"
+            },
+            "sourceRecordIds": [
+              "alqadim:shard:water-blast:use"
+            ],
+            "factIds": [
+              "shard-water-blast"
+            ],
+            "requiredUsefulClaim": "Describe Water Blast as a fast-moving seeking shot of water, like a magic missile, with a listed range of 60 yd.",
+            "sourceWitness": "A fast-moving shot of water that seeks its target like a magic missile. Range: 60 yd. Damage: 2–12."
+          }
+        },
+        {
+          "text": "Instead, give me Flame Arrow's damage line.",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "1–6 + 4–24 fire"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.moonstoneShards[1]",
+              "review": "extracted"
+            },
+            "sourceRecordIds": [
+              "alqadim:shard:flame-arrow:use"
+            ],
+            "factIds": [
+              "shard-flame-arrow"
+            ],
+            "requiredUsefulClaim": "Give the recorded Flame Arrow damage components 1–6 plus 4–24 fire, retaining the source condition that the larger damage applies to creatures affected by flame.",
+            "sourceWitness": "A fiery bolt whose larger damage applies to creatures affected by flame. Range: 20 yd. Damage: 1–6 + 4–24 fire."
+          }
+        },
+        {
+          "text": "Which of those shards will kill the particular enemy in front of me with one shot?",
+          "expected": {
+            "decision": "not-answer",
+            "boundary": "The conversation supplies no observed target identity, HP, resistances or current state, and the source does not establish this one-shot outcome for the player's encounter."
+          }
+        }
+      ]
+    },
+    {
+      "id": "alqadim-fresh-kitchen-and-key",
+      "gameId": "alqadim",
+      "turns": [
+        {
+          "text": "Where is Sumie described during the return to the castle?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "kitchen",
+              "orange",
+              "fireplace"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.chapters[10].required[id=ch11_2]",
+              "review": "extracted"
+            },
+            "sourceRecordIds": [
+              "alqadim:objective:ch11_2:hint"
+            ],
+            "factIds": [
+              "ch11_2"
+            ],
+            "requiredUsefulClaim": "Locate Sumie in the kitchen, wearing orange near the fireplace; do not move her to a shop or infer a current position in the save.",
+            "sourceWitness": "Meet Sumie in the kitchen (wearing orange near fireplace)."
+          }
+        },
+        {
+          "text": "For that visit, which office supplies the baker referral?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Office of Trade",
+              "baker referral"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.chapters[10].required[id=ch11_3]",
+              "review": "extracted"
+            },
+            "sourceRecordIds": [
+              "alqadim:objective:ch11_3:hint"
+            ],
+            "factIds": [
+              "ch11_3"
+            ],
+            "requiredUsefulClaim": "Direct the player to the Office of Trade for the baker referral; do not treat the referral itself as the Key of Bone.",
+            "sourceWitness": "Visit the Office of Trade to receive the baker referral."
+          }
+        },
+        {
+          "text": "What passage is the Key of Bone supposed to open?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "secret passage",
+              "castle kitchen cellars"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.keyItems[11].description",
+              "review": "extracted"
+            },
+            "sourceRecordIds": [
+              "alqadim:item:key-of-bone:use"
+            ],
+            "factIds": [
+              "item-key-of-bone-use"
+            ],
+            "requiredUsefulClaim": "State that the Key of Bone opens the secret passage in the castle kitchen cellars.",
+            "sourceWitness": "Opens the secret passage in the castle kitchen cellars."
+          }
+        },
+        {
+          "text": "What exact password does Sumie say before opening the cellar?",
+          "expected": {
+            "decision": "not-answer",
+            "boundary": "The source describes returning to Sumie and unlocking the cellar door. It records no literal password spoken by her; do not fabricate dialogue."
+          }
+        }
+      ]
+    },
+    {
+      "id": "alqadim-fresh-old-dungeon-escort",
+      "gameId": "alqadim",
+      "turns": [
+        {
+          "text": "Where does the Old Dungeon hide its first-room key?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "behind a boulder",
+              "first room"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.chapters[11].required[id=ch12_2]",
+              "review": "extracted"
+            },
+            "sourceRecordIds": [
+              "alqadim:objective:ch12_2:hint"
+            ],
+            "factIds": [
+              "ch12_2"
+            ],
+            "requiredUsefulClaim": "Locate the hidden key behind a boulder in the first room of the Old Dungeon; do not imply it was already collected.",
+            "sourceWitness": "Retrieve the hidden key behind a boulder in the first room."
+          }
+        },
+        {
+          "text": "What hazards does the running advice there tell me to time?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "poison",
+              "flame vents"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.chapters[11].required[id=ch12_3]",
+              "review": "extracted"
+            },
+            "sourceRecordIds": [
+              "alqadim:objective:ch12_3:hint"
+            ],
+            "factIds": [
+              "ch12_3"
+            ],
+            "requiredUsefulClaim": "Report that the documented run must be timed past poison and flame vents, without inventing a timing interval.",
+            "sourceWitness": "Time your run past the poison and flame vents."
+          }
+        },
+        {
+          "text": "Who is the cyclops to be escorted, and where should I take him?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Pangar-Bek",
+              "dungeon exit"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.chapters[11].required[id=ch12_4]",
+              "review": "extracted"
+            },
+            "sourceRecordIds": [
+              "alqadim:objective:ch12_4:hint"
+            ],
+            "factIds": [
+              "ch12_4"
+            ],
+            "requiredUsefulClaim": "Identify the escort subject as the cyclops Pangar-Bek and the destination as the dungeon exit; do not reverse that role or substitute a different rescued character.",
+            "sourceWitness": "Locate and escort the cyclops Pangar-Bek to the dungeon exit."
+          }
+        },
+        {
+          "text": "Give me the exact delay in seconds between those vent bursts.",
+          "expected": {
+            "decision": "not-answer",
+            "boundary": "The source says to time the run but provides no numeric vent cycle or delay. A precise duration must be withheld."
+          }
+        }
+      ]
+    },
+    {
+      "id": "alqadim-fresh-journal-to-mirror",
+      "gameId": "alqadim",
+      "turns": [
+        {
+          "text": "Where should I search for the Vizier's conspiracy journal?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Vizier's desk"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.chapters[13].required[id=ch14_3]",
+              "review": "extracted"
+            },
+            "sourceRecordIds": [
+              "alqadim:objective:ch14_3:hint"
+            ],
+            "factIds": [
+              "ch14_3"
+            ],
+            "requiredUsefulClaim": "Direct the search to the Vizier's desk for his conspiracy journal, without asserting the item is in inventory.",
+            "sourceWitness": "Search the Vizier's desk to retrieve his conspiracy journal."
+          }
+        },
+        {
+          "text": "What evidence is that journal described as containing?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Vizier's betrayal"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.keyItems[12].description",
+              "review": "extracted"
+            },
+            "sourceRecordIds": [
+              "alqadim:item:vizier-s-journal:use"
+            ],
+            "factIds": [
+              "item-vizier-s-journal-use"
+            ],
+            "requiredUsefulClaim": "State that the journal contains incriminating evidence detailing the Vizier's betrayal; do not invent a literal quotation from its pages.",
+            "sourceWitness": "Contains incriminating evidence detailing the Vizier's betrayal."
+          }
+        },
+        {
+          "text": "Change to the Enchanted Mirror: what job does that item do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Reflects magical light beams",
+              "optics puzzles"
+            ],
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.keyItems[4].description",
+              "review": "extracted"
+            },
+            "sourceRecordIds": [
+              "alqadim:item:enchanted-mirror:use"
+            ],
+            "factIds": [
+              "item-enchanted-mirror-use"
+            ],
+            "requiredUsefulClaim": "Give the Enchanted Mirror's documented function of reflecting magical light beams to solve optics puzzles.",
+            "sourceWitness": "Reflects magical light beams to solve optics puzzles."
+          }
+        },
+        {
+          "text": "What metal is the frame of that mirror made from?",
+          "expected": {
+            "decision": "not-answer",
+            "boundary": "The source names an enchanted mirror and its optics function, but supplies no frame construction material or metal identity."
+          }
+        }
+      ]
+    }
+  ]
+}

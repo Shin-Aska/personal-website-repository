@@ -1,10 +1,10 @@
 # Handoff: local guide assistants (for the next agent)
 
-Repository: `/mnt/internal-hdd/Development/personal-website-repository`. Written 20 October 2026; latest behavior and verification refreshed 24 October 2026. Read this first, then `docs/game-assistant.md` (the full design and test record). Neither file is committed. The bounded all-games conversation audit is now complete; see the latest integrated campaign section at the end and `docs/assistant-conversation-goal.md` for current evidence.
+Repository: `/mnt/internal-hdd/Development/personal-website-repository`. Latest scope decision:25 October2026. **Start with `docs/assistant-beta-checklist.md` and `guides/tests/assistant/evidence/beta-checkpoint-20261025.json`.** The owner asked to wind down to a bounded beta, create a checklist for another AI agent, preserve the broader goal for later, and commit the relevant work. Feature expansion stops at this beta checkpoint. The broader structured-knowledge objective is deferred and incomplete; it has not passed broad runtime acceptance. Current measured implementation is checkpoint14. Sections below are historical evidence and do not override the beta scope, model freeze or later owner instructions. No FTP upload or Git push is authorized by the beta commit request.
 
 ## What this is
 
-Six game-guide pages (Albion, Ultima V, Ultima VI, Ultima VII, Al-Qadim, StarCraft/BWAPI) have a chat assistant that runs entirely in the browser: rule-based English parsing, BM25-style retrieval, spoiler-tiered records and conversation state. The owner-approved opt-in model now selects constrained conversational wording when the shared factual engine cannot handle an eligible descriptive follow-up. It cannot generate game facts. There is no remote inference or network request carrying a question. Answers are stored guide text, overlay indexes over guide text, or clearly labeled, cited research notes.
+Six game-guide pages (Albion, Ultima V, Ultima VI, Ultima VII, Al-Qadim, StarCraft/BWAPI) have a chat assistant that runs entirely in the browser. The owner requested expanding the MiniLM intent and follow-up experiment into all six production guide integrations. A shared conversation wrapper now combines learned intent proposals, explicit subject memory, source-backed consultation and the existing factual engine. The earlier opt-in model still supplies constrained conversational wording for eligible descriptive follow-ups. Neither model generates game facts. There is no remote inference or network request carrying a question. Answers are stored guide text, overlay indexes over guide text, or clearly labeled, cited research notes. See the latest rollout section for verification and publication status.
 
 ## The owner's standing requirements (do not violate)
 
@@ -26,12 +26,15 @@ Six game-guide pages (Albion, Ultima V, Ultima VI, Ultima VII, Al-Qadim, StarCra
 | Path | Role |
 | --- | --- |
 | `guides/js/assistant/engine.js` | Pipeline: parse, then authorize at the spoiler ceiling, resolve the subject, relationship candidates, checks (method, edition, numbers, material terms), answer, compose multi-part replies, conversation state. Also counter/cure, comparisons, sell, stats, advice, “did you mean”. |
+| `guides/js/assistant/guide-assistant.js`, `dialogue.js` | Production adapter factory and shared conversation wrapper. Intent proposals and relation fragments carry a sourced subject; original source-engine evidence, progress readers, choices and actions remain authoritative. |
+| `guides/js/assistant/intent-runtime.js`, `intent-worker.js`, `intent-head.js` | Consent-gated MiniLM classifier, local verified assets, serialized CPU inference and per-turn cancellation. No factual generation. |
+| `guides/js/assistant/source-responses.js`, `consultation.js`, `guides/data/assistant/consultation-catalog.json` | Reviewed source summaries/URLs and conditional guide-backed recommendations for all six games. |
 | `guides/js/assistant/language.js` | `parse(text, {editions})`, `materialTerms`, `detectIntent`, `detectMethod`, `splitParts`. Ordered intent regexes, filler phrases (FRAMES/CUES), the SCAFFOLD word set, report/hypothetical detection, subject correction (“I meant X”), follow-ups. |
 | `guides/js/assistant/retrieval.js` | Tokens and normalization, the entity resolver (exact aliases, then a conservative typo matcher), BM25 index, `similarity` (Jaro-Winkler), `distance` (Levenshtein). |
 | `guides/js/assistant/topics.js` | `factMap`, `buildTopicRecords` (overlay topics = verbatim guide facts), `buildResearchRecords` (cited research). |
 | `guides/js/assistant/policy.js` | Spoiler tiers gentle < balanced < direct; `authorize` copies only the allowed variant. |
 | `guides/js/assistant/rules.js` | Three-valued requirement evaluation and session evidence (progress claims). |
-| `guides/js/assistant/ui.js` | Shared view for every guide, rendering with `textContent` only: context line (“Asking about …”), the Nudge / Hint / Full answer toggle, New topic / Clear chat, the conversation, the guide source line and, for research, an “Outside research (not in this guide)” citation line. |
+| `guides/js/assistant/ui.js` | Shared view for every guide, rendering with `textContent` only: context line (“Asking about …”), New topic / Clear chat, the conversation, source locators and research citations. All chat requests and contexts use `direct`; there is no help selector or answer-level badge. |
 | `guides/css/assistant.css` | Shared look, loaded by `ui.js`. Pages only set `--assistant-accent`, `--assistant-on-accent`, `--assistant-surface`, `--assistant-text` and `--assistant-muted`. |
 | `guides/js/assistant/bootstrap.js`, `consent.js`, `guides/css/assistant-consent.css` | Shared first-visit consent, persistent preference, visibility gate and settings. |
 | `guides/js/assistant/model-runtime.js`, `model-worker.js` | One consent-controlled CPU worker, verified local assets, shared cache and request cancellation. |
@@ -1003,3 +1006,355 @@ binaries were uploaded. Credentials, rollback backups and raw deployment logs
 remain outside Git. Only canonical final evidence is versioned; intermediate
 first/round/probe/failure reports referenced in older notes remain local. No Git
 push is part of this request.
+
+## Intent-classifier prototype, 24 October 2026
+
+The owner subsequently requested committing the remaining test evidence first,
+then an intent prototype for Ultima VII and StarCraft. The 27 earlier reports
+and their history index are committed as `873b9f9`; executable tests and canonical
+prior acceptance were already included in `5ec79d4`. That commit's secret scan
+passed, including checking for the saved FTP password without emitting it.
+
+The owner explicitly approved a roughly 24 MB MiniLM download. The isolated
+`guides/tests/assistant/intent-prototype/` lab uses pinned verified
+`Xenova/all-MiniLM-L6-v2` q8 assets and the existing Transformers.js 3.8.1 runtime;
+no packages were installed. Only a linear intent head is trained; no encoder
+fine-tuning or generative fact answering is performed. The two current guide
+record sets supply its subjects, and source/spoiler authorization stays in code.
+Model binaries and raw results are ignored. Production files and active model
+settings are unchanged; the prototype was not uploaded or pushed.
+
+Read the prototype `README.md`, `corpus-review.md`, `RESULTS.md` and sanitized
+`evidence/reviewed-summary.json`. Actual MiniLM classification matches 41/48
+independent labels, with about 5 ms median on four uncached desktop samples.
+Conversation intent/entity matches are 38/47 and 27/47. Only 1/48 independent
+questions pass conservative rewrite eligibility; uncertainty thresholds reject
+none despite seven label errors. This is not accepted for production routing or
+an end-to-end accuracy claim. Synthetic/structural checks pass 22/22, real-browser
+control races 11/11, preparation retry succeeds, source/storage remain unchanged,
+and no external requests or page/console errors occur. No model/corpus fitting
+was tuned after seeing the frozen evaluation; later dialogue/async fixes make
+that evaluation a regression set for those structural changes.
+
+### Shared short follow-ups, later on 24 October
+
+The owner requested SCHNAIL identity → download link and clarified that the
+behavior must also work in Ultima VII. Read the prototype's `FOLLOWUPS.md` and
+`evidence/followup-summary.json`. The actual reported URL request already had a
+correct learned intent; its rejection came from downstream restriction handling
+and stripped source hrefs. Shared fragments/pronouns now carry their grounded
+subject, method and requested format. The proposed source engine has no separate
+older referent: each request is scoped from the interpreter. Exact source URLs
+and a reviewed short SCHNAIL definition remain program-selected and authorized.
+
+The local v2 head has 180/72 training/validation examples. Five real UI sends
+verify SCHNAIL → download and Iolo → location → stats. Structural/source tests
+pass 39/39 and real-browser control/isolation assertions 16/16. Keep the broader
+limits visible: only 25/65 complete authored follow-up checks pass; learned
+intent matches 50/65, resolved intents 51/65, and v1 label regression is 40/48.
+Remaining failures and zero rejection thresholds are not accepted for production.
+The new raw reports/screenshots/model files remain ignored, the prototype changes
+remain uncommitted, and no production code, cache metadata, FTP files or Git
+remotes were changed in this follow-up.
+
+### Source-backed consultation, later on 24 October
+
+The owner then requested advice for playing StarCraft Remastered: which option
+is best. The model already recognized comparison, but the old path dumped the
+entire comparison and appended `Not answered: do you think`. The prototype now
+has a shared, declarative source-verified consultation controller. It conditionally
+prefers the integrated map for native Remastered play, states Use Map Settings
+and limited maps, and distinguishes SCHNAIL's separate client. The same policy
+handles three guide-backed Ultima VII party roles. It does not rank unsupported
+criteria, certify uncertain compatibility, or claim universally best software.
+
+Read the prototype `CONSULTATION.md` and `evidence/consultation-summary.json`.
+The stable-source real browser run passes 23/23 authored consultation checks,
+existing control/isolation assertions 16/16, and unit contracts 53/53. Context →
+recommendation → download returns only the map's two source URLs. The classifier
+head is unchanged. Source/storage/network boundaries pass; no production, FTP,
+active model/profile or Git remote changed. General conversation limitations
+remain: the older 65-turn follow-up suite still passes only25 complete behaviors.
+
+
+### Full answers only, later on 24 October
+
+The owner confirmed full answers and removal of the selector across all games.
+Shared UI and both prototype/production public requests now force direct answers;
+there are no help controls, hidden selects, level badges or stale suggestions to
+raise a help level. A typed smaller-hint command retains complete source detail,
+including narrative steps and uncertainty. U6/U7 quest launchers say Ask the
+Seer/Sage and their context cards use direct text. Saved progress, consent,
+source/conflict guards and independently authored walkthrough hints are intact.
+
+Current proof: `full-answer-browser-full-answer-complete.json` (24/24),
+`chat-layout-always-full-complete-20261024.json` (42/42 layouts, 98 sends),
+1,252/1,252 standalone tests, and the prototype's `evidence/always-full-summary.json`
+(53 units, 17 real-model control checks, 23 authored consultation checks). The
+prototype still passes only 25/65 broader follow-up behaviors and stays isolated.
+Old UI tier-switching tests/reports are superseded; internal source-tier tests
+remain valid. See the latest `docs/game-assistant.md` section for exact boundaries.
+All 796 offline asset hashes match the regenerated local metadata. These changes
+remain local and uncommitted; no additional FTP upload or push was performed.
+
+
+### All-game intent integration and roomier chats, later on 24 October
+
+The owner requested expanding the smarter prototype into all six guides and
+redesigning cramped chats. All production adapters now use `guide-assistant.js`
+with the shared dialogue wrapper, actual MiniLM intent worker, source formatting
+and conditional consultation (18 reviewed profiles across all six games). Source
+engine evidence/progress, choices/actions, unknown-name and qualifier guards are
+retained. Per-turn abort prevents old work from blocking a new topic. Source and
+model work remain separate; no factual prose is generated by the classifier.
+
+U7 is now a wide conversation-first modal with a collapsed quest briefing and
+pinned multiline composer. U6 also collapses its briefing and has a larger modal.
+Every surface offers Expand chat / Return to guide using a native dialog; moving
+and restoring the same nodes preserves input/history/focus. Phone Send remains
+unobscured. The prototype page now provides links to all six local guides.
+
+Read the latest `docs/game-assistant.md` section and
+`guides/tests/assistant/evidence/rollout-final-acceptance.json`: 1,281 standalone
+checks, 126 actual-MiniLM conversation checks (81 supported / 38 unsupported /
+7 controls), 14 desktop/phone layouts, 14 expanded-chat flows, 24 full-answer UI
+checks, 42 longer layout combinations and 98 sends all pass. Prior failing
+integration reports and the source-oracle audit are preserved. The model weights
+and fitting data are unchanged; this is bounded acceptance, not blind accuracy.
+
+The existing approved MiniLM assets were packaged into `guides/local-assistant/intent/`;
+no new downloads or installs occurred. The main profile now identifies the
+combined bundle and discloses ~186 MB total, including the older wording model.
+Old cached-bundle consent cannot authorize the new files. Metadata caching keeps
+previously visited chat usable offline. All 804 cache-manifest asset hashes match.
+The new code, package, consent profile and metadata remain local/uncommitted;
+no FTP upload or push was performed for this request.
+
+
+### Unified model setup and Trinsic passive-role repair, later on 24 October
+
+Canonical development command is now `python3 guides/local-assistant/setup.py --download`.
+It handles both pinned models and shared runtime, reuses the verified head, stages
+packages before final bundle metadata, and supports offline `--verify-only` with
+no raw prototype cache or Node prerequisite. Twelve Python tests and actual CLI
+reuse/verification modes pass without downloads or model-byte changes. Read the
+main/intent model READMEs for rebuild options and legacy helper boundaries.
+
+Shared grammar and dialogue now preserve passive victim/perpetrator roles and
+current event context: “who got murdered/killed?” names Inamo and Christopher;
+“who is the murderer?” separately names Hook and Forskis. Authorized role name
+lines keep outside-research attribution and the full indexed quote. Natural exact
+event statements establish topic only, not player progress. Unknown/ambiguous
+newer subjects block stale selected-page answers until an explicit topic recovery.
+
+`model-setup-story-final-acceptance.json` consolidates 1,292 standalone tests,
+49 unchanged source-reviewed UI inputs, eight extra unknown-identity UI guards,
+the existing 126 all-game checks, 12 setup tests and current cache verification.
+The final native-MiniLM batch uses the established wording-worker fixture; a fresh
+actual in-app page also verifies the reported exchange with real workers. Facts,
+head/training data, saved-game formats and UI layout were unchanged. No commits,
+pushes or FTP publication; refresh the local guide to load the new script release.
+# Structured knowledge rollout — active, 2026-10-24
+
+The current goal is substantial source-backed knowledge and connected conversations across all six games, with separate game experts. Do not mark it complete from data counts or a small browser probe. Runtime acceptance is still in progress.
+
+All six game experts completed manifests, explicit evidence links, fixed dialogue cases and source audits under `guides/data/assistant/knowledge/`, `guides/tests/assistant/knowledge/` and `docs/assistant-knowledge/`. Independent semantic reviewers checked the original 834 questions against their sources without reading chatbot outputs, corrected invalid method/motive oracles, added complete evidence and preserved source-gap questions. Current scope: 614 focused facts, 271 directed links, 851 turns. `knowledge-data-coverage-20261024.json` records data coverage, not runtime accuracy.
+
+`knowledge.js` compiles facets only against authorized source witnesses or separately labeled primary research, supports reviewed one-level multi-fact compositions, maintains typed graph salience and invalidates unknown subjects. `guide-assistant.js` loads this for all six factories. The original source engine retains progress/actions/choices; focused records do not become arbitrary new state predicates. MiniLM reuses existing approved weights for both classification and local passage retrieval. The worker has a bounded memory-only query-vector cache and a cancellable `encode` API.
+
+Static fact vectors are generated by `build-knowledge-embeddings.py`; they must match every fact document and the pinned encoder. `--verify-only` needs no inference. The optional query-vector map under ignored prototype results is a development replay aid. `knowledge-corpus-replay.mjs` refuses to accept missing exact inputs, changed sources or failed fixed oracles. Fill its missing-query list with the generator's `--queries-only --query-texts` mode. Reports are immutable per tag. The native UI harness is `knowledge-browser.py`; it supports game/dialogue selection and independent source alternatives. UI citations cannot prove internal fact IDs, so both evidence types are required.
+
+Verification so far: earlier source/runtime contracts passed 1304/1304; the new source/support contracts passed 17/17; model setup passed 12/12 and actual bundle verification reported zero downloads/writes. Native UI probe `knowledge-browser-native-02.json` passed 58/61 across all seven surfaces, with all isolation boundaries passing. Targeted StarCraft definition → Java → client-download native sequence passed 5/5. Later runtime fixes still require final replay and browser verification. Full-corpus diagnostics preserve genuine failures; they are not final acceptance. The goal remains active, and no new commit, push or FTP deployment has been performed for this rollout.
+
+
+
+## Structured knowledge checkpoint and approved reader experiment — 24 October 2026
+
+The all-six-game goal remains active. The six dedicated source manifests contain 614 reviewed focused facts and 271 directed links, supplementing the existing source engine. All production guide adapters load the shared knowledge router. `answerRelations` are reviewed capabilities, separate from facet names and retrieval aliases. Sources, editions, objective-versus-procedure distinctions, exact numbers and player-state boundaries still constrain answers. See `docs/assistant-knowledge/README.md` and each game audit for schema and source details.
+
+Latest shared changes use `knowledge-graph.js` for finite direct predicate lookup with typed endpoints, all required evidence and shared scope constraints. Location replies keep the object as the topic for it/them; person questions may focus the named provider. Reordered compound names are distinguished from shorter shared labels. Unknown names cannot inherit a known place/person. Actual identity capabilities are distinct from incidental person mentions. Explicit software version, requirement, combat-strength and character-release questions precede unsuitable classifier proposals. U5's HMS Cape location composes an explicitly reviewed route excerpt with its room/drawers excerpt. Seven named U5 teachers/givers were corrected from generic topic kind to NPC using the guide/atlas; uncertain names were not merged.
+
+Current evidence is **not acceptance**: `knowledge-corpus-replay-semantic-slots-02` passes 702/851 with 149 failures, zero incomplete inputs, stable sources and all 175 negative cases passing. The native production UI run `knowledge-blind-browser-native-05.json` passes 52/96, with all 22 negative cases and every isolation boundary passing. That corpus has already informed diagnosis; author a new independent source-first holdout before claiming generalization. The latest Node contract run passes 1,359/1,359; model setup's 12 tests and offline-manifest tool's four tests pass. Contract counts do not erase the remaining conversation failures. Reviewable checkpoint: `guides/tests/assistant/evidence/knowledge-runtime-checkpoint-20261024.json`.
+
+The user explicitly approved downloading exactly the pinned MobileBERT source-reader model/tokenizers, 27,848,554 bytes, for a local experiment. All six files are downloaded, verified, ignored under `guides/tests/assistant/intent-prototype/source-reader/assets/`, and disconnected from production. No packages were installed. Native WASM loading/inference works and the two smoke cases pass. However, an ungated five-candidate passage diagnostic across 850/851 old replay turns selected the expected top fact only 400/675 times when forced, versus cosine's 568/675. Tight abstention thresholds removed most useful answers. One exact context-expanded query was missing from the old cache; it was reported, not substituted. No complete-chat improvement is claimed. **Do not integrate this reader based on these results.** Detailed limits, provenance and reports are in `docs/assistant-knowledge/source-reader-experiment.md` and `guides/tests/assistant/evidence/source-reader-native-experiment-20261024.json`. It is deliberately absent from the production model setup script and bundle.
+
+Continue improving source coverage, typed relationship indexing and conversation subject handling using the current models. Preserve prior failures and the source-first test oracles. Do not mark the goal complete from source counts, contract tests or a small probe. No commit, push or FTP upload occurred in this checkpoint; earlier publication authority is historical. The user's preview server on port 8769 remains running and their tabs/chat were not reset. Temporary test servers and browsers closed themselves. Regenerate the guide offline manifest after any further public asset changes.
+
+## Owner constraint — 25 October 2026
+
+The owner is going to sleep and explicitly ruled out updating models or getting a new one. **Do not download, replace, retrain, upgrade or promote a model/head.** Earlier one-time download approvals do not authorize further model changes. Continue only ordinary chat/source-data work with the existing approved production models. Model experiments completed before this instruction remain unintegrated evidence; do not restart them or ask for another model while the instruction stands. Read-only inference with the existing assets may verify chat changes. No FTP upload, commit, push or scheduled automation is authorized by this constraint.
+
+The structured-knowledge goal is still active. It must not be marked complete merely because the source index or contract suites pass: observed broad conversations still miss supported answers. The latest source index is 674 facts / 325 directed links across all six games, with matching static fact catalogs and zero compiler issues (`knowledge-data-coverage-20261025-02.json`). Five focused omissions found by independent source review were added; most remaining misses have their source already indexed. The 29-field head was rejected after end-to-end regression (750 baseline versus 712/747 experimental policies); it was not promoted. MobileBERT and the existing SmolLM closed-choice selector were also unpromoted. Preserve all failed artifacts and original frozen oracles.
+
+The current deterministic work distinguishes directed clue destinations from a sender's location and gives an active explicitly named test precedence over an incident ritual sharing a broad quest type. A matching entity's reviewed name also participates in lexical candidate scoring. The Fellowship-member fallback now refreshes its explanation intent instead of retaining a stale story intent; the 1,058-case English suite is green again. Limited hypothetical item-property questions quote a sourced effect/outcome without asserting ownership or advancing progress. General hypothetical progress and current saved-game claims remain guarded.
+
+### Verified checkpoint after the model-change prohibition
+
+`guides/tests/assistant/evidence/knowledge-runtime-checkpoint-20261025.json` is the reproducible current checkpoint: 674 facts/325 links, zero compilation issues; 1,396/1,396 Node contracts; 1,058/1,058 English checks; 203/203 original regressions. The fixed learned-intent replay remains 750/851 with 175/175 negative boundaries and no missing exact query vectors. Native production UI runs are 78/96 (`native-17`) and 36/76 (`fresh-20261025-06`), with all22/all19 negative boundaries and all source/network/storage/native-encoder boundaries passing. The first independent76-turn run was33/76; later runs are observed regressions, never new holdouts. The separate full-claim adjudication covers the earlier35/76 run and found17 complete supported positives outof57. Do not inflate that result with citations or contract counts.
+
+All818 offline assets and the version digest match; experiment assets remain excluded. The production SmolLM profile, MiniLM profile and original12-label head hashes are unchanged. No FTP upload, commit or push occurred. `conversation-state-audit.md` records exact native traces for20 sampled turns; model replacement is neither authorized nor an answer to those concrete lookup defects. Next work must remain within deterministic source/role/context handling and retain source, edition, number, material and saved-state boundaries.
+
+### Later source-rule and independent-conversation checkpoint
+
+`guides/tests/assistant/evidence/knowledge-runtime-checkpoint-20261025-02.json` supersedes the runtime numbers above. See `docs/assistant-knowledge/source-rules-20261025.md` for the bounded deterministic implementation and remaining gaps. Source counts remain 674/325 with zero issues; all encoded fact documents still match. Mariah/tablet ownership and Addom/Brion role bindings changed metadata only. New shared `recorded-conditions.js` and `requested-measurements.js` preserve explicit proof and measurement fields. No model, profile, head, setup or weight change is authorized or occurred.
+
+Current verification: 1544/1544 recursive Node contract/policy tests (broader scope than the earlier root-only total), English 1058/1058, original 203/203, replay 751/851 with all 175 negatives and zero missing inputs. Native observed 96 = 81/96 and observed 76 = 43/76, with all 22/all 19 negatives and browser isolation checks passing. Compound-locator verifier correction accounts for one separately audited verifier-only pass; do not count it as a new answer. All 820 offline assets, including both new shared modules, and the version digest match.
+
+Two source-first author agents froze another 48 turns, without consulting runtime answers or previous cases. Individual first executions are retained as `knowledge-blind-browser-independent-{ultima,other}-20261025-01.json`; strict 18/48 included 10/12 negative successes. Complete-claim adjudication (`knowledge-independent-adjudication-20261025.json`) found 10 complete useful positives out of 36, including two strict citation/format differences, and 3 wrong-subject/field positives. Age and ounces failures were fixed with a shared measurement guard; the unchanged concatenated cases now score 20/48 with all 12 negatives. Positive rendered replies remain unchanged, so the 10/36 useful-answer limit still applies. Do not report 20 complete positive answers or call these cases unseen again.
+
+Next work: resolve subject/context loss from natural preambles and compounds, explicit answer-role selection, conditional software requirements and field-specific follow-ups. Preserve source/edition/number/material/state boundaries and rollback. No further model work, FTP upload, commit, push or new automation. Goal remains active and incomplete; source counts and contracts are insufficient acceptance evidence.
+
+### Later context and source-role checkpoint
+
+`guides/tests/assistant/evidence/knowledge-runtime-checkpoint-20261025-03.json` supersedes the previous runtime checkpoint. Implementation and limits are in `docs/assistant-knowledge/source-context-frame-20261025.md`. All 674 facts still match their static encoded documents; there are now 326 directed links and zero compiler issues. The new link is COM access → COM room, proved by the complete existing access witness. Pistol storage and Grapple inventory have reviewed field bindings/capabilities. No model, profile, head, setup or weight update occurred. One additional exact test query was encoded using the existing pinned local encoder into ignored test-cache files; it generated zero fact files and blocked external requests.
+
+The shared source frame handles bounded topical single-question preambles and explicit subject precedence. Context words are removed only as complete grammatical wrappers; object modifiers remain evidence requirements. Unsupported material/quantity scope survives implicit pronouns, including a new named object, while a fresh named request can recover. Edition remains intentional game/session scope. An unresolved preamble reference cannot select a different quest's generic rune. The final Toronto access → Pistol/Canisters → wall cabinet sequence is verified without asserting entry or ownership. The generic “who has to be in the party” graph slot selects Khunag from the recorded requirement. Reports, hypothetical progression, current-save uncertainty and compound cancellation/rollback remain guarded.
+
+Verification: 1,553/1,553 recursive Node tests, English 1,058/1,058, original 203/203. Replay remains 751/851 with all 175 negatives and zero missing inputs. Final native observed reports are `native-26` (81/96), `fresh-20261025-15` (43/76) and `independent-all-20261025-06` (25/48), with all 22/19/12 negative boundaries and isolation checks. The latest 48-turn complete-claim review is `knowledge-independent-adjudication-20261025-02.json`: 14/36 complete useful positive answers, 22 still incomplete; the three previous wrong-field positives are now correct or withheld. Do not report 25 useful positives, unseen evaluation, or zero errors outside that reviewed set. Exact locator differences remain failures. All 820 offline assets/version match; frozen corpora and failed intermediate reports are preserved.
+
+Next source work should address the remaining scene/quest, actor/object and conditional-property gaps rather than add aliases for every failed question. Grapple's conditional handover/inventory follow-up, Sherry's control/mouse-hole sequence, Trinsic interview/password clauses, wisp/emp transaction roles, academy/ship contextual steps and SCHNAIL conditional installation/network intervals remain incomplete. Goal stays active. Model freeze and no-publication constraints remain unchanged; user server/tabs were not reset.
+
+### Later source-role continuity checkpoint
+
+`guides/tests/assistant/evidence/knowledge-runtime-checkpoint-20261025-04.json` is current. Implementation, source corrections and remaining gaps are in `docs/assistant-knowledge/source-role-continuity-20261025.md`. The index contains 674 facts, 334 directed links and eight exact authorized source-container contexts with zero compiler issues. Actor movement, control, parent references, continuation contacts, interviews, bribe/requested-item roles and bounded static software requirements now have separate source paths. Editorial context supplies no physical containment, progression or current save state. A reviewed communication-phase guard bypass involving an additional conditional preamble is fixed and tested.
+
+All models, head, profiles, tokenizer, setup and weights remain unchanged; no downloads or installations. The existing pinned encoder reused 673 fact-document vectors and refreshed only the Finnigan source document, which now quotes the original complete copy-protection quiz/password witness rather than an adapter summary. Three exact inputs were added to ignored replay caches, using the same encoder. Trinsic citations now identify the actual `.content` field. Frozen source/phrase oracles remain untouched: the 851-turn replay retains two older provenance expectations as failures, while a Lord Michael dialogue request newly passes. Its final score is 750/851, all175 negatives, zero missing inputs and stable sources.
+
+Final verification: 1,597/1,597 recursive Node tests, English1,058/1,058, original203/203 with tracked results restored byte for byte; three embedding-reuse, four citation-verifier and four offline-manifest Python tests. Native production reports are `native-28` (81/96), `fresh-20261025-17` (43/76) and `independent-all-20261025-08` (38/48), with all22/19/12 negatives and isolation checks passing. An intermediate Sherry actor/item regression in `native-27` is retained and repaired; the final original96 returns to81/96. All822 offline assets and version hashes match. Watched production sources still match the final browser reports.
+
+Independent complete-claim review `knowledge-independent-adjudication-20261025-03.json` finds27/36 useful positive claims, including one explicitly qualified operational equivalent: the literal Ariana PERMISSION/YES helper conveys returning to her, but still fails the frozen exact-step source/phrase check. Excluding that qualified alternative gives26/36. Nine source-answerable positives remain incomplete; no wrong-subject/field positives were found in this limited review. The newer48 is an observed regression set, not an unseen holdout. One newly strict-passing Trinsic crime-scene citation was already a useful answer before this checkpoint, so it is not an additional useful claim.
+
+Next work: bounded reference-only positional/readiness preambles for the Academy; source-grounded disintegrator and exit follow-ups; same-item Ship Orb location composition using both the helm-cabin instruction and independently authored Wrecked Ship location; HMS Cape locked-door preamble; Khunag's compound recruitment; and the Trinsic permission/password compound. Keep all source, edition, quantity, modifier, unknown-reference, cancellation and save-state guards. The goal is active and incomplete; broader corpora retain meaningful failures. No FTP, commit, push, automation or user-tab change occurred. Do not start model work.
+
+### Later read-only preamble and shard continuity checkpoint
+
+`guides/tests/assistant/evidence/knowledge-runtime-checkpoint-20261025-05.json` is current. Implementation and limitations are in `docs/assistant-knowledge/source-preambles-20261025.md`. The source index remains674 facts/334 links, with11 validated editorial contexts and zero compiler issues. All674 encoded fact documents remain unchanged. Models, head, profiles, tokenizer, setup and weights remain frozen; no model downloads or installations. One exact missing test input was encoded with the existing pinned local model into ignored replay caches (986 total), with zero fact-document encodings.
+
+Positional/readiness reports can now frame factual source questions without being recorded as progress. The original report parse is preserved. Difficulty wrappers and subject-only topic fragments retain their material scope; explicit requested fields remain questions. A failed `how` request cannot revive an older scene. `next` and `now` in a topic require proof. Synchronous positional failures do not dispatch the preamble to the source engine. The Ship Orb location reply quotes both its exact helm-cabin instruction and separately authored same-item Wrecked Ship location, preserving both citations. The following purpose question retains the item. HMS Cape entrance → doors → drawer search now works. All-or-none source replies retain cancellation, rollback and save-state guards.
+
+A broader audit found an actual wrong-subject answer in the older96: after Faulinei, a shard-use question selected Hatred/Astaroth. Three exact Shadowlord source contexts now keep the matching shard; Hatred and Cowardice route facts no longer claim a shard-use capability merely because their routes use other spells/equipment. All three rituals are checked without an encoder/classifier, including unknown-subject invalidation. An intermediate overbroad purpose pattern caused an Ariana regression in `native-29`; that report is retained. The final purpose pattern is bounded, the permission paraphrases require explicit source proof, and Ariana's full blocker → Anya → return sequence is restored byte for byte versus `native-28`.
+
+Verification:1,623/1,623 recursive Node tests; English1,058/1,058; original203/203 with tracked results restored byte for byte. Cached replay752/851, all175 negatives, no missing inputs and stable sources; two improved answers now give the Hatred/Cowardice timing rather than acquisition routes. Final native reports: `native-30`82/96, `fresh-20261025-19`43/76, `independent-all-20261025-10`43/48. All22/19/12 negative boundaries and all browser isolation checks pass. Watched production source hashes still match. All824 offline assets and the version digest match; experimental/test assets remain excluded.
+
+`knowledge-independent-adjudication-20261025-04.json` independently reviews five new complete positive claims: Cape doors, Academy start, disintegrator wall advice, Ship Orb helm location and ship-restoration purpose. The total is32/36 useful positive claims including the previously qualified Ariana helper operational equivalent (31/36 excluding it), with four source-answerable positives still incomplete. Strict43/48 includes12 negative boundaries and retains the Ariana exact-source/phrase failure. No previously useful answer regressed; the Academy exit remains withheld with changed non-answer wording. These are observed regression cases, not unseen evaluation or broad zero-error evidence.
+
+Next work must keep the full six-game scope. Four positives remain in the reviewed48: Trinsic permission/password compound, deferred Academy exit to Zaratan, hold barrels/potions and Khunag recruitment/dialogue. Broader corpora retain14 native96 failures,33 fresh76 failures and99 strict cached851 failures. Prioritize actual wrong-phase answers (Swamp Cave preparation selecting later loot, Black Sword forging selecting its finishing use, Manrel acquisition assuming possession), then directed conversion/escort/return roles and source-present factual comparisons/compounds. At least14 cached failures are useful answers with strict metadata differences; six Al-Qadim objective-only limitations remain appropriate. Preserve those distinctions and every frozen oracle. Both previous and current goal turns made progress; the goal remains active and incomplete. No publication, commit, automation or user-tab change occurred.
+
+
+### Later procedural action/object checkpoint
+
+`guides/tests/assistant/evidence/knowledge-runtime-checkpoint-20261025-06.json` is current. See `docs/assistant-knowledge/procedural-proof-20261025.md`, `ultima6-procedure-scope.md` and `guides/tests/assistant/ultima7-procedure-scope-review.md` for source evidence and limits. Counts:674 facts,338 directed links,16 exact editorial contexts, zero compiler issues. All674 encoded documents and protected source fields remain unchanged; catalog metadata hashes only were refreshed. No model or query-vector work occurred; cache count remains986. Models, profiles, head, setup, tokenizer and weights remain frozen.
+
+Four actual wrong answers are repaired in the unchanged851 corpus: Manrel key acquisition now asks Manrel for KEY and the flowers vow; Honor return quotes SUMM/Moonstone/return-to-pedestal rather than an earlier promise; Swamp Cave preparation equips every companion with boots and spells rather than returning treasure; Black Sword forge heats/hammers/binds rather than invoking the finished weapon. Metadata separates key/tomb/rune/pedestal/cave and U7 forging, Arcadion release, Ether Gem use, artifact lead, Talismans and later Courage use.
+
+The finite procedural reader checks literal preparation/crafting/return/delivery instructions. Delivery is separate from return; a promise does not prove return. Causative software/income idioms and intransitive navigation remain outside its grammar. Actually/really framing does not bypass it. Candidate phase proof must belong to its canonical target or an exact directly authored single-fact target edge; a broad method/use binding cannot transfer sword creation to Ether Gem/Arcadion or rune return to Moonstone. Procedural pronouns require grounding, unsupported edition scope persists, and failed material modifiers survive pronouns. Name matching retains action words and ignores WH template words in reordered matching: key-use aliases cannot answer acquisition, and what-to-choose cannot override the active map.
+
+Verification:1,661/1,661 Node contracts. Final cached replay `procedural-proof-20261025-04` passes756/851 versus752, all175 negatives, zero missing inputs and stable sources, with no prior strict pass lost. Final native reports `native-33`, `fresh-20261025-22`, `independent-all-20261025-13` retain82/96,43/76 and43/48; all22/19/12 negatives and isolation checks pass. Intermediate delivery/income and map-context regressions are retained and repaired. Legacy English1,058/1,058 and original203/203 are reused: engine/language code did not change this turn. All825 offline assets/version hashes match, test/experiment assets stay excluded and watched production hashes match final reports.
+
+Review05 verifies all36 positive replies/citations in the observed48 unchanged from review04:32/36 useful claims including the qualified Ariana helper (31/36 without it), four still incomplete. One installed-Java-build question now clarifies rather than declining; its boundary holds, but current-machine unknown-state wording still needs refinement. Counts are not broad acceptance.
+
+Continue the full goal. Four reviewed48 gaps remain: Trinsic permission/password, deferred Academy exit, hold barrels/potions, Khunag recruitment/dialogue. Broader native96 retains14 failures, fresh76 retains33 and cached851 retains95 strict failures including known metadata/citation differences. Next priorities: direct conversion/escort/actor roles, factual properties/comparisons before recommendation fallback, contextual compounds, and additional procedural forms/passive or delegated instructions. Preserve objective-only limitations and every frozen oracle. Both goal turns made progress; goal remains active and incomplete. No installations/downloads, FTP, commit, push, automation or user-tab change occurred.
+
+
+### Source transition checkpoint (models remain frozen)
+
+`guides/tests/assistant/evidence/knowledge-runtime-checkpoint-20261025-07.json` is current; implementation and limits are in `docs/assistant-knowledge/source-transitions-20261025.md`. Counts:674 facts,339 directed links,16 editorial contexts, compiler0. Protected U7 source/document fields remain unchanged. The user's sleep constraint remains binding: no model updates/replacements/new models/training/profile/head/setup changes/downloads/installations. All674 document vectors and986 cached query vectors are reused; metadata-hash refresh only. No FTP/commit/push/automation/user-tab changes.
+
+The four prior incomplete source-answerable conversations are repaired generically: Trinsic authorization/report/quiz/password compound; grounded deferred Academy exit; Hold breakable barrels for potions; Khunag recruitment plus literal dialogue assertion. New bounded phase/departure/method readers preserve unknown modifiers, quantities, source/edition restrictions, atomic compounds and no state effects. A destination referenced as there cannot silently reuse the previous scene. Review caught arbitrary AFTER nouns (escape/password) borrowing unrelated parent words; the action/nominal phase check now rejects them. See new transition/resource graph tests and U7 literal report-to metadata test.
+
+Final validation:1,701/1,701 contracts (`/tmp/knowledge-contracts-20261025-27.log`),11 Python checks, rerun English1,058/1,058 and original203/203 with tracked original results restored. All827 offline assets/version match, including both new shared modules; tests/experiments excluded. Cached replay `source-transitions-20261025-01`756/851 unchanged, all175 boundaries, zero missing exact queries, no previous strict pass lost. Browser `native-34`82/96, `fresh-20261025-23`43/76, `independent-all-20261025-14`47/48 (previous43/48); all22/19/12 boundaries and source/network/storage/isolation checks pass. All91 watched runtime hashes still current. Full-claim review06 verifies all48 turns: exactly four changed complete positives, other44 replies/citations identical;36/36 useful positives including qualified Ariana alternative,35/36 without it. Strict47/48 keeps that unchanged exact-source/phrase failure. Observed sets remain observed, every frozen oracle hash unchanged.
+
+Goal active/incomplete; both consecutive goal turns made progress, no blocker. The larger native96 still has14 failures, fresh76 has33, cached851 has95 including known provenance differences. Continue directed conversion/escort/actor roles, factual properties/comparisons before consultation and more procedural/compound forms. Refine current-machine unknown-state wording. Do not mistake contract counts or this observed48 for full six-game acceptance.
+
+
+### Actor/object/phase checkpoint — models still frozen
+
+`guides/tests/assistant/evidence/knowledge-runtime-checkpoint-20261025-08.json` is current. Implementation/limits: `docs/assistant-knowledge/actor-phases-20261025.md`; data coverage09; changed-useful-claim review `knowledge-actor-phase-adjudication-20261025.json`; full48 review07. Counts674 facts,348 directed links,18 editorial contexts, compiler0. All674 encoded source documents remain byte-equivalent; metadata catalog hashes only refreshed. Query cache986 unchanged, no inference-generated vectors. Production profiles/head/model/setup/assets remain frozen; no downloads/installations/FTP/commit/push/automation/user-tab changes.
+
+Source roles and shared guards now cover converter/input/output, raw material, song teacher/performance recipient, escort/rescue subjects, artifact informant, passive crafting, transport/concealment and release. Pistol pickup is separate from hiding it past security. Bare person acquisition cannot return item rewards; recruitment still works. Provider procedures preserve genuine permission, rune, map-piece, signature, key, ration and blessing paths while requiring the actual actor, signer and field modifiers. Miranda/Cove/Lock Lake/forged signatures cannot borrow Heather's signature. What a person requires differs from where they are required. Resultative get-him-released preserves Weston's appeal and Arcadion's mirror mechanism; objective-only captive release remains withheld. Exact new source contexts cover Sacrifice and Old Dungeon; explicit alternate Reef naming switches scope correctly. U7 virtue-quest edition tags use the literal Forge of Virtue tab/heading. No question-shaped data aliases or model training.
+
+Final verification:1,735/1,735 recursive assistant Node contracts (`/tmp/knowledge-contracts-20261025-34.log`),11 Python citation/offline/vector reuse checks, git diff check clean. Last verified English1,058/1,058 and original203/203 reused because engine/language/preamble paths are unchanged this turn; their source hashes compared. All827 offline assets and version match. Cached `actor-phases-20261025-06`757/851 versus756, all175 boundaries, zero missing exact inputs and no prior strict pass lost. Final native40 is85/96 (previous82), fresh-20261025-29 is48/76 (previous43), independent-all-20261025-20 retains47/48. All22/19/12 boundaries and all source/network/storage/isolation checks pass, and all91 watched runtime source hashes still match. Every frozen oracle hash unchanged. All intermediate failures retained; acquisition/permission, actor ownership, requirement direction, network conditions, release and direct item-purpose regressions repaired before checkpoint.
+
+Full48 replies/citations/strict verdicts identical to prior reviewed baseline:36/36 useful positives including qualified Ariana helper (35/36 without it), all12 boundaries. All11 changed native96/observed76 replies reviewed:9 complete source-supported claims,2 still incomplete (chant and plural carry). New complete Gwenno/Selganor compound retains exact-parent-citation strict failure while quoting both authorized child steps; no citation equivalence/oracle edit. No lost prior strict pass in any final suite. These are observed sets, not unseen evaluation or exhaustive acceptance.
+
+Goal active/incomplete. Previous and current turns made concrete progress; no blocker. Remaining broader gaps: Compassion permission/return/chant continuity, Once-inside Pistol+Canisters/plural transport, literal comparison/property assertions before consultation, BWAPI identity/version/documentation follow-ups, trainer/use/combat details and additional procedural forms. Native96 retains11 strict failures, observed76 retains28, cached851 retains94 including provenance differences. Keep full six-game scope, source/object/edition/material/state guards, objective-only limits and all frozen oracles. No model or deployment work is authorized.
+
+
+### Factual property and continuity checkpoint — models frozen
+
+Current checkpoint is `guides/tests/assistant/evidence/knowledge-runtime-checkpoint-20261025-09.json`; implementation/limits are in `docs/assistant-knowledge/property-continuity-20261025.md`. Coverage10:674 facts,353 directed links,18 editorial contexts, compiler0. Albion adds explicit Canisters and Pistol + Canisters group metadata; StarCraft adds literal topic labels and capabilities. Every protected fact document/vector remains unchanged; manifest hash refresh only. Existing query cache986 unchanged. The user's sleep constraint prohibits model/profile/head/setup/assets changes, new models, training, downloads and installations. No FTP/commit/push/automation/user-tab actions occurred.
+
+Shared source comparisons precede consultation and require full literal capabilities: reciprocal attack profiles, a single two-term use contrast, tool-specific runtime contrast, or complete-circle rear coverage. Naming wrappers retain the canonical term. Permission authority, conditional return recipient and shrine word remain separate roles. The Compassion procedure now carries Anya → Ariana → MU correctly, and asking who gives permission still identifies Anya after returning to Ariana. A bundle requires the exact complete components and all authored proofs; grounded plural transport retains the whole group. Once-inside scope uses a unique direct place relation actually returned for the active subject, with no player-entry claim. Tool authorship retains its tool owner for one direct framework-documentation dependency. Failed compounds preserve complete prior proof memory; single unknown positional subjects invalidate stale topics.
+
+Review caught and repaired environmental-damage grammar hijacking, newly named ammunition receiving current-inventory answers, stale positional topics after atomic declines, and infinitive have-to requirements being mistaken for possession counts. Full recursive contracts1,779/1,779 (`/tmp/knowledge-contracts-20261025-37.log`), rerun English1,058/1,058, original203/203 with tracked results restored, and Python11 pass. All829 offline hashes/version match; tests/experiments excluded. Cached `property-continuity-20261025-03` retains757/851, all175 boundaries, zero missing exact inputs, identical strict statuses to prior checkpoint. Final native42 passes90/96 (previous85), fresh31 passes55/76 (previous48), independent22 retains47/48. All22/19/12 boundaries and every source/storage/network/isolation check pass; all93 watched source hashes remain current. Frozen oracle/model hashes unchanged.
+
+Changed-turn review `knowledge-property-continuity-adjudication-20261025.json` examines every14 changed complete reply/citation/resource/witness:13 complete supported positive claims,12 gaining strict passes;1 complete Compassion permission answer retains the exact-parent citation failure while citing supporting child steps;1 safe Johne state boundary. No changed incomplete/wrong-subject answer. Other158 turns unchanged and outside that qualitative review. Full48 review08 compares every complete response/citation with prior review07 and finds all identical:36/36 useful positives including qualified Ariana helper,35/36 without it, all12 boundaries. Strict47/48 retains the alternative's failure. Observed sets remain observed and do not establish exhaustive acceptance.
+
+Goal active/incomplete, consecutive turns show progress and no blocker. Remaining strict failures: native96 six, observed76 twenty-one, cached851 ninety-four including provenance/wording differences. Continue named holders, trainers, charge limits and combat-property roles; U5 travel/recruitment/shrine rituals; U7 daemon/gem and mana-on-hit; StarCraft factual comparison, offline and setup conversations. Preserve all literal proof, complete bundle, atomic compound, source/edition/material/quantity/state guards and objective-only limits. Do not update models or publish.
+
+
+### Capability and participant checkpoint — models remain frozen
+
+Current checkpoint: `guides/tests/assistant/evidence/knowledge-runtime-checkpoint-20261025-10.json`. Implementation/limits: `docs/assistant-knowledge/capability-roles-20261025.md`. Coverage11:674 facts,357 directed links,19 editorial contexts, compiler0. U7 adds direct vessel/instrument roles and literal Courage proof scope; Al-Qadim adds source-only Oasis context and boar location. Protected fact fields/documents remain unchanged. All674 static source vectors and986 ignored cached queries are reused, with manifest-hash refresh only. No model/profile/head/setup/assets changes, downloads, installations, training, FTP, commit, push, automation or user-tab changes.
+
+Shared literal software capability readers now cover explicit comparison, unconditional offline operation, exact conditional executable detection, and native edition compatibility. A validated complete proof can establish its current request's vocabulary, while independent context and inherited restrictions remain guarded. An already reviewed contained excerpt can beat a containing same-record excerpt; no witness is trimmed at runtime. Resource limits require consumption and depletion evidence. A grounded repeated item reference comes only from complete returned proof and explicit binding. Mana trigger answers quote the recorded on-hit effect without inventing an exclusive condition, negative carrying effect or exact drain amount.
+
+Direct graph readers separate typed holder, binding actor, vessel and requested entry dependency. Literal type, scene and complete directed proofs are required. The full forging procedure resolves its unique named free-actor slot to the later typed binding action for the same artifact; marker identity remains separate corroboration and edition eligibility is unchanged. Khunag entry dependency requires his actual direct Kenget gate, not another requirement or current party status. Trainer locations preserve eligibility. Named option evaluations use that named option's own verified consultation trait across all six catalogs; Jaana's early-magic advice now retains her for the location follow-up.
+
+Delegated source answers establish canonical references only from whole authorized records actually returned, with no state changes/actions. Curated proof IDs require actual complete witnesses and source IDs. A source record can establish its own source anchor without becoming a fabricated focused fact. Successful properties/criteria no longer become unmet material constraints on a follow-up; source/edition scope persists and unsupported scopes retain their guarded path.
+
+Independent review caught uppercase unknown conditional suffixes escaping to partial legacy-engine answers. Recognized capability requests now fail closed in both APIs; paired Mars/Pandora/SNES/StarCraftII/Uranium/CurrentSave probes verify no delegated partial answer. Real-sequence testing caught delegated Magebane-location grounding and a Jaana fulfilled-criterion regression; both are repaired, with all intermediate evidence retained. Static link-count/context contracts were updated for the reviewed new schema entries; every frozen conversation oracle hash is unchanged.
+
+Final checks:1,833/1,833 recursive Node contracts (`/tmp/knowledge-contracts-20261025-41.log`),11 Python checks, clean diff check. Source engine and eight parsing dependencies are hash-identical to prior English1,058/original203 baselines, reused with explicit qualification. Cached `capability-roles-20261025-04` retains757/851, identical strict statuses, all175 negative boundaries and zero missing exact inputs. Final native46=95/96 (previous90), fresh35=61/76 (previous55), independent26=47/48. All22/19/12 boundaries and all source/storage/network/isolation checks pass; all95 watched files per report (97-file union) still match. All831 offline asset hashes/version match; tests/experiments excluded. Production model/oracle hashes unchanged.
+
+Final changed-useful-claim review `knowledge-capability-role-adjudication-20261025-02.json` reviews all13 changed full responses against full witnesses:12 complete useful positives (11 new strict passes,1 Jaana exact-source failure),1 safe boundary, zero unavailable/incomplete asserted positives. The Magebane response is the recorded hit trigger, with no broader carrying/exclusivity assertion. Other207 turns remain outside that delta qualitative review. Full48 review09 compares every complete response/citation/expected useful claim with prior review08 and finds all identical:36 useful positives including qualified Ariana alternative,35 excluding it,12 boundaries; strict47/48 retains its alternative failure. No unseen or exhaustive understanding claim.
+
+Goal active/incomplete; previous/current turns both progress, no blocker. Native96's only remaining strict miss is training citation provenance, with Fasiir/useful answer present. Observed76 retains15 strict failures: six source-present unanswered conversations (U5 travel-topic framing, strongest-mage descriptor, shrine cycles/guidance compound, eight-shrine reward; U6 passage-question attribution; Oasis boar combat field) plus nine citation/wording differences. Continue those real conversation gaps, then audit broader851 failures and all-game coverage. The boar objective still cannot become a combat procedure; use the exact same canonical base bestiary combat record with independently sourced place scope. Keep all constraints, literal proof, atomicity and objective-only limits. Do not resume model or publication work.
+
+
+### Sequence and source-scope checkpoint11 — models remain frozen
+
+Current: `guides/tests/assistant/evidence/knowledge-runtime-checkpoint-20261025-11.json`. Implementation and limits: `docs/assistant-knowledge/sequence-scope-20261025.md`. Coverage12: 674 facts, 357 directed links, 19 editorial contexts, zero compiler issues. New source helpers handle literal ordered action quantity/next destination, completion rewards, corrected descriptive-person compounds, exact QA-series attribution, same-canonical-actor combat/location context and software fields from complete returned procedures. Topic markers preserve the full named target. Failed compounds roll back prior complete focus; unsupported source scopes persist through pronouns. Full original proofs and all source/edition/material/quantity/state guards remain required.
+
+All six prior source-present misses in observed76 now supply complete useful claims: Cape speed, named Johne plus reach difficulty, shrine cycles/Codex guidance, eight-shrine VERAMOCOR reward, passage Wizard answer and Oasis boar tactics/location. Changed-claim review `knowledge-sequence-scope-adjudication-20261025.json` retains every before/after reply and full source record: six useful positives, five strict gains, one boar parent-versus-child citation-only failure; other214 whole rows unchanged. Full48 review10 confirms all48 whole rows identical to prior review09, retaining36 useful positives including qualified Ariana alternative,35 excluding it,12 boundaries and strict47/48.
+
+Final verification: 1,878/1,878 recursive Node contracts (`/tmp/knowledge-contracts-20261025-47.log`); rerun English1,058/1,058 and original203/203, with tracked original results restored; Python11 pass; clean diff check. Cached `sequence-scope-20261025-06`763/851, up six, all175 negative controls, zero missing exact inputs and no prior strict pass lost. Final native49=95/96, fresh38=66/76, independent29=47/48; all22/19/12 negative controls and isolation/source checks pass. All834 offline hashes/version and674 static documents verify. All106 watched source hashes across the four final native reports remain current. The986 cached queries, model/profile/head/setup/assets and frozen oracles remain unchanged. No encoding, training, downloads, installs, FTP, commit, push, automation or user-tab changes.
+
+New full native run `knowledge-browser-full-corpus-sequence-scope-20261025-03.json` covers1,005 turns (851 unique game turns plus154 duplicate Al-Qadim walkthrough-panel turns), strict889/1,005, all216 negative controls and all native isolation checks. `knowledge-full-corpus-adjudication-20261025.json` consolidates three complete-reply/source reviews; all116 strict failures reviewed:46 source-present unanswered,15 wrong/incomplete fields,2 partial/qualification gaps,41 useful-claim citation/wording/disclaimer/oracle-scope differences,12 justified objective-only declines. Real response gaps:63 panel rows,60 unique game rows. Three useful-claim rows still have contradictory decline/clarify wording. Nine recovered passes separately reviewed; other880 strict passes outside full qualitative acceptance. These are observed regression corpora, not unseen evaluation.
+
+Intermediate full02 preserved a wrong Hold-loot answer on both Al-Qadim panels despite the same889 strict score. Manual whole-claim review caught it; complete-field priority is now limited to combat, paired negative test added, and full03 restores the correct objective-only decline. All1,005 final whole turn rows match full01. Earlier artifacts and oracles remain unchanged; do not discard this regression evidence.
+
+Goal active/incomplete; previous/current turns both progress, no blocker. Next prioritize the60 unique genuine gaps from the full review: directed actor/provider/recipient and instrument/destination roles; procedure phases (start/follow/finish/enter/escape); static property/default/caveat/omitted-comparator follow-ups; teacher/container/component/list/link types; purpose versus launch/installation and source conflict qualification. Preserve objective-only source limits and atomic compound behavior. Broader source-first conversations remain required. Do not resume model or publication work.
+
+
+### Semantic-field checkpoint12 — known-case gains, fresh generalization failure
+
+Current: `guides/tests/assistant/evidence/knowledge-runtime-checkpoint-20261025-12.json`; implementation/limits: `docs/assistant-knowledge/semantic-fields-20261025.md`; coverage13:674facts,359directedlinks,19contexts,compiler0. Shared phase/field readers and10literal phase-indexed facts distinguish preparation/approach/escape/start/follow/acquisition/completion. Three phase-local descriptions use original-title+clause proof. Directed readers handle training-location, buyer, scoped container contents and control method; Albion adds2containeredges/1entity and reviewed bindings/capabilities. Exact named request/price/bonus/combat fields require complete directed literal source proof, hardened against14independent unrelated/co-mentioned/negated controls. Software fields cover defaults, purpose, comparisons, type, configuration/version/destination/mode/support categories with actual returned proof and canonical owners; generic item/spell purpose remains intact. Exact hidden identifiers cannot be answered by a narrative effect.
+
+Final known-case checks:1,958/1,958 recursive Node contracts (`/tmp/knowledge-contracts-20261025-49.log`),Python11,674staticdoc/vector verification, all836offlinehashes/version. Prior English1058 andoriginal203fullreruns reused only after8engine/parserdependency hashes match checkpoint11. Cached `semantic-fields-20261025-03`797/851,up34,zeroincomplete/missing,all175boundaries,no prior strict loss. Two newly requested exact context strings inferred using unchanged pinned encoder into ignored replaycache:988total;0sourcevectorsencoded and0model/profile/head/setup/assets changes,downloads,installs,training. Initial two incomplete replayreports retained. NoFTP/commit/push/automation/user-tab actions.
+
+Native51=95/96,fresh40=66/76,independent31=47/48:allwhole220rows identical to checkpoint11,all22/19/12boundaries. Full `knowledge-browser-full-corpus-semantic-fields-20261025-02.json`919/1005(previous889),all216negativecontrols,no prior strict loss,allisolation/sourcechecks. All109watchedsourcefiles across finalreports remain current. Fullchanged review `knowledge-semantic-fields-adjudication-20261025.json`:41changed whole replies/citations reviewed,40complete supported positives and1heldboundary;30strictgains,10newcompletepositivesretaincitationfailures. Other964rows exactlyunchanged,notnewlyqualitativelycorrect. Repairs38priorgenuinepanelgaps=35uniquegames. Current full-failure review `knowledge-full-corpus-adjudication-20261025-02.json` covers all86failures:25genuinegaps,49usefulclaimcitation/wording/oracle differences,12correctobjective-onlydeclines. RemainingCourage-testcompletion wording stillfails despitehelper; do not claim it repaired natively. Intermediate full01=918/1005 leaked Housing ending-effect as answer to hiddenflag; generic identifier-field guard repaired it, allreports retained.
+
+CRITICAL counterevidence: source-first fresh96 firstnative run `knowledge-blind-browser-source-first-96-20261025-01.json` strict37/96. Threepairauthored corpora and combined `knowledge-source-first-96-20261025.json` frozen unchanged (combinedSHA5cd6b923fca976dd9ae8d9023e4fe637e37aea3591ac3ecdfc0f63e9f8ae6a5b). All96whole replies/24dialogues cross-reviewed against exactoriginalsources by differentpairauthor. `knowledge-source-first96-adjudication-20261025.json`:17/72completeusefulpositives (14directanswers,3fullclaimsunderclarification),52source-presentunanswered,2wrongfields,1partial,23/24boundaries. Failedboundary asks Sceptre metal, receives truthful use-effect asanswer (no fabricatedmetal). OneBWAPIcompatibility response extra secondarycitation resolves to AntivirusBlockingSCHNAIL; primaryloadingchecksvalid. Both defects remain unresolved. Allsourceproofs exist; nooracleissues. Currentknown919score cannot substitute for this weak generalization result.
+
+Goalactive/incomplete; prior/currentgoalturns progress,noblocker. Nextimplement shared request frame: canonicalowner, requestedfields/directrole/phase, references andexplicitconstraints BEFOREranking. Separate field/list cardinality from assertednumericvalues. Whole-witness multi-field coverage must precede per-part owner resolution, preservecompleteproof/qualifiers andatomicrollback. Apply same fieldcoverage to legacyfallback so unknownmaterial/property never returns available use-effect. Separatetopicowner fromlastanswerentity; corrections/newnamedownersclearappropriatescope. Validateactualsource-childcoordinates, notjustfile-levelwitnessmembership. Do not patch each newwording with alias/regex or keep inflatingdata as primaryrepair. Preserveallold/newfrozenoracles andmodel/publicationconstraints. Fresh96 is now observed regression evidence, not an unseen/statisticalevaluation.
+
+
+## Request-field checkpoint13 — current verified state, goal still incomplete
+
+Read `docs/assistant-knowledge/request-fields-20261025.md` and `guides/tests/assistant/evidence/knowledge-runtime-checkpoint-20261025-13.json` first. This supersedes checkpoint12 runtime state, preserving its reports. Shared syntax/typed field retrieval, exact-name identity resolution, whole compound coverage, source-container versus participant references, ordinary fallback proof/citation reconciliation and transactional precision priority now serve all six games. Data remains 674 fact documents/359 links;22 contexts,1,143 field entries (258 structured raw),179 annotated facts/433 authored fields;compiler0. All674 encoded documents/vectors reused; no model changes/downloads/installations/training. One exact test-only query inference extends ignored cache989. No FTP/commit/push.
+
+Final verification: Node2073/2073;Python11;English1058/original203 rerun. Cached798/851 with0missing/incomplete,175negatives/no prior strictloss. Native full920/1005 versus919 with0strict/usefulclaimloss: onlyFaulineisummon changed vscheckpoint12. All216negatives held. Observed220 runs95/96+66/76+47/48;53negatives/no previous strictloss;one clearer heldnegative whole-row change. Fresh96 native54/96 versus37;all24negatives held. All96whole rows/citations identical across finaltwo frozen field runs; manual32/72 completeusefulclaims versus17,including2underclarification;39source-presentunanswered/1wrongfield remain. BWAPI unrelated secondarycitation fixed. All840offline asset hashes/versionmatch;allnative source/network/storage/serverchecks pass.
+
+Preserve intermediate failure evidence: fieldnative01 full903/1005 (17losses) repaired by existing-precision priority and bounded rawguard reconciliation; replay01 had1missingquery/3incomplete,finalreplay02 complete. Do not present strictscore or data counts as broad goalcompletion. No production processes remain live. The status-only user reply was no-progress; this goal turn made concrete implementation and verified progress, with no blocker. Continue task/object/participant and phase bindings for genuine gaps, not per-question aliases or regexes. Do not resume model or publication work.
+
+### In-progress argument bindings after checkpoint13
+
+Read `docs/assistant-knowledge/argument-bindings-20261025.md`. First frozen argument reports: fresh72/96 (24negatives; no old strictloss); full920/1005 and observed208/220 ALLwhole rows exactlycheckpoint13;cached798/851 complete/no missing. Node58=2124/2124. Models+all674 document/vector payloads unchanged (catalogmanifestheader refresh only). Manualpairreviews exist for U5/U6 andU7/SC; rootAQ/Albion review/aggregate pending. Critically, manualreview caught red-lens repair missing its required keyword support despite strictpass. Root JUST fixed required proof closure in router+legacy priority and added positive/revokedsupport actualconversation test; local5/5 passes `/tmp/argument-closure-repair-03.log`. This last runtime repair has not been natively rerun; do not call checkpoint14 complete or currentfullbrowser accepted yet. No live native jobs remain. Next freeze/rerun allappropriate suites+offline hashes, review final deltas, thencheckpoint14. `subjectMode: topic` caller support and ~21 supported unanswered conversations remain. User's prime-time question received beta-after-focused-pass recommendation; no deployment/model authorization/change. Goalactive/incomplete; currentturn concreteprogress, no blocker.
+
+
+## Argument-binding checkpoint14 and owner-directed beta wind-down
+
+The final frozen build passes2,125 recursive Node checks and11 Python checks. Full native920/1,005 and observed208/220 have complete whole-row equality with checkpoint13; all216/53 unsupported controls hold. Fresh96 remains72 strict passes and24/24 unsupported controls. The final support-closure repair now displays/cites both original red-lens passages; all95 other whole replies are identical to the manually reviewed first run. Aggregate source review:51/72 useful supported answers (49 direct+2 under clarification),21 unanswered,0 partial/wrong fields in this particular fresh set. The separate full corpus retains24 genuine gaps. All841 offline entries/version and114 watched native source files verify. Coverage15:674 facts/359 links/24 contexts/1,154 typed fields/0 compiler issues; all674 document/vector payloads and frozen model/head/profile/oracles unchanged. No new inference, model changes/downloads/installations or publication in this argument pass.
+
+The earlier in-progress paragraph is superseded by `knowledge-runtime-checkpoint-20261025-14.json`. The owner then explicitly narrowed immediate acceptance to a beta checkpoint, portable next-agent checklist and local commit. Read `docs/assistant-beta-checklist.md` for stopping criteria, all21 source-first misses and reproduction commands. Preserve the broader objective as deferred, rather than mark it achieved or continue unlimited feature work. A local commit does not authorize FTP/push. The beta record includes any current UI-smoke failures and known limits; passing contract counts alone are not beta or all-game correctness.

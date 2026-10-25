@@ -1,8 +1,10 @@
 # Browser-only guide assistants
 
-Originally implemented against commit `06cbf66842af400ff7d4decbcffe1a11e21560f6` on 20 October 2026. All six guide assistants interpret questions, retrieve facts, evaluate modeled requirements and maintain dialogue in native browser JavaScript. On 23 October the owner approved an opt-in local model for constrained conversational fallback wording across all six pages. The model selects approved sentences; the program still supplies every game fact as authorized guide text or labeled/cited research. There is no server inference, visitor key, account or GPU requirement. Model/runtime parts are self-hosted static files reused from the explicitly approved downloads, not system-installed packages. Enabling chat downloads approximately 162 MB once where browser caching is available; no model worker or large asset starts before consent. Questions stay in the browser.
+Current scope,25 October2026: the owner requested a bounded beta checkpoint, a checklist for a later AI agent and a local commit. Start with [the beta checklist](assistant-beta-checklist.md). Feature expansion stops at this checkpoint; the broader six-game conversation goal is deferred and incomplete. The current structured-knowledge implementation is checkpoint14:51/72 useful answers in the harder observed source-first set, with21 supported unanswered questions and2 complete answers still shown under clarification. The established1,005-turn suite remains920 passes. These limitations are part of beta acceptance, not evidence of complete game knowledge. Model changes, installations, downloads, FTP uploads and Git pushes are outside this scope.
 
-The factual engine remains a bounded symbolic assistant, not general-purpose generative intelligence. It accepts naturally worded English questions about its explicit relationships and aliases, up to three clearly separated subquestions per message, short conversational follow-ups ("And its effect?", "Where?", "What about X?", "Sorry, I meant X"), typed or button clarifications, and explicit progress reports. It deliberately clarifies or declines unsupported topics, conditions, versions, relationships and ambiguous reports. Every factual sentence it emits is a stored guide record, an overlay record indexing guide text, or a clearly labeled and cited research note (see [Knowledge sources](#knowledge-sources)). It never composes new facts, explanations, verdicts or prerequisites. Research is done at authoring time; visitors' questions never trigger web lookups. There is no fallback to another service.
+Originally implemented against commit `06cbf66842af400ff7d4decbcffe1a11e21560f6` on 20 October 2026. All six guide assistants interpret questions, retrieve facts, evaluate modeled requirements and maintain dialogue in native browser JavaScript. On 23 October the owner approved an opt-in local model for constrained conversational fallback wording across all six pages. The model selects approved sentences; the program still supplies every game fact as authorized guide text or labeled/cited research. There is no server inference, visitor key, account or GPU requirement. Model/runtime parts are self-hosted static files reused from the explicitly approved downloads, not system-installed packages. The current bundle includes the shared MiniLM intent classifier added on 24 October. Enabling chat discloses approximately 186 MB including the earlier wording model; browser caches reuse verified files, and no model worker or large asset starts before consent. Questions stay in the browser.
+
+The factual engine remains a bounded symbolic assistant, not general-purpose generative intelligence. It accepts naturally worded English questions about its explicit relationships and aliases, up to three clearly separated subquestions per message, short conversational follow-ups ("And its effect?", "Where?", "What about X?", "Sorry, I meant X"), typed or button clarifications, and explicit progress reports. It deliberately clarifies or declines unsupported topics, conditions, versions, relationships and ambiguous reports. Every factual sentence it emits is a stored guide record, an overlay record indexing guide text, or a clearly labeled and cited research note (see [Knowledge sources](#knowledge-sources)). It does not invent game facts, explanations or prerequisites. Conditional recommendations select from reviewed guide traits and quote their evidence. Research is done at authoring time; visitors' questions never trigger web lookups. There is no fallback to another service.
 
 ## Files and integrations
 
@@ -418,7 +420,7 @@ Tone wrappers are authored. They do not change numbers, facts, source uncertaint
 
 ## Help levels and the shared view
 
-The spoiler ceiling is presented to visitors as a help level: **Nudge** (`gentle`), **Hint** (`balanced`) and **Full answer** (`direct`). Only the names changed; authorization, history filtering and the shared ceiling across views are as described above. `ui.js` renders one control set for every guide (context line, help toggle, New topic, Clear chat) and the conversation; `guides/css/assistant.css` styles it, and each guide only sets its `--assistant-*` colours. The page's own select is kept hidden as the source of truth. Ultima VI shows its step hint and conversation in one view; Ultima VII shows its quest hint as a card above the conversation. Details, the Albion “i just started, what to do here?” fix and the test changes are in `docs/assistant-handoff.md` (“Help levels and one shared layout”).
+On 24 October the owner replaced the Nudge / Hint / Full answer interface with **full answers only**. `ui.js` now pins every chat context and request to `direct`, including reopened views, topic changes and resets. No help selector, hidden replacement select, level radio group or per-message level badge is generated. The shared controls contain the context line, New topic and Clear chat. Ultima VI and VII show complete authored step/quest instructions above their conversations. Their chat buttons say Ask the Seer/Sage. The source engine retains its tier-authorization API for internal contracts, while visitor-facing chat always requests the fullest available sourced variant. Independently authored walkthrough hints and puzzle accordions are unchanged.
 
 ### Context-aware first unticked step (23 October 2026)
 
@@ -1409,3 +1411,182 @@ The failing baseline geometry and final proof are in `evidence/chat-layout-*`.
 The two stylesheet cache hashes were regenerated and verified. No conversation
 engine, factual sources, saved-progress formats, installs or published files were
 changed by this follow-up. All changes remain local.
+
+
+## Full answers in every chat, 24 October 2026
+
+The owner explicitly confirmed: “Full answers by default; remove the selector,”
+then “it should always be full.” Every production chat now requests direct
+answers, including both Al-Qadim views, and the isolated intent prototype follows
+the same policy. The Nudge/Hint/Full answer selector, its hidden select, keyboard
+radio group, explanatory note and response-level badges are removed. New topic,
+Clear chat, topic and tone controls remain. Ultima VI/VII context cards show full
+step/quest text and their chat launchers say Ask the Seer/Sage.
+
+The shared view overrides obsolete lower context preferences. A `fullAnswersOnly`
+request also prevents a typed “smaller hint” from downgrading the answer. Narrative
+repeats use the existing narrative formatter: Ultima VI keeps its ordered-step
+label, and Ultima VII keeps the explicit warning that Inamo's motive has conflicting
+accounts. Unsupported replies no longer recommend a removed help selector.
+The internal tier API and source contracts remain available for tests. Existing
+walkthrough hint accordions, source attribution, conflict/edition/qualifier guards,
+consent and saved-progress formats are preserved. The MiniLM prototype remains
+isolated from production.
+
+Final stable-source verification:
+
+- 1,252/1,252 standalone assistant tests, including seven full-answer regressions.
+- 24/24 production browser checks: seven surfaces, desktop and 390px phone,
+  fixed direct-only source oracles, smaller-hint repeats, reset/reopen/context
+  changes, a legacy gentle context and long Ultima VI scrolling. See
+  `guides/tests/assistant/evidence/full-answer-browser-full-answer-complete.json`
+  and `full-answer-ui-review.md` for source oracles and preserved failures.
+- 42/42 layout combinations and 98 actual sends. Current proof is
+  `guides/tests/assistant/evidence/chat-layout-always-full-complete-20261024.json`;
+  older selector-based reports remain historical snapshots.
+- Prototype: 53/53 unit checks, 17/17 real-MiniLM control/isolation checks,
+  23/23 authored consultations and the SCHNAIL download/Iolo follow-up UI sends.
+  `intent-prototype/evidence/always-full-summary.json` retains the broader
+  limits: 40/48 independent intent labels and only 25/65 complete follow-up
+  behaviors. Removing the selector does not establish general model readiness.
+- All browser runs preserve source hashes and saved storage, use only local
+  static GETs, and have no external requests or page errors. Production layout
+  runs use the approved consent/worker fixture; prototype inference uses the
+  existing approved MiniLM assets. No packages or models were downloaded.
+- Regenerated local cache metadata; verified all 796 asset hashes and the version
+  marker. Four offline-manifest tests pass. No FTP upload, commit or push is part
+  of this follow-up.
+
+UI suites whose purpose was switching the former selector between tiers are
+superseded by the full-answer browser suite. Backend authorization and the
+independent lower-tier source tests retain their contracts. The old evidence is
+kept with its original source hashes and must not be presented as a current UI run.
+
+
+## Shared intent and roomier chats in all six games, 24 October 2026
+
+The owner requested promoting the smarter two-game conversation experiment into
+all six guide integrations and redesigning cramped chats. Every production adapter
+now uses `guide-assistant.js`: its own current records and progress reader feed
+the original factual engine, with a shared dialogue wrapper, MiniLM intent
+proposals, explicit subject memory, source-preserving relation fragments and
+conditional guide consultation. The wrapper preserves raw user wording in the
+transcript, source choices/actions and revision checks, session evidence and
+adapter methods. New topics, changed contexts, reset, disable and obsolete
+requests cancel pending interpretation without reloading the shared encoder.
+
+`dialogue.js`, `source-responses.js`, `consultation.js` and the reviewed consultation
+catalog contain this production behavior. All six games have three reviewed
+consultation profiles each. The classifier proposes the requested relationship;
+source authorization, qualifiers, editions, unknown names, quoted uncertainty,
+conflicts and guide-only requests remain independent constraints. Explicit
+relation-vocabulary fallback is identified separately from model routing.
+Authorship requests retain their predicate and can quote one unconditional,
+authorized explanatory passage only when it explicitly names a tool's authors;
+they never become generic identity answers. Download/documentation URLs come
+from the exact reviewed guide elements.
+
+The frozen MiniLM encoder and existing 180/72 fitting/validation split are reused.
+The head is exported offline once and packaged with the already approved model
+files; browser visits do not train it. New intent assets total 24,053,489 bytes and
+reuse the existing 22,528,676-byte runtime. No new external downloads or packages
+were needed. Existing chat consent now identifies the enlarged bundle and
+correctly discloses approximately 186 MB including the earlier wording model.
+A cached older profile cannot authorize added files under an older enabled choice.
+Both metadata and verified parts can be reused offline. Model files load only
+after consent; the intent encoder starts lazily on the first question.
+
+Ultima VII's Sage is now a conversation workspace up to 72rem wide, bounded by
+the available viewport, with a pinned composer and independently scrolling chat.
+Its quest briefing is a collapsed native disclosure rather than a large competing
+scroll area. Ultima VI uses the same briefing treatment and a roomier modal;
+Ultima V and StarCraft have taller transcripts. Every guide has Expand chat:
+a native dialog moves the existing transcript and composer into a spacious view,
+then Return to guide or Escape restores the same nodes, history and focus. Phone
+views use the available screen and floating settings cannot cover Send. Original
+journal dialogs and independent walkthrough hints keep their existing layout and content.
+The prototype page links directly to all six local guide chats.
+
+Final evidence is consolidated in
+`guides/tests/assistant/evidence/rollout-final-acceptance.json`:
+
+- **1,281/1,281** standalone tests pass, including runtime lifecycle, offline
+  metadata, bundle consent, dialogue/progress/choice/cancellation contracts and
+  selected-atlas-context isolation.
+- Actual MiniLM in all seven chat surfaces passes **126/126** reviewed conversation
+  checks: 81 supported factual requests, 38 unsupported requests and seven reset
+  controls. The 18 unique authored dialogues run across six games, with both
+  Al-Qadim surfaces. All 14 desktop/phone layouts and 14 expanded-chat sequences
+  pass, including real sends, wheel scrolling, Escape, restored focus and another
+  send. The isolated old-bundle consent negative phase also passes.
+- Existing full-answer UI acceptance passes **24/24**. The longer layout suite
+  passes **42/42** combinations and 98 actual sends, including short landscape
+  screens. New UI controls never reintroduce a help selector or answer badge.
+- The independent consultation audit passes 18 declared criteria and eight
+  negatives, and verifies all 18 profiles / 74 source-witness uses. No game facts
+  were invented and no saved-game progress was written.
+- Browser runs retain exact current source hashes and saved storage, make only
+  local static GETs, and have no external requests or page errors. They use real
+  native MiniLM and the approved fixture for the older wording worker; these
+  acceptance numbers are not a new native-generative-model claim.
+- Regenerated local offline metadata and verified all **804** listed assets and
+  the version marker. Four offline-manifest tests pass.
+
+The rollout corpus was authored from existing guide facts and is a bounded
+acceptance set, not blind model accuracy. The weights and original datasets
+were not tuned on these questions. Original independent intent accuracy remains
+40/48 and scores are uncalibrated. The earlier 82/126 and 120/126 integration
+reports remain intact. A documented source audit allowed the actual indexed
+Al-Qadim city as an alternative to its shop facet for a generic location request,
+and accepted a consultation record's exact declared variant provenance; no source
+facts or model labels were changed to manufacture a passing answer. Details are
+in `rollout-corpus-review.md`.
+
+These changes are local and uncommitted. No additional FTP upload or Git push
+was requested or performed. The historical release evidence above describes the
+previous published interface; the new shared files, intent asset parts, bundle
+profile and cache metadata must be included together in any future deployment.
+
+
+## Combined model setup and passive story roles, 24 October 2026
+
+The owner requested one development setup command for both models and reported
+that the Trinsic chat answered “who is the murderer?” but missed “who got
+murdered?” and “who got killed.” `guides/local-assistant/setup.py --download` now
+handles both approved pinned model packages, the shared runtime, verified head
+reuse and final bundle metadata. Complete packages need no original raw downloads,
+Node or browser; the default and `--verify-only` modes validate them offline without
+writes. Only the explicit download flag fetches missing/corrupt approved inputs;
+head refitting is an explicit `--rebuild-head` option. Failed fetches/builds do not
+publish a configured partial bundle. Existing internal preparation helpers remain
+available; the public entry point is documented in `guides/local-assistant/README.md`.
+
+The conversation defect had three causes: get-passive murder questions were
+classified as acquisition/remedy, a natural “I am in the Trinsic murders” statement
+did not establish an event topic, and ordinary intent routing could lose the
+source role/event frame. Shared be/get/perfect passive grammar now identifies the
+victim role before gameplay intents. Typed source-role requests retain their full
+wording and constraints, actual role replies establish their sourced event, and
+exact event-topic statements update conversation context without asserting saved
+progress. Unconfirmed or unknown newer subjects cannot revive older selected-page
+facts. Explicit topic statements or named-event questions can establish the event
+again. Victims and killers have separate name lines derived from authorized role
+metadata, with research attribution and the complete source quote retained.
+Planned/prevented/negated deaths and accusations cannot become confirmed murders.
+No game facts, fitting examples or model weights were changed.
+
+Current proof is `guides/tests/assistant/evidence/model-setup-story-final-acceptance.json`:
+12 Python setup tests; real default/download-reuse/offline-verification CLI runs;
+1,292 standalone assistant tests; the unchanged 49-input passive-story UI corpus;
+eight separate unknown-identity/recovery UI checks; and the existing 126-check
+all-game native-MiniLM conversation suite all pass. The automated browser runs use
+real MiniLM plus the established wording-worker fixture. A fresh in-app browser
+page separately verified the exact reported three-question exchange with the real
+local workers. All current browser source hashes and storage/network boundaries
+match; all 804 offline asset hashes and the version marker are verified, and four
+manifest tests pass. Original failing baseline and earlier passing versions are
+preserved. These are bounded regression checks, not a universal language claim.
+
+The combined setup reused existing verified packages (zero external downloads or
+installs); profile/head/payload bytes were preserved. Code and evidence remain
+local and uncommitted, with no FTP upload or Git push.

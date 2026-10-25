@@ -1124,7 +1124,6 @@ const gameData = {
 
         const seerState = {
             tone: "pragmatic",
-            spoiler: "light",
             activeContext: null,
             assistant: null,
             view: null,
@@ -1145,16 +1144,6 @@ const gameData = {
                     button.classList.remove('seer-option-selected');
                 }
             });
-        }
-
-        function setSeerSpoiler(spoiler) {
-            seerState.uiRevision += 1;
-            seerState.spoiler = ['light', 'gentle', 'balanced', 'direct'].includes(spoiler) ? spoiler : 'light';
-            const select = document.getElementById('seer-spoiler-select');
-            if (select) select.value = seerState.spoiler === 'light' ? 'gentle' : seerState.spoiler;
-            seerState.assistant?.setPolicy(seerState.spoiler);
-            renderSeerContext();
-            seerState.view?.refresh();
         }
 
         gameData.pcItemList = parsePcItemList(gameData.pcItemListRaw || "");
@@ -1327,17 +1316,16 @@ const gameData = {
                         messages: document.getElementById('seer-chat-messages'),
                         input: document.getElementById('seer-query'),
                         sendButton: document.getElementById('ask-seer'),
-                        spoilerSelect: document.getElementById('seer-spoiler-select'),
                         controlsBefore: document.querySelector('.u6-seer-intro'),
                         bindEvents: false,
                         getContext: () => ({
                             contextId: seerState.activeContext?.key || 'general',
                             entityIds: seerState.activeContext ? [`ultima6:${seerState.activeContext.key}`] : [],
-                            spoiler: seerState.spoiler,
+                            spoiler: 'direct',
                             tone: seerState.tone
                         })
                     });
-                    assistant.setPolicy(seerState.spoiler);
+                    assistant.setPolicy('direct');
                     renderSeerContext();
                     return seerState.view;
                 }).catch(error => {
@@ -1351,18 +1339,18 @@ const gameData = {
         function renderSeerContext() {
             const context = seerState.activeContext;
             if (!context) return;
-            const safe = seerState.assistant?.describeContext(context.key, seerState.spoiler);
+            const safe = seerState.assistant?.describeContext(context.key, 'direct');
             document.getElementById('seer-modal-title').textContent = `✨ ${safe?.title || 'Seer counsel'}`;
             document.getElementById('seer-modal-summary').textContent = 'Local guide counsel · selected quest or map context · no generated facts';
             const paragraph = document.createElement('p');
-            paragraph.textContent = safe?.text || 'Loading the local guide hints…';
+            paragraph.textContent = safe?.text || 'Loading the local guide context…';
             document.getElementById('seer-general-hints').replaceChildren(paragraph);
         }
 
         function showSeerLoadError() {
             const hints = document.getElementById('seer-general-hints');
             const paragraph = document.createElement('p');
-            paragraph.textContent = 'The local hint files could not be loaded. The walkthrough and atlas remain available; reopen counsel after the files are available.';
+            paragraph.textContent = 'The local guide files could not be loaded. The walkthrough and atlas remain available; reopen counsel after the files are available.';
             hints?.replaceChildren(paragraph);
         }
 
@@ -1971,7 +1959,7 @@ const gameData = {
                         <div class="u6-quest-objective__actions">
                             <button type="button" class="u6-quest-action" data-quest-details-toggle aria-expanded="false" aria-controls="${detailsId}">Next steps</button>
                             ${routeAction}
-                            <button type="button" class="u6-seer-context-link u6-quest-seer-link" data-seer-quest="${questKey}" data-seer-section="${sectionKey}"><span aria-hidden="true">✨</span> Hint</button>
+                            <button type="button" class="u6-seer-context-link u6-quest-seer-link" data-seer-quest="${questKey}" data-seer-section="${sectionKey}"><span aria-hidden="true">✨</span> Ask the Seer</button>
                         </div>
                         <div id="${detailsId}" class="u6-quest-objective__details hidden">
                             <h5>Walkthrough</h5>
@@ -2037,7 +2025,7 @@ const gameData = {
                     <div class="u6-quest-objective__actions">
                         <button type="button" class="u6-quest-action" data-side-quest-details-toggle aria-expanded="false"
                             aria-controls="${detailsId}">Walkthrough</button>
-                        <button type="button" class="u6-seer-context-link u6-quest-seer-link" data-seer-side="${sideKey}"><span aria-hidden="true">✨</span> Hint</button>
+                        <button type="button" class="u6-seer-context-link u6-quest-seer-link" data-seer-side="${sideKey}"><span aria-hidden="true">✨</span> Ask the Seer</button>
                     </div>
                     <div id="${detailsId}" class="u6-quest-objective__details hidden">
                         <h5>Optional walkthrough</h5>
@@ -2343,7 +2331,6 @@ const gameData = {
         });
 
         const toneButtons = document.querySelectorAll('.seer-tone-option');
-        const spoilerSelect = document.getElementById('seer-spoiler-select');
 
         const defaultTone = Array.from(toneButtons).find(button => button.dataset.default === 'true');
         if (defaultTone) {
@@ -2352,9 +2339,6 @@ const gameData = {
         toneButtons.forEach(button => {
             button.addEventListener('click', () => setSeerTone(button.dataset.tone));
         });
-
-        setSeerSpoiler('light');
-        spoilerSelect?.addEventListener('change', () => setSeerSpoiler(spoilerSelect.value));
 
         setupKeywordHintButtons();
     }
@@ -2881,7 +2865,7 @@ const gameData = {
                     atlasSeerLink.dataset.seerMarker = encodeURIComponent(markerData.name);
                     delete atlasSeerLink.dataset.seerAtlas;
                     if (strong) strong.textContent = `Counsel for ${markerData.name}`;
-                    if (small) small.textContent = 'Hints and tailored advice for this marker';
+                    if (small) small.textContent = 'Guide answers for this marker';
                 } else {
                     atlasSeerLink.dataset.seerAtlas = String(activeLevel?.id ?? 0);
                     delete atlasSeerLink.dataset.seerMarker;

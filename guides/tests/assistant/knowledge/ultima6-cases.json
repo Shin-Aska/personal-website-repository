@@ -1,0 +1,2301 @@
+{
+  "schemaVersion": 1,
+  "gameId": "ultima6",
+  "reviewedAt": "2026-10-24",
+  "dialogues": [
+    {
+      "id": "compassion-permission",
+      "turns": [
+        {
+          "text": "Why does Ariana need permission?",
+          "expected": {
+            "decision": "not-answer",
+            "contains": [],
+            "notContains": [
+              "because she is a child",
+              "Anya distrusts"
+            ],
+            "oracleRationale": "The source states whose permission Ariana needs, but supplies no reason or motive for that permission rule."
+          }
+        },
+        {
+          "text": "How do I get Anya permission?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Blue Boar",
+              "YES"
+            ],
+            "factIds": [
+              "anya-permission"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[0].sections[0].steps[1]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I get Ariana rune?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Return to Ariana",
+              "confirm permission"
+            ],
+            "factIds": [
+              "ariana-rune"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[0].sections[0].steps[2]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I use the Compassion mantra?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "MU",
+              "Moonstone"
+            ],
+            "factIds": [
+              "compassion-mantra"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[0].sections[0].steps[3]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Have I already got permission?",
+          "expected": {
+            "decision": "not-answer",
+            "contains": []
+          }
+        },
+        {
+          "text": "Whose permission does Ariana need before giving me the rune?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "mother",
+              "Anya"
+            ],
+            "factIds": [
+              "ariana-consent"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[0].sections[0].steps[0]",
+              "review": "extracted"
+            },
+            "sourceRecordIds": [
+              "ultima6:quest:act-i-liberating-the-shrines:compassion-britain:hint"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "honesty-promise",
+      "turns": [
+        {
+          "text": "How do I get Manrel key?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "flowers",
+              "Beyvin"
+            ],
+            "factIds": [
+              "manrel-key"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[0].sections[1].steps[0]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Where is the Blue Bottle Inn secret door?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "storeroom wall"
+            ],
+            "factIds": [
+              "catacomb-door"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[0].sections[1].steps[1]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I retrieve the Honesty rune?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "flowers",
+              "tomb"
+            ],
+            "factIds": [
+              "beyvin-flowers"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[0].sections[1].steps[2]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I use the Honesty mantra?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "AHM",
+              "Verity Isle"
+            ],
+            "factIds": [
+              "honesty-mantra"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[0].sections[1].steps[3]",
+              "review": "extracted"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "valor-mouse",
+      "turns": [
+        {
+          "text": "How do I recruit Sherry?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "cheese",
+              "JOIN"
+            ],
+            "factIds": [
+              "sherry-join"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[0].sections[2].steps[0]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Where do I take Sherry?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Sword and Keg",
+              "Jhelom"
+            ],
+            "factIds": [
+              "sherry-jhelom"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[0].sections[2].steps[1]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How does Sherry get the rune?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "mouse hole",
+              "regroup"
+            ],
+            "factIds": [
+              "sherry-rune"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[0].sections[2].steps[2]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I use the Valor mantra?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "RA",
+              "Moonstone"
+            ],
+            "factIds": [
+              "valor-mantra"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[0].sections[2].steps[3]",
+              "review": "extracted"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "justice-witness",
+      "turns": [
+        {
+          "text": "How do I get Lenora permission?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "PERMISSION",
+              "Boskin"
+            ],
+            "factIds": [
+              "lenora-permission"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[0].sections[3].steps[0]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I get Pridgarm key?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "jail key",
+              "KIDS"
+            ],
+            "factIds": [
+              "pridgarm-key"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[0].sections[3].steps[1]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I expose Boskin lie?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Lenora",
+              "TRUTH"
+            ],
+            "factIds": [
+              "boskin-truth"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[0].sections[3].steps[2]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I get the Justice rune?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Slaughtered Lamb",
+              "BEH"
+            ],
+            "factIds": [
+              "justice-rune"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[0].sections[3].steps[3]",
+              "review": "extracted"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "sacrifice-crafting",
+      "turns": [
+        {
+          "text": "How do I get panpipes?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Ben",
+              "Julia",
+              "board"
+            ],
+            "factIds": [
+              "panpipes-makers"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[0].sections[4].steps[0]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I learn Gwenno song?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "STONES",
+              "6789878767653"
+            ],
+            "factIds": [
+              "gwenno-song"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[0].sections[4].steps[1]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I get Selganor rune?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Artisan Guild",
+              "tune"
+            ],
+            "factIds": [
+              "selganor-rune"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[0].sections[4].steps[2]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I use the Sacrifice mantra?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "CAH",
+              "Moonstone"
+            ],
+            "factIds": [
+              "sacrifice-mantra"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[0].sections[4].steps[3]",
+              "review": "extracted"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "honor-loan",
+      "turns": [
+        {
+          "text": "How do I get Whitsaber rune?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "lends"
+            ],
+            "factIds": [
+              "whitsaber-loan"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[0].sections[5].steps[0]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Where is the Honor rune?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "central pedestal",
+              "promise"
+            ],
+            "factIds": [
+              "honor-pedestal"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[0].sections[5].steps[1]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I return the Honor rune?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "SUMM",
+              "return",
+              "pedestal"
+            ],
+            "factIds": [
+              "honor-return"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[0].sections[5].steps[2]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "What happens after reporting to Whitsaber?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "virtue boost"
+            ],
+            "factIds": [
+              "whitsaber-report"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[0].sections[5].steps[3]",
+              "review": "extracted"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "spirituality-location",
+      "turns": [
+        {
+          "text": "How do I jog Marney memory?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "POEM",
+              "BASKET"
+            ],
+            "factIds": [
+              "marney-keywords"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[0].sections[6].steps[1]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Where is the Spirituality rune?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "hope chest",
+              "Marney"
+            ],
+            "factIds": [
+              "spirituality-rune"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[0].sections[6].steps[2]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I reach Spirituality with the Orb?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "two tiles west",
+              "one tile south",
+              "does not require"
+            ],
+            "factIds": [
+              "spirituality-orb"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[0].sections[6].steps[3]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I reach Spirituality by blue moongate?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "midnight",
+              "any blue moongate"
+            ],
+            "factIds": [
+              "spirituality-midnight"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[0].sections[6].steps[4]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I use the Spirituality mantra?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "OM",
+              "moonstone"
+            ],
+            "factIds": [
+              "spirituality-mantra"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[0].sections[6].steps[5]",
+              "review": "extracted"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "humility-riddle",
+      "turns": [
+        {
+          "text": "How do I answer Antonio riddle?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "CONOR",
+              "Antonio",
+              "gain the rune"
+            ],
+            "factIds": [
+              "humility-rune"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[0].sections[7].steps[2]",
+              "review": "extracted"
+            },
+            "sourceRecordIds": [
+              "ultima6:quest:act-i-liberating-the-shrines:humility-new-magincia:hint"
+            ]
+          }
+        },
+        {
+          "text": "Who is the humble villager?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Conor"
+            ],
+            "factIds": [
+              "conor-villagers"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[0].sections[7].steps[1]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I get the Humility rune?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "CONOR",
+              "Antonio"
+            ],
+            "factIds": [
+              "humility-rune"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[0].sections[7].steps[2]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I use the Humility mantra?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "LUM",
+              "Isle of the Avatar"
+            ],
+            "factIds": [
+              "humility-mantra"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[0].sections[7].steps[3]",
+              "review": "extracted"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "tablet-leads",
+      "turns": [
+        {
+          "text": "How do I show Mariah the Gargish tome?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Lycaeum",
+              "BOOK"
+            ],
+            "factIds": [
+              "mariah-book"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[1].sections[0].steps[0]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "What does the Silver Tablet require?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Mariah",
+              "needs other half"
+            ],
+            "factIds": [
+              "silver-tablet-other-half"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[1].sections[0].keywords[0].helper",
+              "review": "extracted"
+            },
+            "sourceRecordIds": [
+              "ultima6:quest:act-ii-prophecy-pirates:translate-the-gargish-tome:keyword:0"
+            ]
+          }
+        },
+        {
+          "text": "How do I ask the gypsies about the tablet?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Homer",
+              "Buccaneer"
+            ],
+            "factIds": [
+              "zoltan-homer"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[1].sections[0].steps[2]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Why does Homer require the guild?",
+          "expected": {
+            "decision": "not-answer",
+            "contains": [],
+            "notContains": [
+              "because Homer distrusts",
+              "because he only trusts guild members"
+            ],
+            "oracleRationale": "Homer's insistence on guild membership is explicit; his reason for imposing it is not supplied."
+          }
+        },
+        {
+          "text": "What does Homer require when I ask about Hawkins?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "HAWKINS",
+              "join the guild"
+            ],
+            "factIds": [
+              "homer-guild"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[1].sections[1].steps[0]",
+              "review": "extracted"
+            },
+            "sourceRecordIds": [
+              "ultima6:quest:act-ii-prophecy-pirates:join-the-thieves-guild:hint"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "guild-belt",
+      "turns": [
+        {
+          "text": "What does Budo require?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Phoenix",
+              "belt",
+              "sewers"
+            ],
+            "factIds": [
+              "budo-belt"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[1].sections[1].steps[1]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I take Phoenix belt?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "INVISIBILITY",
+              "PICKPOCKET"
+            ],
+            "factIds": [
+              "phoenix-pickpocket"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[1].sections[1].steps[2]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "What happens when I return Budo belt?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "guild password",
+              "Homer"
+            ],
+            "factIds": [
+              "budo-password"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[1].sections[1].steps[3]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Who is Phoenix mother?",
+          "expected": {
+            "decision": "not-answer",
+            "contains": []
+          }
+        }
+      ]
+    },
+    {
+      "id": "map-dungeons",
+      "turns": [
+        {
+          "text": "How do I get Ybarra map piece?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "food",
+              "Shame"
+            ],
+            "factIds": [
+              "ybarra-map"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[1].sections[2].steps[0]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I get Wrong map piece?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "lever puzzle",
+              "level three"
+            ],
+            "factIds": [
+              "wrong-map"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[1].sections[2].steps[1]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I get Hawknose map piece?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "queen",
+              "body"
+            ],
+            "factIds": [
+              "hawknose-map"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[1].sections[2].steps[2]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I get the shipwreck map piece?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "71S 15E",
+              "stern"
+            ],
+            "factIds": [
+              "shipwreck-map"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[1].sections[2].steps[3]",
+              "review": "extracted"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "map-trades",
+      "turns": [
+        {
+          "text": "How do I get Morchella map piece?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "MAGIC SHIELD"
+            ],
+            "factIds": [
+              "morchella-map"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[1].sections[2].steps[4]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I get Bonn map piece?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "harpsichord",
+              "cellar"
+            ],
+            "factIds": [
+              "bonn-map"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[1].sections[2].steps[5]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I get Arturos map piece?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "locket",
+              "Paws"
+            ],
+            "factIds": [
+              "arturos-map"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[1].sections[2].steps[6]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I get Whitsaber map piece?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "GORDON",
+              "Trinsic"
+            ],
+            "factIds": [
+              "gordon-map"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[1].sections[2].steps[7]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I get Homer final map piece?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "eight fragments",
+              "final piece"
+            ],
+            "factIds": [
+              "homer-map"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[1].sections[2].steps[8]",
+              "review": "extracted"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "pirate-cave",
+      "turns": [
+        {
+          "text": "How do I sail to Pirate Cave?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "southeast",
+              "Homer"
+            ],
+            "factIds": [
+              "pirate-island"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[1].sections[3].steps[0]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I follow Pirate Cave signs?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "first",
+              "opposite"
+            ],
+            "factIds": [
+              "pirate-first-sign"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[1].sections[3].steps[1]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I navigate Maze of Death?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "right wall",
+              "traps"
+            ],
+            "factIds": [
+              "pirate-maze"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[1].sections[3].steps[2]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "What do I get in Pirate Cave?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "silver tablet",
+              "Storm Cloak",
+              "Magic Fan"
+            ],
+            "factIds": [
+              "pirate-loot"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[1].sections[3].steps[3]",
+              "review": "extracted"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "gargish-language",
+      "turns": [
+        {
+          "text": "How do I enter Hythloth?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Shrine of Humility",
+              "sealed door"
+            ],
+            "factIds": [
+              "hythloth-entry"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[2].sections[0].steps[0]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I descend Hythloth?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "level 4",
+              "powder kegs"
+            ],
+            "factIds": [
+              "hythloth-descent"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[2].sections[0].steps[1]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I get Captain Johne scroll?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "GARGISH",
+              "vocabulary"
+            ],
+            "factIds": [
+              "johne-scroll"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[2].sections[0].steps[2]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I use the Gargish scroll?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "USE",
+              "fluency"
+            ],
+            "factIds": [
+              "gargish-use"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[2].sections[0].steps[3]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "What is the Gargish word for laptop?",
+          "expected": {
+            "decision": "not-answer",
+            "contains": []
+          }
+        }
+      ]
+    },
+    {
+      "id": "diplomatic-access",
+      "turns": [
+        {
+          "text": "How do I recruit Beh Lem?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "JOIN",
+              "safe passage"
+            ],
+            "factIds": [
+              "beh-lem-safe"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[2].sections[1].steps[0]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I surrender to Draxinusom?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "SURRENDER",
+              "audience"
+            ],
+            "factIds": [
+              "draxinusom-surrender"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[2].sections[1].steps[1]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "What does the Amulet of Submission do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Wear",
+              "move freely"
+            ],
+            "factIds": [
+              "submission-amulet"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[2].sections[1].steps[2]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Is Beh Lem in my party already?",
+          "expected": {
+            "decision": "not-answer",
+            "contains": []
+          }
+        }
+      ]
+    },
+    {
+      "id": "balloon-transformations",
+      "turns": [
+        {
+          "text": "Where are the Balloon Plans?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Sutek",
+              "65S 52E"
+            ],
+            "factIds": [
+              "balloon-plans"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[2].sections[2].steps[0]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I get Balloon Cloth?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "40 spidersilk",
+              "Arbeth",
+              "Charlotte"
+            ],
+            "factIds": [
+              "silk-thread-cloth"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[2].sections[2].steps[1]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I get the Balloon Bag?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Marissa",
+              "Michelle"
+            ],
+            "factIds": [
+              "bag-basket"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[2].sections[2].steps[2]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I assemble the Hot-Air Balloon?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "rope",
+              "large pot",
+              "USE"
+            ],
+            "factIds": [
+              "balloon-assembly"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[2].sections[2].steps[3]",
+              "review": "extracted"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "principles-singularity",
+      "turns": [
+        {
+          "text": "What are the Gargoyle Principles mantras?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Control",
+              "Passion",
+              "Diligence",
+              "UN",
+              "OR",
+              "US"
+            ],
+            "factIds": [
+              "principle-mantras"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[2].sections[3].steps[0]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I reach the Shrine of Singularity?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "balloon",
+              "plateau"
+            ],
+            "factIds": [
+              "singularity-route"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[2].sections[3].steps[1]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I use the Singularity mantra?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "UNORUS",
+              "Sacred Quest"
+            ],
+            "factIds": [
+              "singularity-mantra"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[2].sections[3].steps[2]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Is Mondain Minax father?",
+          "expected": {
+            "decision": "not-answer",
+            "contains": []
+          }
+        }
+      ]
+    },
+    {
+      "id": "stonegate-cube",
+      "turns": [
+        {
+          "text": "How do I approach Stonegate?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "peacefully",
+              "10N 37E"
+            ],
+            "factIds": [
+              "stonegate-peace"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[3].sections[0].steps[0]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I get the Stonegate key?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "fresh fish",
+              "HELP"
+            ],
+            "factIds": [
+              "stonegate-key"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[3].sections[0].steps[1]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Where is the Vortex Cube chamber?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "secret passages",
+              "lower floors"
+            ],
+            "factIds": [
+              "cube-chamber"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[3].sections[0].steps[2]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Is the Vortex Cube in my inventory?",
+          "expected": {
+            "decision": "not-answer",
+            "contains": []
+          }
+        }
+      ]
+    },
+    {
+      "id": "lens-makers",
+      "turns": [
+        {
+          "text": "How do I get the red lens?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Hall of Knowledge",
+              "Lor-wis-lem"
+            ],
+            "factIds": [
+              "red-lens"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[3].sections[1].steps[0]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I get the blue lens?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Ephemerides",
+              "glass sword",
+              "Moonglow"
+            ],
+            "factIds": [
+              "blue-lens"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[3].sections[1].steps[1]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I place the twin lenses?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "left flame",
+              "right flame"
+            ],
+            "factIds": [
+              "lens-placement"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[3].sections[2].steps[1]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Where is the blue lens on Mars?",
+          "expected": {
+            "decision": "not-answer",
+            "contains": []
+          }
+        }
+      ]
+    },
+    {
+      "id": "final-ritual",
+      "turns": [
+        {
+          "text": "What does the Vortex Cube require?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "all eight Moonstones"
+            ],
+            "factIds": [
+              "cube-charge"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[3].sections[2].steps[0]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I arrange the Codex lenses?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Britannian",
+              "left",
+              "gargoyle",
+              "right"
+            ],
+            "factIds": [
+              "lens-placement"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[3].sections[2].steps[1]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I activate the Vortex Cube?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "both beams",
+              "USE"
+            ],
+            "factIds": [
+              "cube-activation"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[3].sections[2].steps[2]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Have I completed the final ritual?",
+          "expected": {
+            "decision": "not-answer",
+            "contains": []
+          }
+        }
+      ]
+    },
+    {
+      "id": "library-books",
+      "turns": [
+        {
+          "text": "How do I deliver Wizard of Oz?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Lord British",
+              "twenty gems"
+            ],
+            "factIds": [
+              "side-1-step-0"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.sideQuests[1].steps[0]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I deliver the Boardgame Strategy book?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Dr. Cat",
+              "150 gold"
+            ],
+            "factIds": [
+              "side-1-step-1"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.sideQuests[1].steps[1]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I deliver Lost Book of Mantras?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "wisps",
+              "information",
+              "substance"
+            ],
+            "factIds": [
+              "side-1-step-2"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.sideQuests[1].steps[2]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Who wrote the lost Gargish sequel?",
+          "expected": {
+            "decision": "not-answer",
+            "contains": []
+          }
+        }
+      ]
+    },
+    {
+      "id": "trade-circuit",
+      "turns": [
+        {
+          "text": "How do I trade grain and flour?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Linda",
+              "Grison",
+              "Cullen"
+            ],
+            "factIds": [
+              "side-0-step-0"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.sideQuests[0].steps[0]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I trade wool?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Aurendir",
+              "Charlotte"
+            ],
+            "factIds": [
+              "side-0-step-1"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.sideQuests[0].steps[1]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I trade honey jars?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Minoc",
+              "Zeke",
+              "Empath Abbey"
+            ],
+            "factIds": [
+              "side-0-step-2"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.sideQuests[0].steps[2]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Who is Linda daughter?",
+          "expected": {
+            "decision": "not-answer",
+            "contains": []
+          }
+        }
+      ]
+    },
+    {
+      "id": "swamp-deceit",
+      "turns": [
+        {
+          "text": "How do I prepare for Swamp Cave?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "every companion",
+              "swamp boots"
+            ],
+            "factIds": [
+              "side-3-step-0"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.sideQuests[3].steps[0]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I reach Swamp Cave?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Kafiristan",
+              "38"
+            ],
+            "factIds": [
+              "side-3-step-1"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.sideQuests[3].steps[1]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I prepare for Dungeon Deceit?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "ship",
+              "Reveal",
+              "Vanish"
+            ],
+            "factIds": [
+              "side-4-step-0"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.sideQuests[4].steps[0]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I navigate Deceit traps?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Reveal",
+              "western",
+              "solo"
+            ],
+            "factIds": [
+              "side-4-step-1"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.sideQuests[4].steps[1]",
+              "review": "extracted"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "clue-hunt",
+      "turns": [
+        {
+          "text": "How do I start Chuckles Trail?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Nystul",
+              "chest"
+            ],
+            "factIds": [
+              "side-2-step-0"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.sideQuests[2].steps[0]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I follow Chuckles scrolls?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "beehive",
+              "harpsichord",
+              "cauldron"
+            ],
+            "factIds": [
+              "side-2-step-1"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.sideQuests[2].steps[1]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I finish Chuckles Trail?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "stone lions",
+              "Smith"
+            ],
+            "factIds": [
+              "side-2-step-2"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.sideQuests[2].steps[2]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Who is Smith mother?",
+          "expected": {
+            "decision": "not-answer",
+            "contains": []
+          }
+        }
+      ]
+    },
+    {
+      "id": "optional-heroes",
+      "turns": [
+        {
+          "text": "How do I reach Despise entrance?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "northeast",
+              "central valley"
+            ],
+            "factIds": [
+              "side-5-step-0"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.sideQuests[5].steps[0]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I cross Despise lake?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "eastern ladder",
+              "underground lake"
+            ],
+            "factIds": [
+              "side-5-step-1"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.sideQuests[5].steps[1]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I continue into Heroes Hole?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "first floor",
+              "no essential quest item"
+            ],
+            "factIds": [
+              "side-5-step-2"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.sideQuests[5].steps[2]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Who is Quantum Turnip?",
+          "expected": {
+            "decision": "not-answer",
+            "contains": []
+          }
+        },
+        {
+          "text": "Where is it?",
+          "expected": {
+            "decision": "not-answer",
+            "contains": []
+          }
+        }
+      ]
+    },
+    {
+      "id": "followup-anya",
+      "turns": [
+        {
+          "text": "How do I get Anya permission?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "RUNE",
+              "PERMISSION",
+              "YES"
+            ],
+            "factIds": [
+              "anya-permission"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[0].sections[0].steps[1]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Where is she?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Blue Boar Tavern"
+            ],
+            "factIds": [
+              "anya-permission"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[0].sections[0].steps[1]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Who is Quantum Turnip?",
+          "expected": {
+            "decision": "not-answer",
+            "contains": []
+          }
+        },
+        {
+          "text": "Where is she?",
+          "expected": {
+            "decision": "not-answer",
+            "contains": []
+          }
+        }
+      ]
+    },
+    {
+      "id": "followup-sherry",
+      "turns": [
+        {
+          "text": "How do I recruit Sherry?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "cheese",
+              "JOIN"
+            ],
+            "factIds": [
+              "sherry-join"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[0].sections[2].steps[0]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Where do I take her?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Sword and Keg",
+              "Jhelom"
+            ],
+            "factIds": [
+              "sherry-jhelom"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[0].sections[2].steps[1]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How does she get the rune?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "mouse hole"
+            ],
+            "factIds": [
+              "sherry-rune"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[0].sections[2].steps[2]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Is she in my party?",
+          "expected": {
+            "decision": "not-answer",
+            "contains": []
+          }
+        }
+      ]
+    },
+    {
+      "id": "followup-scroll",
+      "turns": [
+        {
+          "text": "How do I get the Gargish vocabulary scroll?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Captain Johne",
+              "GARGISH"
+            ],
+            "factIds": [
+              "johne-scroll"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[2].sections[0].steps[2]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I use it?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "USE",
+              "fluency"
+            ],
+            "factIds": [
+              "gargish-use"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[2].sections[0].steps[3]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Does it translate modern English slang?",
+          "expected": {
+            "decision": "not-answer",
+            "contains": []
+          }
+        },
+        {
+          "text": "Who is Quantum Turnip?",
+          "expected": {
+            "decision": "not-answer",
+            "contains": []
+          }
+        },
+        {
+          "text": "How do I use it?",
+          "expected": {
+            "decision": "not-answer",
+            "contains": []
+          }
+        }
+      ]
+    },
+    {
+      "id": "followup-red-lens",
+      "turns": [
+        {
+          "text": "How do I get the red lens?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Hall of Knowledge",
+              "Lor-wis-lem"
+            ],
+            "factIds": [
+              "red-lens"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[3].sections[1].steps[0]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Who repairs it?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Lor-wis-lem"
+            ],
+            "factIds": [
+              "red-lens"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[3].sections[1].steps[0]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Where is it before repair?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Hall of Knowledge"
+            ],
+            "factIds": [
+              "red-lens"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[3].sections[1].steps[0]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "What does it cost in the SNES version?",
+          "expected": {
+            "decision": "not-answer",
+            "contains": []
+          }
+        }
+      ]
+    },
+    {
+      "id": "followup-blue-lens",
+      "turns": [
+        {
+          "text": "How do I get the Britannian lens?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Ephemerides",
+              "glass sword"
+            ],
+            "factIds": [
+              "blue-lens"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[3].sections[1].steps[1]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Where is he?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Moonglow"
+            ],
+            "factIds": [
+              "blue-lens"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[3].sections[1].steps[1]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "What does he need?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "glass sword"
+            ],
+            "factIds": [
+              "blue-lens"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[3].sections[1].steps[1]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Who is his daughter?",
+          "expected": {
+            "decision": "not-answer",
+            "contains": []
+          }
+        }
+      ]
+    },
+    {
+      "id": "followup-cube",
+      "turns": [
+        {
+          "text": "What does the Vortex Cube require?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "all eight Moonstones"
+            ],
+            "factIds": [
+              "cube-charge"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[3].sections[2].steps[0]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "How do I activate it?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "both beams",
+              "USE"
+            ],
+            "factIds": [
+              "cube-activation"
+            ],
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[3].sections[2].steps[2]",
+              "review": "extracted"
+            }
+          }
+        },
+        {
+          "text": "Have I already charged it?",
+          "expected": {
+            "decision": "not-answer",
+            "contains": []
+          }
+        },
+        {
+          "text": "Who is Quantum Turnip?",
+          "expected": {
+            "decision": "not-answer",
+            "contains": []
+          }
+        },
+        {
+          "text": "How do I activate it?",
+          "expected": {
+            "decision": "not-answer",
+            "contains": []
+          }
+        }
+      ]
+    }
+  ]
+}

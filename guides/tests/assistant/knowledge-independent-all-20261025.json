@@ -1,0 +1,816 @@
+{
+  "schemaVersion": 1,
+  "suite": "independent-source-conversations-all-20261025",
+  "frozenAt": "2026-10-24T18:54:20.837427+00:00",
+  "oracleAuthorship": "Unmodified concatenation of two independently authored source-first suites. Individual first executions are retained; the combined corpus is now observed regression evidence.",
+  "componentFiles": {
+    "knowledge-independent-ultima-20261025.json": "5193e464b5b16f9aae089442db7e0dcacfd489da937875510b1fac508f38583c",
+    "knowledge-independent-other-20261025.json": "60c58336240b09371d1fc0fb2546606748087ce14f3290951eb615c498a0c2aa"
+  },
+  "validationScope": "Source-backed guide claims and boundaries; complete useful-claim review required alongside strict source/phrase scores. No source oracles changed after execution.",
+  "sourceHashesAtFreeze": {
+    "guides/data/assistant/knowledge/ultima5.json": "fde0c4797ad32d111ad31d9def56e9839c6802339da3cc95ef8d36c93e72dced",
+    "guides/data/assistant/knowledge/ultima6.json": "e3d48258056b14576491045b811becd40b136b3e8a8223d867462a8ff919dd65",
+    "guides/data/assistant/knowledge/ultima7.json": "55bc9f21c2b1d12b20aed45984e1f12cf29b0f8ead0d13141362b363e278d634",
+    "guides/js/Ultima5.js": "e2699ed2d8aca9bf3465c7dcd262461f5fca59f1fb4cbd41361e0f5c5a96dae5",
+    "guides/js/Ultima6.js": "a0b07db60d7c30ac19bb64b56fa26b1428a6437f437f087eb2d75109afae4898",
+    "guides/js/Ultima7.js": "c3cd92659e5e959c6d172ba38d56ba85148729b82185768557cb595e3bfb6085",
+    "guides/data/assistant/knowledge/alqadim.json": "795ef0e7cfa7a8909601f394fc98c692caaf01f2d32a938d914a4ca213eb35b4",
+    "guides/data/assistant/knowledge/albion.json": "91bb79665310b095418f793a50207b4dd578f689a8d013d59fde3d31b110f53b",
+    "guides/data/assistant/knowledge/starcraft.json": "8c49a3a1690b0e0f2c82a1a618022b66b09ea47eb67b168775d7ccaf6190764c",
+    "guides/js/AlQadim.js": "269798843206f12b76163c65b04301be278652115fbdbd46596f13f3ae7b5e5e",
+    "guides/js/Albion.js": "4adba84eca7af2436731b7053e3167a909f57f85edc611c6287411af84e4b1ca",
+    "guides/StarcraftBWAPI.html": "f43b3fcfbffddaadf2b4bf951b16652a9d1133d726b7efe06357f9a7cb925983"
+  },
+  "dialogues": [
+    {
+      "id": "u5-grapple-conversation",
+      "gameId": "ultima5",
+      "turns": [
+        {
+          "text": "I want the Grapple. Where can I find Lord Michael during the day, and where does he retire?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=opening-grapple.steps[0]",
+              "review": "extracted"
+            },
+            "contains": [
+              "Empath Abbey",
+              "courtyard by day",
+              "northwest bedroom"
+            ],
+            "requiredUsefulClaim": "Place Lord Michael at Empath Abbey, in the courtyard by day, retiring to the northwest bedroom.",
+            "sourceWitness": "Find Lord Michael at Empath Abbey: he is in the courtyard by day and retires to the northwest bedroom."
+          }
+        },
+        {
+          "text": "And what should I actually ask him about?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=opening-grapple.steps[1]",
+              "review": "extracted"
+            },
+            "contains": [
+              "GRAPPLE"
+            ],
+            "requiredUsefulClaim": "Tell the player to ask Lord Michael specifically about GRAPPLE.",
+            "sourceWitness": "Speak with Lord Michael and ask specifically about GRAPPLE."
+          }
+        },
+        {
+          "text": "Once he hands it over, where should I keep the hook?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=opening-grapple.steps[2]",
+              "review": "extracted"
+            },
+            "contains": [
+              "active party",
+              "inventory"
+            ],
+            "requiredUsefulClaim": "Tell the player to keep the Grappling Hook in the active party’s inventory.",
+            "sourceWitness": "Take the Grappling Hook he provides and keep it in the active party’s inventory."
+          }
+        },
+        {
+          "text": "Is he standing in that courtyard in my save right now?",
+          "expected": {
+            "decision": "not-answer",
+            "boundary": "The guide gives a general schedule, but the conversation supplies no current save state, current game time, or observed NPC position."
+          }
+        }
+      ]
+    },
+    {
+      "id": "u5-cape-plans-conversation",
+      "gameId": "ultima5",
+      "turns": [
+        {
+          "text": "For the HMS Cape plans, how do I approach the shipwright building?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=opening-hms-cape.steps[0]",
+              "review": "extracted"
+            },
+            "contains": [
+              "East Britanny",
+              "north",
+              "Oaken Oar",
+              "west entrance"
+            ],
+            "requiredUsefulClaim": "Direct the player north in East Britanny to the Oaken Oar shipwright building and through the west entrance.",
+            "sourceWitness": "Enter East Britanny and go north to the Oaken Oar shipwright’s building; use the west entrance."
+          }
+        },
+        {
+          "text": "What about the locked doors inside—how do I get through them?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=opening-hms-cape.steps[1]",
+              "review": "extracted"
+            },
+            "contains": [
+              "eastern room",
+              "both ordinary locked doors",
+              "lockpicks"
+            ],
+            "requiredUsefulClaim": "Direct the player to the eastern room and say to jimmy both ordinary locked doors with lockpicks.",
+            "sourceWitness": "Move to the eastern room and jimmy both ordinary locked doors with lockpicks."
+          }
+        },
+        {
+          "text": "Where in that room should I search for the plans?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=opening-hms-cape.steps[2]",
+              "review": "extracted"
+            },
+            "contains": [
+              "drawers",
+              "HMS Cape plans"
+            ],
+            "requiredUsefulClaim": "Tell the player to search the room’s drawers to recover the HMS Cape plans.",
+            "sourceWitness": "Search the drawers in the room until you recover the HMS Cape plans."
+          }
+        },
+        {
+          "text": "What kind of wood are those two doors made from?",
+          "expected": {
+            "decision": "not-answer",
+            "boundary": "The source describes ordinary locked doors and lockpicks, but identifies no construction material or wood species for those doors."
+          }
+        }
+      ]
+    },
+    {
+      "id": "u6-compassion-permission-conversation",
+      "gameId": "ultima6",
+      "turns": [
+        {
+          "text": "Where do I meet Ariana about the rune, and whose approval does she need?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[0].sections[0].steps[0]",
+              "review": "extracted"
+            },
+            "contains": [
+              "Conservatory",
+              "RUNE",
+              "mother Anya's permission"
+            ],
+            "requiredUsefulClaim": "Locate Ariana at the Conservatory, tell the player to ask for RUNE, and identify her mother Anya as the person whose permission she needs.",
+            "sourceWitness": "Meet Ariana at the Conservatory and ask for the `RUNE`. She needs her mother Anya's permission."
+          }
+        },
+        {
+          "text": "Okay, where do I find her mother and what do I say to get that approval?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[0].sections[0].steps[1]",
+              "review": "extracted"
+            },
+            "contains": [
+              "Blue Boar Tavern",
+              "RUNE",
+              "PERMISSION",
+              "YES"
+            ],
+            "requiredUsefulClaim": "Locate Anya at the Blue Boar Tavern; give RUNE or PERMISSION as conversation topics and YES as the reply when asked.",
+            "sourceWitness": "Visit Anya at the Blue Boar Tavern, mention `RUNE` or `PERMISSION`, and answer `YES` when asked."
+          }
+        },
+        {
+          "text": "How do I collect it once permission is sorted out?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[0].sections[0].steps[2]",
+              "review": "extracted"
+            },
+            "contains": [
+              "Return to Ariana",
+              "confirm permission",
+              "Rune of Compassion"
+            ],
+            "requiredUsefulClaim": "Tell the player to return to Ariana and confirm permission to receive the Rune of Compassion.",
+            "sourceWitness": "Return to Ariana, confirm permission, and receive the Rune of Compassion."
+          }
+        },
+        {
+          "text": "Exactly how old is Anya?",
+          "expected": {
+            "decision": "not-answer",
+            "boundary": "The approved source records identify Anya and her permission role but do not give her age; no numeric age may be invented."
+          }
+        }
+      ]
+    },
+    {
+      "id": "u6-sherry-mouse-conversation",
+      "gameId": "ultima6",
+      "turns": [
+        {
+          "text": "How do I persuade Sherry to come along?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[0].sections[2].steps[0]",
+              "review": "extracted"
+            },
+            "contains": [
+              "Castle Britannia's kitchen",
+              "cheese",
+              "JOIN"
+            ],
+            "requiredUsefulClaim": "Direct the player to Castle Britannia’s kitchen, have them offer cheese to Sherry, and invite her to JOIN.",
+            "sourceWitness": "In Castle Britannia's kitchen, pick up cheese, offer it to Sherry, and invite her to `JOIN`."
+          }
+        },
+        {
+          "text": "Where do I take her for the mouse hole, and who should I be controlling?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[0].sections[2].steps[1]",
+              "review": "extracted"
+            },
+            "contains": [
+              "Sword and Keg",
+              "Jhelom",
+              "mouse hole",
+              "switch control to her"
+            ],
+            "requiredUsefulClaim": "Locate the mouse hole at the Sword and Keg in Jhelom, position Sherry there, and switch control to her.",
+            "sourceWitness": "Travel to the Sword and Keg in Jhelom, position Sherry at the mouse hole, and switch control to her."
+          }
+        },
+        {
+          "text": "Once she is there, how do we get the rune back to the group?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[0].sections[2].steps[2]",
+              "review": "extracted"
+            },
+            "contains": [
+              "Enter the mouse hole as Sherry",
+              "grab the rune",
+              "regroup"
+            ],
+            "requiredUsefulClaim": "Enter the mouse hole as Sherry to grab the rune, then regroup with the party.",
+            "sourceWitness": "Enter the mouse hole as Sherry to grab the rune, then regroup with the party."
+          }
+        },
+        {
+          "text": "Does that exact recruitment method also work in the SNES edition?",
+          "expected": {
+            "decision": "not-answer",
+            "boundary": "The supplied guide witnesses do not establish SNES-specific recruitment behavior or equivalence across editions."
+          }
+        }
+      ]
+    },
+    {
+      "id": "u7-trinsic-investigation-conversation",
+      "gameId": "ultima7",
+      "turns": [
+        {
+          "text": "I am investigating the Trinsic stables murder. What should I be looking for at the crime scene?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/js/Ultima7.js",
+              "locator": "DB.mainQuest[0].content",
+              "review": "extracted"
+            },
+            "contains": [
+              "crime scene",
+              "key"
+            ],
+            "requiredUsefulClaim": "Tell the player to examine the crime scene for a key.",
+            "sourceWitness": "Investigate the ritualistic murder in the stables. Examine the crime scene for a key."
+          }
+        },
+        {
+          "text": "Who should I question, and what clue should those interviews give me about the suspect and the ship?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/js/Ultima7.js",
+              "locator": "DB.mainQuest[0].content",
+              "review": "extracted"
+            },
+            "contains": [
+              "Spark",
+              "Gilberto",
+              "Klog",
+              "man with a hook",
+              "Crown Jewel"
+            ],
+            "requiredUsefulClaim": "Name Spark, Gilberto, and Klog as interview subjects, identify the suspect clue as a man with a hook, and identify the escape vessel as the Crown Jewel. Do not turn that clue into an unsupported named identity.",
+            "sourceWitness": "Interview Spark, Gilberto, and Klog to identify the suspect (man with a hook) and his escape vessel (the Crown Jewel)."
+          }
+        },
+        {
+          "text": "How do I get permission to leave the city after the investigation, and what password do I receive?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/js/Ultima7.js",
+              "locator": "DB.mainQuest[0].content",
+              "review": "extracted"
+            },
+            "contains": [
+              "Mayor Finnigan",
+              "copy protection quiz",
+              "Blackbird"
+            ],
+            "requiredUsefulClaim": "Tell the player to report to Mayor Finnigan and pass his copy-protection quiz to receive the exit password Blackbird.",
+            "sourceWitness": "Investigate the ritualistic murder in the stables. Examine the crime scene for a key. Interview Spark, Gilberto, and Klog to identify the suspect (man with a hook) and his escape vessel (the Crown Jewel). Report to Mayor Finnigan and pass his copy protection quiz with these answers:<br><br><b class='text-yellow-300'>Spektran latitude:</b> 120<br><b class='text-yellow-300'>Terfin longitude:</b> 120<br><b class='text-yellow-300'>Dagger Isle latitude:</b> 0<br><b class='text-yellow-300'>Skara Brae latitude:</b> 30<br><b class='text-yellow-300'>Deep Forest latitude:</b> 60<br><b class='text-yellow-300'>Buccaneer's Den latitude:</b> 60<br><b class='text-yellow-300'>Skara Brae longitude:</b> 60<br><br>He will then give you the password 'Blackbird' to leave the city."
+          }
+        },
+        {
+          "text": "Is that password already recorded in my current save?",
+          "expected": {
+            "decision": "not-answer",
+            "boundary": "The guide explains obtaining the password, but no current save contents or completed investigation state have been supplied."
+          }
+        }
+      ]
+    },
+    {
+      "id": "u7-wisp-emp-conversation",
+      "gameId": "ultima7",
+      "turns": [
+        {
+          "text": "Where should I start looking for the silent wisp?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/js/Ultima7.js",
+              "locator": "DB.mainQuest[2].content",
+              "review": "extracted"
+            },
+            "contains": [
+              "Deep Forest",
+              "silent wisp"
+            ],
+            "requiredUsefulClaim": "Direct the player to the Deep Forest to find the silent wisp.",
+            "sourceWitness": "Go to the Deep Forest and find the silent wisp."
+          }
+        },
+        {
+          "text": "What are the emps expecting as a bribe, and where can I get it?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/js/Ultima7.js",
+              "locator": "DB.mainQuest[2].content",
+              "review": "extracted"
+            },
+            "contains": [
+              "honey",
+              "Bee Cave",
+              "bribe the emps"
+            ],
+            "requiredUsefulClaim": "Tell the player to get honey from the Bee Cave to bribe the emps.",
+            "sourceWitness": "Get honey from the Bee Cave to bribe the emps."
+          }
+        },
+        {
+          "text": "How do I get their whistle, and what does the wisp ask for once I can speak to it?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/js/Ultima7.js",
+              "locator": "DB.mainQuest[2].content",
+              "review": "extracted"
+            },
+            "contains": [
+              "Negotiate with the emps",
+              "wisp whistle",
+              "Alagner's notebook",
+              "New Magincia",
+              "exchange for information"
+            ],
+            "requiredUsefulClaim": "Explain that negotiating with the emps obtains the wisp whistle; use it to communicate with the wisp, which demands Alagner’s notebook from New Magincia in exchange for information.",
+            "sourceWitness": "Negotiate with the emps to get a wisp whistle. Use the whistle to communicate with the wisp, who demands Alagner's notebook from New Magincia in exchange for information."
+          }
+        },
+        {
+          "text": "Exactly how many ounces of honey do I have to hand over?",
+          "expected": {
+            "decision": "not-answer",
+            "boundary": "The source names honey as the bribe but supplies no exact quantity in ounces; no amount or unit conversion is supported."
+          }
+        }
+      ]
+    },
+    {
+      "id": "alqadim-independent-academy",
+      "gameId": "alqadim",
+      "turns": [
+        {
+          "text": "I'm at Sinbar's academy and ready for the trial. How do I actually start it?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.chapters[0].required[id=ch1_1]",
+              "review": "extracted"
+            },
+            "contains": [
+              "Sinbar",
+              "Speak"
+            ],
+            "requiredUsefulClaim": "Tell the player to speak with Master Sinbar to initiate the trial.",
+            "sourceWitness": "Speak with Master Sinbar to initiate the trial."
+          }
+        },
+        {
+          "text": "That moving disintegrator field is catching me. What does the guide recommend for avoiding it?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.chapters[0].required[id=ch1_2]",
+              "review": "extracted"
+            },
+            "contains": [
+              "walls"
+            ],
+            "requiredUsefulClaim": "Advise staying close to the walls to avoid the moving disintegrator field.",
+            "sourceWitness": "Avoid the moving disintegrator field (stay close to walls)."
+          }
+        },
+        {
+          "text": "When I'm done here, how do I leave for Zaratan?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.chapters[0].required[id=ch1_6]",
+              "review": "extracted"
+            },
+            "contains": [
+              "northern teleporter",
+              "Zaratan"
+            ],
+            "requiredUsefulClaim": "Direct the player into the northern teleporter to exit the academy to Zaratan.",
+            "sourceWitness": "Step into the northern teleporter to exit to Zaratan."
+          }
+        },
+        {
+          "text": "Exactly how many seconds does that moving field take to cross the academy room?",
+          "expected": {
+            "decision": "not-answer",
+            "boundary": "The selected guide evidence gives wall-hugging advice but no exact disintegrator-field crossing time; do not invent a duration."
+          }
+        }
+      ]
+    },
+    {
+      "id": "alqadim-independent-ship",
+      "gameId": "alqadim",
+      "turns": [
+        {
+          "text": "I'm searching the wrecked ship for the Ship Orb. Which part should I search?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.chapters[3].required[id=ch4_5]",
+              "review": "extracted"
+            },
+            "contains": [
+              "helm cabin"
+            ],
+            "requiredUsefulClaim": "Locate the Ship Orb in the helm cabin and tell the player to retrieve it there.",
+            "sourceWitness": "Retrieve the Ship Orb from the helm cabin."
+          }
+        },
+        {
+          "text": "What is it actually for?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.keyItems[5].description",
+              "review": "extracted"
+            },
+            "contains": [
+              "ship",
+              "navigation"
+            ],
+            "requiredUsefulClaim": "Explain that the Ship Orb powers and restores the corsair ship for navigation.",
+            "sourceWitness": "Powers and restores the corsair ship for navigation."
+          }
+        },
+        {
+          "text": "Before I leave the hold, is there anything I can break open for healing potions?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.chapters[3].optional[id=ch4_7]",
+              "review": "extracted"
+            },
+            "contains": [
+              "barrels",
+              "hold",
+              "healing potions"
+            ],
+            "requiredUsefulClaim": "Tell the player to smash barrels in the ship's hold to find hidden healing potions.",
+            "sourceWitness": "Smash barrels in the ship's hold to find hidden healing potions."
+          }
+        },
+        {
+          "text": "Can you tell whether the Ship Orb is already in my inventory in this save?",
+          "expected": {
+            "decision": "not-answer",
+            "boundary": "Static guide sources cannot establish the contents of the player's current save or inventory."
+          }
+        }
+      ]
+    },
+    {
+      "id": "albion-independent-toronto",
+      "gameId": "albion",
+      "turns": [
+        {
+          "text": "I spoke to Joe aboard Toronto, but I still need access to the COM room. Where do I go, and what code do I enter?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "QUEST_HINTS[\"toronto-intro\"][\"com-code\"]",
+              "review": "extracted"
+            },
+            "contains": [
+              "ladder",
+              "north",
+              "1042"
+            ],
+            "requiredUsefulClaim": "After talking to Joe, direct the player to the access ladder in the room north of Joe's and give code 1042 for COM/service-level access.",
+            "sourceWitness": "Talk to Joe, then use the access ladder in the room north of Joe’s; key in 1042 to enter the COM/service level access."
+          }
+        },
+        {
+          "text": "Once I'm in there, how do I get the Pistol and Canisters?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "QUEST_HINTS[\"toronto-intro\"][\"pistol\"]",
+              "review": "extracted"
+            },
+            "contains": [
+              "damaged console",
+              "Pistol",
+              "Canisters"
+            ],
+            "requiredUsefulClaim": "Tell the player to examine the damaged console in the COM room to obtain the Pistol and Canisters.",
+            "sourceWitness": "In the COM room, examine the damaged console to get the Pistol + Canisters; grab the extra Stimdrinks from the east drawer."
+          }
+        },
+        {
+          "text": "Where should I stash them before going through security?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "QUEST_HINTS[\"toronto-intro\"][\"hide-weapon\"]",
+              "review": "extracted"
+            },
+            "contains": [
+              "wall cabinet",
+              "service level"
+            ],
+            "requiredUsefulClaim": "Tell the player to hide the Pistol and Canisters in the wall cabinet on the service level before passing security.",
+            "sourceWitness": "After looting the COM room, hide the Pistol + Canisters in the wall cabinet on the service level before passing security."
+          }
+        },
+        {
+          "text": "Are my Pistol and Canisters hidden in that cabinet right now?",
+          "expected": {
+            "decision": "not-answer",
+            "boundary": "The guide specifies the hiding procedure but cannot inspect whether the player has performed it in the current save."
+          }
+        }
+      ]
+    },
+    {
+      "id": "albion-independent-khunag",
+      "gameId": "albion",
+      "turns": [
+        {
+          "text": "I'm planning the Kenget Kamulos trip. Who has to be in the party for me to get inside?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "QUEST_HINTS[\"kenget-kamulos\"][\"khunag-required\"]",
+              "review": "extracted"
+            },
+            "contains": [
+              "Khunag"
+            ],
+            "requiredUsefulClaim": "State that Khunag must be in the party to enter Kenget Kamulos.",
+            "sourceWitness": "Hard gate: you cannot enter Kenget Kamulos without Khunag in the party."
+          }
+        },
+        {
+          "text": "Where can I recruit him, and is talking to him part of it?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "QUEST_HINTS[\"maini\"][\"choose-siobhan-or-khunag\"]",
+              "review": "extracted"
+            },
+            "contains": [
+              "Beloveno",
+              "Khunag",
+              "dialogue"
+            ],
+            "requiredUsefulClaim": "Identify Beloveno as the recruitment place and explain that Khunag is recruited through dialogue.",
+            "sourceWitness": "Beloveno: you can recruit Siobhan directly, or recruit Khunag via dialogue (he’s required later for Kenget Kamulos)."
+          }
+        },
+        {
+          "text": "Switching from access to the fight itself: how should I handle Kamulos to obtain the High Knowledge?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "QUEST_HINTS[\"kenget-kamulos\"][\"defeat-kamulos\"]",
+              "review": "extracted"
+            },
+            "contains": [
+              "immune to Frost",
+              "Thorn Snare",
+              "damage"
+            ],
+            "requiredUsefulClaim": "Explain Kamulos's Frost immunity, advise using Thorn Snare to lock him down, and then focusing damage to secure the High Knowledge.",
+            "sourceWitness": "Kamulos is immune to Frost; use Thorn Snare to lock him down, then focus damage to secure the High Knowledge."
+          }
+        },
+        {
+          "text": "Is Khunag already in my current party?",
+          "expected": {
+            "decision": "not-answer",
+            "boundary": "Recruitment and entry requirements do not establish current party membership; the guide cannot inspect the player's save."
+          }
+        }
+      ]
+    },
+    {
+      "id": "starcraft-independent-remastered-map",
+      "gameId": "starcraft",
+      "turns": [
+        {
+          "text": "I'm following the integrated BWAPI map option for Remastered. Where does the downloaded ZIP need to be extracted?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#remastered-setup ol > li:nth-child(3)",
+              "review": "extracted"
+            },
+            "contains": [
+              "maps folder"
+            ],
+            "requiredUsefulClaim": "Direct extraction into the StarCraft maps folder; if giving Documents\\StarCraft\\Maps, identify it as a typical path rather than a verified path on the user's machine.",
+            "sourceWitness": "Extract the downloaded ZIP file to your StarCraft maps folder (typically Documents\\StarCraft\\Maps)."
+          }
+        },
+        {
+          "text": "And which menu do I use to open it?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#remastered-setup ol > li:nth-child(5)",
+              "review": "extracted"
+            },
+            "contains": [
+              "Single Player",
+              "Custom Game"
+            ],
+            "requiredUsefulClaim": "Direct the player to Single Player, then Custom Game, to open the integrated map.",
+            "sourceWitness": "Navigate to Single Player → Custom Game."
+          }
+        },
+        {
+          "text": "For that map, which Game Type should I choose so the AI works?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#remastered-setup ol > li:nth-child(7)",
+              "review": "extracted"
+            },
+            "contains": [
+              "Use Map Settings",
+              "Melee"
+            ],
+            "requiredUsefulClaim": "Require Use Map Settings and explain that the AI does not function properly in standard Melee.",
+            "sourceWitness": "Crucial Step: Under Game Type, you MUST select \"Use Map Settings\". The AI will not function properly in a standard Melee game."
+          }
+        },
+        {
+          "text": "Does that archive definitely work with every Remastered patch released as of today?",
+          "expected": {
+            "decision": "not-answer",
+            "boundary": "The static guide does not certify all current or future Remastered patch versions; do not turn its native-support statement into universal version compatibility."
+          }
+        }
+      ]
+    },
+    {
+      "id": "starcraft-independent-schnail",
+      "gameId": "starcraft",
+      "turns": [
+        {
+          "text": "If I choose SCHNAIL, do I have to install Brood War separately first?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#schnail-setup .text-blue-700",
+              "review": "extracted"
+            },
+            "contains": [
+              "own version",
+              "separately"
+            ],
+            "requiredUsefulClaim": "Explain that SCHNAIL includes its own version of Starcraft: Brood War, so a separate game installation is not needed.",
+            "sourceWitness": "Note: SCHNAIL includes its own version of Starcraft: Brood War, so you don't need to install the game separately."
+          }
+        },
+        {
+          "text": "Once I've logged into it, do I have to stay connected to the internet during matches?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#troubleshooting .text-yellow-700",
+              "review": "extracted"
+            },
+            "contains": [
+              "initial",
+              "login",
+              "local network"
+            ],
+            "requiredUsefulClaim": "Explain that the guide requires internet for the initial client login and that gameplay after login takes place on the local network with no ongoing internet requirement.",
+            "sourceWitness": "Note about SCHNAIL: An internet connection is only required for the initial client login. All gameplay after login happens on your local network, ensuring minimal latency and no ongoing internet requirement during play."
+          }
+        },
+        {
+          "text": "On a different setup point, why might its very first launch take a while?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#getting-started > .bg-blue-50 .text-blue-700",
+              "review": "extracted"
+            },
+            "contains": [
+              "downloads",
+              "game files"
+            ],
+            "requiredUsefulClaim": "Explain that the first launch may take time because it downloads necessary game files; do not claim a particular user's delay has been diagnosed.",
+            "sourceWitness": "Note: The first launch might take some time as it downloads necessary game files."
+          }
+        },
+        {
+          "text": "Which exact Java build is installed on my PC right now for SCHNAIL?",
+          "expected": {
+            "decision": "not-answer",
+            "boundary": "The guide's Java recommendation cannot establish the exact Java build currently installed on the user's computer."
+          }
+        }
+      ]
+    }
+  ]
+}

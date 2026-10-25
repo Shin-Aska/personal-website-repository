@@ -1229,8 +1229,7 @@ button.u7-party-slot:hover {
 
 /* Browser-only Sage: keep controls usable inside the existing guide modal. */
 .sage-panel { display: flex; flex-direction: column; gap: .75rem; max-height: 75vh; overflow: auto; white-space: normal; }
-.sage-spoiler-label { display: flex; align-items: center; gap: .6rem; font-size: .875rem; }
-.sage-spoiler, .sage-input { background: #1a202c; color: #f7fafc; border: 1px solid #718096; border-radius: .35rem; padding: .5rem; }
+.sage-input { background: #1a202c; color: #f7fafc; border: 1px solid #718096; border-radius: .35rem; padding: .5rem; }
 .sage-panel { --assistant-accent: #d69e2e; --assistant-on-accent: #1a202c; --assistant-surface: #102a43; }
 .sage-general-hints { flex: 0 1 auto; max-height: 28vh; overflow-y: auto; }
 .sage-general-text { white-space: pre-wrap; }
@@ -1240,3 +1239,54 @@ button.u7-party-slot:hover {
 .sage-send { padding: .5rem 1rem; border-radius: .35rem; }
 .sage-panel button:focus-visible, .sage-panel input:focus-visible, .sage-panel select:focus-visible { outline: 2px solid #f6e05e; outline-offset: 2px; }
 @media (max-width: 480px) { .sage-input-row { flex-wrap: wrap; } .sage-send { width: 100%; } }
+
+/* Conversation-first Sage: the quest briefing is available without taking
+   half the chat, and only the transcript scrolls during a conversation. */
+body.sage-chat-open { overflow: hidden; }
+#ai-modal[data-assistant-dialog] { padding: 1rem; }
+#ai-modal[data-assistant-dialog] > .sage-dialog-shell {
+    display: flex;
+    flex-direction: column;
+    width: min(72rem, 100%);
+    max-width: none;
+    height: min(56rem, calc(100vh - 2rem));
+    height: min(56rem, calc(100dvh - 2rem));
+    padding: clamp(1rem, 2vw, 1.6rem);
+    overflow: hidden;
+}
+#ai-modal[data-assistant-dialog] #ai-modal-title { flex-shrink: 0; padding-right: 2.5rem; margin-bottom: .65rem; color: #f0ca78; }
+#ai-modal[data-assistant-dialog] #ai-modal-content,
+#ai-modal[data-assistant-dialog] #ai-response-text { display: flex; flex-direction: column; flex: 1; min-height: 0; overflow: hidden; }
+#ai-modal[data-assistant-dialog] .sage-panel { flex: 1; min-height: 0; max-height: none; overflow: hidden; gap: .7rem; }
+.sage-description { margin: 0; color: #c1cbd7; font-size: .85rem; line-height: 1.4; flex-shrink: 0; }
+.sage-panel .guide-assistant-controls { margin-bottom: 0; flex-shrink: 0; }
+.sage-panel .sage-general-hints { flex: 0 0 auto; max-height: 26dvh; overflow: auto; }
+.sage-panel .sage-messages {
+    flex: 1 1 0;
+    min-height: 8rem;
+    padding: .7rem 1rem;
+    border: 1px solid #52627a;
+    border-radius: .8rem;
+    background: #202b3a;
+    font-size: 1rem;
+    overscroll-behavior: contain;
+}
+.sage-panel .sage-input-row { flex-shrink: 0; align-items: stretch; }
+.sage-panel textarea.sage-input { min-height: 3.6rem; max-height: 18dvh; resize: vertical; font: inherit; }
+.sage-panel textarea.sage-input:focus-visible { outline: 2px solid #f0ca78; outline-offset: 2px; }
+.sage-panel .sage-send { min-width: 5rem; padding: .65rem 1.1rem; border-radius: .6rem; background: #d7b35c; color: #162332; font-weight: 700; }
+.sage-panel .sage-send:hover { background: #f0cf83; }
+.sage-panel .sage-send:disabled { opacity: .65; }
+@media (max-width: 600px) {
+    #ai-modal[data-assistant-dialog] { padding: .4rem; }
+    #ai-modal[data-assistant-dialog] > .sage-dialog-shell { height: calc(100dvh - .8rem); padding: .85rem; }
+    #ai-modal[data-assistant-dialog] #ai-modal-title { font-size: 1.2rem; }
+    .sage-panel .sage-input-row { flex-wrap: nowrap; }
+    .sage-panel .sage-send { width: auto; min-width: 4rem; }
+    .sage-panel .sage-messages { padding: .5rem; }
+}
+@media (max-height: 560px) {
+    #ai-modal[data-assistant-dialog] .sage-description { display: none; }
+    #ai-modal[data-assistant-dialog] #ai-modal-title { font-size: 1.1rem; margin-bottom: .3rem; }
+    #ai-modal[data-assistant-dialog] .sage-panel { gap: .4rem; }
+}

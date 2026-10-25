@@ -1,0 +1,663 @@
+{
+  "schemaVersion": 1,
+  "comparisonType": "frozen-observed-native-regression-dual-baseline-whole-row-comparison",
+  "createdAt": "2026-10-25T04:11:37.052715+00:00",
+  "method": "Existing three frozen observed corpora rerun sequentially in isolated headless Chrome contexts. Real pinned local MiniLM classification/encoding; existing generative-worker fixture. Exact surface/dialogue/turn dictionaries compared with both baseline51/40/31 and failed52/41/32; no oracle rewrite, expected state injection, retries or restarted live sessions.",
+  "limitations": [
+    "Observed regression evidence, not fresh independent acceptance.",
+    "Strict differences are not automatically useful-claim adjudications; changed full replies remain in native reports.",
+    "No internal fact retrieval is inferred from oracle IDs.",
+    "Production, old oracles, models/profiles/assets, installed tools and user-browser state were not modified."
+  ],
+  "totals": {
+    "turns": 220,
+    "strictCurrent": 208,
+    "negativeTurns": 53,
+    "negativePasses": 53,
+    "allCurrentRunBoundariesHold": true,
+    "baseline": {
+      "strict": 208,
+      "strictGains": 0,
+      "strictLosses": 0,
+      "changedWholeRows": 1,
+      "unchangedWholeRows": 219
+    },
+    "previous": {
+      "strict": 207,
+      "strictGains": 1,
+      "strictLosses": 0,
+      "changedWholeRows": 3,
+      "unchangedWholeRows": 217
+    }
+  },
+  "productionHashWindow": {
+    "commonWatchedPaths": 103,
+    "sameHashesAcrossAllThreeCurrentRuns": true,
+    "differingCommonPaths": []
+  },
+  "remasteredDowngradeRegression": {
+    "key": "starcraft/sc-remastered-map-route/3",
+    "fullRows": {
+      "baseline": {
+        "text": "Will I have to downgrade Remastered for this route?",
+        "expected": {
+          "decision": "answer",
+          "source": {
+            "file": "guides/StarcraftBWAPI.html",
+            "locator": "#remastered-setup .text-blue-700",
+            "review": "extracted"
+          },
+          "contains": [
+            "without needing version downgrades"
+          ],
+          "requiredUsefulClaim": "The integrated map route works natively in Remastered without a version downgrade.",
+          "sourceWitness": "This method works natively with StarCraft Remastered without needing version downgrades."
+        },
+        "decision": "answer",
+        "rendered": "Note: This method works natively with StarCraft Remastered without needing version downgrades.\nRequirements are not modeled here; checklist order is not a prerequisite.",
+        "citations": [
+          "Source: existing guide; extracted. guides/StarcraftBWAPI.html — #remastered-setup .text-blue-700"
+        ],
+        "links": [],
+        "acceptedAnswerBranch": 0,
+        "answerBranchProblems": [
+          []
+        ],
+        "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+        "problems": [],
+        "passed": true,
+        "surface": "starcraft",
+        "dialogueId": "sc-remastered-map-route",
+        "turn": 3
+      },
+      "previous": {
+        "text": "Will I have to downgrade Remastered for this route?",
+        "expected": {
+          "decision": "answer",
+          "source": {
+            "file": "guides/StarcraftBWAPI.html",
+            "locator": "#remastered-setup .text-blue-700",
+            "review": "extracted"
+          },
+          "contains": [
+            "without needing version downgrades"
+          ],
+          "requiredUsefulClaim": "The integrated map route works natively in Remastered without a version downgrade.",
+          "sourceWitness": "This method works natively with StarCraft Remastered without needing version downgrades."
+        },
+        "decision": "decline",
+        "rendered": "The available sources do not cover every requested field of that subject.",
+        "citations": [],
+        "links": [],
+        "acceptedAnswerBranch": null,
+        "answerBranchProblems": [
+          [
+            "Missing exact fixed source citation: guides/StarcraftBWAPI.html — #remastered-setup .text-blue-700",
+            "Missing fixed answer substring: without needing version downgrades"
+          ]
+        ],
+        "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+        "problems": [
+          "Expected answer; observed decline",
+          "Missing exact fixed source citation: guides/StarcraftBWAPI.html — #remastered-setup .text-blue-700",
+          "Missing fixed answer substring: without needing version downgrades"
+        ],
+        "passed": false,
+        "surface": "starcraft",
+        "dialogueId": "sc-remastered-map-route",
+        "turn": 3
+      },
+      "current": {
+        "text": "Will I have to downgrade Remastered for this route?",
+        "expected": {
+          "decision": "answer",
+          "source": {
+            "file": "guides/StarcraftBWAPI.html",
+            "locator": "#remastered-setup .text-blue-700",
+            "review": "extracted"
+          },
+          "contains": [
+            "without needing version downgrades"
+          ],
+          "requiredUsefulClaim": "The integrated map route works natively in Remastered without a version downgrade.",
+          "sourceWitness": "This method works natively with StarCraft Remastered without needing version downgrades."
+        },
+        "decision": "answer",
+        "rendered": "Note: This method works natively with StarCraft Remastered without needing version downgrades.\nRequirements are not modeled here; checklist order is not a prerequisite.",
+        "citations": [
+          "Source: existing guide; extracted. guides/StarcraftBWAPI.html — #remastered-setup .text-blue-700"
+        ],
+        "links": [],
+        "acceptedAnswerBranch": 0,
+        "answerBranchProblems": [
+          []
+        ],
+        "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+        "problems": [],
+        "passed": true,
+        "surface": "starcraft",
+        "dialogueId": "sc-remastered-map-route",
+        "turn": 3
+      }
+    },
+    "strictBaseline": true,
+    "strictPrevious": false,
+    "strictCurrent": true,
+    "restoredRequiredUsefulClaim": true
+  },
+  "runs": [
+    {
+      "currentReport": "guides/tests/assistant/evidence/knowledge-blind-browser-native-53.json",
+      "currentReportSha256": "133b89d6e762c3439174b20a0a23489c27fc427b282ae260f62aa5269924e41e",
+      "corpusPath": "guides/tests/assistant/knowledge-blind-cases.json",
+      "corpusSha256": "4dbdf52d7976e370195ed2fa8e6db6528d470266a9e129880a4533ddbc6f2ebb",
+      "comparisons": {
+        "baseline": {
+          "report": "guides/tests/assistant/evidence/knowledge-blind-browser-native-51.json",
+          "sha256": "4766b4c7f77367669a98ce939a36b91317e652f314ee10bd1ee15c29679155d9",
+          "strictBefore": 95,
+          "strictAfter": 95,
+          "total": 96,
+          "gains": [],
+          "losses": [],
+          "wholeRowsUnchanged": 96,
+          "wholeRowsChanged": 0,
+          "changedKeys": [],
+          "frozenExpectedRowsUnchanged": true,
+          "negativeTurns": 22,
+          "negativePassesBefore": 22,
+          "negativePassesAfter": 22,
+          "negativeChangedKeys": [],
+          "lostWholeRows": [],
+          "changedNegativeWholeRows": []
+        },
+        "previous": {
+          "report": "guides/tests/assistant/evidence/knowledge-blind-browser-native-52.json",
+          "sha256": "41e865f78ed7b0f16b42965316eaeaa71324de03e12f68d79beace96c8ef21bc",
+          "strictBefore": 95,
+          "strictAfter": 95,
+          "total": 96,
+          "gains": [],
+          "losses": [],
+          "wholeRowsUnchanged": 95,
+          "wholeRowsChanged": 1,
+          "changedKeys": [
+            "ultima5/ultima5-blind-falsehood/3"
+          ],
+          "frozenExpectedRowsUnchanged": true,
+          "negativeTurns": 22,
+          "negativePassesBefore": 22,
+          "negativePassesAfter": 22,
+          "negativeChangedKeys": [],
+          "lostWholeRows": [],
+          "changedNegativeWholeRows": []
+        }
+      },
+      "currentBoundaries": {
+        "allTurnsRan": true,
+        "nativeMiniLMEverySurface": true,
+        "storageUnchanged": true,
+        "noSavedGameWrites": true,
+        "noExternalRequests": true,
+        "noPageErrors": true,
+        "onlyStaticGets": true,
+        "sourceStable": true,
+        "serverClosed": true
+      },
+      "sourceStableDuringRun": true,
+      "changedSourceFiles": [],
+      "watchedFiles": 104,
+      "nativeIntentEvidence": {
+        "ultima5": {
+          "nativeModelReady": true,
+          "classifications": 16,
+          "encodings": 16,
+          "embeddingResults": 16,
+          "validEmbeddings": true
+        },
+        "ultima6": {
+          "nativeModelReady": true,
+          "classifications": 16,
+          "encodings": 16,
+          "embeddingResults": 16,
+          "validEmbeddings": true
+        },
+        "ultima7": {
+          "nativeModelReady": true,
+          "classifications": 16,
+          "encodings": 16,
+          "embeddingResults": 16,
+          "validEmbeddings": true
+        },
+        "alqadim": {
+          "nativeModelReady": true,
+          "classifications": 16,
+          "encodings": 16,
+          "embeddingResults": 16,
+          "validEmbeddings": true
+        },
+        "albion": {
+          "nativeModelReady": true,
+          "classifications": 16,
+          "encodings": 16,
+          "embeddingResults": 16,
+          "validEmbeddings": true
+        },
+        "starcraft": {
+          "nativeModelReady": true,
+          "classifications": 16,
+          "encodings": 16,
+          "embeddingResults": 16,
+          "validEmbeddings": true
+        }
+      },
+      "blockedRequests": [],
+      "pageErrors": [],
+      "storageWrites": {
+        "ultima5": [],
+        "ultima6": [],
+        "ultima7": [],
+        "alqadim": [],
+        "albion": [],
+        "starcraft": []
+      },
+      "currentFailures": [
+        {
+          "surface": "albion",
+          "dialogueId": "albion-blind-sira-and-magic",
+          "turn": 3,
+          "text": "Who trains Iskai magic?",
+          "problems": [
+            "Missing exact fixed source citation: guides/js/Albion.js — DB.magic[0].freeTraining"
+          ]
+        }
+      ]
+    },
+    {
+      "currentReport": "guides/tests/assistant/evidence/knowledge-blind-browser-fresh-20261025-42.json",
+      "currentReportSha256": "8ba130cc67f5faec020913244675e82dfc6fcf8b8961094e7536f5484b98e3d2",
+      "corpusPath": "guides/tests/assistant/knowledge-fresh-cases-20261025.json",
+      "corpusSha256": "67847abd677579e424d4458f710962a39e8453e9034e7696f1269b4bf4402eb3",
+      "comparisons": {
+        "baseline": {
+          "report": "guides/tests/assistant/evidence/knowledge-blind-browser-fresh-20261025-40.json",
+          "sha256": "2fbe484ab88bfd547e9c34de08a96200e6757b2101fc483f8256feffae239216",
+          "strictBefore": 66,
+          "strictAfter": 66,
+          "total": 76,
+          "gains": [],
+          "losses": [],
+          "wholeRowsUnchanged": 76,
+          "wholeRowsChanged": 0,
+          "changedKeys": [],
+          "frozenExpectedRowsUnchanged": true,
+          "negativeTurns": 19,
+          "negativePassesBefore": 19,
+          "negativePassesAfter": 19,
+          "negativeChangedKeys": [],
+          "lostWholeRows": [],
+          "changedNegativeWholeRows": []
+        },
+        "previous": {
+          "report": "guides/tests/assistant/evidence/knowledge-blind-browser-fresh-20261025-41.json",
+          "sha256": "4d7188bf73714425f172ec3d19ad55b4c34f881279e8e91f9840112f07fc1320",
+          "strictBefore": 65,
+          "strictAfter": 66,
+          "total": 76,
+          "gains": [
+            "starcraft/sc-remastered-map-route/3"
+          ],
+          "losses": [],
+          "wholeRowsUnchanged": 74,
+          "wholeRowsChanged": 2,
+          "changedKeys": [
+            "ultima7/u7-liches-and-mana/2",
+            "starcraft/sc-remastered-map-route/3"
+          ],
+          "frozenExpectedRowsUnchanged": true,
+          "negativeTurns": 19,
+          "negativePassesBefore": 19,
+          "negativePassesAfter": 19,
+          "negativeChangedKeys": [],
+          "lostWholeRows": [],
+          "changedNegativeWholeRows": []
+        }
+      },
+      "currentBoundaries": {
+        "allTurnsRan": true,
+        "nativeMiniLMEverySurface": true,
+        "storageUnchanged": true,
+        "noSavedGameWrites": true,
+        "noExternalRequests": true,
+        "noPageErrors": true,
+        "onlyStaticGets": true,
+        "sourceStable": true,
+        "serverClosed": true
+      },
+      "sourceStableDuringRun": true,
+      "changedSourceFiles": [],
+      "watchedFiles": 104,
+      "nativeIntentEvidence": {
+        "ultima5": {
+          "nativeModelReady": true,
+          "classifications": 12,
+          "encodings": 12,
+          "embeddingResults": 12,
+          "validEmbeddings": true
+        },
+        "ultima6": {
+          "nativeModelReady": true,
+          "classifications": 12,
+          "encodings": 13,
+          "embeddingResults": 13,
+          "validEmbeddings": true
+        },
+        "ultima7": {
+          "nativeModelReady": true,
+          "classifications": 12,
+          "encodings": 14,
+          "embeddingResults": 14,
+          "validEmbeddings": true
+        },
+        "alqadim": {
+          "nativeModelReady": true,
+          "classifications": 12,
+          "encodings": 12,
+          "embeddingResults": 12,
+          "validEmbeddings": true
+        },
+        "albion": {
+          "nativeModelReady": true,
+          "classifications": 12,
+          "encodings": 13,
+          "embeddingResults": 13,
+          "validEmbeddings": true
+        },
+        "starcraft": {
+          "nativeModelReady": true,
+          "classifications": 16,
+          "encodings": 17,
+          "embeddingResults": 17,
+          "validEmbeddings": true
+        }
+      },
+      "blockedRequests": [],
+      "pageErrors": [],
+      "storageWrites": {
+        "ultima5": [],
+        "ultima6": [],
+        "ultima7": [],
+        "alqadim": [],
+        "albion": [],
+        "starcraft": []
+      },
+      "currentFailures": [
+        {
+          "surface": "ultima5",
+          "dialogueId": "u5-mage-recruiting",
+          "turn": 2,
+          "text": "Where do I find her?",
+          "problems": [
+            "Missing exact fixed source citation: guides/js/Ultima5.js — companionData[2].Location"
+          ]
+        },
+        {
+          "surface": "ultima6",
+          "dialogueId": "u6-family-permission",
+          "turn": 1,
+          "text": "How do I get permission to borrow the Compassion rune in Britain?",
+          "problems": [
+            "Missing exact fixed source citation: guides/js/Ultima6.js — gameData.quests[0].sections[0]"
+          ]
+        },
+        {
+          "surface": "ultima6",
+          "dialogueId": "u6-making-music",
+          "turn": 3,
+          "text": "Whose song should I learn, and who hears the performance to award the rune?",
+          "problems": [
+            "Missing exact fixed source citation: guides/js/Ultima6.js — gameData.quests[0].sections[4]"
+          ]
+        },
+        {
+          "surface": "ultima7",
+          "dialogueId": "u7-observatory-crystal",
+          "turn": 3,
+          "text": "What does the guide list as the reward for helping him?",
+          "problems": [
+            "Missing exact fixed source citation: guides/js/Ultima7.js — DB.sideQuests[10]"
+          ]
+        },
+        {
+          "surface": "alqadim",
+          "dialogueId": "aq-sword-training",
+          "turn": 1,
+          "text": "How do I learn the Full-Circle Swing?",
+          "problems": [
+            "Missing exact fixed source citation: guides/js/AlQadim.js — DB.combatMoves[2].training"
+          ]
+        },
+        {
+          "surface": "alqadim",
+          "dialogueId": "aq-berries-and-family",
+          "turn": 3,
+          "text": "Before I leave the oasis, how should I deal with its giant boar?",
+          "problems": [
+            "Missing exact fixed source citation: guides/js/AlQadim.js — DB.bestiary[3]"
+          ]
+        },
+        {
+          "surface": "albion",
+          "dialogueId": "ab-freezing-and-seeds",
+          "turn": 3,
+          "text": "What level and SP cost does Thorn Snare have instead?",
+          "problems": [
+            "Missing exact fixed source citation: guides/js/Albion.js — DB.magic[0].keySpells[1].level/sp"
+          ]
+        },
+        {
+          "surface": "albion",
+          "dialogueId": "ab-linked-companions",
+          "turn": 1,
+          "text": "What happens to Sira if Melthas leaves?",
+          "problems": [
+            "Missing exact fixed source citation: guides/js/Albion.js — DB.characters[3].role/notes"
+          ]
+        },
+        {
+          "surface": "starcraft",
+          "dialogueId": "sc-client-first-launch",
+          "turn": 3,
+          "text": "After the first login, is play still going over the internet?",
+          "problems": [
+            "Missing fixed answer substring: initial login"
+          ]
+        },
+        {
+          "surface": "starcraft",
+          "dialogueId": "sc-bot-learning-resources",
+          "turn": 2,
+          "text": "Who does the guide credit with UAlbertaBot?",
+          "problems": [
+            "Missing exact fixed source citation: guides/StarcraftBWAPI.html — #resources .space-y-4 > div:nth-child(2)",
+            "Missing fixed answer substring: Dave Churchill"
+          ]
+        }
+      ]
+    },
+    {
+      "currentReport": "guides/tests/assistant/evidence/knowledge-blind-browser-independent-all-20261025-33.json",
+      "currentReportSha256": "5bb747a4cdbb4170147d3805e7ddb3220226f17d0d8860840c507eb443289642",
+      "corpusPath": "guides/tests/assistant/knowledge-independent-all-20261025.json",
+      "corpusSha256": "a6c44c5f5ae77f80295bd6c2403369545f9de28afe5920a07d105a40d016b907",
+      "comparisons": {
+        "baseline": {
+          "report": "guides/tests/assistant/evidence/knowledge-blind-browser-independent-all-20261025-31.json",
+          "sha256": "6e8e0cb707ee954de8abd08dcefbf8f1368ef4f75a1f93ebec9f5b0988bbd02e",
+          "strictBefore": 47,
+          "strictAfter": 47,
+          "total": 48,
+          "gains": [],
+          "losses": [],
+          "wholeRowsUnchanged": 47,
+          "wholeRowsChanged": 1,
+          "changedKeys": [
+            "ultima5/u5-cape-plans-conversation/4"
+          ],
+          "frozenExpectedRowsUnchanged": true,
+          "negativeTurns": 12,
+          "negativePassesBefore": 12,
+          "negativePassesAfter": 12,
+          "negativeChangedKeys": [
+            "ultima5/u5-cape-plans-conversation/4"
+          ],
+          "lostWholeRows": [],
+          "changedNegativeWholeRows": [
+            {
+              "key": "ultima5/u5-cape-plans-conversation/4",
+              "before": {
+                "text": "What kind of wood are those two doors made from?",
+                "expected": {
+                  "decision": "not-answer",
+                  "boundary": "The source describes ordinary locked doors and lockpicks, but identifies no construction material or wood species for those doors."
+                },
+                "decision": "clarify",
+                "rendered": "I could not find that in this guide. Try naming the subject as it appears in the guide, or ask about another subject.",
+                "citations": [],
+                "links": [],
+                "acceptedAnswerBranch": null,
+                "answerBranchProblems": [],
+                "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+                "problems": [],
+                "passed": true,
+                "surface": "ultima5",
+                "dialogueId": "u5-cape-plans-conversation",
+                "turn": 4
+              },
+              "after": {
+                "text": "What kind of wood are those two doors made from?",
+                "expected": {
+                  "decision": "not-answer",
+                  "boundary": "The source describes ordinary locked doors and lockpicks, but identifies no construction material or wood species for those doors."
+                },
+                "decision": "decline",
+                "rendered": "The available sources do not record that requested field for this subject.",
+                "citations": [],
+                "links": [],
+                "acceptedAnswerBranch": null,
+                "answerBranchProblems": [],
+                "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+                "problems": [],
+                "passed": true,
+                "surface": "ultima5",
+                "dialogueId": "u5-cape-plans-conversation",
+                "turn": 4
+              }
+            }
+          ]
+        },
+        "previous": {
+          "report": "guides/tests/assistant/evidence/knowledge-blind-browser-independent-all-20261025-32.json",
+          "sha256": "55fac4df984a44d63ecf7a7f9cbffd51d5623446a0348f0583bc865ffa1ff2e3",
+          "strictBefore": 47,
+          "strictAfter": 47,
+          "total": 48,
+          "gains": [],
+          "losses": [],
+          "wholeRowsUnchanged": 48,
+          "wholeRowsChanged": 0,
+          "changedKeys": [],
+          "frozenExpectedRowsUnchanged": true,
+          "negativeTurns": 12,
+          "negativePassesBefore": 12,
+          "negativePassesAfter": 12,
+          "negativeChangedKeys": [],
+          "lostWholeRows": [],
+          "changedNegativeWholeRows": []
+        }
+      },
+      "currentBoundaries": {
+        "allTurnsRan": true,
+        "nativeMiniLMEverySurface": true,
+        "storageUnchanged": true,
+        "noSavedGameWrites": true,
+        "noExternalRequests": true,
+        "noPageErrors": true,
+        "onlyStaticGets": true,
+        "sourceStable": true,
+        "serverClosed": true
+      },
+      "sourceStableDuringRun": true,
+      "changedSourceFiles": [],
+      "watchedFiles": 104,
+      "nativeIntentEvidence": {
+        "ultima5": {
+          "nativeModelReady": true,
+          "classifications": 8,
+          "encodings": 8,
+          "embeddingResults": 8,
+          "validEmbeddings": true
+        },
+        "ultima6": {
+          "nativeModelReady": true,
+          "classifications": 8,
+          "encodings": 11,
+          "embeddingResults": 11,
+          "validEmbeddings": true
+        },
+        "ultima7": {
+          "nativeModelReady": true,
+          "classifications": 8,
+          "encodings": 12,
+          "embeddingResults": 12,
+          "validEmbeddings": true
+        },
+        "alqadim": {
+          "nativeModelReady": true,
+          "classifications": 8,
+          "encodings": 8,
+          "embeddingResults": 8,
+          "validEmbeddings": true
+        },
+        "albion": {
+          "nativeModelReady": true,
+          "classifications": 8,
+          "encodings": 10,
+          "embeddingResults": 10,
+          "validEmbeddings": true
+        },
+        "starcraft": {
+          "nativeModelReady": true,
+          "classifications": 8,
+          "encodings": 8,
+          "embeddingResults": 8,
+          "validEmbeddings": true
+        }
+      },
+      "blockedRequests": [],
+      "pageErrors": [],
+      "storageWrites": {
+        "ultima5": [],
+        "ultima6": [],
+        "ultima7": [],
+        "alqadim": [],
+        "albion": [],
+        "starcraft": []
+      },
+      "currentFailures": [
+        {
+          "surface": "ultima6",
+          "dialogueId": "u6-compassion-permission-conversation",
+          "turn": 3,
+          "text": "How do I collect it once permission is sorted out?",
+          "problems": [
+            "Missing exact fixed source citation: guides/js/Ultima6.js — gameData.quests[0].sections[0].steps[2]",
+            "Missing fixed answer substring: Return to Ariana",
+            "Missing fixed answer substring: confirm permission",
+            "Missing fixed answer substring: Rune of Compassion"
+          ]
+        }
+      ]
+    }
+  ]
+}

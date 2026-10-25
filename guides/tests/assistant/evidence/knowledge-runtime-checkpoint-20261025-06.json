@@ -1,0 +1,189 @@
+{
+  "schemaVersion": 1,
+  "kind": "structured-knowledge-runtime-checkpoint",
+  "checkedAt": "2026-10-24T21:59:54.381434+00:00",
+  "goalStatus": "active",
+  "acceptance": "incomplete",
+  "ownerConstraint": "No model updates, replacements, new models, training or downloads. Existing production model/head unchanged. Continue deterministic chat/source-data work only.",
+  "supersedes": "knowledge-runtime-checkpoint-20261025-05.json",
+  "dataCoverageReport": "guides/tests/assistant/evidence/knowledge-data-coverage-20261025-07.json",
+  "data": {
+    "facts": 674,
+    "links": 338,
+    "sourceContexts": 16,
+    "compilerIssues": 0
+  },
+  "contracts": {
+    "passed": 1661,
+    "total": 1661,
+    "scope": "All recursively discovered assistant *.test.mjs; original frozen conversation oracles unchanged.",
+    "log": "/tmp/knowledge-contracts-20261025-25.log"
+  },
+  "legacyEnglish": {
+    "report": "guides/tests/assistant/intent-prototype/results/english-source-preambles-20261025-01.json",
+    "passed": 1058,
+    "total": 1058,
+    "currentTurnQualification": "Reused prior verified baseline; source-engine/language implementation unchanged in this knowledge-only turn."
+  },
+  "originalRegression": {
+    "report": "guides/tests/assistant/intent-prototype/results/original-source-preambles-20261025-01.json",
+    "passed": 203,
+    "total": 203,
+    "qualification": "Tracked results.json restored byte for byte.",
+    "currentTurnQualification": "Reused prior verified baseline; source-engine/language implementation unchanged in this knowledge-only turn."
+  },
+  "citationVerifierUnitTests": 4,
+  "offlineManifestUnitTests": 4,
+  "developmentReplay": {
+    "report": "guides/tests/assistant/intent-prototype/results/knowledge-corpus-replay-procedural-proof-20261025-04/report.json",
+    "total": 851,
+    "passed": 756,
+    "failed": 95,
+    "incomplete": 0,
+    "sourceStable": true,
+    "missingQueryCount": 0,
+    "negativeBoundaries": [
+      175,
+      175
+    ],
+    "comparisonWithPreviousCheckpoint": "756/851 versus752/851, with four actual wrong-answer fixes: Manrel key acquisition, Honor rune return, Swamp Cave preparation and Black Sword forging. No previous strict pass is lost. Two older corrected-Trinsic provenance expectations remain failures; frozen oracles unchanged.",
+    "sourceCorrectionFailures": [
+      {
+        "game": "ultima7",
+        "text": "How do I investigate the Trinsic crime scene?",
+        "reason": "Old oracle expects DB.mainQuest[0]; answer cites exact DB.mainQuest[0].content."
+      },
+      {
+        "game": "ultima7",
+        "text": "How do I get the Trinsic exit password?",
+        "reason": "Old oracle expects adapter-summary record provenance; answer now quotes and cites the full original Finnigan quiz/password witness."
+      }
+    ]
+  },
+  "nativeObserved96": {
+    "report": "guides/tests/assistant/evidence/knowledge-blind-browser-native-33.json",
+    "sha256": "05453ceb6754f8995cb0258091214dab49b5d7e2eb5aec40bc812bc1633938d1",
+    "passed": 82,
+    "total": 96,
+    "negativeBoundaries": [
+      22,
+      22
+    ],
+    "boundaries": {
+      "allTurnsRan": true,
+      "nativeMiniLMEverySurface": true,
+      "storageUnchanged": true,
+      "noSavedGameWrites": true,
+      "noExternalRequests": true,
+      "noPageErrors": true,
+      "onlyStaticGets": true,
+      "sourceStable": true,
+      "serverClosed": true
+    },
+    "allWatchedSourceHashesStillCurrent": true
+  },
+  "nativeObserved76": {
+    "report": "guides/tests/assistant/evidence/knowledge-blind-browser-fresh-20261025-22.json",
+    "sha256": "8c8c555adde1be3dddb3f65389b8d57b3f173d787fe89354c660f48b218919f9",
+    "passed": 43,
+    "total": 76,
+    "negativeBoundaries": [
+      19,
+      19
+    ],
+    "boundaries": {
+      "allTurnsRan": true,
+      "nativeMiniLMEverySurface": true,
+      "storageUnchanged": true,
+      "noSavedGameWrites": true,
+      "noExternalRequests": true,
+      "noPageErrors": true,
+      "onlyStaticGets": true,
+      "sourceStable": true,
+      "serverClosed": true
+    },
+    "allWatchedSourceHashesStillCurrent": true
+  },
+  "nativeIndependent48NowObserved": {
+    "report": "guides/tests/assistant/evidence/knowledge-blind-browser-independent-all-20261025-13.json",
+    "sha256": "53b9651b864e669d7b17288338786f4863735ce199c6290734f8765b6edbbf7b",
+    "passed": 43,
+    "total": 48,
+    "negativeBoundaries": [
+      12,
+      12
+    ],
+    "boundaries": {
+      "allTurnsRan": true,
+      "nativeMiniLMEverySurface": true,
+      "storageUnchanged": true,
+      "noSavedGameWrites": true,
+      "noExternalRequests": true,
+      "noPageErrors": true,
+      "onlyStaticGets": true,
+      "sourceStable": true,
+      "serverClosed": true
+    },
+    "allWatchedSourceHashesStillCurrent": true
+  },
+  "independentFirstExecutionReview": {
+    "report": "guides/tests/assistant/evidence/knowledge-independent-adjudication-20261025.json",
+    "firstStrictPassed": 18,
+    "total": 48,
+    "completeSupportedPositiveClaims": 10,
+    "positiveTurns": 36,
+    "firstNegativeBoundaries": [
+      10,
+      12
+    ],
+    "qualification": "First individual executions, before the measurement fix. Two independently authored source-first suites were concatenated without changing any dialogue oracle. They are now observed regression cases. The post-fix20/48 contains all12 boundary successes; it is not20 complete positive answers."
+  },
+  "citationVerifierQualification": "The exact compound-locator parser correction contributes1 verifier-only pass on stored native-18 replies, with zero changed runtime answers. See knowledge-compound-citation-audit-20261025.json. No parent/child citation equivalence or oracle edits were introduced.",
+  "productionModelFilesUnchanged": {
+    "guides/local-assistant/profile.json": "7fcde9d4b3d8842dc2345159687e845e023ce9049c92deab6d99d494e6ba813d",
+    "guides/local-assistant/intent/profile.json": "786a95a078fcc940f95539837883405257f1a3a896637bb71b8b477be680639e",
+    "guides/local-assistant/intent/head.json": "979c196a92df490124802e61fcc5fad787fc535ee69ff0eae64784355a8f6bfb"
+  },
+  "offline": {
+    "assets": 825,
+    "allHashesMatch": true,
+    "versionMatches": true,
+    "experimentalAssetsExcluded": true,
+    "newSharedModulesIncluded": true,
+    "version": "b34b02a7235226a451e088880ee24d337fc107d3d1ff8b42e6c8f075f3a25c08"
+  },
+  "publication": {
+    "ftpUploaded": false,
+    "committed": false,
+    "pushed": false
+  },
+  "remainingWork": "Full six-game acceptance remains incomplete. Four source-answerable turns in reviewed48 remain incomplete: Trinsic leave/password compound, deferred Academy exit, hold barrels/potions, Khunag recruitment/dialogue. Native96 retains14 failures; fresh76 retains33; replay851 retains95 strict failures including known provenance mismatches. Continue direct actor/conversion/escort roles, literal properties/comparisons before consultation and source-present compound/conditional contexts; extend procedural proof beyond the current finite request/instruction grammar without cross-object transfer. Refine current-machine unknown-state wording. Keep objective-only limits and frozen oracles. No model updates/downloads/installations/publication.",
+  "previousGoalTurnClassification": "progress",
+  "completeUsefulClaimReview": {
+    "report": "guides/tests/assistant/evidence/knowledge-independent-adjudication-20261025-05.json",
+    "turns": 48,
+    "strictPassed": 43,
+    "positiveTurns": 36,
+    "completeSupportedPositiveClaims": 32,
+    "completeSupportedPositiveClaimsExcludingQualifiedAlternative": 31,
+    "qualifiedAlternativePositiveClaims": 1,
+    "withheldOrIncompletePositiveClaims": 4,
+    "wrongSubjectOrFieldPositiveClaims": 0,
+    "boundaryTurns": 12,
+    "boundariesHeld": 12,
+    "qualification": "All36 positive replies and citations are unchanged versus the previous full-claim review:32/36 including the qualified Ariana helper (31/36 excluding it). Four positives remain incomplete; strict43/48 includes12 boundaries. This48-turn observed set establishes no exhaustive correctness elsewhere. One current-machine boundary now uses an unhelpful clarification, recorded separately."
+  },
+  "embeddingReuseUnitTests": 3,
+  "sourceIndexRefresh": {
+    "modelChanged": false,
+    "factDocumentVectorsEncoded": 0,
+    "factDocumentsUnchanged": 674,
+    "metadataRefreshOnly": true,
+    "newIgnoredExactQueryVectors": 0,
+    "totalCachedQueryVectors": 986,
+    "modelDownloads": 0,
+    "installations": 0
+  },
+  "implementationNote": "docs/assistant-knowledge/procedural-proof-20261025.md",
+  "currentGoalTurnClassification": "progress"
+}

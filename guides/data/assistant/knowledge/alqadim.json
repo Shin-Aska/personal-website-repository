@@ -1,0 +1,5072 @@
+{
+  "schemaVersion": 1,
+  "gameId": "alqadim",
+  "reviewedAt": "2026-10-25",
+  "review": "Focused source-step and conversational-role audit; conflicts and missing procedures remain withheld; not independently play-tested",
+  "facts": [
+    {
+      "id": "ch1_1",
+      "subject": "Sinbar",
+      "facet": "method",
+      "aliases": [
+        "Master Sinbar",
+        "academy trial"
+      ],
+      "text": "Speak with Master Sinbar to initiate the trial.",
+      "witness": "Speak with Master Sinbar to initiate the trial.",
+      "source": {
+        "file": "guides/js/AlQadim.js",
+        "locator": "DB.chapters[0].required[id=ch1_1]",
+        "review": "extracted"
+      },
+      "sourceRecordId": "alqadim:objective:ch1_1:hint",
+      "entityId": "alqadim:knowledge:sinbar",
+      "answerRelations": [
+        "method",
+        "objective",
+        "outcome"
+      ],
+      "answerBindings": [
+        {
+          "entityId": "alqadim:knowledge:academy-trial",
+          "relations": [
+            "method",
+            "objective",
+            "outcome"
+          ],
+          "mention": "the trial"
+        }
+      ],
+      "sourceFields": [
+        {
+          "key": "method",
+          "selectors": [
+            "step"
+          ],
+          "witness": "Speak with Master Sinbar to initiate the trial."
+        }
+      ]
+    },
+    {
+      "id": "ch1_2",
+      "subject": "Disintegrator field",
+      "facet": "method",
+      "aliases": [
+        "moving field",
+        "academy walls"
+      ],
+      "text": "Avoid the moving disintegrator field (stay close to walls).",
+      "witness": "Avoid the moving disintegrator field (stay close to walls).",
+      "source": {
+        "file": "guides/js/AlQadim.js",
+        "locator": "DB.chapters[0].required[id=ch1_2]",
+        "review": "extracted"
+      },
+      "sourceRecordId": "alqadim:objective:ch1_2:hint",
+      "entityId": "alqadim:knowledge:disintegrator-field",
+      "answerRelations": [
+        "method"
+      ]
+    },
+    {
+      "id": "ch1_3",
+      "subject": "Spear gauntlets",
+      "facet": "objective",
+      "aliases": [
+        "stationary spears",
+        "rising spears"
+      ],
+      "text": "Bypass stationary and rising spear gauntlets.",
+      "witness": "Bypass stationary and rising spear gauntlets.",
+      "source": {
+        "file": "guides/js/AlQadim.js",
+        "locator": "DB.chapters[0].required[id=ch1_3]",
+        "review": "extracted"
+      },
+      "sourceRecordId": "alqadim:objective:ch1_3:hint",
+      "entityId": "alqadim:knowledge:spear-gauntlets",
+      "answerRelations": [
+        "objective"
+      ]
+    },
+    {
+      "id": "ch1_4",
+      "subject": "Academy fire jets",
+      "facet": "objective",
+      "aliases": [
+        "academy pressure plates"
+      ],
+      "text": "Navigate pressure plates and fire jets.",
+      "witness": "Navigate pressure plates and fire jets.",
+      "source": {
+        "file": "guides/js/AlQadim.js",
+        "locator": "DB.chapters[0].required[id=ch1_4]",
+        "review": "extracted"
+      },
+      "sourceRecordId": "alqadim:objective:ch1_4:hint",
+      "entityId": "alqadim:knowledge:academy-fire-jets",
+      "answerRelations": [
+        "objective"
+      ]
+    },
+    {
+      "id": "ch1_5",
+      "subject": "Academy final chest",
+      "facet": "acquisition",
+      "aliases": [
+        "starting equipment"
+      ],
+      "text": "Open the final chest to claim starting equipment.",
+      "witness": "Open the final chest to claim starting equipment.",
+      "source": {
+        "file": "guides/js/AlQadim.js",
+        "locator": "DB.chapters[0].required[id=ch1_5]",
+        "review": "extracted"
+      },
+      "sourceRecordId": "alqadim:objective:ch1_5:hint",
+      "entityId": "alqadim:knowledge:academy-final-chest",
+      "answerRelations": [
+        "acquisition",
+        "method",
+        "outcome"
+      ],
+      "answerBindings": [
+        {
+          "entityId": "alqadim:knowledge:starting-equipment",
+          "relations": [
+            "acquisition",
+            "method"
+          ],
+          "mention": "starting equipment"
+        }
+      ]
+    },
+    {
+      "id": "ch1_6",
+      "subject": "Academy teleporter",
+      "facet": "route",
+      "aliases": [
+        "northern teleporter",
+        "exit to Zaratan"
+      ],
+      "text": "Step into the northern teleporter to exit to Zaratan.",
+      "witness": "Step into the northern teleporter to exit to Zaratan.",
+      "source": {
+        "file": "guides/js/AlQadim.js",
+        "locator": "DB.chapters[0].required[id=ch1_6]",
+        "review": "extracted"
+      },
+      "sourceRecordId": "alqadim:objective:ch1_6:hint",
+      "entityId": "alqadim:knowledge:academy-teleporter",
+      "answerRelations": [
+        "method",
+        "use",
+        "destination",
+        "route"
+      ],
+      "sourceFields": [
+        {
+          "key": "location",
+          "selectors": [],
+          "witness": "Step into the northern teleporter to exit to Zaratan."
+        },
+        {
+          "key": "method",
+          "selectors": [
+            "step"
+          ],
+          "witness": "Step into the northern teleporter to exit to Zaratan."
+        },
+        {
+          "key": "outcome",
+          "selectors": [],
+          "witness": "Step into the northern teleporter to exit to Zaratan."
+        }
+      ]
+    },
+    {
+      "id": "ch1_7",
+      "subject": "Academy vases",
+      "facet": "acquisition",
+      "aliases": [
+        "bonus gold coins"
+      ],
+      "text": "Smash all vases along the way for bonus gold coins.",
+      "witness": "Smash all vases along the way for bonus gold coins.",
+      "source": {
+        "file": "guides/js/AlQadim.js",
+        "locator": "DB.chapters[0].optional[id=ch1_7]",
+        "review": "extracted"
+      },
+      "sourceRecordId": "alqadim:objective:ch1_7:hint",
+      "entityId": "alqadim:knowledge:academy-vases",
+      "answerRelations": [
+        "acquisition",
+        "method",
+        "outcome"
+      ],
+      "answerBindings": [
+        {
+          "entityId": "alqadim:knowledge:bonus-gold-coins",
+          "relations": [
+            "acquisition",
+            "method"
+          ],
+          "mention": "gold coins"
+        }
+      ]
+    },
+    {
+      "id": "ch2_1",
+      "subject": "Family Sword of Honor",
+      "facet": "acquisition",
+      "aliases": [
+        "Zubin sword",
+        "family sword"
+      ],
+      "text": "Meet Aliya at the gates and speak with Zubin to get the Family Sword of Honor.",
+      "witness": "Meet Aliya at the gates and speak with Zubin to get the Family Sword of Honor.",
+      "source": {
+        "file": "guides/js/AlQadim.js",
+        "locator": "DB.chapters[1].required[id=ch2_1]",
+        "review": "extracted"
+      },
+      "sourceRecordId": "alqadim:objective:ch2_1:hint",
+      "entityId": "alqadim:knowledge:family-sword-of-honor",
+      "answerRelations": [
+        "acquisition",
+        "method"
+      ]
+    },
+    {
+      "id": "ch2_2",
+      "subject": "Jessamin",
+      "facet": "identity",
+      "aliases": [
+        "Mother",
+        "family gift"
+      ],
+      "text": "Visit Mother (Jessamin) and Aunt (get family gift).",
+      "witness": "Visit Mother (Jessamin) and Aunt (get family gift).",
+      "source": {
+        "file": "guides/js/AlQadim.js",
+        "locator": "DB.chapters[1].required[id=ch2_2]",
+        "review": "extracted"
+      },
+      "sourceRecordId": "alqadim:objective:ch2_2:hint",
+      "entityId": "alqadim:knowledge:jessamin",
+      "answerRelations": [
+        "identity",
+        "objective"
+      ]
+    },
+    {
+      "id": "ch2_3",
+      "subject": "Babazar",
+      "facet": "requirement",
+      "aliases": [
+        "sick daughter",
+        "purple desert berries"
+      ],
+      "text": "Accept Babazar's quest to find purple desert berries for his sick daughter.",
+      "witness": "Accept Babazar's quest to find purple desert berries for his sick daughter.",
+      "source": {
+        "file": "guides/js/AlQadim.js",
+        "locator": "DB.chapters[1].required[id=ch2_3]",
+        "review": "extracted"
+      },
+      "sourceRecordId": "alqadim:objective:ch2_3:hint",
+      "entityId": "alqadim:knowledge:babazar",
+      "answerRelations": [
+        "explanation",
+        "objective",
+        "prerequisites"
+      ]
+    },
+    {
+      "id": "ch2_4",
+      "subject": "Haroon abi Wassab",
+      "facet": "method",
+      "aliases": [
+        "Aliya treaty",
+        "peace negotiation"
+      ],
+      "text": "Bring Aliya before Haroon abi Wassab to negotiate the treaty.",
+      "witness": "Bring Aliya before Haroon abi Wassab to negotiate the treaty.",
+      "source": {
+        "file": "guides/js/AlQadim.js",
+        "locator": "DB.chapters[1].required[id=ch2_4]",
+        "review": "extracted"
+      },
+      "sourceRecordId": "alqadim:objective:ch2_4:hint",
+      "entityId": "alqadim:knowledge:haroon-abi-wassab",
+      "answerRelations": [
+        "method",
+        "destination",
+        "objective"
+      ],
+      "answerBindings": [
+        {
+          "entityId": "alqadim:knowledge:aliya",
+          "relations": [
+            "method",
+            "destination"
+          ],
+          "mention": "Aliya"
+        }
+      ]
+    },
+    {
+      "id": "ch2_5",
+      "subject": "Qadi peace treaty",
+      "facet": "method",
+      "aliases": [
+        "oath with Aliya",
+        "Haroon oath"
+      ],
+      "text": "Swear the oath with Aliya before Haroon to sign the Qadi's peace treaty.",
+      "witness": "Swear the oath with Aliya before Haroon to sign the Qadi's peace treaty.",
+      "source": {
+        "file": "guides/js/AlQadim.js",
+        "locator": "DB.chapters[1].required[id=ch2_5]",
+        "review": "extracted"
+      },
+      "sourceRecordId": "alqadim:objective:ch2_5:hint",
+      "entityId": "alqadim:knowledge:qadi-peace-treaty",
+      "answerRelations": [
+        "method",
+        "prerequisites",
+        "outcome"
+      ]
+    },
+    {
+      "id": "ch2_6",
+      "subject": "Muliban accusation",
+      "facet": "outcome",
+      "aliases": [
+        "family banishment"
+      ],
+      "text": "Witness the genie Muliban's accusation, resulting in your family's banishment.",
+      "witness": "Witness the genie Muliban's accusation, resulting in your family's banishment.",
+      "source": {
+        "file": "guides/js/AlQadim.js",
+        "locator": "DB.chapters[1].required[id=ch2_6]",
+        "review": "extracted"
+      },
+      "sourceRecordId": "alqadim:objective:ch2_6:hint",
+      "entityId": "alqadim:knowledge:muliban-accusation",
+      "answerRelations": [
+        "objective",
+        "outcome"
+      ]
+    },
+    {
+      "id": "ch3_3",
+      "subject": "Purple Berries",
+      "facet": "acquisition",
+      "aliases": [
+        "oasis berries"
+      ],
+      "text": "Collect the Purple Berries from the oasis bushes.",
+      "witness": "Collect the Purple Berries from the oasis bushes.",
+      "source": {
+        "file": "guides/js/AlQadim.js",
+        "locator": "DB.chapters[2].required[id=ch3_3]",
+        "review": "extracted"
+      },
+      "sourceRecordId": "alqadim:objective:ch3_3:hint",
+      "entityId": "alqadim:knowledge:purple-berries",
+      "answerRelations": [
+        "acquisition",
+        "location",
+        "method"
+      ]
+    },
+    {
+      "id": "ch3_4",
+      "subject": "Oasis mermaid",
+      "facet": "method",
+      "aliases": [
+        "mermaid pool quest"
+      ],
+      "text": "Converse with the mermaid at the pool and accept her quest.",
+      "witness": "Converse with the mermaid at the pool and accept her quest.",
+      "source": {
+        "file": "guides/js/AlQadim.js",
+        "locator": "DB.chapters[2].required[id=ch3_4]",
+        "review": "extracted"
+      },
+      "sourceRecordId": "alqadim:objective:ch3_4:hint",
+      "entityId": "alqadim:knowledge:oasis-mermaid",
+      "answerRelations": [
+        "method",
+        "location",
+        "objective"
+      ]
+    },
+    {
+      "id": "ch3_5",
+      "subject": "Giant Boar",
+      "facet": "objective",
+      "aliases": [
+        "oasis outskirts boar"
+      ],
+      "text": "Defeat the giant boar roaming the oasis outskirts for XP.",
+      "witness": "Defeat the giant boar roaming the oasis outskirts for XP.",
+      "source": {
+        "file": "guides/js/AlQadim.js",
+        "locator": "DB.chapters[2].optional[id=ch3_5]",
+        "review": "extracted"
+      },
+      "sourceRecordId": "alqadim:objective:ch3_5:hint",
+      "entityId": "alqadim:knowledge:giant-boar",
+      "answerRelations": [
+        "objective",
+        "outcome",
+        "location"
+      ]
+    },
+    {
+      "id": "ch4_2",
+      "subject": "Mermaid sister",
+      "facet": "objective",
+      "aliases": [
+        "stone cell rescue"
+      ],
+      "text": "Rescue the mermaid's sister locked in the stone cell.",
+      "witness": "Rescue the mermaid's sister locked in the stone cell.",
+      "source": {
+        "file": "guides/js/AlQadim.js",
+        "locator": "DB.chapters[3].required[id=ch4_2]",
+        "review": "extracted"
+      },
+      "sourceRecordId": "alqadim:objective:ch4_2:hint",
+      "entityId": "alqadim:knowledge:mermaid-sister",
+      "answerRelations": [
+        "objective",
+        "location"
+      ]
+    },
+    {
+      "id": "ch4_3",
+      "subject": "Dock dark mage",
+      "facet": "objective",
+      "aliases": [
+        "dock entrance mage"
+      ],
+      "text": "Defeat the dark mage guarding the dock entrance.",
+      "witness": "Defeat the dark mage guarding the dock entrance.",
+      "source": {
+        "file": "guides/js/AlQadim.js",
+        "locator": "DB.chapters[3].required[id=ch4_3]",
+        "review": "extracted"
+      },
+      "sourceRecordId": "alqadim:objective:ch4_3:hint",
+      "entityId": "alqadim:knowledge:dock-dark-mage",
+      "answerRelations": [
+        "objective",
+        "location"
+      ]
+    },
+    {
+      "id": "ch4_4",
+      "subject": "Rotting Ship's Hold",
+      "facet": "objective",
+      "aliases": [
+        "undead hold",
+        "zombies hold"
+      ],
+      "text": "Enter the Rotting Ship's Hold and clear all zombies.",
+      "witness": "Enter the Rotting Ship's Hold and clear all zombies.",
+      "source": {
+        "file": "guides/js/AlQadim.js",
+        "locator": "DB.chapters[3].required[id=ch4_4]",
+        "review": "extracted"
+      },
+      "sourceRecordId": "alqadim:objective:ch4_4:hint",
+      "entityId": "alqadim:knowledge:rotting-ship-s-hold",
+      "answerRelations": [
+        "objective"
+      ]
+    },
+    {
+      "id": "ch4_5",
+      "subject": "Ship Orb",
+      "facet": "acquisition",
+      "aliases": [
+        "helm cabin orb"
+      ],
+      "text": "Retrieve the Ship Orb from the helm cabin.",
+      "witness": "Retrieve the Ship Orb from the helm cabin.",
+      "source": {
+        "file": "guides/js/AlQadim.js",
+        "locator": "DB.chapters[3].required[id=ch4_5]",
+        "review": "extracted"
+      },
+      "sourceRecordId": "alqadim:objective:ch4_5:hint",
+      "entityId": "alqadim:knowledge:ship-orb",
+      "answerRelations": [
+        "acquisition",
+        "location"
+      ]
+    },
+    {
+      "id": "ch4_6",
+      "subject": "Corsair ship",
+      "facet": "use",
+      "aliases": [
+        "sea navigation",
+        "restore ship"
+      ],
+      "text": "Restore your ship to enable navigation across the sea.",
+      "witness": "Restore your ship to enable navigation across the sea.",
+      "source": {
+        "file": "guides/js/AlQadim.js",
+        "locator": "DB.chapters[3].required[id=ch4_6]",
+        "review": "extracted"
+      },
+      "sourceRecordId": "alqadim:objective:ch4_6:hint",
+      "entityId": "alqadim:knowledge:corsair-ship",
+      "answerRelations": [
+        "objective",
+        "outcome",
+        "use"
+      ],
+      "support": {
+        "method": [
+          "item-ship-orb-use"
+        ]
+      }
+    },
+    {
+      "id": "ch4_7",
+      "subject": "Rotting Ship's Hold barrels",
+      "facet": "acquisition",
+      "aliases": [
+        "hidden healing potions"
+      ],
+      "text": "Smash barrels in the ship's hold to find hidden healing potions.",
+      "witness": "Smash barrels in the ship's hold to find hidden healing potions.",
+      "source": {
+        "file": "guides/js/AlQadim.js",
+        "locator": "DB.chapters[3].optional[id=ch4_7]",
+        "review": "extracted"
+      },
+      "sourceRecordId": "alqadim:objective:ch4_7:hint",
+      "entityId": "alqadim:knowledge:rotting-ship-s-hold-barrels",
+      "answerRelations": [
+        "acquisition",
+        "method"
+      ],
+      "answerBindings": [
+        {
+          "entityId": "alqadim:knowledge:healing-potions",
+          "relations": [
+            "acquisition",
+            "method"
+          ],
+          "mention": "healing potions"
+        }
+      ],
+      "sourceFields": [
+        {
+          "key": "provider",
+          "selectors": [],
+          "witness": "Smash barrels in the ship's hold to find hidden healing potions."
+        },
+        {
+          "key": "method",
+          "selectors": [
+            "step"
+          ],
+          "witness": "Smash barrels in the ship's hold to find hidden healing potions."
+        },
+        {
+          "key": "acquisition",
+          "selectors": [],
+          "witness": "Smash barrels in the ship's hold to find hidden healing potions."
+        }
+      ]
+    },
+    {
+      "id": "ch5_2",
+      "subject": "Mirror optics puzzle",
+      "facet": "objective",
+      "aliases": [
+        "tower light reflection"
+      ],
+      "text": "Solve the mirror optics and light reflection puzzle.",
+      "witness": "Solve the mirror optics and light reflection puzzle.",
+      "source": {
+        "file": "guides/js/AlQadim.js",
+        "locator": "DB.chapters[4].required[id=ch5_2]",
+        "review": "extracted"
+      },
+      "sourceRecordId": "alqadim:objective:ch5_2:hint",
+      "entityId": "alqadim:knowledge:mirror-optics-puzzle",
+      "answerRelations": [
+        "objective"
+      ]
+    },
+    {
+      "id": "ch5_4",
+      "subject": "Acid Slime King",
+      "facet": "objective",
+      "aliases": [
+        "toxic pool neutralization"
+      ],
+      "text": "Defeat the Acid Slime King to neutralize the toxic pool.",
+      "witness": "Defeat the Acid Slime King to neutralize the toxic pool.",
+      "source": {
+        "file": "guides/js/AlQadim.js",
+        "locator": "DB.chapters[4].required[id=ch5_4]",
+        "review": "extracted"
+      },
+      "sourceRecordId": "alqadim:objective:ch5_4:hint",
+      "entityId": "alqadim:knowledge:acid-slime-king",
+      "answerRelations": [
+        "objective",
+        "outcome"
+      ]
+    },
+    {
+      "id": "ch5_6",
+      "subject": "Captured tower mage",
+      "facet": "method",
+      "aliases": [
+        "tower blessing"
+      ],
+      "text": "Free the captured tower mage to receive his blessing.",
+      "witness": "Free the captured tower mage to receive his blessing.",
+      "source": {
+        "file": "guides/js/AlQadim.js",
+        "locator": "DB.chapters[4].required[id=ch5_6]",
+        "review": "extracted"
+      },
+      "sourceRecordId": "alqadim:objective:ch5_6:hint",
+      "entityId": "alqadim:knowledge:captured-tower-mage",
+      "answerRelations": [
+        "acquisition",
+        "objective",
+        "outcome"
+      ]
+    },
+    {
+      "id": "ch5_7",
+      "subject": "Tower Level 2 tile puzzle",
+      "facet": "objective",
+      "aliases": [
+        "optional pressure-plate tile puzzle"
+      ],
+      "text": "Solve the optional pressure-plate tile puzzle on Level 2 for items.",
+      "witness": "Solve the optional pressure-plate tile puzzle on Level 2 for items.",
+      "source": {
+        "file": "guides/js/AlQadim.js",
+        "locator": "DB.chapters[4].optional[id=ch5_7]",
+        "review": "extracted"
+      },
+      "sourceRecordId": "alqadim:objective:ch5_7:hint",
+      "entityId": "alqadim:knowledge:tower-level-2-tile-puzzle",
+      "answerRelations": [
+        "objective",
+        "outcome"
+      ]
+    },
+    {
+      "id": "ch6_3",
+      "subject": "Traveler's Rest",
+      "facet": "objective",
+      "aliases": [
+        "Closed Inn",
+        "Capital City inn"
+      ],
+      "text": "Visit the Closed Inn (Traveler's Rest) and converse with patrons.",
+      "witness": "Visit the Closed Inn (Traveler's Rest) and converse with patrons.",
+      "source": {
+        "file": "guides/js/AlQadim.js",
+        "locator": "DB.chapters[5].required[id=ch6_3]",
+        "review": "extracted"
+      },
+      "sourceRecordId": "alqadim:objective:ch6_3:hint",
+      "entityId": "alqadim:knowledge:traveler-s-rest",
+      "answerRelations": [
+        "identity",
+        "objective"
+      ]
+    },
+    {
+      "id": "ch6_4",
+      "subject": "Zubakon",
+      "facet": "location",
+      "aliases": [
+        "shop with no sign",
+        "sword trainer",
+        "Zubakon location",
+        "signless shop",
+        "sword trainer location"
+      ],
+      "text": "Visit Zubakon at the shop with no sign to learn any new sword swings you are eligible for.",
+      "witness": "Visit Zubakon at the shop with no sign to learn any new sword swings you are eligible for.",
+      "source": {
+        "file": "guides/js/AlQadim.js",
+        "locator": "DB.chapters[5].optional[id=ch6_4]",
+        "review": "extracted"
+      },
+      "sourceRecordId": "alqadim:objective:ch6_4:hint",
+      "entityId": "alqadim:knowledge:zubakon",
+      "answerRelations": [
+        "acquisition",
+        "location",
+        "prerequisites"
+      ]
+    },
+    {
+      "id": "ch7_1",
+      "subject": "Caliph audience",
+      "facet": "method",
+      "aliases": [
+        "Vizier audience"
+      ],
+      "text": "Request an audience with the Caliph via the Vizier.",
+      "witness": "Request an audience with the Caliph via the Vizier.",
+      "source": {
+        "file": "guides/js/AlQadim.js",
+        "locator": "DB.chapters[6].required[id=ch7_1]",
+        "review": "extracted"
+      },
+      "sourceRecordId": "alqadim:objective:ch7_1:hint",
+      "entityId": "alqadim:knowledge:caliph-audience",
+      "answerRelations": [
+        "method"
+      ]
+    },
+    {
+      "id": "ch7_2",
+      "subject": "Vizier mind scan",
+      "facet": "method",
+      "aliases": [
+        "telepathic scan"
+      ],
+      "text": "Submit to the Vizier's mind scan.",
+      "witness": "Submit to the Vizier's mind scan.",
+      "source": {
+        "file": "guides/js/AlQadim.js",
+        "locator": "DB.chapters[6].required[id=ch7_2]",
+        "review": "extracted"
+      },
+      "sourceRecordId": "alqadim:objective:ch7_2:hint",
+      "entityId": "alqadim:knowledge:vizier-mind-scan",
+      "answerRelations": [
+        "method",
+        "objective"
+      ]
+    },
+    {
+      "id": "ch7_3",
+      "subject": "Caliph questions",
+      "facet": "method",
+      "aliases": [
+        "absolute honesty"
+      ],
+      "text": "Answer the questions with absolute honesty.",
+      "witness": "Answer the questions with absolute honesty.",
+      "source": {
+        "file": "guides/js/AlQadim.js",
+        "locator": "DB.chapters[6].required[id=ch7_3]",
+        "review": "extracted"
+      },
+      "sourceRecordId": "alqadim:objective:ch7_3:hint",
+      "entityId": "alqadim:knowledge:caliph-questions",
+      "answerRelations": [
+        "method"
+      ]
+    },
+    {
+      "id": "ch8_2",
+      "subject": "Shibaz Hermit",
+      "facet": "objective",
+      "aliases": [
+        "Hermit hut guidance"
+      ],
+      "text": "Locate the Hermit's hut and accept his guidance.",
+      "witness": "Locate the Hermit's hut and accept his guidance.",
+      "source": {
+        "file": "guides/js/AlQadim.js",
+        "locator": "DB.chapters[7].required[id=ch8_2]",
+        "review": "extracted"
+      },
+      "sourceRecordId": "alqadim:objective:ch8_2:hint",
+      "entityId": "alqadim:knowledge:shibaz-hermit",
+      "answerRelations": [
+        "objective"
+      ]
+    },
+    {
+      "id": "ch8_3",
+      "subject": "Flying Carpet",
+      "facet": "acquisition",
+      "aliases": [
+        "harpy nest carpet"
+      ],
+      "text": "Retrieve the Flying Carpet from the harpy nest.",
+      "witness": "Retrieve the Flying Carpet from the harpy nest.",
+      "source": {
+        "file": "guides/js/AlQadim.js",
+        "locator": "DB.chapters[7].required[id=ch8_3]",
+        "review": "extracted"
+      },
+      "sourceRecordId": "alqadim:objective:ch8_3:hint",
+      "entityId": "alqadim:knowledge:flying-carpet",
+      "answerRelations": [
+        "acquisition",
+        "location"
+      ]
+    },
+    {
+      "id": "ch8_4",
+      "subject": "Hags riddle",
+      "facet": "objective",
+      "aliases": [
+        "Library path riddle"
+      ],
+      "text": "Solve the hags' riddle to open the path to the Library.",
+      "witness": "Solve the hags' riddle to open the path to the Library.",
+      "source": {
+        "file": "guides/js/AlQadim.js",
+        "locator": "DB.chapters[7].required[id=ch8_4]",
+        "review": "extracted"
+      },
+      "sourceRecordId": "alqadim:objective:ch8_4:hint",
+      "entityId": "alqadim:knowledge:hags-riddle",
+      "answerRelations": [
+        "objective",
+        "prerequisites",
+        "outcome"
+      ]
+    },
+    {
+      "id": "ch9_2",
+      "subject": "Library levels",
+      "facet": "objective",
+      "aliases": [
+        "library maze",
+        "L1 to L3"
+      ],
+      "text": "Navigate through levels L1 to L3.",
+      "witness": "Navigate through levels L1 to L3.",
+      "source": {
+        "file": "guides/js/AlQadim.js",
+        "locator": "DB.chapters[8].required[id=ch9_2]",
+        "review": "extracted"
+      },
+      "sourceRecordId": "alqadim:objective:ch9_2:hint",
+      "entityId": "alqadim:knowledge:library-levels",
+      "answerRelations": [
+        "objective"
+      ]
+    },
+    {
+      "id": "ch10_1",
+      "subject": "Bottle of Eternal Emptiness",
+      "facet": "acquisition",
+      "aliases": [
+        "Senat bottle"
+      ],
+      "text": "Retrieve the Bottle of Eternal Emptiness from the center of volcanic Isle of Senat.",
+      "witness": "Retrieve the Bottle of Eternal Emptiness from the center of volcanic Isle of Senat.",
+      "source": {
+        "file": "guides/js/AlQadim.js",
+        "locator": "DB.chapters[9].required[id=ch10_1]",
+        "review": "extracted"
+      },
+      "sourceRecordId": "alqadim:objective:ch10_1:hint",
+      "entityId": "alqadim:knowledge:bottle-of-eternal-emptiness",
+      "answerRelations": [
+        "acquisition",
+        "location"
+      ]
+    },
+    {
+      "id": "ch10_2",
+      "subject": "Efreet agent",
+      "facet": "method",
+      "aliases": [
+        "bottle trap",
+        "capture Efreet"
+      ],
+      "text": "Trap the Efreet agent in the bottle.",
+      "witness": "Trap the Efreet agent in the bottle.",
+      "source": {
+        "file": "guides/js/AlQadim.js",
+        "locator": "DB.chapters[9].required[id=ch10_2]",
+        "review": "extracted"
+      },
+      "sourceRecordId": "alqadim:objective:ch10_2:hint",
+      "entityId": "alqadim:knowledge:efreet-agent",
+      "answerRelations": [
+        "method",
+        "objective"
+      ],
+      "answerBindings": [
+        {
+          "entityId": "alqadim:knowledge:bottle-of-eternal-emptiness",
+          "relations": [
+            "method"
+          ],
+          "mention": "bottle"
+        }
+      ]
+    },
+    {
+      "id": "ch10_3",
+      "subject": "Chessboard",
+      "facet": "route",
+      "aliases": [
+        "Marid North",
+        "Djinns East",
+        "Daos West"
+      ],
+      "text": "Navigate the Chessboard: Marid (North), Djinns (East), Daos (West).",
+      "witness": "Navigate the Chessboard: Marid (North), Djinns (East), Daos (West).",
+      "source": {
+        "file": "guides/js/AlQadim.js",
+        "locator": "DB.chapters[9].required[id=ch10_3]",
+        "review": "extracted"
+      },
+      "sourceRecordId": "alqadim:objective:ch10_3:hint",
+      "entityId": "alqadim:knowledge:chessboard",
+      "answerRelations": [
+        "explanation",
+        "location"
+      ]
+    },
+    {
+      "id": "ch10_7",
+      "subject": "Efreet Potion",
+      "facet": "use",
+      "aliases": [
+        "South chessboard path",
+        "Efreet Lord potion"
+      ],
+      "text": "Drink the potion, cross the South chessboard path, and learn the truth from the Efreet Lord.",
+      "witness": "Drink the potion, cross the South chessboard path, and learn the truth from the Efreet Lord.",
+      "source": {
+        "file": "guides/js/AlQadim.js",
+        "locator": "DB.chapters[9].required[id=ch10_7]",
+        "review": "extracted"
+      },
+      "sourceRecordId": "alqadim:objective:ch10_7:hint",
+      "entityId": "alqadim:knowledge:efreet-potion",
+      "answerRelations": [
+        "use",
+        "method",
+        "outcome"
+      ],
+      "answerBindings": [
+        {
+          "entityId": "alqadim:knowledge:south-chessboard-path",
+          "relations": [
+            "method"
+          ],
+          "mention": "South chessboard path"
+        }
+      ],
+      "support": {
+        "route": [
+          "page-coords-south",
+          "item-efreet-potion-use"
+        ]
+      }
+    },
+    {
+      "id": "ch11_2",
+      "subject": "Sumie",
+      "facet": "location",
+      "aliases": [
+        "kitchen fireplace",
+        "orange clothing"
+      ],
+      "text": "Meet Sumie in the kitchen (wearing orange near fireplace).",
+      "witness": "Meet Sumie in the kitchen (wearing orange near fireplace).",
+      "source": {
+        "file": "guides/js/AlQadim.js",
+        "locator": "DB.chapters[10].required[id=ch11_2]",
+        "review": "extracted"
+      },
+      "sourceRecordId": "alqadim:objective:ch11_2:hint",
+      "entityId": "alqadim:knowledge:sumie",
+      "answerRelations": [
+        "location",
+        "objective"
+      ],
+      "sourceFields": [
+        {
+          "key": "location",
+          "selectors": [],
+          "witness": "Meet Sumie in the kitchen (wearing orange near fireplace)."
+        },
+        {
+          "key": "identity",
+          "selectors": [
+            "appearance"
+          ],
+          "witness": "Meet Sumie in the kitchen (wearing orange near fireplace)."
+        }
+      ]
+    },
+    {
+      "id": "ch11_3",
+      "subject": "Office of Trade",
+      "facet": "method",
+      "aliases": [
+        "baker referral"
+      ],
+      "text": "Visit the Office of Trade to receive the baker referral.",
+      "witness": "Visit the Office of Trade to receive the baker referral.",
+      "source": {
+        "file": "guides/js/AlQadim.js",
+        "locator": "DB.chapters[10].required[id=ch11_3]",
+        "review": "extracted"
+      },
+      "sourceRecordId": "alqadim:objective:ch11_3:hint",
+      "entityId": "alqadim:knowledge:office-of-trade",
+      "answerRelations": [
+        "acquisition",
+        "location"
+      ],
+      "sourceFields": [
+        {
+          "key": "provider",
+          "selectors": [],
+          "witness": "Visit the Office of Trade to receive the baker referral."
+        },
+        {
+          "key": "acquisition",
+          "selectors": [],
+          "witness": "Visit the Office of Trade to receive the baker referral."
+        },
+        {
+          "key": "location",
+          "selectors": [],
+          "witness": "Visit the Office of Trade to receive the baker referral."
+        }
+      ]
+    },
+    {
+      "id": "ch11_4",
+      "subject": "Key of Bone",
+      "facet": "acquisition",
+      "aliases": [
+        "Baker key",
+        "market baker"
+      ],
+      "text": "Speak to the Baker in the market to claim the Key of Bone.",
+      "witness": "Speak to the Baker in the market to claim the Key of Bone.",
+      "source": {
+        "file": "guides/js/AlQadim.js",
+        "locator": "DB.chapters[10].required[id=ch11_4]",
+        "review": "extracted"
+      },
+      "sourceRecordId": "alqadim:objective:ch11_4:hint",
+      "entityId": "alqadim:knowledge:key-of-bone",
+      "answerRelations": [
+        "acquisition",
+        "location",
+        "method"
+      ],
+      "answerBindings": [
+        {
+          "entityId": "alqadim:knowledge:baker",
+          "relations": [
+            "location"
+          ],
+          "mention": "Baker"
+        }
+      ]
+    },
+    {
+      "id": "ch11_5",
+      "subject": "Sumie",
+      "facet": "method",
+      "aliases": [
+        "kitchen cellar door"
+      ],
+      "text": "Return to Sumie to unlock the kitchen cellar door.",
+      "witness": "Return to Sumie to unlock the kitchen cellar door.",
+      "source": {
+        "file": "guides/js/AlQadim.js",
+        "locator": "DB.chapters[10].required[id=ch11_5]",
+        "review": "extracted"
+      },
+      "sourceRecordId": "alqadim:objective:ch11_5:hint",
+      "entityId": "alqadim:knowledge:sumie",
+      "answerRelations": [
+        "method",
+        "destination",
+        "outcome"
+      ],
+      "answerBindings": [
+        {
+          "entityId": "alqadim:knowledge:kitchen-cellar-door",
+          "relations": [
+            "outcome"
+          ],
+          "mention": "kitchen cellar door"
+        }
+      ]
+    },
+    {
+      "id": "ch12_2",
+      "subject": "Old Dungeon hidden key",
+      "facet": "acquisition",
+      "aliases": [
+        "boulder first room key"
+      ],
+      "text": "Retrieve the hidden key behind a boulder in the first room.",
+      "witness": "Retrieve the hidden key behind a boulder in the first room.",
+      "source": {
+        "file": "guides/js/AlQadim.js",
+        "locator": "DB.chapters[11].required[id=ch12_2]",
+        "review": "extracted"
+      },
+      "sourceRecordId": "alqadim:objective:ch12_2:hint",
+      "entityId": "alqadim:knowledge:old-dungeon-hidden-key",
+      "answerRelations": [
+        "acquisition",
+        "location"
+      ],
+      "sourceFields": [
+        {
+          "key": "location",
+          "selectors": [],
+          "witness": "Retrieve the hidden key behind a boulder in the first room.",
+          "arguments": [
+            {
+              "bindings": [
+                {
+                  "role": "object",
+                  "mention": "hidden key"
+                },
+                {
+                  "role": "destination",
+                  "mention": "behind a boulder in the first room"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "key": "acquisition",
+          "selectors": [],
+          "witness": "Retrieve the hidden key behind a boulder in the first room.",
+          "arguments": [
+            {
+              "bindings": [
+                {
+                  "role": "object",
+                  "mention": "hidden key"
+                },
+                {
+                  "role": "destination",
+                  "mention": "behind a boulder in the first room"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch12_3",
+      "subject": "Old Dungeon vents",
+      "facet": "method",
+      "aliases": [
+        "poison vents",
+        "flame vents"
+      ],
+      "text": "Time your run past the poison and flame vents.",
+      "witness": "Time your run past the poison and flame vents.",
+      "source": {
+        "file": "guides/js/AlQadim.js",
+        "locator": "DB.chapters[11].required[id=ch12_3]",
+        "review": "extracted"
+      },
+      "sourceRecordId": "alqadim:objective:ch12_3:hint",
+      "entityId": "alqadim:knowledge:old-dungeon-vents",
+      "answerRelations": [
+        "method"
+      ],
+      "sourceFields": [
+        {
+          "key": "method",
+          "selectors": [
+            "step",
+            "hazards"
+          ],
+          "witness": "Time your run past the poison and flame vents.",
+          "arguments": [
+            {
+              "bindings": [
+                {
+                  "role": "object",
+                  "mention": "poison and flame vents"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "key": "identity",
+          "selectors": [
+            "hazards"
+          ],
+          "witness": "Time your run past the poison and flame vents.",
+          "arguments": [
+            {
+              "bindings": [
+                {
+                  "role": "object",
+                  "mention": "poison and flame vents"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch12_4",
+      "subject": "Pangar-Bek",
+      "facet": "method",
+      "aliases": [
+        "cyclops escort",
+        "dungeon exit",
+        "escort Pangar-Bek",
+        "Pangar-Bek escort destination"
+      ],
+      "text": "Locate and escort the cyclops Pangar-Bek to the dungeon exit.",
+      "witness": "Locate and escort the cyclops Pangar-Bek to the dungeon exit.",
+      "source": {
+        "file": "guides/js/AlQadim.js",
+        "locator": "DB.chapters[11].required[id=ch12_4]",
+        "review": "extracted"
+      },
+      "sourceRecordId": "alqadim:objective:ch12_4:hint",
+      "entityId": "alqadim:knowledge:pangar-bek",
+      "answerRelations": [
+        "identity",
+        "method",
+        "destination",
+        "objective"
+      ],
+      "topicLabels": [
+        "Pangar-Bek escort destination"
+      ],
+      "sourceFields": [
+        {
+          "key": "identity",
+          "selectors": [
+            "role",
+            "type"
+          ],
+          "witness": "Locate and escort the cyclops Pangar-Bek to the dungeon exit.",
+          "arguments": [
+            {
+              "linkId": "pangar-exit",
+              "bindings": [
+                {
+                  "role": "object",
+                  "mention": "Pangar-Bek",
+                  "entityId": "alqadim:knowledge:pangar-bek"
+                },
+                {
+                  "role": "destination",
+                  "mention": "dungeon exit",
+                  "entityId": "alqadim:knowledge:old-dungeon-exit"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "key": "location",
+          "selectors": [],
+          "witness": "Locate and escort the cyclops Pangar-Bek to the dungeon exit.",
+          "arguments": [
+            {
+              "linkId": "pangar-exit",
+              "bindings": [
+                {
+                  "role": "object",
+                  "mention": "Pangar-Bek",
+                  "entityId": "alqadim:knowledge:pangar-bek"
+                },
+                {
+                  "role": "destination",
+                  "mention": "dungeon exit",
+                  "entityId": "alqadim:knowledge:old-dungeon-exit"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "key": "method",
+          "selectors": [
+            "escort"
+          ],
+          "witness": "Locate and escort the cyclops Pangar-Bek to the dungeon exit.",
+          "arguments": [
+            {
+              "linkId": "pangar-exit",
+              "bindings": [
+                {
+                  "role": "object",
+                  "mention": "Pangar-Bek",
+                  "entityId": "alqadim:knowledge:pangar-bek"
+                },
+                {
+                  "role": "destination",
+                  "mention": "dungeon exit",
+                  "entityId": "alqadim:knowledge:old-dungeon-exit"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch13_1",
+      "subject": "New Dungeon",
+      "facet": "objective",
+      "aliases": [
+        "stealth section"
+      ],
+      "text": "Enter the New Dungeon (Stealth Section - Do not get caught).",
+      "witness": "Enter the New Dungeon (Stealth Section - Do not get caught).",
+      "source": {
+        "file": "guides/js/AlQadim.js",
+        "locator": "DB.chapters[12].required[id=ch13_1]",
+        "review": "extracted"
+      },
+      "sourceRecordId": "alqadim:objective:ch13_1:hint",
+      "entityId": "alqadim:knowledge:new-dungeon",
+      "answerRelations": [
+        "objective"
+      ]
+    },
+    {
+      "id": "ch13_2",
+      "subject": "New Dungeon pressure plates",
+      "facet": "objective",
+      "aliases": [
+        "security pressure plates",
+        "security pressure plate objective",
+        "New Dungeon pressure plate objective"
+      ],
+      "text": "Bypass the security pressure plates.",
+      "witness": "Bypass the security pressure plates.",
+      "source": {
+        "file": "guides/js/AlQadim.js",
+        "locator": "DB.chapters[12].required[id=ch13_2]",
+        "review": "extracted"
+      },
+      "sourceRecordId": "alqadim:objective:ch13_2:hint",
+      "entityId": "alqadim:knowledge:new-dungeon-pressure-plates",
+      "answerRelations": [
+        "objective"
+      ],
+      "topicLabels": [
+        "New Dungeon pressure plate objective"
+      ]
+    },
+    {
+      "id": "ch13_3",
+      "subject": "Zubin cell",
+      "facet": "method",
+      "aliases": [
+        "Zubin revelation"
+      ],
+      "text": "Locate Zubin's cell and listen to his revelation.",
+      "witness": "Locate Zubin's cell and listen to his revelation.",
+      "source": {
+        "file": "guides/js/AlQadim.js",
+        "locator": "DB.chapters[12].required[id=ch13_3]",
+        "review": "extracted"
+      },
+      "sourceRecordId": "alqadim:objective:ch13_3:hint",
+      "entityId": "alqadim:knowledge:zubin-cell",
+      "answerRelations": [
+        "method",
+        "objective"
+      ],
+      "answerBindings": [
+        {
+          "entityId": "alqadim:knowledge:zubin",
+          "relations": [
+            "method",
+            "objective"
+          ],
+          "mention": "Zubin"
+        }
+      ]
+    },
+    {
+      "id": "ch14_3",
+      "subject": "Vizier's Journal",
+      "facet": "acquisition",
+      "aliases": [
+        "conspiracy journal",
+        "Vizier desk"
+      ],
+      "text": "Search the Vizier's desk to retrieve his conspiracy journal.",
+      "witness": "Search the Vizier's desk to retrieve his conspiracy journal.",
+      "source": {
+        "file": "guides/js/AlQadim.js",
+        "locator": "DB.chapters[13].required[id=ch14_3]",
+        "review": "extracted"
+      },
+      "sourceRecordId": "alqadim:objective:ch14_3:hint",
+      "entityId": "alqadim:knowledge:vizier-s-journal",
+      "answerRelations": [
+        "acquisition",
+        "location",
+        "method"
+      ],
+      "sourceFields": [
+        {
+          "key": "location",
+          "selectors": [],
+          "witness": "Search the Vizier's desk to retrieve his conspiracy journal."
+        },
+        {
+          "key": "acquisition",
+          "selectors": [],
+          "witness": "Search the Vizier's desk to retrieve his conspiracy journal."
+        },
+        {
+          "key": "method",
+          "selectors": [
+            "step"
+          ],
+          "witness": "Search the Vizier's desk to retrieve his conspiracy journal."
+        }
+      ]
+    },
+    {
+      "id": "ch15_2",
+      "subject": "Al'Katraz mercenary groups",
+      "facet": "objective",
+      "aliases": [
+        "warring mercenary factions"
+      ],
+      "text": "Interact with the two warring mercenary groups.",
+      "witness": "Interact with the two warring mercenary groups.",
+      "source": {
+        "file": "guides/js/AlQadim.js",
+        "locator": "DB.chapters[14].required[id=ch15_2]",
+        "review": "extracted"
+      },
+      "sourceRecordId": "alqadim:objective:ch15_2:hint",
+      "entityId": "alqadim:knowledge:al-katraz-mercenary-groups",
+      "answerRelations": [
+        "objective"
+      ]
+    },
+    {
+      "id": "ch15_3",
+      "subject": "Al'Katraz password",
+      "facet": "acquisition",
+      "aliases": [
+        "three elemental shrines"
+      ],
+      "text": "Solve the three elemental shrines to reveal the password.",
+      "witness": "Solve the three elemental shrines to reveal the password.",
+      "source": {
+        "file": "guides/js/AlQadim.js",
+        "locator": "DB.chapters[14].required[id=ch15_3]",
+        "review": "extracted"
+      },
+      "sourceRecordId": "alqadim:objective:ch15_3:hint",
+      "entityId": "alqadim:knowledge:al-katraz-password",
+      "answerRelations": [
+        "acquisition",
+        "objective",
+        "outcome"
+      ]
+    },
+    {
+      "id": "ch16_1",
+      "subject": "Al'Katraz Prison Dungeon",
+      "facet": "requirement",
+      "aliases": [
+        "prison password"
+      ],
+      "text": "Enter Al'Katraz Prison Dungeon using the password.",
+      "witness": "Enter Al'Katraz Prison Dungeon using the password.",
+      "source": {
+        "file": "guides/js/AlQadim.js",
+        "locator": "DB.chapters[15].required[id=ch16_1]",
+        "review": "extracted"
+      },
+      "sourceRecordId": "alqadim:objective:ch16_1:hint",
+      "entityId": "alqadim:knowledge:al-katraz-prison-dungeon",
+      "answerRelations": [
+        "method",
+        "prerequisites"
+      ]
+    },
+    {
+      "id": "ch16_2",
+      "subject": "Ettin guards",
+      "facet": "objective",
+      "aliases": [
+        "prison Ettins"
+      ],
+      "text": "Defeat the Ettin guards.",
+      "witness": "Defeat the Ettin guards.",
+      "source": {
+        "file": "guides/js/AlQadim.js",
+        "locator": "DB.chapters[15].required[id=ch16_2]",
+        "review": "extracted"
+      },
+      "sourceRecordId": "alqadim:objective:ch16_2:hint",
+      "entityId": "alqadim:knowledge:ettin-guards",
+      "answerRelations": [
+        "objective"
+      ]
+    },
+    {
+      "id": "ch16_3",
+      "subject": "Prison keys",
+      "facet": "acquisition",
+      "aliases": [
+        "Mercenary Captain keys"
+      ],
+      "text": "Defeat the Mercenary Captain to obtain the prison keys.",
+      "witness": "Defeat the Mercenary Captain to obtain the prison keys.",
+      "source": {
+        "file": "guides/js/AlQadim.js",
+        "locator": "DB.chapters[15].required[id=ch16_3]",
+        "review": "extracted"
+      },
+      "sourceRecordId": "alqadim:objective:ch16_3:hint",
+      "entityId": "alqadim:knowledge:prison-keys",
+      "answerRelations": [
+        "acquisition",
+        "outcome"
+      ]
+    },
+    {
+      "id": "ch16_4",
+      "subject": "Tarik",
+      "facet": "method",
+      "aliases": [
+        "brother rescue",
+        "escort to ship",
+        "escort Tarik",
+        "Tarik escort destination",
+        "brother ship escort"
+      ],
+      "text": "Rescue Tarik and escort him back to the ship.",
+      "witness": "Rescue Tarik and escort him back to the ship.",
+      "source": {
+        "file": "guides/js/AlQadim.js",
+        "locator": "DB.chapters[15].required[id=ch16_4]",
+        "review": "extracted"
+      },
+      "sourceRecordId": "alqadim:objective:ch16_4:hint",
+      "entityId": "alqadim:knowledge:tarik",
+      "answerRelations": [
+        "method",
+        "destination",
+        "objective"
+      ],
+      "topicLabels": [
+        "Tarik escort destination"
+      ]
+    },
+    {
+      "id": "ch17_2",
+      "subject": "Sand genies",
+      "facet": "objective",
+      "aliases": [
+        "Aballat genies"
+      ],
+      "text": "Converse with the sand genies.",
+      "witness": "Converse with the sand genies.",
+      "source": {
+        "file": "guides/js/AlQadim.js",
+        "locator": "DB.chapters[16].required[id=ch17_2]",
+        "review": "extracted"
+      },
+      "sourceRecordId": "alqadim:objective:ch17_2:hint",
+      "entityId": "alqadim:knowledge:sand-genies",
+      "answerRelations": [
+        "objective"
+      ]
+    },
+    {
+      "id": "ch17_3",
+      "subject": "Voice-trapping bottles",
+      "facet": "objective",
+      "aliases": [
+        "voice bottles"
+      ],
+      "text": "Locate the voice-trapping bottles.",
+      "witness": "Locate the voice-trapping bottles.",
+      "source": {
+        "file": "guides/js/AlQadim.js",
+        "locator": "DB.chapters[16].required[id=ch17_3]",
+        "review": "extracted"
+      },
+      "sourceRecordId": "alqadim:objective:ch17_3:hint",
+      "entityId": "alqadim:knowledge:voice-trapping-bottles",
+      "answerRelations": [
+        "objective"
+      ]
+    },
+    {
+      "id": "ch17_4",
+      "subject": "Tarik voice",
+      "facet": "objective",
+      "aliases": [
+        "restore speech",
+        "Tarik voice restoration objective"
+      ],
+      "text": "Restore Tarik's voice.",
+      "witness": "Restore Tarik's voice.",
+      "source": {
+        "file": "guides/js/AlQadim.js",
+        "locator": "DB.chapters[16].required[id=ch17_4]",
+        "review": "extracted"
+      },
+      "sourceRecordId": "alqadim:objective:ch17_4:hint",
+      "entityId": "alqadim:knowledge:tarik-voice",
+      "answerRelations": [
+        "objective"
+      ],
+      "topicLabels": [
+        "Tarik voice restoration objective"
+      ],
+      "answerBindings": [
+        {
+          "entityId": "alqadim:knowledge:tarik",
+          "relations": [
+            "objective"
+          ],
+          "mention": "Tarik"
+        }
+      ]
+    },
+    {
+      "id": "ch18_2",
+      "subject": "Al-Naqqil teleporter traps",
+      "facet": "objective",
+      "aliases": [
+        "teleporter traps"
+      ],
+      "text": "Evade the teleporter traps.",
+      "witness": "Evade the teleporter traps.",
+      "source": {
+        "file": "guides/js/AlQadim.js",
+        "locator": "DB.chapters[17].required[id=ch18_2]",
+        "review": "extracted"
+      },
+      "sourceRecordId": "alqadim:objective:ch18_2:hint",
+      "entityId": "alqadim:knowledge:al-naqqil-teleporter-traps",
+      "answerRelations": [
+        "objective"
+      ]
+    },
+    {
+      "id": "ch18_3",
+      "subject": "Magic necklaces",
+      "facet": "acquisition",
+      "aliases": [
+        "three Nameless mages",
+        "magic neck pieces"
+      ],
+      "text": "Defeat the three Nameless mages to claim their magic necklaces.",
+      "witness": "Defeat the three Nameless mages to claim their magic necklaces.",
+      "source": {
+        "file": "guides/js/AlQadim.js",
+        "locator": "DB.chapters[17].required[id=ch18_3]",
+        "review": "extracted"
+      },
+      "sourceRecordId": "alqadim:objective:ch18_3:hint",
+      "entityId": "alqadim:knowledge:magic-necklaces",
+      "answerRelations": [
+        "acquisition",
+        "outcome"
+      ]
+    },
+    {
+      "id": "ch18_4",
+      "subject": "Outer Planes gateway",
+      "facet": "objective",
+      "aliases": [
+        "open gateway"
+      ],
+      "text": "Open the gateway to the Outer Planes.",
+      "witness": "Open the gateway to the Outer Planes.",
+      "source": {
+        "file": "guides/js/AlQadim.js",
+        "locator": "DB.chapters[17].required[id=ch18_4]",
+        "review": "extracted"
+      },
+      "sourceRecordId": "alqadim:objective:ch18_4:hint",
+      "entityId": "alqadim:knowledge:outer-planes-gateway",
+      "answerRelations": [
+        "objective"
+      ]
+    },
+    {
+      "id": "ch19_1",
+      "subject": "Floating platform grids",
+      "facet": "objective",
+      "aliases": [
+        "Outer Planes platforms"
+      ],
+      "text": "Cross the floating platform grids.",
+      "witness": "Cross the floating platform grids.",
+      "source": {
+        "file": "guides/js/AlQadim.js",
+        "locator": "DB.chapters[18].required[id=ch19_1]",
+        "review": "extracted"
+      },
+      "sourceRecordId": "alqadim:objective:ch19_1:hint",
+      "entityId": "alqadim:knowledge:floating-platform-grids",
+      "answerRelations": [
+        "objective"
+      ]
+    },
+    {
+      "id": "ch19_2",
+      "subject": "Kara",
+      "facet": "objective",
+      "aliases": [
+        "rogue genie",
+        "corrupted genie"
+      ],
+      "text": "Defeat the rogue genie Kara.",
+      "witness": "Defeat the rogue genie Kara.",
+      "source": {
+        "file": "guides/js/AlQadim.js",
+        "locator": "DB.chapters[18].required[id=ch19_2]",
+        "review": "extracted"
+      },
+      "sourceRecordId": "alqadim:objective:ch19_2:hint",
+      "entityId": "alqadim:knowledge:kara",
+      "answerRelations": [
+        "objective",
+        "identity"
+      ]
+    },
+    {
+      "id": "ch19_3",
+      "subject": "Magical shield orbs",
+      "facet": "objective",
+      "aliases": [
+        "shield orbs",
+        "final orbs"
+      ],
+      "text": "Destroy the magical shield orbs.",
+      "witness": "Destroy the magical shield orbs.",
+      "source": {
+        "file": "guides/js/AlQadim.js",
+        "locator": "DB.chapters[18].required[id=ch19_3]",
+        "review": "extracted"
+      },
+      "sourceRecordId": "alqadim:objective:ch19_3:hint",
+      "entityId": "alqadim:knowledge:magical-shield-orbs",
+      "answerRelations": [
+        "objective"
+      ]
+    },
+    {
+      "id": "ch19_4",
+      "subject": "Vizier finale",
+      "facet": "objective",
+      "aliases": [
+        "Genie's Curse",
+        "cleanse curse"
+      ],
+      "text": "Defeat the Vizier and cleanse the Genie's Curse.",
+      "witness": "Defeat the Vizier and cleanse the Genie's Curse.",
+      "source": {
+        "file": "guides/js/AlQadim.js",
+        "locator": "DB.chapters[18].required[id=ch19_4]",
+        "review": "extracted"
+      },
+      "sourceRecordId": "alqadim:objective:ch19_4:hint",
+      "entityId": "alqadim:knowledge:vizier-finale",
+      "answerRelations": [
+        "objective"
+      ]
+    },
+    {
+      "id": "page-start",
+      "subject": "Starting Corsair",
+      "facet": "identity",
+      "aliases": [
+        "starting level",
+        "starting character"
+      ],
+      "text": "You begin as a second-level seafaring warrior: lightly equipped, quick on your feet, and already skilled with the scimitar.",
+      "witness": "You begin as a second-level seafaring warrior: lightly equipped, quick on your feet, and already skilled with the scimitar.",
+      "source": {
+        "file": "guides/AlQadim.html",
+        "locator": "Player field manual, lead paragraph",
+        "review": "extracted"
+      },
+      "sourceRecordId": "alqadim:topic:starting-character:explanation",
+      "entityId": "alqadim:knowledge:starting-corsair",
+      "answerRelations": [
+        "identity",
+        "explanation",
+        "stats"
+      ]
+    },
+    {
+      "id": "page-real-time",
+      "subject": "Combat rhythm",
+      "facet": "explanation",
+      "aliases": [
+        "real time combat",
+        "three action circles"
+      ],
+      "text": "Combat is real time. The three action circles appear in dangerous areas and show which sword swings are currently available.",
+      "witness": "Combat is real time. The three action circles appear in dangerous areas and show which sword swings are currently available.",
+      "source": {
+        "file": "guides/AlQadim.html",
+        "locator": "The combat rhythm",
+        "review": "extracted"
+      },
+      "sourceRecordId": "alqadim:topic:combat-controls:explanation",
+      "entityId": "alqadim:knowledge:combat-rhythm",
+      "answerRelations": [
+        "explanation",
+        "use"
+      ],
+      "topicLabels": [
+        "Combat rhythm"
+      ]
+    },
+    {
+      "id": "page-face",
+      "subject": "Scimitar facing",
+      "facet": "use",
+      "aliases": [
+        "Alt direction lock",
+        "lock facing direction",
+        "scimitar aiming",
+        "unlock facing when surrounded"
+      ],
+      "text": "Your scimitar strikes in the direction you face. Press Alt to lock that direction in a corridor; unlock when surrounded.",
+      "witness": "Your scimitar strikes in the direction you face. Press Alt to lock that direction in a corridor; unlock when surrounded.",
+      "source": {
+        "file": "guides/AlQadim.html",
+        "locator": "The combat rhythm, 01 Face the threat",
+        "review": "extracted"
+      },
+      "sourceRecordId": "alqadim:topic:combat-controls:explanation",
+      "entityId": "alqadim:knowledge:scimitar-facing",
+      "answerRelations": [
+        "use",
+        "method",
+        "combat"
+      ],
+      "topicLabels": [
+        "Scimitar facing controls",
+        "Facing direction lock"
+      ]
+    },
+    {
+      "id": "page-swing",
+      "subject": "Sword swing controls",
+      "facet": "use",
+      "aliases": [
+        "action circles",
+        "orange circles",
+        "basic attack controls",
+        "sword swing timing",
+        "hold and release sword attack"
+      ],
+      "text": "Click for the quick attack. Hold the action button longer and release when the second or third circle lights orange.",
+      "witness": "Click for the quick attack. Hold the action button longer and release when the second or third circle lights orange.",
+      "source": {
+        "file": "guides/AlQadim.html",
+        "locator": "The combat rhythm, 02 Choose the swing",
+        "review": "extracted"
+      },
+      "sourceRecordId": "alqadim:topic:combat-controls:explanation",
+      "entityId": "alqadim:knowledge:sword-swing-controls",
+      "answerRelations": [
+        "use",
+        "method"
+      ],
+      "topicLabels": [
+        "Sword swing controls",
+        "Action circle timing"
+      ]
+    },
+    {
+      "id": "page-recovery",
+      "subject": "Sword recovery",
+      "facet": "combat",
+      "aliases": [
+        "readying pause",
+        "attack recovery",
+        "sword readying pause",
+        "make space after a hit"
+      ],
+      "text": "Every blow has a brief readying pause. Land a clean hit, make space, then begin the next attack before closing again.",
+      "witness": "Every blow has a brief readying pause. Land a clean hit, make space, then begin the next attack before closing again.",
+      "source": {
+        "file": "guides/AlQadim.html",
+        "locator": "The combat rhythm, 03 Respect recovery",
+        "review": "extracted"
+      },
+      "sourceRecordId": "alqadim:topic:combat-controls:explanation",
+      "entityId": "alqadim:knowledge:sword-recovery",
+      "answerRelations": [
+        "explanation",
+        "method",
+        "combat"
+      ],
+      "topicLabels": [
+        "Sword recovery timing"
+      ]
+    },
+    {
+      "id": "page-hand",
+      "subject": "Left hand weapon",
+      "facet": "use",
+      "aliases": [
+        "seeking sling",
+        "Space fire",
+        "left hand aiming",
+        "fire seeking sling",
+        "fire magic shard",
+        "Space key"
+      ],
+      "text": "Ready either the seeking sling or one magic shard. Fire with Space in the direction your Corsair last faced.",
+      "witness": "Ready either the seeking sling or one magic shard. Fire with Space in the direction your Corsair last faced.",
+      "source": {
+        "file": "guides/AlQadim.html",
+        "locator": "The combat rhythm, 04 Switch the left hand",
+        "review": "extracted"
+      },
+      "sourceRecordId": "alqadim:topic:sling-and-shards:explanation",
+      "entityId": "alqadim:knowledge:left-hand-weapon",
+      "answerRelations": [
+        "use",
+        "method"
+      ],
+      "topicLabels": [
+        "Left hand weapon controls",
+        "Sling and shard controls"
+      ],
+      "answerBindings": [
+        {
+          "entityId": "alqadim:knowledge:moonstone-shards",
+          "relations": [
+            "use",
+            "method"
+          ],
+          "mention": "magic shard"
+        }
+      ]
+    },
+    {
+      "id": "page-shard-charges",
+      "subject": "Moonstone shard charges",
+      "facet": "use",
+      "aliases": [
+        "empty shard",
+        "fragment charges",
+        "finite shard charges",
+        "shard breaks when empty",
+        "one charge per shot",
+        "shard ammunition limit"
+      ],
+      "text": "Each glowing fragment carries its own remaining charges. One shot spends one charge; when a shard is empty, it breaks apart.",
+      "witness": "Each glowing fragment carries its own remaining charges. One shot spends one charge; when a shard is empty, it breaks apart.",
+      "source": {
+        "file": "guides/AlQadim.html",
+        "locator": "Moonstone arsenal",
+        "review": "extracted"
+      },
+      "sourceRecordId": "alqadim:topic:sling-and-shards:explanation",
+      "entityId": "alqadim:knowledge:moonstone-shard-charges",
+      "answerRelations": [
+        "use",
+        "limitations",
+        "outcome",
+        "explanation"
+      ],
+      "topicLabels": [
+        "Moonstone shard charges",
+        "Shard charge consumption",
+        "Empty shard behavior",
+        "Finite shard charges"
+      ],
+      "answerBindings": [
+        {
+          "entityId": "alqadim:knowledge:moonstone-shards",
+          "relations": [
+            "use",
+            "limitations",
+            "outcome",
+            "explanation"
+          ],
+          "mention": "shard"
+        }
+      ]
+    },
+    {
+      "id": "page-shard-rules",
+      "subject": "Moonstone shard controls",
+      "facet": "use",
+      "aliases": [
+        "equip shard",
+        "aim shard",
+        "fire shard",
+        "shard firing controls",
+        "aiming a moonstone shard",
+        "equipping a moonstone shard"
+      ],
+      "text": "Equip: One shard or the sling. Aim: Face the intended direction. Fire: Press Space.",
+      "witness": "Equip: One shard or the sling. Aim: Face the intended direction. Fire: Press Space.",
+      "source": {
+        "file": "guides/AlQadim.html",
+        "locator": "Moonstone arsenal, shard rules",
+        "review": "extracted"
+      },
+      "sourceRecordId": "alqadim:topic:sling-and-shards:explanation",
+      "entityId": "alqadim:knowledge:moonstone-shard-controls",
+      "answerRelations": [
+        "use",
+        "method",
+        "explanation"
+      ],
+      "topicLabels": [
+        "Moonstone shard controls",
+        "Shard firing controls"
+      ],
+      "answerBindings": [
+        {
+          "entityId": "alqadim:knowledge:moonstone-shards",
+          "relations": [
+            "use",
+            "method"
+          ],
+          "mention": "shard"
+        }
+      ],
+      "support": {
+        "use": [
+          "page-shard-charges"
+        ],
+        "method": [
+          "page-shard-charges"
+        ],
+        "reference": [
+          "page-shard-charges"
+        ],
+        "limitations": [
+          "page-shard-charges"
+        ]
+      }
+    },
+    {
+      "id": "page-zubakon",
+      "subject": "Zubakon",
+      "facet": "requirement",
+      "aliases": [
+        "later swings eligibility",
+        "sword training eligibility",
+        "experience eligibility",
+        "learning later sword swings"
+      ],
+      "text": "Zubakon can teach the later swings once experience makes you eligible.",
+      "witness": "Zubakon can teach the later swings once experience makes you eligible.",
+      "source": {
+        "file": "guides/AlQadim.html",
+        "locator": "Scimitar discipline",
+        "review": "extracted"
+      },
+      "sourceRecordId": "alqadim:topic:zubakon-teaching:explanation",
+      "entityId": "alqadim:knowledge:zubakon",
+      "answerRelations": [
+        "acquisition",
+        "prerequisites"
+      ],
+      "topicLabels": [
+        "Sword training eligibility",
+        "Later sword swing training"
+      ]
+    },
+    {
+      "id": "page-charge",
+      "subject": "Sword charge timing",
+      "facet": "combat",
+      "aliases": [
+        "charge before contact"
+      ],
+      "text": "Charge before contact. Do not wait until you are beside a creature to ready the swing.",
+      "witness": "Charge before contact. Do not wait until you are beside a creature to ready the swing.",
+      "source": {
+        "file": "guides/AlQadim.html",
+        "locator": "Hu’rakan’s field notes",
+        "review": "extracted"
+      },
+      "sourceRecordId": "alqadim:topic:combat-tips:explanation",
+      "entityId": "alqadim:knowledge:sword-charge-timing",
+      "answerRelations": [
+        "method",
+        "combat"
+      ],
+      "topicLabels": [
+        "Sword charge timing"
+      ],
+      "sourceFields": [
+        {
+          "key": "method",
+          "selectors": [
+            "step"
+          ],
+          "witness": "Charge before contact. Do not wait until you are beside a creature to ready the swing."
+        },
+        {
+          "key": "use",
+          "selectors": [],
+          "witness": "Charge before contact. Do not wait until you are beside a creature to ready the swing."
+        }
+      ]
+    },
+    {
+      "id": "page-withdraw",
+      "subject": "Hit and withdraw",
+      "facet": "combat",
+      "aliases": [
+        "powerful foes"
+      ],
+      "text": "Hit and withdraw. Against powerful foes, secure one blow and back away before the return strike.",
+      "witness": "Hit and withdraw. Against powerful foes, secure one blow and back away before the return strike.",
+      "source": {
+        "file": "guides/AlQadim.html",
+        "locator": "Hu’rakan’s field notes",
+        "review": "extracted"
+      },
+      "sourceRecordId": "alqadim:topic:combat-tips:explanation",
+      "entityId": "alqadim:knowledge:hit-and-withdraw",
+      "answerRelations": [
+        "method",
+        "combat"
+      ],
+      "topicLabels": [
+        "Hit and withdraw tactics"
+      ]
+    },
+    {
+      "id": "page-moving",
+      "subject": "Combat movement",
+      "facet": "combat",
+      "aliases": [
+        "dodge slower creatures"
+      ],
+      "text": "Keep moving. Slower creatures can be dodged; your moving feet make you harder to hit.",
+      "witness": "Keep moving. Slower creatures can be dodged; your moving feet make you harder to hit.",
+      "source": {
+        "file": "guides/AlQadim.html",
+        "locator": "Hu’rakan’s field notes",
+        "review": "extracted"
+      },
+      "sourceRecordId": "alqadim:topic:combat-tips:explanation",
+      "entityId": "alqadim:knowledge:combat-movement",
+      "answerRelations": [
+        "method",
+        "combat",
+        "cause"
+      ],
+      "topicLabels": [
+        "Combat movement"
+      ],
+      "sourceFields": [
+        {
+          "key": "method",
+          "selectors": [
+            "step"
+          ],
+          "witness": "Keep moving. Slower creatures can be dodged; your moving feet make you harder to hit."
+        },
+        {
+          "key": "cause",
+          "selectors": [],
+          "witness": "Keep moving. Slower creatures can be dodged; your moving feet make you harder to hit."
+        }
+      ]
+    },
+    {
+      "id": "page-pause",
+      "subject": "Combat pause",
+      "facet": "use",
+      "aliases": [
+        "menu healing potion",
+        "pause combat from menu",
+        "drink healing potion during combat"
+      ],
+      "text": "Use the pause. Opening the menu pauses combat, giving you time to drink a healing potion before the health bar empties.",
+      "witness": "Use the pause. Opening the menu pauses combat, giving you time to drink a healing potion before the health bar empties.",
+      "source": {
+        "file": "guides/AlQadim.html",
+        "locator": "Hu’rakan’s field notes",
+        "review": "extracted"
+      },
+      "sourceRecordId": "alqadim:topic:combat-tips:explanation",
+      "entityId": "alqadim:knowledge:combat-pause",
+      "answerRelations": [
+        "use",
+        "method",
+        "outcome"
+      ],
+      "topicLabels": [
+        "Combat pause controls",
+        "Healing during combat"
+      ],
+      "sourceFields": [
+        {
+          "key": "method",
+          "selectors": [
+            "step"
+          ],
+          "witness": "Use the pause. Opening the menu pauses combat, giving you time to drink a healing potion before the health bar empties."
+        },
+        {
+          "key": "use",
+          "selectors": [
+            "effect"
+          ],
+          "witness": "Use the pause. Opening the menu pauses combat, giving you time to drink a healing potion before the health bar empties."
+        }
+      ]
+    },
+    {
+      "id": "page-sources",
+      "subject": "Guide source policy",
+      "facet": "explanation",
+      "aliases": [
+        "original manual",
+        "official cluebook",
+        "location authority"
+      ],
+      "text": "Story and controls follow the original manual. Locations, inhabitants, and route notes follow the official cluebook; when decoded game metadata disagrees, the cluebook is the location authority.",
+      "witness": "Story and controls follow the original manual. Locations, inhabitants, and route notes follow the official cluebook; when decoded game metadata disagrees, the cluebook is the location authority.",
+      "source": {
+        "file": "guides/AlQadim.html",
+        "locator": "Source policy",
+        "review": "extracted"
+      },
+      "sourceRecordId": "alqadim:topic:sources:explanation",
+      "entityId": "alqadim:knowledge:guide-source-policy",
+      "answerRelations": [
+        "documentation",
+        "explanation"
+      ]
+    },
+    {
+      "id": "page-sources-2",
+      "subject": "Mechanics source policy",
+      "facet": "explanation",
+      "aliases": [
+        "spell values",
+        "Weapons Master source"
+      ],
+      "text": "Mechanics and spell values follow the original game manual; Weapons Master locations and practical combat advice follow the official cluebook.",
+      "witness": "Mechanics and spell values follow the original game manual; Weapons Master locations and practical combat advice follow the official cluebook.",
+      "source": {
+        "file": "guides/AlQadim.html",
+        "locator": "Field manual footnote",
+        "review": "extracted"
+      },
+      "sourceRecordId": "alqadim:topic:sources:explanation",
+      "entityId": "alqadim:knowledge:mechanics-source-policy",
+      "answerRelations": [
+        "documentation",
+        "explanation"
+      ]
+    },
+    {
+      "id": "page-coords-north",
+      "subject": "Marid Lord path",
+      "facet": "route",
+      "aliases": [
+        "North Path",
+        "chessboard Marid"
+      ],
+      "text": "North Path (Marid Lord): Down 5 → East 3 → Up 1",
+      "witness": "North Path (Marid Lord): Down 5 → East 3 → Up 1",
+      "source": {
+        "file": "guides/AlQadim.html",
+        "locator": "Island of Senat Diplomatic Gauntlet, Quick Coordinates Reference",
+        "review": "extracted"
+      },
+      "sourceRecordId": "alqadim:topic:chessboard-paths:explanation",
+      "entityId": "alqadim:knowledge:marid-lord-path",
+      "answerRelations": [
+        "route"
+      ]
+    },
+    {
+      "id": "page-coords-east",
+      "subject": "Djinn Lords path",
+      "facet": "route",
+      "aliases": [
+        "East Path",
+        "chessboard Djinn"
+      ],
+      "text": "East Path (Djinn Lords): West 5 → Up 3 → East 1",
+      "witness": "East Path (Djinn Lords): West 5 → Up 3 → East 1",
+      "source": {
+        "file": "guides/AlQadim.html",
+        "locator": "Island of Senat Diplomatic Gauntlet, Quick Coordinates Reference",
+        "review": "extracted"
+      },
+      "sourceRecordId": "alqadim:topic:chessboard-paths:explanation",
+      "entityId": "alqadim:knowledge:djinn-lords-path",
+      "answerRelations": [
+        "route"
+      ]
+    },
+    {
+      "id": "page-coords-west",
+      "subject": "Dao Lord path",
+      "facet": "route",
+      "aliases": [
+        "West Path",
+        "chessboard Dao"
+      ],
+      "text": "West Path (Dao Lord): East 5 → Down 3 → West 1",
+      "witness": "West Path (Dao Lord): East 5 → Down 3 → West 1",
+      "source": {
+        "file": "guides/AlQadim.html",
+        "locator": "Island of Senat Diplomatic Gauntlet, Quick Coordinates Reference",
+        "review": "extracted"
+      },
+      "sourceRecordId": "alqadim:topic:chessboard-paths:explanation",
+      "entityId": "alqadim:knowledge:dao-lord-path",
+      "answerRelations": [
+        "route"
+      ]
+    },
+    {
+      "id": "page-coords-south",
+      "subject": "Efreet Lord path",
+      "facet": "route",
+      "aliases": [
+        "South Path",
+        "chessboard Efreet",
+        "South chessboard path",
+        "South chessboard route",
+        "Efreet Lord chessboard route"
+      ],
+      "text": "South Path (Efreet Lord): North 5 → East 3 → South 1",
+      "witness": "South Path (Efreet Lord): North 5 → East 3 → South 1",
+      "source": {
+        "file": "guides/AlQadim.html",
+        "locator": "Island of Senat Diplomatic Gauntlet, Quick Coordinates Reference",
+        "review": "extracted"
+      },
+      "sourceRecordId": "alqadim:topic:chessboard-paths:explanation",
+      "entityId": "alqadim:knowledge:efreet-lord-path",
+      "answerRelations": [
+        "route"
+      ],
+      "topicLabels": [
+        "South chessboard path directions",
+        "Efreet Lord chessboard route directions"
+      ],
+      "answerBindings": [
+        {
+          "entityId": "alqadim:knowledge:south-chessboard-path",
+          "relations": [
+            "route"
+          ],
+          "mention": "South Path"
+        }
+      ],
+      "support": {
+        "route": [
+          "item-efreet-potion-use"
+        ],
+        "reference": [
+          "item-efreet-potion-use"
+        ]
+      }
+    },
+    {
+      "id": "swing-quick-swing",
+      "subject": "Quick Swing",
+      "facet": "combat",
+      "aliases": [
+        "Front",
+        "Click the action button",
+        "basic attack",
+        "quick attack",
+        "basic swing",
+        "front attack",
+        "quick swing controls"
+      ],
+      "text": "A fast scimitar strike in the direction the Corsair faces—or toward the sword cursor when using the mouse. Click the action button. Available at second level.",
+      "witness": "A fast scimitar strike in the direction the Corsair faces—or toward the sword cursor when using the mouse. Click the action button. Available at second level.",
+      "source": {
+        "file": "guides/js/AlQadim.js",
+        "locator": "DB.combatMoves[0]",
+        "review": "extracted"
+      },
+      "sourceRecordId": "alqadim:combat:quick-swing:combat",
+      "entityId": "alqadim:knowledge:quick-swing",
+      "answerRelations": [
+        "use",
+        "method",
+        "combat",
+        "prerequisites",
+        "explanation"
+      ],
+      "topicLabels": [
+        "Basic attack controls",
+        "Quick attack coverage"
+      ],
+      "support": {
+        "comparison": [
+          "swing-wide-swing",
+          "swing-full-circle-swing"
+        ]
+      },
+      "sourceFields": [
+        {
+          "key": "method",
+          "selectors": [
+            "step"
+          ],
+          "witness": "A fast scimitar strike in the direction the Corsair faces—or toward the sword cursor when using the mouse. Click the action button. Available at second level."
+        },
+        {
+          "key": "use",
+          "selectors": [
+            "effect"
+          ],
+          "witness": "A fast scimitar strike in the direction the Corsair faces—or toward the sword cursor when using the mouse. Click the action button. Available at second level."
+        },
+        {
+          "key": "prerequisites",
+          "selectors": [
+            "condition"
+          ],
+          "witness": "A fast scimitar strike in the direction the Corsair faces—or toward the sword cursor when using the mouse. Click the action button. Available at second level."
+        }
+      ]
+    },
+    {
+      "id": "swing-wide-swing",
+      "subject": "Wide Swing",
+      "facet": "combat",
+      "aliases": [
+        "Front + both sides",
+        "Release when the second action circle lights orange",
+        "wide attack coverage",
+        "wide swing controls",
+        "second orange action circle"
+      ],
+      "text": "A stronger cut that damages monsters in front of the Corsair and to his left and right. Release when the second action circle lights orange. Learn from Zubakon after becoming eligible.",
+      "witness": "A stronger cut that damages monsters in front of the Corsair and to his left and right. Release when the second action circle lights orange. Learn from Zubakon after becoming eligible.",
+      "source": {
+        "file": "guides/js/AlQadim.js",
+        "locator": "DB.combatMoves[1]",
+        "review": "extracted"
+      },
+      "sourceRecordId": "alqadim:combat:wide-swing:combat",
+      "entityId": "alqadim:knowledge:wide-swing",
+      "answerRelations": [
+        "use",
+        "method",
+        "combat",
+        "acquisition",
+        "prerequisites",
+        "explanation"
+      ],
+      "topicLabels": [
+        "Wide swing coverage",
+        "Wide swing controls"
+      ],
+      "support": {
+        "comparison": [
+          "swing-quick-swing",
+          "swing-full-circle-swing"
+        ],
+        "acquisition": [
+          "ch6_4",
+          "page-zubakon"
+        ],
+        "prerequisites": [
+          "page-zubakon"
+        ]
+      },
+      "sourceFields": [
+        {
+          "key": "method",
+          "selectors": [
+            "step"
+          ],
+          "witness": "A stronger cut that damages monsters in front of the Corsair and to his left and right. Release when the second action circle lights orange. Learn from Zubakon after becoming eligible."
+        },
+        {
+          "key": "use",
+          "selectors": [
+            "effect"
+          ],
+          "witness": "A stronger cut that damages monsters in front of the Corsair and to his left and right. Release when the second action circle lights orange. Learn from Zubakon after becoming eligible."
+        },
+        {
+          "key": "prerequisites",
+          "selectors": [
+            "condition"
+          ],
+          "witness": "A stronger cut that damages monsters in front of the Corsair and to his left and right. Release when the second action circle lights orange. Learn from Zubakon after becoming eligible."
+        }
+      ]
+    },
+    {
+      "id": "swing-full-circle-swing",
+      "subject": "Full-Circle Swing",
+      "facet": "combat",
+      "aliases": [
+        "All sides",
+        "Release when the third action circle lights orange",
+        "full circle attack coverage",
+        "full circle swing controls",
+        "third orange action circle",
+        "attack monsters behind"
+      ],
+      "text": "The most powerful swing: a complete 360-degree cut that also catches monsters behind the Corsair. Release when the third action circle lights orange. Learn from Zubakon after later progression.",
+      "witness": "The most powerful swing: a complete 360-degree cut that also catches monsters behind the Corsair. Release when the third action circle lights orange. Learn from Zubakon after later progression.",
+      "source": {
+        "file": "guides/js/AlQadim.js",
+        "locator": "DB.combatMoves[2]",
+        "review": "extracted"
+      },
+      "sourceRecordId": "alqadim:combat:full-circle-swing:combat",
+      "entityId": "alqadim:knowledge:full-circle-swing",
+      "answerRelations": [
+        "use",
+        "method",
+        "combat",
+        "acquisition",
+        "prerequisites",
+        "explanation"
+      ],
+      "topicLabels": [
+        "Full circle swing coverage",
+        "Full circle swing controls"
+      ],
+      "support": {
+        "comparison": [
+          "swing-quick-swing",
+          "swing-wide-swing"
+        ],
+        "acquisition": [
+          "ch6_4",
+          "page-zubakon"
+        ],
+        "prerequisites": [
+          "page-zubakon"
+        ]
+      },
+      "sourceFields": [
+        {
+          "key": "method",
+          "selectors": [
+            "step"
+          ],
+          "witness": "The most powerful swing: a complete 360-degree cut that also catches monsters behind the Corsair. Release when the third action circle lights orange. Learn from Zubakon after later progression."
+        },
+        {
+          "key": "use",
+          "selectors": [
+            "effect"
+          ],
+          "witness": "The most powerful swing: a complete 360-degree cut that also catches monsters behind the Corsair. Release when the third action circle lights orange. Learn from Zubakon after later progression."
+        },
+        {
+          "key": "prerequisites",
+          "selectors": [
+            "condition"
+          ],
+          "witness": "The most powerful swing: a complete 360-degree cut that also catches monsters behind the Corsair. Release when the third action circle lights orange. Learn from Zubakon after later progression."
+        }
+      ]
+    },
+    {
+      "id": "shard-cone-of-cold",
+      "subject": "Cone of Cold",
+      "facet": "use",
+      "aliases": [
+        "Cone of Cold shard",
+        "Cone of Cold damage",
+        "Cone of Cold range"
+      ],
+      "text": "A cone of extreme cold that freezes everything it touches. Range: 10 yd. Damage: 12–30.",
+      "witness": "A cone of extreme cold that freezes everything it touches. Range: 10 yd. Damage: 12–30.",
+      "source": {
+        "file": "guides/js/AlQadim.js",
+        "locator": "DB.moonstoneShards[0]",
+        "review": "extracted",
+        "index": {
+          "file": "guides/js/assistant/adapters/alqadim.js",
+          "locator": "use record also answers explanation",
+          "review": "authored-index"
+        }
+      },
+      "sourceRecordId": "alqadim:shard:cone-of-cold:use",
+      "entityId": "alqadim:knowledge:cone-of-cold",
+      "answerRelations": [
+        "use",
+        "stats",
+        "explanation"
+      ],
+      "sourceFields": [
+        {
+          "key": "use",
+          "selectors": [
+            "effect"
+          ],
+          "witness": "A cone of extreme cold that freezes everything it touches. Range: 10 yd. Damage: 12–30."
+        },
+        {
+          "key": "stats",
+          "selectors": [
+            "range",
+            "damage"
+          ],
+          "witness": "A cone of extreme cold that freezes everything it touches. Range: 10 yd. Damage: 12–30."
+        }
+      ]
+    },
+    {
+      "id": "shard-flame-arrow",
+      "subject": "Flame Arrow",
+      "facet": "use",
+      "aliases": [
+        "Flame Arrow shard",
+        "Flame Arrow damage",
+        "Flame Arrow range"
+      ],
+      "text": "A fiery bolt whose larger damage applies to creatures affected by flame. Range: 20 yd. Damage: 1–6 + 4–24 fire.",
+      "witness": "A fiery bolt whose larger damage applies to creatures affected by flame. Range: 20 yd. Damage: 1–6 + 4–24 fire.",
+      "source": {
+        "file": "guides/js/AlQadim.js",
+        "locator": "DB.moonstoneShards[1]",
+        "review": "extracted",
+        "index": {
+          "file": "guides/js/assistant/adapters/alqadim.js",
+          "locator": "use record also answers explanation",
+          "review": "authored-index"
+        }
+      },
+      "sourceRecordId": "alqadim:shard:flame-arrow:use",
+      "entityId": "alqadim:knowledge:flame-arrow",
+      "answerRelations": [
+        "use",
+        "stats",
+        "explanation"
+      ],
+      "sourceFields": [
+        {
+          "key": "use",
+          "selectors": [
+            "effect"
+          ],
+          "witness": "A fiery bolt whose larger damage applies to creatures affected by flame. Range: 20 yd. Damage: 1–6 + 4–24 fire."
+        },
+        {
+          "key": "stats",
+          "selectors": [
+            "range",
+            "damage"
+          ],
+          "witness": "A fiery bolt whose larger damage applies to creatures affected by flame. Range: 20 yd. Damage: 1–6 + 4–24 fire."
+        }
+      ]
+    },
+    {
+      "id": "shard-lightning-bolt",
+      "subject": "Lightning Bolt",
+      "facet": "use",
+      "aliases": [
+        "Lightning Bolt shard",
+        "Lightning Bolt damage",
+        "Lightning Bolt range",
+        "lightning ricochet risk",
+        "lightning returning toward caster",
+        "lightning wall bounce"
+      ],
+      "text": "Strikes every target in its path and can ricochet from walls—even back toward the caster. Range: 100 yd. Damage: 6–36 per target.",
+      "witness": "Strikes every target in its path and can ricochet from walls—even back toward the caster. Range: 100 yd. Damage: 6–36 per target.",
+      "source": {
+        "file": "guides/js/AlQadim.js",
+        "locator": "DB.moonstoneShards[2]",
+        "review": "extracted",
+        "index": {
+          "file": "guides/js/assistant/adapters/alqadim.js",
+          "locator": "use record also answers explanation",
+          "review": "authored-index"
+        }
+      },
+      "sourceRecordId": "alqadim:shard:lightning-bolt:use",
+      "entityId": "alqadim:knowledge:lightning-bolt",
+      "answerRelations": [
+        "use",
+        "stats",
+        "limitations",
+        "explanation"
+      ],
+      "topicLabels": [
+        "Lightning ricochet risk",
+        "Lightning Bolt ricochet risk"
+      ],
+      "sourceFields": [
+        {
+          "key": "use",
+          "selectors": [
+            "effect"
+          ],
+          "witness": "Strikes every target in its path and can ricochet from walls—even back toward the caster. Range: 100 yd. Damage: 6–36 per target."
+        },
+        {
+          "key": "stats",
+          "selectors": [
+            "range",
+            "damage"
+          ],
+          "witness": "Strikes every target in its path and can ricochet from walls—even back toward the caster. Range: 100 yd. Damage: 6–36 per target."
+        }
+      ]
+    },
+    {
+      "id": "shard-magic-missile",
+      "subject": "Magic Missile",
+      "facet": "use",
+      "aliases": [
+        "Magic Missile shard",
+        "Magic Missile damage",
+        "Magic Missile range"
+      ],
+      "text": "Three missiles seek the nearest visible enemy in the direction faced. Range: 120 yd. Damage: 6–15 total.",
+      "witness": "Three missiles seek the nearest visible enemy in the direction faced. Range: 120 yd. Damage: 6–15 total.",
+      "source": {
+        "file": "guides/js/AlQadim.js",
+        "locator": "DB.moonstoneShards[3]",
+        "review": "extracted",
+        "index": {
+          "file": "guides/js/assistant/adapters/alqadim.js",
+          "locator": "use record also answers explanation",
+          "review": "authored-index"
+        }
+      },
+      "sourceRecordId": "alqadim:shard:magic-missile:use",
+      "entityId": "alqadim:knowledge:magic-missile",
+      "answerRelations": [
+        "use",
+        "stats",
+        "explanation"
+      ],
+      "sourceFields": [
+        {
+          "key": "use",
+          "selectors": [
+            "effect"
+          ],
+          "witness": "Three missiles seek the nearest visible enemy in the direction faced. Range: 120 yd. Damage: 6–15 total."
+        },
+        {
+          "key": "stats",
+          "selectors": [
+            "range",
+            "damage"
+          ],
+          "witness": "Three missiles seek the nearest visible enemy in the direction faced. Range: 120 yd. Damage: 6–15 total."
+        }
+      ]
+    },
+    {
+      "id": "shard-sundazzle",
+      "subject": "Sundazzle",
+      "facet": "use",
+      "aliases": [
+        "Sundazzle shard",
+        "Sundazzle damage",
+        "Sundazzle range"
+      ],
+      "text": "Dancing colored spheres temporarily blind the target. Range: —. Damage: No damage.",
+      "witness": "Dancing colored spheres temporarily blind the target. Range: —. Damage: No damage.",
+      "source": {
+        "file": "guides/js/AlQadim.js",
+        "locator": "DB.moonstoneShards[4]",
+        "review": "extracted",
+        "index": {
+          "file": "guides/js/assistant/adapters/alqadim.js",
+          "locator": "use record also answers explanation",
+          "review": "authored-index"
+        }
+      },
+      "sourceRecordId": "alqadim:shard:sundazzle:use",
+      "entityId": "alqadim:knowledge:sundazzle",
+      "answerRelations": [
+        "use",
+        "stats",
+        "explanation"
+      ],
+      "sourceFields": [
+        {
+          "key": "use",
+          "selectors": [
+            "effect"
+          ],
+          "witness": "Dancing colored spheres temporarily blind the target. Range: —. Damage: No damage."
+        },
+        {
+          "key": "stats",
+          "selectors": [
+            "range",
+            "damage"
+          ],
+          "witness": "Dancing colored spheres temporarily blind the target. Range: —. Damage: No damage."
+        }
+      ]
+    },
+    {
+      "id": "shard-sunfire",
+      "subject": "Sunfire",
+      "facet": "use",
+      "aliases": [
+        "Sunfire shard",
+        "Sunfire damage",
+        "Sunfire range",
+        "sunfire self damage immunity",
+        "own solar blast safety"
+      ],
+      "text": "An explosive ball of solar flame; the Corsair is never damaged by his own blast. Range: 70 yd. Damage: 6–36.",
+      "witness": "An explosive ball of solar flame; the Corsair is never damaged by his own blast. Range: 70 yd. Damage: 6–36.",
+      "source": {
+        "file": "guides/js/AlQadim.js",
+        "locator": "DB.moonstoneShards[5]",
+        "review": "extracted",
+        "index": {
+          "file": "guides/js/assistant/adapters/alqadim.js",
+          "locator": "use record also answers explanation",
+          "review": "authored-index"
+        }
+      },
+      "sourceRecordId": "alqadim:shard:sunfire:use",
+      "entityId": "alqadim:knowledge:sunfire",
+      "answerRelations": [
+        "use",
+        "stats",
+        "explanation",
+        "limitations"
+      ],
+      "topicLabels": [
+        "Sunfire self damage immunity"
+      ],
+      "sourceFields": [
+        {
+          "key": "use",
+          "selectors": [
+            "effect"
+          ],
+          "witness": "An explosive ball of solar flame; the Corsair is never damaged by his own blast. Range: 70 yd. Damage: 6–36."
+        },
+        {
+          "key": "stats",
+          "selectors": [
+            "range",
+            "damage"
+          ],
+          "witness": "An explosive ball of solar flame; the Corsair is never damaged by his own blast. Range: 70 yd. Damage: 6–36."
+        }
+      ]
+    },
+    {
+      "id": "shard-sunscorch",
+      "subject": "Sunscorch",
+      "facet": "use",
+      "aliases": [
+        "Sunscorch shard",
+        "Sunscorch damage",
+        "Sunscorch range"
+      ],
+      "text": "An unerring heat beam that curves around obstacles and punishes targets touching substantial metal. Range: 60 yd. Damage: 4–24 + 2–8 metal.",
+      "witness": "An unerring heat beam that curves around obstacles and punishes targets touching substantial metal. Range: 60 yd. Damage: 4–24 + 2–8 metal.",
+      "source": {
+        "file": "guides/js/AlQadim.js",
+        "locator": "DB.moonstoneShards[6]",
+        "review": "extracted",
+        "index": {
+          "file": "guides/js/assistant/adapters/alqadim.js",
+          "locator": "use record also answers explanation",
+          "review": "authored-index"
+        }
+      },
+      "sourceRecordId": "alqadim:shard:sunscorch:use",
+      "entityId": "alqadim:knowledge:sunscorch",
+      "answerRelations": [
+        "use",
+        "stats",
+        "explanation"
+      ],
+      "sourceFields": [
+        {
+          "key": "use",
+          "selectors": [
+            "effect"
+          ],
+          "witness": "An unerring heat beam that curves around obstacles and punishes targets touching substantial metal. Range: 60 yd. Damage: 4–24 + 2–8 metal."
+        },
+        {
+          "key": "stats",
+          "selectors": [
+            "range",
+            "damage"
+          ],
+          "witness": "An unerring heat beam that curves around obstacles and punishes targets touching substantial metal. Range: 60 yd. Damage: 4–24 + 2–8 metal."
+        }
+      ]
+    },
+    {
+      "id": "shard-water-blast",
+      "subject": "Water Blast",
+      "facet": "use",
+      "aliases": [
+        "Water Blast shard",
+        "Water Blast damage",
+        "Water Blast range"
+      ],
+      "text": "A fast-moving shot of water that seeks its target like a magic missile. Range: 60 yd. Damage: 2–12.",
+      "witness": "A fast-moving shot of water that seeks its target like a magic missile. Range: 60 yd. Damage: 2–12.",
+      "source": {
+        "file": "guides/js/AlQadim.js",
+        "locator": "DB.moonstoneShards[7]",
+        "review": "extracted",
+        "index": {
+          "file": "guides/js/assistant/adapters/alqadim.js",
+          "locator": "use record also answers explanation",
+          "review": "authored-index"
+        }
+      },
+      "sourceRecordId": "alqadim:shard:water-blast:use",
+      "entityId": "alqadim:knowledge:water-blast",
+      "answerRelations": [
+        "use",
+        "stats",
+        "explanation"
+      ],
+      "sourceFields": [
+        {
+          "key": "identity",
+          "selectors": [
+            "type"
+          ],
+          "witness": "A fast-moving shot of water that seeks its target like a magic missile. Range: 60 yd. Damage: 2–12."
+        },
+        {
+          "key": "use",
+          "selectors": [
+            "effect"
+          ],
+          "witness": "A fast-moving shot of water that seeks its target like a magic missile. Range: 60 yd. Damage: 2–12."
+        },
+        {
+          "key": "stats",
+          "selectors": [
+            "range",
+            "damage"
+          ],
+          "witness": "A fast-moving shot of water that seeks its target like a magic missile. Range: 60 yd. Damage: 2–12."
+        }
+      ]
+    },
+    {
+      "id": "enemy-air-elemental",
+      "subject": "Air Elemental",
+      "facet": "combat",
+      "aliases": [
+        "Air Elemental strategy"
+      ],
+      "text": "Air Elemental: Avoid storm spins. Attack immediately after they finish spinning. Danger: Medium.",
+      "witness": "Air Elemental: Avoid storm spins. Attack immediately after they finish spinning. Danger: Medium.",
+      "source": {
+        "file": "guides/js/AlQadim.js",
+        "locator": "DB.bestiary[2].strategy/danger",
+        "review": "extracted",
+        "index": {
+          "file": "guides/js/assistant/adapters/alqadim.js",
+          "locator": "combat record also answers explanation",
+          "review": "authored-index"
+        }
+      },
+      "sourceRecordId": "alqadim:bestiary:air-elemental:combat",
+      "entityId": "alqadim:knowledge:air-elemental",
+      "answerRelations": [
+        "combat",
+        "method"
+      ]
+    },
+    {
+      "id": "enemy-giant-boar",
+      "subject": "Giant Boar",
+      "facet": "combat",
+      "aliases": [
+        "Giant Boar strategy"
+      ],
+      "text": "Giant Boar: Charges in straight lines. Dodge sideways, then strike from behind. Danger: Medium.",
+      "witness": "Giant Boar: Charges in straight lines. Dodge sideways, then strike from behind. Danger: Medium.",
+      "source": {
+        "file": "guides/js/AlQadim.js",
+        "locator": "DB.bestiary[3].strategy/danger",
+        "review": "extracted",
+        "index": {
+          "file": "guides/js/assistant/adapters/alqadim.js",
+          "locator": "combat record also answers explanation",
+          "review": "authored-index"
+        }
+      },
+      "sourceRecordId": "alqadim:bestiary:giant-boar:combat",
+      "entityId": "alqadim:knowledge:giant-boar",
+      "answerRelations": [
+        "combat",
+        "method"
+      ]
+    },
+    {
+      "id": "enemy-acid-slime",
+      "subject": "Acid Slime",
+      "facet": "combat",
+      "aliases": [
+        "Acid Slime strategy"
+      ],
+      "text": "Acid Slime: Leaves toxic pools. Do not stand in green residue. Strike from range. Danger: Medium.",
+      "witness": "Acid Slime: Leaves toxic pools. Do not stand in green residue. Strike from range. Danger: Medium.",
+      "source": {
+        "file": "guides/js/AlQadim.js",
+        "locator": "DB.bestiary[6].strategy/danger",
+        "review": "extracted",
+        "index": {
+          "file": "guides/js/assistant/adapters/alqadim.js",
+          "locator": "combat record also answers explanation",
+          "review": "authored-index"
+        }
+      },
+      "sourceRecordId": "alqadim:bestiary:acid-slime:combat",
+      "entityId": "alqadim:knowledge:acid-slime",
+      "answerRelations": [
+        "combat",
+        "method"
+      ]
+    },
+    {
+      "id": "enemy-fire-elemental",
+      "subject": "Fire Elemental",
+      "facet": "combat",
+      "aliases": [
+        "Fire Elemental strategy"
+      ],
+      "text": "Fire Elemental: Immune to fire. Apply Water Blast shards or Oil of Fire Invulnerability. Danger: High.",
+      "witness": "Fire Elemental: Immune to fire. Apply Water Blast shards or Oil of Fire Invulnerability. Danger: High.",
+      "source": {
+        "file": "guides/js/AlQadim.js",
+        "locator": "DB.bestiary[7].strategy/danger",
+        "review": "extracted",
+        "index": {
+          "file": "guides/js/assistant/adapters/alqadim.js",
+          "locator": "combat record also answers explanation",
+          "review": "authored-index"
+        }
+      },
+      "sourceRecordId": "alqadim:bestiary:fire-elemental:combat",
+      "entityId": "alqadim:knowledge:fire-elemental",
+      "answerRelations": [
+        "combat",
+        "method",
+        "limitations"
+      ],
+      "sourceFields": [
+        {
+          "key": "method",
+          "selectors": [
+            "step"
+          ],
+          "witness": "Fire Elemental: Immune to fire. Apply Water Blast shards or Oil of Fire Invulnerability. Danger: High."
+        },
+        {
+          "key": "limitations",
+          "selectors": [],
+          "witness": "Fire Elemental: Immune to fire. Apply Water Blast shards or Oil of Fire Invulnerability. Danger: High."
+        },
+        {
+          "key": "sequence",
+          "selectors": [
+            "alternatives"
+          ],
+          "witness": "Fire Elemental: Immune to fire. Apply Water Blast shards or Oil of Fire Invulnerability. Danger: High."
+        }
+      ]
+    },
+    {
+      "id": "enemy-hag",
+      "subject": "Hag",
+      "facet": "combat",
+      "aliases": [
+        "Hag strategy"
+      ],
+      "text": "Hag: Casts magic missile streams. Evade behind columns, strike during cooldown. Danger: High.",
+      "witness": "Hag: Casts magic missile streams. Evade behind columns, strike during cooldown. Danger: High.",
+      "source": {
+        "file": "guides/js/AlQadim.js",
+        "locator": "DB.bestiary[8].strategy/danger",
+        "review": "extracted",
+        "index": {
+          "file": "guides/js/assistant/adapters/alqadim.js",
+          "locator": "combat record also answers explanation",
+          "review": "authored-index"
+        }
+      },
+      "sourceRecordId": "alqadim:bestiary:hag:combat",
+      "entityId": "alqadim:knowledge:hag",
+      "answerRelations": [
+        "combat",
+        "method"
+      ]
+    },
+    {
+      "id": "enemy-scaly-horned-ogre",
+      "subject": "Scaly-Horned Ogre",
+      "facet": "combat",
+      "aliases": [
+        "Scaly-Horned Ogre strategy"
+      ],
+      "text": "Scaly-Horned Ogre: Huge health pool. Evade heavy clubs and ready a strong sword swing before closing. Danger: High.",
+      "witness": "Scaly-Horned Ogre: Huge health pool. Evade heavy clubs and ready a strong sword swing before closing. Danger: High.",
+      "source": {
+        "file": "guides/js/AlQadim.js",
+        "locator": "DB.bestiary[9].strategy/danger",
+        "review": "extracted",
+        "index": {
+          "file": "guides/js/assistant/adapters/alqadim.js",
+          "locator": "combat record also answers explanation",
+          "review": "authored-index"
+        }
+      },
+      "sourceRecordId": "alqadim:bestiary:scaly-horned-ogre:combat",
+      "entityId": "alqadim:knowledge:scaly-horned-ogre",
+      "answerRelations": [
+        "combat",
+        "method"
+      ]
+    },
+    {
+      "id": "enemy-cyclops-ettin",
+      "subject": "Cyclops & Ettin",
+      "facet": "combat",
+      "aliases": [
+        "Cyclops & Ettin strategy"
+      ],
+      "text": "Cyclops & Ettin: Devastating melee damage. Run in, hit once, back out. Use Giant Strength. Danger: High.",
+      "witness": "Cyclops & Ettin: Devastating melee damage. Run in, hit once, back out. Use Giant Strength. Danger: High.",
+      "source": {
+        "file": "guides/js/AlQadim.js",
+        "locator": "DB.bestiary[10].strategy/danger",
+        "review": "extracted",
+        "index": {
+          "file": "guides/js/assistant/adapters/alqadim.js",
+          "locator": "combat record also answers explanation",
+          "review": "authored-index"
+        }
+      },
+      "sourceRecordId": "alqadim:bestiary:cyclops-ettin:combat",
+      "entityId": "alqadim:knowledge:cyclops-ettin",
+      "answerRelations": [
+        "combat",
+        "method"
+      ]
+    },
+    {
+      "id": "item-family-sword-of-honor-use",
+      "subject": "Family Sword of Honor",
+      "facet": "use",
+      "aliases": [
+        "Family Sword of Honor effect"
+      ],
+      "text": "Family Sword of Honor: Magical scimitar that cannot harm allies or innocents. The primary weapon.",
+      "witness": "Family Sword of Honor: Magical scimitar that cannot harm allies or innocents. The primary weapon.",
+      "source": {
+        "file": "guides/js/AlQadim.js",
+        "locator": "DB.keyItems[0].description",
+        "review": "extracted",
+        "index": {
+          "file": "guides/js/assistant/adapters/alqadim.js",
+          "locator": "use record also answers explanation",
+          "review": "authored-index"
+        }
+      },
+      "sourceRecordId": "alqadim:item:family-sword-of-honor:use",
+      "entityId": "alqadim:knowledge:family-sword-of-honor",
+      "answerRelations": [
+        "identity",
+        "use",
+        "limitations"
+      ],
+      "sourceFields": [
+        {
+          "key": "use",
+          "selectors": [
+            "effect",
+            "purpose"
+          ],
+          "witness": "Family Sword of Honor: Magical scimitar that cannot harm allies or innocents. The primary weapon."
+        }
+      ]
+    },
+    {
+      "id": "item-ship-orb-use",
+      "subject": "Ship Orb",
+      "facet": "use",
+      "aliases": [
+        "Ship Orb effect"
+      ],
+      "text": "Ship Orb: Powers and restores the corsair ship for navigation.",
+      "witness": "Ship Orb: Powers and restores the corsair ship for navigation.",
+      "source": {
+        "file": "guides/js/AlQadim.js",
+        "locator": "DB.keyItems[5].description",
+        "review": "extracted",
+        "index": {
+          "file": "guides/js/assistant/adapters/alqadim.js",
+          "locator": "use record also answers explanation",
+          "review": "authored-index"
+        }
+      },
+      "sourceRecordId": "alqadim:item:ship-orb:use",
+      "entityId": "alqadim:knowledge:ship-orb",
+      "answerRelations": [
+        "use",
+        "method",
+        "outcome"
+      ],
+      "answerBindings": [
+        {
+          "entityId": "alqadim:knowledge:corsair-ship",
+          "relations": [
+            "use",
+            "method",
+            "outcome"
+          ],
+          "mention": "corsair ship"
+        },
+        {
+          "entityId": "alqadim:knowledge:sea-navigation",
+          "relations": [
+            "use",
+            "method",
+            "outcome"
+          ],
+          "mention": "navigation"
+        }
+      ],
+      "sourceFields": [
+        {
+          "key": "use",
+          "selectors": [
+            "effect",
+            "purpose"
+          ],
+          "witness": "Ship Orb: Powers and restores the corsair ship for navigation."
+        }
+      ]
+    },
+    {
+      "id": "item-enchanted-mirror-use",
+      "subject": "Enchanted Mirror",
+      "facet": "use",
+      "aliases": [
+        "Enchanted Mirror effect"
+      ],
+      "text": "Enchanted Mirror: Reflects magical light beams to solve optics puzzles.",
+      "witness": "Enchanted Mirror: Reflects magical light beams to solve optics puzzles.",
+      "source": {
+        "file": "guides/js/AlQadim.js",
+        "locator": "DB.keyItems[4].description",
+        "review": "extracted",
+        "index": {
+          "file": "guides/js/assistant/adapters/alqadim.js",
+          "locator": "use record also answers explanation",
+          "review": "authored-index"
+        }
+      },
+      "sourceRecordId": "alqadim:item:enchanted-mirror:use",
+      "entityId": "alqadim:knowledge:enchanted-mirror",
+      "answerRelations": [
+        "use"
+      ],
+      "sourceFields": [
+        {
+          "key": "use",
+          "selectors": [
+            "effect",
+            "purpose"
+          ],
+          "witness": "Enchanted Mirror: Reflects magical light beams to solve optics puzzles."
+        }
+      ]
+    },
+    {
+      "id": "item-efreet-potion-use",
+      "subject": "Efreet Potion",
+      "facet": "use",
+      "aliases": [
+        "Efreet Potion effect"
+      ],
+      "text": "Efreet Potion: Grants immunity to the chessboard death flames.",
+      "witness": "Efreet Potion: Grants immunity to the chessboard death flames.",
+      "source": {
+        "file": "guides/js/AlQadim.js",
+        "locator": "DB.keyItems[10].description",
+        "review": "extracted",
+        "index": {
+          "file": "guides/js/assistant/adapters/alqadim.js",
+          "locator": "use record also answers explanation",
+          "review": "authored-index"
+        }
+      },
+      "sourceRecordId": "alqadim:item:efreet-potion:use",
+      "entityId": "alqadim:knowledge:efreet-potion",
+      "answerRelations": [
+        "use"
+      ],
+      "sourceFields": [
+        {
+          "key": "use",
+          "selectors": [
+            "effect",
+            "purpose"
+          ],
+          "witness": "Efreet Potion: Grants immunity to the chessboard death flames."
+        }
+      ]
+    },
+    {
+      "id": "item-key-of-bone-use",
+      "subject": "Key of Bone",
+      "facet": "use",
+      "aliases": [
+        "Key of Bone effect"
+      ],
+      "text": "Key of Bone: Opens the secret passage in the castle kitchen cellars.",
+      "witness": "Key of Bone: Opens the secret passage in the castle kitchen cellars.",
+      "source": {
+        "file": "guides/js/AlQadim.js",
+        "locator": "DB.keyItems[11].description",
+        "review": "extracted",
+        "index": {
+          "file": "guides/js/assistant/adapters/alqadim.js",
+          "locator": "use record also answers explanation",
+          "review": "authored-index"
+        }
+      },
+      "sourceRecordId": "alqadim:item:key-of-bone:use",
+      "entityId": "alqadim:knowledge:key-of-bone",
+      "answerRelations": [
+        "use"
+      ],
+      "sourceFields": [
+        {
+          "key": "use",
+          "selectors": [
+            "effect",
+            "purpose"
+          ],
+          "witness": "Key of Bone: Opens the secret passage in the castle kitchen cellars."
+        }
+      ]
+    },
+    {
+      "id": "item-vizier-s-journal-use",
+      "subject": "Vizier's Journal",
+      "facet": "use",
+      "aliases": [
+        "Vizier's Journal effect"
+      ],
+      "text": "Vizier's Journal: Contains incriminating evidence detailing the Vizier's betrayal.",
+      "witness": "Vizier's Journal: Contains incriminating evidence detailing the Vizier's betrayal.",
+      "source": {
+        "file": "guides/js/AlQadim.js",
+        "locator": "DB.keyItems[12].description",
+        "review": "extracted",
+        "index": {
+          "file": "guides/js/assistant/adapters/alqadim.js",
+          "locator": "use record also answers explanation",
+          "review": "authored-index"
+        }
+      },
+      "sourceRecordId": "alqadim:item:vizier-s-journal:use",
+      "entityId": "alqadim:knowledge:vizier-s-journal",
+      "answerRelations": [
+        "use",
+        "explanation"
+      ],
+      "sourceFields": [
+        {
+          "key": "use",
+          "selectors": [
+            "effect",
+            "purpose"
+          ],
+          "witness": "Vizier's Journal: Contains incriminating evidence detailing the Vizier's betrayal."
+        }
+      ]
+    },
+    {
+      "id": "berries-location",
+      "subject": "Purple Berries",
+      "facet": "location",
+      "aliases": [
+        "Western Desert Oasis berries"
+      ],
+      "text": "Purple Berries: Western Desert Oasis.",
+      "witness": "Purple Berries: Western Desert Oasis.",
+      "source": {
+        "file": "guides/js/AlQadim.js",
+        "locator": "DB.keyItems[1].location",
+        "review": "extracted"
+      },
+      "sourceRecordId": "alqadim:item:purple-berries:location",
+      "entityId": "alqadim:knowledge:purple-berries",
+      "answerRelations": [
+        "location"
+      ]
+    },
+    {
+      "id": "item-bottle-of-eternal-emptiness-use",
+      "subject": "Bottle of Eternal Emptiness",
+      "facet": "use",
+      "aliases": [
+        "Efreet agent trap",
+        "bottle traps Efreet agent",
+        "bottle clears chessboard path"
+      ],
+      "text": "Bottle of Eternal Emptiness: Traps the Efreet agent, clearing the chessboard path.",
+      "witness": "Bottle of Eternal Emptiness: Traps the Efreet agent, clearing the chessboard path.",
+      "source": {
+        "file": "guides/js/AlQadim.js",
+        "locator": "DB.keyItems[9].description",
+        "review": "extracted"
+      },
+      "sourceRecordId": "alqadim:item:bottle-of-eternal-emptiness:use",
+      "entityId": "alqadim:knowledge:bottle-of-eternal-emptiness",
+      "answerRelations": [
+        "use",
+        "outcome"
+      ],
+      "topicLabels": [
+        "Bottle of Eternal Emptiness use",
+        "Efreet agent trapping effect"
+      ],
+      "sourceFields": [
+        {
+          "key": "use",
+          "selectors": [
+            "effect",
+            "purpose"
+          ],
+          "witness": "Bottle of Eternal Emptiness: Traps the Efreet agent, clearing the chessboard path."
+        }
+      ]
+    },
+    {
+      "id": "item-purple-berries-use",
+      "subject": "Purple Berries",
+      "facet": "use",
+      "aliases": [
+        "medicinal berries",
+        "berries for Babazar daughter"
+      ],
+      "text": "Purple Berries: Medicinal berries needed to cure Babazar's daughter.",
+      "witness": "Purple Berries: Medicinal berries needed to cure Babazar's daughter.",
+      "source": {
+        "file": "guides/js/AlQadim.js",
+        "locator": "DB.keyItems[1].description",
+        "review": "extracted"
+      },
+      "sourceRecordId": "alqadim:item:purple-berries:use",
+      "entityId": "alqadim:knowledge:purple-berries",
+      "answerRelations": [
+        "identity",
+        "use",
+        "purpose"
+      ],
+      "topicLabels": [
+        "Purple Berries use"
+      ],
+      "sourceFields": [
+        {
+          "key": "use",
+          "selectors": [
+            "effect",
+            "purpose"
+          ],
+          "witness": "Purple Berries: Medicinal berries needed to cure Babazar's daughter."
+        }
+      ]
+    },
+    {
+      "id": "tarik-identity",
+      "subject": "Tarik",
+      "facet": "identity",
+      "aliases": [
+        "Corsair brother",
+        "your brother Tarik"
+      ],
+      "text": "your brother Tarik",
+      "witness": "your brother Tarik",
+      "source": {
+        "file": "guides/js/AlQadim.js",
+        "locator": "DB.chapters[15].summary (identity phrase)",
+        "review": "extracted"
+      },
+      "sourceRecordId": "alqadim:chapter:16:explanation",
+      "entityId": "alqadim:knowledge:tarik",
+      "answerRelations": [
+        "identity",
+        "relationship"
+      ]
+    }
+  ],
+  "entities": [
+    {
+      "id": "alqadim:knowledge:sinbar",
+      "name": "Sinbar",
+      "kind": "person",
+      "aliases": [
+        "Master Sinbar"
+      ]
+    },
+    {
+      "id": "alqadim:knowledge:disintegrator-field",
+      "name": "Disintegrator field",
+      "kind": "hazard",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:spear-gauntlets",
+      "name": "Spear gauntlets",
+      "kind": "hazard",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:academy-fire-jets",
+      "name": "Academy fire jets",
+      "kind": "hazard",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:academy-final-chest",
+      "name": "Academy final chest",
+      "kind": "item",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:academy-teleporter",
+      "name": "Academy teleporter",
+      "kind": "place",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:academy-vases",
+      "name": "Academy vases",
+      "kind": "item",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:family-sword-of-honor",
+      "name": "Family Sword of Honor",
+      "kind": "item",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:jessamin",
+      "name": "Jessamin",
+      "kind": "person",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:babazar",
+      "name": "Babazar",
+      "kind": "person",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:haroon-abi-wassab",
+      "name": "Haroon abi Wassab",
+      "kind": "person",
+      "aliases": [
+        "Haroon"
+      ]
+    },
+    {
+      "id": "alqadim:knowledge:qadi-peace-treaty",
+      "name": "Qadi peace treaty",
+      "kind": "quest",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:muliban-accusation",
+      "name": "Muliban accusation",
+      "kind": "topic",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:purple-berries",
+      "name": "Purple Berries",
+      "kind": "item",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:oasis-mermaid",
+      "name": "Oasis mermaid",
+      "kind": "person",
+      "aliases": [
+        "mermaid at the pool"
+      ]
+    },
+    {
+      "id": "alqadim:knowledge:giant-boar",
+      "name": "Giant Boar",
+      "kind": "creature",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:mermaid-sister",
+      "name": "Mermaid sister",
+      "kind": "person",
+      "aliases": [
+        "mermaid's sister"
+      ]
+    },
+    {
+      "id": "alqadim:knowledge:dock-dark-mage",
+      "name": "Dock dark mage",
+      "kind": "creature",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:rotting-ship-s-hold",
+      "name": "Rotting Ship's Hold",
+      "kind": "place",
+      "aliases": [
+        "ship's hold"
+      ]
+    },
+    {
+      "id": "alqadim:knowledge:ship-orb",
+      "name": "Ship Orb",
+      "kind": "item",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:corsair-ship",
+      "name": "Corsair ship",
+      "kind": "item",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:rotting-ship-s-hold-barrels",
+      "name": "Rotting Ship's Hold barrels",
+      "kind": "item",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:mirror-optics-puzzle",
+      "name": "Mirror optics puzzle",
+      "kind": "mechanic",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:acid-slime-king",
+      "name": "Acid Slime King",
+      "kind": "creature",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:captured-tower-mage",
+      "name": "Captured tower mage",
+      "kind": "person",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:tower-level-2-tile-puzzle",
+      "name": "Tower Level 2 tile puzzle",
+      "kind": "mechanic",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:traveler-s-rest",
+      "name": "Traveler's Rest",
+      "kind": "place",
+      "aliases": [
+        "Closed Inn"
+      ]
+    },
+    {
+      "id": "alqadim:knowledge:zubakon",
+      "name": "Zubakon",
+      "kind": "person",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:caliph-audience",
+      "name": "Caliph audience",
+      "kind": "quest",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:vizier-mind-scan",
+      "name": "Vizier mind scan",
+      "kind": "topic",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:caliph-questions",
+      "name": "Caliph questions",
+      "kind": "topic",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:shibaz-hermit",
+      "name": "Shibaz Hermit",
+      "kind": "person",
+      "aliases": [
+        "Hermit"
+      ]
+    },
+    {
+      "id": "alqadim:knowledge:flying-carpet",
+      "name": "Flying Carpet",
+      "kind": "item",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:hags-riddle",
+      "name": "Hags riddle",
+      "kind": "topic",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:library-levels",
+      "name": "Library levels",
+      "kind": "place",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:bottle-of-eternal-emptiness",
+      "name": "Bottle of Eternal Emptiness",
+      "kind": "item",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:efreet-agent",
+      "name": "Efreet agent",
+      "kind": "person",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:chessboard",
+      "name": "Chessboard",
+      "kind": "place",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:efreet-potion",
+      "name": "Efreet Potion",
+      "kind": "item",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:sumie",
+      "name": "Sumie",
+      "kind": "person",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:office-of-trade",
+      "name": "Office of Trade",
+      "kind": "place",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:key-of-bone",
+      "name": "Key of Bone",
+      "kind": "item",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:old-dungeon-hidden-key",
+      "name": "Old Dungeon hidden key",
+      "kind": "item",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:old-dungeon-vents",
+      "name": "Old Dungeon vents",
+      "kind": "hazard",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:pangar-bek",
+      "name": "Pangar-Bek",
+      "kind": "person",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:new-dungeon",
+      "name": "New Dungeon",
+      "kind": "place",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:new-dungeon-pressure-plates",
+      "name": "New Dungeon pressure plates",
+      "kind": "hazard",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:zubin-cell",
+      "name": "Zubin cell",
+      "kind": "place",
+      "aliases": [
+        "Zubin's cell"
+      ]
+    },
+    {
+      "id": "alqadim:knowledge:vizier-s-journal",
+      "name": "Vizier's Journal",
+      "kind": "item",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:al-katraz-mercenary-groups",
+      "name": "Al'Katraz mercenary groups",
+      "kind": "group",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:al-katraz-password",
+      "name": "Al'Katraz password",
+      "kind": "clue",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:al-katraz-prison-dungeon",
+      "name": "Al'Katraz Prison Dungeon",
+      "kind": "place",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:ettin-guards",
+      "name": "Ettin guards",
+      "kind": "creature",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:prison-keys",
+      "name": "Prison keys",
+      "kind": "item",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:tarik",
+      "name": "Tarik",
+      "kind": "person",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:sand-genies",
+      "name": "Sand genies",
+      "kind": "group",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:voice-trapping-bottles",
+      "name": "Voice-trapping bottles",
+      "kind": "item",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:tarik-voice",
+      "name": "Tarik voice",
+      "kind": "topic",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:al-naqqil-teleporter-traps",
+      "name": "Al-Naqqil teleporter traps",
+      "kind": "hazard",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:magic-necklaces",
+      "name": "Magic necklaces",
+      "kind": "item",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:outer-planes-gateway",
+      "name": "Outer Planes gateway",
+      "kind": "place",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:floating-platform-grids",
+      "name": "Floating platform grids",
+      "kind": "place",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:kara",
+      "name": "Kara",
+      "kind": "person",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:magical-shield-orbs",
+      "name": "Magical shield orbs",
+      "kind": "item",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:vizier-finale",
+      "name": "Vizier finale",
+      "kind": "topic",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:starting-corsair",
+      "name": "Starting Corsair",
+      "kind": "character",
+      "aliases": [
+        "Corsair"
+      ]
+    },
+    {
+      "id": "alqadim:knowledge:combat-rhythm",
+      "name": "Combat rhythm",
+      "kind": "topic",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:scimitar-facing",
+      "name": "Scimitar facing",
+      "kind": "mechanic",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:sword-swing-controls",
+      "name": "Sword swing controls",
+      "kind": "mechanic",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:sword-recovery",
+      "name": "Sword recovery",
+      "kind": "mechanic",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:left-hand-weapon",
+      "name": "Left hand weapon",
+      "kind": "topic",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:moonstone-shard-charges",
+      "name": "Moonstone shard charges",
+      "kind": "mechanic",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:moonstone-shard-controls",
+      "name": "Moonstone shard controls",
+      "kind": "mechanic",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:sword-charge-timing",
+      "name": "Sword charge timing",
+      "kind": "mechanic",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:hit-and-withdraw",
+      "name": "Hit and withdraw",
+      "kind": "mechanic",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:combat-movement",
+      "name": "Combat movement",
+      "kind": "mechanic",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:combat-pause",
+      "name": "Combat pause",
+      "kind": "mechanic",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:guide-source-policy",
+      "name": "Guide source policy",
+      "kind": "topic",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:mechanics-source-policy",
+      "name": "Mechanics source policy",
+      "kind": "topic",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:marid-lord-path",
+      "name": "Marid Lord path",
+      "kind": "place",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:djinn-lords-path",
+      "name": "Djinn Lords path",
+      "kind": "place",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:dao-lord-path",
+      "name": "Dao Lord path",
+      "kind": "place",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:efreet-lord-path",
+      "name": "Efreet Lord path",
+      "kind": "place",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:quick-swing",
+      "name": "Quick Swing",
+      "kind": "combat",
+      "aliases": [
+        "quick attack",
+        "basic attack",
+        "basic swing"
+      ]
+    },
+    {
+      "id": "alqadim:knowledge:wide-swing",
+      "name": "Wide Swing",
+      "kind": "combat",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:full-circle-swing",
+      "name": "Full-Circle Swing",
+      "kind": "combat",
+      "aliases": [
+        "full circle swing",
+        "360-degree swing"
+      ]
+    },
+    {
+      "id": "alqadim:knowledge:cone-of-cold",
+      "name": "Cone of Cold",
+      "kind": "item",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:flame-arrow",
+      "name": "Flame Arrow",
+      "kind": "item",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:lightning-bolt",
+      "name": "Lightning Bolt",
+      "kind": "item",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:magic-missile",
+      "name": "Magic Missile",
+      "kind": "item",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:sundazzle",
+      "name": "Sundazzle",
+      "kind": "item",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:sunfire",
+      "name": "Sunfire",
+      "kind": "item",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:sunscorch",
+      "name": "Sunscorch",
+      "kind": "item",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:water-blast",
+      "name": "Water Blast",
+      "kind": "item",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:air-elemental",
+      "name": "Air Elemental",
+      "kind": "creature",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:acid-slime",
+      "name": "Acid Slime",
+      "kind": "creature",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:fire-elemental",
+      "name": "Fire Elemental",
+      "kind": "creature",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:hag",
+      "name": "Hag",
+      "kind": "creature",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:scaly-horned-ogre",
+      "name": "Scaly-Horned Ogre",
+      "kind": "creature",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:cyclops-ettin",
+      "name": "Cyclops & Ettin",
+      "kind": "creature",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:enchanted-mirror",
+      "name": "Enchanted Mirror",
+      "kind": "item",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:zubin",
+      "name": "Zubin",
+      "kind": "person",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:western-desert-oasis",
+      "name": "Western Desert Oasis",
+      "kind": "place",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:aliya",
+      "name": "Aliya",
+      "kind": "person",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:family-banishment",
+      "name": "Family banishment",
+      "kind": "topic",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:zaratan",
+      "name": "Zaratan",
+      "kind": "place",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:starting-equipment",
+      "name": "Starting equipment",
+      "kind": "item",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:bonus-gold-coins",
+      "name": "Bonus gold coins",
+      "kind": "item",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:stone-cell",
+      "name": "Stone cell",
+      "kind": "place",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:dock-entrance",
+      "name": "Dock entrance",
+      "kind": "place",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:helm-cabin",
+      "name": "Helm cabin",
+      "kind": "place",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:sea-navigation",
+      "name": "Sea navigation",
+      "kind": "topic",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:healing-potions",
+      "name": "Healing potions",
+      "kind": "item",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:toxic-pool",
+      "name": "Toxic pool",
+      "kind": "place",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:tower-blessing",
+      "name": "Tower blessing",
+      "kind": "topic",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:shop-with-no-sign",
+      "name": "Shop with no sign",
+      "kind": "place",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:vizier",
+      "name": "Vizier",
+      "kind": "person",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:harpy-nest",
+      "name": "Harpy nest",
+      "kind": "place",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:library-path",
+      "name": "Library path",
+      "kind": "place",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:isle-of-senat",
+      "name": "Isle of Senat",
+      "kind": "place",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:south-chessboard-path",
+      "name": "South chessboard path",
+      "kind": "place",
+      "aliases": [
+        "South chessboard route"
+      ]
+    },
+    {
+      "id": "alqadim:knowledge:palace-kitchen-fireplace",
+      "name": "Palace kitchen fireplace",
+      "kind": "place",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:baker-referral",
+      "name": "Baker referral",
+      "kind": "clue",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:baker",
+      "name": "Baker",
+      "kind": "person",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:kitchen-cellar-door",
+      "name": "Kitchen cellar door",
+      "kind": "place",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:first-room-boulder",
+      "name": "First-room boulder",
+      "kind": "item",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:old-dungeon-exit",
+      "name": "Old Dungeon exit",
+      "kind": "place",
+      "aliases": [
+        "dungeon exit"
+      ]
+    },
+    {
+      "id": "alqadim:knowledge:vizier-desk",
+      "name": "Vizier desk",
+      "kind": "place",
+      "aliases": [
+        "Vizier's desk"
+      ]
+    },
+    {
+      "id": "alqadim:knowledge:three-elemental-shrines",
+      "name": "Three elemental shrines",
+      "kind": "place",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:mercenary-captain",
+      "name": "Mercenary Captain",
+      "kind": "person",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:ship",
+      "name": "Ship",
+      "kind": "item",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:three-nameless-mages",
+      "name": "Three Nameless mages",
+      "kind": "group",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:magical-light-beams",
+      "name": "Magical light beams",
+      "kind": "hazard",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:chessboard-death-flames",
+      "name": "Chessboard death flames",
+      "kind": "hazard",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:castle-kitchen-cellars-passage",
+      "name": "Castle kitchen cellars passage",
+      "kind": "place",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:vizier-betrayal",
+      "name": "Vizier betrayal",
+      "kind": "topic",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:outer-planes",
+      "name": "Outer Planes",
+      "kind": "place",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:genie-s-curse",
+      "name": "Genie's Curse",
+      "kind": "topic",
+      "aliases": []
+    },
+    {
+      "id": "alqadim:knowledge:moonstone-shards",
+      "name": "Moonstone shards",
+      "kind": "item",
+      "aliases": [
+        "magic shards",
+        "magic shard",
+        "moonstone shard",
+        "shards"
+      ]
+    },
+    {
+      "id": "alqadim:knowledge:academy-trial",
+      "name": "Academy trial",
+      "kind": "quest",
+      "aliases": [
+        "trial"
+      ]
+    },
+    {
+      "id": "alqadim:chapter:4",
+      "name": "Deadman's Reef & The Ship",
+      "kind": "quest",
+      "aliases": [
+        "Reef of the Dead"
+      ]
+    },
+    {
+      "id": "alqadim:knowledge:oasis-outskirts",
+      "name": "Oasis outskirts",
+      "kind": "place",
+      "aliases": []
+    }
+  ],
+  "links": [
+    {
+      "id": "sword-from-zubin",
+      "from": "alqadim:knowledge:family-sword-of-honor",
+      "to": "alqadim:knowledge:zubin",
+      "relation": "obtained_from",
+      "evidenceFactIds": [
+        "ch2_1"
+      ],
+      "status": "recorded",
+      "qualifiers": []
+    },
+    {
+      "id": "berries-for-daughter",
+      "from": "alqadim:knowledge:babazar",
+      "to": "alqadim:knowledge:purple-berries",
+      "relation": "requires",
+      "evidenceFactIds": [
+        "ch2_3"
+      ],
+      "status": "conditional",
+      "qualifiers": [
+        "Babazar quest for his sick daughter; not current inventory"
+      ]
+    },
+    {
+      "id": "berries-at-oasis",
+      "from": "alqadim:knowledge:purple-berries",
+      "to": "alqadim:knowledge:western-desert-oasis",
+      "relation": "found_in",
+      "evidenceFactIds": [
+        "berries-location"
+      ],
+      "status": "recorded",
+      "qualifiers": []
+    },
+    {
+      "id": "haroon-treaty-aliya",
+      "from": "alqadim:knowledge:haroon-abi-wassab",
+      "to": "alqadim:knowledge:aliya",
+      "relation": "negotiates_with",
+      "evidenceFactIds": [
+        "ch2_4"
+      ],
+      "status": "recorded",
+      "qualifiers": []
+    },
+    {
+      "id": "treaty-oath-aliya",
+      "from": "alqadim:knowledge:qadi-peace-treaty",
+      "to": "alqadim:knowledge:aliya",
+      "relation": "requires_oath_with",
+      "evidenceFactIds": [
+        "ch2_5"
+      ],
+      "status": "conditional",
+      "qualifiers": [
+        "Swear the oath before Haroon"
+      ]
+    },
+    {
+      "id": "treaty-oath-haroon",
+      "from": "alqadim:knowledge:qadi-peace-treaty",
+      "to": "alqadim:knowledge:haroon-abi-wassab",
+      "relation": "sworn_before",
+      "evidenceFactIds": [
+        "ch2_5"
+      ],
+      "status": "recorded",
+      "qualifiers": []
+    },
+    {
+      "id": "muliban-banishment",
+      "from": "alqadim:knowledge:muliban-accusation",
+      "to": "alqadim:knowledge:family-banishment",
+      "relation": "results_in",
+      "evidenceFactIds": [
+        "ch2_6"
+      ],
+      "status": "recorded",
+      "qualifiers": []
+    },
+    {
+      "id": "academy-exit-zaratan",
+      "from": "alqadim:knowledge:academy-teleporter",
+      "to": "alqadim:knowledge:zaratan",
+      "relation": "leads_to",
+      "evidenceFactIds": [
+        "ch1_6"
+      ],
+      "status": "recorded",
+      "qualifiers": []
+    },
+    {
+      "id": "academy-chest-equipment",
+      "from": "alqadim:knowledge:academy-final-chest",
+      "to": "alqadim:knowledge:starting-equipment",
+      "relation": "provides",
+      "evidenceFactIds": [
+        "ch1_5"
+      ],
+      "status": "recorded",
+      "qualifiers": []
+    },
+    {
+      "id": "vases-gold",
+      "from": "alqadim:knowledge:academy-vases",
+      "to": "alqadim:knowledge:bonus-gold-coins",
+      "relation": "provides",
+      "evidenceFactIds": [
+        "ch1_7"
+      ],
+      "status": "recorded",
+      "qualifiers": []
+    },
+    {
+      "id": "sister-cell",
+      "from": "alqadim:knowledge:mermaid-sister",
+      "to": "alqadim:knowledge:stone-cell",
+      "relation": "located_in",
+      "evidenceFactIds": [
+        "ch4_2"
+      ],
+      "status": "recorded",
+      "qualifiers": []
+    },
+    {
+      "id": "mage-dock",
+      "from": "alqadim:knowledge:dock-dark-mage",
+      "to": "alqadim:knowledge:dock-entrance",
+      "relation": "guards",
+      "evidenceFactIds": [
+        "ch4_3"
+      ],
+      "status": "recorded",
+      "qualifiers": []
+    },
+    {
+      "id": "orb-helm",
+      "from": "alqadim:knowledge:ship-orb",
+      "to": "alqadim:knowledge:helm-cabin",
+      "relation": "found_in",
+      "evidenceFactIds": [
+        "ch4_5"
+      ],
+      "status": "recorded",
+      "qualifiers": []
+    },
+    {
+      "id": "ship-navigation",
+      "from": "alqadim:knowledge:corsair-ship",
+      "to": "alqadim:knowledge:sea-navigation",
+      "relation": "enables",
+      "evidenceFactIds": [
+        "ch4_6"
+      ],
+      "status": "conditional",
+      "qualifiers": [
+        "Restore the ship"
+      ]
+    },
+    {
+      "id": "barrels-potions",
+      "from": "alqadim:knowledge:rotting-ship-s-hold-barrels",
+      "to": "alqadim:knowledge:healing-potions",
+      "relation": "provides",
+      "evidenceFactIds": [
+        "ch4_7"
+      ],
+      "status": "conditional",
+      "qualifiers": [
+        "Smash the barrels"
+      ]
+    },
+    {
+      "id": "king-neutralizes-pool",
+      "from": "alqadim:knowledge:acid-slime-king",
+      "to": "alqadim:knowledge:toxic-pool",
+      "relation": "neutralizes_on_defeat",
+      "evidenceFactIds": [
+        "ch5_4"
+      ],
+      "status": "conditional",
+      "qualifiers": [
+        "Defeat the Acid Slime King"
+      ]
+    },
+    {
+      "id": "mage-blessing",
+      "from": "alqadim:knowledge:captured-tower-mage",
+      "to": "alqadim:knowledge:tower-blessing",
+      "relation": "provides",
+      "evidenceFactIds": [
+        "ch5_6"
+      ],
+      "status": "conditional",
+      "qualifiers": [
+        "Free the captured mage"
+      ]
+    },
+    {
+      "id": "zubakon-signless",
+      "from": "alqadim:knowledge:zubakon",
+      "to": "alqadim:knowledge:shop-with-no-sign",
+      "relation": "located_in",
+      "evidenceFactIds": [
+        "ch6_4"
+      ],
+      "status": "recorded",
+      "qualifiers": []
+    },
+    {
+      "id": "wide-teacher",
+      "from": "alqadim:knowledge:wide-swing",
+      "to": "alqadim:knowledge:zubakon",
+      "relation": "taught_by",
+      "evidenceFactIds": [
+        "swing-wide-swing"
+      ],
+      "status": "conditional",
+      "qualifiers": [
+        "After becoming eligible"
+      ]
+    },
+    {
+      "id": "circle-teacher",
+      "from": "alqadim:knowledge:full-circle-swing",
+      "to": "alqadim:knowledge:zubakon",
+      "relation": "taught_by",
+      "evidenceFactIds": [
+        "swing-full-circle-swing"
+      ],
+      "status": "conditional",
+      "qualifiers": [
+        "After later progression"
+      ]
+    },
+    {
+      "id": "audience-vizier",
+      "from": "alqadim:knowledge:caliph-audience",
+      "to": "alqadim:knowledge:vizier",
+      "relation": "requested_via",
+      "evidenceFactIds": [
+        "ch7_1"
+      ],
+      "status": "recorded",
+      "qualifiers": []
+    },
+    {
+      "id": "carpet-nest",
+      "from": "alqadim:knowledge:flying-carpet",
+      "to": "alqadim:knowledge:harpy-nest",
+      "relation": "found_in",
+      "evidenceFactIds": [
+        "ch8_3"
+      ],
+      "status": "recorded",
+      "qualifiers": []
+    },
+    {
+      "id": "riddle-library",
+      "from": "alqadim:knowledge:hags-riddle",
+      "to": "alqadim:knowledge:library-path",
+      "relation": "opens",
+      "evidenceFactIds": [
+        "ch8_4"
+      ],
+      "status": "conditional",
+      "qualifiers": [
+        "Solve the riddle"
+      ]
+    },
+    {
+      "id": "bottle-senat",
+      "from": "alqadim:knowledge:bottle-of-eternal-emptiness",
+      "to": "alqadim:knowledge:isle-of-senat",
+      "relation": "found_in",
+      "evidenceFactIds": [
+        "ch10_1"
+      ],
+      "status": "recorded",
+      "qualifiers": []
+    },
+    {
+      "id": "potion-south",
+      "from": "alqadim:knowledge:efreet-potion",
+      "to": "alqadim:knowledge:south-chessboard-path",
+      "relation": "used_for",
+      "evidenceFactIds": [
+        "ch10_7"
+      ],
+      "status": "conditional",
+      "qualifiers": [
+        "Drink the potion"
+      ]
+    },
+    {
+      "id": "sumie-kitchen",
+      "from": "alqadim:knowledge:sumie",
+      "to": "alqadim:knowledge:palace-kitchen-fireplace",
+      "relation": "located_in",
+      "evidenceFactIds": [
+        "ch11_2"
+      ],
+      "status": "recorded",
+      "qualifiers": []
+    },
+    {
+      "id": "referral-office",
+      "from": "alqadim:knowledge:office-of-trade",
+      "to": "alqadim:knowledge:baker-referral",
+      "relation": "provides",
+      "evidenceFactIds": [
+        "ch11_3"
+      ],
+      "status": "recorded",
+      "qualifiers": []
+    },
+    {
+      "id": "key-baker",
+      "from": "alqadim:knowledge:key-of-bone",
+      "to": "alqadim:knowledge:baker",
+      "relation": "obtained_from",
+      "evidenceFactIds": [
+        "ch11_4"
+      ],
+      "status": "recorded",
+      "qualifiers": []
+    },
+    {
+      "id": "sumie-cellar",
+      "from": "alqadim:knowledge:kitchen-cellar-door",
+      "to": "alqadim:knowledge:sumie",
+      "relation": "return_to",
+      "evidenceFactIds": [
+        "ch11_5"
+      ],
+      "status": "conditional",
+      "qualifiers": [
+        "Return to Sumie to unlock the kitchen cellar door; the unlocking mechanism is not described."
+      ]
+    },
+    {
+      "id": "hidden-key-boulder",
+      "from": "alqadim:knowledge:old-dungeon-hidden-key",
+      "to": "alqadim:knowledge:first-room-boulder",
+      "relation": "found_behind",
+      "evidenceFactIds": [
+        "ch12_2"
+      ],
+      "status": "recorded",
+      "qualifiers": []
+    },
+    {
+      "id": "pangar-exit",
+      "from": "alqadim:knowledge:pangar-bek",
+      "to": "alqadim:knowledge:old-dungeon-exit",
+      "relation": "escorted_to",
+      "evidenceFactIds": [
+        "ch12_4"
+      ],
+      "status": "recorded",
+      "qualifiers": [
+        "Guide escort objective and destination; not a report of completed rescue or current location."
+      ]
+    },
+    {
+      "id": "journal-desk",
+      "from": "alqadim:knowledge:vizier-s-journal",
+      "to": "alqadim:knowledge:vizier-desk",
+      "relation": "found_in",
+      "evidenceFactIds": [
+        "ch14_3"
+      ],
+      "status": "recorded",
+      "qualifiers": []
+    },
+    {
+      "id": "shrines-password",
+      "from": "alqadim:knowledge:al-katraz-password",
+      "to": "alqadim:knowledge:three-elemental-shrines",
+      "relation": "obtained_from",
+      "evidenceFactIds": [
+        "ch15_3"
+      ],
+      "status": "conditional",
+      "qualifiers": [
+        "Solve the shrines"
+      ]
+    },
+    {
+      "id": "prison-password",
+      "from": "alqadim:knowledge:al-katraz-prison-dungeon",
+      "to": "alqadim:knowledge:al-katraz-password",
+      "relation": "requires",
+      "evidenceFactIds": [
+        "ch16_1"
+      ],
+      "status": "conditional",
+      "qualifiers": [
+        "Enter using the password"
+      ]
+    },
+    {
+      "id": "captain-keys",
+      "from": "alqadim:knowledge:prison-keys",
+      "to": "alqadim:knowledge:mercenary-captain",
+      "relation": "obtained_from",
+      "evidenceFactIds": [
+        "ch16_3"
+      ],
+      "status": "conditional",
+      "qualifiers": [
+        "Defeat the captain"
+      ]
+    },
+    {
+      "id": "tarik-ship",
+      "from": "alqadim:knowledge:tarik",
+      "to": "alqadim:knowledge:ship",
+      "relation": "escorted_to",
+      "evidenceFactIds": [
+        "ch16_4"
+      ],
+      "status": "recorded",
+      "qualifiers": [
+        "Guide escort objective and destination; not a report of completed rescue or current location."
+      ]
+    },
+    {
+      "id": "necklaces-mages",
+      "from": "alqadim:knowledge:magic-necklaces",
+      "to": "alqadim:knowledge:three-nameless-mages",
+      "relation": "obtained_from",
+      "evidenceFactIds": [
+        "ch18_3"
+      ],
+      "status": "conditional",
+      "qualifiers": [
+        "Defeat the three mages"
+      ]
+    },
+    {
+      "id": "orb-restores-ship",
+      "from": "alqadim:knowledge:ship-orb",
+      "to": "alqadim:knowledge:corsair-ship",
+      "relation": "powers",
+      "evidenceFactIds": [
+        "item-ship-orb-use"
+      ],
+      "status": "recorded",
+      "qualifiers": []
+    },
+    {
+      "id": "mirror-reflects",
+      "from": "alqadim:knowledge:enchanted-mirror",
+      "to": "alqadim:knowledge:magical-light-beams",
+      "relation": "reflects",
+      "evidenceFactIds": [
+        "item-enchanted-mirror-use"
+      ],
+      "status": "recorded",
+      "qualifiers": []
+    },
+    {
+      "id": "potion-immunity",
+      "from": "alqadim:knowledge:efreet-potion",
+      "to": "alqadim:knowledge:chessboard-death-flames",
+      "relation": "grants_immunity_to",
+      "evidenceFactIds": [
+        "item-efreet-potion-use"
+      ],
+      "status": "recorded",
+      "qualifiers": []
+    },
+    {
+      "id": "bone-opens-cellars",
+      "from": "alqadim:knowledge:key-of-bone",
+      "to": "alqadim:knowledge:castle-kitchen-cellars-passage",
+      "relation": "opens",
+      "evidenceFactIds": [
+        "item-key-of-bone-use"
+      ],
+      "status": "recorded",
+      "qualifiers": []
+    },
+    {
+      "id": "journal-evidence",
+      "from": "alqadim:knowledge:vizier-s-journal",
+      "to": "alqadim:knowledge:vizier-betrayal",
+      "relation": "documents",
+      "evidenceFactIds": [
+        "item-vizier-s-journal-use"
+      ],
+      "status": "recorded",
+      "qualifiers": []
+    },
+    {
+      "id": "gateway-planes",
+      "from": "alqadim:knowledge:outer-planes-gateway",
+      "to": "alqadim:knowledge:outer-planes",
+      "relation": "leads_to",
+      "evidenceFactIds": [
+        "ch18_4"
+      ],
+      "status": "recorded",
+      "qualifiers": []
+    },
+    {
+      "id": "bottle-traps-agent",
+      "from": "alqadim:knowledge:bottle-of-eternal-emptiness",
+      "to": "alqadim:knowledge:efreet-agent",
+      "relation": "traps",
+      "evidenceFactIds": [
+        "item-bottle-of-eternal-emptiness-use"
+      ],
+      "status": "recorded",
+      "qualifiers": []
+    },
+    {
+      "id": "trial-begins-with-sinbar",
+      "from": "alqadim:knowledge:academy-trial",
+      "to": "alqadim:knowledge:sinbar",
+      "relation": "begins_with",
+      "evidenceFactIds": [
+        "ch1_1"
+      ],
+      "status": "conditional",
+      "qualifiers": [
+        "Speak with Master Sinbar"
+      ]
+    },
+    {
+      "id": "orb-restores-corsair-ship",
+      "from": "alqadim:knowledge:ship-orb",
+      "to": "alqadim:knowledge:corsair-ship",
+      "relation": "restores",
+      "evidenceFactIds": [
+        "item-ship-orb-use"
+      ],
+      "status": "recorded",
+      "qualifiers": []
+    },
+    {
+      "id": "hold-barrels-location",
+      "from": "alqadim:knowledge:rotting-ship-s-hold-barrels",
+      "to": "alqadim:knowledge:rotting-ship-s-hold",
+      "relation": "located_in",
+      "evidenceFactIds": [
+        "ch4_7"
+      ],
+      "status": "recorded",
+      "qualifiers": []
+    },
+    {
+      "id": "reef-rescue-subject",
+      "from": "alqadim:chapter:4",
+      "to": "alqadim:knowledge:mermaid-sister",
+      "relation": "rescue_subject",
+      "evidenceFactIds": [
+        "ch4_2"
+      ],
+      "status": "recorded",
+      "qualifiers": [
+        "Guide rescue objective in the explicitly scoped Reef chapter; not a release procedure, completed rescue, or recruitment."
+      ],
+      "sourceContextId": "reef-ship-source-scope"
+    },
+    {
+      "id": "old-dungeon-escort-subject",
+      "from": "alqadim:chapter:12",
+      "to": "alqadim:knowledge:pangar-bek",
+      "relation": "escort_subject",
+      "evidenceFactIds": [
+        "ch12_4"
+      ],
+      "status": "recorded",
+      "qualifiers": [
+        "Guide escort objective in the explicitly scoped Old Dungeon chapter; not completed rescue, current location, or a release procedure."
+      ],
+      "sourceContextId": "old-dungeon-source-scope"
+    },
+    {
+      "id": "boar-oasis-outskirts",
+      "from": "alqadim:knowledge:giant-boar",
+      "to": "alqadim:knowledge:oasis-outskirts",
+      "relation": "located_in",
+      "evidenceFactIds": [
+        "ch3_5"
+      ],
+      "status": "recorded",
+      "qualifiers": [
+        "Roaming the oasis outskirts; this location does not establish completion of the optional objective."
+      ]
+    }
+  ],
+  "sourceContexts": [
+    {
+      "id": "academy-trial-source-scope",
+      "entityId": "alqadim:knowledge:academy-trial",
+      "sourceRecordId": "alqadim:chapter:1:hint",
+      "label": "Academy"
+    },
+    {
+      "id": "reef-ship-source-scope",
+      "entityId": "alqadim:chapter:4",
+      "sourceRecordId": "alqadim:chapter:4:hint",
+      "label": "Deadman's Reef"
+    },
+    {
+      "id": "old-dungeon-source-scope",
+      "entityId": "alqadim:chapter:12",
+      "sourceRecordId": "alqadim:chapter:12:hint",
+      "label": "Old Dungeon"
+    },
+    {
+      "id": "oasis-source-scope",
+      "entityId": "alqadim:knowledge:western-desert-oasis",
+      "sourceRecordId": "alqadim:chapter:3:hint",
+      "label": "Oasis"
+    }
+  ]
+}

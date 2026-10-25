@@ -1,0 +1,4277 @@
+{
+  "schemaVersion": 1,
+  "suite": "independent-source-conversations-ultima-20261025",
+  "realMiniLM": true,
+  "nativeIntentClassification": true,
+  "nativeQueryEncoding": true,
+  "generativeWorkerFixture": true,
+  "nativeGenerativeInference": false,
+  "productionFactoryAndUI": true,
+  "expectedStateInjected": false,
+  "corpusPath": "guides/tests/assistant/knowledge-independent-ultima-20261025.json",
+  "corpusHash": "5193e464b5b16f9aae089442db7e0dcacfd489da937875510b1fac508f38583c",
+  "sourceHashesBefore": {
+    "guides/Ultima5.html": "c419f66b8a99902351736c024a2230899ec21cdb4ab7af971c58f547b69a2212",
+    "guides/Ultima6.html": "f64c4728cd19b042ccea6c7aa7398aea50b955f7fa3ad177168a937149fd30c2",
+    "guides/Ultima7.html": "dfc1ef95f254d5f5e905910353081704e04e491c284041b9d8c706b93de1a405",
+    "guides/data/assistant/albion.json": "b3b219ccb434c450189e97404b4c06a3bbc8334dc581bea55bc4a70213851404",
+    "guides/data/assistant/alqadim.json": "f0f15243ea3b27701d97b3ab369a108ef46e93ec5f780f6e1fd1bf5e69bf2b77",
+    "guides/data/assistant/consultation-catalog.json": "e7ad5de8bc0b48dcd83c35882719d43770c13ac029099c7a635f3b3ba322aa0d",
+    "guides/data/assistant/knowledge/albion-embeddings.json": "4f4734de1d016e03b923a0d9e66eb6f527daae5f42915fffcaf63362fdfb2988",
+    "guides/data/assistant/knowledge/albion.json": "91bb79665310b095418f793a50207b4dd578f689a8d013d59fde3d31b110f53b",
+    "guides/data/assistant/knowledge/alqadim-embeddings.json": "31deb8ca7457956e947da5835e52c9316895466372aa94cfda4995b2004ed110",
+    "guides/data/assistant/knowledge/alqadim.json": "795ef0e7cfa7a8909601f394fc98c692caaf01f2d32a938d914a4ca213eb35b4",
+    "guides/data/assistant/knowledge/starcraft-embeddings.json": "8ac219d3b111748b30f80df269dc04bbd9154f0a4fbdba269f885b4015285cd8",
+    "guides/data/assistant/knowledge/starcraft.json": "8c49a3a1690b0e0f2c82a1a618022b66b09ea47eb67b168775d7ccaf6190764c",
+    "guides/data/assistant/knowledge/ultima5-embeddings.json": "83dedf9e4a4cca76a97bfc495d3a3bd1faa32accb4c1bf001c1d8fb4b1690ea6",
+    "guides/data/assistant/knowledge/ultima5.json": "fde0c4797ad32d111ad31d9def56e9839c6802339da3cc95ef8d36c93e72dced",
+    "guides/data/assistant/knowledge/ultima6-embeddings.json": "b88fde4f113fd7af860e6b7f35592659373a2d92c1809935089931f2ce98daf6",
+    "guides/data/assistant/knowledge/ultima6.json": "e3d48258056b14576491045b811becd40b136b3e8a8223d867462a8ff919dd65",
+    "guides/data/assistant/knowledge/ultima7-embeddings.json": "d78b99de61c94397fa08c12b55397a235145622a06fbe0475232772584e4fb30",
+    "guides/data/assistant/knowledge/ultima7.json": "55bc9f21c2b1d12b20aed45984e1f12cf29b0f8ead0d13141362b363e278d634",
+    "guides/data/assistant/manifest.json": "d2ad011aa0d0c733b9c35a9e1afc70a01f8eef0cbfc04de0eaf45a90824d9ee4",
+    "guides/data/assistant/starcraft.json": "0dc5925ca67adfc434b5366213a5e05e11cbf869f1d0aa71e4daa6d16ae2dfc0",
+    "guides/data/assistant/ultima5.json": "bbd6a3a33133bc1aca80ac7a19cea5011e19c9f33869582355d7fd60f0f0d24e",
+    "guides/data/assistant/ultima6.json": "67b3bf1e8e935df279bec2f11cf698ba721f5d8e169f1a050fefa4ee66b5ad05",
+    "guides/data/assistant/ultima7.json": "9b5c29c25936ccfd20ca9b704df57d45c1f7142a2014b09630f8e2f2aee10871",
+    "guides/js/AlQadim.js": "269798843206f12b76163c65b04301be278652115fbdbd46596f13f3ae7b5e5e",
+    "guides/js/AlQadimAtlasData.js": "82abbb86cafad98655e4bacfdd28e8ba96fba7f747da44b30aaa9364a37e747e",
+    "guides/js/Albion.js": "4adba84eca7af2436731b7053e3167a909f57f85edc611c6287411af84e4b1ca",
+    "guides/js/AlbionAtlasData.js": "b5a96b06ee31e94eba95df1cec41c2b564576e1170a3065b61e9f5db7890dcc8",
+    "guides/js/AlbionMarkers.js": "1de190722be16721a0ff3ff3a50b2c1298706bc33629dd223ed673f63cfbc27b",
+    "guides/js/Ultima5.js": "e2699ed2d8aca9bf3465c7dcd262461f5fca59f1fb4cbd41361e0f5c5a96dae5",
+    "guides/js/Ultima5AtlasData.js": "1292346505cb26d534154b317d7beee7bb186f8dda2d9316127912111bfb72a2",
+    "guides/js/Ultima6.js": "a0b07db60d7c30ac19bb64b56fa26b1428a6437f437f087eb2d75109afae4898",
+    "guides/js/Ultima6Atlas.js": "c83db308efae81f2868d5b4954d679d24e81b83b226d4e4548699668f98d8e88",
+    "guides/js/Ultima7.js": "c3cd92659e5e959c6d172ba38d56ba85148729b82185768557cb595e3bfb6085",
+    "guides/js/Ultima7Markers.js": "9103499a31be5bd132959ff268aa0149b90ec310a7f1098fbed1fc25a2de1f2e",
+    "guides/js/assistant/adapters/albion.js": "df3993cb351cf9f5e4ade03d8bcfdfc3477c00f4fb39922b9e8cc8d4e255e70b",
+    "guides/js/assistant/adapters/alqadim.js": "fa65928d9011011a12095cd4bbf37a56bfed3b91559ce6aa8097a991b111065c",
+    "guides/js/assistant/adapters/starcraft.js": "b4a11908b121a545fd810c4f8ae09404c210ab0607f70e9121a145a8aea6063e",
+    "guides/js/assistant/adapters/ultima5.js": "3aa64babe0f83ecc713f5d9a665b8ba7a4e7dbfce557a8cff22778a6170cf95a",
+    "guides/js/assistant/adapters/ultima6.js": "d99a14171975b88fff97d7e0ff9a39ac1e07abfed425706732827d6d4fe5e480",
+    "guides/js/assistant/adapters/ultima7.js": "5140505e9fe04a864e950afab671519f31ef24ac6a9b2e91b7c3853c1cf1e7c3",
+    "guides/js/assistant/bootstrap.js": "022aff4f7c2f93fc5c74da9b6457c6a53ee5eb2c072bf90970eca95ef3855608",
+    "guides/js/assistant/consent.js": "cd83de63e5ec28425fad9eef36d597eec48ec839cb48e93569a568571f1e4b98",
+    "guides/js/assistant/consultation.js": "e699091ce4ae4926b6d925a93cb13396ad440fc01ca66c8a574ef35fe939990a",
+    "guides/js/assistant/dialogue.js": "f417535267998da1d3da92bbdd301d7f7f069727af64983cf4cc45564f721f58",
+    "guides/js/assistant/engine.js": "e558f38682a413f9e94a85de0dcc217e29f73320f2863b18d1a0a3d55278cca1",
+    "guides/js/assistant/fallback-context.js": "73c2638570035a73683cdd83b2eac5133d577892aef3613539ebb80c0481cb73",
+    "guides/js/assistant/fallback-guard.js": "8ac7766576c0fa39a9f8eb1d8130687f5dec2d93ed3793b1ab32a416502eb4dc",
+    "guides/js/assistant/frame-tokens.js": "9f225b8d13b2082f45af7f1ec7ca5b56900733383537123d7dab05baa95f511b",
+    "guides/js/assistant/guide-assistant.js": "3cb383e9989d466330fcb8a04161c7816b943c823080e1aca4be777244729665",
+    "guides/js/assistant/intent-head.js": "23e428fedd405946199beb1e55641281bdae078e3d8ea6e448d0ac0acc1a39a7",
+    "guides/js/assistant/intent-runtime.js": "3187389f1a763a0f0234e2379205dc7c6763895b5292b59e36c903a5b908029f",
+    "guides/js/assistant/intent-worker.js": "246895c7ee6e5c70dd98cec48235768bbbc8bbeeeea994e5028e41ceb26d8119",
+    "guides/js/assistant/knowledge-graph.js": "87e393958389634153a9f2bf83dae8543f7c7409d24ec53e94d33f47ffe4c60f",
+    "guides/js/assistant/knowledge.js": "a6dce7d4b658608293a067eb98a23846eeb18182a8afd28b10d5a8dc10132b60",
+    "guides/js/assistant/language.js": "07c089c0b9179e6a5099f9afc24126324fe8f864834c83af740f9f8bdd7324e6",
+    "guides/js/assistant/model-download.js": "1a9f1be1319d9219507a140e4eae6ad6ea2cbb348b19771c7261d1a52432a6a1",
+    "guides/js/assistant/model-runtime.js": "c6331135f75b3ab5f094e6b7020567b19f2b22286105dc51eba190917e98fdd1",
+    "guides/js/assistant/model-worker.js": "5f490d60ae8b991ae64d523d16c683d11a8995283353cfb534f0d3529ce0d6fc",
+    "guides/js/assistant/policy.js": "df44eea0b5eec7dae01deb0ab4c179873cb5f271ae1a3d87ed89a630cb87aec3",
+    "guides/js/assistant/recorded-conditions.js": "e081dd84810466b52540445b1c780b8297e6932cefad445fab620359b686a89e",
+    "guides/js/assistant/retrieval.js": "1ff4e7fe4ef670bde94ca3cac6935fd73c2fa831c98a06d1fdc35cc5e48ce132",
+    "guides/js/assistant/rules.js": "3c2edda7907d22a78d022abd9e1fded1ad70103056129325f44d2cc8be78ef74",
+    "guides/js/assistant/source-responses.js": "7691754f6350f348cabeb95c613c7f18d3fbb7d4f4d0baa115e74fdb2bc4966a",
+    "guides/js/assistant/topics.js": "cae60c918f936d1429713f076420e32c1fc72a89d371b47f7b1958b81e852d39",
+    "guides/js/assistant/ui.js": "d75176fca259ceb47493529cf01b114fce45f45c07444b6de67dd7f68f97092d",
+    "guides/js/chart.js": "e0059220c10bff95fdb7f5b77b9bfffba68b3ccf4eab4f7398ee7aef3cffca2b",
+    "guides/js/index.js": "0feb3e548e54dd42b171533aebd0931a77cdb0f5b5c51ce2d733814e8cdae557",
+    "guides/js/leaflet.js": "85d455b4522415f6badc42a0e7d17c919d100347d6b8958bd0dc738fdecd6d50",
+    "guides/js/lucide.js": "9dac1057f358d159e8ce1e46f259df2b0cb4a19281de7cf8c9ffb29c7a2226f6",
+    "guides/js/tailwind.js": "7afa0afd2536044695e7e674298bc0dda9af94475e4e07d0575feccfa796c74f",
+    "guides/local-assistant/intent/checksums.json": "17718502a6838e861291fffa496d4c6f99b88ea30374de5200df3be95bd2a0bd",
+    "guides/local-assistant/intent/head.json": "979c196a92df490124802e61fcc5fad787fc535ee69ff0eae64784355a8f6bfb",
+    "guides/local-assistant/intent/profile.json": "786a95a078fcc940f95539837883405257f1a3a896637bb71b8b477be680639e",
+    "guides/local-assistant/intent/verification.json": "50512f1218da394e7db5c8138b3dafcf2b7bbed9cd4c45d6e34f63150702748c",
+    "guides/local-assistant/profile.json": "7fcde9d4b3d8842dc2345159687e845e023ce9049c92deab6d99d494e6ba813d",
+    "guides/tests/assistant/browser-consent-fixture.js": "824ec886ed266ada0d40fe2f7142995cd8252f7629b395ee4be9037dea63b89f",
+    "guides/tests/assistant/full-answer-browser.py": "14c72f2b0e3ff540f13cf2019c8eeba8a4e758251cb33c03ab191bf5c4fa97ae",
+    "guides/tests/assistant/knowledge-blind-browser.py": "49c883ec36c00a8e0a90dc8fd7ec1caafa28babfdfa3d00eaef10865d4faaf43",
+    "guides/tests/assistant/knowledge-browser.py": "e4caf821ae66941cdb9b7e10f6d50663746597b8f3defed7f8209d8c3a90ad41",
+    "guides/tests/assistant/knowledge-independent-ultima-20261025.json": "5193e464b5b16f9aae089442db7e0dcacfd489da937875510b1fac508f38583c"
+  },
+  "selectedSurfaces": [
+    "ultima5",
+    "ultima6",
+    "ultima7"
+  ],
+  "turns": [
+    {
+      "text": "I want the Grapple. Where can I find Lord Michael during the day, and where does he retire?",
+      "expected": {
+        "decision": "answer",
+        "source": {
+          "file": "guides/js/Ultima5.js",
+          "locator": "ultima5GrandQuestChapters objective=opening-grapple.steps[0]",
+          "review": "extracted"
+        },
+        "contains": [
+          "Empath Abbey",
+          "courtyard by day",
+          "northwest bedroom"
+        ],
+        "requiredUsefulClaim": "Place Lord Michael at Empath Abbey, in the courtyard by day, retiring to the northwest bedroom.",
+        "sourceWitness": "Find Lord Michael at Empath Abbey: he is in the courtyard by day and retires to the northwest bedroom."
+      },
+      "decision": "clarify",
+      "rendered": "Which subject do you mean: Grapple or Lord Michael?",
+      "citations": [],
+      "links": [],
+      "acceptedAnswerBranch": null,
+      "answerBranchProblems": [
+        [
+          "Missing exact fixed source citation: guides/js/Ultima5.js \u2014 ultima5GrandQuestChapters objective=opening-grapple.steps[0]",
+          "Missing fixed answer substring: Empath Abbey",
+          "Missing fixed answer substring: courtyard by day",
+          "Missing fixed answer substring: northwest bedroom"
+        ]
+      ],
+      "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+      "problems": [
+        "Expected answer; observed clarify",
+        "Missing exact fixed source citation: guides/js/Ultima5.js \u2014 ultima5GrandQuestChapters objective=opening-grapple.steps[0]",
+        "Missing fixed answer substring: Empath Abbey",
+        "Missing fixed answer substring: courtyard by day",
+        "Missing fixed answer substring: northwest bedroom"
+      ],
+      "passed": false,
+      "surface": "ultima5",
+      "dialogueId": "u5-grapple-conversation",
+      "turn": 1
+    },
+    {
+      "text": "And what should I actually ask him about?",
+      "expected": {
+        "decision": "answer",
+        "source": {
+          "file": "guides/js/Ultima5.js",
+          "locator": "ultima5GrandQuestChapters objective=opening-grapple.steps[1]",
+          "review": "extracted"
+        },
+        "contains": [
+          "GRAPPLE"
+        ],
+        "requiredUsefulClaim": "Tell the player to ask Lord Michael specifically about GRAPPLE.",
+        "sourceWitness": "Speak with Lord Michael and ask specifically about GRAPPLE."
+      },
+      "decision": "clarify",
+      "rendered": "The intended subject is still unconfirmed; I cannot return to the older selected topic.",
+      "citations": [],
+      "links": [],
+      "acceptedAnswerBranch": null,
+      "answerBranchProblems": [
+        [
+          "Missing exact fixed source citation: guides/js/Ultima5.js \u2014 ultima5GrandQuestChapters objective=opening-grapple.steps[1]",
+          "Missing fixed answer substring: GRAPPLE"
+        ]
+      ],
+      "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+      "problems": [
+        "Expected answer; observed clarify",
+        "Missing exact fixed source citation: guides/js/Ultima5.js \u2014 ultima5GrandQuestChapters objective=opening-grapple.steps[1]",
+        "Missing fixed answer substring: GRAPPLE"
+      ],
+      "passed": false,
+      "surface": "ultima5",
+      "dialogueId": "u5-grapple-conversation",
+      "turn": 2
+    },
+    {
+      "text": "Once he hands it over, where should I keep the hook?",
+      "expected": {
+        "decision": "answer",
+        "source": {
+          "file": "guides/js/Ultima5.js",
+          "locator": "ultima5GrandQuestChapters objective=opening-grapple.steps[2]",
+          "review": "extracted"
+        },
+        "contains": [
+          "active party",
+          "inventory"
+        ],
+        "requiredUsefulClaim": "Tell the player to keep the Grappling Hook in the active party\u2019s inventory.",
+        "sourceWitness": "Take the Grappling Hook he provides and keep it in the active party\u2019s inventory."
+      },
+      "decision": "answer",
+      "rendered": "Take the Magic Carpet lying just inside the chamber. It crosses land, water, swamps, brush, and hills, but rough sea still damages the party and mountains still require the Grapple.",
+      "citations": [
+        "Source: existing guide; extracted. guides/js/Ultima5.js \u2014 ultima5GrandQuestChapters objective=opening-castle-raid.steps[3]"
+      ],
+      "links": [],
+      "acceptedAnswerBranch": null,
+      "answerBranchProblems": [
+        [
+          "Missing exact fixed source citation: guides/js/Ultima5.js \u2014 ultima5GrandQuestChapters objective=opening-grapple.steps[2]",
+          "Missing fixed answer substring: active party",
+          "Missing fixed answer substring: inventory"
+        ]
+      ],
+      "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+      "problems": [
+        "Missing exact fixed source citation: guides/js/Ultima5.js \u2014 ultima5GrandQuestChapters objective=opening-grapple.steps[2]",
+        "Missing fixed answer substring: active party",
+        "Missing fixed answer substring: inventory"
+      ],
+      "passed": false,
+      "surface": "ultima5",
+      "dialogueId": "u5-grapple-conversation",
+      "turn": 3
+    },
+    {
+      "text": "Is he standing in that courtyard in my save right now?",
+      "expected": {
+        "decision": "not-answer",
+        "boundary": "The guide gives a general schedule, but the conversation supplies no current save state, current game time, or observed NPC position."
+      },
+      "decision": "decline",
+      "rendered": "I cannot verify your current game state from this guide.",
+      "citations": [],
+      "links": [],
+      "acceptedAnswerBranch": null,
+      "answerBranchProblems": [],
+      "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+      "problems": [],
+      "passed": true,
+      "surface": "ultima5",
+      "dialogueId": "u5-grapple-conversation",
+      "turn": 4
+    },
+    {
+      "text": "For the HMS Cape plans, how do I approach the shipwright building?",
+      "expected": {
+        "decision": "answer",
+        "source": {
+          "file": "guides/js/Ultima5.js",
+          "locator": "ultima5GrandQuestChapters objective=opening-hms-cape.steps[0]",
+          "review": "extracted"
+        },
+        "contains": [
+          "East Britanny",
+          "north",
+          "Oaken Oar",
+          "west entrance"
+        ],
+        "requiredUsefulClaim": "Direct the player north in East Britanny to the Oaken Oar shipwright building and through the west entrance.",
+        "sourceWitness": "Enter East Britanny and go north to the Oaken Oar shipwright\u2019s building; use the west entrance."
+      },
+      "decision": "answer",
+      "rendered": "Enter East Britanny and go north to the Oaken Oar shipwright\u2019s building; use the west entrance.",
+      "citations": [
+        "Source: existing guide; extracted. guides/js/Ultima5.js \u2014 ultima5GrandQuestChapters objective=opening-hms-cape.steps[0]"
+      ],
+      "links": [],
+      "acceptedAnswerBranch": 0,
+      "answerBranchProblems": [
+        []
+      ],
+      "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+      "problems": [],
+      "passed": true,
+      "surface": "ultima5",
+      "dialogueId": "u5-cape-plans-conversation",
+      "turn": 1
+    },
+    {
+      "text": "What about the locked doors inside\u2014how do I get through them?",
+      "expected": {
+        "decision": "answer",
+        "source": {
+          "file": "guides/js/Ultima5.js",
+          "locator": "ultima5GrandQuestChapters objective=opening-hms-cape.steps[1]",
+          "review": "extracted"
+        },
+        "contains": [
+          "eastern room",
+          "both ordinary locked doors",
+          "lockpicks"
+        ],
+        "requiredUsefulClaim": "Direct the player to the eastern room and say to jimmy both ordinary locked doors with lockpicks.",
+        "sourceWitness": "Move to the eastern room and jimmy both ordinary locked doors with lockpicks."
+      },
+      "decision": "decline",
+      "rendered": "I could not ground every part of that question in the available sources. Unanswered: \u201cwhat about the locked doors inside\u201d. Ask that part with its subject and restrictions.",
+      "citations": [],
+      "links": [],
+      "acceptedAnswerBranch": null,
+      "answerBranchProblems": [
+        [
+          "Missing exact fixed source citation: guides/js/Ultima5.js \u2014 ultima5GrandQuestChapters objective=opening-hms-cape.steps[1]",
+          "Missing fixed answer substring: eastern room",
+          "Missing fixed answer substring: both ordinary locked doors",
+          "Missing fixed answer substring: lockpicks"
+        ]
+      ],
+      "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+      "problems": [
+        "Expected answer; observed decline",
+        "Missing exact fixed source citation: guides/js/Ultima5.js \u2014 ultima5GrandQuestChapters objective=opening-hms-cape.steps[1]",
+        "Missing fixed answer substring: eastern room",
+        "Missing fixed answer substring: both ordinary locked doors",
+        "Missing fixed answer substring: lockpicks"
+      ],
+      "passed": false,
+      "surface": "ultima5",
+      "dialogueId": "u5-cape-plans-conversation",
+      "turn": 2
+    },
+    {
+      "text": "Where in that room should I search for the plans?",
+      "expected": {
+        "decision": "answer",
+        "source": {
+          "file": "guides/js/Ultima5.js",
+          "locator": "ultima5GrandQuestChapters objective=opening-hms-cape.steps[2]",
+          "review": "extracted"
+        },
+        "contains": [
+          "drawers",
+          "HMS Cape plans"
+        ],
+        "requiredUsefulClaim": "Tell the player to search the room\u2019s drawers to recover the HMS Cape plans.",
+        "sourceWitness": "Search the drawers in the room until you recover the HMS Cape plans."
+      },
+      "decision": "answer",
+      "rendered": "Search the drawers in the room until you recover the HMS Cape plans.",
+      "citations": [
+        "Source: existing guide; extracted. guides/js/Ultima5.js \u2014 ultima5GrandQuestChapters objective=opening-hms-cape.steps[2]"
+      ],
+      "links": [],
+      "acceptedAnswerBranch": 0,
+      "answerBranchProblems": [
+        []
+      ],
+      "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+      "problems": [],
+      "passed": true,
+      "surface": "ultima5",
+      "dialogueId": "u5-cape-plans-conversation",
+      "turn": 3
+    },
+    {
+      "text": "What kind of wood are those two doors made from?",
+      "expected": {
+        "decision": "not-answer",
+        "boundary": "The source describes ordinary locked doors and lockpicks, but identifies no construction material or wood species for those doors."
+      },
+      "decision": "clarify",
+      "rendered": "I could not find that in this guide. Try naming the subject as it appears in the guide, or ask about another subject.",
+      "citations": [],
+      "links": [],
+      "acceptedAnswerBranch": null,
+      "answerBranchProblems": [],
+      "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+      "problems": [],
+      "passed": true,
+      "surface": "ultima5",
+      "dialogueId": "u5-cape-plans-conversation",
+      "turn": 4
+    },
+    {
+      "text": "Where do I meet Ariana about the rune, and whose approval does she need?",
+      "expected": {
+        "decision": "answer",
+        "source": {
+          "file": "guides/js/Ultima6.js",
+          "locator": "gameData.quests[0].sections[0].steps[0]",
+          "review": "extracted"
+        },
+        "contains": [
+          "Conservatory",
+          "RUNE",
+          "mother Anya's permission"
+        ],
+        "requiredUsefulClaim": "Locate Ariana at the Conservatory, tell the player to ask for RUNE, and identify her mother Anya as the person whose permission she needs.",
+        "sourceWitness": "Meet Ariana at the Conservatory and ask for the `RUNE`. She needs her mother Anya's permission."
+      },
+      "decision": "answer",
+      "rendered": "Meet Ariana at the Conservatory and ask for the RUNE. She needs her mother Anya's permission.\n\nAnya:\nMeet Ariana at the Conservatory and ask for the RUNE. She needs her mother Anya's permission.",
+      "citations": [
+        "Source: existing guide; extracted. guides/js/Ultima6.js \u2014 gameData.quests[0].sections[0].steps[0]"
+      ],
+      "links": [],
+      "acceptedAnswerBranch": 0,
+      "answerBranchProblems": [
+        []
+      ],
+      "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+      "problems": [],
+      "passed": true,
+      "surface": "ultima6",
+      "dialogueId": "u6-compassion-permission-conversation",
+      "turn": 1
+    },
+    {
+      "text": "Okay, where do I find her mother and what do I say to get that approval?",
+      "expected": {
+        "decision": "answer",
+        "source": {
+          "file": "guides/js/Ultima6.js",
+          "locator": "gameData.quests[0].sections[0].steps[1]",
+          "review": "extracted"
+        },
+        "contains": [
+          "Blue Boar Tavern",
+          "RUNE",
+          "PERMISSION",
+          "YES"
+        ],
+        "requiredUsefulClaim": "Locate Anya at the Blue Boar Tavern; give RUNE or PERMISSION as conversation topics and YES as the reply when asked.",
+        "sourceWitness": "Visit Anya at the Blue Boar Tavern, mention `RUNE` or `PERMISSION`, and answer `YES` when asked."
+      },
+      "decision": "decline",
+      "rendered": "I could not ground every part of that question in the available sources. Unanswered: \u201cwhat do i say to get that approval\u201d. Ask that part with its subject and restrictions.",
+      "citations": [],
+      "links": [],
+      "acceptedAnswerBranch": null,
+      "answerBranchProblems": [
+        [
+          "Missing exact fixed source citation: guides/js/Ultima6.js \u2014 gameData.quests[0].sections[0].steps[1]",
+          "Missing fixed answer substring: Blue Boar Tavern",
+          "Missing fixed answer substring: RUNE",
+          "Missing fixed answer substring: PERMISSION",
+          "Missing fixed answer substring: YES"
+        ]
+      ],
+      "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+      "problems": [
+        "Expected answer; observed decline",
+        "Missing exact fixed source citation: guides/js/Ultima6.js \u2014 gameData.quests[0].sections[0].steps[1]",
+        "Missing fixed answer substring: Blue Boar Tavern",
+        "Missing fixed answer substring: RUNE",
+        "Missing fixed answer substring: PERMISSION",
+        "Missing fixed answer substring: YES"
+      ],
+      "passed": false,
+      "surface": "ultima6",
+      "dialogueId": "u6-compassion-permission-conversation",
+      "turn": 2
+    },
+    {
+      "text": "How do I collect it once permission is sorted out?",
+      "expected": {
+        "decision": "answer",
+        "source": {
+          "file": "guides/js/Ultima6.js",
+          "locator": "gameData.quests[0].sections[0].steps[2]",
+          "review": "extracted"
+        },
+        "contains": [
+          "Return to Ariana",
+          "confirm permission",
+          "Rune of Compassion"
+        ],
+        "requiredUsefulClaim": "Tell the player to return to Ariana and confirm permission to receive the Rune of Compassion.",
+        "sourceWitness": "Return to Ariana, confirm permission, and receive the Rune of Compassion."
+      },
+      "decision": "clarify",
+      "rendered": "What would you like to know: location, acquisition, use, stats, combat, a counter or cure, prerequisites, or a hint?",
+      "citations": [],
+      "links": [],
+      "acceptedAnswerBranch": null,
+      "answerBranchProblems": [
+        [
+          "Missing exact fixed source citation: guides/js/Ultima6.js \u2014 gameData.quests[0].sections[0].steps[2]",
+          "Missing fixed answer substring: Return to Ariana",
+          "Missing fixed answer substring: confirm permission",
+          "Missing fixed answer substring: Rune of Compassion"
+        ]
+      ],
+      "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+      "problems": [
+        "Expected answer; observed clarify",
+        "Missing exact fixed source citation: guides/js/Ultima6.js \u2014 gameData.quests[0].sections[0].steps[2]",
+        "Missing fixed answer substring: Return to Ariana",
+        "Missing fixed answer substring: confirm permission",
+        "Missing fixed answer substring: Rune of Compassion"
+      ],
+      "passed": false,
+      "surface": "ultima6",
+      "dialogueId": "u6-compassion-permission-conversation",
+      "turn": 3
+    },
+    {
+      "text": "Exactly how old is Anya?",
+      "expected": {
+        "decision": "not-answer",
+        "boundary": "The approved source records identify Anya and her permission role but do not give her age; no numeric age may be invented."
+      },
+      "decision": "answer",
+      "rendered": "Visit Anya at the Blue Boar Tavern, mention RUNE or PERMISSION, and answer YES when asked.",
+      "citations": [
+        "Source: existing guide; extracted. guides/js/Ultima6.js \u2014 gameData.quests[0].sections[0].steps[1]"
+      ],
+      "links": [],
+      "acceptedAnswerBranch": null,
+      "answerBranchProblems": [],
+      "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+      "problems": [
+        "Expected non-answer; observed factual answer"
+      ],
+      "passed": false,
+      "surface": "ultima6",
+      "dialogueId": "u6-compassion-permission-conversation",
+      "turn": 4
+    },
+    {
+      "text": "How do I persuade Sherry to come along?",
+      "expected": {
+        "decision": "answer",
+        "source": {
+          "file": "guides/js/Ultima6.js",
+          "locator": "gameData.quests[0].sections[2].steps[0]",
+          "review": "extracted"
+        },
+        "contains": [
+          "Castle Britannia's kitchen",
+          "cheese",
+          "JOIN"
+        ],
+        "requiredUsefulClaim": "Direct the player to Castle Britannia\u2019s kitchen, have them offer cheese to Sherry, and invite her to JOIN.",
+        "sourceWitness": "In Castle Britannia's kitchen, pick up cheese, offer it to Sherry, and invite her to `JOIN`."
+      },
+      "decision": "answer",
+      "rendered": "In Castle Britannia's kitchen, pick up cheese, offer it to Sherry, and invite her to JOIN.",
+      "citations": [
+        "Source: existing guide; extracted. guides/js/Ultima6.js \u2014 gameData.quests[0].sections[2].steps[0]"
+      ],
+      "links": [],
+      "acceptedAnswerBranch": 0,
+      "answerBranchProblems": [
+        []
+      ],
+      "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+      "problems": [],
+      "passed": true,
+      "surface": "ultima6",
+      "dialogueId": "u6-sherry-mouse-conversation",
+      "turn": 1
+    },
+    {
+      "text": "Where do I take her for the mouse hole, and who should I be controlling?",
+      "expected": {
+        "decision": "answer",
+        "source": {
+          "file": "guides/js/Ultima6.js",
+          "locator": "gameData.quests[0].sections[2].steps[1]",
+          "review": "extracted"
+        },
+        "contains": [
+          "Sword and Keg",
+          "Jhelom",
+          "mouse hole",
+          "switch control to her"
+        ],
+        "requiredUsefulClaim": "Locate the mouse hole at the Sword and Keg in Jhelom, position Sherry there, and switch control to her.",
+        "sourceWitness": "Travel to the Sword and Keg in Jhelom, position Sherry at the mouse hole, and switch control to her."
+      },
+      "decision": "decline",
+      "rendered": "I could not ground every part of that question in the available sources. Unanswered: \u201cwho should i be controlling\u201d. Ask that part with its subject and restrictions.",
+      "citations": [],
+      "links": [],
+      "acceptedAnswerBranch": null,
+      "answerBranchProblems": [
+        [
+          "Missing exact fixed source citation: guides/js/Ultima6.js \u2014 gameData.quests[0].sections[2].steps[1]",
+          "Missing fixed answer substring: Sword and Keg",
+          "Missing fixed answer substring: Jhelom",
+          "Missing fixed answer substring: mouse hole",
+          "Missing fixed answer substring: switch control to her"
+        ]
+      ],
+      "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+      "problems": [
+        "Expected answer; observed decline",
+        "Missing exact fixed source citation: guides/js/Ultima6.js \u2014 gameData.quests[0].sections[2].steps[1]",
+        "Missing fixed answer substring: Sword and Keg",
+        "Missing fixed answer substring: Jhelom",
+        "Missing fixed answer substring: mouse hole",
+        "Missing fixed answer substring: switch control to her"
+      ],
+      "passed": false,
+      "surface": "ultima6",
+      "dialogueId": "u6-sherry-mouse-conversation",
+      "turn": 2
+    },
+    {
+      "text": "Once she is there, how do we get the rune back to the group?",
+      "expected": {
+        "decision": "answer",
+        "source": {
+          "file": "guides/js/Ultima6.js",
+          "locator": "gameData.quests[0].sections[2].steps[2]",
+          "review": "extracted"
+        },
+        "contains": [
+          "Enter the mouse hole as Sherry",
+          "grab the rune",
+          "regroup"
+        ],
+        "requiredUsefulClaim": "Enter the mouse hole as Sherry to grab the rune, then regroup with the party.",
+        "sourceWitness": "Enter the mouse hole as Sherry to grab the rune, then regroup with the party."
+      },
+      "decision": "answer",
+      "rendered": "Take the rune from the central pedestal and promise to return it soon.",
+      "citations": [
+        "Source: existing guide; extracted. guides/js/Ultima6.js \u2014 gameData.quests[0].sections[5].steps[1]"
+      ],
+      "links": [],
+      "acceptedAnswerBranch": null,
+      "answerBranchProblems": [
+        [
+          "Missing exact fixed source citation: guides/js/Ultima6.js \u2014 gameData.quests[0].sections[2].steps[2]",
+          "Missing fixed answer substring: Enter the mouse hole as Sherry",
+          "Missing fixed answer substring: grab the rune",
+          "Missing fixed answer substring: regroup"
+        ]
+      ],
+      "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+      "problems": [
+        "Missing exact fixed source citation: guides/js/Ultima6.js \u2014 gameData.quests[0].sections[2].steps[2]",
+        "Missing fixed answer substring: Enter the mouse hole as Sherry",
+        "Missing fixed answer substring: grab the rune",
+        "Missing fixed answer substring: regroup"
+      ],
+      "passed": false,
+      "surface": "ultima6",
+      "dialogueId": "u6-sherry-mouse-conversation",
+      "turn": 3
+    },
+    {
+      "text": "Does that exact recruitment method also work in the SNES edition?",
+      "expected": {
+        "decision": "not-answer",
+        "boundary": "The supplied guide witnesses do not establish SNES-specific recruitment behavior or equivalence across editions."
+      },
+      "decision": "clarify",
+      "rendered": "What would you like to know: location, acquisition, use, stats, combat, a counter or cure, prerequisites, or a hint?",
+      "citations": [],
+      "links": [],
+      "acceptedAnswerBranch": null,
+      "answerBranchProblems": [],
+      "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+      "problems": [],
+      "passed": true,
+      "surface": "ultima6",
+      "dialogueId": "u6-sherry-mouse-conversation",
+      "turn": 4
+    },
+    {
+      "text": "I am investigating the Trinsic stables murder. What should I be looking for at the crime scene?",
+      "expected": {
+        "decision": "answer",
+        "source": {
+          "file": "guides/js/Ultima7.js",
+          "locator": "DB.mainQuest[0].content",
+          "review": "extracted"
+        },
+        "contains": [
+          "crime scene",
+          "key"
+        ],
+        "requiredUsefulClaim": "Tell the player to examine the crime scene for a key.",
+        "sourceWitness": "Investigate the ritualistic murder in the stables. Examine the crime scene for a key."
+      },
+      "decision": "answer",
+      "rendered": "Investigate the ritualistic murder in the stables. Examine the crime scene for a key.",
+      "citations": [
+        "Source: existing guide; extracted. guides/js/Ultima7.js \u2014 DB.mainQuest[0]"
+      ],
+      "links": [],
+      "acceptedAnswerBranch": null,
+      "answerBranchProblems": [
+        [
+          "Missing exact fixed source citation: guides/js/Ultima7.js \u2014 DB.mainQuest[0].content"
+        ]
+      ],
+      "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+      "problems": [
+        "Missing exact fixed source citation: guides/js/Ultima7.js \u2014 DB.mainQuest[0].content"
+      ],
+      "passed": false,
+      "surface": "ultima7",
+      "dialogueId": "u7-trinsic-investigation-conversation",
+      "turn": 1
+    },
+    {
+      "text": "Who should I question, and what clue should those interviews give me about the suspect and the ship?",
+      "expected": {
+        "decision": "answer",
+        "source": {
+          "file": "guides/js/Ultima7.js",
+          "locator": "DB.mainQuest[0].content",
+          "review": "extracted"
+        },
+        "contains": [
+          "Spark",
+          "Gilberto",
+          "Klog",
+          "man with a hook",
+          "Crown Jewel"
+        ],
+        "requiredUsefulClaim": "Name Spark, Gilberto, and Klog as interview subjects, identify the suspect clue as a man with a hook, and identify the escape vessel as the Crown Jewel. Do not turn that clue into an unsupported named identity.",
+        "sourceWitness": "Interview Spark, Gilberto, and Klog to identify the suspect (man with a hook) and his escape vessel (the Crown Jewel)."
+      },
+      "decision": "decline",
+      "rendered": "I could not ground every part of that question in the available sources. Unanswered: \u201cwho should i question\u201d. Ask that part with its subject and restrictions.",
+      "citations": [],
+      "links": [],
+      "acceptedAnswerBranch": null,
+      "answerBranchProblems": [
+        [
+          "Missing exact fixed source citation: guides/js/Ultima7.js \u2014 DB.mainQuest[0].content",
+          "Missing fixed answer substring: Spark",
+          "Missing fixed answer substring: Gilberto",
+          "Missing fixed answer substring: Klog",
+          "Missing fixed answer substring: man with a hook",
+          "Missing fixed answer substring: Crown Jewel"
+        ]
+      ],
+      "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+      "problems": [
+        "Expected answer; observed decline",
+        "Missing exact fixed source citation: guides/js/Ultima7.js \u2014 DB.mainQuest[0].content",
+        "Missing fixed answer substring: Spark",
+        "Missing fixed answer substring: Gilberto",
+        "Missing fixed answer substring: Klog",
+        "Missing fixed answer substring: man with a hook",
+        "Missing fixed answer substring: Crown Jewel"
+      ],
+      "passed": false,
+      "surface": "ultima7",
+      "dialogueId": "u7-trinsic-investigation-conversation",
+      "turn": 2
+    },
+    {
+      "text": "How do I get permission to leave the city after the investigation, and what password do I receive?",
+      "expected": {
+        "decision": "answer",
+        "source": {
+          "file": "guides/js/Ultima7.js",
+          "locator": "DB.mainQuest[0].content",
+          "review": "extracted"
+        },
+        "contains": [
+          "Mayor Finnigan",
+          "copy protection quiz",
+          "Blackbird"
+        ],
+        "requiredUsefulClaim": "Tell the player to report to Mayor Finnigan and pass his copy-protection quiz to receive the exit password Blackbird.",
+        "sourceWitness": "Investigate the ritualistic murder in the stables. Examine the crime scene for a key. Interview Spark, Gilberto, and Klog to identify the suspect (man with a hook) and his escape vessel (the Crown Jewel). Report to Mayor Finnigan and pass his copy protection quiz with these answers:<br><br><b class='text-yellow-300'>Spektran latitude:</b> 120<br><b class='text-yellow-300'>Terfin longitude:</b> 120<br><b class='text-yellow-300'>Dagger Isle latitude:</b> 0<br><b class='text-yellow-300'>Skara Brae latitude:</b> 30<br><b class='text-yellow-300'>Deep Forest latitude:</b> 60<br><b class='text-yellow-300'>Buccaneer's Den latitude:</b> 60<br><b class='text-yellow-300'>Skara Brae longitude:</b> 60<br><br>He will then give you the password 'Blackbird' to leave the city."
+      },
+      "decision": "decline",
+      "rendered": "I could not ground every part of that question in the available sources. Unanswered: \u201chow do i get permission to leave the city after the investigation\u201d. Ask that part with its subject and restrictions.",
+      "citations": [],
+      "links": [],
+      "acceptedAnswerBranch": null,
+      "answerBranchProblems": [
+        [
+          "Missing exact fixed source citation: guides/js/Ultima7.js \u2014 DB.mainQuest[0].content",
+          "Missing fixed answer substring: Mayor Finnigan",
+          "Missing fixed answer substring: copy protection quiz",
+          "Missing fixed answer substring: Blackbird"
+        ]
+      ],
+      "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+      "problems": [
+        "Expected answer; observed decline",
+        "Missing exact fixed source citation: guides/js/Ultima7.js \u2014 DB.mainQuest[0].content",
+        "Missing fixed answer substring: Mayor Finnigan",
+        "Missing fixed answer substring: copy protection quiz",
+        "Missing fixed answer substring: Blackbird"
+      ],
+      "passed": false,
+      "surface": "ultima7",
+      "dialogueId": "u7-trinsic-investigation-conversation",
+      "turn": 3
+    },
+    {
+      "text": "Is that password already recorded in my current save?",
+      "expected": {
+        "decision": "not-answer",
+        "boundary": "The guide explains obtaining the password, but no current save contents or completed investigation state have been supplied."
+      },
+      "decision": "decline",
+      "rendered": "I cannot verify your current game state from this guide.",
+      "citations": [],
+      "links": [],
+      "acceptedAnswerBranch": null,
+      "answerBranchProblems": [],
+      "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+      "problems": [],
+      "passed": true,
+      "surface": "ultima7",
+      "dialogueId": "u7-trinsic-investigation-conversation",
+      "turn": 4
+    },
+    {
+      "text": "Where should I start looking for the silent wisp?",
+      "expected": {
+        "decision": "answer",
+        "source": {
+          "file": "guides/js/Ultima7.js",
+          "locator": "DB.mainQuest[2].content",
+          "review": "extracted"
+        },
+        "contains": [
+          "Deep Forest",
+          "silent wisp"
+        ],
+        "requiredUsefulClaim": "Direct the player to the Deep Forest to find the silent wisp.",
+        "sourceWitness": "Go to the Deep Forest and find the silent wisp."
+      },
+      "decision": "answer",
+      "rendered": "Go to the Deep Forest and find the silent wisp.",
+      "citations": [
+        "Source: existing guide; extracted. guides/js/Ultima7.js \u2014 DB.mainQuest[2].content; DB.mainQuest[2].content"
+      ],
+      "links": [],
+      "acceptedAnswerBranch": 0,
+      "answerBranchProblems": [
+        []
+      ],
+      "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+      "problems": [],
+      "passed": true,
+      "surface": "ultima7",
+      "dialogueId": "u7-wisp-emp-conversation",
+      "turn": 1
+    },
+    {
+      "text": "What are the emps expecting as a bribe, and where can I get it?",
+      "expected": {
+        "decision": "answer",
+        "source": {
+          "file": "guides/js/Ultima7.js",
+          "locator": "DB.mainQuest[2].content",
+          "review": "extracted"
+        },
+        "contains": [
+          "honey",
+          "Bee Cave",
+          "bribe the emps"
+        ],
+        "requiredUsefulClaim": "Tell the player to get honey from the Bee Cave to bribe the emps.",
+        "sourceWitness": "Get honey from the Bee Cave to bribe the emps."
+      },
+      "decision": "decline",
+      "rendered": "I could not ground every part of that question in the available sources. Unanswered: \u201cwhat are the emps expecting as a bribe\u201d. Ask that part with its subject and restrictions.",
+      "citations": [],
+      "links": [],
+      "acceptedAnswerBranch": null,
+      "answerBranchProblems": [
+        [
+          "Missing exact fixed source citation: guides/js/Ultima7.js \u2014 DB.mainQuest[2].content",
+          "Missing fixed answer substring: honey",
+          "Missing fixed answer substring: Bee Cave",
+          "Missing fixed answer substring: bribe the emps"
+        ]
+      ],
+      "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+      "problems": [
+        "Expected answer; observed decline",
+        "Missing exact fixed source citation: guides/js/Ultima7.js \u2014 DB.mainQuest[2].content",
+        "Missing fixed answer substring: honey",
+        "Missing fixed answer substring: Bee Cave",
+        "Missing fixed answer substring: bribe the emps"
+      ],
+      "passed": false,
+      "surface": "ultima7",
+      "dialogueId": "u7-wisp-emp-conversation",
+      "turn": 2
+    },
+    {
+      "text": "How do I get their whistle, and what does the wisp ask for once I can speak to it?",
+      "expected": {
+        "decision": "answer",
+        "source": {
+          "file": "guides/js/Ultima7.js",
+          "locator": "DB.mainQuest[2].content",
+          "review": "extracted"
+        },
+        "contains": [
+          "Negotiate with the emps",
+          "wisp whistle",
+          "Alagner's notebook",
+          "New Magincia",
+          "exchange for information"
+        ],
+        "requiredUsefulClaim": "Explain that negotiating with the emps obtains the wisp whistle; use it to communicate with the wisp, which demands Alagner\u2019s notebook from New Magincia in exchange for information.",
+        "sourceWitness": "Negotiate with the emps to get a wisp whistle. Use the whistle to communicate with the wisp, who demands Alagner's notebook from New Magincia in exchange for information."
+      },
+      "decision": "decline",
+      "rendered": "I could not ground every part of that question in the available sources. Unanswered: \u201cwhat does the wisp ask for once i can speak to it\u201d. Ask that part with its subject and restrictions.",
+      "citations": [],
+      "links": [],
+      "acceptedAnswerBranch": null,
+      "answerBranchProblems": [
+        [
+          "Missing exact fixed source citation: guides/js/Ultima7.js \u2014 DB.mainQuest[2].content",
+          "Missing fixed answer substring: Negotiate with the emps",
+          "Missing fixed answer substring: wisp whistle",
+          "Missing fixed answer substring: Alagner's notebook",
+          "Missing fixed answer substring: New Magincia",
+          "Missing fixed answer substring: exchange for information"
+        ]
+      ],
+      "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+      "problems": [
+        "Expected answer; observed decline",
+        "Missing exact fixed source citation: guides/js/Ultima7.js \u2014 DB.mainQuest[2].content",
+        "Missing fixed answer substring: Negotiate with the emps",
+        "Missing fixed answer substring: wisp whistle",
+        "Missing fixed answer substring: Alagner's notebook",
+        "Missing fixed answer substring: New Magincia",
+        "Missing fixed answer substring: exchange for information"
+      ],
+      "passed": false,
+      "surface": "ultima7",
+      "dialogueId": "u7-wisp-emp-conversation",
+      "turn": 3
+    },
+    {
+      "text": "Exactly how many ounces of honey do I have to hand over?",
+      "expected": {
+        "decision": "not-answer",
+        "boundary": "The source names honey as the bribe but supplies no exact quantity in ounces; no amount or unit conversion is supported."
+      },
+      "decision": "answer",
+      "rendered": "Get honey from the Bee Cave to bribe the emps.",
+      "citations": [
+        "Source: existing guide; extracted. guides/js/Ultima7.js \u2014 DB.mainQuest[2].content"
+      ],
+      "links": [],
+      "acceptedAnswerBranch": null,
+      "answerBranchProblems": [],
+      "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+      "problems": [
+        "Expected non-answer; observed factual answer"
+      ],
+      "passed": false,
+      "surface": "ultima7",
+      "dialogueId": "u7-wisp-emp-conversation",
+      "turn": 4
+    }
+  ],
+  "failures": [
+    {
+      "surface": "ultima5",
+      "dialogueId": "u5-grapple-conversation",
+      "turn": 1,
+      "text": "I want the Grapple. Where can I find Lord Michael during the day, and where does he retire?",
+      "problems": [
+        "Expected answer; observed clarify",
+        "Missing exact fixed source citation: guides/js/Ultima5.js \u2014 ultima5GrandQuestChapters objective=opening-grapple.steps[0]",
+        "Missing fixed answer substring: Empath Abbey",
+        "Missing fixed answer substring: courtyard by day",
+        "Missing fixed answer substring: northwest bedroom"
+      ]
+    },
+    {
+      "surface": "ultima5",
+      "dialogueId": "u5-grapple-conversation",
+      "turn": 2,
+      "text": "And what should I actually ask him about?",
+      "problems": [
+        "Expected answer; observed clarify",
+        "Missing exact fixed source citation: guides/js/Ultima5.js \u2014 ultima5GrandQuestChapters objective=opening-grapple.steps[1]",
+        "Missing fixed answer substring: GRAPPLE"
+      ]
+    },
+    {
+      "surface": "ultima5",
+      "dialogueId": "u5-grapple-conversation",
+      "turn": 3,
+      "text": "Once he hands it over, where should I keep the hook?",
+      "problems": [
+        "Missing exact fixed source citation: guides/js/Ultima5.js \u2014 ultima5GrandQuestChapters objective=opening-grapple.steps[2]",
+        "Missing fixed answer substring: active party",
+        "Missing fixed answer substring: inventory"
+      ]
+    },
+    {
+      "surface": "ultima5",
+      "dialogueId": "u5-cape-plans-conversation",
+      "turn": 2,
+      "text": "What about the locked doors inside\u2014how do I get through them?",
+      "problems": [
+        "Expected answer; observed decline",
+        "Missing exact fixed source citation: guides/js/Ultima5.js \u2014 ultima5GrandQuestChapters objective=opening-hms-cape.steps[1]",
+        "Missing fixed answer substring: eastern room",
+        "Missing fixed answer substring: both ordinary locked doors",
+        "Missing fixed answer substring: lockpicks"
+      ]
+    },
+    {
+      "surface": "ultima6",
+      "dialogueId": "u6-compassion-permission-conversation",
+      "turn": 2,
+      "text": "Okay, where do I find her mother and what do I say to get that approval?",
+      "problems": [
+        "Expected answer; observed decline",
+        "Missing exact fixed source citation: guides/js/Ultima6.js \u2014 gameData.quests[0].sections[0].steps[1]",
+        "Missing fixed answer substring: Blue Boar Tavern",
+        "Missing fixed answer substring: RUNE",
+        "Missing fixed answer substring: PERMISSION",
+        "Missing fixed answer substring: YES"
+      ]
+    },
+    {
+      "surface": "ultima6",
+      "dialogueId": "u6-compassion-permission-conversation",
+      "turn": 3,
+      "text": "How do I collect it once permission is sorted out?",
+      "problems": [
+        "Expected answer; observed clarify",
+        "Missing exact fixed source citation: guides/js/Ultima6.js \u2014 gameData.quests[0].sections[0].steps[2]",
+        "Missing fixed answer substring: Return to Ariana",
+        "Missing fixed answer substring: confirm permission",
+        "Missing fixed answer substring: Rune of Compassion"
+      ]
+    },
+    {
+      "surface": "ultima6",
+      "dialogueId": "u6-compassion-permission-conversation",
+      "turn": 4,
+      "text": "Exactly how old is Anya?",
+      "problems": [
+        "Expected non-answer; observed factual answer"
+      ]
+    },
+    {
+      "surface": "ultima6",
+      "dialogueId": "u6-sherry-mouse-conversation",
+      "turn": 2,
+      "text": "Where do I take her for the mouse hole, and who should I be controlling?",
+      "problems": [
+        "Expected answer; observed decline",
+        "Missing exact fixed source citation: guides/js/Ultima6.js \u2014 gameData.quests[0].sections[2].steps[1]",
+        "Missing fixed answer substring: Sword and Keg",
+        "Missing fixed answer substring: Jhelom",
+        "Missing fixed answer substring: mouse hole",
+        "Missing fixed answer substring: switch control to her"
+      ]
+    },
+    {
+      "surface": "ultima6",
+      "dialogueId": "u6-sherry-mouse-conversation",
+      "turn": 3,
+      "text": "Once she is there, how do we get the rune back to the group?",
+      "problems": [
+        "Missing exact fixed source citation: guides/js/Ultima6.js \u2014 gameData.quests[0].sections[2].steps[2]",
+        "Missing fixed answer substring: Enter the mouse hole as Sherry",
+        "Missing fixed answer substring: grab the rune",
+        "Missing fixed answer substring: regroup"
+      ]
+    },
+    {
+      "surface": "ultima7",
+      "dialogueId": "u7-trinsic-investigation-conversation",
+      "turn": 1,
+      "text": "I am investigating the Trinsic stables murder. What should I be looking for at the crime scene?",
+      "problems": [
+        "Missing exact fixed source citation: guides/js/Ultima7.js \u2014 DB.mainQuest[0].content"
+      ]
+    },
+    {
+      "surface": "ultima7",
+      "dialogueId": "u7-trinsic-investigation-conversation",
+      "turn": 2,
+      "text": "Who should I question, and what clue should those interviews give me about the suspect and the ship?",
+      "problems": [
+        "Expected answer; observed decline",
+        "Missing exact fixed source citation: guides/js/Ultima7.js \u2014 DB.mainQuest[0].content",
+        "Missing fixed answer substring: Spark",
+        "Missing fixed answer substring: Gilberto",
+        "Missing fixed answer substring: Klog",
+        "Missing fixed answer substring: man with a hook",
+        "Missing fixed answer substring: Crown Jewel"
+      ]
+    },
+    {
+      "surface": "ultima7",
+      "dialogueId": "u7-trinsic-investigation-conversation",
+      "turn": 3,
+      "text": "How do I get permission to leave the city after the investigation, and what password do I receive?",
+      "problems": [
+        "Expected answer; observed decline",
+        "Missing exact fixed source citation: guides/js/Ultima7.js \u2014 DB.mainQuest[0].content",
+        "Missing fixed answer substring: Mayor Finnigan",
+        "Missing fixed answer substring: copy protection quiz",
+        "Missing fixed answer substring: Blackbird"
+      ]
+    },
+    {
+      "surface": "ultima7",
+      "dialogueId": "u7-wisp-emp-conversation",
+      "turn": 2,
+      "text": "What are the emps expecting as a bribe, and where can I get it?",
+      "problems": [
+        "Expected answer; observed decline",
+        "Missing exact fixed source citation: guides/js/Ultima7.js \u2014 DB.mainQuest[2].content",
+        "Missing fixed answer substring: honey",
+        "Missing fixed answer substring: Bee Cave",
+        "Missing fixed answer substring: bribe the emps"
+      ]
+    },
+    {
+      "surface": "ultima7",
+      "dialogueId": "u7-wisp-emp-conversation",
+      "turn": 3,
+      "text": "How do I get their whistle, and what does the wisp ask for once I can speak to it?",
+      "problems": [
+        "Expected answer; observed decline",
+        "Missing exact fixed source citation: guides/js/Ultima7.js \u2014 DB.mainQuest[2].content",
+        "Missing fixed answer substring: Negotiate with the emps",
+        "Missing fixed answer substring: wisp whistle",
+        "Missing fixed answer substring: Alagner's notebook",
+        "Missing fixed answer substring: New Magincia",
+        "Missing fixed answer substring: exchange for information"
+      ]
+    },
+    {
+      "surface": "ultima7",
+      "dialogueId": "u7-wisp-emp-conversation",
+      "turn": 4,
+      "text": "Exactly how many ounces of honey do I have to hand over?",
+      "problems": [
+        "Expected non-answer; observed factual answer"
+      ]
+    }
+  ],
+  "requests": [
+    {
+      "url": "http://127.0.0.1:43859/guides/Ultima5.html",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/css/assistant-consent.css",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/js/assistant/bootstrap.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/js/tailwind.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/js/chart.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/js/lucide.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/css/leaflet.css",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/css/Ultima5.css",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/images/Ultima5box.jpg",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/images/ultima5-briefing-hero.webp",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/js/assistant/model-runtime.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/js/assistant/intent-runtime.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/js/assistant/consent.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/js/assistant/model-download.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/js/leaflet.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/js/Ultima5AtlasData.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/js/Ultima5.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/images/paper-texture2.jpg",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/fonts/lora-v36-latin-700.woff2",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/images/U5GameWorld.png",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/fonts/inter-v19-latin-700.woff2",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/fonts/lora-v36-latin-regular.woff2",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/fonts/inter-v19-latin-regular.woff2",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/js/assistant/adapters/ultima5.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/js/assistant/ui.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/js/assistant/guide-assistant.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/js/assistant/topics.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/css/assistant.css",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/local-assistant/profile.json",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/images/Ultima5box.jpg",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/local-assistant/intent/profile.json",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/js/assistant/engine.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/js/assistant/dialogue.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/js/assistant/source-responses.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/js/assistant/knowledge.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/js/assistant/policy.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/js/assistant/retrieval.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/js/assistant/rules.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/js/assistant/fallback-context.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/js/assistant/fallback-guard.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/js/assistant/language.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/js/assistant/consultation.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/js/assistant/knowledge-graph.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/js/assistant/recorded-conditions.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/data/assistant/ultima5.json",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/data/assistant/consultation-catalog.json",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/data/assistant/knowledge/ultima5.json",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/data/assistant/knowledge/ultima5-embeddings.json",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/images/Ultima5box.jpg",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/js/assistant/intent-worker.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/js/assistant/model-download.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/js/assistant/intent-head.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/local-assistant/intent/files/7135149f7cffa1a573466c6e4d8423ed73b62fd2332c575bf738a0d033f70df7.bin",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/local-assistant/intent/files/da0e79933b9ed51798a3ae27893d3c5fa4a201126cef75586296df9b4d2c62a0.bin",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/local-assistant/intent/files/9261e7d79b44c8195c1cada2b453e55b00aeb81e907a6664974b4d7776172ab3.bin",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/local-assistant/intent/files/b6d346be366a7d1d48332dbc9fdf3bf8960b5d879522b7799ddba59e76237ee3.bin",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/local-assistant/intent/files/07eced375cec144d27c900241f3e339478dec958f92fddbc551f295c992038a3.bin",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/local-assistant/intent/files/7f4b29b4f81642ad87533b14758761b8859e5deb8717081893ac512006ea99c2.bin",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/local-assistant/intent/files/8bdaa80935c394b9c614e00c7b829303b05df133447f901c98c56ebf90d672b6.bin",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/local-assistant/intent/files/979c196a92df490124802e61fcc5fad787fc535ee69ff0eae64784355a8f6bfb.bin",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/local-assistant/files/08fb86ec433c78bfb032c5d84a68b8e8e5a8d81268fa39e24314179a5767a5b9.bin",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/local-assistant/files/9d41eaeb98b753f4fb40fd7ab6d37d86f37f31b08f78446a8a83327beb7f68f0.bin",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/local-assistant/files/b870ce8426a85ac994ef80359c3a01cd79d01ae49cf19f8a98d24810bbc7b4f4.bin",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/local-assistant/files/aa5002b70e789798da263f5f99c62bd3e8fcd0c119258a493c40c180648365fa.bin",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/Ultima6.html",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/css/assistant-consent.css",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/js/assistant/bootstrap.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/js/tailwind.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/js/chart.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/css/fonts.css",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/css/leaflet.css",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/css/Ultima6.css",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/images/Ultima6box.jpg",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/images/ultima6-briefing-hero.webp",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/js/assistant/model-runtime.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/js/assistant/intent-runtime.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/js/assistant/consent.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/js/assistant/model-download.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/js/leaflet.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/js/Ultima6Atlas.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/js/Ultima6.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/images/paper-texture.jpg",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/images/U6GameWorld.png",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/local-assistant/profile.json",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/local-assistant/intent/profile.json",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/js/assistant/adapters/ultima6.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/js/assistant/ui.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/js/assistant/guide-assistant.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/js/assistant/topics.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/js/assistant/engine.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/js/assistant/dialogue.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/js/assistant/source-responses.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/js/assistant/knowledge.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/css/assistant.css",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/js/assistant/policy.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/js/assistant/retrieval.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/js/assistant/language.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/js/assistant/consultation.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/js/assistant/rules.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/js/assistant/fallback-context.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/js/assistant/fallback-guard.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/js/assistant/knowledge-graph.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/js/assistant/recorded-conditions.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/data/assistant/ultima6.json",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/data/assistant/consultation-catalog.json",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/data/assistant/knowledge/ultima6.json",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/data/assistant/knowledge/ultima6-embeddings.json",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/js/assistant/intent-worker.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/js/assistant/model-download.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/js/assistant/intent-head.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/Ultima7.html",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/css/assistant-consent.css",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/js/assistant/bootstrap.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/js/tailwind.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/js/chart.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/css/fonts.css",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/css/leaflet.css",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/css/Ultima7.css",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/images/ultima7-briefing-hero.webp",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/js/leaflet.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/js/assistant/model-runtime.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/js/assistant/intent-runtime.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/js/assistant/consent.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/js/assistant/model-download.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/js/Ultima7Markers.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/js/Ultima7.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/fonts/lora-v36-latin-regular.woff2",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/images/U7PWorldMap.jpg",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/fonts/inter-v19-latin-regular.woff2",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/fonts/lora-v36-latin-700.woff2",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/fonts/inter-v19-latin-600.woff2",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/fonts/inter-v19-latin-800.woff2",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/fonts/inter-v19-latin-700.woff2",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/images/ultima7-portraits/avatar.png",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/images/ultima7-portraits/iolo.png",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/local-assistant/profile.json",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/local-assistant/intent/profile.json",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/js/assistant/adapters/ultima7.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/js/assistant/ui.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/js/assistant/guide-assistant.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/js/assistant/policy.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/js/assistant/topics.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/css/assistant.css",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/js/assistant/engine.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/js/assistant/dialogue.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/js/assistant/source-responses.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/js/assistant/knowledge.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/js/assistant/retrieval.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/js/assistant/language.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/js/assistant/consultation.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/js/assistant/knowledge-graph.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/js/assistant/recorded-conditions.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/js/assistant/rules.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/js/assistant/fallback-context.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/js/assistant/fallback-guard.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/data/assistant/ultima7.json",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/data/assistant/consultation-catalog.json",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/data/assistant/knowledge/ultima7.json",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/data/assistant/knowledge/ultima7-embeddings.json",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/js/assistant/intent-worker.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/js/assistant/model-download.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:43859/guides/js/assistant/intent-head.js",
+      "method": "GET",
+      "hasBody": false
+    }
+  ],
+  "blockedRequests": [],
+  "pageErrors": [],
+  "workers": {
+    "ultima5": [
+      {
+        "url": "http://127.0.0.1:43859/guides/js/assistant/intent-worker.js",
+        "events": [
+          {
+            "direction": "send",
+            "type": "load",
+            "id": null,
+            "text": null,
+            "modelId": "Xenova/all-MiniLM-L6-v2"
+          },
+          {
+            "direction": "receive",
+            "type": "ready",
+            "id": null,
+            "metadata": {
+              "modelId": "Xenova/all-MiniLM-L6-v2",
+              "revision": "751bff37182d3f1213fa05d7196b954e230abad9",
+              "dimensions": 384,
+              "encoderFineTuned": false,
+              "realModelInference": true,
+              "wasmThreads": 1,
+              "headSha256": "979c196a92df490124802e61fcc5fad787fc535ee69ff0eae64784355a8f6bfb",
+              "thresholds": {
+                "minScore": 0,
+                "minMargin": 0,
+                "abstainAll": false,
+                "selection": {
+                  "source": "validation",
+                  "samples": 72,
+                  "targetAccuracy": 0.9,
+                  "minAccepted": 6,
+                  "accepted": 72,
+                  "accuracy": 0.9444444444444444,
+                  "coverage": 1,
+                  "candidateLimitPerAxis": 51
+                }
+              },
+              "additionalBytes": 24053489
+            },
+            "predictions": null,
+            "message": null
+          },
+          {
+            "direction": "send",
+            "type": "classify",
+            "id": 1,
+            "text": "I want the Grapple. Where can I find Lord Michael during the day, and where does he retire?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "result",
+            "id": 1,
+            "metadata": null,
+            "predictions": [
+              {
+                "label": "location",
+                "score": 0.39092395200396374
+              },
+              {
+                "label": "acquisition",
+                "score": 0.16822711733167942
+              },
+              {
+                "label": "identity",
+                "score": 0.07499647762240322
+              },
+              {
+                "label": "use",
+                "score": 0.06434302616639859
+              },
+              {
+                "label": "unknown",
+                "score": 0.06318300829366622
+              },
+              {
+                "label": "overview",
+                "score": 0.04889091824544708
+              },
+              {
+                "label": "comparison",
+                "score": 0.03938312470564093
+              },
+              {
+                "label": "hint",
+                "score": 0.03695579774875327
+              },
+              {
+                "label": "combat",
+                "score": 0.03143801164432102
+              },
+              {
+                "label": "why",
+                "score": 0.031244742046463783
+              },
+              {
+                "label": "stats",
+                "score": 0.02556833204151786
+              },
+              {
+                "label": "prerequisites",
+                "score": 0.024845492149744828
+              }
+            ],
+            "message": null
+          },
+          {
+            "direction": "send",
+            "type": "encode",
+            "id": 2,
+            "text": "I want the Grapple. Where can I find Lord Michael during the day, and where does he retire?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "embedding",
+            "id": 2,
+            "metadata": null,
+            "predictions": null,
+            "message": null,
+            "dimensions": 384,
+            "allFinite": true,
+            "norm": 1.000000162263721
+          },
+          {
+            "direction": "send",
+            "type": "classify",
+            "id": 3,
+            "text": "And what should I actually ask him about?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "result",
+            "id": 3,
+            "metadata": null,
+            "predictions": [
+              {
+                "label": "unknown",
+                "score": 0.15547742089017857
+              },
+              {
+                "label": "hint",
+                "score": 0.1303283100956503
+              },
+              {
+                "label": "identity",
+                "score": 0.10789483834618845
+              },
+              {
+                "label": "overview",
+                "score": 0.09509067978314217
+              },
+              {
+                "label": "prerequisites",
+                "score": 0.09331838654059056
+              },
+              {
+                "label": "location",
+                "score": 0.07400928280175055
+              },
+              {
+                "label": "comparison",
+                "score": 0.06201643518218783
+              },
+              {
+                "label": "stats",
+                "score": 0.059655318043989145
+              },
+              {
+                "label": "combat",
+                "score": 0.05905544806206406
+              },
+              {
+                "label": "why",
+                "score": 0.05748152078784819
+              },
+              {
+                "label": "use",
+                "score": 0.05596214618607173
+              },
+              {
+                "label": "acquisition",
+                "score": 0.04971021328033846
+              }
+            ],
+            "message": null
+          },
+          {
+            "direction": "send",
+            "type": "encode",
+            "id": 4,
+            "text": "And what should I actually ask him about?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "embedding",
+            "id": 4,
+            "metadata": null,
+            "predictions": null,
+            "message": null,
+            "dimensions": 384,
+            "allFinite": true,
+            "norm": 1.0000001751707144
+          },
+          {
+            "direction": "send",
+            "type": "classify",
+            "id": 5,
+            "text": "Once he hands it over, where should I keep the hook?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "result",
+            "id": 5,
+            "metadata": null,
+            "predictions": [
+              {
+                "label": "location",
+                "score": 0.16726455634264537
+              },
+              {
+                "label": "use",
+                "score": 0.14850383943660672
+              },
+              {
+                "label": "combat",
+                "score": 0.13380472026757942
+              },
+              {
+                "label": "acquisition",
+                "score": 0.12218749808371777
+              },
+              {
+                "label": "hint",
+                "score": 0.09225054582006807
+              },
+              {
+                "label": "comparison",
+                "score": 0.0750250674079356
+              },
+              {
+                "label": "unknown",
+                "score": 0.06225116015453689
+              },
+              {
+                "label": "prerequisites",
+                "score": 0.05128796670132786
+              },
+              {
+                "label": "why",
+                "score": 0.043202998644566164
+              },
+              {
+                "label": "identity",
+                "score": 0.0389854563199158
+              },
+              {
+                "label": "stats",
+                "score": 0.0382065084982048
+              },
+              {
+                "label": "overview",
+                "score": 0.02702968232289571
+              }
+            ],
+            "message": null
+          },
+          {
+            "direction": "send",
+            "type": "encode",
+            "id": 6,
+            "text": "Once he hands it over, where should I keep the hook?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "embedding",
+            "id": 6,
+            "metadata": null,
+            "predictions": null,
+            "message": null,
+            "dimensions": 384,
+            "allFinite": true,
+            "norm": 1.0000000329404564
+          },
+          {
+            "direction": "send",
+            "type": "classify",
+            "id": 7,
+            "text": "Is he standing in that courtyard in my save right now?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "result",
+            "id": 7,
+            "metadata": null,
+            "predictions": [
+              {
+                "label": "location",
+                "score": 0.31720359845515317
+              },
+              {
+                "label": "identity",
+                "score": 0.1158542616454181
+              },
+              {
+                "label": "acquisition",
+                "score": 0.08390817452355685
+              },
+              {
+                "label": "unknown",
+                "score": 0.07809398828905255
+              },
+              {
+                "label": "prerequisites",
+                "score": 0.0656556503211424
+              },
+              {
+                "label": "hint",
+                "score": 0.06346975984559937
+              },
+              {
+                "label": "combat",
+                "score": 0.05904228131309807
+              },
+              {
+                "label": "stats",
+                "score": 0.053794569265339154
+              },
+              {
+                "label": "use",
+                "score": 0.042345370805251796
+              },
+              {
+                "label": "comparison",
+                "score": 0.0421606930216411
+              },
+              {
+                "label": "why",
+                "score": 0.0419984426760343
+              },
+              {
+                "label": "overview",
+                "score": 0.036473209838713126
+              }
+            ],
+            "message": null
+          },
+          {
+            "direction": "send",
+            "type": "encode",
+            "id": 8,
+            "text": "Is he standing in that courtyard in my save right now?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "embedding",
+            "id": 8,
+            "metadata": null,
+            "predictions": null,
+            "message": null,
+            "dimensions": 384,
+            "allFinite": true,
+            "norm": 0.9999998964901132
+          },
+          {
+            "direction": "send",
+            "type": "classify",
+            "id": 9,
+            "text": "For the HMS Cape plans, how do I approach the shipwright building?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "result",
+            "id": 9,
+            "metadata": null,
+            "predictions": [
+              {
+                "label": "use",
+                "score": 0.2546158727395859
+              },
+              {
+                "label": "location",
+                "score": 0.14542346216805918
+              },
+              {
+                "label": "overview",
+                "score": 0.12567693905167487
+              },
+              {
+                "label": "acquisition",
+                "score": 0.10482313211433722
+              },
+              {
+                "label": "hint",
+                "score": 0.08532801464486843
+              },
+              {
+                "label": "stats",
+                "score": 0.04787290230882495
+              },
+              {
+                "label": "unknown",
+                "score": 0.046867582385826945
+              },
+              {
+                "label": "comparison",
+                "score": 0.045728564502278336
+              },
+              {
+                "label": "prerequisites",
+                "score": 0.037070153538714096
+              },
+              {
+                "label": "combat",
+                "score": 0.036468557983863385
+              },
+              {
+                "label": "why",
+                "score": 0.03507141998938982
+              },
+              {
+                "label": "identity",
+                "score": 0.03505339857257686
+              }
+            ],
+            "message": null
+          },
+          {
+            "direction": "send",
+            "type": "encode",
+            "id": 10,
+            "text": "For the HMS Cape plans, how do I approach the shipwright building?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "embedding",
+            "id": 10,
+            "metadata": null,
+            "predictions": null,
+            "message": null,
+            "dimensions": 384,
+            "allFinite": true,
+            "norm": 1.0000001847789186
+          },
+          {
+            "direction": "send",
+            "type": "classify",
+            "id": 11,
+            "text": "What about the locked doors inside\u2014how do I get through them?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "result",
+            "id": 11,
+            "metadata": null,
+            "predictions": [
+              {
+                "label": "location",
+                "score": 0.1656700026238607
+              },
+              {
+                "label": "use",
+                "score": 0.16265249038053356
+              },
+              {
+                "label": "hint",
+                "score": 0.13935592898616642
+              },
+              {
+                "label": "unknown",
+                "score": 0.09865847883382392
+              },
+              {
+                "label": "overview",
+                "score": 0.09730500925499717
+              },
+              {
+                "label": "acquisition",
+                "score": 0.08288047602521756
+              },
+              {
+                "label": "comparison",
+                "score": 0.06606651277122907
+              },
+              {
+                "label": "combat",
+                "score": 0.0521474652087159
+              },
+              {
+                "label": "prerequisites",
+                "score": 0.0399026074814583
+              },
+              {
+                "label": "why",
+                "score": 0.03881787610579109
+              },
+              {
+                "label": "identity",
+                "score": 0.032027616285501034
+              },
+              {
+                "label": "stats",
+                "score": 0.024515536042705097
+              }
+            ],
+            "message": null
+          },
+          {
+            "direction": "send",
+            "type": "encode",
+            "id": 12,
+            "text": "what about the locked doors inside",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "embedding",
+            "id": 12,
+            "metadata": null,
+            "predictions": null,
+            "message": null,
+            "dimensions": 384,
+            "allFinite": true,
+            "norm": 0.9999998332228417
+          },
+          {
+            "direction": "send",
+            "type": "classify",
+            "id": 13,
+            "text": "Where in that room should I search for the plans?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "result",
+            "id": 13,
+            "metadata": null,
+            "predictions": [
+              {
+                "label": "location",
+                "score": 0.5850579438927708
+              },
+              {
+                "label": "overview",
+                "score": 0.12028772451316788
+              },
+              {
+                "label": "unknown",
+                "score": 0.052177315345566425
+              },
+              {
+                "label": "acquisition",
+                "score": 0.04355787008051297
+              },
+              {
+                "label": "use",
+                "score": 0.03929551347315464
+              },
+              {
+                "label": "hint",
+                "score": 0.03582913589163631
+              },
+              {
+                "label": "prerequisites",
+                "score": 0.03156671084668349
+              },
+              {
+                "label": "comparison",
+                "score": 0.02662574364674226
+              },
+              {
+                "label": "stats",
+                "score": 0.018878696573715874
+              },
+              {
+                "label": "combat",
+                "score": 0.017112209709589973
+              },
+              {
+                "label": "identity",
+                "score": 0.015475474870926991
+              },
+              {
+                "label": "why",
+                "score": 0.014135661155532534
+              }
+            ],
+            "message": null
+          },
+          {
+            "direction": "send",
+            "type": "encode",
+            "id": 14,
+            "text": "Where in that room should I search for the plans?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "embedding",
+            "id": 14,
+            "metadata": null,
+            "predictions": null,
+            "message": null,
+            "dimensions": 384,
+            "allFinite": true,
+            "norm": 1.0000001115965456
+          },
+          {
+            "direction": "send",
+            "type": "classify",
+            "id": 15,
+            "text": "What kind of wood are those two doors made from?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "result",
+            "id": 15,
+            "metadata": null,
+            "predictions": [
+              {
+                "label": "identity",
+                "score": 0.18961900792726546
+              },
+              {
+                "label": "location",
+                "score": 0.17001643702188324
+              },
+              {
+                "label": "stats",
+                "score": 0.11861497352015918
+              },
+              {
+                "label": "comparison",
+                "score": 0.10019737370599814
+              },
+              {
+                "label": "unknown",
+                "score": 0.07775520707939299
+              },
+              {
+                "label": "acquisition",
+                "score": 0.07218330350858461
+              },
+              {
+                "label": "why",
+                "score": 0.058702010597535166
+              },
+              {
+                "label": "use",
+                "score": 0.04986745722991392
+              },
+              {
+                "label": "overview",
+                "score": 0.0479016625474971
+              },
+              {
+                "label": "prerequisites",
+                "score": 0.0442947877808781
+              },
+              {
+                "label": "hint",
+                "score": 0.03803571389314967
+              },
+              {
+                "label": "combat",
+                "score": 0.0328120651877424
+              }
+            ],
+            "message": null
+          },
+          {
+            "direction": "send",
+            "type": "encode",
+            "id": 16,
+            "text": "What kind of wood are those two doors made from?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "embedding",
+            "id": 16,
+            "metadata": null,
+            "predictions": null,
+            "message": null,
+            "dimensions": 384,
+            "allFinite": true,
+            "norm": 0.9999999285501253
+          }
+        ]
+      }
+    ],
+    "ultima6": [
+      {
+        "url": "http://127.0.0.1:43859/guides/js/assistant/intent-worker.js",
+        "events": [
+          {
+            "direction": "send",
+            "type": "load",
+            "id": null,
+            "text": null,
+            "modelId": "Xenova/all-MiniLM-L6-v2"
+          },
+          {
+            "direction": "receive",
+            "type": "ready",
+            "id": null,
+            "metadata": {
+              "modelId": "Xenova/all-MiniLM-L6-v2",
+              "revision": "751bff37182d3f1213fa05d7196b954e230abad9",
+              "dimensions": 384,
+              "encoderFineTuned": false,
+              "realModelInference": true,
+              "wasmThreads": 1,
+              "headSha256": "979c196a92df490124802e61fcc5fad787fc535ee69ff0eae64784355a8f6bfb",
+              "thresholds": {
+                "minScore": 0,
+                "minMargin": 0,
+                "abstainAll": false,
+                "selection": {
+                  "source": "validation",
+                  "samples": 72,
+                  "targetAccuracy": 0.9,
+                  "minAccepted": 6,
+                  "accepted": 72,
+                  "accuracy": 0.9444444444444444,
+                  "coverage": 1,
+                  "candidateLimitPerAxis": 51
+                }
+              },
+              "additionalBytes": 24053489
+            },
+            "predictions": null,
+            "message": null
+          },
+          {
+            "direction": "send",
+            "type": "classify",
+            "id": 1,
+            "text": "Where do I meet Ariana about the rune, and whose approval does she need?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "result",
+            "id": 1,
+            "metadata": null,
+            "predictions": [
+              {
+                "label": "location",
+                "score": 0.17355836042607434
+              },
+              {
+                "label": "identity",
+                "score": 0.12038664553454466
+              },
+              {
+                "label": "acquisition",
+                "score": 0.11180446008843974
+              },
+              {
+                "label": "use",
+                "score": 0.08675783244325105
+              },
+              {
+                "label": "prerequisites",
+                "score": 0.08041180152218712
+              },
+              {
+                "label": "comparison",
+                "score": 0.07849746039686231
+              },
+              {
+                "label": "unknown",
+                "score": 0.07654116754691694
+              },
+              {
+                "label": "overview",
+                "score": 0.06737151889547172
+              },
+              {
+                "label": "hint",
+                "score": 0.05848961885468047
+              },
+              {
+                "label": "combat",
+                "score": 0.05202195805899451
+              },
+              {
+                "label": "why",
+                "score": 0.04814465023514694
+              },
+              {
+                "label": "stats",
+                "score": 0.046014525997430444
+              }
+            ],
+            "message": null
+          },
+          {
+            "direction": "send",
+            "type": "encode",
+            "id": 2,
+            "text": "where do i meet ariana about the rune",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "embedding",
+            "id": 2,
+            "metadata": null,
+            "predictions": null,
+            "message": null,
+            "dimensions": 384,
+            "allFinite": true,
+            "norm": 1.0000002446819762
+          },
+          {
+            "direction": "send",
+            "type": "encode",
+            "id": 3,
+            "text": "whose approval does she need\nSubject: Ariana",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "embedding",
+            "id": 3,
+            "metadata": null,
+            "predictions": null,
+            "message": null,
+            "dimensions": 384,
+            "allFinite": true,
+            "norm": 1.0000002168198596
+          },
+          {
+            "direction": "send",
+            "type": "classify",
+            "id": 4,
+            "text": "Okay, where do I find her mother and what do I say to get that approval?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "result",
+            "id": 4,
+            "metadata": null,
+            "predictions": [
+              {
+                "label": "location",
+                "score": 0.23586817653820588
+              },
+              {
+                "label": "acquisition",
+                "score": 0.14853204324310934
+              },
+              {
+                "label": "hint",
+                "score": 0.1370339886772237
+              },
+              {
+                "label": "use",
+                "score": 0.11186949415714574
+              },
+              {
+                "label": "unknown",
+                "score": 0.09536015354358127
+              },
+              {
+                "label": "comparison",
+                "score": 0.05081211938387125
+              },
+              {
+                "label": "identity",
+                "score": 0.04759114275661744
+              },
+              {
+                "label": "prerequisites",
+                "score": 0.04332325115451851
+              },
+              {
+                "label": "stats",
+                "score": 0.0396921059891492
+              },
+              {
+                "label": "combat",
+                "score": 0.03657648329562136
+              },
+              {
+                "label": "overview",
+                "score": 0.03464902000543876
+              },
+              {
+                "label": "why",
+                "score": 0.018692021255517683
+              }
+            ],
+            "message": null
+          },
+          {
+            "direction": "send",
+            "type": "encode",
+            "id": 5,
+            "text": "where do i find her mother\nSubject: Anya",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "embedding",
+            "id": 5,
+            "metadata": null,
+            "predictions": null,
+            "message": null,
+            "dimensions": 384,
+            "allFinite": true,
+            "norm": 0.9999999690136475
+          },
+          {
+            "direction": "send",
+            "type": "encode",
+            "id": 6,
+            "text": "what do i say to get that approval",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "embedding",
+            "id": 6,
+            "metadata": null,
+            "predictions": null,
+            "message": null,
+            "dimensions": 384,
+            "allFinite": true,
+            "norm": 1.0000000993315896
+          },
+          {
+            "direction": "send",
+            "type": "classify",
+            "id": 7,
+            "text": "How do I collect it once permission is sorted out?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "result",
+            "id": 7,
+            "metadata": null,
+            "predictions": [
+              {
+                "label": "acquisition",
+                "score": 0.3135676678707625
+              },
+              {
+                "label": "use",
+                "score": 0.14210409005832966
+              },
+              {
+                "label": "location",
+                "score": 0.12894786833843838
+              },
+              {
+                "label": "hint",
+                "score": 0.113931102653194
+              },
+              {
+                "label": "unknown",
+                "score": 0.06144973880035461
+              },
+              {
+                "label": "prerequisites",
+                "score": 0.049172635673769026
+              },
+              {
+                "label": "overview",
+                "score": 0.04507326378240003
+              },
+              {
+                "label": "why",
+                "score": 0.04314916041428349
+              },
+              {
+                "label": "identity",
+                "score": 0.0388534611914757
+              },
+              {
+                "label": "stats",
+                "score": 0.028957807752820253
+              },
+              {
+                "label": "combat",
+                "score": 0.021511433213521582
+              },
+              {
+                "label": "comparison",
+                "score": 0.013281770250650847
+              }
+            ],
+            "message": null
+          },
+          {
+            "direction": "send",
+            "type": "encode",
+            "id": 8,
+            "text": "How do I collect it once permission is sorted out?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "embedding",
+            "id": 8,
+            "metadata": null,
+            "predictions": null,
+            "message": null,
+            "dimensions": 384,
+            "allFinite": true,
+            "norm": 0.9999998641516119
+          },
+          {
+            "direction": "send",
+            "type": "classify",
+            "id": 9,
+            "text": "Exactly how old is Anya?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "result",
+            "id": 9,
+            "metadata": null,
+            "predictions": [
+              {
+                "label": "identity",
+                "score": 0.22964685793299658
+              },
+              {
+                "label": "stats",
+                "score": 0.19860467954598196
+              },
+              {
+                "label": "unknown",
+                "score": 0.11007933577155131
+              },
+              {
+                "label": "prerequisites",
+                "score": 0.08183146583915825
+              },
+              {
+                "label": "location",
+                "score": 0.07903687300493642
+              },
+              {
+                "label": "comparison",
+                "score": 0.06470268780623906
+              },
+              {
+                "label": "why",
+                "score": 0.05550241010860521
+              },
+              {
+                "label": "hint",
+                "score": 0.04790591834730604
+              },
+              {
+                "label": "overview",
+                "score": 0.04402719579856175
+              },
+              {
+                "label": "use",
+                "score": 0.03812384418769445
+              },
+              {
+                "label": "acquisition",
+                "score": 0.03164679852770307
+              },
+              {
+                "label": "combat",
+                "score": 0.018891933129265827
+              }
+            ],
+            "message": null
+          },
+          {
+            "direction": "send",
+            "type": "encode",
+            "id": 10,
+            "text": "Exactly how old is Anya?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "embedding",
+            "id": 10,
+            "metadata": null,
+            "predictions": null,
+            "message": null,
+            "dimensions": 384,
+            "allFinite": true,
+            "norm": 1.0000001817505468
+          },
+          {
+            "direction": "send",
+            "type": "classify",
+            "id": 11,
+            "text": "How do I persuade Sherry to come along?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "result",
+            "id": 11,
+            "metadata": null,
+            "predictions": [
+              {
+                "label": "unknown",
+                "score": 0.16980204497557316
+              },
+              {
+                "label": "hint",
+                "score": 0.1380026958747504
+              },
+              {
+                "label": "use",
+                "score": 0.12114115889681878
+              },
+              {
+                "label": "acquisition",
+                "score": 0.09774363725624458
+              },
+              {
+                "label": "combat",
+                "score": 0.08284742305336325
+              },
+              {
+                "label": "overview",
+                "score": 0.07017403378895319
+              },
+              {
+                "label": "comparison",
+                "score": 0.06343326431215168
+              },
+              {
+                "label": "prerequisites",
+                "score": 0.05900029361784285
+              },
+              {
+                "label": "location",
+                "score": 0.05838381003892305
+              },
+              {
+                "label": "identity",
+                "score": 0.05735287179468377
+              },
+              {
+                "label": "why",
+                "score": 0.0544074370698433
+              },
+              {
+                "label": "stats",
+                "score": 0.027711329320851893
+              }
+            ],
+            "message": null
+          },
+          {
+            "direction": "send",
+            "type": "encode",
+            "id": 12,
+            "text": "How do I persuade Sherry to come along?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "embedding",
+            "id": 12,
+            "metadata": null,
+            "predictions": null,
+            "message": null,
+            "dimensions": 384,
+            "allFinite": true,
+            "norm": 0.9999999530895287
+          },
+          {
+            "direction": "send",
+            "type": "classify",
+            "id": 13,
+            "text": "Where do I take her for the mouse hole, and who should I be controlling?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "result",
+            "id": 13,
+            "metadata": null,
+            "predictions": [
+              {
+                "label": "location",
+                "score": 0.17238644240414017
+              },
+              {
+                "label": "hint",
+                "score": 0.1259352454463597
+              },
+              {
+                "label": "combat",
+                "score": 0.10718793941995143
+              },
+              {
+                "label": "comparison",
+                "score": 0.09807166478970841
+              },
+              {
+                "label": "acquisition",
+                "score": 0.08942399449808944
+              },
+              {
+                "label": "prerequisites",
+                "score": 0.075165222868822
+              },
+              {
+                "label": "unknown",
+                "score": 0.07309976700893303
+              },
+              {
+                "label": "use",
+                "score": 0.07240272510909745
+              },
+              {
+                "label": "identity",
+                "score": 0.05926559435782239
+              },
+              {
+                "label": "stats",
+                "score": 0.05446270962119145
+              },
+              {
+                "label": "overview",
+                "score": 0.04542747408006126
+              },
+              {
+                "label": "why",
+                "score": 0.027171220395823096
+              }
+            ],
+            "message": null
+          },
+          {
+            "direction": "send",
+            "type": "encode",
+            "id": 14,
+            "text": "where do i take her for the mouse hole\nSubject: Sherry",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "embedding",
+            "id": 14,
+            "metadata": null,
+            "predictions": null,
+            "message": null,
+            "dimensions": 384,
+            "allFinite": true,
+            "norm": 1.0000000403655223
+          },
+          {
+            "direction": "send",
+            "type": "encode",
+            "id": 15,
+            "text": "who should i be controlling",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "embedding",
+            "id": 15,
+            "metadata": null,
+            "predictions": null,
+            "message": null,
+            "dimensions": 384,
+            "allFinite": true,
+            "norm": 1.000000083495361
+          },
+          {
+            "direction": "send",
+            "type": "classify",
+            "id": 16,
+            "text": "Once she is there, how do we get the rune back to the group?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "result",
+            "id": 16,
+            "metadata": null,
+            "predictions": [
+              {
+                "label": "use",
+                "score": 0.14325832887866186
+              },
+              {
+                "label": "hint",
+                "score": 0.1366483062097277
+              },
+              {
+                "label": "location",
+                "score": 0.13134810643731412
+              },
+              {
+                "label": "acquisition",
+                "score": 0.12954180460122952
+              },
+              {
+                "label": "unknown",
+                "score": 0.07621518534107975
+              },
+              {
+                "label": "combat",
+                "score": 0.07604911047427142
+              },
+              {
+                "label": "why",
+                "score": 0.05857659134749096
+              },
+              {
+                "label": "overview",
+                "score": 0.05496220118244591
+              },
+              {
+                "label": "comparison",
+                "score": 0.05438880544082071
+              },
+              {
+                "label": "identity",
+                "score": 0.048007703543483826
+              },
+              {
+                "label": "stats",
+                "score": 0.04654081240406754
+              },
+              {
+                "label": "prerequisites",
+                "score": 0.04446304413940667
+              }
+            ],
+            "message": null
+          },
+          {
+            "direction": "send",
+            "type": "encode",
+            "id": 17,
+            "text": "Once she is there, how do we get the rune back to the group?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "embedding",
+            "id": 17,
+            "metadata": null,
+            "predictions": null,
+            "message": null,
+            "dimensions": 384,
+            "allFinite": true,
+            "norm": 1.0000000219584932
+          },
+          {
+            "direction": "send",
+            "type": "classify",
+            "id": 18,
+            "text": "Does that exact recruitment method also work in the SNES edition?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "result",
+            "id": 18,
+            "metadata": null,
+            "predictions": [
+              {
+                "label": "overview",
+                "score": 0.17601807154388296
+              },
+              {
+                "label": "acquisition",
+                "score": 0.1413797118066234
+              },
+              {
+                "label": "use",
+                "score": 0.09553033617791853
+              },
+              {
+                "label": "unknown",
+                "score": 0.08826473097390984
+              },
+              {
+                "label": "prerequisites",
+                "score": 0.08289682307978355
+              },
+              {
+                "label": "why",
+                "score": 0.07740303710386294
+              },
+              {
+                "label": "identity",
+                "score": 0.06604146625732325
+              },
+              {
+                "label": "comparison",
+                "score": 0.06237207985225937
+              },
+              {
+                "label": "stats",
+                "score": 0.061327620555651406
+              },
+              {
+                "label": "location",
+                "score": 0.06002052286486791
+              },
+              {
+                "label": "hint",
+                "score": 0.04512953564047633
+              },
+              {
+                "label": "combat",
+                "score": 0.04361606414344058
+              }
+            ],
+            "message": null
+          },
+          {
+            "direction": "send",
+            "type": "encode",
+            "id": 19,
+            "text": "Does that exact recruitment method also work in the SNES edition?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "embedding",
+            "id": 19,
+            "metadata": null,
+            "predictions": null,
+            "message": null,
+            "dimensions": 384,
+            "allFinite": true,
+            "norm": 1.0000000226907668
+          }
+        ]
+      }
+    ],
+    "ultima7": [
+      {
+        "url": "http://127.0.0.1:43859/guides/js/assistant/intent-worker.js",
+        "events": [
+          {
+            "direction": "send",
+            "type": "load",
+            "id": null,
+            "text": null,
+            "modelId": "Xenova/all-MiniLM-L6-v2"
+          },
+          {
+            "direction": "receive",
+            "type": "ready",
+            "id": null,
+            "metadata": {
+              "modelId": "Xenova/all-MiniLM-L6-v2",
+              "revision": "751bff37182d3f1213fa05d7196b954e230abad9",
+              "dimensions": 384,
+              "encoderFineTuned": false,
+              "realModelInference": true,
+              "wasmThreads": 1,
+              "headSha256": "979c196a92df490124802e61fcc5fad787fc535ee69ff0eae64784355a8f6bfb",
+              "thresholds": {
+                "minScore": 0,
+                "minMargin": 0,
+                "abstainAll": false,
+                "selection": {
+                  "source": "validation",
+                  "samples": 72,
+                  "targetAccuracy": 0.9,
+                  "minAccepted": 6,
+                  "accepted": 72,
+                  "accuracy": 0.9444444444444444,
+                  "coverage": 1,
+                  "candidateLimitPerAxis": 51
+                }
+              },
+              "additionalBytes": 24053489
+            },
+            "predictions": null,
+            "message": null
+          },
+          {
+            "direction": "send",
+            "type": "classify",
+            "id": 1,
+            "text": "I am investigating the Trinsic stables murder. What should I be looking for at the crime scene?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "result",
+            "id": 1,
+            "metadata": null,
+            "predictions": [
+              {
+                "label": "location",
+                "score": 0.2809406070029762
+              },
+              {
+                "label": "overview",
+                "score": 0.14842327935660957
+              },
+              {
+                "label": "hint",
+                "score": 0.0735991494870808
+              },
+              {
+                "label": "stats",
+                "score": 0.06525110600148502
+              },
+              {
+                "label": "identity",
+                "score": 0.06350671611867352
+              },
+              {
+                "label": "acquisition",
+                "score": 0.06249749155031147
+              },
+              {
+                "label": "unknown",
+                "score": 0.059820562908749625
+              },
+              {
+                "label": "why",
+                "score": 0.05973433412255007
+              },
+              {
+                "label": "combat",
+                "score": 0.05650813504358757
+              },
+              {
+                "label": "use",
+                "score": 0.05000960069420553
+              },
+              {
+                "label": "prerequisites",
+                "score": 0.04154557779704008
+              },
+              {
+                "label": "comparison",
+                "score": 0.03816343991673053
+              }
+            ],
+            "message": null
+          },
+          {
+            "direction": "send",
+            "type": "encode",
+            "id": 2,
+            "text": "I am investigating the Trinsic stables murder. What should I be looking for at the crime scene?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "embedding",
+            "id": 2,
+            "metadata": null,
+            "predictions": null,
+            "message": null,
+            "dimensions": 384,
+            "allFinite": true,
+            "norm": 1.0000000385330186
+          },
+          {
+            "direction": "send",
+            "type": "classify",
+            "id": 3,
+            "text": "Who should I question, and what clue should those interviews give me about the suspect and the ship?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "result",
+            "id": 3,
+            "metadata": null,
+            "predictions": [
+              {
+                "label": "hint",
+                "score": 0.1661308814457175
+              },
+              {
+                "label": "overview",
+                "score": 0.13397745866589963
+              },
+              {
+                "label": "identity",
+                "score": 0.13159555030887002
+              },
+              {
+                "label": "unknown",
+                "score": 0.1030274679922384
+              },
+              {
+                "label": "acquisition",
+                "score": 0.07693247630395698
+              },
+              {
+                "label": "combat",
+                "score": 0.0733855341639259
+              },
+              {
+                "label": "why",
+                "score": 0.06596167467128822
+              },
+              {
+                "label": "use",
+                "score": 0.059061927883738104
+              },
+              {
+                "label": "location",
+                "score": 0.05783713304757194
+              },
+              {
+                "label": "comparison",
+                "score": 0.052183584732477355
+              },
+              {
+                "label": "prerequisites",
+                "score": 0.04863723152739111
+              },
+              {
+                "label": "stats",
+                "score": 0.031269079256924875
+              }
+            ],
+            "message": null
+          },
+          {
+            "direction": "send",
+            "type": "encode",
+            "id": 4,
+            "text": "who should i question",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "embedding",
+            "id": 4,
+            "metadata": null,
+            "predictions": null,
+            "message": null,
+            "dimensions": 384,
+            "allFinite": true,
+            "norm": 1.0000002128789944
+          },
+          {
+            "direction": "send",
+            "type": "classify",
+            "id": 5,
+            "text": "How do I get permission to leave the city after the investigation, and what password do I receive?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "result",
+            "id": 5,
+            "metadata": null,
+            "predictions": [
+              {
+                "label": "hint",
+                "score": 0.2053743853540752
+              },
+              {
+                "label": "acquisition",
+                "score": 0.170528644579312
+              },
+              {
+                "label": "location",
+                "score": 0.1463463359748264
+              },
+              {
+                "label": "use",
+                "score": 0.09018255283749237
+              },
+              {
+                "label": "prerequisites",
+                "score": 0.07357180406614283
+              },
+              {
+                "label": "unknown",
+                "score": 0.06269627183219052
+              },
+              {
+                "label": "identity",
+                "score": 0.05306361656538169
+              },
+              {
+                "label": "why",
+                "score": 0.045523918243275015
+              },
+              {
+                "label": "stats",
+                "score": 0.041692758741406176
+              },
+              {
+                "label": "overview",
+                "score": 0.040031735133790144
+              },
+              {
+                "label": "combat",
+                "score": 0.03779376947402989
+              },
+              {
+                "label": "comparison",
+                "score": 0.03319420719807783
+              }
+            ],
+            "message": null
+          },
+          {
+            "direction": "send",
+            "type": "encode",
+            "id": 6,
+            "text": "how do i get permission to leave the city after the investigation",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "embedding",
+            "id": 6,
+            "metadata": null,
+            "predictions": null,
+            "message": null,
+            "dimensions": 384,
+            "allFinite": true,
+            "norm": 0.9999997808170827
+          },
+          {
+            "direction": "send",
+            "type": "classify",
+            "id": 7,
+            "text": "Is that password already recorded in my current save?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "result",
+            "id": 7,
+            "metadata": null,
+            "predictions": [
+              {
+                "label": "unknown",
+                "score": 0.1945471349487636
+              },
+              {
+                "label": "acquisition",
+                "score": 0.1453476583325816
+              },
+              {
+                "label": "use",
+                "score": 0.10702800371835243
+              },
+              {
+                "label": "location",
+                "score": 0.10316431683178984
+              },
+              {
+                "label": "prerequisites",
+                "score": 0.09964071008606792
+              },
+              {
+                "label": "hint",
+                "score": 0.07922229063362914
+              },
+              {
+                "label": "identity",
+                "score": 0.07154351860542359
+              },
+              {
+                "label": "stats",
+                "score": 0.07065431631864513
+              },
+              {
+                "label": "why",
+                "score": 0.05957833528350483
+              },
+              {
+                "label": "overview",
+                "score": 0.02972004693932623
+              },
+              {
+                "label": "comparison",
+                "score": 0.021764973247203816
+              },
+              {
+                "label": "combat",
+                "score": 0.01778869505471174
+              }
+            ],
+            "message": null
+          },
+          {
+            "direction": "send",
+            "type": "encode",
+            "id": 8,
+            "text": "Is that password already recorded in my current save?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "embedding",
+            "id": 8,
+            "metadata": null,
+            "predictions": null,
+            "message": null,
+            "dimensions": 384,
+            "allFinite": true,
+            "norm": 1.0000000745943187
+          },
+          {
+            "direction": "send",
+            "type": "classify",
+            "id": 9,
+            "text": "Where should I start looking for the silent wisp?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "result",
+            "id": 9,
+            "metadata": null,
+            "predictions": [
+              {
+                "label": "acquisition",
+                "score": 0.22682834797721227
+              },
+              {
+                "label": "location",
+                "score": 0.16953769808541683
+              },
+              {
+                "label": "use",
+                "score": 0.11387522998874663
+              },
+              {
+                "label": "overview",
+                "score": 0.10695081095225104
+              },
+              {
+                "label": "hint",
+                "score": 0.07221066584301294
+              },
+              {
+                "label": "unknown",
+                "score": 0.0609906962142399
+              },
+              {
+                "label": "combat",
+                "score": 0.058527100625927045
+              },
+              {
+                "label": "prerequisites",
+                "score": 0.05325111825434464
+              },
+              {
+                "label": "comparison",
+                "score": 0.047535686701999126
+              },
+              {
+                "label": "identity",
+                "score": 0.03711313097773417
+              },
+              {
+                "label": "why",
+                "score": 0.028939533076602426
+              },
+              {
+                "label": "stats",
+                "score": 0.02423998130251298
+              }
+            ],
+            "message": null
+          },
+          {
+            "direction": "send",
+            "type": "encode",
+            "id": 10,
+            "text": "Where should I start looking for the silent wisp?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "embedding",
+            "id": 10,
+            "metadata": null,
+            "predictions": null,
+            "message": null,
+            "dimensions": 384,
+            "allFinite": true,
+            "norm": 1.0000002771862357
+          },
+          {
+            "direction": "send",
+            "type": "classify",
+            "id": 11,
+            "text": "What are the emps expecting as a bribe, and where can I get it?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "result",
+            "id": 11,
+            "metadata": null,
+            "predictions": [
+              {
+                "label": "acquisition",
+                "score": 0.20315539464296886
+              },
+              {
+                "label": "identity",
+                "score": 0.10665865311490663
+              },
+              {
+                "label": "why",
+                "score": 0.10122868011621285
+              },
+              {
+                "label": "use",
+                "score": 0.08912857782098772
+              },
+              {
+                "label": "hint",
+                "score": 0.07970906218936806
+              },
+              {
+                "label": "overview",
+                "score": 0.07934329270607404
+              },
+              {
+                "label": "unknown",
+                "score": 0.07759736668770292
+              },
+              {
+                "label": "prerequisites",
+                "score": 0.07018274216479767
+              },
+              {
+                "label": "combat",
+                "score": 0.061847762662467234
+              },
+              {
+                "label": "location",
+                "score": 0.04660138701785696
+              },
+              {
+                "label": "stats",
+                "score": 0.04352065757734873
+              },
+              {
+                "label": "comparison",
+                "score": 0.04102642329930817
+              }
+            ],
+            "message": null
+          },
+          {
+            "direction": "send",
+            "type": "encode",
+            "id": 12,
+            "text": "what are the emps expecting as a bribe",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "embedding",
+            "id": 12,
+            "metadata": null,
+            "predictions": null,
+            "message": null,
+            "dimensions": 384,
+            "allFinite": true,
+            "norm": 0.9999998675267823
+          },
+          {
+            "direction": "send",
+            "type": "classify",
+            "id": 13,
+            "text": "How do I get their whistle, and what does the wisp ask for once I can speak to it?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "result",
+            "id": 13,
+            "metadata": null,
+            "predictions": [
+              {
+                "label": "use",
+                "score": 0.2975445237544378
+              },
+              {
+                "label": "acquisition",
+                "score": 0.2367777361405833
+              },
+              {
+                "label": "overview",
+                "score": 0.0794765414005373
+              },
+              {
+                "label": "hint",
+                "score": 0.06330531534318434
+              },
+              {
+                "label": "unknown",
+                "score": 0.058004468174642554
+              },
+              {
+                "label": "combat",
+                "score": 0.052598690461438426
+              },
+              {
+                "label": "location",
+                "score": 0.04347280845229169
+              },
+              {
+                "label": "prerequisites",
+                "score": 0.041959195547068534
+              },
+              {
+                "label": "identity",
+                "score": 0.038630391920220095
+              },
+              {
+                "label": "stats",
+                "score": 0.03139571714664527
+              },
+              {
+                "label": "why",
+                "score": 0.030868386199842123
+              },
+              {
+                "label": "comparison",
+                "score": 0.025966225459108653
+              }
+            ],
+            "message": null
+          },
+          {
+            "direction": "send",
+            "type": "encode",
+            "id": 14,
+            "text": "how do i get their whistle",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "embedding",
+            "id": 14,
+            "metadata": null,
+            "predictions": null,
+            "message": null,
+            "dimensions": 384,
+            "allFinite": true,
+            "norm": 1.0000001576298834
+          },
+          {
+            "direction": "send",
+            "type": "encode",
+            "id": 15,
+            "text": "what does the wisp ask for once i can speak to it\nSubject: Wisp whistle",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "embedding",
+            "id": 15,
+            "metadata": null,
+            "predictions": null,
+            "message": null,
+            "dimensions": 384,
+            "allFinite": true,
+            "norm": 0.9999997777395425
+          },
+          {
+            "direction": "send",
+            "type": "classify",
+            "id": 16,
+            "text": "Exactly how many ounces of honey do I have to hand over?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "result",
+            "id": 16,
+            "metadata": null,
+            "predictions": [
+              {
+                "label": "stats",
+                "score": 0.26426499790695457
+              },
+              {
+                "label": "unknown",
+                "score": 0.12683516543353454
+              },
+              {
+                "label": "hint",
+                "score": 0.10036239188210759
+              },
+              {
+                "label": "prerequisites",
+                "score": 0.09941357970823894
+              },
+              {
+                "label": "use",
+                "score": 0.08976966020818761
+              },
+              {
+                "label": "acquisition",
+                "score": 0.05665548554065554
+              },
+              {
+                "label": "location",
+                "score": 0.056538472704535325
+              },
+              {
+                "label": "identity",
+                "score": 0.04911673371436806
+              },
+              {
+                "label": "comparison",
+                "score": 0.048910438863714385
+              },
+              {
+                "label": "combat",
+                "score": 0.042082717139010344
+              },
+              {
+                "label": "overview",
+                "score": 0.037277092684794025
+              },
+              {
+                "label": "why",
+                "score": 0.028773264213899034
+              }
+            ],
+            "message": null
+          },
+          {
+            "direction": "send",
+            "type": "encode",
+            "id": 17,
+            "text": "Exactly how many ounces of honey do I have to hand over?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "embedding",
+            "id": 17,
+            "metadata": null,
+            "predictions": null,
+            "message": null,
+            "dimensions": 384,
+            "allFinite": true,
+            "norm": 0.9999999754690041
+          }
+        ]
+      }
+    ]
+  },
+  "storageUnchanged": {
+    "ultima5": true,
+    "ultima6": true,
+    "ultima7": true
+  },
+  "storageWrites": {
+    "ultima5": [],
+    "ultima6": [],
+    "ultima7": []
+  },
+  "screenshots": [
+    "guides/tests/assistant/intent-prototype/results/knowledge-blind/independent-ultima-20261025-01/ultima5.png",
+    "guides/tests/assistant/intent-prototype/results/knowledge-blind/independent-ultima-20261025-01/ultima6.png",
+    "guides/tests/assistant/intent-prototype/results/knowledge-blind/independent-ultima-20261025-01/ultima7.png"
+  ],
+  "oracleLimitation": "Exact guide file/locator tuples or complete primary research label/URL/date tuples, plus fixed useful phrases. Internal fact IDs are not observed. Required useful claims and boundaries also need semantic review.",
+  "loopbackPort": 43859,
+  "browser": "156.0.8078.47",
+  "serverClosed": true,
+  "sourceHashesAfter": {
+    "guides/Ultima5.html": "c419f66b8a99902351736c024a2230899ec21cdb4ab7af971c58f547b69a2212",
+    "guides/Ultima6.html": "f64c4728cd19b042ccea6c7aa7398aea50b955f7fa3ad177168a937149fd30c2",
+    "guides/Ultima7.html": "dfc1ef95f254d5f5e905910353081704e04e491c284041b9d8c706b93de1a405",
+    "guides/data/assistant/albion.json": "b3b219ccb434c450189e97404b4c06a3bbc8334dc581bea55bc4a70213851404",
+    "guides/data/assistant/alqadim.json": "f0f15243ea3b27701d97b3ab369a108ef46e93ec5f780f6e1fd1bf5e69bf2b77",
+    "guides/data/assistant/consultation-catalog.json": "e7ad5de8bc0b48dcd83c35882719d43770c13ac029099c7a635f3b3ba322aa0d",
+    "guides/data/assistant/knowledge/albion-embeddings.json": "4f4734de1d016e03b923a0d9e66eb6f527daae5f42915fffcaf63362fdfb2988",
+    "guides/data/assistant/knowledge/albion.json": "91bb79665310b095418f793a50207b4dd578f689a8d013d59fde3d31b110f53b",
+    "guides/data/assistant/knowledge/alqadim-embeddings.json": "31deb8ca7457956e947da5835e52c9316895466372aa94cfda4995b2004ed110",
+    "guides/data/assistant/knowledge/alqadim.json": "795ef0e7cfa7a8909601f394fc98c692caaf01f2d32a938d914a4ca213eb35b4",
+    "guides/data/assistant/knowledge/starcraft-embeddings.json": "8ac219d3b111748b30f80df269dc04bbd9154f0a4fbdba269f885b4015285cd8",
+    "guides/data/assistant/knowledge/starcraft.json": "8c49a3a1690b0e0f2c82a1a618022b66b09ea47eb67b168775d7ccaf6190764c",
+    "guides/data/assistant/knowledge/ultima5-embeddings.json": "83dedf9e4a4cca76a97bfc495d3a3bd1faa32accb4c1bf001c1d8fb4b1690ea6",
+    "guides/data/assistant/knowledge/ultima5.json": "fde0c4797ad32d111ad31d9def56e9839c6802339da3cc95ef8d36c93e72dced",
+    "guides/data/assistant/knowledge/ultima6-embeddings.json": "b88fde4f113fd7af860e6b7f35592659373a2d92c1809935089931f2ce98daf6",
+    "guides/data/assistant/knowledge/ultima6.json": "e3d48258056b14576491045b811becd40b136b3e8a8223d867462a8ff919dd65",
+    "guides/data/assistant/knowledge/ultima7-embeddings.json": "d78b99de61c94397fa08c12b55397a235145622a06fbe0475232772584e4fb30",
+    "guides/data/assistant/knowledge/ultima7.json": "55bc9f21c2b1d12b20aed45984e1f12cf29b0f8ead0d13141362b363e278d634",
+    "guides/data/assistant/manifest.json": "d2ad011aa0d0c733b9c35a9e1afc70a01f8eef0cbfc04de0eaf45a90824d9ee4",
+    "guides/data/assistant/starcraft.json": "0dc5925ca67adfc434b5366213a5e05e11cbf869f1d0aa71e4daa6d16ae2dfc0",
+    "guides/data/assistant/ultima5.json": "bbd6a3a33133bc1aca80ac7a19cea5011e19c9f33869582355d7fd60f0f0d24e",
+    "guides/data/assistant/ultima6.json": "67b3bf1e8e935df279bec2f11cf698ba721f5d8e169f1a050fefa4ee66b5ad05",
+    "guides/data/assistant/ultima7.json": "9b5c29c25936ccfd20ca9b704df57d45c1f7142a2014b09630f8e2f2aee10871",
+    "guides/js/AlQadim.js": "269798843206f12b76163c65b04301be278652115fbdbd46596f13f3ae7b5e5e",
+    "guides/js/AlQadimAtlasData.js": "82abbb86cafad98655e4bacfdd28e8ba96fba7f747da44b30aaa9364a37e747e",
+    "guides/js/Albion.js": "4adba84eca7af2436731b7053e3167a909f57f85edc611c6287411af84e4b1ca",
+    "guides/js/AlbionAtlasData.js": "b5a96b06ee31e94eba95df1cec41c2b564576e1170a3065b61e9f5db7890dcc8",
+    "guides/js/AlbionMarkers.js": "1de190722be16721a0ff3ff3a50b2c1298706bc33629dd223ed673f63cfbc27b",
+    "guides/js/Ultima5.js": "e2699ed2d8aca9bf3465c7dcd262461f5fca59f1fb4cbd41361e0f5c5a96dae5",
+    "guides/js/Ultima5AtlasData.js": "1292346505cb26d534154b317d7beee7bb186f8dda2d9316127912111bfb72a2",
+    "guides/js/Ultima6.js": "a0b07db60d7c30ac19bb64b56fa26b1428a6437f437f087eb2d75109afae4898",
+    "guides/js/Ultima6Atlas.js": "c83db308efae81f2868d5b4954d679d24e81b83b226d4e4548699668f98d8e88",
+    "guides/js/Ultima7.js": "c3cd92659e5e959c6d172ba38d56ba85148729b82185768557cb595e3bfb6085",
+    "guides/js/Ultima7Markers.js": "9103499a31be5bd132959ff268aa0149b90ec310a7f1098fbed1fc25a2de1f2e",
+    "guides/js/assistant/adapters/albion.js": "df3993cb351cf9f5e4ade03d8bcfdfc3477c00f4fb39922b9e8cc8d4e255e70b",
+    "guides/js/assistant/adapters/alqadim.js": "fa65928d9011011a12095cd4bbf37a56bfed3b91559ce6aa8097a991b111065c",
+    "guides/js/assistant/adapters/starcraft.js": "b4a11908b121a545fd810c4f8ae09404c210ab0607f70e9121a145a8aea6063e",
+    "guides/js/assistant/adapters/ultima5.js": "3aa64babe0f83ecc713f5d9a665b8ba7a4e7dbfce557a8cff22778a6170cf95a",
+    "guides/js/assistant/adapters/ultima6.js": "d99a14171975b88fff97d7e0ff9a39ac1e07abfed425706732827d6d4fe5e480",
+    "guides/js/assistant/adapters/ultima7.js": "5140505e9fe04a864e950afab671519f31ef24ac6a9b2e91b7c3853c1cf1e7c3",
+    "guides/js/assistant/bootstrap.js": "022aff4f7c2f93fc5c74da9b6457c6a53ee5eb2c072bf90970eca95ef3855608",
+    "guides/js/assistant/consent.js": "cd83de63e5ec28425fad9eef36d597eec48ec839cb48e93569a568571f1e4b98",
+    "guides/js/assistant/consultation.js": "e699091ce4ae4926b6d925a93cb13396ad440fc01ca66c8a574ef35fe939990a",
+    "guides/js/assistant/dialogue.js": "f417535267998da1d3da92bbdd301d7f7f069727af64983cf4cc45564f721f58",
+    "guides/js/assistant/engine.js": "e558f38682a413f9e94a85de0dcc217e29f73320f2863b18d1a0a3d55278cca1",
+    "guides/js/assistant/fallback-context.js": "73c2638570035a73683cdd83b2eac5133d577892aef3613539ebb80c0481cb73",
+    "guides/js/assistant/fallback-guard.js": "8ac7766576c0fa39a9f8eb1d8130687f5dec2d93ed3793b1ab32a416502eb4dc",
+    "guides/js/assistant/frame-tokens.js": "9f225b8d13b2082f45af7f1ec7ca5b56900733383537123d7dab05baa95f511b",
+    "guides/js/assistant/guide-assistant.js": "3cb383e9989d466330fcb8a04161c7816b943c823080e1aca4be777244729665",
+    "guides/js/assistant/intent-head.js": "23e428fedd405946199beb1e55641281bdae078e3d8ea6e448d0ac0acc1a39a7",
+    "guides/js/assistant/intent-runtime.js": "3187389f1a763a0f0234e2379205dc7c6763895b5292b59e36c903a5b908029f",
+    "guides/js/assistant/intent-worker.js": "246895c7ee6e5c70dd98cec48235768bbbc8bbeeeea994e5028e41ceb26d8119",
+    "guides/js/assistant/knowledge-graph.js": "87e393958389634153a9f2bf83dae8543f7c7409d24ec53e94d33f47ffe4c60f",
+    "guides/js/assistant/knowledge.js": "a6dce7d4b658608293a067eb98a23846eeb18182a8afd28b10d5a8dc10132b60",
+    "guides/js/assistant/language.js": "07c089c0b9179e6a5099f9afc24126324fe8f864834c83af740f9f8bdd7324e6",
+    "guides/js/assistant/model-download.js": "1a9f1be1319d9219507a140e4eae6ad6ea2cbb348b19771c7261d1a52432a6a1",
+    "guides/js/assistant/model-runtime.js": "c6331135f75b3ab5f094e6b7020567b19f2b22286105dc51eba190917e98fdd1",
+    "guides/js/assistant/model-worker.js": "5f490d60ae8b991ae64d523d16c683d11a8995283353cfb534f0d3529ce0d6fc",
+    "guides/js/assistant/policy.js": "df44eea0b5eec7dae01deb0ab4c179873cb5f271ae1a3d87ed89a630cb87aec3",
+    "guides/js/assistant/recorded-conditions.js": "e081dd84810466b52540445b1c780b8297e6932cefad445fab620359b686a89e",
+    "guides/js/assistant/retrieval.js": "1ff4e7fe4ef670bde94ca3cac6935fd73c2fa831c98a06d1fdc35cc5e48ce132",
+    "guides/js/assistant/rules.js": "3c2edda7907d22a78d022abd9e1fded1ad70103056129325f44d2cc8be78ef74",
+    "guides/js/assistant/source-responses.js": "7691754f6350f348cabeb95c613c7f18d3fbb7d4f4d0baa115e74fdb2bc4966a",
+    "guides/js/assistant/topics.js": "cae60c918f936d1429713f076420e32c1fc72a89d371b47f7b1958b81e852d39",
+    "guides/js/assistant/ui.js": "d75176fca259ceb47493529cf01b114fce45f45c07444b6de67dd7f68f97092d",
+    "guides/js/chart.js": "e0059220c10bff95fdb7f5b77b9bfffba68b3ccf4eab4f7398ee7aef3cffca2b",
+    "guides/js/index.js": "0feb3e548e54dd42b171533aebd0931a77cdb0f5b5c51ce2d733814e8cdae557",
+    "guides/js/leaflet.js": "85d455b4522415f6badc42a0e7d17c919d100347d6b8958bd0dc738fdecd6d50",
+    "guides/js/lucide.js": "9dac1057f358d159e8ce1e46f259df2b0cb4a19281de7cf8c9ffb29c7a2226f6",
+    "guides/js/tailwind.js": "7afa0afd2536044695e7e674298bc0dda9af94475e4e07d0575feccfa796c74f",
+    "guides/local-assistant/intent/checksums.json": "17718502a6838e861291fffa496d4c6f99b88ea30374de5200df3be95bd2a0bd",
+    "guides/local-assistant/intent/head.json": "979c196a92df490124802e61fcc5fad787fc535ee69ff0eae64784355a8f6bfb",
+    "guides/local-assistant/intent/profile.json": "786a95a078fcc940f95539837883405257f1a3a896637bb71b8b477be680639e",
+    "guides/local-assistant/intent/verification.json": "50512f1218da394e7db5c8138b3dafcf2b7bbed9cd4c45d6e34f63150702748c",
+    "guides/local-assistant/profile.json": "7fcde9d4b3d8842dc2345159687e845e023ce9049c92deab6d99d494e6ba813d",
+    "guides/tests/assistant/browser-consent-fixture.js": "824ec886ed266ada0d40fe2f7142995cd8252f7629b395ee4be9037dea63b89f",
+    "guides/tests/assistant/full-answer-browser.py": "14c72f2b0e3ff540f13cf2019c8eeba8a4e758251cb33c03ab191bf5c4fa97ae",
+    "guides/tests/assistant/knowledge-blind-browser.py": "49c883ec36c00a8e0a90dc8fd7ec1caafa28babfdfa3d00eaef10865d4faaf43",
+    "guides/tests/assistant/knowledge-browser.py": "e4caf821ae66941cdb9b7e10f6d50663746597b8f3defed7f8209d8c3a90ad41",
+    "guides/tests/assistant/knowledge-independent-ultima-20261025.json": "5193e464b5b16f9aae089442db7e0dcacfd489da937875510b1fac508f38583c"
+  },
+  "sourceStable": true,
+  "changedSourceFiles": [],
+  "nativeIntentEvidence": {
+    "ultima5": {
+      "nativeModelReady": true,
+      "classifications": 8,
+      "encodings": 8,
+      "embeddingResults": 8,
+      "validEmbeddings": true
+    },
+    "ultima6": {
+      "nativeModelReady": true,
+      "classifications": 8,
+      "encodings": 11,
+      "embeddingResults": 11,
+      "validEmbeddings": true
+    },
+    "ultima7": {
+      "nativeModelReady": true,
+      "classifications": 8,
+      "encodings": 9,
+      "embeddingResults": 9,
+      "validEmbeddings": true
+    }
+  },
+  "expectedTurns": 24,
+  "totalTurns": 24,
+  "passedTurns": 9,
+  "boundaries": {
+    "allTurnsRan": true,
+    "nativeMiniLMEverySurface": true,
+    "storageUnchanged": true,
+    "noSavedGameWrites": true,
+    "noExternalRequests": true,
+    "noPageErrors": true,
+    "onlyStaticGets": true,
+    "sourceStable": true,
+    "serverClosed": true
+  }
+}

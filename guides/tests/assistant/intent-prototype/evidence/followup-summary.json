@@ -1,0 +1,747 @@
+{
+  "schema": 1,
+  "checkedAt": "2026-10-24T04:21:13.789Z",
+  "scope": [
+    "ultima7",
+    "starcraft"
+  ],
+  "status": "Core shared follow-ups verified; broader prototype remains experimental",
+  "model": {
+    "modelId": "Xenova/all-MiniLM-L6-v2",
+    "revision": "751bff37182d3f1213fa05d7196b954e230abad9",
+    "modelBytes": 23916680,
+    "sharedRuntimeBytes": 22528676,
+    "dimensions": 384,
+    "prepareMs": 674.1000000014901,
+    "realModelInference": true,
+    "encoderFineTuned": false,
+    "remoteModelsAllowed": false,
+    "wasmThreads": 1
+  },
+  "training": {
+    "dataset": "followup-v2",
+    "trainingSamples": 180,
+    "validationSamples": 72,
+    "trainingHash": "4c2d736e54be12a752afe5b17c1910a4e5d177e1473667efec5d38bcaaa85243",
+    "validationHash": "968ec7f80b4697cf30c1f0fae5821493086fd5cc40871f8cb0f5cec2bd42c4cd",
+    "headHash": "ca4b05baaf3e5f674267e648c70a1a9aa14a378f19bd1e3fab822ea85134c20e",
+    "encoderFineTuned": false,
+    "headTraining": {
+      "samples": 180,
+      "epochs": 400,
+      "learningRate": 0.8,
+      "l2": 0.001,
+      "seed": 42,
+      "loss": 0.6671667419397713
+    },
+    "fitMs": 665.7999999988824,
+    "thresholds": {
+      "minScore": 0,
+      "minMargin": 0,
+      "abstainAll": false,
+      "selection": {
+        "source": "validation",
+        "samples": 72,
+        "targetAccuracy": 0.9,
+        "minAccepted": 6,
+        "accepted": 72,
+        "accuracy": 0.9444444444444444,
+        "coverage": 1,
+        "candidateLimitPerAxis": 51
+      }
+    },
+    "trainingMetrics": {
+      "total": 180,
+      "correct": 178,
+      "accuracy": 0.9888888888888889,
+      "accepted": 180,
+      "acceptedCorrect": 178,
+      "acceptedAccuracy": 0.9888888888888889,
+      "coverage": 1,
+      "abstained": 0
+    },
+    "validationMetrics": {
+      "total": 72,
+      "correct": 68,
+      "accuracy": 0.9444444444444444,
+      "accepted": 72,
+      "acceptedCorrect": 68,
+      "acceptedAccuracy": 0.9444444444444444,
+      "coverage": 1,
+      "abstained": 0
+    }
+  },
+  "frozenCorpusSha256": {
+    "training-v2.json": "7b6de20db5751ea0d21dcfcacbe6dba1fdf787586a8e6f1af3a5e06ad618b6c8",
+    "validation-v2.json": "e54d90a131fd9e1f36bd8467c377425bf0790bf63e392b95d0f3f7b5afc482f7",
+    "followup-evaluation.json": "877827a32d23b0cd1cf0b20a6be30b9b42ab2174a32c453f2c183b833c5938c3"
+  },
+  "classifierHeadUnchangedAcrossStructuralFixes": true,
+  "followupEvaluationUnchangedAcrossStructuralFixes": true,
+  "v1IntentRegression": {
+    "total": 48,
+    "correct": 40,
+    "accuracy": 0.8333333333333334,
+    "accepted": 48,
+    "acceptedCorrect": 40,
+    "acceptedAccuracy": 0.8333333333333334,
+    "coverage": 1,
+    "abstained": 0
+  },
+  "followupBehavior": {
+    "passed": 25,
+    "total": 65,
+    "intentMatches": 50,
+    "resolvedIntentMatches": 51,
+    "routeOrigins": {
+      "model": 63,
+      "exact-relation": 1,
+      "pending-confirmation": 1
+    },
+    "failures": [
+      {
+        "id": "sc-reported-download-exchange:5",
+        "text": "necessary prerequisites?",
+        "problems": [
+          "Expected conversational subject SCHNAIL",
+          "Expected a sourced answer",
+          "Missing answer text: account",
+          "Missing answer text: Java",
+          "Expected source record not selected"
+        ]
+      },
+      {
+        "id": "sc-reported-download-exchange:6",
+        "text": "antivirus blocked it; suggestions?",
+        "problems": [
+          "Expected conversational subject SCHNAIL"
+        ]
+      },
+      {
+        "id": "sc-reported-download-exchange:7",
+        "text": "docs page",
+        "problems": [
+          "Expected a sourced answer",
+          "Missing answer text: BWAPI",
+          "Missing answer text: SCHNAIL",
+          "Expected source record not selected",
+          "Expected source URL absent: https://bwapi.github.io/",
+          "Expected source URL absent: https://github.com/bwapi/bwapi/wiki",
+          "Expected source URL absent: https://www.schnail.com/docs"
+        ]
+      },
+      {
+        "id": "sc-launcher-short-operations:1",
+        "text": "Define BWAI Launcher for me.",
+        "problems": [
+          "Expected a sourced answer",
+          "Missing answer text: single-player",
+          "Expected source record not selected"
+        ]
+      },
+      {
+        "id": "sc-launcher-short-operations:2",
+        "text": "fetch its package",
+        "problems": [
+          "Expected conversational subject BWAILauncher",
+          "Expected a sourced answer",
+          "Missing answer text: GitHub",
+          "Expected source record not selected",
+          "Expected source URL absent: https://github.com/poiuyqwert/BWAILauncher/tree/main"
+        ]
+      },
+      {
+        "id": "sc-launcher-short-operations:3",
+        "text": "set it up on 1.16.1",
+        "problems": [
+          "Expected conversational subject BWAILauncher",
+          "Expected a sourced answer",
+          "Missing answer text: 1.16.1",
+          "Missing answer text: Starcraft.exe",
+          "Expected source record not selected"
+        ]
+      },
+      {
+        "id": "sc-launcher-short-operations:4",
+        "text": "the executable is not being detected",
+        "problems": [
+          "Expected conversational subject BWAILauncher",
+          "Expected a sourced answer",
+          "Missing answer text: Starcraft.exe",
+          "Expected source record not selected"
+        ]
+      },
+      {
+        "id": "sc-launcher-short-operations:5",
+        "text": "portable setup",
+        "problems": [
+          "Expected conversational subject BWAILauncher",
+          "Expected a sourced answer",
+          "Missing answer text: Starcraft.exe",
+          "Expected source record not selected"
+        ]
+      },
+      {
+        "id": "sc-launcher-short-operations:6",
+        "text": "requirements for Remastered?",
+        "problems": [
+          "Expected conversational subject BWAILauncher"
+        ]
+      },
+      {
+        "id": "sc-launcher-short-operations:7",
+        "text": "installation steps",
+        "problems": [
+          "Expected conversational subject BWAILauncher"
+        ]
+      },
+      {
+        "id": "sc-map-short-requests:1",
+        "text": "Tell me what the Remastered SCM Map is.",
+        "problems": [
+          "Expected a sourced answer",
+          "Missing answer text: integrated map",
+          "Missing answer text: launcher",
+          "Expected source record not selected"
+        ]
+      },
+      {
+        "id": "sc-map-short-requests:2",
+        "text": "archive link",
+        "problems": [
+          "Expected conversational subject Remastered SCM Map",
+          "Expected a sourced answer",
+          "Missing answer text: Proton Drive",
+          "Expected source record not selected",
+          "Expected source URL absent: https://drive.proton.me/urls/55AMBJ5FN4#BB7pM4E3tZeE",
+          "Expected source URL absent: https://www.richardorilla.website/files/bwapiscr.zip"
+        ]
+      },
+      {
+        "id": "sc-map-short-requests:3",
+        "text": "extract location",
+        "problems": [
+          "Expected conversational subject Remastered SCM Map",
+          "Expected a sourced answer",
+          "Missing answer text: Maps",
+          "Expected source record not selected"
+        ]
+      },
+      {
+        "id": "sc-map-short-requests:4",
+        "text": "launch instructions",
+        "problems": [
+          "Expected conversational subject Remastered SCM Map",
+          "Expected a sourced answer",
+          "Missing answer text: Use Map Settings",
+          "Expected source record not selected"
+        ]
+      },
+      {
+        "id": "sc-map-short-requests:5",
+        "text": "AI stands still under Melee; advice?",
+        "problems": [
+          "Expected conversational subject Remastered SCM Map"
+        ]
+      },
+      {
+        "id": "sc-map-short-requests:6",
+        "text": "what causes that in Melee?",
+        "problems": [
+          "Expected conversational subject Remastered SCM Map",
+          "Expected a sourced answer",
+          "Missing answer text: Melee",
+          "Expected source record not selected"
+        ]
+      },
+      {
+        "id": "sc-guide-only-and-empty-context:1",
+        "text": "A definition of BWAPI, please.",
+        "problems": [
+          "Expected a sourced answer",
+          "Missing answer text: C++",
+          "Missing answer text: Brood War",
+          "Expected source record not selected",
+          "Expected source URL absent: https://github.com/bwapi/bwapi"
+        ]
+      },
+      {
+        "id": "sc-guide-only-and-empty-context:3",
+        "text": "its definition?",
+        "problems": [
+          "Expected conversational subject BWAPI"
+        ]
+      },
+      {
+        "id": "sc-guide-only-and-empty-context:4",
+        "text": "where is the guide manual?",
+        "problems": [
+          "Expected source URL absent: https://bwapi.github.io/",
+          "Expected source URL absent: https://github.com/bwapi/bwapi/wiki",
+          "Expected source URL absent: https://www.schnail.com/docs"
+        ]
+      },
+      {
+        "id": "sc-wrong-edition-fragments:2",
+        "text": "installer please",
+        "problems": [
+          "Expected conversational subject SCHNAIL"
+        ]
+      },
+      {
+        "id": "sc-wrong-edition-fragments:3",
+        "text": "setup steps please",
+        "problems": [
+          "Expected conversational subject SCHNAIL"
+        ]
+      },
+      {
+        "id": "sc-wrong-edition-fragments:4",
+        "text": "requirements first?",
+        "problems": [
+          "Expected conversational subject SCHNAIL"
+        ]
+      },
+      {
+        "id": "sc-wrong-edition-fragments:5",
+        "text": "New topic, Brood War only: identify SCHNAIL.",
+        "problems": [
+          "Expected a sourced answer",
+          "Missing answer text: Human and AI League",
+          "Expected source record not selected"
+        ]
+      },
+      {
+        "id": "sc-wrong-edition-fragments:6",
+        "text": "why the initial launch wait?",
+        "problems": [
+          "Expected conversational subject SCHNAIL",
+          "Expected a sourced answer",
+          "Missing answer text: downloads",
+          "Missing answer text: game files",
+          "Expected source record not selected"
+        ]
+      },
+      {
+        "id": "u7-bard-followup-regression:4",
+        "text": "and his job?",
+        "problems": [
+          "Expected a sourced answer",
+          "Missing answer text: Bard",
+          "Expected source record not selected"
+        ]
+      },
+      {
+        "id": "u7-two-companions-fragments:1",
+        "text": "Give me an identity for Shamino.",
+        "problems": [
+          "Expected a sourced answer",
+          "Missing answer text: Ranger",
+          "Expected source record not selected"
+        ]
+      },
+      {
+        "id": "u7-two-companions-fragments:2",
+        "text": "base attributes?",
+        "problems": [
+          "Expected a sourced answer",
+          "Missing answer text: Dexterity 21",
+          "Expected source record not selected"
+        ]
+      },
+      {
+        "id": "u7-two-companions-fragments:3",
+        "text": "listed whereabouts",
+        "problems": [
+          "Expected a sourced answer",
+          "Missing answer text: Blue Boar",
+          "Expected source record not selected"
+        ]
+      },
+      {
+        "id": "u7-two-companions-fragments:4",
+        "text": "Change to Spark: who is that companion?",
+        "problems": [
+          "Expected a sourced answer",
+          "Missing answer text: Fighter",
+          "Expected source record not selected"
+        ]
+      },
+      {
+        "id": "u7-two-companions-fragments:5",
+        "text": "starting numbers?",
+        "problems": [
+          "Expected a sourced answer",
+          "Missing answer text: Strength 14",
+          "Missing answer text: Combat 10",
+          "Expected source record not selected"
+        ]
+      },
+      {
+        "id": "u7-two-companions-fragments:6",
+        "text": "whereabouts of that companion?",
+        "problems": [
+          "Expected conversational subject Spark",
+          "Expected a sourced answer",
+          "Missing answer text: Christopher's House",
+          "Expected source record not selected"
+        ]
+      },
+      {
+        "id": "u7-spell-use-and-lower-help:1",
+        "text": "How is Mark & Recall used?",
+        "problems": [
+          "Expected a sourced answer",
+          "Missing answer text: return point",
+          "Expected source record not selected"
+        ]
+      },
+      {
+        "id": "u7-spell-use-and-lower-help:3",
+        "text": "spell location?",
+        "problems": [
+          "Expected conversational subject Mark & Recall"
+        ]
+      },
+      {
+        "id": "u7-spell-use-and-lower-help:4",
+        "text": "get this spell?",
+        "problems": [
+          "Expected conversational subject Mark & Recall"
+        ]
+      },
+      {
+        "id": "u7-spell-use-and-lower-help:5",
+        "text": "New subject: Destroy Trap usage?",
+        "problems": [
+          "Expected a sourced answer",
+          "Missing answer text: Tetrahedron",
+          "Expected source record not selected"
+        ]
+      },
+      {
+        "id": "u7-spell-use-and-lower-help:6",
+        "text": "And its use again?",
+        "problems": [
+          "Expected conversational subject Destroy Trap"
+        ]
+      },
+      {
+        "id": "u7-source-and-spoiler-fragments:4",
+        "text": "Allow research again. Different subject: identify the Guardian.",
+        "problems": [
+          "Expected a sourced answer",
+          "Missing answer text: another dimension",
+          "Expected source record not selected",
+          "Expected source URL absent: https://mithyr.com/Ultima/7.0_VII_TheBlackGate/Script/libNPC148.htm"
+        ]
+      },
+      {
+        "id": "u7-source-and-spoiler-fragments:5",
+        "text": "identity?",
+        "problems": [
+          "Expected conversational subject Guardian"
+        ]
+      },
+      {
+        "id": "u7-source-and-spoiler-fragments:7",
+        "text": "her location on the guide?",
+        "problems": [
+          "Expected conversational subject Jaana",
+          "Expected a sourced answer",
+          "Missing answer text: Cove",
+          "Expected source record not selected"
+        ]
+      },
+      {
+        "id": "u7-confirm-reset-and-unknown:3",
+        "text": "his starting numbers",
+        "problems": [
+          "Expected a sourced answer",
+          "Missing answer text: Strength 21",
+          "Expected source record not selected"
+        ]
+      }
+    ]
+  },
+  "coreActualUiSends": [
+    {
+      "gameId": "ultima7",
+      "text": "Who is Iolo?",
+      "rendered": "Iolo: Fighter (Bard). Focus: Balanced archer. Joins automatically at the start. Party Builder choices are a plan, not evidence that this companion is currently in your party.\n\nSource: existing guide. guides/js/Ultima7.js \u2014 DB.companions[0]\n",
+      "links": []
+    },
+    {
+      "gameId": "ultima7",
+      "text": "where is he?",
+      "rendered": "The guide lists Iolo at Trinsic. This is a guide location, not a report of their current position.\n\nSource: existing guide. guides/js/Ultima7.js \u2014 DB.companions[0].location\n",
+      "links": []
+    },
+    {
+      "gameId": "ultima7",
+      "text": "stats",
+      "rendered": "Iolo: Strength 18, Dexterity 19, Intelligence 20, Combat 19. Tags: ranged.\n\nSource: existing guide. guides/js/Ultima7.js \u2014 DB.companions[0].str/dex/int/com\n",
+      "links": []
+    },
+    {
+      "gameId": "starcraft",
+      "text": "what is schnail",
+      "rendered": "SCHNAIL (Starcraft Human and AI League) is a client for playing Brood War AI opponents.\n\nSource: existing guide. guides/StarcraftBWAPI.html \u2014 #schnail-setup ul\nSource: existing guide. guides/tests/assistant/intent-prototype/source-responses.mjs \u2014 PROTOTYPE_DEFINITIONS[0].variants.direct\n",
+      "links": []
+    },
+    {
+      "gameId": "starcraft",
+      "text": "download link",
+      "rendered": "Download SCHNAIL: https://www.schnail.com/#/downloads Account required.\n\ntheir downloads page\nSource: existing guide. guides/StarcraftBWAPI.html \u2014 #schnail-requirements li:nth-child(2)\n",
+      "links": [
+        "https://www.schnail.com/#/downloads"
+      ]
+    }
+  ],
+  "unitChecks": {
+    "passed": 39,
+    "total": 39,
+    "meaning": "Numerical training, synthetic structure and source contracts; not model accuracy"
+  },
+  "realBrowserControls": {
+    "passed": true,
+    "checks": [
+      {
+        "name": "reset: stale ask rejects with AbortError",
+        "passed": true,
+        "details": {
+          "settled": true,
+          "rejected": true,
+          "name": "AbortError",
+          "message": "Discarded an interpretation after the topic or settings changed."
+        }
+      },
+      {
+        "name": "reset: both histories remain empty",
+        "passed": true,
+        "details": {
+          "original": 0,
+          "proposed": 0
+        }
+      },
+      {
+        "name": "reset: no reply card resurrects",
+        "passed": true,
+        "details": {
+          "turns": 0
+        }
+      },
+      {
+        "name": "spoiler lowering: stale ask rejects with AbortError",
+        "passed": true,
+        "details": {
+          "settled": true,
+          "rejected": true,
+          "name": "AbortError",
+          "message": "Discarded an interpretation after the topic or settings changed."
+        }
+      },
+      {
+        "name": "spoiler lowering: both engine policies remain gentle",
+        "passed": true,
+        "details": {
+          "selected": "gentle",
+          "original": "gentle",
+          "proposed": "gentle"
+        }
+      },
+      {
+        "name": "spoiler lowering: both histories remain empty",
+        "passed": true,
+        "details": {
+          "original": 0,
+          "proposed": 0
+        }
+      },
+      {
+        "name": "spoiler lowering: no reply card resurrects",
+        "passed": true,
+        "details": {
+          "turns": 0
+        }
+      },
+      {
+        "name": "game selection: stale ask rejects with AbortError",
+        "passed": true,
+        "details": {
+          "settled": true,
+          "rejected": true,
+          "name": "AbortError",
+          "message": "Discarded an interpretation after the topic or settings changed."
+        }
+      },
+      {
+        "name": "game selection: selector matches the active StarCraft session",
+        "passed": true,
+        "details": {
+          "selected": "starcraft",
+          "active": "starcraft",
+          "selectionWaitMs": 10.099999999627471
+        }
+      },
+      {
+        "name": "game selection: both new histories remain empty",
+        "passed": true,
+        "details": {
+          "original": 0,
+          "proposed": 0
+        }
+      },
+      {
+        "name": "game selection: no old reply card resurrects",
+        "passed": true,
+        "details": {
+          "turns": 0
+        }
+      },
+      {
+        "name": "subject isolation: initial Iolo request establishes a sourced answer",
+        "passed": true,
+        "details": {
+          "status": "ready",
+          "modelIntent": "identity",
+          "routeOrigin": "model",
+          "entity": "Iolo",
+          "decision": "answer",
+          "recordIds": [
+            "ultima7:companion:iolo:explanation"
+          ],
+          "submittedToEngine": "Who is Iolo?",
+          "text": "Iolo: Fighter (Bard). Focus: Balanced archer. Joins automatically at the start. Party Builder choices are a plan, not evidence that this companion is currently in your party."
+        }
+      },
+      {
+        "name": "subject isolation: misspelled Duprae remains nonfactual pending clarification",
+        "passed": true,
+        "details": {
+          "status": "clarify",
+          "modelIntent": "identity",
+          "routeOrigin": "model",
+          "entity": null,
+          "decision": "clarify",
+          "recordIds": [],
+          "submittedToEngine": null,
+          "text": "Did you mean Dupre?"
+        }
+      },
+      {
+        "name": "subject isolation: unresolved pronoun cannot produce a factual answer",
+        "passed": true,
+        "details": {
+          "status": "clarify",
+          "modelIntent": "location",
+          "routeOrigin": "model",
+          "entity": null,
+          "decision": "clarify",
+          "recordIds": [],
+          "submittedToEngine": "Where is he?",
+          "text": "Which guide objective or named subject do you mean? Open its guide section or name it."
+        }
+      },
+      {
+        "name": "subject isolation: unresolved pronoun cannot reuse any Iolo record",
+        "passed": true,
+        "details": {
+          "status": "clarify",
+          "modelIntent": "location",
+          "routeOrigin": "model",
+          "entity": null,
+          "decision": "clarify",
+          "recordIds": [],
+          "submittedToEngine": "Where is he?",
+          "text": "Which guide objective or named subject do you mean? Open its guide section or name it."
+        }
+      },
+      {
+        "name": "subject isolation: an accepted explicit Dupre request restores its sourced answer",
+        "passed": true,
+        "details": {
+          "status": "ready",
+          "modelIntent": "identity",
+          "routeOrigin": "model",
+          "entity": "Dupre",
+          "decision": "answer",
+          "recordIds": [
+            "ultima7:companion:dupre:explanation"
+          ],
+          "submittedToEngine": "Who is Dupre?",
+          "text": "Dupre: Fighter (Paladin). Focus: Front-line anchor. The best front-line tank with the highest starting Strength. Party Builder choices are a plan, not evidence that this companion is currently in your party.",
+          "acceptedByRealModelRoute": true,
+          "condition": "Recovery answer is required when the real-model interpreter accepts the explicit request; this check does not manufacture a label."
+        }
+      }
+    ]
+  },
+  "preparationRetry": {
+    "injectedFailure": "Empty validation response during first preparation only",
+    "headUnpublishedAfterFailure": true,
+    "retrySucceeded": true
+  },
+  "browserBoundaries": {
+    "browser": "156.0.8078.47",
+    "browserAcceptanceComplete": true,
+    "storageUnchanged": true,
+    "blockedExternalRequests": [],
+    "pageErrors": [],
+    "consoleErrors": [],
+    "onlyStaticGets": true,
+    "sourceFilesUnchangedDuringRun": true
+  },
+  "sourceHashes": {
+    "guides/tests/assistant/intent-prototype/source-responses.test.mjs": "5197ff5360f41004593e4b42e547af9f93211c2c6bde5a154f1e9047bd3693a1",
+    "guides/tests/assistant/intent-prototype/interpreter.mjs": "f7c161960ad7a352a45804c24a4e874757e1e14fdb3228e461be80f867899e01",
+    "guides/tests/assistant/intent-prototype/classifier.mjs": "9e073c5227ea40a34d0c5e9914b73d3d1e83e7b4b9f55c2a1fb6c0a0be894162",
+    "guides/tests/assistant/intent-prototype/encoder.mjs": "23c10b180c23001ccdf6a47aac8a3292fab26ba627f483a74440446d9abd9e84",
+    "guides/tests/assistant/intent-prototype/source-responses.mjs": "900268d0dbd3cb7e5937a85d0dab9adf1c8587ed9e2b0abce2b9b931fd8f4ca4",
+    "guides/tests/assistant/intent-prototype/lab.mjs": "24cd3ee8f9382cb244a61ea42bef5779a0ccb2ac0d799c1107e9f8fc2f35cf58",
+    "guides/tests/assistant/intent-prototype/classifier.test.mjs": "082e20ee6c2ba38554b9d4b555b6a166172fc00080ed272edc0e40df02dd8ef2",
+    "guides/tests/assistant/intent-prototype/interpreter.test.mjs": "4c39e1870890a6bfcc2fe7902a925b3a6a18924b07917f276753297f2972b11d",
+    "guides/tests/assistant/intent-prototype/embedding-worker.mjs": "74ae0604dff285175fa6c52db35d09f3b7eb6189397efc4ffbe8781cfccbb13f",
+    "guides/tests/assistant/intent-prototype/lab-browser-checks.mjs": "512654f9473d5ea9fcc5172de1e099dd66394250328752b9d305e5ea6465f280",
+    "guides/tests/assistant/intent-prototype/export-ultima7-records.mjs": "689844135a0ed8a2ace257b9e95b71621a354fd0c73bc314c348132405b178c1",
+    "guides/tests/assistant/intent-prototype/cases/validation-v2.json": "e54d90a131fd9e1f36bd8467c377425bf0790bf63e392b95d0f3f7b5afc482f7",
+    "guides/tests/assistant/intent-prototype/cases/training-v2.json": "7b6de20db5751ea0d21dcfcacbe6dba1fdf787586a8e6f1af3a5e06ad618b6c8",
+    "guides/tests/assistant/intent-prototype/cases/validation.json": "0a88fd1626fb273deb40e3b7f209a950b2e2944f2b1657d552d0c8f7bb2228b7",
+    "guides/tests/assistant/intent-prototype/cases/followup-evaluation.json": "877827a32d23b0cd1cf0b20a6be30b9b42ab2174a32c453f2c183b833c5938c3",
+    "guides/tests/assistant/intent-prototype/cases/evaluation.json": "e7612087c82234a809011485110d9ee750a0c7a38f3027951b176df7a7c4df7f",
+    "guides/tests/assistant/intent-prototype/cases/training.json": "473f263180478f6bb509594a0fa25e4db375393776d9f45f2204045314a1d648",
+    "guides/js/assistant/ui.js": "e6740fe2ca415f4e55b71b183f053a0d627741f3252394a03640dce3c1b64005",
+    "guides/js/assistant/rules.js": "3c2edda7907d22a78d022abd9e1fded1ad70103056129325f44d2cc8be78ef74",
+    "guides/js/assistant/engine.js": "080da52cc6800abf2bfc31e29e7725dbca40cc0119b26c813479e8170a7aee13",
+    "guides/js/assistant/retrieval.js": "d40e3d699e419ccee015abbdfe1b901816629af3d0ded9d52f082476b906c7f3",
+    "guides/js/assistant/bootstrap.js": "36507c252a2cb1c74a56ce094f9dbf61221c813ff799a733d114bfc09acac51b",
+    "guides/js/assistant/fallback-guard.js": "8ac7766576c0fa39a9f8eb1d8130687f5dec2d93ed3793b1ab32a416502eb4dc",
+    "guides/js/assistant/consent.js": "f586ad8ab8fb34cf1e08f71115077f87c8df2ce146bf5a0cfb90b5f9712d5dee",
+    "guides/js/assistant/language.js": "f615ac045c6fae7e5ffea26f852c0c50b9985bd43a432d736c0c7948ebbb9e7e",
+    "guides/js/assistant/topics.js": "cae60c918f936d1429713f076420e32c1fc72a89d371b47f7b1958b81e852d39",
+    "guides/js/assistant/frame-tokens.js": "9f225b8d13b2082f45af7f1ec7ca5b56900733383537123d7dab05baa95f511b",
+    "guides/js/assistant/policy.js": "df44eea0b5eec7dae01deb0ab4c179873cb5f271ae1a3d87ed89a630cb87aec3",
+    "guides/js/assistant/model-runtime.js": "c6331135f75b3ab5f094e6b7020567b19f2b22286105dc51eba190917e98fdd1",
+    "guides/js/assistant/model-worker.js": "5f490d60ae8b991ae64d523d16c683d11a8995283353cfb534f0d3529ce0d6fc",
+    "guides/js/assistant/model-download.js": "1a9f1be1319d9219507a140e4eae6ad6ea2cbb348b19771c7261d1a52432a6a1",
+    "guides/js/assistant/fallback-context.js": "73c2638570035a73683cdd83b2eac5133d577892aef3613539ebb80c0481cb73",
+    "guides/js/assistant/adapters/ultima6.js": "761e8fd994e277a81e679c00d64458dabf7cbdba9dfe08286066f52d4dfa9c86",
+    "guides/js/assistant/adapters/ultima5.js": "c629bcd97dc4fab79f7b70e054de1e910434120ce0bb21e0fe8086200b4d2cdf",
+    "guides/js/assistant/adapters/ultima7.js": "cc0474d4a9571dbcce7349b91e144a79d0217c9fb1b9e2bf995e71a092dd7389",
+    "guides/js/assistant/adapters/starcraft.js": "352de741dd9bc2f293b3822c7e8429cb53aa798c66dcaf051fc3d4e3d0bbb37c",
+    "guides/js/assistant/adapters/albion.js": "2bc964d229c805afa38f85fcbd4322c9df43e09008de5d7de5d517fcd047c0be",
+    "guides/js/assistant/adapters/alqadim.js": "547e5694e3982a2d058a82f2a0e111c128748c22b6d5275a7588cf85b193c7c9",
+    "guides/StarcraftBWAPI.html": "5da1260744b5087846463044b60361921c11bc3d115962498c1863e44201b263",
+    "guides/Ultima7.html": "1ab4eb0852664fff8021e8ed32b1c55d7270ad846cf0cac4f15d54fb64e59ac1",
+    "guides/tests/assistant/intent-prototype/assets/profile.json": "eb254faf53e2a995d63cc72b4b26a1c8ecc34a5ea47ddc28d245e78bacdc2b1d"
+  },
+  "rawReportSha256": "c08f660d2d73763da46b3509194f78e9731525a5caf52c1d046a253bfdb5e04a",
+  "limitations": [
+    "Combined 65-turn behavior suite contains labelled known regressions and newly authored follow-ups; it is not blind accuracy.",
+    "Effective intent, raw learned modelIntent, deterministic exact-relation fallback and pending-confirmation routes are counted separately.",
+    "v1 48-question regression matches 40 labels under the v2 head; changing fitting data did not establish an across-the-board classifier gain.",
+    "Only 25/65 complete follow-up behaviors pass all source/entity/URL checks. Longer paraphrases, setup subtopics, documentation and specialized qualifiers remain incomplete.",
+    "Validation still selected zero score/margin thresholds; ranking scores do not provide calibrated uncertainty.",
+    "The first v2 run used stricter test-harness checks that incorrectly ignored visible research citation URLs and pending candidates; the integrated checker fixes are documented without modifying frozen expectations."
+  ]
+}

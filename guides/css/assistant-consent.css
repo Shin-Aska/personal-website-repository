@@ -11,3 +11,7 @@ html:not([data-guide-chat="ready"]) :is([data-guide-chat-surface],.walkthrough-a
 .ga-consent-buttons button:first-child{background:#2563eb}
 .ga-consent-buttons button:disabled{opacity:.6;cursor:wait}
 #guide-assistant-consent button:focus-visible,#guide-assistant-settings:focus-visible{outline:3px solid #fbbf24;outline-offset:3px}
+/* Close the conversation to return to settings; the floating button must not
+   cover the composer in a full-screen mobile guide dialog. */
+body.sage-chat-open #guide-assistant-settings,
+body.u6-seer-modal-open #guide-assistant-settings { visibility: hidden; pointer-events: none; }

@@ -1,4 +1,4 @@
-import { createAssistant } from '../engine.js';
+import { createGuideAssistant } from '../guide-assistant.js';
 import { buildNarrativeRecords, buildResearchRecords, buildTopicRecords, factMap } from '../topics.js';
 
 const slug = text => String(text).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
@@ -295,6 +295,6 @@ export async function createAlbionAssistant({ DB, questLog, questHints, tradeHin
     const response = await fetch(new URL('../../../data/assistant/albion.json', import.meta.url));
     if (!response.ok) throw new Error('Local Albion knowledge could not be loaded.');
     const overlay = await response.json();
-    return createAssistant({ gameId: 'albion', records: buildAlbionRecords({ DB, questLog, questHints, tradeHints, movements, atlas, overlay }),
+    return createGuideAssistant({ gameId: 'albion', records: buildAlbionRecords({ DB, questLog, questHints, tradeHints, movements, atlas, overlay }),
         getProgress: () => importAlbionProgress(questLog, getQuestState()) });
 }

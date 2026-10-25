@@ -2446,7 +2446,7 @@ function ensureAlbionAssistant() {
             messages: document.getElementById('walkthrough-ai-body'),
             input: document.getElementById('walkthrough-ai-input'),
             sendButton: document.getElementById('walkthrough-ai-send'), bindEvents: false,
-            getContext: () => ({ contextId: walkthroughAiActiveChapterId || 'default', tone: 'terminal',
+            getContext: () => ({ contextId: walkthroughAiActiveChapterId || 'default', spoiler: 'direct', tone: 'terminal',
                 label: DB.chapters.find(chapter => chapter.id === walkthroughAiActiveChapterId)?.title }),
             actions: { 'albion:map:beegle': () => openWalkthroughAtlasStop('toronto-intro', 2) }
         });

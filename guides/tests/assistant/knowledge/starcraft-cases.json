@@ -1,0 +1,2499 @@
+{
+  "schemaVersion": 1,
+  "gameId": "starcraft",
+  "reviewedAt": "2026-10-24",
+  "review": "Oracles authored from reviewed HTML excerpts, current source snapshots and primary repository/maintainer documents before runtime replay. Fact IDs are fixed source expectations, not values derived from answers. Direct/full chat; technical setup domain substitutes installation goals and component relationships for campaign quests. Short follow-ups retain their explicitly introduced subject; explicit tool names switch subject. Negative answers require non-answer rather than unrelated product assertions.",
+  "basis": [
+    "guides/StarcraftBWAPI.html",
+    "guides/tests/assistant/evidence/conversation-starcraft-source-records.json",
+    "guides/data/assistant/knowledge/starcraft.json",
+    "docs/assistant-knowledge/starcraft.md"
+  ],
+  "dialogues": [
+    {
+      "id": "starcraft-knowledge-prerequisites",
+      "review": "SCHNAIL prerequisites and Java links; follow-up must retain SCHNAIL.",
+      "spoiler": "direct",
+      "turns": [
+        {
+          "text": "What does SCHNAIL stand for?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Starcraft Human and AI League"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:schnail-identity"
+            ],
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#schnail-requirements li:nth-child(1)"
+            }
+          }
+        },
+        {
+          "text": "Do I need an account for it?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "requires account"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:schnail-account",
+              "starcraft:knowledge:schnail-download"
+            ],
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#schnail-requirements li:nth-child(2)"
+            }
+          }
+        },
+        {
+          "text": "What Java does it need?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Java JRE",
+              "JDK 21 LTS"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:schnail-java"
+            ],
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#schnail-setup ol > li:nth-child(4)"
+            }
+          }
+        },
+        {
+          "text": "Where is its client download?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "downloads page",
+              "requires account"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:schnail-download",
+              "starcraft:knowledge:schnail-account"
+            ],
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#schnail-requirements li:nth-child(2)"
+            }
+          }
+        },
+        {
+          "text": "What exact SCHNAIL release number is available today?",
+          "expected": {
+            "decision": "not-answer",
+            "notContains": []
+          }
+        }
+      ]
+    },
+    {
+      "id": "starcraft-knowledge-network",
+      "review": "Initial login versus local gameplay, not a claim of first-time disconnected setup.",
+      "spoiler": "direct",
+      "turns": [
+        {
+          "text": "Can SCHNAIL play without an ongoing internet connection?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "initial client login",
+              "local network"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:schnail-network"
+            ],
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#troubleshooting .text-yellow-700"
+            }
+          }
+        },
+        {
+          "text": "Where do I log in to the client?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Launch the SCHNAIL client",
+              "credentials"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:schnail-client-login"
+            ],
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#schnail-setup ol > li:nth-child(6)"
+            }
+          }
+        },
+        {
+          "text": "What does it do with game files?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "automatically download and set up"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:schnail-game-files"
+            ],
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#schnail-setup ol > li:nth-child(7)"
+            }
+          }
+        },
+        {
+          "text": "Can I register a new SCHNAIL account while completely disconnected?",
+          "expected": {
+            "decision": "not-answer",
+            "notContains": []
+          }
+        }
+      ]
+    },
+    {
+      "id": "starcraft-knowledge-java",
+      "review": "SCHNAIL Java requirement is separate from PurpleWave runtime.",
+      "spoiler": "direct",
+      "turns": [
+        {
+          "text": "Where do I get Liberica Java for SCHNAIL?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Java JRE",
+              "bell-sw.com"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:java-link"
+            ],
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#schnail-requirements li:nth-child(3)"
+            }
+          }
+        },
+        {
+          "text": "Which Java release does SCHNAIL recommend?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "JDK 21 LTS"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:schnail-java"
+            ],
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#schnail-setup ol > li:nth-child(4)"
+            }
+          }
+        },
+        {
+          "text": "Does PurpleWave use the same Java runtime?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "32-bit JDK 8",
+              "32-bit BWAPI",
+              "SCHNAIL"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:purplewave-java"
+            ],
+            "source": {
+              "file": "guides/data/assistant/knowledge/starcraft.json",
+              "locator": "facts[61]"
+            }
+          }
+        },
+        {
+          "text": "Does the guide guarantee Java 21 is correct for every StarCraft bot?",
+          "expected": {
+            "decision": "not-answer",
+            "notContains": []
+          }
+        }
+      ]
+    },
+    {
+      "id": "starcraft-knowledge-supplied-game",
+      "review": "SCHNAIL supplied game contrasted with separately installed launcher game.",
+      "spoiler": "direct",
+      "turns": [
+        {
+          "text": "Does SCHNAIL need a separate Brood War installation?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "includes its own version",
+              "don't need to install"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:schnail-own-game"
+            ],
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#schnail-setup .text-blue-700"
+            }
+          }
+        },
+        {
+          "text": "How do I install it?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Register an account",
+              "Download and install Java JRE",
+              "Launch the SCHNAIL client"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:schnail-install"
+            ],
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#schnail-setup ol"
+            }
+          }
+        },
+        {
+          "text": "What about the BWAILauncher game installation?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "1.16.1",
+              "conflict"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:bwai-conflict"
+            ],
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#bwai-requirements ol; #bwai-setup .text-yellow-700"
+            }
+          }
+        },
+        {
+          "text": "Does owning SCHNAIL license every commercial StarCraft edition?",
+          "expected": {
+            "decision": "not-answer",
+            "notContains": []
+          }
+        }
+      ]
+    },
+    {
+      "id": "starcraft-knowledge-first-launch",
+      "review": "Hedged source explanation and topic continuation; no invented timeout.",
+      "spoiler": "direct",
+      "turns": [
+        {
+          "text": "Why does SCHNAIL take time on first launch?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "might take some time",
+              "downloads necessary game files"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:schnail-first-launch"
+            ],
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#getting-started > .bg-blue-50 .text-blue-700"
+            }
+          }
+        },
+        {
+          "text": "Who sets those game files up?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "client will automatically download"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:schnail-game-files"
+            ],
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#schnail-setup ol > li:nth-child(7)"
+            }
+          }
+        },
+        {
+          "text": "Does it still need internet during gameplay after login?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "local network",
+              "no ongoing internet requirement"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:schnail-network"
+            ],
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#troubleshooting .text-yellow-700"
+            }
+          }
+        },
+        {
+          "text": "Exactly how many minutes will that first download take?",
+          "expected": {
+            "decision": "not-answer",
+            "notContains": []
+          }
+        }
+      ]
+    },
+    {
+      "id": "starcraft-knowledge-features",
+      "review": "Actual key features versus unsupported matchmaking formula.",
+      "spoiler": "direct",
+      "turns": [
+        {
+          "text": "Does SCHNAIL update the game or just the client?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "both client and game"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:schnail-updates"
+            ],
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#schnail-setup ul > li:nth-child(2)"
+            }
+          }
+        },
+        {
+          "text": "Does it have matchmaking?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Integrated matchmaking"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:schnail-matchmaking"
+            ],
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#schnail-setup ul > li:nth-child(3)"
+            }
+          }
+        },
+        {
+          "text": "What strengths does the guide list for SCHNAIL?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "micro and macro",
+              "Active community"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:schnail-strengths"
+            ],
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#getting-started .grid > div:nth-child(1) .pros-cons"
+            }
+          }
+        },
+        {
+          "text": "What exact Elo formula does SCHNAIL matchmaking use?",
+          "expected": {
+            "decision": "not-answer",
+            "notContains": []
+          }
+        }
+      ]
+    },
+    {
+      "id": "starcraft-knowledge-antivirus",
+      "review": "Guide troubleshooting does not certify safety or authenticity.",
+      "spoiler": "direct",
+      "turns": [
+        {
+          "text": "My antivirus quarantined SCHNAIL; what checks does the guide give?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "quarantine",
+              "installation directory"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:schnail-antivirus"
+            ],
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#troubleshooting .space-y-4 > div:nth-child(1)"
+            }
+          }
+        },
+        {
+          "text": "Where can I get support for this client?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "SCHNAIL Discord Server"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:schnail-support",
+              "starcraft:knowledge:launch-crash"
+            ],
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#troubleshooting .space-y-4 > div:nth-child(2)"
+            }
+          }
+        },
+        {
+          "text": "Where are its docs?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "SCHNAIL Documentation"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:schnail-docs"
+            ],
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#resources .grid > div:nth-child(1) li:nth-child(3)"
+            }
+          }
+        },
+        {
+          "text": "Can you guarantee my SCHNAIL executable is malware-free?",
+          "expected": {
+            "decision": "not-answer",
+            "notContains": [
+              "guaranteed safe"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "starcraft-knowledge-support-links",
+      "review": "Support, documentation, and download purposes stay separate.",
+      "spoiler": "direct",
+      "turns": [
+        {
+          "text": "Which support server is linked for SCHNAIL?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "SCHNAIL Discord Server"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:schnail-support",
+              "starcraft:knowledge:launch-crash"
+            ],
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#troubleshooting .space-y-4 > div:nth-child(2)"
+            }
+          }
+        },
+        {
+          "text": "Does SCHNAIL have a documentation page?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "SCHNAIL Documentation"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:schnail-docs"
+            ],
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#resources .grid > div:nth-child(1) li:nth-child(3)"
+            }
+          }
+        },
+        {
+          "text": "Where is SCHNAIL downloaded?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "downloads page",
+              "account"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:schnail-download",
+              "starcraft:knowledge:schnail-account"
+            ],
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#schnail-requirements li:nth-child(2)"
+            }
+          }
+        },
+        {
+          "text": "Are those invite codes guaranteed to work forever?",
+          "expected": {
+            "decision": "not-answer",
+            "notContains": []
+          }
+        }
+      ]
+    },
+    {
+      "id": "starcraft-knowledge-bwai-purpose",
+      "review": "Launcher purpose and boundaries in the guide.",
+      "spoiler": "direct",
+      "turns": [
+        {
+          "text": "What is BWAILauncher used for?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "replaces the standard AI",
+              "single-player mode"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:bwai-identity",
+              "starcraft:knowledge:bwai-single-player"
+            ],
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#bwai-setup h4:nth-of-type(3) + ul > li:first-child"
+            }
+          }
+        },
+        {
+          "text": "Does it need an internet connection?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "No internet connection required",
+              "offline play"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:bwai-offline"
+            ],
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#getting-started .grid > div:nth-child(2) .pros-cons ul.mb-3"
+            }
+          }
+        },
+        {
+          "text": "Where is its repository?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "GitHub"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:bwai-download"
+            ],
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#bwai-setup ol > li:nth-child(2)"
+            }
+          }
+        },
+        {
+          "text": "Can I use BWAILauncher in official ranked Battle.net matches?",
+          "expected": {
+            "decision": "not-answer",
+            "notContains": []
+          }
+        }
+      ]
+    },
+    {
+      "id": "starcraft-knowledge-bwai-compatibility",
+      "review": "Never certify the known guide conflict as compatibility.",
+      "spoiler": "direct",
+      "turns": [
+        {
+          "text": "Does BWAILauncher support StarCraft Remastered?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "1.16.1",
+              "conflict",
+              "cannot confirm"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:bwai-conflict"
+            ],
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#bwai-requirements ol; #bwai-setup .text-yellow-700"
+            }
+          }
+        },
+        {
+          "text": "Which map method works directly with Remastered?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Works directly with StarCraft Remastered",
+              "No external launcher required"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:map-launcher",
+              "starcraft:knowledge:map-limitations"
+            ],
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#getting-started .grid > div:nth-child(3) .pros-cons"
+            }
+          }
+        },
+        {
+          "text": "So has BWAILauncher Remastered compatibility been established?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "conflict",
+              "cannot confirm"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:bwai-conflict"
+            ],
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#bwai-requirements ol; #bwai-setup .text-yellow-700"
+            }
+          }
+        },
+        {
+          "text": "Give me a verified BWAILauncher support matrix for every Remastered patch.",
+          "expected": {
+            "decision": "not-answer",
+            "notContains": []
+          }
+        }
+      ]
+    },
+    {
+      "id": "starcraft-knowledge-bwai-installation",
+      "review": "Launcher extraction and executable steps, not map directory.",
+      "spoiler": "direct",
+      "turns": [
+        {
+          "text": "How do I install BWAILauncher for 1.16.1?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "1.16.1",
+              "installation directory",
+              "BWAILauncher.exe"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:bwai-install"
+            ],
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#bwai-setup ol"
+            }
+          }
+        },
+        {
+          "text": "Where do I extract it?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "installation directory"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:bwai-directory"
+            ],
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#bwai-setup ol > li:nth-child(3)"
+            }
+          }
+        },
+        {
+          "text": "Which executable do I run?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "BWAILauncher.exe"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:bwai-executable"
+            ],
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#bwai-setup ol > li:nth-child(4)"
+            }
+          }
+        },
+        {
+          "text": "What if it cannot detect Starcraft.exe?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Game",
+              "Paths",
+              "Save the settings and restart"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:bwai-detection"
+            ],
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#bwai-setup ol > li:nth-child(5)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "starcraft-knowledge-bwai-detection",
+      "review": "True pronoun troubleshooting chain retains launcher context.",
+      "spoiler": "direct",
+      "turns": [
+        {
+          "text": "BWAILauncher doesn't detect my game. What should I do?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "settings/configuration",
+              "Starcraft.exe"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:bwai-detection"
+            ],
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#bwai-setup ol > li:nth-child(5)"
+            }
+          }
+        },
+        {
+          "text": "Which file should I select?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Starcraft.exe"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:bwai-detection"
+            ],
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#bwai-setup ol > li:nth-child(5)"
+            }
+          }
+        },
+        {
+          "text": "What do I do after saving the settings?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "restart the launcher"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:bwai-detection"
+            ],
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#bwai-setup ol > li:nth-child(5)"
+            }
+          }
+        },
+        {
+          "text": "Which registry key must I edit to repair that launcher detection?",
+          "expected": {
+            "decision": "not-answer",
+            "notContains": []
+          }
+        }
+      ]
+    },
+    {
+      "id": "starcraft-knowledge-portable",
+      "review": "Portable settings and same-folder executable requirement.",
+      "spoiler": "direct",
+      "turns": [
+        {
+          "text": "How does BWAILauncher work with portable StarCraft?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "portable Starcraft directory",
+              "Starcraft.exe"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:bwai-portable"
+            ],
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#bwai-setup ul.mb-4"
+            }
+          }
+        },
+        {
+          "text": "Where are its settings saved?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "same folder"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:bwai-portable"
+            ],
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#bwai-setup ul.mb-4"
+            }
+          }
+        },
+        {
+          "text": "Do I point it at the executable in that directory?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "same directory"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:bwai-portable"
+            ],
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#bwai-setup ul.mb-4"
+            }
+          }
+        },
+        {
+          "text": "Does the guide give a Linux portable BWAILauncher command?",
+          "expected": {
+            "decision": "not-answer",
+            "notContains": []
+          }
+        }
+      ]
+    },
+    {
+      "id": "starcraft-knowledge-offline-comparison",
+      "review": "Tool-specific connectivity and strength comparison.",
+      "spoiler": "direct",
+      "turns": [
+        {
+          "text": "Which offline benefit does BWAILauncher offer?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "No internet connection required"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:bwai-offline"
+            ],
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#getting-started .grid > div:nth-child(2) .pros-cons ul.mb-3"
+            }
+          }
+        },
+        {
+          "text": "How is the SCHNAIL internet requirement different?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "initial client login",
+              "local network"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:schnail-network"
+            ],
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#troubleshooting .text-yellow-700"
+            }
+          }
+        },
+        {
+          "text": "What micro limitations does BWAILauncher have?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "standard AI micro",
+              "Limited strategic depth compared to SCHNAIL"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:bwai-limitations"
+            ],
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#getting-started .grid > div:nth-child(2) .pros-cons"
+            }
+          }
+        },
+        {
+          "text": "Which bot is universally strongest and safest today?",
+          "expected": {
+            "decision": "not-answer",
+            "notContains": []
+          }
+        }
+      ]
+    },
+    {
+      "id": "starcraft-knowledge-difficulty",
+      "review": "Difficulty settings documented without invented control names.",
+      "spoiler": "direct",
+      "turns": [
+        {
+          "text": "How should I choose BWAILauncher difficulty?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Try different difficulty settings"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:bwai-difficulty"
+            ],
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#bwai-setup h4:nth-of-type(3) + ul > li:nth-child(3)"
+            }
+          }
+        },
+        {
+          "text": "Does it replace single-player AI?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "replaces the standard AI",
+              "single-player mode"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:bwai-single-player",
+              "starcraft:knowledge:bwai-identity"
+            ],
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#bwai-setup h4:nth-of-type(3) + ul > li:first-child"
+            }
+          }
+        },
+        {
+          "text": "What are the downsides of that AI?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Less realistic AI behavior",
+              "standard AI micro"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:bwai-limitations"
+            ],
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#getting-started .grid > div:nth-child(2) .pros-cons"
+            }
+          }
+        },
+        {
+          "text": "What exact difficulty number guarantees an even match for 1800 MMR?",
+          "expected": {
+            "decision": "not-answer",
+            "notContains": []
+          }
+        }
+      ]
+    },
+    {
+      "id": "starcraft-knowledge-map-identity",
+      "review": "Native Remastered map is distinct from developer framework.",
+      "spoiler": "direct",
+      "turns": [
+        {
+          "text": "What is the Remastered SCM map method?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "works natively with StarCraft Remastered",
+              "without needing version downgrades"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:map-identity"
+            ],
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#remastered-setup .text-blue-700"
+            }
+          }
+        },
+        {
+          "text": "What do I need for it?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Install StarCraft Remastered",
+              "SCM map"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:map-requirements"
+            ],
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#remastered-requirements ol"
+            }
+          }
+        },
+        {
+          "text": "Where do I download its archive?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Proton Drive",
+              "Direct Download"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:map-download"
+            ],
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#remastered-setup ol > li:nth-child(2)"
+            }
+          }
+        },
+        {
+          "text": "Does this map install every BWAPI tournament bot into Remastered?",
+          "expected": {
+            "decision": "not-answer",
+            "notContains": []
+          }
+        }
+      ]
+    },
+    {
+      "id": "starcraft-knowledge-map-installation",
+      "review": "Archive folder, menu and required mode in sequence.",
+      "spoiler": "direct",
+      "turns": [
+        {
+          "text": "How do I set up the Remastered SCM map?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "maps folder",
+              "Custom Game",
+              "Use Map Settings"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:map-setup"
+            ],
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#remastered-setup ol"
+            }
+          }
+        },
+        {
+          "text": "Where do I extract it?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Documents\\StarCraft\\Maps"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:map-folder"
+            ],
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#remastered-setup ol > li:nth-child(3)"
+            }
+          }
+        },
+        {
+          "text": "Which menu do I open?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Single Player",
+              "Custom Game"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:map-menu"
+            ],
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#remastered-setup ol > li:nth-child(5)"
+            }
+          }
+        },
+        {
+          "text": "What Game Type should I choose?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Use Map Settings",
+              "standard Melee"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:map-game-type"
+            ],
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#remastered-setup ol > li:nth-child(7)"
+            }
+          }
+        },
+        {
+          "text": "What is the exact macOS Maps directory for this installation?",
+          "expected": {
+            "decision": "not-answer",
+            "notContains": []
+          }
+        }
+      ]
+    },
+    {
+      "id": "starcraft-knowledge-map-mode",
+      "review": "UMS versus Melee is explicit; no arbitrary mode extrapolation.",
+      "spoiler": "direct",
+      "turns": [
+        {
+          "text": "Why is the advanced AI wrong in a standard Melee game?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Use Map Settings",
+              "will not function properly"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:map-game-type"
+            ],
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#remastered-setup ol > li:nth-child(7)"
+            }
+          }
+        },
+        {
+          "text": "Which mode should I use instead?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Use Map Settings"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:map-game-type"
+            ],
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#remastered-setup ol > li:nth-child(7)"
+            }
+          }
+        },
+        {
+          "text": "Can the map method use arbitrary maps?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Limited to the provided integrated maps"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:map-limitations",
+              "starcraft:knowledge:map-launcher"
+            ],
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#getting-started .grid > div:nth-child(3) .pros-cons"
+            }
+          }
+        },
+        {
+          "text": "Does Use Map Settings let me use every custom bot on any ladder map?",
+          "expected": {
+            "decision": "not-answer",
+            "notContains": []
+          }
+        }
+      ]
+    },
+    {
+      "id": "starcraft-knowledge-map-limits",
+      "review": "Launcher-free convenience does not imply API-wide support.",
+      "spoiler": "direct",
+      "turns": [
+        {
+          "text": "Does the Remastered map need an external launcher?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "No external launcher required"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:map-launcher",
+              "starcraft:knowledge:map-limitations"
+            ],
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#getting-started .grid > div:nth-child(3) .pros-cons"
+            }
+          }
+        },
+        {
+          "text": "What are its restrictions?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Use Map Settings",
+              "provided integrated maps"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:map-limitations",
+              "starcraft:knowledge:map-launcher"
+            ],
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#getting-started .grid > div:nth-child(3) .pros-cons"
+            }
+          }
+        },
+        {
+          "text": "Does BWAPI’s own developer quick start target Remastered?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "1.16.1",
+              "does not certify"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:bwapi-1161"
+            ],
+            "source": {
+              "file": "guides/data/assistant/knowledge/starcraft.json",
+              "locator": "facts[49]"
+            }
+          }
+        },
+        {
+          "text": "Can you certify native Remastered support for all BWAPI 4.4.0 DLLs?",
+          "expected": {
+            "decision": "not-answer",
+            "notContains": []
+          }
+        }
+      ]
+    },
+    {
+      "id": "starcraft-knowledge-cross-tool-folders",
+      "review": "Explicit tool switches must reset installation locations.",
+      "spoiler": "direct",
+      "turns": [
+        {
+          "text": "What three advanced AI solutions does the guide compare?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "SCHNAIL",
+              "BWAILauncher",
+              "Remastered SCM Map"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:options-comparison"
+            ],
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#getting-started .grid"
+            }
+          }
+        },
+        {
+          "text": "Where do BWAILauncher files go?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Brood War installation directory"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:bwai-directory"
+            ],
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#bwai-setup ol > li:nth-child(3)"
+            }
+          }
+        },
+        {
+          "text": "Where do Remastered SCM map files go?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "StarCraft maps folder",
+              "Documents"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:map-folder"
+            ],
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#remastered-setup ol > li:nth-child(3)"
+            }
+          }
+        },
+        {
+          "text": "Where does Steamhammer’s binary configuration go?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "bwapi-data/AI",
+              "4.4.0"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:steamhammer-config"
+            ],
+            "source": {
+              "file": "guides/data/assistant/knowledge/starcraft.json",
+              "locator": "facts[68]"
+            }
+          }
+        },
+        {
+          "text": "Where does PurpleWave run its JAR?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "StarCraft directory",
+              "bwapi-data/read"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:purplewave-working-folder"
+            ],
+            "source": {
+              "file": "guides/data/assistant/knowledge/starcraft.json",
+              "locator": "facts[63]"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "starcraft-knowledge-crashes",
+      "review": "General source checks cannot diagnose a made-up error.",
+      "spoiler": "direct",
+      "turns": [
+        {
+          "text": "The game crashes when starting; what should I check?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "graphics drivers",
+              "compatibility mode",
+              "minimum requirements"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:launch-crash",
+              "starcraft:knowledge:schnail-support"
+            ],
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#troubleshooting .space-y-4 > div:nth-child(2)"
+            }
+          }
+        },
+        {
+          "text": "Where can I ask the SCHNAIL community?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "SCHNAIL Discord Server"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:schnail-support",
+              "starcraft:knowledge:launch-crash"
+            ],
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#troubleshooting .space-y-4 > div:nth-child(2)"
+            }
+          }
+        },
+        {
+          "text": "Where can I look for BWAPI load errors?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "console output"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:bwapi-loading-console"
+            ],
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#bwapi-loading-checks li:nth-child(3)"
+            }
+          }
+        },
+        {
+          "text": "What exact fix does error SC-XYZZY-742 require?",
+          "expected": {
+            "decision": "not-answer",
+            "notContains": []
+          }
+        }
+      ]
+    },
+    {
+      "id": "starcraft-knowledge-bwapi-load",
+      "review": "Specific diagnostic facets retain scope across follow-ups.",
+      "spoiler": "direct",
+      "turns": [
+        {
+          "text": "BWAPI is not loading. What version check should I make?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "compatible version",
+              "version-specific instructions"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:bwapi-loading-version"
+            ],
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#bwapi-loading-checks ul"
+            }
+          }
+        },
+        {
+          "text": "What files should I check next?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "correct directories"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:bwapi-loading-files"
+            ],
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#bwapi-loading-checks li:nth-child(2)"
+            }
+          }
+        },
+        {
+          "text": "Where do I look for error messages?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "console output"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:bwapi-loading-console"
+            ],
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#bwapi-loading-checks li:nth-child(3)"
+            }
+          }
+        },
+        {
+          "text": "Where is the BWAPI wiki?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "BWAPI Wiki"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:bwapi-docs"
+            ],
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#resources .grid > div:nth-child(1)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "starcraft-knowledge-documentation",
+      "review": "Three documentation destinations with distinct subject labels.",
+      "spoiler": "direct",
+      "turns": [
+        {
+          "text": "What documentation links does the page list for BWAPI?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "BWAPI Official Documentation",
+              "BWAPI Wiki"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:bwapi-docs"
+            ],
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#resources .grid > div:nth-child(1)"
+            }
+          }
+        },
+        {
+          "text": "What about SCHNAIL documentation?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "SCHNAIL Documentation"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:schnail-docs"
+            ],
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#resources .grid > div:nth-child(1) li:nth-child(3)"
+            }
+          }
+        },
+        {
+          "text": "Where is UAlbertaBot configuration documented?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "configuration",
+              "worker allocation"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:ualberta-docs"
+            ],
+            "source": {
+              "file": "guides/data/assistant/knowledge/starcraft.json",
+              "locator": "facts[59]"
+            }
+          }
+        },
+        {
+          "text": "Does the page include an official Blizzard certification of these clients?",
+          "expected": {
+            "decision": "not-answer",
+            "notContains": []
+          }
+        }
+      ]
+    },
+    {
+      "id": "starcraft-knowledge-communities",
+      "review": "Support/community link purposes and server distinction.",
+      "spoiler": "direct",
+      "turns": [
+        {
+          "text": "Where do I ask BWAPI community questions?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "BWAPI GitHub Discussions"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:bwapi-community"
+            ],
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#resources .grid > div:nth-child(2) li:nth-child(1)"
+            }
+          }
+        },
+        {
+          "text": "Which subreddit is listed?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "r/broodwar"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:broodwar-community"
+            ],
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#resources .grid > div:nth-child(2) li:nth-child(2)"
+            }
+          }
+        },
+        {
+          "text": "Which StarCraft AI Discord is listed in Additional Resources?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Starcraft AI Discord"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:ai-discord"
+            ],
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#resources .grid > div:nth-child(2) li:nth-child(3)"
+            }
+          }
+        },
+        {
+          "text": "Which separate Discord supports SCHNAIL?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "SCHNAIL Discord Server"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:schnail-support",
+              "starcraft:knowledge:launch-crash"
+            ],
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#troubleshooting .space-y-4 > div:nth-child(2)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "starcraft-knowledge-bot-examples",
+      "review": "Bot examples and attributed lineage, not client inclusion.",
+      "spoiler": "direct",
+      "turns": [
+        {
+          "text": "What open-source bot examples does the guide list?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Steamhammer",
+              "UAlbertaBot"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:example-bots"
+            ],
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#resources .space-y-8 > div:nth-child(2)"
+            }
+          }
+        },
+        {
+          "text": "What is UAlbertaBot?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "David Churchill",
+              "competition bot"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:ualberta-identity"
+            ],
+            "source": {
+              "file": "guides/data/assistant/knowledge/starcraft.json",
+              "locator": "facts[53]"
+            }
+          }
+        },
+        {
+          "text": "How is Steamhammer related to it?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "descended",
+              "UAlbertaBot"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:steamhammer-identity"
+            ],
+            "source": {
+              "file": "guides/data/assistant/knowledge/starcraft.json",
+              "locator": "facts[65]"
+            }
+          }
+        },
+        {
+          "text": "Are those bots guaranteed to be bundled with every SCHNAIL client release?",
+          "expected": {
+            "decision": "not-answer",
+            "notContains": []
+          }
+        }
+      ]
+    },
+    {
+      "id": "starcraft-knowledge-bwapi-developer",
+      "review": "Primary-source SDK versus map and client download.",
+      "spoiler": "direct",
+      "turns": [
+        {
+          "text": "What is BWAPI?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "C++ framework",
+              "programming API"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:bwapi-identity"
+            ],
+            "source": {
+              "file": "guides/data/assistant/knowledge/starcraft.json",
+              "locator": "facts[48]"
+            }
+          }
+        },
+        {
+          "text": "Where can I get the developer release?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "GitHub Releases",
+              "SCM map archive"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:bwapi-releases"
+            ],
+            "source": {
+              "file": "guides/data/assistant/knowledge/starcraft.json",
+              "locator": "facts[52]"
+            }
+          }
+        },
+        {
+          "text": "How does the developer example launch?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "ExampleAIModule.dll",
+              "Chaoslauncher",
+              "release injector"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:bwapi-chaoslauncher"
+            ],
+            "source": {
+              "file": "guides/data/assistant/knowledge/starcraft.json",
+              "locator": "facts[50]"
+            }
+          }
+        },
+        {
+          "text": "Which Brood War version does that quick start specify?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "1.16.1"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:bwapi-1161"
+            ],
+            "source": {
+              "file": "guides/data/assistant/knowledge/starcraft.json",
+              "locator": "facts[49]"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "starcraft-knowledge-bwapi-defaults",
+      "review": "Defaults remain qualified; no every-bot non-cheating guarantee.",
+      "spoiler": "direct",
+      "turns": [
+        {
+          "text": "Does BWAPI let bots see units outside visible state by default?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "normally hides",
+              "Changed defaults"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:bwapi-visibility"
+            ],
+            "source": {
+              "file": "guides/data/assistant/knowledge/starcraft.json",
+              "locator": "facts[51]"
+            }
+          }
+        },
+        {
+          "text": "Can those defaults be changed?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Changed defaults",
+              "not a guarantee"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:bwapi-visibility"
+            ],
+            "source": {
+              "file": "guides/data/assistant/knowledge/starcraft.json",
+              "locator": "facts[51]"
+            }
+          }
+        },
+        {
+          "text": "Is the API itself a packaged opponent client?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "programming API",
+              "not a prepackaged opponent"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:bwapi-identity"
+            ],
+            "source": {
+              "file": "guides/data/assistant/knowledge/starcraft.json",
+              "locator": "facts[48]"
+            }
+          }
+        },
+        {
+          "text": "Can you prove that every downloadable BWAPI bot never cheats?",
+          "expected": {
+            "decision": "not-answer",
+            "notContains": []
+          }
+        }
+      ]
+    },
+    {
+      "id": "starcraft-knowledge-ualberta-authorship",
+      "review": "Conflicting guide attribution is not repeated as settled truth.",
+      "spoiler": "direct",
+      "turns": [
+        {
+          "text": "Who wrote UAlbertaBot?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "David Churchill",
+              "Steve Gelly",
+              "do not establish"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:ualberta-creator"
+            ],
+            "source": {
+              "file": "guides/data/assistant/knowledge/starcraft.json",
+              "locator": "facts[54]"
+            }
+          }
+        },
+        {
+          "text": "Is it actively maintained?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "not been actively maintained since early 2021"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:ualberta-maintenance"
+            ],
+            "source": {
+              "file": "guides/data/assistant/knowledge/starcraft.json",
+              "locator": "facts[57]"
+            }
+          }
+        },
+        {
+          "text": "Where can I read its architecture documentation?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "architecture",
+              "configuration"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:ualberta-docs"
+            ],
+            "source": {
+              "file": "guides/data/assistant/knowledge/starcraft.json",
+              "locator": "facts[59]"
+            }
+          }
+        },
+        {
+          "text": "What release is UAlbertaBot guaranteed to ship next month?",
+          "expected": {
+            "decision": "not-answer",
+            "notContains": []
+          }
+        }
+      ]
+    },
+    {
+      "id": "starcraft-knowledge-ualberta-runtime",
+      "review": "Historical developer versions and one-game client limitation.",
+      "spoiler": "direct",
+      "turns": [
+        {
+          "text": "Which developer versions does UAlbertaBot document?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "VS2019",
+              "BWAPI 4.4.0"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:ualberta-version"
+            ],
+            "source": {
+              "file": "guides/data/assistant/knowledge/starcraft.json",
+              "locator": "facts[55]"
+            }
+          }
+        },
+        {
+          "text": "Does it use a module DLL or a client executable?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "client EXE",
+              "instead of a module DLL"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:ualberta-client"
+            ],
+            "source": {
+              "file": "guides/data/assistant/knowledge/starcraft.json",
+              "locator": "facts[56]"
+            }
+          }
+        },
+        {
+          "text": "Why might its AUTO_RESTART fail after a game?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "first game",
+              "AUTO_RESTART"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:ualberta-client"
+            ],
+            "source": {
+              "file": "guides/data/assistant/knowledge/starcraft.json",
+              "locator": "facts[56]"
+            }
+          }
+        },
+        {
+          "text": "Will the unmodified historical UAlbertaBot build definitely compile on every current compiler?",
+          "expected": {
+            "decision": "not-answer",
+            "notContains": []
+          }
+        }
+      ]
+    },
+    {
+      "id": "starcraft-knowledge-ualberta-components",
+      "review": "Actual bot component relations supply structured breadth.",
+      "spoiler": "direct",
+      "turns": [
+        {
+          "text": "What does UAlbertaBot use for combat simulation?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "SparCraft",
+              "combat simulator"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:ualberta-components"
+            ],
+            "source": {
+              "file": "guides/data/assistant/knowledge/starcraft.json",
+              "locator": "facts[58]"
+            }
+          }
+        },
+        {
+          "text": "What plans its build orders?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "BOSS",
+              "build-order search"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:ualberta-components"
+            ],
+            "source": {
+              "file": "guides/data/assistant/knowledge/starcraft.json",
+              "locator": "facts[58]"
+            }
+          }
+        },
+        {
+          "text": "Where can I find worker allocation and pathfinding docs?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "worker allocation",
+              "pathfinding"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:ualberta-docs"
+            ],
+            "source": {
+              "file": "guides/data/assistant/knowledge/starcraft.json",
+              "locator": "facts[59]"
+            }
+          }
+        },
+        {
+          "text": "Does installing SCHNAIL require me to compile BOSS?",
+          "expected": {
+            "decision": "not-answer",
+            "notContains": []
+          }
+        }
+      ]
+    },
+    {
+      "id": "starcraft-knowledge-purplewave-runtime",
+      "review": "Runtime architecture and Java version do not leak across tools.",
+      "spoiler": "direct",
+      "turns": [
+        {
+          "text": "What is PurpleWave?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Scala",
+              "all three races"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:purplewave-identity"
+            ],
+            "source": {
+              "file": "guides/data/assistant/knowledge/starcraft.json",
+              "locator": "facts[60]"
+            }
+          }
+        },
+        {
+          "text": "Which Java runtime does it require?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "32-bit JDK 8"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:purplewave-java"
+            ],
+            "source": {
+              "file": "guides/data/assistant/knowledge/starcraft.json",
+              "locator": "facts[61]"
+            }
+          }
+        },
+        {
+          "text": "What does the guide recommend for SCHNAIL instead?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "JDK 21 LTS"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:schnail-java"
+            ],
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#schnail-setup ol > li:nth-child(4)"
+            }
+          }
+        },
+        {
+          "text": "Can I treat those two Java recommendations as interchangeable for every bot?",
+          "expected": {
+            "decision": "not-answer",
+            "notContains": []
+          }
+        }
+      ]
+    },
+    {
+      "id": "starcraft-knowledge-purplewave-build",
+      "review": "Source build and working directory are labeled external research.",
+      "spoiler": "direct",
+      "turns": [
+        {
+          "text": "How does the reviewed PurpleWave source build work?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Maven",
+              "mvn clean package",
+              "target/PurpleWave-1.0.jar"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:purplewave-build"
+            ],
+            "source": {
+              "file": "guides/data/assistant/knowledge/starcraft.json",
+              "locator": "facts[62]"
+            }
+          }
+        },
+        {
+          "text": "What is its working directory?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "StarCraft directory",
+              "bwapi-data/AI"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:purplewave-working-folder"
+            ],
+            "source": {
+              "file": "guides/data/assistant/knowledge/starcraft.json",
+              "locator": "facts[63]"
+            }
+          }
+        },
+        {
+          "text": "Where do I ask PurpleWave questions?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "GitHub issues",
+              "MIT license"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:purplewave-support"
+            ],
+            "source": {
+              "file": "guides/data/assistant/knowledge/starcraft.json",
+              "locator": "facts[64]"
+            }
+          }
+        },
+        {
+          "text": "Give me a guaranteed prebuilt PurpleWave installer URL for Remastered.",
+          "expected": {
+            "decision": "not-answer",
+            "notContains": []
+          }
+        }
+      ]
+    },
+    {
+      "id": "starcraft-knowledge-steamhammer-creator",
+      "review": "Primary-source conflict rather than parroting guide creator error.",
+      "spoiler": "direct",
+      "turns": [
+        {
+          "text": "Who created Steamhammer?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Jay Scott",
+              "UAlbertaBot",
+              "conflicting"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:steamhammer-creator"
+            ],
+            "source": {
+              "file": "guides/data/assistant/knowledge/starcraft.json",
+              "locator": "facts[66]"
+            }
+          }
+        },
+        {
+          "text": "Which bot did it descend from?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "UAlbertaBot"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:steamhammer-identity"
+            ],
+            "source": {
+              "file": "guides/data/assistant/knowledge/starcraft.json",
+              "locator": "facts[65]"
+            }
+          }
+        },
+        {
+          "text": "Which license relationship does it retain?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "MIT",
+              "UAlbertaBot"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:steamhammer-license"
+            ],
+            "source": {
+              "file": "guides/data/assistant/knowledge/starcraft.json",
+              "locator": "facts[69]"
+            }
+          }
+        },
+        {
+          "text": "Did Dave Churchill personally author every Steamhammer feature?",
+          "expected": {
+            "decision": "not-answer",
+            "notContains": []
+          }
+        }
+      ]
+    },
+    {
+      "id": "starcraft-knowledge-steamhammer-install",
+      "review": "Maintainer destination and API/config versus Remastered maps.",
+      "spoiler": "direct",
+      "turns": [
+        {
+          "text": "Where should I look for Steamhammer source and binaries?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "maintainer page",
+              "binary",
+              "source"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:steamhammer-download"
+            ],
+            "source": {
+              "file": "guides/data/assistant/knowledge/starcraft.json",
+              "locator": "facts[67]"
+            }
+          }
+        },
+        {
+          "text": "Where do I put the matching JSON configuration?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "bwapi-data/AI",
+              "4.4.0"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:steamhammer-config"
+            ],
+            "source": {
+              "file": "guides/data/assistant/knowledge/starcraft.json",
+              "locator": "facts[68]"
+            }
+          }
+        },
+        {
+          "text": "Where does the Remastered map ZIP go instead?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "StarCraft maps folder"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:map-folder"
+            ],
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#remastered-setup ol > li:nth-child(3)"
+            }
+          }
+        },
+        {
+          "text": "Is the questionable Steamhammer GitHub URL from the guide a verified current binary endpoint?",
+          "expected": {
+            "decision": "not-answer",
+            "notContains": []
+          }
+        }
+      ]
+    },
+    {
+      "id": "starcraft-knowledge-version-boundaries",
+      "review": "Version numbers remain attached to the correct tool.",
+      "spoiler": "direct",
+      "turns": [
+        {
+          "text": "What Brood War version does BWAILauncher setup request?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "1.16.1",
+              "conflict"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:bwai-conflict"
+            ],
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#bwai-requirements ol; #bwai-setup .text-yellow-700"
+            }
+          }
+        },
+        {
+          "text": "What BWAPI version does UAlbertaBot’s README use?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "4.4.0"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:ualberta-version"
+            ],
+            "source": {
+              "file": "guides/data/assistant/knowledge/starcraft.json",
+              "locator": "facts[55]"
+            }
+          }
+        },
+        {
+          "text": "What Java version and architecture does PurpleWave request?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "32-bit JDK 8"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:purplewave-java"
+            ],
+            "source": {
+              "file": "guides/data/assistant/knowledge/starcraft.json",
+              "locator": "facts[61]"
+            }
+          }
+        },
+        {
+          "text": "And what Java recommendation is recorded for SCHNAIL?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "JDK 21 LTS"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:schnail-java"
+            ],
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#schnail-setup ol > li:nth-child(4)"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

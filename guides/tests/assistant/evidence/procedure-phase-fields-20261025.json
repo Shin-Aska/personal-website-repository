@@ -1,0 +1,170 @@
+{
+  "reviewType": "source-literal-procedure-phase-metadata",
+  "protectedFields": [
+    "id",
+    "subject",
+    "facet",
+    "aliases",
+    "text",
+    "witness",
+    "source",
+    "sourceRecordId"
+  ],
+  "games": {
+    "ultima5": {
+      "protectedProjectionSha256": "a41a08a5c026853273ba388a6a8ee87579f21b3ff3e3884c5d332a9bb7ae773e",
+      "unchangedProtectedFields": true,
+      "changes": [
+        {
+          "factId": "raid-supplies",
+          "phase": "preparation",
+          "field": "supplies",
+          "source": {
+            "file": "guides/js/Ultima5.js",
+            "locator": "ultima5GrandQuestChapters objective=opening-raid-kit.steps[2]",
+            "review": "extracted"
+          },
+          "witness": "Bring several lockpicks, food, direct healing, poison cure, and enough hit points to survive any fireplace passage or guard mistake."
+        },
+        {
+          "factId": "spirituality-midnight",
+          "phase": "approach",
+          "field": "route",
+          "source": {
+            "file": "guides/js/Ultima5.js",
+            "locator": "ultima5GrandQuestChapters objective=shrine-spirituality.steps[1]",
+            "review": "extracted"
+          },
+          "witness": "Wait beside any active moongate above a buried moonstone. Check your pocket watch and step into the gate at exactly midnight (12:00 AM) to reach the Ethereal Void. You do not need to depart from Skara Brae."
+        },
+        {
+          "factId": "spirituality-return",
+          "phase": "return",
+          "field": "route",
+          "source": {
+            "file": "guides/js/Ultima5.js",
+            "locator": "ultima5GrandQuestChapters objective=shrine-spirituality.steps[4]",
+            "review": "extracted"
+          },
+          "witness": "Enter any moongate at exactly midnight again to return to the Shrine of Spirituality, then meditate with OM to complete the quest and gain attributes."
+        },
+        {
+          "factId": "crown-capture",
+          "phase": "preparation",
+          "field": "capture-safety",
+          "source": {
+            "file": "guides/js/Ultima5.js",
+            "locator": "ultima5GrandQuestChapters objective=regalia-crown.steps[0]",
+            "review": "extracted"
+          },
+          "witness": "Make a permanent save; capture in Blackthorn’s Castle can permanently erase a companion."
+        },
+        {
+          "factId": "amulet-waterfall",
+          "phase": "approach",
+          "field": "route",
+          "source": {
+            "file": "guides/js/Ultima5.js",
+            "locator": "ultima5GrandQuestChapters objective=regalia-amulet.steps[0]",
+            "review": "extracted"
+          },
+          "witness": "Ride the Magic Carpet into the waterfall east of Skara Brae."
+        },
+        {
+          "factId": "amulet-escape",
+          "phase": "escape",
+          "field": "method",
+          "source": {
+            "file": "guides/js/Ultima5.js",
+            "locator": "ultima5GrandQuestChapters objective=regalia-amulet.steps[3]",
+            "review": "extracted"
+          },
+          "witness": "Escape with VAS REL POR, or accept a controlled party death if no return spell remains."
+        }
+      ]
+    },
+    "ultima6": {
+      "protectedProjectionSha256": "25210e525366809b3807cf877f444c463ee120e9b0c1abb42d3ed328038542f0",
+      "unchangedProtectedFields": true,
+      "changes": [
+        {
+          "factId": "side-2-step-0",
+          "phase": "start",
+          "field": "method",
+          "source": {
+            "file": "guides/js/Ultima6.js",
+            "locator": "gameData.sideQuests[2].steps[0]",
+            "review": "extracted"
+          },
+          "witness": "Ask Chuckles about his clue, then search the chest in Nystul's room."
+        },
+        {
+          "factId": "side-2-step-1",
+          "phase": "follow",
+          "field": "route",
+          "source": {
+            "file": "guides/js/Ultima6.js",
+            "locator": "gameData.sideQuests[2].steps[1]",
+            "review": "extracted"
+          },
+          "witness": "Follow the scrolls through a plant in Serpent's Hold, a beehive in Minoc, the Blue Bottle harpsichord, the Yew jail beds, and a New Magincia cauldron."
+        }
+      ]
+    },
+    "ultima7": {
+      "protectedProjectionSha256": "83447ed627458a032d2f4a9ff4b1fdc15f6a93315ed60b84b26a2a26a65ebf74",
+      "unchangedProtectedFields": true,
+      "changes": [
+        {
+          "factId": "ether-gem-dragon",
+          "phase": "acquisition",
+          "field": "method",
+          "source": {
+            "file": "guides/js/Ultima7.js",
+            "locator": "DB.virtueQuests[5].content",
+            "review": "extracted"
+          },
+          "witness": "defeat Dracothraxus for the Ether Gem"
+        },
+        {
+          "factId": "courage-finish-sword",
+          "phase": "completion",
+          "field": "method",
+          "source": {
+            "file": "guides/js/Ultima7.js",
+            "locator": "DB.virtueQuests[7]",
+            "review": "extracted"
+          },
+          "witness": "Return to Dracothraxus and invoke the Black Sword's power to finish the test."
+        }
+      ]
+    }
+  },
+  "phaseLocalScopeLabelChanges": {
+    "ultima5": {
+      "crown-capture": {
+        "label": "Crown retrieval",
+        "kind": "recovery",
+        "subject": "Crown",
+        "sourceTitle": "Recover the Crown"
+      },
+      "amulet-escape": {
+        "label": "Amulet route",
+        "kind": "route",
+        "subject": "Amulet",
+        "sourceTitle": "Recover the Amulet"
+      }
+    },
+    "ultima6": {
+      "side-2-step-1": {
+        "label": "Chuckles scrolls",
+        "kind": "actor-object",
+        "actor": "Chuckles",
+        "object": "scrolls",
+        "sourceTitle": "Chuckles' Trail of Clues",
+        "actorEvidence": "Ask Chuckles about his clue",
+        "objectEvidence": "Follow the scrolls"
+      }
+    }
+  }
+}

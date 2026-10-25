@@ -1,0 +1,1595 @@
+{
+  "schemaVersion": 1,
+  "suite": "knowledge-fresh-conversations-20261025",
+  "frozenAt": "2026-10-24T16:45:54.862730Z",
+  "oracleAuthorship": "Independent source-first authorship. No existing evaluation cases, reports, replay results, manifests, runtime response algorithm, or model outputs were consulted. Written guide data, approved base source overlays, and adapters solely for provenance mapping were consulted.",
+  "validationScope": "76 turns in 19 four-turn dialogues; Full answer, explicit game scope, no assumed player state. Expectations assert source-backed useful claims. Matching primary source tuple is exact on file, locator, review. AlternativeAnswers are frozen legitimate equivalent source paths; any selected path must satisfy its complete contains list and the requiredUsefulClaim. A sourceWitness string is a verbatim proof; an array gives separate verbatim proof clauses for a compound claim, all required. allSources, if present, requires every exact tuple in the response. No fact IDs are used.",
+  "sourceHashesAtFreeze": {
+    "guides/data/assistant/ultima5.json": "bbd6a3a33133bc1aca80ac7a19cea5011e19c9f33869582355d7fd60f0f0d24e",
+    "guides/data/assistant/ultima6.json": "67b3bf1e8e935df279bec2f11cf698ba721f5d8e169f1a050fefa4ee66b5ad05",
+    "guides/data/assistant/ultima7.json": "9b5c29c25936ccfd20ca9b704df57d45c1f7142a2014b09630f8e2f2aee10871",
+    "guides/data/assistant/alqadim.json": "f0f15243ea3b27701d97b3ab369a108ef46e93ec5f780f6e1fd1bf5e69bf2b77",
+    "guides/data/assistant/albion.json": "b3b219ccb434c450189e97404b4c06a3bbc8334dc581bea55bc4a70213851404",
+    "guides/data/assistant/starcraft.json": "0dc5925ca67adfc434b5366213a5e05e11cbf869f1d0aa71e4daa6d16ae2dfc0",
+    "guides/js/Ultima5.js": "e2699ed2d8aca9bf3465c7dcd262461f5fca59f1fb4cbd41361e0f5c5a96dae5",
+    "guides/js/Ultima6.js": "a0b07db60d7c30ac19bb64b56fa26b1428a6437f437f087eb2d75109afae4898",
+    "guides/js/Ultima7.js": "c3cd92659e5e959c6d172ba38d56ba85148729b82185768557cb595e3bfb6085",
+    "guides/js/AlQadim.js": "269798843206f12b76163c65b04301be278652115fbdbd46596f13f3ae7b5e5e",
+    "guides/js/Albion.js": "4adba84eca7af2436731b7053e3167a909f57f85edc611c6287411af84e4b1ca",
+    "guides/StarcraftBWAPI.html": "f43b3fcfbffddaadf2b4bf951b16652a9d1133d726b7efe06357f9a7cb925983",
+    "guides/Ultima5.html": "c419f66b8a99902351736c024a2230899ec21cdb4ab7af971c58f547b69a2212",
+    "guides/js/assistant/adapters/ultima5.js": "3aa64babe0f83ecc713f5d9a665b8ba7a4e7dbfce557a8cff22778a6170cf95a",
+    "guides/js/assistant/adapters/ultima6.js": "d99a14171975b88fff97d7e0ff9a39ac1e07abfed425706732827d6d4fe5e480",
+    "guides/js/assistant/adapters/ultima7.js": "5140505e9fe04a864e950afab671519f31ef24ac6a9b2e91b7c3853c1cf1e7c3",
+    "guides/js/assistant/adapters/alqadim.js": "fa65928d9011011a12095cd4bbf37a56bfed3b91559ce6aa8097a991b111065c",
+    "guides/js/assistant/adapters/albion.js": "df3993cb351cf9f5e4ade03d8bcfdfc3477c00f4fb39922b9e8cc8d4e255e70b",
+    "guides/js/assistant/adapters/starcraft.js": "b4a11908b121a545fd810c4f8ae09404c210ab0607f70e9121a145a8aea6063e"
+  },
+  "dialogues": [
+    {
+      "id": "u5-mountain-and-sea",
+      "gameId": "ultima5",
+      "turns": [
+        {
+          "text": "I keep getting blocked by small mountain peaks. How do I obtain the Grapple?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=opening-grapple.steps",
+              "review": "extracted"
+            },
+            "contains": [
+              "Lord Michael",
+              "GRAPPLE"
+            ],
+            "requiredUsefulClaim": "Ask Lord Michael at Empath Abbey about GRAPPLE to obtain the hook.",
+            "sourceWitness": "Speak with Lord Michael and ask specifically about GRAPPLE.",
+            "alternativeAnswers": [
+              {
+                "source": {
+                  "file": "guides/js/Ultima5.js",
+                  "locator": "ultima5SideQuests id=side-grapple",
+                  "review": "extracted"
+                },
+                "contains": [
+                  "Lord Michael",
+                  "GRAPPLE"
+                ],
+                "sourceWitness": "Ask Lord Michael about GRAPPLE."
+              },
+              {
+                "source": {
+                  "file": "guides/js/Ultima5.js",
+                  "locator": "ultima5GrandQuestChapters objective=opening-grapple",
+                  "review": "extracted"
+                },
+                "contains": [
+                  "Lord Michael",
+                  "GRAPPLE"
+                ],
+                "sourceWitness": "Speak with Lord Michael and ask specifically about GRAPPLE."
+              },
+              {
+                "source": {
+                  "file": "guides/js/Ultima5.js",
+                  "locator": "ultima5GrandQuestChapters objective=opening-grapple.steps[1]",
+                  "review": "extracted"
+                },
+                "sourceWitness": "Speak with Lord Michael and ask specifically about GRAPPLE.",
+                "contains": [
+                  "Lord Michael",
+                  "GRAPPLE"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "text": "Once I have it, what routes does it open?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=opening-grapple.outcome",
+              "review": "extracted"
+            },
+            "contains": [
+              "mountain peaks",
+              "Underworld"
+            ],
+            "requiredUsefulClaim": "The Grapple makes small peaks and several Underworld routes traversable.",
+            "sourceWitness": "Small mountain peaks and several Underworld routes become traversable."
+          }
+        },
+        {
+          "text": "Different travel problem: what do the HMS Cape plans do to a frigate?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "ultima5GrandQuestChapters objective=opening-hms-cape.outcome",
+              "review": "extracted"
+            },
+            "contains": [
+              "double",
+              "speed"
+            ],
+            "requiredUsefulClaim": "Using the plans doubles frigate speed.",
+            "sourceWitness": "Using the plans on a frigate doubles its speed relative to enemies.",
+            "alternativeAnswers": [
+              {
+                "source": {
+                  "file": "guides/js/Ultima5.js",
+                  "locator": "commonTips[2]",
+                  "review": "extracted"
+                },
+                "contains": [
+                  "double",
+                  "frigate speed"
+                ],
+                "sourceWitness": "they double frigate speed."
+              },
+              {
+                "source": {
+                  "file": "guides/js/Ultima5.js",
+                  "locator": "ultima5SideQuests id=side-hms-cape.reward",
+                  "review": "extracted"
+                },
+                "contains": [
+                  "Double",
+                  "frigate speed"
+                ],
+                "sourceWitness": "Double frigate speed"
+              }
+            ]
+          }
+        },
+        {
+          "text": "Have I already applied those plans to my ship?",
+          "expected": {
+            "decision": "not-answer",
+            "boundary": "No current ship-upgrade state was supplied. A guide procedure or checklist cannot prove the upgrade is installed."
+          }
+        }
+      ]
+    },
+    {
+      "id": "u5-mage-recruiting",
+      "gameId": "ultima5",
+      "turns": [
+        {
+          "text": "Would Jaana be a worthwhile early recruit for magic?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "companionData[2]",
+              "review": "extracted"
+            },
+            "contains": [
+              "essential early recruit",
+              "spellcasting"
+            ],
+            "requiredUsefulClaim": "The guide recommends Jaana early for her mage spellcasting.",
+            "sourceWitness": "An essential early recruit. As a mage, her spellcasting ability is invaluable throughout the game."
+          }
+        },
+        {
+          "text": "Where do I find her?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "companionData[2].Location",
+              "review": "extracted"
+            },
+            "contains": [
+              "Yew"
+            ],
+            "requiredUsefulClaim": "Jaana is listed in Yew.",
+            "sourceWitness": "Location: \"Yew\"",
+            "alternativeAnswers": [
+              {
+                "source": {
+                  "file": "guides/js/Ultima5.js",
+                  "locator": "ultima5SideQuests id=side-jaana",
+                  "review": "extracted"
+                },
+                "contains": [
+                  "Yew"
+                ],
+                "sourceWitness": "Enter the fireplace behind the living area, descend to the hidden jail, unlock the door, and recruit Jaana."
+              }
+            ]
+          }
+        },
+        {
+          "text": "I meant the strongest mage for later: who is it, and what makes reaching him difficult?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/js/Ultima5.js",
+              "locator": "companionData[4]",
+              "review": "extracted"
+            },
+            "contains": [
+              "Johne",
+              "wrecked ship",
+              "Underworld"
+            ],
+            "requiredUsefulClaim": "Johne is the strongest mage; reaching his wrecked ship in the Underworld is difficult.",
+            "sourceWitness": "The strongest mage in the game, but he is difficult to reach, located on a wrecked ship in the Underworld.",
+            "alternativeAnswers": [
+              {
+                "source": {
+                  "file": "guides/js/Ultima5.js",
+                  "locator": "companionData[4].Notes",
+                  "review": "extracted"
+                },
+                "contains": [
+                  "Johne",
+                  "wrecked ship",
+                  "Underworld"
+                ],
+                "sourceWitness": "The strongest mage in the game, but he is difficult to reach, located on a wrecked ship in the Underworld."
+              }
+            ]
+          }
+        },
+        {
+          "text": "Does that mean Johne is in my active party now?",
+          "expected": {
+            "decision": "not-answer",
+            "boundary": "A recommendation and recruitment location do not establish current party membership."
+          }
+        }
+      ]
+    },
+    {
+      "id": "u5-shrine-passwords",
+      "gameId": "ultima5",
+      "turns": [
+        {
+          "text": "Are mantras and Words of Power used for the same thing?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/Ultima5.html",
+              "locator": "Mantras & Words of Power panel, introduction",
+              "review": "extracted"
+            },
+            "contains": [
+              "Shrines of Virtue",
+              "dungeons"
+            ],
+            "requiredUsefulClaim": "Mantras are used at Shrines of Virtue; Words of Power unlock dungeons.",
+            "sourceWitness": "These \"passwords\" are essential for progressing through the game. Mantras are used at the Shrines of Virtue, while Words of Power unlock the dungeons."
+          }
+        },
+        {
+          "text": "For the shrine ritual, how many cycles do I meditate, and where do I go for guidance afterward?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/Ultima5.html",
+              "locator": "section#shrines, the four shrine-loop cards",
+              "review": "extracted"
+            },
+            "contains": [
+              "three cycles",
+              "Codex",
+              "Isle of the Avatar"
+            ],
+            "requiredUsefulClaim": "Meditate three cycles, then visit the Codex on the Isle of the Avatar.",
+            "sourceWitness": "1) Learn the Mantra from NPCs in the virtue's city. 2) Meditate at the shrine using the mantra for three cycles. 3) Visit the Codex on the Isle of the Avatar to receive guidance. 4) Return & Complete by meditating again to gain stats."
+          }
+        },
+        {
+          "text": "What does completing all eight shrine quests unlock?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/Ultima5.html",
+              "locator": "section#shrines, closing sentence",
+              "review": "extracted"
+            },
+            "contains": [
+              "Doom",
+              "VERAMOCOR"
+            ],
+            "requiredUsefulClaim": "All eight shrine quests grant VERAMOCOR, the Word of Power for Doom.",
+            "sourceWitness": "Completing all eight shrine quests grants the Word of Power for Doom: VERAMOCOR."
+          }
+        },
+        {
+          "text": "What is the equivalent shrine ritual in Ultima V on a fan-made mobile remake?",
+          "expected": {
+            "decision": "not-answer",
+            "boundary": "No named mobile remake or its altered shrine mechanics are covered. Do not transfer PC guide mechanics as edition-specific certainty."
+          }
+        }
+      ]
+    },
+    {
+      "id": "u6-family-permission",
+      "gameId": "ultima6",
+      "turns": [
+        {
+          "text": "How do I get permission to borrow the Compassion rune in Britain?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[0].sections[0]",
+              "review": "extracted"
+            },
+            "contains": [
+              "Anya",
+              "Blue Boar",
+              "YES",
+              "Ariana"
+            ],
+            "requiredUsefulClaim": "Ask Anya at the Blue Boar Tavern about RUNE/PERMISSION and answer YES, then return to Ariana.",
+            "sourceWitness": [
+              "Visit Anya at the Blue Boar Tavern, mention `RUNE` or `PERMISSION`, and answer `YES` when asked.",
+              "Return to Ariana, confirm permission, and receive the Rune of Compassion."
+            ]
+          }
+        },
+        {
+          "text": "Who do I return to after getting her blessing?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[0].sections[0]",
+              "review": "extracted"
+            },
+            "contains": [
+              "Ariana",
+              "permission"
+            ],
+            "requiredUsefulClaim": "Return to Ariana and confirm permission to receive the rune.",
+            "sourceWitness": "Return to Ariana, confirm permission, and receive the Rune of Compassion.",
+            "alternativeAnswers": [
+              {
+                "source": {
+                  "file": "guides/js/Ultima6.js",
+                  "locator": "gameData.quests[0].sections[0].steps[2]",
+                  "review": "extracted"
+                },
+                "sourceWitness": "Return to Ariana, confirm permission, and receive the Rune of Compassion.",
+                "contains": [
+                  "Ariana",
+                  "permission"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "text": "And what word do I chant when cleansing that shrine?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[0].sections[0]",
+              "review": "extracted"
+            },
+            "contains": [
+              "MU"
+            ],
+            "requiredUsefulClaim": "Use MU at the Compassion shrine.",
+            "sourceWitness": "Cleanse the southern shrine using the rune, chant `MU`, take the Moonstone, and meditate.",
+            "alternativeAnswers": [
+              {
+                "source": {
+                  "file": "guides/js/Ultima6.js",
+                  "locator": "gameData.quests[0].sections[0].steps[3]",
+                  "review": "extracted"
+                },
+                "sourceWitness": "Cleanse the southern shrine using the rune, chant `MU`, take the Moonstone, and meditate.",
+                "contains": [
+                  "MU"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "text": "Did Ariana already give me the rune in my saved game?",
+          "expected": {
+            "decision": "not-answer",
+            "boundary": "No saved-game inventory or dialogue state was supplied. The procedure cannot establish whether the player received it."
+          }
+        }
+      ]
+    },
+    {
+      "id": "u6-making-music",
+      "gameId": "ultima6",
+      "turns": [
+        {
+          "text": "For the Sacrifice rune, who turns the wooden board into panpipes?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[0].sections[4]",
+              "review": "extracted"
+            },
+            "contains": [
+              "Julia",
+              "PANPIPES"
+            ],
+            "requiredUsefulClaim": "Julia crafts PANPIPES from the board.",
+            "sourceWitness": "Buy a yew log from Ben west of Yew, cut it into a board, and ask Julia to craft `PANPIPES`.",
+            "alternativeAnswers": [
+              {
+                "source": {
+                  "file": "guides/js/Ultima6.js",
+                  "locator": "gameData.quests[0].sections[4].steps[0]",
+                  "review": "extracted"
+                },
+                "sourceWitness": "Buy a yew log from Ben west of Yew, cut it into a board, and ask Julia to craft `PANPIPES`.",
+                "contains": [
+                  "Julia",
+                  "PANPIPES"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "text": "Where is the raw wood obtained?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[0].sections[4]",
+              "review": "extracted"
+            },
+            "contains": [
+              "Ben",
+              "Yew"
+            ],
+            "requiredUsefulClaim": "Buy a yew log from Ben west of Yew.",
+            "sourceWitness": "Buy a yew log from Ben west of Yew",
+            "alternativeAnswers": [
+              {
+                "source": {
+                  "file": "guides/js/Ultima6.js",
+                  "locator": "gameData.quests[0].sections[4].steps[0]",
+                  "review": "extracted"
+                },
+                "sourceWitness": "Buy a yew log from Ben west of Yew",
+                "contains": [
+                  "Ben",
+                  "Yew"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "text": "Whose song should I learn, and who hears the performance to award the rune?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.quests[0].sections[4]",
+              "review": "extracted"
+            },
+            "contains": [
+              "Gwenno",
+              "STONES",
+              "Selganor"
+            ],
+            "requiredUsefulClaim": "Learn STONES from Gwenno and perform it for Selganor to receive the rune.",
+            "sourceWitness": [
+              "Ask Gwenno about the song `STONES` to learn the numeric tune 6789878767653.",
+              "Perform the tune for Selganor inside the Artisan Guild to receive the rune."
+            ]
+          }
+        },
+        {
+          "text": "How much durability do those panpipes lose each time I play Stones?",
+          "expected": {
+            "decision": "not-answer",
+            "boundary": "The sources do not describe panpipe durability or per-performance degradation. No numeric loss may be invented."
+          }
+        }
+      ]
+    },
+    {
+      "id": "u6-passage-and-materials",
+      "gameId": "ultima6",
+      "turns": [
+        {
+          "text": "What produced the headless creatures, according to the passage questions?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.passage[2]",
+              "review": "extracted"
+            },
+            "contains": [
+              "Wizard"
+            ],
+            "requiredUsefulClaim": "A wizard produced the headlesses; this is the passage answer.",
+            "sourceWitness": "question: \"How wert the headlesses produced?\", answer: \"Wizard\""
+          }
+        },
+        {
+          "text": "What part of a tangle vine causes sleep?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.passage[1]",
+              "review": "extracted"
+            },
+            "contains": [
+              "Pods"
+            ],
+            "requiredUsefulClaim": "The tangle vine pods cause sleep.",
+            "sourceWitness": "question: \"What part of the tangle vine doth put one to sleep?\", answer: \"Pods\""
+          }
+        },
+        {
+          "text": "Switching to spell ingredients: where does Sulfurous Ash come from?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/js/Ultima6.js",
+              "locator": "gameData.passage[17]",
+              "review": "extracted"
+            },
+            "contains": [
+              "Volcanic Eruptions"
+            ],
+            "requiredUsefulClaim": "Sulfurous Ash comes from volcanic eruptions.",
+            "sourceWitness": "question: \"Where does Sulfurous Ash come from?\", answer: \"Volcanic Eruptions\""
+          }
+        },
+        {
+          "text": "Can I harvest Sulfurous Ash right where my Avatar is standing now?",
+          "expected": {
+            "decision": "not-answer",
+            "boundary": "The source states origin, not current coordinates, nearby harvest availability, or player location."
+          }
+        }
+      ]
+    },
+    {
+      "id": "u7-forging-and-binding",
+      "gameId": "ultima7",
+      "turns": [
+        {
+          "text": "How is the Black Sword forged in Forge of Virtue?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/js/Ultima7.js",
+              "locator": "DB.virtueQuests[6]",
+              "review": "extracted"
+            },
+            "contains": [
+              "Heat and hammer",
+              "bind the daemon"
+            ],
+            "requiredUsefulClaim": "Heat and hammer the blade until sharp, then bind the daemon to make the Black Sword.",
+            "sourceWitness": "Heat and hammer the blade at the forge until it's sharp, then bind the daemon to forge the Black Sword.",
+            "alternativeAnswers": [
+              {
+                "source": {
+                  "file": "guides/js/Ultima7.js",
+                  "locator": "DB.virtueQuests[6].content",
+                  "review": "extracted"
+                },
+                "sourceWitness": "Heat and hammer the blade at the forge until it's sharp, then bind the daemon to forge the Black Sword.",
+                "contains": [
+                  "Heat and hammer",
+                  "bind the daemon"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "text": "Which daemon, and what gem do I put him into?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/js/Ultima7.js",
+              "locator": "DB.virtueQuests[6]",
+              "review": "extracted"
+            },
+            "contains": [
+              "Arcadion",
+              "Ether Gem",
+              "mirror"
+            ],
+            "requiredUsefulClaim": "Free Arcadion into the Ether Gem via the mirror.",
+            "sourceWitness": "Free Arcadion into the Ether Gem via the mirror.",
+            "alternativeAnswers": [
+              {
+                "source": {
+                  "file": "guides/js/Ultima7.js",
+                  "locator": "DB.virtueQuests[6].content",
+                  "review": "extracted"
+                },
+                "sourceWitness": "Free Arcadion into the Ether Gem via the mirror.",
+                "contains": [
+                  "Arcadion",
+                  "Ether Gem",
+                  "mirror"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "text": "Who do I ask about the artifact of power?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/js/Ultima7.js",
+              "locator": "DB.virtueQuests[6]",
+              "review": "extracted"
+            },
+            "contains": [
+              "Erethian"
+            ],
+            "requiredUsefulClaim": "Ask Erethian about the artifact of power.",
+            "sourceWitness": "Ask Erethian about the artifact of power.",
+            "alternativeAnswers": [
+              {
+                "source": {
+                  "file": "guides/js/Ultima7.js",
+                  "locator": "DB.virtueQuests[6].content",
+                  "review": "extracted"
+                },
+                "sourceWitness": "Ask Erethian about the artifact of power.",
+                "contains": [
+                  "Erethian"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "text": "Is my current blade sharp enough to bind him yet?",
+          "expected": {
+            "decision": "not-answer",
+            "boundary": "No current forge-state evidence was supplied; a written crafting instruction cannot establish the blade state."
+          }
+        }
+      ]
+    },
+    {
+      "id": "u7-observatory-crystal",
+      "gameId": "ultima7",
+      "turns": [
+        {
+          "text": "Brion needs his orrery powered. Where do I get the special crystal?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/js/Ultima7.js",
+              "locator": "DB.sideQuests[10]",
+              "review": "extracted"
+            },
+            "contains": [
+              "Addom",
+              "20 gold"
+            ],
+            "requiredUsefulClaim": "Buy the special crystal from Addom for 20 gold.",
+            "sourceWitness": "Buy a special crystal from the adventurer Addom for 20 gold and give it to Brion so he can power the observatory's orrery.",
+            "alternativeAnswers": [
+              {
+                "source": {
+                  "file": "guides/js/Ultima7.js",
+                  "locator": "DB.sideQuests[10].walkthrough",
+                  "review": "extracted"
+                },
+                "sourceWitness": "Buy a special crystal from the adventurer Addom for 20 gold and give it to Brion so he can power the observatory's orrery.",
+                "contains": [
+                  "Addom",
+                  "20 gold"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "text": "Who receives it?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/js/Ultima7.js",
+              "locator": "DB.sideQuests[10]",
+              "review": "extracted"
+            },
+            "contains": [
+              "Brion",
+              "orrery"
+            ],
+            "requiredUsefulClaim": "Give the crystal to Brion to power the observatory orrery.",
+            "sourceWitness": "give it to Brion so he can power the observatory's orrery.",
+            "alternativeAnswers": [
+              {
+                "source": {
+                  "file": "guides/js/Ultima7.js",
+                  "locator": "DB.sideQuests[10].walkthrough",
+                  "review": "extracted"
+                },
+                "sourceWitness": "give it to Brion so he can power the observatory's orrery.",
+                "contains": [
+                  "Brion",
+                  "orrery"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "text": "What does the guide list as the reward for helping him?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/js/Ultima7.js",
+              "locator": "DB.sideQuests[10]",
+              "review": "extracted"
+            },
+            "contains": [
+              "Brion activates the orrery"
+            ],
+            "requiredUsefulClaim": "The listed reward is that Brion activates the orrery.",
+            "sourceWitness": "reward: \"Brion activates the orrery\""
+          }
+        },
+        {
+          "text": "How many days until that orrery crystal runs out and needs another purchase?",
+          "expected": {
+            "decision": "not-answer",
+            "boundary": "The guide does not give a crystal lifetime, recharge interval, or repeat-purchase mechanic."
+          }
+        }
+      ]
+    },
+    {
+      "id": "u7-liches-and-mana",
+      "gameId": "ultima7",
+      "turns": [
+        {
+          "text": "What weapon does the guide recommend against liches, and why?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/js/Ultima7.js",
+              "locator": "DB.bestiary[2]",
+              "review": "extracted"
+            },
+            "contains": [
+              "Magebane",
+              "mana"
+            ],
+            "requiredUsefulClaim": "Use Magebane to drain liches' mana and suppress their dangerous spellcasting.",
+            "sourceWitness": "Drain their mana with Magebane to shut down the part of their arsenal that makes them lethal."
+          }
+        },
+        {
+          "text": "Where is Magebane found?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/js/Ultima7.js",
+              "locator": "DB.equipment[5].location",
+              "review": "extracted"
+            },
+            "contains": [
+              "16N/38E",
+              "Stonegate"
+            ],
+            "requiredUsefulClaim": "Magebane is at 16N/38E in the swamp at Stonegate Ruins.",
+            "sourceWitness": "16N/38E (Stonegate Ruins, in swamp)"
+          }
+        },
+        {
+          "text": "Does it drain mana only when I hit, or just from carrying it?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/js/Ultima7.js",
+              "locator": "DB.equipment[5]",
+              "review": "extracted"
+            },
+            "contains": [
+              "Drains Mana on Hit"
+            ],
+            "requiredUsefulClaim": "Magebane drains mana on hit; carrying it alone is not the stated effect.",
+            "sourceWitness": "effect: \"Drains Mana on Hit\""
+          }
+        },
+        {
+          "text": "How much mana does each hit drain exactly?",
+          "expected": {
+            "decision": "not-answer",
+            "boundary": "No exact mana-per-hit amount is given in the authorized sources."
+          }
+        }
+      ]
+    },
+    {
+      "id": "aq-sword-training",
+      "gameId": "alqadim",
+      "turns": [
+        {
+          "text": "How do I learn the Full-Circle Swing?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.combatMoves[2].training",
+              "review": "extracted"
+            },
+            "contains": [
+              "Zubakon",
+              "later progression"
+            ],
+            "requiredUsefulClaim": "Learn Full-Circle Swing from Zubakon after later progression.",
+            "sourceWitness": "Learn from Zubakon after later progression"
+          }
+        },
+        {
+          "text": "When should I release the action button for it?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.combatMoves[2]",
+              "review": "extracted"
+            },
+            "contains": [
+              "third action circle",
+              "orange"
+            ],
+            "requiredUsefulClaim": "Release when the third action circle lights orange.",
+            "sourceWitness": "Release when the third action circle lights orange"
+          }
+        },
+        {
+          "text": "Does that attack catch enemies behind me too?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.combatMoves[2]",
+              "review": "extracted"
+            },
+            "contains": [
+              "360-degree",
+              "behind"
+            ],
+            "requiredUsefulClaim": "Full-Circle Swing covers 360 degrees and catches monsters behind the Corsair.",
+            "sourceWitness": "a complete 360-degree cut that also catches monsters behind the Corsair."
+          }
+        },
+        {
+          "text": "Has my current character earned enough experience for Zubakon to teach it?",
+          "expected": {
+            "decision": "not-answer",
+            "boundary": "Eligibility depends on progression not supplied here. The guide training description cannot establish current experience."
+          }
+        }
+      ]
+    },
+    {
+      "id": "aq-berries-and-family",
+      "gameId": "alqadim",
+      "turns": [
+        {
+          "text": "What are the Purple Berries needed for?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.keyItems[1].description",
+              "review": "extracted"
+            },
+            "contains": [
+              "Babazar",
+              "daughter"
+            ],
+            "requiredUsefulClaim": "Purple Berries cure Babazar's daughter.",
+            "sourceWitness": "Medicinal berries needed to cure Babazar's daughter."
+          }
+        },
+        {
+          "text": "How do I collect them?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.chapters[2].required[id=ch3_3]",
+              "review": "extracted"
+            },
+            "contains": [
+              "oasis bushes"
+            ],
+            "requiredUsefulClaim": "Collect Purple Berries from oasis bushes.",
+            "sourceWitness": "Collect the Purple Berries from the oasis bushes."
+          }
+        },
+        {
+          "text": "Before I leave the oasis, how should I deal with its giant boar?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.bestiary[3]",
+              "review": "extracted"
+            },
+            "contains": [
+              "Dodge sideways",
+              "behind"
+            ],
+            "requiredUsefulClaim": "Sidestep its straight-line charge, then strike from behind.",
+            "sourceWitness": "Charges in straight lines. Dodge sideways, then strike from behind.",
+            "alternativeAnswers": [
+              {
+                "source": {
+                  "file": "guides/js/AlQadim.js",
+                  "locator": "DB.chapters[2]",
+                  "review": "extracted"
+                },
+                "contains": [
+                  "Step aside",
+                  "flank"
+                ],
+                "sourceWitness": "The boar charges in straight lines. Step aside, then strike its flank."
+              }
+            ]
+          }
+        },
+        {
+          "text": "What dose of Purple Berries should I give a poisoned party member?",
+          "expected": {
+            "decision": "not-answer",
+            "boundary": "The source gives a specific quest cure for Babazar's daughter, not a poison remedy for arbitrary party members or a dosage."
+          }
+        }
+      ]
+    },
+    {
+      "id": "aq-ship-restoration",
+      "gameId": "alqadim",
+      "turns": [
+        {
+          "text": "What does the Ship Orb actually do?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.keyItems[5].description",
+              "review": "extracted"
+            },
+            "contains": [
+              "restores",
+              "navigation"
+            ],
+            "requiredUsefulClaim": "The Ship Orb powers and restores the corsair ship for navigation.",
+            "sourceWitness": "Powers and restores the corsair ship for navigation."
+          }
+        },
+        {
+          "text": "How do I obtain that orb?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.chapters[3].required[id=ch4_5]",
+              "review": "extracted"
+            },
+            "contains": [
+              "helm cabin"
+            ],
+            "requiredUsefulClaim": "Retrieve the Ship Orb from the helm cabin.",
+            "sourceWitness": "Retrieve the Ship Orb from the helm cabin."
+          }
+        },
+        {
+          "text": "Who am I rescuing on the Reef of the Dead?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/js/AlQadim.js",
+              "locator": "DB.chapters[3].summary",
+              "review": "extracted"
+            },
+            "contains": [
+              "mermaid",
+              "sister"
+            ],
+            "requiredUsefulClaim": "Rescue the mermaid's sister on the Reef of the Dead.",
+            "sourceWitness": "rescue the mermaid's sister, and claim the Ship Orb.",
+            "alternativeAnswers": [
+              {
+                "source": {
+                  "file": "guides/js/AlQadim.js",
+                  "locator": "DB.chapters[3]",
+                  "review": "extracted"
+                },
+                "contains": [
+                  "mermaid",
+                  "sister",
+                  "stone cell"
+                ],
+                "sourceWitness": "Rescue the mermaid's sister locked in the stone cell."
+              },
+              {
+                "source": {
+                  "file": "guides/js/AlQadim.js",
+                  "locator": "DB.chapters[3].required[id=ch4_2]",
+                  "review": "extracted"
+                },
+                "contains": [
+                  "mermaid",
+                  "sister",
+                  "stone cell"
+                ],
+                "sourceWitness": "Rescue the mermaid's sister locked in the stone cell."
+              }
+            ]
+          }
+        },
+        {
+          "text": "Can the mermaid's sister join my party after I free her?",
+          "expected": {
+            "decision": "not-answer",
+            "boundary": "The guide states the rescue objective, but does not establish recruitment or party membership for the mermaid's sister."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ab-toronto-supplies",
+      "gameId": "albion",
+      "turns": [
+        {
+          "text": "How do I access the COM room aboard Toronto?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "QUEST_HINTS[\"toronto-intro\"][\"com-code\"]",
+              "review": "extracted"
+            },
+            "contains": [
+              "Joe",
+              "1042"
+            ],
+            "requiredUsefulClaim": "Speak to Joe, use the access ladder north of his room, and enter 1042.",
+            "sourceWitness": "Talk to Joe, then use the access ladder in the room north of Joe’s; key in 1042 to enter the COM/service level access."
+          }
+        },
+        {
+          "text": "Once inside, where do I find the Pistol and its canisters?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "QUEST_HINTS[\"toronto-intro\"][\"pistol\"]",
+              "review": "extracted"
+            },
+            "contains": [
+              "damaged console",
+              "Pistol",
+              "Canisters"
+            ],
+            "requiredUsefulClaim": "Examine the damaged COM-room console for the Pistol and Canisters.",
+            "sourceWitness": "In the COM room, examine the damaged console to get the Pistol + Canisters"
+          }
+        },
+        {
+          "text": "How can I carry them past security?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "QUEST_HINTS[\"toronto-intro\"][\"hide-weapon\"]",
+              "review": "extracted"
+            },
+            "contains": [
+              "wall cabinet",
+              "service level"
+            ],
+            "requiredUsefulClaim": "Hide the Pistol and Canisters in the service-level wall cabinet before security.",
+            "sourceWitness": "hide the Pistol + Canisters in the wall cabinet on the service level before passing security."
+          }
+        },
+        {
+          "text": "Is my Pistol safely hidden there already?",
+          "expected": {
+            "decision": "not-answer",
+            "boundary": "No inventory or storage state was supplied. A guide instruction cannot prove that the pistol is already stored."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ab-freezing-and-seeds",
+      "gameId": "albion",
+      "turns": [
+        {
+          "text": "What does Frost Avalanche do, and what resource does each cast use?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "DB.magic[0].keySpells[0]",
+              "review": "extracted"
+            },
+            "contains": [
+              "Freezes all enemies",
+              "30 SP",
+              "Trifalai Seed"
+            ],
+            "requiredUsefulClaim": "Frost Avalanche freezes all enemies, costs 30 SP, and uses a Trifalai Seed.",
+            "sourceWitness": [
+              "{ name: \"Frost Avalanche\", level: 9, sp: 30, effect: \"Freezes all enemies\" }",
+              "reagent: \"Trifalai Seed (1.2G each)\""
+            ]
+          }
+        },
+        {
+          "text": "Who offers the free training for it?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "DB.magic[0].keySpells[0]; DB.magic[0].freeTraining/routeHint",
+              "review": "extracted"
+            },
+            "contains": [
+              "Fasiir",
+              "Jirinaar"
+            ],
+            "requiredUsefulClaim": "Fasiir at the Dji-Kas guild in Jirinaar is the free training stop for Sira.",
+            "sourceWitness": "Fasiir in Dji-Kas guild (Jirinaar)"
+          }
+        },
+        {
+          "text": "What level and SP cost does Thorn Snare have instead?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "DB.magic[0].keySpells[1].level/sp",
+              "review": "extracted"
+            },
+            "contains": [
+              "12",
+              "16 SP"
+            ],
+            "requiredUsefulClaim": "Thorn Snare has spell level 12 and costs 16 SP.",
+            "sourceWitness": "{ name: \"Thorn Snare\", level: 12, sp: 16, effect: \"Immobilizes target completely\" }"
+          }
+        },
+        {
+          "text": "Do I currently have enough Trifalai Seeds to cast Frost Avalanche twice?",
+          "expected": {
+            "decision": "not-answer",
+            "boundary": "No current seed inventory was supplied. A reagent requirement does not prove two casts are available."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ab-linked-companions",
+      "gameId": "albion",
+      "turns": [
+        {
+          "text": "What happens to Sira if Melthas leaves?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "DB.characters[3].role/notes",
+              "review": "extracted"
+            },
+            "contains": [
+              "leaves with Melthas"
+            ],
+            "requiredUsefulClaim": "Sira always leaves with Melthas.",
+            "sourceWitness": "Always leaves with Melthas."
+          }
+        },
+        {
+          "text": "Why would I bring her into a difficult fight?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "DB.characters[3].strengths/weaknesses",
+              "review": "extracted"
+            },
+            "contains": [
+              "crowd control",
+              "Frost/Snare"
+            ],
+            "requiredUsefulClaim": "Sira brings crowd control and frost/snare immobilization.",
+            "sourceWitness": "strengths: [\"Powerful crowd control\", \"Frost/Snare immobilizes enemies\", \"High speed\"]"
+          }
+        },
+        {
+          "text": "How does Melthas help against demons?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/js/Albion.js",
+              "locator": "DB.characters[4].strengths/weaknesses",
+              "review": "extracted"
+            },
+            "contains": [
+              "Demon Exodus",
+              "demon-type"
+            ],
+            "requiredUsefulClaim": "Melthas's Demon Exodus destroys demon-type monsters.",
+            "sourceWitness": "Demon Exodus destroys demon-type monsters"
+          }
+        },
+        {
+          "text": "Can I keep Sira when dismissing Melthas in the 2026 console remaster?",
+          "expected": {
+            "decision": "not-answer",
+            "boundary": "The sources cover Albion (1995 PC), not a specified 2026 console remaster or its party rules."
+          }
+        }
+      ]
+    },
+    {
+      "id": "sc-client-first-launch",
+      "gameId": "starcraft",
+      "turns": [
+        {
+          "text": "For SCHNAIL, do I need to install a separate copy of Brood War?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#schnail-setup .text-blue-700",
+              "review": "extracted"
+            },
+            "contains": [
+              "own",
+              "Starcraft"
+            ],
+            "requiredUsefulClaim": "SCHNAIL includes its own game installation; no separate StarCraft install is needed.",
+            "sourceWitness": "you don't need to install the game separately.",
+            "alternativeAnswers": [
+              {
+                "source": {
+                  "file": "guides/StarcraftBWAPI.html",
+                  "locator": "#schnail-setup ul",
+                  "review": "extracted"
+                },
+                "contains": [
+                  "No separate Starcraft installation required"
+                ],
+                "sourceWitness": "No separate Starcraft installation required"
+              },
+              {
+                "source": {
+                  "file": "guides/StarcraftBWAPI.html",
+                  "locator": "#schnail-setup ol",
+                  "review": "extracted"
+                },
+                "contains": [
+                  "automatically download",
+                  "game files"
+                ],
+                "sourceWitness": "The client will automatically download and set up the game files"
+              }
+            ]
+          }
+        },
+        {
+          "text": "Why might the first launch be slow?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#getting-started > .bg-blue-50 .text-blue-700",
+              "review": "extracted"
+            },
+            "contains": [
+              "downloads",
+              "game files"
+            ],
+            "requiredUsefulClaim": "First launch might take time because it downloads necessary game files.",
+            "sourceWitness": "The first launch might take some time as it downloads\n                                    necessary game files."
+          }
+        },
+        {
+          "text": "After the first login, is play still going over the internet?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#troubleshooting .text-yellow-700",
+              "review": "extracted"
+            },
+            "contains": [
+              "initial login",
+              "local network"
+            ],
+            "requiredUsefulClaim": "Internet is required for initial login; play then uses the local network.",
+            "sourceWitness": "client login. All gameplay after login happens on your local network, ensuring",
+            "alternativeAnswers": [
+              {
+                "source": {
+                  "file": "guides/StarcraftBWAPI.html",
+                  "locator": "#getting-started .grid > div:nth-child(1) .pros-cons",
+                  "review": "extracted"
+                },
+                "contains": [
+                  "initial login",
+                  "local network"
+                ],
+                "sourceWitness": "AI plays over local network after login"
+              }
+            ]
+          }
+        },
+        {
+          "text": "Which executable did my antivirus quarantine on this computer?",
+          "expected": {
+            "decision": "not-answer",
+            "boundary": "No local antivirus evidence is supplied. General quarantine advice cannot identify a file on the player's machine."
+          }
+        }
+      ]
+    },
+    {
+      "id": "sc-remastered-map-route",
+      "gameId": "starcraft",
+      "turns": [
+        {
+          "text": "I want the integrated Remastered map route. Where do I extract the ZIP?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#remastered-setup ol > li:nth-child(3)",
+              "review": "extracted"
+            },
+            "contains": [
+              "Documents\\StarCraft\\Maps"
+            ],
+            "requiredUsefulClaim": "Extract the ZIP into the StarCraft maps folder, typically Documents\\StarCraft\\Maps.",
+            "sourceWitness": "Documents\\StarCraft\\Maps",
+            "alternativeAnswers": [
+              {
+                "source": {
+                  "file": "guides/StarcraftBWAPI.html",
+                  "locator": "#remastered-setup ol",
+                  "review": "extracted"
+                },
+                "contains": [
+                  "Documents\\StarCraft\\Maps"
+                ],
+                "sourceWitness": "Documents\\StarCraft\\Maps"
+              }
+            ]
+          }
+        },
+        {
+          "text": "For that map, which game type do I choose, and why does Melee fail?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#remastered-setup ol > li:nth-child(7)",
+              "review": "extracted"
+            },
+            "contains": [
+              "Use Map Settings",
+              "Melee"
+            ],
+            "requiredUsefulClaim": "Choose Use Map Settings; the integrated AI does not work properly in standard Melee.",
+            "sourceWitness": "The AI will not function properly in a standard Melee game.",
+            "alternativeAnswers": [
+              {
+                "source": {
+                  "file": "guides/StarcraftBWAPI.html",
+                  "locator": "#remastered-setup ol",
+                  "review": "extracted"
+                },
+                "contains": [
+                  "Use Map Settings",
+                  "Melee"
+                ],
+                "sourceWitness": "The AI will not function properly in a standard Melee game."
+              }
+            ]
+          }
+        },
+        {
+          "text": "Will I have to downgrade Remastered for this route?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#remastered-setup .text-blue-700",
+              "review": "extracted"
+            },
+            "contains": [
+              "without needing version downgrades"
+            ],
+            "requiredUsefulClaim": "The integrated map route works natively in Remastered without a version downgrade.",
+            "sourceWitness": "This method works natively with StarCraft Remastered without needing version downgrades."
+          }
+        },
+        {
+          "text": "Does this same SCM archive also work in StarCraft II?",
+          "expected": {
+            "decision": "not-answer",
+            "boundary": "The guide covers Brood War and Remastered, not StarCraft II map compatibility."
+          }
+        }
+      ]
+    },
+    {
+      "id": "sc-bot-learning-resources",
+      "gameId": "starcraft",
+      "turns": [
+        {
+          "text": "What open-source example bots does this guide offer for learning?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#resources .space-y-8 > div:nth-child(2)",
+              "review": "extracted"
+            },
+            "contains": [
+              "Steamhammer",
+              "UAlbertaBot"
+            ],
+            "requiredUsefulClaim": "The guide lists Steamhammer and UAlbertaBot as open-source example implementations.",
+            "sourceWitness": "Learn from these open-source bot implementations:"
+          }
+        },
+        {
+          "text": "Who does the guide credit with UAlbertaBot?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#resources .space-y-4 > div:nth-child(2)",
+              "review": "extracted"
+            },
+            "contains": [
+              "Dave Churchill",
+              "Steve Gelly"
+            ],
+            "requiredUsefulClaim": "The guide credits Dave Churchill and Steve Gelly with UAlbertaBot.",
+            "sourceWitness": "A Starcraft AI development framework by Dave\n                                        Churchill\n                                        and Steve Gelly"
+          }
+        },
+        {
+          "text": "Where can I read the framework documentation?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#resources .grid > div:nth-child(1)",
+              "review": "extracted"
+            },
+            "contains": [
+              "BWAPI Official Documentation",
+              "BWAPI Wiki"
+            ],
+            "requiredUsefulClaim": "The guide links BWAPI Official Documentation and the BWAPI Wiki.",
+            "sourceWitness": "BWAPI Official Documentation"
+          }
+        },
+        {
+          "text": "Which of those bots wins more often in today's tournament rankings?",
+          "expected": {
+            "decision": "not-answer",
+            "boundary": "No current tournament standings or win-rate comparison is present. Example listings do not prove current competitive ranking."
+          }
+        }
+      ]
+    },
+    {
+      "id": "sc-offline-comparison",
+      "gameId": "starcraft",
+      "turns": [
+        {
+          "text": "How does BWAILauncher compare with SCHNAIL for AI realism and strategic depth?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#getting-started .grid > div:nth-child(2) .pros-cons",
+              "review": "extracted"
+            },
+            "sourceWitness": [
+              "Less realistic AI behavior",
+              "Limited strategic depth compared to SCHNAIL"
+            ],
+            "contains": [
+              "Less realistic AI",
+              "Limited strategic depth",
+              "SCHNAIL"
+            ],
+            "requiredUsefulClaim": "The guide describes BWAILauncher as less realistic and less strategically deep than SCHNAIL."
+          }
+        },
+        {
+          "text": "Can I use BWAILauncher entirely offline?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#getting-started .grid > div:nth-child(2) .pros-cons ul.mb-3",
+              "review": "extracted"
+            },
+            "sourceWitness": "No internet connection required",
+            "contains": [
+              "No internet connection required"
+            ],
+            "requiredUsefulClaim": "The guide lists BWAILauncher as requiring no internet connection.",
+            "alternativeAnswers": [
+              {
+                "source": {
+                  "file": "guides/StarcraftBWAPI.html",
+                  "locator": "#getting-started .grid > div:nth-child(2) .pros-cons",
+                  "review": "extracted"
+                },
+                "contains": [
+                  "No internet connection required"
+                ],
+                "sourceWitness": "No internet connection required"
+              }
+            ]
+          }
+        },
+        {
+          "text": "If it cannot detect Starcraft.exe automatically, how do I point it at the game?",
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#bwai-setup ol > li:nth-child(5)",
+              "review": "extracted"
+            },
+            "sourceWitness": [
+              "Starcraft.exe",
+              "Save the settings and restart the launcher"
+            ],
+            "contains": [
+              "settings",
+              "Starcraft.exe",
+              "restart"
+            ],
+            "requiredUsefulClaim": "Open launcher settings, select Starcraft.exe in Game/Paths, then save and restart."
+          }
+        },
+        {
+          "text": "Is the installation on my computer already version 1.16.1?",
+          "expected": {
+            "decision": "not-answer",
+            "boundary": "No local installation or executable-version evidence was supplied. Guide target-version instructions cannot establish the installed version."
+          }
+        }
+      ]
+    }
+  ]
+}

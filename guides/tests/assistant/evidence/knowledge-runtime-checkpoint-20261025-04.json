@@ -1,0 +1,188 @@
+{
+  "schemaVersion": 1,
+  "kind": "structured-knowledge-runtime-checkpoint",
+  "checkedAt": "2026-10-24T20:57:26.140721+00:00",
+  "goalStatus": "active",
+  "acceptance": "incomplete",
+  "ownerConstraint": "No model updates, replacements, new models, training or downloads. Existing production model/head unchanged. Continue deterministic chat/source-data work only.",
+  "supersedes": "knowledge-runtime-checkpoint-20261025-03.json",
+  "dataCoverageReport": "guides/tests/assistant/evidence/knowledge-data-coverage-20261025-05.json",
+  "data": {
+    "facts": 674,
+    "links": 334,
+    "sourceContexts": 8,
+    "compilerIssues": 0
+  },
+  "contracts": {
+    "passed": 1597,
+    "total": 1597,
+    "scope": "All recursively discovered assistant *.test.mjs; original frozen conversation oracles unchanged.",
+    "log": "/tmp/knowledge-contracts-20261025-19.log"
+  },
+  "legacyEnglish": {
+    "report": "guides/tests/assistant/intent-prototype/results/english-source-roles-20261025-01.json",
+    "passed": 1058,
+    "total": 1058
+  },
+  "originalRegression": {
+    "report": "guides/tests/assistant/intent-prototype/results/original-source-roles-20261025-01.json",
+    "passed": 203,
+    "total": 203,
+    "qualification": "Tracked results.json restored byte for byte."
+  },
+  "citationVerifierUnitTests": 4,
+  "offlineManifestUnitTests": 4,
+  "developmentReplay": {
+    "report": "guides/tests/assistant/intent-prototype/results/knowledge-corpus-replay-source-roles-20261025-03/report.json",
+    "total": 851,
+    "passed": 750,
+    "failed": 101,
+    "incomplete": 0,
+    "sourceStable": true,
+    "missingQueryCount": 0,
+    "negativeBoundaries": [
+      175,
+      175
+    ],
+    "comparisonWithPreviousCheckpoint": "750/851 versus751/851: one newly passing Lord Michael dialogue request and two retained source-provenance oracle failures after correcting Trinsic citations/witness. No frozen oracle edits.",
+    "sourceCorrectionFailures": [
+      {
+        "game": "ultima7",
+        "text": "How do I investigate the Trinsic crime scene?",
+        "reason": "Old oracle expects DB.mainQuest[0]; answer cites exact DB.mainQuest[0].content."
+      },
+      {
+        "game": "ultima7",
+        "text": "How do I get the Trinsic exit password?",
+        "reason": "Old oracle expects adapter-summary record provenance; answer now quotes and cites the full original Finnigan quiz/password witness."
+      }
+    ]
+  },
+  "nativeObserved96": {
+    "report": "guides/tests/assistant/evidence/knowledge-blind-browser-native-28.json",
+    "sha256": "b1b65d46513db8942e5c486121bd09bc4d0884d2fc67595a819c92c3b0816f0d",
+    "passed": 81,
+    "total": 96,
+    "negativeBoundaries": [
+      22,
+      22
+    ],
+    "boundaries": {
+      "allTurnsRan": true,
+      "nativeMiniLMEverySurface": true,
+      "storageUnchanged": true,
+      "noSavedGameWrites": true,
+      "noExternalRequests": true,
+      "noPageErrors": true,
+      "onlyStaticGets": true,
+      "sourceStable": true,
+      "serverClosed": true
+    },
+    "allWatchedSourceHashesStillCurrent": true
+  },
+  "nativeObserved76": {
+    "report": "guides/tests/assistant/evidence/knowledge-blind-browser-fresh-20261025-17.json",
+    "sha256": "515c1d6fa37027d0f7de5149577ba058e0e30d92c59711184b3a81d11d6ff705",
+    "passed": 43,
+    "total": 76,
+    "negativeBoundaries": [
+      19,
+      19
+    ],
+    "boundaries": {
+      "allTurnsRan": true,
+      "nativeMiniLMEverySurface": true,
+      "storageUnchanged": true,
+      "noSavedGameWrites": true,
+      "noExternalRequests": true,
+      "noPageErrors": true,
+      "onlyStaticGets": true,
+      "sourceStable": true,
+      "serverClosed": true
+    },
+    "allWatchedSourceHashesStillCurrent": true
+  },
+  "nativeIndependent48NowObserved": {
+    "report": "guides/tests/assistant/evidence/knowledge-blind-browser-independent-all-20261025-08.json",
+    "sha256": "dccd383e85e60f239b3a1d6cf90ce8ba69a0f6062bbd9d53327df388668210fb",
+    "passed": 38,
+    "total": 48,
+    "negativeBoundaries": [
+      12,
+      12
+    ],
+    "boundaries": {
+      "allTurnsRan": true,
+      "nativeMiniLMEverySurface": true,
+      "storageUnchanged": true,
+      "noSavedGameWrites": true,
+      "noExternalRequests": true,
+      "noPageErrors": true,
+      "onlyStaticGets": true,
+      "sourceStable": true,
+      "serverClosed": true
+    },
+    "allWatchedSourceHashesStillCurrent": true
+  },
+  "independentFirstExecutionReview": {
+    "report": "guides/tests/assistant/evidence/knowledge-independent-adjudication-20261025.json",
+    "firstStrictPassed": 18,
+    "total": 48,
+    "completeSupportedPositiveClaims": 10,
+    "positiveTurns": 36,
+    "firstNegativeBoundaries": [
+      10,
+      12
+    ],
+    "qualification": "First individual executions, before the measurement fix. Two independently authored source-first suites were concatenated without changing any dialogue oracle. They are now observed regression cases. The post-fix20/48 contains all12 boundary successes; it is not20 complete positive answers."
+  },
+  "citationVerifierQualification": "The exact compound-locator parser correction contributes1 verifier-only pass on stored native-18 replies, with zero changed runtime answers. See knowledge-compound-citation-audit-20261025.json. No parent/child citation equivalence or oracle edits were introduced.",
+  "productionModelFilesUnchanged": {
+    "guides/local-assistant/profile.json": "7fcde9d4b3d8842dc2345159687e845e023ce9049c92deab6d99d494e6ba813d",
+    "guides/local-assistant/intent/profile.json": "786a95a078fcc940f95539837883405257f1a3a896637bb71b8b477be680639e",
+    "guides/local-assistant/intent/head.json": "979c196a92df490124802e61fcc5fad787fc535ee69ff0eae64784355a8f6bfb"
+  },
+  "offline": {
+    "assets": 822,
+    "allHashesMatch": true,
+    "versionMatches": true,
+    "experimentalAssetsExcluded": true,
+    "newSharedModulesIncluded": true,
+    "version": "af0ea223eb5420770bbaba19605338f264553d3f259aad39324fc1b4458bfb6a"
+  },
+  "publication": {
+    "ftpUploaded": false,
+    "committed": false,
+    "pushed": false
+  },
+  "remainingWork": "Acceptance remains incomplete:9 source-answerable turns in the reviewed48 still lack complete useful answers; broader native suites retain15/96 and33/76 failures and the851-turn replay101 strict failures (including2 corrected-source oracle mismatches). Continue source-present scene context, full multi-clause requests and bounded reference-only preambles. No new/update models, downloads, installations or publishing.",
+  "previousGoalTurnClassification": "progress",
+  "completeUsefulClaimReview": {
+    "report": "guides/tests/assistant/evidence/knowledge-independent-adjudication-20261025-03.json",
+    "turns": 48,
+    "strictPassed": 38,
+    "positiveTurns": 36,
+    "completeSupportedPositiveClaims": 27,
+    "completeSupportedPositiveClaimsExcludingQualifiedAlternative": 26,
+    "qualifiedAlternativePositiveClaims": 1,
+    "withheldOrIncompletePositiveClaims": 9,
+    "wrongSubjectOrFieldPositiveClaims": 0,
+    "boundaryTurns": 12,
+    "boundariesHeld": 12,
+    "qualification": "27/36 complete useful claims includes one stated operational-equivalence judgment for the literal Ariana helper; excluding that alternative yields26/36. Strict38/48 includes12 boundaries. One new strict Trinsic crime-scene pass corrects a citation for an already useful answer. Observed regression only;9 answerable turns remain incomplete."
+  },
+  "embeddingReuseUnitTests": 3,
+  "sourceIndexRefresh": {
+    "modelChanged": false,
+    "pinnedExistingEncoderOnly": true,
+    "unchangedDocumentVectorsReused": 673,
+    "correctedDocumentVectorsEncoded": 1,
+    "correctedFact": "ultima7:finnigan-exit",
+    "newIgnoredExactQueryVectors": 3,
+    "totalCachedQueryVectors": 985,
+    "modelDownloads": 0,
+    "installations": 0,
+    "log": "/tmp/knowledge-source-index-refresh-20261025-01.log"
+  },
+  "implementationNote": "docs/assistant-knowledge/source-role-continuity-20261025.md"
+}

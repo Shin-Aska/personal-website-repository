@@ -1,5 +1,6 @@
 import {modelRuntime} from './model-runtime.js';
-import {CONSENT_KEY,readChoice,saveChoice} from './consent.js';
+import {intentRuntime} from './intent-runtime.js';
+import {CONSENT_KEY,readChoice,saveChoice,matchesChatBundle} from './consent.js';
 import {modelLoadingText} from './model-download.js';
 const root=document.documentElement;
 const storage=()=>{try{return window.localStorage;}catch{return null;}};
@@ -76,7 +77,11 @@ function tag() {
 }
 new MutationObserver(tag).observe(document.body,{childList:true,subtree:true});tag();
 paint(modelRuntime.state);
-modelRuntime.profile().then(value=>{
-    config=value;size.textContent=`Enabling chat downloads approximately ${Math.ceil(config.totalBytes/1e6)} MB of model files. Your browser can reuse them on later visits. This choice applies to all six guides on this site.`;
+Promise.all([modelRuntime.profile(),intentRuntime.profile()]).then(([value,intent])=>{
+    // An older cached profile must not authorize newly added model files under
+    // an earlier choice. Both metadata records describe this exact chat bundle.
+    if(!matchesChatBundle(value,intent))
+        throw new Error('Updated chat settings are not available');
+    config=value;size.textContent=`Enabling chat downloads approximately ${Math.ceil((config.totalBytes+(config.intent?.additionalBytes||0))/1e6)} MB of local chat files, including conversation understanding. Your browser can reuse them on later visits. This choice applies to all six guides on this site.`;
     choose(readChoice(storage(),config.id),false);if(choice===null)show();
 }).catch(()=>{size.textContent='Model settings could not be read. Reload to try again; the guide remains available.';show();});

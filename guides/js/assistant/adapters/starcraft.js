@@ -1,4 +1,4 @@
-import { createAssistant } from '../engine.js';
+import { createGuideAssistant } from '../guide-assistant.js';
 import { createView } from '../ui.js';
 import { buildNarrativeRecords, buildResearchRecords } from '../topics.js';
 
@@ -121,7 +121,7 @@ export async function mountStarcraftAssistant(root = document) {
     const response = await fetch(new URL('../../../data/assistant/starcraft.json', import.meta.url));
     if (!response.ok) throw new Error('The local guide data could not be loaded.');
     const overlay = await response.json();
-    const assistant = createAssistant({
+    const assistant = await createGuideAssistant({
         gameId: 'starcraft',
         records: buildStarcraftRecords(root, overlay),
         getProgress: () => []
@@ -140,7 +140,6 @@ export async function mountStarcraftAssistant(root = document) {
             tone: root.getElementById('sc-assistant-tone').value,
             label: select.value ? select.selectedOptions[0]?.textContent : undefined
         }),
-        spoilerSelect: root.getElementById('sc-assistant-spoiler'),
         toneSelect: root.getElementById('sc-assistant-tone')
     });
     select.addEventListener('change', () => {

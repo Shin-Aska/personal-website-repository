@@ -2371,7 +2371,7 @@ async function ensureUltima5Seer() {
                 input: document.getElementById('seer-query'),
                 sendButton: document.getElementById('ask-seer'),
                 bindEvents: false,
-                getContext: () => ({ contextId: 'general', scope: 'campaign' })
+                getContext: () => ({ contextId: 'general', scope: 'campaign', spoiler: 'direct' })
             });
             ultima5SeerView.preparationMs = assistant.preparationMs;
             const selectedSection = document.querySelector('.content-section.active')?.id;

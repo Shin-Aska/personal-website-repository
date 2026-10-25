@@ -1,0 +1,1730 @@
+{
+  "schemaVersion": 1,
+  "kind": "full-native-corpus-source-claim-adjudication",
+  "checkedAt": "2026-10-25T01:47:22.247602+00:00",
+  "inputReport": "guides/tests/assistant/evidence/knowledge-browser-full-corpus-sequence-scope-20261025-03.json",
+  "inputReportSha256": "ba10e2f42e7c7ae6fe12d9aef954f9d4c4317afdf7f5190f01645b9aa55732b5",
+  "acceptance": "incomplete",
+  "summary": {
+    "totalTurns": 1005,
+    "strictPassedTurns": 889,
+    "strictFailedTurns": 116,
+    "allStrictFailuresQualitativelyReviewed": true,
+    "failedRowCategories": {
+      "source-present-unanswered": 46,
+      "useful-claim-oracle-difference": 41,
+      "wrong-or-incomplete-field": 15,
+      "partial-or-qualification-gap": 2,
+      "justified-objective-only-decline": 12
+    },
+    "genuineResponseGapsAcrossPanelRows": 63,
+    "uniqueGameStrictFailures": 107,
+    "uniqueGameFailedCategories": {
+      "source-present-unanswered": 44,
+      "useful-claim-oracle-difference": 41,
+      "wrong-or-incomplete-field": 14,
+      "partial-or-qualification-gap": 2,
+      "justified-objective-only-decline": 6
+    },
+    "uniqueGameResponseGaps": 60,
+    "separatelyReviewedRecoveredStrictPasses": 9,
+    "otherStrictPassesNotQualitativelyAdjudicated": 880,
+    "negativeControlsStrictlyPassed": 216,
+    "negativeControlsTotal": 216
+  },
+  "reviewArtifacts": {
+    "guides/tests/assistant/evidence/knowledge-full-corpus-review-ultima5-ultima6-20261025-02.json": "eeddf31a4247becc691ab8864bf168fcd7a6ebc938ae5366ded5dae07f518411",
+    "guides/tests/assistant/evidence/knowledge-full-corpus-review-starcraft-albion-20261025-02.json": "efa75ec2bcb291cb50099565ca487d57680b6161f972e939881cc61a1d9e4ace",
+    "guides/tests/assistant/evidence/knowledge-full-corpus-review-ultima7-alqadim-20261025-02.json": "3bcff3fa4fd66df163c1cbbd2f701907964df94346aed889f072f745fa1a97ef"
+  },
+  "method": "Consolidates three independently authored complete-response/source/claim reviews. Every strict-failing row is included exactly once. Final03 basis rebases reuse manual judgments only after exact full dialogue, expected metadata, rendered reply, citations, links and verdict equality plus current source hashes. Categories are source/meaning judgments, not phrase-score conversions.",
+  "qualifications": [
+    "The 154 Al-Qadim walkthrough turns duplicate its second production panel. Unique-game counts collapse only that exact panel identity.",
+    "41 useful-claim rows retain citation/wording/disclaimer/oracle-scope differences; three include a contradictory decline/clarify disclaimer and still need wording refinement. Strict results/oracles unchanged.",
+    "12 justified declines preserve objective-only source limits; no unsupported procedure is counted as a real answer.",
+    "All116 strict failures and9 recovered passes were explicitly reviewed. Other880 strict passes are not independently adjudicated; passing scores do not establish exhaustive six-game understanding.",
+    "Existing pinned local models reused; no new inference assets, training, downloads, installations or publication.",
+    "Current corpora are observed development/regression sets. No unseen evaluation claim."
+  ],
+  "sourceHashVerification": {
+    "count": 102,
+    "allCurrent": true
+  },
+  "rows": [
+    {
+      "key": "ultima5/party-recommendation/1",
+      "category": "source-present-unanswered",
+      "originalCategory": "genuinely-unavailable-source-present",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-ultima5-ultima6-20261025-02.json",
+      "reviewRowIndex": 0,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "Which six party members does the recommended party use?"
+    },
+    {
+      "key": "ultima5/party-recommendation/3",
+      "category": "source-present-unanswered",
+      "originalCategory": "genuinely-unavailable-source-present",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-ultima5-ultima6-20261025-02.json",
+      "reviewRowIndex": 1,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "How do I reach Mariah for recruitment?"
+    },
+    {
+      "key": "ultima5/cape-plans-locations/4",
+      "category": "useful-claim-oracle-difference",
+      "originalCategory": "complete-useful-claim-citation-or-wording-failure",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-ultima5-ultima6-20261025-02.json",
+      "reviewRowIndex": 2,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "What do they do?"
+    },
+    {
+      "key": "ultima5/castle-raid-access/4",
+      "category": "source-present-unanswered",
+      "originalCategory": "genuinely-unavailable-source-present",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-ultima5-ultima6-20261025-02.json",
+      "reviewRowIndex": 3,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "What supplies does the Castle raid kit need?"
+    },
+    {
+      "key": "ultima5/carpet-pronoun/1",
+      "category": "useful-claim-oracle-difference",
+      "originalCategory": "complete-useful-claim-citation-or-wording-failure",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-ultima5-ultima6-20261025-02.json",
+      "reviewRowIndex": 4,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "How do I use the Magic Carpet?"
+    },
+    {
+      "key": "ultima5/carpet-pronoun/2",
+      "category": "source-present-unanswered",
+      "originalCategory": "genuinely-unavailable-source-present",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-ultima5-ultima6-20261025-02.json",
+      "reviewRowIndex": 5,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "Can it cross mountains?"
+    },
+    {
+      "key": "ultima5/honor-and-humility/3",
+      "category": "wrong-or-incomplete-field",
+      "originalCategory": "wrong-or-incomplete-asserted-field",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-ultima5-ultima6-20261025-02.json",
+      "reviewRowIndex": 6,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "What is the Humility attribute bonus?"
+    },
+    {
+      "key": "ultima5/spirituality-followups/1",
+      "category": "wrong-or-incomplete-field",
+      "originalCategory": "wrong-or-incomplete-asserted-field",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-ultima5-ultima6-20261025-02.json",
+      "reviewRowIndex": 7,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "How do I reach the Shrine of Spirituality?"
+    },
+    {
+      "key": "ultima5/spirituality-followups/4",
+      "category": "source-present-unanswered",
+      "originalCategory": "genuinely-unavailable-source-present",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-ultima5-ultima6-20261025-02.json",
+      "reviewRowIndex": 8,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "Must I leave from Skara Brae because I selected its atlas marker?"
+    },
+    {
+      "key": "ultima5/faulinei-identity-route/4",
+      "category": "source-present-unanswered",
+      "originalCategory": "genuinely-unavailable-source-present",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-ultima5-ultima6-20261025-02.json",
+      "reviewRowIndex": 9,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "How do I summon him at the flame?"
+    },
+    {
+      "key": "ultima5/astaroth-flame-and-words/4",
+      "category": "source-present-unanswered",
+      "originalCategory": "genuinely-unavailable-source-present",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-ultima5-ultima6-20261025-02.json",
+      "reviewRowIndex": 10,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "Is Astaroth defeated merely because I recovered the Shard?"
+    },
+    {
+      "key": "ultima5/crown-danger-use/4",
+      "category": "source-present-unanswered",
+      "originalCategory": "genuinely-unavailable-source-present",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-ultima5-ultima6-20261025-02.json",
+      "reviewRowIndex": 11,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "What does Crown retrieval require for capture safety?"
+    },
+    {
+      "key": "ultima5/amulet-followups/1",
+      "category": "wrong-or-incomplete-field",
+      "originalCategory": "wrong-or-incomplete-asserted-field",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-ultima5-ultima6-20261025-02.json",
+      "reviewRowIndex": 12,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "How do I reach the Amulet?"
+    },
+    {
+      "key": "ultima5/amulet-followups/5",
+      "category": "wrong-or-incomplete-field",
+      "originalCategory": "wrong-or-incomplete-asserted-field",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-ultima5-ultima6-20261025-02.json",
+      "reviewRowIndex": 13,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "How do I escape the Amulet route?"
+    },
+    {
+      "key": "ultima6/humility-riddle/2",
+      "category": "source-present-unanswered",
+      "originalCategory": "genuinely-unavailable-source-present",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-ultima5-ultima6-20261025-02.json",
+      "reviewRowIndex": 14,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "Who is the humble villager?"
+    },
+    {
+      "key": "ultima6/tablet-leads/3",
+      "category": "useful-claim-oracle-difference",
+      "originalCategory": "complete-useful-claim-citation-or-wording-failure",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-ultima5-ultima6-20261025-02.json",
+      "reviewRowIndex": 15,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "How do I ask the gypsies about the tablet?"
+    },
+    {
+      "key": "ultima6/pirate-cave/3",
+      "category": "useful-claim-oracle-difference",
+      "originalCategory": "complete-useful-claim-citation-or-wording-failure",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-ultima5-ultima6-20261025-02.json",
+      "reviewRowIndex": 16,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "How do I navigate Maze of Death?"
+    },
+    {
+      "key": "ultima6/clue-hunt/1",
+      "category": "wrong-or-incomplete-field",
+      "originalCategory": "wrong-or-incomplete-asserted-field",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-ultima5-ultima6-20261025-02.json",
+      "reviewRowIndex": 17,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "How do I start Chuckles Trail?"
+    },
+    {
+      "key": "ultima6/clue-hunt/2",
+      "category": "wrong-or-incomplete-field",
+      "originalCategory": "wrong-or-incomplete-asserted-field",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-ultima5-ultima6-20261025-02.json",
+      "reviewRowIndex": 18,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "How do I follow Chuckles scrolls?"
+    },
+    {
+      "key": "ultima6/followup-blue-lens/3",
+      "category": "source-present-unanswered",
+      "originalCategory": "genuinely-unavailable-source-present",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-ultima5-ultima6-20261025-02.json",
+      "reviewRowIndex": 19,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "What does he need?"
+    },
+    {
+      "key": "albion/anne-and-beegle/3",
+      "category": "source-present-unanswered",
+      "originalCategory": "unavailable_source_present",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-starcraft-albion-20261025-02.json",
+      "reviewRowIndex": 0,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "What is in his north cabinet?"
+    },
+    {
+      "key": "albion/drirr-recruitment-combat/1",
+      "category": "partial-or-qualification-gap",
+      "originalCategory": "partial_source_present",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-starcraft-albion-20261025-02.json",
+      "reviewRowIndex": 1,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "How do I recruit Drirr?"
+    },
+    {
+      "key": "albion/sira-party-link/4",
+      "category": "source-present-unanswered",
+      "originalCategory": "unavailable_source_present",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-starcraft-albion-20261025-02.json",
+      "reviewRowIndex": 2,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "Where does Sira train spells?"
+    },
+    {
+      "key": "albion/rejira-money/1",
+      "category": "useful-claim-oracle-difference",
+      "originalCategory": "complete_supported_citation_difference",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-starcraft-albion-20261025-02.json",
+      "reviewRowIndex": 3,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "How do I get Rejira potions?"
+    },
+    {
+      "key": "albion/rejira-money/4",
+      "category": "source-present-unanswered",
+      "originalCategory": "unavailable_source_present",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-starcraft-albion-20261025-02.json",
+      "reviewRowIndex": 4,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "Where should I sell Krondir drops?"
+    },
+    {
+      "key": "albion/melthas-demon-spells/3",
+      "category": "useful-claim-oracle-difference",
+      "originalCategory": "complete_supported_citation_difference",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-starcraft-albion-20261025-02.json",
+      "reviewRowIndex": 5,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "Where does Melthas get spell scrolls?"
+    },
+    {
+      "key": "albion/rifrako-utilities/3",
+      "category": "source-present-unanswered",
+      "originalCategory": "unavailable_source_present",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-starcraft-albion-20261025-02.json",
+      "reviewRowIndex": 6,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "And Dreamshield?"
+    },
+    {
+      "key": "albion/beloveno-choice/4",
+      "category": "source-present-unanswered",
+      "originalCategory": "unavailable_source_present",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-starcraft-albion-20261025-02.json",
+      "reviewRowIndex": 7,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "Can I dismiss Khunag after his chapter?"
+    },
+    {
+      "key": "albion/assassination-reward/1",
+      "category": "source-present-unanswered",
+      "originalCategory": "unavailable_source_present",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-starcraft-albion-20261025-02.json",
+      "reviewRowIndex": 8,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "What is the Herras assassination sequence?"
+    },
+    {
+      "key": "albion/harriet-travel/2",
+      "category": "useful-claim-oracle-difference",
+      "originalCategory": "useful_claim_with_decision_disclaimer",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-starcraft-albion-20261025-02.json",
+      "reviewRowIndex": 9,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "Why is she important?"
+    },
+    {
+      "key": "albion/harriet-travel/3",
+      "category": "source-present-unanswered",
+      "originalCategory": "unavailable_source_present",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-starcraft-albion-20261025-02.json",
+      "reviewRowIndex": 10,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "Where does Harriet train spells?"
+    },
+    {
+      "key": "albion/porenoil-route/2",
+      "category": "source-present-unanswered",
+      "originalCategory": "unavailable_source_present",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-starcraft-albion-20261025-02.json",
+      "reviewRowIndex": 11,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "What does it prevent?"
+    },
+    {
+      "key": "albion/toronto-return-codes/1",
+      "category": "source-present-unanswered",
+      "originalCategory": "unavailable_source_present",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-starcraft-albion-20261025-02.json",
+      "reviewRowIndex": 12,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "What are Toronto return codes in order?"
+    },
+    {
+      "key": "albion/toronto-return-codes/2",
+      "category": "source-present-unanswered",
+      "originalCategory": "unavailable_source_present",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-starcraft-albion-20261025-02.json",
+      "reviewRowIndex": 13,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "Where does the first one come from?"
+    },
+    {
+      "key": "albion/secret-word-scroll/3",
+      "category": "useful-claim-oracle-difference",
+      "originalCategory": "complete_supported_oracle_scope_difference",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-starcraft-albion-20261025-02.json",
+      "reviewRowIndex": 14,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "Where is the Metalmagic Scroll?"
+    },
+    {
+      "key": "albion/blue-plate-demonstration/1",
+      "category": "source-present-unanswered",
+      "originalCategory": "unavailable_source_present",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-starcraft-albion-20261025-02.json",
+      "reviewRowIndex": 15,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "How do I use the blue floor plate?"
+    },
+    {
+      "key": "albion/blue-plate-demonstration/3",
+      "category": "useful-claim-oracle-difference",
+      "originalCategory": "useful_claim_with_decision_disclaimer",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-starcraft-albion-20261025-02.json",
+      "reviewRowIndex": 16,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "What makes Animal 3 dangerous?"
+    },
+    {
+      "key": "albion/finale-joe/2",
+      "category": "useful-claim-oracle-difference",
+      "originalCategory": "complete_supported_citation_difference",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-starcraft-albion-20261025-02.json",
+      "reviewRowIndex": 17,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "What do the Service Robot tactics say?"
+    },
+    {
+      "key": "albion/housing-control/3",
+      "category": "source-present-unanswered",
+      "originalCategory": "unavailable_source_present",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-starcraft-albion-20261025-02.json",
+      "reviewRowIndex": 18,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "What can hold it?"
+    },
+    {
+      "key": "starcraft/starcraft-knowledge-java/3",
+      "category": "source-present-unanswered",
+      "originalCategory": "unavailable_source_present",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-starcraft-albion-20261025-02.json",
+      "reviewRowIndex": 19,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "Does PurpleWave use the same Java runtime?"
+    },
+    {
+      "key": "starcraft/starcraft-knowledge-supplied-game/3",
+      "category": "partial-or-qualification-gap",
+      "originalCategory": "partial_qualification",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-starcraft-albion-20261025-02.json",
+      "reviewRowIndex": 20,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "What about the BWAILauncher game installation?"
+    },
+    {
+      "key": "starcraft/starcraft-knowledge-bwai-purpose/1",
+      "category": "wrong-or-incomplete-field",
+      "originalCategory": "wrong_field",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-starcraft-albion-20261025-02.json",
+      "reviewRowIndex": 21,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "What is BWAILauncher used for?"
+    },
+    {
+      "key": "starcraft/starcraft-knowledge-bwai-compatibility/2",
+      "category": "wrong-or-incomplete-field",
+      "originalCategory": "wrong_field",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-starcraft-albion-20261025-02.json",
+      "reviewRowIndex": 22,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "Which map method works directly with Remastered?"
+    },
+    {
+      "key": "starcraft/starcraft-knowledge-bwai-compatibility/3",
+      "category": "source-present-unanswered",
+      "originalCategory": "unavailable_source_present",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-starcraft-albion-20261025-02.json",
+      "reviewRowIndex": 23,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "So has BWAILauncher Remastered compatibility been established?"
+    },
+    {
+      "key": "starcraft/starcraft-knowledge-offline-comparison/2",
+      "category": "wrong-or-incomplete-field",
+      "originalCategory": "wrong_field",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-starcraft-albion-20261025-02.json",
+      "reviewRowIndex": 24,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "How is the SCHNAIL internet requirement different?"
+    },
+    {
+      "key": "starcraft/starcraft-knowledge-map-mode/1",
+      "category": "useful-claim-oracle-difference",
+      "originalCategory": "useful_claim_with_decision_disclaimer",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-starcraft-albion-20261025-02.json",
+      "reviewRowIndex": 25,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "Why is the advanced AI wrong in a standard Melee game?"
+    },
+    {
+      "key": "starcraft/starcraft-knowledge-map-mode/2",
+      "category": "source-present-unanswered",
+      "originalCategory": "unavailable_source_present",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-starcraft-albion-20261025-02.json",
+      "reviewRowIndex": 26,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "Which mode should I use instead?"
+    },
+    {
+      "key": "starcraft/starcraft-knowledge-map-mode/3",
+      "category": "source-present-unanswered",
+      "originalCategory": "unavailable_source_present",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-starcraft-albion-20261025-02.json",
+      "reviewRowIndex": 27,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "Can the map method use arbitrary maps?"
+    },
+    {
+      "key": "starcraft/starcraft-knowledge-map-limits/3",
+      "category": "source-present-unanswered",
+      "originalCategory": "unavailable_source_present",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-starcraft-albion-20261025-02.json",
+      "reviewRowIndex": 28,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "Does BWAPI’s own developer quick start target Remastered?"
+    },
+    {
+      "key": "starcraft/starcraft-knowledge-cross-tool-folders/4",
+      "category": "source-present-unanswered",
+      "originalCategory": "unavailable_source_present",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-starcraft-albion-20261025-02.json",
+      "reviewRowIndex": 29,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "Where does Steamhammer’s binary configuration go?"
+    },
+    {
+      "key": "starcraft/starcraft-knowledge-cross-tool-folders/5",
+      "category": "useful-claim-oracle-difference",
+      "originalCategory": "complete_supported_citation_difference",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-starcraft-albion-20261025-02.json",
+      "reviewRowIndex": 30,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "Where does PurpleWave run its JAR?"
+    },
+    {
+      "key": "starcraft/starcraft-knowledge-documentation/3",
+      "category": "useful-claim-oracle-difference",
+      "originalCategory": "complete_supported_citation_difference",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-starcraft-albion-20261025-02.json",
+      "reviewRowIndex": 31,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "Where is UAlbertaBot configuration documented?"
+    },
+    {
+      "key": "starcraft/starcraft-knowledge-communities/2",
+      "category": "wrong-or-incomplete-field",
+      "originalCategory": "wrong_field",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-starcraft-albion-20261025-02.json",
+      "reviewRowIndex": 32,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "Which subreddit is listed?"
+    },
+    {
+      "key": "starcraft/starcraft-knowledge-bot-examples/2",
+      "category": "useful-claim-oracle-difference",
+      "originalCategory": "complete_supported_citation_difference",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-starcraft-albion-20261025-02.json",
+      "reviewRowIndex": 33,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "What is UAlbertaBot?"
+    },
+    {
+      "key": "starcraft/starcraft-knowledge-bot-examples/3",
+      "category": "useful-claim-oracle-difference",
+      "originalCategory": "complete_supported_citation_difference",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-starcraft-albion-20261025-02.json",
+      "reviewRowIndex": 34,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "How is Steamhammer related to it?"
+    },
+    {
+      "key": "starcraft/starcraft-knowledge-bwapi-developer/1",
+      "category": "useful-claim-oracle-difference",
+      "originalCategory": "complete_supported_citation_difference",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-starcraft-albion-20261025-02.json",
+      "reviewRowIndex": 35,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "What is BWAPI?"
+    },
+    {
+      "key": "starcraft/starcraft-knowledge-bwapi-developer/2",
+      "category": "useful-claim-oracle-difference",
+      "originalCategory": "complete_supported_citation_difference",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-starcraft-albion-20261025-02.json",
+      "reviewRowIndex": 36,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "Where can I get the developer release?"
+    },
+    {
+      "key": "starcraft/starcraft-knowledge-bwapi-developer/3",
+      "category": "useful-claim-oracle-difference",
+      "originalCategory": "complete_supported_citation_difference",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-starcraft-albion-20261025-02.json",
+      "reviewRowIndex": 37,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "How does the developer example launch?"
+    },
+    {
+      "key": "starcraft/starcraft-knowledge-bwapi-developer/4",
+      "category": "useful-claim-oracle-difference",
+      "originalCategory": "complete_supported_citation_difference",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-starcraft-albion-20261025-02.json",
+      "reviewRowIndex": 38,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "Which Brood War version does that quick start specify?"
+    },
+    {
+      "key": "starcraft/starcraft-knowledge-bwapi-defaults/1",
+      "category": "source-present-unanswered",
+      "originalCategory": "unavailable_source_present",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-starcraft-albion-20261025-02.json",
+      "reviewRowIndex": 39,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "Does BWAPI let bots see units outside visible state by default?"
+    },
+    {
+      "key": "starcraft/starcraft-knowledge-bwapi-defaults/2",
+      "category": "source-present-unanswered",
+      "originalCategory": "unavailable_source_present",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-starcraft-albion-20261025-02.json",
+      "reviewRowIndex": 40,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "Can those defaults be changed?"
+    },
+    {
+      "key": "starcraft/starcraft-knowledge-bwapi-defaults/3",
+      "category": "source-present-unanswered",
+      "originalCategory": "unavailable_source_present",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-starcraft-albion-20261025-02.json",
+      "reviewRowIndex": 41,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "Is the API itself a packaged opponent client?"
+    },
+    {
+      "key": "starcraft/starcraft-knowledge-ualberta-authorship/1",
+      "category": "useful-claim-oracle-difference",
+      "originalCategory": "complete_supported_citation_difference",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-starcraft-albion-20261025-02.json",
+      "reviewRowIndex": 42,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "Who wrote UAlbertaBot?"
+    },
+    {
+      "key": "starcraft/starcraft-knowledge-ualberta-authorship/2",
+      "category": "useful-claim-oracle-difference",
+      "originalCategory": "complete_supported_citation_difference",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-starcraft-albion-20261025-02.json",
+      "reviewRowIndex": 43,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "Is it actively maintained?"
+    },
+    {
+      "key": "starcraft/starcraft-knowledge-ualberta-authorship/3",
+      "category": "useful-claim-oracle-difference",
+      "originalCategory": "complete_supported_citation_difference",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-starcraft-albion-20261025-02.json",
+      "reviewRowIndex": 44,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "Where can I read its architecture documentation?"
+    },
+    {
+      "key": "starcraft/starcraft-knowledge-ualberta-runtime/1",
+      "category": "useful-claim-oracle-difference",
+      "originalCategory": "complete_supported_citation_difference",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-starcraft-albion-20261025-02.json",
+      "reviewRowIndex": 45,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "Which developer versions does UAlbertaBot document?"
+    },
+    {
+      "key": "starcraft/starcraft-knowledge-ualberta-runtime/2",
+      "category": "useful-claim-oracle-difference",
+      "originalCategory": "complete_supported_citation_difference",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-starcraft-albion-20261025-02.json",
+      "reviewRowIndex": 46,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "Does it use a module DLL or a client executable?"
+    },
+    {
+      "key": "starcraft/starcraft-knowledge-ualberta-runtime/3",
+      "category": "useful-claim-oracle-difference",
+      "originalCategory": "complete_supported_citation_difference",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-starcraft-albion-20261025-02.json",
+      "reviewRowIndex": 47,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "Why might its AUTO_RESTART fail after a game?"
+    },
+    {
+      "key": "starcraft/starcraft-knowledge-ualberta-components/1",
+      "category": "useful-claim-oracle-difference",
+      "originalCategory": "complete_supported_citation_difference",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-starcraft-albion-20261025-02.json",
+      "reviewRowIndex": 48,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "What does UAlbertaBot use for combat simulation?"
+    },
+    {
+      "key": "starcraft/starcraft-knowledge-ualberta-components/2",
+      "category": "wrong-or-incomplete-field",
+      "originalCategory": "wrong_field",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-starcraft-albion-20261025-02.json",
+      "reviewRowIndex": 49,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "What plans its build orders?"
+    },
+    {
+      "key": "starcraft/starcraft-knowledge-ualberta-components/3",
+      "category": "useful-claim-oracle-difference",
+      "originalCategory": "complete_supported_citation_difference",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-starcraft-albion-20261025-02.json",
+      "reviewRowIndex": 50,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "Where can I find worker allocation and pathfinding docs?"
+    },
+    {
+      "key": "starcraft/starcraft-knowledge-purplewave-runtime/1",
+      "category": "useful-claim-oracle-difference",
+      "originalCategory": "complete_supported_citation_difference",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-starcraft-albion-20261025-02.json",
+      "reviewRowIndex": 51,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "What is PurpleWave?"
+    },
+    {
+      "key": "starcraft/starcraft-knowledge-purplewave-runtime/2",
+      "category": "useful-claim-oracle-difference",
+      "originalCategory": "complete_supported_citation_difference",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-starcraft-albion-20261025-02.json",
+      "reviewRowIndex": 52,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "Which Java runtime does it require?"
+    },
+    {
+      "key": "starcraft/starcraft-knowledge-purplewave-runtime/3",
+      "category": "wrong-or-incomplete-field",
+      "originalCategory": "wrong_field",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-starcraft-albion-20261025-02.json",
+      "reviewRowIndex": 53,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "What does the guide recommend for SCHNAIL instead?"
+    },
+    {
+      "key": "starcraft/starcraft-knowledge-purplewave-build/1",
+      "category": "useful-claim-oracle-difference",
+      "originalCategory": "complete_supported_citation_difference",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-starcraft-albion-20261025-02.json",
+      "reviewRowIndex": 54,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "How does the reviewed PurpleWave source build work?"
+    },
+    {
+      "key": "starcraft/starcraft-knowledge-purplewave-build/2",
+      "category": "useful-claim-oracle-difference",
+      "originalCategory": "complete_supported_citation_difference",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-starcraft-albion-20261025-02.json",
+      "reviewRowIndex": 55,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "What is its working directory?"
+    },
+    {
+      "key": "starcraft/starcraft-knowledge-purplewave-build/3",
+      "category": "useful-claim-oracle-difference",
+      "originalCategory": "complete_supported_citation_difference",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-starcraft-albion-20261025-02.json",
+      "reviewRowIndex": 56,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "Where do I ask PurpleWave questions?"
+    },
+    {
+      "key": "starcraft/starcraft-knowledge-steamhammer-creator/1",
+      "category": "useful-claim-oracle-difference",
+      "originalCategory": "complete_supported_citation_difference",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-starcraft-albion-20261025-02.json",
+      "reviewRowIndex": 57,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "Who created Steamhammer?"
+    },
+    {
+      "key": "starcraft/starcraft-knowledge-steamhammer-creator/2",
+      "category": "useful-claim-oracle-difference",
+      "originalCategory": "complete_supported_citation_difference",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-starcraft-albion-20261025-02.json",
+      "reviewRowIndex": 58,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "Which bot did it descend from?"
+    },
+    {
+      "key": "starcraft/starcraft-knowledge-steamhammer-creator/3",
+      "category": "useful-claim-oracle-difference",
+      "originalCategory": "complete_supported_citation_difference",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-starcraft-albion-20261025-02.json",
+      "reviewRowIndex": 59,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "Which license relationship does it retain?"
+    },
+    {
+      "key": "starcraft/starcraft-knowledge-steamhammer-install/1",
+      "category": "useful-claim-oracle-difference",
+      "originalCategory": "complete_supported_citation_difference",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-starcraft-albion-20261025-02.json",
+      "reviewRowIndex": 60,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "Where should I look for Steamhammer source and binaries?"
+    },
+    {
+      "key": "starcraft/starcraft-knowledge-steamhammer-install/2",
+      "category": "source-present-unanswered",
+      "originalCategory": "unavailable_source_present",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-starcraft-albion-20261025-02.json",
+      "reviewRowIndex": 61,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "Where do I put the matching JSON configuration?"
+    },
+    {
+      "key": "starcraft/starcraft-knowledge-version-boundaries/2",
+      "category": "useful-claim-oracle-difference",
+      "originalCategory": "complete_supported_citation_difference",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-starcraft-albion-20261025-02.json",
+      "reviewRowIndex": 62,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "What BWAPI version does UAlbertaBot’s README use?"
+    },
+    {
+      "key": "starcraft/starcraft-knowledge-version-boundaries/3",
+      "category": "useful-claim-oracle-difference",
+      "originalCategory": "complete_supported_citation_difference",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-starcraft-albion-20261025-02.json",
+      "reviewRowIndex": 63,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "What Java version and architecture does PurpleWave request?"
+    },
+    {
+      "key": "ultima7/trinsic-evidence-password/1",
+      "category": "useful-claim-oracle-difference",
+      "originalCategory": "complete-useful-claim-oracle-difference",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-ultima7-alqadim-20261025-02.json",
+      "reviewRowIndex": 0,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "How do I investigate the Trinsic crime scene?"
+    },
+    {
+      "key": "ultima7/wisp-honey-whistle/3",
+      "category": "useful-claim-oracle-difference",
+      "originalCategory": "complete-useful-claim-oracle-difference",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-ultima7-alqadim-20261025-02.json",
+      "reviewRowIndex": 1,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "How do I get wisp whistle?"
+    },
+    {
+      "key": "ultima7/alagner-skara/1",
+      "category": "source-present-unanswered",
+      "originalCategory": "source-present-unanswered",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-ultima7-alqadim-20261025-02.json",
+      "reviewRowIndex": 2,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "What is Alagner request?"
+    },
+    {
+      "key": "ultima7/sphere-hourglass-prerequisite/4",
+      "category": "source-present-unanswered",
+      "originalCategory": "source-present-unanswered",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-ultima7-alqadim-20261025-02.json",
+      "reviewRowIndex": 3,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "Can I enchant the hourglass before the Tetrahedron is destroyed?"
+    },
+    {
+      "key": "ultima7/truth-true-locket/4",
+      "category": "source-present-unanswered",
+      "originalCategory": "source-present-unanswered",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-ultima7-alqadim-20261025-02.json",
+      "reviewRowIndex": 4,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "Are all optional puzzles required to get the true locket?"
+    },
+    {
+      "key": "ultima7/truth-true-locket/5",
+      "category": "source-present-unanswered",
+      "originalCategory": "source-present-unanswered",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-ultima7-alqadim-20261025-02.json",
+      "reviewRowIndex": 5,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "What do the optional Truth puzzles offer?"
+    },
+    {
+      "key": "ultima7/courage-ether-gem/2",
+      "category": "useful-claim-oracle-difference",
+      "originalCategory": "complete-useful-claim-oracle-difference",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-ultima7-alqadim-20261025-02.json",
+      "reviewRowIndex": 6,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "How do I get Dracothraxus reward?"
+    },
+    {
+      "key": "ultima7/courage-ether-gem/3",
+      "category": "wrong-or-incomplete-field",
+      "originalCategory": "source-present-wrong-field",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-ultima7-alqadim-20261025-02.json",
+      "reviewRowIndex": 7,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "How do I finish Courage test?"
+    },
+    {
+      "key": "ultima7/courage-ether-gem/4",
+      "category": "source-present-unanswered",
+      "originalCategory": "source-present-unanswered",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-ultima7-alqadim-20261025-02.json",
+      "reviewRowIndex": 8,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "Does obtaining the Ether Gem automatically finish Courage?"
+    },
+    {
+      "key": "ultima7/arcadion-black-sword/4",
+      "category": "source-present-unanswered",
+      "originalCategory": "source-present-unanswered",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-ultima7-alqadim-20261025-02.json",
+      "reviewRowIndex": 9,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "Is Arcadion a benevolent human blacksmith?"
+    },
+    {
+      "key": "ultima7/dark-core-stat-caveat/4",
+      "category": "source-present-unanswered",
+      "originalCategory": "source-present-unanswered",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-ultima7-alqadim-20261025-02.json",
+      "reviewRowIndex": 10,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "Does every edition raise all three stats to exactly 60?"
+    },
+    {
+      "key": "ultima7/honor-flag-alternatives/3",
+      "category": "source-present-unanswered",
+      "originalCategory": "source-present-unanswered",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-ultima7-alqadim-20261025-02.json",
+      "reviewRowIndex": 11,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "Must I kill all three fighters to resolve the Honor Flag?"
+    },
+    {
+      "key": "ultima7/blorn-victim-property/3",
+      "category": "source-present-unanswered",
+      "originalCategory": "source-present-unanswered",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-ultima7-alqadim-20261025-02.json",
+      "reviewRowIndex": 12,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "Does Blorn being the accuser make Lap-Lem the thief?"
+    },
+    {
+      "key": "ultima7/orrery-crystal-price/1",
+      "category": "source-present-unanswered",
+      "originalCategory": "source-present-unanswered",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-ultima7-alqadim-20261025-02.json",
+      "reviewRowIndex": 13,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "How do I get Addom crystal price?"
+    },
+    {
+      "key": "alqadim/hold-and-dock/1",
+      "category": "justified-objective-only-decline",
+      "originalCategory": "justified-objective-only-decline",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-ultima7-alqadim-20261025-02.json",
+      "reviewRowIndex": 14,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "How do I deal with the Dock dark mage?"
+    },
+    {
+      "key": "alqadim/hold-and-dock/2",
+      "category": "justified-objective-only-decline",
+      "originalCategory": "justified-objective-only-decline",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-ultima7-alqadim-20261025-02.json",
+      "reviewRowIndex": 15,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "How do I clear the Rotting Ship's Hold?"
+    },
+    {
+      "key": "alqadim/shibaz-library/1",
+      "category": "justified-objective-only-decline",
+      "originalCategory": "justified-objective-only-decline",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-ultima7-alqadim-20261025-02.json",
+      "reviewRowIndex": 16,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "How do I find Shibaz Hermit guidance?"
+    },
+    {
+      "key": "alqadim/shibaz-library/4",
+      "category": "justified-objective-only-decline",
+      "originalCategory": "justified-objective-only-decline",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-ultima7-alqadim-20261025-02.json",
+      "reviewRowIndex": 17,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "How do I open the Hags riddle Library path?"
+    },
+    {
+      "key": "alqadim/new-dungeon-and-journal/1",
+      "category": "justified-objective-only-decline",
+      "originalCategory": "justified-objective-only-decline",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-ultima7-alqadim-20261025-02.json",
+      "reviewRowIndex": 18,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "How do I enter the New Dungeon?"
+    },
+    {
+      "key": "alqadim/finale-boundaries/3",
+      "category": "justified-objective-only-decline",
+      "originalCategory": "justified-objective-only-decline",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-ultima7-alqadim-20261025-02.json",
+      "reviewRowIndex": 19,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "How do I handle the Magical shield orbs?"
+    },
+    {
+      "key": "alqadim/combat-survival/2",
+      "category": "source-present-unanswered",
+      "originalCategory": "source-present-unanswered",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-ultima7-alqadim-20261025-02.json",
+      "reviewRowIndex": 20,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "How do I use Sword charge timing?"
+    },
+    {
+      "key": "alqadim/combat-survival/5",
+      "category": "wrong-or-incomplete-field",
+      "originalCategory": "source-present-wrong-field",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-ultima7-alqadim-20261025-02.json",
+      "reviewRowIndex": 21,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "How do I use Combat movement?"
+    },
+    {
+      "key": "alqadim/moonstone-controls/3",
+      "category": "source-present-unanswered",
+      "originalCategory": "source-present-unanswered",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-ultima7-alqadim-20261025-02.json",
+      "reviewRowIndex": 22,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "Does buying shards give infinite charges?"
+    },
+    {
+      "key": "alqadim-walkthrough/hold-and-dock/1",
+      "category": "justified-objective-only-decline",
+      "originalCategory": "justified-objective-only-decline",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-ultima7-alqadim-20261025-02.json",
+      "reviewRowIndex": 23,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "How do I deal with the Dock dark mage?"
+    },
+    {
+      "key": "alqadim-walkthrough/hold-and-dock/2",
+      "category": "justified-objective-only-decline",
+      "originalCategory": "justified-objective-only-decline",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-ultima7-alqadim-20261025-02.json",
+      "reviewRowIndex": 24,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "How do I clear the Rotting Ship's Hold?"
+    },
+    {
+      "key": "alqadim-walkthrough/shibaz-library/1",
+      "category": "justified-objective-only-decline",
+      "originalCategory": "justified-objective-only-decline",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-ultima7-alqadim-20261025-02.json",
+      "reviewRowIndex": 25,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "How do I find Shibaz Hermit guidance?"
+    },
+    {
+      "key": "alqadim-walkthrough/shibaz-library/4",
+      "category": "justified-objective-only-decline",
+      "originalCategory": "justified-objective-only-decline",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-ultima7-alqadim-20261025-02.json",
+      "reviewRowIndex": 26,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "How do I open the Hags riddle Library path?"
+    },
+    {
+      "key": "alqadim-walkthrough/new-dungeon-and-journal/1",
+      "category": "justified-objective-only-decline",
+      "originalCategory": "justified-objective-only-decline",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-ultima7-alqadim-20261025-02.json",
+      "reviewRowIndex": 27,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "How do I enter the New Dungeon?"
+    },
+    {
+      "key": "alqadim-walkthrough/finale-boundaries/3",
+      "category": "justified-objective-only-decline",
+      "originalCategory": "justified-objective-only-decline",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-ultima7-alqadim-20261025-02.json",
+      "reviewRowIndex": 28,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "How do I handle the Magical shield orbs?"
+    },
+    {
+      "key": "alqadim-walkthrough/combat-survival/2",
+      "category": "source-present-unanswered",
+      "originalCategory": "source-present-unanswered",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-ultima7-alqadim-20261025-02.json",
+      "reviewRowIndex": 29,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "How do I use Sword charge timing?"
+    },
+    {
+      "key": "alqadim-walkthrough/combat-survival/5",
+      "category": "wrong-or-incomplete-field",
+      "originalCategory": "source-present-wrong-field",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-ultima7-alqadim-20261025-02.json",
+      "reviewRowIndex": 30,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "How do I use Combat movement?"
+    },
+    {
+      "key": "alqadim-walkthrough/moonstone-controls/3",
+      "category": "source-present-unanswered",
+      "originalCategory": "source-present-unanswered",
+      "reviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-ultima7-alqadim-20261025-02.json",
+      "reviewRowIndex": 31,
+      "strictPassed": false,
+      "requiredUsefulClaim": null,
+      "question": "Does buying shards give infinite charges?"
+    }
+  ],
+  "reviewedRecoveredPasses": [
+    {
+      "key": "starcraft/starcraft-knowledge-support-links/3",
+      "wholeRow": {
+        "text": "Where is SCHNAIL downloaded?",
+        "expected": {
+          "decision": "answer",
+          "contains": [
+            "downloads page",
+            "account"
+          ],
+          "notContains": [],
+          "factIds": [
+            "starcraft:knowledge:schnail-download",
+            "starcraft:knowledge:schnail-account"
+          ],
+          "source": {
+            "file": "guides/StarcraftBWAPI.html",
+            "locator": "#schnail-requirements li:nth-child(2)"
+          }
+        },
+        "decision": "answer",
+        "rendered": "2. Download the latest release of SCHNAIL from their downloads page (requires account, see SCHNAIL Setup Guide for more information)",
+        "citations": [
+          "Source: existing guide; extracted. guides/StarcraftBWAPI.html — #schnail-requirements li:nth-child(2)"
+        ],
+        "links": [],
+        "acceptedAnswerBranch": 0,
+        "answerBranchProblems": [
+          []
+        ],
+        "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+        "problems": [],
+        "passed": true,
+        "surface": "starcraft",
+        "dialogueId": "starcraft-knowledge-support-links",
+        "turn": 3
+      },
+      "dialogueContextRef": "starcraft/starcraft-knowledge-support-links",
+      "category": "complete_supported_recovered_strict_pass",
+      "reason": "Complete rendered source gives SCHNAIL downloads page and account requirement, with the exact existing HTML citation.",
+      "sourceEvidence": [
+        {
+          "id": "starcraft:knowledge:schnail-account",
+          "text": "2. Download the latest release of SCHNAIL from their downloads page (requires account, see SCHNAIL Setup Guide for more information)",
+          "witness": "2. Download the latest release of SCHNAIL from their downloads page (requires account, see SCHNAIL Setup Guide for more information)",
+          "source": {
+            "file": "guides/StarcraftBWAPI.html",
+            "locator": "#schnail-requirements li:nth-child(2)",
+            "review": "extracted"
+          }
+        },
+        {
+          "id": "starcraft:knowledge:schnail-download",
+          "text": "2. Download the latest release of SCHNAIL from their downloads page (requires account, see SCHNAIL Setup Guide for more information)",
+          "witness": "2. Download the latest release of SCHNAIL from their downloads page (requires account, see SCHNAIL Setup Guide for more information)",
+          "source": {
+            "file": "guides/StarcraftBWAPI.html",
+            "locator": "#schnail-requirements li:nth-child(2)",
+            "review": "extracted"
+          }
+        }
+      ],
+      "completeReplyReviewed": true,
+      "citationsReviewed": true,
+      "entireSameDialogueReviewed": true
+    },
+    {
+      "key": "starcraft/starcraft-knowledge-bwai-installation/4",
+      "wholeRow": {
+        "text": "What if it cannot detect Starcraft.exe?",
+        "expected": {
+          "decision": "answer",
+          "contains": [
+            "Game",
+            "Paths",
+            "Save the settings and restart"
+          ],
+          "notContains": [],
+          "factIds": [
+            "starcraft:knowledge:bwai-detection"
+          ],
+          "source": {
+            "file": "guides/StarcraftBWAPI.html",
+            "locator": "#bwai-setup ol > li:nth-child(5)"
+          }
+        },
+        "decision": "answer",
+        "rendered": "If BWAILauncher doesn't detect your Starcraft installation automatically: Click on the settings/configuration button in the launcher; Navigate to the \"Game\" or \"Paths\" section; Browse to and select your Starcraft.exe file; Save the settings and restart the launcher",
+        "citations": [
+          "Source: existing guide; extracted. guides/StarcraftBWAPI.html — #bwai-setup ol > li:nth-child(5)"
+        ],
+        "links": [],
+        "acceptedAnswerBranch": 0,
+        "answerBranchProblems": [
+          []
+        ],
+        "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+        "problems": [],
+        "passed": true,
+        "surface": "starcraft",
+        "dialogueId": "starcraft-knowledge-bwai-installation",
+        "turn": 4
+      },
+      "dialogueContextRef": "starcraft/starcraft-knowledge-bwai-installation",
+      "category": "complete_supported_recovered_strict_pass",
+      "reason": "Complete conditional detection sequence names settings/configuration, Game or Paths, Starcraft.exe and save/restart. The actual exact dialogue grounds the conditional, selected-file or static after-saving request; no saved-state claim is made.",
+      "sourceEvidence": [
+        {
+          "id": "starcraft:knowledge:bwai-detection",
+          "text": "If BWAILauncher doesn't detect your Starcraft installation automatically: Click on the settings/configuration button in the launcher; Navigate to the \"Game\" or \"Paths\" section; Browse to and select your Starcraft.exe file; Save the settings and restart the launcher",
+          "witness": "If BWAILauncher doesn't detect your Starcraft installation automatically: Click on the settings/configuration button in the launcher; Navigate to the \"Game\" or \"Paths\" section; Browse to and select your Starcraft.exe file; Save the settings and restart the launcher",
+          "source": {
+            "file": "guides/StarcraftBWAPI.html",
+            "locator": "#bwai-setup ol > li:nth-child(5)",
+            "review": "extracted"
+          }
+        }
+      ],
+      "completeReplyReviewed": true,
+      "citationsReviewed": true,
+      "entireSameDialogueReviewed": true
+    },
+    {
+      "key": "starcraft/starcraft-knowledge-bwai-detection/2",
+      "wholeRow": {
+        "text": "Which file should I select?",
+        "expected": {
+          "decision": "answer",
+          "contains": [
+            "Starcraft.exe"
+          ],
+          "notContains": [],
+          "factIds": [
+            "starcraft:knowledge:bwai-detection"
+          ],
+          "source": {
+            "file": "guides/StarcraftBWAPI.html",
+            "locator": "#bwai-setup ol > li:nth-child(5)"
+          }
+        },
+        "decision": "answer",
+        "rendered": "If BWAILauncher doesn't detect your Starcraft installation automatically: Click on the settings/configuration button in the launcher; Navigate to the \"Game\" or \"Paths\" section; Browse to and select your Starcraft.exe file; Save the settings and restart the launcher",
+        "citations": [
+          "Source: existing guide; extracted. guides/StarcraftBWAPI.html — #bwai-setup ol > li:nth-child(5)"
+        ],
+        "links": [],
+        "acceptedAnswerBranch": 0,
+        "answerBranchProblems": [
+          []
+        ],
+        "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+        "problems": [],
+        "passed": true,
+        "surface": "starcraft",
+        "dialogueId": "starcraft-knowledge-bwai-detection",
+        "turn": 2
+      },
+      "dialogueContextRef": "starcraft/starcraft-knowledge-bwai-detection",
+      "category": "complete_supported_recovered_strict_pass",
+      "reason": "Complete conditional detection sequence names settings/configuration, Game or Paths, Starcraft.exe and save/restart. The actual exact dialogue grounds the conditional, selected-file or static after-saving request; no saved-state claim is made.",
+      "sourceEvidence": [
+        {
+          "id": "starcraft:knowledge:bwai-detection",
+          "text": "If BWAILauncher doesn't detect your Starcraft installation automatically: Click on the settings/configuration button in the launcher; Navigate to the \"Game\" or \"Paths\" section; Browse to and select your Starcraft.exe file; Save the settings and restart the launcher",
+          "witness": "If BWAILauncher doesn't detect your Starcraft installation automatically: Click on the settings/configuration button in the launcher; Navigate to the \"Game\" or \"Paths\" section; Browse to and select your Starcraft.exe file; Save the settings and restart the launcher",
+          "source": {
+            "file": "guides/StarcraftBWAPI.html",
+            "locator": "#bwai-setup ol > li:nth-child(5)",
+            "review": "extracted"
+          }
+        }
+      ],
+      "completeReplyReviewed": true,
+      "citationsReviewed": true,
+      "entireSameDialogueReviewed": true
+    },
+    {
+      "key": "starcraft/starcraft-knowledge-bwai-detection/3",
+      "wholeRow": {
+        "text": "What do I do after saving the settings?",
+        "expected": {
+          "decision": "answer",
+          "contains": [
+            "restart the launcher"
+          ],
+          "notContains": [],
+          "factIds": [
+            "starcraft:knowledge:bwai-detection"
+          ],
+          "source": {
+            "file": "guides/StarcraftBWAPI.html",
+            "locator": "#bwai-setup ol > li:nth-child(5)"
+          }
+        },
+        "decision": "answer",
+        "rendered": "If BWAILauncher doesn't detect your Starcraft installation automatically: Click on the settings/configuration button in the launcher; Navigate to the \"Game\" or \"Paths\" section; Browse to and select your Starcraft.exe file; Save the settings and restart the launcher",
+        "citations": [
+          "Source: existing guide; extracted. guides/StarcraftBWAPI.html — #bwai-setup ol > li:nth-child(5)"
+        ],
+        "links": [],
+        "acceptedAnswerBranch": 0,
+        "answerBranchProblems": [
+          []
+        ],
+        "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+        "problems": [],
+        "passed": true,
+        "surface": "starcraft",
+        "dialogueId": "starcraft-knowledge-bwai-detection",
+        "turn": 3
+      },
+      "dialogueContextRef": "starcraft/starcraft-knowledge-bwai-detection",
+      "category": "complete_supported_recovered_strict_pass",
+      "reason": "Complete conditional detection sequence names settings/configuration, Game or Paths, Starcraft.exe and save/restart. The actual exact dialogue grounds the conditional, selected-file or static after-saving request; no saved-state claim is made.",
+      "sourceEvidence": [
+        {
+          "id": "starcraft:knowledge:bwai-detection",
+          "text": "If BWAILauncher doesn't detect your Starcraft installation automatically: Click on the settings/configuration button in the launcher; Navigate to the \"Game\" or \"Paths\" section; Browse to and select your Starcraft.exe file; Save the settings and restart the launcher",
+          "witness": "If BWAILauncher doesn't detect your Starcraft installation automatically: Click on the settings/configuration button in the launcher; Navigate to the \"Game\" or \"Paths\" section; Browse to and select your Starcraft.exe file; Save the settings and restart the launcher",
+          "source": {
+            "file": "guides/StarcraftBWAPI.html",
+            "locator": "#bwai-setup ol > li:nth-child(5)",
+            "review": "extracted"
+          }
+        }
+      ],
+      "completeReplyReviewed": true,
+      "citationsReviewed": true,
+      "entireSameDialogueReviewed": true
+    },
+    {
+      "key": "starcraft/starcraft-knowledge-portable/1",
+      "wholeRow": {
+        "text": "How does BWAILauncher work with portable StarCraft?",
+        "expected": {
+          "decision": "answer",
+          "contains": [
+            "portable Starcraft directory",
+            "Starcraft.exe"
+          ],
+          "notContains": [],
+          "factIds": [
+            "starcraft:knowledge:bwai-portable"
+          ],
+          "source": {
+            "file": "guides/StarcraftBWAPI.html",
+            "locator": "#bwai-setup ul.mb-4"
+          }
+        },
+        "decision": "answer",
+        "rendered": "Extract BWAILauncher to your portable Starcraft directory; When prompted, point BWAILauncher to the Starcraft.exe in the same directory; All settings will be saved in the same folder, making it fully portable",
+        "citations": [
+          "Source: existing guide; extracted. guides/StarcraftBWAPI.html — #bwai-setup ul.mb-4"
+        ],
+        "links": [],
+        "acceptedAnswerBranch": 0,
+        "answerBranchProblems": [
+          []
+        ],
+        "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+        "problems": [],
+        "passed": true,
+        "surface": "starcraft",
+        "dialogueId": "starcraft-knowledge-portable",
+        "turn": 1
+      },
+      "dialogueContextRef": "starcraft/starcraft-knowledge-portable",
+      "category": "complete_supported_recovered_strict_pass",
+      "reason": "Complete portable method retains extraction destination, Starcraft.exe in that directory and saved settings in the same folder. In this exact dialogue it answers initial procedure, settings location or executable-location follow-up without claiming user actions occurred.",
+      "sourceEvidence": [
+        {
+          "id": "starcraft:knowledge:bwai-portable",
+          "text": "Extract BWAILauncher to your portable Starcraft directory; When prompted, point BWAILauncher to the Starcraft.exe in the same directory; All settings will be saved in the same folder, making it fully portable",
+          "witness": "Extract BWAILauncher to your portable Starcraft directory; When prompted, point BWAILauncher to the Starcraft.exe in the same directory; All settings will be saved in the same folder, making it fully portable",
+          "source": {
+            "file": "guides/StarcraftBWAPI.html",
+            "locator": "#bwai-setup ul.mb-4",
+            "review": "extracted"
+          }
+        }
+      ],
+      "completeReplyReviewed": true,
+      "citationsReviewed": true,
+      "entireSameDialogueReviewed": true
+    },
+    {
+      "key": "starcraft/starcraft-knowledge-portable/2",
+      "wholeRow": {
+        "text": "Where are its settings saved?",
+        "expected": {
+          "decision": "answer",
+          "contains": [
+            "same folder"
+          ],
+          "notContains": [],
+          "factIds": [
+            "starcraft:knowledge:bwai-portable"
+          ],
+          "source": {
+            "file": "guides/StarcraftBWAPI.html",
+            "locator": "#bwai-setup ul.mb-4"
+          }
+        },
+        "decision": "answer",
+        "rendered": "Extract BWAILauncher to your portable Starcraft directory; When prompted, point BWAILauncher to the Starcraft.exe in the same directory; All settings will be saved in the same folder, making it fully portable",
+        "citations": [
+          "Source: existing guide; extracted. guides/StarcraftBWAPI.html — #bwai-setup ul.mb-4"
+        ],
+        "links": [],
+        "acceptedAnswerBranch": 0,
+        "answerBranchProblems": [
+          []
+        ],
+        "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+        "problems": [],
+        "passed": true,
+        "surface": "starcraft",
+        "dialogueId": "starcraft-knowledge-portable",
+        "turn": 2
+      },
+      "dialogueContextRef": "starcraft/starcraft-knowledge-portable",
+      "category": "complete_supported_recovered_strict_pass",
+      "reason": "Complete portable method retains extraction destination, Starcraft.exe in that directory and saved settings in the same folder. In this exact dialogue it answers initial procedure, settings location or executable-location follow-up without claiming user actions occurred.",
+      "sourceEvidence": [
+        {
+          "id": "starcraft:knowledge:bwai-portable",
+          "text": "Extract BWAILauncher to your portable Starcraft directory; When prompted, point BWAILauncher to the Starcraft.exe in the same directory; All settings will be saved in the same folder, making it fully portable",
+          "witness": "Extract BWAILauncher to your portable Starcraft directory; When prompted, point BWAILauncher to the Starcraft.exe in the same directory; All settings will be saved in the same folder, making it fully portable",
+          "source": {
+            "file": "guides/StarcraftBWAPI.html",
+            "locator": "#bwai-setup ul.mb-4",
+            "review": "extracted"
+          }
+        }
+      ],
+      "completeReplyReviewed": true,
+      "citationsReviewed": true,
+      "entireSameDialogueReviewed": true
+    },
+    {
+      "key": "starcraft/starcraft-knowledge-portable/3",
+      "wholeRow": {
+        "text": "Do I point it at the executable in that directory?",
+        "expected": {
+          "decision": "answer",
+          "contains": [
+            "same directory"
+          ],
+          "notContains": [],
+          "factIds": [
+            "starcraft:knowledge:bwai-portable"
+          ],
+          "source": {
+            "file": "guides/StarcraftBWAPI.html",
+            "locator": "#bwai-setup ul.mb-4"
+          }
+        },
+        "decision": "answer",
+        "rendered": "Extract BWAILauncher to your portable Starcraft directory; When prompted, point BWAILauncher to the Starcraft.exe in the same directory; All settings will be saved in the same folder, making it fully portable",
+        "citations": [
+          "Source: existing guide; extracted. guides/StarcraftBWAPI.html — #bwai-setup ul.mb-4"
+        ],
+        "links": [],
+        "acceptedAnswerBranch": 0,
+        "answerBranchProblems": [
+          []
+        ],
+        "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+        "problems": [],
+        "passed": true,
+        "surface": "starcraft",
+        "dialogueId": "starcraft-knowledge-portable",
+        "turn": 3
+      },
+      "dialogueContextRef": "starcraft/starcraft-knowledge-portable",
+      "category": "complete_supported_recovered_strict_pass",
+      "reason": "Complete portable method retains extraction destination, Starcraft.exe in that directory and saved settings in the same folder. In this exact dialogue it answers initial procedure, settings location or executable-location follow-up without claiming user actions occurred.",
+      "sourceEvidence": [
+        {
+          "id": "starcraft:knowledge:bwai-portable",
+          "text": "Extract BWAILauncher to your portable Starcraft directory; When prompted, point BWAILauncher to the Starcraft.exe in the same directory; All settings will be saved in the same folder, making it fully portable",
+          "witness": "Extract BWAILauncher to your portable Starcraft directory; When prompted, point BWAILauncher to the Starcraft.exe in the same directory; All settings will be saved in the same folder, making it fully portable",
+          "source": {
+            "file": "guides/StarcraftBWAPI.html",
+            "locator": "#bwai-setup ul.mb-4",
+            "review": "extracted"
+          }
+        }
+      ],
+      "completeReplyReviewed": true,
+      "citationsReviewed": true,
+      "entireSameDialogueReviewed": true
+    },
+    {
+      "key": "albion/rifrako-utilities/4",
+      "wholeRow": {
+        "text": "What does it do?",
+        "expected": {
+          "decision": "answer",
+          "contains": [
+            "12 Prot",
+            "Sleep Spores"
+          ],
+          "factIds": [
+            "dreamshield-effect"
+          ],
+          "source": {
+            "file": "guides/js/Albion.js",
+            "locator": "DB.equipment[6].effect",
+            "review": "extracted"
+          }
+        },
+        "decision": "answer",
+        "rendered": "Guide entry: Shield. 12 Prot, Sleep Spores (20).",
+        "citations": [
+          "Source: existing guide; extracted. guides/js/Albion.js — DB.equipment[6].effect"
+        ],
+        "links": [],
+        "acceptedAnswerBranch": 0,
+        "answerBranchProblems": [
+          []
+        ],
+        "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+        "problems": [],
+        "passed": true,
+        "surface": "albion",
+        "dialogueId": "rifrako-utilities",
+        "turn": 4
+      },
+      "dialogueContextRef": "albion/rifrako-utilities",
+      "category": "complete_supported_recovered_strict_pass",
+      "reason": "The complete Dreamshield effect reply supplies Shield, 12 Prot and Sleep Spores (20) with the equipment effect source, despite the preceding elliptical acquisition turn still failing.",
+      "sourceEvidence": [
+        {
+          "id": "dreamshield-effect",
+          "text": "Shield. 12 Prot, Sleep Spores (20).",
+          "witness": "Shield. 12 Prot, Sleep Spores (20).",
+          "source": {
+            "file": "guides/js/Albion.js",
+            "locator": "DB.equipment[6].effect",
+            "review": "extracted"
+          }
+        }
+      ],
+      "completeReplyReviewed": true,
+      "citationsReviewed": true,
+      "entireSameDialogueReviewed": true
+    },
+    {
+      "key": "albion/porenoil-route/1",
+      "wholeRow": {
+        "text": "How do I get Porenoil?",
+        "expected": {
+          "decision": "answer",
+          "contains": [
+            "Merdger/Merger",
+            "Equipment Maker"
+          ],
+          "factIds": [
+            "porenoil"
+          ],
+          "source": {
+            "file": "guides/js/Albion.js",
+            "locator": "QUEST_HINTS[\"umajo\"][\"porenoil\"]",
+            "review": "extracted"
+          }
+        },
+        "decision": "answer",
+        "rendered": "Guide entry: Ask Merdger/Merger in the Equipment Maker’s Guild about Porenoil; it prevents dehydration in the desert.",
+        "citations": [
+          "Source: existing guide; extracted. guides/js/Albion.js — QUEST_HINTS[\"umajo\"][\"porenoil\"]"
+        ],
+        "links": [],
+        "acceptedAnswerBranch": 0,
+        "answerBranchProblems": [
+          []
+        ],
+        "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+        "problems": [],
+        "passed": true,
+        "surface": "albion",
+        "dialogueId": "porenoil-route",
+        "turn": 1
+      },
+      "dialogueContextRef": "albion/porenoil-route",
+      "category": "complete_supported_recovered_strict_pass",
+      "reason": "The complete acquisition reply supplies Merdger/Merger, Equipment Maker’s Guild and dehydration-prevention source claim with exact citation. Its later preventive-effect follow-up still fails and is reviewed separately.",
+      "sourceEvidence": [
+        {
+          "id": "porenoil",
+          "text": "Ask Merdger/Merger in the Equipment Maker’s Guild about Porenoil; it prevents dehydration in the desert.",
+          "witness": "Ask Merdger/Merger in the Equipment Maker’s Guild about Porenoil; it prevents dehydration in the desert.",
+          "source": {
+            "file": "guides/js/Albion.js",
+            "locator": "QUEST_HINTS[\"umajo\"][\"porenoil\"]",
+            "review": "extracted"
+          }
+        }
+      ],
+      "completeReplyReviewed": true,
+      "citationsReviewed": true,
+      "entireSameDialogueReviewed": true
+    }
+  ],
+  "remainingMechanisms": [
+    "Directed role and requested-field selection: actor/provider/recipient, owner/container/component, route instrument versus destination.",
+    "Procedure phases: starting/following/finishing, entering/escaping, purpose versus launch/installation.",
+    "Static property, caveat, default and omitted-comparator follow-ups.",
+    "Resource/link/subreddit/list type distinctions and source conflict qualification.",
+    "Standalone descriptive-person wording and broader source-first conversation validation."
+  ],
+  "goalStatus": "active",
+  "previousGoalTurnClassification": "progress",
+  "currentGoalTurnClassification": "progress"
+}

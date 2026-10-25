@@ -1,4 +1,4 @@
-# Shared local chat model
+# Shared local chat models
 
 This is the production model folder shared by all six game guides. Keep it here:
 `guides/js/assistant/` contains the browser code, this folder contains the model
@@ -9,7 +9,9 @@ the historical experiments. No live guide imports the pilot.
 | --- | --- |
 | `profile.json` | Active model/runtime identity, settings and verified file mapping |
 | `files/*.bin` | The 18 deployable model/runtime parts |
+| `intent/profile.json`, `intent/files/*.bin` | MiniLM intent model, exported classification head and verified parts; reuse the shared browser runtime |
 | `prepare-assets.py` | Local packaging and read-only verification; never downloads |
+| `setup.py` | Unified setup and offline verification for SmolLM2, MiniLM, the exported head and bundle disclosure |
 
 All six guides read **profile.json**. It selects the model/runtime files, identity,
 quantization and input limit in one place. The shipped model is the already
@@ -26,11 +28,65 @@ the worker reconstructs their exact original bytes. No package manager is needed
 The root `.gitattributes` marks every shipped `.bin` part as binary so Git never
 changes line endings inside a hashed part, including parts containing JSON text.
 
-The model only scores paths through three approved conversational sentences for
+The SmolLM2 model only scores paths through three approved conversational sentences for
 the relevant category. The program supplies all quoted game text and citations.
 Replacing the model cannot grant permission to generate facts or change progress.
 
-## Rebuild from existing approved downloads
+The MiniLM classifier predicts the requested relationship and supports subject
+follow-ups. Its package adds **24,053,489 bytes** and shares the existing runtime.
+The complete bundle is about **186 MB**; the classifier starts lazily after consent.
+Neither model supplies unsourced game facts.
+
+## Set up both approved models
+
+Use one command for development setup:
+
+```sh
+python3 guides/local-assistant/setup.py --download
+```
+
+This explicitly permits fetching only missing or corrupt files from the already
+approved pinned SmolLM2, MiniLM and Transformers runtime sources. Verified inputs
+are reused. No package is installed. The command stages SmolLM2 first, prepares
+the MiniLM inputs, packages the verified existing classification head, then
+publishes the final bundle profile after both packages pass verification. Node
+and the prototype Ultima VII snapshot are not prerequisites for normal setup.
+
+When the tracked packages are complete, the same entry point needs no download
+flag, original pilot/prototype downloads, Chrome, or Playwright:
+
+```sh
+python3 guides/local-assistant/setup.py
+python3 guides/local-assistant/setup.py --verify-only
+```
+
+Both commands reuse complete verified packages without changing them. The strict
+`--verify-only` command rejects a corrupt/partial part, mismatched head or fitting
+provenance, inconsistent shared runtime, or incorrect bundle disclosure; it does
+not fetch files or write metadata. A failed download/build does not publish a
+partially configured final profile. Partial downloads are removed and valid raw
+inputs remain reusable on retry.
+
+Head fitting is a separate explicit choice:
+
+```sh
+python3 guides/local-assistant/setup.py --rebuild-head
+```
+
+That option requires an existing Chrome/Playwright environment and the frozen
+fitting sources; it installs nothing. Add `--download` only when approved pinned
+raw files are also missing. Ordinary setup reuses the tracked verified head and
+does not change its weights, thresholds, or training data.
+
+Run the setup regression tests with:
+
+```sh
+python3 -m unittest discover -s guides/local-assistant -p test_setup.py -v
+```
+
+The older packaging commands below remain available for focused maintenance.
+
+## Rebuild the base package from existing approved downloads
 
 To check the shipped files without the pilot downloads, installing anything or
 changing files:
