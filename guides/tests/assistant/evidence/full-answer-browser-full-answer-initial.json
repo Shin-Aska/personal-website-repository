@@ -1,0 +1,1152 @@
+{
+  "schemaVersion": 1,
+  "scope": "Seven production surfaces; prototype lab separately verified by its owner",
+  "workerFixture": true,
+  "realNativeInference": false,
+  "fixture": "browser_consent_fixture.py / browser-consent-fixture.js",
+  "oracleBasis": "Existing reviewed narrative-all-games-cases.json, current trusted record loader, approved StarCraft source snapshot",
+  "oracles": {
+    "albion": {
+      "gameId": "albion",
+      "question": "What is the method for the path to Toronto?",
+      "spoiler": "direct",
+      "recordId": "albion:narrative:toronto-route-method:method",
+      "contains": [
+        "pay Ohl a Jewel",
+        "coastline"
+      ],
+      "sourceOracle": {
+        "record": {
+          "id": "albion:narrative:toronto-route-method:method",
+          "entityId": "albion:route:toronto",
+          "title": "The path to Toronto",
+          "aliases": [
+            "Toronto route",
+            "reach Toronto"
+          ],
+          "kind": "route",
+          "relation": "narrative",
+          "scope": "reference",
+          "narrative": {
+            "aspect": "method",
+            "subjects": [
+              "To reach Toronto"
+            ],
+            "context": [
+              "pay Ohl a Jewel"
+            ],
+            "status": "recorded",
+            "predicate": "reach"
+          },
+          "minSpoiler": "direct",
+          "requires": null,
+          "editions": [],
+          "conflict": false,
+          "variants": {
+            "direct": {
+              "text": "To reach Toronto: either pay Ohl a Jewel (meet via the Miner\u2019s Guild schedule) or follow the \u201cstones to coastline then south\u201d route to the cave entrance."
+            }
+          },
+          "source": {
+            "file": "guides/js/Albion.js",
+            "locator": "QUEST_HINTS.umajo.find-path",
+            "review": "extracted",
+            "index": {
+              "file": "guides/data/assistant/albion.json",
+              "locator": "narratives[id=toronto-route-method]",
+              "review": "authored-index"
+            },
+            "claims": [
+              {
+                "text": "To reach Toronto: either pay Ohl a Jewel (meet via the Miner\u2019s Guild schedule) or follow the \u201cstones to coastline then south\u201d route to the cave entrance.",
+                "source": {
+                  "file": "guides/js/Albion.js",
+                  "locator": "QUEST_HINTS.umajo.find-path",
+                  "review": "extracted"
+                }
+              }
+            ]
+          }
+        },
+        "gentleAuthorized": false,
+        "directAuthorized": true
+      }
+    },
+    "ultima5": {
+      "gameId": "ultima5",
+      "question": "What is the method for the Sandalwood Box?",
+      "spoiler": "direct",
+      "recordId": "ultima5:narrative:sandalwood-method:method",
+      "contains": [
+        "play Stones",
+        "secret wall opens"
+      ],
+      "sourceOracle": {
+        "record": {
+          "id": "ultima5:narrative:sandalwood-method:method",
+          "entityId": "ultima5:objective:opening-castle-raid",
+          "title": "Raid Lord British\u2019s third-floor chambers",
+          "aliases": [
+            "Sandalwood Box secret wall"
+          ],
+          "kind": "objective",
+          "relation": "narrative",
+          "scope": "reference",
+          "narrative": {
+            "aspect": "method",
+            "subjects": [
+              "Sandalwood Box"
+            ],
+            "context": [
+              "harpsichord"
+            ],
+            "status": "recorded",
+            "predicate": "play Stones"
+          },
+          "minSpoiler": "direct",
+          "requires": null,
+          "editions": [],
+          "conflict": false,
+          "variants": {
+            "direct": {
+              "text": "Stand at the harpsichord and play Stones as 6-7-8-9-8-7-8-7-6-7-6-5-3. The secret wall opens; enter and take the Sandalwood Box."
+            }
+          },
+          "source": {
+            "file": "guides/js/Ultima5.js",
+            "locator": "ultima5GrandQuestChapters objective=opening-castle-raid.steps[4]",
+            "review": "extracted",
+            "index": {
+              "file": "guides/data/assistant/ultima5.json",
+              "locator": "narratives[id=sandalwood-method]",
+              "review": "authored-index"
+            },
+            "claims": [
+              {
+                "text": "Stand at the harpsichord and play Stones as 6-7-8-9-8-7-8-7-6-7-6-5-3. The secret wall opens; enter and take the Sandalwood Box.",
+                "source": {
+                  "file": "guides/js/Ultima5.js",
+                  "locator": "ultima5GrandQuestChapters objective=opening-castle-raid.steps[4]",
+                  "review": "extracted"
+                }
+              }
+            ]
+          }
+        },
+        "gentleAuthorized": false,
+        "directAuthorized": true
+      }
+    },
+    "ultima6": {
+      "gameId": "ultima6",
+      "question": "What is the next step in the Merchants' Circuit?",
+      "spoiler": "direct",
+      "recordId": "ultima6:narrative:merchants-sequence:sequence",
+      "contains": [
+        "In the guide's steps",
+        "then bring his flour back"
+      ],
+      "sourceOracle": {
+        "record": {
+          "id": "ultima6:narrative:merchants-sequence:sequence",
+          "entityId": "ultima6:side-quest:the-merchants-circuit",
+          "title": "The Merchants' Circuit",
+          "aliases": [
+            "Merchants' Circuit",
+            "trade route steps"
+          ],
+          "kind": "objective",
+          "relation": "narrative",
+          "scope": "reference",
+          "narrative": {
+            "aspect": "sequence",
+            "subjects": [
+              "grain"
+            ],
+            "context": [
+              "Linda",
+              "Grison",
+              "Cullen"
+            ],
+            "status": "recorded",
+            "predicate": "bring",
+            "sequenceMode": "steps"
+          },
+          "minSpoiler": "direct",
+          "requires": null,
+          "editions": [],
+          "conflict": false,
+          "variants": {
+            "direct": {
+              "text": "Carry grain from Linda in Britain to Grison in Paws, then bring his flour back to Cullen in Britain."
+            }
+          },
+          "source": {
+            "file": "guides/js/Ultima6.js",
+            "locator": "gameData.sideQuests[0].steps[0]",
+            "review": "extracted",
+            "index": {
+              "file": "guides/data/assistant/ultima6.json",
+              "locator": "narratives[id=merchants-sequence]",
+              "review": "authored-index"
+            },
+            "claims": [
+              {
+                "text": "Carry grain from Linda in Britain to Grison in Paws, then bring his flour back to Cullen in Britain.",
+                "source": {
+                  "file": "guides/js/Ultima6.js",
+                  "locator": "gameData.sideQuests[0].steps[0]",
+                  "review": "extracted"
+                }
+              }
+            ]
+          }
+        },
+        "gentleAuthorized": false,
+        "directAuthorized": true
+      }
+    },
+    "ultima7": {
+      "gameId": "ultima7",
+      "question": "Why was Inamo killed?",
+      "spoiler": "direct",
+      "recordId": "ultima7:narrative:inamo-motive:cause",
+      "contains": [
+        "different accounts",
+        "no single explanation"
+      ],
+      "sourceOracle": {
+        "record": {
+          "id": "ultima7:narrative:inamo-motive:cause",
+          "entityId": "ultima7:npc:inamo",
+          "title": "Inamo",
+          "aliases": [],
+          "kind": "npc",
+          "relation": "narrative",
+          "scope": "reference",
+          "narrative": {
+            "aspect": "cause",
+            "subjects": [
+              "Inamo"
+            ],
+            "context": [],
+            "status": "disputed",
+            "predicate": "killed"
+          },
+          "minSpoiler": "direct",
+          "requires": null,
+          "editions": [],
+          "conflict": false,
+          "variants": {
+            "direct": {
+              "text": "The Ultima Codex's Inamo article says Inamo was likely an unexpected bystander when he was killed.\nThe Ultima Codex's Christopher article says Inamo was killed apparently so that he could not witness the crime.\nThe Ultima Codex's Klog article describes Inamo as a gargoyle killed to silence a witness."
+            }
+          },
+          "source": {
+            "file": "https://wiki.ultimacodex.com/index.php?title=Inamo&oldid=154876, https://wiki.ultimacodex.com/wiki/Christopher, https://wiki.ultimacodex.com/wiki/Klog",
+            "locator": "Inamo \u2014 The Codex of Ultima Wisdom; Christopher \u2014 The Codex of Ultima Wisdom; Klog \u2014 The Codex of Ultima Wisdom",
+            "review": "external-research",
+            "index": {
+              "file": "guides/data/assistant/ultima7.json",
+              "locator": "narratives[id=inamo-motive]",
+              "review": "authored-index"
+            },
+            "claims": [
+              {
+                "text": "The Ultima Codex's Inamo article says Inamo was likely an unexpected bystander when he was killed.",
+                "source": {
+                  "file": "https://wiki.ultimacodex.com/index.php?title=Inamo&oldid=154876",
+                  "locator": "Inamo \u2014 The Codex of Ultima Wisdom",
+                  "review": "external-research",
+                  "references": [
+                    {
+                      "label": "Inamo \u2014 The Codex of Ultima Wisdom",
+                      "url": "https://wiki.ultimacodex.com/index.php?title=Inamo&oldid=154876",
+                      "checkedAt": "2026-10-21"
+                    }
+                  ]
+                }
+              },
+              {
+                "text": "The Ultima Codex's Christopher article says Inamo was killed apparently so that he could not witness the crime.",
+                "source": {
+                  "file": "https://wiki.ultimacodex.com/wiki/Christopher",
+                  "locator": "Christopher \u2014 The Codex of Ultima Wisdom",
+                  "review": "external-research",
+                  "references": [
+                    {
+                      "label": "Christopher \u2014 The Codex of Ultima Wisdom",
+                      "url": "https://wiki.ultimacodex.com/wiki/Christopher",
+                      "checkedAt": "2026-10-21"
+                    }
+                  ]
+                }
+              },
+              {
+                "text": "The Ultima Codex's Klog article describes Inamo as a gargoyle killed to silence a witness.",
+                "source": {
+                  "file": "https://wiki.ultimacodex.com/wiki/Klog",
+                  "locator": "Klog \u2014 The Codex of Ultima Wisdom",
+                  "review": "external-research",
+                  "references": [
+                    {
+                      "label": "Klog \u2014 The Codex of Ultima Wisdom",
+                      "url": "https://wiki.ultimacodex.com/wiki/Klog",
+                      "checkedAt": "2026-10-22"
+                    }
+                  ]
+                }
+              }
+            ],
+            "references": [
+              {
+                "label": "Inamo \u2014 The Codex of Ultima Wisdom",
+                "url": "https://wiki.ultimacodex.com/index.php?title=Inamo&oldid=154876",
+                "checkedAt": "2026-10-21"
+              },
+              {
+                "label": "Christopher \u2014 The Codex of Ultima Wisdom",
+                "url": "https://wiki.ultimacodex.com/wiki/Christopher",
+                "checkedAt": "2026-10-21"
+              },
+              {
+                "label": "Klog \u2014 The Codex of Ultima Wisdom",
+                "url": "https://wiki.ultimacodex.com/wiki/Klog",
+                "checkedAt": "2026-10-22"
+              }
+            ]
+          }
+        },
+        "gentleAuthorized": false,
+        "directAuthorized": true
+      }
+    },
+    "alqadim": {
+      "gameId": "alqadim",
+      "question": "What is the method for getting the Family Sword of Honor?",
+      "spoiler": "direct",
+      "recordId": "alqadim:narrative:ch2_1:method",
+      "contains": [
+        "speak with Zubin"
+      ],
+      "sourceOracle": {
+        "record": {
+          "id": "alqadim:narrative:ch2_1:method",
+          "entityId": "alqadim:objective:ch2_1",
+          "title": "Meet Aliya at the gates and speak with Zubin to get the Family Sword of Honor",
+          "aliases": [],
+          "kind": "objective",
+          "relation": "narrative",
+          "scope": "reference",
+          "narrative": {
+            "aspect": "method",
+            "subjects": [
+              "Family Sword of Honor"
+            ],
+            "context": [
+              "Zubin"
+            ],
+            "status": "recorded",
+            "predicate": "get"
+          },
+          "minSpoiler": "direct",
+          "requires": null,
+          "editions": [],
+          "conflict": false,
+          "variants": {
+            "direct": {
+              "text": "Meet Aliya at the gates and speak with Zubin to get the Family Sword of Honor."
+            }
+          },
+          "source": {
+            "file": "guides/js/AlQadim.js",
+            "locator": "DB.chapters[1].required[id=ch2_1]",
+            "review": "extracted",
+            "index": {
+              "file": "guides/data/assistant/alqadim.json",
+              "locator": "narratives[id=ch2_1]",
+              "review": "authored-index"
+            },
+            "claims": [
+              {
+                "text": "Meet Aliya at the gates and speak with Zubin to get the Family Sword of Honor.",
+                "source": {
+                  "file": "guides/js/AlQadim.js",
+                  "locator": "DB.chapters[1].required[id=ch2_1]",
+                  "review": "extracted"
+                }
+              }
+            ]
+          }
+        },
+        "gentleAuthorized": false,
+        "directAuthorized": true
+      }
+    },
+    "starcraft": {
+      "gameId": "starcraft",
+      "question": "Summarize SCHNAIL",
+      "spoiler": "direct",
+      "recordId": "starcraft:narrative:schnail-summary:summary",
+      "contains": [
+        "More realistic AI behavior",
+        "includes its own version"
+      ],
+      "sourceOracle": {
+        "record": {
+          "id": "starcraft:narrative:schnail-summary:summary",
+          "entityId": "starcraft:schnail",
+          "title": "SCHNAIL",
+          "aliases": [
+            "SCHNAIL client",
+            "Starcraft Human and AI League"
+          ],
+          "kind": "setup",
+          "relation": "narrative",
+          "scope": "reference",
+          "narrative": {
+            "aspect": "summary",
+            "subjects": [
+              "SCHNAIL"
+            ],
+            "context": [],
+            "status": "recorded"
+          },
+          "minSpoiler": "direct",
+          "requires": null,
+          "editions": [],
+          "conflict": false,
+          "variants": {
+            "direct": {
+              "text": "SCHNAIL; Pros: More realistic AI behavior; Better micro and macro management; Seamless integration with the game; Active community and regular updates; Cons: Requires internet connection for initial login; AI plays over local network after login; View Setup Guide\nNote: SCHNAIL includes its own version of Starcraft: Brood War, so you don't need to install the game separately."
+            }
+          },
+          "source": {
+            "file": "guides/StarcraftBWAPI.html",
+            "locator": "#getting-started .grid > div:first-child; #schnail-setup .text-blue-700",
+            "review": "extracted",
+            "index": {
+              "file": "guides/data/assistant/starcraft.json",
+              "locator": "narratives[id=schnail-summary]",
+              "review": "authored-index"
+            },
+            "claims": [
+              {
+                "text": "SCHNAIL; Pros: More realistic AI behavior; Better micro and macro management; Seamless integration with the game; Active community and regular updates; Cons: Requires internet connection for initial login; AI plays over local network after login; View Setup Guide",
+                "source": {
+                  "file": "guides/StarcraftBWAPI.html",
+                  "locator": "#getting-started .grid > div:first-child",
+                  "review": "extracted"
+                }
+              },
+              {
+                "text": "Note: SCHNAIL includes its own version of Starcraft: Brood War, so you don't need to install the game separately.",
+                "source": {
+                  "file": "guides/StarcraftBWAPI.html",
+                  "locator": "#schnail-setup .text-blue-700",
+                  "review": "extracted"
+                }
+              }
+            ]
+          }
+        },
+        "gentleAuthorized": false,
+        "directAuthorized": true
+      }
+    }
+  },
+  "checks": [
+    {
+      "id": "seven-surface-storage-network-source-and-server-boundaries",
+      "passed": false,
+      "error": "{}"
+    }
+  ],
+  "failures": [
+    {
+      "id": "albion-surface-setup",
+      "error": "Page.wait_for_function: Timeout 30000ms exceeded."
+    },
+    {
+      "id": "ultima5-surface-setup",
+      "error": "Page.wait_for_function: Timeout 30000ms exceeded."
+    },
+    {
+      "id": "seven-surface-storage-network-source-and-server-boundaries",
+      "error": "{}"
+    }
+  ],
+  "replies": [],
+  "storageUnchanged": {},
+  "pageErrors": [],
+  "requests": [
+    {
+      "url": "http://127.0.0.1:33723/guides/Albion.html",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:33723/guides/css/assistant-consent.css",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:33723/guides/js/assistant/bootstrap.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:33723/guides/js/tailwind.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:33723/guides/css/fonts.css",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:33723/guides/css/leaflet.css",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:33723/guides/css/Albion.css",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:33723/guides/images/albion/briefing-hero.webp",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:33723/guides/js/leaflet.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:33723/guides/js/assistant/model-runtime.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:33723/guides/js/assistant/consent.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:33723/guides/js/assistant/model-download.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:33723/guides/js/AlbionAtlasData.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:33723/guides/js/AlbionMarkers.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:33723/guides/js/Albion.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:33723/guides/fonts/inter-v19-latin-regular.woff2",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:33723/guides/fonts/lora-v36-latin-700.woff2",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:33723/guides/fonts/inter-v19-latin-600.woff2",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:33723/guides/fonts/inter-v19-latin-900.woff2",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:33723/guides/fonts/inter-v19-latin-800.woff2",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:33723/guides/fonts/lora-v36-latin-regular.woff2",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:33723/guides/fonts/inter-v19-latin-700.woff2",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:33723/guides/js/assistant/adapters/albion.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:33723/guides/js/assistant/ui.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:33723/guides/local-assistant/profile.json",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:33723/guides/js/assistant/engine.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:33723/guides/js/assistant/topics.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:33723/guides/css/assistant.css",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:33723/guides/js/assistant/policy.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:33723/guides/js/assistant/retrieval.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:33723/guides/js/assistant/rules.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:33723/guides/js/assistant/fallback-context.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:33723/guides/js/assistant/fallback-guard.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:33723/guides/js/assistant/language.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:33723/guides/data/assistant/albion.json",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:33723/guides/fonts/inter-v19-latin-italic.woff2",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:33723/guides/fonts/inter-v19-latin-700italic.woff2",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:33723/guides/Ultima5.html",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:33723/guides/css/assistant-consent.css",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:33723/guides/js/assistant/bootstrap.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:33723/guides/js/tailwind.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:33723/guides/js/chart.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:33723/guides/js/lucide.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:33723/guides/css/leaflet.css",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:33723/guides/css/Ultima5.css",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:33723/guides/images/Ultima5box.jpg",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:33723/guides/images/ultima5-briefing-hero.webp",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:33723/guides/js/assistant/model-runtime.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:33723/guides/js/assistant/consent.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:33723/guides/js/assistant/model-download.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:33723/guides/js/leaflet.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:33723/guides/js/Ultima5AtlasData.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:33723/guides/js/Ultima5.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:33723/guides/images/paper-texture2.jpg",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:33723/guides/fonts/lora-v36-latin-700.woff2",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:33723/guides/images/U5GameWorld.png",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:33723/guides/fonts/inter-v19-latin-700.woff2",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:33723/guides/fonts/lora-v36-latin-regular.woff2",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:33723/guides/fonts/inter-v19-latin-regular.woff2",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:33723/guides/js/assistant/adapters/ultima5.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:33723/guides/js/assistant/ui.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:33723/guides/local-assistant/profile.json",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:33723/guides/js/assistant/engine.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:33723/guides/js/assistant/topics.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:33723/guides/css/assistant.css",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:33723/guides/images/Ultima5box.jpg",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:33723/guides/js/assistant/policy.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:33723/guides/js/assistant/retrieval.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:33723/guides/js/assistant/rules.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:33723/guides/js/assistant/fallback-context.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:33723/guides/js/assistant/fallback-guard.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:33723/guides/js/assistant/language.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:33723/guides/data/assistant/ultima5.json",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:33723/guides/images/Ultima5box.jpg",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:33723/guides/Ultima6.html",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:33723/guides/css/assistant-consent.css",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:33723/guides/js/assistant/bootstrap.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:33723/guides/js/tailwind.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:33723/guides/js/chart.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:33723/guides/css/fonts.css",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:33723/guides/css/leaflet.css",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:33723/guides/css/Ultima6.css",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:33723/guides/images/Ultima6box.jpg",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:33723/guides/images/ultima6-briefing-hero.webp",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:33723/guides/js/assistant/model-runtime.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:33723/guides/js/assistant/consent.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:33723/guides/js/assistant/model-download.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:33723/guides/js/leaflet.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:33723/guides/js/Ultima6Atlas.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:33723/guides/js/Ultima6.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:33723/guides/images/paper-texture.jpg",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:33723/guides/images/U6GameWorld.png",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:33723/guides/local-assistant/profile.json",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:33723/guides/js/assistant/adapters/ultima6.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:33723/guides/js/assistant/ui.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:33723/guides/js/assistant/engine.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:33723/guides/js/assistant/topics.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:33723/guides/css/assistant.css",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:33723/guides/js/assistant/policy.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:33723/guides/js/assistant/retrieval.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:33723/guides/js/assistant/rules.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:33723/guides/js/assistant/fallback-context.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:33723/guides/js/assistant/fallback-guard.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:33723/guides/js/assistant/language.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:33723/guides/data/assistant/ultima6.json",
+      "method": "GET",
+      "hasBody": false
+    }
+  ],
+  "blockedRequests": [],
+  "sourceHashesBefore": {
+    "guides/AlQadim.html": "a3a46b58e9d4f5130f7e804208e919f9513fd9d923df4484d8d7b00d5d76761b",
+    "guides/Albion.html": "fe71ab0c58c947ef3eabf3690ad7dcaffebb066f5538729a013977deda1f6978",
+    "guides/StarcraftBWAPI.html": "f43b3fcfbffddaadf2b4bf951b16652a9d1133d726b7efe06357f9a7cb925983",
+    "guides/Ultima5.html": "c419f66b8a99902351736c024a2230899ec21cdb4ab7af971c58f547b69a2212",
+    "guides/Ultima6.html": "c38694b5092e26602e83f506c1c5933824c92b91fe8138d08b54570a3f839a94",
+    "guides/Ultima7.html": "ac54ffb4cc021316003037f5a04cc66bf44db038c28ef980710d05de09b18dac",
+    "guides/css/AlQadim.css": "c29271988579dedcf94b160312ca16c0f8e0994b75e1eef52033021232f00e92",
+    "guides/css/Albion.css": "4a66562119a9843a9241f13abd7d42ed990a308babe7c1a657c0dddd2712e1bb",
+    "guides/css/Starcraft.css": "a682aa3e68b90d9badd29b82f6ca4fbb1f609de22c7edfc36edad2b38e35a036",
+    "guides/css/Ultima5.css": "549d3f42d41796bd3bcfc08aa1d0d96d78169e79d1a618779a4f24af9bbd7342",
+    "guides/css/Ultima6.css": "48d9c96bc419ec68821f8221993fb2324fc2725747374f267ef868ff0ca2b4bc",
+    "guides/css/Ultima7.css": "9ca2bc60bbd069a8567a9fdb13e1ad45c20ec533cef0b99df50d9c92ed61ac38",
+    "guides/css/assistant-consent.css": "0cd4b0a528aa188d42bb51d6c8cba6243c07064a1880280b1edcab7a484d7374",
+    "guides/css/assistant.css": "e396c857300458985ebeca498fa13a4ba2af9af0d38a7a2207074c560be900eb",
+    "guides/css/fonts.css": "39217afc105185c4edd31a75422dee29a9f03a068aa89415b963b13cb7329ce7",
+    "guides/css/index.css": "7022da3fe5e4f2790aad8465911e921c8aef0c4b93231cc5069b5f713edb27eb",
+    "guides/css/leaflet.css": "a7837102824184820dfa198d1ebcd109ff6d0ff9a2672a074b9a1b4d147d04c6",
+    "guides/css/offline.css": "71355c6e53c5dd70ce36cb47ef011e63c0865c10a7f2d77d02931625b1ea4614",
+    "guides/data/assistant/albion.json": "b3b219ccb434c450189e97404b4c06a3bbc8334dc581bea55bc4a70213851404",
+    "guides/data/assistant/alqadim.json": "f0f15243ea3b27701d97b3ab369a108ef46e93ec5f780f6e1fd1bf5e69bf2b77",
+    "guides/data/assistant/manifest.json": "d2ad011aa0d0c733b9c35a9e1afc70a01f8eef0cbfc04de0eaf45a90824d9ee4",
+    "guides/data/assistant/starcraft.json": "0dc5925ca67adfc434b5366213a5e05e11cbf869f1d0aa71e4daa6d16ae2dfc0",
+    "guides/data/assistant/ultima5.json": "bbd6a3a33133bc1aca80ac7a19cea5011e19c9f33869582355d7fd60f0f0d24e",
+    "guides/data/assistant/ultima6.json": "67b3bf1e8e935df279bec2f11cf698ba721f5d8e169f1a050fefa4ee66b5ad05",
+    "guides/data/assistant/ultima7.json": "9b5c29c25936ccfd20ca9b704df57d45c1f7142a2014b09630f8e2f2aee10871",
+    "guides/js/AlQadim.js": "269798843206f12b76163c65b04301be278652115fbdbd46596f13f3ae7b5e5e",
+    "guides/js/AlQadimAtlasData.js": "82abbb86cafad98655e4bacfdd28e8ba96fba7f747da44b30aaa9364a37e747e",
+    "guides/js/Albion.js": "4adba84eca7af2436731b7053e3167a909f57f85edc611c6287411af84e4b1ca",
+    "guides/js/AlbionAtlasData.js": "b5a96b06ee31e94eba95df1cec41c2b564576e1170a3065b61e9f5db7890dcc8",
+    "guides/js/AlbionMarkers.js": "1de190722be16721a0ff3ff3a50b2c1298706bc33629dd223ed673f63cfbc27b",
+    "guides/js/Ultima5.js": "e2699ed2d8aca9bf3465c7dcd262461f5fca59f1fb4cbd41361e0f5c5a96dae5",
+    "guides/js/Ultima5AtlasData.js": "1292346505cb26d534154b317d7beee7bb186f8dda2d9316127912111bfb72a2",
+    "guides/js/Ultima6.js": "a0b07db60d7c30ac19bb64b56fa26b1428a6437f437f087eb2d75109afae4898",
+    "guides/js/Ultima6Atlas.js": "c83db308efae81f2868d5b4954d679d24e81b83b226d4e4548699668f98d8e88",
+    "guides/js/Ultima7.js": "9b8776ebe358e87c9f76f5175de06ecc617b31a22961700beba48ab8fffba6f9",
+    "guides/js/Ultima7Markers.js": "9103499a31be5bd132959ff268aa0149b90ec310a7f1098fbed1fc25a2de1f2e",
+    "guides/js/assistant/adapters/albion.js": "2bc964d229c805afa38f85fcbd4322c9df43e09008de5d7de5d517fcd047c0be",
+    "guides/js/assistant/adapters/alqadim.js": "547e5694e3982a2d058a82f2a0e111c128748c22b6d5275a7588cf85b193c7c9",
+    "guides/js/assistant/adapters/starcraft.js": "dd0cc14b3ca145cd13ed7870dbc420bd1dea378f474221ab57ebc5b6e6e4b20a",
+    "guides/js/assistant/adapters/ultima5.js": "c629bcd97dc4fab79f7b70e054de1e910434120ce0bb21e0fe8086200b4d2cdf",
+    "guides/js/assistant/adapters/ultima6.js": "761e8fd994e277a81e679c00d64458dabf7cbdba9dfe08286066f52d4dfa9c86",
+    "guides/js/assistant/adapters/ultima7.js": "cc0474d4a9571dbcce7349b91e144a79d0217c9fb1b9e2bf995e71a092dd7389",
+    "guides/js/assistant/bootstrap.js": "36507c252a2cb1c74a56ce094f9dbf61221c813ff799a733d114bfc09acac51b",
+    "guides/js/assistant/consent.js": "f586ad8ab8fb34cf1e08f71115077f87c8df2ce146bf5a0cfb90b5f9712d5dee",
+    "guides/js/assistant/engine.js": "49ee70e38a80f87a1386c359b1e2063d9d0110d690b344c2f6c0bb89065aa3ef",
+    "guides/js/assistant/fallback-context.js": "73c2638570035a73683cdd83b2eac5133d577892aef3613539ebb80c0481cb73",
+    "guides/js/assistant/fallback-guard.js": "8ac7766576c0fa39a9f8eb1d8130687f5dec2d93ed3793b1ab32a416502eb4dc",
+    "guides/js/assistant/frame-tokens.js": "9f225b8d13b2082f45af7f1ec7ca5b56900733383537123d7dab05baa95f511b",
+    "guides/js/assistant/language.js": "f615ac045c6fae7e5ffea26f852c0c50b9985bd43a432d736c0c7948ebbb9e7e",
+    "guides/js/assistant/model-download.js": "1a9f1be1319d9219507a140e4eae6ad6ea2cbb348b19771c7261d1a52432a6a1",
+    "guides/js/assistant/model-runtime.js": "c6331135f75b3ab5f094e6b7020567b19f2b22286105dc51eba190917e98fdd1",
+    "guides/js/assistant/model-worker.js": "5f490d60ae8b991ae64d523d16c683d11a8995283353cfb534f0d3529ce0d6fc",
+    "guides/js/assistant/policy.js": "df44eea0b5eec7dae01deb0ab4c179873cb5f271ae1a3d87ed89a630cb87aec3",
+    "guides/js/assistant/retrieval.js": "d40e3d699e419ccee015abbdfe1b901816629af3d0ded9d52f082476b906c7f3",
+    "guides/js/assistant/rules.js": "3c2edda7907d22a78d022abd9e1fded1ad70103056129325f44d2cc8be78ef74",
+    "guides/js/assistant/topics.js": "cae60c918f936d1429713f076420e32c1fc72a89d371b47f7b1958b81e852d39",
+    "guides/js/assistant/ui.js": "17de8fa0c4372ca8109e72580f8347d60de7a799f74c7dd15db8d55b35201b64",
+    "guides/js/chart.js": "e0059220c10bff95fdb7f5b77b9bfffba68b3ccf4eab4f7398ee7aef3cffca2b",
+    "guides/js/index.js": "0feb3e548e54dd42b171533aebd0931a77cdb0f5b5c51ce2d733814e8cdae557",
+    "guides/js/leaflet.js": "85d455b4522415f6badc42a0e7d17c919d100347d6b8958bd0dc738fdecd6d50",
+    "guides/js/lucide.js": "9dac1057f358d159e8ce1e46f259df2b0cb4a19281de7cf8c9ffb29c7a2226f6",
+    "guides/js/tailwind.js": "7afa0afd2536044695e7e674298bc0dda9af94475e4e07d0575feccfa796c74f",
+    "guides/tests/assistant/browser-consent-fixture.js": "824ec886ed266ada0d40fe2f7142995cd8252f7629b395ee4be9037dea63b89f",
+    "guides/tests/assistant/browser_conversation_observer.py": "b3a5d1ebaea8cc1cc4e9ef351518c791cf9e682f349e79ecfd8851c80e70197b",
+    "guides/tests/assistant/full-answer-browser.py": "8556596c6bb4c12a16da9281bd063a0c600f42f1299e2d170aabb59943a5e47a",
+    "guides/tests/assistant/narrative-all-games-cases.json": "7b2b4c58f5c799e942077a08740e68f324097ee302e0c41f86db8d59dfe2e2fc"
+  },
+  "screenshots": [],
+  "loopbackPort": 33723,
+  "serverClosed": true,
+  "sourceHashesAfter": {
+    "guides/AlQadim.html": "a3a46b58e9d4f5130f7e804208e919f9513fd9d923df4484d8d7b00d5d76761b",
+    "guides/Albion.html": "fe71ab0c58c947ef3eabf3690ad7dcaffebb066f5538729a013977deda1f6978",
+    "guides/StarcraftBWAPI.html": "f43b3fcfbffddaadf2b4bf951b16652a9d1133d726b7efe06357f9a7cb925983",
+    "guides/Ultima5.html": "c419f66b8a99902351736c024a2230899ec21cdb4ab7af971c58f547b69a2212",
+    "guides/Ultima6.html": "c38694b5092e26602e83f506c1c5933824c92b91fe8138d08b54570a3f839a94",
+    "guides/Ultima7.html": "ac54ffb4cc021316003037f5a04cc66bf44db038c28ef980710d05de09b18dac",
+    "guides/css/AlQadim.css": "c29271988579dedcf94b160312ca16c0f8e0994b75e1eef52033021232f00e92",
+    "guides/css/Albion.css": "4a66562119a9843a9241f13abd7d42ed990a308babe7c1a657c0dddd2712e1bb",
+    "guides/css/Starcraft.css": "a682aa3e68b90d9badd29b82f6ca4fbb1f609de22c7edfc36edad2b38e35a036",
+    "guides/css/Ultima5.css": "549d3f42d41796bd3bcfc08aa1d0d96d78169e79d1a618779a4f24af9bbd7342",
+    "guides/css/Ultima6.css": "48d9c96bc419ec68821f8221993fb2324fc2725747374f267ef868ff0ca2b4bc",
+    "guides/css/Ultima7.css": "9ca2bc60bbd069a8567a9fdb13e1ad45c20ec533cef0b99df50d9c92ed61ac38",
+    "guides/css/assistant-consent.css": "0cd4b0a528aa188d42bb51d6c8cba6243c07064a1880280b1edcab7a484d7374",
+    "guides/css/assistant.css": "e396c857300458985ebeca498fa13a4ba2af9af0d38a7a2207074c560be900eb",
+    "guides/css/fonts.css": "39217afc105185c4edd31a75422dee29a9f03a068aa89415b963b13cb7329ce7",
+    "guides/css/index.css": "7022da3fe5e4f2790aad8465911e921c8aef0c4b93231cc5069b5f713edb27eb",
+    "guides/css/leaflet.css": "a7837102824184820dfa198d1ebcd109ff6d0ff9a2672a074b9a1b4d147d04c6",
+    "guides/css/offline.css": "71355c6e53c5dd70ce36cb47ef011e63c0865c10a7f2d77d02931625b1ea4614",
+    "guides/data/assistant/albion.json": "b3b219ccb434c450189e97404b4c06a3bbc8334dc581bea55bc4a70213851404",
+    "guides/data/assistant/alqadim.json": "f0f15243ea3b27701d97b3ab369a108ef46e93ec5f780f6e1fd1bf5e69bf2b77",
+    "guides/data/assistant/manifest.json": "d2ad011aa0d0c733b9c35a9e1afc70a01f8eef0cbfc04de0eaf45a90824d9ee4",
+    "guides/data/assistant/starcraft.json": "0dc5925ca67adfc434b5366213a5e05e11cbf869f1d0aa71e4daa6d16ae2dfc0",
+    "guides/data/assistant/ultima5.json": "bbd6a3a33133bc1aca80ac7a19cea5011e19c9f33869582355d7fd60f0f0d24e",
+    "guides/data/assistant/ultima6.json": "67b3bf1e8e935df279bec2f11cf698ba721f5d8e169f1a050fefa4ee66b5ad05",
+    "guides/data/assistant/ultima7.json": "9b5c29c25936ccfd20ca9b704df57d45c1f7142a2014b09630f8e2f2aee10871",
+    "guides/js/AlQadim.js": "269798843206f12b76163c65b04301be278652115fbdbd46596f13f3ae7b5e5e",
+    "guides/js/AlQadimAtlasData.js": "82abbb86cafad98655e4bacfdd28e8ba96fba7f747da44b30aaa9364a37e747e",
+    "guides/js/Albion.js": "4adba84eca7af2436731b7053e3167a909f57f85edc611c6287411af84e4b1ca",
+    "guides/js/AlbionAtlasData.js": "b5a96b06ee31e94eba95df1cec41c2b564576e1170a3065b61e9f5db7890dcc8",
+    "guides/js/AlbionMarkers.js": "1de190722be16721a0ff3ff3a50b2c1298706bc33629dd223ed673f63cfbc27b",
+    "guides/js/Ultima5.js": "e2699ed2d8aca9bf3465c7dcd262461f5fca59f1fb4cbd41361e0f5c5a96dae5",
+    "guides/js/Ultima5AtlasData.js": "1292346505cb26d534154b317d7beee7bb186f8dda2d9316127912111bfb72a2",
+    "guides/js/Ultima6.js": "a0b07db60d7c30ac19bb64b56fa26b1428a6437f437f087eb2d75109afae4898",
+    "guides/js/Ultima6Atlas.js": "c83db308efae81f2868d5b4954d679d24e81b83b226d4e4548699668f98d8e88",
+    "guides/js/Ultima7.js": "9b8776ebe358e87c9f76f5175de06ecc617b31a22961700beba48ab8fffba6f9",
+    "guides/js/Ultima7Markers.js": "9103499a31be5bd132959ff268aa0149b90ec310a7f1098fbed1fc25a2de1f2e",
+    "guides/js/assistant/adapters/albion.js": "2bc964d229c805afa38f85fcbd4322c9df43e09008de5d7de5d517fcd047c0be",
+    "guides/js/assistant/adapters/alqadim.js": "547e5694e3982a2d058a82f2a0e111c128748c22b6d5275a7588cf85b193c7c9",
+    "guides/js/assistant/adapters/starcraft.js": "dd0cc14b3ca145cd13ed7870dbc420bd1dea378f474221ab57ebc5b6e6e4b20a",
+    "guides/js/assistant/adapters/ultima5.js": "c629bcd97dc4fab79f7b70e054de1e910434120ce0bb21e0fe8086200b4d2cdf",
+    "guides/js/assistant/adapters/ultima6.js": "761e8fd994e277a81e679c00d64458dabf7cbdba9dfe08286066f52d4dfa9c86",
+    "guides/js/assistant/adapters/ultima7.js": "cc0474d4a9571dbcce7349b91e144a79d0217c9fb1b9e2bf995e71a092dd7389",
+    "guides/js/assistant/bootstrap.js": "36507c252a2cb1c74a56ce094f9dbf61221c813ff799a733d114bfc09acac51b",
+    "guides/js/assistant/consent.js": "f586ad8ab8fb34cf1e08f71115077f87c8df2ce146bf5a0cfb90b5f9712d5dee",
+    "guides/js/assistant/engine.js": "49ee70e38a80f87a1386c359b1e2063d9d0110d690b344c2f6c0bb89065aa3ef",
+    "guides/js/assistant/fallback-context.js": "73c2638570035a73683cdd83b2eac5133d577892aef3613539ebb80c0481cb73",
+    "guides/js/assistant/fallback-guard.js": "8ac7766576c0fa39a9f8eb1d8130687f5dec2d93ed3793b1ab32a416502eb4dc",
+    "guides/js/assistant/frame-tokens.js": "9f225b8d13b2082f45af7f1ec7ca5b56900733383537123d7dab05baa95f511b",
+    "guides/js/assistant/language.js": "f615ac045c6fae7e5ffea26f852c0c50b9985bd43a432d736c0c7948ebbb9e7e",
+    "guides/js/assistant/model-download.js": "1a9f1be1319d9219507a140e4eae6ad6ea2cbb348b19771c7261d1a52432a6a1",
+    "guides/js/assistant/model-runtime.js": "c6331135f75b3ab5f094e6b7020567b19f2b22286105dc51eba190917e98fdd1",
+    "guides/js/assistant/model-worker.js": "5f490d60ae8b991ae64d523d16c683d11a8995283353cfb534f0d3529ce0d6fc",
+    "guides/js/assistant/policy.js": "df44eea0b5eec7dae01deb0ab4c179873cb5f271ae1a3d87ed89a630cb87aec3",
+    "guides/js/assistant/retrieval.js": "d40e3d699e419ccee015abbdfe1b901816629af3d0ded9d52f082476b906c7f3",
+    "guides/js/assistant/rules.js": "3c2edda7907d22a78d022abd9e1fded1ad70103056129325f44d2cc8be78ef74",
+    "guides/js/assistant/topics.js": "cae60c918f936d1429713f076420e32c1fc72a89d371b47f7b1958b81e852d39",
+    "guides/js/assistant/ui.js": "17de8fa0c4372ca8109e72580f8347d60de7a799f74c7dd15db8d55b35201b64",
+    "guides/js/chart.js": "e0059220c10bff95fdb7f5b77b9bfffba68b3ccf4eab4f7398ee7aef3cffca2b",
+    "guides/js/index.js": "0feb3e548e54dd42b171533aebd0931a77cdb0f5b5c51ce2d733814e8cdae557",
+    "guides/js/leaflet.js": "85d455b4522415f6badc42a0e7d17c919d100347d6b8958bd0dc738fdecd6d50",
+    "guides/js/lucide.js": "9dac1057f358d159e8ce1e46f259df2b0cb4a19281de7cf8c9ffb29c7a2226f6",
+    "guides/js/tailwind.js": "7afa0afd2536044695e7e674298bc0dda9af94475e4e07d0575feccfa796c74f",
+    "guides/tests/assistant/browser-consent-fixture.js": "824ec886ed266ada0d40fe2f7142995cd8252f7629b395ee4be9037dea63b89f",
+    "guides/tests/assistant/browser_conversation_observer.py": "b3a5d1ebaea8cc1cc4e9ef351518c791cf9e682f349e79ecfd8851c80e70197b",
+    "guides/tests/assistant/full-answer-browser.py": "8556596c6bb4c12a16da9281bd063a0c600f42f1299e2d170aabb59943a5e47a",
+    "guides/tests/assistant/narrative-all-games-cases.json": "7b2b4c58f5c799e942077a08740e68f324097ee302e0c41f86db8d59dfe2e2fc"
+  },
+  "sourceFilesUnchangedDuringRun": true,
+  "onlyStaticGets": true,
+  "passed": 0
+}

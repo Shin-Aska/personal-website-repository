@@ -1,0 +1,5073 @@
+{
+  "schemaVersion": 1,
+  "realMiniLM": true,
+  "generativeWorkerFixture": true,
+  "nativeGenerativeInference": false,
+  "reportedOnly": false,
+  "corpusHash": "eec658e8ed853070e6af8f48b5cec224a10a1cff2d09e8cc44fc6f09e2d12428",
+  "sourceHashesBefore": {
+    "guides/Albion.html": "fe71ab0c58c947ef3eabf3690ad7dcaffebb066f5538729a013977deda1f6978",
+    "guides/Ultima7.html": "dfc1ef95f254d5f5e905910353081704e04e491c284041b9d8c706b93de1a405",
+    "guides/css/AlQadim.css": "c29271988579dedcf94b160312ca16c0f8e0994b75e1eef52033021232f00e92",
+    "guides/css/Albion.css": "4a66562119a9843a9241f13abd7d42ed990a308babe7c1a657c0dddd2712e1bb",
+    "guides/css/Starcraft.css": "a682aa3e68b90d9badd29b82f6ca4fbb1f609de22c7edfc36edad2b38e35a036",
+    "guides/css/Ultima5.css": "944beebb213134d7c8c1d70ed1ddcffeb23a0bc9c83f4b3246de1069e2116ab3",
+    "guides/css/Ultima6.css": "853833987d3471fdf758dd3f6671938dff987d9a63ff237725fbc47af9abe13b",
+    "guides/css/Ultima7.css": "4448a986d73473bd4444cc7a2d300ff3b359278c41d9c3a12ec86aa35a5ac71a",
+    "guides/css/assistant-consent.css": "75fc193a045ce2ac0f2937dbf7263eeca7a3d0d278b34ac28dfe948107d2dd95",
+    "guides/css/assistant.css": "c7cf671a906009f14cd8d33b4fb9567f80af090b418fd462884106150ed8dc03",
+    "guides/css/fonts.css": "39217afc105185c4edd31a75422dee29a9f03a068aa89415b963b13cb7329ce7",
+    "guides/css/index.css": "7022da3fe5e4f2790aad8465911e921c8aef0c4b93231cc5069b5f713edb27eb",
+    "guides/css/leaflet.css": "a7837102824184820dfa198d1ebcd109ff6d0ff9a2672a074b9a1b4d147d04c6",
+    "guides/css/offline.css": "71355c6e53c5dd70ce36cb47ef011e63c0865c10a7f2d77d02931625b1ea4614",
+    "guides/data/assistant/albion.json": "b3b219ccb434c450189e97404b4c06a3bbc8334dc581bea55bc4a70213851404",
+    "guides/data/assistant/alqadim.json": "f0f15243ea3b27701d97b3ab369a108ef46e93ec5f780f6e1fd1bf5e69bf2b77",
+    "guides/data/assistant/consultation-catalog.json": "e7ad5de8bc0b48dcd83c35882719d43770c13ac029099c7a635f3b3ba322aa0d",
+    "guides/data/assistant/manifest.json": "d2ad011aa0d0c733b9c35a9e1afc70a01f8eef0cbfc04de0eaf45a90824d9ee4",
+    "guides/data/assistant/starcraft.json": "0dc5925ca67adfc434b5366213a5e05e11cbf869f1d0aa71e4daa6d16ae2dfc0",
+    "guides/data/assistant/ultima5.json": "bbd6a3a33133bc1aca80ac7a19cea5011e19c9f33869582355d7fd60f0f0d24e",
+    "guides/data/assistant/ultima6.json": "67b3bf1e8e935df279bec2f11cf698ba721f5d8e169f1a050fefa4ee66b5ad05",
+    "guides/data/assistant/ultima7.json": "9b5c29c25936ccfd20ca9b704df57d45c1f7142a2014b09630f8e2f2aee10871",
+    "guides/js/AlQadim.js": "269798843206f12b76163c65b04301be278652115fbdbd46596f13f3ae7b5e5e",
+    "guides/js/AlQadimAtlasData.js": "82abbb86cafad98655e4bacfdd28e8ba96fba7f747da44b30aaa9364a37e747e",
+    "guides/js/Albion.js": "4adba84eca7af2436731b7053e3167a909f57f85edc611c6287411af84e4b1ca",
+    "guides/js/AlbionAtlasData.js": "b5a96b06ee31e94eba95df1cec41c2b564576e1170a3065b61e9f5db7890dcc8",
+    "guides/js/AlbionMarkers.js": "1de190722be16721a0ff3ff3a50b2c1298706bc33629dd223ed673f63cfbc27b",
+    "guides/js/Ultima5.js": "e2699ed2d8aca9bf3465c7dcd262461f5fca59f1fb4cbd41361e0f5c5a96dae5",
+    "guides/js/Ultima5AtlasData.js": "1292346505cb26d534154b317d7beee7bb186f8dda2d9316127912111bfb72a2",
+    "guides/js/Ultima6.js": "a0b07db60d7c30ac19bb64b56fa26b1428a6437f437f087eb2d75109afae4898",
+    "guides/js/Ultima6Atlas.js": "c83db308efae81f2868d5b4954d679d24e81b83b226d4e4548699668f98d8e88",
+    "guides/js/Ultima7.js": "c3cd92659e5e959c6d172ba38d56ba85148729b82185768557cb595e3bfb6085",
+    "guides/js/Ultima7Markers.js": "9103499a31be5bd132959ff268aa0149b90ec310a7f1098fbed1fc25a2de1f2e",
+    "guides/js/assistant/adapters/albion.js": "df3993cb351cf9f5e4ade03d8bcfdfc3477c00f4fb39922b9e8cc8d4e255e70b",
+    "guides/js/assistant/adapters/alqadim.js": "fa65928d9011011a12095cd4bbf37a56bfed3b91559ce6aa8097a991b111065c",
+    "guides/js/assistant/adapters/starcraft.js": "b4a11908b121a545fd810c4f8ae09404c210ab0607f70e9121a145a8aea6063e",
+    "guides/js/assistant/adapters/ultima5.js": "3aa64babe0f83ecc713f5d9a665b8ba7a4e7dbfce557a8cff22778a6170cf95a",
+    "guides/js/assistant/adapters/ultima6.js": "68f2d1abd30790c217ddd9f906a1abc03fd40b74ffad932c297ada42f8d2049a",
+    "guides/js/assistant/adapters/ultima7.js": "5140505e9fe04a864e950afab671519f31ef24ac6a9b2e91b7c3853c1cf1e7c3",
+    "guides/js/assistant/bootstrap.js": "022aff4f7c2f93fc5c74da9b6457c6a53ee5eb2c072bf90970eca95ef3855608",
+    "guides/js/assistant/consent.js": "cd83de63e5ec28425fad9eef36d597eec48ec839cb48e93569a568571f1e4b98",
+    "guides/js/assistant/consultation.js": "e699091ce4ae4926b6d925a93cb13396ad440fc01ca66c8a574ef35fe939990a",
+    "guides/js/assistant/dialogue.js": "4071ec9bc886fe3cf0415dbb5cd9f910fd87e7141be76a6e417c844674d3af74",
+    "guides/js/assistant/engine.js": "5a66ee1544c7c18b9ef6628bd2d396952dd4172f28221aa44effb0fed8aa6bef",
+    "guides/js/assistant/fallback-context.js": "73c2638570035a73683cdd83b2eac5133d577892aef3613539ebb80c0481cb73",
+    "guides/js/assistant/fallback-guard.js": "8ac7766576c0fa39a9f8eb1d8130687f5dec2d93ed3793b1ab32a416502eb4dc",
+    "guides/js/assistant/frame-tokens.js": "9f225b8d13b2082f45af7f1ec7ca5b56900733383537123d7dab05baa95f511b",
+    "guides/js/assistant/guide-assistant.js": "264f98fa0fbf45e50f6d4b8d4889a41a4efdc56b16fa6a2b7d696de85371bcc6",
+    "guides/js/assistant/intent-head.js": "23e428fedd405946199beb1e55641281bdae078e3d8ea6e448d0ac0acc1a39a7",
+    "guides/js/assistant/intent-runtime.js": "32e364a567372b4e008d1064b250e129d263f0bd87e29e65b4fe9b9b63e59a94",
+    "guides/js/assistant/intent-worker.js": "310eb79354e02019e9c05acbf8fa1e60e447f7ed99086a47a6cdc83b331d66c5",
+    "guides/js/assistant/language.js": "c9c784649dc096d35bba709821f1989814bfcdc2b2356c543d4035c9c67344be",
+    "guides/js/assistant/model-download.js": "1a9f1be1319d9219507a140e4eae6ad6ea2cbb348b19771c7261d1a52432a6a1",
+    "guides/js/assistant/model-runtime.js": "c6331135f75b3ab5f094e6b7020567b19f2b22286105dc51eba190917e98fdd1",
+    "guides/js/assistant/model-worker.js": "5f490d60ae8b991ae64d523d16c683d11a8995283353cfb534f0d3529ce0d6fc",
+    "guides/js/assistant/policy.js": "df44eea0b5eec7dae01deb0ab4c179873cb5f271ae1a3d87ed89a630cb87aec3",
+    "guides/js/assistant/retrieval.js": "d40e3d699e419ccee015abbdfe1b901816629af3d0ded9d52f082476b906c7f3",
+    "guides/js/assistant/rules.js": "3c2edda7907d22a78d022abd9e1fded1ad70103056129325f44d2cc8be78ef74",
+    "guides/js/assistant/source-responses.js": "6b360a86d0596ae537ccd4d3afa9689afc9c03aff35509e6bc17df91d64ee8b5",
+    "guides/js/assistant/topics.js": "cae60c918f936d1429713f076420e32c1fc72a89d371b47f7b1958b81e852d39",
+    "guides/js/assistant/ui.js": "8f080207c96e9c03d0a316db83867708f98ca6d2d389e72cfc267c444b0ae152",
+    "guides/js/chart.js": "e0059220c10bff95fdb7f5b77b9bfffba68b3ccf4eab4f7398ee7aef3cffca2b",
+    "guides/js/index.js": "0feb3e548e54dd42b171533aebd0931a77cdb0f5b5c51ce2d733814e8cdae557",
+    "guides/js/leaflet.js": "85d455b4522415f6badc42a0e7d17c919d100347d6b8958bd0dc738fdecd6d50",
+    "guides/js/lucide.js": "9dac1057f358d159e8ce1e46f259df2b0cb4a19281de7cf8c9ffb29c7a2226f6",
+    "guides/js/tailwind.js": "7afa0afd2536044695e7e674298bc0dda9af94475e4e07d0575feccfa796c74f",
+    "guides/local-assistant/intent/profile.json": "786a95a078fcc940f95539837883405257f1a3a896637bb71b8b477be680639e",
+    "guides/local-assistant/profile.json": "7fcde9d4b3d8842dc2345159687e845e023ce9049c92deab6d99d494e6ba813d",
+    "guides/tests/assistant/rollout-browser.py": "1a96f3106af2344838bff0dabd9fc0154ab7bac73c48d9f79d07f7d4f43d0b3c",
+    "guides/tests/assistant/story-passive-browser.py": "133acd105a60361b9b3e6cd5e02d9eba779fb4082e2092ff56aefb2930145beb",
+    "guides/tests/assistant/story-passive-cases.json": "eec658e8ed853070e6af8f48b5cec224a10a1cff2d09e8cc44fc6f09e2d12428"
+  },
+  "turns": [
+    {
+      "text": "who got murdered?",
+      "decision": "answer",
+      "rendered": "The Trinsic Murders \u2014 Victim:\nNot in this guide \u2014 from outside research:\nVictims: Inamo, Christopher\nAccording to the Ultima Codex, Inamo was killed in the ritual murder of Christopher, which it attributes to the Fellowship assassins Hook and Forskis.",
+      "citations": [
+        "Outside research (not in this guide): Inamo \u2014 The Codex of Ultima Wisdom \u2014 https://wiki.ultimacodex.com/index.php?title=Inamo&oldid=154876 (checked 2026-10-21); Christopher \u2014 The Codex of Ultima Wisdom (corroboration) \u2014 https://wiki.ultimacodex.com/wiki/Christopher (checked 2026-10-21)."
+      ],
+      "links": [],
+      "expectedRecordIds": [
+        "ultima7:story:trinsic-murder-victims:victim"
+      ],
+      "acceptedRecordAlternatives": [],
+      "recordIdObservation": "Oracle metadata; actual UI source citations checked. No module injection/expected-state seeding.",
+      "problems": [],
+      "passed": true,
+      "gameId": "ultima7",
+      "scenarioId": "reported-cold-got-murdered",
+      "turn": 1,
+      "expectedRole": "victim",
+      "expectedSupported": true,
+      "contextStatement": false
+    },
+    {
+      "text": "who got killed",
+      "decision": "answer",
+      "rendered": "The Trinsic Murders \u2014 Victim:\nNot in this guide \u2014 from outside research:\nVictims: Inamo, Christopher\nAccording to the Ultima Codex, Inamo was killed in the ritual murder of Christopher, which it attributes to the Fellowship assassins Hook and Forskis.",
+      "citations": [
+        "Outside research (not in this guide): Inamo \u2014 The Codex of Ultima Wisdom \u2014 https://wiki.ultimacodex.com/index.php?title=Inamo&oldid=154876 (checked 2026-10-21); Christopher \u2014 The Codex of Ultima Wisdom (corroboration) \u2014 https://wiki.ultimacodex.com/wiki/Christopher (checked 2026-10-21)."
+      ],
+      "links": [],
+      "expectedRecordIds": [
+        "ultima7:story:trinsic-murder-victims:victim"
+      ],
+      "acceptedRecordAlternatives": [],
+      "recordIdObservation": "Oracle metadata; actual UI source citations checked. No module injection/expected-state seeding.",
+      "problems": [],
+      "passed": true,
+      "gameId": "ultima7",
+      "scenarioId": "reported-cold-got-killed",
+      "turn": 1,
+      "expectedRole": "victim",
+      "expectedSupported": true,
+      "contextStatement": false
+    },
+    {
+      "text": "who was murdered?",
+      "decision": "answer",
+      "rendered": "The Trinsic Murders \u2014 Victim:\nNot in this guide \u2014 from outside research:\nVictims: Inamo, Christopher\nAccording to the Ultima Codex, Inamo was killed in the ritual murder of Christopher, which it attributes to the Fellowship assassins Hook and Forskis.",
+      "citations": [
+        "Outside research (not in this guide): Inamo \u2014 The Codex of Ultima Wisdom \u2014 https://wiki.ultimacodex.com/index.php?title=Inamo&oldid=154876 (checked 2026-10-21); Christopher \u2014 The Codex of Ultima Wisdom (corroboration) \u2014 https://wiki.ultimacodex.com/wiki/Christopher (checked 2026-10-21)."
+      ],
+      "links": [],
+      "expectedRecordIds": [
+        "ultima7:story:trinsic-murder-victims:victim"
+      ],
+      "acceptedRecordAlternatives": [],
+      "recordIdObservation": "Oracle metadata; actual UI source citations checked. No module injection/expected-state seeding.",
+      "problems": [],
+      "passed": true,
+      "gameId": "ultima7",
+      "scenarioId": "cold-was-murdered",
+      "turn": 1,
+      "expectedRole": "victim",
+      "expectedSupported": true,
+      "contextStatement": false
+    },
+    {
+      "text": "who were killed?",
+      "decision": "answer",
+      "rendered": "The Trinsic Murders \u2014 Victim:\nNot in this guide \u2014 from outside research:\nVictims: Inamo, Christopher\nAccording to the Ultima Codex, Inamo was killed in the ritual murder of Christopher, which it attributes to the Fellowship assassins Hook and Forskis.",
+      "citations": [
+        "Outside research (not in this guide): Inamo \u2014 The Codex of Ultima Wisdom \u2014 https://wiki.ultimacodex.com/index.php?title=Inamo&oldid=154876 (checked 2026-10-21); Christopher \u2014 The Codex of Ultima Wisdom (corroboration) \u2014 https://wiki.ultimacodex.com/wiki/Christopher (checked 2026-10-21)."
+      ],
+      "links": [],
+      "expectedRecordIds": [
+        "ultima7:story:trinsic-murder-victims:victim"
+      ],
+      "acceptedRecordAlternatives": [],
+      "recordIdObservation": "Oracle metadata; actual UI source citations checked. No module injection/expected-state seeding.",
+      "problems": [],
+      "passed": true,
+      "gameId": "ultima7",
+      "scenarioId": "cold-were-killed",
+      "turn": 1,
+      "expectedRole": "victim",
+      "expectedSupported": true,
+      "contextStatement": false
+    },
+    {
+      "text": "who are the victims?",
+      "decision": "answer",
+      "rendered": "The Trinsic Murders \u2014 Victim:\nNot in this guide \u2014 from outside research:\nVictims: Inamo, Christopher\nAccording to the Ultima Codex, Inamo was killed in the ritual murder of Christopher, which it attributes to the Fellowship assassins Hook and Forskis.",
+      "citations": [
+        "Outside research (not in this guide): Inamo \u2014 The Codex of Ultima Wisdom \u2014 https://wiki.ultimacodex.com/index.php?title=Inamo&oldid=154876 (checked 2026-10-21); Christopher \u2014 The Codex of Ultima Wisdom (corroboration) \u2014 https://wiki.ultimacodex.com/wiki/Christopher (checked 2026-10-21)."
+      ],
+      "links": [],
+      "expectedRecordIds": [
+        "ultima7:story:trinsic-murder-victims:victim"
+      ],
+      "acceptedRecordAlternatives": [],
+      "recordIdObservation": "Oracle metadata; actual UI source citations checked. No module injection/expected-state seeding.",
+      "problems": [],
+      "passed": true,
+      "gameId": "ultima7",
+      "scenarioId": "cold-victims-noun",
+      "turn": 1,
+      "expectedRole": "victim",
+      "expectedSupported": true,
+      "contextStatement": false
+    },
+    {
+      "text": "who is the murderer?",
+      "decision": "answer",
+      "rendered": "The Trinsic Murders \u2014 Perpetrator:\nNot in this guide \u2014 from outside research:\nKillers: Hook, Forskis\nAccording to the Ultima Codex, Inamo was killed in the ritual murder of Christopher, which it attributes to the Fellowship assassins Hook and Forskis.",
+      "citations": [
+        "Outside research (not in this guide): Inamo \u2014 The Codex of Ultima Wisdom \u2014 https://wiki.ultimacodex.com/index.php?title=Inamo&oldid=154876 (checked 2026-10-21); Christopher \u2014 The Codex of Ultima Wisdom (corroboration) \u2014 https://wiki.ultimacodex.com/wiki/Christopher (checked 2026-10-21)."
+      ],
+      "links": [],
+      "expectedRecordIds": [
+        "ultima7:story:trinsic-killers:perpetrator"
+      ],
+      "acceptedRecordAlternatives": [],
+      "recordIdObservation": "Oracle metadata; actual UI source citations checked. No module injection/expected-state seeding.",
+      "problems": [],
+      "passed": true,
+      "gameId": "ultima7",
+      "scenarioId": "cold-perpetrator",
+      "turn": 1,
+      "expectedRole": "perpetrator",
+      "expectedSupported": true,
+      "contextStatement": false
+    },
+    {
+      "text": "who murdered Christopher?",
+      "decision": "answer",
+      "rendered": "The Trinsic Murders \u2014 Perpetrator:\nNot in this guide \u2014 from outside research:\nKillers: Hook, Forskis\nAccording to the Ultima Codex, Inamo was killed in the ritual murder of Christopher, which it attributes to the Fellowship assassins Hook and Forskis.",
+      "citations": [
+        "Outside research (not in this guide): Inamo \u2014 The Codex of Ultima Wisdom \u2014 https://wiki.ultimacodex.com/index.php?title=Inamo&oldid=154876 (checked 2026-10-21); Christopher \u2014 The Codex of Ultima Wisdom (corroboration) \u2014 https://wiki.ultimacodex.com/wiki/Christopher (checked 2026-10-21)."
+      ],
+      "links": [],
+      "expectedRecordIds": [
+        "ultima7:story:trinsic-killers:perpetrator"
+      ],
+      "acceptedRecordAlternatives": [],
+      "recordIdObservation": "Oracle metadata; actual UI source citations checked. No module injection/expected-state seeding.",
+      "problems": [],
+      "passed": true,
+      "gameId": "ultima7",
+      "scenarioId": "active-object-christopher",
+      "turn": 1,
+      "expectedRole": "perpetrator",
+      "expectedSupported": true,
+      "contextStatement": false
+    },
+    {
+      "text": "who was Christopher murdered by?",
+      "decision": "answer",
+      "rendered": "The Trinsic Murders \u2014 Perpetrator:\nNot in this guide \u2014 from outside research:\nKillers: Hook, Forskis\nAccording to the Ultima Codex, Inamo was killed in the ritual murder of Christopher, which it attributes to the Fellowship assassins Hook and Forskis.",
+      "citations": [
+        "Outside research (not in this guide): Inamo \u2014 The Codex of Ultima Wisdom \u2014 https://wiki.ultimacodex.com/index.php?title=Inamo&oldid=154876 (checked 2026-10-21); Christopher \u2014 The Codex of Ultima Wisdom (corroboration) \u2014 https://wiki.ultimacodex.com/wiki/Christopher (checked 2026-10-21)."
+      ],
+      "links": [],
+      "expectedRecordIds": [
+        "ultima7:story:trinsic-killers:perpetrator"
+      ],
+      "acceptedRecordAlternatives": [],
+      "recordIdObservation": "Oracle metadata; actual UI source citations checked. No module injection/expected-state seeding.",
+      "problems": [],
+      "passed": true,
+      "gameId": "ultima7",
+      "scenarioId": "passive-by-christopher",
+      "turn": 1,
+      "expectedRole": "perpetrator",
+      "expectedSupported": true,
+      "contextStatement": false
+    },
+    {
+      "text": "who was murdered by Hook?",
+      "decision": "answer",
+      "rendered": "The Trinsic Murders \u2014 Victim:\nNot in this guide \u2014 from outside research:\nVictims: Inamo, Christopher\nAccording to the Ultima Codex, Inamo was killed in the ritual murder of Christopher, which it attributes to the Fellowship assassins Hook and Forskis.",
+      "citations": [
+        "Outside research (not in this guide): Inamo \u2014 The Codex of Ultima Wisdom \u2014 https://wiki.ultimacodex.com/index.php?title=Inamo&oldid=154876 (checked 2026-10-21); Christopher \u2014 The Codex of Ultima Wisdom (corroboration) \u2014 https://wiki.ultimacodex.com/wiki/Christopher (checked 2026-10-21)."
+      ],
+      "links": [],
+      "expectedRecordIds": [
+        "ultima7:story:trinsic-murder-victims:victim"
+      ],
+      "acceptedRecordAlternatives": [],
+      "recordIdObservation": "Oracle metadata; actual UI source citations checked. No module injection/expected-state seeding.",
+      "problems": [],
+      "passed": true,
+      "gameId": "ultima7",
+      "scenarioId": "passive-by-hook",
+      "turn": 1,
+      "expectedRole": "victim",
+      "expectedSupported": true,
+      "contextStatement": false
+    },
+    {
+      "text": "who did Hook murder?",
+      "decision": "answer",
+      "rendered": "The Trinsic Murders \u2014 Victim:\nNot in this guide \u2014 from outside research:\nVictims: Inamo, Christopher\nAccording to the Ultima Codex, Inamo was killed in the ritual murder of Christopher, which it attributes to the Fellowship assassins Hook and Forskis.",
+      "citations": [
+        "Outside research (not in this guide): Inamo \u2014 The Codex of Ultima Wisdom \u2014 https://wiki.ultimacodex.com/index.php?title=Inamo&oldid=154876 (checked 2026-10-21); Christopher \u2014 The Codex of Ultima Wisdom (corroboration) \u2014 https://wiki.ultimacodex.com/wiki/Christopher (checked 2026-10-21)."
+      ],
+      "links": [],
+      "expectedRecordIds": [
+        "ultima7:story:trinsic-murder-victims:victim"
+      ],
+      "acceptedRecordAlternatives": [],
+      "recordIdObservation": "Oracle metadata; actual UI source citations checked. No module injection/expected-state seeding.",
+      "problems": [],
+      "passed": true,
+      "gameId": "ultima7",
+      "scenarioId": "active-object-hook",
+      "turn": 1,
+      "expectedRole": "victim",
+      "expectedSupported": true,
+      "contextStatement": false
+    },
+    {
+      "text": "who did Inamo kill?",
+      "decision": "decline",
+      "rendered": "I found the entry for Inamo, but I don't have a sourced answer to that relationship question in the available records.",
+      "citations": [],
+      "links": [],
+      "expectedRecordIds": [],
+      "acceptedRecordAlternatives": [],
+      "recordIdObservation": "Oracle metadata; actual UI source citations checked. No module injection/expected-state seeding.",
+      "problems": [],
+      "passed": true,
+      "gameId": "ultima7",
+      "scenarioId": "active-inamo-not-perpetrator",
+      "turn": 1,
+      "expectedRole": null,
+      "expectedSupported": false,
+      "contextStatement": false
+    },
+    {
+      "text": "who did Christopher murder?",
+      "decision": "decline",
+      "rendered": "I found the entry for Christopher, but I don't have a sourced answer to that relationship question in the available records.",
+      "citations": [],
+      "links": [],
+      "expectedRecordIds": [],
+      "acceptedRecordAlternatives": [],
+      "recordIdObservation": "Oracle metadata; actual UI source citations checked. No module injection/expected-state seeding.",
+      "problems": [],
+      "passed": true,
+      "gameId": "ultima7",
+      "scenarioId": "active-christopher-not-perpetrator",
+      "turn": 1,
+      "expectedRole": null,
+      "expectedSupported": false,
+      "contextStatement": false
+    },
+    {
+      "text": "who did not get killed?",
+      "decision": "decline",
+      "rendered": "The guide does not establish that negative story relationship.",
+      "citations": [],
+      "links": [],
+      "expectedRecordIds": [],
+      "acceptedRecordAlternatives": [],
+      "recordIdObservation": "Oracle metadata; actual UI source citations checked. No module injection/expected-state seeding.",
+      "problems": [],
+      "passed": true,
+      "gameId": "ultima7",
+      "scenarioId": "negated-passive",
+      "turn": 1,
+      "expectedRole": null,
+      "expectedSupported": false,
+      "contextStatement": false
+    },
+    {
+      "text": "who got murdered in the Moonstone Harbor massacre?",
+      "decision": "decline",
+      "rendered": "I found the entry for Harbor, but I don't have a sourced answer to that relationship question in the available records.",
+      "citations": [],
+      "links": [],
+      "expectedRecordIds": [],
+      "acceptedRecordAlternatives": [],
+      "recordIdObservation": "Oracle metadata; actual UI source citations checked. No module injection/expected-state seeding.",
+      "problems": [],
+      "passed": true,
+      "gameId": "ultima7",
+      "scenarioId": "unknown-event",
+      "turn": 1,
+      "expectedRole": null,
+      "expectedSupported": false,
+      "contextStatement": false
+    },
+    {
+      "text": "who got murdered in Trinsic in Serpent Isle?",
+      "decision": "decline",
+      "rendered": "I found the entry for Trinsic, but I don't have a sourced answer to that relationship question in the available records.",
+      "citations": [],
+      "links": [],
+      "expectedRecordIds": [],
+      "acceptedRecordAlternatives": [],
+      "recordIdObservation": "Oracle metadata; actual UI source citations checked. No module injection/expected-state seeding.",
+      "problems": [],
+      "passed": true,
+      "gameId": "ultima7",
+      "scenarioId": "restricted-edition",
+      "turn": 1,
+      "expectedRole": null,
+      "expectedSupported": false,
+      "contextStatement": false
+    },
+    {
+      "text": "Guide only: who got murdered in the Trinsic Murders?",
+      "decision": "decline",
+      "rendered": "I found the entry for The Trinsic Murders, but I don't have a sourced answer to that relationship question in the available records.",
+      "citations": [],
+      "links": [],
+      "expectedRecordIds": [],
+      "acceptedRecordAlternatives": [],
+      "recordIdObservation": "Oracle metadata; actual UI source citations checked. No module injection/expected-state seeding.",
+      "problems": [],
+      "passed": true,
+      "gameId": "ultima7",
+      "scenarioId": "guide-only-victims",
+      "turn": 1,
+      "expectedRole": null,
+      "expectedSupported": false,
+      "contextStatement": false
+    },
+    {
+      "text": "Guide only: who is the suspect in the Trinsic Murders?",
+      "decision": "answer",
+      "rendered": "The Trinsic Murders \u2014 Suspect:\nThe guide records: Interview Spark, Gilberto, and Klog to identify the suspect (man with a hook) and his escape vessel (the Crown Jewel).",
+      "citations": [
+        "Source: existing guide; extracted. guides/js/Ultima7.js \u2014 DB.mainQuest[0].content"
+      ],
+      "links": [],
+      "expectedRecordIds": [
+        "ultima7:story:trinsic-suspect:suspect"
+      ],
+      "acceptedRecordAlternatives": [],
+      "recordIdObservation": "Oracle metadata; actual UI source citations checked. No module injection/expected-state seeding.",
+      "problems": [],
+      "passed": true,
+      "gameId": "ultima7",
+      "scenarioId": "guide-only-suspect",
+      "turn": 1,
+      "expectedRole": "suspect",
+      "expectedSupported": true,
+      "contextStatement": false
+    },
+    {
+      "text": "who got murdered?",
+      "decision": "decline",
+      "rendered": "I don't have a sourced answer to that relationship question in the available records. I looked only at the current topic, Infiltrating the Fellowship. Name another subject or event, or reset the topic.",
+      "citations": [],
+      "links": [],
+      "expectedRecordIds": [],
+      "acceptedRecordAlternatives": [],
+      "recordIdObservation": "Oracle metadata; actual UI source citations checked. No module injection/expected-state seeding.",
+      "problems": [],
+      "passed": true,
+      "gameId": "ultima7",
+      "scenarioId": "other-selected-quest",
+      "turn": 1,
+      "expectedRole": null,
+      "expectedSupported": false,
+      "contextStatement": false
+    },
+    {
+      "text": "who got murdered in Blorn's Accusations?",
+      "decision": "decline",
+      "rendered": "I found the entry for Reward (side quest 8), but I don't have a sourced answer to that relationship question in the available records.",
+      "citations": [],
+      "links": [],
+      "expectedRecordIds": [],
+      "acceptedRecordAlternatives": [],
+      "recordIdObservation": "Oracle metadata; actual UI source citations checked. No module injection/expected-state seeding.",
+      "problems": [],
+      "passed": true,
+      "gameId": "ultima7",
+      "scenarioId": "accusation-not-murder",
+      "turn": 1,
+      "expectedRole": null,
+      "expectedSupported": false,
+      "contextStatement": false
+    },
+    {
+      "text": "who got murdered?",
+      "decision": "answer",
+      "rendered": "The Trinsic Murders \u2014 Victim:\nNot in this guide \u2014 from outside research:\nVictims: Inamo, Christopher\nAccording to the Ultima Codex, Inamo was killed in the ritual murder of Christopher, which it attributes to the Fellowship assassins Hook and Forskis.",
+      "citations": [
+        "Outside research (not in this guide): Inamo \u2014 The Codex of Ultima Wisdom \u2014 https://wiki.ultimacodex.com/index.php?title=Inamo&oldid=154876 (checked 2026-10-21); Christopher \u2014 The Codex of Ultima Wisdom (corroboration) \u2014 https://wiki.ultimacodex.com/wiki/Christopher (checked 2026-10-21)."
+      ],
+      "links": [],
+      "expectedRecordIds": [
+        "ultima7:story:trinsic-murder-victims:victim"
+      ],
+      "acceptedRecordAlternatives": [],
+      "recordIdObservation": "Oracle metadata; actual UI source citations checked. No module injection/expected-state seeding.",
+      "problems": [],
+      "passed": true,
+      "gameId": "ultima7",
+      "scenarioId": "reported-warm-role-switches",
+      "turn": 1,
+      "expectedRole": "victim",
+      "expectedSupported": true,
+      "contextStatement": false
+    },
+    {
+      "text": "who is the murderer?",
+      "decision": "answer",
+      "rendered": "The Trinsic Murders \u2014 Perpetrator:\nNot in this guide \u2014 from outside research:\nKillers: Hook, Forskis\nAccording to the Ultima Codex, Inamo was killed in the ritual murder of Christopher, which it attributes to the Fellowship assassins Hook and Forskis.",
+      "citations": [
+        "Outside research (not in this guide): Inamo \u2014 The Codex of Ultima Wisdom \u2014 https://wiki.ultimacodex.com/index.php?title=Inamo&oldid=154876 (checked 2026-10-21); Christopher \u2014 The Codex of Ultima Wisdom (corroboration) \u2014 https://wiki.ultimacodex.com/wiki/Christopher (checked 2026-10-21)."
+      ],
+      "links": [],
+      "expectedRecordIds": [
+        "ultima7:story:trinsic-killers:perpetrator"
+      ],
+      "acceptedRecordAlternatives": [],
+      "recordIdObservation": "Oracle metadata; actual UI source citations checked. No module injection/expected-state seeding.",
+      "problems": [],
+      "passed": true,
+      "gameId": "ultima7",
+      "scenarioId": "reported-warm-role-switches",
+      "turn": 2,
+      "expectedRole": "perpetrator",
+      "expectedSupported": true,
+      "contextStatement": false
+    },
+    {
+      "text": "who got killed",
+      "decision": "answer",
+      "rendered": "The Trinsic Murders \u2014 Victim:\nNot in this guide \u2014 from outside research:\nVictims: Inamo, Christopher\nAccording to the Ultima Codex, Inamo was killed in the ritual murder of Christopher, which it attributes to the Fellowship assassins Hook and Forskis.",
+      "citations": [
+        "Outside research (not in this guide): Inamo \u2014 The Codex of Ultima Wisdom \u2014 https://wiki.ultimacodex.com/index.php?title=Inamo&oldid=154876 (checked 2026-10-21); Christopher \u2014 The Codex of Ultima Wisdom (corroboration) \u2014 https://wiki.ultimacodex.com/wiki/Christopher (checked 2026-10-21)."
+      ],
+      "links": [],
+      "expectedRecordIds": [
+        "ultima7:story:trinsic-murder-victims:victim"
+      ],
+      "acceptedRecordAlternatives": [],
+      "recordIdObservation": "Oracle metadata; actual UI source citations checked. No module injection/expected-state seeding.",
+      "problems": [],
+      "passed": true,
+      "gameId": "ultima7",
+      "scenarioId": "reported-warm-role-switches",
+      "turn": 3,
+      "expectedRole": "victim",
+      "expectedSupported": true,
+      "contextStatement": false
+    },
+    {
+      "text": "who killed whom?",
+      "decision": "answer",
+      "rendered": "The Trinsic Murders \u2014 Who killed whom:\nNot in this guide \u2014 from outside research:\nKillers: Hook, Forskis\nVictims: Inamo, Christopher\nAccording to the Ultima Codex, Inamo was killed in the ritual murder of Christopher, which it attributes to the Fellowship assassins Hook and Forskis.",
+      "citations": [
+        "Outside research (not in this guide): Inamo \u2014 The Codex of Ultima Wisdom \u2014 https://wiki.ultimacodex.com/index.php?title=Inamo&oldid=154876 (checked 2026-10-21); Christopher \u2014 The Codex of Ultima Wisdom (corroboration) \u2014 https://wiki.ultimacodex.com/wiki/Christopher (checked 2026-10-21)."
+      ],
+      "links": [],
+      "expectedRecordIds": [
+        "ultima7:story:trinsic-killers:perpetrator",
+        "ultima7:story:trinsic-murder-victims:victim"
+      ],
+      "acceptedRecordAlternatives": [],
+      "recordIdObservation": "Oracle metadata; actual UI source citations checked. No module injection/expected-state seeding.",
+      "problems": [],
+      "passed": true,
+      "gameId": "ultima7",
+      "scenarioId": "reported-warm-role-switches",
+      "turn": 4,
+      "expectedRole": "participants",
+      "expectedSupported": true,
+      "contextStatement": false
+    },
+    {
+      "text": "who were the victims?",
+      "decision": "answer",
+      "rendered": "The Trinsic Murders \u2014 Victim:\nNot in this guide \u2014 from outside research:\nVictims: Inamo, Christopher\nAccording to the Ultima Codex, Inamo was killed in the ritual murder of Christopher, which it attributes to the Fellowship assassins Hook and Forskis.",
+      "citations": [
+        "Outside research (not in this guide): Inamo \u2014 The Codex of Ultima Wisdom \u2014 https://wiki.ultimacodex.com/index.php?title=Inamo&oldid=154876 (checked 2026-10-21); Christopher \u2014 The Codex of Ultima Wisdom (corroboration) \u2014 https://wiki.ultimacodex.com/wiki/Christopher (checked 2026-10-21)."
+      ],
+      "links": [],
+      "expectedRecordIds": [
+        "ultima7:story:trinsic-murder-victims:victim"
+      ],
+      "acceptedRecordAlternatives": [],
+      "recordIdObservation": "Oracle metadata; actual UI source citations checked. No module injection/expected-state seeding.",
+      "problems": [],
+      "passed": true,
+      "gameId": "ultima7",
+      "scenarioId": "reported-warm-role-switches",
+      "turn": 5,
+      "expectedRole": "victim",
+      "expectedSupported": true,
+      "contextStatement": false
+    },
+    {
+      "text": "who killed Christopher?",
+      "decision": "answer",
+      "rendered": "The Trinsic Murders \u2014 Perpetrator:\nNot in this guide \u2014 from outside research:\nKillers: Hook, Forskis\nAccording to the Ultima Codex, Inamo was killed in the ritual murder of Christopher, which it attributes to the Fellowship assassins Hook and Forskis.",
+      "citations": [
+        "Outside research (not in this guide): Inamo \u2014 The Codex of Ultima Wisdom \u2014 https://wiki.ultimacodex.com/index.php?title=Inamo&oldid=154876 (checked 2026-10-21); Christopher \u2014 The Codex of Ultima Wisdom (corroboration) \u2014 https://wiki.ultimacodex.com/wiki/Christopher (checked 2026-10-21)."
+      ],
+      "links": [],
+      "expectedRecordIds": [
+        "ultima7:story:trinsic-killers:perpetrator"
+      ],
+      "acceptedRecordAlternatives": [],
+      "recordIdObservation": "Oracle metadata; actual UI source citations checked. No module injection/expected-state seeding.",
+      "problems": [],
+      "passed": true,
+      "gameId": "ultima7",
+      "scenarioId": "reported-warm-role-switches",
+      "turn": 6,
+      "expectedRole": "perpetrator",
+      "expectedSupported": true,
+      "contextStatement": false
+    },
+    {
+      "text": "I am in the Trinsic murders",
+      "decision": "clarify",
+      "rendered": "I will use The Trinsic Murders as the conversation topic. No progress was changed.",
+      "citations": [],
+      "links": [],
+      "expectedRecordIds": [],
+      "acceptedRecordAlternatives": [],
+      "recordIdObservation": "Oracle metadata; actual UI source citations checked. No module injection/expected-state seeding.",
+      "problems": [],
+      "passed": true,
+      "gameId": "ultima7",
+      "scenarioId": "natural-event-context-statement",
+      "turn": 1,
+      "expectedRole": null,
+      "expectedSupported": false,
+      "contextStatement": true
+    },
+    {
+      "text": "who got murdered?",
+      "decision": "answer",
+      "rendered": "The Trinsic Murders \u2014 Victim:\nNot in this guide \u2014 from outside research:\nVictims: Inamo, Christopher\nAccording to the Ultima Codex, Inamo was killed in the ritual murder of Christopher, which it attributes to the Fellowship assassins Hook and Forskis.",
+      "citations": [
+        "Outside research (not in this guide): Inamo \u2014 The Codex of Ultima Wisdom \u2014 https://wiki.ultimacodex.com/index.php?title=Inamo&oldid=154876 (checked 2026-10-21); Christopher \u2014 The Codex of Ultima Wisdom (corroboration) \u2014 https://wiki.ultimacodex.com/wiki/Christopher (checked 2026-10-21)."
+      ],
+      "links": [],
+      "expectedRecordIds": [
+        "ultima7:story:trinsic-murder-victims:victim"
+      ],
+      "acceptedRecordAlternatives": [],
+      "recordIdObservation": "Oracle metadata; actual UI source citations checked. No module injection/expected-state seeding.",
+      "problems": [],
+      "passed": true,
+      "gameId": "ultima7",
+      "scenarioId": "natural-event-context-statement",
+      "turn": 2,
+      "expectedRole": "victim",
+      "expectedSupported": true,
+      "contextStatement": false
+    },
+    {
+      "text": "who is the murderer?",
+      "decision": "answer",
+      "rendered": "The Trinsic Murders \u2014 Perpetrator:\nNot in this guide \u2014 from outside research:\nKillers: Hook, Forskis\nAccording to the Ultima Codex, Inamo was killed in the ritual murder of Christopher, which it attributes to the Fellowship assassins Hook and Forskis.",
+      "citations": [
+        "Outside research (not in this guide): Inamo \u2014 The Codex of Ultima Wisdom \u2014 https://wiki.ultimacodex.com/index.php?title=Inamo&oldid=154876 (checked 2026-10-21); Christopher \u2014 The Codex of Ultima Wisdom (corroboration) \u2014 https://wiki.ultimacodex.com/wiki/Christopher (checked 2026-10-21)."
+      ],
+      "links": [],
+      "expectedRecordIds": [
+        "ultima7:story:trinsic-killers:perpetrator"
+      ],
+      "acceptedRecordAlternatives": [],
+      "recordIdObservation": "Oracle metadata; actual UI source citations checked. No module injection/expected-state seeding.",
+      "problems": [],
+      "passed": true,
+      "gameId": "ultima7",
+      "scenarioId": "natural-event-context-statement",
+      "turn": 3,
+      "expectedRole": "perpetrator",
+      "expectedSupported": true,
+      "contextStatement": false
+    },
+    {
+      "text": "who was killed?",
+      "decision": "answer",
+      "rendered": "The Trinsic Murders \u2014 Victim:\nNot in this guide \u2014 from outside research:\nVictims: Inamo, Christopher\nAccording to the Ultima Codex, Inamo was killed in the ritual murder of Christopher, which it attributes to the Fellowship assassins Hook and Forskis.",
+      "citations": [
+        "Outside research (not in this guide): Inamo \u2014 The Codex of Ultima Wisdom \u2014 https://wiki.ultimacodex.com/index.php?title=Inamo&oldid=154876 (checked 2026-10-21); Christopher \u2014 The Codex of Ultima Wisdom (corroboration) \u2014 https://wiki.ultimacodex.com/wiki/Christopher (checked 2026-10-21)."
+      ],
+      "links": [],
+      "expectedRecordIds": [
+        "ultima7:story:trinsic-murder-victims:victim"
+      ],
+      "acceptedRecordAlternatives": [],
+      "recordIdObservation": "Oracle metadata; actual UI source citations checked. No module injection/expected-state seeding.",
+      "problems": [],
+      "passed": true,
+      "gameId": "ultima7",
+      "scenarioId": "natural-event-context-statement",
+      "turn": 4,
+      "expectedRole": "victim",
+      "expectedSupported": true,
+      "contextStatement": false
+    },
+    {
+      "text": "who killed whom?",
+      "decision": "answer",
+      "rendered": "The Trinsic Murders \u2014 Who killed whom:\nNot in this guide \u2014 from outside research:\nKillers: Hook, Forskis\nVictims: Inamo, Christopher\nAccording to the Ultima Codex, Inamo was killed in the ritual murder of Christopher, which it attributes to the Fellowship assassins Hook and Forskis.",
+      "citations": [
+        "Outside research (not in this guide): Inamo \u2014 The Codex of Ultima Wisdom \u2014 https://wiki.ultimacodex.com/index.php?title=Inamo&oldid=154876 (checked 2026-10-21); Christopher \u2014 The Codex of Ultima Wisdom (corroboration) \u2014 https://wiki.ultimacodex.com/wiki/Christopher (checked 2026-10-21)."
+      ],
+      "links": [],
+      "expectedRecordIds": [
+        "ultima7:story:trinsic-killers:perpetrator",
+        "ultima7:story:trinsic-murder-victims:victim"
+      ],
+      "acceptedRecordAlternatives": [],
+      "recordIdObservation": "Oracle metadata; actual UI source citations checked. No module injection/expected-state seeding.",
+      "problems": [],
+      "passed": true,
+      "gameId": "ultima7",
+      "scenarioId": "natural-event-context-statement",
+      "turn": 5,
+      "expectedRole": "participants",
+      "expectedSupported": true,
+      "contextStatement": false
+    },
+    {
+      "text": "Who got killed in the Trinsic Murders?",
+      "decision": "answer",
+      "rendered": "The Trinsic Murders \u2014 Victim:\nNot in this guide \u2014 from outside research:\nVictims: Inamo, Christopher\nAccording to the Ultima Codex, Inamo was killed in the ritual murder of Christopher, which it attributes to the Fellowship assassins Hook and Forskis.",
+      "citations": [
+        "Outside research (not in this guide): Inamo \u2014 The Codex of Ultima Wisdom \u2014 https://wiki.ultimacodex.com/index.php?title=Inamo&oldid=154876 (checked 2026-10-21); Christopher \u2014 The Codex of Ultima Wisdom (corroboration) \u2014 https://wiki.ultimacodex.com/wiki/Christopher (checked 2026-10-21)."
+      ],
+      "links": [],
+      "expectedRecordIds": [
+        "ultima7:story:trinsic-murder-victims:victim"
+      ],
+      "acceptedRecordAlternatives": [],
+      "recordIdObservation": "Oracle metadata; actual UI source citations checked. No module injection/expected-state seeding.",
+      "problems": [],
+      "passed": true,
+      "gameId": "ultima7",
+      "scenarioId": "event-switch-to-accusations",
+      "turn": 1,
+      "expectedRole": "victim",
+      "expectedSupported": true,
+      "contextStatement": false
+    },
+    {
+      "text": "Who was the victim in Blorn's Accusations?",
+      "decision": "answer",
+      "rendered": "Blorn's Accusations \u2014 Victim:\nVictims: Lap-Lem\nThe guide records: Speak to the accused gargoyle, Lap-Lem. He was the victim.",
+      "citations": [
+        "Source: existing guide; extracted. guides/js/Ultima7.js \u2014 DB.sideQuests[7].walkthrough"
+      ],
+      "links": [],
+      "expectedRecordIds": [
+        "ultima7:story:blorn-victim:victim"
+      ],
+      "acceptedRecordAlternatives": [],
+      "recordIdObservation": "Oracle metadata; actual UI source citations checked. No module injection/expected-state seeding.",
+      "problems": [],
+      "passed": true,
+      "gameId": "ultima7",
+      "scenarioId": "event-switch-to-accusations",
+      "turn": 2,
+      "expectedRole": "accusation-victim",
+      "expectedSupported": true,
+      "contextStatement": false
+    },
+    {
+      "text": "who got murdered?",
+      "decision": "decline",
+      "rendered": "I don't have a sourced answer to that relationship question in the available records. I looked only at the current topic, Reward (side quest 8). Name another subject or event, or reset the topic.",
+      "citations": [],
+      "links": [],
+      "expectedRecordIds": [],
+      "acceptedRecordAlternatives": [],
+      "recordIdObservation": "Oracle metadata; actual UI source citations checked. No module injection/expected-state seeding.",
+      "problems": [],
+      "passed": true,
+      "gameId": "ultima7",
+      "scenarioId": "event-switch-to-accusations",
+      "turn": 3,
+      "expectedRole": null,
+      "expectedSupported": false,
+      "contextStatement": false
+    },
+    {
+      "text": "who killed Lap-Lem?",
+      "decision": "decline",
+      "rendered": "I found the entry for Lap-Lem, but I don't have a sourced answer to that relationship question in the available records.",
+      "citations": [],
+      "links": [],
+      "expectedRecordIds": [],
+      "acceptedRecordAlternatives": [],
+      "recordIdObservation": "Oracle metadata; actual UI source citations checked. No module injection/expected-state seeding.",
+      "problems": [],
+      "passed": true,
+      "gameId": "ultima7",
+      "scenarioId": "event-switch-to-accusations",
+      "turn": 4,
+      "expectedRole": null,
+      "expectedSupported": false,
+      "contextStatement": false
+    },
+    {
+      "text": "Who were the victims in the Trinsic Murders?",
+      "decision": "answer",
+      "rendered": "The Trinsic Murders \u2014 Victim:\nNot in this guide \u2014 from outside research:\nVictims: Inamo, Christopher\nAccording to the Ultima Codex, Inamo was killed in the ritual murder of Christopher, which it attributes to the Fellowship assassins Hook and Forskis.",
+      "citations": [
+        "Outside research (not in this guide): Inamo \u2014 The Codex of Ultima Wisdom \u2014 https://wiki.ultimacodex.com/index.php?title=Inamo&oldid=154876 (checked 2026-10-21); Christopher \u2014 The Codex of Ultima Wisdom (corroboration) \u2014 https://wiki.ultimacodex.com/wiki/Christopher (checked 2026-10-21)."
+      ],
+      "links": [],
+      "expectedRecordIds": [
+        "ultima7:story:trinsic-murder-victims:victim"
+      ],
+      "acceptedRecordAlternatives": [],
+      "recordIdObservation": "Oracle metadata; actual UI source citations checked. No module injection/expected-state seeding.",
+      "problems": [],
+      "passed": true,
+      "gameId": "ultima7",
+      "scenarioId": "event-switch-to-accusations",
+      "turn": 5,
+      "expectedRole": "victim",
+      "expectedSupported": true,
+      "contextStatement": false
+    },
+    {
+      "text": "who is the murderer?",
+      "decision": "answer",
+      "rendered": "The Trinsic Murders \u2014 Perpetrator:\nNot in this guide \u2014 from outside research:\nKillers: Hook, Forskis\nAccording to the Ultima Codex, Inamo was killed in the ritual murder of Christopher, which it attributes to the Fellowship assassins Hook and Forskis.",
+      "citations": [
+        "Outside research (not in this guide): Inamo \u2014 The Codex of Ultima Wisdom \u2014 https://wiki.ultimacodex.com/index.php?title=Inamo&oldid=154876 (checked 2026-10-21); Christopher \u2014 The Codex of Ultima Wisdom (corroboration) \u2014 https://wiki.ultimacodex.com/wiki/Christopher (checked 2026-10-21)."
+      ],
+      "links": [],
+      "expectedRecordIds": [
+        "ultima7:story:trinsic-killers:perpetrator"
+      ],
+      "acceptedRecordAlternatives": [],
+      "recordIdObservation": "Oracle metadata; actual UI source citations checked. No module injection/expected-state seeding.",
+      "problems": [],
+      "passed": true,
+      "gameId": "ultima7",
+      "scenarioId": "event-switch-to-accusations",
+      "turn": 6,
+      "expectedRole": "perpetrator",
+      "expectedSupported": true,
+      "contextStatement": false
+    },
+    {
+      "text": "Guide only: who got murdered in the Trinsic Murders?",
+      "decision": "decline",
+      "rendered": "I found the entry for The Trinsic Murders, but I don't have a sourced answer to that relationship question in the available records.",
+      "citations": [],
+      "links": [],
+      "expectedRecordIds": [],
+      "acceptedRecordAlternatives": [],
+      "recordIdObservation": "Oracle metadata; actual UI source citations checked. No module injection/expected-state seeding.",
+      "problems": [],
+      "passed": true,
+      "gameId": "ultima7",
+      "scenarioId": "source-boundary-persists",
+      "turn": 1,
+      "expectedRole": null,
+      "expectedSupported": false,
+      "contextStatement": false
+    },
+    {
+      "text": "who got killed?",
+      "decision": "decline",
+      "rendered": "I don't have a sourced answer to that relationship question in the available records.",
+      "citations": [],
+      "links": [],
+      "expectedRecordIds": [],
+      "acceptedRecordAlternatives": [],
+      "recordIdObservation": "Oracle metadata; actual UI source citations checked. No module injection/expected-state seeding.",
+      "problems": [],
+      "passed": true,
+      "gameId": "ultima7",
+      "scenarioId": "source-boundary-persists",
+      "turn": 2,
+      "expectedRole": null,
+      "expectedSupported": false,
+      "contextStatement": false
+    },
+    {
+      "text": "who were the victims?",
+      "decision": "decline",
+      "rendered": "I don't have a sourced answer to that relationship question in the available records. I looked only at the current topic, The Trinsic Murders. Name another subject or event, or reset the topic.",
+      "citations": [],
+      "links": [],
+      "expectedRecordIds": [],
+      "acceptedRecordAlternatives": [],
+      "recordIdObservation": "Oracle metadata; actual UI source citations checked. No module injection/expected-state seeding.",
+      "problems": [],
+      "passed": true,
+      "gameId": "ultima7",
+      "scenarioId": "source-boundary-persists",
+      "turn": 3,
+      "expectedRole": null,
+      "expectedSupported": false,
+      "contextStatement": false
+    },
+    {
+      "text": "Guide only: who is the suspect in the Trinsic Murders?",
+      "decision": "answer",
+      "rendered": "The Trinsic Murders \u2014 Suspect:\nThe guide records: Interview Spark, Gilberto, and Klog to identify the suspect (man with a hook) and his escape vessel (the Crown Jewel).",
+      "citations": [
+        "Source: existing guide; extracted. guides/js/Ultima7.js \u2014 DB.mainQuest[0].content"
+      ],
+      "links": [],
+      "expectedRecordIds": [
+        "ultima7:story:trinsic-suspect:suspect"
+      ],
+      "acceptedRecordAlternatives": [],
+      "recordIdObservation": "Oracle metadata; actual UI source citations checked. No module injection/expected-state seeding.",
+      "problems": [],
+      "passed": true,
+      "gameId": "ultima7",
+      "scenarioId": "source-boundary-persists",
+      "turn": 4,
+      "expectedRole": "suspect",
+      "expectedSupported": true,
+      "contextStatement": false
+    },
+    {
+      "text": "Who is the murderer in the Trinsic Murders?",
+      "decision": "answer",
+      "rendered": "The Trinsic Murders \u2014 Perpetrator:\nNot in this guide \u2014 from outside research:\nKillers: Hook, Forskis\nAccording to the Ultima Codex, Inamo was killed in the ritual murder of Christopher, which it attributes to the Fellowship assassins Hook and Forskis.",
+      "citations": [
+        "Outside research (not in this guide): Inamo \u2014 The Codex of Ultima Wisdom \u2014 https://wiki.ultimacodex.com/index.php?title=Inamo&oldid=154876 (checked 2026-10-21); Christopher \u2014 The Codex of Ultima Wisdom (corroboration) \u2014 https://wiki.ultimacodex.com/wiki/Christopher (checked 2026-10-21)."
+      ],
+      "links": [],
+      "expectedRecordIds": [
+        "ultima7:story:trinsic-killers:perpetrator"
+      ],
+      "acceptedRecordAlternatives": [],
+      "recordIdObservation": "Oracle metadata; actual UI source citations checked. No module injection/expected-state seeding.",
+      "problems": [],
+      "passed": true,
+      "gameId": "ultima7",
+      "scenarioId": "warm-negative-roles",
+      "turn": 1,
+      "expectedRole": "perpetrator",
+      "expectedSupported": true,
+      "contextStatement": false
+    },
+    {
+      "text": "who was not the murderer?",
+      "decision": "decline",
+      "rendered": "The guide does not establish that negative story relationship.",
+      "citations": [],
+      "links": [],
+      "expectedRecordIds": [],
+      "acceptedRecordAlternatives": [],
+      "recordIdObservation": "Oracle metadata; actual UI source citations checked. No module injection/expected-state seeding.",
+      "problems": [],
+      "passed": true,
+      "gameId": "ultima7",
+      "scenarioId": "warm-negative-roles",
+      "turn": 2,
+      "expectedRole": null,
+      "expectedSupported": false,
+      "contextStatement": false
+    },
+    {
+      "text": "who did not get murdered?",
+      "decision": "decline",
+      "rendered": "The guide does not establish that negative story relationship.",
+      "citations": [],
+      "links": [],
+      "expectedRecordIds": [],
+      "acceptedRecordAlternatives": [],
+      "recordIdObservation": "Oracle metadata; actual UI source citations checked. No module injection/expected-state seeding.",
+      "problems": [],
+      "passed": true,
+      "gameId": "ultima7",
+      "scenarioId": "warm-negative-roles",
+      "turn": 3,
+      "expectedRole": null,
+      "expectedSupported": false,
+      "contextStatement": false
+    },
+    {
+      "text": "Why did Iolo murder Christopher?",
+      "decision": "clarify",
+      "rendered": "Which subject do you mean: Iolo or Christopher?",
+      "citations": [],
+      "links": [],
+      "expectedRecordIds": [],
+      "acceptedRecordAlternatives": [],
+      "recordIdObservation": "Oracle metadata; actual UI source citations checked. No module injection/expected-state seeding.",
+      "problems": [],
+      "passed": true,
+      "gameId": "ultima7",
+      "scenarioId": "warm-negative-roles",
+      "turn": 4,
+      "expectedRole": null,
+      "expectedSupported": false,
+      "contextStatement": false
+    },
+    {
+      "text": "who got killed in the Moonstone Harbor massacre?",
+      "decision": "decline",
+      "rendered": "I found the entry for Harbor, but I don't have a sourced answer to that relationship question in the available records.",
+      "citations": [],
+      "links": [],
+      "expectedRecordIds": [],
+      "acceptedRecordAlternatives": [],
+      "recordIdObservation": "Oracle metadata; actual UI source citations checked. No module injection/expected-state seeding.",
+      "problems": [],
+      "passed": true,
+      "gameId": "ultima7",
+      "scenarioId": "warm-negative-roles",
+      "turn": 5,
+      "expectedRole": null,
+      "expectedSupported": false,
+      "contextStatement": false
+    },
+    {
+      "text": "Summarize Maini",
+      "decision": "answer",
+      "rendered": "Maini \u2014 Preventing Assassination \u2014 Summary:\nGuide entry: Prevent Herras's assassination, confront Kontos at the shrine.",
+      "citations": [
+        "Source: existing guide; extracted. guides/js/Albion.js \u2014 DB.chapters[3].summary"
+      ],
+      "links": [],
+      "expectedRecordIds": [
+        "albion:narrative:maini-summary:summary"
+      ],
+      "acceptedRecordAlternatives": [],
+      "recordIdObservation": "Oracle metadata; actual UI source citations checked. No module injection/expected-state seeding.",
+      "problems": [],
+      "passed": true,
+      "gameId": "albion",
+      "scenarioId": "other-game-event-does-not-create-victims",
+      "turn": 1,
+      "expectedRole": null,
+      "expectedSupported": true,
+      "contextStatement": false
+    },
+    {
+      "text": "who got murdered?",
+      "decision": "clarify",
+      "rendered": "Restate the event with its unresolved source, edition or material restriction.",
+      "citations": [],
+      "links": [],
+      "expectedRecordIds": [],
+      "acceptedRecordAlternatives": [],
+      "recordIdObservation": "Oracle metadata; actual UI source citations checked. No module injection/expected-state seeding.",
+      "problems": [],
+      "passed": true,
+      "gameId": "albion",
+      "scenarioId": "other-game-event-does-not-create-victims",
+      "turn": 2,
+      "expectedRole": null,
+      "expectedSupported": false,
+      "contextStatement": false
+    },
+    {
+      "text": "who killed Herras?",
+      "decision": "clarify",
+      "rendered": "I found the entry for Herras, but I don't have a sourced answer to that relationship question in the available records.",
+      "citations": [],
+      "links": [],
+      "expectedRecordIds": [],
+      "acceptedRecordAlternatives": [],
+      "recordIdObservation": "Oracle metadata; actual UI source citations checked. No module injection/expected-state seeding.",
+      "problems": [],
+      "passed": true,
+      "gameId": "albion",
+      "scenarioId": "other-game-event-does-not-create-victims",
+      "turn": 3,
+      "expectedRole": null,
+      "expectedSupported": false,
+      "contextStatement": false
+    },
+    {
+      "text": "who got killed in the festival murder?",
+      "decision": "clarify",
+      "rendered": "I found the entry for Nakiridaani \u2014 Land of the Iskai, but I don't have a sourced answer to that relationship question in the available records.",
+      "citations": [],
+      "links": [],
+      "expectedRecordIds": [],
+      "acceptedRecordAlternatives": [],
+      "recordIdObservation": "Oracle metadata; actual UI source citations checked. No module injection/expected-state seeding.",
+      "problems": [],
+      "passed": true,
+      "gameId": "albion",
+      "scenarioId": "other-game-event-does-not-create-victims",
+      "turn": 4,
+      "expectedRole": null,
+      "expectedSupported": false,
+      "contextStatement": false
+    }
+  ],
+  "failures": [],
+  "requests": [
+    {
+      "url": "http://127.0.0.1:36287/guides/Ultima7.html",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:36287/guides/css/assistant-consent.css",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:36287/guides/js/assistant/bootstrap.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:36287/guides/js/tailwind.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:36287/guides/js/chart.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:36287/guides/css/fonts.css",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:36287/guides/css/leaflet.css",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:36287/guides/css/Ultima7.css?v=20261020-local",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:36287/guides/images/ultima7-briefing-hero.webp",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:36287/guides/js/leaflet.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:36287/guides/js/assistant/model-runtime.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:36287/guides/js/assistant/intent-runtime.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:36287/guides/js/assistant/consent.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:36287/guides/js/assistant/model-download.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:36287/guides/js/Ultima7Markers.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:36287/guides/js/Ultima7.js?v=20261020-local",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:36287/guides/fonts/lora-v36-latin-regular.woff2",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:36287/guides/images/U7PWorldMap.jpg",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:36287/guides/fonts/inter-v19-latin-regular.woff2",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:36287/guides/fonts/lora-v36-latin-700.woff2",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:36287/guides/fonts/inter-v19-latin-600.woff2",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:36287/guides/fonts/inter-v19-latin-800.woff2",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:36287/guides/fonts/inter-v19-latin-700.woff2",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:36287/guides/images/ultima7-portraits/avatar.png",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:36287/guides/images/ultima7-portraits/iolo.png",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:36287/guides/local-assistant/profile.json",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:36287/guides/local-assistant/intent/profile.json",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:36287/guides/js/assistant/adapters/ultima7.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:36287/guides/js/assistant/ui.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:36287/guides/js/assistant/guide-assistant.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:36287/guides/js/assistant/policy.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:36287/guides/js/assistant/topics.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:36287/guides/css/assistant.css",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:36287/guides/js/assistant/engine.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:36287/guides/js/assistant/dialogue.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:36287/guides/js/assistant/source-responses.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:36287/guides/js/assistant/retrieval.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:36287/guides/js/assistant/language.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:36287/guides/js/assistant/consultation.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:36287/guides/js/assistant/rules.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:36287/guides/js/assistant/fallback-context.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:36287/guides/js/assistant/fallback-guard.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:36287/guides/data/assistant/ultima7.json",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:36287/guides/data/assistant/consultation-catalog.json",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:36287/guides/js/assistant/intent-worker.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:36287/guides/js/assistant/model-download.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:36287/guides/js/assistant/intent-head.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:36287/guides/local-assistant/intent/files/7135149f7cffa1a573466c6e4d8423ed73b62fd2332c575bf738a0d033f70df7.bin",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:36287/guides/local-assistant/intent/files/da0e79933b9ed51798a3ae27893d3c5fa4a201126cef75586296df9b4d2c62a0.bin",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:36287/guides/local-assistant/intent/files/9261e7d79b44c8195c1cada2b453e55b00aeb81e907a6664974b4d7776172ab3.bin",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:36287/guides/local-assistant/intent/files/b6d346be366a7d1d48332dbc9fdf3bf8960b5d879522b7799ddba59e76237ee3.bin",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:36287/guides/local-assistant/intent/files/07eced375cec144d27c900241f3e339478dec958f92fddbc551f295c992038a3.bin",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:36287/guides/local-assistant/intent/files/7f4b29b4f81642ad87533b14758761b8859e5deb8717081893ac512006ea99c2.bin",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:36287/guides/local-assistant/intent/files/8bdaa80935c394b9c614e00c7b829303b05df133447f901c98c56ebf90d672b6.bin",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:36287/guides/local-assistant/intent/files/979c196a92df490124802e61fcc5fad787fc535ee69ff0eae64784355a8f6bfb.bin",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:36287/guides/local-assistant/files/08fb86ec433c78bfb032c5d84a68b8e8e5a8d81268fa39e24314179a5767a5b9.bin",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:36287/guides/local-assistant/files/9d41eaeb98b753f4fb40fd7ab6d37d86f37f31b08f78446a8a83327beb7f68f0.bin",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:36287/guides/local-assistant/files/b870ce8426a85ac994ef80359c3a01cd79d01ae49cf19f8a98d24810bbc7b4f4.bin",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:36287/guides/local-assistant/files/aa5002b70e789798da263f5f99c62bd3e8fcd0c119258a493c40c180648365fa.bin",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:36287/guides/Albion.html",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:36287/guides/css/assistant-consent.css",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:36287/guides/js/assistant/bootstrap.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:36287/guides/js/tailwind.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:36287/guides/css/fonts.css",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:36287/guides/css/leaflet.css",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:36287/guides/css/Albion.css?v=20260904-atlas-links2",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:36287/guides/images/albion/briefing-hero.webp",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:36287/guides/js/leaflet.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:36287/guides/js/assistant/model-runtime.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:36287/guides/js/assistant/intent-runtime.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:36287/guides/js/assistant/consent.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:36287/guides/js/assistant/model-download.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:36287/guides/js/AlbionAtlasData.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:36287/guides/js/AlbionMarkers.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:36287/guides/js/Albion.js?v=20261020-local-assistant",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:36287/guides/fonts/inter-v19-latin-regular.woff2",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:36287/guides/fonts/lora-v36-latin-700.woff2",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:36287/guides/fonts/inter-v19-latin-600.woff2",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:36287/guides/fonts/inter-v19-latin-900.woff2",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:36287/guides/fonts/inter-v19-latin-800.woff2",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:36287/guides/fonts/lora-v36-latin-regular.woff2",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:36287/guides/fonts/inter-v19-latin-700.woff2",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:36287/guides/js/assistant/adapters/albion.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:36287/guides/js/assistant/ui.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:36287/guides/local-assistant/profile.json",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:36287/guides/js/assistant/guide-assistant.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:36287/guides/js/assistant/topics.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:36287/guides/local-assistant/intent/profile.json",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:36287/guides/css/assistant.css",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:36287/guides/js/assistant/engine.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:36287/guides/js/assistant/dialogue.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:36287/guides/js/assistant/source-responses.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:36287/guides/js/assistant/policy.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:36287/guides/js/assistant/retrieval.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:36287/guides/js/assistant/rules.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:36287/guides/js/assistant/fallback-context.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:36287/guides/js/assistant/fallback-guard.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:36287/guides/js/assistant/language.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:36287/guides/js/assistant/consultation.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:36287/guides/data/assistant/albion.json",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:36287/guides/data/assistant/consultation-catalog.json",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:36287/guides/fonts/inter-v19-latin-italic.woff2",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:36287/guides/fonts/inter-v19-latin-700italic.woff2",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:36287/guides/js/assistant/intent-worker.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:36287/guides/js/assistant/model-download.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:36287/guides/js/assistant/intent-head.js",
+      "method": "GET",
+      "hasBody": false
+    }
+  ],
+  "blocked": [],
+  "pageErrors": [],
+  "workers": {
+    "ultima7": [
+      {
+        "url": "http://127.0.0.1:36287/guides/js/assistant/intent-worker.js",
+        "events": [
+          {
+            "direction": "send",
+            "type": "load",
+            "id": null,
+            "text": null,
+            "modelId": "Xenova/all-MiniLM-L6-v2"
+          },
+          {
+            "direction": "receive",
+            "type": "ready",
+            "id": null,
+            "metadata": {
+              "modelId": "Xenova/all-MiniLM-L6-v2",
+              "revision": "751bff37182d3f1213fa05d7196b954e230abad9",
+              "dimensions": 384,
+              "encoderFineTuned": false,
+              "realModelInference": true,
+              "wasmThreads": 1,
+              "headSha256": "979c196a92df490124802e61fcc5fad787fc535ee69ff0eae64784355a8f6bfb",
+              "thresholds": {
+                "minScore": 0,
+                "minMargin": 0,
+                "abstainAll": false,
+                "selection": {
+                  "source": "validation",
+                  "samples": 72,
+                  "targetAccuracy": 0.9,
+                  "minAccepted": 6,
+                  "accepted": 72,
+                  "accuracy": 0.9444444444444444,
+                  "coverage": 1,
+                  "candidateLimitPerAxis": 51
+                }
+              },
+              "additionalBytes": 24053489
+            },
+            "predictions": null,
+            "message": null
+          },
+          {
+            "direction": "send",
+            "type": "classify",
+            "id": 1,
+            "text": "who got murdered?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "result",
+            "id": 1,
+            "metadata": null,
+            "predictions": [
+              {
+                "label": "identity",
+                "score": 0.18576738881792923
+              },
+              {
+                "label": "unknown",
+                "score": 0.15020767593942042
+              },
+              {
+                "label": "location",
+                "score": 0.11674137877007969
+              },
+              {
+                "label": "why",
+                "score": 0.11477356089682914
+              },
+              {
+                "label": "hint",
+                "score": 0.09696382291183175
+              },
+              {
+                "label": "combat",
+                "score": 0.07260510425261561
+              },
+              {
+                "label": "overview",
+                "score": 0.06735743950132429
+              },
+              {
+                "label": "stats",
+                "score": 0.055017680585957275
+              },
+              {
+                "label": "comparison",
+                "score": 0.04664339922492911
+              },
+              {
+                "label": "acquisition",
+                "score": 0.03459911192223248
+              },
+              {
+                "label": "prerequisites",
+                "score": 0.03118817229693426
+              },
+              {
+                "label": "use",
+                "score": 0.028135264879916824
+              }
+            ],
+            "message": null
+          },
+          {
+            "direction": "send",
+            "type": "classify",
+            "id": 2,
+            "text": "who got killed",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "result",
+            "id": 2,
+            "metadata": null,
+            "predictions": [
+              {
+                "label": "combat",
+                "score": 0.18247224932405154
+              },
+              {
+                "label": "identity",
+                "score": 0.15725725026387874
+              },
+              {
+                "label": "hint",
+                "score": 0.10489254366906027
+              },
+              {
+                "label": "why",
+                "score": 0.10031355134432104
+              },
+              {
+                "label": "unknown",
+                "score": 0.09464873549405531
+              },
+              {
+                "label": "location",
+                "score": 0.088835666035531
+              },
+              {
+                "label": "overview",
+                "score": 0.07075418652499298
+              },
+              {
+                "label": "stats",
+                "score": 0.05733926361818125
+              },
+              {
+                "label": "acquisition",
+                "score": 0.050637001197629906
+              },
+              {
+                "label": "comparison",
+                "score": 0.04093593441764702
+              },
+              {
+                "label": "use",
+                "score": 0.034608214452970285
+              },
+              {
+                "label": "prerequisites",
+                "score": 0.01730540365768065
+              }
+            ],
+            "message": null
+          },
+          {
+            "direction": "send",
+            "type": "classify",
+            "id": 3,
+            "text": "who was murdered?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "result",
+            "id": 3,
+            "metadata": null,
+            "predictions": [
+              {
+                "label": "identity",
+                "score": 0.2138616001351557
+              },
+              {
+                "label": "unknown",
+                "score": 0.15313841314479357
+              },
+              {
+                "label": "location",
+                "score": 0.1278792822378431
+              },
+              {
+                "label": "why",
+                "score": 0.10319594172162475
+              },
+              {
+                "label": "hint",
+                "score": 0.0852681541538826
+              },
+              {
+                "label": "combat",
+                "score": 0.07712384234342873
+              },
+              {
+                "label": "overview",
+                "score": 0.0637744673001905
+              },
+              {
+                "label": "comparison",
+                "score": 0.04645758262159206
+              },
+              {
+                "label": "stats",
+                "score": 0.04408449073786569
+              },
+              {
+                "label": "prerequisites",
+                "score": 0.03024704958356536
+              },
+              {
+                "label": "use",
+                "score": 0.029756080090172228
+              },
+              {
+                "label": "acquisition",
+                "score": 0.02521309592988576
+              }
+            ],
+            "message": null
+          },
+          {
+            "direction": "send",
+            "type": "classify",
+            "id": 4,
+            "text": "who were killed?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "result",
+            "id": 4,
+            "metadata": null,
+            "predictions": [
+              {
+                "label": "combat",
+                "score": 0.19079683075029183
+              },
+              {
+                "label": "identity",
+                "score": 0.14980044374129042
+              },
+              {
+                "label": "overview",
+                "score": 0.12095405193162556
+              },
+              {
+                "label": "unknown",
+                "score": 0.11516047291223065
+              },
+              {
+                "label": "location",
+                "score": 0.09454149651911566
+              },
+              {
+                "label": "why",
+                "score": 0.07676759869558947
+              },
+              {
+                "label": "hint",
+                "score": 0.0668984463333711
+              },
+              {
+                "label": "stats",
+                "score": 0.06401519072451918
+              },
+              {
+                "label": "comparison",
+                "score": 0.050917091777993695
+              },
+              {
+                "label": "prerequisites",
+                "score": 0.027382569359092255
+              },
+              {
+                "label": "use",
+                "score": 0.024355670889988235
+              },
+              {
+                "label": "acquisition",
+                "score": 0.01841013636489202
+              }
+            ],
+            "message": null
+          },
+          {
+            "direction": "send",
+            "type": "classify",
+            "id": 5,
+            "text": "who are the victims?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "result",
+            "id": 5,
+            "metadata": null,
+            "predictions": [
+              {
+                "label": "identity",
+                "score": 0.22029168927457704
+              },
+              {
+                "label": "unknown",
+                "score": 0.14556165712210972
+              },
+              {
+                "label": "why",
+                "score": 0.1201315516976188
+              },
+              {
+                "label": "location",
+                "score": 0.10770986993765462
+              },
+              {
+                "label": "overview",
+                "score": 0.1005928688430279
+              },
+              {
+                "label": "combat",
+                "score": 0.06368659895667414
+              },
+              {
+                "label": "stats",
+                "score": 0.05256610628638398
+              },
+              {
+                "label": "hint",
+                "score": 0.05135860487165765
+              },
+              {
+                "label": "comparison",
+                "score": 0.04791430048123878
+              },
+              {
+                "label": "acquisition",
+                "score": 0.033003365252145
+              },
+              {
+                "label": "use",
+                "score": 0.032826070658617645
+              },
+              {
+                "label": "prerequisites",
+                "score": 0.024357316618294524
+              }
+            ],
+            "message": null
+          },
+          {
+            "direction": "send",
+            "type": "classify",
+            "id": 6,
+            "text": "who is the murderer?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "result",
+            "id": 6,
+            "metadata": null,
+            "predictions": [
+              {
+                "label": "identity",
+                "score": 0.3618748402052694
+              },
+              {
+                "label": "location",
+                "score": 0.09532050911700482
+              },
+              {
+                "label": "unknown",
+                "score": 0.08171872260680067
+              },
+              {
+                "label": "why",
+                "score": 0.07306224636609703
+              },
+              {
+                "label": "hint",
+                "score": 0.06658380586664138
+              },
+              {
+                "label": "combat",
+                "score": 0.0628702283388095
+              },
+              {
+                "label": "overview",
+                "score": 0.05753494331379447
+              },
+              {
+                "label": "stats",
+                "score": 0.0474899712932001
+              },
+              {
+                "label": "acquisition",
+                "score": 0.04419280944602992
+              },
+              {
+                "label": "comparison",
+                "score": 0.04119893069035976
+              },
+              {
+                "label": "use",
+                "score": 0.03880537993941264
+              },
+              {
+                "label": "prerequisites",
+                "score": 0.029347612816580396
+              }
+            ],
+            "message": null
+          },
+          {
+            "direction": "send",
+            "type": "classify",
+            "id": 7,
+            "text": "who murdered Christopher?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "result",
+            "id": 7,
+            "metadata": null,
+            "predictions": [
+              {
+                "label": "location",
+                "score": 0.16567529023991603
+              },
+              {
+                "label": "identity",
+                "score": 0.1495221095175509
+              },
+              {
+                "label": "unknown",
+                "score": 0.12525884074263052
+              },
+              {
+                "label": "why",
+                "score": 0.11285172871879558
+              },
+              {
+                "label": "overview",
+                "score": 0.09471355037252113
+              },
+              {
+                "label": "hint",
+                "score": 0.06859651412740667
+              },
+              {
+                "label": "comparison",
+                "score": 0.06145998224132981
+              },
+              {
+                "label": "combat",
+                "score": 0.04952848431898145
+              },
+              {
+                "label": "stats",
+                "score": 0.049455695246749455
+              },
+              {
+                "label": "acquisition",
+                "score": 0.0461566732273885
+              },
+              {
+                "label": "use",
+                "score": 0.04233571835163174
+              },
+              {
+                "label": "prerequisites",
+                "score": 0.03444541289509828
+              }
+            ],
+            "message": null
+          },
+          {
+            "direction": "send",
+            "type": "classify",
+            "id": 8,
+            "text": "who was Christopher murdered by?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "result",
+            "id": 8,
+            "metadata": null,
+            "predictions": [
+              {
+                "label": "location",
+                "score": 0.17310569693032873
+              },
+              {
+                "label": "identity",
+                "score": 0.17150443254543166
+              },
+              {
+                "label": "unknown",
+                "score": 0.13044942647830265
+              },
+              {
+                "label": "why",
+                "score": 0.10872577155257439
+              },
+              {
+                "label": "overview",
+                "score": 0.09004765059379943
+              },
+              {
+                "label": "hint",
+                "score": 0.06338912823338137
+              },
+              {
+                "label": "comparison",
+                "score": 0.05846819711490456
+              },
+              {
+                "label": "stats",
+                "score": 0.04597050156721322
+              },
+              {
+                "label": "acquisition",
+                "score": 0.0447377568162195
+              },
+              {
+                "label": "use",
+                "score": 0.04265105431231899
+              },
+              {
+                "label": "combat",
+                "score": 0.037638104865547764
+              },
+              {
+                "label": "prerequisites",
+                "score": 0.03331227898997747
+              }
+            ],
+            "message": null
+          },
+          {
+            "direction": "send",
+            "type": "classify",
+            "id": 9,
+            "text": "who was murdered by Hook?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "result",
+            "id": 9,
+            "metadata": null,
+            "predictions": [
+              {
+                "label": "identity",
+                "score": 0.1863445114871424
+              },
+              {
+                "label": "why",
+                "score": 0.13408481543478287
+              },
+              {
+                "label": "unknown",
+                "score": 0.13117974921580078
+              },
+              {
+                "label": "location",
+                "score": 0.09639926213482947
+              },
+              {
+                "label": "hint",
+                "score": 0.07641623145257542
+              },
+              {
+                "label": "combat",
+                "score": 0.07606935210776439
+              },
+              {
+                "label": "overview",
+                "score": 0.062176438443263114
+              },
+              {
+                "label": "acquisition",
+                "score": 0.052382462888248195
+              },
+              {
+                "label": "stats",
+                "score": 0.05023996129401969
+              },
+              {
+                "label": "comparison",
+                "score": 0.04938408356001952
+              },
+              {
+                "label": "use",
+                "score": 0.04549432430872514
+              },
+              {
+                "label": "prerequisites",
+                "score": 0.03982880767282891
+              }
+            ],
+            "message": null
+          },
+          {
+            "direction": "send",
+            "type": "classify",
+            "id": 10,
+            "text": "who did Hook murder?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "result",
+            "id": 10,
+            "metadata": null,
+            "predictions": [
+              {
+                "label": "identity",
+                "score": 0.2167161599105153
+              },
+              {
+                "label": "why",
+                "score": 0.1428632674243866
+              },
+              {
+                "label": "unknown",
+                "score": 0.11733138683566101
+              },
+              {
+                "label": "location",
+                "score": 0.07354040312521096
+              },
+              {
+                "label": "hint",
+                "score": 0.06572283468101785
+              },
+              {
+                "label": "overview",
+                "score": 0.06403583223308792
+              },
+              {
+                "label": "acquisition",
+                "score": 0.058680381782936136
+              },
+              {
+                "label": "combat",
+                "score": 0.055678734423749605
+              },
+              {
+                "label": "use",
+                "score": 0.0549100452081465
+              },
+              {
+                "label": "stats",
+                "score": 0.05446004191606452
+              },
+              {
+                "label": "comparison",
+                "score": 0.05180894568769003
+              },
+              {
+                "label": "prerequisites",
+                "score": 0.04425196677153347
+              }
+            ],
+            "message": null
+          },
+          {
+            "direction": "send",
+            "type": "classify",
+            "id": 11,
+            "text": "who did Inamo kill?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "result",
+            "id": 11,
+            "metadata": null,
+            "predictions": [
+              {
+                "label": "identity",
+                "score": 0.19229347468798252
+              },
+              {
+                "label": "combat",
+                "score": 0.1622551341682039
+              },
+              {
+                "label": "why",
+                "score": 0.093900655764471
+              },
+              {
+                "label": "unknown",
+                "score": 0.09222722498177383
+              },
+              {
+                "label": "location",
+                "score": 0.08353335104342247
+              },
+              {
+                "label": "comparison",
+                "score": 0.07540398351116061
+              },
+              {
+                "label": "stats",
+                "score": 0.07022993562353315
+              },
+              {
+                "label": "overview",
+                "score": 0.06447057960487627
+              },
+              {
+                "label": "hint",
+                "score": 0.06239757335878468
+              },
+              {
+                "label": "acquisition",
+                "score": 0.04403553805291571
+              },
+              {
+                "label": "use",
+                "score": 0.03472906803002448
+              },
+              {
+                "label": "prerequisites",
+                "score": 0.0245234811728514
+              }
+            ],
+            "message": null
+          },
+          {
+            "direction": "send",
+            "type": "classify",
+            "id": 12,
+            "text": "who did Christopher murder?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "result",
+            "id": 12,
+            "metadata": null,
+            "predictions": [
+              {
+                "label": "identity",
+                "score": 0.15219169984004047
+              },
+              {
+                "label": "location",
+                "score": 0.14642291400139165
+              },
+              {
+                "label": "unknown",
+                "score": 0.1230355703583453
+              },
+              {
+                "label": "why",
+                "score": 0.11783694597649318
+              },
+              {
+                "label": "overview",
+                "score": 0.09588866119463606
+              },
+              {
+                "label": "hint",
+                "score": 0.06349427116875103
+              },
+              {
+                "label": "comparison",
+                "score": 0.06201249224052395
+              },
+              {
+                "label": "stats",
+                "score": 0.05415788870517314
+              },
+              {
+                "label": "use",
+                "score": 0.05349609538677921
+              },
+              {
+                "label": "acquisition",
+                "score": 0.052052226105312134
+              },
+              {
+                "label": "combat",
+                "score": 0.039718709269494674
+              },
+              {
+                "label": "prerequisites",
+                "score": 0.0396925257530592
+              }
+            ],
+            "message": null
+          },
+          {
+            "direction": "send",
+            "type": "classify",
+            "id": 13,
+            "text": "who did not get killed?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "result",
+            "id": 13,
+            "metadata": null,
+            "predictions": [
+              {
+                "label": "combat",
+                "score": 0.21626205963980333
+              },
+              {
+                "label": "identity",
+                "score": 0.12810451051526087
+              },
+              {
+                "label": "why",
+                "score": 0.1212634524643468
+              },
+              {
+                "label": "unknown",
+                "score": 0.1013063281728932
+              },
+              {
+                "label": "overview",
+                "score": 0.07534985749525039
+              },
+              {
+                "label": "hint",
+                "score": 0.07003462039466814
+              },
+              {
+                "label": "stats",
+                "score": 0.06583847157660808
+              },
+              {
+                "label": "comparison",
+                "score": 0.06523949142644411
+              },
+              {
+                "label": "location",
+                "score": 0.06332043719268031
+              },
+              {
+                "label": "prerequisites",
+                "score": 0.03346983218020104
+              },
+              {
+                "label": "acquisition",
+                "score": 0.032278459507983
+              },
+              {
+                "label": "use",
+                "score": 0.02753247943386076
+              }
+            ],
+            "message": null
+          },
+          {
+            "direction": "send",
+            "type": "classify",
+            "id": 14,
+            "text": "who got murdered in the Moonstone Harbor massacre?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "result",
+            "id": 14,
+            "metadata": null,
+            "predictions": [
+              {
+                "label": "identity",
+                "score": 0.15516985907350606
+              },
+              {
+                "label": "unknown",
+                "score": 0.12390700795327503
+              },
+              {
+                "label": "location",
+                "score": 0.11993966381614166
+              },
+              {
+                "label": "combat",
+                "score": 0.10426486966870344
+              },
+              {
+                "label": "overview",
+                "score": 0.08275060488365767
+              },
+              {
+                "label": "why",
+                "score": 0.08169063642504258
+              },
+              {
+                "label": "stats",
+                "score": 0.07181929092137626
+              },
+              {
+                "label": "hint",
+                "score": 0.07170125583900426
+              },
+              {
+                "label": "acquisition",
+                "score": 0.05639703766560407
+              },
+              {
+                "label": "use",
+                "score": 0.049413175690010296
+              },
+              {
+                "label": "comparison",
+                "score": 0.044121235204334565
+              },
+              {
+                "label": "prerequisites",
+                "score": 0.03882536285934403
+              }
+            ],
+            "message": null
+          },
+          {
+            "direction": "send",
+            "type": "classify",
+            "id": 15,
+            "text": "who got murdered in Trinsic in Serpent Isle?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "result",
+            "id": 15,
+            "metadata": null,
+            "predictions": [
+              {
+                "label": "location",
+                "score": 0.20379543705120476
+              },
+              {
+                "label": "identity",
+                "score": 0.127940880919794
+              },
+              {
+                "label": "unknown",
+                "score": 0.10751527903230569
+              },
+              {
+                "label": "why",
+                "score": 0.09691118860225921
+              },
+              {
+                "label": "overview",
+                "score": 0.08762391750038095
+              },
+              {
+                "label": "combat",
+                "score": 0.07194870074012621
+              },
+              {
+                "label": "hint",
+                "score": 0.06796244452953999
+              },
+              {
+                "label": "stats",
+                "score": 0.056824750178978325
+              },
+              {
+                "label": "acquisition",
+                "score": 0.05069370355712562
+              },
+              {
+                "label": "comparison",
+                "score": 0.04954964530610365
+              },
+              {
+                "label": "prerequisites",
+                "score": 0.0408553895335367
+              },
+              {
+                "label": "use",
+                "score": 0.03837866304864478
+              }
+            ],
+            "message": null
+          },
+          {
+            "direction": "send",
+            "type": "classify",
+            "id": 16,
+            "text": "Guide only: who got murdered in the Trinsic Murders?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "result",
+            "id": 16,
+            "metadata": null,
+            "predictions": [
+              {
+                "label": "overview",
+                "score": 0.2280622277289104
+              },
+              {
+                "label": "location",
+                "score": 0.16183660908816644
+              },
+              {
+                "label": "identity",
+                "score": 0.10764672913770922
+              },
+              {
+                "label": "unknown",
+                "score": 0.09792119484595523
+              },
+              {
+                "label": "hint",
+                "score": 0.07279085323491528
+              },
+              {
+                "label": "stats",
+                "score": 0.05657141475906886
+              },
+              {
+                "label": "combat",
+                "score": 0.05343884920720164
+              },
+              {
+                "label": "why",
+                "score": 0.051511323633067235
+              },
+              {
+                "label": "prerequisites",
+                "score": 0.04307247488035928
+              },
+              {
+                "label": "acquisition",
+                "score": 0.0426206037518986
+              },
+              {
+                "label": "use",
+                "score": 0.042392136836951914
+              },
+              {
+                "label": "comparison",
+                "score": 0.04213558289579582
+              }
+            ],
+            "message": null
+          },
+          {
+            "direction": "send",
+            "type": "classify",
+            "id": 17,
+            "text": "Guide only: who is the suspect in the Trinsic Murders?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "result",
+            "id": 17,
+            "metadata": null,
+            "predictions": [
+              {
+                "label": "overview",
+                "score": 0.1753257691970588
+              },
+              {
+                "label": "identity",
+                "score": 0.17214479210533223
+              },
+              {
+                "label": "location",
+                "score": 0.14256792472234311
+              },
+              {
+                "label": "hint",
+                "score": 0.08854790130144641
+              },
+              {
+                "label": "unknown",
+                "score": 0.07797734010370984
+              },
+              {
+                "label": "why",
+                "score": 0.07186636053885735
+              },
+              {
+                "label": "acquisition",
+                "score": 0.05341307727869366
+              },
+              {
+                "label": "combat",
+                "score": 0.04806808948318816
+              },
+              {
+                "label": "use",
+                "score": 0.04460296008477854
+              },
+              {
+                "label": "stats",
+                "score": 0.04380965663231578
+              },
+              {
+                "label": "comparison",
+                "score": 0.04198042837448262
+              },
+              {
+                "label": "prerequisites",
+                "score": 0.03969570017779348
+              }
+            ],
+            "message": null
+          },
+          {
+            "direction": "send",
+            "type": "classify",
+            "id": 18,
+            "text": "who got murdered?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "result",
+            "id": 18,
+            "metadata": null,
+            "predictions": [
+              {
+                "label": "identity",
+                "score": 0.18576738881792923
+              },
+              {
+                "label": "unknown",
+                "score": 0.15020767593942042
+              },
+              {
+                "label": "location",
+                "score": 0.11674137877007969
+              },
+              {
+                "label": "why",
+                "score": 0.11477356089682914
+              },
+              {
+                "label": "hint",
+                "score": 0.09696382291183175
+              },
+              {
+                "label": "combat",
+                "score": 0.07260510425261561
+              },
+              {
+                "label": "overview",
+                "score": 0.06735743950132429
+              },
+              {
+                "label": "stats",
+                "score": 0.055017680585957275
+              },
+              {
+                "label": "comparison",
+                "score": 0.04664339922492911
+              },
+              {
+                "label": "acquisition",
+                "score": 0.03459911192223248
+              },
+              {
+                "label": "prerequisites",
+                "score": 0.03118817229693426
+              },
+              {
+                "label": "use",
+                "score": 0.028135264879916824
+              }
+            ],
+            "message": null
+          },
+          {
+            "direction": "send",
+            "type": "classify",
+            "id": 19,
+            "text": "who got murdered in Blorn's Accusations?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "result",
+            "id": 19,
+            "metadata": null,
+            "predictions": [
+              {
+                "label": "why",
+                "score": 0.16015651077508644
+              },
+              {
+                "label": "identity",
+                "score": 0.15122210966454064
+              },
+              {
+                "label": "location",
+                "score": 0.13369722456227162
+              },
+              {
+                "label": "unknown",
+                "score": 0.12377302379105887
+              },
+              {
+                "label": "combat",
+                "score": 0.08301385245712653
+              },
+              {
+                "label": "overview",
+                "score": 0.07549086156020585
+              },
+              {
+                "label": "stats",
+                "score": 0.07023051305912843
+              },
+              {
+                "label": "hint",
+                "score": 0.05945948966692613
+              },
+              {
+                "label": "comparison",
+                "score": 0.05274032485216173
+              },
+              {
+                "label": "use",
+                "score": 0.03178022226304721
+              },
+              {
+                "label": "acquisition",
+                "score": 0.030767658443727957
+              },
+              {
+                "label": "prerequisites",
+                "score": 0.02766820890471848
+              }
+            ],
+            "message": null
+          },
+          {
+            "direction": "send",
+            "type": "classify",
+            "id": 20,
+            "text": "who got murdered?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "result",
+            "id": 20,
+            "metadata": null,
+            "predictions": [
+              {
+                "label": "identity",
+                "score": 0.18576738881792923
+              },
+              {
+                "label": "unknown",
+                "score": 0.15020767593942042
+              },
+              {
+                "label": "location",
+                "score": 0.11674137877007969
+              },
+              {
+                "label": "why",
+                "score": 0.11477356089682914
+              },
+              {
+                "label": "hint",
+                "score": 0.09696382291183175
+              },
+              {
+                "label": "combat",
+                "score": 0.07260510425261561
+              },
+              {
+                "label": "overview",
+                "score": 0.06735743950132429
+              },
+              {
+                "label": "stats",
+                "score": 0.055017680585957275
+              },
+              {
+                "label": "comparison",
+                "score": 0.04664339922492911
+              },
+              {
+                "label": "acquisition",
+                "score": 0.03459911192223248
+              },
+              {
+                "label": "prerequisites",
+                "score": 0.03118817229693426
+              },
+              {
+                "label": "use",
+                "score": 0.028135264879916824
+              }
+            ],
+            "message": null
+          },
+          {
+            "direction": "send",
+            "type": "classify",
+            "id": 21,
+            "text": "who is the murderer?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "result",
+            "id": 21,
+            "metadata": null,
+            "predictions": [
+              {
+                "label": "identity",
+                "score": 0.3618748402052694
+              },
+              {
+                "label": "location",
+                "score": 0.09532050911700482
+              },
+              {
+                "label": "unknown",
+                "score": 0.08171872260680067
+              },
+              {
+                "label": "why",
+                "score": 0.07306224636609703
+              },
+              {
+                "label": "hint",
+                "score": 0.06658380586664138
+              },
+              {
+                "label": "combat",
+                "score": 0.0628702283388095
+              },
+              {
+                "label": "overview",
+                "score": 0.05753494331379447
+              },
+              {
+                "label": "stats",
+                "score": 0.0474899712932001
+              },
+              {
+                "label": "acquisition",
+                "score": 0.04419280944602992
+              },
+              {
+                "label": "comparison",
+                "score": 0.04119893069035976
+              },
+              {
+                "label": "use",
+                "score": 0.03880537993941264
+              },
+              {
+                "label": "prerequisites",
+                "score": 0.029347612816580396
+              }
+            ],
+            "message": null
+          },
+          {
+            "direction": "send",
+            "type": "classify",
+            "id": 22,
+            "text": "who got killed",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "result",
+            "id": 22,
+            "metadata": null,
+            "predictions": [
+              {
+                "label": "combat",
+                "score": 0.18247224932405154
+              },
+              {
+                "label": "identity",
+                "score": 0.15725725026387874
+              },
+              {
+                "label": "hint",
+                "score": 0.10489254366906027
+              },
+              {
+                "label": "why",
+                "score": 0.10031355134432104
+              },
+              {
+                "label": "unknown",
+                "score": 0.09464873549405531
+              },
+              {
+                "label": "location",
+                "score": 0.088835666035531
+              },
+              {
+                "label": "overview",
+                "score": 0.07075418652499298
+              },
+              {
+                "label": "stats",
+                "score": 0.05733926361818125
+              },
+              {
+                "label": "acquisition",
+                "score": 0.050637001197629906
+              },
+              {
+                "label": "comparison",
+                "score": 0.04093593441764702
+              },
+              {
+                "label": "use",
+                "score": 0.034608214452970285
+              },
+              {
+                "label": "prerequisites",
+                "score": 0.01730540365768065
+              }
+            ],
+            "message": null
+          },
+          {
+            "direction": "send",
+            "type": "classify",
+            "id": 23,
+            "text": "who killed whom?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "result",
+            "id": 23,
+            "metadata": null,
+            "predictions": [
+              {
+                "label": "identity",
+                "score": 0.2205015119776348
+              },
+              {
+                "label": "combat",
+                "score": 0.17934180034034275
+              },
+              {
+                "label": "location",
+                "score": 0.12007724260380861
+              },
+              {
+                "label": "unknown",
+                "score": 0.11046782761839573
+              },
+              {
+                "label": "why",
+                "score": 0.07341167203710328
+              },
+              {
+                "label": "hint",
+                "score": 0.07229181453654908
+              },
+              {
+                "label": "overview",
+                "score": 0.05817476138338457
+              },
+              {
+                "label": "stats",
+                "score": 0.04787407404901466
+              },
+              {
+                "label": "comparison",
+                "score": 0.03822835526552058
+              },
+              {
+                "label": "acquisition",
+                "score": 0.029429175293022854
+              },
+              {
+                "label": "use",
+                "score": 0.029194608388808455
+              },
+              {
+                "label": "prerequisites",
+                "score": 0.021007156506414826
+              }
+            ],
+            "message": null
+          },
+          {
+            "direction": "send",
+            "type": "classify",
+            "id": 24,
+            "text": "who were the victims?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "result",
+            "id": 24,
+            "metadata": null,
+            "predictions": [
+              {
+                "label": "identity",
+                "score": 0.1756842844680554
+              },
+              {
+                "label": "unknown",
+                "score": 0.17444706561118367
+              },
+              {
+                "label": "why",
+                "score": 0.11619251785663078
+              },
+              {
+                "label": "location",
+                "score": 0.10877237000641689
+              },
+              {
+                "label": "overview",
+                "score": 0.10863300003185161
+              },
+              {
+                "label": "stats",
+                "score": 0.062031800691877526
+              },
+              {
+                "label": "combat",
+                "score": 0.05643743870102076
+              },
+              {
+                "label": "hint",
+                "score": 0.053635410642355746
+              },
+              {
+                "label": "comparison",
+                "score": 0.05005552064215076
+              },
+              {
+                "label": "use",
+                "score": 0.033395656579132314
+              },
+              {
+                "label": "acquisition",
+                "score": 0.03284315505705869
+              },
+              {
+                "label": "prerequisites",
+                "score": 0.027871779712265832
+              }
+            ],
+            "message": null
+          },
+          {
+            "direction": "send",
+            "type": "classify",
+            "id": 25,
+            "text": "who killed Christopher?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "result",
+            "id": 25,
+            "metadata": null,
+            "predictions": [
+              {
+                "label": "identity",
+                "score": 0.15567979687827085
+              },
+              {
+                "label": "location",
+                "score": 0.14327396208445636
+              },
+              {
+                "label": "overview",
+                "score": 0.10976315085180573
+              },
+              {
+                "label": "unknown",
+                "score": 0.1088599066307446
+              },
+              {
+                "label": "why",
+                "score": 0.09806094312817148
+              },
+              {
+                "label": "combat",
+                "score": 0.08023754082697371
+              },
+              {
+                "label": "comparison",
+                "score": 0.06626045884033768
+              },
+              {
+                "label": "hint",
+                "score": 0.06310885792669793
+              },
+              {
+                "label": "stats",
+                "score": 0.0589490603446121
+              },
+              {
+                "label": "acquisition",
+                "score": 0.04454233107999697
+              },
+              {
+                "label": "use",
+                "score": 0.04215405038426831
+              },
+              {
+                "label": "prerequisites",
+                "score": 0.029109941023664255
+              }
+            ],
+            "message": null
+          },
+          {
+            "direction": "send",
+            "type": "classify",
+            "id": 26,
+            "text": "I am in the Trinsic murders",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "result",
+            "id": 26,
+            "metadata": null,
+            "predictions": [
+              {
+                "label": "unknown",
+                "score": 0.19253965890344013
+              },
+              {
+                "label": "location",
+                "score": 0.18192398667948967
+              },
+              {
+                "label": "identity",
+                "score": 0.09332313811603377
+              },
+              {
+                "label": "hint",
+                "score": 0.0930383406167401
+              },
+              {
+                "label": "overview",
+                "score": 0.08850722310754194
+              },
+              {
+                "label": "acquisition",
+                "score": 0.07995502139554679
+              },
+              {
+                "label": "use",
+                "score": 0.05596972243434569
+              },
+              {
+                "label": "prerequisites",
+                "score": 0.05193360325353143
+              },
+              {
+                "label": "why",
+                "score": 0.05086928024545566
+              },
+              {
+                "label": "combat",
+                "score": 0.046959791424670244
+              },
+              {
+                "label": "stats",
+                "score": 0.0335828493299088
+              },
+              {
+                "label": "comparison",
+                "score": 0.0313973844932958
+              }
+            ],
+            "message": null
+          },
+          {
+            "direction": "send",
+            "type": "classify",
+            "id": 27,
+            "text": "who got murdered?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "result",
+            "id": 27,
+            "metadata": null,
+            "predictions": [
+              {
+                "label": "identity",
+                "score": 0.18576738881792923
+              },
+              {
+                "label": "unknown",
+                "score": 0.15020767593942042
+              },
+              {
+                "label": "location",
+                "score": 0.11674137877007969
+              },
+              {
+                "label": "why",
+                "score": 0.11477356089682914
+              },
+              {
+                "label": "hint",
+                "score": 0.09696382291183175
+              },
+              {
+                "label": "combat",
+                "score": 0.07260510425261561
+              },
+              {
+                "label": "overview",
+                "score": 0.06735743950132429
+              },
+              {
+                "label": "stats",
+                "score": 0.055017680585957275
+              },
+              {
+                "label": "comparison",
+                "score": 0.04664339922492911
+              },
+              {
+                "label": "acquisition",
+                "score": 0.03459911192223248
+              },
+              {
+                "label": "prerequisites",
+                "score": 0.03118817229693426
+              },
+              {
+                "label": "use",
+                "score": 0.028135264879916824
+              }
+            ],
+            "message": null
+          },
+          {
+            "direction": "send",
+            "type": "classify",
+            "id": 28,
+            "text": "who is the murderer?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "result",
+            "id": 28,
+            "metadata": null,
+            "predictions": [
+              {
+                "label": "identity",
+                "score": 0.3618748402052694
+              },
+              {
+                "label": "location",
+                "score": 0.09532050911700482
+              },
+              {
+                "label": "unknown",
+                "score": 0.08171872260680067
+              },
+              {
+                "label": "why",
+                "score": 0.07306224636609703
+              },
+              {
+                "label": "hint",
+                "score": 0.06658380586664138
+              },
+              {
+                "label": "combat",
+                "score": 0.0628702283388095
+              },
+              {
+                "label": "overview",
+                "score": 0.05753494331379447
+              },
+              {
+                "label": "stats",
+                "score": 0.0474899712932001
+              },
+              {
+                "label": "acquisition",
+                "score": 0.04419280944602992
+              },
+              {
+                "label": "comparison",
+                "score": 0.04119893069035976
+              },
+              {
+                "label": "use",
+                "score": 0.03880537993941264
+              },
+              {
+                "label": "prerequisites",
+                "score": 0.029347612816580396
+              }
+            ],
+            "message": null
+          },
+          {
+            "direction": "send",
+            "type": "classify",
+            "id": 29,
+            "text": "who was killed?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "result",
+            "id": 29,
+            "metadata": null,
+            "predictions": [
+              {
+                "label": "identity",
+                "score": 0.21766894866662692
+              },
+              {
+                "label": "combat",
+                "score": 0.15273229844438585
+              },
+              {
+                "label": "unknown",
+                "score": 0.10625463034741485
+              },
+              {
+                "label": "location",
+                "score": 0.10406484590646999
+              },
+              {
+                "label": "hint",
+                "score": 0.08407694270471257
+              },
+              {
+                "label": "overview",
+                "score": 0.08107338172586256
+              },
+              {
+                "label": "why",
+                "score": 0.07726513565623128
+              },
+              {
+                "label": "stats",
+                "score": 0.059289730708425734
+              },
+              {
+                "label": "comparison",
+                "score": 0.040737414381142145
+              },
+              {
+                "label": "use",
+                "score": 0.029486293916851685
+              },
+              {
+                "label": "prerequisites",
+                "score": 0.025151807074448605
+              },
+              {
+                "label": "acquisition",
+                "score": 0.022198570467427833
+              }
+            ],
+            "message": null
+          },
+          {
+            "direction": "send",
+            "type": "classify",
+            "id": 30,
+            "text": "who killed whom?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "result",
+            "id": 30,
+            "metadata": null,
+            "predictions": [
+              {
+                "label": "identity",
+                "score": 0.2205015119776348
+              },
+              {
+                "label": "combat",
+                "score": 0.17934180034034275
+              },
+              {
+                "label": "location",
+                "score": 0.12007724260380861
+              },
+              {
+                "label": "unknown",
+                "score": 0.11046782761839573
+              },
+              {
+                "label": "why",
+                "score": 0.07341167203710328
+              },
+              {
+                "label": "hint",
+                "score": 0.07229181453654908
+              },
+              {
+                "label": "overview",
+                "score": 0.05817476138338457
+              },
+              {
+                "label": "stats",
+                "score": 0.04787407404901466
+              },
+              {
+                "label": "comparison",
+                "score": 0.03822835526552058
+              },
+              {
+                "label": "acquisition",
+                "score": 0.029429175293022854
+              },
+              {
+                "label": "use",
+                "score": 0.029194608388808455
+              },
+              {
+                "label": "prerequisites",
+                "score": 0.021007156506414826
+              }
+            ],
+            "message": null
+          },
+          {
+            "direction": "send",
+            "type": "classify",
+            "id": 31,
+            "text": "Who got killed in the Trinsic Murders?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "result",
+            "id": 31,
+            "metadata": null,
+            "predictions": [
+              {
+                "label": "identity",
+                "score": 0.1380802603335352
+              },
+              {
+                "label": "location",
+                "score": 0.13578861530672934
+              },
+              {
+                "label": "unknown",
+                "score": 0.11541867890518338
+              },
+              {
+                "label": "overview",
+                "score": 0.10355454055092603
+              },
+              {
+                "label": "why",
+                "score": 0.09994040732911413
+              },
+              {
+                "label": "stats",
+                "score": 0.08082514327509197
+              },
+              {
+                "label": "combat",
+                "score": 0.07851691502541856
+              },
+              {
+                "label": "hint",
+                "score": 0.07293234772369239
+              },
+              {
+                "label": "comparison",
+                "score": 0.05576754235004146
+              },
+              {
+                "label": "acquisition",
+                "score": 0.042597481023413944
+              },
+              {
+                "label": "use",
+                "score": 0.04114476495098216
+              },
+              {
+                "label": "prerequisites",
+                "score": 0.03543330322587136
+              }
+            ],
+            "message": null
+          },
+          {
+            "direction": "send",
+            "type": "classify",
+            "id": 32,
+            "text": "Who was the victim in Blorn's Accusations?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "result",
+            "id": 32,
+            "metadata": null,
+            "predictions": [
+              {
+                "label": "identity",
+                "score": 0.2163820873638719
+              },
+              {
+                "label": "why",
+                "score": 0.1804585311669596
+              },
+              {
+                "label": "unknown",
+                "score": 0.12677369361021418
+              },
+              {
+                "label": "location",
+                "score": 0.10954589068585195
+              },
+              {
+                "label": "stats",
+                "score": 0.060456257511478755
+              },
+              {
+                "label": "hint",
+                "score": 0.05702022216756464
+              },
+              {
+                "label": "overview",
+                "score": 0.05576941394756061
+              },
+              {
+                "label": "combat",
+                "score": 0.052416921150509485
+              },
+              {
+                "label": "comparison",
+                "score": 0.044004653531223
+              },
+              {
+                "label": "acquisition",
+                "score": 0.03829418648559396
+              },
+              {
+                "label": "use",
+                "score": 0.03237290711168935
+              },
+              {
+                "label": "prerequisites",
+                "score": 0.026505235267482722
+              }
+            ],
+            "message": null
+          },
+          {
+            "direction": "send",
+            "type": "classify",
+            "id": 33,
+            "text": "who got murdered?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "result",
+            "id": 33,
+            "metadata": null,
+            "predictions": [
+              {
+                "label": "identity",
+                "score": 0.18576738881792923
+              },
+              {
+                "label": "unknown",
+                "score": 0.15020767593942042
+              },
+              {
+                "label": "location",
+                "score": 0.11674137877007969
+              },
+              {
+                "label": "why",
+                "score": 0.11477356089682914
+              },
+              {
+                "label": "hint",
+                "score": 0.09696382291183175
+              },
+              {
+                "label": "combat",
+                "score": 0.07260510425261561
+              },
+              {
+                "label": "overview",
+                "score": 0.06735743950132429
+              },
+              {
+                "label": "stats",
+                "score": 0.055017680585957275
+              },
+              {
+                "label": "comparison",
+                "score": 0.04664339922492911
+              },
+              {
+                "label": "acquisition",
+                "score": 0.03459911192223248
+              },
+              {
+                "label": "prerequisites",
+                "score": 0.03118817229693426
+              },
+              {
+                "label": "use",
+                "score": 0.028135264879916824
+              }
+            ],
+            "message": null
+          },
+          {
+            "direction": "send",
+            "type": "classify",
+            "id": 34,
+            "text": "who killed Lap-Lem?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "result",
+            "id": 34,
+            "metadata": null,
+            "predictions": [
+              {
+                "label": "identity",
+                "score": 0.19952865726452748
+              },
+              {
+                "label": "combat",
+                "score": 0.1502260413941514
+              },
+              {
+                "label": "location",
+                "score": 0.1126332291605677
+              },
+              {
+                "label": "unknown",
+                "score": 0.11039867760508616
+              },
+              {
+                "label": "why",
+                "score": 0.08113891973819079
+              },
+              {
+                "label": "stats",
+                "score": 0.07484738652501484
+              },
+              {
+                "label": "overview",
+                "score": 0.07125143205794482
+              },
+              {
+                "label": "hint",
+                "score": 0.06036059745907623
+              },
+              {
+                "label": "comparison",
+                "score": 0.04246764448655763
+              },
+              {
+                "label": "use",
+                "score": 0.03848989827893883
+              },
+              {
+                "label": "acquisition",
+                "score": 0.033040813087400894
+              },
+              {
+                "label": "prerequisites",
+                "score": 0.025616702942543326
+              }
+            ],
+            "message": null
+          },
+          {
+            "direction": "send",
+            "type": "classify",
+            "id": 35,
+            "text": "Who were the victims in the Trinsic Murders?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "result",
+            "id": 35,
+            "metadata": null,
+            "predictions": [
+              {
+                "label": "identity",
+                "score": 0.14578144536321244
+              },
+              {
+                "label": "unknown",
+                "score": 0.13964431360677415
+              },
+              {
+                "label": "location",
+                "score": 0.1324186773106155
+              },
+              {
+                "label": "overview",
+                "score": 0.1182782158109357
+              },
+              {
+                "label": "why",
+                "score": 0.09808353674815741
+              },
+              {
+                "label": "stats",
+                "score": 0.08367306841595279
+              },
+              {
+                "label": "hint",
+                "score": 0.06262283557379596
+              },
+              {
+                "label": "comparison",
+                "score": 0.059283252950644516
+              },
+              {
+                "label": "combat",
+                "score": 0.04996719872425543
+              },
+              {
+                "label": "use",
+                "score": 0.03831540055409094
+              },
+              {
+                "label": "acquisition",
+                "score": 0.03645661768880494
+              },
+              {
+                "label": "prerequisites",
+                "score": 0.0354754372527603
+              }
+            ],
+            "message": null
+          },
+          {
+            "direction": "send",
+            "type": "classify",
+            "id": 36,
+            "text": "who is the murderer?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "result",
+            "id": 36,
+            "metadata": null,
+            "predictions": [
+              {
+                "label": "identity",
+                "score": 0.3618748402052694
+              },
+              {
+                "label": "location",
+                "score": 0.09532050911700482
+              },
+              {
+                "label": "unknown",
+                "score": 0.08171872260680067
+              },
+              {
+                "label": "why",
+                "score": 0.07306224636609703
+              },
+              {
+                "label": "hint",
+                "score": 0.06658380586664138
+              },
+              {
+                "label": "combat",
+                "score": 0.0628702283388095
+              },
+              {
+                "label": "overview",
+                "score": 0.05753494331379447
+              },
+              {
+                "label": "stats",
+                "score": 0.0474899712932001
+              },
+              {
+                "label": "acquisition",
+                "score": 0.04419280944602992
+              },
+              {
+                "label": "comparison",
+                "score": 0.04119893069035976
+              },
+              {
+                "label": "use",
+                "score": 0.03880537993941264
+              },
+              {
+                "label": "prerequisites",
+                "score": 0.029347612816580396
+              }
+            ],
+            "message": null
+          },
+          {
+            "direction": "send",
+            "type": "classify",
+            "id": 37,
+            "text": "Guide only: who got murdered in the Trinsic Murders?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "result",
+            "id": 37,
+            "metadata": null,
+            "predictions": [
+              {
+                "label": "overview",
+                "score": 0.2280622277289104
+              },
+              {
+                "label": "location",
+                "score": 0.16183660908816644
+              },
+              {
+                "label": "identity",
+                "score": 0.10764672913770922
+              },
+              {
+                "label": "unknown",
+                "score": 0.09792119484595523
+              },
+              {
+                "label": "hint",
+                "score": 0.07279085323491528
+              },
+              {
+                "label": "stats",
+                "score": 0.05657141475906886
+              },
+              {
+                "label": "combat",
+                "score": 0.05343884920720164
+              },
+              {
+                "label": "why",
+                "score": 0.051511323633067235
+              },
+              {
+                "label": "prerequisites",
+                "score": 0.04307247488035928
+              },
+              {
+                "label": "acquisition",
+                "score": 0.0426206037518986
+              },
+              {
+                "label": "use",
+                "score": 0.042392136836951914
+              },
+              {
+                "label": "comparison",
+                "score": 0.04213558289579582
+              }
+            ],
+            "message": null
+          },
+          {
+            "direction": "send",
+            "type": "classify",
+            "id": 38,
+            "text": "who got killed?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "result",
+            "id": 38,
+            "metadata": null,
+            "predictions": [
+              {
+                "label": "identity",
+                "score": 0.17324965895610142
+              },
+              {
+                "label": "combat",
+                "score": 0.17062069923303108
+              },
+              {
+                "label": "why",
+                "score": 0.10180684030882724
+              },
+              {
+                "label": "location",
+                "score": 0.09930790429225039
+              },
+              {
+                "label": "unknown",
+                "score": 0.09551917316910384
+              },
+              {
+                "label": "hint",
+                "score": 0.08348344003340366
+              },
+              {
+                "label": "overview",
+                "score": 0.08347428358134726
+              },
+              {
+                "label": "stats",
+                "score": 0.06914433582748852
+              },
+              {
+                "label": "comparison",
+                "score": 0.04281392088123757
+              },
+              {
+                "label": "acquisition",
+                "score": 0.032790713140850226
+              },
+              {
+                "label": "use",
+                "score": 0.027050314548811044
+              },
+              {
+                "label": "prerequisites",
+                "score": 0.020738716027547753
+              }
+            ],
+            "message": null
+          },
+          {
+            "direction": "send",
+            "type": "classify",
+            "id": 39,
+            "text": "who were the victims?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "result",
+            "id": 39,
+            "metadata": null,
+            "predictions": [
+              {
+                "label": "identity",
+                "score": 0.1756842844680554
+              },
+              {
+                "label": "unknown",
+                "score": 0.17444706561118367
+              },
+              {
+                "label": "why",
+                "score": 0.11619251785663078
+              },
+              {
+                "label": "location",
+                "score": 0.10877237000641689
+              },
+              {
+                "label": "overview",
+                "score": 0.10863300003185161
+              },
+              {
+                "label": "stats",
+                "score": 0.062031800691877526
+              },
+              {
+                "label": "combat",
+                "score": 0.05643743870102076
+              },
+              {
+                "label": "hint",
+                "score": 0.053635410642355746
+              },
+              {
+                "label": "comparison",
+                "score": 0.05005552064215076
+              },
+              {
+                "label": "use",
+                "score": 0.033395656579132314
+              },
+              {
+                "label": "acquisition",
+                "score": 0.03284315505705869
+              },
+              {
+                "label": "prerequisites",
+                "score": 0.027871779712265832
+              }
+            ],
+            "message": null
+          },
+          {
+            "direction": "send",
+            "type": "classify",
+            "id": 40,
+            "text": "Guide only: who is the suspect in the Trinsic Murders?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "result",
+            "id": 40,
+            "metadata": null,
+            "predictions": [
+              {
+                "label": "overview",
+                "score": 0.1753257691970588
+              },
+              {
+                "label": "identity",
+                "score": 0.17214479210533223
+              },
+              {
+                "label": "location",
+                "score": 0.14256792472234311
+              },
+              {
+                "label": "hint",
+                "score": 0.08854790130144641
+              },
+              {
+                "label": "unknown",
+                "score": 0.07797734010370984
+              },
+              {
+                "label": "why",
+                "score": 0.07186636053885735
+              },
+              {
+                "label": "acquisition",
+                "score": 0.05341307727869366
+              },
+              {
+                "label": "combat",
+                "score": 0.04806808948318816
+              },
+              {
+                "label": "use",
+                "score": 0.04460296008477854
+              },
+              {
+                "label": "stats",
+                "score": 0.04380965663231578
+              },
+              {
+                "label": "comparison",
+                "score": 0.04198042837448262
+              },
+              {
+                "label": "prerequisites",
+                "score": 0.03969570017779348
+              }
+            ],
+            "message": null
+          },
+          {
+            "direction": "send",
+            "type": "classify",
+            "id": 41,
+            "text": "Who is the murderer in the Trinsic Murders?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "result",
+            "id": 41,
+            "metadata": null,
+            "predictions": [
+              {
+                "label": "identity",
+                "score": 0.1986309449033908
+              },
+              {
+                "label": "location",
+                "score": 0.12423014889339529
+              },
+              {
+                "label": "unknown",
+                "score": 0.11784806322498884
+              },
+              {
+                "label": "overview",
+                "score": 0.09889603826796943
+              },
+              {
+                "label": "why",
+                "score": 0.09193628298010155
+              },
+              {
+                "label": "stats",
+                "score": 0.06445925403312369
+              },
+              {
+                "label": "hint",
+                "score": 0.06380081515967455
+              },
+              {
+                "label": "combat",
+                "score": 0.05935031206067838
+              },
+              {
+                "label": "comparison",
+                "score": 0.05487994403360966
+              },
+              {
+                "label": "acquisition",
+                "score": 0.04523474627340015
+              },
+              {
+                "label": "use",
+                "score": 0.04195846614439823
+              },
+              {
+                "label": "prerequisites",
+                "score": 0.0387749840252694
+              }
+            ],
+            "message": null
+          },
+          {
+            "direction": "send",
+            "type": "classify",
+            "id": 42,
+            "text": "who was not the murderer?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "result",
+            "id": 42,
+            "metadata": null,
+            "predictions": [
+              {
+                "label": "identity",
+                "score": 0.23851028628395118
+              },
+              {
+                "label": "unknown",
+                "score": 0.12286298244187947
+              },
+              {
+                "label": "why",
+                "score": 0.10244441515279623
+              },
+              {
+                "label": "hint",
+                "score": 0.09928814377473565
+              },
+              {
+                "label": "location",
+                "score": 0.0879203575645328
+              },
+              {
+                "label": "comparison",
+                "score": 0.06790656034594107
+              },
+              {
+                "label": "combat",
+                "score": 0.0595410266920556
+              },
+              {
+                "label": "overview",
+                "score": 0.05712432513522285
+              },
+              {
+                "label": "acquisition",
+                "score": 0.04331509870944196
+              },
+              {
+                "label": "prerequisites",
+                "score": 0.04286620411635997
+              },
+              {
+                "label": "stats",
+                "score": 0.039708153917947464
+              },
+              {
+                "label": "use",
+                "score": 0.03851244586513586
+              }
+            ],
+            "message": null
+          },
+          {
+            "direction": "send",
+            "type": "classify",
+            "id": 43,
+            "text": "who did not get murdered?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "result",
+            "id": 43,
+            "metadata": null,
+            "predictions": [
+              {
+                "label": "why",
+                "score": 0.16381740270017134
+              },
+              {
+                "label": "unknown",
+                "score": 0.15114571775328278
+              },
+              {
+                "label": "identity",
+                "score": 0.1409026177443093
+              },
+              {
+                "label": "combat",
+                "score": 0.08581002804813818
+              },
+              {
+                "label": "location",
+                "score": 0.08340929901388015
+              },
+              {
+                "label": "hint",
+                "score": 0.08252710610102147
+              },
+              {
+                "label": "overview",
+                "score": 0.07054160463568422
+              },
+              {
+                "label": "comparison",
+                "score": 0.06797929227725696
+              },
+              {
+                "label": "stats",
+                "score": 0.04631680211684833
+              },
+              {
+                "label": "prerequisites",
+                "score": 0.04524080549180331
+              },
+              {
+                "label": "acquisition",
+                "score": 0.03162113792138237
+              },
+              {
+                "label": "use",
+                "score": 0.03068818619622166
+              }
+            ],
+            "message": null
+          },
+          {
+            "direction": "send",
+            "type": "classify",
+            "id": 44,
+            "text": "Why did Iolo murder Christopher?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "result",
+            "id": 44,
+            "metadata": null,
+            "predictions": [
+              {
+                "label": "why",
+                "score": 0.26632575147808624
+              },
+              {
+                "label": "identity",
+                "score": 0.12897605988875457
+              },
+              {
+                "label": "unknown",
+                "score": 0.11718897020037163
+              },
+              {
+                "label": "location",
+                "score": 0.0844628365418439
+              },
+              {
+                "label": "overview",
+                "score": 0.08215485548006678
+              },
+              {
+                "label": "comparison",
+                "score": 0.06726259137464949
+              },
+              {
+                "label": "stats",
+                "score": 0.05055722878129639
+              },
+              {
+                "label": "hint",
+                "score": 0.048178801577324876
+              },
+              {
+                "label": "use",
+                "score": 0.04334822500755334
+              },
+              {
+                "label": "acquisition",
+                "score": 0.039563095650475257
+              },
+              {
+                "label": "combat",
+                "score": 0.03934865670383609
+              },
+              {
+                "label": "prerequisites",
+                "score": 0.0326329273157413
+              }
+            ],
+            "message": null
+          },
+          {
+            "direction": "send",
+            "type": "classify",
+            "id": 45,
+            "text": "who got killed in the Moonstone Harbor massacre?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "result",
+            "id": 45,
+            "metadata": null,
+            "predictions": [
+              {
+                "label": "identity",
+                "score": 0.15211375303903557
+              },
+              {
+                "label": "combat",
+                "score": 0.11868108680485633
+              },
+              {
+                "label": "location",
+                "score": 0.1163728453642456
+              },
+              {
+                "label": "unknown",
+                "score": 0.11239900472474475
+              },
+              {
+                "label": "overview",
+                "score": 0.08676269945160117
+              },
+              {
+                "label": "stats",
+                "score": 0.08153742953103338
+              },
+              {
+                "label": "why",
+                "score": 0.07310012157779462
+              },
+              {
+                "label": "hint",
+                "score": 0.07039107613466818
+              },
+              {
+                "label": "acquisition",
+                "score": 0.06284929113598729
+              },
+              {
+                "label": "use",
+                "score": 0.048484411467341344
+              },
+              {
+                "label": "comparison",
+                "score": 0.04147280335632382
+              },
+              {
+                "label": "prerequisites",
+                "score": 0.035835477412367915
+              }
+            ],
+            "message": null
+          }
+        ]
+      }
+    ],
+    "albion": [
+      {
+        "url": "http://127.0.0.1:36287/guides/js/assistant/intent-worker.js",
+        "events": [
+          {
+            "direction": "send",
+            "type": "load",
+            "id": null,
+            "text": null,
+            "modelId": "Xenova/all-MiniLM-L6-v2"
+          },
+          {
+            "direction": "receive",
+            "type": "ready",
+            "id": null,
+            "metadata": {
+              "modelId": "Xenova/all-MiniLM-L6-v2",
+              "revision": "751bff37182d3f1213fa05d7196b954e230abad9",
+              "dimensions": 384,
+              "encoderFineTuned": false,
+              "realModelInference": true,
+              "wasmThreads": 1,
+              "headSha256": "979c196a92df490124802e61fcc5fad787fc535ee69ff0eae64784355a8f6bfb",
+              "thresholds": {
+                "minScore": 0,
+                "minMargin": 0,
+                "abstainAll": false,
+                "selection": {
+                  "source": "validation",
+                  "samples": 72,
+                  "targetAccuracy": 0.9,
+                  "minAccepted": 6,
+                  "accepted": 72,
+                  "accuracy": 0.9444444444444444,
+                  "coverage": 1,
+                  "candidateLimitPerAxis": 51
+                }
+              },
+              "additionalBytes": 24053489
+            },
+            "predictions": null,
+            "message": null
+          },
+          {
+            "direction": "send",
+            "type": "classify",
+            "id": 1,
+            "text": "Summarize Maini",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "result",
+            "id": 1,
+            "metadata": null,
+            "predictions": [
+              {
+                "label": "overview",
+                "score": 0.4465743388892883
+              },
+              {
+                "label": "stats",
+                "score": 0.09024625998832801
+              },
+              {
+                "label": "unknown",
+                "score": 0.08997593503706568
+              },
+              {
+                "label": "identity",
+                "score": 0.06059461537812778
+              },
+              {
+                "label": "comparison",
+                "score": 0.05541740299137627
+              },
+              {
+                "label": "why",
+                "score": 0.051312394611326355
+              },
+              {
+                "label": "hint",
+                "score": 0.049623694378483914
+              },
+              {
+                "label": "use",
+                "score": 0.0411899668397189
+              },
+              {
+                "label": "location",
+                "score": 0.034304438385776126
+              },
+              {
+                "label": "prerequisites",
+                "score": 0.03391943374055781
+              },
+              {
+                "label": "combat",
+                "score": 0.028052588627290532
+              },
+              {
+                "label": "acquisition",
+                "score": 0.018788931132660235
+              }
+            ],
+            "message": null
+          },
+          {
+            "direction": "send",
+            "type": "classify",
+            "id": 2,
+            "text": "who got murdered?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "result",
+            "id": 2,
+            "metadata": null,
+            "predictions": [
+              {
+                "label": "identity",
+                "score": 0.18576738881792923
+              },
+              {
+                "label": "unknown",
+                "score": 0.15020767593942042
+              },
+              {
+                "label": "location",
+                "score": 0.11674137877007969
+              },
+              {
+                "label": "why",
+                "score": 0.11477356089682914
+              },
+              {
+                "label": "hint",
+                "score": 0.09696382291183175
+              },
+              {
+                "label": "combat",
+                "score": 0.07260510425261561
+              },
+              {
+                "label": "overview",
+                "score": 0.06735743950132429
+              },
+              {
+                "label": "stats",
+                "score": 0.055017680585957275
+              },
+              {
+                "label": "comparison",
+                "score": 0.04664339922492911
+              },
+              {
+                "label": "acquisition",
+                "score": 0.03459911192223248
+              },
+              {
+                "label": "prerequisites",
+                "score": 0.03118817229693426
+              },
+              {
+                "label": "use",
+                "score": 0.028135264879916824
+              }
+            ],
+            "message": null
+          },
+          {
+            "direction": "send",
+            "type": "classify",
+            "id": 3,
+            "text": "who killed Herras?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "result",
+            "id": 3,
+            "metadata": null,
+            "predictions": [
+              {
+                "label": "combat",
+                "score": 0.20680360017692567
+              },
+              {
+                "label": "identity",
+                "score": 0.13788849158671426
+              },
+              {
+                "label": "unknown",
+                "score": 0.1343353639013365
+              },
+              {
+                "label": "location",
+                "score": 0.11533999684769265
+              },
+              {
+                "label": "stats",
+                "score": 0.0833134623555965
+              },
+              {
+                "label": "why",
+                "score": 0.07351285287761697
+              },
+              {
+                "label": "overview",
+                "score": 0.0732564445840974
+              },
+              {
+                "label": "hint",
+                "score": 0.04779679079095699
+              },
+              {
+                "label": "comparison",
+                "score": 0.04092693511230899
+              },
+              {
+                "label": "acquisition",
+                "score": 0.03522993361555685
+              },
+              {
+                "label": "use",
+                "score": 0.026413611873923562
+              },
+              {
+                "label": "prerequisites",
+                "score": 0.02518251627727365
+              }
+            ],
+            "message": null
+          },
+          {
+            "direction": "send",
+            "type": "classify",
+            "id": 4,
+            "text": "who got killed in the festival murder?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "result",
+            "id": 4,
+            "metadata": null,
+            "predictions": [
+              {
+                "label": "location",
+                "score": 0.15898656576486955
+              },
+              {
+                "label": "identity",
+                "score": 0.1488743571078738
+              },
+              {
+                "label": "unknown",
+                "score": 0.12112861829764131
+              },
+              {
+                "label": "why",
+                "score": 0.12063691890922049
+              },
+              {
+                "label": "overview",
+                "score": 0.09218961969997776
+              },
+              {
+                "label": "combat",
+                "score": 0.07630808357583475
+              },
+              {
+                "label": "hint",
+                "score": 0.06190395242111304
+              },
+              {
+                "label": "stats",
+                "score": 0.045012615958109396
+              },
+              {
+                "label": "acquisition",
+                "score": 0.0444810753136756
+              },
+              {
+                "label": "prerequisites",
+                "score": 0.04372975193009961
+              },
+              {
+                "label": "comparison",
+                "score": 0.04369753066188005
+              },
+              {
+                "label": "use",
+                "score": 0.04305091035970461
+              }
+            ],
+            "message": null
+          }
+        ]
+      }
+    ]
+  },
+  "storageUnchanged": {
+    "ultima7": true,
+    "albion": true
+  },
+  "storageWrites": {
+    "ultima7": [],
+    "albion": []
+  },
+  "screenshots": [
+    "guides/tests/assistant/intent-prototype/results/story-passive/story-passive-final/warm-role-switches.png"
+  ],
+  "model": {
+    "ultima7": {
+      "status": "ready",
+      "loaded": 46582165,
+      "total": 46582165,
+      "cached": 0,
+      "downloaded": 46582165,
+      "downloadTotal": 46582165,
+      "speedBps": null,
+      "message": null,
+      "persisted": true,
+      "metadata": {
+        "modelId": "Xenova/all-MiniLM-L6-v2",
+        "revision": "751bff37182d3f1213fa05d7196b954e230abad9",
+        "dimensions": 384,
+        "encoderFineTuned": false,
+        "realModelInference": true,
+        "wasmThreads": 1,
+        "headSha256": "979c196a92df490124802e61fcc5fad787fc535ee69ff0eae64784355a8f6bfb",
+        "thresholds": {
+          "minScore": 0,
+          "minMargin": 0,
+          "abstainAll": false,
+          "selection": {
+            "source": "validation",
+            "samples": 72,
+            "targetAccuracy": 0.9,
+            "minAccepted": 6,
+            "accepted": 72,
+            "accuracy": 0.9444444444444444,
+            "coverage": 1,
+            "candidateLimitPerAxis": 51
+          }
+        },
+        "additionalBytes": 24053489
+      },
+      "thresholds": {
+        "minScore": 0,
+        "minMargin": 0,
+        "abstainAll": false,
+        "selection": {
+          "source": "validation",
+          "samples": 72,
+          "targetAccuracy": 0.9,
+          "minAccepted": 6,
+          "accepted": 72,
+          "accuracy": 0.9444444444444444,
+          "coverage": 1,
+          "candidateLimitPerAxis": 51
+        }
+      }
+    },
+    "albion": {
+      "status": "ready",
+      "loaded": 46582165,
+      "total": 46582165,
+      "cached": 46582165,
+      "downloaded": 0,
+      "downloadTotal": 0,
+      "speedBps": null,
+      "message": null,
+      "persisted": true,
+      "metadata": {
+        "modelId": "Xenova/all-MiniLM-L6-v2",
+        "revision": "751bff37182d3f1213fa05d7196b954e230abad9",
+        "dimensions": 384,
+        "encoderFineTuned": false,
+        "realModelInference": true,
+        "wasmThreads": 1,
+        "headSha256": "979c196a92df490124802e61fcc5fad787fc535ee69ff0eae64784355a8f6bfb",
+        "thresholds": {
+          "minScore": 0,
+          "minMargin": 0,
+          "abstainAll": false,
+          "selection": {
+            "source": "validation",
+            "samples": 72,
+            "targetAccuracy": 0.9,
+            "minAccepted": 6,
+            "accepted": 72,
+            "accuracy": 0.9444444444444444,
+            "coverage": 1,
+            "candidateLimitPerAxis": 51
+          }
+        },
+        "additionalBytes": 24053489
+      },
+      "thresholds": {
+        "minScore": 0,
+        "minMargin": 0,
+        "abstainAll": false,
+        "selection": {
+          "source": "validation",
+          "samples": 72,
+          "targetAccuracy": 0.9,
+          "minAccepted": 6,
+          "accepted": 72,
+          "accuracy": 0.9444444444444444,
+          "coverage": 1,
+          "candidateLimitPerAxis": 51
+        }
+      }
+    }
+  },
+  "browser": "156.0.8078.47",
+  "serverClosed": true,
+  "sourceHashesAfter": {
+    "guides/Albion.html": "fe71ab0c58c947ef3eabf3690ad7dcaffebb066f5538729a013977deda1f6978",
+    "guides/Ultima7.html": "dfc1ef95f254d5f5e905910353081704e04e491c284041b9d8c706b93de1a405",
+    "guides/css/AlQadim.css": "c29271988579dedcf94b160312ca16c0f8e0994b75e1eef52033021232f00e92",
+    "guides/css/Albion.css": "4a66562119a9843a9241f13abd7d42ed990a308babe7c1a657c0dddd2712e1bb",
+    "guides/css/Starcraft.css": "a682aa3e68b90d9badd29b82f6ca4fbb1f609de22c7edfc36edad2b38e35a036",
+    "guides/css/Ultima5.css": "944beebb213134d7c8c1d70ed1ddcffeb23a0bc9c83f4b3246de1069e2116ab3",
+    "guides/css/Ultima6.css": "853833987d3471fdf758dd3f6671938dff987d9a63ff237725fbc47af9abe13b",
+    "guides/css/Ultima7.css": "4448a986d73473bd4444cc7a2d300ff3b359278c41d9c3a12ec86aa35a5ac71a",
+    "guides/css/assistant-consent.css": "75fc193a045ce2ac0f2937dbf7263eeca7a3d0d278b34ac28dfe948107d2dd95",
+    "guides/css/assistant.css": "c7cf671a906009f14cd8d33b4fb9567f80af090b418fd462884106150ed8dc03",
+    "guides/css/fonts.css": "39217afc105185c4edd31a75422dee29a9f03a068aa89415b963b13cb7329ce7",
+    "guides/css/index.css": "7022da3fe5e4f2790aad8465911e921c8aef0c4b93231cc5069b5f713edb27eb",
+    "guides/css/leaflet.css": "a7837102824184820dfa198d1ebcd109ff6d0ff9a2672a074b9a1b4d147d04c6",
+    "guides/css/offline.css": "71355c6e53c5dd70ce36cb47ef011e63c0865c10a7f2d77d02931625b1ea4614",
+    "guides/data/assistant/albion.json": "b3b219ccb434c450189e97404b4c06a3bbc8334dc581bea55bc4a70213851404",
+    "guides/data/assistant/alqadim.json": "f0f15243ea3b27701d97b3ab369a108ef46e93ec5f780f6e1fd1bf5e69bf2b77",
+    "guides/data/assistant/consultation-catalog.json": "e7ad5de8bc0b48dcd83c35882719d43770c13ac029099c7a635f3b3ba322aa0d",
+    "guides/data/assistant/manifest.json": "d2ad011aa0d0c733b9c35a9e1afc70a01f8eef0cbfc04de0eaf45a90824d9ee4",
+    "guides/data/assistant/starcraft.json": "0dc5925ca67adfc434b5366213a5e05e11cbf869f1d0aa71e4daa6d16ae2dfc0",
+    "guides/data/assistant/ultima5.json": "bbd6a3a33133bc1aca80ac7a19cea5011e19c9f33869582355d7fd60f0f0d24e",
+    "guides/data/assistant/ultima6.json": "67b3bf1e8e935df279bec2f11cf698ba721f5d8e169f1a050fefa4ee66b5ad05",
+    "guides/data/assistant/ultima7.json": "9b5c29c25936ccfd20ca9b704df57d45c1f7142a2014b09630f8e2f2aee10871",
+    "guides/js/AlQadim.js": "269798843206f12b76163c65b04301be278652115fbdbd46596f13f3ae7b5e5e",
+    "guides/js/AlQadimAtlasData.js": "82abbb86cafad98655e4bacfdd28e8ba96fba7f747da44b30aaa9364a37e747e",
+    "guides/js/Albion.js": "4adba84eca7af2436731b7053e3167a909f57f85edc611c6287411af84e4b1ca",
+    "guides/js/AlbionAtlasData.js": "b5a96b06ee31e94eba95df1cec41c2b564576e1170a3065b61e9f5db7890dcc8",
+    "guides/js/AlbionMarkers.js": "1de190722be16721a0ff3ff3a50b2c1298706bc33629dd223ed673f63cfbc27b",
+    "guides/js/Ultima5.js": "e2699ed2d8aca9bf3465c7dcd262461f5fca59f1fb4cbd41361e0f5c5a96dae5",
+    "guides/js/Ultima5AtlasData.js": "1292346505cb26d534154b317d7beee7bb186f8dda2d9316127912111bfb72a2",
+    "guides/js/Ultima6.js": "a0b07db60d7c30ac19bb64b56fa26b1428a6437f437f087eb2d75109afae4898",
+    "guides/js/Ultima6Atlas.js": "c83db308efae81f2868d5b4954d679d24e81b83b226d4e4548699668f98d8e88",
+    "guides/js/Ultima7.js": "c3cd92659e5e959c6d172ba38d56ba85148729b82185768557cb595e3bfb6085",
+    "guides/js/Ultima7Markers.js": "9103499a31be5bd132959ff268aa0149b90ec310a7f1098fbed1fc25a2de1f2e",
+    "guides/js/assistant/adapters/albion.js": "df3993cb351cf9f5e4ade03d8bcfdfc3477c00f4fb39922b9e8cc8d4e255e70b",
+    "guides/js/assistant/adapters/alqadim.js": "fa65928d9011011a12095cd4bbf37a56bfed3b91559ce6aa8097a991b111065c",
+    "guides/js/assistant/adapters/starcraft.js": "b4a11908b121a545fd810c4f8ae09404c210ab0607f70e9121a145a8aea6063e",
+    "guides/js/assistant/adapters/ultima5.js": "3aa64babe0f83ecc713f5d9a665b8ba7a4e7dbfce557a8cff22778a6170cf95a",
+    "guides/js/assistant/adapters/ultima6.js": "68f2d1abd30790c217ddd9f906a1abc03fd40b74ffad932c297ada42f8d2049a",
+    "guides/js/assistant/adapters/ultima7.js": "5140505e9fe04a864e950afab671519f31ef24ac6a9b2e91b7c3853c1cf1e7c3",
+    "guides/js/assistant/bootstrap.js": "022aff4f7c2f93fc5c74da9b6457c6a53ee5eb2c072bf90970eca95ef3855608",
+    "guides/js/assistant/consent.js": "cd83de63e5ec28425fad9eef36d597eec48ec839cb48e93569a568571f1e4b98",
+    "guides/js/assistant/consultation.js": "e699091ce4ae4926b6d925a93cb13396ad440fc01ca66c8a574ef35fe939990a",
+    "guides/js/assistant/dialogue.js": "4071ec9bc886fe3cf0415dbb5cd9f910fd87e7141be76a6e417c844674d3af74",
+    "guides/js/assistant/engine.js": "5a66ee1544c7c18b9ef6628bd2d396952dd4172f28221aa44effb0fed8aa6bef",
+    "guides/js/assistant/fallback-context.js": "73c2638570035a73683cdd83b2eac5133d577892aef3613539ebb80c0481cb73",
+    "guides/js/assistant/fallback-guard.js": "8ac7766576c0fa39a9f8eb1d8130687f5dec2d93ed3793b1ab32a416502eb4dc",
+    "guides/js/assistant/frame-tokens.js": "9f225b8d13b2082f45af7f1ec7ca5b56900733383537123d7dab05baa95f511b",
+    "guides/js/assistant/guide-assistant.js": "264f98fa0fbf45e50f6d4b8d4889a41a4efdc56b16fa6a2b7d696de85371bcc6",
+    "guides/js/assistant/intent-head.js": "23e428fedd405946199beb1e55641281bdae078e3d8ea6e448d0ac0acc1a39a7",
+    "guides/js/assistant/intent-runtime.js": "32e364a567372b4e008d1064b250e129d263f0bd87e29e65b4fe9b9b63e59a94",
+    "guides/js/assistant/intent-worker.js": "310eb79354e02019e9c05acbf8fa1e60e447f7ed99086a47a6cdc83b331d66c5",
+    "guides/js/assistant/language.js": "c9c784649dc096d35bba709821f1989814bfcdc2b2356c543d4035c9c67344be",
+    "guides/js/assistant/model-download.js": "1a9f1be1319d9219507a140e4eae6ad6ea2cbb348b19771c7261d1a52432a6a1",
+    "guides/js/assistant/model-runtime.js": "c6331135f75b3ab5f094e6b7020567b19f2b22286105dc51eba190917e98fdd1",
+    "guides/js/assistant/model-worker.js": "5f490d60ae8b991ae64d523d16c683d11a8995283353cfb534f0d3529ce0d6fc",
+    "guides/js/assistant/policy.js": "df44eea0b5eec7dae01deb0ab4c179873cb5f271ae1a3d87ed89a630cb87aec3",
+    "guides/js/assistant/retrieval.js": "d40e3d699e419ccee015abbdfe1b901816629af3d0ded9d52f082476b906c7f3",
+    "guides/js/assistant/rules.js": "3c2edda7907d22a78d022abd9e1fded1ad70103056129325f44d2cc8be78ef74",
+    "guides/js/assistant/source-responses.js": "6b360a86d0596ae537ccd4d3afa9689afc9c03aff35509e6bc17df91d64ee8b5",
+    "guides/js/assistant/topics.js": "cae60c918f936d1429713f076420e32c1fc72a89d371b47f7b1958b81e852d39",
+    "guides/js/assistant/ui.js": "8f080207c96e9c03d0a316db83867708f98ca6d2d389e72cfc267c444b0ae152",
+    "guides/js/chart.js": "e0059220c10bff95fdb7f5b77b9bfffba68b3ccf4eab4f7398ee7aef3cffca2b",
+    "guides/js/index.js": "0feb3e548e54dd42b171533aebd0931a77cdb0f5b5c51ce2d733814e8cdae557",
+    "guides/js/leaflet.js": "85d455b4522415f6badc42a0e7d17c919d100347d6b8958bd0dc738fdecd6d50",
+    "guides/js/lucide.js": "9dac1057f358d159e8ce1e46f259df2b0cb4a19281de7cf8c9ffb29c7a2226f6",
+    "guides/js/tailwind.js": "7afa0afd2536044695e7e674298bc0dda9af94475e4e07d0575feccfa796c74f",
+    "guides/local-assistant/intent/profile.json": "786a95a078fcc940f95539837883405257f1a3a896637bb71b8b477be680639e",
+    "guides/local-assistant/profile.json": "7fcde9d4b3d8842dc2345159687e845e023ce9049c92deab6d99d494e6ba813d",
+    "guides/tests/assistant/rollout-browser.py": "1a96f3106af2344838bff0dabd9fc0154ab7bac73c48d9f79d07f7d4f43d0b3c",
+    "guides/tests/assistant/story-passive-browser.py": "133acd105a60361b9b3e6cd5e02d9eba779fb4082e2092ff56aefb2930145beb",
+    "guides/tests/assistant/story-passive-cases.json": "eec658e8ed853070e6af8f48b5cec224a10a1cff2d09e8cc44fc6f09e2d12428"
+  },
+  "sourceFilesUnchanged": true,
+  "nativeIntentEvidence": {
+    "ultima7": {
+      "ready": 1,
+      "classifications": 45,
+      "results": 45
+    },
+    "albion": {
+      "ready": 1,
+      "classifications": 4,
+      "results": 4
+    }
+  },
+  "boundaries": {
+    "actualMiniLMEveryGame": true,
+    "storageUnchanged": true,
+    "noSavedGameWrites": true,
+    "noExternalRequests": true,
+    "noPageErrors": true,
+    "onlyStaticGets": true,
+    "sourceFilesUnchanged": true,
+    "ownedServerClosed": true
+  },
+  "categories": {
+    "supported": {
+      "passed": 28,
+      "total": 28
+    },
+    "unsupported": {
+      "passed": 20,
+      "total": 20
+    },
+    "contextStatement": {
+      "passed": 1,
+      "total": 1
+    }
+  },
+  "passed": 49,
+  "total": 49
+}

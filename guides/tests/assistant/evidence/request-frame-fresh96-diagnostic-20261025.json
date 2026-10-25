@@ -1,0 +1,5030 @@
+{
+  "schemaVersion": 1,
+  "reviewType": "syntax-only-request-frame-diagnostic",
+  "createdAt": "2026-10-25T05:02:01.521Z",
+  "corpusPath": "guides/tests/assistant/knowledge-source-first-96-20261025.json",
+  "corpusSha256": "5cd6b923fca976dd9ae8d9023e4fe637e37aea3591ac3ecdfc0f63e9f8ae6a5b",
+  "parserPath": "guides/js/assistant/request-frame.js",
+  "parserSha256": "08356a3e740e6d38f0eba00c55397add82fd25ddbc0ce32c05690a003b2f2eb4",
+  "boundary": "All 96 frozen query strings were parsed without invoking a source planner, knowledge response, model, encoder, browser or oracle scorer. Typed counts are grammar diagnostics, not source support, useful-answer accuracy or acceptance.",
+  "counts": {
+    "typed": 80,
+    "unresolved": 5,
+    "not-parsed": 2,
+    "state-guarded": 9
+  },
+  "rows": [
+    {
+      "gameId": "ultima5",
+      "dialogueId": "fresh-u5-sceptre-entry-and-crossing",
+      "turn": 1,
+      "text": "Why should I clear out the Shadowlords before collecting the Sceptre?",
+      "parseStatus": "typed",
+      "frame": {
+        "kind": "source-fields",
+        "originalText": "Why should I clear out the Shadowlords before collecting the Sceptre?",
+        "subjectText": "clear out the Shadowlords",
+        "subjectCandidates": [
+          "clear out the Shadowlords"
+        ],
+        "contextTexts": [],
+        "intentTexts": [],
+        "correction": false,
+        "fields": [
+          {
+            "key": "cause",
+            "selectors": [],
+            "requestedText": "Why should I clear out the Shadowlords before collecting the Sceptre",
+            "actionText": "I clear out the Shadowlords",
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [
+              "before collecting the Sceptre"
+            ],
+            "subjectText": "clear out the Shadowlords",
+            "qualifierTexts": [
+              "before collecting the Sceptre"
+            ],
+            "localConditionTexts": [
+              "before collecting the Sceptre"
+            ]
+          }
+        ],
+        "constraints": {},
+        "constraintTexts": [],
+        "complete": true,
+        "unresolvedTexts": [],
+        "staticEligible": true,
+        "playerStateQuestion": false,
+        "report": false
+      }
+    },
+    {
+      "gameId": "ultima5",
+      "dialogueId": "fresh-u5-sceptre-entry-and-crossing",
+      "turn": 2,
+      "text": "At Stonegate, what opens the central door, and what answer gets me past the demon?",
+      "parseStatus": "typed",
+      "frame": {
+        "kind": "source-fields",
+        "originalText": "At Stonegate, what opens the central door, and what answer gets me past the demon?",
+        "subjectText": "the central door",
+        "subjectCandidates": [
+          "the central door",
+          "At Stonegate"
+        ],
+        "contextTexts": [
+          "At Stonegate"
+        ],
+        "intentTexts": [],
+        "correction": false,
+        "fields": [
+          {
+            "key": "method",
+            "selectors": [
+              "open"
+            ],
+            "requestedText": "what opens the central door",
+            "objectTexts": [
+              "the central door"
+            ],
+            "objectRole": "object",
+            "governorText": "opens",
+            "actionText": "opens the central door",
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [],
+            "subjectText": "the central door",
+            "qualifierTexts": []
+          },
+          {
+            "key": "method",
+            "selectors": [
+              "riddle-answer"
+            ],
+            "requestedText": "what answer gets me past the demon",
+            "fieldText": "answer",
+            "qualifierTexts": [],
+            "fieldHead": "answer",
+            "objectTexts": [
+              "the demon"
+            ],
+            "objectRole": "object",
+            "governorText": "gets me past",
+            "actionText": "answer gets me past the demon",
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": []
+          }
+        ],
+        "constraints": {},
+        "constraintTexts": [
+          "At Stonegate"
+        ],
+        "complete": true,
+        "unresolvedTexts": [],
+        "staticEligible": true,
+        "playerStateQuestion": false,
+        "report": false
+      }
+    },
+    {
+      "gameId": "ultima5",
+      "dialogueId": "fresh-u5-sceptre-entry-and-crossing",
+      "turn": 3,
+      "text": "Beyond that door, how should I cross the pits and trapdoors to pick it up?",
+      "parseStatus": "typed",
+      "frame": {
+        "kind": "source-fields",
+        "originalText": "Beyond that door, how should I cross the pits and trapdoors to pick it up?",
+        "subjectText": "the pits and trapdoors",
+        "subjectCandidates": [
+          "the pits and trapdoors",
+          "Beyond that door"
+        ],
+        "contextTexts": [
+          "Beyond that door"
+        ],
+        "intentTexts": [],
+        "correction": false,
+        "fields": [
+          {
+            "key": "method",
+            "selectors": [
+              "cross"
+            ],
+            "requestedText": "how should I cross the pits and trapdoors to pick it up",
+            "actionText": "cross the pits and trapdoors to pick it up",
+            "purposeTexts": [
+              "to pick it up"
+            ],
+            "qualifierTexts": [
+              "to pick it up"
+            ],
+            "objectTexts": [
+              "the pits and trapdoors"
+            ],
+            "objectRole": "object",
+            "governorText": "cross",
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [
+              "to pick it up"
+            ],
+            "subjectText": "the pits and trapdoors"
+          }
+        ],
+        "constraints": {},
+        "constraintTexts": [
+          "Beyond that door"
+        ],
+        "complete": true,
+        "unresolvedTexts": [],
+        "staticEligible": true,
+        "playerStateQuestion": false,
+        "report": false
+      }
+    },
+    {
+      "gameId": "ultima5",
+      "dialogueId": "fresh-u5-sceptre-entry-and-crossing",
+      "turn": 4,
+      "text": "Which metal is the Sceptre made from?",
+      "parseStatus": "typed",
+      "frame": {
+        "kind": "source-fields",
+        "originalText": "Which metal is the Sceptre made from?",
+        "subjectText": "the Sceptre",
+        "subjectCandidates": [
+          "the Sceptre"
+        ],
+        "contextTexts": [],
+        "intentTexts": [],
+        "correction": false,
+        "fields": [
+          {
+            "key": "composition",
+            "selectors": [
+              "metal"
+            ],
+            "requestedText": "Which metal is the Sceptre made from",
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [
+              "from"
+            ],
+            "subjectText": "the Sceptre",
+            "qualifierTexts": [
+              "from"
+            ]
+          }
+        ],
+        "constraints": {},
+        "constraintTexts": [],
+        "complete": true,
+        "unresolvedTexts": [],
+        "staticEligible": true,
+        "playerStateQuestion": false,
+        "report": false
+      }
+    },
+    {
+      "gameId": "ultima5",
+      "dialogueId": "fresh-u5-faulinei-lead-to-flame",
+      "turn": 1,
+      "text": "For the Faulinei expedition, who teaches the dungeon word after Malik points me onward, and what is the word?",
+      "parseStatus": "typed",
+      "frame": {
+        "kind": "source-fields",
+        "originalText": "For the Faulinei expedition, who teaches the dungeon word after Malik points me onward, and what is the word?",
+        "subjectText": "the dungeon word",
+        "subjectCandidates": [
+          "the dungeon word",
+          "the word",
+          "For the Faulinei expedition"
+        ],
+        "contextTexts": [
+          "For the Faulinei expedition"
+        ],
+        "intentTexts": [],
+        "correction": false,
+        "identityCandidateText": "the word",
+        "fields": [
+          {
+            "key": "teacher",
+            "selectors": [],
+            "requestedText": "who teaches the dungeon word after Malik points me onward",
+            "actionText": "teaches the dungeon word",
+            "argumentTexts": [],
+            "objectTexts": [
+              "the dungeon word"
+            ],
+            "objectRole": "content",
+            "governorText": "teaches",
+            "fullArgumentTexts": [
+              "the dungeon word"
+            ],
+            "ownerArgumentTexts": [
+              "the dungeon word"
+            ],
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [
+              "after Malik points me onward"
+            ],
+            "subjectText": "the dungeon word",
+            "qualifierTexts": [
+              "after Malik points me onward"
+            ],
+            "localConditionTexts": [
+              "after Malik points me onward"
+            ]
+          },
+          {
+            "key": "method",
+            "selectors": [
+              "keyword"
+            ],
+            "requestedText": "what is the word",
+            "fieldText": "word",
+            "qualifierTexts": [],
+            "fieldHead": "the word",
+            "identityCandidateText": "the word",
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": []
+          }
+        ],
+        "constraints": {},
+        "constraintTexts": [
+          "For the Faulinei expedition"
+        ],
+        "complete": true,
+        "unresolvedTexts": [],
+        "staticEligible": true,
+        "playerStateQuestion": false,
+        "report": false
+      }
+    },
+    {
+      "gameId": "ultima5",
+      "dialogueId": "fresh-u5-faulinei-lead-to-flame",
+      "turn": 2,
+      "text": "I mean summoning him at the Lycaeum next: where do I stand, and what do I shout?",
+      "parseStatus": "typed",
+      "frame": {
+        "kind": "source-fields",
+        "originalText": "I mean summoning him at the Lycaeum next: where do I stand, and what do I shout?",
+        "subjectText": "summoning him at the Lycaeum next",
+        "subjectCandidates": [
+          "summoning him at the Lycaeum next",
+          "I mean summoning him at the Lycaeum next"
+        ],
+        "contextTexts": [
+          "I mean summoning him at the Lycaeum next"
+        ],
+        "intentTexts": [],
+        "correction": true,
+        "fields": [
+          {
+            "key": "location",
+            "selectors": [],
+            "requestedText": "where do I stand",
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [],
+            "qualifierTexts": []
+          },
+          {
+            "key": "method",
+            "selectors": [
+              "summon"
+            ],
+            "requestedText": "what do I shout",
+            "actionText": "shout",
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [],
+            "qualifierTexts": []
+          }
+        ],
+        "constraints": {},
+        "constraintTexts": [
+          "I mean summoning him at the Lycaeum next"
+        ],
+        "complete": true,
+        "unresolvedTexts": [],
+        "staticEligible": true,
+        "playerStateQuestion": false,
+        "report": false
+      }
+    },
+    {
+      "gameId": "ultima5",
+      "dialogueId": "fresh-u5-faulinei-lead-to-flame",
+      "turn": 3,
+      "text": "After shouting his name, when should I use the Shard of Falsehood?",
+      "parseStatus": "typed",
+      "frame": {
+        "kind": "source-fields",
+        "originalText": "After shouting his name, when should I use the Shard of Falsehood?",
+        "subjectText": "the Shard of Falsehood",
+        "subjectCandidates": [
+          "the Shard of Falsehood",
+          "After shouting his name"
+        ],
+        "contextTexts": [
+          "After shouting his name"
+        ],
+        "intentTexts": [],
+        "correction": false,
+        "fields": [
+          {
+            "key": "sequence",
+            "selectors": [],
+            "requestedText": "when should I use the Shard of Falsehood",
+            "actionText": "use the Shard of Falsehood",
+            "argumentTexts": [],
+            "fullArgumentTexts": [
+              "the Shard of Falsehood"
+            ],
+            "ownerArgumentTexts": [
+              "the Shard of Falsehood"
+            ],
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [],
+            "subjectText": "the Shard of Falsehood",
+            "qualifierTexts": []
+          }
+        ],
+        "constraints": {
+          "conditionText": "After shouting his name"
+        },
+        "constraintTexts": [
+          "After shouting his name"
+        ],
+        "complete": true,
+        "unresolvedTexts": [],
+        "staticEligible": true,
+        "playerStateQuestion": false,
+        "report": false
+      }
+    },
+    {
+      "gameId": "ultima5",
+      "dialogueId": "fresh-u5-faulinei-lead-to-flame",
+      "turn": 4,
+      "text": "How many real-world seconds does that one-turn wait last?",
+      "parseStatus": "typed",
+      "frame": {
+        "kind": "source-fields",
+        "originalText": "How many real-world seconds does that one-turn wait last?",
+        "subjectText": "that one-turn wait",
+        "subjectCandidates": [
+          "that one-turn wait"
+        ],
+        "contextTexts": [],
+        "intentTexts": [],
+        "correction": false,
+        "fields": [
+          {
+            "key": "stats",
+            "selectors": [
+              "duration"
+            ],
+            "requestedText": "How many real-world seconds does that one-turn wait last",
+            "fieldText": "seconds",
+            "qualifierTexts": [
+              "real-world"
+            ],
+            "fieldHead": "real-world seconds",
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [
+              "real-world"
+            ],
+            "subjectText": "that one-turn wait"
+          }
+        ],
+        "constraints": {},
+        "constraintTexts": [],
+        "complete": true,
+        "unresolvedTexts": [],
+        "staticEligible": true,
+        "playerStateQuestion": false,
+        "report": false
+      }
+    },
+    {
+      "gameId": "ultima5",
+      "dialogueId": "fresh-u5-party-growth-and-replacement",
+      "turn": 1,
+      "text": "Which companions should I keep at the beginning, and who needs healing before roadside combat?",
+      "parseStatus": "unresolved",
+      "frame": {
+        "kind": "source-fields",
+        "originalText": "Which companions should I keep at the beginning, and who needs healing before roadside combat?",
+        "subjectText": null,
+        "subjectCandidates": [],
+        "contextTexts": [],
+        "intentTexts": [],
+        "correction": false,
+        "fields": [
+          {
+            "key": "identity",
+            "selectors": [
+              "members"
+            ],
+            "requestedText": "Which companions should I keep at the beginning",
+            "fieldText": "companions",
+            "qualifierTexts": [],
+            "fieldHead": "companions",
+            "actionText": "keep at the beginning",
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": []
+          }
+        ],
+        "constraints": {},
+        "constraintTexts": [],
+        "complete": false,
+        "unresolvedTexts": [
+          "who needs healing before roadside combat"
+        ],
+        "staticEligible": true,
+        "playerStateQuestion": false,
+        "report": false
+      }
+    },
+    {
+      "gameId": "ultima5",
+      "dialogueId": "fresh-u5-party-growth-and-replacement",
+      "turn": 2,
+      "text": "I want Julia as the next replacement. Where do I recruit her?",
+      "parseStatus": "typed",
+      "frame": {
+        "kind": "source-fields",
+        "originalText": "I want Julia as the next replacement. Where do I recruit her?",
+        "subjectText": "her",
+        "subjectCandidates": [
+          "her",
+          "I want Julia as the next replacement"
+        ],
+        "contextTexts": [
+          "I want Julia as the next replacement"
+        ],
+        "intentTexts": [],
+        "correction": false,
+        "fields": [
+          {
+            "key": "location",
+            "selectors": [
+              "recruitment"
+            ],
+            "requestedText": "Where do I recruit her",
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [],
+            "subjectText": "her",
+            "qualifierTexts": []
+          }
+        ],
+        "constraints": {},
+        "constraintTexts": [
+          "I want Julia as the next replacement"
+        ],
+        "complete": true,
+        "unresolvedTexts": [],
+        "staticEligible": true,
+        "playerStateQuestion": false,
+        "report": false
+      }
+    },
+    {
+      "gameId": "ultima5",
+      "dialogueId": "fresh-u5-party-growth-and-replacement",
+      "turn": 3,
+      "text": "For the planned full roster, give me the six names and the later mage replacement for Julia.",
+      "parseStatus": "typed",
+      "frame": {
+        "kind": "source-fields",
+        "originalText": "For the planned full roster, give me the six names and the later mage replacement for Julia.",
+        "subjectText": "Julia",
+        "subjectCandidates": [
+          "Julia",
+          "For the planned full roster"
+        ],
+        "contextTexts": [
+          "For the planned full roster"
+        ],
+        "intentTexts": [],
+        "correction": false,
+        "fields": [
+          {
+            "key": "identity",
+            "selectors": [
+              "members"
+            ],
+            "requestedText": "give me the six names and the later mage replacement for Julia",
+            "fieldText": "names",
+            "qualifierTexts": [],
+            "fieldHead": "the six names and the later mage replacement",
+            "requestedCountText": "six",
+            "requestedCount": {
+              "text": "six",
+              "value": 6,
+              "scope": "requested-list"
+            },
+            "subjectMode": "topic",
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": []
+          },
+          {
+            "key": "identity",
+            "selectors": [
+              "replacement"
+            ],
+            "requestedText": "give me the six names and the later mage replacement for Julia",
+            "fieldText": "replacement",
+            "qualifierTexts": [
+              "later mage"
+            ],
+            "fieldHead": "the six names and the later mage replacement",
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [
+              "later mage"
+            ],
+            "subjectText": "Julia"
+          }
+        ],
+        "constraints": {},
+        "constraintTexts": [
+          "For the planned full roster"
+        ],
+        "complete": true,
+        "unresolvedTexts": [],
+        "staticEligible": true,
+        "playerStateQuestion": false,
+        "report": false
+      }
+    },
+    {
+      "gameId": "ultima5",
+      "dialogueId": "fresh-u5-party-growth-and-replacement",
+      "turn": 4,
+      "text": "Which member of that recommended six has the highest Luck score?",
+      "parseStatus": "typed",
+      "frame": {
+        "kind": "source-fields",
+        "originalText": "Which member of that recommended six has the highest Luck score?",
+        "subjectText": "the highest Luck score",
+        "subjectCandidates": [
+          "the highest Luck score"
+        ],
+        "contextTexts": [],
+        "intentTexts": [],
+        "correction": false,
+        "fields": [
+          {
+            "key": "identity",
+            "selectors": [
+              "members"
+            ],
+            "requestedText": "Which member of that recommended six has the highest Luck score",
+            "fieldText": "member",
+            "qualifierTexts": [
+              "of that recommended six"
+            ],
+            "fieldHead": "member of that recommended six",
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [
+              "of that recommended six"
+            ],
+            "subjectText": "the highest Luck score"
+          }
+        ],
+        "constraints": {
+          "comparisonText": "highest Luck score"
+        },
+        "constraintTexts": [
+          "highest Luck score"
+        ],
+        "complete": true,
+        "unresolvedTexts": [],
+        "staticEligible": true,
+        "playerStateQuestion": false,
+        "report": false
+      }
+    },
+    {
+      "gameId": "ultima5",
+      "dialogueId": "fresh-u5-honor-meditation-humility-correction",
+      "turn": 1,
+      "text": "Who supplies the Honor mantra, and what condition should I meet before asking?",
+      "parseStatus": "typed",
+      "frame": {
+        "kind": "source-fields",
+        "originalText": "Who supplies the Honor mantra, and what condition should I meet before asking?",
+        "subjectText": "the Honor mantra",
+        "subjectCandidates": [
+          "the Honor mantra"
+        ],
+        "contextTexts": [],
+        "intentTexts": [],
+        "correction": false,
+        "fields": [
+          {
+            "key": "provider",
+            "selectors": [],
+            "requestedText": "Who supplies the Honor mantra",
+            "actionText": "supplies the Honor mantra",
+            "argumentTexts": [],
+            "objectTexts": [
+              "the Honor mantra"
+            ],
+            "objectRole": "object",
+            "governorText": "supplies",
+            "fullArgumentTexts": [
+              "the Honor mantra"
+            ],
+            "ownerArgumentTexts": [
+              "the Honor mantra"
+            ],
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [],
+            "subjectText": "the Honor mantra",
+            "qualifierTexts": []
+          },
+          {
+            "key": "prerequisites",
+            "selectors": [
+              "condition"
+            ],
+            "requestedText": "what condition should I meet before asking",
+            "fieldText": "condition",
+            "qualifierTexts": [
+              "before asking"
+            ],
+            "fieldHead": "condition",
+            "actionText": "meet",
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [
+              "before asking"
+            ],
+            "localConditionTexts": [
+              "before asking"
+            ]
+          }
+        ],
+        "constraints": {},
+        "constraintTexts": [],
+        "complete": true,
+        "unresolvedTexts": [],
+        "staticEligible": true,
+        "playerStateQuestion": false,
+        "report": false
+      }
+    },
+    {
+      "gameId": "ultima5",
+      "dialogueId": "fresh-u5-honor-meditation-humility-correction",
+      "turn": 2,
+      "text": "For that shrine’s meditation, which word do I use and how long should I meditate?",
+      "parseStatus": "typed",
+      "frame": {
+        "kind": "source-fields",
+        "originalText": "For that shrine’s meditation, which word do I use and how long should I meditate?",
+        "subjectText": "that shrine's meditation",
+        "subjectCandidates": [
+          "that shrine's meditation",
+          "For that shrine's meditation"
+        ],
+        "contextTexts": [
+          "For that shrine's meditation"
+        ],
+        "intentTexts": [],
+        "correction": false,
+        "fields": [
+          {
+            "key": "method",
+            "selectors": [
+              "keyword"
+            ],
+            "requestedText": "which word do I use",
+            "fieldText": "word",
+            "qualifierTexts": [],
+            "fieldHead": "word",
+            "actionText": "use",
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": []
+          },
+          {
+            "key": "stats",
+            "selectors": [
+              "duration"
+            ],
+            "requestedText": "how long should I meditate",
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [],
+            "qualifierTexts": []
+          }
+        ],
+        "constraints": {},
+        "constraintTexts": [
+          "For that shrine's meditation"
+        ],
+        "complete": true,
+        "unresolvedTexts": [],
+        "staticEligible": true,
+        "playerStateQuestion": false,
+        "report": false
+      }
+    },
+    {
+      "gameId": "ultima5",
+      "dialogueId": "fresh-u5-honor-meditation-humility-correction",
+      "turn": 3,
+      "text": "Correction—I am asking about Humility’s completion bonus now: what attributes does that shrine add?",
+      "parseStatus": "typed",
+      "frame": {
+        "kind": "source-fields",
+        "originalText": "Correction—I am asking about Humility’s completion bonus now: what attributes does that shrine add?",
+        "subjectText": "that shrine",
+        "subjectCandidates": [
+          "that shrine",
+          "I am asking about Humility's completion bonus now"
+        ],
+        "contextTexts": [
+          "I am asking about Humility's completion bonus now"
+        ],
+        "intentTexts": [],
+        "correction": true,
+        "fields": [
+          {
+            "key": "use",
+            "selectors": [
+              "bonus"
+            ],
+            "requestedText": "what attributes does that shrine add",
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [],
+            "subjectText": "that shrine",
+            "qualifierTexts": []
+          }
+        ],
+        "constraints": {},
+        "constraintTexts": [
+          "I am asking about Humility's completion bonus now"
+        ],
+        "complete": true,
+        "unresolvedTexts": [],
+        "staticEligible": true,
+        "playerStateQuestion": false,
+        "report": false
+      }
+    },
+    {
+      "gameId": "ultima5",
+      "dialogueId": "fresh-u5-honor-meditation-humility-correction",
+      "turn": 4,
+      "text": "Is the floor of the Humility shrine granite or basalt?",
+      "parseStatus": "unresolved",
+      "frame": {
+        "kind": "source-fields",
+        "originalText": "Is the floor of the Humility shrine granite or basalt?",
+        "subjectText": "the floor of the Humility shrine granite or basalt",
+        "subjectCandidates": [
+          "the floor of the Humility shrine granite or basalt"
+        ],
+        "contextTexts": [],
+        "intentTexts": [],
+        "correction": false,
+        "fields": [
+          {
+            "key": "unknown",
+            "selectors": [
+              "the floor of the humility shrine granite or basalt"
+            ],
+            "requestedText": "Is the floor of the Humility shrine granite or basalt",
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [],
+            "subjectText": "the floor of the Humility shrine granite or basalt",
+            "qualifierTexts": []
+          }
+        ],
+        "constraints": {},
+        "constraintTexts": [],
+        "complete": false,
+        "unresolvedTexts": [
+          "Is the floor of the Humility shrine granite or basalt"
+        ],
+        "staticEligible": true,
+        "playerStateQuestion": false,
+        "report": false
+      }
+    },
+    {
+      "gameId": "ultima6",
+      "dialogueId": "fresh-u6-panpipes-performance-chain",
+      "turn": 1,
+      "text": "I need panpipes for the Sacrifice task. Who supplies the wood, how is it prepared, and who makes the instrument?",
+      "parseStatus": "typed",
+      "frame": {
+        "kind": "source-fields",
+        "originalText": "I need panpipes for the Sacrifice task. Who supplies the wood, how is it prepared, and who makes the instrument?",
+        "subjectText": "the wood",
+        "subjectCandidates": [
+          "the wood",
+          "it",
+          "the instrument",
+          "I need panpipes for the Sacrifice task"
+        ],
+        "contextTexts": [
+          "I need panpipes for the Sacrifice task"
+        ],
+        "intentTexts": [],
+        "correction": false,
+        "fields": [
+          {
+            "key": "provider",
+            "selectors": [],
+            "requestedText": "Who supplies the wood",
+            "actionText": "supplies the wood",
+            "argumentTexts": [],
+            "objectTexts": [
+              "the wood"
+            ],
+            "objectRole": "object",
+            "governorText": "supplies",
+            "fullArgumentTexts": [
+              "the wood"
+            ],
+            "ownerArgumentTexts": [
+              "the wood"
+            ],
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [],
+            "subjectText": "the wood",
+            "qualifierTexts": []
+          },
+          {
+            "key": "method",
+            "selectors": [
+              "material-preparation"
+            ],
+            "requestedText": "how is it prepared",
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [],
+            "subjectText": "it",
+            "qualifierTexts": []
+          },
+          {
+            "key": "creator",
+            "selectors": [],
+            "requestedText": "who makes the instrument",
+            "actionText": "makes the instrument",
+            "argumentTexts": [],
+            "objectTexts": [
+              "the instrument"
+            ],
+            "objectRole": "output",
+            "governorText": "makes",
+            "fullArgumentTexts": [
+              "the instrument"
+            ],
+            "ownerArgumentTexts": [
+              "the instrument"
+            ],
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [],
+            "subjectText": "the instrument",
+            "qualifierTexts": []
+          }
+        ],
+        "constraints": {},
+        "constraintTexts": [
+          "I need panpipes for the Sacrifice task"
+        ],
+        "complete": true,
+        "unresolvedTexts": [],
+        "staticEligible": true,
+        "playerStateQuestion": false,
+        "report": false
+      }
+    },
+    {
+      "gameId": "ultima6",
+      "dialogueId": "fresh-u6-panpipes-performance-chain",
+      "turn": 2,
+      "text": "And who teaches the tune, what song topic should I use, and what is its number sequence?",
+      "parseStatus": "typed",
+      "frame": {
+        "kind": "source-fields",
+        "originalText": "And who teaches the tune, what song topic should I use, and what is its number sequence?",
+        "subjectText": "the tune",
+        "subjectCandidates": [
+          "the tune",
+          "its"
+        ],
+        "contextTexts": [],
+        "intentTexts": [],
+        "correction": false,
+        "fields": [
+          {
+            "key": "teacher",
+            "selectors": [],
+            "requestedText": "who teaches the tune",
+            "actionText": "teaches the tune",
+            "argumentTexts": [],
+            "objectTexts": [
+              "the tune"
+            ],
+            "objectRole": "content",
+            "governorText": "teaches",
+            "fullArgumentTexts": [
+              "the tune"
+            ],
+            "ownerArgumentTexts": [
+              "the tune"
+            ],
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [],
+            "subjectText": "the tune",
+            "qualifierTexts": []
+          },
+          {
+            "key": "method",
+            "selectors": [
+              "keyword"
+            ],
+            "requestedText": "what song topic should I use",
+            "fieldText": "song topic",
+            "qualifierTexts": [],
+            "fieldHead": "song topic",
+            "actionText": "use",
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": []
+          },
+          {
+            "key": "sequence",
+            "selectors": [
+              "tune"
+            ],
+            "requestedText": "what is its number sequence",
+            "fieldText": "number sequence",
+            "qualifierTexts": [],
+            "fieldHead": "number sequence",
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [],
+            "subjectText": "its"
+          }
+        ],
+        "constraints": {},
+        "constraintTexts": [],
+        "complete": true,
+        "unresolvedTexts": [],
+        "staticEligible": true,
+        "playerStateQuestion": false,
+        "report": false
+      }
+    },
+    {
+      "gameId": "ultima6",
+      "dialogueId": "fresh-u6-panpipes-performance-chain",
+      "turn": 3,
+      "text": "Who do I perform it for, and where, to earn the rune?",
+      "parseStatus": "typed",
+      "frame": {
+        "kind": "source-fields",
+        "originalText": "Who do I perform it for, and where, to earn the rune?",
+        "subjectText": null,
+        "subjectCandidates": [],
+        "contextTexts": [],
+        "intentTexts": [],
+        "correction": false,
+        "fields": [
+          {
+            "key": "recipient",
+            "selectors": [],
+            "requestedText": "Who do I perform it for",
+            "actionText": "perform it for",
+            "argumentTexts": [
+              "it"
+            ],
+            "objectTexts": [
+              "it"
+            ],
+            "objectRole": "content",
+            "governorText": "perform",
+            "fullArgumentTexts": [
+              "it"
+            ],
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [
+              "it"
+            ],
+            "qualifierTexts": []
+          },
+          {
+            "key": "location",
+            "selectors": [],
+            "requestedText": "where, to earn the rune",
+            "qualifierTexts": [
+              ", to earn the rune"
+            ]
+          }
+        ],
+        "constraints": {},
+        "constraintTexts": [],
+        "complete": true,
+        "unresolvedTexts": [],
+        "staticEligible": true,
+        "playerStateQuestion": false,
+        "report": false
+      }
+    },
+    {
+      "gameId": "ultima6",
+      "dialogueId": "fresh-u6-panpipes-performance-chain",
+      "turn": 4,
+      "text": "What tempo in beats per minute does that tune require?",
+      "parseStatus": "typed",
+      "frame": {
+        "kind": "source-fields",
+        "originalText": "What tempo in beats per minute does that tune require?",
+        "subjectText": "that tune",
+        "subjectCandidates": [
+          "that tune"
+        ],
+        "contextTexts": [],
+        "intentTexts": [],
+        "correction": false,
+        "fields": [
+          {
+            "key": "stats",
+            "selectors": [
+              "tempo"
+            ],
+            "requestedText": "What tempo in beats per minute does that tune require",
+            "fieldText": "tempo",
+            "qualifierTexts": [
+              "in beats per"
+            ],
+            "fieldHead": "tempo in beats per minute",
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [
+              "in beats per"
+            ],
+            "subjectText": "that tune"
+          },
+          {
+            "key": "stats",
+            "selectors": [
+              "duration"
+            ],
+            "requestedText": "What tempo in beats per minute does that tune require",
+            "fieldText": "minute",
+            "qualifierTexts": [
+              "in beats per"
+            ],
+            "fieldHead": "tempo in beats per minute",
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [
+              "in beats per"
+            ],
+            "subjectText": "that tune"
+          }
+        ],
+        "constraints": {},
+        "constraintTexts": [],
+        "complete": true,
+        "unresolvedTexts": [],
+        "staticEligible": true,
+        "playerStateQuestion": false,
+        "report": false
+      }
+    },
+    {
+      "gameId": "ultima6",
+      "dialogueId": "fresh-u6-balloon-plans-cloth-and-assembly",
+      "turn": 1,
+      "text": "Where should I look for the balloon plans, including the coordinates?",
+      "parseStatus": "typed",
+      "frame": {
+        "kind": "source-fields",
+        "originalText": "Where should I look for the balloon plans, including the coordinates?",
+        "subjectText": "the balloon plans, including the coordinates",
+        "subjectCandidates": [
+          "the balloon plans, including the coordinates"
+        ],
+        "contextTexts": [],
+        "intentTexts": [],
+        "correction": false,
+        "fields": [
+          {
+            "key": "location",
+            "selectors": [],
+            "requestedText": "Where should I look for the balloon plans, including the coordinates",
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [],
+            "subjectText": "the balloon plans, including the coordinates",
+            "qualifierTexts": []
+          },
+          {
+            "key": "location",
+            "selectors": [
+              "coordinates"
+            ],
+            "requestedText": "Where should I look for the balloon plans, including the coordinates",
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [],
+            "subjectText": "the balloon plans, including the coordinates",
+            "qualifierTexts": []
+          }
+        ],
+        "constraints": {},
+        "constraintTexts": [],
+        "complete": true,
+        "unresolvedTexts": [],
+        "staticEligible": true,
+        "playerStateQuestion": false,
+        "report": false
+      }
+    },
+    {
+      "gameId": "ultima6",
+      "dialogueId": "fresh-u6-balloon-plans-cloth-and-assembly",
+      "turn": 2,
+      "text": "For the balloon cloth, how much spidersilk is needed, and who turns it into thread and cloth?",
+      "parseStatus": "typed",
+      "frame": {
+        "kind": "source-fields",
+        "originalText": "For the balloon cloth, how much spidersilk is needed, and who turns it into thread and cloth?",
+        "subjectText": "thread and cloth",
+        "subjectCandidates": [
+          "thread and cloth",
+          "For the balloon cloth"
+        ],
+        "contextTexts": [
+          "For the balloon cloth"
+        ],
+        "intentTexts": [],
+        "correction": false,
+        "fields": [
+          {
+            "key": "stats",
+            "selectors": [
+              "quantity"
+            ],
+            "requestedText": "how much spidersilk is needed",
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [],
+            "qualifierTexts": []
+          },
+          {
+            "key": "creator",
+            "selectors": [],
+            "requestedText": "who turns it into thread and cloth",
+            "actionText": "turns it into thread and cloth",
+            "argumentTexts": [
+              "it"
+            ],
+            "objectTexts": [
+              "thread and cloth"
+            ],
+            "objectRole": "output",
+            "governorText": "turns",
+            "fullArgumentTexts": [
+              "it",
+              "thread and cloth"
+            ],
+            "ownerArgumentTexts": [
+              "thread and cloth"
+            ],
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [
+              "it"
+            ],
+            "subjectText": "thread and cloth",
+            "qualifierTexts": []
+          }
+        ],
+        "constraints": {},
+        "constraintTexts": [
+          "For the balloon cloth"
+        ],
+        "complete": true,
+        "unresolvedTexts": [],
+        "staticEligible": true,
+        "playerStateQuestion": false,
+        "report": false
+      }
+    },
+    {
+      "gameId": "ultima6",
+      "dialogueId": "fresh-u6-balloon-plans-cloth-and-assembly",
+      "turn": 3,
+      "text": "Once every component is in my inventory, what do I do with the plans, and what burner items must I collect?",
+      "parseStatus": "typed",
+      "frame": {
+        "kind": "source-fields",
+        "originalText": "Once every component is in my inventory, what do I do with the plans, and what burner items must I collect?",
+        "subjectText": "the plans",
+        "subjectCandidates": [
+          "the plans",
+          "Once every component is in my inventory"
+        ],
+        "contextTexts": [
+          "Once every component is in my inventory"
+        ],
+        "intentTexts": [],
+        "correction": false,
+        "fields": [
+          {
+            "key": "use",
+            "selectors": [
+              "effect"
+            ],
+            "requestedText": "what do I do with the plans",
+            "actionText": "do with the plans",
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [],
+            "subjectText": "the plans",
+            "qualifierTexts": []
+          },
+          {
+            "key": "prerequisites",
+            "selectors": [
+              "materials"
+            ],
+            "requestedText": "what burner items must I collect",
+            "fieldText": "burner items",
+            "qualifierTexts": [
+              "must I collect"
+            ],
+            "fieldHead": "burner items must I collect",
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [
+              "must I collect"
+            ]
+          }
+        ],
+        "constraints": {
+          "conditionText": "Once every component is in my inventory"
+        },
+        "constraintTexts": [
+          "Once every component is in my inventory"
+        ],
+        "complete": true,
+        "unresolvedTexts": [],
+        "staticEligible": true,
+        "playerStateQuestion": false,
+        "report": false
+      }
+    },
+    {
+      "gameId": "ultima6",
+      "dialogueId": "fresh-u6-balloon-plans-cloth-and-assembly",
+      "turn": 4,
+      "text": "Can I replace those 40 spidersilk with hemp and keep the same recipe?",
+      "parseStatus": "typed",
+      "frame": {
+        "kind": "source-fields",
+        "originalText": "Can I replace those 40 spidersilk with hemp and keep the same recipe?",
+        "subjectText": "I replace those 40 spidersilk with hemp and keep the same recipe",
+        "subjectCandidates": [
+          "I replace those 40 spidersilk with hemp and keep the same recipe"
+        ],
+        "contextTexts": [],
+        "intentTexts": [],
+        "correction": false,
+        "fields": [
+          {
+            "key": "prerequisites",
+            "selectors": [
+              "materials"
+            ],
+            "requestedText": "Can I replace those 40 spidersilk with hemp and keep the same recipe",
+            "actionText": "I replace those 40 spidersilk with hemp and keep the same recipe",
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [],
+            "subjectText": "I replace those 40 spidersilk with hemp and keep the same recipe",
+            "qualifierTexts": []
+          }
+        ],
+        "constraints": {},
+        "constraintTexts": [],
+        "complete": true,
+        "unresolvedTexts": [],
+        "staticEligible": true,
+        "playerStateQuestion": false,
+        "report": false
+      }
+    },
+    {
+      "gameId": "ultima6",
+      "dialogueId": "fresh-u6-map-trades-and-bonn-correction",
+      "turn": 1,
+      "text": "Where do I meet Ybarra for his map piece, and what does he accept in exchange?",
+      "parseStatus": "typed",
+      "frame": {
+        "kind": "source-fields",
+        "originalText": "Where do I meet Ybarra for his map piece, and what does he accept in exchange?",
+        "subjectText": "Ybarra for his map piece",
+        "subjectCandidates": [
+          "Ybarra for his map piece",
+          "he"
+        ],
+        "contextTexts": [],
+        "intentTexts": [],
+        "correction": false,
+        "fields": [
+          {
+            "key": "location",
+            "selectors": [],
+            "requestedText": "Where do I meet Ybarra for his map piece",
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [],
+            "subjectText": "Ybarra for his map piece",
+            "qualifierTexts": []
+          },
+          {
+            "key": "prerequisites",
+            "selectors": [
+              "materials"
+            ],
+            "requestedText": "what does he accept in exchange",
+            "actionText": " in exchange",
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [],
+            "subjectText": "he",
+            "qualifierTexts": []
+          }
+        ],
+        "constraints": {},
+        "constraintTexts": [],
+        "complete": true,
+        "unresolvedTexts": [],
+        "staticEligible": true,
+        "playerStateQuestion": false,
+        "report": false
+      }
+    },
+    {
+      "gameId": "ultima6",
+      "dialogueId": "fresh-u6-map-trades-and-bonn-correction",
+      "turn": 2,
+      "text": "Actually, the next trade I meant is Morchella’s. Where is she, and what should I bring for her shard?",
+      "parseStatus": "typed",
+      "frame": {
+        "kind": "source-fields",
+        "originalText": "Actually, the next trade I meant is Morchella’s. Where is she, and what should I bring for her shard?",
+        "subjectText": "her shard",
+        "subjectCandidates": [
+          "her shard",
+          "she",
+          "the next trade I meant is Morchella's"
+        ],
+        "contextTexts": [
+          "the next trade I meant is Morchella's"
+        ],
+        "intentTexts": [],
+        "correction": true,
+        "fields": [
+          {
+            "key": "location",
+            "selectors": [],
+            "requestedText": "Where is she",
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [],
+            "subjectText": "she",
+            "qualifierTexts": []
+          },
+          {
+            "key": "prerequisites",
+            "selectors": [
+              "materials"
+            ],
+            "requestedText": "what should I bring for her shard",
+            "actionText": "bring for her shard",
+            "argumentTexts": [
+              "for her shard"
+            ],
+            "fullArgumentTexts": [
+              "for her shard"
+            ],
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [
+              "for her shard"
+            ],
+            "subjectText": "her shard",
+            "qualifierTexts": []
+          }
+        ],
+        "constraints": {},
+        "constraintTexts": [
+          "the next trade I meant is Morchella's"
+        ],
+        "complete": true,
+        "unresolvedTexts": [],
+        "staticEligible": true,
+        "playerStateQuestion": false,
+        "report": false
+      }
+    },
+    {
+      "gameId": "ultima6",
+      "dialogueId": "fresh-u6-map-trades-and-bonn-correction",
+      "turn": 3,
+      "text": "With Bonn, am I trading something or moving an object? Where does his fragment hide?",
+      "parseStatus": "not-parsed",
+      "frame": null
+    },
+    {
+      "gameId": "ultima6",
+      "dialogueId": "fresh-u6-map-trades-and-bonn-correction",
+      "turn": 4,
+      "text": "What is the weight in kilograms of Bonn’s harpsichord?",
+      "parseStatus": "typed",
+      "frame": {
+        "kind": "source-fields",
+        "originalText": "What is the weight in kilograms of Bonn’s harpsichord?",
+        "subjectText": "Bonn's harpsichord",
+        "subjectCandidates": [
+          "Bonn's harpsichord"
+        ],
+        "contextTexts": [],
+        "intentTexts": [],
+        "correction": false,
+        "fields": [
+          {
+            "key": "stats",
+            "selectors": [
+              "weight"
+            ],
+            "requestedText": "What is the weight in kilograms of Bonn's harpsichord",
+            "fieldText": "weight",
+            "qualifierTexts": [
+              "in kilograms"
+            ],
+            "fieldHead": "the weight in kilograms",
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [
+              "in kilograms"
+            ],
+            "subjectText": "Bonn's harpsichord"
+          }
+        ],
+        "constraints": {},
+        "constraintTexts": [],
+        "complete": true,
+        "unresolvedTexts": [],
+        "staticEligible": true,
+        "playerStateQuestion": false,
+        "report": false
+      }
+    },
+    {
+      "gameId": "ultima6",
+      "dialogueId": "fresh-u6-red-blue-lens-role-placement",
+      "turn": 1,
+      "text": "For the broken red gargoyle lens, where is it recovered and who handles the repair?",
+      "parseStatus": "typed",
+      "frame": {
+        "kind": "source-fields",
+        "originalText": "For the broken red gargoyle lens, where is it recovered and who handles the repair?",
+        "subjectText": "the repair",
+        "subjectCandidates": [
+          "the repair",
+          "it",
+          "For the broken red gargoyle lens"
+        ],
+        "contextTexts": [
+          "For the broken red gargoyle lens"
+        ],
+        "intentTexts": [],
+        "correction": false,
+        "fields": [
+          {
+            "key": "location",
+            "selectors": [],
+            "requestedText": "where is it recovered",
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [],
+            "subjectText": "it",
+            "qualifierTexts": []
+          },
+          {
+            "key": "creator",
+            "selectors": [
+              "repair"
+            ],
+            "requestedText": "who handles the repair",
+            "actionText": "handles the repair",
+            "objectRole": "output",
+            "governorText": "handles",
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [],
+            "subjectText": "the repair",
+            "qualifierTexts": []
+          }
+        ],
+        "constraints": {},
+        "constraintTexts": [
+          "For the broken red gargoyle lens"
+        ],
+        "complete": true,
+        "unresolvedTexts": [],
+        "staticEligible": true,
+        "playerStateQuestion": false,
+        "report": false
+      }
+    },
+    {
+      "gameId": "ultima6",
+      "dialogueId": "fresh-u6-red-blue-lens-role-placement",
+      "turn": 2,
+      "text": "Switch to the blue human lens: who makes that one, what do I bring, and which topics do I mention?",
+      "parseStatus": "typed",
+      "frame": {
+        "kind": "source-fields",
+        "originalText": "Switch to the blue human lens: who makes that one, what do I bring, and which topics do I mention?",
+        "subjectText": "that one",
+        "subjectCandidates": [
+          "that one",
+          "Switch to the blue human lens"
+        ],
+        "contextTexts": [
+          "Switch to the blue human lens"
+        ],
+        "intentTexts": [],
+        "correction": true,
+        "fields": [
+          {
+            "key": "creator",
+            "selectors": [],
+            "requestedText": "who makes that one",
+            "actionText": "makes that one",
+            "argumentTexts": [],
+            "objectTexts": [
+              "that one"
+            ],
+            "objectRole": "output",
+            "governorText": "makes",
+            "fullArgumentTexts": [
+              "that one"
+            ],
+            "ownerArgumentTexts": [
+              "that one"
+            ],
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [],
+            "subjectText": "that one",
+            "qualifierTexts": []
+          },
+          {
+            "key": "prerequisites",
+            "selectors": [
+              "materials"
+            ],
+            "requestedText": "what do I bring",
+            "actionText": "bring",
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [],
+            "qualifierTexts": []
+          },
+          {
+            "key": "method",
+            "selectors": [
+              "keyword"
+            ],
+            "requestedText": "which topics do I mention",
+            "fieldText": "topics",
+            "qualifierTexts": [],
+            "fieldHead": "topics",
+            "actionText": "mention",
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": []
+          }
+        ],
+        "constraints": {},
+        "constraintTexts": [
+          "Switch to the blue human lens"
+        ],
+        "complete": true,
+        "unresolvedTexts": [],
+        "staticEligible": true,
+        "playerStateQuestion": false,
+        "report": false
+      }
+    },
+    {
+      "gameId": "ultima6",
+      "dialogueId": "fresh-u6-red-blue-lens-role-placement",
+      "turn": 3,
+      "text": "At the Codex, which side gets the Britannian lens and which gets the gargoyle lens?",
+      "parseStatus": "typed",
+      "frame": {
+        "kind": "source-fields",
+        "originalText": "At the Codex, which side gets the Britannian lens and which gets the gargoyle lens?",
+        "subjectText": "the Britannian lens",
+        "subjectCandidates": [
+          "the Britannian lens",
+          "the gargoyle lens",
+          "At the Codex"
+        ],
+        "contextTexts": [
+          "At the Codex"
+        ],
+        "intentTexts": [],
+        "correction": false,
+        "fields": [
+          {
+            "key": "method",
+            "selectors": [
+              "placement"
+            ],
+            "requestedText": "which side gets the Britannian lens",
+            "objectTexts": [
+              "the Britannian lens"
+            ],
+            "objectRole": "object",
+            "governorText": "gets",
+            "actionText": "side gets the Britannian lens",
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [],
+            "subjectText": "the Britannian lens",
+            "qualifierTexts": []
+          },
+          {
+            "key": "method",
+            "selectors": [
+              "placement"
+            ],
+            "requestedText": "which gets the gargoyle lens",
+            "objectTexts": [
+              "the gargoyle lens"
+            ],
+            "objectRole": "object",
+            "governorText": "gets",
+            "actionText": "side gets the gargoyle lens",
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [],
+            "subjectText": "the gargoyle lens",
+            "qualifierTexts": [],
+            "inheritedFieldText": "side"
+          }
+        ],
+        "constraints": {},
+        "constraintTexts": [
+          "At the Codex"
+        ],
+        "complete": true,
+        "unresolvedTexts": [],
+        "staticEligible": true,
+        "playerStateQuestion": false,
+        "report": false
+      }
+    },
+    {
+      "gameId": "ultima6",
+      "dialogueId": "fresh-u6-red-blue-lens-role-placement",
+      "turn": 4,
+      "text": "What exact angle in degrees should I set each of those lenses to?",
+      "parseStatus": "typed",
+      "frame": {
+        "kind": "source-fields",
+        "originalText": "What exact angle in degrees should I set each of those lenses to?",
+        "subjectText": null,
+        "subjectCandidates": [],
+        "contextTexts": [],
+        "intentTexts": [],
+        "correction": false,
+        "fields": [
+          {
+            "key": "stats",
+            "selectors": [
+              "angle"
+            ],
+            "requestedText": "What exact angle in degrees should I set each of those lenses to",
+            "fieldText": "angle",
+            "qualifierTexts": [
+              "exact in degrees"
+            ],
+            "fieldHead": "exact angle in degrees",
+            "actionText": "set each of those lenses to",
+            "qualifiers": {
+              "exact": true,
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [
+              "in degrees"
+            ]
+          }
+        ],
+        "constraints": {},
+        "constraintTexts": [],
+        "complete": true,
+        "unresolvedTexts": [],
+        "staticEligible": true,
+        "playerStateQuestion": false,
+        "report": false
+      }
+    },
+    {
+      "gameId": "albion",
+      "dialogueId": "albion-fresh-weapon-tradeoffs",
+      "turn": 1,
+      "text": "Point me to the location listed for Shadowsword.",
+      "parseStatus": "typed",
+      "frame": {
+        "kind": "source-fields",
+        "originalText": "Point me to the location listed for Shadowsword.",
+        "subjectText": "Shadowsword",
+        "subjectCandidates": [
+          "Shadowsword"
+        ],
+        "contextTexts": [],
+        "intentTexts": [],
+        "correction": false,
+        "fields": [
+          {
+            "key": "location",
+            "selectors": [],
+            "requestedText": "Point me to the location listed for Shadowsword"
+          }
+        ],
+        "constraints": {},
+        "constraintTexts": [],
+        "complete": true,
+        "unresolvedTexts": [],
+        "staticEligible": true,
+        "playerStateQuestion": false,
+        "report": false
+      }
+    },
+    {
+      "gameId": "albion",
+      "dialogueId": "albion-fresh-weapon-tradeoffs",
+      "turn": 2,
+      "text": "What penalties come with that weapon?",
+      "parseStatus": "typed",
+      "frame": {
+        "kind": "source-fields",
+        "originalText": "What penalties come with that weapon?",
+        "subjectText": "that weapon",
+        "subjectCandidates": [
+          "that weapon"
+        ],
+        "contextTexts": [],
+        "intentTexts": [],
+        "correction": false,
+        "fields": [
+          {
+            "key": "use",
+            "selectors": [
+              "penalty"
+            ],
+            "requestedText": "What penalties come with that weapon",
+            "fieldText": "penalties",
+            "qualifierTexts": [],
+            "fieldHead": "penalties",
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [],
+            "subjectText": "that weapon"
+          }
+        ],
+        "constraints": {},
+        "constraintTexts": [],
+        "complete": true,
+        "unresolvedTexts": [],
+        "staticEligible": true,
+        "playerStateQuestion": false,
+        "report": false
+      }
+    },
+    {
+      "gameId": "albion",
+      "dialogueId": "albion-fresh-weapon-tradeoffs",
+      "turn": 3,
+      "text": "Switch to Danu's Light: which bonuses does that weapon give?",
+      "parseStatus": "typed",
+      "frame": {
+        "kind": "source-fields",
+        "originalText": "Switch to Danu's Light: which bonuses does that weapon give?",
+        "subjectText": "that weapon",
+        "subjectCandidates": [
+          "that weapon",
+          "Switch to Danu's Light"
+        ],
+        "contextTexts": [
+          "Switch to Danu's Light"
+        ],
+        "intentTexts": [],
+        "correction": true,
+        "fields": [
+          {
+            "key": "use",
+            "selectors": [
+              "bonus"
+            ],
+            "requestedText": "which bonuses does that weapon give",
+            "fieldText": "bonuses",
+            "qualifierTexts": [],
+            "fieldHead": "bonuses",
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [],
+            "subjectText": "that weapon"
+          }
+        ],
+        "constraints": {},
+        "constraintTexts": [
+          "Switch to Danu's Light"
+        ],
+        "complete": true,
+        "unresolvedTexts": [],
+        "staticEligible": true,
+        "playerStateQuestion": false,
+        "report": false
+      }
+    },
+    {
+      "gameId": "albion",
+      "dialogueId": "albion-fresh-weapon-tradeoffs",
+      "turn": 4,
+      "text": "Is this sword equipped on Tom in my save at the moment?",
+      "parseStatus": "state-guarded",
+      "frame": {
+        "kind": "source-fields",
+        "originalText": "Is this sword equipped on Tom in my save at the moment?",
+        "subjectText": "this sword",
+        "subjectCandidates": [
+          "this sword"
+        ],
+        "contextTexts": [],
+        "intentTexts": [],
+        "correction": false,
+        "fields": [
+          {
+            "key": "unknown",
+            "selectors": [
+              "this sword equipped on tom in my save at the moment"
+            ],
+            "requestedText": "Is this sword equipped on Tom in my save at the moment",
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [
+              "on Tom in my save at the moment"
+            ],
+            "subjectText": "this sword",
+            "qualifierTexts": [
+              "on Tom in my save at the moment"
+            ]
+          }
+        ],
+        "constraints": {},
+        "constraintTexts": [],
+        "complete": false,
+        "unresolvedTexts": [
+          "Is this sword equipped on Tom in my save at the moment"
+        ],
+        "staticEligible": false,
+        "playerStateQuestion": true,
+        "report": false
+      }
+    },
+    {
+      "gameId": "albion",
+      "dialogueId": "albion-fresh-warrior-and-mage",
+      "turn": 1,
+      "text": "Tell me what sets Siobhan's basic damage apart.",
+      "parseStatus": "typed",
+      "frame": {
+        "kind": "source-fields",
+        "originalText": "Tell me what sets Siobhan's basic damage apart.",
+        "subjectText": "Siobhan",
+        "subjectCandidates": [
+          "Siobhan"
+        ],
+        "contextTexts": [],
+        "intentTexts": [],
+        "correction": false,
+        "fields": [
+          {
+            "key": "stats",
+            "selectors": [
+              "damage"
+            ],
+            "requestedText": "Tell me what sets Siobhan's basic damage apart",
+            "fieldText": "basic damage",
+            "qualifierTexts": [],
+            "fieldHead": "basic damage",
+            "qualifiers": {
+              "distinguishing": true,
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [],
+            "subjectText": "Siobhan"
+          }
+        ],
+        "constraints": {},
+        "constraintTexts": [],
+        "complete": true,
+        "unresolvedTexts": [],
+        "staticEligible": true,
+        "playerStateQuestion": false,
+        "report": false
+      }
+    },
+    {
+      "gameId": "albion",
+      "dialogueId": "albion-fresh-warrior-and-mage",
+      "turn": 2,
+      "text": "Where is her recruitment meeting place listed?",
+      "parseStatus": "typed",
+      "frame": {
+        "kind": "source-fields",
+        "originalText": "Where is her recruitment meeting place listed?",
+        "subjectText": "her",
+        "subjectCandidates": [
+          "her"
+        ],
+        "contextTexts": [],
+        "intentTexts": [],
+        "correction": false,
+        "fields": [
+          {
+            "key": "location",
+            "selectors": [
+              "recruitment"
+            ],
+            "requestedText": "Where is her recruitment meeting place listed",
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [],
+            "subjectText": "her",
+            "qualifierTexts": []
+          }
+        ],
+        "constraints": {},
+        "constraintTexts": [],
+        "complete": true,
+        "unresolvedTexts": [],
+        "staticEligible": true,
+        "playerStateQuestion": false,
+        "report": false
+      }
+    },
+    {
+      "gameId": "albion",
+      "dialogueId": "albion-fresh-warrior-and-mage",
+      "turn": 3,
+      "text": "Now Khunag: what motive do his character notes give, and where do they mark him as required?",
+      "parseStatus": "typed",
+      "frame": {
+        "kind": "source-fields",
+        "originalText": "Now Khunag: what motive do his character notes give, and where do they mark him as required?",
+        "subjectText": "his",
+        "subjectCandidates": [
+          "his",
+          "him",
+          "Now Khunag"
+        ],
+        "contextTexts": [
+          "Now Khunag"
+        ],
+        "intentTexts": [],
+        "correction": true,
+        "fields": [
+          {
+            "key": "cause",
+            "selectors": [],
+            "requestedText": "what motive do his character notes give",
+            "fieldText": "motive",
+            "qualifierTexts": [],
+            "fieldHead": "motive",
+            "qualifiers": {
+              "provenanceTexts": [
+                "character notes"
+              ]
+            },
+            "unknownQualifierTexts": [],
+            "subjectText": "his",
+            "sourceActorText": "his character notes"
+          },
+          {
+            "key": "location",
+            "selectors": [
+              "required"
+            ],
+            "requestedText": "where do they mark him as required",
+            "sourceActorText": "they",
+            "governorText": "mark as required",
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [],
+            "subjectText": "him",
+            "qualifierTexts": []
+          }
+        ],
+        "constraints": {},
+        "constraintTexts": [
+          "Now Khunag"
+        ],
+        "complete": true,
+        "unresolvedTexts": [],
+        "staticEligible": true,
+        "playerStateQuestion": false,
+        "report": false
+      }
+    },
+    {
+      "gameId": "albion",
+      "dialogueId": "albion-fresh-warrior-and-mage",
+      "turn": 4,
+      "text": "After choosing Khunag, is Siobhan available for me to recruit in my current save?",
+      "parseStatus": "state-guarded",
+      "frame": {
+        "kind": "source-fields",
+        "originalText": "After choosing Khunag, is Siobhan available for me to recruit in my current save?",
+        "subjectText": "Siobhan available for me to recruit in my current save",
+        "subjectCandidates": [
+          "Siobhan available for me to recruit in my current save",
+          "After choosing Khunag"
+        ],
+        "contextTexts": [
+          "After choosing Khunag"
+        ],
+        "intentTexts": [],
+        "correction": false,
+        "fields": [
+          {
+            "key": "unknown",
+            "selectors": [
+              "siobhan available for me to recruit in my current save"
+            ],
+            "requestedText": "is Siobhan available for me to recruit in my current save",
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [],
+            "subjectText": "Siobhan available for me to recruit in my current save",
+            "qualifierTexts": []
+          }
+        ],
+        "constraints": {
+          "conditionText": "After choosing Khunag"
+        },
+        "constraintTexts": [
+          "After choosing Khunag"
+        ],
+        "complete": false,
+        "unresolvedTexts": [
+          "is Siobhan available for me to recruit in my current save"
+        ],
+        "staticEligible": false,
+        "playerStateQuestion": true,
+        "report": false
+      }
+    },
+    {
+      "gameId": "albion",
+      "dialogueId": "albion-fresh-regional-trading",
+      "turn": 1,
+      "text": "Quote Rabir's selling and buying percentages in Jirinaar.",
+      "parseStatus": "typed",
+      "frame": {
+        "kind": "source-fields",
+        "originalText": "Quote Rabir's selling and buying percentages in Jirinaar.",
+        "subjectText": "Rabir",
+        "subjectCandidates": [
+          "Rabir"
+        ],
+        "contextTexts": [],
+        "intentTexts": [],
+        "correction": false,
+        "fields": [
+          {
+            "key": "stats",
+            "selectors": [
+              "selling-percentage"
+            ],
+            "requestedText": "Quote Rabir's selling and buying percentages in Jirinaar",
+            "fieldText": "selling and buying percentages",
+            "qualifierTexts": [
+              "in Jirinaar"
+            ],
+            "fieldHead": "selling and buying percentages in Jirinaar",
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [
+              "in Jirinaar"
+            ],
+            "subjectText": "Rabir"
+          },
+          {
+            "key": "stats",
+            "selectors": [
+              "buying-percentage"
+            ],
+            "requestedText": "Quote Rabir's selling and buying percentages in Jirinaar",
+            "fieldText": "selling and buying percentages",
+            "qualifierTexts": [
+              "in Jirinaar"
+            ],
+            "fieldHead": "selling and buying percentages in Jirinaar",
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [
+              "in Jirinaar"
+            ],
+            "subjectText": "Rabir"
+          }
+        ],
+        "constraints": {},
+        "constraintTexts": [],
+        "complete": true,
+        "unresolvedTexts": [],
+        "staticEligible": true,
+        "playerStateQuestion": false,
+        "report": false
+      }
+    },
+    {
+      "gameId": "albion",
+      "dialogueId": "albion-fresh-regional-trading",
+      "turn": 2,
+      "text": "For Gratogel instead, what selling percentage does Winion's table row give?",
+      "parseStatus": "typed",
+      "frame": {
+        "kind": "source-fields",
+        "originalText": "For Gratogel instead, what selling percentage does Winion's table row give?",
+        "subjectText": "Winion",
+        "subjectCandidates": [
+          "Winion",
+          "For Gratogel instead"
+        ],
+        "contextTexts": [
+          "For Gratogel instead"
+        ],
+        "intentTexts": [],
+        "correction": false,
+        "fields": [
+          {
+            "key": "stats",
+            "selectors": [
+              "selling-percentage"
+            ],
+            "requestedText": "what selling percentage does Winion's table row give",
+            "fieldText": "selling percentage",
+            "qualifierTexts": [],
+            "fieldHead": "selling percentage",
+            "qualifiers": {
+              "provenanceTexts": [
+                "table row"
+              ]
+            },
+            "unknownQualifierTexts": [],
+            "subjectText": "Winion",
+            "sourceActorText": "Winion's table row"
+          }
+        ],
+        "constraints": {},
+        "constraintTexts": [
+          "For Gratogel instead"
+        ],
+        "complete": true,
+        "unresolvedTexts": [],
+        "staticEligible": true,
+        "playerStateQuestion": false,
+        "report": false
+      }
+    },
+    {
+      "gameId": "albion",
+      "dialogueId": "albion-fresh-regional-trading",
+      "turn": 3,
+      "text": "Move on to Umajo shops: give both trade percentages there.",
+      "parseStatus": "typed",
+      "frame": {
+        "kind": "source-fields",
+        "originalText": "Move on to Umajo shops: give both trade percentages there.",
+        "subjectText": "Umajo shops",
+        "subjectCandidates": [
+          "Umajo shops",
+          "Move on to Umajo shops"
+        ],
+        "contextTexts": [
+          "Move on to Umajo shops"
+        ],
+        "intentTexts": [],
+        "correction": true,
+        "fields": [
+          {
+            "key": "stats",
+            "selectors": [
+              "selling-percentage"
+            ],
+            "requestedText": "give both trade percentages there",
+            "fieldText": "trade percentages",
+            "qualifierTexts": [
+              "there"
+            ],
+            "fieldHead": "both trade percentages there",
+            "requestedCountText": "both",
+            "requestedCount": {
+              "text": "both",
+              "value": 2,
+              "scope": "requested-list"
+            },
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [
+              "there"
+            ]
+          },
+          {
+            "key": "stats",
+            "selectors": [
+              "buying-percentage"
+            ],
+            "requestedText": "give both trade percentages there",
+            "fieldText": "trade percentages",
+            "qualifierTexts": [
+              "there"
+            ],
+            "fieldHead": "both trade percentages there",
+            "requestedCountText": "both",
+            "requestedCount": {
+              "text": "both",
+              "value": 2,
+              "scope": "requested-list"
+            },
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [
+              "there"
+            ]
+          }
+        ],
+        "constraints": {},
+        "constraintTexts": [
+          "Move on to Umajo shops"
+        ],
+        "complete": true,
+        "unresolvedTexts": [],
+        "staticEligible": true,
+        "playerStateQuestion": false,
+        "report": false
+      }
+    },
+    {
+      "gameId": "albion",
+      "dialogueId": "albion-fresh-regional-trading",
+      "turn": 4,
+      "text": "How much gold will those shops pay for everything I am carrying?",
+      "parseStatus": "state-guarded",
+      "frame": {
+        "kind": "source-fields",
+        "originalText": "How much gold will those shops pay for everything I am carrying?",
+        "subjectText": "those shops",
+        "subjectCandidates": [
+          "those shops"
+        ],
+        "contextTexts": [],
+        "intentTexts": [],
+        "correction": false,
+        "fields": [
+          {
+            "key": "stats",
+            "selectors": [
+              "quantity"
+            ],
+            "requestedText": "How much gold will those shops pay for everything I am carrying",
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [
+              "for everything I am carrying"
+            ],
+            "subjectText": "those shops",
+            "qualifierTexts": [
+              "for everything I am carrying"
+            ]
+          }
+        ],
+        "constraints": {},
+        "constraintTexts": [],
+        "complete": true,
+        "unresolvedTexts": [],
+        "staticEligible": false,
+        "playerStateQuestion": true,
+        "report": false
+      }
+    },
+    {
+      "gameId": "albion",
+      "dialogueId": "albion-fresh-toronto-return-route",
+      "turn": 1,
+      "text": "Lay out the two documented approaches for reaching Toronto.",
+      "parseStatus": "typed",
+      "frame": {
+        "kind": "source-fields",
+        "originalText": "Lay out the two documented approaches for reaching Toronto.",
+        "subjectText": "Toronto",
+        "subjectCandidates": [
+          "Toronto"
+        ],
+        "contextTexts": [],
+        "intentTexts": [],
+        "correction": false,
+        "fields": [
+          {
+            "key": "sequence",
+            "selectors": [
+              "alternatives"
+            ],
+            "requestedText": "Lay out the two documented approaches for reaching Toronto",
+            "fieldText": "approaches",
+            "qualifierTexts": [
+              "documented"
+            ],
+            "fieldHead": "the two documented approaches",
+            "requestedCountText": "two",
+            "requestedCount": {
+              "text": "two",
+              "value": 2,
+              "scope": "requested-list"
+            },
+            "purposeTexts": [
+              "reaching Toronto"
+            ],
+            "governorText": "reaching",
+            "qualifiers": {
+              "provenanceTexts": [
+                "documented"
+              ]
+            },
+            "unknownQualifierTexts": [],
+            "subjectText": "Toronto"
+          }
+        ],
+        "constraints": {},
+        "constraintTexts": [],
+        "complete": true,
+        "unresolvedTexts": [],
+        "staticEligible": true,
+        "playerStateQuestion": false,
+        "report": false
+      }
+    },
+    {
+      "gameId": "albion",
+      "dialogueId": "albion-fresh-toronto-return-route",
+      "turn": 2,
+      "text": "After the reactor scene, where does the guide tell me to take the footage?",
+      "parseStatus": "typed",
+      "frame": {
+        "kind": "source-fields",
+        "originalText": "After the reactor scene, where does the guide tell me to take the footage?",
+        "subjectText": "the footage",
+        "subjectCandidates": [
+          "the footage",
+          "After the reactor scene"
+        ],
+        "contextTexts": [
+          "After the reactor scene"
+        ],
+        "intentTexts": [],
+        "correction": false,
+        "fields": [
+          {
+            "key": "location",
+            "selectors": [],
+            "requestedText": "where does the guide tell me to take the footage",
+            "sourceActorText": "the guide",
+            "objectTexts": [
+              "the footage"
+            ],
+            "objectRole": "object",
+            "governorText": "tell me to take",
+            "actionText": "take the footage",
+            "argumentTexts": [],
+            "fullArgumentTexts": [
+              "the footage"
+            ],
+            "ownerArgumentTexts": [
+              "the footage"
+            ],
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [],
+            "subjectText": "the footage",
+            "qualifierTexts": []
+          }
+        ],
+        "constraints": {
+          "conditionText": "After the reactor scene"
+        },
+        "constraintTexts": [
+          "After the reactor scene"
+        ],
+        "complete": true,
+        "unresolvedTexts": [],
+        "staticEligible": true,
+        "playerStateQuestion": false,
+        "report": false
+      }
+    },
+    {
+      "gameId": "albion",
+      "dialogueId": "albion-fresh-toronto-return-route",
+      "turn": 3,
+      "text": "For the final trip, which technician does the guide recommend to reduce robot trouble?",
+      "parseStatus": "not-parsed",
+      "frame": null
+    },
+    {
+      "gameId": "albion",
+      "dialogueId": "albion-fresh-toronto-return-route",
+      "turn": 4,
+      "text": "Has Joe already repaired the circuits in my playthrough?",
+      "parseStatus": "state-guarded",
+      "frame": {
+        "kind": "source-fields",
+        "originalText": "Has Joe already repaired the circuits in my playthrough?",
+        "subjectText": "Joe already repaired the circuits in my playthrough",
+        "subjectCandidates": [
+          "Joe already repaired the circuits in my playthrough"
+        ],
+        "contextTexts": [],
+        "intentTexts": [],
+        "correction": false,
+        "fields": [
+          {
+            "key": "unknown",
+            "selectors": [
+              "joe already repaired the circuits in my playthrough"
+            ],
+            "requestedText": "Has Joe already repaired the circuits in my playthrough",
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [],
+            "subjectText": "Joe already repaired the circuits in my playthrough",
+            "qualifierTexts": []
+          }
+        ],
+        "constraints": {},
+        "constraintTexts": [],
+        "complete": false,
+        "unresolvedTexts": [
+          "Has Joe already repaired the circuits in my playthrough"
+        ],
+        "staticEligible": false,
+        "playerStateQuestion": true,
+        "report": false
+      }
+    },
+    {
+      "gameId": "alqadim",
+      "dialogueId": "alqadim-fresh-elemental-and-shards",
+      "turn": 1,
+      "text": "What tactic does the guide recommend against a Fire Elemental?",
+      "parseStatus": "typed",
+      "frame": {
+        "kind": "source-fields",
+        "originalText": "What tactic does the guide recommend against a Fire Elemental?",
+        "subjectText": "a Fire Elemental",
+        "subjectCandidates": [
+          "a Fire Elemental"
+        ],
+        "contextTexts": [],
+        "intentTexts": [],
+        "correction": false,
+        "fields": [
+          {
+            "key": "method",
+            "selectors": [
+              "step"
+            ],
+            "requestedText": "What tactic does the guide recommend against a Fire Elemental",
+            "fieldText": "tactic",
+            "qualifierTexts": [],
+            "fieldHead": "tactic",
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [],
+            "subjectText": "a Fire Elemental",
+            "sourceActorText": "the guide"
+          }
+        ],
+        "constraints": {},
+        "constraintTexts": [],
+        "complete": true,
+        "unresolvedTexts": [],
+        "staticEligible": true,
+        "playerStateQuestion": false,
+        "report": false
+      }
+    },
+    {
+      "gameId": "alqadim",
+      "dialogueId": "alqadim-fresh-elemental-and-shards",
+      "turn": 2,
+      "text": "What sort of projectile is Water Blast, and what range is listed?",
+      "parseStatus": "typed",
+      "frame": {
+        "kind": "source-fields",
+        "originalText": "What sort of projectile is Water Blast, and what range is listed?",
+        "subjectText": "Water Blast",
+        "subjectCandidates": [
+          "Water Blast"
+        ],
+        "contextTexts": [],
+        "intentTexts": [],
+        "correction": false,
+        "fields": [
+          {
+            "key": "identity",
+            "selectors": [
+              "type"
+            ],
+            "requestedText": "What sort of projectile is Water Blast",
+            "fieldText": "sort of projectile",
+            "qualifierTexts": [],
+            "fieldHead": "sort of projectile",
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [],
+            "subjectText": "Water Blast"
+          },
+          {
+            "key": "stats",
+            "selectors": [
+              "range"
+            ],
+            "requestedText": "what range is listed",
+            "fieldText": "range",
+            "qualifierTexts": [],
+            "fieldHead": "range",
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": []
+          }
+        ],
+        "constraints": {},
+        "constraintTexts": [],
+        "complete": true,
+        "unresolvedTexts": [],
+        "staticEligible": true,
+        "playerStateQuestion": false,
+        "report": false
+      }
+    },
+    {
+      "gameId": "alqadim",
+      "dialogueId": "alqadim-fresh-elemental-and-shards",
+      "turn": 3,
+      "text": "Instead, give me Flame Arrow's damage line.",
+      "parseStatus": "typed",
+      "frame": {
+        "kind": "source-fields",
+        "originalText": "Instead, give me Flame Arrow's damage line.",
+        "subjectText": "Flame Arrow",
+        "subjectCandidates": [
+          "Flame Arrow"
+        ],
+        "contextTexts": [],
+        "intentTexts": [],
+        "correction": true,
+        "fields": [
+          {
+            "key": "stats",
+            "selectors": [
+              "damage"
+            ],
+            "requestedText": "give me Flame Arrow's damage line",
+            "fieldText": "damage",
+            "qualifierTexts": [],
+            "fieldHead": "damage line",
+            "metadataTexts": [
+              "line"
+            ],
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [],
+            "subjectText": "Flame Arrow"
+          }
+        ],
+        "constraints": {},
+        "constraintTexts": [],
+        "complete": true,
+        "unresolvedTexts": [],
+        "staticEligible": true,
+        "playerStateQuestion": false,
+        "report": false
+      }
+    },
+    {
+      "gameId": "alqadim",
+      "dialogueId": "alqadim-fresh-elemental-and-shards",
+      "turn": 4,
+      "text": "Which of those shards will kill the particular enemy in front of me with one shot?",
+      "parseStatus": "state-guarded",
+      "frame": {
+        "kind": "source-fields",
+        "originalText": "Which of those shards will kill the particular enemy in front of me with one shot?",
+        "subjectText": "kill the particular enemy in front of me with one shot",
+        "subjectCandidates": [
+          "kill the particular enemy in front of me with one shot"
+        ],
+        "contextTexts": [],
+        "intentTexts": [],
+        "correction": false,
+        "fields": [
+          {
+            "key": "unknown",
+            "selectors": [
+              "of those shards"
+            ],
+            "requestedText": "Which of those shards will kill the particular enemy in front of me with one shot",
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [],
+            "subjectText": "kill the particular enemy in front of me with one shot",
+            "qualifierTexts": []
+          }
+        ],
+        "constraints": {},
+        "constraintTexts": [],
+        "complete": false,
+        "unresolvedTexts": [
+          "Which of those shards will kill the particular enemy in front of me with one shot"
+        ],
+        "staticEligible": false,
+        "playerStateQuestion": true,
+        "report": false
+      }
+    },
+    {
+      "gameId": "alqadim",
+      "dialogueId": "alqadim-fresh-kitchen-and-key",
+      "turn": 1,
+      "text": "Where is Sumie described during the return to the castle?",
+      "parseStatus": "typed",
+      "frame": {
+        "kind": "source-fields",
+        "originalText": "Where is Sumie described during the return to the castle?",
+        "subjectText": "Sumie",
+        "subjectCandidates": [
+          "Sumie"
+        ],
+        "contextTexts": [],
+        "intentTexts": [],
+        "correction": false,
+        "fields": [
+          {
+            "key": "location",
+            "selectors": [],
+            "requestedText": "Where is Sumie described during the return to the castle",
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [
+              "during the return to the castle"
+            ],
+            "subjectText": "Sumie",
+            "qualifierTexts": [
+              "during the return to the castle"
+            ]
+          }
+        ],
+        "constraints": {},
+        "constraintTexts": [],
+        "complete": true,
+        "unresolvedTexts": [],
+        "staticEligible": true,
+        "playerStateQuestion": false,
+        "report": false
+      }
+    },
+    {
+      "gameId": "alqadim",
+      "dialogueId": "alqadim-fresh-kitchen-and-key",
+      "turn": 2,
+      "text": "For that visit, which office supplies the baker referral?",
+      "parseStatus": "typed",
+      "frame": {
+        "kind": "source-fields",
+        "originalText": "For that visit, which office supplies the baker referral?",
+        "subjectText": "the baker referral",
+        "subjectCandidates": [
+          "the baker referral",
+          "For that visit"
+        ],
+        "contextTexts": [
+          "For that visit"
+        ],
+        "intentTexts": [],
+        "correction": false,
+        "fields": [
+          {
+            "key": "provider",
+            "selectors": [],
+            "requestedText": "which office supplies the baker referral",
+            "actionText": "supplies the baker referral",
+            "argumentTexts": [],
+            "objectTexts": [
+              "the baker referral"
+            ],
+            "objectRole": "object",
+            "governorText": "supplies",
+            "fullArgumentTexts": [
+              "the baker referral"
+            ],
+            "ownerArgumentTexts": [
+              "the baker referral"
+            ],
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [],
+            "subjectText": "the baker referral",
+            "qualifierTexts": []
+          }
+        ],
+        "constraints": {},
+        "constraintTexts": [
+          "For that visit"
+        ],
+        "complete": true,
+        "unresolvedTexts": [],
+        "staticEligible": true,
+        "playerStateQuestion": false,
+        "report": false
+      }
+    },
+    {
+      "gameId": "alqadim",
+      "dialogueId": "alqadim-fresh-kitchen-and-key",
+      "turn": 3,
+      "text": "What passage is the Key of Bone supposed to open?",
+      "parseStatus": "typed",
+      "frame": {
+        "kind": "source-fields",
+        "originalText": "What passage is the Key of Bone supposed to open?",
+        "subjectText": "the Key of Bone",
+        "subjectCandidates": [
+          "the Key of Bone"
+        ],
+        "contextTexts": [],
+        "intentTexts": [],
+        "correction": false,
+        "fields": [
+          {
+            "key": "use",
+            "selectors": [
+              "effect"
+            ],
+            "requestedText": "What passage is the Key of Bone supposed to open",
+            "fieldText": "passage",
+            "fieldHead": "passage",
+            "governorText": "supposed to open",
+            "actionText": "open",
+            "qualifierTexts": [
+              "passage"
+            ],
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [
+              "passage"
+            ],
+            "subjectText": "the Key of Bone"
+          }
+        ],
+        "constraints": {},
+        "constraintTexts": [],
+        "complete": true,
+        "unresolvedTexts": [],
+        "staticEligible": true,
+        "playerStateQuestion": false,
+        "report": false
+      }
+    },
+    {
+      "gameId": "alqadim",
+      "dialogueId": "alqadim-fresh-kitchen-and-key",
+      "turn": 4,
+      "text": "What exact password does Sumie say before opening the cellar?",
+      "parseStatus": "typed",
+      "frame": {
+        "kind": "source-fields",
+        "originalText": "What exact password does Sumie say before opening the cellar?",
+        "subjectText": "Sumie",
+        "subjectCandidates": [
+          "Sumie"
+        ],
+        "contextTexts": [],
+        "intentTexts": [],
+        "correction": false,
+        "fields": [
+          {
+            "key": "method",
+            "selectors": [
+              "keyword"
+            ],
+            "requestedText": "What exact password does Sumie say before opening the cellar",
+            "fieldText": "password",
+            "qualifierTexts": [
+              "exact",
+              "before opening the cellar"
+            ],
+            "fieldHead": "exact password",
+            "qualifiers": {
+              "exact": true,
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [
+              "before opening the cellar"
+            ],
+            "subjectText": "Sumie",
+            "localConditionTexts": [
+              "before opening the cellar"
+            ]
+          }
+        ],
+        "constraints": {},
+        "constraintTexts": [],
+        "complete": true,
+        "unresolvedTexts": [],
+        "staticEligible": true,
+        "playerStateQuestion": false,
+        "report": false
+      }
+    },
+    {
+      "gameId": "alqadim",
+      "dialogueId": "alqadim-fresh-old-dungeon-escort",
+      "turn": 1,
+      "text": "Where does the Old Dungeon hide its first-room key?",
+      "parseStatus": "typed",
+      "frame": {
+        "kind": "source-fields",
+        "originalText": "Where does the Old Dungeon hide its first-room key?",
+        "subjectText": "the Old Dungeon",
+        "subjectCandidates": [
+          "the Old Dungeon"
+        ],
+        "contextTexts": [],
+        "intentTexts": [],
+        "correction": false,
+        "fields": [
+          {
+            "key": "location",
+            "selectors": [],
+            "requestedText": "Where does the Old Dungeon hide its first-room key",
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [
+              "its first-room key"
+            ],
+            "subjectText": "the Old Dungeon",
+            "qualifierTexts": [
+              "its first-room key"
+            ]
+          }
+        ],
+        "constraints": {},
+        "constraintTexts": [],
+        "complete": true,
+        "unresolvedTexts": [],
+        "staticEligible": true,
+        "playerStateQuestion": false,
+        "report": false
+      }
+    },
+    {
+      "gameId": "alqadim",
+      "dialogueId": "alqadim-fresh-old-dungeon-escort",
+      "turn": 2,
+      "text": "What hazards does the running advice there tell me to time?",
+      "parseStatus": "typed",
+      "frame": {
+        "kind": "source-fields",
+        "originalText": "What hazards does the running advice there tell me to time?",
+        "subjectText": "the running advice there tell me to time",
+        "subjectCandidates": [
+          "the running advice there tell me to time"
+        ],
+        "contextTexts": [],
+        "intentTexts": [],
+        "correction": false,
+        "fields": [
+          {
+            "key": "method",
+            "selectors": [
+              "step"
+            ],
+            "requestedText": "What hazards does the running advice there tell me to time",
+            "fieldText": "hazards",
+            "qualifierTexts": [],
+            "fieldHead": "hazards",
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [],
+            "subjectText": "the running advice there tell me to time"
+          }
+        ],
+        "constraints": {},
+        "constraintTexts": [],
+        "complete": true,
+        "unresolvedTexts": [],
+        "staticEligible": true,
+        "playerStateQuestion": false,
+        "report": false
+      }
+    },
+    {
+      "gameId": "alqadim",
+      "dialogueId": "alqadim-fresh-old-dungeon-escort",
+      "turn": 3,
+      "text": "Who is the cyclops to be escorted, and where should I take him?",
+      "parseStatus": "typed",
+      "frame": {
+        "kind": "source-fields",
+        "originalText": "Who is the cyclops to be escorted, and where should I take him?",
+        "subjectText": "the cyclops to be escorted",
+        "subjectCandidates": [
+          "the cyclops to be escorted",
+          "him"
+        ],
+        "contextTexts": [],
+        "intentTexts": [],
+        "correction": false,
+        "identityCandidateText": "the cyclops to be escorted",
+        "fields": [
+          {
+            "key": "identity",
+            "selectors": [],
+            "requestedText": "Who is the cyclops to be escorted",
+            "identityCandidateText": "the cyclops to be escorted",
+            "requiresExactIdentity": true,
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [],
+            "subjectText": "the cyclops to be escorted",
+            "qualifierTexts": []
+          },
+          {
+            "key": "location",
+            "selectors": [],
+            "requestedText": "where should I take him",
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [],
+            "subjectText": "him",
+            "qualifierTexts": []
+          }
+        ],
+        "constraints": {},
+        "constraintTexts": [],
+        "complete": true,
+        "unresolvedTexts": [],
+        "staticEligible": true,
+        "playerStateQuestion": false,
+        "report": false
+      }
+    },
+    {
+      "gameId": "alqadim",
+      "dialogueId": "alqadim-fresh-old-dungeon-escort",
+      "turn": 4,
+      "text": "Give me the exact delay in seconds between those vent bursts.",
+      "parseStatus": "typed",
+      "frame": {
+        "kind": "source-fields",
+        "originalText": "Give me the exact delay in seconds between those vent bursts.",
+        "subjectText": null,
+        "subjectCandidates": [],
+        "contextTexts": [],
+        "intentTexts": [],
+        "correction": false,
+        "fields": [
+          {
+            "key": "stats",
+            "selectors": [
+              "duration"
+            ],
+            "requestedText": "Give me the exact delay in seconds between those vent bursts",
+            "fieldText": "delay",
+            "qualifierTexts": [
+              "exact in between those vent bursts"
+            ],
+            "fieldHead": "the exact delay in seconds between those vent bursts",
+            "qualifiers": {
+              "exact": true,
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [
+              "in between those vent bursts"
+            ]
+          }
+        ],
+        "constraints": {},
+        "constraintTexts": [],
+        "complete": true,
+        "unresolvedTexts": [],
+        "staticEligible": true,
+        "playerStateQuestion": false,
+        "report": false
+      }
+    },
+    {
+      "gameId": "alqadim",
+      "dialogueId": "alqadim-fresh-journal-to-mirror",
+      "turn": 1,
+      "text": "Where should I search for the Vizier's conspiracy journal?",
+      "parseStatus": "typed",
+      "frame": {
+        "kind": "source-fields",
+        "originalText": "Where should I search for the Vizier's conspiracy journal?",
+        "subjectText": "the Vizier's conspiracy journal",
+        "subjectCandidates": [
+          "the Vizier's conspiracy journal"
+        ],
+        "contextTexts": [],
+        "intentTexts": [],
+        "correction": false,
+        "fields": [
+          {
+            "key": "location",
+            "selectors": [],
+            "requestedText": "Where should I search for the Vizier's conspiracy journal",
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [],
+            "subjectText": "the Vizier's conspiracy journal",
+            "qualifierTexts": []
+          }
+        ],
+        "constraints": {},
+        "constraintTexts": [],
+        "complete": true,
+        "unresolvedTexts": [],
+        "staticEligible": true,
+        "playerStateQuestion": false,
+        "report": false
+      }
+    },
+    {
+      "gameId": "alqadim",
+      "dialogueId": "alqadim-fresh-journal-to-mirror",
+      "turn": 2,
+      "text": "What evidence is that journal described as containing?",
+      "parseStatus": "unresolved",
+      "frame": {
+        "kind": "source-fields",
+        "originalText": "What evidence is that journal described as containing?",
+        "subjectText": "that journal",
+        "subjectCandidates": [
+          "that journal"
+        ],
+        "contextTexts": [],
+        "intentTexts": [],
+        "correction": false,
+        "fields": [
+          {
+            "key": "unknown",
+            "selectors": [
+              "evidence"
+            ],
+            "requestedText": "What evidence is that journal described as containing",
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [
+              "as containing"
+            ],
+            "subjectText": "that journal",
+            "qualifierTexts": [
+              "as containing"
+            ]
+          }
+        ],
+        "constraints": {},
+        "constraintTexts": [],
+        "complete": false,
+        "unresolvedTexts": [
+          "What evidence is that journal described as containing"
+        ],
+        "staticEligible": true,
+        "playerStateQuestion": false,
+        "report": false
+      }
+    },
+    {
+      "gameId": "alqadim",
+      "dialogueId": "alqadim-fresh-journal-to-mirror",
+      "turn": 3,
+      "text": "Change to the Enchanted Mirror: what job does that item do?",
+      "parseStatus": "typed",
+      "frame": {
+        "kind": "source-fields",
+        "originalText": "Change to the Enchanted Mirror: what job does that item do?",
+        "subjectText": "that item",
+        "subjectCandidates": [
+          "that item",
+          "Change to the Enchanted Mirror"
+        ],
+        "contextTexts": [
+          "Change to the Enchanted Mirror"
+        ],
+        "intentTexts": [],
+        "correction": true,
+        "fields": [
+          {
+            "key": "use",
+            "selectors": [
+              "purpose"
+            ],
+            "requestedText": "what job does that item do",
+            "fieldText": "job",
+            "qualifierTexts": [],
+            "fieldHead": "job",
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [],
+            "subjectText": "that item"
+          }
+        ],
+        "constraints": {},
+        "constraintTexts": [
+          "Change to the Enchanted Mirror"
+        ],
+        "complete": true,
+        "unresolvedTexts": [],
+        "staticEligible": true,
+        "playerStateQuestion": false,
+        "report": false
+      }
+    },
+    {
+      "gameId": "alqadim",
+      "dialogueId": "alqadim-fresh-journal-to-mirror",
+      "turn": 4,
+      "text": "What metal is the frame of that mirror made from?",
+      "parseStatus": "typed",
+      "frame": {
+        "kind": "source-fields",
+        "originalText": "What metal is the frame of that mirror made from?",
+        "subjectText": "the frame of that mirror",
+        "subjectCandidates": [
+          "the frame of that mirror"
+        ],
+        "contextTexts": [],
+        "intentTexts": [],
+        "correction": false,
+        "fields": [
+          {
+            "key": "composition",
+            "selectors": [
+              "metal"
+            ],
+            "requestedText": "What metal is the frame of that mirror made from",
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [
+              "from"
+            ],
+            "subjectText": "the frame of that mirror",
+            "qualifierTexts": [
+              "from"
+            ]
+          }
+        ],
+        "constraints": {},
+        "constraintTexts": [],
+        "complete": true,
+        "unresolvedTexts": [],
+        "staticEligible": true,
+        "playerStateQuestion": false,
+        "report": false
+      }
+    },
+    {
+      "gameId": "ultima7",
+      "dialogueId": "fresh-u7-tseramed-guide-profile",
+      "turn": 1,
+      "text": "Where does the guide place Tseramed when I go looking for him?",
+      "parseStatus": "typed",
+      "frame": {
+        "kind": "source-fields",
+        "originalText": "Where does the guide place Tseramed when I go looking for him?",
+        "subjectText": "Tseramed",
+        "subjectCandidates": [
+          "Tseramed"
+        ],
+        "contextTexts": [],
+        "intentTexts": [
+          "when I go looking for him"
+        ],
+        "correction": false,
+        "fields": [
+          {
+            "key": "location",
+            "selectors": [],
+            "requestedText": "Where does the guide place Tseramed",
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [],
+            "subjectText": "Tseramed",
+            "qualifierTexts": [],
+            "sourceActorText": "the guide"
+          }
+        ],
+        "constraints": {},
+        "constraintTexts": [],
+        "complete": true,
+        "unresolvedTexts": [],
+        "staticEligible": true,
+        "playerStateQuestion": false,
+        "report": false
+      }
+    },
+    {
+      "gameId": "ultima7",
+      "dialogueId": "fresh-u7-tseramed-guide-profile",
+      "turn": 2,
+      "text": "How is his fighting role and main focus described?",
+      "parseStatus": "typed",
+      "frame": {
+        "kind": "source-fields",
+        "originalText": "How is his fighting role and main focus described?",
+        "subjectText": "his",
+        "subjectCandidates": [
+          "his"
+        ],
+        "contextTexts": [],
+        "intentTexts": [],
+        "correction": false,
+        "fields": [
+          {
+            "key": "identity",
+            "selectors": [
+              "role"
+            ],
+            "requestedText": "How is his fighting role and main focus described",
+            "fieldText": "fighting role",
+            "qualifierTexts": [],
+            "fieldHead": "fighting role and main focus",
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [],
+            "subjectText": "his"
+          },
+          {
+            "key": "identity",
+            "selectors": [
+              "focus"
+            ],
+            "requestedText": "How is his fighting role and main focus described",
+            "fieldText": "main focus",
+            "qualifierTexts": [],
+            "fieldHead": "fighting role and main focus",
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [],
+            "subjectText": "his"
+          }
+        ],
+        "constraints": {},
+        "constraintTexts": [],
+        "complete": true,
+        "unresolvedTexts": [],
+        "staticEligible": true,
+        "playerStateQuestion": false,
+        "report": false
+      }
+    },
+    {
+      "gameId": "ultima7",
+      "dialogueId": "fresh-u7-tseramed-guide-profile",
+      "turn": 3,
+      "text": "What starting Strength, Dexterity, Intelligence and Combat does Tseramed have in that table?",
+      "parseStatus": "typed",
+      "frame": {
+        "kind": "source-fields",
+        "originalText": "What starting Strength, Dexterity, Intelligence and Combat does Tseramed have in that table?",
+        "subjectText": "Tseramed",
+        "subjectCandidates": [
+          "Tseramed"
+        ],
+        "contextTexts": [],
+        "intentTexts": [],
+        "correction": false,
+        "fields": [
+          {
+            "key": "stats",
+            "selectors": [
+              "strength"
+            ],
+            "requestedText": "What starting Strength, Dexterity, Intelligence and Combat does Tseramed have in that table",
+            "fieldText": "Strength",
+            "qualifierTexts": [
+              "starting",
+              "in that table"
+            ],
+            "fieldHead": "starting Strength, Dexterity, Intelligence and Combat",
+            "qualifiers": {
+              "baselineText": "starting",
+              "provenanceTexts": [
+                "in that table"
+              ]
+            },
+            "unknownQualifierTexts": [],
+            "subjectText": "Tseramed"
+          },
+          {
+            "key": "stats",
+            "selectors": [
+              "dexterity"
+            ],
+            "requestedText": "What starting Strength, Dexterity, Intelligence and Combat does Tseramed have in that table",
+            "fieldText": "Dexterity",
+            "qualifierTexts": [
+              "in that table"
+            ],
+            "fieldHead": "starting Strength, Dexterity, Intelligence and Combat",
+            "qualifiers": {
+              "provenanceTexts": [
+                "in that table"
+              ]
+            },
+            "unknownQualifierTexts": [],
+            "subjectText": "Tseramed"
+          },
+          {
+            "key": "stats",
+            "selectors": [
+              "intelligence"
+            ],
+            "requestedText": "What starting Strength, Dexterity, Intelligence and Combat does Tseramed have in that table",
+            "fieldText": "Intelligence",
+            "qualifierTexts": [
+              "in that table"
+            ],
+            "fieldHead": "starting Strength, Dexterity, Intelligence and Combat",
+            "qualifiers": {
+              "provenanceTexts": [
+                "in that table"
+              ]
+            },
+            "unknownQualifierTexts": [],
+            "subjectText": "Tseramed"
+          },
+          {
+            "key": "stats",
+            "selectors": [
+              "combat"
+            ],
+            "requestedText": "What starting Strength, Dexterity, Intelligence and Combat does Tseramed have in that table",
+            "fieldText": "Combat",
+            "qualifierTexts": [
+              "in that table"
+            ],
+            "fieldHead": "starting Strength, Dexterity, Intelligence and Combat",
+            "qualifiers": {
+              "provenanceTexts": [
+                "in that table"
+              ]
+            },
+            "unknownQualifierTexts": [],
+            "subjectText": "Tseramed"
+          }
+        ],
+        "constraints": {},
+        "constraintTexts": [],
+        "complete": true,
+        "unresolvedTexts": [],
+        "staticEligible": true,
+        "playerStateQuestion": false,
+        "report": false
+      }
+    },
+    {
+      "gameId": "ultima7",
+      "dialogueId": "fresh-u7-tseramed-guide-profile",
+      "turn": 4,
+      "text": "Is he waiting beside the Bee Cave in my current save?",
+      "parseStatus": "state-guarded",
+      "frame": {
+        "kind": "source-fields",
+        "originalText": "Is he waiting beside the Bee Cave in my current save?",
+        "subjectText": "he",
+        "subjectCandidates": [
+          "he"
+        ],
+        "contextTexts": [],
+        "intentTexts": [],
+        "correction": false,
+        "fields": [
+          {
+            "key": "unknown",
+            "selectors": [
+              "he waiting beside the bee cave in my current save"
+            ],
+            "requestedText": "Is he waiting beside the Bee Cave in my current save",
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [
+              "beside the Bee Cave in my current save"
+            ],
+            "subjectText": "he",
+            "qualifierTexts": [
+              "beside the Bee Cave in my current save"
+            ]
+          }
+        ],
+        "constraints": {},
+        "constraintTexts": [],
+        "complete": false,
+        "unresolvedTexts": [
+          "Is he waiting beside the Bee Cave in my current save"
+        ],
+        "staticEligible": false,
+        "playerStateQuestion": true,
+        "report": false
+      }
+    },
+    {
+      "gameId": "ultima7",
+      "dialogueId": "fresh-u7-serpents-hold-equipment",
+      "turn": 1,
+      "text": "What location and coordinates are listed for the Juggernaut Hammer?",
+      "parseStatus": "typed",
+      "frame": {
+        "kind": "source-fields",
+        "originalText": "What location and coordinates are listed for the Juggernaut Hammer?",
+        "subjectText": "the Juggernaut Hammer",
+        "subjectCandidates": [
+          "the Juggernaut Hammer"
+        ],
+        "contextTexts": [],
+        "intentTexts": [],
+        "correction": false,
+        "fields": [
+          {
+            "key": "location",
+            "selectors": [],
+            "requestedText": "What location and coordinates are listed for the Juggernaut Hammer",
+            "fieldText": "location",
+            "qualifierTexts": [],
+            "fieldHead": "location and coordinates",
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [],
+            "subjectText": "the Juggernaut Hammer"
+          },
+          {
+            "key": "location",
+            "selectors": [
+              "coordinates"
+            ],
+            "requestedText": "What location and coordinates are listed for the Juggernaut Hammer",
+            "fieldText": "coordinates",
+            "qualifierTexts": [],
+            "fieldHead": "location and coordinates",
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [],
+            "subjectText": "the Juggernaut Hammer"
+          }
+        ],
+        "constraints": {},
+        "constraintTexts": [],
+        "complete": true,
+        "unresolvedTexts": [],
+        "staticEligible": true,
+        "playerStateQuestion": false,
+        "report": false
+      }
+    },
+    {
+      "gameId": "ultima7",
+      "dialogueId": "fresh-u7-serpents-hold-equipment",
+      "turn": 2,
+      "text": "What weapon type and effect does the guide assign to that hammer?",
+      "parseStatus": "typed",
+      "frame": {
+        "kind": "source-fields",
+        "originalText": "What weapon type and effect does the guide assign to that hammer?",
+        "subjectText": "that hammer",
+        "subjectCandidates": [
+          "that hammer"
+        ],
+        "contextTexts": [],
+        "intentTexts": [],
+        "correction": false,
+        "fields": [
+          {
+            "key": "identity",
+            "selectors": [
+              "type"
+            ],
+            "requestedText": "What weapon type and effect does the guide assign to that hammer",
+            "fieldText": "weapon type",
+            "qualifierTexts": [],
+            "fieldHead": "weapon type and effect",
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [],
+            "subjectText": "that hammer",
+            "sourceActorText": "the guide"
+          },
+          {
+            "key": "use",
+            "selectors": [
+              "effect"
+            ],
+            "requestedText": "What weapon type and effect does the guide assign to that hammer",
+            "fieldText": "effect",
+            "qualifierTexts": [],
+            "fieldHead": "weapon type and effect",
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [],
+            "subjectText": "that hammer",
+            "sourceActorText": "the guide"
+          }
+        ],
+        "constraints": {},
+        "constraintTexts": [],
+        "complete": true,
+        "unresolvedTexts": [],
+        "staticEligible": true,
+        "playerStateQuestion": false,
+        "report": false
+      }
+    },
+    {
+      "gameId": "ultima7",
+      "dialogueId": "fresh-u7-serpents-hold-equipment",
+      "turn": 3,
+      "text": "What site and protective effect are listed for the Sword of Defense?",
+      "parseStatus": "typed",
+      "frame": {
+        "kind": "source-fields",
+        "originalText": "What site and protective effect are listed for the Sword of Defense?",
+        "subjectText": "the Sword of Defense",
+        "subjectCandidates": [
+          "the Sword of Defense"
+        ],
+        "contextTexts": [],
+        "intentTexts": [],
+        "correction": false,
+        "fields": [
+          {
+            "key": "location",
+            "selectors": [],
+            "requestedText": "What site and protective effect are listed for the Sword of Defense",
+            "fieldText": "site",
+            "qualifierTexts": [],
+            "fieldHead": "site and protective effect",
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [],
+            "subjectText": "the Sword of Defense"
+          },
+          {
+            "key": "use",
+            "selectors": [
+              "effect"
+            ],
+            "requestedText": "What site and protective effect are listed for the Sword of Defense",
+            "fieldText": "protective effect",
+            "qualifierTexts": [],
+            "fieldHead": "site and protective effect",
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [],
+            "subjectText": "the Sword of Defense"
+          }
+        ],
+        "constraints": {},
+        "constraintTexts": [],
+        "complete": true,
+        "unresolvedTexts": [],
+        "staticEligible": true,
+        "playerStateQuestion": false,
+        "report": false
+      }
+    },
+    {
+      "gameId": "ultima7",
+      "dialogueId": "fresh-u7-serpents-hold-equipment",
+      "turn": 4,
+      "text": "How many durability points remain on my Juggernaut Hammer right now?",
+      "parseStatus": "state-guarded",
+      "frame": {
+        "kind": "source-fields",
+        "originalText": "How many durability points remain on my Juggernaut Hammer right now?",
+        "subjectText": null,
+        "subjectCandidates": [],
+        "contextTexts": [],
+        "intentTexts": [],
+        "correction": false,
+        "fields": [
+          {
+            "key": "stats",
+            "selectors": [
+              "durability"
+            ],
+            "requestedText": "How many durability points remain on my Juggernaut Hammer right now",
+            "fieldText": "durability",
+            "qualifierTexts": [
+              "points remain on my Juggernaut Hammer right now"
+            ],
+            "fieldHead": "durability points remain on my Juggernaut Hammer right now",
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [
+              "points remain on my Juggernaut Hammer right now"
+            ]
+          }
+        ],
+        "constraints": {},
+        "constraintTexts": [],
+        "complete": true,
+        "unresolvedTexts": [],
+        "staticEligible": false,
+        "playerStateQuestion": true,
+        "report": false
+      }
+    },
+    {
+      "gameId": "ultima7",
+      "dialogueId": "fresh-u7-brion-crystal-transaction",
+      "turn": 1,
+      "text": "In Brion's orrery quest, which adventurer sells the special crystal?",
+      "parseStatus": "typed",
+      "frame": {
+        "kind": "source-fields",
+        "originalText": "In Brion's orrery quest, which adventurer sells the special crystal?",
+        "subjectText": "the special crystal",
+        "subjectCandidates": [
+          "the special crystal",
+          "In Brion's orrery quest"
+        ],
+        "contextTexts": [
+          "In Brion's orrery quest"
+        ],
+        "intentTexts": [],
+        "correction": false,
+        "fields": [
+          {
+            "key": "provider",
+            "selectors": [
+              "seller"
+            ],
+            "requestedText": "which adventurer sells the special crystal",
+            "actionText": "sells the special crystal",
+            "argumentTexts": [],
+            "objectTexts": [
+              "the special crystal"
+            ],
+            "objectRole": "object",
+            "governorText": "sells",
+            "fullArgumentTexts": [
+              "the special crystal"
+            ],
+            "ownerArgumentTexts": [
+              "the special crystal"
+            ],
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [],
+            "subjectText": "the special crystal",
+            "qualifierTexts": []
+          }
+        ],
+        "constraints": {},
+        "constraintTexts": [
+          "In Brion's orrery quest"
+        ],
+        "complete": true,
+        "unresolvedTexts": [],
+        "staticEligible": true,
+        "playerStateQuestion": false,
+        "report": false
+      }
+    },
+    {
+      "gameId": "ultima7",
+      "dialogueId": "fresh-u7-brion-crystal-transaction",
+      "turn": 2,
+      "text": "What should I pay for the crystal, and who gets it afterward?",
+      "parseStatus": "typed",
+      "frame": {
+        "kind": "source-fields",
+        "originalText": "What should I pay for the crystal, and who gets it afterward?",
+        "subjectText": "the crystal",
+        "subjectCandidates": [
+          "the crystal",
+          "it afterward"
+        ],
+        "contextTexts": [],
+        "intentTexts": [],
+        "correction": false,
+        "fields": [
+          {
+            "key": "stats",
+            "selectors": [
+              "price"
+            ],
+            "requestedText": "What should I pay for the crystal",
+            "actionText": "pay for the crystal",
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [],
+            "subjectText": "the crystal",
+            "qualifierTexts": []
+          },
+          {
+            "key": "recipient",
+            "selectors": [],
+            "requestedText": "who gets it afterward",
+            "actionText": "gets it afterward",
+            "argumentTexts": [],
+            "objectTexts": [
+              "it afterward"
+            ],
+            "objectRole": "content",
+            "governorText": "gets",
+            "fullArgumentTexts": [
+              "it afterward"
+            ],
+            "ownerArgumentTexts": [
+              "it afterward"
+            ],
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [],
+            "subjectText": "it afterward",
+            "qualifierTexts": []
+          }
+        ],
+        "constraints": {},
+        "constraintTexts": [],
+        "complete": true,
+        "unresolvedTexts": [],
+        "staticEligible": true,
+        "playerStateQuestion": false,
+        "report": false
+      }
+    },
+    {
+      "gameId": "ultima7",
+      "dialogueId": "fresh-u7-brion-crystal-transaction",
+      "turn": 3,
+      "text": "What outcome does the reward field list for finishing that errand?",
+      "parseStatus": "typed",
+      "frame": {
+        "kind": "source-fields",
+        "originalText": "What outcome does the reward field list for finishing that errand?",
+        "subjectText": "that errand",
+        "subjectCandidates": [
+          "that errand"
+        ],
+        "contextTexts": [],
+        "intentTexts": [],
+        "correction": false,
+        "fields": [
+          {
+            "key": "outcome",
+            "selectors": [],
+            "requestedText": "What outcome does the reward field list for finishing that errand",
+            "fieldText": "outcome",
+            "qualifierTexts": [],
+            "fieldHead": "outcome",
+            "purposeTexts": [
+              "finishing that errand"
+            ],
+            "governorText": "finishing",
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [],
+            "subjectText": "that errand",
+            "sourceActorText": "the reward field"
+          }
+        ],
+        "constraints": {},
+        "constraintTexts": [],
+        "complete": true,
+        "unresolvedTexts": [],
+        "staticEligible": true,
+        "playerStateQuestion": false,
+        "report": false
+      }
+    },
+    {
+      "gameId": "ultima7",
+      "dialogueId": "fresh-u7-brion-crystal-transaction",
+      "turn": 4,
+      "text": "Does the guide say that crystal is quartz?",
+      "parseStatus": "unresolved",
+      "frame": {
+        "kind": "source-fields",
+        "originalText": "Does the guide say that crystal is quartz?",
+        "subjectText": null,
+        "subjectCandidates": [],
+        "contextTexts": [],
+        "intentTexts": [],
+        "correction": false,
+        "fields": [
+          {
+            "key": "unknown",
+            "selectors": [
+              "the guide say that crystal is quartz"
+            ],
+            "requestedText": "Does the guide say that crystal is quartz",
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [
+              "that crystal is quartz"
+            ],
+            "qualifierTexts": [
+              "that crystal is quartz"
+            ],
+            "sourceActorText": "the guide"
+          }
+        ],
+        "constraints": {},
+        "constraintTexts": [],
+        "complete": false,
+        "unresolvedTexts": [
+          "Does the guide say that crystal is quartz"
+        ],
+        "staticEligible": true,
+        "playerStateQuestion": false,
+        "report": false
+      }
+    },
+    {
+      "gameId": "ultima7",
+      "dialogueId": "fresh-u7-utility-and-warning-spells",
+      "turn": 1,
+      "text": "What practical travel benefit does Mark & Recall provide?",
+      "parseStatus": "typed",
+      "frame": {
+        "kind": "source-fields",
+        "originalText": "What practical travel benefit does Mark & Recall provide?",
+        "subjectText": "Mark & Recall",
+        "subjectCandidates": [
+          "Mark & Recall"
+        ],
+        "contextTexts": [],
+        "intentTexts": [],
+        "correction": false,
+        "fields": [
+          {
+            "key": "use",
+            "selectors": [
+              "travel"
+            ],
+            "requestedText": "What practical travel benefit does Mark & Recall provide",
+            "fieldText": "travel benefit",
+            "qualifierTexts": [],
+            "fieldHead": "practical travel benefit",
+            "presentationTexts": [
+              "practical"
+            ],
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [],
+            "subjectText": "Mark & Recall"
+          }
+        ],
+        "constraints": {},
+        "constraintTexts": [],
+        "complete": true,
+        "unresolvedTexts": [],
+        "staticEligible": true,
+        "playerStateQuestion": false,
+        "report": false
+      }
+    },
+    {
+      "gameId": "ultima7",
+      "dialogueId": "fresh-u7-utility-and-warning-spells",
+      "turn": 2,
+      "text": "Which obstacles can Unlock Magic open that ordinary keys cannot handle?",
+      "parseStatus": "typed",
+      "frame": {
+        "kind": "source-fields",
+        "originalText": "Which obstacles can Unlock Magic open that ordinary keys cannot handle?",
+        "subjectText": "Unlock Magic",
+        "subjectCandidates": [
+          "Unlock Magic"
+        ],
+        "contextTexts": [],
+        "intentTexts": [],
+        "correction": false,
+        "fields": [
+          {
+            "key": "use",
+            "selectors": [
+              "effect"
+            ],
+            "requestedText": "Which obstacles can Unlock Magic open that ordinary keys cannot handle",
+            "actionText": "Unlock Magic open that ordinary keys cannot handle",
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [
+              "that ordinary keys cannot handle"
+            ],
+            "subjectText": "Unlock Magic",
+            "qualifierTexts": [
+              "that ordinary keys cannot handle"
+            ]
+          }
+        ],
+        "constraints": {},
+        "constraintTexts": [],
+        "complete": true,
+        "unresolvedTexts": [],
+        "staticEligible": true,
+        "playerStateQuestion": false,
+        "report": false
+      }
+    },
+    {
+      "gameId": "ultima7",
+      "dialogueId": "fresh-u7-utility-and-warning-spells",
+      "turn": 3,
+      "text": "What is the stated danger of treating Armageddon as a normal field spell?",
+      "parseStatus": "typed",
+      "frame": {
+        "kind": "source-fields",
+        "originalText": "What is the stated danger of treating Armageddon as a normal field spell?",
+        "subjectText": "Armageddon",
+        "subjectCandidates": [
+          "Armageddon"
+        ],
+        "contextTexts": [],
+        "intentTexts": [],
+        "correction": false,
+        "fields": [
+          {
+            "key": "limitations",
+            "selectors": [],
+            "requestedText": "What is the stated danger of treating Armageddon as a normal field spell",
+            "fieldText": "danger",
+            "qualifierTexts": [
+              "stated",
+              "as a normal field spell"
+            ],
+            "fieldHead": "the stated danger",
+            "purposeTexts": [
+              "treating Armageddon as a normal field spell"
+            ],
+            "governorText": "treating",
+            "qualifiers": {
+              "provenanceTexts": [
+                "stated"
+              ]
+            },
+            "unknownQualifierTexts": [
+              "as a normal field spell"
+            ],
+            "subjectText": "Armageddon"
+          }
+        ],
+        "constraints": {},
+        "constraintTexts": [],
+        "complete": true,
+        "unresolvedTexts": [],
+        "staticEligible": true,
+        "playerStateQuestion": false,
+        "report": false
+      }
+    },
+    {
+      "gameId": "ultima7",
+      "dialogueId": "fresh-u7-utility-and-warning-spells",
+      "turn": 4,
+      "text": "What exact blast radius in tiles does this page give Armageddon?",
+      "parseStatus": "typed",
+      "frame": {
+        "kind": "source-fields",
+        "originalText": "What exact blast radius in tiles does this page give Armageddon?",
+        "subjectText": "Armageddon",
+        "subjectCandidates": [
+          "Armageddon"
+        ],
+        "contextTexts": [],
+        "intentTexts": [],
+        "correction": false,
+        "fields": [
+          {
+            "key": "stats",
+            "selectors": [
+              "radius"
+            ],
+            "requestedText": "What exact blast radius in tiles does this page give Armageddon",
+            "fieldText": "blast radius",
+            "qualifierTexts": [
+              "exact in tiles"
+            ],
+            "fieldHead": "exact blast radius in tiles",
+            "qualifiers": {
+              "exact": true,
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [
+              "in tiles"
+            ],
+            "subjectText": "Armageddon",
+            "sourceActorText": "this page"
+          }
+        ],
+        "constraints": {},
+        "constraintTexts": [],
+        "complete": true,
+        "unresolvedTexts": [],
+        "staticEligible": true,
+        "playerStateQuestion": false,
+        "report": false
+      }
+    },
+    {
+      "gameId": "starcraft",
+      "dialogueId": "fresh-sc-bwapi-load-diagnostics",
+      "turn": 1,
+      "text": "If BWAPI is not loading, what version-compatibility check does the guide list?",
+      "parseStatus": "typed",
+      "frame": {
+        "kind": "source-fields",
+        "originalText": "If BWAPI is not loading, what version-compatibility check does the guide list?",
+        "subjectText": null,
+        "subjectCandidates": [
+          "If BWAPI is not loading"
+        ],
+        "contextTexts": [
+          "If BWAPI is not loading"
+        ],
+        "intentTexts": [],
+        "correction": false,
+        "fields": [
+          {
+            "key": "method",
+            "selectors": [
+              "diagnostics"
+            ],
+            "requestedText": "what version-compatibility check does the guide list",
+            "fieldText": "version-compatibility check",
+            "qualifierTexts": [],
+            "fieldHead": "version-compatibility check",
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [],
+            "sourceActorText": "the guide"
+          }
+        ],
+        "constraints": {
+          "conditionText": "If BWAPI is not loading"
+        },
+        "constraintTexts": [
+          "If BWAPI is not loading"
+        ],
+        "complete": true,
+        "unresolvedTexts": [],
+        "staticEligible": true,
+        "playerStateQuestion": false,
+        "report": false
+      }
+    },
+    {
+      "gameId": "starcraft",
+      "dialogueId": "fresh-sc-bwapi-load-diagnostics",
+      "turn": 2,
+      "text": "Where should I look for messages about that BWAPI loading failure?",
+      "parseStatus": "typed",
+      "frame": {
+        "kind": "source-fields",
+        "originalText": "Where should I look for messages about that BWAPI loading failure?",
+        "subjectText": "messages about that BWAPI loading failure",
+        "subjectCandidates": [
+          "messages about that BWAPI loading failure"
+        ],
+        "contextTexts": [],
+        "intentTexts": [],
+        "correction": false,
+        "fields": [
+          {
+            "key": "location",
+            "selectors": [],
+            "requestedText": "Where should I look for messages about that BWAPI loading failure",
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [],
+            "subjectText": "messages about that BWAPI loading failure",
+            "qualifierTexts": []
+          }
+        ],
+        "constraints": {},
+        "constraintTexts": [],
+        "complete": true,
+        "unresolvedTexts": [],
+        "staticEligible": true,
+        "playerStateQuestion": false,
+        "report": false
+      }
+    },
+    {
+      "gameId": "starcraft",
+      "dialogueId": "fresh-sc-bwapi-load-diagnostics",
+      "turn": 3,
+      "text": "And what placement check is specified for the BWAPI files?",
+      "parseStatus": "typed",
+      "frame": {
+        "kind": "source-fields",
+        "originalText": "And what placement check is specified for the BWAPI files?",
+        "subjectText": "the BWAPI files",
+        "subjectCandidates": [
+          "the BWAPI files"
+        ],
+        "contextTexts": [],
+        "intentTexts": [],
+        "correction": false,
+        "fields": [
+          {
+            "key": "method",
+            "selectors": [
+              "placement-check"
+            ],
+            "requestedText": "what placement check is specified for the BWAPI files",
+            "fieldText": "placement check",
+            "qualifierTexts": [],
+            "fieldHead": "placement check",
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [],
+            "subjectText": "the BWAPI files"
+          }
+        ],
+        "constraints": {},
+        "constraintTexts": [],
+        "complete": true,
+        "unresolvedTexts": [],
+        "staticEligible": true,
+        "playerStateQuestion": false,
+        "report": false
+      }
+    },
+    {
+      "gameId": "starcraft",
+      "dialogueId": "fresh-sc-bwapi-load-diagnostics",
+      "turn": 4,
+      "text": "Which exact Windows registry value does the guide tell me to change for this loading problem?",
+      "parseStatus": "unresolved",
+      "frame": {
+        "kind": "source-fields",
+        "originalText": "Which exact Windows registry value does the guide tell me to change for this loading problem?",
+        "subjectText": "the guide tell me to change for this loading problem",
+        "subjectCandidates": [
+          "the guide tell me to change for this loading problem"
+        ],
+        "contextTexts": [],
+        "intentTexts": [],
+        "correction": false,
+        "fields": [
+          {
+            "key": "unknown",
+            "selectors": [
+              "exact windows registry value"
+            ],
+            "requestedText": "Which exact Windows registry value does the guide tell me to change for this loading problem",
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [],
+            "subjectText": "the guide tell me to change for this loading problem",
+            "qualifierTexts": [],
+            "sourceActorText": "the guide"
+          }
+        ],
+        "constraints": {},
+        "constraintTexts": [],
+        "complete": false,
+        "unresolvedTexts": [
+          "Which exact Windows registry value does the guide tell me to change for this loading problem"
+        ],
+        "staticEligible": true,
+        "playerStateQuestion": false,
+        "report": false
+      }
+    },
+    {
+      "gameId": "starcraft",
+      "dialogueId": "fresh-sc-purplewave-build-and-project",
+      "turn": 1,
+      "text": "What does the reviewed PurpleWave README say is needed to build the source, and what does the package command produce?",
+      "parseStatus": "typed",
+      "frame": {
+        "kind": "source-fields",
+        "originalText": "What does the reviewed PurpleWave README say is needed to build the source, and what does the package command produce?",
+        "subjectText": "the reviewed PurpleWave README",
+        "subjectCandidates": [
+          "the reviewed PurpleWave README",
+          "the package command"
+        ],
+        "contextTexts": [],
+        "intentTexts": [],
+        "correction": false,
+        "fields": [
+          {
+            "key": "prerequisites",
+            "selectors": [
+              "condition"
+            ],
+            "requestedText": "What does the reviewed PurpleWave README say is needed to build the source",
+            "actionText": " is needed to build the source",
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [],
+            "subjectText": "the reviewed PurpleWave README",
+            "qualifierTexts": [],
+            "sourceActorText": "the reviewed PurpleWave README"
+          },
+          {
+            "key": "outcome",
+            "selectors": [
+              "artifact"
+            ],
+            "requestedText": "what does the package command produce",
+            "actionText": "",
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [],
+            "subjectText": "the package command",
+            "qualifierTexts": []
+          }
+        ],
+        "constraints": {},
+        "constraintTexts": [],
+        "complete": true,
+        "unresolvedTexts": [],
+        "staticEligible": true,
+        "playerStateQuestion": false,
+        "report": false
+      }
+    },
+    {
+      "gameId": "starcraft",
+      "dialogueId": "fresh-sc-purplewave-build-and-project",
+      "turn": 2,
+      "text": "For running its JAR, what working folder and three data directories are described, and how is the IDE folder qualified?",
+      "parseStatus": "typed",
+      "frame": {
+        "kind": "source-fields",
+        "originalText": "For running its JAR, what working folder and three data directories are described, and how is the IDE folder qualified?",
+        "subjectText": "the IDE folder",
+        "subjectCandidates": [
+          "the IDE folder",
+          "For running its JAR"
+        ],
+        "contextTexts": [
+          "For running its JAR"
+        ],
+        "intentTexts": [],
+        "correction": false,
+        "fields": [
+          {
+            "key": "location",
+            "selectors": [
+              "working-directory"
+            ],
+            "requestedText": "what working folder and three data directories are described",
+            "fieldText": "working folder",
+            "qualifierTexts": [],
+            "fieldHead": "working folder and three data directories",
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": []
+          },
+          {
+            "key": "location",
+            "selectors": [
+              "data-directory"
+            ],
+            "requestedText": "what working folder and three data directories are described",
+            "fieldText": "data directories",
+            "qualifierTexts": [],
+            "fieldHead": "working folder and three data directories",
+            "requestedCountText": "three",
+            "requestedCount": {
+              "text": "three",
+              "value": 3,
+              "scope": "requested-list"
+            },
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": []
+          },
+          {
+            "key": "limitations",
+            "selectors": [],
+            "requestedText": "how is the IDE folder qualified",
+            "fieldHead": "the IDE folder",
+            "qualifierTexts": [],
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [],
+            "subjectText": "the IDE folder"
+          }
+        ],
+        "constraints": {},
+        "constraintTexts": [
+          "For running its JAR"
+        ],
+        "complete": true,
+        "unresolvedTexts": [],
+        "staticEligible": true,
+        "playerStateQuestion": false,
+        "report": false
+      }
+    },
+    {
+      "gameId": "starcraft",
+      "dialogueId": "fresh-sc-purplewave-build-and-project",
+      "turn": 3,
+      "text": "Where does that project invite questions, and what license and derivative-bot policy are recorded?",
+      "parseStatus": "typed",
+      "frame": {
+        "kind": "source-fields",
+        "originalText": "Where does that project invite questions, and what license and derivative-bot policy are recorded?",
+        "subjectText": "that project",
+        "subjectCandidates": [
+          "that project"
+        ],
+        "contextTexts": [],
+        "intentTexts": [],
+        "correction": false,
+        "fields": [
+          {
+            "key": "support",
+            "selectors": [],
+            "requestedText": "Where does that project invite questions",
+            "governorText": "invite questions",
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [],
+            "subjectText": "that project",
+            "qualifierTexts": []
+          },
+          {
+            "key": "support",
+            "selectors": [
+              "license"
+            ],
+            "requestedText": "what license and derivative-bot policy are recorded",
+            "fieldText": "license",
+            "qualifierTexts": [],
+            "fieldHead": "license and derivative-bot policy",
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": []
+          },
+          {
+            "key": "support",
+            "selectors": [
+              "policy"
+            ],
+            "requestedText": "what license and derivative-bot policy are recorded",
+            "fieldText": "derivative-bot policy",
+            "qualifierTexts": [],
+            "fieldHead": "license and derivative-bot policy",
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": []
+          }
+        ],
+        "constraints": {},
+        "constraintTexts": [],
+        "complete": true,
+        "unresolvedTexts": [],
+        "staticEligible": true,
+        "playerStateQuestion": false,
+        "report": false
+      }
+    },
+    {
+      "gameId": "starcraft",
+      "dialogueId": "fresh-sc-purplewave-build-and-project",
+      "turn": 4,
+      "text": "Can you give the exact absolute folder where my PurpleWave JAR is installed now?",
+      "parseStatus": "state-guarded",
+      "frame": {
+        "kind": "source-fields",
+        "originalText": "Can you give the exact absolute folder where my PurpleWave JAR is installed now?",
+        "subjectText": "you",
+        "subjectCandidates": [
+          "you"
+        ],
+        "contextTexts": [],
+        "intentTexts": [],
+        "correction": false,
+        "fields": [
+          {
+            "key": "location",
+            "selectors": [],
+            "requestedText": "Can you give the exact absolute folder where my PurpleWave JAR is installed now",
+            "fieldText": "folder",
+            "qualifierTexts": [
+              "you give exact absolute where my PurpleWave JAR is installed now",
+              "the exact absolute folder where my PurpleWave JAR is installed now"
+            ],
+            "fieldHead": "you give the exact absolute folder where my PurpleWave JAR is installed now",
+            "qualifiers": {
+              "exact": true,
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [
+              "you give absolute where my PurpleWave JAR is installed now",
+              "the absolute folder where my PurpleWave JAR is installed now"
+            ],
+            "subjectText": "you"
+          }
+        ],
+        "constraints": {},
+        "constraintTexts": [],
+        "complete": true,
+        "unresolvedTexts": [],
+        "staticEligible": false,
+        "playerStateQuestion": true,
+        "report": false
+      }
+    },
+    {
+      "gameId": "starcraft",
+      "dialogueId": "fresh-sc-schnail-automation-scope",
+      "turn": 1,
+      "text": "For SCHNAIL, what does the guide say can make the first launch take some time?",
+      "parseStatus": "typed",
+      "frame": {
+        "kind": "source-fields",
+        "originalText": "For SCHNAIL, what does the guide say can make the first launch take some time?",
+        "subjectText": "the guide",
+        "subjectCandidates": [
+          "the guide",
+          "For SCHNAIL"
+        ],
+        "contextTexts": [
+          "For SCHNAIL"
+        ],
+        "intentTexts": [],
+        "correction": false,
+        "fields": [
+          {
+            "key": "cause",
+            "selectors": [],
+            "requestedText": "what does the guide say can make the first launch take some time",
+            "actionText": " can make the first launch take some time",
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [],
+            "subjectText": "the guide",
+            "qualifierTexts": [],
+            "sourceActorText": "the guide"
+          }
+        ],
+        "constraints": {},
+        "constraintTexts": [
+          "For SCHNAIL"
+        ],
+        "complete": true,
+        "unresolvedTexts": [],
+        "staticEligible": true,
+        "playerStateQuestion": false,
+        "report": false
+      }
+    },
+    {
+      "gameId": "starcraft",
+      "dialogueId": "fresh-sc-schnail-automation-scope",
+      "turn": 2,
+      "text": "What setup work does the client itself perform on the game files?",
+      "parseStatus": "typed",
+      "frame": {
+        "kind": "source-fields",
+        "originalText": "What setup work does the client itself perform on the game files?",
+        "subjectText": "the client",
+        "subjectCandidates": [
+          "the client"
+        ],
+        "contextTexts": [],
+        "intentTexts": [],
+        "correction": false,
+        "fields": [
+          {
+            "key": "use",
+            "selectors": [
+              "automation"
+            ],
+            "requestedText": "What setup work does the client itself perform on the game files",
+            "fieldText": "setup work",
+            "qualifierTexts": [
+              "on the game files"
+            ],
+            "fieldHead": "setup work",
+            "metadataTexts": [
+              "itself"
+            ],
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [
+              "on the game files"
+            ],
+            "subjectText": "the client"
+          }
+        ],
+        "constraints": {},
+        "constraintTexts": [],
+        "complete": true,
+        "unresolvedTexts": [],
+        "staticEligible": true,
+        "playerStateQuestion": false,
+        "report": false
+      }
+    },
+    {
+      "gameId": "starcraft",
+      "dialogueId": "fresh-sc-schnail-automation-scope",
+      "turn": 3,
+      "text": "Are automatic updates described for the client alone, or for the game too?",
+      "parseStatus": "typed",
+      "frame": {
+        "kind": "source-fields",
+        "originalText": "Are automatic updates described for the client alone, or for the game too?",
+        "subjectText": null,
+        "subjectCandidates": [],
+        "contextTexts": [],
+        "intentTexts": [],
+        "correction": false,
+        "fields": [
+          {
+            "key": "use",
+            "selectors": [
+              "updates"
+            ],
+            "requestedText": "Are automatic updates described for the client alone, or for the game too",
+            "fieldText": "automatic updates",
+            "qualifierTexts": [],
+            "fieldHead": "automatic updates",
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [],
+            "alternativeTexts": [
+              "the client",
+              "the game"
+            ],
+            "contrastText": "alone-or-too"
+          }
+        ],
+        "constraints": {},
+        "constraintTexts": [],
+        "complete": true,
+        "unresolvedTexts": [],
+        "staticEligible": true,
+        "playerStateQuestion": false,
+        "report": false
+      }
+    },
+    {
+      "gameId": "starcraft",
+      "dialogueId": "fresh-sc-schnail-automation-scope",
+      "turn": 4,
+      "text": "How many minutes will that first download take on my internet connection?",
+      "parseStatus": "state-guarded",
+      "frame": {
+        "kind": "source-fields",
+        "originalText": "How many minutes will that first download take on my internet connection?",
+        "subjectText": "that first download take on my internet connection",
+        "subjectCandidates": [
+          "that first download take on my internet connection"
+        ],
+        "contextTexts": [],
+        "intentTexts": [],
+        "correction": false,
+        "fields": [
+          {
+            "key": "stats",
+            "selectors": [
+              "duration"
+            ],
+            "requestedText": "How many minutes will that first download take on my internet connection",
+            "fieldText": "minutes",
+            "qualifierTexts": [],
+            "fieldHead": "minutes",
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [],
+            "subjectText": "that first download take on my internet connection"
+          }
+        ],
+        "constraints": {},
+        "constraintTexts": [],
+        "complete": true,
+        "unresolvedTexts": [],
+        "staticEligible": false,
+        "playerStateQuestion": true,
+        "report": false
+      }
+    },
+    {
+      "gameId": "starcraft",
+      "dialogueId": "fresh-sc-ualberta-historical-client",
+      "turn": 1,
+      "text": "In the reviewed UAlbertaBot instructions, is execution through a client program or a module library?",
+      "parseStatus": "typed",
+      "frame": {
+        "kind": "source-fields",
+        "originalText": "In the reviewed UAlbertaBot instructions, is execution through a client program or a module library?",
+        "subjectText": null,
+        "subjectCandidates": [
+          "In the reviewed UAlbertaBot instructions"
+        ],
+        "contextTexts": [
+          "In the reviewed UAlbertaBot instructions"
+        ],
+        "intentTexts": [],
+        "correction": false,
+        "fields": [
+          {
+            "key": "identity",
+            "selectors": [
+              "execution-mode"
+            ],
+            "requestedText": "is execution through a client program or a module library",
+            "fieldText": "execution",
+            "qualifierTexts": [],
+            "fieldHead": "execution",
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [],
+            "alternativeTexts": [
+              "a client program",
+              "a module library"
+            ],
+            "contrastText": "or"
+          }
+        ],
+        "constraints": {},
+        "constraintTexts": [
+          "In the reviewed UAlbertaBot instructions"
+        ],
+        "complete": true,
+        "unresolvedTexts": [],
+        "staticEligible": true,
+        "playerStateQuestion": false,
+        "report": false
+      }
+    },
+    {
+      "gameId": "starcraft",
+      "dialogueId": "fresh-sc-ualberta-historical-client",
+      "turn": 2,
+      "text": "What limitation does that impose on AUTO_RESTART across games?",
+      "parseStatus": "typed",
+      "frame": {
+        "kind": "source-fields",
+        "originalText": "What limitation does that impose on AUTO_RESTART across games?",
+        "subjectText": "that",
+        "subjectCandidates": [
+          "that"
+        ],
+        "contextTexts": [],
+        "intentTexts": [],
+        "correction": false,
+        "fields": [
+          {
+            "key": "limitations",
+            "selectors": [],
+            "requestedText": "What limitation does that impose on AUTO_RESTART across games",
+            "fieldText": "limitation",
+            "qualifierTexts": [
+              "on AUTO_RESTART across games"
+            ],
+            "fieldHead": "limitation",
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [
+              "on AUTO_RESTART across games"
+            ],
+            "subjectText": "that"
+          }
+        ],
+        "constraints": {},
+        "constraintTexts": [],
+        "complete": true,
+        "unresolvedTexts": [],
+        "staticEligible": true,
+        "playerStateQuestion": false,
+        "report": false
+      }
+    },
+    {
+      "gameId": "starcraft",
+      "dialogueId": "fresh-sc-ualberta-historical-client",
+      "turn": 3,
+      "text": "From when does the README say active maintenance stopped, and how should its toolchain guidance be treated?",
+      "parseStatus": "typed",
+      "frame": {
+        "kind": "source-fields",
+        "originalText": "From when does the README say active maintenance stopped, and how should its toolchain guidance be treated?",
+        "subjectText": "its",
+        "subjectCandidates": [
+          "its"
+        ],
+        "contextTexts": [],
+        "intentTexts": [],
+        "correction": false,
+        "fields": [
+          {
+            "key": "sequence",
+            "selectors": [],
+            "requestedText": "From when does the README say active maintenance stopped",
+            "actionText": "does the README say active maintenance stopped",
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [
+              "active maintenance stopped"
+            ],
+            "qualifierTexts": [
+              "active maintenance stopped"
+            ],
+            "sourceActorText": "the README"
+          },
+          {
+            "key": "support",
+            "selectors": [
+              "toolchain-policy"
+            ],
+            "requestedText": "how should its toolchain guidance be treated",
+            "fieldText": "toolchain guidance",
+            "qualifierTexts": [],
+            "fieldHead": "toolchain guidance",
+            "qualifiers": {
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [],
+            "subjectText": "its",
+            "governorText": "treated"
+          }
+        ],
+        "constraints": {},
+        "constraintTexts": [],
+        "complete": true,
+        "unresolvedTexts": [],
+        "staticEligible": true,
+        "playerStateQuestion": false,
+        "report": false
+      }
+    },
+    {
+      "gameId": "starcraft",
+      "dialogueId": "fresh-sc-ualberta-historical-client",
+      "turn": 4,
+      "text": "What exact date has its next official release been promised for?",
+      "parseStatus": "typed",
+      "frame": {
+        "kind": "source-fields",
+        "originalText": "What exact date has its next official release been promised for?",
+        "subjectText": "its next official release been promised for",
+        "subjectCandidates": [
+          "its next official release been promised for"
+        ],
+        "contextTexts": [],
+        "intentTexts": [],
+        "correction": false,
+        "fields": [
+          {
+            "key": "stats",
+            "selectors": [
+              "date"
+            ],
+            "requestedText": "What exact date has its next official release been promised for",
+            "fieldText": "date",
+            "qualifierTexts": [
+              "exact"
+            ],
+            "fieldHead": "exact date",
+            "qualifiers": {
+              "exact": true,
+              "provenanceTexts": []
+            },
+            "unknownQualifierTexts": [],
+            "subjectText": "its next official release been promised for"
+          }
+        ],
+        "constraints": {},
+        "constraintTexts": [],
+        "complete": true,
+        "unresolvedTexts": [],
+        "staticEligible": true,
+        "playerStateQuestion": false,
+        "report": false
+      }
+    }
+  ]
+}

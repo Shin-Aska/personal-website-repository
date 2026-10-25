@@ -1,0 +1,110 @@
+{
+  "schema": 1,
+  "checkedAt": "2026-10-24T06:04:19.380995+00:00",
+  "feature": "Shared local intent, dialogue and consultation in all six guides, with roomier conversation views",
+  "games": [
+    "albion",
+    "ultima5",
+    "ultima6",
+    "ultima7",
+    "alqadim",
+    "starcraft"
+  ],
+  "evidence": [
+    {
+      "file": "rollout-browser-rollout-third.json",
+      "sha256": "c5fa6cdabcc85a8f1ac73590afb5b652d2069e6d0017a0a577276c2d32cc6767"
+    },
+    {
+      "file": "full-answer-browser-rollout-full-final.json",
+      "sha256": "e0c3361e12940e19c28695fa613c8d196425151f7e8a0ac7e086355e22e4f9de"
+    },
+    {
+      "file": "chat-layout-rollout-final-20261024.json",
+      "sha256": "0d5a87b1691df7cbfa06476170119751c6201703d81e7dfbc6a08000892b987a"
+    },
+    {
+      "file": "rollout-consultation-audit.json",
+      "sha256": "a19a55af200c66908758bb82f8c355bcf0e79a4a966244255022b73e6d61661b"
+    }
+  ],
+  "standaloneTests": {
+    "passed": 1281,
+    "total": 1281,
+    "failures": 0,
+    "command": "node --test guides/tests/assistant/*.test.mjs"
+  },
+  "actualMiniLM": {
+    "conversationChecks": {
+      "passed": 126,
+      "total": 126
+    },
+    "categories": {
+      "supportedFactual": {
+        "passed": 81,
+        "total": 81
+      },
+      "unsupported": {
+        "passed": 38,
+        "total": 38
+      },
+      "control": {
+        "passed": 7,
+        "total": 7
+      }
+    },
+    "chatSurfaces": 7,
+    "desktopPhoneLayoutChecks": {
+      "passed": 14,
+      "total": 14
+    },
+    "expandedChatChecks": {
+      "passed": 14,
+      "total": 14
+    },
+    "nativeGenerativeInference": false,
+    "generativeWorkerFixture": true
+  },
+  "additionalUiChecks": {
+    "fullAnswerChecks": 24,
+    "layoutCombinations": 42,
+    "layoutActualSends": 98
+  },
+  "consultationScope": {
+    "games": 6,
+    "profiles": 18,
+    "witnessUses": 74,
+    "declaredCriteriaChecks": 18,
+    "negativeConditions": 8
+  },
+  "cache": {
+    "assets": 804,
+    "version": "60ecf833e19fc2d3caab16198ca5bf40f09e6054f91297313bdeeeb4245c34c9",
+    "manifestTestsPassed": 4
+  },
+  "boundaries": {
+    "allSurfacesRan": true,
+    "realIntentEverySurface": true,
+    "storageUnchanged": true,
+    "noSavedGameWrites": true,
+    "noExternalRequests": true,
+    "noPageErrors": true,
+    "onlyStaticGets": true,
+    "sourceFilesUnchanged": true,
+    "serverClosed": true
+  },
+  "limitations": [
+    "Authored, source-reviewed cases establish bounded behavior rather than blind model accuracy.",
+    "The classifier weights and fitting data remain unchanged; scores are uncalibrated.",
+    "Consultation uses a reviewed catalog of conditional guide recommendations.",
+    "Native MiniLM and browser/UI behavior were tested; these rollout browser runs use the existing generative-worker fixture."
+  ],
+  "publication": {
+    "localOnly": true,
+    "ftpUploaded": false,
+    "committed": false,
+    "pushed": false,
+    "newExternalDownloads": false,
+    "packagesInstalled": false
+  }
+}

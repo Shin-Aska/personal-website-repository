@@ -1,0 +1,536 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-24T06:07:10.557Z",
+  "method": "Read-only source and structural decision audit; explicit comparison routing; no model inference.",
+  "command": "node guides/tests/assistant/rollout-consultation-audit.mjs",
+  "coverage": {
+    "games": 6,
+    "profiles": 18,
+    "witnessUses": 74,
+    "distinctWitnesses": 29,
+    "criteria": 18,
+    "negativeConditions": 8,
+    "bundleGuards": 3
+  },
+  "semanticReview": [
+    {
+      "gameId": "starcraft",
+      "finding": "Native Remastered map, realistic-AI client, and offline 1.16.1 launcher are distinct conditional goals. Map mode/map coverage and SCHNAIL own-game/login limitations stay quoted; no same-installation compatibility is inferred."
+    },
+    {
+      "gameId": "ultima7",
+      "finding": "Healing, front-line tank, and balanced archer match the guide companion roles. Party Builder text explicitly distinguishes a plan from actual party membership."
+    },
+    {
+      "gameId": "albion",
+      "finding": "Siobhan warrior strength, Sira frost/snare specialty, and Harriet island teleportation requirement match the source. This is role guidance, not a claim that a currently unavailable companion has joined."
+    },
+    {
+      "gameId": "ultima5",
+      "finding": "Shamino archery, Geoffrey front-line combat, and Jaana early spellcasting match the source. Early spellcasting is not a strongest-late-mage or highest-stat ranking."
+    },
+    {
+      "gameId": "ultima6",
+      "finding": "Iolo ranged damage, Dupre front-line tank, and Jaana dedicated spellcaster directly match source role descriptions; no party state is asserted."
+    },
+    {
+      "gameId": "alqadim",
+      "finding": "Fast strike, front-and-sides coverage, and full-circle rear coverage match the move descriptions. Quotes retain second-level/learning/progression caveats and do not assert that a move is already learned."
+    }
+  ],
+  "sourceHashes": {
+    "guides/data/assistant/consultation-catalog.json": {
+      "bytes": 52598,
+      "sha256": "e7ad5de8bc0b48dcd83c35882719d43770c13ac029099c7a635f3b3ba322aa0d"
+    },
+    "guides/tests/assistant/evidence/conversation-starcraft-source-records.json": {
+      "bytes": 258318,
+      "sha256": "81305c946b909c349030970e87b36dc45840ab45aca82a467abcc99836239f16"
+    },
+    "guides/tests/assistant/load-records.mjs": {
+      "bytes": 2817,
+      "sha256": "b951811d54313cc90fc60cdca1583905ed926871dd291c408c2b297db407edfc"
+    },
+    "guides/tests/assistant/rollout-consultation-audit.mjs": {
+      "bytes": 12455,
+      "sha256": "affb47d3262dd5d32892f1db6b6640a18f0375b3567b54ed6da7dca4239dda16"
+    },
+    "guides/js/assistant/consultation.js": {
+      "bytes": 15390,
+      "sha256": "e699091ce4ae4926b6d925a93cb13396ad440fc01ca66c8a574ef35fe939990a"
+    },
+    "guides/js/assistant/policy.js": {
+      "bytes": 5808,
+      "sha256": "df44eea0b5eec7dae01deb0ab4c179873cb5f271ae1a3d87ed89a630cb87aec3"
+    },
+    "guides/js/assistant/language.js": {
+      "bytes": 50188,
+      "sha256": "f615ac045c6fae7e5ffea26f852c0c50b9985bd43a432d736c0c7948ebbb9e7e"
+    },
+    "guides/js/assistant/retrieval.js": {
+      "bytes": 20149,
+      "sha256": "d40e3d699e419ccee015abbdfe1b901816629af3d0ded9d52f082476b906c7f3"
+    },
+    "guides/js/assistant/topics.js": {
+      "bytes": 21526,
+      "sha256": "cae60c918f936d1429713f076420e32c1fc72a89d371b47f7b1958b81e852d39"
+    },
+    "guides/js/assistant/consent.js": {
+      "bytes": 949,
+      "sha256": "cd83de63e5ec28425fad9eef36d597eec48ec839cb48e93569a568571f1e4b98"
+    },
+    "guides/js/assistant/bootstrap.js": {
+      "bytes": 6647,
+      "sha256": "022aff4f7c2f93fc5c74da9b6457c6a53ee5eb2c072bf90970eca95ef3855608"
+    },
+    "guides/js/assistant/adapters/albion.js": {
+      "bytes": 26746,
+      "sha256": "df3993cb351cf9f5e4ade03d8bcfdfc3477c00f4fb39922b9e8cc8d4e255e70b"
+    },
+    "guides/data/assistant/albion.json": {
+      "bytes": 32601,
+      "sha256": "b3b219ccb434c450189e97404b4c06a3bbc8334dc581bea55bc4a70213851404"
+    },
+    "guides/js/assistant/adapters/ultima5.js": {
+      "bytes": 37817,
+      "sha256": "3aa64babe0f83ecc713f5d9a665b8ba7a4e7dbfce557a8cff22778a6170cf95a"
+    },
+    "guides/data/assistant/ultima5.json": {
+      "bytes": 63568,
+      "sha256": "bbd6a3a33133bc1aca80ac7a19cea5011e19c9f33869582355d7fd60f0f0d24e"
+    },
+    "guides/js/assistant/adapters/ultima6.js": {
+      "bytes": 29075,
+      "sha256": "68f2d1abd30790c217ddd9f906a1abc03fd40b74ffad932c297ada42f8d2049a"
+    },
+    "guides/data/assistant/ultima6.json": {
+      "bytes": 57830,
+      "sha256": "67b3bf1e8e935df279bec2f11cf698ba721f5d8e169f1a050fefa4ee66b5ad05"
+    },
+    "guides/js/assistant/adapters/ultima7.js": {
+      "bytes": 38294,
+      "sha256": "5140505e9fe04a864e950afab671519f31ef24ac6a9b2e91b7c3853c1cf1e7c3"
+    },
+    "guides/data/assistant/ultima7.json": {
+      "bytes": 85560,
+      "sha256": "9b5c29c25936ccfd20ca9b704df57d45c1f7142a2014b09630f8e2f2aee10871"
+    },
+    "guides/js/assistant/adapters/alqadim.js": {
+      "bytes": 16942,
+      "sha256": "fa65928d9011011a12095cd4bbf37a56bfed3b91559ce6aa8097a991b111065c"
+    },
+    "guides/data/assistant/alqadim.json": {
+      "bytes": 60897,
+      "sha256": "f0f15243ea3b27701d97b3ab369a108ef46e93ec5f780f6e1fd1bf5e69bf2b77"
+    },
+    "guides/js/assistant/adapters/starcraft.js": {
+      "bytes": 8182,
+      "sha256": "b4a11908b121a545fd810c4f8ae09404c210ab0607f70e9121a145a8aea6063e"
+    },
+    "guides/data/assistant/starcraft.json": {
+      "bytes": 72628,
+      "sha256": "0dc5925ca67adfc434b5366213a5e05e11cbf869f1d0aa71e4daa6d16ae2dfc0"
+    },
+    "guides/js/Albion.js": {
+      "bytes": 121843,
+      "sha256": "4adba84eca7af2436731b7053e3167a909f57f85edc611c6287411af84e4b1ca"
+    },
+    "guides/js/Ultima5.js": {
+      "bytes": 138756,
+      "sha256": "e2699ed2d8aca9bf3465c7dcd262461f5fca59f1fb4cbd41361e0f5c5a96dae5"
+    },
+    "guides/js/Ultima6.js": {
+      "bytes": 184270,
+      "sha256": "a0b07db60d7c30ac19bb64b56fa26b1428a6437f437f087eb2d75109afae4898"
+    },
+    "guides/js/Ultima7.js": {
+      "bytes": 80902,
+      "sha256": "c3cd92659e5e959c6d172ba38d56ba85148729b82185768557cb595e3bfb6085"
+    },
+    "guides/js/AlQadim.js": {
+      "bytes": 103896,
+      "sha256": "269798843206f12b76163c65b04301be278652115fbdbd46596f13f3ae7b5e5e"
+    },
+    "guides/js/AlbionAtlasData.js": {
+      "bytes": 713128,
+      "sha256": "b5a96b06ee31e94eba95df1cec41c2b564576e1170a3065b61e9f5db7890dcc8"
+    },
+    "guides/js/Ultima5AtlasData.js": {
+      "bytes": 1656132,
+      "sha256": "1292346505cb26d534154b317d7beee7bb186f8dda2d9316127912111bfb72a2"
+    },
+    "guides/js/Ultima6Atlas.js": {
+      "bytes": 44499,
+      "sha256": "c83db308efae81f2868d5b4954d679d24e81b83b226d4e4548699668f98d8e88"
+    },
+    "guides/js/Ultima7Markers.js": {
+      "bytes": 91924,
+      "sha256": "9103499a31be5bd132959ff268aa0149b90ec310a7f1098fbed1fc25a2de1f2e"
+    },
+    "guides/js/AlQadimAtlasData.js": {
+      "bytes": 135983,
+      "sha256": "82abbb86cafad98655e4bacfdd28e8ba96fba7f747da44b30aaa9364a37e747e"
+    },
+    "guides/StarcraftBWAPI.html": {
+      "bytes": 59019,
+      "sha256": "f43b3fcfbffddaadf2b4bf951b16652a9d1133d726b7efe06357f9a7cb925983"
+    },
+    "guides/local-assistant/profile.json": {
+      "bytes": 8778,
+      "sha256": "7fcde9d4b3d8842dc2345159687e845e023ce9049c92deab6d99d494e6ba813d"
+    },
+    "guides/local-assistant/intent/profile.json": {
+      "bytes": 7021,
+      "sha256": "786a95a078fcc940f95539837883405257f1a3a896637bb71b8b477be680639e"
+    }
+  },
+  "witnessChecks": {
+    "passed": 74,
+    "failures": []
+  },
+  "criteriaChecks": [
+    {
+      "gameId": "starcraft",
+      "criterion": "nativeRemastered",
+      "text": "Which option is best for native Remastered?",
+      "expectedEntityId": "starcraft:remastered-map",
+      "actualEntityId": "starcraft:remastered-map",
+      "decision": "answer",
+      "recordIds": [
+        "starcraft:remastered-map:features",
+        "starcraft:ai-options:comparison",
+        "starcraft:remastered-map:no-downgrade",
+        "starcraft:remastered-map:setup",
+        "starcraft:remastered-map:pros-cons",
+        "starcraft:schnail:features",
+        "starcraft:schnail:pros-cons",
+        "starcraft:schnail:own-game"
+      ],
+      "passed": true,
+      "problems": []
+    },
+    {
+      "gameId": "starcraft",
+      "criterion": "realisticAI",
+      "text": "Which option is best for realistic AI?",
+      "expectedEntityId": "starcraft:schnail",
+      "actualEntityId": "starcraft:schnail",
+      "decision": "answer",
+      "recordIds": [
+        "starcraft:schnail:features",
+        "starcraft:ai-options:comparison",
+        "starcraft:schnail:pros-cons",
+        "starcraft:schnail:own-game"
+      ],
+      "passed": true,
+      "problems": []
+    },
+    {
+      "gameId": "starcraft",
+      "criterion": "offline",
+      "text": "In Brood War 1.16.1, which option is best for offline?",
+      "expectedEntityId": "starcraft:bwai",
+      "actualEntityId": "starcraft:bwai",
+      "decision": "answer",
+      "recordIds": [
+        "starcraft:bwai:features",
+        "starcraft:bwai:pros-cons",
+        "starcraft:bwai:setup"
+      ],
+      "passed": true,
+      "problems": []
+    },
+    {
+      "gameId": "ultima7",
+      "criterion": "healing",
+      "text": "Which option is best for healing?",
+      "expectedEntityId": "ultima7:companion:jaana",
+      "actualEntityId": "ultima7:companion:jaana",
+      "decision": "answer",
+      "recordIds": [
+        "ultima7:companion:jaana:explanation"
+      ],
+      "passed": true,
+      "problems": []
+    },
+    {
+      "gameId": "ultima7",
+      "criterion": "frontline",
+      "text": "Which option is best for frontline?",
+      "expectedEntityId": "ultima7:companion:dupre",
+      "actualEntityId": "ultima7:companion:dupre",
+      "decision": "answer",
+      "recordIds": [
+        "ultima7:companion:dupre:explanation"
+      ],
+      "passed": true,
+      "problems": []
+    },
+    {
+      "gameId": "ultima7",
+      "criterion": "ranged",
+      "text": "Which option is best for ranged?",
+      "expectedEntityId": "ultima7:companion:iolo",
+      "actualEntityId": "ultima7:companion:iolo",
+      "decision": "answer",
+      "recordIds": [
+        "ultima7:companion:iolo:explanation",
+        "ultima7:companion:iolo:stats"
+      ],
+      "passed": true,
+      "problems": []
+    },
+    {
+      "gameId": "albion",
+      "criterion": "frontline",
+      "text": "Which option is best for frontline?",
+      "expectedEntityId": "albion:character:siobhan",
+      "actualEntityId": "albion:character:siobhan",
+      "decision": "answer",
+      "recordIds": [
+        "albion:character:siobhan:explanation"
+      ],
+      "passed": true,
+      "problems": []
+    },
+    {
+      "gameId": "albion",
+      "criterion": "frost",
+      "text": "Which option is best for frost magic?",
+      "expectedEntityId": "albion:character:sira",
+      "actualEntityId": "albion:character:sira",
+      "decision": "answer",
+      "recordIds": [
+        "albion:character:sira:explanation"
+      ],
+      "passed": true,
+      "problems": []
+    },
+    {
+      "gameId": "albion",
+      "criterion": "teleportation",
+      "text": "Which option is best for teleportation?",
+      "expectedEntityId": "albion:character:harriet",
+      "actualEntityId": "albion:character:harriet",
+      "decision": "answer",
+      "recordIds": [
+        "albion:character:harriet:explanation"
+      ],
+      "passed": true,
+      "problems": []
+    },
+    {
+      "gameId": "ultima5",
+      "criterion": "ranged",
+      "text": "Which option is best for ranged?",
+      "expectedEntityId": "ultima5:companion:shamino",
+      "actualEntityId": "ultima5:companion:shamino",
+      "decision": "answer",
+      "recordIds": [
+        "ultima5:companion:shamino:explanation"
+      ],
+      "passed": true,
+      "problems": []
+    },
+    {
+      "gameId": "ultima5",
+      "criterion": "frontline",
+      "text": "Which option is best for frontline?",
+      "expectedEntityId": "ultima5:companion:geoffrey",
+      "actualEntityId": "ultima5:companion:geoffrey",
+      "decision": "answer",
+      "recordIds": [
+        "ultima5:companion:geoffrey:explanation"
+      ],
+      "passed": true,
+      "problems": []
+    },
+    {
+      "gameId": "ultima5",
+      "criterion": "earlyMagic",
+      "text": "Which option is best for early spellcasting?",
+      "expectedEntityId": "ultima5:companion:jaana",
+      "actualEntityId": "ultima5:companion:jaana",
+      "decision": "answer",
+      "recordIds": [
+        "ultima5:companion:jaana:explanation"
+      ],
+      "passed": true,
+      "problems": []
+    },
+    {
+      "gameId": "ultima6",
+      "criterion": "ranged",
+      "text": "Which option is best for ranged?",
+      "expectedEntityId": "ultima6:atlas:marker:Iolo",
+      "actualEntityId": "ultima6:atlas:marker:Iolo",
+      "decision": "answer",
+      "recordIds": [
+        "ultima6:atlas:marker:Iolo:explanation:reference"
+      ],
+      "passed": true,
+      "problems": []
+    },
+    {
+      "gameId": "ultima6",
+      "criterion": "frontline",
+      "text": "Which option is best for frontline?",
+      "expectedEntityId": "ultima6:atlas:marker:Dupre",
+      "actualEntityId": "ultima6:atlas:marker:Dupre",
+      "decision": "answer",
+      "recordIds": [
+        "ultima6:atlas:marker:Dupre:explanation:reference"
+      ],
+      "passed": true,
+      "problems": []
+    },
+    {
+      "gameId": "ultima6",
+      "criterion": "spellcasting",
+      "text": "Which option is best for spellcasting?",
+      "expectedEntityId": "ultima6:atlas:marker:Jaana",
+      "actualEntityId": "ultima6:atlas:marker:Jaana",
+      "decision": "answer",
+      "recordIds": [
+        "ultima6:atlas:marker:Jaana:explanation:reference"
+      ],
+      "passed": true,
+      "problems": []
+    },
+    {
+      "gameId": "alqadim",
+      "criterion": "quickStrike",
+      "text": "Which option is best for fast strike?",
+      "expectedEntityId": "alqadim:combat:quick-swing",
+      "actualEntityId": "alqadim:combat:quick-swing",
+      "decision": "answer",
+      "recordIds": [
+        "alqadim:combat:quick-swing:combat"
+      ],
+      "passed": true,
+      "problems": []
+    },
+    {
+      "gameId": "alqadim",
+      "criterion": "frontCoverage",
+      "text": "Which option is best for front coverage?",
+      "expectedEntityId": "alqadim:combat:wide-swing",
+      "actualEntityId": "alqadim:combat:wide-swing",
+      "decision": "answer",
+      "recordIds": [
+        "alqadim:combat:wide-swing:combat"
+      ],
+      "passed": true,
+      "problems": []
+    },
+    {
+      "gameId": "alqadim",
+      "criterion": "rearCoverage",
+      "text": "Which option is best for rear coverage?",
+      "expectedEntityId": "alqadim:combat:full-circle-swing",
+      "actualEntityId": "alqadim:combat:full-circle-swing",
+      "decision": "answer",
+      "recordIds": [
+        "alqadim:combat:full-circle-swing:combat"
+      ],
+      "passed": true,
+      "problems": []
+    }
+  ],
+  "negativeChecks": [
+    {
+      "gameId": "ultima7",
+      "text": "Which companion is best for healing other than Jaana?",
+      "expectedDecision": "clarify",
+      "decision": "clarify",
+      "reason": "unsupported-condition",
+      "passed": true,
+      "problems": []
+    },
+    {
+      "gameId": "ultima7",
+      "text": "Which companion is best for healing instead of Jaana?",
+      "expectedDecision": "clarify",
+      "decision": "clarify",
+      "reason": "unsupported-condition",
+      "passed": true,
+      "problems": []
+    },
+    {
+      "gameId": "ultima7",
+      "text": "Which companion is best for healing apart from Jaana?",
+      "expectedDecision": "clarify",
+      "decision": "clarify",
+      "reason": "unsupported-condition",
+      "passed": true,
+      "problems": []
+    },
+    {
+      "gameId": "ultima7",
+      "text": "Which companion is best for healing if Jaana has left?",
+      "expectedDecision": "clarify",
+      "decision": "clarify",
+      "reason": "unsupported-condition",
+      "passed": true,
+      "problems": []
+    },
+    {
+      "gameId": "albion",
+      "text": "Which warrior should I use with Khunag in the party?",
+      "expectedDecision": "clarify",
+      "decision": "clarify",
+      "reason": "unsupported-condition",
+      "passed": true,
+      "problems": []
+    },
+    {
+      "gameId": "alqadim",
+      "text": "Which move is best for rear coverage before I learn it?",
+      "expectedDecision": "clarify",
+      "decision": "clarify",
+      "reason": "unsupported-condition",
+      "passed": true,
+      "problems": []
+    },
+    {
+      "gameId": "ultima5",
+      "text": "Which companion is the best archer with the highest Dexterity?",
+      "expectedDecision": "clarify",
+      "decision": "clarify",
+      "reason": "unsupported-condition",
+      "passed": true,
+      "problems": []
+    },
+    {
+      "gameId": "ultima6",
+      "text": "Which companion should I use for magic support without Jaana?",
+      "expectedDecision": "clarify",
+      "decision": "clarify",
+      "reason": "unsupported-condition",
+      "passed": true,
+      "problems": []
+    }
+  ],
+  "bundleChecks": [
+    {
+      "name": "Current bundle matches its actual added intent package",
+      "passed": true
+    },
+    {
+      "name": "Old cached main profile without intent metadata cannot authorize added files",
+      "passed": true
+    },
+    {
+      "name": "Changed intent byte disclosure cannot authorize different bytes",
+      "passed": true
+    }
+  ],
+  "passed": true,
+  "failures": [],
+  "limitations": [
+    "This audit makes no model-accuracy or generalization claim.",
+    "Expected cases are declared in the script, independently of runtime results. Semantic trait review is a manual reading of the cited guide facts, not proof of a universal best option.",
+    "No real player session or saved progress is read or changed. Empty stateChanges checks the response contract; it does not establish actual party membership, learning, recruitment, or installation.",
+    "StarCraft source verification uses the existing live-DOM snapshot and captured guide HTML hash; browser DOM extraction and real-model behavior are separate acceptance checks."
+  ]
+}

@@ -1,0 +1,114 @@
+{
+  "schemaVersion": 1,
+  "kind": "native-extractive-reader-local-experiment",
+  "checkedAt": "2026-10-24",
+  "decision": "Do not integrate: this passage-ranking diagnostic did not improve source selection.",
+  "productionIntegrated": false,
+  "downloadsApprovedByUser": true,
+  "packagesInstalled": false,
+  "model": {
+    "modelId": "onnx-community/mobilebert-uncased-squad-v2-ONNX",
+    "revision": "a8d7291835b8b6481505577f2aa98db0d3a4f601",
+    "modelBytes": 27848554,
+    "remoteModelsAllowed": false,
+    "wasmThreads": 1
+  },
+  "nativeInference": true,
+  "nativeMechanicsPassed": true,
+  "sourceStable": true,
+  "externalInferenceRequests": 0,
+  "pageErrors": [],
+  "serverClosed": true,
+  "cases": 850,
+  "missingCases": [
+    {
+      "game": "starcraft",
+      "dialogue": "starcraft-knowledge-antivirus",
+      "turn": 3,
+      "queries": [
+        "Where are its docs?\nSubject: SCHNAIL"
+      ]
+    }
+  ],
+  "positiveCases": 675,
+  "boundaryCases": 175,
+  "sameGameCosineTop5ExpectedFactPresent": 663,
+  "forcedTopFactSelection": {
+    "cosineCorrect": 568,
+    "readerCorrect": 400,
+    "total": 675
+  },
+  "uncalibrated": {
+    "turns": 850,
+    "boundary": 175,
+    "rawReaderBoundaryAcceptance": 63,
+    "positive": 675,
+    "positiveWithExpectedFocusedFact": 675,
+    "candidateCovered": 663,
+    "cosineTopFactCorrect": 568,
+    "readerTopFactCorrect": 284,
+    "readerWrongFact": 166,
+    "readerAbstainedOnPositive": 225,
+    "rawReaderBoundaryAbstention": 112
+  },
+  "thresholdSelection": {
+    "method": "SHA256(gameId/dialogueId) first32bits modulo4: zero evaluation, remainder development",
+    "objective": "correct fact IDs - 5 * wrong fact IDs - 10 * raw boundary acceptances; development dialogues only",
+    "chosen": {
+      "minNullMargin": 4,
+      "minWinnerMargin": 8
+    },
+    "development": {
+      "turns": 649,
+      "boundary": 124,
+      "rawReaderBoundaryAbstention": 122,
+      "positive": 525,
+      "positiveWithExpectedFocusedFact": 525,
+      "candidateCovered": 517,
+      "cosineTopFactCorrect": 444,
+      "readerAbstainedOnPositive": 456,
+      "readerTopFactCorrect": 65,
+      "rawReaderBoundaryAcceptance": 2,
+      "readerWrongFact": 4
+    },
+    "evaluation": {
+      "turns": 201,
+      "positive": 150,
+      "positiveWithExpectedFocusedFact": 150,
+      "candidateCovered": 146,
+      "cosineTopFactCorrect": 124,
+      "readerAbstainedOnPositive": 138,
+      "readerWrongFact": 2,
+      "readerTopFactCorrect": 10,
+      "boundary": 51,
+      "rawReaderBoundaryAbstention": 49,
+      "rawReaderBoundaryAcceptance": 2
+    }
+  },
+  "observedLatencyMs": {
+    "contexts": 4250,
+    "median": 29.0,
+    "p95": 50.19999999552965,
+    "total": 133243.59999979287
+  },
+  "prepareMs": 975.1000000014901,
+  "memoryLimitation": "Page JS heap excludes worker/WASM memory. Total model runtime memory was not measured.",
+  "limitations": [
+    "Ungated same-game top-k retrieval; source/entity/role/state gates are not represented.",
+    "Correct fact identity is weaker than a complete answer with every requested claim and source.",
+    "Context-expanded questions come from the earlier baseline runtime, not a reader-controlled conversation.",
+    "All diagnostic cases are from the development corpus; no claim of unseen conversational generalization.",
+    "One exact context-expanded MiniLM query was absent from the old replay cache. 850/851 turns were measured; the missing turn is explicitly listed.",
+    "Threshold search cannot turn these results into production chat acceptance."
+  ],
+  "artifacts": {
+    "guides/tests/assistant/intent-prototype/source-reader/manifest.json": "4e082ec3d5c4aa04247c79c46cc5e4609e6dfc2032f14b7bce405c36db15051a",
+    "guides/tests/assistant/intent-prototype/source-reader/reader-worker.mjs": "fb733ff405303a691829561db3a93acf41020d5ec52892c8581496e17a7a6510",
+    "guides/tests/assistant/intent-prototype/source-reader/span-policy.mjs": "515cde994996dbce63f30f7bfc2b0e37401c60750543e9632b64c2bb3d729c7d",
+    "guides/tests/assistant/intent-prototype/source-reader/benchmark.py": "43d2d97ddd01a1ffec0b375e49983d38f3b18aa2c9680ff52225f0a3632f3d16",
+    "guides/tests/assistant/intent-prototype/source-reader/build-diagnostic.py": "65e68e7e66bfc951e3142bc543ad340d82df12641873754d10611c3ce9f1ebcf",
+    "guides/tests/assistant/intent-prototype/source-reader/evaluate-diagnostic.py": "7fb423be4e0bd02c54c38c7a1e5285fa3ba72942c4040251d04b357556983a52",
+    "guides/tests/assistant/intent-prototype/source-reader/results/retrieval-diagnostic-01/report.json": "3be5010d0596d9814e43f66dd453fce04ded4750611d0c771fadfb8b3ef27e4f",
+    "guides/tests/assistant/intent-prototype/source-reader/results/retrieval-diagnostic-01/evaluation.json": "29555b054179d7cd6359624b358e7c304a1b96dce5901fe10c6a007800d4dee7"
+  }
+}
