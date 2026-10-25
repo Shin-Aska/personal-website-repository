@@ -1,0 +1,122 @@
+{
+  "schemaVersion": 1,
+  "kind": "live-smoke-native-classification-adjudication",
+  "checkedAt": "2026-10-25T06:51:34.292231+00:00",
+  "rawReport": "guides/tests/assistant/evidence/deployment-live-browser-20261025.json",
+  "rawReportSha256": "a80a95e0b9067a6f82be381268ddd038abebb9463675d9f8eaeb9abd23b3ebde",
+  "rawHarnessExit": 1,
+  "rawPassedSurfaces": 5,
+  "rawTotalSurfaces": 7,
+  "twoOverstrictChecksPreserved": [
+    {
+      "surface": "ultima6",
+      "problem": "Native intent inference not observed"
+    },
+    {
+      "surface": "starcraft",
+      "problem": "Native intent inference not observed"
+    }
+  ],
+  "classificationCriterion": "The real intent worker is ready and returns six result events on each page. A separate embedding event is optional when a complete typed source plan returns before retrieval encoding. Missing optional embedding events do not mean intent classification did not run.",
+  "sourceCodeEvidence": {
+    "file": "guides/js/assistant/dialogue.js",
+    "sha256": "8fa6449a825030b928a7b179cdf358f4a769ce9df1e1bdf290cfa818e6937680",
+    "path": "answerAsync awaits interpreter.interpret, then may return a complete planFrame result before the optional encode call."
+  },
+  "surfaces": [
+    {
+      "surface": "albion",
+      "modelReady": true,
+      "nativeClassifications": 6,
+      "separateQueryEmbeddingEvents": 6,
+      "completeSourceOraclePasses": 6,
+      "layoutChecksPassed": 4,
+      "realServiceWorkerControlled": true,
+      "progressUnchanged": true,
+      "initialHarnessPassed": true
+    },
+    {
+      "surface": "ultima5",
+      "modelReady": true,
+      "nativeClassifications": 6,
+      "separateQueryEmbeddingEvents": 6,
+      "completeSourceOraclePasses": 6,
+      "layoutChecksPassed": 4,
+      "realServiceWorkerControlled": true,
+      "progressUnchanged": true,
+      "initialHarnessPassed": true
+    },
+    {
+      "surface": "ultima6",
+      "modelReady": true,
+      "nativeClassifications": 6,
+      "separateQueryEmbeddingEvents": 0,
+      "completeSourceOraclePasses": 6,
+      "layoutChecksPassed": 4,
+      "realServiceWorkerControlled": true,
+      "progressUnchanged": true,
+      "initialHarnessPassed": false
+    },
+    {
+      "surface": "ultima7",
+      "modelReady": true,
+      "nativeClassifications": 6,
+      "separateQueryEmbeddingEvents": 6,
+      "completeSourceOraclePasses": 6,
+      "layoutChecksPassed": 4,
+      "realServiceWorkerControlled": true,
+      "progressUnchanged": true,
+      "initialHarnessPassed": true
+    },
+    {
+      "surface": "alqadim",
+      "modelReady": true,
+      "nativeClassifications": 6,
+      "separateQueryEmbeddingEvents": 6,
+      "completeSourceOraclePasses": 6,
+      "layoutChecksPassed": 4,
+      "realServiceWorkerControlled": true,
+      "progressUnchanged": true,
+      "initialHarnessPassed": true
+    },
+    {
+      "surface": "alqadim-walkthrough",
+      "modelReady": true,
+      "nativeClassifications": 6,
+      "separateQueryEmbeddingEvents": 6,
+      "completeSourceOraclePasses": 6,
+      "layoutChecksPassed": 4,
+      "realServiceWorkerControlled": true,
+      "progressUnchanged": true,
+      "initialHarnessPassed": true
+    },
+    {
+      "surface": "starcraft",
+      "modelReady": true,
+      "nativeClassifications": 6,
+      "separateQueryEmbeddingEvents": 0,
+      "completeSourceOraclePasses": 6,
+      "layoutChecksPassed": 4,
+      "realServiceWorkerControlled": true,
+      "progressUnchanged": true,
+      "initialHarnessPassed": false
+    }
+  ],
+  "totals": {
+    "games": 6,
+    "surfaces": 7,
+    "nativeClassifications": 42,
+    "completeSourceOraclePasses": 42,
+    "layoutChecksPassed": 28,
+    "separateQueryEmbeddingEvents": 30,
+    "progressUnchanged": true,
+    "questionLeaks": 0,
+    "pageErrors": 0
+  },
+  "productionChangesMadeToPass": false,
+  "questionOrAnswerOracleChanges": false,
+  "nativeGenerativeInference": false,
+  "generativeWorkerFixture": true,
+  "qualification": "The raw failed diagnostic remains unchanged. All answer/source assertions, native classification events, geometry checks and state/network observations passed; only the blanket separate-encoding assertion was overstrict for two valid typed-source shortcuts. No passing surface was rerun, no production/model/oracle changes. This is a bounded smoke with repeated known questions, not broad or unseen answer acceptance.",
+  "deploymentReceipt": "guides/tests/assistant/evidence/deployment-20261025.json"
+}

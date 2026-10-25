@@ -1,5 +1,7 @@
 # Guide assistant beta checkpoint and next-agent checklist
 
+Publication update: the owner later requested committing the remaining tests and uploading the beta. Signed archive `3c78aa0` preserves all120 historical reports; the beta runtime is published under `/guides`. Read [the25 October release record](assistant-release-20261025.md). The broader goal stays paused; original checkpoint records retain their historical scope/status.
+
 Owner decision, 25 October 2026: wind down to an acceptable beta, preserve the broader goal for a later AI agent, and commit the relevant work. This is a local beta candidate. A Git commit does not upload, push or publish it.
 
 ## Scope and stopping rule
