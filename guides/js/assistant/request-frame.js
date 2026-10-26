@@ -10,9 +10,12 @@ const bare = value => clean(value).replace(/^(?:the|a|an)\s+/i, '');
 const WH = '(?:from when|what|which|where|who|whose|whom|why|when|how|is|are|does|do|can|could|should|would|will|has|have)';
 const IMPERATIVE = '(?:give|tell|show|describe|explain|quote|list|name|lay out|point me to)';
 const START = new RegExp(`^(?:${WH}|${IMPERATIVE})\\b`, 'i');
-const AUX = '(?:does|do|did|can|could|should|would|will|is|are|was|were|has|have)';
+const AUX = '(?:does|do|did|can|could|should|would|will|must|is|are|was|were|has|have)';
 const ACTORS = /^(?:(?:the|this|that|reviewed|documented|original|local)\s+)*(?:guide|page|table|source|record|description|instructions|notes|readme|reward field)$/i;
-const documentActor = text => ACTORS.test(text) || (!possessiveOwner(text) && /\b(?:guide|manual|page|table|source|record|description|instructions|notes|readme)$/i.test(clean(text)));
+// A trailing place reference ('the running advice there') leaves the actor a
+// document; the router still requires its remaining words in the proof.
+const actorText = text => clean(text).replace(/\s+(?:there|here)$/i, '');
+const documentActor = text => ACTORS.test(actorText(text)) || (!possessiveOwner(text) && /\b(?:guide|manual|page|table|source|record|description|instructions|notes|readme|advice|tips|hints|walkthrough)$/i.test(actorText(text)));
 const STATE = /\b(?:my|our|already|currently|current|right now|at the moment|in front of me|for me to recruit|i am carrying|i'm carrying|i own|i currently have)\b/i;
 const REPORT = /^(?:i|we)\s+(?:already|just|finally|currently)\s+(?!(?:need|want|would like)\b)|^(?:i|we)\s+(?:(?:already|just|finally|now|currently|still)\s+)*(?:(?:have|had)\s+(?!to\b)|got\b|own\b|obtained\b|acquired\b|completed\b|finished\b|recruited\b|defeated\b|lost\b)|^(?:i'm|i am|we're|we are)\s+(?:at|in)\s+/i;
 const FIELD_RULES = [
@@ -145,8 +148,10 @@ function propertyOwner(candidate, fields) {
         &&reference(wrapped[2])&&/\b(?:quest|errand|project)$/i.test(wrapped[2]))
         return {subjectText:wrapped[2],purposeTexts:[candidate],governorText:wrapped[1]};
     wrapped=/^(reaching|entering|accessing)\s+(.+)$/i.exec(candidate);
+    // The approached place is also the route's destination argument; a route
+    // record may bind it without the place owning the record.
     if(wrapped&&fields.every(value=>value.key==='sequence'&&value.selectors.includes('alternatives')))
-        return {subjectText:wrapped[2],purposeTexts:[candidate],governorText:wrapped[1]};
+        return {subjectText:wrapped[2],purposeTexts:[candidate],governorText:wrapped[1],objectTexts:[wrapped[2]],objectRole:'destination'};
     wrapped=/^(treating|using)\s+(.+?)\s+(as\s+.+)$/i.exec(candidate);
     if(wrapped&&fields.every(value=>value.key==='limitations'))
         return {subjectText:wrapped[2],purposeTexts:[candidate],governorText:wrapped[1],qualifierTexts:[wrapped[3]]};
@@ -168,6 +173,10 @@ function actionField(action, clause) {
     if (/^(?:pay|cost|charge|spend)\b/.test(q)) return field('stats','price',clause,{actionText:action});
     if (/^(?:bring|collect|need|require|gather)\b/.test(q)) return field('prerequisites', 'materials', clause, {actionText:action});
     if (/^(?:say|ask|shout|mention|chant)\b/.test(q)) return field('method', /shout/.test(q)?'summon':'keyword',clause,{actionText:action});
+    // 'what do I do with the plans' asks for the use instruction itself; the
+    // plans are that instruction's input, not necessarily its owner.
+    const inputUse=/^do with\s+(.+)$/i.exec(clean(action));
+    if (inputUse) return field('use',null,clause,{actionText:action,objectTexts:[inputUse[1]],objectRole:'input'});
     if (/^(?:open|unlock|do with|use|do|provide|benefit)\b/.test(q)) return field('use','effect',clause,{actionText:action});
     if (/^(?:get|obtain|acquire|buy|recover|recruit)\b/.test(q)) return field('acquisition',null,clause,{actionText:action});
     const selector = /^(?:summon|call)/.test(q)?'summon':/^(?:cross|traverse)/.test(q)?'cross':/^(?:launch|run|execute)/.test(q)?'launch':
@@ -187,6 +196,9 @@ function ownerIn(rest, qualifiers) {
     // A source actor assigns/records a field to a target; it is not the target.
     if ((m=/^(.+?)\s+(?:assign|assigns|give|gives|list|lists|recommend|recommends|record|records|describe|describes)\s+(?:.+?\s+)?(?:to|for|of|against)\s+(.+)$/i.exec(r)) && documentActor(m[1])) return m[2];
     if((m=/^(.+?)\s+(?:place|places|give|gives|list|lists|describe|describes|record|records)\s+(.+)$/i.exec(r))&&documentActor(m[1]))return m[2];
+    // A document directing the player names no owner beyond a trailing place
+    // reference: 'the running advice there tells me to time' asks about there.
+    if((m=/^(.+?)\s+(?:tell|tells|ask|asks)\s+(?:me|us)\s+to\b/i.exec(r))&&documentActor(m[1]))return /\b(there|here)$/i.exec(clean(m[1]))?.[1] || null;
     if ((m=/^(?:listed|recorded|described|given|specified|documented|available|required|needed)\s+(?:for|of|on|about|in)\s+(.+)$/i.exec(r))) return m[1];
     if ((m=/^(.+?)\s+(?:have|has|provide|provides|give|gives|do|does|require|requires|need|needs|accept|accepts|impose|imposes|open|opens|list|lists|say|says|contain|contains|perform|performs|grant|grants|add|adds|remain|remains|last|lasts|hide|hides|pay|pays)\b(.*)$/i.exec(r))) {
         if(m[2].trim())qualifiers.push(m[2].trim());
@@ -298,6 +310,10 @@ function readClause(raw) {
         }
         else if(/^(?:does|do|did)\s+.+?\s+(?:mark|marks|list|lists|record|records|describe|describes)\s+.+?\s+as\b/i.test(r))return null;
         else if((target=/^(?:does|do|did)\s+(.+?)\s+(?:place|places|put|puts|locate|locates|mark|marks|tell)\s+(.+)$/i.exec(r))&&documentActor(target[1])){subjectText=target[2];recognized=true;}
+        // 'where does the dungeon hide its key' locates the key within the
+        // named place. Only the inanimate 'its' reads as containment; a
+        // person's possession still needs a directed ownership resolver.
+        else if((target=/^(?:does|do|did)\s+(.+?)\s+(?:hide|hides|keep|keeps|store|stores|conceal|conceals)\s+its\s+(.+)$/i.exec(r))&&!documentActor(target[1])){subjectText=`${target[2]} in ${target[1]}`;recognized=true;}
         else if((target=/^(?:do|can|should|must)\s+(?:i|we)\s+(?:go|look|search|meet|find|recruit|take|bring|visit|stand|download)(?:\s+(?:for|to))?\s+(.+)$/i.exec(r))){subjectText=target[1];recognized=true;}
         else if((target=/^(?:is|are|was|were|does|do|should|can)\s+(.+)$/i.exec(r))){subjectText=ownerIn(target[1],qualifiers);recognized=true;}
         if(/^(?:do|can|should|must)\s+(?:i|we)\s+(?:stand|go|look|search|meet|find|recruit|take|bring|visit)\s*$/i.test(r)){subjectText=null;recognized=true;}
@@ -316,6 +332,10 @@ function readClause(raw) {
     } else if ((m=/^(?:who|whom|which (?:person|adventurer|technician|office|worker|maker|teacher|merchant|villager))\s+(.+)$/i.exec(q))) {
         let action=m[1];
         if((m=/^(?:do|should|can|must)\s+(?:i|we)\s+(.+)$/i.exec(action)))action=m[1];
+        // 'who gets it afterward' orders this clause after the previous one in
+        // the same question; the adverb is kept but is not part of the object.
+        const order=/\s+(afterwards?|later|next|then)$/i.exec(action);
+        if(order)action=action.slice(0,order.index);
         if(/\b(?:perform|give|deliver|hand|take|bring)\b.+\b(?:for|to)$/i.test(action))fields=[field('recipient',null,clause,{actionText:action})];
         else {const governed=governedField(action,clause);if(!governed)return null;fields=[governed];}
         const object=/^(?:made|creat(?:e|es|ed)|wrote|write(?:s)?|develop(?:s|ed)?|author(?:s|ed)?|design(?:s|ed)?|teach(?:es)?|suppl(?:y|ies)|sell(?:s)?|make(?:s)?|craft(?:s)?|provide(?:s)?|give(?:s)?|repair(?:s)?|receive(?:s)?|get(?:s)?|handle(?:s)?)\s+(.+)$/i.exec(action);
@@ -326,6 +346,7 @@ function readClause(raw) {
             if(argumentsRead.objectTexts.length)value.objectTexts=argumentsRead.objectTexts;
             value.objectRole=argumentsRead.objectRole || (value.key==='teacher'?'content':value.key==='creator'?'output':value.key==='recipient'?'content':'object');
             value.governorText=action.split(/\s+/)[0];
+            if(order)value.orderText=order[1];
         }
         if(argumentsRead.outputText)subjectText=argumentsRead.outputText;
         if(/^(?:is|are)\s+/i.test(action)){fields=[field('identity',null,clause)];subjectText=action.replace(/^(?:is|are)\s+/i,'');}
@@ -336,6 +357,10 @@ function readClause(raw) {
         const personal=/^(?:i|we)\s+(.+)$/i.exec(predicate),args=personal?governedArguments(personal[1]):{texts:[]};
         subjectText=personal?args.outputText || args.texts[0] || null:ownerIn(predicate,qualifiers);
         fields=[field('sequence',null,clause,{actionText:personal?personal[1]:m[1],...(args.texts.length?{argumentTexts:args.texts}:{})})];
+        // 'from when does the README say active maintenance stopped' asks when
+        // a recorded status began; the typed maintenance field owns that date.
+        const status=!personal&&/^(?:(.+?)\s+(?:say|says|state|states)\s+)?(?:active\s+)?maintenance\s+(?:stopped|ended|ceased|halted)$/i.exec(predicate);
+        if(status&&(!status[1]||documentActor(status[1]))){fields=[field('limitations','maintenance',clause,{actionText:m[1]})];qualifiers.splice(0);}
     } else if ((m=/^how\s+(many|much|long|far|wide)\s+(.+)$/i.exec(q))) {
         const amount=m[1].toLowerCase(),r=m[2];
         fields=nominalFields(r.split(new RegExp(`\\s+${AUX}\\s+`,'i'))[0],clause);
@@ -406,7 +431,13 @@ function readClause(raw) {
                     ...(actionTail&&!/^(?:to|for|with|without|in|on|at|through|via)\b/i.test(actionTail)?{objectTexts:[actionTail],objectRole:'object'}:{})})];
             }
             const personal=/^(?:i|we)\s+(.+)$/i.exec(tail);
-            if(personal){subjectText=null;const args=governedArguments(personal[1]);for(const value of fields){value.actionText=personal[1];if(args.texts.length)value.argumentTexts=args.texts;}}
+            if(personal){subjectText=null;const args=governedArguments(personal[1]);for(const value of fields){value.actionText=personal[1];if(args.texts.length)value.argumentTexts=args.texts;}
+                // 'what burner items must I collect': the modifier names the
+                // items' own object; the field keeps the task owner rather than
+                // borrowing another clause's subject.
+                const modifier=/^(.+?)\s+(?:items|materials|parts|components)$/i.exec(clean(head));
+                if(modifier&&!/^(?:the|which|what|other|more|extra|required|needed|necessary)$/i.test(modifier[1]))
+                    for(const value of fields){value.objectTexts=[modifier[1]];value.objectRole='object';value.subjectMode='topic';}}
             if(/\battributes?\b/i.test(head)&&/\b(?:add|grant|give)\b/i.test(tail))fields=[field('use','bonus',clause)];
             if(/\bmade (?:of|from)\b/i.test(tail))fields=[field('composition',/\bmetal\b/i.test(head)?'metal':'material',clause)];
             if(!fields.length && /^(?:i|we)\s+/i.test(tail)){const action=tail.replace(/^(?:i|we)\s+/i,'');const operation=actionField(action,clause);if(!operation)return null;fields=[operation];subjectText=/\b(?:with|for|about)\s+(.+)$/i.exec(action)?.[1] || null;}
@@ -433,6 +464,7 @@ function readClause(raw) {
     for(const value of fields){
         for(const key of ['metadataTexts','purposeTexts','qualifierTexts'])if(propertyRead[key])value[key]=[...(value[key] || []),...propertyRead[key]];
         if(propertyRead.governorText)value.governorText=propertyRead.governorText;
+        if(propertyRead.objectTexts&&!value.objectTexts){value.objectTexts=propertyRead.objectTexts;value.objectRole=propertyRead.objectRole;}
     }
     // Nominal request modifiers have typed semantics. Baseline and exactness
     // do not become asserted values; totals never authorize inferred sums.

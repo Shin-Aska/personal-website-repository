@@ -13,14 +13,14 @@ const bare = value => text(value).replace(/^(?:the|a|an) /,'').replace(/'s$/,'')
 const unique = values => [...new Set(values)];
 const list = value => Array.isArray(value)?value:[];
 const phrase = (haystack,needle) => needle && (` ${tokens(haystack).join(' ')} `).includes(` ${tokens(needle).join(' ')} `);
-const REFERENCE=/^(?:(?:this|that|the|his|her|its|their) )?(?:it|he|him|his|she|her|they|them|their|one|item|weapon|sword|hammer|spell|client|project|shrine|quest|task|errand|route|table|guide|instrument|plans|tune|song|piece|shard|lens|door|wood|material|components|parts|there)$/;
+const REFERENCE=/^(?:this|that|its)$|^(?:(?:this|that|the|his|her|its|their) )?(?:it|he|him|his|she|her|they|them|their|one|item|weapon|sword|hammer|spell|client|project|shrine|quest|task|errand|route|table|guide|instrument|plans|tune|song|piece|shard|lens|door|wood|material|components|parts|there)$/;
 const GENERIC=new Set(['rune','lens','key','shard','book','item','spell','weapon','quest','task','door','client','bot','map','wood','material','instrument','components','parts','one','guide','table']);
-const CONTEXT_GLUE=new Set(('a an the i we me my our your its his her their it he him she they them this that those these of for in at on to from by with and or as '+
+const CONTEXT_GLUE=new Set(('a an the i we me my our your its his her their it he him she they them this that those these of for in at on to from by with and or as across '+
     'is are was were be been have has do does can should would will must once when after before then now next '+
     'about regarding source guide page reviewed documented recorded listed stated instructions notes table '+
     'asking ask mean meant correction actually switch change move want need planned planning full').split(' '));
 const verbForms={running:'run',reaching:'reach',finishing:'finish',completing:'complete',collecting:'collect',summoning:'summon',shouting:'shout',
-    asking:'ask',saying:'say',mentioning:'mention',using:'use',performing:'perform',giving:'give'};
+    asking:'ask',saying:'say',mentioning:'mention',using:'use',performing:'perform',giving:'give',completion:'complete'};
 const stem=value=>verbForms[value] || value.replace(/ies$/,'y').replace(/s$/,'');
 const sourceTuple = source => JSON.stringify([source?.file,source?.locator,source?.review]);
 
@@ -47,7 +47,10 @@ function namedIn(value,entities,owners){
 function exactOwners(value,entities,owners){
     const candidate=bare(value).replace(/^(?:for|about|regarding|as for|switch to|change to|move on to|now|i need|i want|i mean|i meant|i am asking about|if|when) /,'')
         .replace(/\b(?:is|are) (?=not\b)/,'')
-        .replace(/ (?:expedition|trip|task|quest)$/,'');
+        .replace(/ (?:expedition|trip|task|quest)$/,'')
+        // 'I want Julia as the next replacement' names Julia; the role stays
+        // a request the owner's own proof must still support.
+        .replace(/ as (?:the |a |an )?(?:next |new |later )?(?:replacement|recruit|companion|member)$/,'');
     return [...owners].filter(id=>entityLabels(entities.get(id)).some(label=>compact(label)===compact(candidate)));
 }
 /** Resolve a copular noun against complete known names before field words. */
@@ -126,7 +129,9 @@ function availableWords(proof,entry,knowledge){
         ...ownerNames,...contexts,entry.phase,...list(entry.selectors),...siblingSelectors].filter(Boolean).join(' ')).map(stem));
 }
 function contextWords(value,knowledge){
-    let context=text(value).replace(/,? instead$/,'');
+    // A possessive marks ownership, not an extra source word ("that shrine's").
+    let context=text(value).replace(/,? instead$/,'').replace(/'s\b/g,'')
+        .replace(/^(?:i am|i'm) asking about /,'');
     const wrapper=/^(?:for|about|regarding|as for|in|during) (.+?) (?:expedition|trip|task|quest)$/.exec(context);
     if(wrapper && exactOwners(wrapper[1],knowledge.entities,new Set(knowledge.entities.keys())).length)context=wrapper[1];
     // A task noun is a wrapper only after an independently named topic.
@@ -140,7 +145,7 @@ function explicitCondition(value,proof,entry,knowledge){
     if(!value)return true;
     const condition=text(value),witness=text(proof.text);
     if(/^unless\b/.test(condition) && !/\bunless\b/.test(witness))return false;
-    if(/^once (?:every|all (?:the )?)(?:component|part)s? (?:is|are) in (?:my|our|the) inventory$/.test(condition))
+    if(/^once (?:every |all (?:the )?)(?:component|part)s? (?:is|are) in (?:my|our|the) inventory$/.test(condition))
         return /\b(?:once|when|after|if) all (?:the )?(?:parts|components) are in (?:your |the )?inventory\b/.test(witness);
     const pointer=/\bpoints?\b.*\bonward\b/.test(condition) && /\bpoints?\b/.test(witness);
     if(entry.key==='prerequisites' && entry.explicit && /^before (?:asking|speaking|talking)$/.test(condition))return true;
@@ -157,8 +162,25 @@ function explicitCondition(value,proof,entry,knowledge){
     return terms.every(word=>available.has(stem(word)));
 }
 
+// An anchor on the previous answer's step ('after shouting his name',
+// 'beyond that door') is proved only by that immediately previous proof, and
+// only when this proof is the next step of the same source list.
+function anchoredOnPrevious(value,proof,previous){
+    const anchor=/^(?:after|beyond|past|through|once past) (.+)$/.exec(text(value));
+    const step=/^(.*)\[(\d+)\]$/.exec(proof.source?.locator || '');
+    if(!anchor || !step)return false;
+    const prior=list(previous).find(fact=>fact.source?.file===proof.source.file
+        && fact.source?.locator===`${step[1]}[${Number(step[2])-1}]`);
+    if(!prior)return false;
+    // 'his name' refers back to the word the previous step has the player say.
+    const words=tokens(anchor[1].replace(/\b(?:his|her|its|their) name\b/,'').replace(/'s\b/g,''))
+        .filter(word=>!CONTEXT_GLUE.has(word));
+    const priorWords=new Set(tokens(prior.text).map(stem));
+    return words.length>0 && words.every(word=>priorWords.has(stem(word)));
+}
+
 /** Source/edition/context qualification is independent of field coverage. */
-export function sourceFieldScopeAllows({frame,proof,entry,knowledge,inherited={}}){
+export function sourceFieldScopeAllows({frame,proof,entry,knowledge,inherited={},previous=[]}){
     if(!proof?.source || !entry || !knowledge?.entities || !frame)return false;
     const constraints=frame.constraints || {};
     if(constraints.comparisonText)return false;
@@ -168,13 +190,14 @@ export function sourceFieldScopeAllows({frame,proof,entry,knowledge,inherited={}
         || !editionAllowed(constraints.editionText || inherited.editionText,proof)
         || inherited.guideOnly && ['external-research','conflicting'].includes(proof.source.review))return false;
     if(list(inherited.editions).some(edition=>!editionAllowed(edition,proof)))return false;
-    if(!explicitCondition(constraints.conditionText,proof,entry,knowledge))return false;
+    if(!explicitCondition(constraints.conditionText,proof,entry,knowledge)
+        && !anchoredOnPrevious(constraints.conditionText,proof,previous))return false;
     const available=availableWords(proof,entry,knowledge);
     if([...list(inherited.material),...list(inherited.quantities)].some(value=>tokens(value).some(word=>!available.has(stem(word)))))return false;
     for(const context of list(frame.contextTexts)){
         if(context===constraints.sourceText || context===constraints.editionText || context===constraints.conditionText)continue;
         const remaining=contextWords(context,knowledge);
-        if(remaining.some(word=>!available.has(stem(word))))return false;
+        if(remaining.some(word=>!available.has(stem(word))) && !anchoredOnPrevious(context,proof,previous))return false;
     }
     return true;
 }
@@ -183,7 +206,7 @@ function subjectScopeAllows(value,owner,entry,proof,knowledge){
     const exact=exactOwners(value,knowledge.entities,new Set(entry.subjectEntityIds));
     if(exact.includes(owner))return true;
     const available=availableWords(proof,entry,knowledge);
-    const content=tokens(value).filter(word=>!CONTEXT_GLUE.has(word));
+    const content=tokens(text(value).replace(/'s\b/g,'')).filter(word=>!CONTEXT_GLUE.has(word));
     return content.length>0 && content.every(word=>available.has(stem(word)));
 }
 function fieldAllows(field,entry,proof,knowledge){
@@ -242,16 +265,20 @@ export {fieldAllows as sourceFieldFieldAllows};
  * for the same canonical topic. It cannot authorize a subset, generate prose,
  * mutate conversation/game state or turn source similarity into field proof.
  */
-export function planSourceFields({frame,knowledge,index,focusEntityId=null,grounded=false,contextIds=[],referents={},inherited={},isEligible=()=>true,embedding=null}={}){
+export function planSourceFields({frame,knowledge,index,focusEntityId=null,grounded=false,contextIds=[],referents={},inherited={},isEligible=()=>true,embedding=null,previousProofIds=[]}={}){
     const unhandled={status:'unhandled'};
     if(!frame || frame.kind!=='source-fields' || frame.staticEligible===false || frame.report || frame.playerStateQuestion
         || !frame.complete || list(frame.unresolvedTexts).length || !list(frame.fields).length
         || !knowledge?.entities?.get || !Array.isArray(index?.entries) || list(index.issues).length)return unhandled;
     const entries=index.entries,owners=new Set(entries.flatMap(entry=>list(entry.subjectEntityIds)));
+    const previous=list(previousProofIds).map(id=>list(knowledge.facts).find(fact=>fact.id===id)).filter(Boolean);
     const referentIds=unique([...list(referents.object),...list(referents.content),...list(referents.output),
         ...list(referents.input),...(['item','spell'].includes(kindGroup(knowledge.entities.get(focusEntityId)?.kind))?[focusEntityId]:[])]);
+    // A topic-mode field asks about the task itself; it never borrows the
+    // subject another clause of the same question named.
+    const fieldSubject=field=>field.subjectMode==='topic'?null:field.subjectText || frame.subjectText;
     const matchArguments=(field,entry,localReferents=referentIds,localGrounded=grounded)=>{
-        const value=field.subjectText || frame.subjectText || '';
+        const value=fieldSubject(field) || '';
         const effective=!list(field.objectTexts).length && value
             ?{...field,objectTexts:[value],objectRole:'object'}:field;
         if(list(effective.objectTexts).some(sourceFieldNeedsReference)){
@@ -268,12 +295,27 @@ export function planSourceFields({frame,knowledge,index,focusEntityId=null,groun
         }
         return matchSourceFieldArguments({field:effective,entry,knowledge,referentIds:localReferents,grounded:localGrounded});
     };
-    const topicContexts=list(frame.contextTexts).filter(value=>/^(?:for|about|regarding|as for|switch to|change to|move on to|now|i need|i want|i mean|i meant|i am asking about|if|when)\b/i.test(value));
+    // A correction 'the next trade I meant is Morchella's' names its topic
+    // after 'I meant is'; the corrected noun phrase before it is not an owner.
+    const topicContexts=list(frame.contextTexts).map(value=>frame.correction
+        && /^(?:the|that|this) .+? i meant is (.+)$/i.exec(text(value))?.[1].replace(/^/,'i meant ') || value)
+        .filter(value=>/^(?:for|about|regarding|as for|switch to|change to|move on to|now|i need|i want|i mean|i meant|i am asking about|if|when)\b/i.test(value));
     let exact=unique(topicContexts.flatMap(value=>exactOwners(value,knowledge.entities,owners)));
     if(!exact.length && frame.subjectText && !REFERENCE.test(bare(frame.subjectText)))exact=exactOwners(frame.subjectText,knowledge.entities,owners);
+    // 'I am asking about Humility's bonus: what does that shrine add?' names
+    // its owner by the topic's possessor and the reference's own kind noun.
+    const kindNoun=/^(?:this|that) ([\p{L}]+)$/u.exec(text(frame.subjectText))?.[1];
+    if(!exact.length && kindNoun)exact=unique(topicContexts.flatMap(value=>{
+        const possessor=/^(?:for|about|regarding|as for|i am asking about|i'm asking about|i mean|i meant) (.+?)'s /.exec(text(value))?.[1];
+        return possessor?exactOwners(`${possessor} ${kindNoun}`,knowledge.entities,owners):[];
+    }));
     const mentions=namedIn(frame.originalText,knowledge.entities,owners);
     const named=unique(mentions.map(hit=>hit.id));
-    const reference=REFERENCE.test(bare(frame.subjectText)) || !named.length && /\b(?:it|its|he|him|his|she|her|they|them|their|that|this|there)\b/i.test(frame.originalText);
+    // 'for the client alone, or for the game too' refers back through a
+    // reference noun among its alternatives, like a pronoun would.
+    const alternativeReference=frame.fields.some(field=>list(field.alternativeTexts).some(value=>REFERENCE.test(bare(value))));
+    const reference=REFERENCE.test(bare(frame.subjectText)) || !named.length && (alternativeReference
+        || /\b(?:it|its|he|him|his|she|her|they|them|their|that|this|there)\b/i.test(frame.originalText));
     let candidates=exact.length?exact:named.length?named:reference && grounded && owners.has(focusEntityId)?[focusEntityId]:[];
     const argumentOwners=unique(frame.fields.flatMap(field=>entries.filter(entry=>entry.key===field.key && matchArguments(field,entry).matched)
         .flatMap(entry=>matchArguments(field,entry).entityIds.length?matchArguments(field,entry).entityIds:entry.subjectEntityIds)));
@@ -321,14 +363,17 @@ export function planSourceFields({frame,knowledge,index,focusEntityId=null,groun
                 if(context && !entry.explicit)continue;
                 const proof=sourceFieldProof(entry,knowledge);
                 if(context && (!proof || !factSourceContexts({fact:proof,contexts:[context]}).some(scope=>scope.id===context.id)))continue;
-                const requestedOwner=field.subjectText || frame.subjectText;
+                const requestedOwner=fieldSubject(field);
                 if(/^(?:he|him|his|she|her)$/i.test(requestedOwner || '')
                     && (!(grounded || introducedPerson) || !['person','monster'].includes(kindGroup(knowledge.entities.get(personalFocus)?.kind))
                         || !entry.subjectEntityIds.includes(personalFocus)))continue;
                 if(context && requestedOwner){
                     const namedOwners=exactOwners(requestedOwner,knowledge.entities,new Set(knowledge.entities.keys()));
+                    // A named owner literally bound in the entry's arguments
+                    // (the plans as the use instruction's input) also counts.
                     if(namedOwners.length && !namedOwners.some(id=>entry.subjectEntityIds.includes(id))
-                        && !(argumentMatch.matched && namedOwners.includes(context.entityId)))continue;
+                        && !(argumentMatch.matched && (namedOwners.includes(context.entityId)
+                            || argumentMatch.entityIds.some(id=>namedOwners.includes(id)))))continue;
                     if(/^(?:he|him|his|she|her|they|them|their)$/i.test(requestedOwner)
                         && (!grounded || !entry.subjectEntityIds.includes(focusEntityId)))continue;
                     if(/^(?:it|its|this|that)$/i.test(requestedOwner)
@@ -336,18 +381,25 @@ export function planSourceFields({frame,knowledge,index,focusEntityId=null,groun
                     // Container membership is a search scope, never an object
                     // relationship. A named sub-object still needs its own
                     // literal witness/selector, outside neighboring prose.
-                    if(!namedOwners.length && !/^(?:it|its|this|that|he|him|his|she|her|they|them|their)$/i.test(requestedOwner)){
+                    // 'there' names the grounded context itself, never a sub-object.
+                    if(!namedOwners.length && !/^(?:it|its|this|that|he|him|his|she|her|they|them|their|there|here)$/i.test(requestedOwner)){
                         const local=new Set(tokens([entry.witness,...list(entry.selectors),proof.subject,...list(proof.aliases)].join(' ')).map(stem));
                         if(tokens(requestedOwner).filter(word=>!CONTEXT_GLUE.has(word)).some(word=>!local.has(stem(word))) && !argumentMatch.matched)continue;
                     }
                 }
                 if(context && !requestedOwner && /\b(?:it|its|him|her|them)\b/i.test(field.requestedText || '')
                     && (!grounded || !entry.subjectEntityIds.includes(focusEntityId)) && !argumentMatch.matched)continue;
-                const subject=field.subjectText || frame.subjectText;
+                // 'to pick it up' acquires the carried referent; an entry whose
+                // reviewed output is that same grounded entity proves it.
+                const acquiresReferent=value=>/^to (?:pick (?:it|them) up|pick up (?:it|them)|collect (?:it|them)|retrieve (?:it|them)|get (?:it|them)|take (?:it|them)|obtain (?:it|them))$/i.test(text(value));
+                const checkedField=grounded && focusEntityId && list(field.purposeTexts).length && list(field.purposeTexts).every(acquiresReferent)
+                    && list(entry.arguments).some(group=>list(group.bindings).some(binding=>binding.role==='output' && binding.entityId===focusEntityId))
+                    ?{...field,unknownQualifierTexts:list(field.unknownQualifierTexts).filter(value=>!field.purposeTexts.includes(value))}:field;
+                const subject=fieldSubject(field);
                 const documentSubject=field.sourceActorText && compact(subject)===compact(field.sourceActorText);
-                if(!proof || !isEligible(proof,{owner,frame}) || !fieldAllows(field,entry,proof,knowledge)
+                if(!proof || !isEligible(proof,{owner,frame}) || !fieldAllows(checkedField,entry,proof,knowledge)
                     || !documentSubject && !subjectScopeAllows(subject,owner,entry,proof,knowledge) && !argumentMatch.matched
-                    || !sourceFieldScopeAllows({frame,proof,entry,knowledge,inherited:ownerScope}))continue;
+                    || !sourceFieldScopeAllows({frame,proof,entry,knowledge,inherited:ownerScope,previous:grounded?previous:[]}))continue;
                 // A composite field's capability itself can depend on another
                 // whole proof, even when the question omits its object name.
                 const required=unique([...argumentMatch.requiredFactIds,...list(entry.arguments)

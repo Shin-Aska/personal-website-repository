@@ -263,9 +263,14 @@ const hasPhrase = (text, phrase) => {
     // part of an authored label: "key use" cannot match "get the key" by
     // dropping "use" as ordinary question scaffolding.
     const significant = tokens(phrase).filter(value => !NAME_FILL.has(value));
+    // A reordered multiword label may appear as a passive participle: "the
+    // cyclops to be escorted" contains the label "cyclops escort". A gerund
+    // ("after visiting") is a separate event and does not match.
+    const words = tokens(text), inflected = value => words.includes(value)
+        || value.length >= 4 && words.some(word => [`${value}ed`, `${value}d`].includes(word));
     return Boolean(label) && (` ${query} `).includes(` ${label} `)
-        || (label.length >= 6 && tokens(text).some(value => value === label.replace(/ /g, '')))
-        || (significant.length >= 2 && significant.every(value => tokens(text).includes(value)));
+        || (label.length >= 6 && words.some(value => value === label.replace(/ /g, '')))
+        || (significant.length >= 2 && significant.every(inflected));
 };
 const GROUPS = {
     identity: ['identity', 'explanation', 'definition', 'overview', 'features'],
@@ -734,6 +739,7 @@ export function createKnowledgeRouter(knowledge) {
         const parsed=parse(text),currentScope={guideOnly:parsed.parts.some(part=>part.guideOnly),editions:parsed.editions || []};
         const plan=planSourceFields({frame,knowledge,index:knowledge.sourceFields,focusEntityId:focus,
             grounded:!invalidated && Boolean(lastFact),contextIds:sceneIds,referents:fieldReferents,inherited:restriction || {},embedding:opts.embedding,
+            previousProofIds:!invalidated?lastProofIds:[],
             isEligible:(proof,{owner})=>factEligible(proof,{guideOnly:currentScope.guideOnly || owner===focus && restriction?.guideOnly,
                 editions:[...new Set([...currentScope.editions,...(owner===focus?restriction?.editions || []:[])])]})});
         if(typeof opts.trace==='function')opts.trace({stage:'source-fields',frame,plan});
