@@ -2,7 +2,11 @@
 
 Repository: `/mnt/internal-hdd/Development/personal-website-repository`. Latest scope decision:25 October2026. **Start with `docs/assistant-beta-checklist.md` and `guides/tests/assistant/evidence/beta-checkpoint-20261025.json`.** The owner asked to wind down to a bounded beta, create a checklist for another AI agent, preserve the broader goal for later, and commit the relevant work. Feature expansion stops at this beta checkpoint. The broader structured-knowledge objective is deferred and incomplete; it has not passed broad runtime acceptance. Current measured implementation is checkpoint14. Sections below are historical evidence and do not override the beta scope, model freeze or later owner instructions. No FTP upload or Git push is authorized by the beta commit request.
 
-## Current publication —25 October2026
+## Current publication — 26 October 2026
+
+The source-first routing repairs (`541a1ec`, manifest fix `47c8b44`) are live: five files under `/guides`, verified by FTP readback and public HTTPS. See `docs/assistant-release-20261026.md` and the 26 October continuation log in `docs/assistant-beta-checklist.md`. No push.
+
+## Previous publication — 25 October 2026
 
 After the beta commit, the owner explicitly requested committing remaining tests and FTP publication. The120 historical reports are signed in `3c78aa0`; the frozen beta runtime `2ea2c53` is now published. Read `docs/assistant-release-20261025.md` and `guides/tests/assistant/evidence/deployment-20261025.json` for86 verified files, production cache reconciliation and live evidence. Only `/guides` changed; default/Classic, credentials, tools/tests/docs and raw caches were excluded. No Git push. The broader goal remains paused and the beta limitations remain. This later authorization/publication supersedes earlier no-upload status statements in this historical handoff.
 
