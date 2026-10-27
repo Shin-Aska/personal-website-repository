@@ -3,7 +3,7 @@
 import {authorize} from './policy.js';
 import {factSourceContexts} from './source-contexts.js';
 import {kindGroup} from './retrieval.js';
-import {matchSourceFieldArguments,sourceFieldReferents,sourceFieldNeedsReference} from './source-field-arguments.js';
+import {matchSourceFieldArguments,sourceFieldReferents,sourceFieldNeedsReference,provedEntityRoleWords} from './source-field-arguments.js';
 import {supportsSoftwareFieldAlternatives} from './software-capabilities.js';
 
 const text = value => typeof value==='string'?value.normalize('NFKC').toLowerCase().replace(/[’‘]/g,"'").replace(/\s+/g,' ').trim():'';
@@ -13,14 +13,14 @@ const bare = value => text(value).replace(/^(?:the|a|an) /,'').replace(/'s$/,'')
 const unique = values => [...new Set(values)];
 const list = value => Array.isArray(value)?value:[];
 const phrase = (haystack,needle) => needle && (` ${tokens(haystack).join(' ')} `).includes(` ${tokens(needle).join(' ')} `);
-const REFERENCE=/^(?:this|that|its)$|^(?:(?:this|that|the|his|her|its|their) )?(?:it|he|him|his|she|her|they|them|their|one|item|weapon|sword|hammer|spell|client|project|shrine|quest|task|errand|route|table|guide|instrument|plans|tune|song|piece|shard|lens|door|wood|material|components|parts|there)$/;
+const REFERENCE=/^(?:this|that|its)$|^(?:(?:this|that|the|his|her|its|their) )?(?:it|he|him|his|she|her|they|them|their|one|item|weapon|sword|hammer|spell|client|project|shrine|quest|task|errand|route|table|guide|journal|instrument|plans|tune|song|piece|shard|lens|door|wood|material|components|parts|there)$/;
 const GENERIC=new Set(['rune','lens','key','shard','book','item','spell','weapon','quest','task','door','client','bot','map','wood','material','instrument','components','parts','one','guide','table']);
 const CONTEXT_GLUE=new Set(('a an the i we me my our your its his her their it he him she they them this that those these of for in at on to from by with and or as across '+
     'is are was were be been have has do does can should would will must once when after before then now next '+
     'about regarding source guide page reviewed documented recorded listed stated instructions notes table '+
     'asking ask mean meant correction actually switch change move want need planned planning full').split(' '));
 const verbForms={running:'run',reaching:'reach',finishing:'finish',completing:'complete',collecting:'collect',summoning:'summon',shouting:'shout',
-    asking:'ask',saying:'say',mentioning:'mention',using:'use',performing:'perform',giving:'give',completion:'complete'};
+    asking:'ask',saying:'say',mentioning:'mention',using:'use',performing:'perform',giving:'give',moving:'move',trading:'trade',completion:'complete'};
 const stem=value=>verbForms[value] || value.replace(/ies$/,'y').replace(/s$/,'');
 const sourceTuple = source => JSON.stringify([source?.file,source?.locator,source?.review]);
 
@@ -45,7 +45,7 @@ function namedIn(value,entities,owners){
     return result;
 }
 function exactOwners(value,entities,owners){
-    const candidate=bare(value).replace(/^(?:for|about|regarding|as for|switch to|change to|move on to|now|i need|i want|i mean|i meant|i am asking about|if|when) /,'')
+    const candidate=bare(value).replace(/^(?:for|with|about|regarding|as for|switch to|change to|move on to|now|i need|i want|i mean|i meant|i am asking about|if|when) /,'')
         .replace(/\b(?:is|are) (?=not\b)/,'')
         .replace(/ (?:expedition|trip|task|quest)$/,'')
         // 'I want Julia as the next replacement' names Julia; the role stays
@@ -125,8 +125,11 @@ function availableWords(proof,entry,knowledge){
     const parent=record?.variants?authorize(record,'direct'):record;
     const contexts=factSourceContexts({fact:proof,contexts:knowledge.sourceContexts})
         .flatMap(context=>[context.label,knowledge.entities.get(context.entityId)?.name]);
+    const outputRoles=list(entry.arguments).flatMap(group=>list(group.bindings)
+        .filter(binding=>binding.role==='output' && binding.entityId)
+        .flatMap(binding=>[...provedEntityRoleWords(binding.entityId,knowledge)]));
     return new Set(tokens([proof.text,proof.subject,...list(proof.aliases),...list(proof.topicLabels),parent?.title,
-        ...ownerNames,...contexts,entry.phase,...list(entry.selectors),...siblingSelectors].filter(Boolean).join(' ')).map(stem));
+        ...ownerNames,...contexts,...outputRoles,entry.phase,...list(entry.selectors),...siblingSelectors].filter(Boolean).join(' ')).map(stem));
 }
 function contextWords(value,knowledge){
     // A possessive marks ownership, not an extra source word ("that shrine's").
@@ -209,10 +212,22 @@ function subjectScopeAllows(value,owner,entry,proof,knowledge){
     const content=tokens(text(value).replace(/'s\b/g,'')).filter(word=>!CONTEXT_GLUE.has(word));
     return content.length>0 && content.every(word=>available.has(stem(word)));
 }
+function supportsMethodActionAlternatives(field,entry,proof,knowledge){
+    if(field.key!=='method' || field.contrastText!=='or' || !entry.explicit || list(field.alternativeTexts).length!==2)return false;
+    const words=availableWords(proof,entry,knowledge);
+    const hasObject=list(entry.arguments).some(group=>list(group.bindings).some(binding=>binding.role==='object'));
+    const matches=list(field.alternativeTexts).filter(option=>{
+        const terms=tokens(option).filter(word=>!CONTEXT_GLUE.has(word));
+        return terms.length>0 && words.has(stem(terms[0]))
+            && terms.slice(1).every(word=>words.has(stem(word)) || hasObject && ['object','something'].includes(stem(word)));
+    });
+    return matches.length===1;
+}
 function fieldAllows(field,entry,proof,knowledge){
     if(field.key!==entry.key)return false;
     if(list(field.alternativeTexts).length && !supportsSoftwareFieldAlternatives({field,fact:proof,entry,
-        subjectLabels:list(entry.subjectEntityIds).flatMap(id=>entityLabels(knowledge.entities.get(id)))}))return false;
+        subjectLabels:list(entry.subjectEntityIds).flatMap(id=>entityLabels(knowledge.entities.get(id)))})
+        && !supportsMethodActionAlternatives(field,entry,proof,knowledge))return false;
     if(field.sourceActorText){
         const actorWords=tokens(field.sourceActorText.replace(/'s\b/gi,'')).filter(word=>!CONTEXT_GLUE.has(word)
             && !['readme','documentation','document','character','profile','row','field','advice','there','say','says'].includes(word));
@@ -299,7 +314,7 @@ export function planSourceFields({frame,knowledge,index,focusEntityId=null,groun
     // after 'I meant is'; the corrected noun phrase before it is not an owner.
     const topicContexts=list(frame.contextTexts).map(value=>frame.correction
         && /^(?:the|that|this) .+? i meant is (.+)$/i.exec(text(value))?.[1].replace(/^/,'i meant ') || value)
-        .filter(value=>/^(?:for|about|regarding|as for|switch to|change to|move on to|now|i need|i want|i mean|i meant|i am asking about|if|when)\b/i.test(value));
+        .filter(value=>/^(?:for|with|about|regarding|as for|switch to|change to|move on to|now|i need|i want|i mean|i meant|i am asking about|if|when)\b/i.test(value));
     let exact=unique(topicContexts.flatMap(value=>exactOwners(value,knowledge.entities,owners)));
     if(!exact.length && frame.subjectText && !REFERENCE.test(bare(frame.subjectText)))exact=exactOwners(frame.subjectText,knowledge.entities,owners);
     // 'I am asking about Humility's bonus: what does that shrine add?' names

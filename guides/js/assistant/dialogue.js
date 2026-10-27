@@ -803,7 +803,13 @@ export function createConversationAssistant({ assistant, records, gameId = assis
             }
             if(knowledgeRouter && wholeSourceRequest(text))
                 return unprovedCapability(turn,text,packet);
-            const planned = typedSourceRelation ? null : consultation.plan(text, packet, { spoiler: 'direct' });
+            const hasProvedSourceFrame = (() => {
+                if (!knowledgeRouter) return false;
+                const snap = knowledgeRouter.checkpoint();
+                try { return knowledgeRouter.planFrame(text, packet, { ...options, embedding, afterSource: true, preferExisting: false })?.decision === 'answer'; }
+                finally { knowledgeRouter.restore(snap); }
+            })();
+            const planned = (typedSourceRelation || hasProvedSourceFrame) ? null : consultation.plan(text, packet, { spoiler: 'direct' });
             if (planned) {
                 clearSourceSlots();
                 if (planned.focusEntityId) interpreter.focusSubject(planned.focusEntityId, { ...options, guideOnly: Boolean(planned.context?.guideOnly) });

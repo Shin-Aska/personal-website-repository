@@ -7,7 +7,7 @@ const clean = value => typeof value === 'string' ? value.normalize('NFKC').repla
 const lower = value => clean(value).toLowerCase();
 const end = value => clean(value).replace(/[?!.]+$/, '').trim();
 const bare = value => clean(value).replace(/^(?:the|a|an)\s+/i, '');
-const WH = '(?:from when|what|which|where|who|whose|whom|why|when|how|is|are|does|do|can|could|should|would|will|has|have)';
+const WH = '(?:from when|what|which|where|who|whose|whom|why|when|how|am|is|are|does|do|can|could|should|would|will|has|have)';
 const IMPERATIVE = '(?:give|tell|show|describe|explain|quote|list|name|lay out|point me to)';
 const START = new RegExp(`^(?:${WH}|${IMPERATIVE})\\b`, 'i');
 const AUX = '(?:does|do|did|can|could|should|would|will|must|is|are|was|were|has|have)';
@@ -163,6 +163,7 @@ function governedField(action, clause) {
     if (/^(?:made|creat(?:e|es|ed)|wrote|write(?:s)?|develop(?:s|ed)?|author(?:s|ed)?|design(?:s|ed)?|make(?:s)?|craft(?:s)?|build(?:s)?|forge(?:s)?|sew(?:s)?|spin(?:s)?|weave(?:s)?|repair(?:s)?|handle(?:s)? the repair|turn(?:s)? .+ into)\b/.test(q)) return field('creator', /repair/.test(q)?'repair':null, clause, { actionText: action });
     if (/^(?:supply|supplies|sell|sells|provides?|gives?|offers?)\b/.test(q)) return field('provider', /sell/.test(q)?'seller':null, clause, { actionText: action });
     if (/^(?:receives?|get|gets|accepts?|takes?|collects?)\b/.test(q)) return field('recipient', null, clause, { actionText: action });
+    if (/^(?:needs?|requires?)\s+healing$|^heal$/i.test(q)) return field('method', 'healing', clause, { actionText: action });
     return null;
 }
 function actionField(action, clause) {
@@ -187,7 +188,7 @@ function actionField(action, clause) {
     return null;
 }
 function reference(text) {
-    return /^(?:(?:his|her|its|their|that|this|the)\s+)?(?:one|item|weapon|hammer|sword|spell|client|project|quest|errand|shrine|table|guide|page|it|he|she|him|her|they|them|there)$|^(?:his|her|its|their)$/i.test(clean(text));
+    return /^(?:(?:his|her|its|their|that|this|the)\s+)?(?:one|item|weapon|hammer|sword|spell|client|project|quest|errand|shrine|table|guide|page|journal|it|he|she|him|her|they|them|there)$|^(?:his|her|its|their)$/i.test(clean(text));
 }
 function ownerIn(rest, qualifiers) {
     const r = end(rest);
@@ -225,13 +226,18 @@ function readClause(raw) {
         .find(match=>!(lower(q.slice(0,match.index))==='from'&&/^when\b/i.test(match[1])));
     const localConditionTexts=localCondition?[localCondition[1]]:[];
     if(localCondition)q=q.slice(0,localCondition.index).trim();
-    const decorate=result=>({...result,...(identityCandidateText?{identityCandidateText,requiresExactIdentity}:{}),stateText:q,fields:result.fields.map(value=>({...value,
+    const decorate=result=>({...result,...(identityCandidateText?{identityCandidateText,requiresExactIdentity}:{}),stateText:result.stateText || q,fields:result.fields.map(value=>({...value,
         ...(sourceActorText?{sourceActorText}:{}),
         ...(localConditionTexts.length?{localConditionTexts:[...(value.localConditionTexts || []),...localConditionTexts],
             qualifierTexts:[...(value.qualifierTexts || []),...localConditionTexts],
             unknownQualifierTexts:[...(value.unknownQualifierTexts || []),...localConditionTexts]}:{})}))});
     // Alternative operators ask the source to choose; the parser never does.
     // Every full option remains independently scoped, including modifiers.
+    const actionChoice=/^am (?:i|we)\s+([a-z]+ing\s+.+?)\s+or\s+([a-z]+ing\s+.+)$/i.exec(q);
+    if(actionChoice)return decorate({subjectText:null,stateText:`${actionChoice[1]} or ${actionChoice[2]}`,
+        fields:[field('method','step',clause,{actionText:`${actionChoice[1]} or ${actionChoice[2]}`,
+            alternativeTexts:[actionChoice[1],actionChoice[2]],contrastText:'or',
+            qualifiers:{provenanceTexts:[]},unknownQualifierTexts:[],qualifierTexts:[]})],qualifiers});
     const executionChoice=/^(?:is|are)\s+(.+?)\s+through\s+(.+?)\s+or\s+(.+)$/i.exec(q);
     if(executionChoice){
         const requested=nominalFields(executionChoice[1],clause);
@@ -314,6 +320,10 @@ function readClause(raw) {
         // named place. Only the inanimate 'its' reads as containment; a
         // person's possession still needs a directed ownership resolver.
         else if((target=/^(?:does|do|did)\s+(.+?)\s+(?:hide|hides|keep|keeps|store|stores|conceal|conceals)\s+its\s+(.+)$/i.exec(r))&&!documentActor(target[1])){subjectText=`${target[2]} in ${target[1]}`;recognized=true;}
+        else if((target=/^(?:does|do|did)\s+(his|her)\s+(.+?)\s+(?:hide|hides)$/i.exec(r))){
+            subjectText=target[1];recognized=true;
+            transportLocation=field('location',null,clause,{actionText:`${target[2]} hide`,objectTexts:[target[2]],objectRole:'output',qualifierTexts:[target[2]]});
+        }
         else if((target=/^(?:do|can|should|must)\s+(?:i|we)\s+(?:go|look|search|meet|find|recruit|take|bring|visit|stand|download)(?:\s+(?:for|to))?\s+(.+)$/i.exec(r))){subjectText=target[1];recognized=true;}
         else if((target=/^(?:is|are|was|were|does|do|should|can)\s+(.+)$/i.exec(r))){subjectText=ownerIn(target[1],qualifiers);recognized=true;}
         if(/^(?:do|can|should|must)\s+(?:i|we)\s+(?:stand|go|look|search|meet|find|recruit|take|bring|visit)\s*$/i.test(r)){subjectText=null;recognized=true;}
@@ -331,17 +341,26 @@ function readClause(raw) {
         if(/^(?:his|her|its|their)\s+\S/i.test(subjectText || ''))return null;
     } else if ((m=/^(?:who|whom|which (?:person|adventurer|technician|office|worker|maker|teacher|merchant|villager))\s+(.+)$/i.exec(q))) {
         let action=m[1];
+        const headKind=/^which (person|adventurer|technician|office|worker|maker|teacher|merchant|villager)\b/i.exec(q)?.[1];
+        const docRecommend=new RegExp(`^${AUX}\\s+(.+?)\\s+(recommend|recommends)(?:\\s+(to\\s+.+))?$`,'i').exec(action);
         if((m=/^(?:do|should|can|must)\s+(?:i|we)\s+(.+)$/i.exec(action)))action=m[1];
         // 'who gets it afterward' orders this clause after the previous one in
         // the same question; the adverb is kept but is not part of the object.
         const order=/\s+(afterwards?|later|next|then)$/i.exec(action);
         if(order)action=action.slice(0,order.index);
-        if(/\b(?:perform|give|deliver|hand|take|bring)\b.+\b(?:for|to)$/i.test(action))fields=[field('recipient',null,clause,{actionText:action})];
+        if(docRecommend&&documentActor(docRecommend[1])){
+            const purpose=docRecommend[3]?.trim() || null;
+            const roleQualifiers=[...(headKind&&!/^person$/i.test(headKind)?[headKind]:[]),...(purpose?[purpose]:[])];
+            fields=[field('identity','recommendation',clause,{actionText:action,governorText:docRecommend[2],
+                ...(headKind?{objectTexts:[headKind],objectRole:'output'}:{}),...(purpose?{purposeTexts:[purpose]}:{}),qualifierTexts:roleQualifiers})];
+        }
+        else if(/\b(?:perform|give|deliver|hand|take|bring)\b.+\b(?:for|to)$/i.test(action))fields=[field('recipient',null,clause,{actionText:action})];
         else {const governed=governedField(action,clause);if(!governed)return null;fields=[governed];}
         const object=/^(?:made|creat(?:e|es|ed)|wrote|write(?:s)?|develop(?:s|ed)?|author(?:s|ed)?|design(?:s|ed)?|teach(?:es)?|suppl(?:y|ies)|sell(?:s)?|make(?:s)?|craft(?:s)?|provide(?:s)?|give(?:s)?|repair(?:s)?|receive(?:s)?|get(?:s)?|handle(?:s)?)\s+(.+)$/i.exec(action);
         if(object)subjectText=object[1];
         const argumentsRead=governedArguments(action);
         for(const value of fields){
+            if(value.key==='identity'&&value.selectors.includes('recommendation'))continue;
             if(argumentsRead.texts.length)value.argumentTexts=argumentsRead.texts;
             if(argumentsRead.objectTexts.length)value.objectTexts=argumentsRead.objectTexts;
             value.objectRole=argumentsRead.objectRole || (value.key==='teacher'?'content':value.key==='creator'?'output':value.key==='recipient'?'content':'object');
@@ -430,8 +449,20 @@ function readClause(raw) {
                     actionText:`${modalOpening[3]}${modalOpening[4]}`,qualifierTexts:[head,...(actionTail?[actionTail]:[])],
                     ...(actionTail&&!/^(?:to|for|with|without|in|on|at|through|via)\b/i.test(actionTail)?{objectTexts:[actionTail],objectRole:'object'}:{})})];
             }
+            const describedContaining=/^(.+?)\s+(described|listed|recorded|stated|documented)\s+as\s+(containing|holding)\b(.*)$/i.exec(tail);
+            if(describedContaining&&!fields.length){
+                subjectText=describedContaining[1];qualifiers=[];
+                const actionTail=describedContaining[4].trim();
+                fields=[field('identity','contents',clause,{fieldText:head,fieldHead:head,governorText:`${describedContaining[2]} as ${describedContaining[3]}`,
+                    actionText:`${describedContaining[3]}${describedContaining[4]}`,qualifierTexts:[head,...(actionTail?[actionTail]:[])]})];
+            }
             const personal=/^(?:i|we)\s+(.+)$/i.exec(tail);
             if(personal){subjectText=null;const args=governedArguments(personal[1]);for(const value of fields){value.actionText=personal[1];if(args.texts.length)value.argumentTexts=args.texts;}
+                const keepScope=/^keep\s+(.+)$/i.exec(clean(personal[1]));
+                if(keepScope&&fields.length&&fields.every(value=>value.key==='identity'&&value.selectors.includes('members'))){
+                    subjectText=`${clean(head)} ${keepScope[1]}`;
+                    for(const value of fields)value.qualifierTexts=[...(value.qualifierTexts || []),keepScope[1]];
+                }
                 // 'what burner items must I collect': the modifier names the
                 // items' own object; the field keeps the task owner rather than
                 // borrowing another clause's subject.
@@ -441,7 +472,10 @@ function readClause(raw) {
             if(/\battributes?\b/i.test(head)&&/\b(?:add|grant|give)\b/i.test(tail))fields=[field('use','bonus',clause)];
             if(/\bmade (?:of|from)\b/i.test(tail))fields=[field('composition',/\bmetal\b/i.test(head)?'metal':'material',clause)];
             if(!fields.length && /^(?:i|we)\s+/i.test(tail)){const action=tail.replace(/^(?:i|we)\s+/i,'');const operation=actionField(action,clause);if(!operation)return null;fields=[operation];subjectText=/\b(?:with|for|about)\s+(.+)$/i.exec(action)?.[1] || null;}
-            if(!fields.length && /\b(?:open|unlock)\b/i.test(tail))fields=[field('use','effect',clause,{actionText:tail})];
+            if(!fields.length && /\b(?:open|unlock)\b/i.test(tail)){
+                const headQualifier=clean(head)&&!/^(?:what|which|thing|things|object|objects)$/i.test(clean(head))?[clean(head)]:[];
+                fields=[field('use','effect',clause,{actionText:tail,...(headQualifier.length?{qualifierTexts:headQualifier}:{})})];
+            }
         }else{head=r;fields=nominalFields(head,clause);const own=possessiveOwner(head);if(own)subjectText=own.subjectText;}
         if(!fields.length)fields=[field('unknown',lower(head || r),clause)];
     } else if ((m=/^(?:is|are|does|do|can|could|should|would|will|has|have)\s+(.+)$/i.exec(q))) {

@@ -18,6 +18,17 @@ const kindWords={song:['song','tune','music'],spell:['spell'],password:['word','
     person:['person','man','woman'],npc:['person'],character:['person'],companion:['companion','person']};
 const inflect=value=>value.replace(/ies$/,'y').replace(/s$/,'');
 const spatial=value=>text(value).replace(/\bcentral (?=(?:door|room|hall|column|row|platform)\b)/g,'center ');
+export function provedEntityRoleFacts(entityId,knowledge){
+    if(!entityId || !Array.isArray(knowledge?.sourceFields?.entries) || !Array.isArray(knowledge?.facts))return [];
+    return knowledge.sourceFields.entries.filter(entry=>entry.explicit && entry.key==='identity'
+        && list(entry.selectors).includes('role') && list(entry.subjectEntityIds).includes(entityId) && entry.factId)
+        .map(entry=>knowledge.facts.find(fact=>fact.id===entry.factId))
+        .filter(fact=>fact && !fact.conflict && fact.source?.review!=='conflicting');
+}
+export function provedEntityRoleWords(entityId,knowledge){
+    return new Set(provedEntityRoleFacts(entityId,knowledge)
+        .flatMap(fact=>words(String(fact.witness || '').split(/[.,;]|(?:\s+who\b)/i)[0]).map(inflect)));
+}
 function bindingMatches(value,binding,{field,entry,knowledge,referentIds,grounded}){
     const requested=bare(spatial(value));
     if(references.test(requested))return Boolean(grounded && binding.entityId && referentIds.includes(binding.entityId));
@@ -35,7 +46,10 @@ function bindingMatches(value,binding,{field,entry,knowledge,referentIds,grounde
     if(!tokens.length)return false;
     // A generic type is usable only from a declared canonical kind. No item
     // becomes wood, an instrument, or a person merely by being nearby.
-    if(tokens.length===1 && list(kindWords[entity?.kind]).includes(tokens[0]))return true;
+    const roleOwnerId=binding.entityId || (list(entry?.subjectEntityIds).length===1
+        && words(knowledge.entities.get(entry.subjectEntityIds[0])?.name).includes(words(binding.mention)[0])?entry.subjectEntityIds[0]:undefined);
+    if(tokens.length===1 && (list(kindWords[entity?.kind]).includes(tokens[0])
+        || provedEntityRoleWords(roleOwnerId,knowledge).has(tokens[0])))return true;
     const labelWords=new Set(names.flatMap(words).map(inflect));
     const headWords=new Set(names.map(name=>words(name).at(-1)).filter(Boolean).map(inflect));
     const localWords=new Set(words(entry.witness).map(inflect));

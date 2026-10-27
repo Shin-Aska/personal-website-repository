@@ -12,6 +12,7 @@ const read = file => JSON.parse(fs.readFileSync(new URL(file, import.meta.url)))
 const vectors = read('./fixtures/source-first-repair-query-vectors.json').vectors;
 const profile = read('../../local-assistant/intent/profile.json');
 const head = read('../../local-assistant/intent/head.json').head;
+const catalog = read('../../data/assistant/consultation-catalog.json');
 const vector = text => { assert.ok(Array.isArray(vectors[text]), `Exact input must exist in the fixture: ${JSON.stringify(text)}`); return vectors[text]; };
 
 function fixture(game, {cached = true} = {}) {
@@ -19,7 +20,7 @@ function fixture(game, {cached = true} = {}) {
         read(`../../data/assistant/knowledge/${game}-embeddings.json`), profile);
     assert.deepEqual(knowledge.issues, []);
     const source = createAssistant({gameId: game, records: knowledge.sourceRecords, fallback: null});
-    const assistant = createConversationAssistant({gameId: game, records: knowledge.records, knowledge, assistant: source,
+    const assistant = createConversationAssistant({gameId: game, records: knowledge.records, knowledge, catalog, assistant: source,
         thresholds: profile.thresholds,
         classify: cached ? async text => predictIntentHead(head, vector(text)) : async () => [],
         encode: cached ? async text => vector(text) : async () => { throw Error('Encoder unavailable'); }});
@@ -237,4 +238,100 @@ test('A place reference without a grounded context does not answer from a guesse
     const reply = await ask('What hazards does the running advice there tell me to time?');
     assert.notEqual(reply.decision, 'answer', reply.text);
     assistant.destroy();
+});
+
+test('Starting party companions, healing recipient and the later mage replacement require proved role and phase facts', async () => {
+    const {assistant, ask} = fixture('ultima5');
+    let reply = await ask('Which companions should I keep at the beginning, and who needs healing before roadside combat?');
+    assert.equal(reply.decision, 'answer');
+    assert.match(reply.text, /Iolo and Shamino/); assert.match(reply.text, /heal Shamino/);
+    assert.deepEqual(locators(reply), ['ultima5GrandQuestChapters objective=opening-party.steps[0]']);
+    reply = await ask('I want Julia as the next replacement. Where do I recruit her?');
+    assert.equal(reply.decision, 'answer');
+    assert.deepEqual(locators(reply), ['ultima5GrandQuestChapters objective=opening-party.steps[2]']);
+    reply = await ask('For the planned full roster, give me the six names and the later mage replacement for Julia.');
+    assert.equal(reply.decision, 'answer');
+    assert.match(reply.text, /Avatar, Iolo, Jaana, Julia, Gwenno, and Mariah/);
+    assert.match(reply.text, /Johne can replace Julia/);
+    assert.deepEqual(locators(reply), ['ultima5GrandQuestChapters objective=opening-party.steps[4]']);
+    assert.notEqual((await ask('Which member of that recommended six has the highest Luck score?')).decision, 'answer');
+    assistant.destroy();
+    const control = fixture('ultima5', {cached: false});
+    assert.notEqual((await control.ask('For the planned full roster, give me the six names and the later bard replacement for Julia.')).decision, 'answer');
+    assert.notEqual((await control.ask('Which companions should I keep at the beginning, and who needs healing after roadside combat?')).decision, 'answer');
+    control.assistant.destroy();
+});
+
+test('Bonn object-moving alternative and hidden fragment require the introduced person and proved action/output', async () => {
+    const {assistant, ask} = fixture('ultima6');
+    assert.equal((await ask('Where do I meet Ybarra for his map piece, and what does he accept in exchange?')).decision, 'answer');
+    assert.equal((await ask('Actually, the next trade I meant is Morchella’s. Where is she, and what should I bring for her shard?')).decision, 'answer');
+    const reply = await ask('With Bonn, am I trading something or moving an object? Where does his fragment hide?');
+    assert.equal(reply.decision, 'answer');
+    assert.match(reply.text, /Bonn's harpsichord on Dagger Isle/);
+    assert.match(reply.text, /cellar ladder and fragment/);
+    assert.deepEqual(locators(reply), ['gameData.quests[1].sections[2].steps[5]']);
+    assert.notEqual((await ask('What is the weight in kilograms of Bonn’s harpsichord?')).decision, 'answer');
+    assistant.destroy();
+    const control = fixture('ultima6', {cached: false});
+    assert.notEqual((await control.ask('With Bonn, am I singing a song or swimming a river? Where does his fragment hide?')).decision, 'answer');
+    assert.notEqual((await control.ask('With Bonn, am I trading something or moving an object? Where does his crown hide?')).decision, 'answer');
+    assert.notEqual((await control.ask('Where does his fragment hide?')).decision, 'answer');
+    control.assistant.destroy();
+});
+
+test('Switching to the blue human lens resolves the Britannian lens without licensing a red human lens', async () => {
+    const {assistant, ask} = fixture('ultima6');
+    assert.equal((await ask('For the broken red gargoyle lens, where is it recovered and who handles the repair?')).decision, 'answer');
+    const reply = await ask('Switch to the blue human lens: who makes that one, what do I bring, and which topics do I mention?');
+    assert.equal(reply.decision, 'answer');
+    for (const value of ['glass sword', 'Ephemerides in Moonglow', 'LENS and SWORD', 'blue Britannian lens'])
+        assert.ok(reply.text.includes(value), reply.text);
+    assert.deepEqual(locators(reply), ['gameData.quests[3].sections[1].steps[1]']);
+    assistant.destroy();
+    const control = fixture('ultima6', {cached: false});
+    assert.notEqual((await control.ask('Switch to the red human lens: who makes that one, what do I bring, and which topics do I mention?')).decision, 'answer');
+    control.assistant.destroy();
+});
+
+test('Vizier journal contents and Unlock Magic obstacles answer directly from reviewed fields while rejecting unproved qualifiers', async () => {
+    const alqadim = fixture('alqadim');
+    assert.equal((await alqadim.ask("Where should I search for the Vizier's conspiracy journal?")).decision, 'answer');
+    const journal = await alqadim.ask('What evidence is that journal described as containing?');
+    assert.equal(journal.decision, 'answer');
+    assert.match(journal.text, /Vizier's betrayal/);
+    assert.deepEqual(locators(journal), ['DB.keyItems[12].description']);
+    alqadim.assistant.destroy();
+    const alqadimControl = fixture('alqadim', {cached: false});
+    await alqadimControl.ask("Where should I search for the Vizier's conspiracy journal?");
+    assert.notEqual((await alqadimControl.ask('What secret map is that journal described as containing?')).decision, 'answer');
+    alqadimControl.assistant.destroy();
+
+    const u7 = fixture('ultima7');
+    assert.equal((await u7.ask('What practical travel benefit does Mark & Recall provide?')).decision, 'answer');
+    const unlock = await u7.ask('Which obstacles can Unlock Magic open that ordinary keys cannot handle?');
+    assert.equal(unlock.decision, 'answer');
+    assert.match(unlock.text, /magically sealed doors and containers/);
+    assert.deepEqual(locators(unlock), ['DB.spells[3].description']);
+    u7.assistant.destroy();
+    const u7Control = fixture('ultima7', {cached: false});
+    assert.notEqual((await u7Control.ask('Which obstacles can Unlock Magic open that skeleton keys cannot handle?')).decision, 'answer');
+    assert.notEqual((await u7Control.ask('Which creatures can Unlock Magic open that ordinary keys cannot handle?')).decision, 'answer');
+    u7Control.assistant.destroy();
+});
+
+test('Toronto return route and final-trip technician recommendation ground Joe Bernard without licensing unproved roles', async () => {
+    const {assistant, ask} = fixture('albion');
+    assert.equal((await ask('Lay out the two documented approaches for reaching Toronto.')).decision, 'answer');
+    assert.equal((await ask('After the reactor scene, where does the guide tell me to take the footage?')).decision, 'answer');
+    const reply = await ask('For the final trip, which technician does the guide recommend to reduce robot trouble?');
+    assert.equal(reply.decision, 'answer');
+    for (const value of ['Joe', 'Service Robot', 'electronics']) assert.ok(reply.text.includes(value), reply.text);
+    assert.deepEqual(locators(reply), ['QUEST_HINTS["finale"]["bring-joe"]']);
+    assert.notEqual((await ask('Has Joe already repaired the circuits in my playthrough?')).decision, 'answer');
+    assistant.destroy();
+    const control = fixture('albion', {cached: false});
+    assert.notEqual((await control.ask('For the final trip, which pilot does the guide recommend to reduce robot trouble?')).decision, 'answer');
+    assert.notEqual((await control.ask('For the final trip, which technician does the guide recommend to pilot the shuttle?')).decision, 'answer');
+    control.assistant.destroy();
 });
