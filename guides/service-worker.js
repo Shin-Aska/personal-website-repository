@@ -54,6 +54,16 @@ async function digest(bytes) {
     return [...new Uint8Array(await crypto.subtle.digest("SHA-256", bytes))]
         .map(value => value.toString(16).padStart(2, "0")).join("");
 }
+async function matchesAsset(bytes, expected, url) {
+    // Keep compatibility with existing byte-exact manifests. Text deployments
+    // may change LF to CRLF (or mix both); compare canonical LF bytes as well.
+    // Never decode/re-encode binary files or ignore other content differences.
+    if (await digest(bytes) === expected) return true;
+    if (!/\.(css|js|mjs|json|svg|webmanifest)$/i.test(new URL(url).pathname)) return false;
+    const source = bytes instanceof Uint8Array ? bytes : new Uint8Array(bytes);
+    const canonical = source.filter((value, index) => value !== 13 || source[index + 1] !== 10);
+    return canonical.length !== source.length && await digest(canonical) === expected;
+}
 
 // The deadline includes the body, not just response headers. Oversized resources
 // keep streaming online, but are never buffered or advertised as saved offline.
@@ -178,7 +188,7 @@ async function readSaved(key, expected) {
             const old = (name !== CACHE_NAME && await previous.match(key)) || await previous.match(original.href);
             if (!old) continue;
             if (/\b(no-store|private)\b/i.test(old.headers.get("Cache-Control") || "")) continue;
-            if (!expected || await digest(await old.clone().arrayBuffer()) === expected) return old;
+            if (!expected || await matchesAsset(await old.clone().arrayBuffer(), expected, key)) return old;
         }
     } catch (_) {}
     return null;
@@ -335,7 +345,7 @@ async function resource(request, manifest, defer, page = false) {
         pending = (async () => {
             const result = await download(request, asset?.hash, copy ? 1800 : 8000);
             if (asset && result.bytes && result.response.status === 200
-                    && await digest(result.bytes) !== asset.hash) throw new Error("Asset deployment mismatch");
+                    && !await matchesAsset(result.bytes, asset.hash, request.url)) throw new Error("Asset deployment mismatch");
             if ([401, 403, 404, 410].includes(result.response.status)) await invalidate(request);
             if (result.response.status === 200 && !result.cacheable && result.bytes) await invalidate(request);
             if (result.response.status >= 500) return { response: copy || result.response, offline: !!copy };
@@ -444,7 +454,7 @@ self.addEventListener("message", event => {
                 if (asset) {
                     try {
                         const initial = await download(request, null, 1800, MAX_ITEM, true);
-                        if (initial.cacheable && initial.bytes && await digest(initial.bytes) === asset.hash) {
+                        if (initial.cacheable && initial.bytes && await matchesAsset(initial.bytes, asset.hash, request.url)) {
                             if (await store(key, initial)) continue;
                         }
                     } catch (_) { /* Fall through to the versioned network URL. */ }

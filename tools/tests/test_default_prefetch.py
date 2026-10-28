@@ -75,6 +75,26 @@ class DefaultPrefetch(unittest.TestCase):
         self.assertEqual(self.page.evaluate('window.prefetchOnlyVersion'),1)
         self.assertFalse(self.errors)
 
+    def test_crlf_dependency_can_be_prefetched_and_promoted(self):
+        base.Site.crlf = True
+        self.visit()
+        self.assertTrue(self.warm('page-prefetch-a.html')['prefetched'])
+        self.assertTrue(self.context.service_workers[0].evaluate('''async () => {
+            const cache = await prefetchCache();
+            for (const record of prefetchedPages.values()) {
+                for (const [key, size] of Object.entries(record.sizes)) {
+                    if ((await (await cache.match(key)).arrayBuffer()).byteLength !== size) return false;
+                }
+            }
+            return true;
+        }'''))
+        self.page.goto(self.origin+'/default/page-prefetch-a.html'); self.ready()
+        self.assertEqual(self.page.evaluate('window.prefetchOnlyVersion'), 1)
+        self.context.set_offline(True)
+        self.page.reload(); self.ready()
+        self.assertEqual(self.page.evaluate('window.prefetchOnlyVersion'), 1)
+        self.assertFalse(self.errors)
+
     def test_observed_new_release_rejects_old_prefetch(self):
         self.visit()
         self.assertTrue(self.warm('page-prefetch-a.html')['prefetched'])

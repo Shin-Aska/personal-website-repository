@@ -189,3 +189,29 @@ One major issue I encountered was when SoftMaker completely ruined a presentatio
 Lately, I've been tempted to use Microsoft Office 2016 via Wine or go all-in with Microsoft Office 365 using WinApps to fully integrate it into my workflow. But for now, WPS meets my needs without requiring me to take any drastic measures.
 
 I'm also trying to avoid running Wine directly on my system, as I prefer it to be sandboxed either through Bottles or indirectly via Lutris + Flatpak. Unfortunately, that also complicates Microsoft Office integration via Wine since it would require a direct installation on my end, something I'm not particularly keen on doing right now for security concerns.
+
+## October 28 2026 Update: The clone wars
+
+A recent development in software development came in the form of cloning existing applications. ArtCraft recently came into traction by attacking Adobe directly by creating clones of Photoshop, Illustrator, and Premiere Pro in the form of PhotoCraft, VectorCraft and FilmCraft.
+
+- [ ] [![](images/artcraft.png)](images/artcraft.png)
+- [ ] Figure 10\. PhotoCraft, a Photoshop inspired raster editor
+
+Although PhotoCraft is promising, it still is a lackluster. In my testing, its content-aware fill has a weird way to be implemented in the UI whereas if you compare that to GIMP with Resynthesizer which feels seamless. 
+
+I also use the G'MIC-Qt plugin, which various reusable effects from sophisticated filters to even simple layer as border. Then add that up with GEGL text-effects to give gap-closer functionality to GIMP such as Glow and drop shadows.
+
+For the editing work I do, though, PhotoCraft could give vanilla GIMP a run for its money. Now why did I cover PhotoCraft? because Artcraft as a whole started with PhotoCraft until they expanded into other suites to now cover the Office Suites which in this case is going head to head with Microsoft Office.
+
+- [ ] [![](images/wordcraft.png)](images/wordcraft.png)
+- [ ] Figure 11\. WordCraft, a Microsoft Word inspired word processor.
+
+In WordCraft for example, you can already see it is very close to Microsoft Word with the ribbon bar and everything, it still lacks in terms of both functionalities and compatibility. It will probably take them a couple of years to be at par with the existing office suites.
+
+But I do have to be honest, Wordcraft by itself is already better than most word processor alternatives but ofcourse the top dogs that I mentioned in this article, still has more weight over it. But give it time, who knows once it gets to beta or stable versions, we may be looking at the next Microsoft Word alternative. Same can be said to GridCraft, the Excel alternative and DeckCraft, the PowerPoint alternative.
+
+Mind you, among the *Craft* line of applications, PhotoCraft is the most contributed so most of the effort is in PhotoCraft but there is also fire burning to other Craft applications so may as well keep an eye out for it.
+
+For me, I still am using WPS in Linux and I guess I'll be sticking with it for now. By the way, DeckCraft, which is the PowerPoint alternative is the 3rd alternative that I found that supports Morph transitions, the first one is obviously WPS and the second is OnlyOffice.
+
+I have been begging SoftMaker to add that to no avail, so imagine that two well established apps, LibreOffice and Softmaker Office couldn't support such feature but a newcomer does. It does give hope for more.

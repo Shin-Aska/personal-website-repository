@@ -26,6 +26,7 @@ class Site(http.server.SimpleHTTPRequestHandler):
     corrupt = set()
     quota = False
     manifest_enabled = True
+    crlf = False
     requests = collections.deque(maxlen=10000)
     manifests = {}
 
@@ -50,13 +51,13 @@ class Site(http.server.SimpleHTTPRequestHandler):
         if version is None:
             version = cls.asset_versions.get(name, cls.version)
         if name == 'script/prefetch-only.js':
-            return f'window.prefetchOnlyVersion = {version};'.encode(), 'application/javascript'
+            return f'// Speculative fixture\nwindow.prefetchOnlyVersion = {version};\n'.encode(), 'application/javascript'
         if name.endswith('.js'):
-            return f'window.assetVersion = {version};'.encode(), 'application/javascript'
+            return f'// Versioned fixture\nwindow.assetVersion = {version};\n'.encode(), 'application/javascript'
         if name.endswith('.css'):
-            return f'body {{ --asset-version: {version}; }}'.encode(), 'text/css'
+            return f'body {{\n --asset-version: {version};\n}}\n'.encode(), 'text/css'
         if name.endswith('.json'):
-            return json.dumps({'version': version}).encode(), 'application/json'
+            return json.dumps({'version': version}, indent=2).encode(), 'application/json'
         if name.endswith('.php'):
             return b'dynamic', 'text/plain'
         body = f'''<!doctype html><html><head><meta charset="utf-8"><title>Visit {version}</title>
@@ -90,6 +91,8 @@ class Site(http.server.SimpleHTTPRequestHandler):
         return body, hashlib.sha256(body).hexdigest()
 
     def send_body(self, body, content_type, private=False, csp=False):
+        if self.crlf and content_type in {'text/html', 'text/css', 'application/javascript', 'application/json'}:
+            body = body.replace(b'\r\n', b'\n').replace(b'\n', b'\r\n')
         self.send_response(200)
         self.send_header('Content-Type', content_type)
         self.send_header('Cache-Control', 'private, no-store' if private else 'public, max-age=31536000')
@@ -164,6 +167,7 @@ class OfflineReading(unittest.TestCase):
     def setUp(self):
         Site.version = 1; Site.worker_version = 2; Site.asset_versions = {}; Site.failures = {}
         Site.slow = set(); Site.corrupt = set(); Site.quota = False; Site.manifest_enabled = True
+        Site.crlf = False
         Site.requests.clear()
         self.context = self.browser.new_context()
         self.page = self.context.new_page()
@@ -226,6 +230,35 @@ class OfflineReading(unittest.TestCase):
         self.assertEqual(sum(path == '/default/css/cache-test.css' for path, _ in Site.requests), 1)
         self.assertEqual(sum(path == '/default/script/cache-test.js' for path, _ in Site.requests), 1)
 
+    def test_crlf_assets_survive_reload_offline_and_release_updates(self):
+        # Reproduce production: the manifest describes LF files but the host
+        # serves identical JS/CSS/JSON with CRLF (including the HTTP-cache copy).
+        Site.crlf = True
+        for scope in ['default', 'guides']:
+            with self.subTest(scope=scope):
+                Site.version = 1
+                Site.requests.clear()
+                self.visit(scope)
+                self.assertEqual(sum(path == f'/{scope}/script/cache-test.js'
+                                     for path, _ in Site.requests), 1)
+                self.page.reload(); self.ready()
+                self.assertEqual(self.page.evaluate('window.assetVersion'), 1)
+                self.context.set_offline(True)
+                self.page.reload(); self.ready()
+                self.assertEqual(self.page.evaluate('window.assetVersion'), 1)
+                self.context.set_offline(False)
+                Site.version = 2
+                self.page.reload(); self.ready()
+                self.assertEqual(self.page.evaluate('window.assetVersion'), 2)
+                self.assertEqual(self.page.evaluate("getComputedStyle(document.body).getPropertyValue('--asset-version').trim()"), '2')
+                self.assertEqual(self.page.evaluate("fetch('data/cache-test.json').then(r=>r.json())"), {'version': 2})
+                self.context.set_offline(True)
+                self.page.reload(); self.ready()
+                self.assertEqual(self.page.evaluate('window.assetVersion'), 2)
+                self.assertEqual(self.page.evaluate("fetch('data/cache-test.json').then(r=>r.json())"), {'version': 2})
+                self.context.set_offline(False)
+        self.assertFalse(self.errors)
+
     def test_initial_save_rejects_stale_http_cache_bytes(self):
         # The fixture's ordinary URLs serve stale v1 despite a v2 release marker.
         Site.version = 2
@@ -234,6 +267,35 @@ class OfflineReading(unittest.TestCase):
         self.page.reload(); self.ready()
         self.assertEqual(self.page.evaluate('window.assetVersion'), 2)
         self.assertEqual(self.text_version(), '2')
+
+    def test_line_ending_verification_preserves_content_and_binary_checks(self):
+        for scope in ['default', 'guides']:
+            self.visit(scope)
+            worker = next(worker for worker in self.context.service_workers
+                          if f'/{scope}/' in worker.url)
+            checks = worker.evaluate(r'''async () => {
+                const lf = new TextEncoder().encode('first\nsecond\nthird\n');
+                const crlf = new TextEncoder().encode('first\r\nsecond\r\nthird\r\n');
+                const mixed = new TextEncoder().encode('first\r\nsecond\nthird\r\n');
+                const changed = new TextEncoder().encode('first\r\nCHANGED\r\nthird\r\n');
+                const loneCR = new TextEncoder().encode('first\rsecond\rthird\r');
+                const hash = await digest(lf);
+                const original = new URL('script/legacy.js', SCOPE);
+                const key = new URL(original); key.searchParams.set('_swv', hash);
+                await (await caches.open(CACHE_NAME)).put(original, new Response(crlf));
+                const migrated = await readSaved(key.href, hash);
+                return {
+                    text: await matchesAsset(crlf, hash, new URL('script/test.js', SCOPE)),
+                    mixed: await matchesAsset(mixed, hash, new URL('css/test.css', SCOPE)),
+                    binary: await matchesAsset(crlf, hash, new URL('images/test.png', SCOPE)),
+                    changed: await matchesAsset(changed, hash, new URL('data/test.json', SCOPE)),
+                    loneCR: await matchesAsset(loneCR, hash, new URL('script/test.js', SCOPE)),
+                    legacy: await matchesAsset(crlf, await digest(crlf), new URL('script/test.js', SCOPE)),
+                    migrated: !!migrated && await migrated.text() === new TextDecoder().decode(crlf)
+                };
+            }''')
+            self.assertEqual(checks, dict(text=True, mixed=True, binary=False,
+                                          changed=False, loneCR=False, legacy=True, migrated=True))
 
     def test_only_changed_file_is_downloaded(self):
         self.visit(); Site.requests.clear()
@@ -450,7 +512,13 @@ class OfflineReading(unittest.TestCase):
             self.assertEqual(hashlib.sha256(manifest).hexdigest(), version)
             for path, item in json.loads(manifest)['files'].items():
                 from urllib.parse import unquote
-                self.assertEqual(hashlib.sha256((ROOT/site/unquote(path)).read_bytes()).hexdigest(), item['hash'], path)
+                body = (ROOT/site/unquote(path)).read_bytes()
+                hashes = {hashlib.sha256(body).hexdigest()}
+                # Partial publishes retain legacy byte-exact records until
+                # those assets are published with the canonical generator.
+                if Path(path).suffix.lower() in {'.css', '.js', '.mjs', '.json', '.svg', '.webmanifest'}:
+                    hashes.add(hashlib.sha256(body.replace(b'\r\n', b'\n')).hexdigest())
+                self.assertIn(item['hash'], hashes, path)
         for page in (ROOT/'classic').glob('*.html'):
             self.assertNotIn('offline.js', page.read_text())
 

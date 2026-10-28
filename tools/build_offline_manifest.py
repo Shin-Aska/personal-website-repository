@@ -16,6 +16,15 @@ DIRECTORIES = {'css', 'script', 'js', 'fonts', 'images', 'languages', 'jdatatabl
 EXTENSIONS = {'.css', '.js', '.mjs', '.json', '.png', '.jpg', '.jpeg', '.gif', '.webp',
               '.svg', '.ico', '.avif', '.woff', '.woff2', '.ttf', '.otf'}
 ROOT_FILES = {'offline.js', 'service-worker.js', 'site.webmanifest'}
+TEXT_EXTENSIONS = {'.css', '.js', '.mjs', '.json', '.svg', '.webmanifest'}
+
+
+def asset_record(relative: Path, body: bytes) -> dict:
+    # Use the same LF identity as the worker so FTP/checkout line endings do
+    # not create false deployment mismatches. Binary assets remain byte-exact.
+    if relative.suffix.lower() in TEXT_EXTENSIONS:
+        body = body.replace(b'\r\n', b'\n')
+    return {'hash': hashlib.sha256(body).hexdigest(), 'size': len(body)}
 
 
 def is_asset(relative: Path) -> bool:
@@ -47,7 +56,7 @@ def build_manifest(site: Path, changed: list[Path] | None = None,
             files.pop(name, None)
             continue
         body = path.read_bytes()
-        files[name] = {'hash': hashlib.sha256(body).hexdigest(), 'size': len(body)}
+        files[name] = asset_record(relative, body)
     # Article images can be uploaded from articles/images rather than the site's
     # local copy. Version the actual uploaded bytes at their public destination.
     for name, source in (overrides or {}).items():
@@ -55,8 +64,7 @@ def build_manifest(site: Path, changed: list[Path] | None = None,
         if relative.is_absolute() or '..' in relative.parts or not is_asset(relative):
             raise ValueError('Invalid offline asset destination')
         body = source.read_bytes()
-        files[quote(relative.as_posix(), safe='/')] = {
-            'hash': hashlib.sha256(body).hexdigest(), 'size': len(body)}
+        files[quote(relative.as_posix(), safe='/')] = asset_record(relative, body)
     body = json.dumps({'schema': 1, 'files': files}, sort_keys=True, separators=(',', ':')).encode()
     version = hashlib.sha256(body).hexdigest()
     for path, content in [(manifest_path, body),

@@ -53,6 +53,29 @@ class OfflineManifestTests(unittest.TestCase):
                              ['/public/offline-manifest.json', '/public/offline-version.json'])
             self.assertFalse((root / 'classic/offline-version.json').exists())
 
+    def test_text_line_endings_have_one_identity_but_binary_bytes_are_exact(self):
+        with tempfile.TemporaryDirectory() as directory:
+            site = self.site(Path(directory))
+            stylesheet = site / 'css/site.css'
+            image = site / 'images/photo.png'
+            lf = b'first\nsecond\nthird\n'
+            crlf = b'first\r\nsecond\r\nthird\r\n'
+            mixed = b'first\r\nsecond\nthird\r\n'
+            image.write_bytes(crlf)
+            for body in [lf, crlf, mixed]:
+                stylesheet.write_bytes(body)
+                build_manifest(site)
+                files = json.loads((site / 'offline-manifest.json').read_text())['files']
+                self.assertEqual(files['css/site.css'], {
+                    'hash': hashlib.sha256(lf).hexdigest(), 'size': len(lf)})
+                self.assertEqual(files['images/photo.png'], {
+                    'hash': hashlib.sha256(crlf).hexdigest(), 'size': len(crlf)})
+            source = Path(directory) / 'uploaded.css'
+            source.write_bytes(mixed)
+            build_manifest(site, [], {'css/site.css': source})
+            files = json.loads((site / 'offline-manifest.json').read_text())['files']
+            self.assertEqual(files['css/site.css']['hash'], hashlib.sha256(lf).hexdigest())
+
     def test_ftp_metadata_is_generated_and_uploaded_after_verified_files(self):
         events = []
         publisher = FTPPublisher('ftp.example.test', 'test', 'test')
