@@ -1,0 +1,1667 @@
+{
+  "schemaVersion": 1,
+  "suite": "independent-source-conversations-all-20261025",
+  "realMiniLM": true,
+  "nativeIntentClassification": true,
+  "nativeQueryEncoding": true,
+  "generativeWorkerFixture": true,
+  "nativeGenerativeInference": false,
+  "productionFactoryAndUI": true,
+  "expectedStateInjected": false,
+  "corpusPath": "guides/tests/assistant/knowledge-independent-all-20261025.json",
+  "corpusHash": "a6c44c5f5ae77f80295bd6c2403369545f9de28afe5920a07d105a40d016b907",
+  "sourceHashesBefore": {
+    "guides/Ultima6.html": "f64c4728cd19b042ccea6c7aa7398aea50b955f7fa3ad177168a937149fd30c2",
+    "guides/data/assistant/albion.json": "b3b219ccb434c450189e97404b4c06a3bbc8334dc581bea55bc4a70213851404",
+    "guides/data/assistant/alqadim.json": "f0f15243ea3b27701d97b3ab369a108ef46e93ec5f780f6e1fd1bf5e69bf2b77",
+    "guides/data/assistant/consultation-catalog.json": "96d5b392afabfcbd9f59007ce17fa7ce20a8874b3cacf0248ae349bc93889cca",
+    "guides/data/assistant/knowledge/albion-embeddings.json": "5b888af1e6d70750bb68166ecaf4bfeb1652c78a658549bda300ed35b0c26c55",
+    "guides/data/assistant/knowledge/albion.json": "c36c81582c303a281e166d7c91a76dfc4bd3dfd97259e076a5af21770da69e5f",
+    "guides/data/assistant/knowledge/alqadim-embeddings.json": "6e22652db6bdc74351ed00a3fef041b4d3e281c73824bb52947c7c9fbc0a8827",
+    "guides/data/assistant/knowledge/alqadim.json": "843ce2425f205464a6c1771f4f18864d712c8736f79203ef78dd234e7ec03b8c",
+    "guides/data/assistant/knowledge/starcraft-embeddings.json": "023acebeab9d1cf17457f2eb3afd9c786a09f5354698ae5a9d77bc59978fae2d",
+    "guides/data/assistant/knowledge/starcraft.json": "97fdae345bbb25f9d3b0b32a8fcbb0a8a0c22bfbe7b4fadd8e5c0cd4c75d4261",
+    "guides/data/assistant/knowledge/ultima5-embeddings.json": "044478927a94462963401a38d554f085084c1a1f0358b48c968c262d74833377",
+    "guides/data/assistant/knowledge/ultima5.json": "5b8326a6b63b3a863bf2cc8509e43efc9e57f3efea43d3bd2fe856d193f5d7c7",
+    "guides/data/assistant/knowledge/ultima6-embeddings.json": "3d5d247aa1d8299c17cfadd1289fddf933bab8cffbbbe99c11977b9ec5652e66",
+    "guides/data/assistant/knowledge/ultima6.json": "a5674813c799eda4bdf9207c79fd051b94c01272e08e96bbee4d7a7abae55031",
+    "guides/data/assistant/knowledge/ultima7-embeddings.json": "9f7da788a33a2d5871fce73814b3bd8836d5e3bcd4409a876ac17a347f57b723",
+    "guides/data/assistant/knowledge/ultima7.json": "99b3d82a1bfc7a619e33cf78ad0636bdfe1b720aa95b8e82e1fdd60ea6545bb6",
+    "guides/data/assistant/manifest.json": "d2ad011aa0d0c733b9c35a9e1afc70a01f8eef0cbfc04de0eaf45a90824d9ee4",
+    "guides/data/assistant/starcraft.json": "0dc5925ca67adfc434b5366213a5e05e11cbf869f1d0aa71e4daa6d16ae2dfc0",
+    "guides/data/assistant/ultima5.json": "bbd6a3a33133bc1aca80ac7a19cea5011e19c9f33869582355d7fd60f0f0d24e",
+    "guides/data/assistant/ultima6.json": "67b3bf1e8e935df279bec2f11cf698ba721f5d8e169f1a050fefa4ee66b5ad05",
+    "guides/data/assistant/ultima7.json": "9b5c29c25936ccfd20ca9b704df57d45c1f7142a2014b09630f8e2f2aee10871",
+    "guides/js/AlQadim.js": "269798843206f12b76163c65b04301be278652115fbdbd46596f13f3ae7b5e5e",
+    "guides/js/AlQadimAtlasData.js": "82abbb86cafad98655e4bacfdd28e8ba96fba7f747da44b30aaa9364a37e747e",
+    "guides/js/Albion.js": "4adba84eca7af2436731b7053e3167a909f57f85edc611c6287411af84e4b1ca",
+    "guides/js/AlbionAtlasData.js": "b5a96b06ee31e94eba95df1cec41c2b564576e1170a3065b61e9f5db7890dcc8",
+    "guides/js/AlbionMarkers.js": "1de190722be16721a0ff3ff3a50b2c1298706bc33629dd223ed673f63cfbc27b",
+    "guides/js/Ultima5.js": "e2699ed2d8aca9bf3465c7dcd262461f5fca59f1fb4cbd41361e0f5c5a96dae5",
+    "guides/js/Ultima5AtlasData.js": "1292346505cb26d534154b317d7beee7bb186f8dda2d9316127912111bfb72a2",
+    "guides/js/Ultima6.js": "a0b07db60d7c30ac19bb64b56fa26b1428a6437f437f087eb2d75109afae4898",
+    "guides/js/Ultima6Atlas.js": "c83db308efae81f2868d5b4954d679d24e81b83b226d4e4548699668f98d8e88",
+    "guides/js/Ultima7.js": "c3cd92659e5e959c6d172ba38d56ba85148729b82185768557cb595e3bfb6085",
+    "guides/js/Ultima7Markers.js": "9103499a31be5bd132959ff268aa0149b90ec310a7f1098fbed1fc25a2de1f2e",
+    "guides/js/assistant/adapters/albion.js": "df3993cb351cf9f5e4ade03d8bcfdfc3477c00f4fb39922b9e8cc8d4e255e70b",
+    "guides/js/assistant/adapters/alqadim.js": "fa65928d9011011a12095cd4bbf37a56bfed3b91559ce6aa8097a991b111065c",
+    "guides/js/assistant/adapters/starcraft.js": "b4a11908b121a545fd810c4f8ae09404c210ab0607f70e9121a145a8aea6063e",
+    "guides/js/assistant/adapters/ultima5.js": "3aa64babe0f83ecc713f5d9a665b8ba7a4e7dbfce557a8cff22778a6170cf95a",
+    "guides/js/assistant/adapters/ultima6.js": "d99a14171975b88fff97d7e0ff9a39ac1e07abfed425706732827d6d4fe5e480",
+    "guides/js/assistant/adapters/ultima7.js": "5140505e9fe04a864e950afab671519f31ef24ac6a9b2e91b7c3853c1cf1e7c3",
+    "guides/js/assistant/bootstrap.js": "022aff4f7c2f93fc5c74da9b6457c6a53ee5eb2c072bf90970eca95ef3855608",
+    "guides/js/assistant/bundle-references.js": "7f1b26d1b66cd8a5c225d10e09dcad1e7886833115f4c064186a214e64986746",
+    "guides/js/assistant/consent.js": "cd83de63e5ec28425fad9eef36d597eec48ec839cb48e93569a568571f1e4b98",
+    "guides/js/assistant/consultation.js": "413afbcdae0843ee276390abe0c810ee76ce8b1437df797ede2261eea1f6b85d",
+    "guides/js/assistant/descriptive-reference-requests.js": "1b96861fd652ac875caa663aecf18691563291180c3899e5e0e99df3b69e275a",
+    "guides/js/assistant/dialogue.js": "159800005db000651ca962b501ff91bd4057efd96d608ce37d6cc7d03275fc3b",
+    "guides/js/assistant/engine.js": "e558f38682a413f9e94a85de0dcc217e29f73320f2863b18d1a0a3d55278cca1",
+    "guides/js/assistant/factual-property-requests.js": "3eee2e045f641ea641fc0b5a0eac906d1e897f6b7a69a5dd14d54eda3a1a5391",
+    "guides/js/assistant/fallback-context.js": "73c2638570035a73683cdd83b2eac5133d577892aef3613539ebb80c0481cb73",
+    "guides/js/assistant/fallback-guard.js": "8ac7766576c0fa39a9f8eb1d8130687f5dec2d93ed3793b1ab32a416502eb4dc",
+    "guides/js/assistant/frame-tokens.js": "9f225b8d13b2082f45af7f1ec7ca5b56900733383537123d7dab05baa95f511b",
+    "guides/js/assistant/guide-assistant.js": "3cb383e9989d466330fcb8a04161c7816b943c823080e1aca4be777244729665",
+    "guides/js/assistant/intent-head.js": "23e428fedd405946199beb1e55641281bdae078e3d8ea6e448d0ac0acc1a39a7",
+    "guides/js/assistant/intent-runtime.js": "3187389f1a763a0f0234e2379205dc7c6763895b5292b59e36c903a5b908029f",
+    "guides/js/assistant/intent-worker.js": "246895c7ee6e5c70dd98cec48235768bbbc8bbeeeea994e5028e41ceb26d8119",
+    "guides/js/assistant/knowledge-graph.js": "9d56040bdcaf20757fc74250de7a59240d035d2d78c43a79afda9c8a9853add2",
+    "guides/js/assistant/knowledge.js": "533b33b123478d10886e51d3f373cff470e679a0aa2ab5fa35c54493af75ef93",
+    "guides/js/assistant/language.js": "f5dd1e7492e51a4d2696132e04d7e482d1bec388656ba5b65f7ecf7a774bd158",
+    "guides/js/assistant/method-assertions.js": "af2baf1b5b82bb90bc52fb2de532a25ce5636f56c8d18fc950440e20bffccbf8",
+    "guides/js/assistant/model-download.js": "1a9f1be1319d9219507a140e4eae6ad6ea2cbb348b19771c7261d1a52432a6a1",
+    "guides/js/assistant/model-runtime.js": "c6331135f75b3ab5f094e6b7020567b19f2b22286105dc51eba190917e98fdd1",
+    "guides/js/assistant/model-worker.js": "5f490d60ae8b991ae64d523d16c683d11a8995283353cfb534f0d3529ce0d6fc",
+    "guides/js/assistant/named-source-fields.js": "01be64708979000a2bef5cf7350711e288321dcb0eced236ca9e58f19f1ccae0",
+    "guides/js/assistant/policy.js": "df44eea0b5eec7dae01deb0ab4c179873cb5f271ae1a3d87ed89a630cb87aec3",
+    "guides/js/assistant/procedural-requests.js": "9d5fd00d418dcca978f45f5f0540264367f345938cc968d7fc57fd2bcf5d6dd3",
+    "guides/js/assistant/procedure-phase-fields.js": "cfe12698b43d87fa314d4226527cf36289834bf0f5dd18c0face0e04eba0b82a",
+    "guides/js/assistant/question-source-attribution.js": "ba2ad08ed24fe0e7c805cfb6584e7542e9e273e6311fc211991cbb5a1484e661",
+    "guides/js/assistant/recorded-conditions.js": "e081dd84810466b52540445b1c780b8297e6932cefad445fab620359b686a89e",
+    "guides/js/assistant/request-frame.js": "485c43ad7a6a38cabe005b25bd2dab863b63d17563b6121c4585de6ae2dd6fc4",
+    "guides/js/assistant/requested-measurements.js": "306478afc82de4e52e29ce0f604b433ea5f5d22e2a330a53d41cc7d8bdccd3f6",
+    "guides/js/assistant/resource-condition-requests.js": "391815392b00782968d49612bc2f2a94ffc6cbe141429298b927f818d6571116",
+    "guides/js/assistant/retrieval.js": "1ff4e7fe4ef670bde94ca3cac6935fd73c2fa831c98a06d1fdc35cc5e48ce132",
+    "guides/js/assistant/rules.js": "3c2edda7907d22a78d022abd9e1fded1ad70103056129325f44d2cc8be78ef74",
+    "guides/js/assistant/scene-transition-preambles.js": "17ed5579286e36a6eab38235cc5816178225644700140379d1c7d0d32e4f0597",
+    "guides/js/assistant/sequence-field-requests.js": "e7d45f727857b29a1467f2c140f38635d10ba0ceb32840bdba7a135a3fbdd30b",
+    "guides/js/assistant/software-capabilities.js": "b2b8586501f8279d072d0a0f0a2286a9ebad8f4d06b5fdc46ff4b380c70c8ba4",
+    "guides/js/assistant/source-contexts.js": "0aea9648a948b346fea93e7fdc65abd013589979bae33cf99d81bf31028ecb99",
+    "guides/js/assistant/source-field-arguments.js": "fc1a2089fa75aa2f505eefc58e2f6b5ff0f580bdc81850fbade62d2391f7656e",
+    "guides/js/assistant/source-field-guard.js": "2e916cbeff86f0419120e9fd4dcf89467c4bd6830033ad8d080d0769efefb11f",
+    "guides/js/assistant/source-field-index.js": "b71914f21f66b880f78097f8304fba2f1a00241445025a82d99243733101bf81",
+    "guides/js/assistant/source-field-router.js": "1f4a453bc26dd8b8f7ea2d01bff98a52e8d18130168579c5c77aec5bf64d549f",
+    "guides/js/assistant/source-location-context.js": "7660b7b38b53b44d8a24a3ae2b600fa796690e8a8f1fd340ea993a6580148558",
+    "guides/js/assistant/source-preambles.js": "bd989c5b9f6b6f565745f5d3044612aa46af2b8034d998c363967a7e181c402e",
+    "guides/js/assistant/source-responses.js": "543d39de10177858da8cfa8bef8bf9f4b91f9daeed2d44f8a217f1b7ff86e041",
+    "guides/js/assistant/static-property-conditions.js": "357896e3d7dffdd0cac913f5afa6e5aa0dde1ed76498db8eeff69228ccf718ab",
+    "guides/js/assistant/topics.js": "cae60c918f936d1429713f076420e32c1fc72a89d371b47f7b1958b81e852d39",
+    "guides/js/assistant/ui.js": "d75176fca259ceb47493529cf01b114fce45f45c07444b6de67dd7f68f97092d",
+    "guides/js/chart.js": "e0059220c10bff95fdb7f5b77b9bfffba68b3ccf4eab4f7398ee7aef3cffca2b",
+    "guides/js/index.js": "0feb3e548e54dd42b171533aebd0931a77cdb0f5b5c51ce2d733814e8cdae557",
+    "guides/js/leaflet.js": "85d455b4522415f6badc42a0e7d17c919d100347d6b8958bd0dc738fdecd6d50",
+    "guides/js/lucide.js": "9dac1057f358d159e8ce1e46f259df2b0cb4a19281de7cf8c9ffb29c7a2226f6",
+    "guides/js/tailwind.js": "7afa0afd2536044695e7e674298bc0dda9af94475e4e07d0575feccfa796c74f",
+    "guides/local-assistant/intent/checksums.json": "17718502a6838e861291fffa496d4c6f99b88ea30374de5200df3be95bd2a0bd",
+    "guides/local-assistant/intent/head.json": "979c196a92df490124802e61fcc5fad787fc535ee69ff0eae64784355a8f6bfb",
+    "guides/local-assistant/intent/profile.json": "786a95a078fcc940f95539837883405257f1a3a896637bb71b8b477be680639e",
+    "guides/local-assistant/intent/verification.json": "50512f1218da394e7db5c8138b3dafcf2b7bbed9cd4c45d6e34f63150702748c",
+    "guides/local-assistant/profile.json": "7fcde9d4b3d8842dc2345159687e845e023ce9049c92deab6d99d494e6ba813d",
+    "guides/tests/assistant/browser-consent-fixture.js": "824ec886ed266ada0d40fe2f7142995cd8252f7629b395ee4be9037dea63b89f",
+    "guides/tests/assistant/full-answer-browser.py": "14c72f2b0e3ff540f13cf2019c8eeba8a4e758251cb33c03ab191bf5c4fa97ae",
+    "guides/tests/assistant/knowledge-blind-browser.py": "49c883ec36c00a8e0a90dc8fd7ec1caafa28babfdfa3d00eaef10865d4faaf43",
+    "guides/tests/assistant/knowledge-browser.py": "e4caf821ae66941cdb9b7e10f6d50663746597b8f3defed7f8209d8c3a90ad41",
+    "guides/tests/assistant/knowledge-independent-all-20261025.json": "a6c44c5f5ae77f80295bd6c2403369545f9de28afe5920a07d105a40d016b907"
+  },
+  "selectedSurfaces": [
+    "ultima6"
+  ],
+  "turns": [
+    {
+      "text": "Where do I meet Ariana about the rune, and whose approval does she need?",
+      "expected": {
+        "decision": "answer",
+        "source": {
+          "file": "guides/js/Ultima6.js",
+          "locator": "gameData.quests[0].sections[0].steps[0]",
+          "review": "extracted"
+        },
+        "contains": [
+          "Conservatory",
+          "RUNE",
+          "mother Anya's permission"
+        ],
+        "requiredUsefulClaim": "Locate Ariana at the Conservatory, tell the player to ask for RUNE, and identify her mother Anya as the person whose permission she needs.",
+        "sourceWitness": "Meet Ariana at the Conservatory and ask for the `RUNE`. She needs her mother Anya's permission."
+      },
+      "decision": "answer",
+      "rendered": "Meet Ariana at the Conservatory and ask for the RUNE. She needs her mother Anya's permission.\n\nAnya:\nMeet Ariana at the Conservatory and ask for the RUNE. She needs her mother Anya's permission.",
+      "citations": [
+        "Source: existing guide; extracted. guides/js/Ultima6.js \u2014 gameData.quests[0].sections[0].steps[0]"
+      ],
+      "links": [],
+      "acceptedAnswerBranch": 0,
+      "answerBranchProblems": [
+        []
+      ],
+      "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+      "problems": [],
+      "passed": true,
+      "surface": "ultima6",
+      "dialogueId": "u6-compassion-permission-conversation",
+      "turn": 1
+    },
+    {
+      "text": "Okay, where do I find her mother and what do I say to get that approval?",
+      "expected": {
+        "decision": "answer",
+        "source": {
+          "file": "guides/js/Ultima6.js",
+          "locator": "gameData.quests[0].sections[0].steps[1]",
+          "review": "extracted"
+        },
+        "contains": [
+          "Blue Boar Tavern",
+          "RUNE",
+          "PERMISSION",
+          "YES"
+        ],
+        "requiredUsefulClaim": "Locate Anya at the Blue Boar Tavern; give RUNE or PERMISSION as conversation topics and YES as the reply when asked.",
+        "sourceWitness": "Visit Anya at the Blue Boar Tavern, mention `RUNE` or `PERMISSION`, and answer `YES` when asked."
+      },
+      "decision": "answer",
+      "rendered": "Visit Anya at the Blue Boar Tavern, mention RUNE or PERMISSION, and answer YES when asked.",
+      "citations": [
+        "Source: existing guide; extracted. guides/js/Ultima6.js \u2014 gameData.quests[0].sections[0].steps[1]"
+      ],
+      "links": [],
+      "acceptedAnswerBranch": 0,
+      "answerBranchProblems": [
+        []
+      ],
+      "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+      "problems": [],
+      "passed": true,
+      "surface": "ultima6",
+      "dialogueId": "u6-compassion-permission-conversation",
+      "turn": 2
+    },
+    {
+      "text": "How do I collect it once permission is sorted out?",
+      "expected": {
+        "decision": "answer",
+        "source": {
+          "file": "guides/js/Ultima6.js",
+          "locator": "gameData.quests[0].sections[0].steps[2]",
+          "review": "extracted"
+        },
+        "contains": [
+          "Return to Ariana",
+          "confirm permission",
+          "Rune of Compassion"
+        ],
+        "requiredUsefulClaim": "Tell the player to return to Ariana and confirm permission to receive the Rune of Compassion.",
+        "sourceWitness": "Return to Ariana, confirm permission, and receive the Rune of Compassion."
+      },
+      "decision": "answer",
+      "rendered": "Ariana: say PERMISSION \u2192 answer YES to claim the rune.\nReturn to Ariana, confirm permission, and receive the Rune of Compassion.",
+      "citations": [
+        "Source: existing guide; extracted. guides/js/Ultima6.js \u2014 gameData.quests[0].sections[0].keywords[0].helper; guides/js/Ultima6.js \u2014 gameData.quests[0].sections[0].steps[2]"
+      ],
+      "links": [],
+      "acceptedAnswerBranch": 0,
+      "answerBranchProblems": [
+        []
+      ],
+      "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+      "problems": [],
+      "passed": true,
+      "surface": "ultima6",
+      "dialogueId": "u6-compassion-permission-conversation",
+      "turn": 3
+    },
+    {
+      "text": "Exactly how old is Anya?",
+      "expected": {
+        "decision": "not-answer",
+        "boundary": "The approved source records identify Anya and her permission role but do not give her age; no numeric age may be invented."
+      },
+      "decision": "decline",
+      "rendered": "The available sources do not give that age or measured quantity for the subject.",
+      "citations": [],
+      "links": [],
+      "acceptedAnswerBranch": null,
+      "answerBranchProblems": [],
+      "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+      "problems": [],
+      "passed": true,
+      "surface": "ultima6",
+      "dialogueId": "u6-compassion-permission-conversation",
+      "turn": 4
+    },
+    {
+      "text": "How do I persuade Sherry to come along?",
+      "expected": {
+        "decision": "answer",
+        "source": {
+          "file": "guides/js/Ultima6.js",
+          "locator": "gameData.quests[0].sections[2].steps[0]",
+          "review": "extracted"
+        },
+        "contains": [
+          "Castle Britannia's kitchen",
+          "cheese",
+          "JOIN"
+        ],
+        "requiredUsefulClaim": "Direct the player to Castle Britannia\u2019s kitchen, have them offer cheese to Sherry, and invite her to JOIN.",
+        "sourceWitness": "In Castle Britannia's kitchen, pick up cheese, offer it to Sherry, and invite her to `JOIN`."
+      },
+      "decision": "answer",
+      "rendered": "In Castle Britannia's kitchen, pick up cheese, offer it to Sherry, and invite her to JOIN.",
+      "citations": [
+        "Source: existing guide; extracted. guides/js/Ultima6.js \u2014 gameData.quests[0].sections[2].steps[0]"
+      ],
+      "links": [],
+      "acceptedAnswerBranch": 0,
+      "answerBranchProblems": [
+        []
+      ],
+      "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+      "problems": [],
+      "passed": true,
+      "surface": "ultima6",
+      "dialogueId": "u6-sherry-mouse-conversation",
+      "turn": 1
+    },
+    {
+      "text": "Where do I take her for the mouse hole, and who should I be controlling?",
+      "expected": {
+        "decision": "answer",
+        "source": {
+          "file": "guides/js/Ultima6.js",
+          "locator": "gameData.quests[0].sections[2].steps[1]",
+          "review": "extracted"
+        },
+        "contains": [
+          "Sword and Keg",
+          "Jhelom",
+          "mouse hole",
+          "switch control to her"
+        ],
+        "requiredUsefulClaim": "Locate the mouse hole at the Sword and Keg in Jhelom, position Sherry there, and switch control to her.",
+        "sourceWitness": "Travel to the Sword and Keg in Jhelom, position Sherry at the mouse hole, and switch control to her."
+      },
+      "decision": "answer",
+      "rendered": "Travel to the Sword and Keg in Jhelom, position Sherry at the mouse hole, and switch control to her.\n\nSherry:\nTravel to the Sword and Keg in Jhelom, position Sherry at the mouse hole, and switch control to her.",
+      "citations": [
+        "Source: existing guide; extracted. guides/js/Ultima6.js \u2014 gameData.quests[0].sections[2].steps[1]"
+      ],
+      "links": [],
+      "acceptedAnswerBranch": 0,
+      "answerBranchProblems": [
+        []
+      ],
+      "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+      "problems": [],
+      "passed": true,
+      "surface": "ultima6",
+      "dialogueId": "u6-sherry-mouse-conversation",
+      "turn": 2
+    },
+    {
+      "text": "Once she is there, how do we get the rune back to the group?",
+      "expected": {
+        "decision": "answer",
+        "source": {
+          "file": "guides/js/Ultima6.js",
+          "locator": "gameData.quests[0].sections[2].steps[2]",
+          "review": "extracted"
+        },
+        "contains": [
+          "Enter the mouse hole as Sherry",
+          "grab the rune",
+          "regroup"
+        ],
+        "requiredUsefulClaim": "Enter the mouse hole as Sherry to grab the rune, then regroup with the party.",
+        "sourceWitness": "Enter the mouse hole as Sherry to grab the rune, then regroup with the party."
+      },
+      "decision": "answer",
+      "rendered": "Enter the mouse hole as Sherry to grab the rune, then regroup with the party.",
+      "citations": [
+        "Source: existing guide; extracted. guides/js/Ultima6.js \u2014 gameData.quests[0].sections[2].steps[2]"
+      ],
+      "links": [],
+      "acceptedAnswerBranch": 0,
+      "answerBranchProblems": [
+        []
+      ],
+      "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+      "problems": [],
+      "passed": true,
+      "surface": "ultima6",
+      "dialogueId": "u6-sherry-mouse-conversation",
+      "turn": 3
+    },
+    {
+      "text": "Does that exact recruitment method also work in the SNES edition?",
+      "expected": {
+        "decision": "not-answer",
+        "boundary": "The supplied guide witnesses do not establish SNES-specific recruitment behavior or equivalence across editions."
+      },
+      "decision": "clarify",
+      "rendered": "What would you like to know: location, acquisition, use, stats, combat, a counter or cure, prerequisites, or a hint?",
+      "citations": [],
+      "links": [],
+      "acceptedAnswerBranch": null,
+      "answerBranchProblems": [],
+      "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+      "problems": [],
+      "passed": true,
+      "surface": "ultima6",
+      "dialogueId": "u6-sherry-mouse-conversation",
+      "turn": 4
+    }
+  ],
+  "failures": [],
+  "requests": [
+    {
+      "url": "http://127.0.0.1:44817/guides/Ultima6.html",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44817/guides/css/assistant-consent.css",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44817/guides/js/assistant/bootstrap.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44817/guides/js/tailwind.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44817/guides/js/chart.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44817/guides/css/fonts.css",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44817/guides/css/leaflet.css",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44817/guides/css/Ultima6.css",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44817/guides/images/Ultima6box.jpg",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44817/guides/images/ultima6-briefing-hero.webp",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44817/guides/js/assistant/model-runtime.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44817/guides/js/assistant/intent-runtime.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44817/guides/js/assistant/consent.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44817/guides/js/assistant/model-download.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44817/guides/js/leaflet.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44817/guides/js/Ultima6Atlas.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44817/guides/js/Ultima6.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44817/guides/images/paper-texture.jpg",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44817/guides/images/U6GameWorld.png",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44817/guides/local-assistant/profile.json",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44817/guides/local-assistant/intent/profile.json",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44817/guides/js/assistant/adapters/ultima6.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44817/guides/js/assistant/ui.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44817/guides/css/assistant.css",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44817/guides/js/assistant/guide-assistant.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44817/guides/js/assistant/topics.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44817/guides/js/assistant/engine.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44817/guides/js/assistant/dialogue.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44817/guides/js/assistant/source-responses.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44817/guides/js/assistant/knowledge.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44817/guides/js/assistant/policy.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44817/guides/js/assistant/retrieval.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44817/guides/js/assistant/language.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44817/guides/js/assistant/consultation.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44817/guides/js/assistant/factual-property-requests.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44817/guides/js/assistant/software-capabilities.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44817/guides/js/assistant/resource-condition-requests.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44817/guides/js/assistant/sequence-field-requests.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44817/guides/js/assistant/descriptive-reference-requests.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44817/guides/js/assistant/question-source-attribution.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44817/guides/js/assistant/named-source-fields.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44817/guides/js/assistant/rules.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44817/guides/js/assistant/fallback-context.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44817/guides/js/assistant/fallback-guard.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44817/guides/js/assistant/source-field-index.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44817/guides/js/assistant/request-frame.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44817/guides/js/assistant/source-field-router.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44817/guides/js/assistant/source-field-guard.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44817/guides/js/assistant/source-field-arguments.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44817/guides/js/assistant/knowledge-graph.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44817/guides/js/assistant/recorded-conditions.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44817/guides/js/assistant/requested-measurements.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44817/guides/js/assistant/source-contexts.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44817/guides/js/assistant/static-property-conditions.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44817/guides/js/assistant/source-preambles.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44817/guides/js/assistant/source-location-context.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44817/guides/js/assistant/procedural-requests.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44817/guides/js/assistant/method-assertions.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44817/guides/js/assistant/scene-transition-preambles.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44817/guides/js/assistant/bundle-references.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44817/guides/js/assistant/procedure-phase-fields.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44817/guides/data/assistant/ultima6.json",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44817/guides/data/assistant/consultation-catalog.json",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44817/guides/data/assistant/knowledge/ultima6.json",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44817/guides/data/assistant/knowledge/ultima6-embeddings.json",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44817/guides/js/assistant/intent-worker.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44817/guides/js/assistant/model-download.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44817/guides/js/assistant/intent-head.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44817/guides/local-assistant/intent/files/7135149f7cffa1a573466c6e4d8423ed73b62fd2332c575bf738a0d033f70df7.bin",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44817/guides/local-assistant/intent/files/da0e79933b9ed51798a3ae27893d3c5fa4a201126cef75586296df9b4d2c62a0.bin",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44817/guides/local-assistant/intent/files/9261e7d79b44c8195c1cada2b453e55b00aeb81e907a6664974b4d7776172ab3.bin",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44817/guides/local-assistant/intent/files/b6d346be366a7d1d48332dbc9fdf3bf8960b5d879522b7799ddba59e76237ee3.bin",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44817/guides/local-assistant/intent/files/07eced375cec144d27c900241f3e339478dec958f92fddbc551f295c992038a3.bin",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44817/guides/local-assistant/intent/files/7f4b29b4f81642ad87533b14758761b8859e5deb8717081893ac512006ea99c2.bin",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44817/guides/local-assistant/intent/files/8bdaa80935c394b9c614e00c7b829303b05df133447f901c98c56ebf90d672b6.bin",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44817/guides/local-assistant/intent/files/979c196a92df490124802e61fcc5fad787fc535ee69ff0eae64784355a8f6bfb.bin",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44817/guides/local-assistant/files/08fb86ec433c78bfb032c5d84a68b8e8e5a8d81268fa39e24314179a5767a5b9.bin",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44817/guides/local-assistant/files/9d41eaeb98b753f4fb40fd7ab6d37d86f37f31b08f78446a8a83327beb7f68f0.bin",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44817/guides/local-assistant/files/b870ce8426a85ac994ef80359c3a01cd79d01ae49cf19f8a98d24810bbc7b4f4.bin",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:44817/guides/local-assistant/files/aa5002b70e789798da263f5f99c62bd3e8fcd0c119258a493c40c180648365fa.bin",
+      "method": "GET",
+      "hasBody": false
+    }
+  ],
+  "blockedRequests": [],
+  "pageErrors": [],
+  "workers": {
+    "ultima6": [
+      {
+        "url": "http://127.0.0.1:44817/guides/js/assistant/intent-worker.js",
+        "events": [
+          {
+            "direction": "send",
+            "type": "load",
+            "id": null,
+            "text": null,
+            "modelId": "Xenova/all-MiniLM-L6-v2"
+          },
+          {
+            "direction": "receive",
+            "type": "ready",
+            "id": null,
+            "metadata": {
+              "modelId": "Xenova/all-MiniLM-L6-v2",
+              "revision": "751bff37182d3f1213fa05d7196b954e230abad9",
+              "dimensions": 384,
+              "encoderFineTuned": false,
+              "realModelInference": true,
+              "wasmThreads": 1,
+              "headSha256": "979c196a92df490124802e61fcc5fad787fc535ee69ff0eae64784355a8f6bfb",
+              "thresholds": {
+                "minScore": 0,
+                "minMargin": 0,
+                "abstainAll": false,
+                "selection": {
+                  "source": "validation",
+                  "samples": 72,
+                  "targetAccuracy": 0.9,
+                  "minAccepted": 6,
+                  "accepted": 72,
+                  "accuracy": 0.9444444444444444,
+                  "coverage": 1,
+                  "candidateLimitPerAxis": 51
+                }
+              },
+              "additionalBytes": 24053489
+            },
+            "predictions": null,
+            "message": null
+          },
+          {
+            "direction": "send",
+            "type": "classify",
+            "id": 1,
+            "text": "Where do I meet Ariana about the rune, and whose approval does she need?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "result",
+            "id": 1,
+            "metadata": null,
+            "predictions": [
+              {
+                "label": "location",
+                "score": 0.17355836042607434
+              },
+              {
+                "label": "identity",
+                "score": 0.12038664553454466
+              },
+              {
+                "label": "acquisition",
+                "score": 0.11180446008843974
+              },
+              {
+                "label": "use",
+                "score": 0.08675783244325105
+              },
+              {
+                "label": "prerequisites",
+                "score": 0.08041180152218712
+              },
+              {
+                "label": "comparison",
+                "score": 0.07849746039686231
+              },
+              {
+                "label": "unknown",
+                "score": 0.07654116754691694
+              },
+              {
+                "label": "overview",
+                "score": 0.06737151889547172
+              },
+              {
+                "label": "hint",
+                "score": 0.05848961885468047
+              },
+              {
+                "label": "combat",
+                "score": 0.05202195805899451
+              },
+              {
+                "label": "why",
+                "score": 0.04814465023514694
+              },
+              {
+                "label": "stats",
+                "score": 0.046014525997430444
+              }
+            ],
+            "message": null
+          },
+          {
+            "direction": "send",
+            "type": "encode",
+            "id": 2,
+            "text": "where do i meet ariana about the rune",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "embedding",
+            "id": 2,
+            "metadata": null,
+            "predictions": null,
+            "message": null,
+            "dimensions": 384,
+            "allFinite": true,
+            "norm": 1.0000002446819762
+          },
+          {
+            "direction": "send",
+            "type": "encode",
+            "id": 3,
+            "text": "whose approval does she need\nSubject: Ariana",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "embedding",
+            "id": 3,
+            "metadata": null,
+            "predictions": null,
+            "message": null,
+            "dimensions": 384,
+            "allFinite": true,
+            "norm": 1.0000002168198596
+          },
+          {
+            "direction": "send",
+            "type": "classify",
+            "id": 4,
+            "text": "Okay, where do I find her mother and what do I say to get that approval?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "result",
+            "id": 4,
+            "metadata": null,
+            "predictions": [
+              {
+                "label": "location",
+                "score": 0.23586817653820588
+              },
+              {
+                "label": "acquisition",
+                "score": 0.14853204324310934
+              },
+              {
+                "label": "hint",
+                "score": 0.1370339886772237
+              },
+              {
+                "label": "use",
+                "score": 0.11186949415714574
+              },
+              {
+                "label": "unknown",
+                "score": 0.09536015354358127
+              },
+              {
+                "label": "comparison",
+                "score": 0.05081211938387125
+              },
+              {
+                "label": "identity",
+                "score": 0.04759114275661744
+              },
+              {
+                "label": "prerequisites",
+                "score": 0.04332325115451851
+              },
+              {
+                "label": "stats",
+                "score": 0.0396921059891492
+              },
+              {
+                "label": "combat",
+                "score": 0.03657648329562136
+              },
+              {
+                "label": "overview",
+                "score": 0.03464902000543876
+              },
+              {
+                "label": "why",
+                "score": 0.018692021255517683
+              }
+            ],
+            "message": null
+          },
+          {
+            "direction": "send",
+            "type": "encode",
+            "id": 5,
+            "text": "where do i find her mother\nSubject: Anya",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "embedding",
+            "id": 5,
+            "metadata": null,
+            "predictions": null,
+            "message": null,
+            "dimensions": 384,
+            "allFinite": true,
+            "norm": 0.9999999690136475
+          },
+          {
+            "direction": "send",
+            "type": "encode",
+            "id": 6,
+            "text": "what do i say to get that approval",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "embedding",
+            "id": 6,
+            "metadata": null,
+            "predictions": null,
+            "message": null,
+            "dimensions": 384,
+            "allFinite": true,
+            "norm": 1.0000000993315896
+          },
+          {
+            "direction": "send",
+            "type": "classify",
+            "id": 7,
+            "text": "How do I collect it once permission is sorted out?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "result",
+            "id": 7,
+            "metadata": null,
+            "predictions": [
+              {
+                "label": "acquisition",
+                "score": 0.3135676678707625
+              },
+              {
+                "label": "use",
+                "score": 0.14210409005832966
+              },
+              {
+                "label": "location",
+                "score": 0.12894786833843838
+              },
+              {
+                "label": "hint",
+                "score": 0.113931102653194
+              },
+              {
+                "label": "unknown",
+                "score": 0.06144973880035461
+              },
+              {
+                "label": "prerequisites",
+                "score": 0.049172635673769026
+              },
+              {
+                "label": "overview",
+                "score": 0.04507326378240003
+              },
+              {
+                "label": "why",
+                "score": 0.04314916041428349
+              },
+              {
+                "label": "identity",
+                "score": 0.0388534611914757
+              },
+              {
+                "label": "stats",
+                "score": 0.028957807752820253
+              },
+              {
+                "label": "combat",
+                "score": 0.021511433213521582
+              },
+              {
+                "label": "comparison",
+                "score": 0.013281770250650847
+              }
+            ],
+            "message": null
+          },
+          {
+            "direction": "send",
+            "type": "encode",
+            "id": 8,
+            "text": "How do I collect it once permission is sorted out?\nSubject: Rune of Compassion",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "embedding",
+            "id": 8,
+            "metadata": null,
+            "predictions": null,
+            "message": null,
+            "dimensions": 384,
+            "allFinite": true,
+            "norm": 1.0000000054209126
+          },
+          {
+            "direction": "send",
+            "type": "classify",
+            "id": 9,
+            "text": "Exactly how old is Anya?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "result",
+            "id": 9,
+            "metadata": null,
+            "predictions": [
+              {
+                "label": "identity",
+                "score": 0.22964685793299658
+              },
+              {
+                "label": "stats",
+                "score": 0.19860467954598196
+              },
+              {
+                "label": "unknown",
+                "score": 0.11007933577155131
+              },
+              {
+                "label": "prerequisites",
+                "score": 0.08183146583915825
+              },
+              {
+                "label": "location",
+                "score": 0.07903687300493642
+              },
+              {
+                "label": "comparison",
+                "score": 0.06470268780623906
+              },
+              {
+                "label": "why",
+                "score": 0.05550241010860521
+              },
+              {
+                "label": "hint",
+                "score": 0.04790591834730604
+              },
+              {
+                "label": "overview",
+                "score": 0.04402719579856175
+              },
+              {
+                "label": "use",
+                "score": 0.03812384418769445
+              },
+              {
+                "label": "acquisition",
+                "score": 0.03164679852770307
+              },
+              {
+                "label": "combat",
+                "score": 0.018891933129265827
+              }
+            ],
+            "message": null
+          },
+          {
+            "direction": "send",
+            "type": "encode",
+            "id": 10,
+            "text": "Exactly how old is Anya?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "embedding",
+            "id": 10,
+            "metadata": null,
+            "predictions": null,
+            "message": null,
+            "dimensions": 384,
+            "allFinite": true,
+            "norm": 1.0000001817505468
+          },
+          {
+            "direction": "send",
+            "type": "classify",
+            "id": 11,
+            "text": "How do I persuade Sherry to come along?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "result",
+            "id": 11,
+            "metadata": null,
+            "predictions": [
+              {
+                "label": "unknown",
+                "score": 0.16980204497557316
+              },
+              {
+                "label": "hint",
+                "score": 0.1380026958747504
+              },
+              {
+                "label": "use",
+                "score": 0.12114115889681878
+              },
+              {
+                "label": "acquisition",
+                "score": 0.09774363725624458
+              },
+              {
+                "label": "combat",
+                "score": 0.08284742305336325
+              },
+              {
+                "label": "overview",
+                "score": 0.07017403378895319
+              },
+              {
+                "label": "comparison",
+                "score": 0.06343326431215168
+              },
+              {
+                "label": "prerequisites",
+                "score": 0.05900029361784285
+              },
+              {
+                "label": "location",
+                "score": 0.05838381003892305
+              },
+              {
+                "label": "identity",
+                "score": 0.05735287179468377
+              },
+              {
+                "label": "why",
+                "score": 0.0544074370698433
+              },
+              {
+                "label": "stats",
+                "score": 0.027711329320851893
+              }
+            ],
+            "message": null
+          },
+          {
+            "direction": "send",
+            "type": "encode",
+            "id": 12,
+            "text": "How do I persuade Sherry to come along?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "embedding",
+            "id": 12,
+            "metadata": null,
+            "predictions": null,
+            "message": null,
+            "dimensions": 384,
+            "allFinite": true,
+            "norm": 0.9999999530895287
+          },
+          {
+            "direction": "send",
+            "type": "classify",
+            "id": 13,
+            "text": "Where do I take her for the mouse hole, and who should I be controlling?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "result",
+            "id": 13,
+            "metadata": null,
+            "predictions": [
+              {
+                "label": "location",
+                "score": 0.17238644240414017
+              },
+              {
+                "label": "hint",
+                "score": 0.1259352454463597
+              },
+              {
+                "label": "combat",
+                "score": 0.10718793941995143
+              },
+              {
+                "label": "comparison",
+                "score": 0.09807166478970841
+              },
+              {
+                "label": "acquisition",
+                "score": 0.08942399449808944
+              },
+              {
+                "label": "prerequisites",
+                "score": 0.075165222868822
+              },
+              {
+                "label": "unknown",
+                "score": 0.07309976700893303
+              },
+              {
+                "label": "use",
+                "score": 0.07240272510909745
+              },
+              {
+                "label": "identity",
+                "score": 0.05926559435782239
+              },
+              {
+                "label": "stats",
+                "score": 0.05446270962119145
+              },
+              {
+                "label": "overview",
+                "score": 0.04542747408006126
+              },
+              {
+                "label": "why",
+                "score": 0.027171220395823096
+              }
+            ],
+            "message": null
+          },
+          {
+            "direction": "send",
+            "type": "encode",
+            "id": 14,
+            "text": "where do i take her for the mouse hole\nSubject: Sherry",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "embedding",
+            "id": 14,
+            "metadata": null,
+            "predictions": null,
+            "message": null,
+            "dimensions": 384,
+            "allFinite": true,
+            "norm": 1.0000000403655223
+          },
+          {
+            "direction": "send",
+            "type": "encode",
+            "id": 15,
+            "text": "who should i be controlling",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "embedding",
+            "id": 15,
+            "metadata": null,
+            "predictions": null,
+            "message": null,
+            "dimensions": 384,
+            "allFinite": true,
+            "norm": 1.000000083495361
+          },
+          {
+            "direction": "send",
+            "type": "classify",
+            "id": 16,
+            "text": "Once she is there, how do we get the rune back to the group?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "result",
+            "id": 16,
+            "metadata": null,
+            "predictions": [
+              {
+                "label": "use",
+                "score": 0.14325832887866186
+              },
+              {
+                "label": "hint",
+                "score": 0.1366483062097277
+              },
+              {
+                "label": "location",
+                "score": 0.13134810643731412
+              },
+              {
+                "label": "acquisition",
+                "score": 0.12954180460122952
+              },
+              {
+                "label": "unknown",
+                "score": 0.07621518534107975
+              },
+              {
+                "label": "combat",
+                "score": 0.07604911047427142
+              },
+              {
+                "label": "why",
+                "score": 0.05857659134749096
+              },
+              {
+                "label": "overview",
+                "score": 0.05496220118244591
+              },
+              {
+                "label": "comparison",
+                "score": 0.05438880544082071
+              },
+              {
+                "label": "identity",
+                "score": 0.048007703543483826
+              },
+              {
+                "label": "stats",
+                "score": 0.04654081240406754
+              },
+              {
+                "label": "prerequisites",
+                "score": 0.04446304413940667
+              }
+            ],
+            "message": null
+          },
+          {
+            "direction": "send",
+            "type": "encode",
+            "id": 17,
+            "text": "Once she is there, how do we get the rune back to the group?\nSubject: Rune of Valor",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "embedding",
+            "id": 17,
+            "metadata": null,
+            "predictions": null,
+            "message": null,
+            "dimensions": 384,
+            "allFinite": true,
+            "norm": 1.0000000718658821
+          },
+          {
+            "direction": "send",
+            "type": "classify",
+            "id": 18,
+            "text": "Does that exact recruitment method also work in the SNES edition?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "result",
+            "id": 18,
+            "metadata": null,
+            "predictions": [
+              {
+                "label": "overview",
+                "score": 0.17601807154388296
+              },
+              {
+                "label": "acquisition",
+                "score": 0.1413797118066234
+              },
+              {
+                "label": "use",
+                "score": 0.09553033617791853
+              },
+              {
+                "label": "unknown",
+                "score": 0.08826473097390984
+              },
+              {
+                "label": "prerequisites",
+                "score": 0.08289682307978355
+              },
+              {
+                "label": "why",
+                "score": 0.07740303710386294
+              },
+              {
+                "label": "identity",
+                "score": 0.06604146625732325
+              },
+              {
+                "label": "comparison",
+                "score": 0.06237207985225937
+              },
+              {
+                "label": "stats",
+                "score": 0.061327620555651406
+              },
+              {
+                "label": "location",
+                "score": 0.06002052286486791
+              },
+              {
+                "label": "hint",
+                "score": 0.04512953564047633
+              },
+              {
+                "label": "combat",
+                "score": 0.04361606414344058
+              }
+            ],
+            "message": null
+          },
+          {
+            "direction": "send",
+            "type": "encode",
+            "id": 19,
+            "text": "Does that exact recruitment method also work in the SNES edition?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "embedding",
+            "id": 19,
+            "metadata": null,
+            "predictions": null,
+            "message": null,
+            "dimensions": 384,
+            "allFinite": true,
+            "norm": 1.0000000226907668
+          }
+        ]
+      }
+    ]
+  },
+  "storageUnchanged": {
+    "ultima6": true
+  },
+  "storageWrites": {
+    "ultima6": []
+  },
+  "screenshots": [
+    "guides/tests/assistant/intent-prototype/results/knowledge-blind/independent-ultima6-terra-compassion-20261029-01/ultima6.png"
+  ],
+  "oracleLimitation": "Exact guide file/locator tuples or complete primary research label/URL/date tuples, plus fixed useful phrases. Internal fact IDs are not observed. Required useful claims and boundaries also need semantic review.",
+  "loopbackPort": 44817,
+  "browser": "156.0.8078.73",
+  "serverClosed": true,
+  "sourceHashesAfter": {
+    "guides/Ultima6.html": "f64c4728cd19b042ccea6c7aa7398aea50b955f7fa3ad177168a937149fd30c2",
+    "guides/data/assistant/albion.json": "b3b219ccb434c450189e97404b4c06a3bbc8334dc581bea55bc4a70213851404",
+    "guides/data/assistant/alqadim.json": "f0f15243ea3b27701d97b3ab369a108ef46e93ec5f780f6e1fd1bf5e69bf2b77",
+    "guides/data/assistant/consultation-catalog.json": "96d5b392afabfcbd9f59007ce17fa7ce20a8874b3cacf0248ae349bc93889cca",
+    "guides/data/assistant/knowledge/albion-embeddings.json": "5b888af1e6d70750bb68166ecaf4bfeb1652c78a658549bda300ed35b0c26c55",
+    "guides/data/assistant/knowledge/albion.json": "c36c81582c303a281e166d7c91a76dfc4bd3dfd97259e076a5af21770da69e5f",
+    "guides/data/assistant/knowledge/alqadim-embeddings.json": "6e22652db6bdc74351ed00a3fef041b4d3e281c73824bb52947c7c9fbc0a8827",
+    "guides/data/assistant/knowledge/alqadim.json": "843ce2425f205464a6c1771f4f18864d712c8736f79203ef78dd234e7ec03b8c",
+    "guides/data/assistant/knowledge/starcraft-embeddings.json": "023acebeab9d1cf17457f2eb3afd9c786a09f5354698ae5a9d77bc59978fae2d",
+    "guides/data/assistant/knowledge/starcraft.json": "97fdae345bbb25f9d3b0b32a8fcbb0a8a0c22bfbe7b4fadd8e5c0cd4c75d4261",
+    "guides/data/assistant/knowledge/ultima5-embeddings.json": "044478927a94462963401a38d554f085084c1a1f0358b48c968c262d74833377",
+    "guides/data/assistant/knowledge/ultima5.json": "5b8326a6b63b3a863bf2cc8509e43efc9e57f3efea43d3bd2fe856d193f5d7c7",
+    "guides/data/assistant/knowledge/ultima6-embeddings.json": "3d5d247aa1d8299c17cfadd1289fddf933bab8cffbbbe99c11977b9ec5652e66",
+    "guides/data/assistant/knowledge/ultima6.json": "a5674813c799eda4bdf9207c79fd051b94c01272e08e96bbee4d7a7abae55031",
+    "guides/data/assistant/knowledge/ultima7-embeddings.json": "9f7da788a33a2d5871fce73814b3bd8836d5e3bcd4409a876ac17a347f57b723",
+    "guides/data/assistant/knowledge/ultima7.json": "99b3d82a1bfc7a619e33cf78ad0636bdfe1b720aa95b8e82e1fdd60ea6545bb6",
+    "guides/data/assistant/manifest.json": "d2ad011aa0d0c733b9c35a9e1afc70a01f8eef0cbfc04de0eaf45a90824d9ee4",
+    "guides/data/assistant/starcraft.json": "0dc5925ca67adfc434b5366213a5e05e11cbf869f1d0aa71e4daa6d16ae2dfc0",
+    "guides/data/assistant/ultima5.json": "bbd6a3a33133bc1aca80ac7a19cea5011e19c9f33869582355d7fd60f0f0d24e",
+    "guides/data/assistant/ultima6.json": "67b3bf1e8e935df279bec2f11cf698ba721f5d8e169f1a050fefa4ee66b5ad05",
+    "guides/data/assistant/ultima7.json": "9b5c29c25936ccfd20ca9b704df57d45c1f7142a2014b09630f8e2f2aee10871",
+    "guides/js/AlQadim.js": "269798843206f12b76163c65b04301be278652115fbdbd46596f13f3ae7b5e5e",
+    "guides/js/AlQadimAtlasData.js": "82abbb86cafad98655e4bacfdd28e8ba96fba7f747da44b30aaa9364a37e747e",
+    "guides/js/Albion.js": "4adba84eca7af2436731b7053e3167a909f57f85edc611c6287411af84e4b1ca",
+    "guides/js/AlbionAtlasData.js": "b5a96b06ee31e94eba95df1cec41c2b564576e1170a3065b61e9f5db7890dcc8",
+    "guides/js/AlbionMarkers.js": "1de190722be16721a0ff3ff3a50b2c1298706bc33629dd223ed673f63cfbc27b",
+    "guides/js/Ultima5.js": "e2699ed2d8aca9bf3465c7dcd262461f5fca59f1fb4cbd41361e0f5c5a96dae5",
+    "guides/js/Ultima5AtlasData.js": "1292346505cb26d534154b317d7beee7bb186f8dda2d9316127912111bfb72a2",
+    "guides/js/Ultima6.js": "a0b07db60d7c30ac19bb64b56fa26b1428a6437f437f087eb2d75109afae4898",
+    "guides/js/Ultima6Atlas.js": "c83db308efae81f2868d5b4954d679d24e81b83b226d4e4548699668f98d8e88",
+    "guides/js/Ultima7.js": "c3cd92659e5e959c6d172ba38d56ba85148729b82185768557cb595e3bfb6085",
+    "guides/js/Ultima7Markers.js": "9103499a31be5bd132959ff268aa0149b90ec310a7f1098fbed1fc25a2de1f2e",
+    "guides/js/assistant/adapters/albion.js": "df3993cb351cf9f5e4ade03d8bcfdfc3477c00f4fb39922b9e8cc8d4e255e70b",
+    "guides/js/assistant/adapters/alqadim.js": "fa65928d9011011a12095cd4bbf37a56bfed3b91559ce6aa8097a991b111065c",
+    "guides/js/assistant/adapters/starcraft.js": "b4a11908b121a545fd810c4f8ae09404c210ab0607f70e9121a145a8aea6063e",
+    "guides/js/assistant/adapters/ultima5.js": "3aa64babe0f83ecc713f5d9a665b8ba7a4e7dbfce557a8cff22778a6170cf95a",
+    "guides/js/assistant/adapters/ultima6.js": "d99a14171975b88fff97d7e0ff9a39ac1e07abfed425706732827d6d4fe5e480",
+    "guides/js/assistant/adapters/ultima7.js": "5140505e9fe04a864e950afab671519f31ef24ac6a9b2e91b7c3853c1cf1e7c3",
+    "guides/js/assistant/bootstrap.js": "022aff4f7c2f93fc5c74da9b6457c6a53ee5eb2c072bf90970eca95ef3855608",
+    "guides/js/assistant/bundle-references.js": "7f1b26d1b66cd8a5c225d10e09dcad1e7886833115f4c064186a214e64986746",
+    "guides/js/assistant/consent.js": "cd83de63e5ec28425fad9eef36d597eec48ec839cb48e93569a568571f1e4b98",
+    "guides/js/assistant/consultation.js": "413afbcdae0843ee276390abe0c810ee76ce8b1437df797ede2261eea1f6b85d",
+    "guides/js/assistant/descriptive-reference-requests.js": "1b96861fd652ac875caa663aecf18691563291180c3899e5e0e99df3b69e275a",
+    "guides/js/assistant/dialogue.js": "159800005db000651ca962b501ff91bd4057efd96d608ce37d6cc7d03275fc3b",
+    "guides/js/assistant/engine.js": "e558f38682a413f9e94a85de0dcc217e29f73320f2863b18d1a0a3d55278cca1",
+    "guides/js/assistant/factual-property-requests.js": "3eee2e045f641ea641fc0b5a0eac906d1e897f6b7a69a5dd14d54eda3a1a5391",
+    "guides/js/assistant/fallback-context.js": "73c2638570035a73683cdd83b2eac5133d577892aef3613539ebb80c0481cb73",
+    "guides/js/assistant/fallback-guard.js": "8ac7766576c0fa39a9f8eb1d8130687f5dec2d93ed3793b1ab32a416502eb4dc",
+    "guides/js/assistant/frame-tokens.js": "9f225b8d13b2082f45af7f1ec7ca5b56900733383537123d7dab05baa95f511b",
+    "guides/js/assistant/guide-assistant.js": "3cb383e9989d466330fcb8a04161c7816b943c823080e1aca4be777244729665",
+    "guides/js/assistant/intent-head.js": "23e428fedd405946199beb1e55641281bdae078e3d8ea6e448d0ac0acc1a39a7",
+    "guides/js/assistant/intent-runtime.js": "3187389f1a763a0f0234e2379205dc7c6763895b5292b59e36c903a5b908029f",
+    "guides/js/assistant/intent-worker.js": "246895c7ee6e5c70dd98cec48235768bbbc8bbeeeea994e5028e41ceb26d8119",
+    "guides/js/assistant/knowledge-graph.js": "9d56040bdcaf20757fc74250de7a59240d035d2d78c43a79afda9c8a9853add2",
+    "guides/js/assistant/knowledge.js": "533b33b123478d10886e51d3f373cff470e679a0aa2ab5fa35c54493af75ef93",
+    "guides/js/assistant/language.js": "f5dd1e7492e51a4d2696132e04d7e482d1bec388656ba5b65f7ecf7a774bd158",
+    "guides/js/assistant/method-assertions.js": "af2baf1b5b82bb90bc52fb2de532a25ce5636f56c8d18fc950440e20bffccbf8",
+    "guides/js/assistant/model-download.js": "1a9f1be1319d9219507a140e4eae6ad6ea2cbb348b19771c7261d1a52432a6a1",
+    "guides/js/assistant/model-runtime.js": "c6331135f75b3ab5f094e6b7020567b19f2b22286105dc51eba190917e98fdd1",
+    "guides/js/assistant/model-worker.js": "5f490d60ae8b991ae64d523d16c683d11a8995283353cfb534f0d3529ce0d6fc",
+    "guides/js/assistant/named-source-fields.js": "01be64708979000a2bef5cf7350711e288321dcb0eced236ca9e58f19f1ccae0",
+    "guides/js/assistant/policy.js": "df44eea0b5eec7dae01deb0ab4c179873cb5f271ae1a3d87ed89a630cb87aec3",
+    "guides/js/assistant/procedural-requests.js": "9d5fd00d418dcca978f45f5f0540264367f345938cc968d7fc57fd2bcf5d6dd3",
+    "guides/js/assistant/procedure-phase-fields.js": "cfe12698b43d87fa314d4226527cf36289834bf0f5dd18c0face0e04eba0b82a",
+    "guides/js/assistant/question-source-attribution.js": "ba2ad08ed24fe0e7c805cfb6584e7542e9e273e6311fc211991cbb5a1484e661",
+    "guides/js/assistant/recorded-conditions.js": "e081dd84810466b52540445b1c780b8297e6932cefad445fab620359b686a89e",
+    "guides/js/assistant/request-frame.js": "485c43ad7a6a38cabe005b25bd2dab863b63d17563b6121c4585de6ae2dd6fc4",
+    "guides/js/assistant/requested-measurements.js": "306478afc82de4e52e29ce0f604b433ea5f5d22e2a330a53d41cc7d8bdccd3f6",
+    "guides/js/assistant/resource-condition-requests.js": "391815392b00782968d49612bc2f2a94ffc6cbe141429298b927f818d6571116",
+    "guides/js/assistant/retrieval.js": "1ff4e7fe4ef670bde94ca3cac6935fd73c2fa831c98a06d1fdc35cc5e48ce132",
+    "guides/js/assistant/rules.js": "3c2edda7907d22a78d022abd9e1fded1ad70103056129325f44d2cc8be78ef74",
+    "guides/js/assistant/scene-transition-preambles.js": "17ed5579286e36a6eab38235cc5816178225644700140379d1c7d0d32e4f0597",
+    "guides/js/assistant/sequence-field-requests.js": "e7d45f727857b29a1467f2c140f38635d10ba0ceb32840bdba7a135a3fbdd30b",
+    "guides/js/assistant/software-capabilities.js": "b2b8586501f8279d072d0a0f0a2286a9ebad8f4d06b5fdc46ff4b380c70c8ba4",
+    "guides/js/assistant/source-contexts.js": "0aea9648a948b346fea93e7fdc65abd013589979bae33cf99d81bf31028ecb99",
+    "guides/js/assistant/source-field-arguments.js": "fc1a2089fa75aa2f505eefc58e2f6b5ff0f580bdc81850fbade62d2391f7656e",
+    "guides/js/assistant/source-field-guard.js": "2e916cbeff86f0419120e9fd4dcf89467c4bd6830033ad8d080d0769efefb11f",
+    "guides/js/assistant/source-field-index.js": "b71914f21f66b880f78097f8304fba2f1a00241445025a82d99243733101bf81",
+    "guides/js/assistant/source-field-router.js": "1f4a453bc26dd8b8f7ea2d01bff98a52e8d18130168579c5c77aec5bf64d549f",
+    "guides/js/assistant/source-location-context.js": "7660b7b38b53b44d8a24a3ae2b600fa796690e8a8f1fd340ea993a6580148558",
+    "guides/js/assistant/source-preambles.js": "bd989c5b9f6b6f565745f5d3044612aa46af2b8034d998c363967a7e181c402e",
+    "guides/js/assistant/source-responses.js": "543d39de10177858da8cfa8bef8bf9f4b91f9daeed2d44f8a217f1b7ff86e041",
+    "guides/js/assistant/static-property-conditions.js": "357896e3d7dffdd0cac913f5afa6e5aa0dde1ed76498db8eeff69228ccf718ab",
+    "guides/js/assistant/topics.js": "cae60c918f936d1429713f076420e32c1fc72a89d371b47f7b1958b81e852d39",
+    "guides/js/assistant/ui.js": "d75176fca259ceb47493529cf01b114fce45f45c07444b6de67dd7f68f97092d",
+    "guides/js/chart.js": "e0059220c10bff95fdb7f5b77b9bfffba68b3ccf4eab4f7398ee7aef3cffca2b",
+    "guides/js/index.js": "0feb3e548e54dd42b171533aebd0931a77cdb0f5b5c51ce2d733814e8cdae557",
+    "guides/js/leaflet.js": "85d455b4522415f6badc42a0e7d17c919d100347d6b8958bd0dc738fdecd6d50",
+    "guides/js/lucide.js": "9dac1057f358d159e8ce1e46f259df2b0cb4a19281de7cf8c9ffb29c7a2226f6",
+    "guides/js/tailwind.js": "7afa0afd2536044695e7e674298bc0dda9af94475e4e07d0575feccfa796c74f",
+    "guides/local-assistant/intent/checksums.json": "17718502a6838e861291fffa496d4c6f99b88ea30374de5200df3be95bd2a0bd",
+    "guides/local-assistant/intent/head.json": "979c196a92df490124802e61fcc5fad787fc535ee69ff0eae64784355a8f6bfb",
+    "guides/local-assistant/intent/profile.json": "786a95a078fcc940f95539837883405257f1a3a896637bb71b8b477be680639e",
+    "guides/local-assistant/intent/verification.json": "50512f1218da394e7db5c8138b3dafcf2b7bbed9cd4c45d6e34f63150702748c",
+    "guides/local-assistant/profile.json": "7fcde9d4b3d8842dc2345159687e845e023ce9049c92deab6d99d494e6ba813d",
+    "guides/tests/assistant/browser-consent-fixture.js": "824ec886ed266ada0d40fe2f7142995cd8252f7629b395ee4be9037dea63b89f",
+    "guides/tests/assistant/full-answer-browser.py": "14c72f2b0e3ff540f13cf2019c8eeba8a4e758251cb33c03ab191bf5c4fa97ae",
+    "guides/tests/assistant/knowledge-blind-browser.py": "49c883ec36c00a8e0a90dc8fd7ec1caafa28babfdfa3d00eaef10865d4faaf43",
+    "guides/tests/assistant/knowledge-browser.py": "e4caf821ae66941cdb9b7e10f6d50663746597b8f3defed7f8209d8c3a90ad41",
+    "guides/tests/assistant/knowledge-independent-all-20261025.json": "a6c44c5f5ae77f80295bd6c2403369545f9de28afe5920a07d105a40d016b907"
+  },
+  "sourceStable": true,
+  "changedSourceFiles": [],
+  "nativeIntentEvidence": {
+    "ultima6": {
+      "nativeModelReady": true,
+      "classifications": 8,
+      "encodings": 11,
+      "embeddingResults": 11,
+      "validEmbeddings": true
+    }
+  },
+  "expectedTurns": 8,
+  "totalTurns": 8,
+  "passedTurns": 8,
+  "boundaries": {
+    "allTurnsRan": true,
+    "nativeMiniLMEverySurface": true,
+    "storageUnchanged": true,
+    "noSavedGameWrites": true,
+    "noExternalRequests": true,
+    "noPageErrors": true,
+    "onlyStaticGets": true,
+    "sourceStable": true,
+    "serverClosed": true
+  }
+}

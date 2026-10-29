@@ -1,0 +1,2588 @@
+{
+  "schemaVersion": 1,
+  "suite": "independent-fresh-source-first-conversations",
+  "realMiniLM": true,
+  "nativeIntentClassification": true,
+  "nativeQueryEncoding": true,
+  "generativeWorkerFixture": true,
+  "nativeGenerativeInference": false,
+  "productionFactoryAndUI": true,
+  "expectedStateInjected": false,
+  "corpusPath": "guides/tests/assistant/knowledge-blind-cases.json",
+  "corpusHash": "4dbdf52d7976e370195ed2fa8e6db6528d470266a9e129880a4533ddbc6f2ebb",
+  "sourceHashesBefore": {
+    "guides/Ultima6.html": "f64c4728cd19b042ccea6c7aa7398aea50b955f7fa3ad177168a937149fd30c2",
+    "guides/data/assistant/albion.json": "b3b219ccb434c450189e97404b4c06a3bbc8334dc581bea55bc4a70213851404",
+    "guides/data/assistant/alqadim.json": "f0f15243ea3b27701d97b3ab369a108ef46e93ec5f780f6e1fd1bf5e69bf2b77",
+    "guides/data/assistant/consultation-catalog.json": "96d5b392afabfcbd9f59007ce17fa7ce20a8874b3cacf0248ae349bc93889cca",
+    "guides/data/assistant/knowledge/albion-embeddings.json": "5b888af1e6d70750bb68166ecaf4bfeb1652c78a658549bda300ed35b0c26c55",
+    "guides/data/assistant/knowledge/albion.json": "c36c81582c303a281e166d7c91a76dfc4bd3dfd97259e076a5af21770da69e5f",
+    "guides/data/assistant/knowledge/alqadim-embeddings.json": "6e22652db6bdc74351ed00a3fef041b4d3e281c73824bb52947c7c9fbc0a8827",
+    "guides/data/assistant/knowledge/alqadim.json": "843ce2425f205464a6c1771f4f18864d712c8736f79203ef78dd234e7ec03b8c",
+    "guides/data/assistant/knowledge/starcraft-embeddings.json": "023acebeab9d1cf17457f2eb3afd9c786a09f5354698ae5a9d77bc59978fae2d",
+    "guides/data/assistant/knowledge/starcraft.json": "97fdae345bbb25f9d3b0b32a8fcbb0a8a0c22bfbe7b4fadd8e5c0cd4c75d4261",
+    "guides/data/assistant/knowledge/ultima5-embeddings.json": "044478927a94462963401a38d554f085084c1a1f0358b48c968c262d74833377",
+    "guides/data/assistant/knowledge/ultima5.json": "5b8326a6b63b3a863bf2cc8509e43efc9e57f3efea43d3bd2fe856d193f5d7c7",
+    "guides/data/assistant/knowledge/ultima6-embeddings.json": "eac821c2fa19c00cbc2388ce1d57ca40e26de4039a939417bd29e186ef5b0c20",
+    "guides/data/assistant/knowledge/ultima6.json": "8d72c21710531b102e648ed7ff900ce7613f8dec6c34483fc128ce320e27a825",
+    "guides/data/assistant/knowledge/ultima7-embeddings.json": "9f7da788a33a2d5871fce73814b3bd8836d5e3bcd4409a876ac17a347f57b723",
+    "guides/data/assistant/knowledge/ultima7.json": "99b3d82a1bfc7a619e33cf78ad0636bdfe1b720aa95b8e82e1fdd60ea6545bb6",
+    "guides/data/assistant/manifest.json": "d2ad011aa0d0c733b9c35a9e1afc70a01f8eef0cbfc04de0eaf45a90824d9ee4",
+    "guides/data/assistant/starcraft.json": "0dc5925ca67adfc434b5366213a5e05e11cbf869f1d0aa71e4daa6d16ae2dfc0",
+    "guides/data/assistant/ultima5.json": "bbd6a3a33133bc1aca80ac7a19cea5011e19c9f33869582355d7fd60f0f0d24e",
+    "guides/data/assistant/ultima6.json": "67b3bf1e8e935df279bec2f11cf698ba721f5d8e169f1a050fefa4ee66b5ad05",
+    "guides/data/assistant/ultima7.json": "9b5c29c25936ccfd20ca9b704df57d45c1f7142a2014b09630f8e2f2aee10871",
+    "guides/js/AlQadim.js": "269798843206f12b76163c65b04301be278652115fbdbd46596f13f3ae7b5e5e",
+    "guides/js/AlQadimAtlasData.js": "82abbb86cafad98655e4bacfdd28e8ba96fba7f747da44b30aaa9364a37e747e",
+    "guides/js/Albion.js": "4adba84eca7af2436731b7053e3167a909f57f85edc611c6287411af84e4b1ca",
+    "guides/js/AlbionAtlasData.js": "b5a96b06ee31e94eba95df1cec41c2b564576e1170a3065b61e9f5db7890dcc8",
+    "guides/js/AlbionMarkers.js": "1de190722be16721a0ff3ff3a50b2c1298706bc33629dd223ed673f63cfbc27b",
+    "guides/js/Ultima5.js": "e2699ed2d8aca9bf3465c7dcd262461f5fca59f1fb4cbd41361e0f5c5a96dae5",
+    "guides/js/Ultima5AtlasData.js": "1292346505cb26d534154b317d7beee7bb186f8dda2d9316127912111bfb72a2",
+    "guides/js/Ultima6.js": "a0b07db60d7c30ac19bb64b56fa26b1428a6437f437f087eb2d75109afae4898",
+    "guides/js/Ultima6Atlas.js": "c83db308efae81f2868d5b4954d679d24e81b83b226d4e4548699668f98d8e88",
+    "guides/js/Ultima7.js": "c3cd92659e5e959c6d172ba38d56ba85148729b82185768557cb595e3bfb6085",
+    "guides/js/Ultima7Markers.js": "9103499a31be5bd132959ff268aa0149b90ec310a7f1098fbed1fc25a2de1f2e",
+    "guides/js/assistant/adapters/albion.js": "df3993cb351cf9f5e4ade03d8bcfdfc3477c00f4fb39922b9e8cc8d4e255e70b",
+    "guides/js/assistant/adapters/alqadim.js": "fa65928d9011011a12095cd4bbf37a56bfed3b91559ce6aa8097a991b111065c",
+    "guides/js/assistant/adapters/starcraft.js": "b4a11908b121a545fd810c4f8ae09404c210ab0607f70e9121a145a8aea6063e",
+    "guides/js/assistant/adapters/ultima5.js": "3aa64babe0f83ecc713f5d9a665b8ba7a4e7dbfce557a8cff22778a6170cf95a",
+    "guides/js/assistant/adapters/ultima6.js": "d99a14171975b88fff97d7e0ff9a39ac1e07abfed425706732827d6d4fe5e480",
+    "guides/js/assistant/adapters/ultima7.js": "5140505e9fe04a864e950afab671519f31ef24ac6a9b2e91b7c3853c1cf1e7c3",
+    "guides/js/assistant/bootstrap.js": "022aff4f7c2f93fc5c74da9b6457c6a53ee5eb2c072bf90970eca95ef3855608",
+    "guides/js/assistant/bundle-references.js": "7f1b26d1b66cd8a5c225d10e09dcad1e7886833115f4c064186a214e64986746",
+    "guides/js/assistant/consent.js": "cd83de63e5ec28425fad9eef36d597eec48ec839cb48e93569a568571f1e4b98",
+    "guides/js/assistant/consultation.js": "413afbcdae0843ee276390abe0c810ee76ce8b1437df797ede2261eea1f6b85d",
+    "guides/js/assistant/descriptive-reference-requests.js": "1b96861fd652ac875caa663aecf18691563291180c3899e5e0e99df3b69e275a",
+    "guides/js/assistant/dialogue.js": "159800005db000651ca962b501ff91bd4057efd96d608ce37d6cc7d03275fc3b",
+    "guides/js/assistant/engine.js": "e558f38682a413f9e94a85de0dcc217e29f73320f2863b18d1a0a3d55278cca1",
+    "guides/js/assistant/factual-property-requests.js": "3eee2e045f641ea641fc0b5a0eac906d1e897f6b7a69a5dd14d54eda3a1a5391",
+    "guides/js/assistant/fallback-context.js": "73c2638570035a73683cdd83b2eac5133d577892aef3613539ebb80c0481cb73",
+    "guides/js/assistant/fallback-guard.js": "8ac7766576c0fa39a9f8eb1d8130687f5dec2d93ed3793b1ab32a416502eb4dc",
+    "guides/js/assistant/frame-tokens.js": "9f225b8d13b2082f45af7f1ec7ca5b56900733383537123d7dab05baa95f511b",
+    "guides/js/assistant/guide-assistant.js": "3cb383e9989d466330fcb8a04161c7816b943c823080e1aca4be777244729665",
+    "guides/js/assistant/intent-head.js": "23e428fedd405946199beb1e55641281bdae078e3d8ea6e448d0ac0acc1a39a7",
+    "guides/js/assistant/intent-runtime.js": "3187389f1a763a0f0234e2379205dc7c6763895b5292b59e36c903a5b908029f",
+    "guides/js/assistant/intent-worker.js": "246895c7ee6e5c70dd98cec48235768bbbc8bbeeeea994e5028e41ceb26d8119",
+    "guides/js/assistant/knowledge-graph.js": "9d56040bdcaf20757fc74250de7a59240d035d2d78c43a79afda9c8a9853add2",
+    "guides/js/assistant/knowledge.js": "533b33b123478d10886e51d3f373cff470e679a0aa2ab5fa35c54493af75ef93",
+    "guides/js/assistant/language.js": "f5dd1e7492e51a4d2696132e04d7e482d1bec388656ba5b65f7ecf7a774bd158",
+    "guides/js/assistant/method-assertions.js": "af2baf1b5b82bb90bc52fb2de532a25ce5636f56c8d18fc950440e20bffccbf8",
+    "guides/js/assistant/model-download.js": "1a9f1be1319d9219507a140e4eae6ad6ea2cbb348b19771c7261d1a52432a6a1",
+    "guides/js/assistant/model-runtime.js": "c6331135f75b3ab5f094e6b7020567b19f2b22286105dc51eba190917e98fdd1",
+    "guides/js/assistant/model-worker.js": "5f490d60ae8b991ae64d523d16c683d11a8995283353cfb534f0d3529ce0d6fc",
+    "guides/js/assistant/named-source-fields.js": "01be64708979000a2bef5cf7350711e288321dcb0eced236ca9e58f19f1ccae0",
+    "guides/js/assistant/policy.js": "df44eea0b5eec7dae01deb0ab4c179873cb5f271ae1a3d87ed89a630cb87aec3",
+    "guides/js/assistant/procedural-requests.js": "9d5fd00d418dcca978f45f5f0540264367f345938cc968d7fc57fd2bcf5d6dd3",
+    "guides/js/assistant/procedure-phase-fields.js": "cfe12698b43d87fa314d4226527cf36289834bf0f5dd18c0face0e04eba0b82a",
+    "guides/js/assistant/question-source-attribution.js": "ba2ad08ed24fe0e7c805cfb6584e7542e9e273e6311fc211991cbb5a1484e661",
+    "guides/js/assistant/recorded-conditions.js": "e081dd84810466b52540445b1c780b8297e6932cefad445fab620359b686a89e",
+    "guides/js/assistant/request-frame.js": "485c43ad7a6a38cabe005b25bd2dab863b63d17563b6121c4585de6ae2dd6fc4",
+    "guides/js/assistant/requested-measurements.js": "306478afc82de4e52e29ce0f604b433ea5f5d22e2a330a53d41cc7d8bdccd3f6",
+    "guides/js/assistant/resource-condition-requests.js": "391815392b00782968d49612bc2f2a94ffc6cbe141429298b927f818d6571116",
+    "guides/js/assistant/retrieval.js": "1ff4e7fe4ef670bde94ca3cac6935fd73c2fa831c98a06d1fdc35cc5e48ce132",
+    "guides/js/assistant/rules.js": "3c2edda7907d22a78d022abd9e1fded1ad70103056129325f44d2cc8be78ef74",
+    "guides/js/assistant/scene-transition-preambles.js": "17ed5579286e36a6eab38235cc5816178225644700140379d1c7d0d32e4f0597",
+    "guides/js/assistant/sequence-field-requests.js": "e7d45f727857b29a1467f2c140f38635d10ba0ceb32840bdba7a135a3fbdd30b",
+    "guides/js/assistant/software-capabilities.js": "b2b8586501f8279d072d0a0f0a2286a9ebad8f4d06b5fdc46ff4b380c70c8ba4",
+    "guides/js/assistant/source-contexts.js": "0aea9648a948b346fea93e7fdc65abd013589979bae33cf99d81bf31028ecb99",
+    "guides/js/assistant/source-field-arguments.js": "fc1a2089fa75aa2f505eefc58e2f6b5ff0f580bdc81850fbade62d2391f7656e",
+    "guides/js/assistant/source-field-guard.js": "2e916cbeff86f0419120e9fd4dcf89467c4bd6830033ad8d080d0769efefb11f",
+    "guides/js/assistant/source-field-index.js": "b71914f21f66b880f78097f8304fba2f1a00241445025a82d99243733101bf81",
+    "guides/js/assistant/source-field-router.js": "1f4a453bc26dd8b8f7ea2d01bff98a52e8d18130168579c5c77aec5bf64d549f",
+    "guides/js/assistant/source-location-context.js": "7660b7b38b53b44d8a24a3ae2b600fa796690e8a8f1fd340ea993a6580148558",
+    "guides/js/assistant/source-preambles.js": "bd989c5b9f6b6f565745f5d3044612aa46af2b8034d998c363967a7e181c402e",
+    "guides/js/assistant/source-responses.js": "543d39de10177858da8cfa8bef8bf9f4b91f9daeed2d44f8a217f1b7ff86e041",
+    "guides/js/assistant/static-property-conditions.js": "357896e3d7dffdd0cac913f5afa6e5aa0dde1ed76498db8eeff69228ccf718ab",
+    "guides/js/assistant/topics.js": "cae60c918f936d1429713f076420e32c1fc72a89d371b47f7b1958b81e852d39",
+    "guides/js/assistant/ui.js": "d75176fca259ceb47493529cf01b114fce45f45c07444b6de67dd7f68f97092d",
+    "guides/js/chart.js": "e0059220c10bff95fdb7f5b77b9bfffba68b3ccf4eab4f7398ee7aef3cffca2b",
+    "guides/js/index.js": "0feb3e548e54dd42b171533aebd0931a77cdb0f5b5c51ce2d733814e8cdae557",
+    "guides/js/leaflet.js": "85d455b4522415f6badc42a0e7d17c919d100347d6b8958bd0dc738fdecd6d50",
+    "guides/js/lucide.js": "9dac1057f358d159e8ce1e46f259df2b0cb4a19281de7cf8c9ffb29c7a2226f6",
+    "guides/js/tailwind.js": "7afa0afd2536044695e7e674298bc0dda9af94475e4e07d0575feccfa796c74f",
+    "guides/local-assistant/intent/checksums.json": "17718502a6838e861291fffa496d4c6f99b88ea30374de5200df3be95bd2a0bd",
+    "guides/local-assistant/intent/head.json": "979c196a92df490124802e61fcc5fad787fc535ee69ff0eae64784355a8f6bfb",
+    "guides/local-assistant/intent/profile.json": "786a95a078fcc940f95539837883405257f1a3a896637bb71b8b477be680639e",
+    "guides/local-assistant/intent/verification.json": "50512f1218da394e7db5c8138b3dafcf2b7bbed9cd4c45d6e34f63150702748c",
+    "guides/local-assistant/profile.json": "7fcde9d4b3d8842dc2345159687e845e023ce9049c92deab6d99d494e6ba813d",
+    "guides/tests/assistant/browser-consent-fixture.js": "824ec886ed266ada0d40fe2f7142995cd8252f7629b395ee4be9037dea63b89f",
+    "guides/tests/assistant/full-answer-browser.py": "14c72f2b0e3ff540f13cf2019c8eeba8a4e758251cb33c03ab191bf5c4fa97ae",
+    "guides/tests/assistant/knowledge-blind-browser.py": "49c883ec36c00a8e0a90dc8fd7ec1caafa28babfdfa3d00eaef10865d4faaf43",
+    "guides/tests/assistant/knowledge-blind-cases.json": "4dbdf52d7976e370195ed2fa8e6db6528d470266a9e129880a4533ddbc6f2ebb",
+    "guides/tests/assistant/knowledge-browser.py": "e4caf821ae66941cdb9b7e10f6d50663746597b8f3defed7f8209d8c3a90ad41"
+  },
+  "selectedSurfaces": [
+    "ultima6"
+  ],
+  "turns": [
+    {
+      "text": "Ariana will not hand over the Compassion rune. What is she waiting for?",
+      "expected": {
+        "decision": "answer",
+        "factIds": [
+          "ultima6:knowledge:ariana-consent"
+        ],
+        "source": {
+          "file": "guides/js/Ultima6.js",
+          "locator": "gameData.quests[0].sections[0].steps[0]",
+          "review": "extracted"
+        },
+        "sourceRecordIds": [
+          "ultima6:quest:act-i-liberating-the-shrines:compassion-britain:hint"
+        ],
+        "contains": [
+          "mother Anya",
+          "permission"
+        ],
+        "requiredUsefulClaim": "She requires mother Anya permission.",
+        "sourceWitness": "Meet Ariana at the Conservatory and ask for the RUNE. She needs her mother Anya's permission."
+      },
+      "decision": "answer",
+      "rendered": "Meet Ariana at the Conservatory and ask for the RUNE. She needs her mother Anya's permission.",
+      "citations": [
+        "Source: existing guide; extracted. guides/js/Ultima6.js \u2014 gameData.quests[0].sections[0].steps[0]"
+      ],
+      "links": [],
+      "acceptedAnswerBranch": 0,
+      "answerBranchProblems": [
+        []
+      ],
+      "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+      "problems": [],
+      "passed": true,
+      "surface": "ultima6",
+      "dialogueId": "ultima6-blind-permission",
+      "turn": 1
+    },
+    {
+      "text": "How do I get her mother to agree?",
+      "expected": {
+        "decision": "answer",
+        "factIds": [
+          "ultima6:knowledge:anya-permission"
+        ],
+        "source": {
+          "file": "guides/js/Ultima6.js",
+          "locator": "gameData.quests[0].sections[0].steps[1]",
+          "review": "extracted"
+        },
+        "sourceRecordIds": [
+          "ultima6:quest:act-i-liberating-the-shrines:compassion-britain:hint"
+        ],
+        "contains": [
+          "Blue Boar",
+          "RUNE or PERMISSION",
+          "YES"
+        ],
+        "requiredUsefulClaim": "Visit Blue Boar, mention RUNE or PERMISSION and answer YES.",
+        "sourceWitness": "Visit Anya at the Blue Boar Tavern, mention RUNE or PERMISSION, and answer YES when asked."
+      },
+      "decision": "answer",
+      "rendered": "Visit Anya at the Blue Boar Tavern, mention RUNE or PERMISSION, and answer YES when asked.",
+      "citations": [
+        "Source: existing guide; extracted. guides/js/Ultima6.js \u2014 gameData.quests[0].sections[0].steps[1]"
+      ],
+      "links": [],
+      "acceptedAnswerBranch": 0,
+      "answerBranchProblems": [
+        []
+      ],
+      "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+      "problems": [],
+      "passed": true,
+      "surface": "ultima6",
+      "dialogueId": "ultima6-blind-permission",
+      "turn": 2
+    },
+    {
+      "text": "Then who do I go back to?",
+      "expected": {
+        "decision": "answer",
+        "factIds": [
+          "ultima6:knowledge:ariana-rune"
+        ],
+        "source": {
+          "file": "guides/js/Ultima6.js",
+          "locator": "gameData.quests[0].sections[0].steps[2]",
+          "review": "extracted"
+        },
+        "sourceRecordIds": [
+          "ultima6:quest:act-i-liberating-the-shrines:compassion-britain:hint"
+        ],
+        "contains": [
+          "Return to Ariana",
+          "confirm permission",
+          "Rune of Compassion"
+        ],
+        "requiredUsefulClaim": "Return to Ariana and confirm permission for rune.",
+        "sourceWitness": "Return to Ariana, confirm permission, and receive the Rune of Compassion."
+      },
+      "decision": "answer",
+      "rendered": "Ariana:\nVisit Anya at the Blue Boar Tavern, mention RUNE or PERMISSION, and answer YES when asked.\nReturn to Ariana, confirm permission, and receive the Rune of Compassion.",
+      "citations": [
+        "Source: existing guide; extracted. guides/js/Ultima6.js \u2014 gameData.quests[0].sections[0].steps[1]; guides/js/Ultima6.js \u2014 gameData.quests[0].sections[0].steps[2]"
+      ],
+      "links": [],
+      "acceptedAnswerBranch": 0,
+      "answerBranchProblems": [
+        []
+      ],
+      "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+      "problems": [],
+      "passed": true,
+      "surface": "ultima6",
+      "dialogueId": "ultima6-blind-permission",
+      "turn": 3
+    },
+    {
+      "text": "Does that mean I have the rune in my inventory now?",
+      "expected": {
+        "decision": "not-answer",
+        "boundary": "inventory inference",
+        "requiredBehavior": "Instructions and advice do not establish current inventory.",
+        "notContains": []
+      },
+      "decision": "decline",
+      "rendered": "I cannot verify your current game state from this guide.",
+      "citations": [],
+      "links": [],
+      "acceptedAnswerBranch": null,
+      "answerBranchProblems": [],
+      "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+      "problems": [],
+      "passed": true,
+      "surface": "ultima6",
+      "dialogueId": "ultima6-blind-permission",
+      "turn": 4
+    },
+    {
+      "text": "How can I get Sherry to come with me?",
+      "expected": {
+        "decision": "answer",
+        "factIds": [
+          "ultima6:knowledge:sherry-join"
+        ],
+        "source": {
+          "file": "guides/js/Ultima6.js",
+          "locator": "gameData.quests[0].sections[2].steps[0]",
+          "review": "extracted"
+        },
+        "sourceRecordIds": [
+          "ultima6:quest:act-i-liberating-the-shrines:valor-jhelom:hint"
+        ],
+        "contains": [
+          "kitchen",
+          "cheese",
+          "JOIN"
+        ],
+        "requiredUsefulClaim": "Offer cheese in castle kitchen and invite JOIN.",
+        "sourceWitness": "In Castle Britannia's kitchen, pick up cheese, offer it to Sherry, and invite her to JOIN."
+      },
+      "decision": "answer",
+      "rendered": "In Castle Britannia's kitchen, pick up cheese, offer it to Sherry, and invite her to JOIN.",
+      "citations": [
+        "Source: existing guide; extracted. guides/js/Ultima6.js \u2014 gameData.quests[0].sections[2].steps[0]"
+      ],
+      "links": [],
+      "acceptedAnswerBranch": 0,
+      "answerBranchProblems": [
+        []
+      ],
+      "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+      "problems": [],
+      "passed": true,
+      "surface": "ultima6",
+      "dialogueId": "ultima6-blind-small-helper",
+      "turn": 1
+    },
+    {
+      "text": "Where do I take her for the rune?",
+      "expected": {
+        "decision": "answer",
+        "factIds": [
+          "ultima6:knowledge:sherry-jhelom"
+        ],
+        "source": {
+          "file": "guides/js/Ultima6.js",
+          "locator": "gameData.quests[0].sections[2].steps[1]",
+          "review": "extracted"
+        },
+        "sourceRecordIds": [
+          "ultima6:quest:act-i-liberating-the-shrines:valor-jhelom:hint"
+        ],
+        "contains": [
+          "Sword and Keg in Jhelom",
+          "mouse hole",
+          "switch control"
+        ],
+        "requiredUsefulClaim": "Sword and Keg Jhelom, mouse hole, switch to Sherry.",
+        "sourceWitness": "Travel to the Sword and Keg in Jhelom, position Sherry at the mouse hole, and switch control to her."
+      },
+      "decision": "answer",
+      "rendered": "Travel to the Sword and Keg in Jhelom, position Sherry at the mouse hole, and switch control to her.",
+      "citations": [
+        "Source: existing guide; extracted. guides/js/Ultima6.js \u2014 gameData.quests[0].sections[2].steps[1]"
+      ],
+      "links": [],
+      "acceptedAnswerBranch": 0,
+      "answerBranchProblems": [
+        []
+      ],
+      "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+      "problems": [],
+      "passed": true,
+      "surface": "ultima6",
+      "dialogueId": "ultima6-blind-small-helper",
+      "turn": 2
+    },
+    {
+      "text": "How does she actually collect it?",
+      "expected": {
+        "decision": "answer",
+        "factIds": [
+          "ultima6:knowledge:sherry-rune"
+        ],
+        "source": {
+          "file": "guides/js/Ultima6.js",
+          "locator": "gameData.quests[0].sections[2].steps[2]",
+          "review": "extracted"
+        },
+        "sourceRecordIds": [
+          "ultima6:quest:act-i-liberating-the-shrines:valor-jhelom:hint"
+        ],
+        "contains": [
+          "mouse hole as Sherry",
+          "grab the rune",
+          "regroup"
+        ],
+        "requiredUsefulClaim": "Enter hole as Sherry, grab rune then regroup.",
+        "sourceWitness": "Enter the mouse hole as Sherry to grab the rune, then regroup with the party."
+      },
+      "decision": "answer",
+      "rendered": "Enter the mouse hole as Sherry to grab the rune, then regroup with the party.",
+      "citations": [
+        "Source: existing guide; extracted. guides/js/Ultima6.js \u2014 gameData.quests[0].sections[2].steps[2]"
+      ],
+      "links": [],
+      "acceptedAnswerBranch": 0,
+      "answerBranchProblems": [
+        []
+      ],
+      "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+      "problems": [],
+      "passed": true,
+      "surface": "ultima6",
+      "dialogueId": "ultima6-blind-small-helper",
+      "turn": 3
+    },
+    {
+      "text": "Could the Sapphire Dormouse do that instead?",
+      "expected": {
+        "decision": "not-answer",
+        "boundary": "unknown actor",
+        "requiredBehavior": "Do not bind the unsupported Sapphire Dormouse to Sherry or give it her ability.",
+        "notContains": [
+          "Enter the mouse hole as Sherry"
+        ]
+      },
+      "decision": "decline",
+      "rendered": "I could not identify that subject in the available sources.",
+      "citations": [],
+      "links": [],
+      "acceptedAnswerBranch": null,
+      "answerBranchProblems": [],
+      "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+      "problems": [],
+      "passed": true,
+      "surface": "ultima6",
+      "dialogueId": "ultima6-blind-small-helper",
+      "turn": 4
+    },
+    {
+      "text": "Walk me through making the balloon cloth.",
+      "expected": {
+        "decision": "answer",
+        "factIds": [
+          "ultima6:knowledge:silk-thread-cloth"
+        ],
+        "source": {
+          "file": "guides/js/Ultima6.js",
+          "locator": "gameData.quests[2].sections[2].steps[1]",
+          "review": "extracted"
+        },
+        "sourceRecordIds": [
+          "ultima6:quest:act-iii-realm-of-the-gargoyles:build-the-hot-air-balloon:hint"
+        ],
+        "contains": [
+          "40 spidersilk",
+          "Arbeth in Paws",
+          "Charlotte in New Magincia"
+        ],
+        "requiredUsefulClaim": "Gather forty spidersilk; Arbeth spins Paws thread and Charlotte weaves New Magincia cloth.",
+        "sourceWitness": "Gather 40 spidersilk, have Arbeth in Paws spin thread, and Charlotte in New Magincia weave cloth."
+      },
+      "decision": "answer",
+      "rendered": "Gather 40 spidersilk, have Arbeth in Paws spin thread, and Charlotte in New Magincia weave cloth.",
+      "citations": [
+        "Source: existing guide; extracted. guides/js/Ultima6.js \u2014 gameData.quests[2].sections[2].steps[1]"
+      ],
+      "links": [],
+      "acceptedAnswerBranch": 0,
+      "answerBranchProblems": [
+        []
+      ],
+      "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+      "problems": [],
+      "passed": true,
+      "surface": "ultima6",
+      "dialogueId": "ultima6-blind-balloon-crafting",
+      "turn": 1
+    },
+    {
+      "text": "Who handles the bag and basket?",
+      "expected": {
+        "decision": "answer",
+        "factIds": [
+          "ultima6:knowledge:bag-basket"
+        ],
+        "source": {
+          "file": "guides/js/Ultima6.js",
+          "locator": "gameData.quests[2].sections[2].steps[2]",
+          "review": "extracted"
+        },
+        "sourceRecordIds": [
+          "ultima6:quest:act-iii-realm-of-the-gargoyles:build-the-hot-air-balloon:hint"
+        ],
+        "contains": [
+          "Marissa in Paws",
+          "Michelle in Minoc"
+        ],
+        "requiredUsefulClaim": "Marissa sews bag in Paws; Michelle sells Minoc basket.",
+        "sourceWitness": "Ask Marissa in Paws to sew the silk bag, and buy a wicker basket from Michelle in Minoc."
+      },
+      "decision": "answer",
+      "rendered": "Ask Marissa in Paws to sew the silk bag, and buy a wicker basket from Michelle in Minoc.",
+      "citations": [
+        "Source: existing guide; extracted. guides/js/Ultima6.js \u2014 gameData.quests[2].sections[2].steps[2]"
+      ],
+      "links": [],
+      "acceptedAnswerBranch": 0,
+      "answerBranchProblems": [
+        []
+      ],
+      "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+      "problems": [],
+      "passed": true,
+      "surface": "ultima6",
+      "dialogueId": "ultima6-blind-balloon-crafting",
+      "turn": 2
+    },
+    {
+      "text": "How do I finish assembling it?",
+      "expected": {
+        "decision": "answer",
+        "factIds": [
+          "ultima6:knowledge:balloon-assembly"
+        ],
+        "source": {
+          "file": "guides/js/Ultima6.js",
+          "locator": "gameData.quests[2].sections[2].steps[3]",
+          "review": "extracted"
+        },
+        "sourceRecordIds": [
+          "ultima6:quest:act-iii-realm-of-the-gargoyles:build-the-hot-air-balloon:hint"
+        ],
+        "contains": [
+          "rope",
+          "large pot",
+          "USE the plans",
+          "all parts"
+        ],
+        "requiredUsefulClaim": "Add rope and large burner pot then USE plans with all parts in inventory.",
+        "sourceWitness": "Collect rope and a large pot for the burner, then USE the plans once all parts are in your inventory."
+      },
+      "decision": "answer",
+      "rendered": "Collect rope and a large pot for the burner, then USE the plans once all parts are in your inventory.",
+      "citations": [
+        "Source: existing guide; extracted. guides/js/Ultima6.js \u2014 gameData.quests[2].sections[2].steps[3]"
+      ],
+      "links": [],
+      "acceptedAnswerBranch": 0,
+      "answerBranchProblems": [
+        []
+      ],
+      "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+      "problems": [],
+      "passed": true,
+      "surface": "ultima6",
+      "dialogueId": "ultima6-blind-balloon-crafting",
+      "turn": 3
+    },
+    {
+      "text": "Does the SNES edition need the same number of silk pieces?",
+      "expected": {
+        "decision": "not-answer",
+        "boundary": "unsupported edition comparison",
+        "requiredBehavior": "Do not certify SNES-specific crafting rules from the unqualified guide.",
+        "notContains": []
+      },
+      "decision": "clarify",
+      "rendered": "I could not find that in this guide. Try naming the subject as it appears in the guide, or ask about another subject.",
+      "citations": [],
+      "links": [],
+      "acceptedAnswerBranch": null,
+      "answerBranchProblems": [],
+      "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+      "problems": [],
+      "passed": true,
+      "surface": "ultima6",
+      "dialogueId": "ultima6-blind-balloon-crafting",
+      "turn": 4
+    },
+    {
+      "text": "Who should see my Gargish book?",
+      "expected": {
+        "decision": "answer",
+        "factIds": [
+          "ultima6:knowledge:mariah-book"
+        ],
+        "source": {
+          "file": "guides/js/Ultima6.js",
+          "locator": "gameData.quests[1].sections[0].steps[0]",
+          "review": "extracted"
+        },
+        "sourceRecordIds": [
+          "ultima6:quest:act-ii-prophecy-pirates:translate-the-gargish-tome:hint"
+        ],
+        "contains": [
+          "Mariah at the Lycaeum",
+          "BOOK"
+        ],
+        "requiredUsefulClaim": "Present it to Mariah at Lycaeum with BOOK.",
+        "sourceWitness": "Present the Gargish book to Mariah at the Lycaeum using keyword BOOK."
+      },
+      "decision": "answer",
+      "rendered": "Present the Gargish book to Mariah at the Lycaeum using keyword BOOK.",
+      "citations": [
+        "Source: existing guide; extracted. guides/js/Ultima6.js \u2014 gameData.quests[1].sections[0].steps[0]"
+      ],
+      "links": [],
+      "acceptedAnswerBranch": 0,
+      "answerBranchProblems": [
+        []
+      ],
+      "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+      "problems": [],
+      "passed": true,
+      "surface": "ultima6",
+      "dialogueId": "ultima6-blind-book-translation",
+      "turn": 1
+    },
+    {
+      "text": "What does she tell me about the tablet?",
+      "expected": {
+        "decision": "answer",
+        "factIds": [
+          "ultima6:knowledge:mariah-tablet"
+        ],
+        "source": {
+          "file": "guides/js/Ultima6.js",
+          "locator": "gameData.quests[1].sections[0].steps[1]",
+          "review": "extracted"
+        },
+        "sourceRecordIds": [
+          "ultima6:quest:act-ii-prophecy-pirates:translate-the-gargish-tome:hint"
+        ],
+        "contains": [
+          "half of the silver tablet",
+          "gypsies near Trinsic"
+        ],
+        "requiredUsefulClaim": "She has half silver tablet and directs to Trinsic gypsies.",
+        "sourceWitness": "She reveals her half of the silver tablet and sends you to the gypsies near Trinsic."
+      },
+      "decision": "answer",
+      "rendered": "She reveals her half of the silver tablet and sends you to the gypsies near Trinsic.",
+      "citations": [
+        "Source: existing guide; extracted. guides/js/Ultima6.js \u2014 gameData.quests[1].sections[0].steps[1]"
+      ],
+      "links": [],
+      "acceptedAnswerBranch": 0,
+      "answerBranchProblems": [
+        []
+      ],
+      "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+      "problems": [],
+      "passed": true,
+      "surface": "ultima6",
+      "dialogueId": "ultima6-blind-book-translation",
+      "turn": 2
+    },
+    {
+      "text": "And where do the gypsies send me?",
+      "expected": {
+        "decision": "answer",
+        "factIds": [
+          "ultima6:knowledge:zoltan-homer"
+        ],
+        "source": {
+          "file": "guides/js/Ultima6.js",
+          "locator": "gameData.quests[1].sections[0].steps[2]",
+          "review": "extracted"
+        },
+        "sourceRecordIds": [
+          "ultima6:quest:act-ii-prophecy-pirates:translate-the-gargish-tome:hint"
+        ],
+        "contains": [
+          "TABLET",
+          "Homer",
+          "Buccaneer's Den"
+        ],
+        "requiredUsefulClaim": "Ask leader TABLET; go Homer Buccaneers Den.",
+        "sourceWitness": "Ask the gypsy leader about the TABLET; they direct you to Homer in Buccaneer's Den."
+      },
+      "decision": "answer",
+      "rendered": "Ask the gypsy leader about the TABLET; they direct you to Homer in Buccaneer's Den.",
+      "citations": [
+        "Source: existing guide; extracted. guides/js/Ultima6.js \u2014 gameData.quests[1].sections[0].steps[2]"
+      ],
+      "links": [],
+      "acceptedAnswerBranch": 0,
+      "answerBranchProblems": [
+        []
+      ],
+      "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+      "problems": [],
+      "passed": true,
+      "surface": "ultima6",
+      "dialogueId": "ultima6-blind-book-translation",
+      "turn": 3
+    },
+    {
+      "text": "Quote the original manual page that names those gypsies.",
+      "expected": {
+        "decision": "not-answer",
+        "boundary": "unsupported provenance",
+        "requiredBehavior": "Do not manufacture a manual page or relabel guide walkthrough text as a checked manual quotation.",
+        "notContains": []
+      },
+      "decision": "decline",
+      "rendered": "I could not identify that subject in the available sources.",
+      "citations": [],
+      "links": [],
+      "acceptedAnswerBranch": null,
+      "answerBranchProblems": [],
+      "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+      "problems": [],
+      "passed": true,
+      "surface": "ultima6",
+      "dialogueId": "ultima6-blind-book-translation",
+      "turn": 4
+    }
+  ],
+  "failures": [],
+  "requests": [
+    {
+      "url": "http://127.0.0.1:38841/guides/Ultima6.html",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:38841/guides/css/assistant-consent.css",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:38841/guides/js/assistant/bootstrap.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:38841/guides/js/tailwind.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:38841/guides/js/chart.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:38841/guides/css/fonts.css",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:38841/guides/css/leaflet.css",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:38841/guides/css/Ultima6.css",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:38841/guides/images/Ultima6box.jpg",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:38841/guides/images/ultima6-briefing-hero.webp",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:38841/guides/js/assistant/model-runtime.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:38841/guides/js/assistant/intent-runtime.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:38841/guides/js/assistant/consent.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:38841/guides/js/assistant/model-download.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:38841/guides/js/leaflet.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:38841/guides/js/Ultima6Atlas.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:38841/guides/js/Ultima6.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:38841/guides/images/paper-texture.jpg",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:38841/guides/images/U6GameWorld.png",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:38841/guides/local-assistant/profile.json",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:38841/guides/local-assistant/intent/profile.json",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:38841/guides/js/assistant/adapters/ultima6.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:38841/guides/js/assistant/ui.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:38841/guides/js/assistant/guide-assistant.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:38841/guides/js/assistant/topics.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:38841/guides/css/assistant.css",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:38841/guides/js/assistant/engine.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:38841/guides/js/assistant/dialogue.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:38841/guides/js/assistant/source-responses.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:38841/guides/js/assistant/knowledge.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:38841/guides/js/assistant/policy.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:38841/guides/js/assistant/retrieval.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:38841/guides/js/assistant/language.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:38841/guides/js/assistant/consultation.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:38841/guides/js/assistant/factual-property-requests.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:38841/guides/js/assistant/software-capabilities.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:38841/guides/js/assistant/resource-condition-requests.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:38841/guides/js/assistant/sequence-field-requests.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:38841/guides/js/assistant/descriptive-reference-requests.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:38841/guides/js/assistant/question-source-attribution.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:38841/guides/js/assistant/named-source-fields.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:38841/guides/js/assistant/rules.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:38841/guides/js/assistant/fallback-context.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:38841/guides/js/assistant/fallback-guard.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:38841/guides/js/assistant/source-field-index.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:38841/guides/js/assistant/request-frame.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:38841/guides/js/assistant/source-field-router.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:38841/guides/js/assistant/source-field-guard.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:38841/guides/js/assistant/source-field-arguments.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:38841/guides/js/assistant/knowledge-graph.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:38841/guides/js/assistant/recorded-conditions.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:38841/guides/js/assistant/requested-measurements.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:38841/guides/js/assistant/source-contexts.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:38841/guides/js/assistant/static-property-conditions.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:38841/guides/js/assistant/source-preambles.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:38841/guides/js/assistant/source-location-context.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:38841/guides/js/assistant/procedural-requests.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:38841/guides/js/assistant/method-assertions.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:38841/guides/js/assistant/scene-transition-preambles.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:38841/guides/js/assistant/bundle-references.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:38841/guides/js/assistant/procedure-phase-fields.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:38841/guides/data/assistant/ultima6.json",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:38841/guides/data/assistant/consultation-catalog.json",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:38841/guides/data/assistant/knowledge/ultima6.json",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:38841/guides/data/assistant/knowledge/ultima6-embeddings.json",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:38841/guides/js/assistant/intent-worker.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:38841/guides/js/assistant/model-download.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:38841/guides/js/assistant/intent-head.js",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:38841/guides/local-assistant/intent/files/7135149f7cffa1a573466c6e4d8423ed73b62fd2332c575bf738a0d033f70df7.bin",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:38841/guides/local-assistant/intent/files/da0e79933b9ed51798a3ae27893d3c5fa4a201126cef75586296df9b4d2c62a0.bin",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:38841/guides/local-assistant/intent/files/9261e7d79b44c8195c1cada2b453e55b00aeb81e907a6664974b4d7776172ab3.bin",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:38841/guides/local-assistant/intent/files/b6d346be366a7d1d48332dbc9fdf3bf8960b5d879522b7799ddba59e76237ee3.bin",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:38841/guides/local-assistant/intent/files/07eced375cec144d27c900241f3e339478dec958f92fddbc551f295c992038a3.bin",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:38841/guides/local-assistant/intent/files/7f4b29b4f81642ad87533b14758761b8859e5deb8717081893ac512006ea99c2.bin",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:38841/guides/local-assistant/intent/files/8bdaa80935c394b9c614e00c7b829303b05df133447f901c98c56ebf90d672b6.bin",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:38841/guides/local-assistant/intent/files/979c196a92df490124802e61fcc5fad787fc535ee69ff0eae64784355a8f6bfb.bin",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:38841/guides/local-assistant/files/08fb86ec433c78bfb032c5d84a68b8e8e5a8d81268fa39e24314179a5767a5b9.bin",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:38841/guides/local-assistant/files/9d41eaeb98b753f4fb40fd7ab6d37d86f37f31b08f78446a8a83327beb7f68f0.bin",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:38841/guides/local-assistant/files/b870ce8426a85ac994ef80359c3a01cd79d01ae49cf19f8a98d24810bbc7b4f4.bin",
+      "method": "GET",
+      "hasBody": false
+    },
+    {
+      "url": "http://127.0.0.1:38841/guides/local-assistant/files/aa5002b70e789798da263f5f99c62bd3e8fcd0c119258a493c40c180648365fa.bin",
+      "method": "GET",
+      "hasBody": false
+    }
+  ],
+  "blockedRequests": [],
+  "pageErrors": [],
+  "workers": {
+    "ultima6": [
+      {
+        "url": "http://127.0.0.1:38841/guides/js/assistant/intent-worker.js",
+        "events": [
+          {
+            "direction": "send",
+            "type": "load",
+            "id": null,
+            "text": null,
+            "modelId": "Xenova/all-MiniLM-L6-v2"
+          },
+          {
+            "direction": "receive",
+            "type": "ready",
+            "id": null,
+            "metadata": {
+              "modelId": "Xenova/all-MiniLM-L6-v2",
+              "revision": "751bff37182d3f1213fa05d7196b954e230abad9",
+              "dimensions": 384,
+              "encoderFineTuned": false,
+              "realModelInference": true,
+              "wasmThreads": 1,
+              "headSha256": "979c196a92df490124802e61fcc5fad787fc535ee69ff0eae64784355a8f6bfb",
+              "thresholds": {
+                "minScore": 0,
+                "minMargin": 0,
+                "abstainAll": false,
+                "selection": {
+                  "source": "validation",
+                  "samples": 72,
+                  "targetAccuracy": 0.9,
+                  "minAccepted": 6,
+                  "accepted": 72,
+                  "accuracy": 0.9444444444444444,
+                  "coverage": 1,
+                  "candidateLimitPerAxis": 51
+                }
+              },
+              "additionalBytes": 24053489
+            },
+            "predictions": null,
+            "message": null
+          },
+          {
+            "direction": "send",
+            "type": "classify",
+            "id": 1,
+            "text": "Ariana will not hand over the Compassion rune. What is she waiting for?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "result",
+            "id": 1,
+            "metadata": null,
+            "predictions": [
+              {
+                "label": "why",
+                "score": 0.17769198512975393
+              },
+              {
+                "label": "comparison",
+                "score": 0.1202828665837067
+              },
+              {
+                "label": "identity",
+                "score": 0.11022444612778311
+              },
+              {
+                "label": "stats",
+                "score": 0.09695385511721448
+              },
+              {
+                "label": "hint",
+                "score": 0.07954639942290173
+              },
+              {
+                "label": "unknown",
+                "score": 0.07146885913646166
+              },
+              {
+                "label": "location",
+                "score": 0.07083696399432421
+              },
+              {
+                "label": "prerequisites",
+                "score": 0.06321759711731902
+              },
+              {
+                "label": "acquisition",
+                "score": 0.06155348688886175
+              },
+              {
+                "label": "combat",
+                "score": 0.056021076594644725
+              },
+              {
+                "label": "use",
+                "score": 0.04889017436399191
+              },
+              {
+                "label": "overview",
+                "score": 0.04331228952303678
+              }
+            ],
+            "message": null
+          },
+          {
+            "direction": "send",
+            "type": "encode",
+            "id": 2,
+            "text": "Ariana will not hand over the Compassion rune. What is she waiting for?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "embedding",
+            "id": 2,
+            "metadata": null,
+            "predictions": null,
+            "message": null,
+            "dimensions": 384,
+            "allFinite": true,
+            "norm": 0.999999849458743
+          },
+          {
+            "direction": "send",
+            "type": "classify",
+            "id": 3,
+            "text": "How do I get her mother to agree?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "result",
+            "id": 3,
+            "metadata": null,
+            "predictions": [
+              {
+                "label": "hint",
+                "score": 0.14100801352551673
+              },
+              {
+                "label": "use",
+                "score": 0.13012584978593558
+              },
+              {
+                "label": "unknown",
+                "score": 0.11493421470198893
+              },
+              {
+                "label": "acquisition",
+                "score": 0.10894593458453726
+              },
+              {
+                "label": "combat",
+                "score": 0.09317175883516637
+              },
+              {
+                "label": "comparison",
+                "score": 0.08760166219826407
+              },
+              {
+                "label": "stats",
+                "score": 0.08292263778148988
+              },
+              {
+                "label": "location",
+                "score": 0.07488326115533471
+              },
+              {
+                "label": "prerequisites",
+                "score": 0.048598832195718276
+              },
+              {
+                "label": "identity",
+                "score": 0.044960825441743804
+              },
+              {
+                "label": "why",
+                "score": 0.039014099264545084
+              },
+              {
+                "label": "overview",
+                "score": 0.03383291052975921
+              }
+            ],
+            "message": null
+          },
+          {
+            "direction": "send",
+            "type": "encode",
+            "id": 4,
+            "text": "How do I get her mother to agree?\nSubject: Anya",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "embedding",
+            "id": 4,
+            "metadata": null,
+            "predictions": null,
+            "message": null,
+            "dimensions": 384,
+            "allFinite": true,
+            "norm": 1.0000001739374214
+          },
+          {
+            "direction": "send",
+            "type": "classify",
+            "id": 5,
+            "text": "Then who do I go back to?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "result",
+            "id": 5,
+            "metadata": null,
+            "predictions": [
+              {
+                "label": "unknown",
+                "score": 0.19019632262105135
+              },
+              {
+                "label": "location",
+                "score": 0.1805994933146512
+              },
+              {
+                "label": "hint",
+                "score": 0.09437764958597387
+              },
+              {
+                "label": "identity",
+                "score": 0.08714716350774011
+              },
+              {
+                "label": "comparison",
+                "score": 0.07383797591734217
+              },
+              {
+                "label": "acquisition",
+                "score": 0.06957384232918201
+              },
+              {
+                "label": "combat",
+                "score": 0.06328170896283183
+              },
+              {
+                "label": "prerequisites",
+                "score": 0.06125449580518018
+              },
+              {
+                "label": "overview",
+                "score": 0.060553970397163794
+              },
+              {
+                "label": "use",
+                "score": 0.05677730963567595
+              },
+              {
+                "label": "why",
+                "score": 0.03716036040286107
+              },
+              {
+                "label": "stats",
+                "score": 0.025239707520346603
+              }
+            ],
+            "message": null
+          },
+          {
+            "direction": "send",
+            "type": "encode",
+            "id": 6,
+            "text": "Then who do I go back to?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "embedding",
+            "id": 6,
+            "metadata": null,
+            "predictions": null,
+            "message": null,
+            "dimensions": 384,
+            "allFinite": true,
+            "norm": 0.9999999448570164
+          },
+          {
+            "direction": "send",
+            "type": "classify",
+            "id": 7,
+            "text": "Does that mean I have the rune in my inventory now?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "result",
+            "id": 7,
+            "metadata": null,
+            "predictions": [
+              {
+                "label": "prerequisites",
+                "score": 0.17925839352872927
+              },
+              {
+                "label": "acquisition",
+                "score": 0.11462204964780448
+              },
+              {
+                "label": "unknown",
+                "score": 0.10316802595727276
+              },
+              {
+                "label": "stats",
+                "score": 0.10229549100392761
+              },
+              {
+                "label": "use",
+                "score": 0.08218364709848672
+              },
+              {
+                "label": "location",
+                "score": 0.0795186577252683
+              },
+              {
+                "label": "identity",
+                "score": 0.0771519907227411
+              },
+              {
+                "label": "hint",
+                "score": 0.07686641962931363
+              },
+              {
+                "label": "comparison",
+                "score": 0.057612071757943244
+              },
+              {
+                "label": "why",
+                "score": 0.05680311490057084
+              },
+              {
+                "label": "overview",
+                "score": 0.04025886788357889
+              },
+              {
+                "label": "combat",
+                "score": 0.030261270144363184
+              }
+            ],
+            "message": null
+          },
+          {
+            "direction": "send",
+            "type": "encode",
+            "id": 8,
+            "text": "Does that mean I have the rune in my inventory now?\nSubject: Rune of Compassion",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "embedding",
+            "id": 8,
+            "metadata": null,
+            "predictions": null,
+            "message": null,
+            "dimensions": 384,
+            "allFinite": true,
+            "norm": 0.9999998107216649
+          },
+          {
+            "direction": "send",
+            "type": "classify",
+            "id": 9,
+            "text": "How can I get Sherry to come with me?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "result",
+            "id": 9,
+            "metadata": null,
+            "predictions": [
+              {
+                "label": "unknown",
+                "score": 0.21346824671999462
+              },
+              {
+                "label": "acquisition",
+                "score": 0.16364449061249253
+              },
+              {
+                "label": "hint",
+                "score": 0.11419320909755491
+              },
+              {
+                "label": "location",
+                "score": 0.09420196922142861
+              },
+              {
+                "label": "use",
+                "score": 0.07862532897440945
+              },
+              {
+                "label": "prerequisites",
+                "score": 0.06557225198364058
+              },
+              {
+                "label": "combat",
+                "score": 0.05824988728720369
+              },
+              {
+                "label": "identity",
+                "score": 0.052885077857071174
+              },
+              {
+                "label": "comparison",
+                "score": 0.04647415673689191
+              },
+              {
+                "label": "why",
+                "score": 0.04124831161754619
+              },
+              {
+                "label": "overview",
+                "score": 0.039938169227784856
+              },
+              {
+                "label": "stats",
+                "score": 0.03149890066398145
+              }
+            ],
+            "message": null
+          },
+          {
+            "direction": "send",
+            "type": "encode",
+            "id": 10,
+            "text": "How can I get Sherry to come with me?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "embedding",
+            "id": 10,
+            "metadata": null,
+            "predictions": null,
+            "message": null,
+            "dimensions": 384,
+            "allFinite": true,
+            "norm": 1.0000000135045355
+          },
+          {
+            "direction": "send",
+            "type": "classify",
+            "id": 11,
+            "text": "Where do I take her for the rune?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "result",
+            "id": 11,
+            "metadata": null,
+            "predictions": [
+              {
+                "label": "location",
+                "score": 0.2143900472100125
+              },
+              {
+                "label": "acquisition",
+                "score": 0.15493524407643217
+              },
+              {
+                "label": "use",
+                "score": 0.0896637410646137
+              },
+              {
+                "label": "combat",
+                "score": 0.08842099638671003
+              },
+              {
+                "label": "prerequisites",
+                "score": 0.08694598962611896
+              },
+              {
+                "label": "comparison",
+                "score": 0.07862447666124289
+              },
+              {
+                "label": "stats",
+                "score": 0.06922805447071372
+              },
+              {
+                "label": "hint",
+                "score": 0.06521899363145053
+              },
+              {
+                "label": "identity",
+                "score": 0.045705693160669254
+              },
+              {
+                "label": "unknown",
+                "score": 0.04363647253192577
+              },
+              {
+                "label": "overview",
+                "score": 0.04292480941685638
+              },
+              {
+                "label": "why",
+                "score": 0.020305481763254033
+              }
+            ],
+            "message": null
+          },
+          {
+            "direction": "send",
+            "type": "encode",
+            "id": 12,
+            "text": "Where do I take her for the rune?\nSubject: Sherry",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "embedding",
+            "id": 12,
+            "metadata": null,
+            "predictions": null,
+            "message": null,
+            "dimensions": 384,
+            "allFinite": true,
+            "norm": 1.000000199867073
+          },
+          {
+            "direction": "send",
+            "type": "classify",
+            "id": 13,
+            "text": "How does she actually collect it?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "result",
+            "id": 13,
+            "metadata": null,
+            "predictions": [
+              {
+                "label": "acquisition",
+                "score": 0.18708872145789388
+              },
+              {
+                "label": "identity",
+                "score": 0.14944587510486956
+              },
+              {
+                "label": "use",
+                "score": 0.13548427171464197
+              },
+              {
+                "label": "location",
+                "score": 0.10798249664832232
+              },
+              {
+                "label": "why",
+                "score": 0.09372726607303204
+              },
+              {
+                "label": "stats",
+                "score": 0.08775055656466563
+              },
+              {
+                "label": "unknown",
+                "score": 0.05733819695855357
+              },
+              {
+                "label": "overview",
+                "score": 0.04748181030221517
+              },
+              {
+                "label": "prerequisites",
+                "score": 0.04396166013036959
+              },
+              {
+                "label": "comparison",
+                "score": 0.03439849491868363
+              },
+              {
+                "label": "hint",
+                "score": 0.03153428375308372
+              },
+              {
+                "label": "combat",
+                "score": 0.023806366373668685
+              }
+            ],
+            "message": null
+          },
+          {
+            "direction": "send",
+            "type": "encode",
+            "id": 14,
+            "text": "How does she actually collect it?\nSubject: Sherry\nObject: Rune of Valor",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "embedding",
+            "id": 14,
+            "metadata": null,
+            "predictions": null,
+            "message": null,
+            "dimensions": 384,
+            "allFinite": true,
+            "norm": 0.9999999252119507
+          },
+          {
+            "direction": "send",
+            "type": "classify",
+            "id": 15,
+            "text": "Could the Sapphire Dormouse do that instead?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "result",
+            "id": 15,
+            "metadata": null,
+            "predictions": [
+              {
+                "label": "unknown",
+                "score": 0.19796215001171732
+              },
+              {
+                "label": "comparison",
+                "score": 0.11258746827503979
+              },
+              {
+                "label": "use",
+                "score": 0.10328260017040304
+              },
+              {
+                "label": "location",
+                "score": 0.0930840366649661
+              },
+              {
+                "label": "prerequisites",
+                "score": 0.07770958733457542
+              },
+              {
+                "label": "why",
+                "score": 0.0761676029136554
+              },
+              {
+                "label": "acquisition",
+                "score": 0.0645212478497022
+              },
+              {
+                "label": "hint",
+                "score": 0.06271952815664822
+              },
+              {
+                "label": "combat",
+                "score": 0.05640708402791651
+              },
+              {
+                "label": "overview",
+                "score": 0.05325389311477906
+              },
+              {
+                "label": "identity",
+                "score": 0.05117877315146578
+              },
+              {
+                "label": "stats",
+                "score": 0.05112602832913113
+              }
+            ],
+            "message": null
+          },
+          {
+            "direction": "send",
+            "type": "encode",
+            "id": 16,
+            "text": "Could the Sapphire Dormouse do that instead?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "embedding",
+            "id": 16,
+            "metadata": null,
+            "predictions": null,
+            "message": null,
+            "dimensions": 384,
+            "allFinite": true,
+            "norm": 0.9999999690475342
+          },
+          {
+            "direction": "send",
+            "type": "classify",
+            "id": 17,
+            "text": "Walk me through making the balloon cloth.",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "result",
+            "id": 17,
+            "metadata": null,
+            "predictions": [
+              {
+                "label": "unknown",
+                "score": 0.2354450318583965
+              },
+              {
+                "label": "identity",
+                "score": 0.09836431932874444
+              },
+              {
+                "label": "hint",
+                "score": 0.0925761511087902
+              },
+              {
+                "label": "use",
+                "score": 0.09248600606298878
+              },
+              {
+                "label": "location",
+                "score": 0.091815631870967
+              },
+              {
+                "label": "acquisition",
+                "score": 0.07891450137965725
+              },
+              {
+                "label": "overview",
+                "score": 0.07131840034557568
+              },
+              {
+                "label": "comparison",
+                "score": 0.05873220992994087
+              },
+              {
+                "label": "prerequisites",
+                "score": 0.05145550884512319
+              },
+              {
+                "label": "why",
+                "score": 0.04706542645086958
+              },
+              {
+                "label": "combat",
+                "score": 0.043300278891135115
+              },
+              {
+                "label": "stats",
+                "score": 0.038526533927811316
+              }
+            ],
+            "message": null
+          },
+          {
+            "direction": "send",
+            "type": "encode",
+            "id": 18,
+            "text": "Walk me through making the balloon cloth.",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "embedding",
+            "id": 18,
+            "metadata": null,
+            "predictions": null,
+            "message": null,
+            "dimensions": 384,
+            "allFinite": true,
+            "norm": 1.0000000833415388
+          },
+          {
+            "direction": "send",
+            "type": "classify",
+            "id": 19,
+            "text": "Who handles the bag and basket?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "result",
+            "id": 19,
+            "metadata": null,
+            "predictions": [
+              {
+                "label": "identity",
+                "score": 0.2913272392752507
+              },
+              {
+                "label": "why",
+                "score": 0.10605877479107541
+              },
+              {
+                "label": "overview",
+                "score": 0.10027624701519156
+              },
+              {
+                "label": "comparison",
+                "score": 0.09311230952301178
+              },
+              {
+                "label": "location",
+                "score": 0.07414169198865847
+              },
+              {
+                "label": "unknown",
+                "score": 0.07281351501824776
+              },
+              {
+                "label": "stats",
+                "score": 0.07090120083786164
+              },
+              {
+                "label": "acquisition",
+                "score": 0.044513702068338316
+              },
+              {
+                "label": "use",
+                "score": 0.043695615063388024
+              },
+              {
+                "label": "combat",
+                "score": 0.043408488591303356
+              },
+              {
+                "label": "prerequisites",
+                "score": 0.0338164002809056
+              },
+              {
+                "label": "hint",
+                "score": 0.025934815546767152
+              }
+            ],
+            "message": null
+          },
+          {
+            "direction": "send",
+            "type": "encode",
+            "id": 20,
+            "text": "Who handles the bag and basket?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "embedding",
+            "id": 20,
+            "metadata": null,
+            "predictions": null,
+            "message": null,
+            "dimensions": 384,
+            "allFinite": true,
+            "norm": 1.0000000020236384
+          },
+          {
+            "direction": "send",
+            "type": "classify",
+            "id": 21,
+            "text": "How do I finish assembling it?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "result",
+            "id": 21,
+            "metadata": null,
+            "predictions": [
+              {
+                "label": "use",
+                "score": 0.3818390513664215
+              },
+              {
+                "label": "hint",
+                "score": 0.1308709725138256
+              },
+              {
+                "label": "acquisition",
+                "score": 0.09291765247817656
+              },
+              {
+                "label": "overview",
+                "score": 0.08236062004052502
+              },
+              {
+                "label": "prerequisites",
+                "score": 0.06727678905397692
+              },
+              {
+                "label": "identity",
+                "score": 0.05198696093098755
+              },
+              {
+                "label": "location",
+                "score": 0.04938982239680652
+              },
+              {
+                "label": "unknown",
+                "score": 0.04264575527611487
+              },
+              {
+                "label": "combat",
+                "score": 0.03292781384367899
+              },
+              {
+                "label": "comparison",
+                "score": 0.024107059669778785
+              },
+              {
+                "label": "stats",
+                "score": 0.022227212764730657
+              },
+              {
+                "label": "why",
+                "score": 0.02145028966497715
+              }
+            ],
+            "message": null
+          },
+          {
+            "direction": "send",
+            "type": "encode",
+            "id": 22,
+            "text": "How do I finish assembling it?\nSubject: Hot-Air Balloon",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "embedding",
+            "id": 22,
+            "metadata": null,
+            "predictions": null,
+            "message": null,
+            "dimensions": 384,
+            "allFinite": true,
+            "norm": 1.0000001773896976
+          },
+          {
+            "direction": "send",
+            "type": "classify",
+            "id": 23,
+            "text": "Does the SNES edition need the same number of silk pieces?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "result",
+            "id": 23,
+            "metadata": null,
+            "predictions": [
+              {
+                "label": "prerequisites",
+                "score": 0.2727681261195018
+              },
+              {
+                "label": "stats",
+                "score": 0.14338258414755017
+              },
+              {
+                "label": "unknown",
+                "score": 0.09697704934677397
+              },
+              {
+                "label": "comparison",
+                "score": 0.09668166013535574
+              },
+              {
+                "label": "acquisition",
+                "score": 0.06972620451714591
+              },
+              {
+                "label": "overview",
+                "score": 0.06945086355546994
+              },
+              {
+                "label": "why",
+                "score": 0.061143466103672495
+              },
+              {
+                "label": "location",
+                "score": 0.056803600996791284
+              },
+              {
+                "label": "identity",
+                "score": 0.04699176190063956
+              },
+              {
+                "label": "use",
+                "score": 0.03648124635736977
+              },
+              {
+                "label": "hint",
+                "score": 0.03629935720848771
+              },
+              {
+                "label": "combat",
+                "score": 0.01329407961124163
+              }
+            ],
+            "message": null
+          },
+          {
+            "direction": "send",
+            "type": "encode",
+            "id": 24,
+            "text": "Does the SNES edition need the same number of silk pieces?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "embedding",
+            "id": 24,
+            "metadata": null,
+            "predictions": null,
+            "message": null,
+            "dimensions": 384,
+            "allFinite": true,
+            "norm": 1.0000003043614467
+          },
+          {
+            "direction": "send",
+            "type": "classify",
+            "id": 25,
+            "text": "Who should see my Gargish book?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "result",
+            "id": 25,
+            "metadata": null,
+            "predictions": [
+              {
+                "label": "unknown",
+                "score": 0.1964968826613478
+              },
+              {
+                "label": "overview",
+                "score": 0.12015049114427372
+              },
+              {
+                "label": "location",
+                "score": 0.1149771664014557
+              },
+              {
+                "label": "combat",
+                "score": 0.0879524083941382
+              },
+              {
+                "label": "identity",
+                "score": 0.08643308555380948
+              },
+              {
+                "label": "comparison",
+                "score": 0.08250255249052481
+              },
+              {
+                "label": "prerequisites",
+                "score": 0.06802703480316179
+              },
+              {
+                "label": "acquisition",
+                "score": 0.06731349581241156
+              },
+              {
+                "label": "why",
+                "score": 0.05571481883407157
+              },
+              {
+                "label": "use",
+                "score": 0.046210595632009854
+              },
+              {
+                "label": "hint",
+                "score": 0.04528268351615512
+              },
+              {
+                "label": "stats",
+                "score": 0.028938784756640308
+              }
+            ],
+            "message": null
+          },
+          {
+            "direction": "send",
+            "type": "encode",
+            "id": 26,
+            "text": "Who should see my Gargish book?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "embedding",
+            "id": 26,
+            "metadata": null,
+            "predictions": null,
+            "message": null,
+            "dimensions": 384,
+            "allFinite": true,
+            "norm": 1.0000001311939666
+          },
+          {
+            "direction": "send",
+            "type": "classify",
+            "id": 27,
+            "text": "What does she tell me about the tablet?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "result",
+            "id": 27,
+            "metadata": null,
+            "predictions": [
+              {
+                "label": "identity",
+                "score": 0.23498559313306852
+              },
+              {
+                "label": "unknown",
+                "score": 0.09267121304983311
+              },
+              {
+                "label": "why",
+                "score": 0.09092682571236022
+              },
+              {
+                "label": "hint",
+                "score": 0.08067633313340442
+              },
+              {
+                "label": "location",
+                "score": 0.07509140731686477
+              },
+              {
+                "label": "stats",
+                "score": 0.07300786700675495
+              },
+              {
+                "label": "overview",
+                "score": 0.07261611089885467
+              },
+              {
+                "label": "prerequisites",
+                "score": 0.066867694284707
+              },
+              {
+                "label": "comparison",
+                "score": 0.06585916961209373
+              },
+              {
+                "label": "use",
+                "score": 0.06154449772243132
+              },
+              {
+                "label": "acquisition",
+                "score": 0.05499070754144862
+              },
+              {
+                "label": "combat",
+                "score": 0.030762580588178712
+              }
+            ],
+            "message": null
+          },
+          {
+            "direction": "send",
+            "type": "encode",
+            "id": 28,
+            "text": "What does she tell me about the tablet?\nSubject: Mariah",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "embedding",
+            "id": 28,
+            "metadata": null,
+            "predictions": null,
+            "message": null,
+            "dimensions": 384,
+            "allFinite": true,
+            "norm": 1.0000001833442065
+          },
+          {
+            "direction": "send",
+            "type": "classify",
+            "id": 29,
+            "text": "And where do the gypsies send me?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "result",
+            "id": 29,
+            "metadata": null,
+            "predictions": [
+              {
+                "label": "location",
+                "score": 0.2613739491101202
+              },
+              {
+                "label": "unknown",
+                "score": 0.2335289545293754
+              },
+              {
+                "label": "acquisition",
+                "score": 0.10071628886929415
+              },
+              {
+                "label": "why",
+                "score": 0.06325502898195508
+              },
+              {
+                "label": "prerequisites",
+                "score": 0.05633969662995683
+              },
+              {
+                "label": "identity",
+                "score": 0.05490476506797993
+              },
+              {
+                "label": "overview",
+                "score": 0.05216661687553508
+              },
+              {
+                "label": "combat",
+                "score": 0.04875401275040708
+              },
+              {
+                "label": "comparison",
+                "score": 0.03990798022790589
+              },
+              {
+                "label": "use",
+                "score": 0.03727607162743555
+              },
+              {
+                "label": "hint",
+                "score": 0.03295904466126201
+              },
+              {
+                "label": "stats",
+                "score": 0.018817590668772727
+              }
+            ],
+            "message": null
+          },
+          {
+            "direction": "send",
+            "type": "encode",
+            "id": 30,
+            "text": "And where do the gypsies send me?",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "embedding",
+            "id": 30,
+            "metadata": null,
+            "predictions": null,
+            "message": null,
+            "dimensions": 384,
+            "allFinite": true,
+            "norm": 0.9999999510024287
+          },
+          {
+            "direction": "send",
+            "type": "classify",
+            "id": 31,
+            "text": "Quote the original manual page that names those gypsies.",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "result",
+            "id": 31,
+            "metadata": null,
+            "predictions": [
+              {
+                "label": "unknown",
+                "score": 0.24558082617451124
+              },
+              {
+                "label": "identity",
+                "score": 0.12427724689831456
+              },
+              {
+                "label": "location",
+                "score": 0.11421315844563752
+              },
+              {
+                "label": "overview",
+                "score": 0.10052059090564035
+              },
+              {
+                "label": "acquisition",
+                "score": 0.071668391261901
+              },
+              {
+                "label": "why",
+                "score": 0.06604456119132836
+              },
+              {
+                "label": "prerequisites",
+                "score": 0.05436034996649644
+              },
+              {
+                "label": "hint",
+                "score": 0.053323918778206886
+              },
+              {
+                "label": "use",
+                "score": 0.04431780437210478
+              },
+              {
+                "label": "stats",
+                "score": 0.04303061577688212
+              },
+              {
+                "label": "combat",
+                "score": 0.04212003775835313
+              },
+              {
+                "label": "comparison",
+                "score": 0.04054249847062343
+              }
+            ],
+            "message": null
+          },
+          {
+            "direction": "send",
+            "type": "encode",
+            "id": 32,
+            "text": "Quote the original manual page that names those gypsies.",
+            "modelId": null
+          },
+          {
+            "direction": "receive",
+            "type": "embedding",
+            "id": 32,
+            "metadata": null,
+            "predictions": null,
+            "message": null,
+            "dimensions": 384,
+            "allFinite": true,
+            "norm": 0.999999775871416
+          }
+        ]
+      }
+    ]
+  },
+  "storageUnchanged": {
+    "ultima6": true
+  },
+  "storageWrites": {
+    "ultima6": []
+  },
+  "screenshots": [
+    "guides/tests/assistant/intent-prototype/results/knowledge-blind/observed-native-ultima6-terra-ephemerides-20261029-01/ultima6.png"
+  ],
+  "oracleLimitation": "Exact guide file/locator tuples or complete primary research label/URL/date tuples, plus fixed useful phrases. Internal fact IDs are not observed. Required useful claims and boundaries also need semantic review.",
+  "loopbackPort": 38841,
+  "browser": "156.0.8078.73",
+  "serverClosed": true,
+  "sourceHashesAfter": {
+    "guides/Ultima6.html": "f64c4728cd19b042ccea6c7aa7398aea50b955f7fa3ad177168a937149fd30c2",
+    "guides/data/assistant/albion.json": "b3b219ccb434c450189e97404b4c06a3bbc8334dc581bea55bc4a70213851404",
+    "guides/data/assistant/alqadim.json": "f0f15243ea3b27701d97b3ab369a108ef46e93ec5f780f6e1fd1bf5e69bf2b77",
+    "guides/data/assistant/consultation-catalog.json": "96d5b392afabfcbd9f59007ce17fa7ce20a8874b3cacf0248ae349bc93889cca",
+    "guides/data/assistant/knowledge/albion-embeddings.json": "5b888af1e6d70750bb68166ecaf4bfeb1652c78a658549bda300ed35b0c26c55",
+    "guides/data/assistant/knowledge/albion.json": "c36c81582c303a281e166d7c91a76dfc4bd3dfd97259e076a5af21770da69e5f",
+    "guides/data/assistant/knowledge/alqadim-embeddings.json": "6e22652db6bdc74351ed00a3fef041b4d3e281c73824bb52947c7c9fbc0a8827",
+    "guides/data/assistant/knowledge/alqadim.json": "843ce2425f205464a6c1771f4f18864d712c8736f79203ef78dd234e7ec03b8c",
+    "guides/data/assistant/knowledge/starcraft-embeddings.json": "023acebeab9d1cf17457f2eb3afd9c786a09f5354698ae5a9d77bc59978fae2d",
+    "guides/data/assistant/knowledge/starcraft.json": "97fdae345bbb25f9d3b0b32a8fcbb0a8a0c22bfbe7b4fadd8e5c0cd4c75d4261",
+    "guides/data/assistant/knowledge/ultima5-embeddings.json": "044478927a94462963401a38d554f085084c1a1f0358b48c968c262d74833377",
+    "guides/data/assistant/knowledge/ultima5.json": "5b8326a6b63b3a863bf2cc8509e43efc9e57f3efea43d3bd2fe856d193f5d7c7",
+    "guides/data/assistant/knowledge/ultima6-embeddings.json": "eac821c2fa19c00cbc2388ce1d57ca40e26de4039a939417bd29e186ef5b0c20",
+    "guides/data/assistant/knowledge/ultima6.json": "8d72c21710531b102e648ed7ff900ce7613f8dec6c34483fc128ce320e27a825",
+    "guides/data/assistant/knowledge/ultima7-embeddings.json": "9f7da788a33a2d5871fce73814b3bd8836d5e3bcd4409a876ac17a347f57b723",
+    "guides/data/assistant/knowledge/ultima7.json": "99b3d82a1bfc7a619e33cf78ad0636bdfe1b720aa95b8e82e1fdd60ea6545bb6",
+    "guides/data/assistant/manifest.json": "d2ad011aa0d0c733b9c35a9e1afc70a01f8eef0cbfc04de0eaf45a90824d9ee4",
+    "guides/data/assistant/starcraft.json": "0dc5925ca67adfc434b5366213a5e05e11cbf869f1d0aa71e4daa6d16ae2dfc0",
+    "guides/data/assistant/ultima5.json": "bbd6a3a33133bc1aca80ac7a19cea5011e19c9f33869582355d7fd60f0f0d24e",
+    "guides/data/assistant/ultima6.json": "67b3bf1e8e935df279bec2f11cf698ba721f5d8e169f1a050fefa4ee66b5ad05",
+    "guides/data/assistant/ultima7.json": "9b5c29c25936ccfd20ca9b704df57d45c1f7142a2014b09630f8e2f2aee10871",
+    "guides/js/AlQadim.js": "269798843206f12b76163c65b04301be278652115fbdbd46596f13f3ae7b5e5e",
+    "guides/js/AlQadimAtlasData.js": "82abbb86cafad98655e4bacfdd28e8ba96fba7f747da44b30aaa9364a37e747e",
+    "guides/js/Albion.js": "4adba84eca7af2436731b7053e3167a909f57f85edc611c6287411af84e4b1ca",
+    "guides/js/AlbionAtlasData.js": "b5a96b06ee31e94eba95df1cec41c2b564576e1170a3065b61e9f5db7890dcc8",
+    "guides/js/AlbionMarkers.js": "1de190722be16721a0ff3ff3a50b2c1298706bc33629dd223ed673f63cfbc27b",
+    "guides/js/Ultima5.js": "e2699ed2d8aca9bf3465c7dcd262461f5fca59f1fb4cbd41361e0f5c5a96dae5",
+    "guides/js/Ultima5AtlasData.js": "1292346505cb26d534154b317d7beee7bb186f8dda2d9316127912111bfb72a2",
+    "guides/js/Ultima6.js": "a0b07db60d7c30ac19bb64b56fa26b1428a6437f437f087eb2d75109afae4898",
+    "guides/js/Ultima6Atlas.js": "c83db308efae81f2868d5b4954d679d24e81b83b226d4e4548699668f98d8e88",
+    "guides/js/Ultima7.js": "c3cd92659e5e959c6d172ba38d56ba85148729b82185768557cb595e3bfb6085",
+    "guides/js/Ultima7Markers.js": "9103499a31be5bd132959ff268aa0149b90ec310a7f1098fbed1fc25a2de1f2e",
+    "guides/js/assistant/adapters/albion.js": "df3993cb351cf9f5e4ade03d8bcfdfc3477c00f4fb39922b9e8cc8d4e255e70b",
+    "guides/js/assistant/adapters/alqadim.js": "fa65928d9011011a12095cd4bbf37a56bfed3b91559ce6aa8097a991b111065c",
+    "guides/js/assistant/adapters/starcraft.js": "b4a11908b121a545fd810c4f8ae09404c210ab0607f70e9121a145a8aea6063e",
+    "guides/js/assistant/adapters/ultima5.js": "3aa64babe0f83ecc713f5d9a665b8ba7a4e7dbfce557a8cff22778a6170cf95a",
+    "guides/js/assistant/adapters/ultima6.js": "d99a14171975b88fff97d7e0ff9a39ac1e07abfed425706732827d6d4fe5e480",
+    "guides/js/assistant/adapters/ultima7.js": "5140505e9fe04a864e950afab671519f31ef24ac6a9b2e91b7c3853c1cf1e7c3",
+    "guides/js/assistant/bootstrap.js": "022aff4f7c2f93fc5c74da9b6457c6a53ee5eb2c072bf90970eca95ef3855608",
+    "guides/js/assistant/bundle-references.js": "7f1b26d1b66cd8a5c225d10e09dcad1e7886833115f4c064186a214e64986746",
+    "guides/js/assistant/consent.js": "cd83de63e5ec28425fad9eef36d597eec48ec839cb48e93569a568571f1e4b98",
+    "guides/js/assistant/consultation.js": "413afbcdae0843ee276390abe0c810ee76ce8b1437df797ede2261eea1f6b85d",
+    "guides/js/assistant/descriptive-reference-requests.js": "1b96861fd652ac875caa663aecf18691563291180c3899e5e0e99df3b69e275a",
+    "guides/js/assistant/dialogue.js": "159800005db000651ca962b501ff91bd4057efd96d608ce37d6cc7d03275fc3b",
+    "guides/js/assistant/engine.js": "e558f38682a413f9e94a85de0dcc217e29f73320f2863b18d1a0a3d55278cca1",
+    "guides/js/assistant/factual-property-requests.js": "3eee2e045f641ea641fc0b5a0eac906d1e897f6b7a69a5dd14d54eda3a1a5391",
+    "guides/js/assistant/fallback-context.js": "73c2638570035a73683cdd83b2eac5133d577892aef3613539ebb80c0481cb73",
+    "guides/js/assistant/fallback-guard.js": "8ac7766576c0fa39a9f8eb1d8130687f5dec2d93ed3793b1ab32a416502eb4dc",
+    "guides/js/assistant/frame-tokens.js": "9f225b8d13b2082f45af7f1ec7ca5b56900733383537123d7dab05baa95f511b",
+    "guides/js/assistant/guide-assistant.js": "3cb383e9989d466330fcb8a04161c7816b943c823080e1aca4be777244729665",
+    "guides/js/assistant/intent-head.js": "23e428fedd405946199beb1e55641281bdae078e3d8ea6e448d0ac0acc1a39a7",
+    "guides/js/assistant/intent-runtime.js": "3187389f1a763a0f0234e2379205dc7c6763895b5292b59e36c903a5b908029f",
+    "guides/js/assistant/intent-worker.js": "246895c7ee6e5c70dd98cec48235768bbbc8bbeeeea994e5028e41ceb26d8119",
+    "guides/js/assistant/knowledge-graph.js": "9d56040bdcaf20757fc74250de7a59240d035d2d78c43a79afda9c8a9853add2",
+    "guides/js/assistant/knowledge.js": "533b33b123478d10886e51d3f373cff470e679a0aa2ab5fa35c54493af75ef93",
+    "guides/js/assistant/language.js": "f5dd1e7492e51a4d2696132e04d7e482d1bec388656ba5b65f7ecf7a774bd158",
+    "guides/js/assistant/method-assertions.js": "af2baf1b5b82bb90bc52fb2de532a25ce5636f56c8d18fc950440e20bffccbf8",
+    "guides/js/assistant/model-download.js": "1a9f1be1319d9219507a140e4eae6ad6ea2cbb348b19771c7261d1a52432a6a1",
+    "guides/js/assistant/model-runtime.js": "c6331135f75b3ab5f094e6b7020567b19f2b22286105dc51eba190917e98fdd1",
+    "guides/js/assistant/model-worker.js": "5f490d60ae8b991ae64d523d16c683d11a8995283353cfb534f0d3529ce0d6fc",
+    "guides/js/assistant/named-source-fields.js": "01be64708979000a2bef5cf7350711e288321dcb0eced236ca9e58f19f1ccae0",
+    "guides/js/assistant/policy.js": "df44eea0b5eec7dae01deb0ab4c179873cb5f271ae1a3d87ed89a630cb87aec3",
+    "guides/js/assistant/procedural-requests.js": "9d5fd00d418dcca978f45f5f0540264367f345938cc968d7fc57fd2bcf5d6dd3",
+    "guides/js/assistant/procedure-phase-fields.js": "cfe12698b43d87fa314d4226527cf36289834bf0f5dd18c0face0e04eba0b82a",
+    "guides/js/assistant/question-source-attribution.js": "ba2ad08ed24fe0e7c805cfb6584e7542e9e273e6311fc211991cbb5a1484e661",
+    "guides/js/assistant/recorded-conditions.js": "e081dd84810466b52540445b1c780b8297e6932cefad445fab620359b686a89e",
+    "guides/js/assistant/request-frame.js": "485c43ad7a6a38cabe005b25bd2dab863b63d17563b6121c4585de6ae2dd6fc4",
+    "guides/js/assistant/requested-measurements.js": "306478afc82de4e52e29ce0f604b433ea5f5d22e2a330a53d41cc7d8bdccd3f6",
+    "guides/js/assistant/resource-condition-requests.js": "391815392b00782968d49612bc2f2a94ffc6cbe141429298b927f818d6571116",
+    "guides/js/assistant/retrieval.js": "1ff4e7fe4ef670bde94ca3cac6935fd73c2fa831c98a06d1fdc35cc5e48ce132",
+    "guides/js/assistant/rules.js": "3c2edda7907d22a78d022abd9e1fded1ad70103056129325f44d2cc8be78ef74",
+    "guides/js/assistant/scene-transition-preambles.js": "17ed5579286e36a6eab38235cc5816178225644700140379d1c7d0d32e4f0597",
+    "guides/js/assistant/sequence-field-requests.js": "e7d45f727857b29a1467f2c140f38635d10ba0ceb32840bdba7a135a3fbdd30b",
+    "guides/js/assistant/software-capabilities.js": "b2b8586501f8279d072d0a0f0a2286a9ebad8f4d06b5fdc46ff4b380c70c8ba4",
+    "guides/js/assistant/source-contexts.js": "0aea9648a948b346fea93e7fdc65abd013589979bae33cf99d81bf31028ecb99",
+    "guides/js/assistant/source-field-arguments.js": "fc1a2089fa75aa2f505eefc58e2f6b5ff0f580bdc81850fbade62d2391f7656e",
+    "guides/js/assistant/source-field-guard.js": "2e916cbeff86f0419120e9fd4dcf89467c4bd6830033ad8d080d0769efefb11f",
+    "guides/js/assistant/source-field-index.js": "b71914f21f66b880f78097f8304fba2f1a00241445025a82d99243733101bf81",
+    "guides/js/assistant/source-field-router.js": "1f4a453bc26dd8b8f7ea2d01bff98a52e8d18130168579c5c77aec5bf64d549f",
+    "guides/js/assistant/source-location-context.js": "7660b7b38b53b44d8a24a3ae2b600fa796690e8a8f1fd340ea993a6580148558",
+    "guides/js/assistant/source-preambles.js": "bd989c5b9f6b6f565745f5d3044612aa46af2b8034d998c363967a7e181c402e",
+    "guides/js/assistant/source-responses.js": "543d39de10177858da8cfa8bef8bf9f4b91f9daeed2d44f8a217f1b7ff86e041",
+    "guides/js/assistant/static-property-conditions.js": "357896e3d7dffdd0cac913f5afa6e5aa0dde1ed76498db8eeff69228ccf718ab",
+    "guides/js/assistant/topics.js": "cae60c918f936d1429713f076420e32c1fc72a89d371b47f7b1958b81e852d39",
+    "guides/js/assistant/ui.js": "d75176fca259ceb47493529cf01b114fce45f45c07444b6de67dd7f68f97092d",
+    "guides/js/chart.js": "e0059220c10bff95fdb7f5b77b9bfffba68b3ccf4eab4f7398ee7aef3cffca2b",
+    "guides/js/index.js": "0feb3e548e54dd42b171533aebd0931a77cdb0f5b5c51ce2d733814e8cdae557",
+    "guides/js/leaflet.js": "85d455b4522415f6badc42a0e7d17c919d100347d6b8958bd0dc738fdecd6d50",
+    "guides/js/lucide.js": "9dac1057f358d159e8ce1e46f259df2b0cb4a19281de7cf8c9ffb29c7a2226f6",
+    "guides/js/tailwind.js": "7afa0afd2536044695e7e674298bc0dda9af94475e4e07d0575feccfa796c74f",
+    "guides/local-assistant/intent/checksums.json": "17718502a6838e861291fffa496d4c6f99b88ea30374de5200df3be95bd2a0bd",
+    "guides/local-assistant/intent/head.json": "979c196a92df490124802e61fcc5fad787fc535ee69ff0eae64784355a8f6bfb",
+    "guides/local-assistant/intent/profile.json": "786a95a078fcc940f95539837883405257f1a3a896637bb71b8b477be680639e",
+    "guides/local-assistant/intent/verification.json": "50512f1218da394e7db5c8138b3dafcf2b7bbed9cd4c45d6e34f63150702748c",
+    "guides/local-assistant/profile.json": "7fcde9d4b3d8842dc2345159687e845e023ce9049c92deab6d99d494e6ba813d",
+    "guides/tests/assistant/browser-consent-fixture.js": "824ec886ed266ada0d40fe2f7142995cd8252f7629b395ee4be9037dea63b89f",
+    "guides/tests/assistant/full-answer-browser.py": "14c72f2b0e3ff540f13cf2019c8eeba8a4e758251cb33c03ab191bf5c4fa97ae",
+    "guides/tests/assistant/knowledge-blind-browser.py": "49c883ec36c00a8e0a90dc8fd7ec1caafa28babfdfa3d00eaef10865d4faaf43",
+    "guides/tests/assistant/knowledge-blind-cases.json": "4dbdf52d7976e370195ed2fa8e6db6528d470266a9e129880a4533ddbc6f2ebb",
+    "guides/tests/assistant/knowledge-browser.py": "e4caf821ae66941cdb9b7e10f6d50663746597b8f3defed7f8209d8c3a90ad41"
+  },
+  "sourceStable": true,
+  "changedSourceFiles": [],
+  "nativeIntentEvidence": {
+    "ultima6": {
+      "nativeModelReady": true,
+      "classifications": 16,
+      "encodings": 16,
+      "embeddingResults": 16,
+      "validEmbeddings": true
+    }
+  },
+  "expectedTurns": 16,
+  "totalTurns": 16,
+  "passedTurns": 16,
+  "boundaries": {
+    "allTurnsRan": true,
+    "nativeMiniLMEverySurface": true,
+    "storageUnchanged": true,
+    "noSavedGameWrites": true,
+    "noExternalRequests": true,
+    "noPageErrors": true,
+    "onlyStaticGets": true,
+    "sourceStable": true,
+    "serverClosed": true
+  }
+}

@@ -1633,6 +1633,13 @@
       "witness": "Question each villager with keyword HUMILITY until Conor is identified.",
       "entityId": "ultima6:knowledge:conor",
       "sourceRecordId": "ultima6:quest:act-i-liberating-the-shrines:humility-new-magincia:hint",
+      "sourceFields": [
+        {
+          "key": "identity",
+          "selectors": [],
+          "witness": "Question each villager with keyword HUMILITY until Conor is identified."
+        }
+      ],
       "answerRelations": [
         "method"
       ]
@@ -3778,6 +3785,7 @@
             "materials"
           ],
           "witness": "Take a glass sword to Ephemerides in Moonglow, discuss LENS and SWORD, and receive the blue Britannian lens.",
+          "subjectEntityIds": ["ultima6:knowledge:blue-lens", "ultima6:knowledge:ephemerides"],
           "arguments": [
             {
               "bindings": [
@@ -4812,6 +4820,10 @@
       "topicLabels": [
         "Ariana permission confirmation keywords"
       ],
+      "support": {
+        "acquisition": ["ariana-rune"],
+        "method": ["ariana-rune"]
+      },
       "answerBindings": [
         {
           "entityId": "ultima6:knowledge:ariana",
@@ -5556,7 +5568,7 @@
       "id": "ultima6:knowledge:conor",
       "name": "Conor",
       "kind": "person",
-      "aliases": []
+      "aliases": ["humble villager"]
     },
     {
       "id": "ultima6:knowledge:humility-rune",

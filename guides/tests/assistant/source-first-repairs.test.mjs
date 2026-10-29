@@ -335,3 +335,95 @@ test('Toronto return route and final-trip technician recommendation ground Joe B
     assert.notEqual((await control.ask('For the final trip, which technician does the guide recommend to pilot the shuttle?')).decision, 'answer');
     control.assistant.destroy();
 });
+
+test('The Humility riddle identifies the villager from the reviewed Conor passage', async () => {
+    const {assistant, ask} = fixture('ultima6');
+    let reply = await ask('How do I answer Antonio riddle?');
+    assert.equal(reply.decision, 'answer'); assert.match(reply.text, /CONOR/);
+    reply = await ask('Who is the humble villager?');
+    assert.equal(reply.decision, 'answer'); assert.match(reply.text, /Conor/);
+    assert.deepEqual(locators(reply), ['gameData.quests[0].sections[7].steps[1]']);
+    reply = await ask('How do I get the Humility rune?');
+    assert.equal(reply.decision, 'answer'); assert.match(reply.text, /Antonio/);
+    reply = await ask('How do I use the Humility mantra?');
+    assert.equal(reply.decision, 'answer'); assert.match(reply.text, /LUM/);
+    assistant.destroy();
+
+    const control = fixture('ultima6', {cached: false});
+    for (const question of ['Who is the arrogant villager?', 'Who is the humble king?'])
+        assert.notEqual((await control.ask(question)).decision, 'answer', question);
+    control.assistant.destroy();
+});
+
+test('Toronto return codes in order use the reviewed sequence without guessing other codes', async () => {
+    const {assistant, ask} = fixture('albion');
+    let reply = await ask('What are Toronto return codes in order?');
+    assert.equal(reply.decision, 'answer');
+    assert.match(reply.text, /1001.*1712.*4312/);
+    assert.deepEqual(locators(reply), ['QUEST_HINTS["toronto-return"]["codes"]']);
+    await ask('Where does the first one come from?');
+    reply = await ask('And the reversed code-notes?');
+    assert.equal(reply.decision, 'answer'); assert.match(reply.text, /4312/);
+    reply = await ask('What do I do with the Toronto evidence?');
+    assert.equal(reply.decision, 'answer'); assert.match(reply.text, /Dji-Cantos/);
+    assistant.destroy();
+
+    const control = fixture('albion', {cached: false});
+    for (const question of ['What are Toronto security codes in order?', 'What are Toronto return codes in reverse order?'])
+        assert.notEqual((await control.ask(question)).decision, 'answer', question);
+    control.assistant.destroy();
+});
+
+test('Compassion rune collection includes the return step and the keyword proof', async () => {
+    const {assistant, ask} = fixture('ultima6');
+    let reply = await ask('Where do I meet Ariana about the rune, and whose approval does she need?');
+    assert.equal(reply.decision, 'answer'); assert.match(reply.text, /Anya/);
+    reply = await ask('Okay, where do I find her mother and what do I say to get that approval?');
+    assert.equal(reply.decision, 'answer'); assert.match(reply.text, /Blue Boar/);
+    reply = await ask('How do I collect it once permission is sorted out?');
+    assert.equal(reply.decision, 'answer');
+    for (const phrase of ['Return to Ariana', 'confirm permission', 'Rune of Compassion', 'PERMISSION'])
+        assert.ok(reply.text.includes(phrase), reply.text);
+    assert.ok(locators(reply).includes('gameData.quests[0].sections[0].steps[2]'));
+    assert.ok(locators(reply).includes('gameData.quests[0].sections[0].keywords[0].helper'));
+    assert.notEqual((await ask('Exactly how old is Anya?')).decision, 'answer');
+    assistant.destroy();
+});
+
+test('Ephemerides material follow-up stays bound to the lens source and named recipient', async () => {
+    const {assistant, ask} = fixture('ultima6');
+    let reply = await ask('How do I get the Britannian lens?');
+    assert.equal(reply.decision, 'answer'); assert.match(reply.text, /Ephemerides/);
+    reply = await ask('Where is he?');
+    assert.equal(reply.decision, 'answer'); assert.match(reply.text, /Moonglow/);
+    reply = await ask('What does he need?');
+    assert.equal(reply.decision, 'answer'); assert.match(reply.text, /glass sword/);
+    assert.deepEqual(locators(reply), ['gameData.quests[3].sections[1].steps[1]']);
+    assert.notEqual((await ask('Who is his daughter?')).decision, 'answer');
+    assistant.destroy();
+
+    const control = fixture('ultima6', {cached: false});
+    assert.notEqual((await control.ask('What does he need?')).decision, 'answer');
+    const unrelated = await control.ask('What does Lord British need?');
+    assert.ok(!/glass sword/i.test(unrelated.text), unrelated.text);
+    control.assistant.destroy();
+});
+
+test('Drirr recruitment includes the reviewed method without asserting current party state', async () => {
+    const {assistant, ask} = fixture('albion');
+    let reply = await ask('How do I recruit Drirr?');
+    assert.equal(reply.decision, 'answer');
+    assert.match(reply.text, /festival murder/); assert.match(reply.text, /joins automatically/);
+    assert.ok(locators(reply).includes('QUEST_HINTS["nakiridaani"]["recruit-drirr"]'));
+    reply = await ask('What are his combat strengths?');
+    assert.equal(reply.decision, 'answer'); assert.match(reply.text, /99 combat caps/);
+    reply = await ask('Where do I get Iskai Lance?');
+    assert.equal(reply.decision, 'answer'); assert.match(reply.text, /Snird/);
+    reply = await ask('What does the Iskai Lance do?');
+    assert.equal(reply.decision, 'answer'); assert.match(reply.text, /Damage: 18/);
+    assistant.destroy();
+
+    const control = fixture('albion', {cached: false});
+    assert.notEqual((await control.ask('Is Drirr in my party right now?')).decision, 'answer');
+    control.assistant.destroy();
+});
