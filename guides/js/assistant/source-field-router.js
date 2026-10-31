@@ -23,6 +23,12 @@ const verbForms={running:'run',reaching:'reach',finishing:'finish',completing:'c
     asking:'ask',saying:'say',mentioning:'mention',using:'use',performing:'perform',giving:'give',moving:'move',trading:'trade',completion:'complete'};
 const stem=value=>verbForms[value] || value.replace(/ies$/,'y').replace(/s$/,'');
 const sourceTuple = source => JSON.stringify([source?.file,source?.locator,source?.review]);
+const sameNominalLabel=(value,label)=>{
+    const a=tokens(bare(value)),b=tokens(bare(label));
+    if(a.length<2 || a.length!==b.length || a.at(-1)!==b.at(-1)
+        || /^(?:who|what|where|when|why|how|which|skip|use|get|find|give|take|buy|sell|collect|return)\b/i.test(label))return false;
+    return [...a].sort().join(' ') === [...b].sort().join(' ');
+};
 
 function entityLabels(entity){
     if(!entity)return [];
@@ -287,6 +293,25 @@ export function planSourceFields({frame,knowledge,index,focusEntityId=null,groun
         || !knowledge?.entities?.get || !Array.isArray(index?.entries) || list(index.issues).length)return unhandled;
     const entries=index.entries,owners=new Set(entries.flatMap(entry=>list(entry.subjectEntityIds)));
     const previous=list(previousProofIds).map(id=>list(knowledge.facts).find(fact=>fact.id===id)).filter(Boolean);
+    if(frame.fields.some(field=>field.ordinal!==undefined)){
+        const ordered=entries.filter(entry=>entry.explicit && entry.key==='sequence' && Array.isArray(entry.members)
+            && entry.members.length && new Set(entry.members).size===entry.members.length
+            && previous.some(proof=>proof.id===entry.factId && !proof.conflict && !proof.record?.conflict
+                && isEligible(proof,{frame}) && entry.members.every(member=>proof.text.includes(member))
+                && entry.members.every((member,index)=>!index || proof.text.indexOf(member)>proof.text.indexOf(entry.members[index-1]))));
+        const lists=[...new Map(ordered.map(entry=>[JSON.stringify([entry.factId,entry.members,sourceTuple(entry.source)]),entry])).values()];
+        if(!grounded || lists.length!==1)return {status:'unsupported',reason:'An ordinal requires one complete grounded ordered source list.'};
+        const [entry]=lists;
+        const fields=[];
+        for(const field of frame.fields){
+            if(field.ordinal===undefined){fields.push(field);continue;}
+            if(!Number.isSafeInteger(field.ordinal) || field.ordinal<1 || field.ordinal>entry.members.length)
+                return {status:'unsupported',reason:'The ordinal is outside the recorded ordered list.'};
+            fields.push({...field,subjectMode:'topic',subjectText:null,objectTexts:[entry.members[field.ordinal-1]],
+                ordinalSourceFactId:entry.factId});
+        }
+        frame={...frame,fields};
+    }
     const referentIds=unique([...list(referents.object),...list(referents.content),...list(referents.output),
         ...list(referents.input),...(['item','spell'].includes(kindGroup(knowledge.entities.get(focusEntityId)?.kind))?[focusEntityId]:[])]);
     // A topic-mode field asks about the task itself; it never borrows the
@@ -332,6 +357,24 @@ export function planSourceFields({frame,knowledge,index,focusEntityId=null,groun
     const reference=REFERENCE.test(bare(frame.subjectText)) || !named.length && (alternativeReference
         || /\b(?:it|its|he|him|his|she|her|they|them|their|that|this|there)\b/i.test(frame.originalText));
     let candidates=exact.length?exact:named.length?named:reference && grounded && owners.has(focusEntityId)?[focusEntityId]:[];
+    if(!candidates.length && !exact.length && !named.length){
+        const nominalOwners=unique(frame.fields.flatMap(field=>entries.filter(entry=>entry.explicit && entry.factId && entry.key===field.key)
+            .flatMap(entry=>{
+                const proof=sourceFieldProof(entry,knowledge),subject=fieldSubject(field);
+                if(!proof || proof.conflict || proof.record?.conflict || !subject
+                    || ![proof.subject,...list(proof.aliases),...list(proof.topicLabels)].some(label=>sameNominalLabel(subject,label)))return [];
+                return entry.subjectEntityIds;
+            })));
+        if(nominalOwners.length===1)candidates=nominalOwners;
+    }
+    // A delegated source answer can own a task record while its complete,
+    // reviewed proof names the item being discussed. Keep those identities
+    // separate and carry only one proved owner from this same source focus.
+    if(!candidates.length && !exact.length && !named.length && reference && grounded){
+        const carried=unique(previous.filter(proof=>list(knowledge.sourceRecords).some(record=>record.id===proof.sourceRecordId
+            && record.entityId===focusEntityId)).map(proof=>proof.entityId).filter(id=>owners.has(id)));
+        if(carried.length===1)candidates=carried;
+    }
     const argumentOwners=unique(frame.fields.flatMap(field=>entries.filter(entry=>entry.key===field.key && matchArguments(field,entry).matched)
         .flatMap(entry=>matchArguments(field,entry).entityIds.length?matchArguments(field,entry).entityIds:entry.subjectEntityIds)));
     candidates=unique([...candidates,...argumentOwners]);
@@ -360,6 +403,10 @@ export function planSourceFields({frame,knowledge,index,focusEntityId=null,groun
         const personalFocus=introducedPerson?owner:focusEntityId;
         for(const originalField of frame.fields){
             let field=originalField;
+            if(field.requiresGroundedTopic && (!grounded || owner!==focusEntityId
+                && !(context && contextIds.includes(context.id)))){
+                complete=false;fields.push({field,complete:false});continue;
+            }
             if(/^(?:they|it)$/i.test(field.sourceActorText || '')){
                 const actors=unique(fields.filter(prior=>prior.complete && prior.field.sourceActorText
                     && !/^(?:they|it)$/i.test(prior.field.sourceActorText)).map(prior=>prior.field.sourceActorText));
@@ -369,6 +416,8 @@ export function planSourceFields({frame,knowledge,index,focusEntityId=null,groun
             const selectors=list(field.selectors).map(text);
             const selected=[];
             for(const entry of entries){
+                if(field.ordinalSourceFactId && entry.factId!==field.ordinalSourceFactId)continue;
+                if(field.requiresExplicitField && !entry.explicit)continue;
                 const argumentMatch=matchArguments(field,entry,[...localReferents],grounded || fields.some(field=>field.complete));
                 if(list(field.objectTexts).length && list(entry.arguments).length && !argumentMatch.matched
                     && !field.objectTexts.every(value=>REFERENCE.test(bare(value))))continue;

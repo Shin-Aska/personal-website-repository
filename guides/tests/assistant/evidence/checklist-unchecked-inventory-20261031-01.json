@@ -1,0 +1,110 @@
+{
+  "schemaVersion": 1,
+  "kind": "assistant-beta-checklist-unchecked-requirement-inventory",
+  "tag": "checklist-unchecked-inventory-20261031-01",
+  "createdAt": "2026-10-31",
+  "source": {
+    "path": "docs\\assistant-beta-checklist.md",
+    "sha256": "8312f6701d9787048983186a8be3255a83f472a48fbe29b66409f7b606688254"
+  },
+  "method": "Read-only extraction of every unchecked [ ] row in docs/assistant-beta-checklist.md and mapping to current implementation/tests/evidence. This does not mark checklist rows complete.",
+  "uncheckedCount": 12,
+  "uncheckedRows": [
+    {
+      "line": 124,
+      "text": "[ ] Owner beta trial: use real gameplay conversations and report the exact question, previous messages, game, edition and visible source. This is intentionally left for the tester.",
+      "status": "owner_only",
+      "assessment": "The checklist explicitly reserves real-gameplay trial details to the owner; not agent-autonomous."
+    },
+    {
+      "line": 155,
+      "text": "[ ] Preserve all fixed conversation oracles, original source text, mandatory whole supporting passages, qualifiers, edition/material/quantity checks, and transactional conversation state.",
+      "status": "partially_evidenced_final_review_pending",
+      "assessment": "Frozen oracles/source/history remain protected; all-row native proof and full source/diff review are still pending until remaining CUA sets and owner final diff/source review."
+    },
+    {
+      "line": 156,
+      "text": "[ ] Reuse the current model assets only. No installations, downloads, replacement models, model/head training, setup rebuilds or profile edits without new owner authorization.",
+      "status": "satisfied_by_existing_assets_and_no_install_policy",
+      "assessment": "Pinned existing models used; all U5 boundaries say nativeMiniLMEveryProbe=true, cached replay uses exact cached vectors; checklist handoff states no install/download/profile/head edits. Preserve as verified constraint at final review."
+    },
+    {
+      "line": 157,
+      "text": "[ ] Keep saved progress read-only, respect consent, and do not read Codex session logs. Do not deploy or push without explicit authorization.",
+      "status": "partially_evidenced_final_consent_review_pending",
+      "assessment": "No storage writes in current U5 run; broader native reports no writes/errors. Consent fixture/provenance and final diff review remain explicit owner tasks; no session logs were read, push/deploy not performed."
+    },
+    {
+      "line": 161,
+      "text": "[ ] Consume parser `subjectMode: topic` deliberately so compound nominal fields keep the task owner while an object/person is discussed. (Partial 26 Oct: the router's `fieldSubject()` consumes it; the parser sets it for \"what <modifier> items must I …\".)",
+      "status": "implementation_and_tests_present_native_broad_check_pending",
+      "assessment": "request-frame.js sets topic-mode fields; source-field-router.js fieldSubject consumes subjectMode=topic (lines317/511/527 and319). Relevant tests: source-field-router.test.mjs, topic-departure-repairs.test.mjs, source-field-integration.test.mjs; full native sets remain acceptance."
+    },
+    {
+      "line": 162,
+      "text": "[ ] Preserve topic, participant, object and directed roles independently through corrections and follow-ups. Teacher, seller, recipient and repairer are different roles.",
+      "status": "implementation_and_tests_present_native_broad_check_pending",
+      "assessment": "Role/owner/object/participant separation has source-field-arguments.js, source-role-conversations.test.mjs, directed-followup-fields.test.mjs, followup-parser-repairs.test.mjs and current native source-backed conversations; remaining CUA sets are required for final broad verification."
+    },
+    {
+      "line": 163,
+      "text": "[ ] Match procedure phase and explicit conditions: before/after, assembly/use, completion/approach, and documented alternatives. (Partial 26–27 Oct: previous-step after/beyond anchors, the every-component condition bug fix, the approach-destination role, and exclusive `am I <gerund> or <gerund>` method alternatives. 31 Oct: reviewed phase-title order and Mariah's explicitly bound recruitment approach repaired; automatic-completion questions remain.)",
+      "status": "current_phase_work_implemented_and_tests_present_final_native_check_pending",
+      "assessment": "Phase/condition logic has phase-title-routing.test.mjs, phase-completion-replays.test.mjs, procedure-phase-fields.test.mjs, actor-phase-conversations.test.mjs and reviewed phase/source work. U7 Courage native rows now contain correct completion handoff per final U7 evidence; old parenthetical “automatic-completion questions remain” is stale/needs reconciliation against final rows. Remaining guide-native suites still pending."
+    },
+    {
+      "line": 181,
+      "text": "[ ] Reproduce the full ordered conversation, not just its last question in isolation.",
+      "status": "repeatable_acceptance_step_native_sets_in_progress",
+      "assessment": "Whole ordered dialogue native runner is required for each remaining guide set; U5/U6 completed, other surfaces still underway."
+    },
+    {
+      "line": 182,
+      "text": "[ ] Read the complete original source child and surrounding source object; preserve every required caveat and support fact.",
+      "status": "repeatable_acceptance_step_final_source_review_pending",
+      "assessment": "Full source children/surrounding objects have been reviewed for U5 changes; final source/consent/diff review still must close all changed rows and all guides."
+    },
+    {
+      "line": 183,
+      "text": "[ ] Verify the useful claim and actual citation, including deliberately unsupported siblings and wrong-role controls.",
+      "status": "repeatable_acceptance_step_native_sets_and_controls_in_progress",
+      "assessment": "U5 current strict misses inspected against source and oracle; native datasets include negative controls. Remaining guides and all final whole replies/controls still need review."
+    },
+    {
+      "line": 184,
+      "text": "[ ] Run the affected checks once, then the relevant frozen conversation set. Broaden only for changed shared paths or unresolved failures.",
+      "status": "repeatable_acceptance_step_native_sets_ui_smoke_in_progress",
+      "assessment": "Node cached/workspace and clean-export suites are passing per handoff. Native guide sets, sourcefirst96/observed220/semantic13 and UI63 geometry/lifecycle checks remain active."
+    },
+    {
+      "line": 185,
+      "text": "[ ] Preserve earlier failed reports, use a new output tag, and describe changed whole replies. A higher substring score alone does not prove a better answer.",
+      "status": "repeatable_acceptance_step_preserve_reports_in_progress",
+      "assessment": "Reports remain distinct by tag; U5 current report and 29Oct baselines preserved. Continue unique tags and whole-reply comparisons for remaining native suites."
+    }
+  ],
+  "remainingAutonomousWork": [
+    {
+      "item": "Finish remaining CUA native sets: StarCraft, Albion, Al-Qadim primary+secondary, and U7 source-first/observed/semantic; U5/U6 already complete.",
+      "owner": "root/current CUA owner",
+      "status": "in progress",
+      "evidence": "Per-surface final reports; preserve strict source-backed failures."
+    },
+    {
+      "item": "Run UI63 geometry/lifecycle smoke in current CUA with no state writes; retain semantic smoke separately.",
+      "owner": "Terra after current browser handback",
+      "status": "pending"
+    },
+    {
+      "item": "Final workspace/clean-export diff, source, consent fixture, state and report-chain review; reconcile stale status notes and remaining unchecked rows without changing original source/oracles.",
+      "owner": "root",
+      "status": "pending"
+    },
+    {
+      "item": "Owner beta gameplay trial with exact question/history/game/edition/source record.",
+      "owner": "owner only",
+      "status": "not agent-autonomous"
+    }
+  ],
+  "noAdditionalStandaloneRuntimeGapFound": "The open parser topic, directed-role and phase checklist rows map to implemented shared logic and dedicated regression suites. Current outstanding evidence is broad native acceptance and final integrity review; this audit found no distinct source-backed U5 implementation defect."
+}

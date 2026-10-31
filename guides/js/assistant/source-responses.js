@@ -98,6 +98,7 @@ function uniqueSources(sources) {
 // acronym/registration excerpt. It is still the DOM-verified definition made
 // above, with both pieces of provenance retained, never a model paraphrase.
 export function presentKnowledgeDefinition(reply, question, records) {
+  reply = presentDeclaredSourceChildren(reply, records);
   if (reply?.decision !== 'answer' || !reply.knowledge?.focusEntityId) return reply;
   const q = normalize(question).replace(/[?!.]+$/, '').replace(/^(?:according to (?:this|the) guide|in (?:this|the) guide)[,:]?\s+/, '');
   for (const record of records) {
@@ -115,6 +116,29 @@ export function presentKnowledgeDefinition(reply, question, records) {
       sourcePresentation: { kind: 'reviewed-knowledge-definition', recordId: record.id } };
   }
   return reply;
+}
+
+// Add only a source-owned, declared direct child whose entire original value
+// is actually displayed. Keep the selected parent citation and source identity.
+export function presentDeclaredSourceChildren(reply, records) {
+  if(reply?.decision!=='answer' || !Array.isArray(reply.recordIds) || !Array.isArray(reply.sources))return reply;
+  const sources=[...reply.sources];
+  for(const record of records || []){
+    if(!reply.recordIds.includes(record.id) || record.conflict)continue;
+    const visible=authorize(record,'direct');
+    if(!visible || visible.requires!==null || visible.source?.review!=='extracted'
+      || !reply.sources.some(source=>source.file===visible.source.file && source.locator===visible.source.locator
+        && source.review===visible.source.review))continue;
+    for(const claim of visible.source.claims || []){
+      if(claim.text!==visible.text || !normalizedText(reply.text).includes(normalizedText(claim.text))
+        || claim.source?.review!=='extracted' || claim.source.file!==visible.source.file
+        || !claim.source.locator?.startsWith(visible.source.locator+'.')
+        || !/^[A-Za-z_$][\w$]*$/.test(claim.source.locator.slice(visible.source.locator.length+1)))continue;
+      if(!sources.some(source=>source.file===claim.source.file && source.locator===claim.source.locator
+        && source.review===claim.source.review))sources.push(claim.source);
+    }
+  }
+  return sources.length===reply.sources.length?reply:{...reply,sources};
 }
 
 /**
@@ -140,6 +164,37 @@ export function sourceFacetReply(packet, records, { spoiler = 'direct' } = {}) {
   const [visible] = matches;
   return { decision: 'answer', text: visible.text, recordIds: [visible.id], sources: [visible.source], actions: [], choices: [], stateChanges: [],
     level: visible.level, title: visible.title, sourcePresentation: { kind: 'quoted-creator', recordId: visible.id } };
+}
+
+// Asking what this guide credits is distinct from asking who truly authored a
+// project. The complete subject remains intact so extra editions, restrictions
+// and unrelated sources cannot disappear into a partial name match.
+export function parseGuideCreditRequest(text) {
+  const q = normalize(text).replace(/[?!.]+$/, '');
+  const match = /^who (?:does|did) (?:this|the) guide credit (?:with|as (?:the )?(?:creator|author|developer) of) (.+)$/.exec(q);
+  return match ? { subjectText: match[1] } : null;
+}
+
+export function sourceGuideCreditReply(request, records, {spoiler='direct', edition} = {}) {
+  if (!request || typeof request.subjectText !== 'string') return null;
+  const subject = normalize(request.subjectText).replace(/^(?:the|a|an) /, '');
+  const matches = records.flatMap(record => {
+    if (record.conflict) return [];
+    const visible = authorize(record, level(spoiler));
+    if (!visible || visible.requires !== null || visible.diagnostics.length
+      || visible.source?.review !== 'extracted' || visible.identity === false
+      || !(visible.relation === 'explanation' || visible.answers.includes('explanation'))
+      || edition && visible.editions.length && !visible.editions.includes(edition)
+      || ![visible.title, ...visible.aliases].some(label => normalize(label) === subject)) return [];
+    const attribution = /(?:^|[;.!?]\s*)([^;.!?]*\b(?:framework|library|software|program|tool|project|bot|client|application|game|guide|book|article)\s+(?:(?:created|developed|written|authored)\s+)?by\s+[A-Z][\p{L}\p{M}.'’\u2013-]+(?:\s|[,.(]|$))/u.exec(visible.text);
+    if (!attribution || /\b(?:not|never|no|maybe|perhaps|reportedly|supposedly|allegedly|if|unless)\b/i.test(attribution[1])) return [];
+    return [visible];
+  });
+  if (matches.length !== 1) return null;
+  const [visible] = matches;
+  return {decision:'answer',text:`Guide attribution:\n${visible.text}`,recordIds:[visible.id],sources:[visible.source],
+    actions:[],choices:[],stateChanges:[],level:visible.level,title:visible.title,
+    sourcePresentation:{kind:'quoted-guide-credit',recordId:visible.id,entityId:visible.entityId}};
 }
 
 /** Keep citations only for selected authorized source text actually displayed.
@@ -187,6 +242,7 @@ export function normalizeSourceReplyCitations(reply, records, {spoiler='direct'}
  * current help ceiling. A model prediction alone can never create an answer.
  */
 export function presentSourceReply(reply, packet, records, { spoiler = 'direct' } = {}) {
+  if(level(spoiler)==='direct')reply=presentDeclaredSourceChildren(reply,records);
   reply=normalizeSourceReplyCitations(reply,records,{spoiler});
   if (reply?.decision !== 'answer' || packet?.status !== 'ready' || !packet.entityId
     || !Array.isArray(reply.recordIds) || !reply.recordIds.length) return reply;

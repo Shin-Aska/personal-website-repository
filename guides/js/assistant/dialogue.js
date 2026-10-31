@@ -3,7 +3,7 @@
 import { authorize, level, LEVELS } from './policy.js';
 import { normalize, resolveEntities, tokens, kindGroup, closeSpelling, isCommonWord } from './retrieval.js';
 import { parse, materialTerms, detectMethod, GUIDE_SOURCE, MAX_PARTS, sourceQuestionParts, playerStateQuestion } from './language.js';
-import { augmentSourceRecords, presentSourceReply, sourceFacetReply, presentKnowledgeDefinition } from './source-responses.js';
+import { augmentSourceRecords, presentSourceReply, sourceFacetReply, presentKnowledgeDefinition, parseGuideCreditRequest, sourceGuideCreditReply } from './source-responses.js';
 import { createConsultation } from './consultation.js';
 import { createKnowledgeRouter } from './knowledge.js';
 import {parseFactualPropertyRequest} from './factual-property-requests.js';
@@ -235,6 +235,14 @@ export function createInterpreter({ gameId, records, classify, thresholds = {} }
         frame = { entityId, intent: null, restrictions: constrained, method: null, requestedFormat: null };
         return true;
     }
+    // The wrapper calls this only after checking a complete cited source
+    // answer. It is separate from an interpreted/model-proposed relationship.
+    function verifySourceRelation(intent) {
+        if(!frame || !subject || frame.unconfirmed || frame.entityId!==subject.entityId)return false;
+        const next={...frame};delete next.verifiedRelation;
+        if(SUPPORTED.has(intent) && (intent==='identity' || templates[intent]))next.verifiedRelation=intent;
+        frame=next;return true;
+    }
 
     async function interpret(value, opts = {}) {
         const originalText = String(value ?? '');
@@ -285,7 +293,7 @@ export function createInterpreter({ gameId, records, classify, thresholds = {} }
                 if (bare) confirmation = waiting.entities.find(candidate => candidate.entityId === choices[0].id);
             }
         }
-        let predictions;
+        let predictions,sourceRelationEllipsis=false,bareNamedEntityEllipsis=false;
         if (confirmation) {
             intent = waiting.intent; transition = 'subject-confirmed';
             routeOrigin = 'pending-confirmation'; modelIntent = waiting.modelIntent ?? waiting.intent;
@@ -318,17 +326,30 @@ export function createInterpreter({ gameId, records, classify, thresholds = {} }
             if (exactRelation && exactRelation !== intent && !gates.abstainAll) {
                 intent = exactRelation; routeOrigin = 'exact-relation';
             }
+            const namedEllipsis=/^and\s+(.+?)\s*[?!.]*$/i.exec(rawRequest.trim());
+            bareNamedEntityEllipsis=Boolean(namedEllipsis && parsed.parts.length===1 && exactHits.length===1
+                && normalize(namedEllipsis[1])===normalize(exactHits[0].alias));
+            if(!gates.abstainAll && !waiting && previous && previousFrame?.entityId===previous.entityId
+                && !previousFrame.unconfirmed && previousFrame.verifiedRelation && parsed.parts.length===1
+                && bareNamedEntityEllipsis && exactHits[0].id!==previous.entityId){
+                intent=previousFrame.verifiedRelation;routeOrigin='source-relation-ellipsis';sourceRelationEllipsis=true;
+            }
         }
         const acceptedIntent = !gates.abstainAll && SUPPORTED.has(intent) && score !== null && margin !== null
             && score >= gates.minScore && margin >= gates.minMargin;
         // A confirmed intent was already gated on its original turn. External
         // pending frames have no model score, but never override abstainAll.
-        const mayInterpret = !gates.abstainAll && (confirmation || acceptedIntent || routeOrigin === 'exact-relation');
+        const mayInterpret = !gates.abstainAll && (confirmation || acceptedIntent || routeOrigin === 'exact-relation' || sourceRelationEllipsis);
         if (unresolvedSelection) return packet('clarify', 'Name the new subject exactly before asking a follow-up.', { blockReplay: true, replayReason: 'The new subject is not confirmed; I cannot attach this follow-up to an earlier subject.' });
         const sourceText = confirmation ? waiting.originalText : rawRequest;
         const analysisText = confirmation ? requestFraming(sourceText, gameId) : requestText;
         const sourceParsed = confirmation ? parse(analysisText, { names: names(list) }) : parsed;
         const core = sourceNeutralCore(sourceParsed.parts[0]?.core || '');
+        if(bareNamedEntityEllipsis && !sourceRelationEllipsis){
+            subject=null;frame=null;
+            return packet('clarify','Name the requested relationship explicitly; no complete source-proved relationship can be carried.',
+                {blockReplay:true,replayReason:'Ask the new subject together with its requested relationship so an old or unconfirmed source field cannot be reused.'});
+        }
         const sourceStory = sourceParsed.parts.length === 1 && sourceParsed.parts[0].story;
         if (sourceStory) {
             // Role direction is authored English grammar, not a model guess.
@@ -364,6 +385,7 @@ export function createInterpreter({ gameId, records, classify, thresholds = {} }
         let hit = confirmation ? hits.find(candidate => candidate.id === confirmation.entityId) : hits.length === 1 ? hits[0] : null;
         const record = confirmation ? entity(confirmation.entityId, list) : hit && entity(hit.id, list);
         let selected = record;
+        if(sourceRelationEllipsis && selected)transition='relation-carried';
         if (!confirmation && previousFrame?.unconfirmed && !hits.some(candidate => candidate.match === 'exact')) {
             subject = null; frame = previousFrame;
             return packet('clarify', 'The new subject is not confirmed. Name it explicitly before asking a follow-up.', {
@@ -418,7 +440,7 @@ export function createInterpreter({ gameId, records, classify, thresholds = {} }
             : intent === 'stats' ? shape.match(/\b(base|starting|initial)\b/)?.[1] || null : null;
         const qualifierShape = qualifier && /^(?:(?:what is|what's) (?:the )?SUBJECT(?:'s)? (?:job|occupation|profession|role)|(?:(?:his|her|its|their|the) |SUBJECT )?(?:job|occupation|profession|role))$/.test(shape);
         const formatShape = ['location', 'acquisition'].includes(intent) && /^(?:SUBJECT(?:'s)? (?:link|links|url|urls|address)|(?:link|url|address) (?:for|of|to) SUBJECT)$/.test(shape);
-        const simpleShape = shapes[intent]?.test(shape) || safeFragment || qualifierShape || formatShape || creatorShape;
+        const simpleShape = shapes[intent]?.test(shape) || safeFragment || qualifierShape || formatShape || creatorShape || sourceRelationEllipsis;
         let restrictions = restrictionsFor(analysisText, sourceParsed, hit);
         const requestWords = maskSubject(normalize(analysisText), hit?.queryTerms || []);
         const detectedMethod = intent === 'acquisition' ? detectMethod(requestWords) : null;
@@ -439,18 +461,18 @@ export function createInterpreter({ gameId, records, classify, thresholds = {} }
         const currentConstraints = carriedConstraints(restrictions, analysisText);
         // Bind the whole current frame, never just the name, for pronouns and
         // ellipsis. Explicitly named questions establish a fresh request frame.
-        if (transition === 'subject-carried') restrictions = mergeRestrictions(restrictions, previousFrame?.restrictions);
+        if (transition === 'subject-carried' || sourceRelationEllipsis) restrictions = mergeRestrictions(restrictions, previousFrame?.restrictions);
         // Grounding describes only which visible subject the message names.
         // It grants no fact permission and does not depend on the model label,
         // score gates, supported relation, or permission to canonicalize.
         const grounding = selected ? { entityId: selected.entityId, entityTitle: selected.title } : {};
-        const inheritedBlocked = transition === 'subject-carried' && previousFrame && isRestricted({ ...previousFrame.restrictions, guideOnly: false });
+        const inheritedBlocked = (transition === 'subject-carried' || sourceRelationEllipsis) && previousFrame && isRestricted({ ...previousFrame.restrictions, guideOnly: false });
         const request = { ...grounding, ...(method ? { method } : {}), ...(requestedFormat ? { requestedFormat } : {}), ...(qualifier ? { qualifier } : {}),
             ...(inheritedBlocked ? { blockReplay: true, replayReason: 'This follow-up inherits a source, edition, negative, numeric, or material constraint. Restate the subject and constraint together; the bare fragment must not be replayed as an unrestricted request.' } : {}) };
         if (selected) {
             subject = pendingEntity(selected);
             frame = { entityId: selected.entityId, intent,
-                restrictions: transition === 'subject-carried' ? mergeRestrictions(currentConstraints, previousFrame?.restrictions) : currentConstraints,
+                restrictions: transition === 'subject-carried' || sourceRelationEllipsis ? mergeRestrictions(currentConstraints, previousFrame?.restrictions) : currentConstraints,
                 method, requestedFormat };
             if (transition === 'none') transition = previous?.entityId === selected.entityId ? 'subject-retained' : 'subject-set';
         } else {
@@ -485,7 +507,7 @@ export function createInterpreter({ gameId, records, classify, thresholds = {} }
         });
     }
 
-    return { interpret, resetTopic: clear, resetSession() { clear(); contextId = null; ceiling = 'direct'; }, setPending, focusSubject, getState: snapshot };
+    return { interpret, resetTopic: clear, resetSession() { clear(); contextId = null; ceiling = 'direct'; }, setPending, focusSubject, verifySourceRelation, getState: snapshot };
 }
 
 /**
@@ -559,6 +581,43 @@ export function createConversationAssistant({ assistant, records, gameId = assis
         if(reply?.decision==='answer' && !reply.knowledge?.limited && !reply.knowledge?.unsupported)return reply;
         rollback();return atomicDecline(reply?.text || 'I could not ground every part of that request in the available sources.');
     }
+    function guideCredit(turn,text,options){
+        const request=parseGuideCreditRequest(text);
+        if(!request)return null;
+        const reply=sourceGuideCreditReply(request,sourceRecords,options)
+            || result('decline','The available guide sources do not establish that complete attribution request.');
+        clearSourceSlots();knowledgeRouter?.reset();interpreter.resetTopic();
+        if(reply.sourcePresentation?.entityId)interpreter.focusSubject(reply.sourcePresentation.entityId,{...options,guideOnly:true});
+        return finish(turn,reply,{originalText:String(text),status:reply.decision==='answer'?'ready':'abstain',
+            routeOrigin:'source-engine',modelIntent:null,sourceScope:'guide-attribution'});
+    }
+    function indexedNarrative(turn,text,options){
+        const selected=knowledgeRouter?.sourceNarrative(text);
+        if(!selected)return null;
+        // Ask the original source engine once, with the original question.
+        // Its ledger must retain this complete answer for full-answer controls.
+        const reply=sourceCall(()=>assistant.answer(text,options));
+        const verified=knowledgeRouter.sourceNarrative(text,reply);
+        if(!verified){
+            clearSourceSlots();interpreter.resetTopic();
+            return finish(turn,atomicDecline('I could not verify the complete indexed source answer.'),
+                {originalText:String(text),status:'abstain',routeOrigin:'source-engine',modelIntent:null});
+        }
+        const parsed=parse(text),guideOnly=parsed.parts.some(part=>part.guideOnly);
+        interpreter.focusSubject(selected.record.entityId,{...options,guideOnly});
+        return finish(turn,reply,{originalText:String(text),status:'ready',intent:selected.request.aspect,
+            entityId:selected.record.entityId,entityTitle:selected.record.title,routeOrigin:'source-engine',modelIntent:null,
+            restrictions:{guideOnly,editions:[]}});
+    }
+    function conflictQuotation(turn,text,options){
+        const reply=knowledgeRouter?.sourceConflictQuotation?.(text,options);
+        if(!reply)return null;
+        // Quoting a disputed original passage reports its content and limit;
+        // it never establishes ordinary fact proof, a pronoun owner or state.
+        clearSourceSlots();knowledgeRouter.reset();interpreter.resetTopic();
+        return finish(turn,reply,{originalText:String(text),status:reply.decision==='answer'?'ready':'abstain',routeOrigin:'source-engine',
+            modelIntent:null,sourceScope:'conflict-quotation'});
+    }
     function restoreAtomicSubject(turn,options){
         interpreter.resetTopic();
         if(turn.priorKnowledge?.focus)interpreter.focusSubject(turn.priorKnowledge.focus,{...options,restrictions:turn.priorKnowledge.restriction});
@@ -584,11 +643,45 @@ export function createConversationAssistant({ assistant, records, gameId = assis
         activeTurn = turn; notify(); return turn;
     }
     const current = turn => !destroyed && !turn.controller.signal.aborted && turn.epoch === generation && turn.id === active && turn.ticket === revision;
+    function sourceVerifiedRelation(reply,text,packet){
+        if(reply?.decision!=='answer' || !reply.recordIds?.length || !reply.sources?.length
+            || reply.actions?.length || reply.stateChanges?.length || reply.choices?.length
+            || reply.fallbackOrigin || reply.fallbackRecordIds?.length || reply.knowledge?.limited || reply.knowledge?.unsupported)return null;
+        const state=interpreter.getState(),owner=state.subject?.entityId;
+        if(!owner || state.pending || state.frame?.unconfirmed)return null;
+        const query=packet?.canonicalQuestion || text,parsed=parse(query);
+        if(parsed.parts.length!==1 || parsed.parts.some(part=>part.report || part.story) || playerStateQuestion(query))return null;
+        const list=(knowledge?.sourceRecords || sourceRecords).map(record=>authorize(record,'direct')).filter(Boolean);
+        const hits=matchEntities(query,list).filter(hit=>hit.match==='exact');
+        if(hits.length!==1 || hits[0].id!==owner)return null;
+        const shape=maskSubject(sourceNeutralCore(parsed.parts[0].core),hits[0].queryTerms);
+        const relations=Object.entries(shapes).filter(([,pattern])=>pattern.test(shape)).map(([intent])=>intent);
+        if(relations.length!==1 || packet?.qualifier || packet?.method || packet?.requestedFormat
+            || /\b(?:install|configure|set up|download|buy|purchase|recruit|hire)\b/.test(shape))return null;
+        const intent=relations[0],coverage=reply.knowledge?.fieldCoverage;
+        if(coverage && (!coverage.complete || coverage.fields?.length!==1 || coverage.fields[0].key!==intent
+            || coverage.fields[0].selectors?.length && !(intent==='use' && coverage.fields[0].selectors.length===1 && coverage.fields[0].selectors[0]==='effect')))return null;
+        const cited=source=>reply.sources.some(actual=>['file','locator','review'].every(key=>actual?.[key]===source?.[key]));
+        const provedFact=(reply.knowledge?.factIds || []).some(id=>{
+            const fact=knowledge?.facts.find(fact=>fact.id===id);
+            return fact && !fact.conflict && !fact.record?.conflict && fact.source.review!=='conflicting'
+                && reply.text.includes(fact.witness) && cited(fact.source) && fact.answerRelations.includes(intent)
+                && (fact.entityId===owner || fact.bindings?.some(binding=>binding.entityId===owner && binding.relations.includes(intent)));
+        });
+        const provedOriginal=reply.recordIds.some(id=>{
+            const record=sourceRecords.find(record=>record.id===id),proof=record && authorize(record,'direct');
+            return proof && !proof.conflict && proof.source.review!=='conflicting' && proof.entityId===owner
+                && reply.text.includes(proof.text) && cited(proof.source)
+                && (aliasIntent(proof.relation)===intent || proof.answers?.includes(intent));
+        });
+        return provedFact || provedOriginal?intent:null;
+    }
     function finish(turn, reply, packet) {
         if (!current(turn)) return stale();
         delete turn.rollback;
         const completed = decorate(reply, packet, turn.ticket);
         if(!turn.preserveKnowledge)knowledgeRouter?.observe(completed, packet, history(turn.id).at(-2)?.text || '');
+        interpreter.verifySourceRelation(sourceVerifiedRelation(completed,history(turn.id).at(-2)?.text || '',packet));
         Object.assign(turn.pending, completed); turn.cleanup(); if (activeTurn === turn) activeTurn = null;
         notify(); return completed;
     }
@@ -695,6 +788,12 @@ export function createConversationAssistant({ assistant, records, gameId = assis
             if (destroyed || opts.signal?.aborted || !validExpected(opts)) return stale();
             switchContext(opts.contextId); clearForCommand(text); seedSelectedContext(opts);
             const prior = lastPacket, turn = begin(text, opts.signal), options = directOptions(opts);
+            const credit=!opts.choiceId && guideCredit(turn,text,options);
+            if(credit)return credit;
+            const quotation=!opts.choiceId && conflictQuotation(turn,text,options);
+            if(quotation)return quotation;
+            const narrative=!opts.choiceId && indexedNarrative(turn,text,options);
+            if(narrative)return narrative;
             const known = !opts.choiceId && planSource(turn,text,{},options);
             if (known) {
                 clearSourceSlots();
@@ -745,6 +844,12 @@ export function createConversationAssistant({ assistant, records, gameId = assis
             switchContext(opts.contextId); clearForCommand(text); seedSelectedContext(opts);
             const turn = begin(text, opts.signal), options = { ...directOptions(opts), signal: null };
             options.signal = turn.controller.signal;
+            const credit=guideCredit(turn,text,options);
+            if(credit)return credit;
+            const quotation=conflictQuotation(turn,text,options);
+            if(quotation)return quotation;
+            const narrative=indexedNarrative(turn,text,options);
+            if(narrative)return narrative;
             let packet;
             try { packet = await interpreter.interpret(text, options); }
             catch { packet = { originalText: String(text), status: 'abstain', reason: 'Intent interpretation unavailable.', routeOrigin: 'source-engine', modelIntent: null }; }

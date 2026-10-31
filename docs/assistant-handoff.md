@@ -2,7 +2,13 @@
 
 Repository: `/mnt/internal-hdd/Development/personal-website-repository`. Latest scope decision:25 October2026. **Start with `docs/assistant-beta-checklist.md` and `guides/tests/assistant/evidence/beta-checkpoint-20261025.json`.** The owner asked to wind down to a bounded beta, create a checklist for another AI agent, preserve the broader goal for later, and commit the relevant work. Feature expansion stops at this beta checkpoint. The broader structured-knowledge objective is deferred and incomplete; it has not passed broad runtime acceptance. Current measured implementation is checkpoint14. Sections below are historical evidence and do not override the beta scope, model freeze or later owner instructions. No FTP upload or Git push is authorized by the beta commit request.
 
-## Current publication — 27 October 2026
+## Current publication — 31 October 2026
+
+The owner separately authorized FTP publication of the current assistant repairs. Eighteen runtime/catalog assets plus the production manifest and version marker are live under `/guides`; all twenty passed staged/final FTP checks and public HTTPS byte checks, followed by an independent twenty-path HTTPS check. Production version is `fb49c68640e66abf081c98f256aae4877def8585076c5e0d131f132555659dbe`. Its live-derived manifest retains all826 untouched entries, updates fifteen and adds three modules (844 total); checkout metadata remains separate at `b1b21e9d…`. Private backups of seventeen existing destinations remain outside Git. See [the release record](assistant-release-20261031.md), [deployment receipt](../guides/tests/assistant/evidence/deployment-20261031-01.json), and [independent public check](../guides/tests/assistant/evidence/independent-publication-https-20261031-01.json).
+
+After publication, the owner authorized a local commit of the implementation, tests, evidence and release records, building on `51b3995`. No Git push was performed. The current checklist records final engineering verification and the still-unverified owner gameplay trial and exhaustive worker-network capture. Publication does not close those requirements. No models, profiles, original guide facts, saved progress, HTML/CSS or other site roots were changed by this deployment.
+
+## Previous publication — 27 October 2026
 
 The source-first metadata and router repairs are live: sixteen files under `/guides` (ten knowledge manifests/embeddings, four assistant scripts, then the reconciled production manifest and version marker), verified by FTP binary readback and public HTTPS (new live version `4ed7c470…`). See `docs/assistant-release-20261027.md` and the 27 October continuation log in `docs/assistant-beta-checklist.md`. No push.
 

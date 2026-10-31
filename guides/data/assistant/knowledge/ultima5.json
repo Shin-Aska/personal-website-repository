@@ -250,6 +250,17 @@
             "ultima5:companion:mariah",
             "ultima5:knowledge:recommended-party"
           ]
+        },
+        {
+          "key": "method",
+          "selectors": [
+            "recruitment"
+          ],
+          "phase": "approach",
+          "witness": "Recruit Gwenno in Britain, then add Mariah at the Lycaeum once a moongate, skiff, frigate, or the Magic Carpet makes the island reachable.",
+          "subjectEntityIds": [
+            "ultima5:companion:mariah"
+          ]
         }
       ]
     },
@@ -592,18 +603,16 @@
       "topicLabels": [
         "HMS Cape upgrade application"
       ],
+      "support": {
+        "use": ["cape-speed"],
+        "effect": ["cape-speed"],
+        "purpose": ["cape-speed"]
+      },
       "sourceFields": [
         {
           "key": "method",
           "selectors": [
             "step"
-          ],
-          "witness": "When you obtain a frigate, use the plans on the ship once to apply the faster sail upgrade."
-        },
-        {
-          "key": "use",
-          "selectors": [
-            "effect"
           ],
           "witness": "When you obtain a frigate, use the plans on the ship once to apply the faster sail upgrade."
         }
@@ -631,6 +640,13 @@
       ],
       "topicLabels": [
         "HMS Cape speed effect"
+      ],
+      "sourceFields": [
+        {
+          "key": "use",
+          "selectors": ["effect"],
+          "witness": "Using the plans on a frigate doubles its speed relative to enemies."
+        }
       ]
     },
     {
@@ -808,6 +824,15 @@
       ],
       "topicLabels": [
         "Magic Carpet terrain limits"
+      ],
+      "sourceFields": [
+        {
+          "key": "use",
+          "selectors": [
+            "travel"
+          ],
+          "witness": "Take the Magic Carpet lying just inside the chamber. It crosses land, water, swamps, brush, and hills, but rough sea still damages the party and mountains still require the Grapple."
+        }
       ]
     },
     {
@@ -1550,6 +1575,25 @@
       ],
       "topicLabels": [
         "Spirituality midnight approach"
+      ],
+      "sourceFields": [
+        {
+          "key": "limitations",
+          "selectors": [
+            "departure"
+          ],
+          "witness": "Wait beside any active moongate above a buried moonstone. Check your pocket watch and step into the gate at exactly midnight (12:00 AM) to reach the Ethereal Void. You do not need to depart from Skara Brae.",
+          "arguments": [
+            {
+              "bindings": [
+                {
+                  "role": "object",
+                  "mention": "Skara Brae"
+                }
+              ]
+            }
+          ]
+        }
       ],
       "procedureFields": [
         {

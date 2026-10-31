@@ -120,7 +120,7 @@ test('preparation timeout and worker failure reject pending embeddings and termi
 function workerFixture() {
     const messages = [], calls = [], assetRequests = [];
     const artifact = JSON.parse(fs.readFileSync(new URL('../../local-assistant/intent/head.json', import.meta.url)));
-    const source = fs.readFileSync(new URL('../../js/assistant/intent-worker.js', import.meta.url), 'utf8').replace(/^import .*;\n/gm, '');
+    const source = fs.readFileSync(new URL('../../js/assistant/intent-worker.js', import.meta.url), 'utf8').replace(/^import .*;\r?\n/gm, '');
     const controls = { vector: unit(), tokenizeWait: null, modelWait: null };
     const context = vm.createContext({ self: { location: { origin: 'https://guide.test' } },
         postMessage: message => messages.push(structuredClone(message)), predictIntentHead,

@@ -1,0 +1,203 @@
+{
+  "schemaVersion": 1,
+  "kind": "bounded-shared-repairs-checkpoint",
+  "date": "2026-10-31",
+  "status": "local-uncommitted; broader goal incomplete",
+  "baseCommit": "51b399535a87e26b60ba5a26a85a20dc7ad44d31",
+  "agents": [
+    "gpt-6.1-sol",
+    "gpt-6.1-terra",
+    "gpt-6-luna"
+  ],
+  "astraUsed": false,
+  "changes": [
+    {
+      "area": "procedure phase",
+      "files": [
+        "guides/js/assistant/knowledge.js",
+        "guides/tests/assistant/phase-title-routing.test.mjs"
+      ],
+      "behavior": "Match reviewed Test of X / X test and Shrine of X / X shrine title order without dropping names or restrictions. Courage completion now uses the existing final-phase proof."
+    },
+    {
+      "area": "follow-up parser",
+      "files": [
+        "guides/js/assistant/request-frame.js",
+        "guides/data/assistant/knowledge/ultima5.json",
+        "guides/data/assistant/knowledge/albion.json",
+        "guides/tests/assistant/followup-parser-repairs.test.mjs"
+      ],
+      "behavior": "Separate finite use from nominal owner; retain recruitment approach/purpose and parse exact danger-property requests. Only reviewed Mariah approach and Animal 3 danger source fields added."
+    },
+    {
+      "area": "Windows verification",
+      "files": [
+        ".gitattributes",
+        "guides/tests/assistant/knowledge-embedding-runtime.test.mjs",
+        "guides/tests/assistant/knowledge-browser.py",
+        "guides/tests/assistant/knowledge-blind-browser.py",
+        "guides/tests/assistant/full-answer-browser.py"
+      ],
+      "behavior": "Canonical LF for checksum-sensitive text; CRLF-aware worker-fixture import stripping; explicit existing-browser executable and lazy optional Playwright imports. Canonical-only frozen files have no Git content changes."
+    },
+    {
+      "area": "native verification fallback",
+      "files": [
+        "guides/tests/assistant/cua-native-probe-server.py",
+        "guides/tests/assistant/review-cua-native-probes.py"
+      ],
+      "behavior": "Serve the existing consent/generative fixture and observed native MiniLM for focused CUA checks; compare full ordered replies using original oracle helpers; preserve limits and partial attempts."
+    }
+  ],
+  "node": {
+    "initial": {
+      "passed": 2150,
+      "total": 2155,
+      "failures": 5,
+      "cause": "Windows CRLF import-removal fixture; production worker import statements remained in VM script.",
+      "log": "guides/tests/assistant/intent-prototype/results/node-sol-terra-luna-20261031-01.log",
+      "sha256": "97f7d91c4b7c2305669b47cb89d22d888b42f034ed3bdd5024cae75f10006358"
+    },
+    "workerRetest": {
+      "passed": 12,
+      "total": 12,
+      "log": "guides/tests/assistant/intent-prototype/results/node-windows-runtime-20261031-01.log"
+    },
+    "final": {
+      "passed": 2155,
+      "total": 2155,
+      "failed": 0,
+      "skipped": 0,
+      "command": "node --test --test-concurrency=8 --test-reporter=tap <all recursive *.test.mjs>",
+      "log": "guides/tests/assistant/intent-prototype/results/node-sol-terra-luna-20261031-02.log",
+      "sha256": "74da1c418144db17c2413de6315b3787096abdf2f41ebdb1b604fbc297eb31ea",
+      "durationMs": 731770.7174
+    }
+  },
+  "python": {
+    "knowledge": {
+      "passed": 7,
+      "total": 7
+    },
+    "offlineManifestUnitChecks": {
+      "passed": 5,
+      "total": 5
+    },
+    "embeddingVerifyOnly": "All six catalogs verified, 674 unchanged documents/vectors",
+    "setupVerifyOnly": {
+      "status": "verified",
+      "writes": false,
+      "downloads": 0,
+      "baseBytes": 161786625,
+      "intentBytes": 24053489
+    }
+  },
+  "native": {
+    "report": "guides/tests/assistant/evidence/knowledge-cua-native-sol-terra-luna-20261031-01.json",
+    "sha256": "851e7377dc3861c76dea5561ad0f5c1e50c11d89c064d83e964ce3bbe6c3d664",
+    "selectedCorpus": {
+      "before": 9,
+      "after": 13,
+      "total": 16
+    },
+    "affectedSourceFirst": {
+      "passed": 46,
+      "total": 48
+    },
+    "additionalControls": {
+      "passed": 9,
+      "total": 9
+    },
+    "boundaries": {
+      "sourceStable": true,
+      "noStorageWrites": true,
+      "noPageErrors": true,
+      "nativeMiniLMEveryProbe": true,
+      "allAdditionalControlsHeld": true
+    },
+    "changedResponseRows": [
+      {
+        "suite": "corpus",
+        "surface": "ultima7",
+        "dialogueId": "courage-ether-gem",
+        "turn": 3,
+        "fields": [
+          "rendered",
+          "citations",
+          "passed"
+        ]
+      },
+      {
+        "suite": "corpus",
+        "surface": "ultima5",
+        "dialogueId": "party-recommendation",
+        "turn": 1,
+        "fields": [
+          "decision",
+          "rendered",
+          "citations",
+          "passed"
+        ]
+      },
+      {
+        "suite": "corpus",
+        "surface": "ultima5",
+        "dialogueId": "party-recommendation",
+        "turn": 3,
+        "fields": [
+          "decision",
+          "rendered",
+          "citations",
+          "passed"
+        ]
+      },
+      {
+        "suite": "corpus",
+        "surface": "albion",
+        "dialogueId": "blue-plate-demonstration",
+        "turn": 3,
+        "fields": [
+          "decision",
+          "rendered",
+          "citations",
+          "passed"
+        ]
+      }
+    ],
+    "unchangedComparedResponseRows": 60,
+    "comparisonFields": [
+      "decision",
+      "rendered",
+      "citations",
+      "links",
+      "passed"
+    ],
+    "intermediateProbe": {
+      "path": "guides/tests/assistant/intent-prototype/results/native-cua-intermediate-ultima7-20261031-01.json",
+      "limitation": "Preserved developmental probe; head.json line-ending normalization occurred during it. Not final acceptance evidence."
+    }
+  },
+  "offline": {
+    "assets": 841,
+    "allHashesAndSizesVerified": true,
+    "version": "125b53fc54ed3aeca6704f59de1b74fce6060145d53e1a08295bb62952c97fca",
+    "changedEntries": 7,
+    "qualification": "Six changed runtime/catalog assets plus one existing Leaflet CSS record whose old hash/size used CRLF rather than the canonical LF identity. Leaflet CSS source unchanged."
+  },
+  "preserved": {
+    "originalFactContentAndSourceIdentities": true,
+    "all674EmbeddingDocumentsAndVectorsEqualHEAD": true,
+    "frozenConversationOraclesUnchanged": true,
+    "modelsProfilesHeadsUnchangedInGit": true,
+    "deliberateAlbionConflictsRetained": true,
+    "noInstallsOrDownloads": true,
+    "noPushOrDeployment": true
+  },
+  "limitations": [
+    "The 1,005-turn corpus, full source-first 96, observed-220 and 13-check semantic smoke were not rerun; their previous reported scores remain historical.",
+    "Python Playwright is absent from every checked installed interpreter; existing Chrome and pinned model assets were reused through CUA.",
+    "The focused CUA report has known failures: Courage automatic completion, conflicted blue-plate use, conflicted Herras sequence, and two Brion strict citation-locator mismatches.",
+    "All nine additional unsupported controls held. Native generative-model performance and exhaustive network interception are not established.",
+    "Luna joined the final 24 adjudicated genuine gaps to the 29 October report: 20 remained in that inventory. Three of those are fixed in this targeted batch; Animal 3 is a fourth observed repair outside that fixed inventory. This is not a current full-corpus gap count."
+  ]
+}

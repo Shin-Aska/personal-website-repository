@@ -1,0 +1,372 @@
+{
+  "schemaVersion": 1,
+  "kind": "native-cua-whole-reply-source-audit",
+  "tag": "u5-whole-reply-source-audit-20261031-01",
+  "createdAt": "2026-10-31",
+  "inputs": {
+    "guides\\tests\\assistant\\evidence\\knowledge-cua-native-whole-goal-final-u5-all-20261031-01.json": "74b1958d9607a0411b02068d69fb3835fe97ad44f017de00a31906d25c707484",
+    "guides\\tests\\assistant\\evidence\\knowledge-browser-terra-20261029-frozen-source-01.json": "4813cd4dbb84d7fcd83ec90c09af4bf009b8ebc6e5b34c2857ade6a196c73bfb",
+    "guides\\tests\\assistant\\evidence\\knowledge-blind-browser-observed-fresh-terra-20261029-01.json": "34ddb7957dd3c1ea0cce43a029a03c2bc4c2955feb40ab8c38e250c031482dc1",
+    "guides\\js\\Ultima5.js": "d76bca76df3c4de11e07a9287b1ca731e36d9be5159ba9e0400c978c4862dc75"
+  },
+  "comparisonMethod": "Actual full turn rows keyed by surface/dialogueId/turn; compare decision, rendered text, citations, links and pass status. No frozen oracle or source text changed.",
+  "currentCoverage": {
+    "status": "failed",
+    "incomplete": false,
+    "summary": {
+      "corpus": {
+        "passed": 145,
+        "failed": 1,
+        "total": 146
+      },
+      "source-first": {
+        "passed": 16,
+        "failed": 0,
+        "total": 16
+      },
+      "observed-native": {
+        "passed": 16,
+        "failed": 0,
+        "total": 16
+      },
+      "observed-fresh": {
+        "passed": 11,
+        "failed": 1,
+        "total": 12
+      },
+      "observed-independent": {
+        "passed": 8,
+        "failed": 0,
+        "total": 8
+      },
+      "semantic13": {
+        "passed": 2,
+        "failed": 0,
+        "total": 2
+      },
+      "controls": {
+        "passed": 0,
+        "failed": 0,
+        "total": 0
+      }
+    },
+    "coverage": {
+      "ultima5:corpus": {
+        "matchedDialogues": 35,
+        "expectedDialogues": 35,
+        "complete": true,
+        "missingDialogueIds": []
+      },
+      "ultima5:source-first": {
+        "matchedDialogues": 4,
+        "expectedDialogues": 4,
+        "complete": true,
+        "missingDialogueIds": []
+      },
+      "ultima5:observed-native": {
+        "matchedDialogues": 4,
+        "expectedDialogues": 4,
+        "complete": true,
+        "missingDialogueIds": []
+      },
+      "ultima5:observed-fresh": {
+        "matchedDialogues": 3,
+        "expectedDialogues": 3,
+        "complete": true,
+        "missingDialogueIds": []
+      },
+      "ultima5:observed-independent": {
+        "matchedDialogues": 2,
+        "expectedDialogues": 2,
+        "complete": true,
+        "missingDialogueIds": []
+      },
+      "ultima5:semantic13": {
+        "matchedDialogues": 1,
+        "expectedDialogues": 1,
+        "complete": true,
+        "missingDialogueIds": []
+      }
+    },
+    "boundaries": {
+      "sourceStable": true,
+      "frozenInputsMatched": true,
+      "noStorageWrites": true,
+      "noPageErrors": true,
+      "nativeMiniLMEveryProbe": true,
+      "allAdditionalControlsHeld": true
+    }
+  },
+  "vs29OctFullNative": {
+    "matchedUltima5Rows": 146,
+    "passLosses": 0,
+    "passLossKeys": [],
+    "failedToPassed": 6,
+    "failedToPassedKeys": [
+      {
+        "surface": "ultima5",
+        "dialogueId": "astaroth-flame-and-words",
+        "turn": 4
+      },
+      {
+        "surface": "ultima5",
+        "dialogueId": "cape-plans-locations",
+        "turn": 4
+      },
+      {
+        "surface": "ultima5",
+        "dialogueId": "carpet-pronoun",
+        "turn": 2
+      },
+      {
+        "surface": "ultima5",
+        "dialogueId": "party-recommendation",
+        "turn": 1
+      },
+      {
+        "surface": "ultima5",
+        "dialogueId": "party-recommendation",
+        "turn": 3
+      },
+      {
+        "surface": "ultima5",
+        "dialogueId": "spirituality-followups",
+        "turn": 4
+      }
+    ],
+    "changedWholeRows": 7,
+    "changedKeys": [
+      {
+        "surface": "ultima5",
+        "dialogueId": "astaroth-flame-and-words",
+        "turn": 4
+      },
+      {
+        "surface": "ultima5",
+        "dialogueId": "cape-plans-locations",
+        "turn": 4
+      },
+      {
+        "surface": "ultima5",
+        "dialogueId": "cape-use-vs-acquire",
+        "turn": 1
+      },
+      {
+        "surface": "ultima5",
+        "dialogueId": "carpet-pronoun",
+        "turn": 2
+      },
+      {
+        "surface": "ultima5",
+        "dialogueId": "party-recommendation",
+        "turn": 1
+      },
+      {
+        "surface": "ultima5",
+        "dialogueId": "party-recommendation",
+        "turn": 3
+      },
+      {
+        "surface": "ultima5",
+        "dialogueId": "spirituality-followups",
+        "turn": 4
+      }
+    ]
+  },
+  "vs29OctObservedFresh": {
+    "matchedUltima5Rows": 12,
+    "wholeReplyChanges": 0,
+    "changedKeys": [],
+    "interpretation": "All12 U5 observed-fresh turns have identical decision, reply, citation, links and pass state to the 29Oct observed-fresh report; the Jaana strict locator miss is pre-existing."
+  },
+  "sourceChecksForChangedReplies": [
+    {
+      "dialogueId": "party-recommendation",
+      "turn": 1,
+      "source": "guides/js/Ultima5.js :: ultima5GrandQuestChapters objective=opening-party.steps[4]",
+      "sourceLines": [
+        312
+      ],
+      "assessment": "Names Avatar, Iolo, Jaana, Julia, Gwenno and Mariah; Shamino-at-inn and Johne-for-Julia alternatives are present in the cited witness."
+    },
+    {
+      "dialogueId": "party-recommendation",
+      "turn": 3,
+      "source": "guides/js/Ultima5.js :: ultima5GrandQuestChapters objective=opening-party.steps[3]",
+      "sourceLines": [
+        311
+      ],
+      "assessment": "Gwenno in Britain and Mariah at the Lycaeum are attributed, with source-listed access alternatives."
+    },
+    {
+      "dialogueId": "cape-plans-locations",
+      "turn": 4,
+      "source": "guides/js/Ultima5.js :: ultima5GrandQuestChapters objective=opening-hms-cape.steps[3] and .outcome",
+      "sourceLines": [
+        342,
+        349
+      ],
+      "assessment": "Use the plans once on a frigate, then speed doubles relative to enemies; both claims are explicit."
+    },
+    {
+      "dialogueId": "cape-use-vs-acquire",
+      "turn": 1,
+      "source": "guides/js/Ultima5.js :: ultima5GrandQuestChapters objective=opening-hms-cape.steps[3] and .outcome",
+      "sourceLines": [
+        342,
+        349
+      ],
+      "assessment": "Same direct use and speed claims; source citations include both steps and outcome."
+    },
+    {
+      "dialogueId": "carpet-pronoun",
+      "turn": 2,
+      "source": "guides/js/Ultima5.js :: ultima5GrandQuestChapters objective=opening-castle-raid.steps[3]",
+      "sourceLines": [
+        393
+      ],
+      "assessment": "Exact supported terrain, rough-sea damage and Grapple-for-mountains qualifiers."
+    },
+    {
+      "dialogueId": "spirituality-followups",
+      "turn": 4,
+      "source": "guides/js/Ultima5.js :: ultima5GrandQuestChapters objective=shrine-spirituality.steps[1]",
+      "sourceLines": [
+        430
+      ],
+      "assessment": "Exact midnight/moongate/Ethereal Void procedure and explicit no-departure-from-Skara-Brae caveat."
+    },
+    {
+      "dialogueId": "astaroth-flame-and-words",
+      "turn": 4,
+      "source": "guides/js/Ultima5.js :: ultima5GrandQuestChapters objective=shadow-astaroth.steps[2..3]",
+      "sourceLines": [
+        460
+      ],
+      "assessment": "Exact Flame of Love positioning, shout, one-turn wait and Shard use on flame; reply explicitly refuses to verify current save state."
+    }
+  ],
+  "remainingStrictFailures": [
+    {
+      "suite": "corpus",
+      "dialogueId": "carpet-pronoun",
+      "turn": 1,
+      "classification": "source-backed complete answer with strict locator/wording mismatch, identical to baseline failure",
+      "sourceWitnesses": [
+        "guides/js/Ultima5.js :: ultima5SideQuests id=side-magic-carpet.detail (line113)",
+        "guides/js/Ultima5.js :: ultima5GrandQuestChapters objective=opening-castle-raid.steps[3] (line393)"
+      ],
+      "assessment": "The cited sideQuest detail gives carpet acquisition route, shallow water/swamp/brush/hills, mountains require Grapple, rough sea dangerous. The selected mainQuest step gives equivalent terrain and adds that rough sea damages the party. Actual answer includes all queried caveats and acquisition. Strict check requires the other exact locator and near-literal plural/phrase wording; no factual content gap found.",
+      "actualTurn": {
+        "conversation": 9,
+        "surface": "ultima5",
+        "text": "How do I use the Magic Carpet?",
+        "decision": "answer",
+        "rendered": "Bring a Skull Key from Shenstone’s stump in Minoc, climb to Lord British’s private rooftop room, unlock the magic door, and take the carpet. It crosses shallow water, swamp, brush, and hills; mountains still need the Grapple, and rough sea is dangerous.",
+        "citations": [
+          "Source: existing guide; extracted. guides/js/Ultima5.js — ultima5SideQuests id=side-magic-carpet.detail"
+        ],
+        "links": [],
+        "expected": {
+          "decision": "answer",
+          "contains": [
+            "land, water, swamps, brush, and hills",
+            "mountains still require the Grapple"
+          ],
+          "notContains": [],
+          "factIds": [
+            "carpet-terrain"
+          ],
+          "source": {
+            "file": "guides/js/Ultima5.js",
+            "locator": "ultima5GrandQuestChapters objective=opening-castle-raid.steps[3]",
+            "review": "extracted"
+          }
+        },
+        "passed": false,
+        "problems": [
+          "Missing exact fixed source citation: guides/js/Ultima5.js — ultima5GrandQuestChapters objective=opening-castle-raid.steps[3]",
+          "Missing fixed answer substring: land, water, swamps, brush, and hills",
+          "Missing fixed answer substring: mountains still require the Grapple"
+        ],
+        "answerBranchProblems": [
+          [
+            "Missing exact fixed source citation: guides/js/Ultima5.js — ultima5GrandQuestChapters objective=opening-castle-raid.steps[3]",
+            "Missing fixed answer substring: land, water, swamps, brush, and hills",
+            "Missing fixed answer substring: mountains still require the Grapple"
+          ]
+        ],
+        "gameId": "ultima5",
+        "suite": "corpus",
+        "dialogueId": "carpet-pronoun",
+        "turn": 1
+      }
+    },
+    {
+      "suite": "observed-fresh",
+      "dialogueId": "u5-mage-recruiting",
+      "turn": 2,
+      "classification": "source-backed complete answer with citation selection mismatch, unchanged from frozen observed-fresh run",
+      "sourceWitnesses": [
+        "guides/js/Ultima5.js :: companionData[2].Location (line5)",
+        "guides/js/Ultima5.js :: ultima5SideQuests id=side-jaana.detail (lines122-123)",
+        "guides/js/Ultima5.js :: ultima5GrandQuestChapters objective=opening-party.steps[1] (line309)"
+      ],
+      "assessment": "The answer identifies Yew and gives the hidden-jail / unlock / recruit route. Both side-jaana.detail and opening-party.steps[1] support that route. Frozen observed-fresh alternative answer accepts the side-jaana source; actual source citation is opening-party.steps[1]. The only failure is exact fixed source locator, not missing Yew content.",
+      "actualTurn": {
+        "conversation": 45,
+        "surface": "ultima5",
+        "text": "Where do I find her?",
+        "decision": "answer",
+        "rendered": "In Yew, enter the fireplace behind the living area, descend into the hidden jail, unlock Jaana’s cell, and ask the mage to join.",
+        "citations": [
+          "Source: existing guide; extracted. guides/js/Ultima5.js — ultima5GrandQuestChapters objective=opening-party.steps[1]"
+        ],
+        "links": [],
+        "expected": {
+          "decision": "answer",
+          "source": {
+            "file": "guides/js/Ultima5.js",
+            "locator": "companionData[2].Location",
+            "review": "extracted"
+          },
+          "contains": [
+            "Yew"
+          ],
+          "requiredUsefulClaim": "Jaana is listed in Yew.",
+          "sourceWitness": "Location: \"Yew\"",
+          "alternativeAnswers": [
+            {
+              "source": {
+                "file": "guides/js/Ultima5.js",
+                "locator": "ultima5SideQuests id=side-jaana",
+                "review": "extracted"
+              },
+              "contains": [
+                "Yew"
+              ],
+              "sourceWitness": "Enter the fireplace behind the living area, descend to the hidden jail, unlock the door, and recruit Jaana."
+            }
+          ]
+        },
+        "passed": false,
+        "problems": [
+          "Missing exact fixed source citation: guides/js/Ultima5.js — companionData[2].Location"
+        ],
+        "answerBranchProblems": [
+          [
+            "Missing exact fixed source citation: guides/js/Ultima5.js — companionData[2].Location"
+          ],
+          [
+            "Missing exact fixed source citation: guides/js/Ultima5.js — ultima5SideQuests id=side-jaana"
+          ]
+        ],
+        "gameId": "ultima5",
+        "suite": "observed-fresh",
+        "dialogueId": "u5-mage-recruiting",
+        "turn": 2
+      }
+    }
+  ],
+  "interpretation": "The 7 whole-row changes vs29Oct consist of 6 fail-to-pass gains and one additional citation/reply expansion that remains passed; zero baseline passing rows were lost. Both current U5 strict failures are useful and source-backed, and neither shows a factual response gap on whole-source review."
+}

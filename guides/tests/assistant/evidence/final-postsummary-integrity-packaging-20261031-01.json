@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "kind": "post-summary-integrity-packaging-delta",
+  "checkedAt": "2026-10-31T07:04:25.621499+00:00",
+  "head": "51b399535a87e26b60ba5a26a85a20dc7ad44d31",
+  "priorAudit": {
+    "path": "guides/tests/assistant/evidence/final-checkout-integrity-audit-20261031-01.json",
+    "sha256": "3fdc7264b1f00f3b8facaca59ad676957abe0d1b7f078fd6a010e683c586e1f6",
+    "scope": "674 original fact protected fields and embedding documents/vectors; 18 generative plus 8 MiniLM assets; original profile/head; before summary source change"
+  },
+  "priorPackaging": {
+    "path": "guides/tests/assistant/evidence/final-packaging-static-audit-20261031-01.json",
+    "sha256": "c7ea56d778e9d9cef239aeee491c41287b06154c3d8b5ee5932d6b9a764c720f"
+  },
+  "cleanExportEvidence": {
+    "path": "guides/tests/assistant/evidence/clean-source-export-postsummary-20261031-01.json",
+    "sha256": "3a883477ace2c2794d4dd709f8cd831d595bbd165b2d51853d15a744c873fb26",
+    "nodeTestsPassed": 2237,
+    "offlineRawMatches": 844
+  },
+  "codeChangesSincePriorAudit": [
+    {
+      "path": "guides/js/assistant/source-narrative-answer.js",
+      "canonicalSha256": "b001fad723696f9bcdb6f2badd4686e77153b6a2ea7ab05a240da93cd5297693"
+    },
+    {
+      "path": "guides/tests/assistant/source-summary-handoff.test.mjs",
+      "canonicalSha256": "848a4eb786f285cec7c64e5bc0064e17fc58f3a8ceb73a1618a243e522a6747a"
+    }
+  ],
+  "sourceReview": {
+    "findings": [],
+    "scope": "Selection requires a single eligible unconditional narrative with matching complete scope; composite validation checks complete engine-rendered template, claim order/text, source identity and references, plus disallows generated output and state changes. Reviewed negative tests cover extra claims, missing passages/citations, editions, unsupported restrictions and causal predicates."
+  },
+  "offline": {
+    "entries": 844,
+    "version": "b1b21e9dc8abfcf19959c0742e4f1ea8bb34062743c9746e036749513a0a0d05",
+    "manifestByteSha256": "b1b21e9dc8abfcf19959c0742e4f1ea8bb34062743c9746e036749513a0a0d05",
+    "versionMatchesManifestBytes": true,
+    "raw": 752,
+    "supported_crlf": 92,
+    "bad": []
+  },
+  "scan": {
+    "changedTracked": 24,
+    "untrackedNonIgnored": 73,
+    "textFilesScanned": 97,
+    "highConfidenceSecretPatternHits": [],
+    "relativeRuntimeImports": 61,
+    "missingRelativeImports": [],
+    "ignoredRelativeImports": []
+  },
+  "stagedDiffEmpty": true,
+  "limitations": "High-confidence pattern scan is not a comprehensive secret audit. Previous protected fact/model verification and clean-export full checks are referenced by hash; browser acceptance is separate. Git index raw bytes may change through read-only stat refresh; no staging performed."
+}

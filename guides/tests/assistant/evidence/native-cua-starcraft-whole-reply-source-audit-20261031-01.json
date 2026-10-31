@@ -1,0 +1,3020 @@
+{
+  "schemaVersion": 1,
+  "kind": "native-cua-starcraft-whole-reply-source-audit",
+  "tag": "starcraft-whole-reply-source-audit-20261031-01",
+  "createdAt": "2026-10-31",
+  "inputs": {
+    "native": {
+      "path": "knowledge-cua-native-whole-goal-final-starcraft-all-20261031-01.json",
+      "sha256": "3756533b946cd9dc1a4acec67b52dceeaa1155e535a1353596aaf0a17d89b848"
+    },
+    "baseline": {
+      "path": "knowledge-browser-terra-20261029-frozen-source-01.json",
+      "sha256": "4813cd4dbb84d7fcd83ec90c09af4bf009b8ebc6e5b34c2857ade6a196c73bfb"
+    },
+    "sourceFirstBaseline": {
+      "path": "knowledge-blind-browser-source-first-terra-frozen-source-20261029-01.json",
+      "sha256": "5ad1b493fb1a339d4b05b49528b35c6bcb797e0033bd241712f32aa25d915ec6"
+    },
+    "observedNativeBaseline": {
+      "path": "knowledge-blind-browser-observed-native-terra-20261029-01.json",
+      "sha256": "3d3ae5eec5c326f83990c90b496690a94ee3f1f698bd6e4fee60552ec5a7672e"
+    },
+    "observedFreshBaseline": {
+      "path": "knowledge-blind-browser-observed-fresh-terra-20261029-01.json",
+      "sha256": "34ddb7957dd3c1ea0cce43a029a03c2bc4c2955feb40ab8c38e250c031482dc1"
+    },
+    "observedIndependentBaseline": {
+      "path": "knowledge-blind-browser-observed-independent-terra-20261029-01.json",
+      "sha256": "4f50cc47f6a090f7c189a3e14c4ae61d229fb7f36bbe82d0815ae33a593ea812"
+    },
+    "semanticOracle": {
+      "path": "full-answer-browser-beta-20261025.json",
+      "sha256": "6c86d270c7c08937b4699a26721cbdbb9b08f394774195961dd69867b8b7c690"
+    },
+    "sourceRecords": {
+      "path": "conversation-starcraft-source-records.json",
+      "sha256": "1bbd9f286f6b59aeb6c54f50b00a3fd79884e16fddab640ea51d10c9326bde71"
+    },
+    "knowledge": "guides/data/assistant/knowledge/starcraft.json",
+    "knowledgeSha256": "97fdae345bbb25f9d3b0b32a8fcbb0a8a0c22bfbe7b4fadd8e5c0cd4c75d4261",
+    "guideHtml": "guides/StarcraftBWAPI.html",
+    "guideHtmlSha256": "ce113606ec9a58b321ea7b3bb0b6e5207ccb676477a688164aefd0790e33aaf6"
+  },
+  "currentRun": {
+    "status": "failed",
+    "incomplete": false,
+    "summary": {
+      "corpus": {
+        "passed": 108,
+        "failed": 35,
+        "total": 143
+      },
+      "source-first": {
+        "passed": 16,
+        "failed": 0,
+        "total": 16
+      },
+      "observed-native": {
+        "passed": 16,
+        "failed": 0,
+        "total": 16
+      },
+      "observed-fresh": {
+        "passed": 14,
+        "failed": 2,
+        "total": 16
+      },
+      "observed-independent": {
+        "passed": 8,
+        "failed": 0,
+        "total": 8
+      },
+      "semantic13": {
+        "passed": 0,
+        "failed": 2,
+        "total": 2
+      },
+      "controls": {
+        "passed": 0,
+        "failed": 0,
+        "total": 0
+      }
+    },
+    "coverage": {
+      "starcraft:corpus": {
+        "matchedDialogues": 35,
+        "expectedDialogues": 35,
+        "complete": true,
+        "missingDialogueIds": []
+      },
+      "starcraft:source-first": {
+        "matchedDialogues": 4,
+        "expectedDialogues": 4,
+        "complete": true,
+        "missingDialogueIds": []
+      },
+      "starcraft:observed-native": {
+        "matchedDialogues": 4,
+        "expectedDialogues": 4,
+        "complete": true,
+        "missingDialogueIds": []
+      },
+      "starcraft:observed-fresh": {
+        "matchedDialogues": 4,
+        "expectedDialogues": 4,
+        "complete": true,
+        "missingDialogueIds": []
+      },
+      "starcraft:observed-independent": {
+        "matchedDialogues": 2,
+        "expectedDialogues": 2,
+        "complete": true,
+        "missingDialogueIds": []
+      },
+      "starcraft:semantic13": {
+        "matchedDialogues": 1,
+        "expectedDialogues": 1,
+        "complete": true,
+        "missingDialogueIds": []
+      }
+    },
+    "boundaries": {
+      "sourceStable": true,
+      "frozenInputsMatched": true,
+      "noStorageWrites": true,
+      "noPageErrors": true,
+      "nativeMiniLMEveryProbe": true,
+      "allAdditionalControlsHeld": true
+    }
+  },
+  "comparisonMethod": "Compare whole turns by (surface, dialogueId, turn), including decision, rendered text, citations, links and pass state. The original frozen oracles and primary source documents are unchanged.",
+  "vs29OctFullCorpus": {
+    "matchedStarcraftRows": 143,
+    "changedWholeRows": 0,
+    "passLosses": 0,
+    "gains": 0,
+    "interpretation": "All143 StarCraft corpus rows are identical to the frozen 29Oct rows. The same35 strict failures were already present; zero pass losses and zero gains."
+  },
+  "vs29OctFocusedSuites": {
+    "source-first": {
+      "matched": 16,
+      "changedWholeReplies": 0,
+      "passLossCount": 0,
+      "gainCount": 0,
+      "passLossKeys": [],
+      "gainKeys": [],
+      "changedKeys": []
+    },
+    "observed-native": {
+      "matched": 16,
+      "changedWholeReplies": 0,
+      "passLossCount": 0,
+      "gainCount": 0,
+      "passLossKeys": [],
+      "gainKeys": [],
+      "changedKeys": []
+    },
+    "observed-fresh": {
+      "matched": 16,
+      "changedWholeReplies": 2,
+      "passLossCount": 1,
+      "gainCount": 1,
+      "passLossKeys": [
+        {
+          "dialogueId": "sc-bot-learning-resources",
+          "turn": 3
+        }
+      ],
+      "gainKeys": [
+        {
+          "dialogueId": "sc-bot-learning-resources",
+          "turn": 2
+        }
+      ],
+      "changedKeys": [
+        {
+          "dialogueId": "sc-bot-learning-resources",
+          "turn": 2
+        },
+        {
+          "dialogueId": "sc-bot-learning-resources",
+          "turn": 3
+        }
+      ]
+    },
+    "observed-independent": {
+      "matched": 8,
+      "changedWholeReplies": 0,
+      "passLossCount": 0,
+      "gainCount": 0,
+      "passLossKeys": [],
+      "gainKeys": [],
+      "changedKeys": []
+    }
+  },
+  "corpusStrictFailureAudit": {
+    "count": 35,
+    "problemShape": "All35 fail solely on missing exact expected internal locator guides/data/assistant/knowledge/starcraft.json facts[N]. Every expected factId maps to that index; every expected answer substring is present; every notContains term remains absent; each current visible citation URL matches the reviewed primary URL(s) recorded in the indexed fact. These are strict source-locator representation differences, not answer-content gaps. Full 35 original turn objects, current complete replies, citations and source witnesses are attached below.",
+    "rows": [
+      {
+        "dialogueId": "starcraft-knowledge-java",
+        "turn": 3,
+        "sourceFact": {
+          "id": "starcraft:knowledge:purplewave-java",
+          "locator": "facts[61]",
+          "text": "Outside research: PurpleWave’s reviewed README requires a 32-bit JDK 8 at runtime because it connects to 32-bit BWAPI. Do not substitute the guide’s SCHNAIL Java 21 recommendation.",
+          "source": {
+            "file": "guides/data/assistant/knowledge/starcraft.json",
+            "locator": "facts[61]",
+            "review": "external-research",
+            "references": [
+              {
+                "label": "PurpleWave runtime primary source",
+                "url": "https://github.com/dgant/PurpleWave",
+                "checkedAt": "2026-10-24"
+              }
+            ]
+          },
+          "researchWitness": {
+            "url": "https://github.com/dgant/PurpleWave",
+            "locator": "README",
+            "checkedAt": "2026-10-24",
+            "text": "32-bit JDK 8"
+          }
+        },
+        "expectedSubstringsAllPresent": true,
+        "forbiddenSubstringsAbsent": true,
+        "actualCitationMatchesReviewedPrimaryUrl": true,
+        "actualTurn": {
+          "conversation": 3,
+          "surface": "starcraft",
+          "text": "Does PurpleWave use the same Java runtime?",
+          "decision": "answer",
+          "rendered": "Not in this guide — from outside research: PurpleWave’s reviewed README requires a 32-bit JDK 8 at runtime because it connects to 32-bit BWAPI. Do not substitute the guide’s SCHNAIL Java 21 recommendation.\nPurpleWave README: https://github.com/dgant/PurpleWave",
+          "citations": [
+            "Outside research (not in this guide): PurpleWave runtime primary source — https://github.com/dgant/PurpleWave (checked 2026-10-24)."
+          ],
+          "links": [
+            "https://github.com/dgant/PurpleWave"
+          ],
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "32-bit JDK 8",
+              "32-bit BWAPI",
+              "SCHNAIL"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:purplewave-java"
+            ],
+            "source": {
+              "file": "guides/data/assistant/knowledge/starcraft.json",
+              "locator": "facts[61]"
+            }
+          },
+          "passed": false,
+          "problems": [
+            "Missing exact fixed source citation: guides/data/assistant/knowledge/starcraft.json — facts[61]"
+          ],
+          "answerBranchProblems": [
+            [
+              "Missing exact fixed source citation: guides/data/assistant/knowledge/starcraft.json — facts[61]"
+            ]
+          ],
+          "gameId": "starcraft",
+          "suite": "corpus",
+          "dialogueId": "starcraft-knowledge-java",
+          "turn": 3
+        }
+      },
+      {
+        "dialogueId": "starcraft-knowledge-map-limits",
+        "turn": 3,
+        "sourceFact": {
+          "id": "starcraft:knowledge:bwapi-1161",
+          "locator": "facts[49]",
+          "text": "Outside research: the reviewed BWAPI README quick start specifies Brood War 1.16.1. That does not certify arbitrary BWAPI binaries for Remastered.",
+          "source": {
+            "file": "guides/data/assistant/knowledge/starcraft.json",
+            "locator": "facts[49]",
+            "review": "external-research",
+            "references": [
+              {
+                "label": "BWAPI quick-start version primary source",
+                "url": "https://github.com/bwapi/bwapi",
+                "checkedAt": "2026-10-24"
+              }
+            ]
+          },
+          "researchWitness": {
+            "url": "https://github.com/bwapi/bwapi",
+            "locator": "README",
+            "checkedAt": "2026-10-24",
+            "text": "1.16.1"
+          }
+        },
+        "expectedSubstringsAllPresent": true,
+        "forbiddenSubstringsAbsent": true,
+        "actualCitationMatchesReviewedPrimaryUrl": true,
+        "actualTurn": {
+          "conversation": 19,
+          "surface": "starcraft",
+          "text": "Does BWAPI’s own developer quick start target Remastered?",
+          "decision": "answer",
+          "rendered": "Not in this guide — from outside research: the reviewed BWAPI README quick start specifies Brood War 1.16.1. That does not certify arbitrary BWAPI binaries for Remastered.\nBWAPI README quick start: https://github.com/bwapi/bwapi",
+          "citations": [
+            "Outside research (not in this guide): BWAPI quick-start version primary source — https://github.com/bwapi/bwapi (checked 2026-10-24)."
+          ],
+          "links": [
+            "https://github.com/bwapi/bwapi"
+          ],
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "1.16.1",
+              "does not certify"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:bwapi-1161"
+            ],
+            "source": {
+              "file": "guides/data/assistant/knowledge/starcraft.json",
+              "locator": "facts[49]"
+            }
+          },
+          "passed": false,
+          "problems": [
+            "Missing exact fixed source citation: guides/data/assistant/knowledge/starcraft.json — facts[49]"
+          ],
+          "answerBranchProblems": [
+            [
+              "Missing exact fixed source citation: guides/data/assistant/knowledge/starcraft.json — facts[49]"
+            ]
+          ],
+          "gameId": "starcraft",
+          "suite": "corpus",
+          "dialogueId": "starcraft-knowledge-map-limits",
+          "turn": 3
+        }
+      },
+      {
+        "dialogueId": "starcraft-knowledge-cross-tool-folders",
+        "turn": 4,
+        "sourceFact": {
+          "id": "starcraft:knowledge:steamhammer-config",
+          "locator": "facts[68]",
+          "text": "Outside research: Steamhammer’s manual binary instructions place the matching version’s JSON configuration in bwapi-data/AI and include BWAPI 4.4.0. This is distinct from extracting the Remastered map ZIP into Maps.",
+          "source": {
+            "file": "guides/data/assistant/knowledge/starcraft.json",
+            "locator": "facts[68]",
+            "review": "external-research",
+            "references": [
+              {
+                "label": "Steamhammer binary configuration primary source",
+                "url": "https://satirist.org/ai/starcraft/steamhammer/",
+                "checkedAt": "2026-10-24"
+              }
+            ]
+          },
+          "researchWitness": {
+            "url": "https://satirist.org/ai/starcraft/steamhammer/",
+            "locator": "Steamhammer overview",
+            "checkedAt": "2026-10-24",
+            "text": "BWAPI version 4.4.0"
+          }
+        },
+        "expectedSubstringsAllPresent": true,
+        "forbiddenSubstringsAbsent": true,
+        "actualCitationMatchesReviewedPrimaryUrl": true,
+        "actualTurn": {
+          "conversation": 20,
+          "surface": "starcraft",
+          "text": "Where does Steamhammer’s binary configuration go?",
+          "decision": "answer",
+          "rendered": "Not in this guide — from outside research: Steamhammer’s manual binary instructions place the matching version’s JSON configuration in bwapi-data/AI and include BWAPI 4.4.0. This is distinct from extracting the Remastered map ZIP into Maps.",
+          "citations": [
+            "Outside research (not in this guide): Steamhammer binary configuration primary source — https://satirist.org/ai/starcraft/steamhammer/ (checked 2026-10-24)."
+          ],
+          "links": [
+            "https://satirist.org/ai/starcraft/steamhammer/"
+          ],
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "bwapi-data/AI",
+              "4.4.0"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:steamhammer-config"
+            ],
+            "source": {
+              "file": "guides/data/assistant/knowledge/starcraft.json",
+              "locator": "facts[68]"
+            }
+          },
+          "passed": false,
+          "problems": [
+            "Missing exact fixed source citation: guides/data/assistant/knowledge/starcraft.json — facts[68]"
+          ],
+          "answerBranchProblems": [
+            [
+              "Missing exact fixed source citation: guides/data/assistant/knowledge/starcraft.json — facts[68]"
+            ]
+          ],
+          "gameId": "starcraft",
+          "suite": "corpus",
+          "dialogueId": "starcraft-knowledge-cross-tool-folders",
+          "turn": 4
+        }
+      },
+      {
+        "dialogueId": "starcraft-knowledge-cross-tool-folders",
+        "turn": 5,
+        "sourceFact": {
+          "id": "starcraft:knowledge:purplewave-working-folder",
+          "locator": "facts[63]",
+          "text": "Outside research: PurpleWave’s JAR instructions run from the StarCraft directory and use bwapi-data/AI, bwapi-data/read and bwapi-data/write. Its IDE configuration points to a sibling bw directory that must match the local installation.",
+          "source": {
+            "file": "guides/data/assistant/knowledge/starcraft.json",
+            "locator": "facts[63]",
+            "review": "external-research",
+            "references": [
+              {
+                "label": "PurpleWave working directory primary source",
+                "url": "https://github.com/dgant/PurpleWave",
+                "checkedAt": "2026-10-24"
+              }
+            ]
+          },
+          "researchWitness": {
+            "url": "https://github.com/dgant/PurpleWave",
+            "locator": "README",
+            "checkedAt": "2026-10-24",
+            "text": "StarCraft directory"
+          }
+        },
+        "expectedSubstringsAllPresent": true,
+        "forbiddenSubstringsAbsent": true,
+        "actualCitationMatchesReviewedPrimaryUrl": true,
+        "actualTurn": {
+          "conversation": 20,
+          "surface": "starcraft",
+          "text": "Where does PurpleWave run its JAR?",
+          "decision": "answer",
+          "rendered": "Not in this guide — from outside research: PurpleWave’s JAR instructions run from the StarCraft directory and use bwapi-data/AI, bwapi-data/read and bwapi-data/write. Its IDE configuration points to a sibling bw directory that must match the local installation.",
+          "citations": [
+            "Outside research (not in this guide): PurpleWave working directory primary source — https://github.com/dgant/PurpleWave (checked 2026-10-24)."
+          ],
+          "links": [
+            "https://github.com/dgant/PurpleWave"
+          ],
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "StarCraft directory",
+              "bwapi-data/read"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:purplewave-working-folder"
+            ],
+            "source": {
+              "file": "guides/data/assistant/knowledge/starcraft.json",
+              "locator": "facts[63]"
+            }
+          },
+          "passed": false,
+          "problems": [
+            "Missing exact fixed source citation: guides/data/assistant/knowledge/starcraft.json — facts[63]"
+          ],
+          "answerBranchProblems": [
+            [
+              "Missing exact fixed source citation: guides/data/assistant/knowledge/starcraft.json — facts[63]"
+            ]
+          ],
+          "gameId": "starcraft",
+          "suite": "corpus",
+          "dialogueId": "starcraft-knowledge-cross-tool-folders",
+          "turn": 5
+        }
+      },
+      {
+        "dialogueId": "starcraft-knowledge-documentation",
+        "turn": 3,
+        "sourceFact": {
+          "id": "starcraft:knowledge:ualberta-docs",
+          "locator": "facts[59]",
+          "text": "Outside research: UAlbertaBot’s wiki links installation, architecture, configuration, build-order and unit-production editing, combat logic, worker allocation, and pathfinding documentation.",
+          "source": {
+            "file": "guides/data/assistant/knowledge/starcraft.json",
+            "locator": "facts[59]",
+            "review": "external-research",
+            "references": [
+              {
+                "label": "UAlbertaBot wiki topics primary source",
+                "url": "https://github.com/davechurchill/ualbertabot/wiki",
+                "checkedAt": "2026-10-24"
+              }
+            ]
+          },
+          "researchWitness": {
+            "url": "https://github.com/davechurchill/ualbertabot/wiki",
+            "locator": "README",
+            "checkedAt": "2026-10-24",
+            "text": "Bot Design and Architecture"
+          }
+        },
+        "expectedSubstringsAllPresent": true,
+        "forbiddenSubstringsAbsent": true,
+        "actualCitationMatchesReviewedPrimaryUrl": true,
+        "actualTurn": {
+          "conversation": 23,
+          "surface": "starcraft",
+          "text": "Where is UAlbertaBot configuration documented?",
+          "decision": "answer",
+          "rendered": "Not in this guide — from outside research: UAlbertaBot’s wiki links installation, architecture, configuration, build-order and unit-production editing, combat logic, worker allocation, and pathfinding documentation.\nUAlbertaBot official wiki: https://github.com/davechurchill/ualbertabot/wiki",
+          "citations": [
+            "Outside research (not in this guide): UAlbertaBot wiki topics primary source — https://github.com/davechurchill/ualbertabot/wiki (checked 2026-10-24)."
+          ],
+          "links": [
+            "https://github.com/davechurchill/ualbertabot/wiki"
+          ],
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "configuration",
+              "worker allocation"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:ualberta-docs"
+            ],
+            "source": {
+              "file": "guides/data/assistant/knowledge/starcraft.json",
+              "locator": "facts[59]"
+            }
+          },
+          "passed": false,
+          "problems": [
+            "Missing exact fixed source citation: guides/data/assistant/knowledge/starcraft.json — facts[59]"
+          ],
+          "answerBranchProblems": [
+            [
+              "Missing exact fixed source citation: guides/data/assistant/knowledge/starcraft.json — facts[59]"
+            ]
+          ],
+          "gameId": "starcraft",
+          "suite": "corpus",
+          "dialogueId": "starcraft-knowledge-documentation",
+          "turn": 3
+        }
+      },
+      {
+        "dialogueId": "starcraft-knowledge-bot-examples",
+        "turn": 2,
+        "sourceFact": {
+          "id": "starcraft:knowledge:ualberta-identity",
+          "locator": "facts[53]",
+          "text": "Outside research: UAlbertaBot is David Churchill’s StarCraft AI competition bot. Its repository directs readers to the wiki for full setup documentation.",
+          "source": {
+            "file": "guides/data/assistant/knowledge/starcraft.json",
+            "locator": "facts[53]",
+            "review": "external-research",
+            "references": [
+              {
+                "label": "UAlbertaBot primary source",
+                "url": "https://github.com/davechurchill/ualbertabot",
+                "checkedAt": "2026-10-24"
+              }
+            ]
+          },
+          "researchWitness": {
+            "url": "https://github.com/davechurchill/ualbertabot",
+            "locator": "README",
+            "checkedAt": "2026-10-24",
+            "text": "StarCraft AI Competition Bot"
+          }
+        },
+        "expectedSubstringsAllPresent": true,
+        "forbiddenSubstringsAbsent": true,
+        "actualCitationMatchesReviewedPrimaryUrl": true,
+        "actualTurn": {
+          "conversation": 25,
+          "surface": "starcraft",
+          "text": "What is UAlbertaBot?",
+          "decision": "answer",
+          "rendered": "Not in this guide — from outside research: UAlbertaBot is David Churchill’s StarCraft AI competition bot. Its repository directs readers to the wiki for full setup documentation.\nUAlbertaBot repository: https://github.com/davechurchill/ualbertabot\nUAlbertaBot wiki: https://github.com/davechurchill/ualbertabot/wiki",
+          "citations": [
+            "Outside research (not in this guide): UAlbertaBot primary source — https://github.com/davechurchill/ualbertabot (checked 2026-10-24)."
+          ],
+          "links": [
+            "https://github.com/davechurchill/ualbertabot",
+            "https://github.com/davechurchill/ualbertabot/wiki"
+          ],
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "David Churchill",
+              "competition bot"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:ualberta-identity"
+            ],
+            "source": {
+              "file": "guides/data/assistant/knowledge/starcraft.json",
+              "locator": "facts[53]"
+            }
+          },
+          "passed": false,
+          "problems": [
+            "Missing exact fixed source citation: guides/data/assistant/knowledge/starcraft.json — facts[53]"
+          ],
+          "answerBranchProblems": [
+            [
+              "Missing exact fixed source citation: guides/data/assistant/knowledge/starcraft.json — facts[53]"
+            ]
+          ],
+          "gameId": "starcraft",
+          "suite": "corpus",
+          "dialogueId": "starcraft-knowledge-bot-examples",
+          "turn": 2
+        }
+      },
+      {
+        "dialogueId": "starcraft-knowledge-bot-examples",
+        "turn": 3,
+        "sourceFact": {
+          "id": "starcraft:knowledge:steamhammer-identity",
+          "locator": "facts[65]",
+          "text": "Outside research: Steamhammer is a BWAPI bot for Brood War descended from Dave Churchill’s UAlbertaBot. Its maintainer page describes it as a starter bot capable of all three races.",
+          "source": {
+            "file": "guides/data/assistant/knowledge/starcraft.json",
+            "locator": "facts[65]",
+            "review": "external-research",
+            "references": [
+              {
+                "label": "Steamhammer primary source",
+                "url": "https://satirist.org/ai/starcraft/steamhammer/",
+                "checkedAt": "2026-10-24"
+              }
+            ]
+          },
+          "researchWitness": {
+            "url": "https://satirist.org/ai/starcraft/steamhammer/",
+            "locator": "Steamhammer overview",
+            "checkedAt": "2026-10-24",
+            "text": "descended from"
+          }
+        },
+        "expectedSubstringsAllPresent": true,
+        "forbiddenSubstringsAbsent": true,
+        "actualCitationMatchesReviewedPrimaryUrl": true,
+        "actualTurn": {
+          "conversation": 25,
+          "surface": "starcraft",
+          "text": "How is Steamhammer related to it?",
+          "decision": "answer",
+          "rendered": "Not in this guide — from outside research: Steamhammer retains UAlbertaBot’s MIT open-source license. Its lineage explains the relationship without making the parent bot’s author the creator of every derivative.\nNot in this guide — from outside research: Steamhammer is a BWAPI bot for Brood War descended from Dave Churchill’s UAlbertaBot. Its maintainer page describes it as a starter bot capable of all three races.\nSteamhammer maintainer page: https://satirist.org/ai/starcraft/steamhammer/",
+          "citations": [
+            "Outside research (not in this guide): Steamhammer lineage and license primary source — https://satirist.org/ai/starcraft/steamhammer/ (checked 2026-10-24); Steamhammer primary source — https://satirist.org/ai/starcraft/steamhammer/ (checked 2026-10-24)."
+          ],
+          "links": [
+            "https://satirist.org/ai/starcraft/steamhammer/"
+          ],
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "descended",
+              "UAlbertaBot"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:steamhammer-identity"
+            ],
+            "source": {
+              "file": "guides/data/assistant/knowledge/starcraft.json",
+              "locator": "facts[65]"
+            }
+          },
+          "passed": false,
+          "problems": [
+            "Missing exact fixed source citation: guides/data/assistant/knowledge/starcraft.json — facts[65]"
+          ],
+          "answerBranchProblems": [
+            [
+              "Missing exact fixed source citation: guides/data/assistant/knowledge/starcraft.json — facts[65]"
+            ]
+          ],
+          "gameId": "starcraft",
+          "suite": "corpus",
+          "dialogueId": "starcraft-knowledge-bot-examples",
+          "turn": 3
+        }
+      },
+      {
+        "dialogueId": "starcraft-knowledge-bwapi-developer",
+        "turn": 1,
+        "sourceFact": {
+          "id": "starcraft:knowledge:bwapi-identity",
+          "locator": "facts[48]",
+          "text": "Outside research: BWAPI is a free, open-source C++ framework for creating AI agents that interact with StarCraft: Brood War. It is a programming API, not a prepackaged opponent client.",
+          "source": {
+            "file": "guides/data/assistant/knowledge/starcraft.json",
+            "locator": "facts[48]",
+            "review": "external-research",
+            "references": [
+              {
+                "label": "BWAPI primary source",
+                "url": "https://github.com/bwapi/bwapi",
+                "checkedAt": "2026-10-24"
+              }
+            ]
+          },
+          "researchWitness": {
+            "url": "https://github.com/bwapi/bwapi",
+            "locator": "README",
+            "checkedAt": "2026-10-24",
+            "text": "free and open source C++ framework"
+          }
+        },
+        "expectedSubstringsAllPresent": true,
+        "forbiddenSubstringsAbsent": true,
+        "actualCitationMatchesReviewedPrimaryUrl": true,
+        "actualTurn": {
+          "conversation": 26,
+          "surface": "starcraft",
+          "text": "What is BWAPI?",
+          "decision": "answer",
+          "rendered": "Not in this guide — from outside research: BWAPI is a free, open-source C++ framework for creating AI agents that interact with StarCraft: Brood War. It is a programming API, not a prepackaged opponent client.\nBWAPI repository: https://github.com/bwapi/bwapi",
+          "citations": [
+            "Outside research (not in this guide): BWAPI primary source — https://github.com/bwapi/bwapi (checked 2026-10-24)."
+          ],
+          "links": [
+            "https://github.com/bwapi/bwapi"
+          ],
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "C++ framework",
+              "programming API"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:bwapi-identity"
+            ],
+            "source": {
+              "file": "guides/data/assistant/knowledge/starcraft.json",
+              "locator": "facts[48]"
+            }
+          },
+          "passed": false,
+          "problems": [
+            "Missing exact fixed source citation: guides/data/assistant/knowledge/starcraft.json — facts[48]"
+          ],
+          "answerBranchProblems": [
+            [
+              "Missing exact fixed source citation: guides/data/assistant/knowledge/starcraft.json — facts[48]"
+            ]
+          ],
+          "gameId": "starcraft",
+          "suite": "corpus",
+          "dialogueId": "starcraft-knowledge-bwapi-developer",
+          "turn": 1
+        }
+      },
+      {
+        "dialogueId": "starcraft-knowledge-bwapi-developer",
+        "turn": 2,
+        "sourceFact": {
+          "id": "starcraft:knowledge:bwapi-releases",
+          "locator": "facts[52]",
+          "text": "Outside research: the BWAPI README links its GitHub Releases for developer downloads. A release asset is different from the guide’s integrated SCM map archive.",
+          "source": {
+            "file": "guides/data/assistant/knowledge/starcraft.json",
+            "locator": "facts[52]",
+            "review": "external-research",
+            "references": [
+              {
+                "label": "BWAPI releases primary source",
+                "url": "https://github.com/bwapi/bwapi",
+                "checkedAt": "2026-10-24"
+              }
+            ]
+          },
+          "researchWitness": {
+            "url": "https://github.com/bwapi/bwapi",
+            "locator": "README",
+            "checkedAt": "2026-10-24",
+            "text": "Releases"
+          }
+        },
+        "expectedSubstringsAllPresent": true,
+        "forbiddenSubstringsAbsent": true,
+        "actualCitationMatchesReviewedPrimaryUrl": true,
+        "actualTurn": {
+          "conversation": 26,
+          "surface": "starcraft",
+          "text": "Where can I get the developer release?",
+          "decision": "answer",
+          "rendered": "Not in this guide — from outside research: the BWAPI README links its GitHub Releases for developer downloads. A release asset is different from the guide’s integrated SCM map archive.\nBWAPI Releases: https://github.com/bwapi/bwapi/releases",
+          "citations": [
+            "Outside research (not in this guide): BWAPI releases primary source — https://github.com/bwapi/bwapi (checked 2026-10-24)."
+          ],
+          "links": [
+            "https://github.com/bwapi/bwapi/releases",
+            "https://github.com/bwapi/bwapi"
+          ],
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "GitHub Releases",
+              "SCM map archive"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:bwapi-releases"
+            ],
+            "source": {
+              "file": "guides/data/assistant/knowledge/starcraft.json",
+              "locator": "facts[52]"
+            }
+          },
+          "passed": false,
+          "problems": [
+            "Missing exact fixed source citation: guides/data/assistant/knowledge/starcraft.json — facts[52]"
+          ],
+          "answerBranchProblems": [
+            [
+              "Missing exact fixed source citation: guides/data/assistant/knowledge/starcraft.json — facts[52]"
+            ]
+          ],
+          "gameId": "starcraft",
+          "suite": "corpus",
+          "dialogueId": "starcraft-knowledge-bwapi-developer",
+          "turn": 2
+        }
+      },
+      {
+        "dialogueId": "starcraft-knowledge-bwapi-developer",
+        "turn": 3,
+        "sourceFact": {
+          "id": "starcraft:knowledge:bwapi-chaoslauncher",
+          "locator": "facts[50]",
+          "text": "Outside research: BWAPI’s example quick start builds a release ExampleAIModule.dll, copies it into bwapi-data/AI, then runs StarCraft through Chaoslauncher with the release injector enabled. These developer steps are separate from the SCM map setup.",
+          "source": {
+            "file": "guides/data/assistant/knowledge/starcraft.json",
+            "locator": "facts[50]",
+            "review": "external-research",
+            "references": [
+              {
+                "label": "BWAPI example launch route primary source",
+                "url": "https://github.com/bwapi/bwapi",
+                "checkedAt": "2026-10-24"
+              }
+            ]
+          },
+          "researchWitness": {
+            "url": "https://github.com/bwapi/bwapi",
+            "locator": "README",
+            "checkedAt": "2026-10-24",
+            "text": "ExampleAIModule.dll"
+          }
+        },
+        "expectedSubstringsAllPresent": true,
+        "forbiddenSubstringsAbsent": true,
+        "actualCitationMatchesReviewedPrimaryUrl": true,
+        "actualTurn": {
+          "conversation": 26,
+          "surface": "starcraft",
+          "text": "How does the developer example launch?",
+          "decision": "answer",
+          "rendered": "Not in this guide — from outside research: BWAPI’s example quick start builds a release ExampleAIModule.dll, copies it into bwapi-data/AI, then runs StarCraft through Chaoslauncher with the release injector enabled. These developer steps are separate from the SCM map setup.\nBWAPI developer quick start: https://github.com/bwapi/bwapi",
+          "citations": [
+            "Outside research (not in this guide): BWAPI example launch route primary source — https://github.com/bwapi/bwapi (checked 2026-10-24)."
+          ],
+          "links": [
+            "https://github.com/bwapi/bwapi"
+          ],
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "ExampleAIModule.dll",
+              "Chaoslauncher",
+              "release injector"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:bwapi-chaoslauncher"
+            ],
+            "source": {
+              "file": "guides/data/assistant/knowledge/starcraft.json",
+              "locator": "facts[50]"
+            }
+          },
+          "passed": false,
+          "problems": [
+            "Missing exact fixed source citation: guides/data/assistant/knowledge/starcraft.json — facts[50]"
+          ],
+          "answerBranchProblems": [
+            [
+              "Missing exact fixed source citation: guides/data/assistant/knowledge/starcraft.json — facts[50]"
+            ]
+          ],
+          "gameId": "starcraft",
+          "suite": "corpus",
+          "dialogueId": "starcraft-knowledge-bwapi-developer",
+          "turn": 3
+        }
+      },
+      {
+        "dialogueId": "starcraft-knowledge-bwapi-developer",
+        "turn": 4,
+        "sourceFact": {
+          "id": "starcraft:knowledge:bwapi-1161",
+          "locator": "facts[49]",
+          "text": "Outside research: the reviewed BWAPI README quick start specifies Brood War 1.16.1. That does not certify arbitrary BWAPI binaries for Remastered.",
+          "source": {
+            "file": "guides/data/assistant/knowledge/starcraft.json",
+            "locator": "facts[49]",
+            "review": "external-research",
+            "references": [
+              {
+                "label": "BWAPI quick-start version primary source",
+                "url": "https://github.com/bwapi/bwapi",
+                "checkedAt": "2026-10-24"
+              }
+            ]
+          },
+          "researchWitness": {
+            "url": "https://github.com/bwapi/bwapi",
+            "locator": "README",
+            "checkedAt": "2026-10-24",
+            "text": "1.16.1"
+          }
+        },
+        "expectedSubstringsAllPresent": true,
+        "forbiddenSubstringsAbsent": true,
+        "actualCitationMatchesReviewedPrimaryUrl": true,
+        "actualTurn": {
+          "conversation": 26,
+          "surface": "starcraft",
+          "text": "Which Brood War version does that quick start specify?",
+          "decision": "answer",
+          "rendered": "Not in this guide — from outside research: the reviewed BWAPI README quick start specifies Brood War 1.16.1. That does not certify arbitrary BWAPI binaries for Remastered.\nBWAPI README quick start: https://github.com/bwapi/bwapi",
+          "citations": [
+            "Outside research (not in this guide): BWAPI quick-start version primary source — https://github.com/bwapi/bwapi (checked 2026-10-24)."
+          ],
+          "links": [
+            "https://github.com/bwapi/bwapi"
+          ],
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "1.16.1"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:bwapi-1161"
+            ],
+            "source": {
+              "file": "guides/data/assistant/knowledge/starcraft.json",
+              "locator": "facts[49]"
+            }
+          },
+          "passed": false,
+          "problems": [
+            "Missing exact fixed source citation: guides/data/assistant/knowledge/starcraft.json — facts[49]"
+          ],
+          "answerBranchProblems": [
+            [
+              "Missing exact fixed source citation: guides/data/assistant/knowledge/starcraft.json — facts[49]"
+            ]
+          ],
+          "gameId": "starcraft",
+          "suite": "corpus",
+          "dialogueId": "starcraft-knowledge-bwapi-developer",
+          "turn": 4
+        }
+      },
+      {
+        "dialogueId": "starcraft-knowledge-bwapi-defaults",
+        "turn": 1,
+        "sourceFact": {
+          "id": "starcraft:knowledge:bwapi-visibility",
+          "locator": "facts[51]",
+          "text": "Outside research: BWAPI normally hides units outside visible game state and blocks human unit control; tournament modules can enforce settings. Changed defaults are announced, so this is not a guarantee that every bot uses identical restrictions.",
+          "source": {
+            "file": "guides/data/assistant/knowledge/starcraft.json",
+            "locator": "facts[51]",
+            "review": "external-research",
+            "references": [
+              {
+                "label": "BWAPI information defaults primary source",
+                "url": "https://github.com/bwapi/bwapi",
+                "checkedAt": "2026-10-24"
+              }
+            ]
+          },
+          "researchWitness": {
+            "url": "https://github.com/bwapi/bwapi",
+            "locator": "README",
+            "checkedAt": "2026-10-24",
+            "text": "visible parts"
+          }
+        },
+        "expectedSubstringsAllPresent": true,
+        "forbiddenSubstringsAbsent": true,
+        "actualCitationMatchesReviewedPrimaryUrl": true,
+        "actualTurn": {
+          "conversation": 27,
+          "surface": "starcraft",
+          "text": "Does BWAPI let bots see units outside visible state by default?",
+          "decision": "answer",
+          "rendered": "Not in this guide — from outside research: BWAPI normally hides units outside visible game state and blocks human unit control; tournament modules can enforce settings. Changed defaults are announced, so this is not a guarantee that every bot uses identical restrictions.",
+          "citations": [
+            "Outside research (not in this guide): BWAPI information defaults primary source — https://github.com/bwapi/bwapi (checked 2026-10-24)."
+          ],
+          "links": [
+            "https://github.com/bwapi/bwapi"
+          ],
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "normally hides",
+              "Changed defaults"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:bwapi-visibility"
+            ],
+            "source": {
+              "file": "guides/data/assistant/knowledge/starcraft.json",
+              "locator": "facts[51]"
+            }
+          },
+          "passed": false,
+          "problems": [
+            "Missing exact fixed source citation: guides/data/assistant/knowledge/starcraft.json — facts[51]"
+          ],
+          "answerBranchProblems": [
+            [
+              "Missing exact fixed source citation: guides/data/assistant/knowledge/starcraft.json — facts[51]"
+            ]
+          ],
+          "gameId": "starcraft",
+          "suite": "corpus",
+          "dialogueId": "starcraft-knowledge-bwapi-defaults",
+          "turn": 1
+        }
+      },
+      {
+        "dialogueId": "starcraft-knowledge-bwapi-defaults",
+        "turn": 2,
+        "sourceFact": {
+          "id": "starcraft:knowledge:bwapi-visibility",
+          "locator": "facts[51]",
+          "text": "Outside research: BWAPI normally hides units outside visible game state and blocks human unit control; tournament modules can enforce settings. Changed defaults are announced, so this is not a guarantee that every bot uses identical restrictions.",
+          "source": {
+            "file": "guides/data/assistant/knowledge/starcraft.json",
+            "locator": "facts[51]",
+            "review": "external-research",
+            "references": [
+              {
+                "label": "BWAPI information defaults primary source",
+                "url": "https://github.com/bwapi/bwapi",
+                "checkedAt": "2026-10-24"
+              }
+            ]
+          },
+          "researchWitness": {
+            "url": "https://github.com/bwapi/bwapi",
+            "locator": "README",
+            "checkedAt": "2026-10-24",
+            "text": "visible parts"
+          }
+        },
+        "expectedSubstringsAllPresent": true,
+        "forbiddenSubstringsAbsent": true,
+        "actualCitationMatchesReviewedPrimaryUrl": true,
+        "actualTurn": {
+          "conversation": 27,
+          "surface": "starcraft",
+          "text": "Can those defaults be changed?",
+          "decision": "answer",
+          "rendered": "Not in this guide — from outside research: BWAPI normally hides units outside visible game state and blocks human unit control; tournament modules can enforce settings. Changed defaults are announced, so this is not a guarantee that every bot uses identical restrictions.",
+          "citations": [
+            "Outside research (not in this guide): BWAPI information defaults primary source — https://github.com/bwapi/bwapi (checked 2026-10-24)."
+          ],
+          "links": [
+            "https://github.com/bwapi/bwapi"
+          ],
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Changed defaults",
+              "not a guarantee"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:bwapi-visibility"
+            ],
+            "source": {
+              "file": "guides/data/assistant/knowledge/starcraft.json",
+              "locator": "facts[51]"
+            }
+          },
+          "passed": false,
+          "problems": [
+            "Missing exact fixed source citation: guides/data/assistant/knowledge/starcraft.json — facts[51]"
+          ],
+          "answerBranchProblems": [
+            [
+              "Missing exact fixed source citation: guides/data/assistant/knowledge/starcraft.json — facts[51]"
+            ]
+          ],
+          "gameId": "starcraft",
+          "suite": "corpus",
+          "dialogueId": "starcraft-knowledge-bwapi-defaults",
+          "turn": 2
+        }
+      },
+      {
+        "dialogueId": "starcraft-knowledge-bwapi-defaults",
+        "turn": 3,
+        "sourceFact": {
+          "id": "starcraft:knowledge:bwapi-identity",
+          "locator": "facts[48]",
+          "text": "Outside research: BWAPI is a free, open-source C++ framework for creating AI agents that interact with StarCraft: Brood War. It is a programming API, not a prepackaged opponent client.",
+          "source": {
+            "file": "guides/data/assistant/knowledge/starcraft.json",
+            "locator": "facts[48]",
+            "review": "external-research",
+            "references": [
+              {
+                "label": "BWAPI primary source",
+                "url": "https://github.com/bwapi/bwapi",
+                "checkedAt": "2026-10-24"
+              }
+            ]
+          },
+          "researchWitness": {
+            "url": "https://github.com/bwapi/bwapi",
+            "locator": "README",
+            "checkedAt": "2026-10-24",
+            "text": "free and open source C++ framework"
+          }
+        },
+        "expectedSubstringsAllPresent": true,
+        "forbiddenSubstringsAbsent": true,
+        "actualCitationMatchesReviewedPrimaryUrl": true,
+        "actualTurn": {
+          "conversation": 27,
+          "surface": "starcraft",
+          "text": "Is the API itself a packaged opponent client?",
+          "decision": "answer",
+          "rendered": "Not in this guide — from outside research: BWAPI is a free, open-source C++ framework for creating AI agents that interact with StarCraft: Brood War. It is a programming API, not a prepackaged opponent client.\nBWAPI repository: https://github.com/bwapi/bwapi",
+          "citations": [
+            "Outside research (not in this guide): BWAPI primary source — https://github.com/bwapi/bwapi (checked 2026-10-24)."
+          ],
+          "links": [
+            "https://github.com/bwapi/bwapi"
+          ],
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "programming API",
+              "not a prepackaged opponent"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:bwapi-identity"
+            ],
+            "source": {
+              "file": "guides/data/assistant/knowledge/starcraft.json",
+              "locator": "facts[48]"
+            }
+          },
+          "passed": false,
+          "problems": [
+            "Missing exact fixed source citation: guides/data/assistant/knowledge/starcraft.json — facts[48]"
+          ],
+          "answerBranchProblems": [
+            [
+              "Missing exact fixed source citation: guides/data/assistant/knowledge/starcraft.json — facts[48]"
+            ]
+          ],
+          "gameId": "starcraft",
+          "suite": "corpus",
+          "dialogueId": "starcraft-knowledge-bwapi-defaults",
+          "turn": 3
+        }
+      },
+      {
+        "dialogueId": "starcraft-knowledge-ualberta-authorship",
+        "turn": 1,
+        "sourceFact": {
+          "id": "starcraft:knowledge:ualberta-creator",
+          "locator": "facts[54]",
+          "text": "Outside research: UAlbertaBot’s README and official wiki identify David Churchill. The guide additionally credits Steve Gelly; the reviewed primary pages do not establish that additional attribution.",
+          "source": {
+            "file": "guides/data/assistant/knowledge/starcraft.json",
+            "locator": "facts[54]",
+            "review": "external-research",
+            "references": [
+              {
+                "label": "UAlbertaBot authorship primary source",
+                "url": "https://github.com/davechurchill/ualbertabot",
+                "checkedAt": "2026-10-24"
+              },
+              {
+                "label": "UAlbertaBot official wiki",
+                "url": "https://github.com/davechurchill/ualbertabot/wiki",
+                "checkedAt": "2026-10-24"
+              }
+            ]
+          },
+          "researchWitness": {
+            "url": "https://github.com/davechurchill/ualbertabot",
+            "locator": "README",
+            "checkedAt": "2026-10-24",
+            "text": "David Churchill"
+          }
+        },
+        "expectedSubstringsAllPresent": true,
+        "forbiddenSubstringsAbsent": true,
+        "actualCitationMatchesReviewedPrimaryUrl": true,
+        "actualTurn": {
+          "conversation": 28,
+          "surface": "starcraft",
+          "text": "Who wrote UAlbertaBot?",
+          "decision": "answer",
+          "rendered": "Not in this guide — from outside research: UAlbertaBot’s README and official wiki identify David Churchill. The guide additionally credits Steve Gelly; the reviewed primary pages do not establish that additional attribution.\nUAlbertaBot README: https://github.com/davechurchill/ualbertabot\nUAlbertaBot wiki: https://github.com/davechurchill/ualbertabot/wiki",
+          "citations": [
+            "Outside research (not in this guide): UAlbertaBot authorship primary source — https://github.com/davechurchill/ualbertabot (checked 2026-10-24); UAlbertaBot official wiki — https://github.com/davechurchill/ualbertabot/wiki (checked 2026-10-24)."
+          ],
+          "links": [
+            "https://github.com/davechurchill/ualbertabot",
+            "https://github.com/davechurchill/ualbertabot/wiki"
+          ],
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "David Churchill",
+              "Steve Gelly",
+              "do not establish"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:ualberta-creator"
+            ],
+            "source": {
+              "file": "guides/data/assistant/knowledge/starcraft.json",
+              "locator": "facts[54]"
+            }
+          },
+          "passed": false,
+          "problems": [
+            "Missing exact fixed source citation: guides/data/assistant/knowledge/starcraft.json — facts[54]"
+          ],
+          "answerBranchProblems": [
+            [
+              "Missing exact fixed source citation: guides/data/assistant/knowledge/starcraft.json — facts[54]"
+            ]
+          ],
+          "gameId": "starcraft",
+          "suite": "corpus",
+          "dialogueId": "starcraft-knowledge-ualberta-authorship",
+          "turn": 1
+        }
+      },
+      {
+        "dialogueId": "starcraft-knowledge-ualberta-authorship",
+        "turn": 2,
+        "sourceFact": {
+          "id": "starcraft:knowledge:ualberta-maintenance",
+          "locator": "facts[57]",
+          "text": "Outside research: the repository README states UAlbertaBot has not been actively maintained since early 2021. Use its documented historical instructions rather than assuming current toolchain support.",
+          "source": {
+            "file": "guides/data/assistant/knowledge/starcraft.json",
+            "locator": "facts[57]",
+            "review": "external-research",
+            "references": [
+              {
+                "label": "UAlbertaBot maintenance notice primary source",
+                "url": "https://github.com/davechurchill/ualbertabot",
+                "checkedAt": "2026-10-24"
+              }
+            ]
+          },
+          "researchWitness": {
+            "url": "https://github.com/davechurchill/ualbertabot",
+            "locator": "README",
+            "checkedAt": "2026-10-24",
+            "text": "not being actively maintained"
+          }
+        },
+        "expectedSubstringsAllPresent": true,
+        "forbiddenSubstringsAbsent": true,
+        "actualCitationMatchesReviewedPrimaryUrl": true,
+        "actualTurn": {
+          "conversation": 28,
+          "surface": "starcraft",
+          "text": "Is it actively maintained?",
+          "decision": "answer",
+          "rendered": "Not in this guide — from outside research: the repository README states UAlbertaBot has not been actively maintained since early 2021. Use its documented historical instructions rather than assuming current toolchain support.",
+          "citations": [
+            "Outside research (not in this guide): UAlbertaBot maintenance notice primary source — https://github.com/davechurchill/ualbertabot (checked 2026-10-24)."
+          ],
+          "links": [
+            "https://github.com/davechurchill/ualbertabot"
+          ],
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "not been actively maintained since early 2021"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:ualberta-maintenance"
+            ],
+            "source": {
+              "file": "guides/data/assistant/knowledge/starcraft.json",
+              "locator": "facts[57]"
+            }
+          },
+          "passed": false,
+          "problems": [
+            "Missing exact fixed source citation: guides/data/assistant/knowledge/starcraft.json — facts[57]"
+          ],
+          "answerBranchProblems": [
+            [
+              "Missing exact fixed source citation: guides/data/assistant/knowledge/starcraft.json — facts[57]"
+            ]
+          ],
+          "gameId": "starcraft",
+          "suite": "corpus",
+          "dialogueId": "starcraft-knowledge-ualberta-authorship",
+          "turn": 2
+        }
+      },
+      {
+        "dialogueId": "starcraft-knowledge-ualberta-authorship",
+        "turn": 3,
+        "sourceFact": {
+          "id": "starcraft:knowledge:ualberta-docs",
+          "locator": "facts[59]",
+          "text": "Outside research: UAlbertaBot’s wiki links installation, architecture, configuration, build-order and unit-production editing, combat logic, worker allocation, and pathfinding documentation.",
+          "source": {
+            "file": "guides/data/assistant/knowledge/starcraft.json",
+            "locator": "facts[59]",
+            "review": "external-research",
+            "references": [
+              {
+                "label": "UAlbertaBot wiki topics primary source",
+                "url": "https://github.com/davechurchill/ualbertabot/wiki",
+                "checkedAt": "2026-10-24"
+              }
+            ]
+          },
+          "researchWitness": {
+            "url": "https://github.com/davechurchill/ualbertabot/wiki",
+            "locator": "README",
+            "checkedAt": "2026-10-24",
+            "text": "Bot Design and Architecture"
+          }
+        },
+        "expectedSubstringsAllPresent": true,
+        "forbiddenSubstringsAbsent": true,
+        "actualCitationMatchesReviewedPrimaryUrl": true,
+        "actualTurn": {
+          "conversation": 28,
+          "surface": "starcraft",
+          "text": "Where can I read its architecture documentation?",
+          "decision": "answer",
+          "rendered": "Not in this guide — from outside research: UAlbertaBot’s wiki links installation, architecture, configuration, build-order and unit-production editing, combat logic, worker allocation, and pathfinding documentation.\nUAlbertaBot official wiki: https://github.com/davechurchill/ualbertabot/wiki",
+          "citations": [
+            "Outside research (not in this guide): UAlbertaBot wiki topics primary source — https://github.com/davechurchill/ualbertabot/wiki (checked 2026-10-24)."
+          ],
+          "links": [
+            "https://github.com/davechurchill/ualbertabot/wiki"
+          ],
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "architecture",
+              "configuration"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:ualberta-docs"
+            ],
+            "source": {
+              "file": "guides/data/assistant/knowledge/starcraft.json",
+              "locator": "facts[59]"
+            }
+          },
+          "passed": false,
+          "problems": [
+            "Missing exact fixed source citation: guides/data/assistant/knowledge/starcraft.json — facts[59]"
+          ],
+          "answerBranchProblems": [
+            [
+              "Missing exact fixed source citation: guides/data/assistant/knowledge/starcraft.json — facts[59]"
+            ]
+          ],
+          "gameId": "starcraft",
+          "suite": "corpus",
+          "dialogueId": "starcraft-knowledge-ualberta-authorship",
+          "turn": 3
+        }
+      },
+      {
+        "dialogueId": "starcraft-knowledge-ualberta-runtime",
+        "turn": 1,
+        "sourceFact": {
+          "id": "starcraft:knowledge:ualberta-version",
+          "locator": "facts[55]",
+          "text": "Outside research: the README’s 2020 update documents VS2019 and BWAPI 4.4.0, including rebuilding BWAPI.lib and BWAPIClient.lib for that toolchain.",
+          "source": {
+            "file": "guides/data/assistant/knowledge/starcraft.json",
+            "locator": "facts[55]",
+            "review": "external-research",
+            "references": [
+              {
+                "label": "UAlbertaBot development versions primary source",
+                "url": "https://github.com/davechurchill/ualbertabot",
+                "checkedAt": "2026-10-24"
+              }
+            ]
+          },
+          "researchWitness": {
+            "url": "https://github.com/davechurchill/ualbertabot",
+            "locator": "README",
+            "checkedAt": "2026-10-24",
+            "text": "BWAPI 4.4.0"
+          }
+        },
+        "expectedSubstringsAllPresent": true,
+        "forbiddenSubstringsAbsent": true,
+        "actualCitationMatchesReviewedPrimaryUrl": true,
+        "actualTurn": {
+          "conversation": 29,
+          "surface": "starcraft",
+          "text": "Which developer versions does UAlbertaBot document?",
+          "decision": "answer",
+          "rendered": "Not in this guide — from outside research: the README’s 2020 update documents VS2019 and BWAPI 4.4.0, including rebuilding BWAPI.lib and BWAPIClient.lib for that toolchain.\nUAlbertaBot README: https://github.com/davechurchill/ualbertabot",
+          "citations": [
+            "Outside research (not in this guide): UAlbertaBot development versions primary source — https://github.com/davechurchill/ualbertabot (checked 2026-10-24)."
+          ],
+          "links": [
+            "https://github.com/davechurchill/ualbertabot"
+          ],
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "VS2019",
+              "BWAPI 4.4.0"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:ualberta-version"
+            ],
+            "source": {
+              "file": "guides/data/assistant/knowledge/starcraft.json",
+              "locator": "facts[55]"
+            }
+          },
+          "passed": false,
+          "problems": [
+            "Missing exact fixed source citation: guides/data/assistant/knowledge/starcraft.json — facts[55]"
+          ],
+          "answerBranchProblems": [
+            [
+              "Missing exact fixed source citation: guides/data/assistant/knowledge/starcraft.json — facts[55]"
+            ]
+          ],
+          "gameId": "starcraft",
+          "suite": "corpus",
+          "dialogueId": "starcraft-knowledge-ualberta-runtime",
+          "turn": 1
+        }
+      },
+      {
+        "dialogueId": "starcraft-knowledge-ualberta-runtime",
+        "turn": 2,
+        "sourceFact": {
+          "id": "starcraft:knowledge:ualberta-client",
+          "locator": "facts[56]",
+          "text": "Outside research: UAlbertaBot’s README uses a client EXE instead of a module DLL and warns that the bot works only for the first game after starting that EXE, limiting AUTO_RESTART.",
+          "source": {
+            "file": "guides/data/assistant/knowledge/starcraft.json",
+            "locator": "facts[56]",
+            "review": "external-research",
+            "references": [
+              {
+                "label": "UAlbertaBot executable mode primary source",
+                "url": "https://github.com/davechurchill/ualbertabot",
+                "checkedAt": "2026-10-24"
+              }
+            ]
+          },
+          "researchWitness": {
+            "url": "https://github.com/davechurchill/ualbertabot",
+            "locator": "README",
+            "checkedAt": "2026-10-24",
+            "text": "Client .exe compilation method"
+          }
+        },
+        "expectedSubstringsAllPresent": true,
+        "forbiddenSubstringsAbsent": true,
+        "actualCitationMatchesReviewedPrimaryUrl": true,
+        "actualTurn": {
+          "conversation": 29,
+          "surface": "starcraft",
+          "text": "Does it use a module DLL or a client executable?",
+          "decision": "answer",
+          "rendered": "Not in this guide — from outside research: UAlbertaBot’s README uses a client EXE instead of a module DLL and warns that the bot works only for the first game after starting that EXE, limiting AUTO_RESTART.",
+          "citations": [
+            "Outside research (not in this guide): UAlbertaBot executable mode primary source — https://github.com/davechurchill/ualbertabot (checked 2026-10-24)."
+          ],
+          "links": [
+            "https://github.com/davechurchill/ualbertabot"
+          ],
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "client EXE",
+              "instead of a module DLL"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:ualberta-client"
+            ],
+            "source": {
+              "file": "guides/data/assistant/knowledge/starcraft.json",
+              "locator": "facts[56]"
+            }
+          },
+          "passed": false,
+          "problems": [
+            "Missing exact fixed source citation: guides/data/assistant/knowledge/starcraft.json — facts[56]"
+          ],
+          "answerBranchProblems": [
+            [
+              "Missing exact fixed source citation: guides/data/assistant/knowledge/starcraft.json — facts[56]"
+            ]
+          ],
+          "gameId": "starcraft",
+          "suite": "corpus",
+          "dialogueId": "starcraft-knowledge-ualberta-runtime",
+          "turn": 2
+        }
+      },
+      {
+        "dialogueId": "starcraft-knowledge-ualberta-runtime",
+        "turn": 3,
+        "sourceFact": {
+          "id": "starcraft:knowledge:ualberta-client",
+          "locator": "facts[56]",
+          "text": "Outside research: UAlbertaBot’s README uses a client EXE instead of a module DLL and warns that the bot works only for the first game after starting that EXE, limiting AUTO_RESTART.",
+          "source": {
+            "file": "guides/data/assistant/knowledge/starcraft.json",
+            "locator": "facts[56]",
+            "review": "external-research",
+            "references": [
+              {
+                "label": "UAlbertaBot executable mode primary source",
+                "url": "https://github.com/davechurchill/ualbertabot",
+                "checkedAt": "2026-10-24"
+              }
+            ]
+          },
+          "researchWitness": {
+            "url": "https://github.com/davechurchill/ualbertabot",
+            "locator": "README",
+            "checkedAt": "2026-10-24",
+            "text": "Client .exe compilation method"
+          }
+        },
+        "expectedSubstringsAllPresent": true,
+        "forbiddenSubstringsAbsent": true,
+        "actualCitationMatchesReviewedPrimaryUrl": true,
+        "actualTurn": {
+          "conversation": 29,
+          "surface": "starcraft",
+          "text": "Why might its AUTO_RESTART fail after a game?",
+          "decision": "answer",
+          "rendered": "Not in this guide — from outside research: UAlbertaBot’s README uses a client EXE instead of a module DLL and warns that the bot works only for the first game after starting that EXE, limiting AUTO_RESTART.",
+          "citations": [
+            "Outside research (not in this guide): UAlbertaBot executable mode primary source — https://github.com/davechurchill/ualbertabot (checked 2026-10-24)."
+          ],
+          "links": [
+            "https://github.com/davechurchill/ualbertabot"
+          ],
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "first game",
+              "AUTO_RESTART"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:ualberta-client"
+            ],
+            "source": {
+              "file": "guides/data/assistant/knowledge/starcraft.json",
+              "locator": "facts[56]"
+            }
+          },
+          "passed": false,
+          "problems": [
+            "Missing exact fixed source citation: guides/data/assistant/knowledge/starcraft.json — facts[56]"
+          ],
+          "answerBranchProblems": [
+            [
+              "Missing exact fixed source citation: guides/data/assistant/knowledge/starcraft.json — facts[56]"
+            ]
+          ],
+          "gameId": "starcraft",
+          "suite": "corpus",
+          "dialogueId": "starcraft-knowledge-ualberta-runtime",
+          "turn": 3
+        }
+      },
+      {
+        "dialogueId": "starcraft-knowledge-ualberta-components",
+        "turn": 1,
+        "sourceFact": {
+          "id": "starcraft:knowledge:ualberta-components",
+          "locator": "facts[58]",
+          "text": "Outside research: the official wiki describes SparCraft as its combat simulator and BOSS as its build-order search and simulation system. These are component relationships, not separate SCHNAIL installation requirements.",
+          "source": {
+            "file": "guides/data/assistant/knowledge/starcraft.json",
+            "locator": "facts[58]",
+            "review": "external-research",
+            "references": [
+              {
+                "label": "UAlbertaBot AI components primary source",
+                "url": "https://github.com/davechurchill/ualbertabot/wiki",
+                "checkedAt": "2026-10-24"
+              }
+            ]
+          },
+          "researchWitness": {
+            "url": "https://github.com/davechurchill/ualbertabot/wiki",
+            "locator": "README",
+            "checkedAt": "2026-10-24",
+            "text": "combat simulation"
+          }
+        },
+        "expectedSubstringsAllPresent": true,
+        "forbiddenSubstringsAbsent": true,
+        "actualCitationMatchesReviewedPrimaryUrl": true,
+        "actualTurn": {
+          "conversation": 30,
+          "surface": "starcraft",
+          "text": "What does UAlbertaBot use for combat simulation?",
+          "decision": "answer",
+          "rendered": "Not in this guide — from outside research: the official wiki describes SparCraft as its combat simulator and BOSS as its build-order search and simulation system. These are component relationships, not separate SCHNAIL installation requirements.\nUAlbertaBot wiki: https://github.com/davechurchill/ualbertabot/wiki",
+          "citations": [
+            "Outside research (not in this guide): UAlbertaBot AI components primary source — https://github.com/davechurchill/ualbertabot/wiki (checked 2026-10-24)."
+          ],
+          "links": [
+            "https://github.com/davechurchill/ualbertabot/wiki"
+          ],
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "SparCraft",
+              "combat simulator"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:ualberta-components"
+            ],
+            "source": {
+              "file": "guides/data/assistant/knowledge/starcraft.json",
+              "locator": "facts[58]"
+            }
+          },
+          "passed": false,
+          "problems": [
+            "Missing exact fixed source citation: guides/data/assistant/knowledge/starcraft.json — facts[58]"
+          ],
+          "answerBranchProblems": [
+            [
+              "Missing exact fixed source citation: guides/data/assistant/knowledge/starcraft.json — facts[58]"
+            ]
+          ],
+          "gameId": "starcraft",
+          "suite": "corpus",
+          "dialogueId": "starcraft-knowledge-ualberta-components",
+          "turn": 1
+        }
+      },
+      {
+        "dialogueId": "starcraft-knowledge-ualberta-components",
+        "turn": 2,
+        "sourceFact": {
+          "id": "starcraft:knowledge:ualberta-components",
+          "locator": "facts[58]",
+          "text": "Outside research: the official wiki describes SparCraft as its combat simulator and BOSS as its build-order search and simulation system. These are component relationships, not separate SCHNAIL installation requirements.",
+          "source": {
+            "file": "guides/data/assistant/knowledge/starcraft.json",
+            "locator": "facts[58]",
+            "review": "external-research",
+            "references": [
+              {
+                "label": "UAlbertaBot AI components primary source",
+                "url": "https://github.com/davechurchill/ualbertabot/wiki",
+                "checkedAt": "2026-10-24"
+              }
+            ]
+          },
+          "researchWitness": {
+            "url": "https://github.com/davechurchill/ualbertabot/wiki",
+            "locator": "README",
+            "checkedAt": "2026-10-24",
+            "text": "combat simulation"
+          }
+        },
+        "expectedSubstringsAllPresent": true,
+        "forbiddenSubstringsAbsent": true,
+        "actualCitationMatchesReviewedPrimaryUrl": true,
+        "actualTurn": {
+          "conversation": 30,
+          "surface": "starcraft",
+          "text": "What plans its build orders?",
+          "decision": "answer",
+          "rendered": "Not in this guide — from outside research: the official wiki describes SparCraft as its combat simulator and BOSS as its build-order search and simulation system. These are component relationships, not separate SCHNAIL installation requirements.\nUAlbertaBot wiki: https://github.com/davechurchill/ualbertabot/wiki",
+          "citations": [
+            "Outside research (not in this guide): UAlbertaBot AI components primary source — https://github.com/davechurchill/ualbertabot/wiki (checked 2026-10-24)."
+          ],
+          "links": [
+            "https://github.com/davechurchill/ualbertabot/wiki"
+          ],
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "BOSS",
+              "build-order search"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:ualberta-components"
+            ],
+            "source": {
+              "file": "guides/data/assistant/knowledge/starcraft.json",
+              "locator": "facts[58]"
+            }
+          },
+          "passed": false,
+          "problems": [
+            "Missing exact fixed source citation: guides/data/assistant/knowledge/starcraft.json — facts[58]"
+          ],
+          "answerBranchProblems": [
+            [
+              "Missing exact fixed source citation: guides/data/assistant/knowledge/starcraft.json — facts[58]"
+            ]
+          ],
+          "gameId": "starcraft",
+          "suite": "corpus",
+          "dialogueId": "starcraft-knowledge-ualberta-components",
+          "turn": 2
+        }
+      },
+      {
+        "dialogueId": "starcraft-knowledge-ualberta-components",
+        "turn": 3,
+        "sourceFact": {
+          "id": "starcraft:knowledge:ualberta-docs",
+          "locator": "facts[59]",
+          "text": "Outside research: UAlbertaBot’s wiki links installation, architecture, configuration, build-order and unit-production editing, combat logic, worker allocation, and pathfinding documentation.",
+          "source": {
+            "file": "guides/data/assistant/knowledge/starcraft.json",
+            "locator": "facts[59]",
+            "review": "external-research",
+            "references": [
+              {
+                "label": "UAlbertaBot wiki topics primary source",
+                "url": "https://github.com/davechurchill/ualbertabot/wiki",
+                "checkedAt": "2026-10-24"
+              }
+            ]
+          },
+          "researchWitness": {
+            "url": "https://github.com/davechurchill/ualbertabot/wiki",
+            "locator": "README",
+            "checkedAt": "2026-10-24",
+            "text": "Bot Design and Architecture"
+          }
+        },
+        "expectedSubstringsAllPresent": true,
+        "forbiddenSubstringsAbsent": true,
+        "actualCitationMatchesReviewedPrimaryUrl": true,
+        "actualTurn": {
+          "conversation": 30,
+          "surface": "starcraft",
+          "text": "Where can I find worker allocation and pathfinding docs?",
+          "decision": "answer",
+          "rendered": "Not in this guide — from outside research: UAlbertaBot’s wiki links installation, architecture, configuration, build-order and unit-production editing, combat logic, worker allocation, and pathfinding documentation.\nUAlbertaBot official wiki: https://github.com/davechurchill/ualbertabot/wiki",
+          "citations": [
+            "Outside research (not in this guide): UAlbertaBot wiki topics primary source — https://github.com/davechurchill/ualbertabot/wiki (checked 2026-10-24)."
+          ],
+          "links": [
+            "https://github.com/davechurchill/ualbertabot/wiki"
+          ],
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "worker allocation",
+              "pathfinding"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:ualberta-docs"
+            ],
+            "source": {
+              "file": "guides/data/assistant/knowledge/starcraft.json",
+              "locator": "facts[59]"
+            }
+          },
+          "passed": false,
+          "problems": [
+            "Missing exact fixed source citation: guides/data/assistant/knowledge/starcraft.json — facts[59]"
+          ],
+          "answerBranchProblems": [
+            [
+              "Missing exact fixed source citation: guides/data/assistant/knowledge/starcraft.json — facts[59]"
+            ]
+          ],
+          "gameId": "starcraft",
+          "suite": "corpus",
+          "dialogueId": "starcraft-knowledge-ualberta-components",
+          "turn": 3
+        }
+      },
+      {
+        "dialogueId": "starcraft-knowledge-purplewave-runtime",
+        "turn": 1,
+        "sourceFact": {
+          "id": "starcraft:knowledge:purplewave-identity",
+          "locator": "facts[60]",
+          "text": "Outside research: PurpleWave is a Scala AI bot for Brood War that can play all three races. It is a separately documented bot, not the guide’s integrated Remastered map.",
+          "source": {
+            "file": "guides/data/assistant/knowledge/starcraft.json",
+            "locator": "facts[60]",
+            "review": "external-research",
+            "references": [
+              {
+                "label": "PurpleWave primary source",
+                "url": "https://github.com/dgant/PurpleWave",
+                "checkedAt": "2026-10-24"
+              }
+            ]
+          },
+          "researchWitness": {
+            "url": "https://github.com/dgant/PurpleWave",
+            "locator": "README",
+            "checkedAt": "2026-10-24",
+            "text": "written in Scala"
+          }
+        },
+        "expectedSubstringsAllPresent": true,
+        "forbiddenSubstringsAbsent": true,
+        "actualCitationMatchesReviewedPrimaryUrl": true,
+        "actualTurn": {
+          "conversation": 31,
+          "surface": "starcraft",
+          "text": "What is PurpleWave?",
+          "decision": "answer",
+          "rendered": "Not in this guide — from outside research: PurpleWave is a Scala AI bot for Brood War that can play all three races. It is a separately documented bot, not the guide’s integrated Remastered map.\nPurpleWave repository: https://github.com/dgant/PurpleWave",
+          "citations": [
+            "Outside research (not in this guide): PurpleWave primary source — https://github.com/dgant/PurpleWave (checked 2026-10-24)."
+          ],
+          "links": [
+            "https://github.com/dgant/PurpleWave"
+          ],
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Scala",
+              "all three races"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:purplewave-identity"
+            ],
+            "source": {
+              "file": "guides/data/assistant/knowledge/starcraft.json",
+              "locator": "facts[60]"
+            }
+          },
+          "passed": false,
+          "problems": [
+            "Missing exact fixed source citation: guides/data/assistant/knowledge/starcraft.json — facts[60]"
+          ],
+          "answerBranchProblems": [
+            [
+              "Missing exact fixed source citation: guides/data/assistant/knowledge/starcraft.json — facts[60]"
+            ]
+          ],
+          "gameId": "starcraft",
+          "suite": "corpus",
+          "dialogueId": "starcraft-knowledge-purplewave-runtime",
+          "turn": 1
+        }
+      },
+      {
+        "dialogueId": "starcraft-knowledge-purplewave-runtime",
+        "turn": 2,
+        "sourceFact": {
+          "id": "starcraft:knowledge:purplewave-java",
+          "locator": "facts[61]",
+          "text": "Outside research: PurpleWave’s reviewed README requires a 32-bit JDK 8 at runtime because it connects to 32-bit BWAPI. Do not substitute the guide’s SCHNAIL Java 21 recommendation.",
+          "source": {
+            "file": "guides/data/assistant/knowledge/starcraft.json",
+            "locator": "facts[61]",
+            "review": "external-research",
+            "references": [
+              {
+                "label": "PurpleWave runtime primary source",
+                "url": "https://github.com/dgant/PurpleWave",
+                "checkedAt": "2026-10-24"
+              }
+            ]
+          },
+          "researchWitness": {
+            "url": "https://github.com/dgant/PurpleWave",
+            "locator": "README",
+            "checkedAt": "2026-10-24",
+            "text": "32-bit JDK 8"
+          }
+        },
+        "expectedSubstringsAllPresent": true,
+        "forbiddenSubstringsAbsent": true,
+        "actualCitationMatchesReviewedPrimaryUrl": true,
+        "actualTurn": {
+          "conversation": 31,
+          "surface": "starcraft",
+          "text": "Which Java runtime does it require?",
+          "decision": "answer",
+          "rendered": "Not in this guide — from outside research: PurpleWave’s reviewed README requires a 32-bit JDK 8 at runtime because it connects to 32-bit BWAPI. Do not substitute the guide’s SCHNAIL Java 21 recommendation.\nPurpleWave README: https://github.com/dgant/PurpleWave",
+          "citations": [
+            "Outside research (not in this guide): PurpleWave runtime primary source — https://github.com/dgant/PurpleWave (checked 2026-10-24)."
+          ],
+          "links": [
+            "https://github.com/dgant/PurpleWave"
+          ],
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "32-bit JDK 8"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:purplewave-java"
+            ],
+            "source": {
+              "file": "guides/data/assistant/knowledge/starcraft.json",
+              "locator": "facts[61]"
+            }
+          },
+          "passed": false,
+          "problems": [
+            "Missing exact fixed source citation: guides/data/assistant/knowledge/starcraft.json — facts[61]"
+          ],
+          "answerBranchProblems": [
+            [
+              "Missing exact fixed source citation: guides/data/assistant/knowledge/starcraft.json — facts[61]"
+            ]
+          ],
+          "gameId": "starcraft",
+          "suite": "corpus",
+          "dialogueId": "starcraft-knowledge-purplewave-runtime",
+          "turn": 2
+        }
+      },
+      {
+        "dialogueId": "starcraft-knowledge-purplewave-build",
+        "turn": 1,
+        "sourceFact": {
+          "id": "starcraft:knowledge:purplewave-build",
+          "locator": "facts[62]",
+          "text": "Outside research: PurpleWave’s README uses Maven with initialized submodules; mvn clean package produces target/PurpleWave-1.0.jar. This is source-build guidance, not a prebuilt-download promise.",
+          "source": {
+            "file": "guides/data/assistant/knowledge/starcraft.json",
+            "locator": "facts[62]",
+            "review": "external-research",
+            "references": [
+              {
+                "label": "PurpleWave source build primary source",
+                "url": "https://github.com/dgant/PurpleWave",
+                "checkedAt": "2026-10-24"
+              }
+            ]
+          },
+          "researchWitness": {
+            "url": "https://github.com/dgant/PurpleWave",
+            "locator": "README",
+            "checkedAt": "2026-10-24",
+            "text": "mvn clean package"
+          }
+        },
+        "expectedSubstringsAllPresent": true,
+        "forbiddenSubstringsAbsent": true,
+        "actualCitationMatchesReviewedPrimaryUrl": true,
+        "actualTurn": {
+          "conversation": 32,
+          "surface": "starcraft",
+          "text": "How does the reviewed PurpleWave source build work?",
+          "decision": "answer",
+          "rendered": "Not in this guide — from outside research: PurpleWave’s README uses Maven with initialized submodules; mvn clean package produces target/PurpleWave-1.0.jar. This is source-build guidance, not a prebuilt-download promise.\nPurpleWave build instructions: https://github.com/dgant/PurpleWave",
+          "citations": [
+            "Outside research (not in this guide): PurpleWave source build primary source — https://github.com/dgant/PurpleWave (checked 2026-10-24)."
+          ],
+          "links": [
+            "https://github.com/dgant/PurpleWave"
+          ],
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Maven",
+              "mvn clean package",
+              "target/PurpleWave-1.0.jar"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:purplewave-build"
+            ],
+            "source": {
+              "file": "guides/data/assistant/knowledge/starcraft.json",
+              "locator": "facts[62]"
+            }
+          },
+          "passed": false,
+          "problems": [
+            "Missing exact fixed source citation: guides/data/assistant/knowledge/starcraft.json — facts[62]"
+          ],
+          "answerBranchProblems": [
+            [
+              "Missing exact fixed source citation: guides/data/assistant/knowledge/starcraft.json — facts[62]"
+            ]
+          ],
+          "gameId": "starcraft",
+          "suite": "corpus",
+          "dialogueId": "starcraft-knowledge-purplewave-build",
+          "turn": 1
+        }
+      },
+      {
+        "dialogueId": "starcraft-knowledge-purplewave-build",
+        "turn": 2,
+        "sourceFact": {
+          "id": "starcraft:knowledge:purplewave-working-folder",
+          "locator": "facts[63]",
+          "text": "Outside research: PurpleWave’s JAR instructions run from the StarCraft directory and use bwapi-data/AI, bwapi-data/read and bwapi-data/write. Its IDE configuration points to a sibling bw directory that must match the local installation.",
+          "source": {
+            "file": "guides/data/assistant/knowledge/starcraft.json",
+            "locator": "facts[63]",
+            "review": "external-research",
+            "references": [
+              {
+                "label": "PurpleWave working directory primary source",
+                "url": "https://github.com/dgant/PurpleWave",
+                "checkedAt": "2026-10-24"
+              }
+            ]
+          },
+          "researchWitness": {
+            "url": "https://github.com/dgant/PurpleWave",
+            "locator": "README",
+            "checkedAt": "2026-10-24",
+            "text": "StarCraft directory"
+          }
+        },
+        "expectedSubstringsAllPresent": true,
+        "forbiddenSubstringsAbsent": true,
+        "actualCitationMatchesReviewedPrimaryUrl": true,
+        "actualTurn": {
+          "conversation": 32,
+          "surface": "starcraft",
+          "text": "What is its working directory?",
+          "decision": "answer",
+          "rendered": "Not in this guide — from outside research: PurpleWave’s JAR instructions run from the StarCraft directory and use bwapi-data/AI, bwapi-data/read and bwapi-data/write. Its IDE configuration points to a sibling bw directory that must match the local installation.",
+          "citations": [
+            "Outside research (not in this guide): PurpleWave working directory primary source — https://github.com/dgant/PurpleWave (checked 2026-10-24)."
+          ],
+          "links": [
+            "https://github.com/dgant/PurpleWave"
+          ],
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "StarCraft directory",
+              "bwapi-data/AI"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:purplewave-working-folder"
+            ],
+            "source": {
+              "file": "guides/data/assistant/knowledge/starcraft.json",
+              "locator": "facts[63]"
+            }
+          },
+          "passed": false,
+          "problems": [
+            "Missing exact fixed source citation: guides/data/assistant/knowledge/starcraft.json — facts[63]"
+          ],
+          "answerBranchProblems": [
+            [
+              "Missing exact fixed source citation: guides/data/assistant/knowledge/starcraft.json — facts[63]"
+            ]
+          ],
+          "gameId": "starcraft",
+          "suite": "corpus",
+          "dialogueId": "starcraft-knowledge-purplewave-build",
+          "turn": 2
+        }
+      },
+      {
+        "dialogueId": "starcraft-knowledge-purplewave-build",
+        "turn": 3,
+        "sourceFact": {
+          "id": "starcraft:knowledge:purplewave-support",
+          "locator": "facts[64]",
+          "text": "Outside research: PurpleWave’s README invites questions through GitHub issues. The project uses the MIT license and encourages derivative bots.",
+          "source": {
+            "file": "guides/data/assistant/knowledge/starcraft.json",
+            "locator": "facts[64]",
+            "review": "external-research",
+            "references": [
+              {
+                "label": "PurpleWave project support primary source",
+                "url": "https://github.com/dgant/PurpleWave",
+                "checkedAt": "2026-10-24"
+              }
+            ]
+          },
+          "researchWitness": {
+            "url": "https://github.com/dgant/PurpleWave",
+            "locator": "README",
+            "checkedAt": "2026-10-24",
+            "text": "MIT License"
+          }
+        },
+        "expectedSubstringsAllPresent": true,
+        "forbiddenSubstringsAbsent": true,
+        "actualCitationMatchesReviewedPrimaryUrl": true,
+        "actualTurn": {
+          "conversation": 32,
+          "surface": "starcraft",
+          "text": "Where do I ask PurpleWave questions?",
+          "decision": "answer",
+          "rendered": "Not in this guide — from outside research: PurpleWave’s README invites questions through GitHub issues. The project uses the MIT license and encourages derivative bots.\nPurpleWave repository: https://github.com/dgant/PurpleWave",
+          "citations": [
+            "Outside research (not in this guide): PurpleWave project support primary source — https://github.com/dgant/PurpleWave (checked 2026-10-24)."
+          ],
+          "links": [
+            "https://github.com/dgant/PurpleWave"
+          ],
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "GitHub issues",
+              "MIT license"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:purplewave-support"
+            ],
+            "source": {
+              "file": "guides/data/assistant/knowledge/starcraft.json",
+              "locator": "facts[64]"
+            }
+          },
+          "passed": false,
+          "problems": [
+            "Missing exact fixed source citation: guides/data/assistant/knowledge/starcraft.json — facts[64]"
+          ],
+          "answerBranchProblems": [
+            [
+              "Missing exact fixed source citation: guides/data/assistant/knowledge/starcraft.json — facts[64]"
+            ]
+          ],
+          "gameId": "starcraft",
+          "suite": "corpus",
+          "dialogueId": "starcraft-knowledge-purplewave-build",
+          "turn": 3
+        }
+      },
+      {
+        "dialogueId": "starcraft-knowledge-steamhammer-creator",
+        "turn": 1,
+        "sourceFact": {
+          "id": "starcraft:knowledge:steamhammer-creator",
+          "locator": "facts[66]",
+          "text": "The guide credits Steamhammer to Dave Churchill. Outside research: Steamhammer’s maintainer page is signed Jay Scott and identifies Churchill’s UAlbertaBot as its parent. Treat the guide’s creator attribution as conflicting, not established authorship.",
+          "source": {
+            "file": "guides/data/assistant/knowledge/starcraft.json",
+            "locator": "facts[66]",
+            "review": "external-research",
+            "references": [
+              {
+                "label": "Steamhammer attribution conflict primary source",
+                "url": "https://satirist.org/ai/starcraft/steamhammer/",
+                "checkedAt": "2026-10-24"
+              }
+            ]
+          },
+          "researchWitness": {
+            "url": "https://satirist.org/ai/starcraft/steamhammer/",
+            "locator": "Steamhammer overview",
+            "checkedAt": "2026-10-24",
+            "text": "Jay Scott"
+          }
+        },
+        "expectedSubstringsAllPresent": true,
+        "forbiddenSubstringsAbsent": true,
+        "actualCitationMatchesReviewedPrimaryUrl": true,
+        "actualTurn": {
+          "conversation": 33,
+          "surface": "starcraft",
+          "text": "Who created Steamhammer?",
+          "decision": "answer",
+          "rendered": "Not in this guide — from outside research: The guide credits Steamhammer to Dave Churchill. Outside research: Steamhammer’s maintainer page is signed Jay Scott and identifies Churchill’s UAlbertaBot as its parent. Treat the guide’s creator attribution as conflicting, not established authorship.\nSteamhammer maintainer page: https://satirist.org/ai/starcraft/steamhammer/",
+          "citations": [
+            "Outside research (not in this guide): Steamhammer attribution conflict primary source — https://satirist.org/ai/starcraft/steamhammer/ (checked 2026-10-24)."
+          ],
+          "links": [
+            "https://satirist.org/ai/starcraft/steamhammer/"
+          ],
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "Jay Scott",
+              "UAlbertaBot",
+              "conflicting"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:steamhammer-creator"
+            ],
+            "source": {
+              "file": "guides/data/assistant/knowledge/starcraft.json",
+              "locator": "facts[66]"
+            }
+          },
+          "passed": false,
+          "problems": [
+            "Missing exact fixed source citation: guides/data/assistant/knowledge/starcraft.json — facts[66]"
+          ],
+          "answerBranchProblems": [
+            [
+              "Missing exact fixed source citation: guides/data/assistant/knowledge/starcraft.json — facts[66]"
+            ]
+          ],
+          "gameId": "starcraft",
+          "suite": "corpus",
+          "dialogueId": "starcraft-knowledge-steamhammer-creator",
+          "turn": 1
+        }
+      },
+      {
+        "dialogueId": "starcraft-knowledge-steamhammer-creator",
+        "turn": 2,
+        "sourceFact": {
+          "id": "starcraft:knowledge:steamhammer-identity",
+          "locator": "facts[65]",
+          "text": "Outside research: Steamhammer is a BWAPI bot for Brood War descended from Dave Churchill’s UAlbertaBot. Its maintainer page describes it as a starter bot capable of all three races.",
+          "source": {
+            "file": "guides/data/assistant/knowledge/starcraft.json",
+            "locator": "facts[65]",
+            "review": "external-research",
+            "references": [
+              {
+                "label": "Steamhammer primary source",
+                "url": "https://satirist.org/ai/starcraft/steamhammer/",
+                "checkedAt": "2026-10-24"
+              }
+            ]
+          },
+          "researchWitness": {
+            "url": "https://satirist.org/ai/starcraft/steamhammer/",
+            "locator": "Steamhammer overview",
+            "checkedAt": "2026-10-24",
+            "text": "descended from"
+          }
+        },
+        "expectedSubstringsAllPresent": true,
+        "forbiddenSubstringsAbsent": true,
+        "actualCitationMatchesReviewedPrimaryUrl": true,
+        "actualTurn": {
+          "conversation": 33,
+          "surface": "starcraft",
+          "text": "Which bot did it descend from?",
+          "decision": "answer",
+          "rendered": "Not in this guide — from outside research: Steamhammer is a BWAPI bot for Brood War descended from Dave Churchill’s UAlbertaBot. Its maintainer page describes it as a starter bot capable of all three races.\nSteamhammer maintainer page: https://satirist.org/ai/starcraft/steamhammer/",
+          "citations": [
+            "Outside research (not in this guide): Steamhammer primary source — https://satirist.org/ai/starcraft/steamhammer/ (checked 2026-10-24)."
+          ],
+          "links": [
+            "https://satirist.org/ai/starcraft/steamhammer/"
+          ],
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "UAlbertaBot"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:steamhammer-identity"
+            ],
+            "source": {
+              "file": "guides/data/assistant/knowledge/starcraft.json",
+              "locator": "facts[65]"
+            }
+          },
+          "passed": false,
+          "problems": [
+            "Missing exact fixed source citation: guides/data/assistant/knowledge/starcraft.json — facts[65]"
+          ],
+          "answerBranchProblems": [
+            [
+              "Missing exact fixed source citation: guides/data/assistant/knowledge/starcraft.json — facts[65]"
+            ]
+          ],
+          "gameId": "starcraft",
+          "suite": "corpus",
+          "dialogueId": "starcraft-knowledge-steamhammer-creator",
+          "turn": 2
+        }
+      },
+      {
+        "dialogueId": "starcraft-knowledge-steamhammer-creator",
+        "turn": 3,
+        "sourceFact": {
+          "id": "starcraft:knowledge:steamhammer-license",
+          "locator": "facts[69]",
+          "text": "Outside research: Steamhammer retains UAlbertaBot’s MIT open-source license. Its lineage explains the relationship without making the parent bot’s author the creator of every derivative.",
+          "source": {
+            "file": "guides/data/assistant/knowledge/starcraft.json",
+            "locator": "facts[69]",
+            "review": "external-research",
+            "references": [
+              {
+                "label": "Steamhammer lineage and license primary source",
+                "url": "https://satirist.org/ai/starcraft/steamhammer/",
+                "checkedAt": "2026-10-24"
+              }
+            ]
+          },
+          "researchWitness": {
+            "url": "https://satirist.org/ai/starcraft/steamhammer/",
+            "locator": "Steamhammer overview",
+            "checkedAt": "2026-10-24",
+            "text": "MIT open source license"
+          }
+        },
+        "expectedSubstringsAllPresent": true,
+        "forbiddenSubstringsAbsent": true,
+        "actualCitationMatchesReviewedPrimaryUrl": true,
+        "actualTurn": {
+          "conversation": 33,
+          "surface": "starcraft",
+          "text": "Which license relationship does it retain?",
+          "decision": "answer",
+          "rendered": "Not in this guide — from outside research: Steamhammer retains UAlbertaBot’s MIT open-source license. Its lineage explains the relationship without making the parent bot’s author the creator of every derivative.\nNot in this guide — from outside research: Steamhammer is a BWAPI bot for Brood War descended from Dave Churchill’s UAlbertaBot. Its maintainer page describes it as a starter bot capable of all three races.\nSteamhammer maintainer page: https://satirist.org/ai/starcraft/steamhammer/",
+          "citations": [
+            "Outside research (not in this guide): Steamhammer lineage and license primary source — https://satirist.org/ai/starcraft/steamhammer/ (checked 2026-10-24); Steamhammer primary source — https://satirist.org/ai/starcraft/steamhammer/ (checked 2026-10-24)."
+          ],
+          "links": [
+            "https://satirist.org/ai/starcraft/steamhammer/"
+          ],
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "MIT",
+              "UAlbertaBot"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:steamhammer-license"
+            ],
+            "source": {
+              "file": "guides/data/assistant/knowledge/starcraft.json",
+              "locator": "facts[69]"
+            }
+          },
+          "passed": false,
+          "problems": [
+            "Missing exact fixed source citation: guides/data/assistant/knowledge/starcraft.json — facts[69]"
+          ],
+          "answerBranchProblems": [
+            [
+              "Missing exact fixed source citation: guides/data/assistant/knowledge/starcraft.json — facts[69]"
+            ]
+          ],
+          "gameId": "starcraft",
+          "suite": "corpus",
+          "dialogueId": "starcraft-knowledge-steamhammer-creator",
+          "turn": 3
+        }
+      },
+      {
+        "dialogueId": "starcraft-knowledge-steamhammer-install",
+        "turn": 1,
+        "sourceFact": {
+          "id": "starcraft:knowledge:steamhammer-download",
+          "locator": "facts[67]",
+          "text": "Outside research: the Steamhammer maintainer page provides binary, source and past-version links. Use that reviewed page rather than inventing a GitHub release asset from the guide’s questionable repository link.",
+          "source": {
+            "file": "guides/data/assistant/knowledge/starcraft.json",
+            "locator": "facts[67]",
+            "review": "external-research",
+            "references": [
+              {
+                "label": "Steamhammer downloads primary source",
+                "url": "https://satirist.org/ai/starcraft/steamhammer/",
+                "checkedAt": "2026-10-24"
+              }
+            ]
+          },
+          "researchWitness": {
+            "url": "https://satirist.org/ai/starcraft/steamhammer/",
+            "locator": "Steamhammer overview",
+            "checkedAt": "2026-10-24",
+            "text": "downloads"
+          }
+        },
+        "expectedSubstringsAllPresent": true,
+        "forbiddenSubstringsAbsent": true,
+        "actualCitationMatchesReviewedPrimaryUrl": true,
+        "actualTurn": {
+          "conversation": 34,
+          "surface": "starcraft",
+          "text": "Where should I look for Steamhammer source and binaries?",
+          "decision": "answer",
+          "rendered": "Not in this guide — from outside research: the Steamhammer maintainer page provides binary, source and past-version links. Use that reviewed page rather than inventing a GitHub release asset from the guide’s questionable repository link.\nSteamhammer downloads and documentation: https://satirist.org/ai/starcraft/steamhammer/",
+          "citations": [
+            "Outside research (not in this guide): Steamhammer downloads primary source — https://satirist.org/ai/starcraft/steamhammer/ (checked 2026-10-24)."
+          ],
+          "links": [
+            "https://satirist.org/ai/starcraft/steamhammer/"
+          ],
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "maintainer page",
+              "binary",
+              "source"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:steamhammer-download"
+            ],
+            "source": {
+              "file": "guides/data/assistant/knowledge/starcraft.json",
+              "locator": "facts[67]"
+            }
+          },
+          "passed": false,
+          "problems": [
+            "Missing exact fixed source citation: guides/data/assistant/knowledge/starcraft.json — facts[67]"
+          ],
+          "answerBranchProblems": [
+            [
+              "Missing exact fixed source citation: guides/data/assistant/knowledge/starcraft.json — facts[67]"
+            ]
+          ],
+          "gameId": "starcraft",
+          "suite": "corpus",
+          "dialogueId": "starcraft-knowledge-steamhammer-install",
+          "turn": 1
+        }
+      },
+      {
+        "dialogueId": "starcraft-knowledge-steamhammer-install",
+        "turn": 2,
+        "sourceFact": {
+          "id": "starcraft:knowledge:steamhammer-config",
+          "locator": "facts[68]",
+          "text": "Outside research: Steamhammer’s manual binary instructions place the matching version’s JSON configuration in bwapi-data/AI and include BWAPI 4.4.0. This is distinct from extracting the Remastered map ZIP into Maps.",
+          "source": {
+            "file": "guides/data/assistant/knowledge/starcraft.json",
+            "locator": "facts[68]",
+            "review": "external-research",
+            "references": [
+              {
+                "label": "Steamhammer binary configuration primary source",
+                "url": "https://satirist.org/ai/starcraft/steamhammer/",
+                "checkedAt": "2026-10-24"
+              }
+            ]
+          },
+          "researchWitness": {
+            "url": "https://satirist.org/ai/starcraft/steamhammer/",
+            "locator": "Steamhammer overview",
+            "checkedAt": "2026-10-24",
+            "text": "BWAPI version 4.4.0"
+          }
+        },
+        "expectedSubstringsAllPresent": true,
+        "forbiddenSubstringsAbsent": true,
+        "actualCitationMatchesReviewedPrimaryUrl": true,
+        "actualTurn": {
+          "conversation": 34,
+          "surface": "starcraft",
+          "text": "Where do I put the matching JSON configuration?",
+          "decision": "answer",
+          "rendered": "Not in this guide — from outside research: Steamhammer’s manual binary instructions place the matching version’s JSON configuration in bwapi-data/AI and include BWAPI 4.4.0. This is distinct from extracting the Remastered map ZIP into Maps.",
+          "citations": [
+            "Outside research (not in this guide): Steamhammer binary configuration primary source — https://satirist.org/ai/starcraft/steamhammer/ (checked 2026-10-24)."
+          ],
+          "links": [
+            "https://satirist.org/ai/starcraft/steamhammer/"
+          ],
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "bwapi-data/AI",
+              "4.4.0"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:steamhammer-config"
+            ],
+            "source": {
+              "file": "guides/data/assistant/knowledge/starcraft.json",
+              "locator": "facts[68]"
+            }
+          },
+          "passed": false,
+          "problems": [
+            "Missing exact fixed source citation: guides/data/assistant/knowledge/starcraft.json — facts[68]"
+          ],
+          "answerBranchProblems": [
+            [
+              "Missing exact fixed source citation: guides/data/assistant/knowledge/starcraft.json — facts[68]"
+            ]
+          ],
+          "gameId": "starcraft",
+          "suite": "corpus",
+          "dialogueId": "starcraft-knowledge-steamhammer-install",
+          "turn": 2
+        }
+      },
+      {
+        "dialogueId": "starcraft-knowledge-version-boundaries",
+        "turn": 2,
+        "sourceFact": {
+          "id": "starcraft:knowledge:ualberta-version",
+          "locator": "facts[55]",
+          "text": "Outside research: the README’s 2020 update documents VS2019 and BWAPI 4.4.0, including rebuilding BWAPI.lib and BWAPIClient.lib for that toolchain.",
+          "source": {
+            "file": "guides/data/assistant/knowledge/starcraft.json",
+            "locator": "facts[55]",
+            "review": "external-research",
+            "references": [
+              {
+                "label": "UAlbertaBot development versions primary source",
+                "url": "https://github.com/davechurchill/ualbertabot",
+                "checkedAt": "2026-10-24"
+              }
+            ]
+          },
+          "researchWitness": {
+            "url": "https://github.com/davechurchill/ualbertabot",
+            "locator": "README",
+            "checkedAt": "2026-10-24",
+            "text": "BWAPI 4.4.0"
+          }
+        },
+        "expectedSubstringsAllPresent": true,
+        "forbiddenSubstringsAbsent": true,
+        "actualCitationMatchesReviewedPrimaryUrl": true,
+        "actualTurn": {
+          "conversation": 35,
+          "surface": "starcraft",
+          "text": "What BWAPI version does UAlbertaBot’s README use?",
+          "decision": "answer",
+          "rendered": "Not in this guide — from outside research: the README’s 2020 update documents VS2019 and BWAPI 4.4.0, including rebuilding BWAPI.lib and BWAPIClient.lib for that toolchain.\nUAlbertaBot README: https://github.com/davechurchill/ualbertabot",
+          "citations": [
+            "Outside research (not in this guide): UAlbertaBot development versions primary source — https://github.com/davechurchill/ualbertabot (checked 2026-10-24)."
+          ],
+          "links": [
+            "https://github.com/davechurchill/ualbertabot"
+          ],
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "4.4.0"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:ualberta-version"
+            ],
+            "source": {
+              "file": "guides/data/assistant/knowledge/starcraft.json",
+              "locator": "facts[55]"
+            }
+          },
+          "passed": false,
+          "problems": [
+            "Missing exact fixed source citation: guides/data/assistant/knowledge/starcraft.json — facts[55]"
+          ],
+          "answerBranchProblems": [
+            [
+              "Missing exact fixed source citation: guides/data/assistant/knowledge/starcraft.json — facts[55]"
+            ]
+          ],
+          "gameId": "starcraft",
+          "suite": "corpus",
+          "dialogueId": "starcraft-knowledge-version-boundaries",
+          "turn": 2
+        }
+      },
+      {
+        "dialogueId": "starcraft-knowledge-version-boundaries",
+        "turn": 3,
+        "sourceFact": {
+          "id": "starcraft:knowledge:purplewave-java",
+          "locator": "facts[61]",
+          "text": "Outside research: PurpleWave’s reviewed README requires a 32-bit JDK 8 at runtime because it connects to 32-bit BWAPI. Do not substitute the guide’s SCHNAIL Java 21 recommendation.",
+          "source": {
+            "file": "guides/data/assistant/knowledge/starcraft.json",
+            "locator": "facts[61]",
+            "review": "external-research",
+            "references": [
+              {
+                "label": "PurpleWave runtime primary source",
+                "url": "https://github.com/dgant/PurpleWave",
+                "checkedAt": "2026-10-24"
+              }
+            ]
+          },
+          "researchWitness": {
+            "url": "https://github.com/dgant/PurpleWave",
+            "locator": "README",
+            "checkedAt": "2026-10-24",
+            "text": "32-bit JDK 8"
+          }
+        },
+        "expectedSubstringsAllPresent": true,
+        "forbiddenSubstringsAbsent": true,
+        "actualCitationMatchesReviewedPrimaryUrl": true,
+        "actualTurn": {
+          "conversation": 35,
+          "surface": "starcraft",
+          "text": "What Java version and architecture does PurpleWave request?",
+          "decision": "answer",
+          "rendered": "Not in this guide — from outside research: PurpleWave’s reviewed README requires a 32-bit JDK 8 at runtime because it connects to 32-bit BWAPI. Do not substitute the guide’s SCHNAIL Java 21 recommendation.\nPurpleWave README: https://github.com/dgant/PurpleWave",
+          "citations": [
+            "Outside research (not in this guide): PurpleWave runtime primary source — https://github.com/dgant/PurpleWave (checked 2026-10-24)."
+          ],
+          "links": [
+            "https://github.com/dgant/PurpleWave"
+          ],
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "32-bit JDK 8"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:purplewave-java"
+            ],
+            "source": {
+              "file": "guides/data/assistant/knowledge/starcraft.json",
+              "locator": "facts[61]"
+            }
+          },
+          "passed": false,
+          "problems": [
+            "Missing exact fixed source citation: guides/data/assistant/knowledge/starcraft.json — facts[61]"
+          ],
+          "answerBranchProblems": [
+            [
+              "Missing exact fixed source citation: guides/data/assistant/knowledge/starcraft.json — facts[61]"
+            ]
+          ],
+          "gameId": "starcraft",
+          "suite": "corpus",
+          "dialogueId": "starcraft-knowledge-version-boundaries",
+          "turn": 3
+        }
+      }
+    ]
+  },
+  "observedFreshChangedRows": [
+    {
+      "dialogueId": "sc-bot-learning-resources",
+      "turn": 2,
+      "before": {
+        "text": "Who does the guide credit with UAlbertaBot?",
+        "expected": {
+          "decision": "answer",
+          "source": {
+            "file": "guides/StarcraftBWAPI.html",
+            "locator": "#resources .space-y-4 > div:nth-child(2)",
+            "review": "extracted"
+          },
+          "contains": [
+            "Dave Churchill",
+            "Steve Gelly"
+          ],
+          "requiredUsefulClaim": "The guide credits Dave Churchill and Steve Gelly with UAlbertaBot.",
+          "sourceWitness": "A Starcraft AI development framework by Dave\n                                        Churchill\n                                        and Steve Gelly"
+        },
+        "decision": "answer",
+        "rendered": "Not in this guide — from outside research: UAlbertaBot’s README and official wiki identify David Churchill. The guide additionally credits Steve Gelly; the reviewed primary pages do not establish that additional attribution.\nUAlbertaBot README: https://github.com/davechurchill/ualbertabot\nUAlbertaBot wiki: https://github.com/davechurchill/ualbertabot/wiki",
+        "citations": [
+          "Outside research (not in this guide): UAlbertaBot authorship primary source — https://github.com/davechurchill/ualbertabot (checked 2026-10-24); UAlbertaBot official wiki — https://github.com/davechurchill/ualbertabot/wiki (checked 2026-10-24)."
+        ],
+        "links": [
+          "https://github.com/davechurchill/ualbertabot",
+          "https://github.com/davechurchill/ualbertabot/wiki"
+        ],
+        "acceptedAnswerBranch": null,
+        "answerBranchProblems": [
+          [
+            "Missing exact fixed source citation: guides/StarcraftBWAPI.html — #resources .space-y-4 > div:nth-child(2)",
+            "Missing fixed answer substring: Dave Churchill"
+          ]
+        ],
+        "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+        "problems": [
+          "Missing exact fixed source citation: guides/StarcraftBWAPI.html — #resources .space-y-4 > div:nth-child(2)",
+          "Missing fixed answer substring: Dave Churchill"
+        ],
+        "passed": false,
+        "surface": "starcraft",
+        "dialogueId": "sc-bot-learning-resources",
+        "turn": 2
+      },
+      "after": {
+        "conversation": 46,
+        "surface": "starcraft",
+        "text": "Who does the guide credit with UAlbertaBot?",
+        "decision": "answer",
+        "rendered": "Guide attribution:\nUAlbertaBot; A Starcraft AI development framework by Dave Churchill and Steve Gelly; View on GitHub",
+        "citations": [
+          "Source: existing guide; extracted. guides/StarcraftBWAPI.html — #resources .space-y-4 > div:nth-child(2)"
+        ],
+        "links": [],
+        "expected": {
+          "decision": "answer",
+          "source": {
+            "file": "guides/StarcraftBWAPI.html",
+            "locator": "#resources .space-y-4 > div:nth-child(2)",
+            "review": "extracted"
+          },
+          "contains": [
+            "Dave Churchill",
+            "Steve Gelly"
+          ],
+          "requiredUsefulClaim": "The guide credits Dave Churchill and Steve Gelly with UAlbertaBot.",
+          "sourceWitness": "A Starcraft AI development framework by Dave\n                                        Churchill\n                                        and Steve Gelly"
+        },
+        "passed": true,
+        "problems": [],
+        "answerBranchProblems": [
+          []
+        ],
+        "gameId": "starcraft",
+        "suite": "observed-fresh",
+        "dialogueId": "sc-bot-learning-resources",
+        "turn": 2
+      }
+    },
+    {
+      "dialogueId": "sc-bot-learning-resources",
+      "turn": 3,
+      "before": {
+        "text": "Where can I read the framework documentation?",
+        "expected": {
+          "decision": "answer",
+          "source": {
+            "file": "guides/StarcraftBWAPI.html",
+            "locator": "#resources .grid > div:nth-child(1)",
+            "review": "extracted"
+          },
+          "contains": [
+            "BWAPI Official Documentation",
+            "BWAPI Wiki"
+          ],
+          "requiredUsefulClaim": "The guide links BWAPI Official Documentation and the BWAPI Wiki.",
+          "sourceWitness": "BWAPI Official Documentation"
+        },
+        "decision": "answer",
+        "rendered": "Documentation; BWAPI Official Documentation; BWAPI Wiki; SCHNAIL Documentation\nBWAPI Official Documentation: https://bwapi.github.io/\nBWAPI Wiki: https://github.com/bwapi/bwapi/wiki",
+        "citations": [
+          "Source: existing guide; extracted. guides/StarcraftBWAPI.html — #resources .grid > div:nth-child(1)"
+        ],
+        "links": [
+          "https://bwapi.github.io/",
+          "https://github.com/bwapi/bwapi/wiki"
+        ],
+        "acceptedAnswerBranch": 0,
+        "answerBranchProblems": [
+          []
+        ],
+        "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+        "problems": [],
+        "passed": true,
+        "surface": "starcraft",
+        "dialogueId": "sc-bot-learning-resources",
+        "turn": 3
+      },
+      "after": {
+        "conversation": 46,
+        "surface": "starcraft",
+        "text": "Where can I read the framework documentation?",
+        "decision": "answer",
+        "rendered": "Not in this guide — from outside research: UAlbertaBot’s wiki links installation, architecture, configuration, build-order and unit-production editing, combat logic, worker allocation, and pathfinding documentation.\nUAlbertaBot official wiki: https://github.com/davechurchill/ualbertabot/wiki",
+        "citations": [
+          "Outside research (not in this guide): UAlbertaBot wiki topics primary source — https://github.com/davechurchill/ualbertabot/wiki (checked 2026-10-24)."
+        ],
+        "links": [
+          "https://github.com/davechurchill/ualbertabot/wiki"
+        ],
+        "expected": {
+          "decision": "answer",
+          "source": {
+            "file": "guides/StarcraftBWAPI.html",
+            "locator": "#resources .grid > div:nth-child(1)",
+            "review": "extracted"
+          },
+          "contains": [
+            "BWAPI Official Documentation",
+            "BWAPI Wiki"
+          ],
+          "requiredUsefulClaim": "The guide links BWAPI Official Documentation and the BWAPI Wiki.",
+          "sourceWitness": "BWAPI Official Documentation"
+        },
+        "passed": false,
+        "problems": [
+          "Missing exact fixed source citation: guides/StarcraftBWAPI.html — #resources .grid > div:nth-child(1)",
+          "Missing fixed answer substring: BWAPI Official Documentation",
+          "Missing fixed answer substring: BWAPI Wiki"
+        ],
+        "answerBranchProblems": [
+          [
+            "Missing exact fixed source citation: guides/StarcraftBWAPI.html — #resources .grid > div:nth-child(1)",
+            "Missing fixed answer substring: BWAPI Official Documentation",
+            "Missing fixed answer substring: BWAPI Wiki"
+          ]
+        ],
+        "gameId": "starcraft",
+        "suite": "observed-fresh",
+        "dialogueId": "sc-bot-learning-resources",
+        "turn": 3
+      }
+    }
+  ],
+  "strictMissAssessment": [
+    {
+      "suite": "observed-fresh",
+      "dialogueId": "sc-client-first-launch",
+      "turn": 3,
+      "kind": "lexical equivalent, no factual gap",
+      "assessment": "Expected substring “initial login” is split by “client”: reply says “initial client login”, then all gameplay happens on local network. Exact expected guide citation is present. Source #troubleshooting .text-yellow-700 says initial login is required and play uses local network. Full current turn retained.",
+      "actualTurn": {
+        "conversation": 44,
+        "surface": "starcraft",
+        "text": "After the first login, is play still going over the internet?",
+        "decision": "answer",
+        "rendered": "Note about SCHNAIL: An internet connection is only required for the initial client login. All gameplay after login happens on your local network, ensuring minimal latency and no ongoing internet requirement during play.",
+        "citations": [
+          "Source: existing guide; extracted. guides/StarcraftBWAPI.html — #troubleshooting .text-yellow-700"
+        ],
+        "links": [],
+        "expected": {
+          "decision": "answer",
+          "source": {
+            "file": "guides/StarcraftBWAPI.html",
+            "locator": "#troubleshooting .text-yellow-700",
+            "review": "extracted"
+          },
+          "contains": [
+            "initial login",
+            "local network"
+          ],
+          "requiredUsefulClaim": "Internet is required for initial login; play then uses the local network.",
+          "sourceWitness": "client login. All gameplay after login happens on your local network, ensuring",
+          "alternativeAnswers": [
+            {
+              "source": {
+                "file": "guides/StarcraftBWAPI.html",
+                "locator": "#getting-started .grid > div:nth-child(1) .pros-cons",
+                "review": "extracted"
+              },
+              "contains": [
+                "initial login",
+                "local network"
+              ],
+              "sourceWitness": "AI plays over local network after login"
+            }
+          ]
+        },
+        "passed": false,
+        "problems": [
+          "Missing fixed answer substring: initial login"
+        ],
+        "answerBranchProblems": [
+          [
+            "Missing fixed answer substring: initial login"
+          ],
+          [
+            "Missing exact fixed source citation: guides/StarcraftBWAPI.html — #getting-started .grid > div:nth-child(1) .pros-cons",
+            "Missing fixed answer substring: initial login"
+          ]
+        ],
+        "gameId": "starcraft",
+        "suite": "observed-fresh",
+        "dialogueId": "sc-client-first-launch",
+        "turn": 3
+      }
+    },
+    {
+      "suite": "observed-fresh",
+      "dialogueId": "sc-bot-learning-resources",
+      "turn": 3,
+      "kind": "source-backed observed-fresh pass loss / target ambiguity requiring owner review",
+      "assessment": "Compared with 29Oct, prior reply linked the guide’s BWAPI Official Documentation and BWAPI Wiki (strict pass); current reply follows prior turn’s UAlbertaBot framework attribution and links the UAlbertaBot official wiki (strict fail). Both are legitimate documentation targets, but the frozen oracle asks for guide BWAPI docs. This is a real strict pass loss and a changed source target, although current reply is contextually supported by the previous turn and external authored fact 59. To preserve both the frozen expected answer and follow-up context, a future response may need to label/link both BWAPI and UAlbertaBot docs distinctly; do not change the frozen oracle. Full before/after turn objects retained in observedFreshChangedRows."
+    }
+  ],
+  "semantic13FailureAudit": {
+    "count": 2,
+    "sourceWitnesses": [
+      "guides/StarcraftBWAPI.html lines177-180: SCHNAIL advantages include “More realistic AI behavior”",
+      "guides/StarcraftBWAPI.html lines382-385: SCHNAIL includes its own version of StarCraft: Brood War, so no separate install is needed."
+    ],
+    "assessment": "Turn1 “Summarize SCHNAIL” is a genuine source-present decline; the frozen oracle requires both the AI behavior and bundled-game points. Turn2 “smaller hint” is a dependent lifecycle failure because turn1 declined; the full-answers-only requirement means it should repeat the complete prior source reply, not create a shortened tier. Both exact full rows retained.",
+    "previousTurn": {
+      "conversation": 50,
+      "surface": "starcraft",
+      "text": "Summarize SCHNAIL",
+      "decision": "decline",
+      "rendered": "I could not identify that subject in the available sources.",
+      "citations": [],
+      "links": [],
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "More realistic AI behavior",
+          "includes its own version"
+        ],
+        "source": {
+          "file": "guides/StarcraftBWAPI.html",
+          "locator": "#getting-started .grid > div:first-child; #schnail-setup .text-blue-700"
+        }
+      },
+      "passed": false,
+      "problems": [
+        "Expected answer; observed decline",
+        "Missing exact fixed source citation: guides/StarcraftBWAPI.html — #getting-started .grid > div:first-child; #schnail-setup .text-blue-700",
+        "Missing fixed answer substring: More realistic AI behavior",
+        "Missing fixed answer substring: includes its own version"
+      ],
+      "answerBranchProblems": [
+        [
+          "Missing exact fixed source citation: guides/StarcraftBWAPI.html — #getting-started .grid > div:first-child; #schnail-setup .text-blue-700",
+          "Missing fixed answer substring: More realistic AI behavior",
+          "Missing fixed answer substring: includes its own version"
+        ]
+      ],
+      "gameId": "starcraft",
+      "suite": "semantic13",
+      "dialogueId": "semantic13-starcraft",
+      "turn": 1
+    },
+    "dependentFollowup": {
+      "conversation": 50,
+      "surface": "starcraft",
+      "text": "smaller hint",
+      "decision": "clarify",
+      "rendered": "Which previous hint should I make gentler?",
+      "citations": [],
+      "links": [],
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "More realistic AI behavior",
+          "includes its own version"
+        ],
+        "source": {
+          "file": "guides/StarcraftBWAPI.html",
+          "locator": "#getting-started .grid > div:first-child; #schnail-setup .text-blue-700"
+        }
+      },
+      "passed": false,
+      "problems": [
+        "Expected answer; observed clarify",
+        "Missing exact fixed source citation: guides/StarcraftBWAPI.html — #getting-started .grid > div:first-child; #schnail-setup .text-blue-700",
+        "Missing fixed answer substring: More realistic AI behavior",
+        "Missing fixed answer substring: includes its own version",
+        "Smaller-hint reply differs from previous full answer: decision",
+        "Smaller-hint reply differs from previous full answer: rendered"
+      ],
+      "answerBranchProblems": [
+        [
+          "Missing exact fixed source citation: guides/StarcraftBWAPI.html — #getting-started .grid > div:first-child; #schnail-setup .text-blue-700",
+          "Missing fixed answer substring: More realistic AI behavior",
+          "Missing fixed answer substring: includes its own version"
+        ]
+      ],
+      "gameId": "starcraft",
+      "suite": "semantic13",
+      "dialogueId": "semantic13-starcraft",
+      "turn": 2
+    }
+  },
+  "interpretation": "The 143 corpus outputs are whole-row identical to 29Oct and contain no content gap among the35 strict citation failures. The one changed fresh turn is an observed strict pass loss despite a source-backed, contextually relevant target shift; retain it as an unresolved regression/oracle tension. The two SCHNAIL semantic turns are genuine source-present gaps, with the second dependent on the first."
+}

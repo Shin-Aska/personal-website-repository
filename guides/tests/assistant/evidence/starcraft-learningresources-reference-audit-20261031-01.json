@@ -1,0 +1,277 @@
+{
+  "schemaVersion": 1,
+  "kind": "starcraft-observed-followup-reference-audit",
+  "tag": "starcraft-learningresources-reference-audit-20261031-01",
+  "createdAt": "2026-10-31",
+  "inputs": {
+    "current": {
+      "path": "knowledge-cua-native-whole-goal-final-starcraft-all-20261031-01.json",
+      "sha256": "3756533b946cd9dc1a4acec67b52dceeaa1155e535a1353596aaf0a17d89b848"
+    },
+    "previousObserved": {
+      "path": "knowledge-blind-browser-observed-fresh-terra-20261029-01.json",
+      "sha256": "34ddb7957dd3c1ea0cce43a029a03c2bc4c2955feb40ab8c38e250c031482dc1"
+    },
+    "guide": {
+      "path": "guides/StarcraftBWAPI.html",
+      "sha256": "ce113606ec9a58b321ea7b3bb0b6e5207ccb676477a688164aefd0790e33aaf6"
+    },
+    "knowledge": {
+      "path": "guides/data/assistant/knowledge/starcraft.json",
+      "sha256": "97fdae345bbb25f9d3b0b32a8fcbb0a8a0c22bfbe7b4fadd8e5c0cd4c75d4261"
+    }
+  },
+  "conversationContext": {
+    "turnsBeforeQuestion": [
+      {
+        "conversation": 46,
+        "surface": "starcraft",
+        "text": "What open-source example bots does this guide offer for learning?",
+        "decision": "answer",
+        "rendered": "Example bot implementations: Steamhammer, UAlbertaBot.",
+        "citations": [
+          "Source: existing guide; extracted. guides/StarcraftBWAPI.html — #resources .space-y-8 > div:nth-child(2)"
+        ],
+        "links": [],
+        "expected": {
+          "decision": "answer",
+          "source": {
+            "file": "guides/StarcraftBWAPI.html",
+            "locator": "#resources .space-y-8 > div:nth-child(2)",
+            "review": "extracted"
+          },
+          "contains": [
+            "Steamhammer",
+            "UAlbertaBot"
+          ],
+          "requiredUsefulClaim": "The guide lists Steamhammer and UAlbertaBot as open-source example implementations.",
+          "sourceWitness": "Learn from these open-source bot implementations:"
+        },
+        "passed": true,
+        "problems": [],
+        "answerBranchProblems": [
+          []
+        ],
+        "gameId": "starcraft",
+        "suite": "observed-fresh",
+        "dialogueId": "sc-bot-learning-resources",
+        "turn": 1
+      },
+      {
+        "conversation": 46,
+        "surface": "starcraft",
+        "text": "Who does the guide credit with UAlbertaBot?",
+        "decision": "answer",
+        "rendered": "Guide attribution:\nUAlbertaBot; A Starcraft AI development framework by Dave Churchill and Steve Gelly; View on GitHub",
+        "citations": [
+          "Source: existing guide; extracted. guides/StarcraftBWAPI.html — #resources .space-y-4 > div:nth-child(2)"
+        ],
+        "links": [],
+        "expected": {
+          "decision": "answer",
+          "source": {
+            "file": "guides/StarcraftBWAPI.html",
+            "locator": "#resources .space-y-4 > div:nth-child(2)",
+            "review": "extracted"
+          },
+          "contains": [
+            "Dave Churchill",
+            "Steve Gelly"
+          ],
+          "requiredUsefulClaim": "The guide credits Dave Churchill and Steve Gelly with UAlbertaBot.",
+          "sourceWitness": "A Starcraft AI development framework by Dave\n                                        Churchill\n                                        and Steve Gelly"
+        },
+        "passed": true,
+        "problems": [],
+        "answerBranchProblems": [
+          []
+        ],
+        "gameId": "starcraft",
+        "suite": "observed-fresh",
+        "dialogueId": "sc-bot-learning-resources",
+        "turn": 2
+      }
+    ],
+    "questionTurn": {
+      "conversation": 46,
+      "surface": "starcraft",
+      "text": "Where can I read the framework documentation?",
+      "decision": "answer",
+      "rendered": "Not in this guide — from outside research: UAlbertaBot’s wiki links installation, architecture, configuration, build-order and unit-production editing, combat logic, worker allocation, and pathfinding documentation.\nUAlbertaBot official wiki: https://github.com/davechurchill/ualbertabot/wiki",
+      "citations": [
+        "Outside research (not in this guide): UAlbertaBot wiki topics primary source — https://github.com/davechurchill/ualbertabot/wiki (checked 2026-10-24)."
+      ],
+      "links": [
+        "https://github.com/davechurchill/ualbertabot/wiki"
+      ],
+      "expected": {
+        "decision": "answer",
+        "source": {
+          "file": "guides/StarcraftBWAPI.html",
+          "locator": "#resources .grid > div:nth-child(1)",
+          "review": "extracted"
+        },
+        "contains": [
+          "BWAPI Official Documentation",
+          "BWAPI Wiki"
+        ],
+        "requiredUsefulClaim": "The guide links BWAPI Official Documentation and the BWAPI Wiki.",
+        "sourceWitness": "BWAPI Official Documentation"
+      },
+      "passed": false,
+      "problems": [
+        "Missing exact fixed source citation: guides/StarcraftBWAPI.html — #resources .grid > div:nth-child(1)",
+        "Missing fixed answer substring: BWAPI Official Documentation",
+        "Missing fixed answer substring: BWAPI Wiki"
+      ],
+      "answerBranchProblems": [
+        [
+          "Missing exact fixed source citation: guides/StarcraftBWAPI.html — #resources .grid > div:nth-child(1)",
+          "Missing fixed answer substring: BWAPI Official Documentation",
+          "Missing fixed answer substring: BWAPI Wiki"
+        ]
+      ],
+      "gameId": "starcraft",
+      "suite": "observed-fresh",
+      "dialogueId": "sc-bot-learning-resources",
+      "turn": 3
+    }
+  },
+  "sourceProof": {
+    "guideCard": "guides/StarcraftBWAPI.html lines710-715: UAlbertaBot is called “A Starcraft AI development framework” and links to its GitHub repository.",
+    "guideGeneralDocs": "guides/StarcraftBWAPI.html lines638-650: general BWAPI resources list BWAPI Official Documentation and BWAPI Wiki.",
+    "reviewedUAlbertaDocsFact": {
+      "id": "starcraft:knowledge:ualberta-docs",
+      "subject": "UAlbertaBot wiki topics",
+      "entityId": "starcraft:ualbertabot",
+      "facet": "documentation",
+      "aliases": [
+        "UAlbertaBot docs",
+        "UAlbertaBot configuration",
+        "UAlbertaBot installation instructions",
+        "UAlbertaBot official wiki",
+        "UAlbertaBot architecture documentation"
+      ],
+      "text": "Outside research: UAlbertaBot’s wiki links installation, architecture, configuration, build-order and unit-production editing, combat logic, worker allocation, and pathfinding documentation.",
+      "witness": "Outside research: UAlbertaBot’s wiki links installation, architecture, configuration, build-order and unit-production editing, combat logic, worker allocation, and pathfinding documentation.",
+      "source": {
+        "file": "guides/data/assistant/knowledge/starcraft.json",
+        "locator": "facts[59]",
+        "review": "external-research",
+        "references": [
+          {
+            "label": "UAlbertaBot wiki topics primary source",
+            "url": "https://github.com/davechurchill/ualbertabot/wiki",
+            "checkedAt": "2026-10-24"
+          }
+        ]
+      },
+      "researchWitness": {
+        "url": "https://github.com/davechurchill/ualbertabot/wiki",
+        "locator": "README",
+        "checkedAt": "2026-10-24",
+        "text": "Bot Design and Architecture"
+      },
+      "links": [
+        {
+          "label": "UAlbertaBot official wiki",
+          "url": "https://github.com/davechurchill/ualbertabot/wiki"
+        }
+      ],
+      "answerRelations": [
+        "documentation"
+      ],
+      "topicLabels": [
+        "UAlbertaBot wiki topics"
+      ]
+    }
+  },
+  "beforeAfter": {
+    "previousObservedFreshTurn3": {
+      "text": "Where can I read the framework documentation?",
+      "expected": {
+        "decision": "answer",
+        "source": {
+          "file": "guides/StarcraftBWAPI.html",
+          "locator": "#resources .grid > div:nth-child(1)",
+          "review": "extracted"
+        },
+        "contains": [
+          "BWAPI Official Documentation",
+          "BWAPI Wiki"
+        ],
+        "requiredUsefulClaim": "The guide links BWAPI Official Documentation and the BWAPI Wiki.",
+        "sourceWitness": "BWAPI Official Documentation"
+      },
+      "decision": "answer",
+      "rendered": "Documentation; BWAPI Official Documentation; BWAPI Wiki; SCHNAIL Documentation\nBWAPI Official Documentation: https://bwapi.github.io/\nBWAPI Wiki: https://github.com/bwapi/bwapi/wiki",
+      "citations": [
+        "Source: existing guide; extracted. guides/StarcraftBWAPI.html — #resources .grid > div:nth-child(1)"
+      ],
+      "links": [
+        "https://bwapi.github.io/",
+        "https://github.com/bwapi/bwapi/wiki"
+      ],
+      "acceptedAnswerBranch": 0,
+      "answerBranchProblems": [
+        []
+      ],
+      "factIdObservation": "factIds/allFactIds are oracle metadata; UI citations do not prove internal retrieved fact IDs.",
+      "problems": [],
+      "passed": true,
+      "surface": "starcraft",
+      "dialogueId": "sc-bot-learning-resources",
+      "turn": 3
+    },
+    "currentObservedFreshTurn3": {
+      "conversation": 46,
+      "surface": "starcraft",
+      "text": "Where can I read the framework documentation?",
+      "decision": "answer",
+      "rendered": "Not in this guide — from outside research: UAlbertaBot’s wiki links installation, architecture, configuration, build-order and unit-production editing, combat logic, worker allocation, and pathfinding documentation.\nUAlbertaBot official wiki: https://github.com/davechurchill/ualbertabot/wiki",
+      "citations": [
+        "Outside research (not in this guide): UAlbertaBot wiki topics primary source — https://github.com/davechurchill/ualbertabot/wiki (checked 2026-10-24)."
+      ],
+      "links": [
+        "https://github.com/davechurchill/ualbertabot/wiki"
+      ],
+      "expected": {
+        "decision": "answer",
+        "source": {
+          "file": "guides/StarcraftBWAPI.html",
+          "locator": "#resources .grid > div:nth-child(1)",
+          "review": "extracted"
+        },
+        "contains": [
+          "BWAPI Official Documentation",
+          "BWAPI Wiki"
+        ],
+        "requiredUsefulClaim": "The guide links BWAPI Official Documentation and the BWAPI Wiki.",
+        "sourceWitness": "BWAPI Official Documentation"
+      },
+      "passed": false,
+      "problems": [
+        "Missing exact fixed source citation: guides/StarcraftBWAPI.html — #resources .grid > div:nth-child(1)",
+        "Missing fixed answer substring: BWAPI Official Documentation",
+        "Missing fixed answer substring: BWAPI Wiki"
+      ],
+      "answerBranchProblems": [
+        [
+          "Missing exact fixed source citation: guides/StarcraftBWAPI.html — #resources .grid > div:nth-child(1)",
+          "Missing fixed answer substring: BWAPI Official Documentation",
+          "Missing fixed answer substring: BWAPI Wiki"
+        ]
+      ],
+      "gameId": "starcraft",
+      "suite": "observed-fresh",
+      "dialogueId": "sc-bot-learning-resources",
+      "turn": 3
+    }
+  },
+  "assessment": {
+    "strictOutcome": "The current turn is a strict pass loss against the frozen observed-fresh oracle; keep that recorded in the native comparison.",
+    "conversationalOutcome": "The user asks this immediately after the guide reply calls UAlbertaBot a StarCraft AI development framework. “the framework documentation” therefore has a strong local antecedent to UAlbertaBot. The current UAlbertaBot official wiki answer is source-backed by the authored fact and is contextually defensible; I do not classify the missing BWAPI link as a factual/subject-carry defect.",
+    "remainingAmbiguity": "The frozen oracle instead expects the page-wide BWAPI documentation links. The previous answer is guide-faithful to that oracle but shifts away from the most recent UAlbertaBot antecedent.",
+    "safeResolution": "A future answer can label both destinations separately (UAlbertaBot wiki for the bot framework; BWAPI Official Documentation and BWAPI Wiki for BWAPI itself). This preserves referent clarity and the guide links without asserting they are the same documentation target. No oracle was changed."
+  }
+}

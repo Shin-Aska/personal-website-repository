@@ -1,0 +1,2173 @@
+{
+  "schemaVersion": 2,
+  "kind": "focused-cua-native-production-ui-adjudication",
+  "tag": "whole-goal-summary-final-starcraft-sourcefirst-semantic-20261031-01",
+  "requestedDatasets": [
+    "source-first",
+    "semantic13"
+  ],
+  "limitations": [
+    "Focused CUA probe, not a rerun of the full Python acceptance harness.",
+    "Existing approved generative-worker fixture; native MiniLM classify and encode.",
+    "Native generative performance, semantic smoke, and complete suite coverage are not established unless reported.",
+    "CSP limits connections to the isolated local origin; exhaustive request interception was not measured.",
+    "Internal fact IDs are not proven by visible UI citations."
+  ],
+  "baselineReports": {
+    "corpus": "guides\\tests\\assistant\\evidence\\knowledge-browser-terra-20261029-frozen-source-01.json",
+    "source-first": "guides\\tests\\assistant\\evidence\\knowledge-blind-browser-source-first-terra-frozen-source-20261029-01.json"
+  },
+  "semantic13": {
+    "path": "guides\\tests\\assistant\\cua-semantic-smoke-13.json",
+    "sha256": "2b6c28344582fab5a82412aa733e275e7d679e2710a987a3cce31e72ccce6109",
+    "assertionCount": 13,
+    "oracleFixture": {
+      "path": "guides/tests/assistant/narrative-all-games-cases.json",
+      "sha256": "a8d8c86b71f875055e6321963c475e85926f168648c5f806bf0c9bd86173c203"
+    }
+  },
+  "probes": [
+    {
+      "surface": "starcraft",
+      "gameId": "starcraft",
+      "rawExportSha256": "e76811ab8f8c2a9d227b4e5f36f130d2f72e9612f727111f730e7a76ea32e4dd",
+      "url": "http://127.0.0.1:51651/guides/StarcraftBWAPI.html",
+      "checkedAt": "2026-10-31T06:31:43.646Z",
+      "sourceHashesBefore": {
+        "guides/Albion.html": "28caca4821bb9ab708a23e2e7f74e7316f24eb67c4ea9234fad03fbf2b2ab334",
+        "guides/AlQadim.html": "c23f4c5810e6eebeb6b66643e6e1447941c3b2325a9a856faffc699d7a9573ac",
+        "guides/css/Albion.css": "da623b05d1246965951536a29bc3a46abd60f83c90f1ee9f5b3fbc01ae03747a",
+        "guides/css/AlQadim.css": "cb9f51cc7b611f82410abfc9356161afd66dbc44f80a3771241a23949c53a633",
+        "guides/css/assistant-consent.css": "6a2d80efe6856733a8d89e012b1e9cbd3b897b86252d99a4ec7a6868eb87d253",
+        "guides/css/assistant.css": "bc309f8755ec2a7ea2aa60daf9391a4bf82dd9019b45e4e06b2dd54415054c30",
+        "guides/css/fonts.css": "2dfc7f8db0a3c7be5fb30ef2ae6b37d69b1a3b3bcf9dd083201fef9e6552729c",
+        "guides/css/index.css": "7022da3fe5e4f2790aad8465911e921c8aef0c4b93231cc5069b5f713edb27eb",
+        "guides/css/leaflet.css": "a7837102824184820dfa198d1ebcd109ff6d0ff9a2672a074b9a1b4d147d04c6",
+        "guides/css/offline.css": "50d57efca3c94077245a7d5de5190580f766acf8309a5aa3804e4a96e696d26f",
+        "guides/css/Starcraft.css": "95eedc6120ba8140f7a22e82b8eacd39b6c1e4b2b3e4350515c619ce17597da7",
+        "guides/css/Ultima5.css": "0cbe71e2af0b9d6c6dbda98a524778d7d5f21b2708aaea3b8e0b9f3d9bb30469",
+        "guides/css/Ultima6.css": "7fb84db0985d764f95cf6c2cfc4fb7ccd4f1a5784e4d42240c04302312ea500c",
+        "guides/css/Ultima7.css": "ff66d7057228f65d0d035353464a8d1b4507157a230e6ceb6a07731ea4ac58d5",
+        "guides/data/assistant/albion.json": "c31117852df81aceb4aba717c527307d32f4c0c1bcded13516b8f93de5ba404b",
+        "guides/data/assistant/alqadim.json": "b51cc1d049fe69636be56ecef9dd1e8e183429f6a37601016208c52c9aecfadd",
+        "guides/data/assistant/consultation-catalog.json": "68fdb05991b4639058f401303e2a1b71049722a30f55f7905eb8473108210444",
+        "guides/data/assistant/knowledge/albion-embeddings.json": "a8868c4d137f1c48ee2dcbf6c9f36343e36f64f23bd785daa7866b0839d97c37",
+        "guides/data/assistant/knowledge/albion.json": "be0faae89113b2a4db1a49132c079d281ac77bbd4c78c8f97b7f0f9566559742",
+        "guides/data/assistant/knowledge/alqadim-embeddings.json": "6e22652db6bdc74351ed00a3fef041b4d3e281c73824bb52947c7c9fbc0a8827",
+        "guides/data/assistant/knowledge/alqadim.json": "843ce2425f205464a6c1771f4f18864d712c8736f79203ef78dd234e7ec03b8c",
+        "guides/data/assistant/knowledge/starcraft-embeddings.json": "023acebeab9d1cf17457f2eb3afd9c786a09f5354698ae5a9d77bc59978fae2d",
+        "guides/data/assistant/knowledge/starcraft.json": "97fdae345bbb25f9d3b0b32a8fcbb0a8a0c22bfbe7b4fadd8e5c0cd4c75d4261",
+        "guides/data/assistant/knowledge/ultima5-embeddings.json": "556625d297222aa6644b08ebd8e574188e902739ace03f778a0cf598742ad90f",
+        "guides/data/assistant/knowledge/ultima5.json": "c242243c05424191356cb2091bc1831c020ff7971aaf1dbf71385d50d6404a42",
+        "guides/data/assistant/knowledge/ultima6-embeddings.json": "99e5c764960c6e45ac78397dde869146a82ede577394f87808b5e05d7148876f",
+        "guides/data/assistant/knowledge/ultima6.json": "be70774b8270273010f386caf8906d6d0251d83989e9f6b92d82c02a5a3ca886",
+        "guides/data/assistant/knowledge/ultima7-embeddings.json": "c6fdcabb8f264ae9410a292b9544eb519ac4f63bc6ccb2be7c07191121d3662c",
+        "guides/data/assistant/knowledge/ultima7.json": "4de2c6d68b6a5d127a7597ccd658e971545b658e78dcf6c46865682e89ac1dee",
+        "guides/data/assistant/manifest.json": "41df16becca3446c8a141aeaca0d253f160be7f9826821ac00f1b7659dbc3b61",
+        "guides/data/assistant/starcraft.json": "91ff755d147999674e6d3014e744a7e62109ba95dcbfef633230e18ee80af1f7",
+        "guides/data/assistant/ultima5.json": "2cb1e1844d6b98f0969dda25ea09474fa34b6f41be8faa55405922c6219ecf5c",
+        "guides/data/assistant/ultima6.json": "2e953db8d3572d2680edd35b50b90e0498fb70fb9844704a5dd7ae06aa21aba7",
+        "guides/data/assistant/ultima7.json": "989a23d8018d66352d360a08f1f2271d0d314aad3cba1ffa3b4ead7ed2f4957f",
+        "guides/index.html": "64887ea723a117e43ae4399f97d2001d4130734c9c60b06c7b3329a87fc23908",
+        "guides/js/Albion.js": "59a5edb47c851a6186f8baf2a448414c6f72abebdf0f6acb3b0bf1410bacdee4",
+        "guides/js/AlbionAtlasData.js": "183ff8cf794255a1bd8390f9cf98b1e15610067220a215f4a871fbd3b1840aed",
+        "guides/js/AlbionMarkers.js": "1de190722be16721a0ff3ff3a50b2c1298706bc33629dd223ed673f63cfbc27b",
+        "guides/js/AlQadim.js": "af9714f98c11dafc002550a6137dbec73fbc7c7baf8f0fca336e6ab248055718",
+        "guides/js/AlQadimAtlasData.js": "bc7aa915d1e5511b643a03dde2801c1b2166a79b7453a085ba0ccb1c4f83e74d",
+        "guides/js/assistant/adapters/albion.js": "ab68229b577cd2d37a1ea03db3295753072782390d6e0840af3f84b10140769d",
+        "guides/js/assistant/adapters/alqadim.js": "eb36af6a18a20d903f50217c10e338340c9c5d09b2a32ca901e5172629c65ce9",
+        "guides/js/assistant/adapters/starcraft.js": "271beb61beb43798ac852c6e8307eaf60d447a9deb264324182748cd11b43737",
+        "guides/js/assistant/adapters/ultima5.js": "e062c5fb282ad9851424a7b631949ac0466f7d5e2bc9f3648d3baa18fe12314e",
+        "guides/js/assistant/adapters/ultima6.js": "1c1d66a5295bd751977c9031974d2e65612dc97185765af03f749c9c3b7742b7",
+        "guides/js/assistant/adapters/ultima7.js": "7fd3c1cde88105c921de59feb1bc3c0f65ecd8b85e34ecae0259351b064ef58e",
+        "guides/js/assistant/bootstrap.js": "274ea7d4b59739f5636cdbe9d36c16953a774abc23f3d91a929750e0d3a98542",
+        "guides/js/assistant/bundle-references.js": "260ddc92434e6a4acf7daf21d01462446466c21ceda56eff32d49ba3acdc3e31",
+        "guides/js/assistant/consent.js": "aedd66aa57633c467bd5fa3fceabee1980ef046e90969585e895e1e0a0c668da",
+        "guides/js/assistant/consultation.js": "3e0b77985b67f5344589fc305cc2af4b6507cb206e19ce410dfe592f434a7902",
+        "guides/js/assistant/descriptive-reference-requests.js": "9ef1171778cb54cde0b8824f36b3ea1fe43a000981180379534a8425921532da",
+        "guides/js/assistant/dialogue.js": "7936ef21f308c6e37b081be0be63b604b6ca06ed801a4b528eab429822e99e88",
+        "guides/js/assistant/engine.js": "56e914fc45f1c929c376ca5ae138483c132bafd8cd522de564e9c35e31e9c736",
+        "guides/js/assistant/factual-property-requests.js": "589542d74623d1df3a7f492bfdbb0e9ec9e2ac3f3155e717ca50a73fb882399f",
+        "guides/js/assistant/fallback-context.js": "3f9d7515e7c4c39deb0c6763353be237d885b1178833a2bd02ddcd432d4b36c2",
+        "guides/js/assistant/fallback-guard.js": "a566a812a82610f88f1978d37bfa6688638b0a5e1122db3cfa0ecb3651d0465d",
+        "guides/js/assistant/frame-tokens.js": "55ed278527adc9795d7151a3d780d9ac74d5407ea1e23c4ec25d5a1875fe78b0",
+        "guides/js/assistant/guide-assistant.js": "9de82b81a6109b48e9aa6959b6d3762daa07810a3619c50788a6be5220953496",
+        "guides/js/assistant/intent-head.js": "18af761c4cf85fccc46f8fa2bdaf76e69ea90303b8b4c9e0c41854c93b293088",
+        "guides/js/assistant/intent-runtime.js": "abc260b13123443b2d4585c2173c3eb7ddb54bdd48604ee8980e575f49982667",
+        "guides/js/assistant/intent-worker.js": "9ff8b22e27259f57dd959c93dfc494809a28a2c3831befd3170e732bdb8cb696",
+        "guides/js/assistant/knowledge-graph.js": "6caa61caa54b8034145785b7d38804b7927f106b1ccd155fdca661571a594515",
+        "guides/js/assistant/knowledge.js": "a8cd573bd6d8c971d98379ff7455e223ad6600fa1a09db0f7b6c0d905db9783e",
+        "guides/js/assistant/language.js": "447aae3bbfd1e92f8b58cbf0901f5fdf15afa6ae7c19caff41989fb4fec1863b",
+        "guides/js/assistant/method-assertions.js": "69be5f101520f8e78f419163d9aa5c8ef4223cc06e6268d20ff64500e5b4dae5",
+        "guides/js/assistant/model-download.js": "f43df3383a651246b64f0dc18c962aba044a7dea2dd16b08c3fab97f97fb6441",
+        "guides/js/assistant/model-runtime.js": "d6c434e0a608f6097dcc72d38a7df50c7018f3b68b65c501e88a95cc6648b89d",
+        "guides/js/assistant/model-worker.js": "ecfce5ee4448a899e666f5bb31b42eda6f5e143020817ef6a64a531d6e410689",
+        "guides/js/assistant/named-source-fields.js": "eabba927261f5a5f6f969c3c78ea75b75289917c1a9853ba92d5ad213af53553",
+        "guides/js/assistant/policy.js": "eb6f309d0f4ee45e8ad5f6f73bc4f10feaf573b6b8c3f89b73b8fe8fdc581a5f",
+        "guides/js/assistant/procedural-requests.js": "361fb292904227e35a38ab4d256dee2bfef9fae9f33640152f26cbe993028b2d",
+        "guides/js/assistant/procedure-phase-fields.js": "79d5eae546858d99c7c1aa702a1577a9a585c4b03e2abc1a8e8edb0c1c00425c",
+        "guides/js/assistant/question-source-attribution.js": "528b3cd8d77b30a75a6faeab2d6b1eb2c70d44fdca5b929f35aecee1272d0971",
+        "guides/js/assistant/recorded-conditions.js": "730289c5a0b4755a4bba0926c352b39fe87e3e00e238c528305dea00eeaef12f",
+        "guides/js/assistant/request-frame.js": "84d68698d9aa431d1739a40d99d3c699ee8f8465fb4800180730e5d89c703e23",
+        "guides/js/assistant/requested-measurements.js": "1fbe94c2b4dc5566fb317db33505c06ad6e355dae060727d58d8c8ed00bca5ce",
+        "guides/js/assistant/resource-condition-requests.js": "3ce3fcf7438076136ba8c2269557c812ca3997d64c35c2f90cf2054ddc961992",
+        "guides/js/assistant/retrieval.js": "500762e3358e89ef7c0b14124c93646c6bbdf525269fbbe0f941c9f671f80eac",
+        "guides/js/assistant/rules.js": "9eec689568f19a711eea6722e1b3004b8964a66223c76011f7d0ba2d8f497241",
+        "guides/js/assistant/scene-transition-preambles.js": "453e9353e1aa7474c3858cbb93fa6eb290bc7ec84b7d08104d5337b741f6c6e4",
+        "guides/js/assistant/sequence-field-requests.js": "ca690483a5423eeb87778aa82f1dae3eea1fdcb6241725fb829813713c45c561",
+        "guides/js/assistant/software-capabilities.js": "e07a8073697e48c37f01109401ee17942eef5bf5991cb58ffed6cb0dcf7e0fac",
+        "guides/js/assistant/source-conflict-quotation.js": "f87cb5d41b2667a14591b8475fd6f39170633d9669b48b63cbe73e44c4a81f4f",
+        "guides/js/assistant/source-contexts.js": "463b9c0fea45e9e99c36599f71600131675a9268b83fa760be62b7d595e3fd12",
+        "guides/js/assistant/source-field-arguments.js": "059f90cf546776fe1367de1bcd48a3c7c916e8c77a42e5c581050597a62d2cb5",
+        "guides/js/assistant/source-field-guard.js": "49f05fa27172a175e70f1f285b59e7b58066dbb880b472ee7f5652f43c3835e8",
+        "guides/js/assistant/source-field-index.js": "64da309a1a287fa6a87b62c2ae2e07f89b9e6f5a2c89396f3d4b179e915bf226",
+        "guides/js/assistant/source-field-router.js": "4f75726a2448d22812dcc6ada2753360d164a6ef1732e57d115abb2a4c1f5809",
+        "guides/js/assistant/source-location-context.js": "79cafdacac0c8f784059e7e48ff8e438f9a96278ff8e0980bcebbc98ba270ee0",
+        "guides/js/assistant/source-narrative-answer.js": "b001fad723696f9bcdb6f2badd4686e77153b6a2ea7ab05a240da93cd5297693",
+        "guides/js/assistant/source-preambles.js": "f9e80bfc5d29aad571da9f726bb32a506e97f2583ece33d9d4ccbe145bd03c3a",
+        "guides/js/assistant/source-responses.js": "09541651ae6c32986072d9c66c09b9e84c34810465a28a9d57c8e22c56f40cd2",
+        "guides/js/assistant/source-role-contrasts.js": "3b647d9ffd6d01bd13d3b7a63f7784aedfcd20c68b10a7384dd6afd2d95d6246",
+        "guides/js/assistant/static-property-conditions.js": "dc47e952129a962f208cc0100cff931250c22ce8ecc47fca57fe53034e87aea8",
+        "guides/js/assistant/topics.js": "988199dba2efba8d58e5611322740f44905569f3f49788ba8846a87f2732245f",
+        "guides/js/assistant/ui.js": "9cf84a2c02002e87b1ea768b00402cb7bbb3f137d60d3340b677f5a38145b921",
+        "guides/js/chart.js": "fd9c0a6ac8a319c5769c326281a4e781ece35cb37265e4208077be18870db4c1",
+        "guides/js/index.js": "0feb3e548e54dd42b171533aebd0931a77cdb0f5b5c51ce2d733814e8cdae557",
+        "guides/js/leaflet.js": "a4f466d139ec76d246b78979b25128d09ee337cedbd10cda000f34debb046f9b",
+        "guides/js/lucide.js": "72ee01f0ecab34adc1b55831352c36b32a7bda129c107edbaff15b5630b31a69",
+        "guides/js/tailwind.js": "f34908e27cada2ed7c543474faa28317990797b24ab48b075ab39d879c9aa595",
+        "guides/js/Ultima5.js": "d76bca76df3c4de11e07a9287b1ca731e36d9be5159ba9e0400c978c4862dc75",
+        "guides/js/Ultima5AtlasData.js": "4c439eec4a29c418fafad9f83165fbe27f6288ead9f67db0e0bf17709160d562",
+        "guides/js/Ultima6.js": "1ac6e25658de7977215f6b23a67492a07b7adacc45743851b705847b2f5a7955",
+        "guides/js/Ultima6Atlas.js": "34c70b8d75fced666f698c83f422fdedabba9e506563fea06ab06c71e3387f59",
+        "guides/js/Ultima7.js": "3c7ce3c82e775313d6de2afa22631a4fc537c31fe07693d90fa6e0a2c8e16949",
+        "guides/js/Ultima7Markers.js": "214e598ef74ff4f27fc2910fdfd0603e53fca95165d9b847febea93dadb1dc55",
+        "guides/local-assistant/intent/checksums.json": "73c8a560940b7308cc84a7d780817128fb2929c88c92baa5f997a36634faaaad",
+        "guides/local-assistant/intent/head.json": "979c196a92df490124802e61fcc5fad787fc535ee69ff0eae64784355a8f6bfb",
+        "guides/local-assistant/intent/profile.json": "5d5a10005b6d44bd6473261f9b4324e941ad3638541903093216234b9fcfaa2c",
+        "guides/local-assistant/intent/verification.json": "7516972fc62026aa74d8d2d827deb80fde52cfaaed4b5b60f9aa4056ef7a964e",
+        "guides/offline-manifest.json": "b1b21e9dc8abfcf19959c0742e4f1ea8bb34062743c9746e036749513a0a0d05",
+        "guides/offline-version.json": "9bcd241cf5697bb0439ba3d8d20f74171e538545da4bf2e1f9bd59e6808c9dc3",
+        "guides/StarcraftBWAPI.html": "ce113606ec9a58b321ea7b3bb0b6e5207ccb676477a688164aefd0790e33aaf6",
+        "guides/tests/assistant/browser-consent-fixture.js": "408399d3ebcca71817ede7424c1d9945a2c13ed0127ac2d8ddaf9cdb66221609",
+        "guides/tests/assistant/conversations/albion.json": "a8af2f712112b6cd8b95e18e2f6376bc604324fcef6bcc8cef8c06769c49a1c1",
+        "guides/tests/assistant/conversations/alqadim.json": "4c350b045970b2eb3ed7d68f0acf99aabe5c92f83638604fa3e7e937eb6d8b4d",
+        "guides/tests/assistant/conversations/starcraft.json": "7901d9b2dee8d54b89ca6f6bb90f8fb0b50a85b9048c04b6a397a11b27d9e01e",
+        "guides/tests/assistant/conversations/ultima5.json": "59b762721a0ac3034198e42e178e5c6a4208a67d6a4a6cf81d4825b650890801",
+        "guides/tests/assistant/conversations/ultima6.json": "994363309d1fdef51f90d367d45b9afc9ddc27f59d39271ac16e5ffd37f4767c",
+        "guides/tests/assistant/conversations/ultima7.json": "13b3601956ff2f52961d5426b4bdc71a1413e95d4f404eac3345bbe2427c51fd",
+        "guides/tests/assistant/cua-native-probe-server.py": "afa4d535fd9e4de2fa185c09e884d9eab10b04e8ccb30beae68083d6a5122af6",
+        "guides/tests/assistant/cua-semantic-smoke-13.json": "2b6c28344582fab5a82412aa733e275e7d679e2710a987a3cce31e72ccce6109",
+        "guides/tests/assistant/evidence/conversation-starcraft-source-records.json": "1bbd9f286f6b59aeb6c54f50b00a3fd79884e16fddab640ea51d10c9326bde71",
+        "guides/tests/assistant/knowledge/albion-cases.json": "150b9a44f62cda30bc3c6be45f4d90b9e9816f00b566c41b6a810950757ffce5",
+        "guides/tests/assistant/knowledge/alqadim-cases.json": "7ef42b1a4daada4c23bc307674036fe2d1d2227d7b0b14a8bb20f1fbdbf6dbec",
+        "guides/tests/assistant/knowledge/starcraft-cases.json": "a293cd66ada60d643bb7ac8fa9f5e3e2c3b0dc2a65d21b694be4da0eb0332419",
+        "guides/tests/assistant/knowledge/ultima5-cases.json": "19ec5d6a56e634baae5e8f50d9fa5e16af8d25e303a3db44566016bf35de1b36",
+        "guides/tests/assistant/knowledge/ultima6-cases.json": "0a26a554d248b7dd3213fd0a9e52b1e2c329e33a7ce3dcd4918fdacc34cdafb5",
+        "guides/tests/assistant/knowledge/ultima7-cases.json": "5ff719685a5ae95f40596c134cde376a1e9ccf5a3a6c247a31cadf5196eef56e",
+        "guides/tests/assistant/knowledge-blind-cases.json": "0d99328dbc72c71e79a12457fceb810160d138fdac181aab0f8ddbcb0fc58189",
+        "guides/tests/assistant/knowledge-browser.py": "9dff89ed6e8b71d2561ce0f65562b14b355e07ca1509f6c179a86ccff57c4cf3",
+        "guides/tests/assistant/knowledge-fresh-cases-20261025.json": "99781d65f37703954238d577ee5bb2461402e580c918424791c49e822bfa4865",
+        "guides/tests/assistant/knowledge-independent-all-20261025.json": "73a88fd31edcf54cb82ebdbe6583b6017635d975b07194d86ddaa4707870f9f4",
+        "guides/tests/assistant/knowledge-source-first-96-20261025.json": "df29edba416c1445472ecf26015931584c12ceabee3e145b0794b01f0ff53b65",
+        "guides/tests/assistant/narrative-all-games-cases.json": "a8d8c86b71f875055e6321963c475e85926f168648c5f806bf0c9bd86173c203",
+        "guides/tests/assistant/review-cua-native-probes.py": "ed5e4ea2edb3ad47fe1d8a8ae5428eb7886a5c96eefa2bfe38dccd5e92ca8e4e",
+        "guides/Ultima5.html": "1e4b2a100a77e7a333788c33f721193b6d12fbf5babe499f1fd7bc6e61329fb0",
+        "guides/Ultima6.html": "b2754a326a372be05044d01ff5f98ac03167d40652a4dececcd8b0d67e5aca73",
+        "guides/Ultima7.html": "348154eed4a56ba7d88a9d9807c18940b062a02526b4b4de4361c170cedaeb9a"
+      },
+      "sourceHashesAfter": {
+        "guides/Albion.html": "28caca4821bb9ab708a23e2e7f74e7316f24eb67c4ea9234fad03fbf2b2ab334",
+        "guides/AlQadim.html": "c23f4c5810e6eebeb6b66643e6e1447941c3b2325a9a856faffc699d7a9573ac",
+        "guides/css/Albion.css": "da623b05d1246965951536a29bc3a46abd60f83c90f1ee9f5b3fbc01ae03747a",
+        "guides/css/AlQadim.css": "cb9f51cc7b611f82410abfc9356161afd66dbc44f80a3771241a23949c53a633",
+        "guides/css/assistant-consent.css": "6a2d80efe6856733a8d89e012b1e9cbd3b897b86252d99a4ec7a6868eb87d253",
+        "guides/css/assistant.css": "bc309f8755ec2a7ea2aa60daf9391a4bf82dd9019b45e4e06b2dd54415054c30",
+        "guides/css/fonts.css": "2dfc7f8db0a3c7be5fb30ef2ae6b37d69b1a3b3bcf9dd083201fef9e6552729c",
+        "guides/css/index.css": "7022da3fe5e4f2790aad8465911e921c8aef0c4b93231cc5069b5f713edb27eb",
+        "guides/css/leaflet.css": "a7837102824184820dfa198d1ebcd109ff6d0ff9a2672a074b9a1b4d147d04c6",
+        "guides/css/offline.css": "50d57efca3c94077245a7d5de5190580f766acf8309a5aa3804e4a96e696d26f",
+        "guides/css/Starcraft.css": "95eedc6120ba8140f7a22e82b8eacd39b6c1e4b2b3e4350515c619ce17597da7",
+        "guides/css/Ultima5.css": "0cbe71e2af0b9d6c6dbda98a524778d7d5f21b2708aaea3b8e0b9f3d9bb30469",
+        "guides/css/Ultima6.css": "7fb84db0985d764f95cf6c2cfc4fb7ccd4f1a5784e4d42240c04302312ea500c",
+        "guides/css/Ultima7.css": "ff66d7057228f65d0d035353464a8d1b4507157a230e6ceb6a07731ea4ac58d5",
+        "guides/data/assistant/albion.json": "c31117852df81aceb4aba717c527307d32f4c0c1bcded13516b8f93de5ba404b",
+        "guides/data/assistant/alqadim.json": "b51cc1d049fe69636be56ecef9dd1e8e183429f6a37601016208c52c9aecfadd",
+        "guides/data/assistant/consultation-catalog.json": "68fdb05991b4639058f401303e2a1b71049722a30f55f7905eb8473108210444",
+        "guides/data/assistant/knowledge/albion-embeddings.json": "a8868c4d137f1c48ee2dcbf6c9f36343e36f64f23bd785daa7866b0839d97c37",
+        "guides/data/assistant/knowledge/albion.json": "be0faae89113b2a4db1a49132c079d281ac77bbd4c78c8f97b7f0f9566559742",
+        "guides/data/assistant/knowledge/alqadim-embeddings.json": "6e22652db6bdc74351ed00a3fef041b4d3e281c73824bb52947c7c9fbc0a8827",
+        "guides/data/assistant/knowledge/alqadim.json": "843ce2425f205464a6c1771f4f18864d712c8736f79203ef78dd234e7ec03b8c",
+        "guides/data/assistant/knowledge/starcraft-embeddings.json": "023acebeab9d1cf17457f2eb3afd9c786a09f5354698ae5a9d77bc59978fae2d",
+        "guides/data/assistant/knowledge/starcraft.json": "97fdae345bbb25f9d3b0b32a8fcbb0a8a0c22bfbe7b4fadd8e5c0cd4c75d4261",
+        "guides/data/assistant/knowledge/ultima5-embeddings.json": "556625d297222aa6644b08ebd8e574188e902739ace03f778a0cf598742ad90f",
+        "guides/data/assistant/knowledge/ultima5.json": "c242243c05424191356cb2091bc1831c020ff7971aaf1dbf71385d50d6404a42",
+        "guides/data/assistant/knowledge/ultima6-embeddings.json": "99e5c764960c6e45ac78397dde869146a82ede577394f87808b5e05d7148876f",
+        "guides/data/assistant/knowledge/ultima6.json": "be70774b8270273010f386caf8906d6d0251d83989e9f6b92d82c02a5a3ca886",
+        "guides/data/assistant/knowledge/ultima7-embeddings.json": "c6fdcabb8f264ae9410a292b9544eb519ac4f63bc6ccb2be7c07191121d3662c",
+        "guides/data/assistant/knowledge/ultima7.json": "4de2c6d68b6a5d127a7597ccd658e971545b658e78dcf6c46865682e89ac1dee",
+        "guides/data/assistant/manifest.json": "41df16becca3446c8a141aeaca0d253f160be7f9826821ac00f1b7659dbc3b61",
+        "guides/data/assistant/starcraft.json": "91ff755d147999674e6d3014e744a7e62109ba95dcbfef633230e18ee80af1f7",
+        "guides/data/assistant/ultima5.json": "2cb1e1844d6b98f0969dda25ea09474fa34b6f41be8faa55405922c6219ecf5c",
+        "guides/data/assistant/ultima6.json": "2e953db8d3572d2680edd35b50b90e0498fb70fb9844704a5dd7ae06aa21aba7",
+        "guides/data/assistant/ultima7.json": "989a23d8018d66352d360a08f1f2271d0d314aad3cba1ffa3b4ead7ed2f4957f",
+        "guides/index.html": "64887ea723a117e43ae4399f97d2001d4130734c9c60b06c7b3329a87fc23908",
+        "guides/js/Albion.js": "59a5edb47c851a6186f8baf2a448414c6f72abebdf0f6acb3b0bf1410bacdee4",
+        "guides/js/AlbionAtlasData.js": "183ff8cf794255a1bd8390f9cf98b1e15610067220a215f4a871fbd3b1840aed",
+        "guides/js/AlbionMarkers.js": "1de190722be16721a0ff3ff3a50b2c1298706bc33629dd223ed673f63cfbc27b",
+        "guides/js/AlQadim.js": "af9714f98c11dafc002550a6137dbec73fbc7c7baf8f0fca336e6ab248055718",
+        "guides/js/AlQadimAtlasData.js": "bc7aa915d1e5511b643a03dde2801c1b2166a79b7453a085ba0ccb1c4f83e74d",
+        "guides/js/assistant/adapters/albion.js": "ab68229b577cd2d37a1ea03db3295753072782390d6e0840af3f84b10140769d",
+        "guides/js/assistant/adapters/alqadim.js": "eb36af6a18a20d903f50217c10e338340c9c5d09b2a32ca901e5172629c65ce9",
+        "guides/js/assistant/adapters/starcraft.js": "271beb61beb43798ac852c6e8307eaf60d447a9deb264324182748cd11b43737",
+        "guides/js/assistant/adapters/ultima5.js": "e062c5fb282ad9851424a7b631949ac0466f7d5e2bc9f3648d3baa18fe12314e",
+        "guides/js/assistant/adapters/ultima6.js": "1c1d66a5295bd751977c9031974d2e65612dc97185765af03f749c9c3b7742b7",
+        "guides/js/assistant/adapters/ultima7.js": "7fd3c1cde88105c921de59feb1bc3c0f65ecd8b85e34ecae0259351b064ef58e",
+        "guides/js/assistant/bootstrap.js": "274ea7d4b59739f5636cdbe9d36c16953a774abc23f3d91a929750e0d3a98542",
+        "guides/js/assistant/bundle-references.js": "260ddc92434e6a4acf7daf21d01462446466c21ceda56eff32d49ba3acdc3e31",
+        "guides/js/assistant/consent.js": "aedd66aa57633c467bd5fa3fceabee1980ef046e90969585e895e1e0a0c668da",
+        "guides/js/assistant/consultation.js": "3e0b77985b67f5344589fc305cc2af4b6507cb206e19ce410dfe592f434a7902",
+        "guides/js/assistant/descriptive-reference-requests.js": "9ef1171778cb54cde0b8824f36b3ea1fe43a000981180379534a8425921532da",
+        "guides/js/assistant/dialogue.js": "7936ef21f308c6e37b081be0be63b604b6ca06ed801a4b528eab429822e99e88",
+        "guides/js/assistant/engine.js": "56e914fc45f1c929c376ca5ae138483c132bafd8cd522de564e9c35e31e9c736",
+        "guides/js/assistant/factual-property-requests.js": "589542d74623d1df3a7f492bfdbb0e9ec9e2ac3f3155e717ca50a73fb882399f",
+        "guides/js/assistant/fallback-context.js": "3f9d7515e7c4c39deb0c6763353be237d885b1178833a2bd02ddcd432d4b36c2",
+        "guides/js/assistant/fallback-guard.js": "a566a812a82610f88f1978d37bfa6688638b0a5e1122db3cfa0ecb3651d0465d",
+        "guides/js/assistant/frame-tokens.js": "55ed278527adc9795d7151a3d780d9ac74d5407ea1e23c4ec25d5a1875fe78b0",
+        "guides/js/assistant/guide-assistant.js": "9de82b81a6109b48e9aa6959b6d3762daa07810a3619c50788a6be5220953496",
+        "guides/js/assistant/intent-head.js": "18af761c4cf85fccc46f8fa2bdaf76e69ea90303b8b4c9e0c41854c93b293088",
+        "guides/js/assistant/intent-runtime.js": "abc260b13123443b2d4585c2173c3eb7ddb54bdd48604ee8980e575f49982667",
+        "guides/js/assistant/intent-worker.js": "9ff8b22e27259f57dd959c93dfc494809a28a2c3831befd3170e732bdb8cb696",
+        "guides/js/assistant/knowledge-graph.js": "6caa61caa54b8034145785b7d38804b7927f106b1ccd155fdca661571a594515",
+        "guides/js/assistant/knowledge.js": "a8cd573bd6d8c971d98379ff7455e223ad6600fa1a09db0f7b6c0d905db9783e",
+        "guides/js/assistant/language.js": "447aae3bbfd1e92f8b58cbf0901f5fdf15afa6ae7c19caff41989fb4fec1863b",
+        "guides/js/assistant/method-assertions.js": "69be5f101520f8e78f419163d9aa5c8ef4223cc06e6268d20ff64500e5b4dae5",
+        "guides/js/assistant/model-download.js": "f43df3383a651246b64f0dc18c962aba044a7dea2dd16b08c3fab97f97fb6441",
+        "guides/js/assistant/model-runtime.js": "d6c434e0a608f6097dcc72d38a7df50c7018f3b68b65c501e88a95cc6648b89d",
+        "guides/js/assistant/model-worker.js": "ecfce5ee4448a899e666f5bb31b42eda6f5e143020817ef6a64a531d6e410689",
+        "guides/js/assistant/named-source-fields.js": "eabba927261f5a5f6f969c3c78ea75b75289917c1a9853ba92d5ad213af53553",
+        "guides/js/assistant/policy.js": "eb6f309d0f4ee45e8ad5f6f73bc4f10feaf573b6b8c3f89b73b8fe8fdc581a5f",
+        "guides/js/assistant/procedural-requests.js": "361fb292904227e35a38ab4d256dee2bfef9fae9f33640152f26cbe993028b2d",
+        "guides/js/assistant/procedure-phase-fields.js": "79d5eae546858d99c7c1aa702a1577a9a585c4b03e2abc1a8e8edb0c1c00425c",
+        "guides/js/assistant/question-source-attribution.js": "528b3cd8d77b30a75a6faeab2d6b1eb2c70d44fdca5b929f35aecee1272d0971",
+        "guides/js/assistant/recorded-conditions.js": "730289c5a0b4755a4bba0926c352b39fe87e3e00e238c528305dea00eeaef12f",
+        "guides/js/assistant/request-frame.js": "84d68698d9aa431d1739a40d99d3c699ee8f8465fb4800180730e5d89c703e23",
+        "guides/js/assistant/requested-measurements.js": "1fbe94c2b4dc5566fb317db33505c06ad6e355dae060727d58d8c8ed00bca5ce",
+        "guides/js/assistant/resource-condition-requests.js": "3ce3fcf7438076136ba8c2269557c812ca3997d64c35c2f90cf2054ddc961992",
+        "guides/js/assistant/retrieval.js": "500762e3358e89ef7c0b14124c93646c6bbdf525269fbbe0f941c9f671f80eac",
+        "guides/js/assistant/rules.js": "9eec689568f19a711eea6722e1b3004b8964a66223c76011f7d0ba2d8f497241",
+        "guides/js/assistant/scene-transition-preambles.js": "453e9353e1aa7474c3858cbb93fa6eb290bc7ec84b7d08104d5337b741f6c6e4",
+        "guides/js/assistant/sequence-field-requests.js": "ca690483a5423eeb87778aa82f1dae3eea1fdcb6241725fb829813713c45c561",
+        "guides/js/assistant/software-capabilities.js": "e07a8073697e48c37f01109401ee17942eef5bf5991cb58ffed6cb0dcf7e0fac",
+        "guides/js/assistant/source-conflict-quotation.js": "f87cb5d41b2667a14591b8475fd6f39170633d9669b48b63cbe73e44c4a81f4f",
+        "guides/js/assistant/source-contexts.js": "463b9c0fea45e9e99c36599f71600131675a9268b83fa760be62b7d595e3fd12",
+        "guides/js/assistant/source-field-arguments.js": "059f90cf546776fe1367de1bcd48a3c7c916e8c77a42e5c581050597a62d2cb5",
+        "guides/js/assistant/source-field-guard.js": "49f05fa27172a175e70f1f285b59e7b58066dbb880b472ee7f5652f43c3835e8",
+        "guides/js/assistant/source-field-index.js": "64da309a1a287fa6a87b62c2ae2e07f89b9e6f5a2c89396f3d4b179e915bf226",
+        "guides/js/assistant/source-field-router.js": "4f75726a2448d22812dcc6ada2753360d164a6ef1732e57d115abb2a4c1f5809",
+        "guides/js/assistant/source-location-context.js": "79cafdacac0c8f784059e7e48ff8e438f9a96278ff8e0980bcebbc98ba270ee0",
+        "guides/js/assistant/source-narrative-answer.js": "b001fad723696f9bcdb6f2badd4686e77153b6a2ea7ab05a240da93cd5297693",
+        "guides/js/assistant/source-preambles.js": "f9e80bfc5d29aad571da9f726bb32a506e97f2583ece33d9d4ccbe145bd03c3a",
+        "guides/js/assistant/source-responses.js": "09541651ae6c32986072d9c66c09b9e84c34810465a28a9d57c8e22c56f40cd2",
+        "guides/js/assistant/source-role-contrasts.js": "3b647d9ffd6d01bd13d3b7a63f7784aedfcd20c68b10a7384dd6afd2d95d6246",
+        "guides/js/assistant/static-property-conditions.js": "dc47e952129a962f208cc0100cff931250c22ce8ecc47fca57fe53034e87aea8",
+        "guides/js/assistant/topics.js": "988199dba2efba8d58e5611322740f44905569f3f49788ba8846a87f2732245f",
+        "guides/js/assistant/ui.js": "9cf84a2c02002e87b1ea768b00402cb7bbb3f137d60d3340b677f5a38145b921",
+        "guides/js/chart.js": "fd9c0a6ac8a319c5769c326281a4e781ece35cb37265e4208077be18870db4c1",
+        "guides/js/index.js": "0feb3e548e54dd42b171533aebd0931a77cdb0f5b5c51ce2d733814e8cdae557",
+        "guides/js/leaflet.js": "a4f466d139ec76d246b78979b25128d09ee337cedbd10cda000f34debb046f9b",
+        "guides/js/lucide.js": "72ee01f0ecab34adc1b55831352c36b32a7bda129c107edbaff15b5630b31a69",
+        "guides/js/tailwind.js": "f34908e27cada2ed7c543474faa28317990797b24ab48b075ab39d879c9aa595",
+        "guides/js/Ultima5.js": "d76bca76df3c4de11e07a9287b1ca731e36d9be5159ba9e0400c978c4862dc75",
+        "guides/js/Ultima5AtlasData.js": "4c439eec4a29c418fafad9f83165fbe27f6288ead9f67db0e0bf17709160d562",
+        "guides/js/Ultima6.js": "1ac6e25658de7977215f6b23a67492a07b7adacc45743851b705847b2f5a7955",
+        "guides/js/Ultima6Atlas.js": "34c70b8d75fced666f698c83f422fdedabba9e506563fea06ab06c71e3387f59",
+        "guides/js/Ultima7.js": "3c7ce3c82e775313d6de2afa22631a4fc537c31fe07693d90fa6e0a2c8e16949",
+        "guides/js/Ultima7Markers.js": "214e598ef74ff4f27fc2910fdfd0603e53fca95165d9b847febea93dadb1dc55",
+        "guides/local-assistant/intent/checksums.json": "73c8a560940b7308cc84a7d780817128fb2929c88c92baa5f997a36634faaaad",
+        "guides/local-assistant/intent/head.json": "979c196a92df490124802e61fcc5fad787fc535ee69ff0eae64784355a8f6bfb",
+        "guides/local-assistant/intent/profile.json": "5d5a10005b6d44bd6473261f9b4324e941ad3638541903093216234b9fcfaa2c",
+        "guides/local-assistant/intent/verification.json": "7516972fc62026aa74d8d2d827deb80fde52cfaaed4b5b60f9aa4056ef7a964e",
+        "guides/offline-manifest.json": "b1b21e9dc8abfcf19959c0742e4f1ea8bb34062743c9746e036749513a0a0d05",
+        "guides/offline-version.json": "9bcd241cf5697bb0439ba3d8d20f74171e538545da4bf2e1f9bd59e6808c9dc3",
+        "guides/StarcraftBWAPI.html": "ce113606ec9a58b321ea7b3bb0b6e5207ccb676477a688164aefd0790e33aaf6",
+        "guides/tests/assistant/browser-consent-fixture.js": "408399d3ebcca71817ede7424c1d9945a2c13ed0127ac2d8ddaf9cdb66221609",
+        "guides/tests/assistant/conversations/albion.json": "a8af2f712112b6cd8b95e18e2f6376bc604324fcef6bcc8cef8c06769c49a1c1",
+        "guides/tests/assistant/conversations/alqadim.json": "4c350b045970b2eb3ed7d68f0acf99aabe5c92f83638604fa3e7e937eb6d8b4d",
+        "guides/tests/assistant/conversations/starcraft.json": "7901d9b2dee8d54b89ca6f6bb90f8fb0b50a85b9048c04b6a397a11b27d9e01e",
+        "guides/tests/assistant/conversations/ultima5.json": "59b762721a0ac3034198e42e178e5c6a4208a67d6a4a6cf81d4825b650890801",
+        "guides/tests/assistant/conversations/ultima6.json": "994363309d1fdef51f90d367d45b9afc9ddc27f59d39271ac16e5ffd37f4767c",
+        "guides/tests/assistant/conversations/ultima7.json": "13b3601956ff2f52961d5426b4bdc71a1413e95d4f404eac3345bbe2427c51fd",
+        "guides/tests/assistant/cua-native-probe-server.py": "afa4d535fd9e4de2fa185c09e884d9eab10b04e8ccb30beae68083d6a5122af6",
+        "guides/tests/assistant/cua-semantic-smoke-13.json": "2b6c28344582fab5a82412aa733e275e7d679e2710a987a3cce31e72ccce6109",
+        "guides/tests/assistant/evidence/conversation-starcraft-source-records.json": "1bbd9f286f6b59aeb6c54f50b00a3fd79884e16fddab640ea51d10c9326bde71",
+        "guides/tests/assistant/knowledge/albion-cases.json": "150b9a44f62cda30bc3c6be45f4d90b9e9816f00b566c41b6a810950757ffce5",
+        "guides/tests/assistant/knowledge/alqadim-cases.json": "7ef42b1a4daada4c23bc307674036fe2d1d2227d7b0b14a8bb20f1fbdbf6dbec",
+        "guides/tests/assistant/knowledge/starcraft-cases.json": "a293cd66ada60d643bb7ac8fa9f5e3e2c3b0dc2a65d21b694be4da0eb0332419",
+        "guides/tests/assistant/knowledge/ultima5-cases.json": "19ec5d6a56e634baae5e8f50d9fa5e16af8d25e303a3db44566016bf35de1b36",
+        "guides/tests/assistant/knowledge/ultima6-cases.json": "0a26a554d248b7dd3213fd0a9e52b1e2c329e33a7ce3dcd4918fdacc34cdafb5",
+        "guides/tests/assistant/knowledge/ultima7-cases.json": "5ff719685a5ae95f40596c134cde376a1e9ccf5a3a6c247a31cadf5196eef56e",
+        "guides/tests/assistant/knowledge-blind-cases.json": "0d99328dbc72c71e79a12457fceb810160d138fdac181aab0f8ddbcb0fc58189",
+        "guides/tests/assistant/knowledge-browser.py": "9dff89ed6e8b71d2561ce0f65562b14b355e07ca1509f6c179a86ccff57c4cf3",
+        "guides/tests/assistant/knowledge-fresh-cases-20261025.json": "99781d65f37703954238d577ee5bb2461402e580c918424791c49e822bfa4865",
+        "guides/tests/assistant/knowledge-independent-all-20261025.json": "73a88fd31edcf54cb82ebdbe6583b6017635d975b07194d86ddaa4707870f9f4",
+        "guides/tests/assistant/knowledge-source-first-96-20261025.json": "df29edba416c1445472ecf26015931584c12ceabee3e145b0794b01f0ff53b65",
+        "guides/tests/assistant/narrative-all-games-cases.json": "a8d8c86b71f875055e6321963c475e85926f168648c5f806bf0c9bd86173c203",
+        "guides/tests/assistant/review-cua-native-probes.py": "ed5e4ea2edb3ad47fe1d8a8ae5428eb7886a5c96eefa2bfe38dccd5e92ca8e4e",
+        "guides/Ultima5.html": "1e4b2a100a77e7a333788c33f721193b6d12fbf5babe499f1fd7bc6e61329fb0",
+        "guides/Ultima6.html": "b2754a326a372be05044d01ff5f98ac03167d40652a4dececcd8b0d67e5aca73",
+        "guides/Ultima7.html": "348154eed4a56ba7d88a9d9807c18940b062a02526b4b4de4361c170cedaeb9a"
+      },
+      "sourceStable": true,
+      "frozenInputsMatched": true,
+      "frozenInputHashMismatches": {},
+      "storageWrites": [],
+      "pageErrors": [],
+      "workers": [
+        {
+          "url": "http://127.0.0.1:51651/guides/js/assistant/intent-worker.js",
+          "events": [
+            {
+              "direction": "send",
+              "type": "load"
+            },
+            {
+              "direction": "receive",
+              "type": "ready",
+              "metadata": {
+                "modelId": "Xenova/all-MiniLM-L6-v2",
+                "revision": "751bff37182d3f1213fa05d7196b954e230abad9",
+                "dimensions": 384,
+                "encoderFineTuned": false,
+                "realModelInference": true,
+                "wasmThreads": 1,
+                "headSha256": "979c196a92df490124802e61fcc5fad787fc535ee69ff0eae64784355a8f6bfb",
+                "thresholds": {
+                  "minScore": 0,
+                  "minMargin": 0,
+                  "abstainAll": false,
+                  "selection": {
+                    "source": "validation",
+                    "samples": 72,
+                    "targetAccuracy": 0.9,
+                    "minAccepted": 6,
+                    "accepted": 72,
+                    "accuracy": 0.9444444444444444,
+                    "coverage": 1,
+                    "candidateLimitPerAxis": 51
+                  }
+                },
+                "additionalBytes": 24053489
+              }
+            },
+            {
+              "direction": "send",
+              "type": "encode",
+              "id": 1,
+              "text": "smaller hint"
+            },
+            {
+              "direction": "receive",
+              "type": "embedding",
+              "id": 1,
+              "dimensions": 384,
+              "allFinite": true,
+              "norm": 1.0000001728843906
+            },
+            {
+              "direction": "send",
+              "type": "classify",
+              "id": 2,
+              "text": "If BWAPI is not loading, what version-compatibility check does the guide list?"
+            },
+            {
+              "direction": "receive",
+              "type": "result",
+              "id": 2,
+              "predictions": [
+                {
+                  "label": "prerequisites",
+                  "score": 0.22965372458185088
+                },
+                {
+                  "label": "hint",
+                  "score": 0.16405911637630308
+                },
+                {
+                  "label": "acquisition",
+                  "score": 0.1439305467218213
+                },
+                {
+                  "label": "stats",
+                  "score": 0.0631816968674872
+                },
+                {
+                  "label": "overview",
+                  "score": 0.0630290421762328
+                },
+                {
+                  "label": "location",
+                  "score": 0.06100206315885684
+                },
+                {
+                  "label": "comparison",
+                  "score": 0.05544538208010834
+                },
+                {
+                  "label": "why",
+                  "score": 0.05199933621631301
+                },
+                {
+                  "label": "unknown",
+                  "score": 0.05073426563862747
+                },
+                {
+                  "label": "use",
+                  "score": 0.04936513350243903
+                },
+                {
+                  "label": "identity",
+                  "score": 0.04930128661701241
+                },
+                {
+                  "label": "combat",
+                  "score": 0.018298406062947737
+                }
+              ]
+            },
+            {
+              "direction": "send",
+              "type": "classify",
+              "id": 3,
+              "text": "Where should I look for messages about that BWAPI loading failure?"
+            },
+            {
+              "direction": "receive",
+              "type": "result",
+              "id": 3,
+              "predictions": [
+                {
+                  "label": "hint",
+                  "score": 0.29931395337770017
+                },
+                {
+                  "label": "acquisition",
+                  "score": 0.1715110350529033
+                },
+                {
+                  "label": "why",
+                  "score": 0.08220370047446593
+                },
+                {
+                  "label": "location",
+                  "score": 0.07605263040570541
+                },
+                {
+                  "label": "unknown",
+                  "score": 0.06930684751057908
+                },
+                {
+                  "label": "identity",
+                  "score": 0.06428939622320753
+                },
+                {
+                  "label": "stats",
+                  "score": 0.05112026401459433
+                },
+                {
+                  "label": "use",
+                  "score": 0.049881576004781956
+                },
+                {
+                  "label": "overview",
+                  "score": 0.048629434192664196
+                },
+                {
+                  "label": "prerequisites",
+                  "score": 0.0471377637893654
+                },
+                {
+                  "label": "combat",
+                  "score": 0.023240112989446997
+                },
+                {
+                  "label": "comparison",
+                  "score": 0.017313285964585496
+                }
+              ]
+            },
+            {
+              "direction": "send",
+              "type": "encode",
+              "id": 4,
+              "text": "Where should I look for messages about that BWAPI loading failure?"
+            },
+            {
+              "direction": "receive",
+              "type": "embedding",
+              "id": 4,
+              "dimensions": 384,
+              "allFinite": true,
+              "norm": 0.9999999923654257
+            },
+            {
+              "direction": "send",
+              "type": "classify",
+              "id": 5,
+              "text": "And what placement check is specified for the BWAPI files?"
+            },
+            {
+              "direction": "receive",
+              "type": "result",
+              "id": 5,
+              "predictions": [
+                {
+                  "label": "location",
+                  "score": 0.2512514328615969
+                },
+                {
+                  "label": "prerequisites",
+                  "score": 0.1294527174266257
+                },
+                {
+                  "label": "use",
+                  "score": 0.09039218905246327
+                },
+                {
+                  "label": "stats",
+                  "score": 0.0881197719330538
+                },
+                {
+                  "label": "why",
+                  "score": 0.07625834973978778
+                },
+                {
+                  "label": "overview",
+                  "score": 0.07433747066052256
+                },
+                {
+                  "label": "acquisition",
+                  "score": 0.07026717071525088
+                },
+                {
+                  "label": "identity",
+                  "score": 0.06457613704796197
+                },
+                {
+                  "label": "comparison",
+                  "score": 0.04884477050266973
+                },
+                {
+                  "label": "unknown",
+                  "score": 0.045039474672284606
+                },
+                {
+                  "label": "hint",
+                  "score": 0.04377946347266059
+                },
+                {
+                  "label": "combat",
+                  "score": 0.01768105191512218
+                }
+              ]
+            },
+            {
+              "direction": "send",
+              "type": "classify",
+              "id": 6,
+              "text": "Which exact Windows registry value does the guide tell me to change for this loading problem?"
+            },
+            {
+              "direction": "receive",
+              "type": "result",
+              "id": 6,
+              "predictions": [
+                {
+                  "label": "hint",
+                  "score": 0.216024309991667
+                },
+                {
+                  "label": "use",
+                  "score": 0.14816969347797251
+                },
+                {
+                  "label": "prerequisites",
+                  "score": 0.11706230234736792
+                },
+                {
+                  "label": "why",
+                  "score": 0.09768751417898809
+                },
+                {
+                  "label": "stats",
+                  "score": 0.09504895050941779
+                },
+                {
+                  "label": "acquisition",
+                  "score": 0.07514505060093568
+                },
+                {
+                  "label": "location",
+                  "score": 0.05718259573555565
+                },
+                {
+                  "label": "overview",
+                  "score": 0.05595549185027795
+                },
+                {
+                  "label": "identity",
+                  "score": 0.045885697637979075
+                },
+                {
+                  "label": "comparison",
+                  "score": 0.040274533285297516
+                },
+                {
+                  "label": "unknown",
+                  "score": 0.03581738529461022
+                },
+                {
+                  "label": "combat",
+                  "score": 0.01574647508993066
+                }
+              ]
+            },
+            {
+              "direction": "send",
+              "type": "encode",
+              "id": 7,
+              "text": "Which exact Windows registry value does the guide tell me to change for this loading problem?"
+            },
+            {
+              "direction": "receive",
+              "type": "embedding",
+              "id": 7,
+              "dimensions": 384,
+              "allFinite": true,
+              "norm": 0.9999999355905856
+            },
+            {
+              "direction": "send",
+              "type": "classify",
+              "id": 8,
+              "text": "What does the reviewed PurpleWave README say is needed to build the source, and what does the package command produce?"
+            },
+            {
+              "direction": "receive",
+              "type": "result",
+              "id": 8,
+              "predictions": [
+                {
+                  "label": "identity",
+                  "score": 0.1825155551537069
+                },
+                {
+                  "label": "acquisition",
+                  "score": 0.1492137875997577
+                },
+                {
+                  "label": "prerequisites",
+                  "score": 0.14575744675313437
+                },
+                {
+                  "label": "location",
+                  "score": 0.11088643249311367
+                },
+                {
+                  "label": "use",
+                  "score": 0.10533820086074923
+                },
+                {
+                  "label": "overview",
+                  "score": 0.06922864331018774
+                },
+                {
+                  "label": "why",
+                  "score": 0.05950156304134612
+                },
+                {
+                  "label": "hint",
+                  "score": 0.04474958214776896
+                },
+                {
+                  "label": "comparison",
+                  "score": 0.04256674649032139
+                },
+                {
+                  "label": "unknown",
+                  "score": 0.03550788511011397
+                },
+                {
+                  "label": "stats",
+                  "score": 0.03537061762023435
+                },
+                {
+                  "label": "combat",
+                  "score": 0.01936353941956561
+                }
+              ]
+            },
+            {
+              "direction": "send",
+              "type": "classify",
+              "id": 9,
+              "text": "For running its JAR, what working folder and three data directories are described, and how is the IDE folder qualified?"
+            },
+            {
+              "direction": "receive",
+              "type": "result",
+              "id": 9,
+              "predictions": [
+                {
+                  "label": "location",
+                  "score": 0.1974107057711204
+                },
+                {
+                  "label": "identity",
+                  "score": 0.13771855405458017
+                },
+                {
+                  "label": "prerequisites",
+                  "score": 0.1198984088059459
+                },
+                {
+                  "label": "use",
+                  "score": 0.10561914741848508
+                },
+                {
+                  "label": "overview",
+                  "score": 0.10190438741635473
+                },
+                {
+                  "label": "stats",
+                  "score": 0.09225943126952174
+                },
+                {
+                  "label": "why",
+                  "score": 0.05881502282736848
+                },
+                {
+                  "label": "comparison",
+                  "score": 0.05350878931802364
+                },
+                {
+                  "label": "hint",
+                  "score": 0.05034175485355314
+                },
+                {
+                  "label": "acquisition",
+                  "score": 0.041311579997728214
+                },
+                {
+                  "label": "unknown",
+                  "score": 0.025733798934404344
+                },
+                {
+                  "label": "combat",
+                  "score": 0.015478419332914068
+                }
+              ]
+            },
+            {
+              "direction": "send",
+              "type": "classify",
+              "id": 10,
+              "text": "Where does that project invite questions, and what license and derivative-bot policy are recorded?"
+            },
+            {
+              "direction": "receive",
+              "type": "result",
+              "id": 10,
+              "predictions": [
+                {
+                  "label": "overview",
+                  "score": 0.14671280011313326
+                },
+                {
+                  "label": "location",
+                  "score": 0.14437248161669547
+                },
+                {
+                  "label": "identity",
+                  "score": 0.14218102615038689
+                },
+                {
+                  "label": "acquisition",
+                  "score": 0.11718482171011814
+                },
+                {
+                  "label": "unknown",
+                  "score": 0.08730921223791056
+                },
+                {
+                  "label": "prerequisites",
+                  "score": 0.08035726620533758
+                },
+                {
+                  "label": "use",
+                  "score": 0.07355968660312671
+                },
+                {
+                  "label": "why",
+                  "score": 0.06429469575794751
+                },
+                {
+                  "label": "hint",
+                  "score": 0.061860089311500686
+                },
+                {
+                  "label": "stats",
+                  "score": 0.04945803066185434
+                },
+                {
+                  "label": "comparison",
+                  "score": 0.02282236399941847
+                },
+                {
+                  "label": "combat",
+                  "score": 0.009887525632570594
+                }
+              ]
+            },
+            {
+              "direction": "send",
+              "type": "classify",
+              "id": 11,
+              "text": "Can you give the exact absolute folder where my PurpleWave JAR is installed now?"
+            },
+            {
+              "direction": "receive",
+              "type": "result",
+              "id": 11,
+              "predictions": [
+                {
+                  "label": "location",
+                  "score": 0.46883724218694534
+                },
+                {
+                  "label": "acquisition",
+                  "score": 0.14090261509031143
+                },
+                {
+                  "label": "identity",
+                  "score": 0.0786638509407558
+                },
+                {
+                  "label": "use",
+                  "score": 0.07153964811040632
+                },
+                {
+                  "label": "hint",
+                  "score": 0.05322153049516713
+                },
+                {
+                  "label": "unknown",
+                  "score": 0.04772855620802472
+                },
+                {
+                  "label": "prerequisites",
+                  "score": 0.045844860602456634
+                },
+                {
+                  "label": "overview",
+                  "score": 0.02518636701915771
+                },
+                {
+                  "label": "stats",
+                  "score": 0.02392085344980262
+                },
+                {
+                  "label": "comparison",
+                  "score": 0.019640615564864912
+                },
+                {
+                  "label": "why",
+                  "score": 0.016869353303095955
+                },
+                {
+                  "label": "combat",
+                  "score": 0.007644507029011256
+                }
+              ]
+            },
+            {
+              "direction": "send",
+              "type": "encode",
+              "id": 12,
+              "text": "Can you give the exact absolute folder where my PurpleWave JAR is installed now?"
+            },
+            {
+              "direction": "receive",
+              "type": "embedding",
+              "id": 12,
+              "dimensions": 384,
+              "allFinite": true,
+              "norm": 0.9999998963177568
+            },
+            {
+              "direction": "send",
+              "type": "classify",
+              "id": 13,
+              "text": "For SCHNAIL, what does the guide say can make the first launch take some time?"
+            },
+            {
+              "direction": "receive",
+              "type": "result",
+              "id": 13,
+              "predictions": [
+                {
+                  "label": "prerequisites",
+                  "score": 0.20162310524122326
+                },
+                {
+                  "label": "overview",
+                  "score": 0.1364974972304624
+                },
+                {
+                  "label": "why",
+                  "score": 0.11288125893501198
+                },
+                {
+                  "label": "hint",
+                  "score": 0.11239123688749032
+                },
+                {
+                  "label": "use",
+                  "score": 0.08363731853894685
+                },
+                {
+                  "label": "comparison",
+                  "score": 0.08076411855707136
+                },
+                {
+                  "label": "acquisition",
+                  "score": 0.05508602517973346
+                },
+                {
+                  "label": "location",
+                  "score": 0.05412170080507778
+                },
+                {
+                  "label": "stats",
+                  "score": 0.04948726377156014
+                },
+                {
+                  "label": "unknown",
+                  "score": 0.04658350186028895
+                },
+                {
+                  "label": "combat",
+                  "score": 0.03550104368949386
+                },
+                {
+                  "label": "identity",
+                  "score": 0.031425929303639535
+                }
+              ]
+            },
+            {
+              "direction": "send",
+              "type": "classify",
+              "id": 14,
+              "text": "What setup work does the client itself perform on the game files?"
+            },
+            {
+              "direction": "receive",
+              "type": "result",
+              "id": 14,
+              "predictions": [
+                {
+                  "label": "why",
+                  "score": 0.1741931210882712
+                },
+                {
+                  "label": "prerequisites",
+                  "score": 0.13131126928860026
+                },
+                {
+                  "label": "comparison",
+                  "score": 0.12827503101808135
+                },
+                {
+                  "label": "use",
+                  "score": 0.1272935436042488
+                },
+                {
+                  "label": "identity",
+                  "score": 0.09247780117809895
+                },
+                {
+                  "label": "overview",
+                  "score": 0.08193236154164923
+                },
+                {
+                  "label": "location",
+                  "score": 0.07555358530492512
+                },
+                {
+                  "label": "stats",
+                  "score": 0.05924628197458661
+                },
+                {
+                  "label": "acquisition",
+                  "score": 0.04858300620906406
+                },
+                {
+                  "label": "hint",
+                  "score": 0.03408905101304119
+                },
+                {
+                  "label": "combat",
+                  "score": 0.029608429791855767
+                },
+                {
+                  "label": "unknown",
+                  "score": 0.017436517987577407
+                }
+              ]
+            },
+            {
+              "direction": "send",
+              "type": "classify",
+              "id": 15,
+              "text": "Are automatic updates described for the client alone, or for the game too?"
+            },
+            {
+              "direction": "receive",
+              "type": "result",
+              "id": 15,
+              "predictions": [
+                {
+                  "label": "prerequisites",
+                  "score": 0.1376372060331681
+                },
+                {
+                  "label": "comparison",
+                  "score": 0.13247810581291353
+                },
+                {
+                  "label": "why",
+                  "score": 0.12276345138247477
+                },
+                {
+                  "label": "identity",
+                  "score": 0.10872630241653286
+                },
+                {
+                  "label": "use",
+                  "score": 0.0957233139902331
+                },
+                {
+                  "label": "overview",
+                  "score": 0.07666769391928745
+                },
+                {
+                  "label": "acquisition",
+                  "score": 0.07578454225067949
+                },
+                {
+                  "label": "unknown",
+                  "score": 0.0643950156351607
+                },
+                {
+                  "label": "stats",
+                  "score": 0.06362577602689366
+                },
+                {
+                  "label": "location",
+                  "score": 0.05056441553335784
+                },
+                {
+                  "label": "hint",
+                  "score": 0.047921493978822276
+                },
+                {
+                  "label": "combat",
+                  "score": 0.023712683020476157
+                }
+              ]
+            },
+            {
+              "direction": "send",
+              "type": "classify",
+              "id": 16,
+              "text": "How many minutes will that first download take on my internet connection?"
+            },
+            {
+              "direction": "receive",
+              "type": "result",
+              "id": 16,
+              "predictions": [
+                {
+                  "label": "prerequisites",
+                  "score": 0.18329937456995002
+                },
+                {
+                  "label": "acquisition",
+                  "score": 0.11080437391522407
+                },
+                {
+                  "label": "stats",
+                  "score": 0.10345371006076294
+                },
+                {
+                  "label": "why",
+                  "score": 0.0922407402397771
+                },
+                {
+                  "label": "location",
+                  "score": 0.08906626230847513
+                },
+                {
+                  "label": "hint",
+                  "score": 0.08600055828530359
+                },
+                {
+                  "label": "comparison",
+                  "score": 0.08387584884430165
+                },
+                {
+                  "label": "unknown",
+                  "score": 0.07024400617347201
+                },
+                {
+                  "label": "use",
+                  "score": 0.06533437090352438
+                },
+                {
+                  "label": "identity",
+                  "score": 0.05255238729337499
+                },
+                {
+                  "label": "overview",
+                  "score": 0.0338127921878915
+                },
+                {
+                  "label": "combat",
+                  "score": 0.029315575217942445
+                }
+              ]
+            },
+            {
+              "direction": "send",
+              "type": "encode",
+              "id": 17,
+              "text": "How many minutes will that first download take on my internet connection?"
+            },
+            {
+              "direction": "receive",
+              "type": "embedding",
+              "id": 17,
+              "dimensions": 384,
+              "allFinite": true,
+              "norm": 1.0000000641373599
+            },
+            {
+              "direction": "send",
+              "type": "classify",
+              "id": 18,
+              "text": "In the reviewed UAlbertaBot instructions, is execution through a client program or a module library?"
+            },
+            {
+              "direction": "receive",
+              "type": "result",
+              "id": 18,
+              "predictions": [
+                {
+                  "label": "identity",
+                  "score": 0.14169674024412193
+                },
+                {
+                  "label": "use",
+                  "score": 0.14164745770797815
+                },
+                {
+                  "label": "prerequisites",
+                  "score": 0.12512995791077708
+                },
+                {
+                  "label": "acquisition",
+                  "score": 0.10082871465944801
+                },
+                {
+                  "label": "overview",
+                  "score": 0.09271864641364091
+                },
+                {
+                  "label": "location",
+                  "score": 0.08055696642717024
+                },
+                {
+                  "label": "comparison",
+                  "score": 0.07401077287701804
+                },
+                {
+                  "label": "why",
+                  "score": 0.07087361366497914
+                },
+                {
+                  "label": "unknown",
+                  "score": 0.06198861507660649
+                },
+                {
+                  "label": "stats",
+                  "score": 0.05167827446914897
+                },
+                {
+                  "label": "hint",
+                  "score": 0.041887392909765064
+                },
+                {
+                  "label": "combat",
+                  "score": 0.016982847639345957
+                }
+              ]
+            },
+            {
+              "direction": "send",
+              "type": "classify",
+              "id": 19,
+              "text": "What limitation does that impose on AUTO_RESTART across games?"
+            },
+            {
+              "direction": "receive",
+              "type": "result",
+              "id": 19,
+              "predictions": [
+                {
+                  "label": "why",
+                  "score": 0.34004770130449763
+                },
+                {
+                  "label": "stats",
+                  "score": 0.14397603658099523
+                },
+                {
+                  "label": "prerequisites",
+                  "score": 0.08828078243984928
+                },
+                {
+                  "label": "comparison",
+                  "score": 0.07566523944979363
+                },
+                {
+                  "label": "unknown",
+                  "score": 0.06159372334733924
+                },
+                {
+                  "label": "identity",
+                  "score": 0.057522580023253764
+                },
+                {
+                  "label": "hint",
+                  "score": 0.052271818783417336
+                },
+                {
+                  "label": "use",
+                  "score": 0.04718509775669096
+                },
+                {
+                  "label": "overview",
+                  "score": 0.0465344590012426
+                },
+                {
+                  "label": "combat",
+                  "score": 0.03784704311111469
+                },
+                {
+                  "label": "location",
+                  "score": 0.03153084444696029
+                },
+                {
+                  "label": "acquisition",
+                  "score": 0.017544673754845554
+                }
+              ]
+            },
+            {
+              "direction": "send",
+              "type": "classify",
+              "id": 20,
+              "text": "From when does the README say active maintenance stopped, and how should its toolchain guidance be treated?"
+            },
+            {
+              "direction": "receive",
+              "type": "result",
+              "id": 20,
+              "predictions": [
+                {
+                  "label": "identity",
+                  "score": 0.15584536122014497
+                },
+                {
+                  "label": "why",
+                  "score": 0.1361941897310808
+                },
+                {
+                  "label": "location",
+                  "score": 0.10864901117125017
+                },
+                {
+                  "label": "hint",
+                  "score": 0.108485060442406
+                },
+                {
+                  "label": "stats",
+                  "score": 0.10128880340056347
+                },
+                {
+                  "label": "overview",
+                  "score": 0.0876302559290748
+                },
+                {
+                  "label": "use",
+                  "score": 0.05834818366629146
+                },
+                {
+                  "label": "comparison",
+                  "score": 0.05785080856934467
+                },
+                {
+                  "label": "unknown",
+                  "score": 0.05513318147700933
+                },
+                {
+                  "label": "prerequisites",
+                  "score": 0.050385784254765954
+                },
+                {
+                  "label": "acquisition",
+                  "score": 0.04736495903372883
+                },
+                {
+                  "label": "combat",
+                  "score": 0.03282440110433981
+                }
+              ]
+            },
+            {
+              "direction": "send",
+              "type": "classify",
+              "id": 21,
+              "text": "What exact date has its next official release been promised for?"
+            },
+            {
+              "direction": "receive",
+              "type": "result",
+              "id": 21,
+              "predictions": [
+                {
+                  "label": "why",
+                  "score": 0.12592021857160496
+                },
+                {
+                  "label": "acquisition",
+                  "score": 0.12074117014562953
+                },
+                {
+                  "label": "prerequisites",
+                  "score": 0.11007967702188284
+                },
+                {
+                  "label": "location",
+                  "score": 0.1074682643070263
+                },
+                {
+                  "label": "identity",
+                  "score": 0.09148165087043846
+                },
+                {
+                  "label": "comparison",
+                  "score": 0.08248063964261783
+                },
+                {
+                  "label": "overview",
+                  "score": 0.07895896106516459
+                },
+                {
+                  "label": "unknown",
+                  "score": 0.07772228322871101
+                },
+                {
+                  "label": "stats",
+                  "score": 0.07610580347042256
+                },
+                {
+                  "label": "hint",
+                  "score": 0.057665934520929815
+                },
+                {
+                  "label": "use",
+                  "score": 0.04281005281084818
+                },
+                {
+                  "label": "combat",
+                  "score": 0.02856534434472399
+                }
+              ]
+            },
+            {
+              "direction": "send",
+              "type": "encode",
+              "id": 22,
+              "text": "What exact date has its next official release been promised for?\nSubject: UAlbertaBot"
+            },
+            {
+              "direction": "receive",
+              "type": "embedding",
+              "id": 22,
+              "dimensions": 384,
+              "allFinite": true,
+              "norm": 0.9999997749613725
+            }
+          ]
+        }
+      ],
+      "nativeModelReady": true,
+      "classifications": 16,
+      "encodings": 6,
+      "validEmbeddings": true
+    }
+  ],
+  "turns": [
+    {
+      "conversation": 1,
+      "surface": "starcraft",
+      "text": "Summarize SCHNAIL",
+      "decision": "answer",
+      "rendered": "SCHNAIL — Summary:\nSCHNAIL; Pros: More realistic AI behavior; Better micro and macro management; Seamless integration with the game; Active community and regular updates; Cons: Requires internet connection for initial login; AI plays over local network after login; View Setup Guide\nNote: SCHNAIL includes its own version of Starcraft: Brood War, so you don't need to install the game separately.",
+      "citations": [
+        "Source: existing guide; extracted. guides/StarcraftBWAPI.html — #getting-started .grid > div:first-child; #schnail-setup .text-blue-700"
+      ],
+      "links": [],
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "More realistic AI behavior",
+          "includes its own version"
+        ],
+        "source": {
+          "file": "guides/StarcraftBWAPI.html",
+          "locator": "#getting-started .grid > div:first-child; #schnail-setup .text-blue-700"
+        }
+      },
+      "passed": true,
+      "problems": [],
+      "answerBranchProblems": [
+        []
+      ],
+      "gameId": "starcraft",
+      "suite": "semantic13",
+      "dialogueId": "semantic13-starcraft",
+      "turn": 1
+    },
+    {
+      "conversation": 1,
+      "surface": "starcraft",
+      "text": "smaller hint",
+      "decision": "answer",
+      "rendered": "SCHNAIL — Summary:\nSCHNAIL; Pros: More realistic AI behavior; Better micro and macro management; Seamless integration with the game; Active community and regular updates; Cons: Requires internet connection for initial login; AI plays over local network after login; View Setup Guide\nNote: SCHNAIL includes its own version of Starcraft: Brood War, so you don't need to install the game separately.",
+      "citations": [
+        "Source: existing guide; extracted. guides/StarcraftBWAPI.html — #getting-started .grid > div:first-child; #schnail-setup .text-blue-700"
+      ],
+      "links": [],
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "More realistic AI behavior",
+          "includes its own version"
+        ],
+        "source": {
+          "file": "guides/StarcraftBWAPI.html",
+          "locator": "#getting-started .grid > div:first-child; #schnail-setup .text-blue-700"
+        }
+      },
+      "passed": true,
+      "problems": [],
+      "answerBranchProblems": [
+        []
+      ],
+      "gameId": "starcraft",
+      "suite": "semantic13",
+      "dialogueId": "semantic13-starcraft",
+      "turn": 2
+    },
+    {
+      "conversation": 2,
+      "surface": "starcraft",
+      "text": "If BWAPI is not loading, what version-compatibility check does the guide list?",
+      "decision": "answer",
+      "rendered": "Make sure you're using a compatible version of BWAPI with your Starcraft version; Check that all BWAPI files are in the correct directories; Look for error messages in the game's console output; Consult the BWAPI documentation for version-specific instructions",
+      "citations": [
+        "Source: existing guide; extracted. guides/StarcraftBWAPI.html — #bwapi-loading-checks ul"
+      ],
+      "links": [],
+      "expected": {
+        "decision": "answer",
+        "source": {
+          "file": "guides/StarcraftBWAPI.html",
+          "locator": "#bwapi-loading-checks ul",
+          "review": "extracted"
+        },
+        "contains": [
+          "compatible version of BWAPI",
+          "Starcraft version"
+        ],
+        "requiredUsefulClaim": "Tell the player to check that BWAPI is compatible with the installed StarCraft version; this source does not establish a universal supported version or certify the player's installation.",
+        "sourceWitness": "Make sure you're using a compatible version of BWAPI with your Starcraft version; Check that all BWAPI files are in the correct directories; Look for error messages in the game's console output; Consult the BWAPI documentation for version-specific instructions",
+        "fullFieldValues": {
+          "check": "Make sure you're using a compatible version of BWAPI with your Starcraft version"
+        },
+        "proofFields": [
+          {
+            "file": "guides/StarcraftBWAPI.html",
+            "locator": "#bwapi-loading-checks li:nth-child(1)",
+            "review": "extracted"
+          }
+        ]
+      },
+      "passed": true,
+      "problems": [],
+      "answerBranchProblems": [
+        []
+      ],
+      "gameId": "starcraft",
+      "suite": "source-first",
+      "dialogueId": "fresh-sc-bwapi-load-diagnostics",
+      "turn": 1
+    },
+    {
+      "conversation": 2,
+      "surface": "starcraft",
+      "text": "Where should I look for messages about that BWAPI loading failure?",
+      "decision": "answer",
+      "rendered": "Look for error messages in the game's console output",
+      "citations": [
+        "Source: existing guide; extracted. guides/StarcraftBWAPI.html — #bwapi-loading-checks li:nth-child(3)"
+      ],
+      "links": [],
+      "expected": {
+        "decision": "answer",
+        "source": {
+          "file": "guides/StarcraftBWAPI.html",
+          "locator": "#bwapi-loading-checks li:nth-child(3)",
+          "review": "extracted"
+        },
+        "contains": [
+          "game's console output"
+        ],
+        "requiredUsefulClaim": "Identify the game's console output as the place to look for error messages.",
+        "sourceWitness": "Look for error messages in the game's console output",
+        "fullFieldValues": {
+          "errorOutput": "game's console output"
+        }
+      },
+      "passed": true,
+      "problems": [],
+      "answerBranchProblems": [
+        []
+      ],
+      "gameId": "starcraft",
+      "suite": "source-first",
+      "dialogueId": "fresh-sc-bwapi-load-diagnostics",
+      "turn": 2
+    },
+    {
+      "conversation": 2,
+      "surface": "starcraft",
+      "text": "And what placement check is specified for the BWAPI files?",
+      "decision": "answer",
+      "rendered": "Check that all BWAPI files are in the correct directories",
+      "citations": [
+        "Source: existing guide; extracted. guides/StarcraftBWAPI.html — #bwapi-loading-checks li:nth-child(2)"
+      ],
+      "links": [],
+      "expected": {
+        "decision": "answer",
+        "source": {
+          "file": "guides/StarcraftBWAPI.html",
+          "locator": "#bwapi-loading-checks li:nth-child(2)",
+          "review": "extracted"
+        },
+        "contains": [
+          "all BWAPI files",
+          "correct directories"
+        ],
+        "requiredUsefulClaim": "Tell the player to check that all BWAPI files are in the correct directories, without inventing an exact directory or claiming they are correctly installed.",
+        "sourceWitness": "Check that all BWAPI files are in the correct directories",
+        "fullFieldValues": {
+          "filePlacementCheck": "Check that all BWAPI files are in the correct directories"
+        }
+      },
+      "passed": true,
+      "problems": [],
+      "answerBranchProblems": [
+        []
+      ],
+      "gameId": "starcraft",
+      "suite": "source-first",
+      "dialogueId": "fresh-sc-bwapi-load-diagnostics",
+      "turn": 3
+    },
+    {
+      "conversation": 2,
+      "surface": "starcraft",
+      "text": "Which exact Windows registry value does the guide tell me to change for this loading problem?",
+      "decision": "clarify",
+      "rendered": "Did you mean SCHNAIL website and account? Please confirm the subject.",
+      "citations": [],
+      "links": [],
+      "expected": {
+        "decision": "not-answer",
+        "boundary": "The loading checklist discusses version compatibility, directories, console output and documentation; it specifies no Windows registry key or value."
+      },
+      "passed": true,
+      "problems": [],
+      "answerBranchProblems": [],
+      "gameId": "starcraft",
+      "suite": "source-first",
+      "dialogueId": "fresh-sc-bwapi-load-diagnostics",
+      "turn": 4
+    },
+    {
+      "conversation": 3,
+      "surface": "starcraft",
+      "text": "What does the reviewed PurpleWave README say is needed to build the source, and what does the package command produce?",
+      "decision": "answer",
+      "rendered": "Not in this guide — from outside research: PurpleWave’s README uses Maven with initialized submodules; mvn clean package produces target/PurpleWave-1.0.jar. This is source-build guidance, not a prebuilt-download promise.\nPurpleWave build instructions: https://github.com/dgant/PurpleWave",
+      "citations": [
+        "Outside research (not in this guide): PurpleWave source build primary source — https://github.com/dgant/PurpleWave (checked 2026-10-24)."
+      ],
+      "links": [
+        "https://github.com/dgant/PurpleWave"
+      ],
+      "expected": {
+        "decision": "answer",
+        "source": {
+          "file": "guides/data/assistant/knowledge/starcraft.json",
+          "locator": "facts[62]",
+          "review": "external-research",
+          "references": [
+            {
+              "label": "PurpleWave source build primary source",
+              "url": "https://github.com/dgant/PurpleWave",
+              "checkedAt": "2026-10-24"
+            }
+          ]
+        },
+        "contains": [
+          "Maven",
+          "initialized submodules",
+          "mvn clean package",
+          "target/PurpleWave-1.0.jar",
+          "not a prebuilt-download promise"
+        ],
+        "requiredUsefulClaim": "Give Maven with initialized submodules, the exact mvn clean package command and target/PurpleWave-1.0.jar output; preserve that this is source-build guidance, not a prebuilt-download promise.",
+        "sourceWitness": "Outside research: PurpleWave’s README uses Maven with initialized submodules; mvn clean package produces target/PurpleWave-1.0.jar. This is source-build guidance, not a prebuilt-download promise.",
+        "fullFieldValues": {
+          "buildTool": "Maven",
+          "prerequisite": "initialized submodules",
+          "command": "mvn clean package",
+          "output": "target/PurpleWave-1.0.jar",
+          "qualification": "source-build guidance, not a prebuilt-download promise"
+        }
+      },
+      "passed": true,
+      "problems": [],
+      "answerBranchProblems": [
+        []
+      ],
+      "gameId": "starcraft",
+      "suite": "source-first",
+      "dialogueId": "fresh-sc-purplewave-build-and-project",
+      "turn": 1
+    },
+    {
+      "conversation": 3,
+      "surface": "starcraft",
+      "text": "For running its JAR, what working folder and three data directories are described, and how is the IDE folder qualified?",
+      "decision": "answer",
+      "rendered": "Not in this guide — from outside research: PurpleWave’s JAR instructions run from the StarCraft directory and use bwapi-data/AI, bwapi-data/read and bwapi-data/write. Its IDE configuration points to a sibling bw directory that must match the local installation.",
+      "citations": [
+        "Outside research (not in this guide): PurpleWave working directory primary source — https://github.com/dgant/PurpleWave (checked 2026-10-24)."
+      ],
+      "links": [
+        "https://github.com/dgant/PurpleWave"
+      ],
+      "expected": {
+        "decision": "answer",
+        "source": {
+          "file": "guides/data/assistant/knowledge/starcraft.json",
+          "locator": "facts[63]",
+          "review": "external-research",
+          "references": [
+            {
+              "label": "PurpleWave working directory primary source",
+              "url": "https://github.com/dgant/PurpleWave",
+              "checkedAt": "2026-10-24"
+            }
+          ]
+        },
+        "contains": [
+          "StarCraft directory",
+          "bwapi-data/AI",
+          "bwapi-data/read",
+          "bwapi-data/write",
+          "sibling bw directory",
+          "must match the local installation"
+        ],
+        "requiredUsefulClaim": "Give the StarCraft working directory and all three bwapi-data paths; distinguish the IDE's sibling bw directory and retain that it must match the local installation.",
+        "sourceWitness": "Outside research: PurpleWave’s JAR instructions run from the StarCraft directory and use bwapi-data/AI, bwapi-data/read and bwapi-data/write. Its IDE configuration points to a sibling bw directory that must match the local installation.",
+        "fullFieldValues": {
+          "workingDirectory": "StarCraft directory",
+          "dataDirectories": [
+            "bwapi-data/AI",
+            "bwapi-data/read",
+            "bwapi-data/write"
+          ],
+          "IDE": "sibling bw directory that must match the local installation"
+        }
+      },
+      "passed": true,
+      "problems": [],
+      "answerBranchProblems": [
+        []
+      ],
+      "gameId": "starcraft",
+      "suite": "source-first",
+      "dialogueId": "fresh-sc-purplewave-build-and-project",
+      "turn": 2
+    },
+    {
+      "conversation": 3,
+      "surface": "starcraft",
+      "text": "Where does that project invite questions, and what license and derivative-bot policy are recorded?",
+      "decision": "answer",
+      "rendered": "Not in this guide — from outside research: PurpleWave’s README invites questions through GitHub issues. The project uses the MIT license and encourages derivative bots.\nPurpleWave repository: https://github.com/dgant/PurpleWave",
+      "citations": [
+        "Outside research (not in this guide): PurpleWave project support primary source — https://github.com/dgant/PurpleWave (checked 2026-10-24)."
+      ],
+      "links": [
+        "https://github.com/dgant/PurpleWave"
+      ],
+      "expected": {
+        "decision": "answer",
+        "source": {
+          "file": "guides/data/assistant/knowledge/starcraft.json",
+          "locator": "facts[64]",
+          "review": "external-research",
+          "references": [
+            {
+              "label": "PurpleWave project support primary source",
+              "url": "https://github.com/dgant/PurpleWave",
+              "checkedAt": "2026-10-24"
+            }
+          ]
+        },
+        "contains": [
+          "GitHub issues",
+          "MIT license",
+          "encourages derivative bots"
+        ],
+        "requiredUsefulClaim": "Identify GitHub issues for questions, the MIT license, and encouragement of derivative bots; remain bounded to the reviewed README.",
+        "sourceWitness": "Outside research: PurpleWave’s README invites questions through GitHub issues. The project uses the MIT license and encourages derivative bots.",
+        "fullFieldValues": {
+          "questions": "GitHub issues",
+          "license": "MIT license",
+          "derivativePolicy": "encourages derivative bots"
+        }
+      },
+      "passed": true,
+      "problems": [],
+      "answerBranchProblems": [
+        []
+      ],
+      "gameId": "starcraft",
+      "suite": "source-first",
+      "dialogueId": "fresh-sc-purplewave-build-and-project",
+      "turn": 3
+    },
+    {
+      "conversation": 3,
+      "surface": "starcraft",
+      "text": "Can you give the exact absolute folder where my PurpleWave JAR is installed now?",
+      "decision": "clarify",
+      "rendered": "I could not find that in this guide. Try naming the subject as it appears in the guide, or ask about another subject.",
+      "citations": [],
+      "links": [],
+      "expected": {
+        "decision": "not-answer",
+        "boundary": "The source describes relative/working-directory requirements but cannot observe the player's machine or provide its current absolute installation path."
+      },
+      "passed": true,
+      "problems": [],
+      "answerBranchProblems": [],
+      "gameId": "starcraft",
+      "suite": "source-first",
+      "dialogueId": "fresh-sc-purplewave-build-and-project",
+      "turn": 4
+    },
+    {
+      "conversation": 4,
+      "surface": "starcraft",
+      "text": "For SCHNAIL, what does the guide say can make the first launch take some time?",
+      "decision": "answer",
+      "rendered": "Note: The first launch might take some time as it downloads necessary game files.",
+      "citations": [
+        "Source: existing guide; extracted. guides/StarcraftBWAPI.html — #getting-started > .bg-blue-50 .text-blue-700"
+      ],
+      "links": [],
+      "expected": {
+        "decision": "answer",
+        "source": {
+          "file": "guides/StarcraftBWAPI.html",
+          "locator": "#getting-started > .bg-blue-50 .text-blue-700",
+          "review": "extracted"
+        },
+        "contains": [
+          "first launch",
+          "downloads necessary game files"
+        ],
+        "requiredUsefulClaim": "Explain that the first launch might take some time because it downloads necessary game files; preserve might rather than asserting a measured delay.",
+        "sourceWitness": "Note: The first launch might take some time as it downloads necessary game files.",
+        "fullFieldValues": {
+          "event": "first launch",
+          "qualification": "might take some time",
+          "cause": "downloads necessary game files"
+        }
+      },
+      "passed": true,
+      "problems": [],
+      "answerBranchProblems": [
+        []
+      ],
+      "gameId": "starcraft",
+      "suite": "source-first",
+      "dialogueId": "fresh-sc-schnail-automation-scope",
+      "turn": 1
+    },
+    {
+      "conversation": 4,
+      "surface": "starcraft",
+      "text": "What setup work does the client itself perform on the game files?",
+      "decision": "answer",
+      "rendered": "The client will automatically download and set up the game files",
+      "citations": [
+        "Source: existing guide; extracted. guides/StarcraftBWAPI.html — #schnail-setup ol > li:nth-child(7)"
+      ],
+      "links": [],
+      "expected": {
+        "decision": "answer",
+        "source": {
+          "file": "guides/StarcraftBWAPI.html",
+          "locator": "#schnail-setup ol > li:nth-child(7)",
+          "review": "extracted"
+        },
+        "contains": [
+          "automatically download and set up the game files"
+        ],
+        "requiredUsefulClaim": "Say that the SCHNAIL client automatically downloads and sets up the game files; do not substitute Java installation or account registration.",
+        "sourceWitness": "The client will automatically download and set up the game files",
+        "fullFieldValues": {
+          "automation": "automatically download and set up the game files"
+        }
+      },
+      "passed": true,
+      "problems": [],
+      "answerBranchProblems": [
+        []
+      ],
+      "gameId": "starcraft",
+      "suite": "source-first",
+      "dialogueId": "fresh-sc-schnail-automation-scope",
+      "turn": 2
+    },
+    {
+      "conversation": 4,
+      "surface": "starcraft",
+      "text": "Are automatic updates described for the client alone, or for the game too?",
+      "decision": "answer",
+      "rendered": "Automatic updates for both client and game",
+      "citations": [
+        "Source: existing guide; extracted. guides/StarcraftBWAPI.html — #schnail-setup ul > li:nth-child(2)"
+      ],
+      "links": [],
+      "expected": {
+        "decision": "answer",
+        "source": {
+          "file": "guides/StarcraftBWAPI.html",
+          "locator": "#schnail-setup ul > li:nth-child(2)",
+          "review": "extracted"
+        },
+        "contains": [
+          "Automatic updates for both client and game"
+        ],
+        "requiredUsefulClaim": "Retain both recipients of the recorded automatic updates: client and game.",
+        "sourceWitness": "Automatic updates for both client and game",
+        "fullFieldValues": {
+          "feature": "Automatic updates",
+          "targets": [
+            "client",
+            "game"
+          ]
+        }
+      },
+      "passed": true,
+      "problems": [],
+      "answerBranchProblems": [
+        []
+      ],
+      "gameId": "starcraft",
+      "suite": "source-first",
+      "dialogueId": "fresh-sc-schnail-automation-scope",
+      "turn": 3
+    },
+    {
+      "conversation": 4,
+      "surface": "starcraft",
+      "text": "How many minutes will that first download take on my internet connection?",
+      "decision": "decline",
+      "rendered": "The available sources do not give that age or measured quantity for the subject.",
+      "citations": [],
+      "links": [],
+      "expected": {
+        "decision": "not-answer",
+        "boundary": "The static guide gives no download duration, network speed, download size, or measurement of the player's connection."
+      },
+      "passed": true,
+      "problems": [],
+      "answerBranchProblems": [],
+      "gameId": "starcraft",
+      "suite": "source-first",
+      "dialogueId": "fresh-sc-schnail-automation-scope",
+      "turn": 4
+    },
+    {
+      "conversation": 5,
+      "surface": "starcraft",
+      "text": "In the reviewed UAlbertaBot instructions, is execution through a client program or a module library?",
+      "decision": "answer",
+      "rendered": "Not in this guide — from outside research: UAlbertaBot’s README uses a client EXE instead of a module DLL and warns that the bot works only for the first game after starting that EXE, limiting AUTO_RESTART.",
+      "citations": [
+        "Outside research (not in this guide): UAlbertaBot executable mode primary source — https://github.com/davechurchill/ualbertabot (checked 2026-10-24)."
+      ],
+      "links": [
+        "https://github.com/davechurchill/ualbertabot"
+      ],
+      "expected": {
+        "decision": "answer",
+        "source": {
+          "file": "guides/data/assistant/knowledge/starcraft.json",
+          "locator": "facts[56]",
+          "review": "external-research",
+          "references": [
+            {
+              "label": "UAlbertaBot executable mode primary source",
+              "url": "https://github.com/davechurchill/ualbertabot",
+              "checkedAt": "2026-10-24"
+            }
+          ]
+        },
+        "contains": [
+          "client EXE instead of a module DLL",
+          "first game after starting that EXE"
+        ],
+        "requiredUsefulClaim": "Identify a client EXE rather than a module DLL and retain the first-game-after-start limitation attached to that execution mode.",
+        "sourceWitness": "Outside research: UAlbertaBot’s README uses a client EXE instead of a module DLL and warns that the bot works only for the first game after starting that EXE, limiting AUTO_RESTART.",
+        "fullFieldValues": {
+          "executionMode": "client EXE instead of a module DLL",
+          "limit": "only for the first game after starting that EXE",
+          "affectedFeature": "AUTO_RESTART"
+        }
+      },
+      "passed": true,
+      "problems": [],
+      "answerBranchProblems": [
+        []
+      ],
+      "gameId": "starcraft",
+      "suite": "source-first",
+      "dialogueId": "fresh-sc-ualberta-historical-client",
+      "turn": 1
+    },
+    {
+      "conversation": 5,
+      "surface": "starcraft",
+      "text": "What limitation does that impose on AUTO_RESTART across games?",
+      "decision": "answer",
+      "rendered": "Not in this guide — from outside research: UAlbertaBot’s README uses a client EXE instead of a module DLL and warns that the bot works only for the first game after starting that EXE, limiting AUTO_RESTART.",
+      "citations": [
+        "Outside research (not in this guide): UAlbertaBot executable mode primary source — https://github.com/davechurchill/ualbertabot (checked 2026-10-24)."
+      ],
+      "links": [
+        "https://github.com/davechurchill/ualbertabot"
+      ],
+      "expected": {
+        "decision": "answer",
+        "source": {
+          "file": "guides/data/assistant/knowledge/starcraft.json",
+          "locator": "facts[56]",
+          "review": "external-research",
+          "references": [
+            {
+              "label": "UAlbertaBot executable mode primary source",
+              "url": "https://github.com/davechurchill/ualbertabot",
+              "checkedAt": "2026-10-24"
+            }
+          ]
+        },
+        "contains": [
+          "only for the first game after starting that EXE",
+          "limiting AUTO_RESTART"
+        ],
+        "requiredUsefulClaim": "Explain that the bot works only for the first game after starting its EXE, which limits AUTO_RESTART; do not promise repeated games or infer a fix.",
+        "sourceWitness": "Outside research: UAlbertaBot’s README uses a client EXE instead of a module DLL and warns that the bot works only for the first game after starting that EXE, limiting AUTO_RESTART.",
+        "fullFieldValues": {
+          "limit": "only for the first game after starting that EXE",
+          "affectedFeature": "AUTO_RESTART"
+        }
+      },
+      "passed": true,
+      "problems": [],
+      "answerBranchProblems": [
+        []
+      ],
+      "gameId": "starcraft",
+      "suite": "source-first",
+      "dialogueId": "fresh-sc-ualberta-historical-client",
+      "turn": 2
+    },
+    {
+      "conversation": 5,
+      "surface": "starcraft",
+      "text": "From when does the README say active maintenance stopped, and how should its toolchain guidance be treated?",
+      "decision": "answer",
+      "rendered": "Not in this guide — from outside research: the repository README states UAlbertaBot has not been actively maintained since early 2021. Use its documented historical instructions rather than assuming current toolchain support.",
+      "citations": [
+        "Outside research (not in this guide): UAlbertaBot maintenance notice primary source — https://github.com/davechurchill/ualbertabot (checked 2026-10-24)."
+      ],
+      "links": [
+        "https://github.com/davechurchill/ualbertabot"
+      ],
+      "expected": {
+        "decision": "answer",
+        "source": {
+          "file": "guides/data/assistant/knowledge/starcraft.json",
+          "locator": "facts[57]",
+          "review": "external-research",
+          "references": [
+            {
+              "label": "UAlbertaBot maintenance notice primary source",
+              "url": "https://github.com/davechurchill/ualbertabot",
+              "checkedAt": "2026-10-24"
+            }
+          ]
+        },
+        "contains": [
+          "not been actively maintained since early 2021",
+          "documented historical instructions",
+          "rather than assuming current toolchain support"
+        ],
+        "requiredUsefulClaim": "Give early 2021 as the recorded maintenance cutoff and advise using documented historical instructions rather than assuming current toolchain support.",
+        "sourceWitness": "Outside research: the repository README states UAlbertaBot has not been actively maintained since early 2021. Use its documented historical instructions rather than assuming current toolchain support.",
+        "fullFieldValues": {
+          "maintenance": "not been actively maintained since early 2021",
+          "guidance": "Use its documented historical instructions rather than assuming current toolchain support."
+        }
+      },
+      "passed": true,
+      "problems": [],
+      "answerBranchProblems": [
+        []
+      ],
+      "gameId": "starcraft",
+      "suite": "source-first",
+      "dialogueId": "fresh-sc-ualberta-historical-client",
+      "turn": 3
+    },
+    {
+      "conversation": 5,
+      "surface": "starcraft",
+      "text": "What exact date has its next official release been promised for?",
+      "decision": "clarify",
+      "rendered": "Which guide objective or named subject do you mean? Open its guide section or name it.",
+      "citations": [],
+      "links": [],
+      "expected": {
+        "decision": "not-answer",
+        "boundary": "The reviewed maintenance notice states a historical lack of active maintenance; it provides no promised future release or release date."
+      },
+      "passed": true,
+      "problems": [],
+      "answerBranchProblems": [],
+      "gameId": "starcraft",
+      "suite": "source-first",
+      "dialogueId": "fresh-sc-ualberta-historical-client",
+      "turn": 4
+    }
+  ],
+  "controls": [],
+  "incompleteConversations": [],
+  "changedComparedReplyRows": [],
+  "coverage": {
+    "starcraft:source-first": {
+      "matchedDialogues": 4,
+      "expectedDialogues": 4,
+      "complete": true,
+      "missingDialogueIds": []
+    },
+    "starcraft:semantic13": {
+      "matchedDialogues": 1,
+      "expectedDialogues": 1,
+      "complete": true,
+      "missingDialogueIds": []
+    }
+  },
+  "known_failures": [],
+  "incomplete": false,
+  "summary": {
+    "corpus": {
+      "passed": 0,
+      "failed": 0,
+      "total": 0
+    },
+    "source-first": {
+      "passed": 16,
+      "failed": 0,
+      "total": 16
+    },
+    "observed-native": {
+      "passed": 0,
+      "failed": 0,
+      "total": 0
+    },
+    "observed-fresh": {
+      "passed": 0,
+      "failed": 0,
+      "total": 0
+    },
+    "observed-independent": {
+      "passed": 0,
+      "failed": 0,
+      "total": 0
+    },
+    "semantic13": {
+      "passed": 2,
+      "failed": 0,
+      "total": 2
+    },
+    "controls": {
+      "passed": 0,
+      "failed": 0,
+      "total": 0
+    }
+  },
+  "boundaries": {
+    "sourceStable": true,
+    "frozenInputsMatched": true,
+    "noStorageWrites": true,
+    "noPageErrors": true,
+    "nativeMiniLMEveryProbe": true,
+    "allAdditionalControlsHeld": true
+  },
+  "status": "complete"
+}

@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "kind": "current-cua-worker-discovery-supplement",
+  "date": "2026-10-31",
+  "priorEvidence": "current-browser-network-capability-limit-20261031-01.json",
+  "browser": "existing ChatGPT in-app browser 2, task-owned tab 6",
+  "observations": [
+    {
+      "method": "readEvents",
+      "parameters": {"afterSequence": 0, "methods": ["Target.attachedToTarget"], "limit": 1000, "timeoutMs": 0},
+      "result": {"cursor": 57402, "truncated": true, "events": []},
+      "interpretation": "No retained worker attachment selector was exposed; the truncated history is not accepted as complete evidence."
+    },
+    {
+      "method": "Target.getTargets",
+      "error": "This method is not supported through raw CDP."
+    }
+  ],
+  "conclusion": "Neither explicit worker attachment nor target discovery is available through the current tool. Exhaustive dedicated-worker network verification remains unestablished; normal current-CUA conversation and UI verification continues.",
+  "alternateAutomation": "None used. Owner chose the current browser tool."
+}

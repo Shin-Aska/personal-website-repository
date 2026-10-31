@@ -1,0 +1,217 @@
+{
+  "schemaVersion": 1,
+  "kind": "read-only-alqadim-walkthrough-whole-reply-audit",
+  "tag": "native-cua-alqadim-walkthrough-whole-reply-audit-20261031-01",
+  "createdAt": "2026-10-31",
+  "inputs": {
+    "guides/tests/assistant/evidence/knowledge-cua-native-whole-goal-final-alqadim-walkthrough-20261031-01.json": "66e011c88c01a6dfbe5027bb32090ba2a8b5ba7ea6a6879d8fc0214a9aa4ba4d",
+    "guides/tests/assistant/evidence/knowledge-cua-native-whole-goal-final-alqadim-all-20261031-01.json": "7b559218715cc223614a21ae823e7345df7d86fb755b853c54d55a06be18904a",
+    "guides/tests/assistant/evidence/knowledge-browser-terra-20261029-frozen-source-01.json": "4813cd4dbb84d7fcd83ec90c09af4bf009b8ebc6e5b34c2857ade6a196c73bfb",
+    "guides/tests/assistant/evidence/knowledge-full-corpus-review-ultima7-alqadim-20261025-02.json": "8db4c54c19374949db0fe1a3e5fa1bd3b616a37b48f4ad8da3af54aa8d3e6cfc"
+  },
+  "baselineComparison": {
+    "baselinePath": "guides/tests/assistant/evidence/knowledge-browser-terra-20261029-frozen-source-01.json",
+    "scope": "walkthrough corpus rows only",
+    "baselineRows": 154,
+    "currentRows": 154,
+    "matchedDialogueTurnKeys": 154,
+    "missingKeys": [],
+    "extraKeys": [],
+    "changedWholeRows": [],
+    "passLosses": 0,
+    "passGains": 0,
+    "baselinePassCount": 148,
+    "currentPassCount": 148
+  },
+  "primarySurfaceComparison": {
+    "primaryReportPath": "guides/tests/assistant/evidence/knowledge-cua-native-whole-goal-final-alqadim-all-20261031-01.json",
+    "primaryRows": 154,
+    "walkthroughRows": 154,
+    "matchedDialogueTurnKeys": 154,
+    "changedWholeRows": [],
+    "passLosses": 0,
+    "passGains": 0,
+    "interpretation": "For the full 154-turn corpus, AlQadim primary and walkthrough surfaces have identical question, expected oracle, full reply text, decision, citations, links, strict status, and problems row by row."
+  },
+  "coverage": {
+    "alqadim-walkthrough:corpus": {
+      "matchedDialogues": 31,
+      "expectedDialogues": 31,
+      "complete": true,
+      "missingDialogueIds": []
+    },
+    "alqadim-walkthrough:semantic13": {
+      "matchedDialogues": 1,
+      "expectedDialogues": 1,
+      "complete": true,
+      "missingDialogueIds": []
+    }
+  },
+  "summary": {
+    "corpus": {
+      "passed": 148,
+      "failed": 6,
+      "total": 154
+    },
+    "source-first": {
+      "passed": 0,
+      "failed": 0,
+      "total": 0
+    },
+    "observed-native": {
+      "passed": 0,
+      "failed": 0,
+      "total": 0
+    },
+    "observed-fresh": {
+      "passed": 0,
+      "failed": 0,
+      "total": 0
+    },
+    "observed-independent": {
+      "passed": 0,
+      "failed": 0,
+      "total": 0
+    },
+    "semantic13": {
+      "passed": 1,
+      "failed": 0,
+      "total": 1
+    },
+    "controls": {
+      "passed": 0,
+      "failed": 0,
+      "total": 0
+    }
+  },
+  "boundaries": {
+    "sourceStable": true,
+    "frozenInputsMatched": true,
+    "noStorageWrites": true,
+    "noPageErrors": true,
+    "nativeMiniLMEveryProbe": true,
+    "allAdditionalControlsHeld": true
+  },
+  "strictFailures": [
+    {
+      "suite": "corpus",
+      "dialogueId": "hold-and-dock",
+      "turn": 1,
+      "question": "How do I deal with the Dock dark mage?",
+      "decision": "decline",
+      "reply": "The guide records an objective for that named creature, but no supported combat method.",
+      "citations": [],
+      "problems": [
+        "Expected answer; observed decline",
+        "Missing exact fixed source citation: guides/js/AlQadim.js — DB.chapters[3].required[id=ch4_3]",
+        "Missing fixed answer substring: Defeat the dark mage",
+        "Missing fixed answer substring: dock entrance"
+      ],
+      "reviewCategory": "justified-objective-only-decline",
+      "reviewReason": "The full source only says Defeat the dark mage guarding the dock entrance. It locates the actor but provides no tactic or combat method. Declining the requested deal-with procedure is justified; the old oracle expects the objective itself as an answer. The response could preserve the objective citation more helpfully, but no missing tactic is established."
+    },
+    {
+      "suite": "corpus",
+      "dialogueId": "hold-and-dock",
+      "turn": 2,
+      "question": "How do I clear the Rotting Ship's Hold?",
+      "decision": "decline",
+      "reply": "The guide records the objective, but does not describe the requested procedure: Enter the Rotting Ship's Hold and clear all zombies.",
+      "citations": [
+        "Source: existing guide; extracted. guides/js/AlQadim.js — DB.chapters[3].required[id=ch4_4]"
+      ],
+      "problems": [
+        "Expected answer; observed decline"
+      ],
+      "reviewCategory": "justified-objective-only-decline",
+      "reviewReason": "The final -03 response correctly declines the requested zombie-clearing method and quotes/cites the entire source objective: Enter the Rotting Ship's Hold and clear all zombies. The full source provides no clearing tactic. The fixed oracle requires answer even though its accepted substrings and source contain only that objective. Optional barrel-smashing healing loot cannot supply the missing clearing method; that wrong-field -02 answer is retained as a historical fixed regression."
+    },
+    {
+      "suite": "corpus",
+      "dialogueId": "shibaz-library",
+      "turn": 1,
+      "question": "How do I find Shibaz Hermit guidance?",
+      "decision": "decline",
+      "reply": "The guide records the objective, but does not describe the requested procedure: Locate the Hermit's hut and accept his guidance.",
+      "citations": [
+        "Source: existing guide; extracted. guides/js/AlQadim.js — DB.chapters[7].required[id=ch8_2]"
+      ],
+      "problems": [
+        "Expected answer; observed decline"
+      ],
+      "reviewCategory": "justified-objective-only-decline",
+      "reviewReason": "The full source only says Locate the Hermit's hut and accept his guidance. It records the destination/objective, but no route, position or procedure for finding that hut. The response quotes the whole objective with its exact citation while declining the missing find method. The old oracle requires only Hermit's hut and thereby rewards an objective-only answer."
+    },
+    {
+      "suite": "corpus",
+      "dialogueId": "shibaz-library",
+      "turn": 4,
+      "question": "How do I open the Hags riddle Library path?",
+      "decision": "decline",
+      "reply": "The guide records the objective, but does not describe the requested procedure: Solve the hags' riddle to open the path to the Library.",
+      "citations": [
+        "Source: existing guide; extracted. guides/js/AlQadim.js — DB.chapters[7].required[id=ch8_4]"
+      ],
+      "problems": [
+        "Expected answer; observed decline"
+      ],
+      "reviewCategory": "justified-objective-only-decline",
+      "reviewReason": "The full source only instructs solving the hags' riddle to open the Library path. It does not give the riddle answer or an independent opening procedure. The response quotes and cites the whole prerequisite/outcome objective while declining the missing method. The next dialogue turn correctly declines the exact riddle answer as well."
+    },
+    {
+      "suite": "corpus",
+      "dialogueId": "new-dungeon-and-journal",
+      "turn": 1,
+      "question": "How do I enter the New Dungeon?",
+      "decision": "decline",
+      "reply": "The guide records the objective, but does not describe the requested procedure: Enter the New Dungeon (Stealth Section - Do not get caught).",
+      "citations": [
+        "Source: existing guide; extracted. guides/js/AlQadim.js — DB.chapters[12].required[id=ch13_1]"
+      ],
+      "problems": [
+        "Expected answer; observed decline"
+      ],
+      "reviewCategory": "justified-objective-only-decline",
+      "reviewReason": "The complete source says Enter the New Dungeon and adds the Stealth Section / Do not get caught constraint. It supplies no entrance route, location or method. The response preserves the entire constraint and exact citation while declining a procedure. The oracle expects that objective/constraint as if it answered how to enter."
+    },
+    {
+      "suite": "corpus",
+      "dialogueId": "finale-boundaries",
+      "turn": 3,
+      "question": "How do I handle the Magical shield orbs?",
+      "decision": "decline",
+      "reply": "The guide records the objective, but does not describe the requested procedure: Destroy the magical shield orbs.",
+      "citations": [
+        "Source: existing guide; extracted. guides/js/AlQadim.js — DB.chapters[18].required[id=ch19_3]"
+      ],
+      "problems": [
+        "Expected answer; observed decline"
+      ],
+      "reviewCategory": "justified-objective-only-decline",
+      "reviewReason": "The complete source only says Destroy the magical shield orbs. No destruction method, order, spell, or relation to attacking the Vizier is recorded. The response quotes/cites the entire objective and correctly declines the requested handle procedure. The old oracle accepts the objective alone as an answer."
+    }
+  ],
+  "semantic13Turn": [
+    {
+      "dialogueId": "semantic13-alqadim-walkthrough",
+      "turn": 1,
+      "question": "What is the method for getting the Family Sword of Honor?",
+      "decision": "answer",
+      "reply": "Meet Aliya at the gates and speak with Zubin to get the Family Sword of Honor — Method:\nFrom the guide, traveler: Meet Aliya at the gates and speak with Zubin to get the Family Sword of Honor.",
+      "citations": [
+        "Source: existing guide; extracted. guides/js/AlQadim.js — DB.chapters[1].required[id=ch2_1]"
+      ],
+      "passed": true
+    }
+  ],
+  "controls": {
+    "turns": [],
+    "summary": {
+      "passed": 0,
+      "failed": 0,
+      "total": 0
+    },
+    "limitation": "No separate scored control rows in this focused report."
+  },
+  "conclusion": "No new walkthrough-specific response differences or pass losses. The 154-turn walkthrough corpus exactly matches both the 2026-10-29 frozen walkthrough baseline and the 2026-10-31 primary AlQadim surface; all six strict misses are the same reviewed objective-only declines and do not establish supported method omissions. Secondary surface run covered only one semantic13 turn; its Family Sword of Honor method answer passed."
+}

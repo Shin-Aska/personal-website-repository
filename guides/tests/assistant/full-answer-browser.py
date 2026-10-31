@@ -16,7 +16,6 @@ from pathlib import Path
 from threading import Thread
 from urllib.parse import urlparse
 
-from playwright.sync_api import sync_playwright
 from browser_consent_fixture import CONSENT_FIXTURE
 
 HERE = Path(__file__).resolve().parent
@@ -213,8 +212,11 @@ def check_scroll(page,surface,long=False):
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--tag',default='final')
+    parser.add_argument('--browser-executable',default='/usr/bin/google-chrome',
+                        help='Existing Chromium/Chrome executable; no browser is installed or downloaded.')
     parser.add_argument('--node',default=shutil.which('node') or '/home/richard/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node')
     args=parser.parse_args()
+    from playwright.sync_api import sync_playwright
     if not args.tag.replace('-','').replace('_','').isalnum():parser.error('Invalid report tag')
     output=HERE/'evidence'/f'full-answer-browser-{args.tag}.json'
     if output.exists():parser.error('Report already exists; use a new tag to preserve results')
@@ -245,7 +247,7 @@ def main():
     report['loopbackPort']=server.server_port
     try:
         with sync_playwright() as p:
-            browser=p.chromium.launch(executable_path='/usr/bin/google-chrome',headless=True,args=['--no-sandbox'])
+            browser=p.chromium.launch(executable_path=args.browser_executable,headless=True,args=['--no-sandbox'])
             context=browser.new_context(service_workers='block',viewport={'width':1280,'height':900})
             context.add_init_script(script=STORAGE_OBSERVER)
             context.add_init_script(script=CONSENT_FIXTURE)

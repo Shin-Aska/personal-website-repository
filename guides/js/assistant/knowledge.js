@@ -22,7 +22,10 @@ import {parseFactualPropertyRequest,supportsFactualPropertyRequest} from './fact
 import {parseBundleRequest,resolveBundleReference} from './bundle-references.js';
 import {parseSoftwareCapabilityRequest,supportsSoftwareCapabilityRequest,readSoftwareSemanticFields} from './software-capabilities.js';
 import {parseNamedSourceFieldRequest,supportsNamedSourceFieldRequest} from './named-source-fields.js';
-import {parseProcedurePhaseRequest,supportsProcedurePhaseRequest,procedurePhaseScopeLabels} from './procedure-phase-fields.js';
+import {parseProcedurePhaseRequest,supportsProcedurePhaseRequest,procedurePhaseScopeLabels,continuationAfterAcquisition,reviewedAfterDependency,optionalActivitiesForObjective,alternativeToProposedCombat,versionedStatClaim,completionAfterReportedRecovery} from './procedure-phase-fields.js';
+import {contradictoryIdentity,accusedVictimContrast} from './source-role-contrasts.js';
+import {selectSourceNarrativeAnswer,validateSourceNarrativeReply} from './source-narrative-answer.js';
+import {selectSourceConflictQuotation,sourceConflictQuotationReply,validateSourceConflictQuotationReply} from './source-conflict-quotation.js';
 import {parseResourceConditionRequest,supportsResourceConditionRequest} from './resource-condition-requests.js';
 import {parseSequenceFieldRequest,supportsSequenceFieldRequest} from './sequence-field-requests.js';
 import {parseDescriptiveReferenceRequest,supportsDescriptiveReferenceRequest} from './descriptive-reference-requests.js';
@@ -684,12 +687,16 @@ export function createKnowledgeRouter(knowledge) {
         return (id && entities.has(id) ? `${text}\nSubject: ${entities.get(id).name}` : String(text))
             + (object && object !== id ? `\nObject: ${entities.get(object).name}` : '');
     }
-    function reply(selected, { target = null, subject = null, prefix = '', object = undefined, placeTarget = null } = {}) {
+    function reply(selected, { target = null, subject = null, prefix = '', object = undefined, placeTarget = null, dedupeContained = false } = {}) {
         fieldReferents=sourceFieldReferents(selected.map(proof=>({proofs:knowledge.sourceFields.entries
             .filter(entry=>entry.factId===proof.id).map(entry=>({entry,proof}))})));
         const sources = selected.map(fact => fact.record.source);
         const resources = [...new Map(selected.flatMap(fact => fact.resources).map(link => [link.url, link])).values()];
-        const text = prefix + selected.map(fact => (fact.source.review === 'external-research' ? 'Not in this guide — from outside research: ' : '')
+        const displayFacts=dedupeContained?selected.filter(fact=>!selected.some(other=>other!==fact
+            && other.sourceRecordId===fact.sourceRecordId && other.source.file===fact.source.file
+            && other.source.locator===fact.source.locator && other.source.review===fact.source.review
+            && other.text.length>fact.text.length && other.text.includes(fact.text))):selected;
+        const text = prefix + displayFacts.map(fact => (fact.source.review === 'external-research' ? 'Not in this guide — from outside research: ' : '')
             + (fact.listMembers ? `${fact.subject}: ${fact.listMembers.join(', ')}.` : fact.text.replace(/^Outside research:\s*/i, ''))).join('\n')
             + (resources.length ? '\n' + resources.map(link => `${link.label}: ${link.url}`).join('\n') : '');
         remember(subject || selected[0].entityId); if (target) remember(target);
@@ -782,6 +789,7 @@ export function createKnowledgeRouter(knowledge) {
     }
     function guardReply(text,response,packet={}){
         if(response?.decision!=='answer' || response.stateChanges?.length || response.actions?.length)return response;
+        if(sourceNarrative(text,response))return response;
         let frame=resolveSourceFrameIdentity(parseSourceRequestFrame(text),knowledge);
         if(!frame || frame.staticEligible===false || frame.report || frame.playerStateQuestion)return response;
         const returned=(response.recordIds || []).map(id=>knowledge.sourceRecords.find(record=>record.id===id)).filter(Boolean);
@@ -866,17 +874,36 @@ export function createKnowledgeRouter(knowledge) {
     }
     function entityLabelsFor(id){const entity=entities.get(id);return entity?[entity.name,...entity.aliases]:[];}
     function completeFieldSupport(frame,response){
-        if(!frame || !response?.knowledge?.factIds)return true;
+        if(!frame)return true;
+        if(!response?.knowledge?.factIds)return !frame.fields.some(field=>field.requiresExplicitField);
         const selected=new Set(response.knowledge.factIds);
-        return frame.fields.every(field=>knowledge.sourceFields.entries
-            .filter(entry=>selected.has(entry.factId) && entry.key===field.key
-                && (!field.selectors?.length || field.selectors.some(selector=>entry.selectors.includes(selector))))
-            .every(entry=>(entry.arguments || []).every(group=>(group.requiredFactIds || []).every(id=>{
+        return frame.fields.every(field=>{
+            const entries=knowledge.sourceFields.entries.filter(entry=>selected.has(entry.factId) && entry.key===field.key
+                && (!field.selectors?.length || field.selectors.some(selector=>entry.selectors.includes(selector)))
+                && (!field.requiresExplicitField || entry.explicit));
+            if(field.requiresExplicitField && (!entries.length || (field.selectors || []).some(selector=>
+                !entries.some(entry=>entry.selectors.includes(selector)))))return false;
+            return entries.every(entry=>(entry.arguments || []).every(group=>(group.requiredFactIds || []).every(id=>{
                 const proof=byFactId.get(id);
                 return selected.has(id) && proof && !proof.conflict && !proof.record.conflict && proof.source.review!=='conflicting';
-            }))));
+            })));
+        });
     }
     function plan(text,packet={},opts={}){
+        const contrastScope={guideOnly:Boolean(restriction?.guideOnly),editions:restriction?.editions || []};
+        const contrastOptions={facts,entities,sourceRecords:[...sourceById.values()],isEligible:fact=>factEligible(fact,contrastScope)};
+        const identityContrast=contradictoryIdentity(text,contrastOptions);
+        if(identityContrast)return reply([identityContrast],{subject:identityContrast.entityId,
+            prefix:'The guide identifies the subject as follows; it does not establish the other descriptions: '});
+        const victimContrast=accusedVictimContrast(text,contrastOptions);
+        if(victimContrast)return reply([victimContrast],{subject:victimContrast.entityId,
+            prefix:'The passage identifies the accused person as the victim; it does not establish the proposed inference: '});
+        const reported=completionAfterReportedRecovery(text,{facts,entities,sourceRecords:[...sourceById.values()],
+            isEligible:fact=>factEligible(fact,{guideOnly:Boolean(restriction?.guideOnly),editions:restriction?.editions || []})});
+        if(reported){
+            lastFacet='method';
+            return reply(reported,{subject:reported[0].entityId,prefix:'I cannot verify your game state. The guide gives these completion steps: '});
+        }
         const boundary=planFrame(text,packet,{...opts,onlyDecline:true});if(boundary)return boundary;
         const before=checkpoint(),existing=planLegacy(text,packet,opts);
         const frame=resolveSourceFrameIdentity(parseSourceRequestFrame(text),knowledge);
@@ -926,8 +953,18 @@ export function createKnowledgeRouter(knowledge) {
         const namedFieldRequest=parseNamedSourceFieldRequest(text) || parseNamedSourceFieldRequest(q);
         const questionAttribution=parseQuestionSourceAttribution(q);
         const phaseCandidate=parseProcedurePhaseRequest(q);
-        const phaseLabels=fact=>[fact.subject,...(fact.topicLabels || []),...(fact.aliases || []),entities.get(fact.entityId)?.name,...(entities.get(fact.entityId)?.aliases || []),
-            ...procedurePhaseScopeLabels({fact,sourceRecord:sourceById.get(fact.sourceRecordId),phase:phaseCandidate?.phase})].filter(Boolean);
+        const phaseLabels=fact=>{
+            const owner=entities.get(fact.entityId);
+            const names=[owner?.name,...(owner?.aliases || [])].filter(Boolean);
+            // The same reviewed title can be phrased as "Courage test" or
+            // "Test of Courage". Preserve the complete name and its modifiers.
+            const inverted=names.flatMap(name=>{
+                const match=/^(test|shrine) of (.+)$/i.exec(name);
+                return match?[`${match[2]} ${match[1]}`]:[];
+            });
+            return [fact.subject,...(fact.topicLabels || []),...(fact.aliases || []),...names,...inverted,
+                ...procedurePhaseScopeLabels({fact,sourceRecord:sourceById.get(fact.sourceRecordId),phase:phaseCandidate?.phase})].filter(Boolean);
+        };
         const phaseRequest=phaseCandidate && facts.some(fact=>fact.procedureFields?.some(field=>field.phase===phaseCandidate.phase)
             && (phaseLabels(fact).some(label=>key(label)===key(phaseCandidate.scopeText.replace(/^(?:the|a|an) /,'')))
                 || /^(?:it|this|that|this route|that route|this quest|that quest|this trail|that trail)$/.test(phaseCandidate.scopeText)
@@ -1037,6 +1074,35 @@ export function createKnowledgeRouter(knowledge) {
             .filter(edition=>!comparedEdition || editionKey(edition)!==comparedEdition);
         const eligible = fact => factEligible(fact, {guideOnly, editions});
         let available = facts.filter(eligible);
+        const phaseRecords=[...sourceById.values()];
+        const continuation=continuationAfterAcquisition(text,{facts:available,entities,sourceRecords:phaseRecords,isEligible:eligible});
+        if(continuation){
+            restriction={guideOnly,editions};lastFacet='method';
+            return reply(continuation,{subject:continuation[0].entityId});
+        }
+        const dependency=reviewedAfterDependency(text,{facts:available,entities,links,sourceRecords:phaseRecords,isEligible:eligible});
+        if(dependency){
+            restriction={guideOnly,editions};lastFacet='prerequisites';
+            return reply(dependency,{subject:dependency[0].entityId});
+        }
+        const optional=optionalActivitiesForObjective(text,{facts:available,sourceRecords:phaseRecords,isEligible:eligible});
+        if(optional){
+            restriction={guideOnly,editions};lastFacet='prerequisites';
+            return reply(optional,{subject:optional[0].entityId});
+        }
+        const alternative=alternativeToProposedCombat(text,{facts:available,sourceRecords:phaseRecords,isEligible:eligible});
+        if(alternative){
+            restriction={guideOnly,editions};lastFacet='method';
+            return reply([alternative],{subject:alternative.entityId,
+                prefix:'This passage describes these alternatives; it does not say whether killing is necessary. '});
+        }
+        const versioned=versionedStatClaim(text,{facts:available,priorFactIds:!invalidated?lastProofIds:[],
+            sourceRecords:phaseRecords,isEligible:eligible});
+        if(versioned){
+            restriction={guideOnly,editions};lastFacet='stats';
+            return reply([versioned],{subject:versioned.entityId,
+                prefix:'The guide does not establish that every edition gives that exact value. '});
+        }
         const attributedFactIds=new Set(questionAttribution?available.filter(fact=>supportsQuestionSourceAttribution(questionAttribution,
             {fact,sourceRecord:sourceById.get(fact.sourceRecordId)})).map(fact=>fact.id):[]);
         const labels = fact => [fact.subject, ...(fact.aliases || []), entities.get(fact.entityId)?.name].filter(nonempty);
@@ -1886,9 +1952,16 @@ export function createKnowledgeRouter(knowledge) {
             return { ...limited, decision: 'decline', knowledge: { ...limited.knowledge, limited: true } };
         }
         const support = (best.fact.support?.[facet] || []).map(id => byFactId.get(id));
-        if (support.some(fact => !eligible(fact))) return null;
+        const preceding = (best.fact.support?.[`before${facet}`] || []).map(id => byFactId.get(id));
+        if ([...preceding,...support].some(fact => !fact || !eligible(fact))) return null;
+        const sourcePaths=value=>(value || '').split(';').map(path=>path.trim()).filter(Boolean);
+        if(preceding.some(fact=>fact.source.file!==best.fact.source.file || fact.text!==fact.witness
+            || !sourcePaths(fact.source.locator).some(path=>sourcePaths(best.fact.source.locator).includes(path))))return null;
         const subject = selectedEntity || (graphIds.length === 1 ? graphIds[0] : null);
-        return respond([best.fact, ...support], { subject, placeTarget:sceneDestination?.id });
+        // A later complete witness can contain the selected short excerpt.
+        // Keep its full passage once, and retain every separately cited source.
+        return respond([...preceding,best.fact,...support], { subject, placeTarget:sceneDestination?.id,
+            dedupeContained:preceding.length>0 });
     }
     function observe(reply, packet, text) {
         if (reply?.knowledge) {
@@ -1912,18 +1985,34 @@ export function createKnowledgeRouter(knowledge) {
             return;
         }
         relativeContext=null;
-        if (packet?.entityId && entities.has(packet.entityId) && (!invalidated || hasPhrase(text, entities.get(packet.entityId).name))){
+        const pureSource=!reply.stateChanges?.length && !reply.actions?.length && !reply.choices?.length
+            && !reply.fallbackOrigin && !reply.fallbackRecordIds?.length;
+        const cited=source=>{
+            const expected=String(source?.locator || '').split(';').map(part=>part.trim()).filter(Boolean);
+            return expected.length>0 && (reply.sources || []).some(actual=>actual?.file===source?.file && actual?.review===source?.review
+                && expected.every(part=>String(actual.locator || '').split(';').map(value=>value.trim()).includes(part)));
+        };
+        const original=pureSource?(reply.recordIds || []).map(id=>sourceById.get(id)).filter(record=>record?.entityId===packet?.entityId
+            && reply.text.includes(record.text) && cited(record.source) && factEligible({record,source:record.source,facet:record.relation},
+                {guideOnly:Boolean(packet?.restrictions?.guideOnly),editions:packet?.restrictions?.editions || []})):[];
+        // A complete cited source reply can establish a discussion subject by
+        // its authorized alias, even when its full action title was not asked.
+        // This proves the referent only, never the player's acquisition/state.
+        const sourceFrame=parseSourceRequestFrame(text);
+        const sourceSubjects=sourceFrame?.complete && sourceFrame.staticEligible
+            ?[sourceFrame.subjectText,...sourceFrame.fields.map(field=>field.subjectText)].filter(Boolean):[];
+        const aliasKey=value=>key(String(value).replace(/^(?:the|a|an)\s+/i,''));
+        const sourceAlias=original.some(record=>[record.title,...(record.aliases || [])].some(label=>
+            sourceSubjects.some(subject=>aliasKey(subject)===aliasKey(label))));
+        if (packet?.entityId && entities.has(packet.entityId) && (!invalidated || hasPhrase(text, entities.get(packet.entityId).name) || sourceAlias)){
             if(packet.entityId!==focus){lastProofIds=[];lastFact=lastFacet=null;sceneIds=[];}
             remember(packet.entityId);
             // A delegated source answer can ground later references only in
             // complete reviewed witnesses actually present in that answer.
-            const pureSource=!reply.stateChanges?.length && !reply.actions?.length;
             const proved=pureSource?facts.filter(fact=>reply.recordIds?.includes(fact.sourceRecordId) && reply.text.includes(fact.witness)
+                && cited(fact.source)
                 && factEligible(fact,{guideOnly:Boolean(packet.restrictions?.guideOnly),editions:packet.restrictions?.editions || []}))
                 :[];
-            const original=pureSource?(reply.recordIds || []).map(id=>sourceById.get(id)).filter(record=>record?.entityId===packet.entityId
-                && reply.text.includes(record.text) && factEligible({record,source:record.source,facet:record.relation},
-                    {guideOnly:Boolean(packet.restrictions?.guideOnly),editions:packet.restrictions?.editions || []})):[];
             if(proved.length || original.length){
                 lastProofIds=proved.map(fact=>fact.id);lastFact=proved[0]?.id || original[0].id;lastFacet=proved[0]?.facet || original[0].relation;
                 // The source answer fulfilled its requested property or
@@ -1933,6 +2022,20 @@ export function createKnowledgeRouter(knowledge) {
             }
         }
     }
-    return { plan, planFrame, guardReply, observe, reset, embeddingText, checkpoint, restore,
+    function sourceNarrative(text,response){
+        const parsed=parse(text),scope={guideOnly:parsed.parts.some(part=>part.guideOnly),editions:parsed.editions || []};
+        const eligible=(record,sourceRecord,claim)=>!record.conflict && !sourceRecord.conflict
+            && factEligible({record,source:claim?.source || record.source,facet:record.relation},scope);
+        const selection=selectSourceNarrativeAnswer({text,records:knowledge.sourceRecords,ceiling:'direct',isEligible:eligible});
+        return response===undefined?selection:Boolean(selection && validateSourceNarrativeReply(selection,response,{isEligible:eligible}));
+    }
+    function sourceConflictQuotation(text,options={}){
+        const selection=selectSourceConflictQuotation({text,knowledge,ceiling:options.spoiler || 'direct',inherited:{
+            guideOnly:Boolean(options.guideOnly || restriction?.guideOnly),
+            editions:[...(options.editions || []),...(restriction?.editions || [])]}});
+        const response=sourceConflictQuotationReply(selection);
+        return validateSourceConflictQuotationReply(selection,response)?response:null;
+    }
+    return { plan, planFrame, guardReply, sourceNarrative, sourceConflictQuotation, observe, reset, embeddingText, checkpoint, restore,
         inspect: () => ({ focus, lastFact, restriction: restriction && copy(restriction), coverage: copy(knowledge.coverage) }) };
 }

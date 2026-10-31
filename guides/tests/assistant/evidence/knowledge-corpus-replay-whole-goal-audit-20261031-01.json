@@ -1,0 +1,1956 @@
+{
+  "schemaVersion": 1,
+  "kind": "cached-full-corpus-semantic-failure-audit",
+  "auditedAt": "2026-10-31",
+  "currentRun": {
+    "path": "guides/tests/assistant/intent-prototype/results/knowledge-corpus-replay-whole-goal-preflight-20261031-02/report.json",
+    "sha256": "3fcaac155ffdaf9758a903b7cf058667cc3c2f0dcbb274d7bcb3ae7e91832261",
+    "tag": "whole-goal-preflight-20261031-02",
+    "status": "incomplete",
+    "sourceStable": true,
+    "changedSources": [],
+    "totals": {
+      "total": 851,
+      "passed": 815,
+      "failed": 30,
+      "incomplete": 6
+    },
+    "profileId": "minilm-l6-v2-q8-751bff3-followup-v2",
+    "encoder": {
+      "modelId": "Xenova/all-MiniLM-L6-v2",
+      "revision": "751bff37182d3f1213fa05d7196b954e230abad9",
+      "dimensions": 384,
+      "dtype": "q8",
+      "maxTokens": 128,
+      "schemaVersion": 1,
+      "count": 1260,
+      "encoderFineTuned": false,
+      "realModelInference": true,
+      "headSha256": "979c196a92df490124802e61fcc5fad787fc535ee69ff0eae64784355a8f6bfb",
+      "nativeExports": [
+        {
+          "file": "query-vector-cache-1793413910582.json",
+          "sha256": "cea10449b7dbd6e7bf0ad7869ab91b2cebd343fd6672c377206c051001fa35fb"
+        },
+        {
+          "file": "query-vector-cache-1793414023636.json",
+          "sha256": "d3eba4ac9fb7b41d633dace53e840834ce8f24f97b459d0405bd32bef9df6898"
+        },
+        {
+          "file": "query-vector-cache-1793414288069.json",
+          "sha256": "23003d5543de07457e28aeb3e9f32e5d929731271126e239cfca98e2076aa52a"
+        },
+        {
+          "file": "query-vector-cache-1793414849505.json",
+          "sha256": "db16d832c2faa04e70ef16306f61595b1511c8930e6e86fe58496eeae71a5d40"
+        }
+      ],
+      "provenance": "Existing pinned production intent-worker.js via local CUA encoder page; exact raw query strings only, no expected labels or answers."
+    }
+  },
+  "comparisonRun": {
+    "path": "guides/tests/assistant/evidence/beta-exact-replay-20261025.json",
+    "sha256": "9890f21261f8f5bba353770a50933128dd0fa7554ff53b78038ed2e46a3707fc",
+    "totals": {
+      "total": 851,
+      "passed": 798,
+      "failed": 53,
+      "incomplete": 0
+    }
+  },
+  "comparison": {
+    "sameKeyedTurns": 851,
+    "keySetsIdentical": true,
+    "strictPassGains": 24,
+    "strictPassGainKeys": [
+      "ultima6/humility-riddle/2",
+      "ultima6/followup-blue-lens/3",
+      "ultima7/sphere-hourglass-prerequisite/4",
+      "ultima7/truth-true-locket/4",
+      "ultima7/truth-true-locket/5",
+      "ultima7/courage-ether-gem/3",
+      "ultima7/courage-ether-gem/4",
+      "ultima7/arcadion-black-sword/4",
+      "ultima7/dark-core-stat-caveat/4",
+      "ultima7/honor-flag-alternatives/3",
+      "ultima7/blorn-victim-property/3",
+      "ultima5/party-recommendation/1",
+      "ultima5/party-recommendation/3",
+      "ultima5/carpet-pronoun/2",
+      "ultima5/spirituality-followups/4",
+      "ultima5/astaroth-flame-and-words/4",
+      "albion/drirr-recruitment-combat/1",
+      "albion/rifrako-utilities/3",
+      "albion/rifrako-utilities/4",
+      "albion/beloveno-choice/4",
+      "albion/toronto-return-codes/1",
+      "albion/toronto-return-codes/2",
+      "albion/blue-plate-demonstration/3",
+      "alqadim/efreet-bottle-and-potion/2"
+    ],
+    "statusLosses": 7,
+    "statusLossKeys": [
+      "ultima6/pirate-cave/3",
+      "starcraft/starcraft-knowledge-antivirus/3",
+      "starcraft/starcraft-knowledge-antivirus/4",
+      "starcraft/starcraft-knowledge-steamhammer-creator/3",
+      "starcraft/starcraft-knowledge-steamhammer-creator/4",
+      "albion/com-access-pistol/3",
+      "albion/com-access-pistol/4"
+    ],
+    "strictRegressionAmongCompletedRows": [
+      "ultima6/pirate-cave/3"
+    ],
+    "incompleteLosses": 6,
+    "incompleteRows": [
+      {
+        "key": "starcraft/starcraft-knowledge-antivirus/3",
+        "question": "Where are its docs?",
+        "previousStatus": "passed",
+        "cause": "Exact query text has no vector in this run; harness marks turn and remaining dialogue turns incomplete."
+      },
+      {
+        "key": "starcraft/starcraft-knowledge-antivirus/4",
+        "question": "Can you guarantee my SCHNAIL executable is malware-free?",
+        "previousStatus": "passed",
+        "cause": "Exact query text has no vector in this run; harness marks turn and remaining dialogue turns incomplete."
+      },
+      {
+        "key": "starcraft/starcraft-knowledge-steamhammer-creator/3",
+        "question": "Which license relationship does it retain?",
+        "previousStatus": "passed",
+        "cause": "Exact query text has no vector in this run; harness marks turn and remaining dialogue turns incomplete."
+      },
+      {
+        "key": "starcraft/starcraft-knowledge-steamhammer-creator/4",
+        "question": "Did Dave Churchill personally author every Steamhammer feature?",
+        "previousStatus": "passed",
+        "cause": "Exact query text has no vector in this run; harness marks turn and remaining dialogue turns incomplete."
+      },
+      {
+        "key": "albion/com-access-pistol/3",
+        "question": "What does it use?",
+        "previousStatus": "passed",
+        "cause": "Exact query text has no vector in this run; harness marks turn and remaining dialogue turns incomplete."
+      },
+      {
+        "key": "albion/com-access-pistol/4",
+        "question": "Where do I hide the weapon before security?",
+        "previousStatus": "passed",
+        "cause": "Exact query text has no vector in this run; harness marks turn and remaining dialogue turns incomplete."
+      }
+    ],
+    "completionNote": "The six incomplete rows were passed in the prior cached replay, but they are not new strict failures. This run does not support a current 851/851 acceptance claim."
+  },
+  "negativeControls": {
+    "expectedNonAnswerRows": 175,
+    "passed": 173,
+    "incomplete": 2,
+    "failed": 0,
+    "incompleteKeys": [
+      "starcraft/starcraft-knowledge-antivirus/4",
+      "starcraft/starcraft-knowledge-steamhammer-creator/4"
+    ],
+    "failedKeys": [],
+    "previouslyPassed": 175,
+    "note": "No negative control failed. Two controls are unadjudicated in this run because their exact prompt vectors are missing."
+  },
+  "classificationCounts": {
+    "complete-for-asked-subquestion; source-locator/detail oracle difference": 1,
+    "genuine-regression": 1,
+    "useful-complete-response; locator granularity oracle difference": 1,
+    "useful-complete-response; internal sourceRecordId oracle difference": 1,
+    "genuine-partial-answer": 1,
+    "useful-complete-response; internal factId oracle difference": 7,
+    "source-supported detail omitted; useful but incomplete outcome": 1,
+    "useful-complete-response; alternate complete source witness": 1,
+    "useful-complete-response; nested locator granularity oracle difference": 3,
+    "useful-complete-response; duplicate source-record/factId oracle difference": 1,
+    "genuine-source-present-unanswered": 1,
+    "genuine-answer-decision-mismatch": 1,
+    "genuine-dialogue-context-loss": 1,
+    "useful-complete-location-answer; alternate source evidence": 1,
+    "genuine-source-present-unanswered with separate XP-conflict boundary": 1,
+    "useful-complete-response; nested locator/source granularity oracle difference": 1,
+    "justified-source-limited-decline": 6
+  },
+  "sharedCauseGroups": [
+    {
+      "cause": "wrong helper or truncated indexed method/narrative selected",
+      "turns": [
+        "ultima6/pirate-cave/3",
+        "ultima7/wisp-honey-whistle/3",
+        "ultima5/cape-plans-locations/4"
+      ],
+      "fix": "Route the exact method/effect question to its full reviewed source witness; preserve complete proof and source citations."
+    },
+    {
+      "cause": "authored answer not reached despite direct eligible source",
+      "turns": [
+        "albion/assassination-reward/1",
+        "albion/blue-plate-demonstration/1"
+      ],
+      "fix": "Enable source-faithful answer path for the exact source role. Blue plate answer must remain limited to the sourced setup/tactic, with disputed XP-count control retained."
+    },
+    {
+      "cause": "explicit supported field misclassified as unsupported explanation",
+      "turns": [
+        "albion/harriet-travel/2"
+      ],
+      "fix": "Return the stated transport requirement/importance directly; preserve refusal to invent any further reason."
+    },
+    {
+      "cause": "immediate follow-up lost its grounded subject",
+      "turns": [
+        "albion/porenoil-route/2"
+      ],
+      "fix": "Resolve “it” to Porenoil from the immediately preceding grounded answer and retain source attribution."
+    },
+    {
+      "cause": "strict internal provenance or locator assertion differs from useful answer",
+      "turns": [
+        "ultima7/trinsic-evidence-password/1",
+        "ultima7/trinsic-evidence-password/3",
+        "ultima7/love-two-rituals/3",
+        "ultima7/dark-core-stat-caveat/1",
+        "ultima7/dark-core-stat-caveat/2",
+        "ultima7/companion-plans-not-party/1",
+        "ultima7/companion-plans-not-party/2",
+        "starcraft/starcraft-knowledge-support-links/3",
+        "ultima5/carpet-pronoun/1",
+        "albion/sira-party-link/4",
+        "albion/rejira-money/1",
+        "albion/melthas-demon-spells/3",
+        "albion/harriet-travel/3",
+        "albion/porenoil-route/1",
+        "albion/secret-word-scroll/3",
+        "albion/finale-joe/2"
+      ],
+      "fix": "No user-facing response repair indicated. Keep original strict oracle/source text immutable; label locator/provenance semantics accurately and do not synthesize hidden IDs."
+    },
+    {
+      "cause": "AlQadim source states objective but not requested tactics/procedure",
+      "turns": [
+        "alqadim/hold-and-dock/1",
+        "alqadim/hold-and-dock/2",
+        "alqadim/shibaz-library/1",
+        "alqadim/shibaz-library/4",
+        "alqadim/new-dungeon-and-journal/1",
+        "alqadim/finale-boundaries/3"
+      ],
+      "fix": "No code fix. Preserve source-limited declines; available witness does not give a specific route/combat/puzzle solution."
+    }
+  ],
+  "remainingCodeFixes": [
+    {
+      "priority": "high",
+      "turns": [
+        "ultima6/pirate-cave/3"
+      ],
+      "action": "Restore the right-wall/trap/powder-keg Maze of Death method; this is the only completed strict pass regression versus prior replay."
+    },
+    {
+      "priority": "high",
+      "turns": [
+        "ultima7/wisp-honey-whistle/3"
+      ],
+      "action": "Answer the prerequisite to obtain Bee Cave honey and bribe the emps, then negotiate for the whistle; avoid conflating later notebook use with whistle acquisition."
+    },
+    {
+      "priority": "high",
+      "turns": [
+        "albion/assassination-reward/1"
+      ],
+      "action": "Answer the complete source-authored ordered timed sequence."
+    },
+    {
+      "priority": "high",
+      "turns": [
+        "albion/harriet-travel/2"
+      ],
+      "action": "Answer the explicit “Required for teleportation between islands” importance statement without adding lore motive."
+    },
+    {
+      "priority": "high",
+      "turns": [
+        "albion/porenoil-route/2"
+      ],
+      "action": "Preserve the previous grounded Porenoil subject across this unambiguous pronoun follow-up; answer dehydration."
+    },
+    {
+      "priority": "high",
+      "turns": [
+        "albion/blue-plate-demonstration/1"
+      ],
+      "action": "Answer only the source-backed plate activation/tactic (16 Animal 3, back row, Demon Exodus) while preserving the existing strict refusal on the disputed XP total/arithmetic."
+    },
+    {
+      "priority": "medium",
+      "turns": [
+        "ultima5/cape-plans-locations/4"
+      ],
+      "action": "Complete the source-supported effect by stating that plans used once on a frigate double its speed relative to enemies. Current “faster sail upgrade” is useful but omits the authored magnitude."
+    }
+  ],
+  "unchangedOracles": "No original question, answer, source locator, or source text was edited. The inventory records observed strict differences and does not propose weakening source/conflict/boundary controls.",
+  "rows": [
+    {
+      "key": "ultima6/tablet-leads/3",
+      "surface": "ultima6",
+      "dialogueId": "tablet-leads",
+      "turn": 3,
+      "question": "How do I ask the gypsies about the tablet?",
+      "currentStatus": "failed",
+      "currentDecision": "answer",
+      "currentReply": "Zoltan: say TABLET for Homer lead.",
+      "currentRecordIds": [
+        "ultima6:knowledge:zoltan-tablet-keyword",
+        "ultima6:quest:act-ii-prophecy-pirates:translate-the-gargish-tome:keyword:0"
+      ],
+      "currentSources": [
+        {
+          "file": "guides/js/Ultima6.js",
+          "locator": "gameData.quests[1].sections[0].keywords[0].helper",
+          "review": "extracted",
+          "index": {
+            "file": "guides/data/assistant/knowledge/ultima6.json",
+            "locator": "facts[97]",
+            "review": "authored-index"
+          }
+        }
+      ],
+      "strictProblems": [
+        "Missing substring: Buccaneer",
+        "Missing one-of factIds: zoltan-homer",
+        "Missing exact source: guides/js/Ultima6.js :: gameData.quests[1].sections[0].steps[2]"
+      ],
+      "frozenExpected": {
+        "decision": "answer",
+        "contains": [
+          "Homer",
+          "Buccaneer"
+        ],
+        "factIds": [
+          "zoltan-homer"
+        ],
+        "source": {
+          "file": "guides/js/Ultima6.js",
+          "locator": "gameData.quests[1].sections[0].steps[2]",
+          "review": "extracted"
+        }
+      },
+      "originalSourceWitness": {
+        "fileAndLocator": "guides/js/Ultima6.js :: gameData.quests[1].sections[0].keywords[0].helper",
+        "verbatimExcerpt": "<strong>Zoltan:</strong> say <code>TABLET</code> for Homer lead."
+      },
+      "priorFrozenAdjudication": {
+        "artifact": "guides/tests/assistant/evidence/knowledge-full-corpus-arguments-adjudication-20261025-02.json",
+        "rowIndex": 24,
+        "category": "useful-claim-oracle-difference",
+        "wholeRowsIdenticalToPreviouslyReviewed": true,
+        "qualification": "Prior classification is a review pointer only; this cached run has a different raw report and was inspected directly."
+      },
+      "classification": "complete-for-asked-subquestion; source-locator/detail oracle difference",
+      "auditFinding": "The question asks which keyword to use. The reply gives Zoltan + TABLET + Homer lead from the keyword helper; Buccaneer’s Den is the next destination, not necessary to answer how to ask. No response fix required for this exact question."
+    },
+    {
+      "key": "ultima6/pirate-cave/3",
+      "surface": "ultima6",
+      "dialogueId": "pirate-cave",
+      "turn": 3,
+      "question": "How do I navigate Maze of Death?",
+      "currentStatus": "failed",
+      "currentDecision": "answer",
+      "currentReply": "Maze: use WIZARD EYE or DISPEL FIELD.",
+      "currentRecordIds": [
+        "ultima6:knowledge:pirate-maze-spells",
+        "ultima6:quest:act-ii-prophecy-pirates:plunder-the-pirate-cave:keyword:0"
+      ],
+      "currentSources": [
+        {
+          "file": "guides/js/Ultima6.js",
+          "locator": "gameData.quests[1].sections[3].keywords[0].helper",
+          "review": "extracted",
+          "index": {
+            "file": "guides/data/assistant/knowledge/ultima6.json",
+            "locator": "facts[100]",
+            "review": "authored-index"
+          }
+        }
+      ],
+      "strictProblems": [
+        "Missing substring: right wall",
+        "Missing substring: traps",
+        "Missing one-of factIds: pirate-maze",
+        "Missing exact source: guides/js/Ultima6.js :: gameData.quests[1].sections[3].steps[2]"
+      ],
+      "frozenExpected": {
+        "decision": "answer",
+        "contains": [
+          "right wall",
+          "traps"
+        ],
+        "factIds": [
+          "pirate-maze"
+        ],
+        "source": {
+          "file": "guides/js/Ultima6.js",
+          "locator": "gameData.quests[1].sections[3].steps[2]",
+          "review": "extracted"
+        }
+      },
+      "originalSourceWitness": {
+        "fileAndLocator": "guides/js/Ultima6.js :: gameData.quests[1].sections[3].steps[2]",
+        "verbatimExcerpt": "Survive the Maze of Death by hugging the right wall, disarming traps, and conserving powder kegs."
+      },
+      "priorFrozenAdjudication": {
+        "artifact": "guides/tests/assistant/evidence/knowledge-full-corpus-arguments-adjudication-20261025-02.json",
+        "rowIndex": 25,
+        "category": "useful-claim-oracle-difference",
+        "wholeRowsIdenticalToPreviouslyReviewed": true,
+        "qualification": "Prior classification is a review pointer only; this cached run has a different raw report and was inspected directly."
+      },
+      "classification": "genuine-regression",
+      "auditFinding": "The user asks how to navigate the maze. The reply gives only two spells and omits the source’s navigation method (hug the right wall, disarm traps, conserve powder kegs). This same turn passed in the prior replay. Restore/select the full method witness for this query."
+    },
+    {
+      "key": "ultima7/trinsic-evidence-password/1",
+      "surface": "ultima7",
+      "dialogueId": "trinsic-evidence-password",
+      "turn": 1,
+      "question": "How do I investigate the Trinsic crime scene?",
+      "currentStatus": "failed",
+      "currentDecision": "answer",
+      "currentReply": "Investigate the ritualistic murder in the stables. Examine the crime scene for a key.",
+      "currentRecordIds": [
+        "ultima7:knowledge:trinsic-crime-scene",
+        "ultima7:quest:the-trinsic-murders:hint"
+      ],
+      "currentSources": [
+        {
+          "file": "guides/js/Ultima7.js",
+          "locator": "DB.mainQuest[0].content",
+          "review": "extracted",
+          "index": {
+            "file": "guides/data/assistant/knowledge/ultima7.json",
+            "locator": "facts[0]",
+            "review": "authored-index"
+          }
+        }
+      ],
+      "strictProblems": [
+        "Missing exact source: guides/js/Ultima7.js :: DB.mainQuest[0]"
+      ],
+      "frozenExpected": {
+        "decision": "answer",
+        "contains": [
+          "stables",
+          "key"
+        ],
+        "factIds": [
+          "trinsic-crime-scene"
+        ],
+        "source": {
+          "file": "guides/js/Ultima7.js",
+          "locator": "DB.mainQuest[0]",
+          "review": "extracted"
+        },
+        "sourceRecordIds": [
+          "ultima7:quest:the-trinsic-murders:hint"
+        ]
+      },
+      "originalSourceWitness": {
+        "fileAndLocator": "guides/js/Ultima7.js :: DB.mainQuest[0].content",
+        "verbatimExcerpt": "Investigate the ritualistic murder in the stables. Examine the crime scene for a key."
+      },
+      "priorFrozenAdjudication": {
+        "artifact": "guides/tests/assistant/evidence/knowledge-full-corpus-arguments-adjudication-20261025-02.json",
+        "rowIndex": 27,
+        "category": "useful-claim-oracle-difference",
+        "wholeRowsIdenticalToPreviouslyReviewed": true,
+        "qualification": "Prior classification is a review pointer only; this cached run has a different raw report and was inspected directly."
+      },
+      "classification": "useful-complete-response; locator granularity oracle difference",
+      "auditFinding": "The answer provides the requested stable/crime-scene actions and cites the content property containing the source text; expected locator names its containing DB.mainQuest[0] object. No response fix required."
+    },
+    {
+      "key": "ultima7/trinsic-evidence-password/3",
+      "surface": "ultima7",
+      "dialogueId": "trinsic-evidence-password",
+      "turn": 3,
+      "question": "How do I get the Trinsic exit password?",
+      "currentStatus": "failed",
+      "currentDecision": "answer",
+      "currentReply": "Report to Mayor Finnigan and pass his copy protection quiz with these answers:\n\nSpektran latitude: 120\nTerfin longitude: 120\nDagger Isle latitude: 0\nSkara Brae latitude: 30\nDeep Forest latitude: 60\nBuccaneer's Den latitude: 60\nSkara Brae longitude: 60\n\nHe will then give you the password 'Blackbird' to leave the city.",
+      "currentRecordIds": [
+        "ultima7:knowledge:finnigan-exit",
+        "ultima7:quest:the-trinsic-murders:hint"
+      ],
+      "currentSources": [
+        {
+          "file": "guides/js/Ultima7.js",
+          "locator": "DB.mainQuest[0].content",
+          "review": "extracted",
+          "index": {
+            "file": "guides/data/assistant/knowledge/ultima7.json",
+            "locator": "facts[2]",
+            "review": "authored-index"
+          }
+        }
+      ],
+      "strictProblems": [
+        "Missing one-of sourceRecordIds provenance: ultima7:fact:trinsic-password:explanation"
+      ],
+      "frozenExpected": {
+        "decision": "answer",
+        "contains": [
+          "Blackbird",
+          "Finnigan",
+          "quiz"
+        ],
+        "factIds": [
+          "finnigan-exit"
+        ],
+        "source": {
+          "file": "guides/js/Ultima7.js",
+          "locator": "DB.mainQuest[0].content",
+          "review": "extracted"
+        },
+        "sourceRecordIds": [
+          "ultima7:fact:trinsic-password:explanation"
+        ]
+      },
+      "originalSourceWitness": {
+        "fileAndLocator": "guides/js/Ultima7.js :: DB.mainQuest[0].content",
+        "verbatimExcerpt": "Report to Mayor Finnigan and pass his copy protection quiz with these answers: Spektran latitude 120; Terfin longitude 120; Dagger Isle latitude 0; Skara Brae latitude 30; Deep Forest latitude 60; Buccaneer’s Den latitude 60; Skara Brae longitude 60. He then gives the password Blackbird."
+      },
+      "priorFrozenAdjudication": null,
+      "classification": "useful-complete-response; internal sourceRecordId oracle difference",
+      "auditFinding": "Reply gives the complete quiz and Blackbird password from the exact expected content locator, but provenance metadata is `quest:the-trinsic-murders:hint` instead of the oracle’s expected password explanation ID. User-visible content is complete; do not change answer/oracle to manufacture provenance."
+    },
+    {
+      "key": "ultima7/wisp-honey-whistle/3",
+      "surface": "ultima7",
+      "dialogueId": "wisp-honey-whistle",
+      "turn": 3,
+      "question": "How do I get wisp whistle?",
+      "currentStatus": "failed",
+      "currentDecision": "answer",
+      "currentReply": "Negotiate with the emps to get a wisp whistle.",
+      "currentRecordIds": [
+        "ultima7:knowledge:whistle-provided",
+        "ultima7:topic:wisp-whistle:hint"
+      ],
+      "currentSources": [
+        {
+          "file": "guides/js/Ultima7.js",
+          "locator": "DB.mainQuest[2].content; DB.mainQuest[2].content",
+          "review": "extracted",
+          "index": {
+            "file": "guides/data/assistant/knowledge/ultima7.json",
+            "locator": "facts[91]",
+            "review": "authored-index"
+          }
+        }
+      ],
+      "strictProblems": [
+        "Missing substring: Alagner",
+        "Missing substring: notebook",
+        "Missing one-of factIds: emp-whistle"
+      ],
+      "frozenExpected": {
+        "decision": "answer",
+        "contains": [
+          "emps",
+          "Alagner",
+          "notebook"
+        ],
+        "factIds": [
+          "emp-whistle"
+        ],
+        "source": {
+          "file": "guides/js/Ultima7.js",
+          "locator": "DB.mainQuest[2].content; DB.mainQuest[2].content",
+          "review": "extracted"
+        },
+        "sourceRecordIds": [
+          "ultima7:topic:wisp-whistle:hint"
+        ]
+      },
+      "originalSourceWitness": {
+        "fileAndLocator": "guides/js/Ultima7.js :: DB.mainQuest[2].content",
+        "verbatimExcerpt": "Get honey from the Bee Cave to bribe the emps. Negotiate with the emps to get a wisp whistle."
+      },
+      "priorFrozenAdjudication": {
+        "artifact": "guides/tests/assistant/evidence/knowledge-full-corpus-arguments-adjudication-20261025-02.json",
+        "rowIndex": 28,
+        "category": "useful-claim-oracle-difference",
+        "wholeRowsIdenticalToPreviouslyReviewed": true,
+        "qualification": "Prior classification is a review pointer only; this cached run has a different raw report and was inspected directly."
+      },
+      "classification": "genuine-partial-answer",
+      "auditFinding": "The answer says negotiate with emps, but the same mainQuest source requires getting honey from Bee Cave to bribe the emps before negotiating. It omits a necessary step. For the “get whistle” question, provide the honey/bribe + negotiate portion; do not append the separate later notebook exchange."
+    },
+    {
+      "key": "ultima7/love-two-rituals/3",
+      "surface": "ultima7",
+      "dialogueId": "love-two-rituals",
+      "turn": 3,
+      "question": "How do I get the Talisman of Love?",
+      "currentStatus": "failed",
+      "currentDecision": "answer",
+      "currentReply": "Aid Bollux and Adjhar using the Stone of Castambre ritual. Perform it twice—first to revive Adjhar, then again to give Bollux a heart. Receive the Talisman of Love when done.",
+      "currentRecordIds": [
+        "ultima7:knowledge:talisman-love-method",
+        "ultima7:quest:test-of-love:hint"
+      ],
+      "currentSources": [
+        {
+          "file": "guides/js/Ultima7.js",
+          "locator": "DB.virtueQuests[4]",
+          "review": "extracted",
+          "index": {
+            "file": "guides/data/assistant/knowledge/ultima7.json",
+            "locator": "facts[114]",
+            "review": "authored-index"
+          }
+        }
+      ],
+      "strictProblems": [
+        "Missing one-of factIds: test-love-definition"
+      ],
+      "frozenExpected": {
+        "decision": "answer",
+        "contains": [
+          "Stone of Castambre",
+          "twice",
+          "Talisman of Love when done"
+        ],
+        "factIds": [
+          "test-love-definition"
+        ],
+        "source": {
+          "file": "guides/js/Ultima7.js",
+          "locator": "DB.virtueQuests[4]",
+          "review": "extracted"
+        },
+        "sourceRecordIds": [
+          "ultima7:quest:test-of-love:hint"
+        ]
+      },
+      "originalSourceWitness": {
+        "fileAndLocator": "guides/js/Ultima7.js :: DB.virtueQuests[4]",
+        "verbatimExcerpt": "Aid Bollux and Adjhar using the Stone of Castambre ritual. Perform it twice—first to revive Adjhar, then again to give Bollux a heart. Receive the Talisman of Love when done."
+      },
+      "priorFrozenAdjudication": null,
+      "classification": "useful-complete-response; internal factId oracle difference",
+      "auditFinding": "Rendered answer reproduces the complete Test of Love passage and exact source locator; only the observed knowledge.factIds do not contain expected `test-love-definition`. No response fix required; check mapping/provenance separately without changing the source text."
+    },
+    {
+      "key": "ultima7/dark-core-stat-caveat/1",
+      "surface": "ultima7",
+      "dialogueId": "dark-core-stat-caveat",
+      "turn": 1,
+      "question": "How do I use Dark Core lenses?",
+      "currentStatus": "failed",
+      "currentDecision": "answer",
+      "currentReply": "Assemble the two museum lenses and the Talismans of Principle on the Dark Core per instructions, then report to Lord British for his reward.",
+      "currentRecordIds": [
+        "ultima7:topic:talismans:hint"
+      ],
+      "currentSources": [
+        {
+          "file": "guides/js/Ultima7.js",
+          "locator": "DB.virtueQuests[7].content",
+          "review": "extracted",
+          "index": {
+            "file": "guides/data/assistant/ultima7.json",
+            "locator": "topics[id=talismans]",
+            "review": "authored-index"
+          }
+        }
+      ],
+      "strictProblems": [
+        "Missing one-of factIds: dark-core-assembly"
+      ],
+      "frozenExpected": {
+        "decision": "answer",
+        "contains": [
+          "two museum lenses",
+          "Talismans of Principle",
+          "Lord British"
+        ],
+        "factIds": [
+          "dark-core-assembly"
+        ],
+        "source": {
+          "file": "guides/js/Ultima7.js",
+          "locator": "DB.virtueQuests[7].content",
+          "review": "extracted"
+        },
+        "sourceRecordIds": [
+          "ultima7:topic:talismans:hint"
+        ]
+      },
+      "originalSourceWitness": {
+        "fileAndLocator": "guides/js/Ultima7.js :: DB.virtueQuests[7].content",
+        "verbatimExcerpt": "Assemble the two museum lenses and the Talismans of Principle on the Dark Core per instructions, then report to Lord British for his reward."
+      },
+      "priorFrozenAdjudication": null,
+      "classification": "useful-complete-response; internal factId oracle difference",
+      "auditFinding": "Full answer mirrors the source passage for assembly and reporting; strict miss is only required internal factId. No answer gap. Keep stat-conflict caveat/control."
+    },
+    {
+      "key": "ultima7/dark-core-stat-caveat/2",
+      "surface": "ultima7",
+      "dialogueId": "dark-core-stat-caveat",
+      "turn": 2,
+      "question": "What is the museum lenses purpose?",
+      "currentStatus": "failed",
+      "currentDecision": "answer",
+      "currentReply": "Assemble the two museum lenses and the Talismans of Principle on the Dark Core per instructions, then report to Lord British for his reward.",
+      "currentRecordIds": [
+        "ultima7:topic:talismans:hint"
+      ],
+      "currentSources": [
+        {
+          "file": "guides/js/Ultima7.js",
+          "locator": "DB.virtueQuests[7].content",
+          "review": "extracted",
+          "index": {
+            "file": "guides/data/assistant/ultima7.json",
+            "locator": "topics[id=talismans]",
+            "review": "authored-index"
+          }
+        }
+      ],
+      "strictProblems": [
+        "Missing one-of factIds: dark-core-assembly"
+      ],
+      "frozenExpected": {
+        "decision": "answer",
+        "contains": [
+          "Dark Core",
+          "report to Lord British"
+        ],
+        "factIds": [
+          "dark-core-assembly"
+        ],
+        "source": {
+          "file": "guides/js/Ultima7.js",
+          "locator": "DB.virtueQuests[7].content",
+          "review": "extracted"
+        },
+        "sourceRecordIds": [
+          "ultima7:topic:talismans:hint"
+        ]
+      },
+      "originalSourceWitness": {
+        "fileAndLocator": "guides/js/Ultima7.js :: DB.virtueQuests[7].content",
+        "verbatimExcerpt": "Assemble the two museum lenses and the Talismans of Principle on the Dark Core per instructions, then report to Lord British for his reward."
+      },
+      "priorFrozenAdjudication": null,
+      "classification": "useful-complete-response; internal factId oracle difference",
+      "auditFinding": "Same complete source reply as turn 1, with exact locator; only internal factId mismatch. No answer gap. Keep stat-conflict caveat/control."
+    },
+    {
+      "key": "ultima7/companion-plans-not-party/1",
+      "surface": "ultima7",
+      "dialogueId": "companion-plans-not-party",
+      "turn": 1,
+      "question": "What is Jaana free healing?",
+      "currentStatus": "failed",
+      "currentDecision": "answer",
+      "currentReply": "Jaana: Healer (Druid). Focus: Healing and magic. Can periodically heal the party for free. Only companion with innate magic. Party Builder choices are a plan, not evidence that this companion is currently in your party.",
+      "currentRecordIds": [
+        "ultima7:companion:jaana:explanation"
+      ],
+      "currentSources": [
+        {
+          "file": "guides/js/Ultima7.js",
+          "locator": "DB.companions[6]",
+          "review": "extracted",
+          "index": {
+            "file": "guides/js/assistant/adapters/ultima7.js",
+            "locator": "companion notes answer recruitment advice and what-does-he-do questions",
+            "review": "authored-index"
+          }
+        }
+      ],
+      "strictProblems": [
+        "Missing one-of factIds: party-jaana"
+      ],
+      "frozenExpected": {
+        "decision": "answer",
+        "contains": [
+          "periodically",
+          "free",
+          "innate magic"
+        ],
+        "factIds": [
+          "party-jaana"
+        ],
+        "source": {
+          "file": "guides/js/Ultima7.js",
+          "locator": "DB.companions[6]",
+          "review": "extracted"
+        },
+        "sourceRecordIds": [
+          "ultima7:companion:jaana:explanation"
+        ]
+      },
+      "originalSourceWitness": {
+        "fileAndLocator": "guides/js/Ultima7.js :: DB.companions[6]",
+        "verbatimExcerpt": "Jaana is a Healer (Druid), can periodically heal the party for free, and is the only companion with innate magic."
+      },
+      "priorFrozenAdjudication": null,
+      "classification": "useful-complete-response; internal factId oracle difference",
+      "auditFinding": "Answer states Jaana’s free periodic healing and innate magic, preserving the party-state warning. Exact expected source object is cited; only `party-jaana` is missing from internal factIds. No response fix required."
+    },
+    {
+      "key": "ultima7/companion-plans-not-party/2",
+      "surface": "ultima7",
+      "dialogueId": "companion-plans-not-party",
+      "turn": 2,
+      "question": "What is Spark training growth?",
+      "currentStatus": "failed",
+      "currentDecision": "answer",
+      "currentReply": "Spark: Fighter. Focus: Fastest growth. Gains training points at double rate. Huge damage potential. Party Builder choices are a plan, not evidence that this companion is currently in your party.",
+      "currentRecordIds": [
+        "ultima7:companion:spark:explanation"
+      ],
+      "currentSources": [
+        {
+          "file": "guides/js/Ultima7.js",
+          "locator": "DB.companions[3]",
+          "review": "extracted",
+          "index": {
+            "file": "guides/js/assistant/adapters/ultima7.js",
+            "locator": "companion notes answer recruitment advice and what-does-he-do questions",
+            "review": "authored-index"
+          }
+        }
+      ],
+      "strictProblems": [
+        "Missing one-of factIds: party-spark"
+      ],
+      "frozenExpected": {
+        "decision": "answer",
+        "contains": [
+          "double rate"
+        ],
+        "factIds": [
+          "party-spark"
+        ],
+        "source": {
+          "file": "guides/js/Ultima7.js",
+          "locator": "DB.companions[3]",
+          "review": "extracted"
+        },
+        "sourceRecordIds": [
+          "ultima7:companion:spark:explanation"
+        ]
+      },
+      "originalSourceWitness": {
+        "fileAndLocator": "guides/js/Ultima7.js :: DB.companions[3]",
+        "verbatimExcerpt": "Spark is a Fighter with the fastest growth; he gains training points at double rate."
+      },
+      "priorFrozenAdjudication": null,
+      "classification": "useful-complete-response; internal factId oracle difference",
+      "auditFinding": "Answer states Spark gains training points at double rate and preserves the party-state warning. Exact expected source object is cited; only `party-spark` is missing from internal factIds. No response fix required."
+    },
+    {
+      "key": "starcraft/starcraft-knowledge-support-links/3",
+      "surface": "starcraft",
+      "dialogueId": "starcraft-knowledge-support-links",
+      "turn": 3,
+      "question": "Where is SCHNAIL downloaded?",
+      "currentStatus": "failed",
+      "currentDecision": "answer",
+      "currentReply": "2. Download the latest release of SCHNAIL from their downloads page (requires account, see SCHNAIL Setup Guide for more information)",
+      "currentRecordIds": [
+        "starcraft:schnail:download"
+      ],
+      "currentSources": [
+        {
+          "file": "guides/StarcraftBWAPI.html",
+          "locator": "#schnail-requirements li:nth-child(2)",
+          "review": "extracted",
+          "index": {
+            "file": "guides/data/assistant/starcraft.json",
+            "locator": "entities[0].facts[1].answers",
+            "review": "authored-index"
+          }
+        }
+      ],
+      "strictProblems": [
+        "Missing one-of factIds: starcraft:knowledge:schnail-download, starcraft:knowledge:schnail-account"
+      ],
+      "frozenExpected": {
+        "decision": "answer",
+        "contains": [
+          "downloads page",
+          "account"
+        ],
+        "notContains": [],
+        "factIds": [
+          "starcraft:knowledge:schnail-download",
+          "starcraft:knowledge:schnail-account"
+        ],
+        "source": {
+          "file": "guides/StarcraftBWAPI.html",
+          "locator": "#schnail-requirements li:nth-child(2)"
+        }
+      },
+      "originalSourceWitness": {
+        "fileAndLocator": "guides/StarcraftBWAPI.html :: #schnail-requirements li:nth-child(2)",
+        "verbatimExcerpt": "Download the latest release of SCHNAIL from its downloads page; an account is required (see the Setup Guide)."
+      },
+      "priorFrozenAdjudication": null,
+      "classification": "useful-complete-response; internal factId oracle difference",
+      "auditFinding": "Answer states download page and account requirement with exact HTML-list locator; the missing expected IDs are not user-facing citation errors. No response fix required."
+    },
+    {
+      "key": "ultima5/cape-plans-locations/4",
+      "surface": "ultima5",
+      "dialogueId": "cape-plans-locations",
+      "turn": 4,
+      "question": "What do they do?",
+      "currentStatus": "failed",
+      "currentDecision": "answer",
+      "currentReply": "When you obtain a frigate, use the plans on the ship once to apply the faster sail upgrade.",
+      "currentRecordIds": [
+        "ultima5:knowledge:cape-upgrade",
+        "ultima5:objective:opening-hms-cape:hint"
+      ],
+      "currentSources": [
+        {
+          "file": "guides/js/Ultima5.js",
+          "locator": "ultima5GrandQuestChapters objective=opening-hms-cape.steps[3]",
+          "review": "extracted",
+          "index": {
+            "file": "guides/data/assistant/knowledge/ultima5.json",
+            "locator": "facts[12]",
+            "review": "authored-index"
+          }
+        }
+      ],
+      "strictProblems": [
+        "Missing substring: doubles its speed relative to enemies",
+        "Missing one-of factIds: cape-speed",
+        "Missing exact source: guides/js/Ultima5.js :: ultima5GrandQuestChapters objective=opening-hms-cape.outcome"
+      ],
+      "frozenExpected": {
+        "decision": "answer",
+        "contains": [
+          "doubles its speed relative to enemies"
+        ],
+        "notContains": [],
+        "factIds": [
+          "cape-speed"
+        ],
+        "source": {
+          "file": "guides/js/Ultima5.js",
+          "locator": "ultima5GrandQuestChapters objective=opening-hms-cape.outcome",
+          "review": "extracted"
+        }
+      },
+      "originalSourceWitness": {
+        "fileAndLocator": "guides/js/Ultima5.js :: ultima5GrandQuestChapters objective=opening-hms-cape.outcome",
+        "verbatimExcerpt": "Using the plans on a frigate doubles its speed relative to enemies."
+      },
+      "priorFrozenAdjudication": {
+        "artifact": "guides/tests/assistant/evidence/knowledge-full-corpus-arguments-adjudication-20261025-02.json",
+        "rowIndex": 18,
+        "category": "useful-claim-oracle-difference",
+        "wholeRowsIdenticalToPreviouslyReviewed": true,
+        "qualification": "Prior classification is a review pointer only; this cached run has a different raw report and was inspected directly."
+      },
+      "classification": "source-supported detail omitted; useful but incomplete outcome",
+      "auditFinding": "The answer says “faster sail upgrade”, but the complete outcome witness specifies a frigate’s speed doubles relative to enemies. The asked “What do they do?” reasonably calls for that effect. Return both the action (use plans once on frigate) and the exact outcome; do not invent/alter source."
+    },
+    {
+      "key": "ultima5/carpet-pronoun/1",
+      "surface": "ultima5",
+      "dialogueId": "carpet-pronoun",
+      "turn": 1,
+      "question": "How do I use the Magic Carpet?",
+      "currentStatus": "failed",
+      "currentDecision": "answer",
+      "currentReply": "Bring a Skull Key from Shenstone’s stump in Minoc, climb to Lord British’s private rooftop room, unlock the magic door, and take the carpet. It crosses shallow water, swamp, brush, and hills; mountains still need the Grapple, and rough sea is dangerous.",
+      "currentRecordIds": [
+        "ultima5:knowledge:side-magic-carpet",
+        "ultima5:side:side-magic-carpet:hint"
+      ],
+      "currentSources": [
+        {
+          "file": "guides/js/Ultima5.js",
+          "locator": "ultima5SideQuests id=side-magic-carpet.detail",
+          "review": "extracted",
+          "index": {
+            "file": "guides/data/assistant/knowledge/ultima5.json",
+            "locator": "facts[83]",
+            "review": "authored-index"
+          }
+        }
+      ],
+      "strictProblems": [
+        "Missing substring: land, water, swamps, brush, and hills",
+        "Missing substring: mountains still require the Grapple",
+        "Missing one-of factIds: carpet-terrain",
+        "Missing exact source: guides/js/Ultima5.js :: ultima5GrandQuestChapters objective=opening-castle-raid.steps[3]"
+      ],
+      "frozenExpected": {
+        "decision": "answer",
+        "contains": [
+          "land, water, swamps, brush, and hills",
+          "mountains still require the Grapple"
+        ],
+        "notContains": [],
+        "factIds": [
+          "carpet-terrain"
+        ],
+        "source": {
+          "file": "guides/js/Ultima5.js",
+          "locator": "ultima5GrandQuestChapters objective=opening-castle-raid.steps[3]",
+          "review": "extracted"
+        }
+      },
+      "originalSourceWitness": {
+        "fileAndLocator": "guides/js/Ultima5.js :: ultima5SideQuests id=side-magic-carpet.detail",
+        "verbatimExcerpt": "Bring a Skull Key from Shenstone’s stump in Minoc (or AN SANCT), climb to Lord British’s private rooftop room, unlock the magic door, and take the carpet. It crosses shallow water, swamp, brush, and hills; mountains still need the Grapple, and rough sea is dangerous."
+      },
+      "priorFrozenAdjudication": {
+        "artifact": "guides/tests/assistant/evidence/knowledge-full-corpus-arguments-adjudication-20261025-02.json",
+        "rowIndex": 19,
+        "category": "useful-claim-oracle-difference",
+        "wholeRowsIdenticalToPreviouslyReviewed": true,
+        "qualification": "Prior classification is a review pointer only; this cached run has a different raw report and was inspected directly."
+      },
+      "classification": "useful-complete-response; alternate complete source witness",
+      "auditFinding": "The answer gives acquisition route, traversable terrain, mountain/Grapple limit, and rough-sea danger from the complete side-quest detail. Its wording is semantically equivalent to the expected opening-castle-raid step; answer is complete for “How do I use” despite a different exact source locator and phrasing. No response fix required."
+    },
+    {
+      "key": "albion/sira-party-link/4",
+      "surface": "albion",
+      "dialogueId": "sira-party-link",
+      "turn": 4,
+      "question": "Where does Sira train spells?",
+      "currentStatus": "failed",
+      "currentDecision": "answer",
+      "currentReply": "Iskai (Dji-Kas): practitioner Sira; reagent Trifalai Seed (1.2G each); training: Fasiir in Dji-Kas guild (Jirinaar). Visit Fasiir before leaving Jirinaar; this is the documented free spell-training stop for Sira.",
+      "currentRecordIds": [
+        "albion:knowledge:iskai-training",
+        "albion:topic:magic-iskai:explanation"
+      ],
+      "currentSources": [
+        {
+          "file": "guides/js/Albion.js",
+          "locator": "DB.magic[0]",
+          "review": "extracted",
+          "index": {
+            "file": "guides/data/assistant/knowledge/albion.json",
+            "locator": "facts[68]",
+            "review": "authored-index"
+          }
+        }
+      ],
+      "strictProblems": [
+        "Missing exact source: guides/js/Albion.js :: DB.magic[0].freeTraining"
+      ],
+      "frozenExpected": {
+        "decision": "answer",
+        "contains": [
+          "Fasiir",
+          "Jirinaar"
+        ],
+        "factIds": [
+          "iskai-training"
+        ],
+        "source": {
+          "file": "guides/js/Albion.js",
+          "locator": "DB.magic[0].freeTraining",
+          "review": "extracted"
+        }
+      },
+      "originalSourceWitness": {
+        "fileAndLocator": "guides/js/Albion.js :: DB.magic[0].freeTraining",
+        "verbatimExcerpt": "Fasiir in Dji-Kas guild (Jirinaar)."
+      },
+      "priorFrozenAdjudication": {
+        "artifact": "guides/tests/assistant/evidence/knowledge-full-corpus-arguments-adjudication-20261025-02.json",
+        "rowIndex": 1,
+        "category": "useful-claim-oracle-difference",
+        "wholeRowsIdenticalToPreviouslyReviewed": false,
+        "qualification": "Prior classification is a review pointer only; this cached run has a different raw report and was inspected directly."
+      },
+      "classification": "useful-complete-response; nested locator granularity oracle difference",
+      "auditFinding": "Answer identifies practitioner Sira, Fasiir, the Dji-Kas guild/Jirinaar and the training stop; cited parent DB.magic[0] contains the expected freeTraining child. No response fix required."
+    },
+    {
+      "key": "albion/rejira-money/1",
+      "surface": "albion",
+      "dialogueId": "rejira-money",
+      "turn": 1,
+      "question": "How do I get Rejira potions?",
+      "currentStatus": "failed",
+      "currentDecision": "answer",
+      "currentReply": "Ending conversations with Rejira in the Dji-Kas Guild can repeatedly produce Blue Healing Potions. The public walkthrough recommends Rabir early and Umajo later as buyers.",
+      "currentRecordIds": [
+        "albion:knowledge:trade-hint-0",
+        "albion:topic:healing-potions:acquisition"
+      ],
+      "currentSources": [
+        {
+          "file": "guides/js/Albion.js",
+          "locator": "ALBION_TRADE_HINTS[0].text",
+          "review": "extracted",
+          "index": {
+            "file": "guides/data/assistant/knowledge/albion.json",
+            "locator": "facts[95]",
+            "review": "authored-index"
+          }
+        }
+      ],
+      "strictProblems": [
+        "Missing one-of factIds: rejira-exploit",
+        "Missing exact source: guides/js/Albion.js :: QUEST_HINTS[\"nakiridaani\"][\"rejira-exploit\"]"
+      ],
+      "frozenExpected": {
+        "decision": "answer",
+        "contains": [
+          "Blue Healing Potions",
+          "Rabir"
+        ],
+        "factIds": [
+          "rejira-exploit"
+        ],
+        "source": {
+          "file": "guides/js/Albion.js",
+          "locator": "QUEST_HINTS[\"nakiridaani\"][\"rejira-exploit\"]",
+          "review": "extracted"
+        }
+      },
+      "originalSourceWitness": {
+        "fileAndLocator": "guides/js/Albion.js :: ALBION_TRADE_HINTS[0].text",
+        "verbatimExcerpt": "Ending conversations with Rejira in the Dji-Kas Guild can repeatedly produce Blue Healing Potions. The public walkthrough recommends Rabir early and Umajo later as buyers."
+      },
+      "priorFrozenAdjudication": {
+        "artifact": "guides/tests/assistant/evidence/knowledge-full-corpus-arguments-adjudication-20261025-02.json",
+        "rowIndex": 2,
+        "category": "useful-claim-oracle-difference",
+        "wholeRowsIdenticalToPreviouslyReviewed": true,
+        "qualification": "Prior classification is a review pointer only; this cached run has a different raw report and was inspected directly."
+      },
+      "classification": "useful-complete-response; duplicate source-record/factId oracle difference",
+      "auditFinding": "Answer states Rejira repeatedly produces Blue Healing Potions and names Rabir early/Umajo later as buyers. It cites a parallel authored ALBION_TRADE_HINTS witness, not the objective overlay locator required by oracle; no missing user-requested claim. Do not alter source/oracle."
+    },
+    {
+      "key": "albion/melthas-demon-spells/3",
+      "surface": "albion",
+      "dialogueId": "melthas-demon-spells",
+      "turn": 3,
+      "question": "Where does Melthas get spell scrolls?",
+      "currentStatus": "failed",
+      "currentDecision": "answer",
+      "currentReply": "Celtic/Mahinos (Druid): practitioner Melthas; reagent None; training: Buy scrolls from Roves in Arjano library. Arjano's library is the route stop for Melthas's spell scrolls.",
+      "currentRecordIds": [
+        "albion:knowledge:druid-training",
+        "albion:topic:magic-druid:explanation"
+      ],
+      "currentSources": [
+        {
+          "file": "guides/js/Albion.js",
+          "locator": "DB.magic[1]",
+          "review": "extracted",
+          "index": {
+            "file": "guides/data/assistant/knowledge/albion.json",
+            "locator": "facts[72]",
+            "review": "authored-index"
+          }
+        }
+      ],
+      "strictProblems": [
+        "Missing exact source: guides/js/Albion.js :: DB.magic[1].freeTraining"
+      ],
+      "frozenExpected": {
+        "decision": "answer",
+        "contains": [
+          "Roves",
+          "Arjano library"
+        ],
+        "factIds": [
+          "druid-training"
+        ],
+        "source": {
+          "file": "guides/js/Albion.js",
+          "locator": "DB.magic[1].freeTraining",
+          "review": "extracted"
+        }
+      },
+      "originalSourceWitness": {
+        "fileAndLocator": "guides/js/Albion.js :: DB.magic[1].freeTraining",
+        "verbatimExcerpt": "Buy scrolls from Roves in Arjano library."
+      },
+      "priorFrozenAdjudication": {
+        "artifact": "guides/tests/assistant/evidence/knowledge-full-corpus-arguments-adjudication-20261025-02.json",
+        "rowIndex": 3,
+        "category": "useful-claim-oracle-difference",
+        "wholeRowsIdenticalToPreviouslyReviewed": true,
+        "qualification": "Prior classification is a review pointer only; this cached run has a different raw report and was inspected directly."
+      },
+      "classification": "useful-complete-response; nested locator granularity oracle difference",
+      "auditFinding": "Answer identifies Roves in Arjano library as the scroll source. Parent DB.magic[1] contains the freeTraining detail; only exact locator depth differs. No response fix required."
+    },
+    {
+      "key": "albion/assassination-reward/1",
+      "surface": "albion",
+      "dialogueId": "assassination-reward",
+      "turn": 1,
+      "question": "What is the Herras assassination sequence?",
+      "currentStatus": "failed",
+      "currentDecision": "decline",
+      "currentReply": "The guide does not support that additional detail or restriction for this subject.",
+      "currentRecordIds": [],
+      "currentSources": [],
+      "strictProblems": [
+        "Expected answer; observed decline",
+        "Missing substring: Timed sequence",
+        "Missing substring: Kariah",
+        "Missing substring: Edjiir",
+        "Missing one-of factIds: assassination-sequence",
+        "Missing exact source: guides/js/Albion.js :: QUEST_HINTS[\"maini\"][\"assassination-sequence\"]"
+      ],
+      "frozenExpected": {
+        "decision": "answer",
+        "contains": [
+          "Timed sequence",
+          "Kariah",
+          "Edjiir"
+        ],
+        "factIds": [
+          "assassination-sequence"
+        ],
+        "source": {
+          "file": "guides/js/Albion.js",
+          "locator": "QUEST_HINTS[\"maini\"][\"assassination-sequence\"]",
+          "review": "extracted"
+        }
+      },
+      "originalSourceWitness": {
+        "fileAndLocator": "guides/js/Albion.js :: QUEST_HINTS[\"maini\"][\"assassination-sequence\"]",
+        "verbatimExcerpt": "Timed sequence: talk to Herras (council), visit Kariah (ask “Yes” + “Information”), find Melthas’s friend (Kounos), buy Edjiir info (Srimalinar), return to Herras (ask “Assassination”), then find Melthas’s friend again to trigger the event."
+      },
+      "priorFrozenAdjudication": {
+        "artifact": "guides/tests/assistant/evidence/knowledge-full-corpus-arguments-adjudication-20261025-02.json",
+        "rowIndex": 6,
+        "category": "source-present-unanswered",
+        "wholeRowsIdenticalToPreviouslyReviewed": true,
+        "qualification": "Prior classification is a review pointer only; this cached run has a different raw report and was inspected directly."
+      },
+      "classification": "genuine-source-present-unanswered",
+      "auditFinding": "Current reply declines even though the exact source supplies the complete timed ordered sequence. Retrieve and answer the ordered source witness as written; do not replace it with a guessed/simplified chronology."
+    },
+    {
+      "key": "albion/harriet-travel/2",
+      "surface": "albion",
+      "dialogueId": "harriet-travel",
+      "turn": 2,
+      "question": "Why is she important?",
+      "currentStatus": "failed",
+      "currentDecision": "decline",
+      "currentReply": "The guide records this requirement or action, but does not explain its reason: Required for teleportation between islands.",
+      "currentRecordIds": [
+        "albion:knowledge:harriet-notes",
+        "albion:character:harriet:explanation"
+      ],
+      "currentSources": [
+        {
+          "file": "guides/js/Albion.js",
+          "locator": "DB.characters[7].notes",
+          "review": "extracted",
+          "index": {
+            "file": "guides/data/assistant/knowledge/albion.json",
+            "locator": "facts[62]",
+            "review": "authored-index"
+          }
+        }
+      ],
+      "strictProblems": [
+        "Expected answer; observed decline"
+      ],
+      "frozenExpected": {
+        "decision": "answer",
+        "contains": [
+          "teleportation between islands"
+        ],
+        "factIds": [
+          "harriet-notes"
+        ],
+        "source": {
+          "file": "guides/js/Albion.js",
+          "locator": "DB.characters[7].notes",
+          "review": "extracted"
+        }
+      },
+      "originalSourceWitness": {
+        "fileAndLocator": "guides/js/Albion.js :: DB.characters[7].notes",
+        "verbatimExcerpt": "Required for teleportation between islands."
+      },
+      "priorFrozenAdjudication": {
+        "artifact": "guides/tests/assistant/evidence/knowledge-full-corpus-arguments-adjudication-20261025-02.json",
+        "rowIndex": 7,
+        "category": "useful-claim-oracle-difference",
+        "wholeRowsIdenticalToPreviouslyReviewed": true,
+        "qualification": "Prior classification is a review pointer only; this cached run has a different raw report and was inspected directly."
+      },
+      "classification": "genuine-answer-decision-mismatch",
+      "auditFinding": "The reply is marked decline and says the guide does not explain the reason, yet its attached source states Harriet is REQUIRED for Kenget Kamulos? Wait this row is DB.characters[7].notes “Required for teleportation between islands” (the visible source claim). Answer that explicit function plainly; do not invent a further lore motive."
+    },
+    {
+      "key": "albion/harriet-travel/3",
+      "surface": "albion",
+      "dialogueId": "harriet-travel",
+      "turn": 3,
+      "question": "Where does Harriet train spells?",
+      "currentStatus": "failed",
+      "currentDecision": "answer",
+      "currentReply": "Dji-Cantos (Enlightened Ones): practitioner Harriet; reagent None; training: Drannagh in Dji-Cantos building. Drannagh teaches Harriet without a spell-training fee at the Dji-Cantos building.",
+      "currentRecordIds": [
+        "albion:knowledge:dji-cantos-training",
+        "albion:topic:magic-dji-cantos:explanation"
+      ],
+      "currentSources": [
+        {
+          "file": "guides/js/Albion.js",
+          "locator": "DB.magic[3]",
+          "review": "extracted",
+          "index": {
+            "file": "guides/data/assistant/knowledge/albion.json",
+            "locator": "facts[80]",
+            "review": "authored-index"
+          }
+        }
+      ],
+      "strictProblems": [
+        "Missing exact source: guides/js/Albion.js :: DB.magic[3].freeTraining"
+      ],
+      "frozenExpected": {
+        "decision": "answer",
+        "contains": [
+          "Drannagh",
+          "Dji-Cantos"
+        ],
+        "factIds": [
+          "dji-cantos-training"
+        ],
+        "source": {
+          "file": "guides/js/Albion.js",
+          "locator": "DB.magic[3].freeTraining",
+          "review": "extracted"
+        }
+      },
+      "originalSourceWitness": {
+        "fileAndLocator": "guides/js/Albion.js :: DB.magic[3].freeTraining",
+        "verbatimExcerpt": "Drannagh in Dji-Cantos building."
+      },
+      "priorFrozenAdjudication": {
+        "artifact": "guides/tests/assistant/evidence/knowledge-full-corpus-arguments-adjudication-20261025-02.json",
+        "rowIndex": 8,
+        "category": "useful-claim-oracle-difference",
+        "wholeRowsIdenticalToPreviouslyReviewed": false,
+        "qualification": "Prior classification is a review pointer only; this cached run has a different raw report and was inspected directly."
+      },
+      "classification": "useful-complete-response; nested locator granularity oracle difference",
+      "auditFinding": "The answer identifies Drannagh and the Dji-Cantos building plus no-fee teaching; cited parent DB.magic[3] contains the expected freeTraining child. No response fix required."
+    },
+    {
+      "key": "albion/porenoil-route/1",
+      "surface": "albion",
+      "dialogueId": "porenoil-route",
+      "turn": 1,
+      "question": "How do I get Porenoil?",
+      "currentStatus": "failed",
+      "currentDecision": "answer",
+      "currentReply": "Ask Merdger/Merger in the Equipment Maker’s Guild about Porenoil; it prevents dehydration in the desert.",
+      "currentRecordIds": [
+        "albion:objective:umajo:porenoil:hint"
+      ],
+      "currentSources": [
+        {
+          "file": "guides/js/Albion.js",
+          "locator": "QUEST_HINTS[\"umajo\"][\"porenoil\"]",
+          "review": "extracted",
+          "index": {
+            "file": "guides/js/assistant/adapters/albion.js",
+            "locator": "overlay objectiveAnswers.porenoil",
+            "review": "authored-index"
+          }
+        }
+      ],
+      "strictProblems": [
+        "Missing one-of factIds: porenoil"
+      ],
+      "frozenExpected": {
+        "decision": "answer",
+        "contains": [
+          "Merdger/Merger",
+          "Equipment Maker"
+        ],
+        "factIds": [
+          "porenoil"
+        ],
+        "source": {
+          "file": "guides/js/Albion.js",
+          "locator": "QUEST_HINTS[\"umajo\"][\"porenoil\"]",
+          "review": "extracted"
+        }
+      },
+      "originalSourceWitness": {
+        "fileAndLocator": "guides/js/Albion.js :: QUEST_HINTS[\"umajo\"][\"porenoil\"]",
+        "verbatimExcerpt": "Ask Merdger/Merger in the Equipment Maker’s Guild about Porenoil; it prevents dehydration in the desert."
+      },
+      "priorFrozenAdjudication": null,
+      "classification": "useful-complete-response; internal factId oracle difference",
+      "auditFinding": "Answer gives Merdger/Merger, Equipment Maker’s Guild and desert-dehydration function at the exact requested QUEST_HINTS locator. Only `porenoil` internal ID is missing. No response fix required."
+    },
+    {
+      "key": "albion/porenoil-route/2",
+      "surface": "albion",
+      "dialogueId": "porenoil-route",
+      "turn": 2,
+      "question": "What does it prevent?",
+      "currentStatus": "failed",
+      "currentDecision": "clarify",
+      "currentReply": "Which subject do you mean? Name it so I can answer from the right source.",
+      "currentRecordIds": [],
+      "currentSources": [],
+      "strictProblems": [
+        "Expected answer; observed clarify",
+        "Missing substring: dehydration",
+        "Missing one-of factIds: porenoil",
+        "Missing exact source: guides/js/Albion.js :: QUEST_HINTS[\"umajo\"][\"porenoil\"]"
+      ],
+      "frozenExpected": {
+        "decision": "answer",
+        "contains": [
+          "dehydration"
+        ],
+        "factIds": [
+          "porenoil"
+        ],
+        "source": {
+          "file": "guides/js/Albion.js",
+          "locator": "QUEST_HINTS[\"umajo\"][\"porenoil\"]",
+          "review": "extracted"
+        }
+      },
+      "originalSourceWitness": {
+        "fileAndLocator": "guides/js/Albion.js :: QUEST_HINTS[\"umajo\"][\"porenoil\"]",
+        "verbatimExcerpt": "Porenoil prevents dehydration in the desert."
+      },
+      "priorFrozenAdjudication": {
+        "artifact": "guides/tests/assistant/evidence/knowledge-full-corpus-arguments-adjudication-20261025-02.json",
+        "rowIndex": 9,
+        "category": "source-present-unanswered",
+        "wholeRowsIdenticalToPreviouslyReviewed": true,
+        "qualification": "Prior classification is a review pointer only; this cached run has a different raw report and was inspected directly."
+      },
+      "classification": "genuine-dialogue-context-loss",
+      "auditFinding": "Immediately preceding turn says Porenoil prevents dehydration in the desert; “What does it prevent?” is an unambiguous follow-up. Resolve the prior grounded subject and answer “dehydration in the desert” with the same source; do not require user to repeat the noun."
+    },
+    {
+      "key": "albion/secret-word-scroll/3",
+      "surface": "albion",
+      "dialogueId": "secret-word-scroll",
+      "turn": 3,
+      "question": "Where is the Metalmagic Scroll?",
+      "currentStatus": "failed",
+      "currentDecision": "answer",
+      "currentReply": "Equipment Makers Cellar (Dungeon) on Umajo Desert. Points of interest: Serpent Staff; Metalmagic Scroll.",
+      "currentRecordIds": [
+        "albion:knowledge:place-equipment-makers-cellar",
+        "albion:location:equipment-makers-cellar:explanation"
+      ],
+      "currentSources": [
+        {
+          "file": "guides/js/Albion.js",
+          "locator": "DB.locations[5].locations[1]",
+          "review": "extracted",
+          "index": {
+            "file": "guides/data/assistant/knowledge/albion.json",
+            "locator": "facts[128]",
+            "review": "authored-index"
+          }
+        }
+      ],
+      "strictProblems": [
+        "Missing substring: Kossotto",
+        "Missing one-of factIds: metalmagic",
+        "Missing exact source: guides/js/Albion.js :: QUEST_HINTS[\"equipment-makers\"][\"metalmagic\"]"
+      ],
+      "frozenExpected": {
+        "decision": "answer",
+        "contains": [
+          "Kossotto"
+        ],
+        "factIds": [
+          "metalmagic"
+        ],
+        "source": {
+          "file": "guides/js/Albion.js",
+          "locator": "QUEST_HINTS[\"equipment-makers\"][\"metalmagic\"]",
+          "review": "extracted"
+        }
+      },
+      "originalSourceWitness": {
+        "fileAndLocator": "guides/js/Albion.js :: DB.locations[5].locations[1]",
+        "verbatimExcerpt": "Equipment Makers Cellar (Dungeon) on Umajo Desert; POIs include Serpent Staff and Metalmagic Scroll."
+      },
+      "priorFrozenAdjudication": {
+        "artifact": "guides/tests/assistant/evidence/knowledge-full-corpus-arguments-adjudication-20261025-02.json",
+        "rowIndex": 12,
+        "category": "useful-claim-oracle-difference",
+        "wholeRowsIdenticalToPreviouslyReviewed": true,
+        "qualification": "Prior classification is a review pointer only; this cached run has a different raw report and was inspected directly."
+      },
+      "classification": "useful-complete-location-answer; alternate source evidence",
+      "auditFinding": "The answer gives the exact location, Equipment Makers Cellar on Umajo Desert, and notes the scroll among its points of interest. The user asks “Where”; the source location directly supports that. The oracle additionally expects Kossotto, which is an acquisition witness, not required for location. No location-answer fix required."
+    },
+    {
+      "key": "albion/blue-plate-demonstration/1",
+      "surface": "albion",
+      "dialogueId": "blue-plate-demonstration",
+      "turn": 1,
+      "question": "How do I use the blue floor plate?",
+      "currentStatus": "failed",
+      "currentDecision": "decline",
+      "currentReply": "The local guide has no supported use answer for this subject. It can tell you how to beat it or a hint.",
+      "currentRecordIds": [],
+      "currentSources": [],
+      "strictProblems": [
+        "Expected answer; observed decline",
+        "Missing substring: 16 Animal 3",
+        "Missing substring: back row",
+        "Missing substring: Demon Exodus",
+        "Missing one-of factIds: xp-plate",
+        "Missing exact source: guides/js/Albion.js :: QUEST_HINTS[\"equipment-makers\"][\"xp-plate\"]"
+      ],
+      "frozenExpected": {
+        "decision": "answer",
+        "contains": [
+          "16 Animal 3",
+          "back row",
+          "Demon Exodus"
+        ],
+        "factIds": [
+          "xp-plate"
+        ],
+        "source": {
+          "file": "guides/js/Albion.js",
+          "locator": "QUEST_HINTS[\"equipment-makers\"][\"xp-plate\"]",
+          "review": "extracted"
+        }
+      },
+      "originalSourceWitness": {
+        "fileAndLocator": "guides/js/Albion.js :: QUEST_HINTS[\"equipment-makers\"][\"xp-plate\"]",
+        "verbatimExcerpt": "Optional XP: the blue floor plate summons 16 Animal 3; put party in back row and use Demon Exodus for fast clears."
+      },
+      "priorFrozenAdjudication": {
+        "artifact": "guides/tests/assistant/evidence/knowledge-full-corpus-arguments-adjudication-20261025-02.json",
+        "rowIndex": 13,
+        "category": "source-present-unanswered",
+        "wholeRowsIdenticalToPreviouslyReviewed": true,
+        "qualification": "Prior classification is a review pointer only; this cached run has a different raw report and was inspected directly."
+      },
+      "classification": "genuine-source-present-unanswered with separate XP-conflict boundary",
+      "auditFinding": "The exact hint gives a non-conflicting use tactic: blue plate summons Animal 3; place party in back row and use Demon Exodus for fast clears. Answer that method and preserve the separate negative-control refusal for disputed XP arithmetic/total. Do not state or reconcile 5760 XP."
+    },
+    {
+      "key": "albion/finale-joe/2",
+      "surface": "albion",
+      "dialogueId": "finale-joe",
+      "turn": 2,
+      "question": "What do the Service Robot tactics say?",
+      "currentStatus": "failed",
+      "currentDecision": "answer",
+      "currentReply": "Bring Joe on the final Toronto return to bypass repair-gated robot encounters. HP: High. Danger: Many more fights without Joe. Type: Machine. EXP: 174.",
+      "currentRecordIds": [
+        "albion:enemy:service-robot:combat"
+      ],
+      "currentSources": [
+        {
+          "file": "guides/js/Albion.js",
+          "locator": "DB.bestiary[2]",
+          "review": "extracted"
+        }
+      ],
+      "strictProblems": [
+        "Missing one-of factIds: service-robot-combat",
+        "Missing exact source: guides/js/Albion.js :: DB.bestiary[2].strategy"
+      ],
+      "frozenExpected": {
+        "decision": "answer",
+        "contains": [
+          "Joe",
+          "repair-gated"
+        ],
+        "factIds": [
+          "service-robot-combat"
+        ],
+        "source": {
+          "file": "guides/js/Albion.js",
+          "locator": "DB.bestiary[2].strategy",
+          "review": "extracted"
+        }
+      },
+      "originalSourceWitness": {
+        "fileAndLocator": "guides/js/Albion.js :: DB.bestiary[2].strategy",
+        "verbatimExcerpt": "Bring Joe on the final Toronto return to bypass repair-gated robot encounters."
+      },
+      "priorFrozenAdjudication": {
+        "artifact": "guides/tests/assistant/evidence/knowledge-full-corpus-arguments-adjudication-20261025-02.json",
+        "rowIndex": 15,
+        "category": "useful-claim-oracle-difference",
+        "wholeRowsIdenticalToPreviouslyReviewed": true,
+        "qualification": "Prior classification is a review pointer only; this cached run has a different raw report and was inspected directly."
+      },
+      "classification": "useful-complete-response; nested locator/source granularity oracle difference",
+      "auditFinding": "Answer provides the practical tactic (bring Joe to bypass repair-gated robot encounters); actual cited DB.bestiary[2] record is the parent of strategy. It satisfies the query without inventing tactics. No response fix required."
+    },
+    {
+      "key": "alqadim/hold-and-dock/1",
+      "surface": "alqadim",
+      "dialogueId": "hold-and-dock",
+      "turn": 1,
+      "question": "How do I deal with the Dock dark mage?",
+      "currentStatus": "failed",
+      "currentDecision": "decline",
+      "currentReply": "The guide records an objective for that named creature, but no supported combat method.",
+      "currentRecordIds": [],
+      "currentSources": [],
+      "strictProblems": [
+        "Expected answer; observed decline",
+        "Missing substring: Defeat the dark mage",
+        "Missing substring: dock entrance",
+        "Missing one-of factIds: ch4_3",
+        "Missing exact source: guides/js/AlQadim.js :: DB.chapters[3].required[id=ch4_3]"
+      ],
+      "frozenExpected": {
+        "decision": "answer",
+        "contains": [
+          "Defeat the dark mage",
+          "dock entrance"
+        ],
+        "notContains": [],
+        "factIds": [
+          "ch4_3"
+        ],
+        "source": {
+          "file": "guides/js/AlQadim.js",
+          "locator": "DB.chapters[3].required[id=ch4_3]",
+          "review": "extracted"
+        }
+      },
+      "originalSourceWitness": {
+        "fileAndLocator": "guides/js/AlQadim.js :: DB.chapters[3].required[id=ch4_3]",
+        "verbatimExcerpt": "Defeat the dark mage guarding the dock entrance."
+      },
+      "priorFrozenAdjudication": {
+        "artifact": "guides/tests/assistant/evidence/knowledge-full-corpus-arguments-adjudication-20261025-02.json",
+        "rowIndex": 38,
+        "category": "justified-objective-only-decline",
+        "wholeRowsIdenticalToPreviouslyReviewed": true,
+        "qualification": "Prior classification is a review pointer only; this cached run has a different raw report and was inspected directly."
+      },
+      "classification": "justified-source-limited-decline",
+      "auditFinding": "Source says only to defeat the dark mage at the dock entrance and contains no combat method. The question asks how to deal with the mage; refusing to invent tactics is correct. Preserve the objective-only refusal."
+    },
+    {
+      "key": "alqadim/hold-and-dock/2",
+      "surface": "alqadim",
+      "dialogueId": "hold-and-dock",
+      "turn": 2,
+      "question": "How do I clear the Rotting Ship's Hold?",
+      "currentStatus": "failed",
+      "currentDecision": "decline",
+      "currentReply": "The guide records the objective, but does not describe the requested procedure: Enter the Rotting Ship's Hold and clear all zombies.",
+      "currentRecordIds": [
+        "alqadim:knowledge:ch4_4",
+        "alqadim:objective:ch4_4:hint"
+      ],
+      "currentSources": [
+        {
+          "file": "guides/js/AlQadim.js",
+          "locator": "DB.chapters[3].required[id=ch4_4]",
+          "review": "extracted",
+          "index": {
+            "file": "guides/data/assistant/knowledge/alqadim.json",
+            "locator": "facts[18]",
+            "review": "authored-index"
+          }
+        }
+      ],
+      "strictProblems": [
+        "Expected answer; observed decline"
+      ],
+      "frozenExpected": {
+        "decision": "answer",
+        "contains": [
+          "clear all zombies"
+        ],
+        "notContains": [],
+        "factIds": [
+          "ch4_4"
+        ],
+        "source": {
+          "file": "guides/js/AlQadim.js",
+          "locator": "DB.chapters[3].required[id=ch4_4]",
+          "review": "extracted"
+        }
+      },
+      "originalSourceWitness": {
+        "fileAndLocator": "guides/js/AlQadim.js :: DB.chapters[3].required[id=ch4_4]",
+        "verbatimExcerpt": "Enter the Rotting Ship's Hold and clear all zombies."
+      },
+      "priorFrozenAdjudication": {
+        "artifact": "guides/tests/assistant/evidence/knowledge-full-corpus-arguments-adjudication-20261025-02.json",
+        "rowIndex": 39,
+        "category": "justified-objective-only-decline",
+        "wholeRowsIdenticalToPreviouslyReviewed": true,
+        "qualification": "Prior classification is a review pointer only; this cached run has a different raw report and was inspected directly."
+      },
+      "classification": "justified-source-limited-decline",
+      "auditFinding": "Source gives the objective to enter the hold and clear zombies, not a route or combat procedure; the question asks how to clear it. Preserve the decline that identifies this limitation."
+    },
+    {
+      "key": "alqadim/shibaz-library/1",
+      "surface": "alqadim",
+      "dialogueId": "shibaz-library",
+      "turn": 1,
+      "question": "How do I find Shibaz Hermit guidance?",
+      "currentStatus": "failed",
+      "currentDecision": "decline",
+      "currentReply": "The guide records the objective, but does not describe the requested procedure: Locate the Hermit's hut and accept his guidance.",
+      "currentRecordIds": [
+        "alqadim:knowledge:ch8_2",
+        "alqadim:objective:ch8_2:hint"
+      ],
+      "currentSources": [
+        {
+          "file": "guides/js/AlQadim.js",
+          "locator": "DB.chapters[7].required[id=ch8_2]",
+          "review": "extracted",
+          "index": {
+            "file": "guides/data/assistant/knowledge/alqadim.json",
+            "locator": "facts[31]",
+            "review": "authored-index"
+          }
+        }
+      ],
+      "strictProblems": [
+        "Expected answer; observed decline"
+      ],
+      "frozenExpected": {
+        "decision": "answer",
+        "contains": [
+          "Hermit's hut"
+        ],
+        "notContains": [],
+        "factIds": [
+          "ch8_2"
+        ],
+        "source": {
+          "file": "guides/js/AlQadim.js",
+          "locator": "DB.chapters[7].required[id=ch8_2]",
+          "review": "extracted"
+        }
+      },
+      "originalSourceWitness": {
+        "fileAndLocator": "guides/js/AlQadim.js :: DB.chapters[7].required[id=ch8_2]",
+        "verbatimExcerpt": "Locate the Hermit's hut and accept his guidance."
+      },
+      "priorFrozenAdjudication": {
+        "artifact": "guides/tests/assistant/evidence/knowledge-full-corpus-arguments-adjudication-20261025-02.json",
+        "rowIndex": 40,
+        "category": "justified-objective-only-decline",
+        "wholeRowsIdenticalToPreviouslyReviewed": true,
+        "qualification": "Prior classification is a review pointer only; this cached run has a different raw report and was inspected directly."
+      },
+      "classification": "justified-source-limited-decline",
+      "auditFinding": "Source only says locate the Hermit’s hut and accept guidance; it does not provide a way to find the hut. Preserve the source-limited decline."
+    },
+    {
+      "key": "alqadim/shibaz-library/4",
+      "surface": "alqadim",
+      "dialogueId": "shibaz-library",
+      "turn": 4,
+      "question": "How do I open the Hags riddle Library path?",
+      "currentStatus": "failed",
+      "currentDecision": "decline",
+      "currentReply": "The guide records the objective, but does not describe the requested procedure: Solve the hags' riddle to open the path to the Library.",
+      "currentRecordIds": [
+        "alqadim:knowledge:ch8_4",
+        "alqadim:objective:ch8_4:hint"
+      ],
+      "currentSources": [
+        {
+          "file": "guides/js/AlQadim.js",
+          "locator": "DB.chapters[7].required[id=ch8_4]",
+          "review": "extracted",
+          "index": {
+            "file": "guides/data/assistant/knowledge/alqadim.json",
+            "locator": "facts[33]",
+            "review": "authored-index"
+          }
+        }
+      ],
+      "strictProblems": [
+        "Expected answer; observed decline"
+      ],
+      "frozenExpected": {
+        "decision": "answer",
+        "contains": [
+          "hags' riddle"
+        ],
+        "notContains": [],
+        "factIds": [
+          "ch8_4"
+        ],
+        "source": {
+          "file": "guides/js/AlQadim.js",
+          "locator": "DB.chapters[7].required[id=ch8_4]",
+          "review": "extracted"
+        }
+      },
+      "originalSourceWitness": {
+        "fileAndLocator": "guides/js/AlQadim.js :: DB.chapters[7].required[id=ch8_4]",
+        "verbatimExcerpt": "Solve the hags' riddle to open the path to the Library."
+      },
+      "priorFrozenAdjudication": {
+        "artifact": "guides/tests/assistant/evidence/knowledge-full-corpus-arguments-adjudication-20261025-02.json",
+        "rowIndex": 41,
+        "category": "justified-objective-only-decline",
+        "wholeRowsIdenticalToPreviouslyReviewed": true,
+        "qualification": "Prior classification is a review pointer only; this cached run has a different raw report and was inspected directly."
+      },
+      "classification": "justified-source-limited-decline",
+      "auditFinding": "Source names solving the hags’ riddle as the objective but does not give the riddle answer/solution procedure. Preserve the decline; do not infer the puzzle answer."
+    },
+    {
+      "key": "alqadim/new-dungeon-and-journal/1",
+      "surface": "alqadim",
+      "dialogueId": "new-dungeon-and-journal",
+      "turn": 1,
+      "question": "How do I enter the New Dungeon?",
+      "currentStatus": "failed",
+      "currentDecision": "decline",
+      "currentReply": "The guide records the objective, but does not describe the requested procedure: Enter the New Dungeon (Stealth Section - Do not get caught).",
+      "currentRecordIds": [
+        "alqadim:knowledge:ch13_1",
+        "alqadim:objective:ch13_1:hint"
+      ],
+      "currentSources": [
+        {
+          "file": "guides/js/AlQadim.js",
+          "locator": "DB.chapters[12].required[id=ch13_1]",
+          "review": "extracted",
+          "index": {
+            "file": "guides/data/assistant/knowledge/alqadim.json",
+            "locator": "facts[46]",
+            "review": "authored-index"
+          }
+        }
+      ],
+      "strictProblems": [
+        "Expected answer; observed decline"
+      ],
+      "frozenExpected": {
+        "decision": "answer",
+        "contains": [
+          "Stealth Section",
+          "Do not get caught"
+        ],
+        "notContains": [],
+        "factIds": [
+          "ch13_1"
+        ],
+        "source": {
+          "file": "guides/js/AlQadim.js",
+          "locator": "DB.chapters[12].required[id=ch13_1]",
+          "review": "extracted"
+        }
+      },
+      "originalSourceWitness": {
+        "fileAndLocator": "guides/js/AlQadim.js :: DB.chapters[12].required[id=ch13_1]",
+        "verbatimExcerpt": "Enter the New Dungeon (Stealth Section - Do not get caught)."
+      },
+      "priorFrozenAdjudication": {
+        "artifact": "guides/tests/assistant/evidence/knowledge-full-corpus-arguments-adjudication-20261025-02.json",
+        "rowIndex": 42,
+        "category": "justified-objective-only-decline",
+        "wholeRowsIdenticalToPreviouslyReviewed": true,
+        "qualification": "Prior classification is a review pointer only; this cached run has a different raw report and was inspected directly."
+      },
+      "classification": "justified-source-limited-decline",
+      "auditFinding": "Source says enter the New Dungeon in the stealth section and do not get caught, but supplies no entry route. The how-to question exceeds the source. Preserve the objective-only decline."
+    },
+    {
+      "key": "alqadim/finale-boundaries/3",
+      "surface": "alqadim",
+      "dialogueId": "finale-boundaries",
+      "turn": 3,
+      "question": "How do I handle the Magical shield orbs?",
+      "currentStatus": "failed",
+      "currentDecision": "decline",
+      "currentReply": "The guide records the objective, but does not describe the requested procedure: Destroy the magical shield orbs.",
+      "currentRecordIds": [
+        "alqadim:knowledge:ch19_3",
+        "alqadim:objective:ch19_3:hint"
+      ],
+      "currentSources": [
+        {
+          "file": "guides/js/AlQadim.js",
+          "locator": "DB.chapters[18].required[id=ch19_3]",
+          "review": "extracted",
+          "index": {
+            "file": "guides/data/assistant/knowledge/alqadim.json",
+            "locator": "facts[64]",
+            "review": "authored-index"
+          }
+        }
+      ],
+      "strictProblems": [
+        "Expected answer; observed decline"
+      ],
+      "frozenExpected": {
+        "decision": "answer",
+        "contains": [
+          "Destroy the magical shield orbs"
+        ],
+        "notContains": [],
+        "factIds": [
+          "ch19_3"
+        ],
+        "source": {
+          "file": "guides/js/AlQadim.js",
+          "locator": "DB.chapters[18].required[id=ch19_3]",
+          "review": "extracted"
+        }
+      },
+      "originalSourceWitness": {
+        "fileAndLocator": "guides/js/AlQadim.js :: DB.chapters[18].required[id=ch19_3]",
+        "verbatimExcerpt": "Destroy the magical shield orbs."
+      },
+      "priorFrozenAdjudication": {
+        "artifact": "guides/tests/assistant/evidence/knowledge-full-corpus-arguments-adjudication-20261025-02.json",
+        "rowIndex": 43,
+        "category": "justified-objective-only-decline",
+        "wholeRowsIdenticalToPreviouslyReviewed": true,
+        "qualification": "Prior classification is a review pointer only; this cached run has a different raw report and was inspected directly."
+      },
+      "classification": "justified-source-limited-decline",
+      "auditFinding": "Source only states the objective to destroy the magical shield orbs and gives no method. The question asks how to handle them; preserve refusal to invent a tactic."
+    }
+  ]
+}

@@ -1,0 +1,4230 @@
+{
+  "schemaVersion": 1,
+  "kind": "final-cached-corpus-semantic-audit",
+  "auditedAt": "2026-10-31",
+  "currentRun": {
+    "path": "guides/tests/assistant/intent-prototype/results/knowledge-corpus-replay-whole-goal-final-20261031-04/report.json",
+    "sha256": "eb19b217d705cc8b8dc5307459027a7a583ac984e7a0cc05ea509fb424a8c2fe",
+    "tag": "whole-goal-final-20261031-04",
+    "status": "failed",
+    "totals": {
+      "total": 851,
+      "passed": 826,
+      "failed": 25,
+      "incomplete": 0
+    },
+    "sourceStable": true,
+    "changedSources": [],
+    "missingQueryCount": 0,
+    "requestedQueryCount": 946,
+    "profileId": "minilm-l6-v2-q8-751bff3-followup-v2",
+    "inference": "Packaged predictIntentHead on exact-text cached MiniLM vectors; no synthetic classification or vector substitution.",
+    "oracleSemantics": {
+      "factIds": "One-of actual reply.knowledge.factIds; engine answers without knowledge metadata do not satisfy required fact IDs.",
+      "allFactIds": "All required actual reply.knowledge.factIds.",
+      "source": "Exact reply.sources file and locator; allSources requires every listed source.",
+      "sourceRecordIds": "One-of provenance witnesses in reply.recordIds or knowledge.evidence.sourceRecordId; allSourceRecordIds requires every listed witness.",
+      "alternativeAnswers": "Independent complete branches; only omitted contains inherits the base contains, and base notContains always applies.",
+      "missingInputs": "The affected turn and remaining turns in that dialogue are incomplete, even if the runtime catches a missing-vector error and returns a source reply."
+    }
+  },
+  "comparisonRuns": {
+    "betaExact": {
+      "path": "guides/tests/assistant/evidence/beta-exact-replay-20261025.json",
+      "sha256": "9890f21261f8f5bba353770a50933128dd0fa7554ff53b78038ed2e46a3707fc",
+      "totals": {
+        "total": 851,
+        "passed": 798,
+        "failed": 53,
+        "incomplete": 0
+      }
+    },
+    "previous30FailureAudit": {
+      "path": "guides/tests/assistant/evidence/knowledge-corpus-replay-whole-goal-audit-20261031-01.json",
+      "sha256": "3270d58665c6378bf767aed3a254ce6b22adf1b5a2207324ac2ecb0bbf265183",
+      "strictFailuresReviewed": 30
+    },
+    "frozenFinal24Adjudication": {
+      "path": "guides/tests/assistant/evidence/knowledge-full-corpus-arguments-adjudication-20261025-02.json",
+      "sha256": "56f7cab033679d91970ad5d8e51867874d7cc28f9e5bf9b58a6efce5e9222684",
+      "strictPassedBefore": 920,
+      "strictFailedBefore": 85,
+      "genuineResponseGaps": 24
+    }
+  },
+  "comparison": {
+    "sameKeyedTurns": 851,
+    "keySetsIdentical": true,
+    "strictPassGainsVsBeta": 28,
+    "strictPassGainKeys": [
+      "albion/beloveno-choice/4",
+      "albion/blue-plate-demonstration/3",
+      "albion/drirr-recruitment-combat/1",
+      "albion/harriet-travel/2",
+      "albion/porenoil-route/2",
+      "albion/rifrako-utilities/3",
+      "albion/rifrako-utilities/4",
+      "albion/toronto-return-codes/1",
+      "albion/toronto-return-codes/2",
+      "alqadim/efreet-bottle-and-potion/2",
+      "ultima5/astaroth-flame-and-words/4",
+      "ultima5/cape-plans-locations/4",
+      "ultima5/carpet-pronoun/2",
+      "ultima5/party-recommendation/1",
+      "ultima5/party-recommendation/3",
+      "ultima5/spirituality-followups/4",
+      "ultima6/followup-blue-lens/3",
+      "ultima6/humility-riddle/2",
+      "ultima7/arcadion-black-sword/4",
+      "ultima7/blorn-victim-property/3",
+      "ultima7/courage-ether-gem/3",
+      "ultima7/courage-ether-gem/4",
+      "ultima7/dark-core-stat-caveat/4",
+      "ultima7/honor-flag-alternatives/3",
+      "ultima7/sphere-hourglass-prerequisite/4",
+      "ultima7/truth-true-locket/4",
+      "ultima7/truth-true-locket/5",
+      "ultima7/wisp-honey-whistle/3"
+    ],
+    "passLossesVsBeta": 0,
+    "passLossKeys": [],
+    "currentStrictFailures": 25,
+    "incomplete": 0,
+    "missingInputs": 0,
+    "currentFailuresAllPresentInPrevious30": true,
+    "newFailureKeysSincePrevious30": [],
+    "previous30RowsNowStrictPassed": [
+      {
+        "key": "albion/harriet-travel/2",
+        "previouslyFailed": true,
+        "currentStatus": "passed"
+      },
+      {
+        "key": "albion/porenoil-route/2",
+        "previouslyFailed": true,
+        "currentStatus": "passed"
+      },
+      {
+        "key": "ultima5/cape-plans-locations/4",
+        "previouslyFailed": true,
+        "currentStatus": "passed"
+      },
+      {
+        "key": "ultima6/pirate-cave/3",
+        "previouslyFailed": true,
+        "currentStatus": "passed"
+      },
+      {
+        "key": "ultima7/wisp-honey-whistle/3",
+        "previouslyFailed": true,
+        "currentStatus": "passed"
+      }
+    ],
+    "previous30RowsStillStrictFailed": [
+      "albion/assassination-reward/1",
+      "albion/blue-plate-demonstration/1",
+      "albion/finale-joe/2",
+      "albion/harriet-travel/3",
+      "albion/melthas-demon-spells/3",
+      "albion/porenoil-route/1",
+      "albion/rejira-money/1",
+      "albion/secret-word-scroll/3",
+      "albion/sira-party-link/4",
+      "alqadim/finale-boundaries/3",
+      "alqadim/hold-and-dock/1",
+      "alqadim/hold-and-dock/2",
+      "alqadim/new-dungeon-and-journal/1",
+      "alqadim/shibaz-library/1",
+      "alqadim/shibaz-library/4",
+      "starcraft/starcraft-knowledge-support-links/3",
+      "ultima5/carpet-pronoun/1",
+      "ultima6/tablet-leads/3",
+      "ultima7/companion-plans-not-party/1",
+      "ultima7/companion-plans-not-party/2",
+      "ultima7/dark-core-stat-caveat/1",
+      "ultima7/dark-core-stat-caveat/2",
+      "ultima7/love-two-rituals/3",
+      "ultima7/trinsic-evidence-password/1",
+      "ultima7/trinsic-evidence-password/3"
+    ]
+  },
+  "negativeControls": {
+    "count": 175,
+    "passed": 175,
+    "failed": 0,
+    "incomplete": 0,
+    "allPass": true
+  },
+  "final24GenuineGapClosure": {
+    "frozenBaselineGapRows": 24,
+    "currentStrictPassed": 22,
+    "currentStrictFailed": 2,
+    "strictFailureKeys": [
+      "albion/assassination-reward/1",
+      "albion/blue-plate-demonstration/1"
+    ],
+    "assessment": "All 24 formerly source-present-unanswered/partial rows now render an answer in this complete cached subset. Twenty-two satisfy the frozen strict oracle. The two remaining strict failures (assassination sequence and blue-plate method) now contain the full sourced claims and citations but route the source ID through quotedFactIds, not knowledge.factIds; these are remaining strict metadata-channel failures, not missing user-facing answers. This is scoped to the cached 851-turn run; final full 1,005 native acceptance remains separate.",
+    "rows": [
+      {
+        "key": "albion/drirr-recruitment-combat/1",
+        "question": "How do I recruit Drirr?",
+        "priorCategory": "partial-or-qualification-gap",
+        "currentStatus": "passed",
+        "currentDecision": "answer",
+        "currentFactIds": [
+          "drirr-recruitment-place",
+          "recruit-drirr"
+        ],
+        "currentSources": [
+          {
+            "file": "guides/js/Albion.js",
+            "locator": "DB.characters[2].joinLocation",
+            "review": "extracted",
+            "index": {
+              "file": "guides/data/assistant/knowledge/albion.json",
+              "locator": "facts[109]",
+              "review": "authored-index"
+            }
+          },
+          {
+            "file": "guides/js/Albion.js",
+            "locator": "QUEST_HINTS[\"nakiridaani\"][\"recruit-drirr\"]",
+            "review": "extracted",
+            "index": {
+              "file": "guides/data/assistant/knowledge/albion.json",
+              "locator": "facts[5]",
+              "review": "authored-index"
+            }
+          }
+        ],
+        "currentStrictProblems": [],
+        "priorReviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-starcraft-albion-20261025-02.json",
+        "priorReviewRowIndex": 1
+      },
+      {
+        "key": "albion/rifrako-utilities/3",
+        "question": "And Dreamshield?",
+        "priorCategory": "source-present-unanswered",
+        "currentStatus": "passed",
+        "currentDecision": "answer",
+        "currentFactIds": [
+          "dreamshield"
+        ],
+        "currentSources": [
+          {
+            "file": "guides/js/Albion.js",
+            "locator": "QUEST_HINTS[\"gratogel\"][\"dreamshield\"]",
+            "review": "extracted",
+            "index": {
+              "file": "guides/data/assistant/knowledge/albion.json",
+              "locator": "facts[12]",
+              "review": "authored-index"
+            }
+          }
+        ],
+        "currentStrictProblems": [],
+        "priorReviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-starcraft-albion-20261025-02.json",
+        "priorReviewRowIndex": 6
+      },
+      {
+        "key": "albion/beloveno-choice/4",
+        "question": "Can I dismiss Khunag after his chapter?",
+        "priorCategory": "source-present-unanswered",
+        "currentStatus": "passed",
+        "currentDecision": "answer",
+        "currentFactIds": [
+          "khunag-combat"
+        ],
+        "currentSources": [
+          {
+            "file": "guides/js/Albion.js",
+            "locator": "DB.characters[6].strengths/weaknesses",
+            "review": "extracted",
+            "index": {
+              "file": "guides/data/assistant/knowledge/albion.json",
+              "locator": "facts[67]",
+              "review": "authored-index"
+            }
+          }
+        ],
+        "currentStrictProblems": [],
+        "priorReviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-starcraft-albion-20261025-02.json",
+        "priorReviewRowIndex": 7
+      },
+      {
+        "key": "albion/assassination-reward/1",
+        "question": "What is the Herras assassination sequence?",
+        "priorCategory": "source-present-unanswered",
+        "currentStatus": "failed",
+        "currentDecision": "answer",
+        "currentFactIds": [],
+        "currentSources": [
+          {
+            "file": "guides/js/Albion.js",
+            "locator": "QUEST_HINTS[\"maini\"][\"assassination-sequence\"]",
+            "review": "extracted"
+          },
+          {
+            "file": "guides/js/AlbionAtlasData.js",
+            "locator": "ALBION_ATLAS_CONFIG.maps[*].npcs[id=npc:281:7]",
+            "review": "extracted"
+          },
+          {
+            "file": "guides/js/AlbionAtlasData.js",
+            "locator": "ALBION_ATLAS_CONFIG.maps[*].npcs[id=npc:213:0]",
+            "review": "extracted"
+          }
+        ],
+        "currentStrictProblems": [
+          "Missing one-of factIds: assassination-sequence"
+        ],
+        "priorReviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-starcraft-albion-20261025-02.json",
+        "priorReviewRowIndex": 8
+      },
+      {
+        "key": "albion/porenoil-route/2",
+        "question": "What does it prevent?",
+        "priorCategory": "source-present-unanswered",
+        "currentStatus": "passed",
+        "currentDecision": "answer",
+        "currentFactIds": [
+          "porenoil"
+        ],
+        "currentSources": [
+          {
+            "file": "guides/js/Albion.js",
+            "locator": "QUEST_HINTS[\"umajo\"][\"porenoil\"]",
+            "review": "extracted",
+            "index": {
+              "file": "guides/data/assistant/knowledge/albion.json",
+              "locator": "facts[20]",
+              "review": "authored-index"
+            }
+          }
+        ],
+        "currentStrictProblems": [],
+        "priorReviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-starcraft-albion-20261025-02.json",
+        "priorReviewRowIndex": 11
+      },
+      {
+        "key": "albion/toronto-return-codes/1",
+        "question": "What are Toronto return codes in order?",
+        "priorCategory": "source-present-unanswered",
+        "currentStatus": "passed",
+        "currentDecision": "answer",
+        "currentFactIds": [
+          "codes"
+        ],
+        "currentSources": [
+          {
+            "file": "guides/js/Albion.js",
+            "locator": "QUEST_HINTS[\"toronto-return\"][\"codes\"]",
+            "review": "extracted",
+            "index": {
+              "file": "guides/data/assistant/knowledge/albion.json",
+              "locator": "facts[22]",
+              "review": "authored-index"
+            }
+          }
+        ],
+        "currentStrictProblems": [],
+        "priorReviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-starcraft-albion-20261025-02.json",
+        "priorReviewRowIndex": 12
+      },
+      {
+        "key": "albion/toronto-return-codes/2",
+        "question": "Where does the first one come from?",
+        "priorCategory": "source-present-unanswered",
+        "currentStatus": "passed",
+        "currentDecision": "answer",
+        "currentFactIds": [
+          "codes"
+        ],
+        "currentSources": [
+          {
+            "file": "guides/js/Albion.js",
+            "locator": "QUEST_HINTS[\"toronto-return\"][\"codes\"]",
+            "review": "extracted",
+            "index": {
+              "file": "guides/data/assistant/knowledge/albion.json",
+              "locator": "facts[22]",
+              "review": "authored-index"
+            }
+          }
+        ],
+        "currentStrictProblems": [],
+        "priorReviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-starcraft-albion-20261025-02.json",
+        "priorReviewRowIndex": 13
+      },
+      {
+        "key": "albion/blue-plate-demonstration/1",
+        "question": "How do I use the blue floor plate?",
+        "priorCategory": "source-present-unanswered",
+        "currentStatus": "failed",
+        "currentDecision": "answer",
+        "currentFactIds": [],
+        "currentSources": [
+          {
+            "file": "guides/js/Albion.js",
+            "locator": "QUEST_HINTS[\"equipment-makers\"][\"xp-plate\"]",
+            "review": "extracted"
+          }
+        ],
+        "currentStrictProblems": [
+          "Missing one-of factIds: xp-plate"
+        ],
+        "priorReviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-starcraft-albion-20261025-02.json",
+        "priorReviewRowIndex": 15
+      },
+      {
+        "key": "ultima5/party-recommendation/1",
+        "question": "Which six party members does the recommended party use?",
+        "priorCategory": "source-present-unanswered",
+        "currentStatus": "passed",
+        "currentDecision": "answer",
+        "currentFactIds": [
+          "party-six"
+        ],
+        "currentSources": [
+          {
+            "file": "guides/js/Ultima5.js",
+            "locator": "ultima5GrandQuestChapters objective=opening-party.steps[4]",
+            "review": "extracted",
+            "index": {
+              "file": "guides/data/assistant/knowledge/ultima5.json",
+              "locator": "facts[4]",
+              "review": "authored-index"
+            }
+          }
+        ],
+        "currentStrictProblems": [],
+        "priorReviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-ultima5-ultima6-20261025-02.json",
+        "priorReviewRowIndex": 0
+      },
+      {
+        "key": "ultima5/party-recommendation/3",
+        "question": "How do I reach Mariah for recruitment?",
+        "priorCategory": "source-present-unanswered",
+        "currentStatus": "passed",
+        "currentDecision": "answer",
+        "currentFactIds": [
+          "gwenno-mariah"
+        ],
+        "currentSources": [
+          {
+            "file": "guides/js/Ultima5.js",
+            "locator": "ultima5GrandQuestChapters objective=opening-party.steps[3]",
+            "review": "extracted",
+            "index": {
+              "file": "guides/data/assistant/knowledge/ultima5.json",
+              "locator": "facts[3]",
+              "review": "authored-index"
+            }
+          }
+        ],
+        "currentStrictProblems": [],
+        "priorReviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-ultima5-ultima6-20261025-02.json",
+        "priorReviewRowIndex": 1
+      },
+      {
+        "key": "ultima5/carpet-pronoun/2",
+        "question": "Can it cross mountains?",
+        "priorCategory": "source-present-unanswered",
+        "currentStatus": "passed",
+        "currentDecision": "answer",
+        "currentFactIds": [
+          "carpet-terrain"
+        ],
+        "currentSources": [
+          {
+            "file": "guides/js/Ultima5.js",
+            "locator": "ultima5GrandQuestChapters objective=opening-castle-raid.steps[3]",
+            "review": "extracted",
+            "index": {
+              "file": "guides/data/assistant/knowledge/ultima5.json",
+              "locator": "facts[20]",
+              "review": "authored-index"
+            }
+          }
+        ],
+        "currentStrictProblems": [],
+        "priorReviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-ultima5-ultima6-20261025-02.json",
+        "priorReviewRowIndex": 5
+      },
+      {
+        "key": "ultima5/spirituality-followups/4",
+        "question": "Must I leave from Skara Brae because I selected its atlas marker?",
+        "priorCategory": "source-present-unanswered",
+        "currentStatus": "passed",
+        "currentDecision": "answer",
+        "currentFactIds": [
+          "spirituality-midnight"
+        ],
+        "currentSources": [
+          {
+            "file": "guides/js/Ultima5.js",
+            "locator": "ultima5GrandQuestChapters objective=shrine-spirituality.steps[1]",
+            "review": "extracted",
+            "index": {
+              "file": "guides/data/assistant/knowledge/ultima5.json",
+              "locator": "facts[42]",
+              "review": "authored-index"
+            }
+          }
+        ],
+        "currentStrictProblems": [],
+        "priorReviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-ultima5-ultima6-20261025-02.json",
+        "priorReviewRowIndex": 8
+      },
+      {
+        "key": "ultima5/astaroth-flame-and-words/4",
+        "question": "Is Astaroth defeated merely because I recovered the Shard?",
+        "priorCategory": "source-present-unanswered",
+        "currentStatus": "passed",
+        "currentDecision": "answer",
+        "currentFactIds": [
+          "astaroth-flame",
+          "astaroth-timing"
+        ],
+        "currentSources": [
+          {
+            "file": "guides/js/Ultima5.js",
+            "locator": "ultima5GrandQuestChapters objective=shadow-astaroth.steps[2]",
+            "review": "extracted",
+            "index": {
+              "file": "guides/data/assistant/knowledge/ultima5.json",
+              "locator": "facts[56]",
+              "review": "authored-index"
+            }
+          },
+          {
+            "file": "guides/js/Ultima5.js",
+            "locator": "ultima5GrandQuestChapters objective=shadow-astaroth.steps[3]",
+            "review": "extracted",
+            "index": {
+              "file": "guides/data/assistant/knowledge/ultima5.json",
+              "locator": "facts[57]",
+              "review": "authored-index"
+            }
+          }
+        ],
+        "currentStrictProblems": [],
+        "priorReviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-ultima5-ultima6-20261025-02.json",
+        "priorReviewRowIndex": 10
+      },
+      {
+        "key": "ultima6/humility-riddle/2",
+        "question": "Who is the humble villager?",
+        "priorCategory": "source-present-unanswered",
+        "currentStatus": "passed",
+        "currentDecision": "answer",
+        "currentFactIds": [
+          "conor-villagers"
+        ],
+        "currentSources": [
+          {
+            "file": "guides/js/Ultima6.js",
+            "locator": "gameData.quests[0].sections[7].steps[1]",
+            "review": "extracted",
+            "index": {
+              "file": "guides/data/assistant/knowledge/ultima6.json",
+              "locator": "facts[30]",
+              "review": "authored-index"
+            }
+          }
+        ],
+        "currentStrictProblems": [],
+        "priorReviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-ultima5-ultima6-20261025-02.json",
+        "priorReviewRowIndex": 14
+      },
+      {
+        "key": "ultima6/followup-blue-lens/3",
+        "question": "What does he need?",
+        "priorCategory": "source-present-unanswered",
+        "currentStatus": "passed",
+        "currentDecision": "answer",
+        "currentFactIds": [
+          "blue-lens"
+        ],
+        "currentSources": [
+          {
+            "file": "guides/js/Ultima6.js",
+            "locator": "gameData.quests[3].sections[1].steps[1]",
+            "review": "extracted",
+            "index": {
+              "file": "guides/data/assistant/knowledge/ultima6.json",
+              "locator": "facts[71]",
+              "review": "authored-index"
+            }
+          }
+        ],
+        "currentStrictProblems": [],
+        "priorReviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-ultima5-ultima6-20261025-02.json",
+        "priorReviewRowIndex": 19
+      },
+      {
+        "key": "ultima7/sphere-hourglass-prerequisite/4",
+        "question": "Can I enchant the hourglass before the Tetrahedron is destroyed?",
+        "priorCategory": "source-present-unanswered",
+        "currentStatus": "passed",
+        "currentDecision": "answer",
+        "currentFactIds": [
+          "hourglass-tetrahedron-prerequisite"
+        ],
+        "currentSources": [
+          {
+            "file": "guides/js/Ultima7.js",
+            "locator": "DB.mainQuest[4].content",
+            "review": "extracted",
+            "index": {
+              "file": "guides/data/assistant/knowledge/ultima7.json",
+              "locator": "facts[14]",
+              "review": "authored-index"
+            }
+          }
+        ],
+        "currentStrictProblems": [],
+        "priorReviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-ultima7-alqadim-20261025-02.json",
+        "priorReviewRowIndex": 3
+      },
+      {
+        "key": "ultima7/truth-true-locket/4",
+        "question": "Are all optional puzzles required to get the true locket?",
+        "priorCategory": "source-present-unanswered",
+        "currentStatus": "passed",
+        "currentDecision": "answer",
+        "currentFactIds": [
+          "truth-real-locket",
+          "truth-optional-loot"
+        ],
+        "currentSources": [
+          {
+            "file": "guides/js/Ultima7.js",
+            "locator": "DB.virtueQuests[3]",
+            "review": "extracted",
+            "index": {
+              "file": "guides/data/assistant/knowledge/ultima7.json",
+              "locator": "facts[27]",
+              "review": "authored-index"
+            }
+          },
+          {
+            "file": "guides/js/Ultima7.js",
+            "locator": "DB.virtueQuests[3]",
+            "review": "extracted",
+            "index": {
+              "file": "guides/data/assistant/knowledge/ultima7.json",
+              "locator": "facts[28]",
+              "review": "authored-index"
+            }
+          }
+        ],
+        "currentStrictProblems": [],
+        "priorReviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-ultima7-alqadim-20261025-02.json",
+        "priorReviewRowIndex": 4
+      },
+      {
+        "key": "ultima7/truth-true-locket/5",
+        "question": "What do the optional Truth puzzles offer?",
+        "priorCategory": "source-present-unanswered",
+        "currentStatus": "passed",
+        "currentDecision": "answer",
+        "currentFactIds": [
+          "truth-optional-loot"
+        ],
+        "currentSources": [
+          {
+            "file": "guides/js/Ultima7.js",
+            "locator": "DB.virtueQuests[3]",
+            "review": "extracted",
+            "index": {
+              "file": "guides/data/assistant/knowledge/ultima7.json",
+              "locator": "facts[28]",
+              "review": "authored-index"
+            }
+          }
+        ],
+        "currentStrictProblems": [],
+        "priorReviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-ultima7-alqadim-20261025-02.json",
+        "priorReviewRowIndex": 5
+      },
+      {
+        "key": "ultima7/courage-ether-gem/3",
+        "question": "How do I finish Courage test?",
+        "priorCategory": "wrong-or-incomplete-field",
+        "currentStatus": "passed",
+        "currentDecision": "answer",
+        "currentFactIds": [
+          "courage-finish-sword"
+        ],
+        "currentSources": [
+          {
+            "file": "guides/js/Ultima7.js",
+            "locator": "DB.virtueQuests[7]",
+            "review": "extracted",
+            "index": {
+              "file": "guides/data/assistant/knowledge/ultima7.json",
+              "locator": "facts[35]",
+              "review": "authored-index"
+            }
+          }
+        ],
+        "currentStrictProblems": [],
+        "priorReviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-ultima7-alqadim-20261025-02.json",
+        "priorReviewRowIndex": 7
+      },
+      {
+        "key": "ultima7/courage-ether-gem/4",
+        "question": "Does obtaining the Ether Gem automatically finish Courage?",
+        "priorCategory": "source-present-unanswered",
+        "currentStatus": "passed",
+        "currentDecision": "answer",
+        "currentFactIds": [
+          "courage-sleep-potions",
+          "courage-finish-sword"
+        ],
+        "currentSources": [
+          {
+            "file": "guides/js/Ultima7.js",
+            "locator": "DB.virtueQuests[5]",
+            "review": "extracted",
+            "index": {
+              "file": "guides/data/assistant/knowledge/ultima7.json",
+              "locator": "facts[31]",
+              "review": "authored-index"
+            }
+          },
+          {
+            "file": "guides/js/Ultima7.js",
+            "locator": "DB.virtueQuests[7]",
+            "review": "extracted",
+            "index": {
+              "file": "guides/data/assistant/knowledge/ultima7.json",
+              "locator": "facts[35]",
+              "review": "authored-index"
+            }
+          }
+        ],
+        "currentStrictProblems": [],
+        "priorReviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-ultima7-alqadim-20261025-02.json",
+        "priorReviewRowIndex": 8
+      },
+      {
+        "key": "ultima7/arcadion-black-sword/4",
+        "question": "Is Arcadion a benevolent human blacksmith?",
+        "priorCategory": "source-present-unanswered",
+        "currentStatus": "passed",
+        "currentDecision": "answer",
+        "currentFactIds": [
+          "arcadion-daemon-identity"
+        ],
+        "currentSources": [
+          {
+            "file": "guides/js/Ultima7Markers.js",
+            "locator": "ULTIMA7_MARKERS[491]",
+            "review": "extracted",
+            "index": {
+              "file": "guides/data/assistant/knowledge/ultima7.json",
+              "locator": "facts[107]",
+              "review": "authored-index"
+            }
+          }
+        ],
+        "currentStrictProblems": [],
+        "priorReviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-ultima7-alqadim-20261025-02.json",
+        "priorReviewRowIndex": 9
+      },
+      {
+        "key": "ultima7/dark-core-stat-caveat/4",
+        "question": "Does every edition raise all three stats to exactly 60?",
+        "priorCategory": "source-present-unanswered",
+        "currentStatus": "passed",
+        "currentDecision": "answer",
+        "currentFactIds": [
+          "forge-reward-caveat"
+        ],
+        "currentSources": [
+          {
+            "file": "guides/Ultima7.html",
+            "locator": "#virtue-quest-content: The Reward",
+            "review": "extracted",
+            "index": {
+              "file": "guides/data/assistant/knowledge/ultima7.json",
+              "locator": "facts[37]",
+              "review": "authored-index"
+            }
+          }
+        ],
+        "currentStrictProblems": [],
+        "priorReviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-ultima7-alqadim-20261025-02.json",
+        "priorReviewRowIndex": 10
+      },
+      {
+        "key": "ultima7/honor-flag-alternatives/3",
+        "question": "Must I kill all three fighters to resolve the Honor Flag?",
+        "priorCategory": "source-present-unanswered",
+        "currentStatus": "passed",
+        "currentDecision": "answer",
+        "currentFactIds": [
+          "side-the-honor-flag"
+        ],
+        "currentSources": [
+          {
+            "file": "guides/js/Ultima7.js",
+            "locator": "DB.sideQuests[6]",
+            "review": "extracted",
+            "index": {
+              "file": "guides/data/assistant/knowledge/ultima7.json",
+              "locator": "facts[43]",
+              "review": "authored-index"
+            }
+          },
+          {
+            "file": "guides/js/Ultima7.js",
+            "locator": "DB.sideQuests[6].walkthrough",
+            "review": "extracted"
+          }
+        ],
+        "currentStrictProblems": [],
+        "priorReviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-ultima7-alqadim-20261025-02.json",
+        "priorReviewRowIndex": 11
+      },
+      {
+        "key": "ultima7/blorn-victim-property/3",
+        "question": "Does Blorn being the accuser make Lap-Lem the thief?",
+        "priorCategory": "source-present-unanswered",
+        "currentStatus": "passed",
+        "currentDecision": "answer",
+        "currentFactIds": [
+          "side-blorn-s-accusations"
+        ],
+        "currentSources": [
+          {
+            "file": "guides/js/Ultima7.js",
+            "locator": "DB.sideQuests[7]",
+            "review": "extracted",
+            "index": {
+              "file": "guides/data/assistant/knowledge/ultima7.json",
+              "locator": "facts[44]",
+              "review": "authored-index"
+            }
+          },
+          {
+            "file": "guides/js/Ultima7.js",
+            "locator": "DB.sideQuests[7].walkthrough",
+            "review": "extracted"
+          }
+        ],
+        "currentStrictProblems": [],
+        "priorReviewArtifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-ultima7-alqadim-20261025-02.json",
+        "priorReviewRowIndex": 12
+      }
+    ]
+  },
+  "assassinationDialogueReview": {
+    "dialogueId": "assassination-reward",
+    "rows": [
+      {
+        "turn": 1,
+        "question": "What is the Herras assassination sequence?",
+        "status": "failed",
+        "decision": "answer",
+        "factIds": [],
+        "sources": [
+          {
+            "file": "guides/js/Albion.js",
+            "locator": "QUEST_HINTS[\"maini\"][\"assassination-sequence\"]",
+            "review": "extracted"
+          },
+          {
+            "file": "guides/js/AlbionAtlasData.js",
+            "locator": "ALBION_ATLAS_CONFIG.maps[*].npcs[id=npc:281:7]",
+            "review": "extracted"
+          },
+          {
+            "file": "guides/js/AlbionAtlasData.js",
+            "locator": "ALBION_ATLAS_CONFIG.maps[*].npcs[id=npc:213:0]",
+            "review": "extracted"
+          }
+        ],
+        "strictProblems": [
+          "Missing one-of factIds: assassination-sequence"
+        ],
+        "renderedTextRetained": true,
+        "reply": {
+          "decision": "answer",
+          "text": "Source limitation: The quest notes use Kounos and Edjiir, while the atlas uses Kontos and Edjirr. The complete sequence is quoted as written; those names are not established as equivalent.\n\nOriginal guide quotation:\n“Timed sequence: talk to Herras (council), visit Kariah (ask “Yes” + “Information”), find Melthas’s friend (Kounos), buy Edjiir info (Srimalinar), return to Herras (ask “Assassination”), then find Melthas’s friend again to trigger the event.”\n\nAdditional source quotations:\n“Edjirr appears on: Edjirr (wanders nearby).”\n“Kontos appears on: Kontos (wanders nearby).”",
+          "recordIds": [
+            "albion:objective:maini:assassination-sequence:hint",
+            "albion:npc:edjirr:location",
+            "albion:npc:kontos:location"
+          ],
+          "sources": [
+            {
+              "file": "guides/js/Albion.js",
+              "locator": "QUEST_HINTS[\"maini\"][\"assassination-sequence\"]",
+              "review": "extracted"
+            },
+            {
+              "file": "guides/js/AlbionAtlasData.js",
+              "locator": "ALBION_ATLAS_CONFIG.maps[*].npcs[id=npc:281:7]",
+              "review": "extracted"
+            },
+            {
+              "file": "guides/js/AlbionAtlasData.js",
+              "locator": "ALBION_ATLAS_CONFIG.maps[*].npcs[id=npc:213:0]",
+              "review": "extracted"
+            }
+          ],
+          "quotedFactIds": [
+            "assassination-sequence"
+          ],
+          "sourcePresentation": {
+            "kind": "conflict-quotation",
+            "conflictId": "albion:maini-names",
+            "mode": "unresolved-names"
+          },
+          "actions": [],
+          "choices": [],
+          "stateChanges": [],
+          "sourceLinks": [],
+          "level": "direct",
+          "revision": 2,
+          "dialoguePacket": {
+            "originalText": "What is the Herras assassination sequence?",
+            "status": "ready",
+            "routeOrigin": "source-engine",
+            "modelIntent": null,
+            "sourceScope": "conflict-quotation"
+          },
+          "modelIntent": null,
+          "routeOrigin": "source-engine"
+        }
+      },
+      {
+        "turn": 2,
+        "question": "Where is Edjiir?",
+        "status": "passed",
+        "decision": "answer",
+        "factIds": [
+          "place-srimalinar"
+        ],
+        "sources": [
+          {
+            "file": "guides/js/Albion.js",
+            "locator": "DB.locations[3].locations[2]",
+            "review": "extracted",
+            "index": {
+              "file": "guides/data/assistant/knowledge/albion.json",
+              "locator": "facts[104]",
+              "review": "authored-index"
+            }
+          }
+        ],
+        "strictProblems": [],
+        "renderedTextRetained": false,
+        "reply": null
+      },
+      {
+        "turn": 3,
+        "question": "Where is Melthas’s friend?",
+        "status": "passed",
+        "decision": "answer",
+        "factIds": [
+          "place-kounos"
+        ],
+        "sources": [
+          {
+            "file": "guides/js/Albion.js",
+            "locator": "DB.locations[3].locations[1]",
+            "review": "extracted",
+            "index": {
+              "file": "guides/data/assistant/knowledge/albion.json",
+              "locator": "facts[103]",
+              "review": "authored-index"
+            }
+          }
+        ],
+        "strictProblems": [],
+        "renderedTextRetained": false,
+        "reply": null
+      },
+      {
+        "turn": 4,
+        "question": "How do I get Herras’s Key?",
+        "status": "passed",
+        "decision": "answer",
+        "factIds": [
+          "herras-key"
+        ],
+        "sources": [
+          {
+            "file": "guides/js/Albion.js",
+            "locator": "QUEST_HINTS[\"maini\"][\"herras-key\"]",
+            "review": "extracted",
+            "index": {
+              "file": "guides/data/assistant/knowledge/albion.json",
+              "locator": "facts[16]",
+              "review": "authored-index"
+            }
+          }
+        ],
+        "strictProblems": [],
+        "renderedTextRetained": false,
+        "reply": null
+      }
+    ],
+    "review": {
+      "turn1": "The answer quotes the full sequence, cites the quest hint plus two atlas references, and explicitly states that Kounos/Edjiir and Kontos/Edjirr are not established as equivalent. The source fact ID appears in quotedFactIds; strict ordinary factIds remains empty.",
+      "turn2": "Current passing compact row carries factId place-srimalinar and guide source DB.locations[3].locations[2]. The original Albion.js witness names Srimalinar (Town) with POI Edjiir (information broker). This is the guide name Edjiir, not an assertion of identity with atlas Edjirr.",
+      "turn3": "Current passing compact row carries factId place-kounos and guide source DB.locations[3].locations[1]. The original Albion.js witness names Kounos (Dungeon Village) with POI Melthas’s friend. This reports the quest-guide location and does not assert identity with atlas Kontos.",
+      "turn4": "Current passing compact row carries factId herras-key and the exact QUEST_HINTS maini herras-key locator.",
+      "wholeTextLimitation": "The compact report retains full rendered text for failed rows only. For turns 2–4, review is limited to passing status plus fact IDs and exact citations, checked against the cited original guide witnesses; no whole rendered-text equality is claimed."
+    }
+  },
+  "classificationCounts": {
+    "useful-answer-oracle-detail-difference": 1,
+    "complete-answer-locator-granularity-difference": 1,
+    "complete-answer-source-provenance-id-difference": 1,
+    "complete-answer-internal-fact-id-difference": 7,
+    "complete-answer-alternate-witness-and-wording-difference": 1,
+    "complete-answer-nested-locator-difference": 3,
+    "complete-answer-parallel-source-and-fact-id-difference": 1,
+    "source-complete-qualified-quotation-in-quotedFactIds": 2,
+    "complete-location-answer-versus-acquisition-oracle": 1,
+    "complete-answer-parent-locator-and-fact-id-difference": 1,
+    "justified-objective-only-decline": 6
+  },
+  "strictFailureReview": [
+    {
+      "key": "ultima6/tablet-leads/3",
+      "surface": "ultima6",
+      "dialogueId": "tablet-leads",
+      "turn": 3,
+      "question": "How do I ask the gypsies about the tablet?",
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Homer",
+          "Buccaneer"
+        ],
+        "factIds": [
+          "zoltan-homer"
+        ],
+        "source": {
+          "file": "guides/js/Ultima6.js",
+          "locator": "gameData.quests[1].sections[0].steps[2]",
+          "review": "extracted"
+        }
+      },
+      "currentStatus": "failed",
+      "currentDecision": "answer",
+      "currentReply": {
+        "decision": "answer",
+        "text": "Zoltan: say TABLET for Homer lead.",
+        "title": "Gypsies",
+        "recordIds": [
+          "ultima6:knowledge:zoltan-tablet-keyword",
+          "ultima6:quest:act-ii-prophecy-pirates:translate-the-gargish-tome:keyword:0"
+        ],
+        "sources": [
+          {
+            "file": "guides/js/Ultima6.js",
+            "locator": "gameData.quests[1].sections[0].keywords[0].helper",
+            "review": "extracted",
+            "index": {
+              "file": "guides/data/assistant/knowledge/ultima6.json",
+              "locator": "facts[97]",
+              "review": "authored-index"
+            }
+          }
+        ],
+        "sourceLinks": [],
+        "actions": [],
+        "choices": [],
+        "stateChanges": [],
+        "level": "direct",
+        "knowledge": {
+          "factIds": [
+            "zoltan-tablet-keyword"
+          ],
+          "focusEntityId": "ultima6:knowledge:gypsies",
+          "context": {
+            "guideOnly": false,
+            "editions": []
+          },
+          "evidence": [
+            {
+              "factId": "zoltan-tablet-keyword",
+              "sourceRecordId": "ultima6:quest:act-ii-prophecy-pirates:translate-the-gargish-tome:keyword:0",
+              "source": {
+                "file": "guides/js/Ultima6.js",
+                "locator": "gameData.quests[1].sections[0].keywords[0].helper",
+                "review": "extracted"
+              }
+            }
+          ]
+        },
+        "revision": 4,
+        "dialoguePacket": {
+          "originalText": "How do I ask the gypsies about the tablet?",
+          "intent": "unknown",
+          "entityId": null,
+          "entityTitle": null,
+          "modelIntent": "unknown",
+          "routeOrigin": "reviewed-knowledge",
+          "transition": "subject-missing",
+          "status": "clarify",
+          "confidence": {
+            "score": 0.19715713552407926,
+            "margin": 0.03947477414562467
+          },
+          "restrictions": {
+            "guideOnly": false,
+            "editions": [],
+            "negation": false,
+            "quantities": [],
+            "comparison": false,
+            "causal": false,
+            "progress": false,
+            "hypothetical": false,
+            "compound": false,
+            "material": [
+              "gypsies",
+              "tablet"
+            ]
+          },
+          "reason": "Intent needs clarification: unknown label or insufficient score separation."
+        },
+        "modelIntent": "unknown",
+        "routeOrigin": "reviewed-knowledge"
+      },
+      "currentSources": [
+        {
+          "file": "guides/js/Ultima6.js",
+          "locator": "gameData.quests[1].sections[0].keywords[0].helper",
+          "review": "extracted",
+          "index": {
+            "file": "guides/data/assistant/knowledge/ultima6.json",
+            "locator": "facts[97]",
+            "review": "authored-index"
+          }
+        }
+      ],
+      "strictProblems": [
+        "Missing substring: Buccaneer",
+        "Missing one-of factIds: zoltan-homer",
+        "Missing exact source: guides/js/Ultima6.js :: gameData.quests[1].sections[0].steps[2]"
+      ],
+      "sourceWitness": {
+        "fileAndLocator": {
+          "file": "guides/js/Ultima6.js",
+          "locator": "gameData.quests[1].sections[0].steps[2]",
+          "review": "extracted"
+        },
+        "verbatimExcerpt": "<strong>Zoltan:</strong> say <code>TABLET</code> for Homer lead."
+      },
+      "priorFullCorpusAdjudication": {
+        "artifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-ultima5-ultima6-20261025-02.json",
+        "rowIndex": 15,
+        "category": "useful-claim-oracle-difference"
+      },
+      "classification": "useful-answer-oracle-detail-difference",
+      "finding": "The exact user question is how to ask. Reply supplies Zoltan + TABLET and says it yields the Homer lead, citing the keyword helper. The frozen branch additionally requires the next destination (Buccaneer’s Den) and a different fact/source locator. This is not a missing answer to the asked keyword question."
+    },
+    {
+      "key": "ultima7/trinsic-evidence-password/1",
+      "surface": "ultima7",
+      "dialogueId": "trinsic-evidence-password",
+      "turn": 1,
+      "question": "How do I investigate the Trinsic crime scene?",
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "stables",
+          "key"
+        ],
+        "factIds": [
+          "trinsic-crime-scene"
+        ],
+        "source": {
+          "file": "guides/js/Ultima7.js",
+          "locator": "DB.mainQuest[0]",
+          "review": "extracted"
+        },
+        "sourceRecordIds": [
+          "ultima7:quest:the-trinsic-murders:hint"
+        ]
+      },
+      "currentStatus": "failed",
+      "currentDecision": "answer",
+      "currentReply": {
+        "decision": "answer",
+        "text": "Investigate the ritualistic murder in the stables. Examine the crime scene for a key.",
+        "title": "The Trinsic Murders",
+        "recordIds": [
+          "ultima7:knowledge:trinsic-crime-scene",
+          "ultima7:quest:the-trinsic-murders:hint"
+        ],
+        "sources": [
+          {
+            "file": "guides/js/Ultima7.js",
+            "locator": "DB.mainQuest[0].content",
+            "review": "extracted",
+            "index": {
+              "file": "guides/data/assistant/knowledge/ultima7.json",
+              "locator": "facts[0]",
+              "review": "authored-index"
+            }
+          }
+        ],
+        "sourceLinks": [],
+        "actions": [],
+        "choices": [],
+        "stateChanges": [],
+        "level": "direct",
+        "knowledge": {
+          "factIds": [
+            "trinsic-crime-scene"
+          ],
+          "focusEntityId": "ultima7:quest:the-trinsic-murders",
+          "context": {
+            "guideOnly": false,
+            "editions": []
+          },
+          "evidence": [
+            {
+              "factId": "trinsic-crime-scene",
+              "sourceRecordId": "ultima7:quest:the-trinsic-murders:hint",
+              "source": {
+                "file": "guides/js/Ultima7.js",
+                "locator": "DB.mainQuest[0].content",
+                "review": "extracted"
+              }
+            }
+          ]
+        },
+        "revision": 2,
+        "dialoguePacket": {
+          "originalText": "How do I investigate the Trinsic crime scene?",
+          "intent": "location",
+          "entityId": null,
+          "entityTitle": null,
+          "modelIntent": "location",
+          "routeOrigin": "reviewed-knowledge",
+          "transition": "ambiguous-subject",
+          "status": "clarify",
+          "confidence": {
+            "score": 0.1879340780296046,
+            "margin": 0.042765872740310906
+          },
+          "restrictions": {
+            "guideOnly": false,
+            "editions": [],
+            "negation": false,
+            "quantities": [],
+            "comparison": false,
+            "causal": false,
+            "progress": false,
+            "hypothetical": false,
+            "compound": false,
+            "material": [
+              "investigate",
+              "trinsic",
+              "crime",
+              "scene"
+            ]
+          },
+          "reason": "Several visible subjects match; name one.",
+          "candidates": [
+            {
+              "entityId": "ultima7:place:trinsic",
+              "title": "Trinsic"
+            },
+            {
+              "entityId": "ultima7:topic:crime-scene-key",
+              "title": "The key at the crime scene"
+            }
+          ]
+        },
+        "modelIntent": "location",
+        "routeOrigin": "reviewed-knowledge"
+      },
+      "currentSources": [
+        {
+          "file": "guides/js/Ultima7.js",
+          "locator": "DB.mainQuest[0].content",
+          "review": "extracted",
+          "index": {
+            "file": "guides/data/assistant/knowledge/ultima7.json",
+            "locator": "facts[0]",
+            "review": "authored-index"
+          }
+        }
+      ],
+      "strictProblems": [
+        "Missing exact source: guides/js/Ultima7.js :: DB.mainQuest[0]"
+      ],
+      "sourceWitness": {
+        "fileAndLocator": {
+          "file": "guides/js/Ultima7.js",
+          "locator": "DB.mainQuest[0]",
+          "review": "extracted"
+        },
+        "verbatimExcerpt": "Investigate the ritualistic murder in the stables. Examine the crime scene for a key."
+      },
+      "priorFullCorpusAdjudication": {
+        "artifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-ultima7-alqadim-20261025-02.json",
+        "rowIndex": 0,
+        "category": "useful-claim-oracle-difference"
+      },
+      "classification": "complete-answer-locator-granularity-difference",
+      "finding": "The answer gives the murder location (stables), action to investigate, and key clue. Citation is the source content child; the oracle asks for the enclosing DB.mainQuest[0] locator."
+    },
+    {
+      "key": "ultima7/trinsic-evidence-password/3",
+      "surface": "ultima7",
+      "dialogueId": "trinsic-evidence-password",
+      "turn": 3,
+      "question": "How do I get the Trinsic exit password?",
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Blackbird",
+          "Finnigan",
+          "quiz"
+        ],
+        "factIds": [
+          "finnigan-exit"
+        ],
+        "source": {
+          "file": "guides/js/Ultima7.js",
+          "locator": "DB.mainQuest[0].content",
+          "review": "extracted"
+        },
+        "sourceRecordIds": [
+          "ultima7:fact:trinsic-password:explanation"
+        ]
+      },
+      "currentStatus": "failed",
+      "currentDecision": "answer",
+      "currentReply": {
+        "decision": "answer",
+        "text": "Report to Mayor Finnigan and pass his copy protection quiz with these answers:\n\nSpektran latitude: 120\nTerfin longitude: 120\nDagger Isle latitude: 0\nSkara Brae latitude: 30\nDeep Forest latitude: 60\nBuccaneer's Den latitude: 60\nSkara Brae longitude: 60\n\nHe will then give you the password 'Blackbird' to leave the city.",
+        "title": "The Trinsic Murders",
+        "recordIds": [
+          "ultima7:knowledge:finnigan-exit",
+          "ultima7:quest:the-trinsic-murders:hint"
+        ],
+        "sources": [
+          {
+            "file": "guides/js/Ultima7.js",
+            "locator": "DB.mainQuest[0].content",
+            "review": "extracted",
+            "index": {
+              "file": "guides/data/assistant/knowledge/ultima7.json",
+              "locator": "facts[2]",
+              "review": "authored-index"
+            }
+          }
+        ],
+        "sourceLinks": [],
+        "actions": [],
+        "choices": [],
+        "stateChanges": [],
+        "level": "direct",
+        "knowledge": {
+          "factIds": [
+            "finnigan-exit"
+          ],
+          "focusEntityId": "ultima7:quest:the-trinsic-murders",
+          "context": {
+            "guideOnly": false,
+            "editions": []
+          },
+          "evidence": [
+            {
+              "factId": "finnigan-exit",
+              "sourceRecordId": "ultima7:quest:the-trinsic-murders:hint",
+              "source": {
+                "file": "guides/js/Ultima7.js",
+                "locator": "DB.mainQuest[0].content",
+                "review": "extracted"
+              }
+            }
+          ]
+        },
+        "revision": 4,
+        "dialoguePacket": {
+          "originalText": "How do I get the Trinsic exit password?",
+          "intent": "acquisition",
+          "entityId": "ultima7:fact:trinsic-password",
+          "entityTitle": "Finnigan's gate password",
+          "modelIntent": "acquisition",
+          "routeOrigin": "reviewed-knowledge",
+          "transition": "subject-set",
+          "status": "ready",
+          "confidence": {
+            "score": 0.24801788203518613,
+            "margin": 0.09387001006171541
+          },
+          "restrictions": {
+            "guideOnly": false,
+            "editions": [],
+            "negation": false,
+            "quantities": [],
+            "comparison": false,
+            "causal": false,
+            "progress": false,
+            "hypothetical": false,
+            "compound": false,
+            "material": []
+          },
+          "reason": "Visible subject and simple request safely grounded; the engine still decides answer eligibility.",
+          "canonicalQuestion": "How do I get Finnigan's gate password?"
+        },
+        "modelIntent": "acquisition",
+        "routeOrigin": "reviewed-knowledge"
+      },
+      "currentSources": [
+        {
+          "file": "guides/js/Ultima7.js",
+          "locator": "DB.mainQuest[0].content",
+          "review": "extracted",
+          "index": {
+            "file": "guides/data/assistant/knowledge/ultima7.json",
+            "locator": "facts[2]",
+            "review": "authored-index"
+          }
+        }
+      ],
+      "strictProblems": [
+        "Missing one-of sourceRecordIds provenance: ultima7:fact:trinsic-password:explanation"
+      ],
+      "sourceWitness": {
+        "fileAndLocator": {
+          "file": "guides/js/Ultima7.js",
+          "locator": "DB.mainQuest[0].content",
+          "review": "extracted"
+        },
+        "verbatimExcerpt": "Report to Mayor Finnigan and pass his copy protection quiz with these answers … He will then give you the password 'Blackbird' to leave the city."
+      },
+      "priorFullCorpusAdjudication": null,
+      "classification": "complete-answer-source-provenance-id-difference",
+      "finding": "The complete quiz and Blackbird password are present and the exact source content is cited. Strict failure is only that the answer uses the Trinsic quest sourceRecordId rather than the oracle’s password-explanation record ID."
+    },
+    {
+      "key": "ultima7/love-two-rituals/3",
+      "surface": "ultima7",
+      "dialogueId": "love-two-rituals",
+      "turn": 3,
+      "question": "How do I get the Talisman of Love?",
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Stone of Castambre",
+          "twice",
+          "Talisman of Love when done"
+        ],
+        "factIds": [
+          "test-love-definition"
+        ],
+        "source": {
+          "file": "guides/js/Ultima7.js",
+          "locator": "DB.virtueQuests[4]",
+          "review": "extracted"
+        },
+        "sourceRecordIds": [
+          "ultima7:quest:test-of-love:hint"
+        ]
+      },
+      "currentStatus": "failed",
+      "currentDecision": "answer",
+      "currentReply": {
+        "decision": "answer",
+        "text": "Aid Bollux and Adjhar using the Stone of Castambre ritual. Perform it twice—first to revive Adjhar, then again to give Bollux a heart. Receive the Talisman of Love when done.",
+        "title": "Talisman of Love",
+        "recordIds": [
+          "ultima7:knowledge:talisman-love-method",
+          "ultima7:quest:test-of-love:hint"
+        ],
+        "sources": [
+          {
+            "file": "guides/js/Ultima7.js",
+            "locator": "DB.virtueQuests[4]",
+            "review": "extracted",
+            "index": {
+              "file": "guides/data/assistant/knowledge/ultima7.json",
+              "locator": "facts[114]",
+              "review": "authored-index"
+            }
+          }
+        ],
+        "sourceLinks": [],
+        "actions": [],
+        "choices": [],
+        "stateChanges": [],
+        "level": "direct",
+        "knowledge": {
+          "factIds": [
+            "talisman-love-method"
+          ],
+          "focusEntityId": "ultima7:knowledge-entity:talisman-of-love",
+          "context": {
+            "guideOnly": false,
+            "editions": []
+          },
+          "evidence": [
+            {
+              "factId": "talisman-love-method",
+              "sourceRecordId": "ultima7:quest:test-of-love:hint",
+              "source": {
+                "file": "guides/js/Ultima7.js",
+                "locator": "DB.virtueQuests[4]",
+                "review": "extracted"
+              }
+            }
+          ]
+        },
+        "revision": 4,
+        "dialoguePacket": {
+          "originalText": "How do I get the Talisman of Love?",
+          "intent": "acquisition",
+          "entityId": null,
+          "entityTitle": null,
+          "modelIntent": "acquisition",
+          "routeOrigin": "reviewed-knowledge",
+          "transition": "subject-missing",
+          "status": "clarify",
+          "confidence": {
+            "score": 0.2274115802942959,
+            "margin": 0.05810973996536986
+          },
+          "restrictions": {
+            "guideOnly": false,
+            "editions": [],
+            "negation": false,
+            "quantities": [],
+            "comparison": false,
+            "causal": false,
+            "progress": false,
+            "hypothetical": false,
+            "compound": false,
+            "material": [
+              "talisman",
+              "love"
+            ]
+          },
+          "reason": "Name one visible subject; no old subject was recovered."
+        },
+        "modelIntent": "acquisition",
+        "routeOrigin": "reviewed-knowledge"
+      },
+      "currentSources": [
+        {
+          "file": "guides/js/Ultima7.js",
+          "locator": "DB.virtueQuests[4]",
+          "review": "extracted",
+          "index": {
+            "file": "guides/data/assistant/knowledge/ultima7.json",
+            "locator": "facts[114]",
+            "review": "authored-index"
+          }
+        }
+      ],
+      "strictProblems": [
+        "Missing one-of factIds: test-love-definition"
+      ],
+      "sourceWitness": {
+        "fileAndLocator": {
+          "file": "guides/js/Ultima7.js",
+          "locator": "DB.virtueQuests[4]",
+          "review": "extracted"
+        },
+        "verbatimExcerpt": "Aid Bollux and Adjhar using the Stone of Castambre ritual. Perform it twice—first to revive Adjhar, then again to give Bollux a heart. Receive the Talisman of Love when done."
+      },
+      "priorFullCorpusAdjudication": null,
+      "classification": "complete-answer-internal-fact-id-difference",
+      "finding": "The reply reproduces the complete Stone of Castambre two-use method and reward. Its source locator and content match the reviewed source; only the required internal fact ID differs."
+    },
+    {
+      "key": "ultima7/dark-core-stat-caveat/1",
+      "surface": "ultima7",
+      "dialogueId": "dark-core-stat-caveat",
+      "turn": 1,
+      "question": "How do I use Dark Core lenses?",
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "two museum lenses",
+          "Talismans of Principle",
+          "Lord British"
+        ],
+        "factIds": [
+          "dark-core-assembly"
+        ],
+        "source": {
+          "file": "guides/js/Ultima7.js",
+          "locator": "DB.virtueQuests[7].content",
+          "review": "extracted"
+        },
+        "sourceRecordIds": [
+          "ultima7:topic:talismans:hint"
+        ]
+      },
+      "currentStatus": "failed",
+      "currentDecision": "answer",
+      "currentReply": {
+        "decision": "answer",
+        "text": "Assemble the two museum lenses and the Talismans of Principle on the Dark Core per instructions, then report to Lord British for his reward.",
+        "recordIds": [
+          "ultima7:topic:talismans:hint"
+        ],
+        "sources": [
+          {
+            "file": "guides/js/Ultima7.js",
+            "locator": "DB.virtueQuests[7].content",
+            "review": "extracted",
+            "index": {
+              "file": "guides/data/assistant/ultima7.json",
+              "locator": "topics[id=talismans]",
+              "review": "authored-index"
+            }
+          }
+        ],
+        "actions": [],
+        "choices": [],
+        "stateChanges": [],
+        "revision": 2,
+        "level": "direct",
+        "rule": {
+          "value": "unknown",
+          "blockers": [],
+          "unknowns": [],
+          "checks": [],
+          "sources": [],
+          "issues": [
+            "unmodeled requirements"
+          ],
+          "visited": 1
+        },
+        "answerPrefix": "",
+        "answerSuffix": "",
+        "title": "The Talismans of Principle",
+        "dialoguePacket": {
+          "originalText": "How do I use Dark Core lenses?",
+          "intent": "use",
+          "entityId": "ultima7:topic:talismans",
+          "entityTitle": "The Talismans of Principle",
+          "modelIntent": "use",
+          "routeOrigin": "model",
+          "transition": "subject-set",
+          "status": "protected",
+          "confidence": {
+            "score": 0.2473148061898614,
+            "margin": 0.1520000693898072
+          },
+          "restrictions": {
+            "guideOnly": false,
+            "editions": [],
+            "negation": false,
+            "quantities": [],
+            "comparison": false,
+            "causal": false,
+            "progress": false,
+            "hypothetical": false,
+            "compound": false,
+            "material": []
+          },
+          "reason": "This wording is outside the simple lossless rewrite shapes."
+        },
+        "modelIntent": "use",
+        "routeOrigin": "model"
+      },
+      "currentSources": [
+        {
+          "file": "guides/js/Ultima7.js",
+          "locator": "DB.virtueQuests[7].content",
+          "review": "extracted",
+          "index": {
+            "file": "guides/data/assistant/ultima7.json",
+            "locator": "topics[id=talismans]",
+            "review": "authored-index"
+          }
+        }
+      ],
+      "strictProblems": [
+        "Missing one-of factIds: dark-core-assembly"
+      ],
+      "sourceWitness": {
+        "fileAndLocator": {
+          "file": "guides/js/Ultima7.js",
+          "locator": "DB.virtueQuests[7].content",
+          "review": "extracted"
+        },
+        "verbatimExcerpt": "Assemble the two museum lenses and the Talismans of Principle on the Dark Core per instructions, then report to Lord British for his reward."
+      },
+      "priorFullCorpusAdjudication": null,
+      "classification": "complete-answer-internal-fact-id-difference",
+      "finding": "The reply states the two lenses and Talismans of Principle assembly on the Dark Core and reporting to Lord British. It cites the exact source content; only the required internal fact ID is absent."
+    },
+    {
+      "key": "ultima7/dark-core-stat-caveat/2",
+      "surface": "ultima7",
+      "dialogueId": "dark-core-stat-caveat",
+      "turn": 2,
+      "question": "What is the museum lenses purpose?",
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Dark Core",
+          "report to Lord British"
+        ],
+        "factIds": [
+          "dark-core-assembly"
+        ],
+        "source": {
+          "file": "guides/js/Ultima7.js",
+          "locator": "DB.virtueQuests[7].content",
+          "review": "extracted"
+        },
+        "sourceRecordIds": [
+          "ultima7:topic:talismans:hint"
+        ]
+      },
+      "currentStatus": "failed",
+      "currentDecision": "answer",
+      "currentReply": {
+        "decision": "answer",
+        "text": "Assemble the two museum lenses and the Talismans of Principle on the Dark Core per instructions, then report to Lord British for his reward.",
+        "recordIds": [
+          "ultima7:topic:talismans:hint"
+        ],
+        "sources": [
+          {
+            "file": "guides/js/Ultima7.js",
+            "locator": "DB.virtueQuests[7].content",
+            "review": "extracted",
+            "index": {
+              "file": "guides/data/assistant/ultima7.json",
+              "locator": "topics[id=talismans]",
+              "review": "authored-index"
+            }
+          }
+        ],
+        "actions": [],
+        "choices": [],
+        "stateChanges": [],
+        "revision": 3,
+        "level": "direct",
+        "rule": {
+          "value": "unknown",
+          "blockers": [],
+          "unknowns": [],
+          "checks": [],
+          "sources": [],
+          "issues": [
+            "unmodeled requirements"
+          ],
+          "visited": 1
+        },
+        "answerPrefix": "",
+        "answerSuffix": "",
+        "title": "The Talismans of Principle",
+        "dialoguePacket": {
+          "originalText": "What is the museum lenses purpose?",
+          "intent": "identity",
+          "entityId": "ultima7:topic:talismans",
+          "entityTitle": "The Talismans of Principle",
+          "modelIntent": "identity",
+          "routeOrigin": "model",
+          "transition": "subject-retained",
+          "status": "protected",
+          "confidence": {
+            "score": 0.1814022229430376,
+            "margin": 0.014875101630596022
+          },
+          "restrictions": {
+            "guideOnly": false,
+            "editions": [],
+            "negation": false,
+            "quantities": [],
+            "comparison": false,
+            "causal": false,
+            "progress": false,
+            "hypothetical": false,
+            "compound": false,
+            "material": []
+          },
+          "reason": "This wording is outside the simple lossless rewrite shapes."
+        },
+        "modelIntent": "identity",
+        "routeOrigin": "model"
+      },
+      "currentSources": [
+        {
+          "file": "guides/js/Ultima7.js",
+          "locator": "DB.virtueQuests[7].content",
+          "review": "extracted",
+          "index": {
+            "file": "guides/data/assistant/ultima7.json",
+            "locator": "topics[id=talismans]",
+            "review": "authored-index"
+          }
+        }
+      ],
+      "strictProblems": [
+        "Missing one-of factIds: dark-core-assembly"
+      ],
+      "sourceWitness": {
+        "fileAndLocator": {
+          "file": "guides/js/Ultima7.js",
+          "locator": "DB.virtueQuests[7].content",
+          "review": "extracted"
+        },
+        "verbatimExcerpt": "Assemble the two museum lenses and the Talismans of Principle on the Dark Core per instructions, then report to Lord British for his reward."
+      },
+      "priorFullCorpusAdjudication": null,
+      "classification": "complete-answer-internal-fact-id-difference",
+      "finding": "Same complete source answer as turn 1; source citation and answer content are present. Only the expected internal fact ID is absent."
+    },
+    {
+      "key": "ultima7/companion-plans-not-party/1",
+      "surface": "ultima7",
+      "dialogueId": "companion-plans-not-party",
+      "turn": 1,
+      "question": "What is Jaana free healing?",
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "periodically",
+          "free",
+          "innate magic"
+        ],
+        "factIds": [
+          "party-jaana"
+        ],
+        "source": {
+          "file": "guides/js/Ultima7.js",
+          "locator": "DB.companions[6]",
+          "review": "extracted"
+        },
+        "sourceRecordIds": [
+          "ultima7:companion:jaana:explanation"
+        ]
+      },
+      "currentStatus": "failed",
+      "currentDecision": "answer",
+      "currentReply": {
+        "decision": "answer",
+        "text": "Jaana: Healer (Druid). Focus: Healing and magic. Can periodically heal the party for free. Only companion with innate magic. Party Builder choices are a plan, not evidence that this companion is currently in your party.",
+        "recordIds": [
+          "ultima7:companion:jaana:explanation"
+        ],
+        "sources": [
+          {
+            "file": "guides/js/Ultima7.js",
+            "locator": "DB.companions[6]",
+            "review": "extracted",
+            "index": {
+              "file": "guides/js/assistant/adapters/ultima7.js",
+              "locator": "companion notes answer recruitment advice and what-does-he-do questions",
+              "review": "authored-index"
+            }
+          }
+        ],
+        "actions": [],
+        "choices": [],
+        "stateChanges": [],
+        "revision": 2,
+        "level": "gentle",
+        "rule": {
+          "value": "unknown",
+          "blockers": [],
+          "unknowns": [],
+          "checks": [],
+          "sources": [],
+          "issues": [
+            "unmodeled requirements"
+          ],
+          "visited": 1
+        },
+        "answerPrefix": "",
+        "answerSuffix": "",
+        "title": "Jaana",
+        "dialoguePacket": {
+          "originalText": "What is Jaana free healing?",
+          "intent": "identity",
+          "entityId": "ultima7:companion:jaana",
+          "entityTitle": "Jaana",
+          "modelIntent": "identity",
+          "routeOrigin": "model",
+          "transition": "subject-set",
+          "status": "protected",
+          "confidence": {
+            "score": 0.231933776751423,
+            "margin": 0.09994588391170584
+          },
+          "restrictions": {
+            "guideOnly": false,
+            "editions": [],
+            "negation": false,
+            "quantities": [],
+            "comparison": false,
+            "causal": false,
+            "progress": false,
+            "hypothetical": false,
+            "compound": false,
+            "material": [
+              "free",
+              "healing"
+            ]
+          },
+          "reason": "Original wording must reach the baseline unchanged; rewriting would lose a restriction or unsupported relation."
+        },
+        "modelIntent": "identity",
+        "routeOrigin": "model"
+      },
+      "currentSources": [
+        {
+          "file": "guides/js/Ultima7.js",
+          "locator": "DB.companions[6]",
+          "review": "extracted",
+          "index": {
+            "file": "guides/js/assistant/adapters/ultima7.js",
+            "locator": "companion notes answer recruitment advice and what-does-he-do questions",
+            "review": "authored-index"
+          }
+        }
+      ],
+      "strictProblems": [
+        "Missing one-of factIds: party-jaana"
+      ],
+      "sourceWitness": {
+        "fileAndLocator": {
+          "file": "guides/js/Ultima7.js",
+          "locator": "DB.companions[6]",
+          "review": "extracted"
+        },
+        "verbatimExcerpt": "Can periodically heal the party for free. Only companion with innate magic."
+      },
+      "priorFullCorpusAdjudication": null,
+      "classification": "complete-answer-internal-fact-id-difference",
+      "finding": "Reply states Jaana periodically heals the party for free and is the only companion with innate magic, while preserving the plan-versus-current-party caveat. Exact companion object citation is present; only the required internal fact ID is absent."
+    },
+    {
+      "key": "ultima7/companion-plans-not-party/2",
+      "surface": "ultima7",
+      "dialogueId": "companion-plans-not-party",
+      "turn": 2,
+      "question": "What is Spark training growth?",
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "double rate"
+        ],
+        "factIds": [
+          "party-spark"
+        ],
+        "source": {
+          "file": "guides/js/Ultima7.js",
+          "locator": "DB.companions[3]",
+          "review": "extracted"
+        },
+        "sourceRecordIds": [
+          "ultima7:companion:spark:explanation"
+        ]
+      },
+      "currentStatus": "failed",
+      "currentDecision": "answer",
+      "currentReply": {
+        "decision": "answer",
+        "text": "Spark: Fighter. Focus: Fastest growth. Gains training points at double rate. Huge damage potential. Party Builder choices are a plan, not evidence that this companion is currently in your party.",
+        "recordIds": [
+          "ultima7:companion:spark:explanation"
+        ],
+        "sources": [
+          {
+            "file": "guides/js/Ultima7.js",
+            "locator": "DB.companions[3]",
+            "review": "extracted",
+            "index": {
+              "file": "guides/js/assistant/adapters/ultima7.js",
+              "locator": "companion notes answer recruitment advice and what-does-he-do questions",
+              "review": "authored-index"
+            }
+          }
+        ],
+        "actions": [],
+        "choices": [],
+        "stateChanges": [],
+        "revision": 3,
+        "level": "gentle",
+        "rule": {
+          "value": "unknown",
+          "blockers": [],
+          "unknowns": [],
+          "checks": [],
+          "sources": [],
+          "issues": [
+            "unmodeled requirements"
+          ],
+          "visited": 1
+        },
+        "answerPrefix": "",
+        "answerSuffix": "",
+        "title": "Spark",
+        "dialoguePacket": {
+          "originalText": "What is Spark training growth?",
+          "intent": "stats",
+          "entityId": "ultima7:companion:spark",
+          "entityTitle": "Spark",
+          "modelIntent": "stats",
+          "routeOrigin": "model",
+          "transition": "subject-set",
+          "status": "protected",
+          "confidence": {
+            "score": 0.18154701855828714,
+            "margin": 0.006035660281966226
+          },
+          "restrictions": {
+            "guideOnly": false,
+            "editions": [],
+            "negation": false,
+            "quantities": [],
+            "comparison": false,
+            "causal": false,
+            "progress": false,
+            "hypothetical": false,
+            "compound": false,
+            "material": [
+              "training",
+              "growth"
+            ]
+          },
+          "reason": "Original wording must reach the baseline unchanged; rewriting would lose a restriction or unsupported relation."
+        },
+        "modelIntent": "stats",
+        "routeOrigin": "model"
+      },
+      "currentSources": [
+        {
+          "file": "guides/js/Ultima7.js",
+          "locator": "DB.companions[3]",
+          "review": "extracted",
+          "index": {
+            "file": "guides/js/assistant/adapters/ultima7.js",
+            "locator": "companion notes answer recruitment advice and what-does-he-do questions",
+            "review": "authored-index"
+          }
+        }
+      ],
+      "strictProblems": [
+        "Missing one-of factIds: party-spark"
+      ],
+      "sourceWitness": {
+        "fileAndLocator": {
+          "file": "guides/js/Ultima7.js",
+          "locator": "DB.companions[3]",
+          "review": "extracted"
+        },
+        "verbatimExcerpt": "Gains training points at double rate."
+      },
+      "priorFullCorpusAdjudication": null,
+      "classification": "complete-answer-internal-fact-id-difference",
+      "finding": "Reply states Spark gains training points at double rate and preserves the plan-versus-current-party caveat. Exact companion object citation is present; only the required internal fact ID is absent."
+    },
+    {
+      "key": "starcraft/starcraft-knowledge-support-links/3",
+      "surface": "starcraft",
+      "dialogueId": "starcraft-knowledge-support-links",
+      "turn": 3,
+      "question": "Where is SCHNAIL downloaded?",
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "downloads page",
+          "account"
+        ],
+        "notContains": [],
+        "factIds": [
+          "starcraft:knowledge:schnail-download",
+          "starcraft:knowledge:schnail-account"
+        ],
+        "source": {
+          "file": "guides/StarcraftBWAPI.html",
+          "locator": "#schnail-requirements li:nth-child(2)"
+        }
+      },
+      "currentStatus": "failed",
+      "currentDecision": "answer",
+      "currentReply": {
+        "decision": "answer",
+        "text": "2. Download the latest release of SCHNAIL from their downloads page (requires account, see SCHNAIL Setup Guide for more information)",
+        "recordIds": [
+          "starcraft:schnail:download"
+        ],
+        "sources": [
+          {
+            "file": "guides/StarcraftBWAPI.html",
+            "locator": "#schnail-requirements li:nth-child(2)",
+            "review": "extracted",
+            "index": {
+              "file": "guides/data/assistant/starcraft.json",
+              "locator": "entities[0].facts[1].answers",
+              "review": "authored-index"
+            }
+          }
+        ],
+        "actions": [],
+        "choices": [],
+        "stateChanges": [],
+        "revision": 4,
+        "level": "direct",
+        "rule": {
+          "value": "unknown",
+          "blockers": [],
+          "unknowns": [],
+          "checks": [],
+          "sources": [],
+          "issues": [
+            "unmodeled requirements"
+          ],
+          "visited": 1
+        },
+        "answerPrefix": "",
+        "answerSuffix": "",
+        "title": "SCHNAIL",
+        "dialoguePacket": {
+          "originalText": "Where is SCHNAIL downloaded?",
+          "intent": "location",
+          "entityId": "starcraft:schnail",
+          "entityTitle": "SCHNAIL",
+          "modelIntent": "location",
+          "routeOrigin": "model",
+          "transition": "subject-retained",
+          "status": "protected",
+          "confidence": {
+            "score": 0.3210116796778302,
+            "margin": 0.020287385333287
+          },
+          "restrictions": {
+            "guideOnly": false,
+            "editions": [],
+            "negation": false,
+            "quantities": [],
+            "comparison": false,
+            "causal": false,
+            "progress": false,
+            "hypothetical": false,
+            "compound": false,
+            "material": [
+              "downloaded"
+            ]
+          },
+          "reason": "Original wording must reach the baseline unchanged; rewriting would lose a restriction or unsupported relation."
+        },
+        "modelIntent": "location",
+        "routeOrigin": "model"
+      },
+      "currentSources": [
+        {
+          "file": "guides/StarcraftBWAPI.html",
+          "locator": "#schnail-requirements li:nth-child(2)",
+          "review": "extracted",
+          "index": {
+            "file": "guides/data/assistant/starcraft.json",
+            "locator": "entities[0].facts[1].answers",
+            "review": "authored-index"
+          }
+        }
+      ],
+      "strictProblems": [
+        "Missing one-of factIds: starcraft:knowledge:schnail-download, starcraft:knowledge:schnail-account"
+      ],
+      "sourceWitness": {
+        "fileAndLocator": {
+          "file": "guides/StarcraftBWAPI.html",
+          "locator": "#schnail-requirements li:nth-child(2)"
+        },
+        "verbatimExcerpt": "Download the latest release of SCHNAIL from their downloads page (requires account, see SCHNAIL Setup Guide for more information)."
+      },
+      "priorFullCorpusAdjudication": null,
+      "classification": "complete-answer-internal-fact-id-difference",
+      "finding": "Answer names the SCHNAIL downloads page, account requirement, and Setup Guide. It cites the exact download list item; only the expected internal IDs are absent."
+    },
+    {
+      "key": "ultima5/carpet-pronoun/1",
+      "surface": "ultima5",
+      "dialogueId": "carpet-pronoun",
+      "turn": 1,
+      "question": "How do I use the Magic Carpet?",
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "land, water, swamps, brush, and hills",
+          "mountains still require the Grapple"
+        ],
+        "notContains": [],
+        "factIds": [
+          "carpet-terrain"
+        ],
+        "source": {
+          "file": "guides/js/Ultima5.js",
+          "locator": "ultima5GrandQuestChapters objective=opening-castle-raid.steps[3]",
+          "review": "extracted"
+        }
+      },
+      "currentStatus": "failed",
+      "currentDecision": "answer",
+      "currentReply": {
+        "decision": "answer",
+        "text": "Bring a Skull Key from Shenstone’s stump in Minoc, climb to Lord British’s private rooftop room, unlock the magic door, and take the carpet. It crosses shallow water, swamp, brush, and hills; mountains still need the Grapple, and rough sea is dangerous.",
+        "title": "Secure the Magic Carpet",
+        "recordIds": [
+          "ultima5:knowledge:side-magic-carpet",
+          "ultima5:side:side-magic-carpet:hint"
+        ],
+        "sources": [
+          {
+            "file": "guides/js/Ultima5.js",
+            "locator": "ultima5SideQuests id=side-magic-carpet.detail",
+            "review": "extracted",
+            "index": {
+              "file": "guides/data/assistant/knowledge/ultima5.json",
+              "locator": "facts[83]",
+              "review": "authored-index"
+            }
+          }
+        ],
+        "sourceLinks": [],
+        "actions": [],
+        "choices": [],
+        "stateChanges": [],
+        "level": "direct",
+        "knowledge": {
+          "factIds": [
+            "side-magic-carpet"
+          ],
+          "focusEntityId": "ultima5:item:magic-carpet",
+          "context": {
+            "guideOnly": false,
+            "editions": []
+          },
+          "evidence": [
+            {
+              "factId": "side-magic-carpet",
+              "sourceRecordId": "ultima5:side:side-magic-carpet:hint",
+              "source": {
+                "file": "guides/js/Ultima5.js",
+                "locator": "ultima5SideQuests id=side-magic-carpet.detail",
+                "review": "extracted"
+              }
+            }
+          ]
+        },
+        "revision": 2,
+        "dialoguePacket": {
+          "originalText": "How do I use the Magic Carpet?",
+          "intent": "use",
+          "entityId": "ultima5:item:magic-carpet",
+          "entityTitle": "Magic Carpet",
+          "modelIntent": "use",
+          "routeOrigin": "reviewed-knowledge",
+          "transition": "subject-set",
+          "status": "ready",
+          "confidence": {
+            "score": 0.25274301889926815,
+            "margin": 0.1335872987017523
+          },
+          "restrictions": {
+            "guideOnly": false,
+            "editions": [],
+            "negation": false,
+            "quantities": [],
+            "comparison": false,
+            "causal": false,
+            "progress": false,
+            "hypothetical": false,
+            "compound": false,
+            "material": []
+          },
+          "reason": "Visible subject and simple request safely grounded; the engine still decides answer eligibility.",
+          "canonicalQuestion": "What does Magic Carpet do?"
+        },
+        "modelIntent": "use",
+        "routeOrigin": "reviewed-knowledge"
+      },
+      "currentSources": [
+        {
+          "file": "guides/js/Ultima5.js",
+          "locator": "ultima5SideQuests id=side-magic-carpet.detail",
+          "review": "extracted",
+          "index": {
+            "file": "guides/data/assistant/knowledge/ultima5.json",
+            "locator": "facts[83]",
+            "review": "authored-index"
+          }
+        }
+      ],
+      "strictProblems": [
+        "Missing substring: land, water, swamps, brush, and hills",
+        "Missing substring: mountains still require the Grapple",
+        "Missing one-of factIds: carpet-terrain",
+        "Missing exact source: guides/js/Ultima5.js :: ultima5GrandQuestChapters objective=opening-castle-raid.steps[3]"
+      ],
+      "sourceWitness": {
+        "fileAndLocator": {
+          "file": "guides/js/Ultima5.js",
+          "locator": "ultima5GrandQuestChapters objective=opening-castle-raid.steps[3]",
+          "review": "extracted"
+        },
+        "verbatimExcerpt": "Bring a Skull Key from Shenstone’s stump in Minoc (or AN SANCT), climb to Lord British’s private rooftop room, unlock the magic door, and take the carpet. It crosses shallow water, swamp, brush, and hills; mountains still need the Grapple, and rough sea is dangerous."
+      },
+      "priorFullCorpusAdjudication": {
+        "artifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-ultima5-ultima6-20261025-02.json",
+        "rowIndex": 4,
+        "category": "useful-claim-oracle-difference"
+      },
+      "classification": "complete-answer-alternate-witness-and-wording-difference",
+      "finding": "The answer supplies the Skull Key route to obtain the carpet, its shallow-water/swamp/brush/hill terrain use, mountain/Grapple limit, and rough-sea danger. It cites the complete side-quest detail, an alternate authored witness to the oracle’s opening-raid step; wording differs but content is supported."
+    },
+    {
+      "key": "albion/sira-party-link/4",
+      "surface": "albion",
+      "dialogueId": "sira-party-link",
+      "turn": 4,
+      "question": "Where does Sira train spells?",
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Fasiir",
+          "Jirinaar"
+        ],
+        "factIds": [
+          "iskai-training"
+        ],
+        "source": {
+          "file": "guides/js/Albion.js",
+          "locator": "DB.magic[0].freeTraining",
+          "review": "extracted"
+        }
+      },
+      "currentStatus": "failed",
+      "currentDecision": "answer",
+      "currentReply": {
+        "decision": "answer",
+        "text": "Iskai (Dji-Kas): practitioner Sira; reagent Trifalai Seed (1.2G each); training: Fasiir in Dji-Kas guild (Jirinaar). Visit Fasiir before leaving Jirinaar; this is the documented free spell-training stop for Sira.",
+        "title": "Sira spell training",
+        "recordIds": [
+          "albion:knowledge:iskai-training",
+          "albion:topic:magic-iskai:explanation"
+        ],
+        "sources": [
+          {
+            "file": "guides/js/Albion.js",
+            "locator": "DB.magic[0]",
+            "review": "extracted",
+            "index": {
+              "file": "guides/data/assistant/knowledge/albion.json",
+              "locator": "facts[68]",
+              "review": "authored-index"
+            }
+          }
+        ],
+        "sourceLinks": [],
+        "actions": [],
+        "choices": [],
+        "stateChanges": [],
+        "level": "direct",
+        "knowledge": {
+          "factIds": [
+            "iskai-training"
+          ],
+          "focusEntityId": "albion:character:sira",
+          "context": {
+            "guideOnly": false,
+            "editions": []
+          },
+          "evidence": [
+            {
+              "factId": "iskai-training",
+              "sourceRecordId": "albion:topic:magic-iskai:explanation",
+              "source": {
+                "file": "guides/js/Albion.js",
+                "locator": "DB.magic[0]",
+                "review": "extracted"
+              }
+            }
+          ]
+        },
+        "revision": 5,
+        "dialoguePacket": {
+          "originalText": "Where does Sira train spells?",
+          "intent": "location",
+          "entityId": null,
+          "entityTitle": null,
+          "modelIntent": "location",
+          "routeOrigin": "reviewed-knowledge",
+          "transition": "ambiguous-subject",
+          "status": "clarify",
+          "confidence": {
+            "score": 0.21579534434466982,
+            "margin": 0.04756067942207545
+          },
+          "restrictions": {
+            "guideOnly": false,
+            "editions": [],
+            "negation": false,
+            "quantities": [],
+            "comparison": false,
+            "causal": false,
+            "progress": false,
+            "hypothetical": false,
+            "compound": false,
+            "material": [
+              "sira",
+              "train",
+              "spells"
+            ]
+          },
+          "reason": "Several visible subjects match; name one.",
+          "candidates": [
+            {
+              "entityId": "albion:character:sira",
+              "title": "Sira"
+            },
+            {
+              "entityId": "albion:topic:training",
+              "title": "Training costs"
+            }
+          ]
+        },
+        "modelIntent": "location",
+        "routeOrigin": "reviewed-knowledge"
+      },
+      "currentSources": [
+        {
+          "file": "guides/js/Albion.js",
+          "locator": "DB.magic[0]",
+          "review": "extracted",
+          "index": {
+            "file": "guides/data/assistant/knowledge/albion.json",
+            "locator": "facts[68]",
+            "review": "authored-index"
+          }
+        }
+      ],
+      "strictProblems": [
+        "Missing exact source: guides/js/Albion.js :: DB.magic[0].freeTraining"
+      ],
+      "sourceWitness": {
+        "fileAndLocator": {
+          "file": "guides/js/Albion.js",
+          "locator": "DB.magic[0].freeTraining",
+          "review": "extracted"
+        },
+        "verbatimExcerpt": "freeTraining: Fasiir in Dji-Kas guild (Jirinaar)."
+      },
+      "priorFullCorpusAdjudication": {
+        "artifact": "guides/tests/assistant/evidence/knowledge-semantic-fields-adjudication-20261025.json",
+        "rowIndex": 1,
+        "category": "useful-claim-oracle-difference"
+      },
+      "classification": "complete-answer-nested-locator-difference",
+      "finding": "Answer gives Fasiir, Dji-Kas guild, and Jirinaar training location; its citation is parent DB.magic[0], containing the expected freeTraining field."
+    },
+    {
+      "key": "albion/rejira-money/1",
+      "surface": "albion",
+      "dialogueId": "rejira-money",
+      "turn": 1,
+      "question": "How do I get Rejira potions?",
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Blue Healing Potions",
+          "Rabir"
+        ],
+        "factIds": [
+          "rejira-exploit"
+        ],
+        "source": {
+          "file": "guides/js/Albion.js",
+          "locator": "QUEST_HINTS[\"nakiridaani\"][\"rejira-exploit\"]",
+          "review": "extracted"
+        }
+      },
+      "currentStatus": "failed",
+      "currentDecision": "answer",
+      "currentReply": {
+        "decision": "answer",
+        "text": "Ending conversations with Rejira in the Dji-Kas Guild can repeatedly produce Blue Healing Potions. The public walkthrough recommends Rabir early and Umajo later as buyers.",
+        "title": "Rejira’s healing potions",
+        "recordIds": [
+          "albion:knowledge:trade-hint-0",
+          "albion:topic:healing-potions:acquisition"
+        ],
+        "sources": [
+          {
+            "file": "guides/js/Albion.js",
+            "locator": "ALBION_TRADE_HINTS[0].text",
+            "review": "extracted",
+            "index": {
+              "file": "guides/data/assistant/knowledge/albion.json",
+              "locator": "facts[95]",
+              "review": "authored-index"
+            }
+          }
+        ],
+        "sourceLinks": [],
+        "actions": [],
+        "choices": [],
+        "stateChanges": [],
+        "level": "direct",
+        "knowledge": {
+          "factIds": [
+            "trade-hint-0"
+          ],
+          "focusEntityId": "albion:knowledge:rejira-s-healing-potions",
+          "context": {
+            "guideOnly": false,
+            "editions": []
+          },
+          "evidence": [
+            {
+              "factId": "trade-hint-0",
+              "sourceRecordId": "albion:topic:healing-potions:acquisition",
+              "source": {
+                "file": "guides/js/Albion.js",
+                "locator": "ALBION_TRADE_HINTS[0].text",
+                "review": "extracted"
+              }
+            }
+          ]
+        },
+        "revision": 2,
+        "dialoguePacket": {
+          "originalText": "How do I get Rejira potions?",
+          "intent": "acquisition",
+          "entityId": "albion:topic:healing-potions",
+          "entityTitle": "Blue Healing Potions",
+          "modelIntent": "acquisition",
+          "routeOrigin": "reviewed-knowledge",
+          "transition": "subject-set",
+          "status": "protected",
+          "confidence": {
+            "score": 0.2696108097796309,
+            "margin": 0.14923403878228678
+          },
+          "restrictions": {
+            "guideOnly": false,
+            "editions": [],
+            "negation": false,
+            "quantities": [],
+            "comparison": false,
+            "causal": false,
+            "progress": false,
+            "hypothetical": false,
+            "compound": false,
+            "material": [
+              "potions"
+            ]
+          },
+          "reason": "Original wording must reach the baseline unchanged; rewriting would lose a restriction or unsupported relation."
+        },
+        "modelIntent": "acquisition",
+        "routeOrigin": "reviewed-knowledge"
+      },
+      "currentSources": [
+        {
+          "file": "guides/js/Albion.js",
+          "locator": "ALBION_TRADE_HINTS[0].text",
+          "review": "extracted",
+          "index": {
+            "file": "guides/data/assistant/knowledge/albion.json",
+            "locator": "facts[95]",
+            "review": "authored-index"
+          }
+        }
+      ],
+      "strictProblems": [
+        "Missing one-of factIds: rejira-exploit",
+        "Missing exact source: guides/js/Albion.js :: QUEST_HINTS[\"nakiridaani\"][\"rejira-exploit\"]"
+      ],
+      "sourceWitness": {
+        "fileAndLocator": {
+          "file": "guides/js/Albion.js",
+          "locator": "QUEST_HINTS[\"nakiridaani\"][\"rejira-exploit\"]",
+          "review": "extracted"
+        },
+        "verbatimExcerpt": "Ending conversations with Rejira in the Dji-Kas Guild can repeatedly produce Blue Healing Potions. The public walkthrough recommends Rabir early and Umajo later as buyers."
+      },
+      "priorFullCorpusAdjudication": {
+        "artifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-starcraft-albion-20261025-02.json",
+        "rowIndex": 3,
+        "category": "useful-claim-oracle-difference"
+      },
+      "classification": "complete-answer-parallel-source-and-fact-id-difference",
+      "finding": "Answer says conversations with Rejira in the Dji-Kas Guild produce Blue Healing Potions and names buyers. It cites the authored trade-hint text instead of duplicate objective hint; no user-requested content is missing."
+    },
+    {
+      "key": "albion/melthas-demon-spells/3",
+      "surface": "albion",
+      "dialogueId": "melthas-demon-spells",
+      "turn": 3,
+      "question": "Where does Melthas get spell scrolls?",
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Roves",
+          "Arjano library"
+        ],
+        "factIds": [
+          "druid-training"
+        ],
+        "source": {
+          "file": "guides/js/Albion.js",
+          "locator": "DB.magic[1].freeTraining",
+          "review": "extracted"
+        }
+      },
+      "currentStatus": "failed",
+      "currentDecision": "answer",
+      "currentReply": {
+        "decision": "answer",
+        "text": "Celtic/Mahinos (Druid): practitioner Melthas; reagent None; training: Buy scrolls from Roves in Arjano library. Arjano's library is the route stop for Melthas's spell scrolls.",
+        "title": "Melthas spell scrolls",
+        "recordIds": [
+          "albion:knowledge:druid-training",
+          "albion:topic:magic-druid:explanation"
+        ],
+        "sources": [
+          {
+            "file": "guides/js/Albion.js",
+            "locator": "DB.magic[1]",
+            "review": "extracted",
+            "index": {
+              "file": "guides/data/assistant/knowledge/albion.json",
+              "locator": "facts[72]",
+              "review": "authored-index"
+            }
+          }
+        ],
+        "sourceLinks": [],
+        "actions": [],
+        "choices": [],
+        "stateChanges": [],
+        "level": "direct",
+        "knowledge": {
+          "factIds": [
+            "druid-training"
+          ],
+          "focusEntityId": "albion:knowledge:melthas-spell-training",
+          "context": {
+            "guideOnly": false,
+            "editions": []
+          },
+          "evidence": [
+            {
+              "factId": "druid-training",
+              "sourceRecordId": "albion:topic:magic-druid:explanation",
+              "source": {
+                "file": "guides/js/Albion.js",
+                "locator": "DB.magic[1]",
+                "review": "extracted"
+              }
+            }
+          ]
+        },
+        "revision": 4,
+        "dialoguePacket": {
+          "originalText": "Where does Melthas get spell scrolls?",
+          "intent": "location",
+          "entityId": null,
+          "entityTitle": null,
+          "modelIntent": "location",
+          "routeOrigin": "reviewed-knowledge",
+          "transition": "ambiguous-subject",
+          "status": "clarify",
+          "confidence": {
+            "score": 0.27835137012218303,
+            "margin": 0.16231031499320586
+          },
+          "restrictions": {
+            "guideOnly": false,
+            "editions": [],
+            "negation": false,
+            "quantities": [],
+            "comparison": false,
+            "causal": false,
+            "progress": false,
+            "hypothetical": false,
+            "compound": false,
+            "material": [
+              "melthas",
+              "spell",
+              "scrolls"
+            ]
+          },
+          "reason": "Several visible subjects match; name one.",
+          "candidates": [
+            {
+              "entityId": "albion:character:melthas",
+              "title": "Melthas"
+            },
+            {
+              "entityId": "albion:topic:spell-training",
+              "title": "Spell training"
+            }
+          ]
+        },
+        "modelIntent": "location",
+        "routeOrigin": "reviewed-knowledge"
+      },
+      "currentSources": [
+        {
+          "file": "guides/js/Albion.js",
+          "locator": "DB.magic[1]",
+          "review": "extracted",
+          "index": {
+            "file": "guides/data/assistant/knowledge/albion.json",
+            "locator": "facts[72]",
+            "review": "authored-index"
+          }
+        }
+      ],
+      "strictProblems": [
+        "Missing exact source: guides/js/Albion.js :: DB.magic[1].freeTraining"
+      ],
+      "sourceWitness": {
+        "fileAndLocator": {
+          "file": "guides/js/Albion.js",
+          "locator": "DB.magic[1].freeTraining",
+          "review": "extracted"
+        },
+        "verbatimExcerpt": "freeTraining: Buy scrolls from Roves in Arjano library."
+      },
+      "priorFullCorpusAdjudication": {
+        "artifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-starcraft-albion-20261025-02.json",
+        "rowIndex": 5,
+        "category": "useful-claim-oracle-difference"
+      },
+      "classification": "complete-answer-nested-locator-difference",
+      "finding": "Answer states buy scrolls from Roves in Arjano library; cited DB.magic[1] parent contains the expected freeTraining field."
+    },
+    {
+      "key": "albion/assassination-reward/1",
+      "surface": "albion",
+      "dialogueId": "assassination-reward",
+      "turn": 1,
+      "question": "What is the Herras assassination sequence?",
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Timed sequence",
+          "Kariah",
+          "Edjiir"
+        ],
+        "factIds": [
+          "assassination-sequence"
+        ],
+        "source": {
+          "file": "guides/js/Albion.js",
+          "locator": "QUEST_HINTS[\"maini\"][\"assassination-sequence\"]",
+          "review": "extracted"
+        }
+      },
+      "currentStatus": "failed",
+      "currentDecision": "answer",
+      "currentReply": {
+        "decision": "answer",
+        "text": "Source limitation: The quest notes use Kounos and Edjiir, while the atlas uses Kontos and Edjirr. The complete sequence is quoted as written; those names are not established as equivalent.\n\nOriginal guide quotation:\n“Timed sequence: talk to Herras (council), visit Kariah (ask “Yes” + “Information”), find Melthas’s friend (Kounos), buy Edjiir info (Srimalinar), return to Herras (ask “Assassination”), then find Melthas’s friend again to trigger the event.”\n\nAdditional source quotations:\n“Edjirr appears on: Edjirr (wanders nearby).”\n“Kontos appears on: Kontos (wanders nearby).”",
+        "recordIds": [
+          "albion:objective:maini:assassination-sequence:hint",
+          "albion:npc:edjirr:location",
+          "albion:npc:kontos:location"
+        ],
+        "sources": [
+          {
+            "file": "guides/js/Albion.js",
+            "locator": "QUEST_HINTS[\"maini\"][\"assassination-sequence\"]",
+            "review": "extracted"
+          },
+          {
+            "file": "guides/js/AlbionAtlasData.js",
+            "locator": "ALBION_ATLAS_CONFIG.maps[*].npcs[id=npc:281:7]",
+            "review": "extracted"
+          },
+          {
+            "file": "guides/js/AlbionAtlasData.js",
+            "locator": "ALBION_ATLAS_CONFIG.maps[*].npcs[id=npc:213:0]",
+            "review": "extracted"
+          }
+        ],
+        "quotedFactIds": [
+          "assassination-sequence"
+        ],
+        "sourcePresentation": {
+          "kind": "conflict-quotation",
+          "conflictId": "albion:maini-names",
+          "mode": "unresolved-names"
+        },
+        "actions": [],
+        "choices": [],
+        "stateChanges": [],
+        "sourceLinks": [],
+        "level": "direct",
+        "revision": 2,
+        "dialoguePacket": {
+          "originalText": "What is the Herras assassination sequence?",
+          "status": "ready",
+          "routeOrigin": "source-engine",
+          "modelIntent": null,
+          "sourceScope": "conflict-quotation"
+        },
+        "modelIntent": null,
+        "routeOrigin": "source-engine"
+      },
+      "currentSources": [
+        {
+          "file": "guides/js/Albion.js",
+          "locator": "QUEST_HINTS[\"maini\"][\"assassination-sequence\"]",
+          "review": "extracted"
+        },
+        {
+          "file": "guides/js/AlbionAtlasData.js",
+          "locator": "ALBION_ATLAS_CONFIG.maps[*].npcs[id=npc:281:7]",
+          "review": "extracted"
+        },
+        {
+          "file": "guides/js/AlbionAtlasData.js",
+          "locator": "ALBION_ATLAS_CONFIG.maps[*].npcs[id=npc:213:0]",
+          "review": "extracted"
+        }
+      ],
+      "strictProblems": [
+        "Missing one-of factIds: assassination-sequence"
+      ],
+      "sourceWitness": {
+        "fileAndLocator": {
+          "file": "guides/js/Albion.js",
+          "locator": "QUEST_HINTS[\"maini\"][\"assassination-sequence\"]",
+          "review": "extracted"
+        },
+        "verbatimExcerpt": "Timed sequence: talk to Herras (council), visit Kariah (ask “Yes” + “Information”), find Melthas’s friend (Kounos), buy Edjiir info (Srimalinar), return to Herras (ask “Assassination”), then find Melthas’s friend again to trigger the event."
+      },
+      "priorFullCorpusAdjudication": {
+        "artifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-starcraft-albion-20261025-02.json",
+        "rowIndex": 8,
+        "category": "source-present-unanswered"
+      },
+      "classification": "source-complete-qualified-quotation-in-quotedFactIds",
+      "finding": "The full timed sequence is quoted from QUEST_HINTS. Reply explicitly says the quest notes’ Kounos/Edjiir and atlas Kontos/Edjirr are not established as equivalent, then attributes the two atlas NPC reports separately. The strict check requires assassination-sequence in ordinary knowledge.factIds; actual reply preserves it in quotedFactIds and cites all three sources. No answer omission or name equivalence is observed."
+    },
+    {
+      "key": "albion/harriet-travel/3",
+      "surface": "albion",
+      "dialogueId": "harriet-travel",
+      "turn": 3,
+      "question": "Where does Harriet train spells?",
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Drannagh",
+          "Dji-Cantos"
+        ],
+        "factIds": [
+          "dji-cantos-training"
+        ],
+        "source": {
+          "file": "guides/js/Albion.js",
+          "locator": "DB.magic[3].freeTraining",
+          "review": "extracted"
+        }
+      },
+      "currentStatus": "failed",
+      "currentDecision": "answer",
+      "currentReply": {
+        "decision": "answer",
+        "text": "Dji-Cantos (Enlightened Ones): practitioner Harriet; reagent None; training: Drannagh in Dji-Cantos building. Drannagh teaches Harriet without a spell-training fee at the Dji-Cantos building.",
+        "title": "Harriet spell training",
+        "recordIds": [
+          "albion:knowledge:dji-cantos-training",
+          "albion:topic:magic-dji-cantos:explanation"
+        ],
+        "sources": [
+          {
+            "file": "guides/js/Albion.js",
+            "locator": "DB.magic[3]",
+            "review": "extracted",
+            "index": {
+              "file": "guides/data/assistant/knowledge/albion.json",
+              "locator": "facts[80]",
+              "review": "authored-index"
+            }
+          }
+        ],
+        "sourceLinks": [],
+        "actions": [],
+        "choices": [],
+        "stateChanges": [],
+        "level": "direct",
+        "knowledge": {
+          "factIds": [
+            "dji-cantos-training"
+          ],
+          "focusEntityId": "albion:character:harriet",
+          "context": {
+            "guideOnly": false,
+            "editions": []
+          },
+          "evidence": [
+            {
+              "factId": "dji-cantos-training",
+              "sourceRecordId": "albion:topic:magic-dji-cantos:explanation",
+              "source": {
+                "file": "guides/js/Albion.js",
+                "locator": "DB.magic[3]",
+                "review": "extracted"
+              }
+            }
+          ]
+        },
+        "revision": 4,
+        "dialoguePacket": {
+          "originalText": "Where does Harriet train spells?",
+          "intent": "location",
+          "entityId": null,
+          "entityTitle": null,
+          "modelIntent": "location",
+          "routeOrigin": "reviewed-knowledge",
+          "transition": "ambiguous-subject",
+          "status": "clarify",
+          "confidence": {
+            "score": 0.24402837221123266,
+            "margin": 0.136233119862804
+          },
+          "restrictions": {
+            "guideOnly": false,
+            "editions": [],
+            "negation": false,
+            "quantities": [],
+            "comparison": false,
+            "causal": false,
+            "progress": false,
+            "hypothetical": false,
+            "compound": false,
+            "material": [
+              "harriet",
+              "train",
+              "spells"
+            ]
+          },
+          "reason": "Several visible subjects match; name one.",
+          "candidates": [
+            {
+              "entityId": "albion:character:harriet",
+              "title": "Harriet"
+            },
+            {
+              "entityId": "albion:topic:training",
+              "title": "Training costs"
+            }
+          ]
+        },
+        "modelIntent": "location",
+        "routeOrigin": "reviewed-knowledge"
+      },
+      "currentSources": [
+        {
+          "file": "guides/js/Albion.js",
+          "locator": "DB.magic[3]",
+          "review": "extracted",
+          "index": {
+            "file": "guides/data/assistant/knowledge/albion.json",
+            "locator": "facts[80]",
+            "review": "authored-index"
+          }
+        }
+      ],
+      "strictProblems": [
+        "Missing exact source: guides/js/Albion.js :: DB.magic[3].freeTraining"
+      ],
+      "sourceWitness": {
+        "fileAndLocator": {
+          "file": "guides/js/Albion.js",
+          "locator": "DB.magic[3].freeTraining",
+          "review": "extracted"
+        },
+        "verbatimExcerpt": "freeTraining: Drannagh in Dji-Cantos building."
+      },
+      "priorFullCorpusAdjudication": {
+        "artifact": "guides/tests/assistant/evidence/knowledge-semantic-fields-adjudication-20261025.json",
+        "rowIndex": 3,
+        "category": "useful-claim-oracle-difference"
+      },
+      "classification": "complete-answer-nested-locator-difference",
+      "finding": "Answer identifies Harriet’s free training by Drannagh in the Dji-Cantos building; cited DB.magic[3] parent contains the expected freeTraining child."
+    },
+    {
+      "key": "albion/porenoil-route/1",
+      "surface": "albion",
+      "dialogueId": "porenoil-route",
+      "turn": 1,
+      "question": "How do I get Porenoil?",
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Merdger/Merger",
+          "Equipment Maker"
+        ],
+        "factIds": [
+          "porenoil"
+        ],
+        "source": {
+          "file": "guides/js/Albion.js",
+          "locator": "QUEST_HINTS[\"umajo\"][\"porenoil\"]",
+          "review": "extracted"
+        }
+      },
+      "currentStatus": "failed",
+      "currentDecision": "answer",
+      "currentReply": {
+        "decision": "answer",
+        "text": "Ask Merdger/Merger in the Equipment Maker’s Guild about Porenoil; it prevents dehydration in the desert.",
+        "recordIds": [
+          "albion:objective:umajo:porenoil:hint"
+        ],
+        "sources": [
+          {
+            "file": "guides/js/Albion.js",
+            "locator": "QUEST_HINTS[\"umajo\"][\"porenoil\"]",
+            "review": "extracted",
+            "index": {
+              "file": "guides/js/assistant/adapters/albion.js",
+              "locator": "overlay objectiveAnswers.porenoil",
+              "review": "authored-index"
+            }
+          }
+        ],
+        "actions": [],
+        "choices": [],
+        "stateChanges": [],
+        "revision": 2,
+        "level": "direct",
+        "rule": {
+          "value": "unknown",
+          "blockers": [],
+          "unknowns": [],
+          "checks": [],
+          "sources": [],
+          "issues": [
+            "unmodeled requirements"
+          ],
+          "visited": 1
+        },
+        "answerPrefix": "",
+        "answerSuffix": "",
+        "title": "Get Porenoil for desert survival",
+        "dialoguePacket": {
+          "originalText": "How do I get Porenoil?",
+          "intent": "acquisition",
+          "entityId": "albion:objective:umajo:porenoil",
+          "entityTitle": "Get Porenoil for desert survival",
+          "modelIntent": "acquisition",
+          "routeOrigin": "model",
+          "transition": "subject-set",
+          "status": "ready",
+          "confidence": {
+            "score": 0.3125667927386027,
+            "margin": 0.20277460461945543
+          },
+          "restrictions": {
+            "guideOnly": false,
+            "editions": [],
+            "negation": false,
+            "quantities": [],
+            "comparison": false,
+            "causal": false,
+            "progress": false,
+            "hypothetical": false,
+            "compound": false,
+            "material": []
+          },
+          "reason": "Visible subject and simple request safely grounded; the engine still decides answer eligibility.",
+          "canonicalQuestion": "How do I get Get Porenoil for desert survival?"
+        },
+        "modelIntent": "acquisition",
+        "routeOrigin": "model"
+      },
+      "currentSources": [
+        {
+          "file": "guides/js/Albion.js",
+          "locator": "QUEST_HINTS[\"umajo\"][\"porenoil\"]",
+          "review": "extracted",
+          "index": {
+            "file": "guides/js/assistant/adapters/albion.js",
+            "locator": "overlay objectiveAnswers.porenoil",
+            "review": "authored-index"
+          }
+        }
+      ],
+      "strictProblems": [
+        "Missing one-of factIds: porenoil"
+      ],
+      "sourceWitness": {
+        "fileAndLocator": {
+          "file": "guides/js/Albion.js",
+          "locator": "QUEST_HINTS[\"umajo\"][\"porenoil\"]",
+          "review": "extracted"
+        },
+        "verbatimExcerpt": "Ask Merdger/Merger in the Equipment Maker’s Guild about Porenoil; it prevents dehydration in the desert."
+      },
+      "priorFullCorpusAdjudication": null,
+      "classification": "complete-answer-internal-fact-id-difference",
+      "finding": "The answer gives the Merdger/Merger Equipment Maker’s Guild instruction and states Porenoil prevents desert dehydration, citing the exact QUEST_HINTS source. Only the internal fact ID is missing."
+    },
+    {
+      "key": "albion/secret-word-scroll/3",
+      "surface": "albion",
+      "dialogueId": "secret-word-scroll",
+      "turn": 3,
+      "question": "Where is the Metalmagic Scroll?",
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Kossotto"
+        ],
+        "factIds": [
+          "metalmagic"
+        ],
+        "source": {
+          "file": "guides/js/Albion.js",
+          "locator": "QUEST_HINTS[\"equipment-makers\"][\"metalmagic\"]",
+          "review": "extracted"
+        }
+      },
+      "currentStatus": "failed",
+      "currentDecision": "answer",
+      "currentReply": {
+        "decision": "answer",
+        "text": "Equipment Makers Cellar (Dungeon) on Umajo Desert. Points of interest: Serpent Staff; Metalmagic Scroll.",
+        "title": "Equipment Makers Cellar",
+        "recordIds": [
+          "albion:knowledge:place-equipment-makers-cellar",
+          "albion:location:equipment-makers-cellar:explanation"
+        ],
+        "sources": [
+          {
+            "file": "guides/js/Albion.js",
+            "locator": "DB.locations[5].locations[1]",
+            "review": "extracted",
+            "index": {
+              "file": "guides/data/assistant/knowledge/albion.json",
+              "locator": "facts[128]",
+              "review": "authored-index"
+            }
+          }
+        ],
+        "sourceLinks": [],
+        "actions": [],
+        "choices": [],
+        "stateChanges": [],
+        "level": "direct",
+        "knowledge": {
+          "factIds": [
+            "place-equipment-makers-cellar"
+          ],
+          "focusEntityId": "albion:knowledge:metalmagic-scroll",
+          "context": {
+            "guideOnly": false,
+            "editions": []
+          },
+          "evidence": [
+            {
+              "factId": "place-equipment-makers-cellar",
+              "sourceRecordId": "albion:location:equipment-makers-cellar:explanation",
+              "source": {
+                "file": "guides/js/Albion.js",
+                "locator": "DB.locations[5].locations[1]",
+                "review": "extracted"
+              }
+            }
+          ]
+        },
+        "revision": 4,
+        "dialoguePacket": {
+          "originalText": "Where is the Metalmagic Scroll?",
+          "intent": "location",
+          "entityId": "albion:objective:equipment-makers:metalmagic",
+          "entityTitle": "Obtain the Metalmagic Scroll",
+          "modelIntent": "location",
+          "routeOrigin": "reviewed-knowledge",
+          "transition": "subject-set",
+          "status": "ready",
+          "confidence": {
+            "score": 0.44987587339504387,
+            "margin": 0.3429313702887206
+          },
+          "restrictions": {
+            "guideOnly": false,
+            "editions": [],
+            "negation": false,
+            "quantities": [],
+            "comparison": false,
+            "causal": false,
+            "progress": false,
+            "hypothetical": false,
+            "compound": false,
+            "material": []
+          },
+          "reason": "Visible subject and simple request safely grounded; the engine still decides answer eligibility.",
+          "canonicalQuestion": "Where is Obtain the Metalmagic Scroll?"
+        },
+        "modelIntent": "location",
+        "routeOrigin": "reviewed-knowledge"
+      },
+      "currentSources": [
+        {
+          "file": "guides/js/Albion.js",
+          "locator": "DB.locations[5].locations[1]",
+          "review": "extracted",
+          "index": {
+            "file": "guides/data/assistant/knowledge/albion.json",
+            "locator": "facts[128]",
+            "review": "authored-index"
+          }
+        }
+      ],
+      "strictProblems": [
+        "Missing substring: Kossotto",
+        "Missing one-of factIds: metalmagic",
+        "Missing exact source: guides/js/Albion.js :: QUEST_HINTS[\"equipment-makers\"][\"metalmagic\"]"
+      ],
+      "sourceWitness": {
+        "fileAndLocator": {
+          "file": "guides/js/Albion.js",
+          "locator": "QUEST_HINTS[\"equipment-makers\"][\"metalmagic\"]",
+          "review": "extracted"
+        },
+        "verbatimExcerpt": "Equipment Makers Cellar (Dungeon) on Umajo Desert; POIs include Serpent Staff and Metalmagic Scroll."
+      },
+      "priorFullCorpusAdjudication": {
+        "artifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-starcraft-albion-20261025-02.json",
+        "rowIndex": 14,
+        "category": "useful-claim-oracle-difference"
+      },
+      "classification": "complete-location-answer-versus-acquisition-oracle",
+      "finding": "The question asks where the scroll is; the answer identifies the Equipment Makers Cellar on Umajo Desert and the source location record lists the Metalmagic Scroll among its POIs. Oracle additionally expects Kossotto from an acquisition hint, which is not needed to answer the location question."
+    },
+    {
+      "key": "albion/blue-plate-demonstration/1",
+      "surface": "albion",
+      "dialogueId": "blue-plate-demonstration",
+      "turn": 1,
+      "question": "How do I use the blue floor plate?",
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "16 Animal 3",
+          "back row",
+          "Demon Exodus"
+        ],
+        "factIds": [
+          "xp-plate"
+        ],
+        "source": {
+          "file": "guides/js/Albion.js",
+          "locator": "QUEST_HINTS[\"equipment-makers\"][\"xp-plate\"]",
+          "review": "extracted"
+        }
+      },
+      "currentStatus": "failed",
+      "currentDecision": "answer",
+      "currentReply": {
+        "decision": "answer",
+        "text": "Source limitation: The guide’s XP total for this plate is disputed. The complete quotation below gives the recorded tactic; it does not establish an XP total.\n\nOriginal guide quotation:\n“Optional XP: the blue floor plate summons 16 Animal 3; put party in back row and use Demon Exodus for fast clears.”",
+        "recordIds": [
+          "albion:objective:equipment-makers:xp-plate:hint"
+        ],
+        "sources": [
+          {
+            "file": "guides/js/Albion.js",
+            "locator": "QUEST_HINTS[\"equipment-makers\"][\"xp-plate\"]",
+            "review": "extracted"
+          }
+        ],
+        "quotedFactIds": [
+          "xp-plate"
+        ],
+        "sourcePresentation": {
+          "kind": "conflict-quotation",
+          "conflictId": "albion:xp-total",
+          "mode": "independent-field"
+        },
+        "actions": [],
+        "choices": [],
+        "stateChanges": [],
+        "sourceLinks": [],
+        "level": "direct",
+        "revision": 2,
+        "dialoguePacket": {
+          "originalText": "How do I use the blue floor plate?",
+          "status": "ready",
+          "routeOrigin": "source-engine",
+          "modelIntent": null,
+          "sourceScope": "conflict-quotation"
+        },
+        "modelIntent": null,
+        "routeOrigin": "source-engine"
+      },
+      "currentSources": [
+        {
+          "file": "guides/js/Albion.js",
+          "locator": "QUEST_HINTS[\"equipment-makers\"][\"xp-plate\"]",
+          "review": "extracted"
+        }
+      ],
+      "strictProblems": [
+        "Missing one-of factIds: xp-plate"
+      ],
+      "sourceWitness": {
+        "fileAndLocator": {
+          "file": "guides/js/Albion.js",
+          "locator": "QUEST_HINTS[\"equipment-makers\"][\"xp-plate\"]",
+          "review": "extracted"
+        },
+        "verbatimExcerpt": "Optional XP: the blue floor plate summons 16 Animal 3; put party in back row and use Demon Exodus for fast clears."
+      },
+      "priorFullCorpusAdjudication": {
+        "artifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-starcraft-albion-20261025-02.json",
+        "rowIndex": 15,
+        "category": "source-present-unanswered"
+      },
+      "classification": "source-complete-qualified-quotation-in-quotedFactIds",
+      "finding": "The answer quotes the complete sourced method: plate summons 16 Animal 3; use back row and Demon Exodus. It explicitly says the guide XP total is disputed and does not establish or repeat a total. It cites the exact hint and places xp-plate in quotedFactIds; ordinary knowledge.factIds is empty. This is a metadata-channel strict miss, not a missing method answer; keep the XP-conflict control."
+    },
+    {
+      "key": "albion/finale-joe/2",
+      "surface": "albion",
+      "dialogueId": "finale-joe",
+      "turn": 2,
+      "question": "What do the Service Robot tactics say?",
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Joe",
+          "repair-gated"
+        ],
+        "factIds": [
+          "service-robot-combat"
+        ],
+        "source": {
+          "file": "guides/js/Albion.js",
+          "locator": "DB.bestiary[2].strategy",
+          "review": "extracted"
+        }
+      },
+      "currentStatus": "failed",
+      "currentDecision": "answer",
+      "currentReply": {
+        "decision": "answer",
+        "text": "Bring Joe on the final Toronto return to bypass repair-gated robot encounters. HP: High. Danger: Many more fights without Joe. Type: Machine. EXP: 174.",
+        "recordIds": [
+          "albion:enemy:service-robot:combat"
+        ],
+        "sources": [
+          {
+            "file": "guides/js/Albion.js",
+            "locator": "DB.bestiary[2]",
+            "review": "extracted"
+          }
+        ],
+        "actions": [],
+        "choices": [],
+        "stateChanges": [],
+        "revision": 3,
+        "level": "balanced",
+        "rule": {
+          "value": "unknown",
+          "blockers": [],
+          "unknowns": [],
+          "checks": [],
+          "sources": [],
+          "issues": [
+            "unmodeled requirements"
+          ],
+          "visited": 1
+        },
+        "answerPrefix": "",
+        "answerSuffix": "",
+        "title": "Service Robot",
+        "dialoguePacket": {
+          "originalText": "What do the Service Robot tactics say?",
+          "intent": "overview",
+          "entityId": "albion:enemy:service-robot",
+          "entityTitle": "Service Robot",
+          "modelIntent": "overview",
+          "routeOrigin": "model",
+          "transition": "subject-set",
+          "status": "protected",
+          "confidence": {
+            "score": 0.21942725289698584,
+            "margin": 0.10222693896439349
+          },
+          "restrictions": {
+            "guideOnly": false,
+            "editions": [],
+            "negation": false,
+            "quantities": [],
+            "comparison": false,
+            "causal": false,
+            "progress": false,
+            "hypothetical": false,
+            "compound": false,
+            "material": []
+          },
+          "reason": "Original wording must reach the baseline unchanged; rewriting would lose a restriction or unsupported relation."
+        },
+        "modelIntent": "overview",
+        "routeOrigin": "model"
+      },
+      "currentSources": [
+        {
+          "file": "guides/js/Albion.js",
+          "locator": "DB.bestiary[2]",
+          "review": "extracted"
+        }
+      ],
+      "strictProblems": [
+        "Missing one-of factIds: service-robot-combat",
+        "Missing exact source: guides/js/Albion.js :: DB.bestiary[2].strategy"
+      ],
+      "sourceWitness": {
+        "fileAndLocator": {
+          "file": "guides/js/Albion.js",
+          "locator": "DB.bestiary[2].strategy",
+          "review": "extracted"
+        },
+        "verbatimExcerpt": "Bring Joe on the final Toronto return to bypass repair-gated robot encounters."
+      },
+      "priorFullCorpusAdjudication": {
+        "artifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-starcraft-albion-20261025-02.json",
+        "rowIndex": 17,
+        "category": "useful-claim-oracle-difference"
+      },
+      "classification": "complete-answer-parent-locator-and-fact-id-difference",
+      "finding": "Reply says bring Joe to bypass repair-gated robot encounters and cites DB.bestiary[2] parent; expected citation is its strategy field and expected internal fact ID."
+    },
+    {
+      "key": "alqadim/hold-and-dock/1",
+      "surface": "alqadim",
+      "dialogueId": "hold-and-dock",
+      "turn": 1,
+      "question": "How do I deal with the Dock dark mage?",
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Defeat the dark mage",
+          "dock entrance"
+        ],
+        "notContains": [],
+        "factIds": [
+          "ch4_3"
+        ],
+        "source": {
+          "file": "guides/js/AlQadim.js",
+          "locator": "DB.chapters[3].required[id=ch4_3]",
+          "review": "extracted"
+        }
+      },
+      "currentStatus": "failed",
+      "currentDecision": "decline",
+      "currentReply": {
+        "decision": "decline",
+        "text": "The guide records an objective for that named creature, but no supported combat method.",
+        "recordIds": [],
+        "sources": [],
+        "actions": [],
+        "choices": [],
+        "stateChanges": [],
+        "level": "direct",
+        "knowledge": {
+          "factIds": [],
+          "focusEntityId": "alqadim:knowledge:dock-dark-mage",
+          "unsupported": true,
+          "context": {
+            "guideOnly": false,
+            "editions": [],
+            "material": [
+              "dock",
+              "dark",
+              "mage"
+            ],
+            "quantities": []
+          }
+        },
+        "revision": 2,
+        "dialoguePacket": {
+          "originalText": "How do I deal with the Dock dark mage?",
+          "intent": "hint",
+          "entityId": null,
+          "entityTitle": null,
+          "modelIntent": "hint",
+          "routeOrigin": "reviewed-knowledge",
+          "transition": "subject-missing",
+          "status": "clarify",
+          "confidence": {
+            "score": 0.21734042648483412,
+            "margin": 0.05960023155615676
+          },
+          "restrictions": {
+            "guideOnly": false,
+            "editions": [],
+            "negation": false,
+            "quantities": [],
+            "comparison": false,
+            "causal": false,
+            "progress": false,
+            "hypothetical": false,
+            "compound": false,
+            "material": [
+              "dock",
+              "dark",
+              "mage"
+            ]
+          },
+          "reason": "Name one visible subject; no old subject was recovered."
+        },
+        "modelIntent": "hint",
+        "routeOrigin": "reviewed-knowledge"
+      },
+      "currentSources": [],
+      "strictProblems": [
+        "Expected answer; observed decline",
+        "Missing substring: Defeat the dark mage",
+        "Missing substring: dock entrance",
+        "Missing one-of factIds: ch4_3",
+        "Missing exact source: guides/js/AlQadim.js :: DB.chapters[3].required[id=ch4_3]"
+      ],
+      "sourceWitness": {
+        "fileAndLocator": {
+          "file": "guides/js/AlQadim.js",
+          "locator": "DB.chapters[3].required[id=ch4_3]",
+          "review": "extracted"
+        },
+        "verbatimExcerpt": "Defeat the dark mage guarding the dock entrance."
+      },
+      "priorFullCorpusAdjudication": {
+        "artifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-ultima7-alqadim-20261025-02.json",
+        "rowIndex": 14,
+        "category": "justified-objective-only-decline"
+      },
+      "classification": "justified-objective-only-decline",
+      "finding": "Source gives only “Defeat the dark mage guarding the dock entrance”; it does not give a combat method. The query asks how to deal with the mage, so refusal to invent tactics is appropriate."
+    },
+    {
+      "key": "alqadim/hold-and-dock/2",
+      "surface": "alqadim",
+      "dialogueId": "hold-and-dock",
+      "turn": 2,
+      "question": "How do I clear the Rotting Ship's Hold?",
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "clear all zombies"
+        ],
+        "notContains": [],
+        "factIds": [
+          "ch4_4"
+        ],
+        "source": {
+          "file": "guides/js/AlQadim.js",
+          "locator": "DB.chapters[3].required[id=ch4_4]",
+          "review": "extracted"
+        }
+      },
+      "currentStatus": "failed",
+      "currentDecision": "decline",
+      "currentReply": {
+        "decision": "decline",
+        "text": "The guide records the objective, but does not describe the requested procedure: Enter the Rotting Ship's Hold and clear all zombies.",
+        "title": "Rotting Ship's Hold",
+        "recordIds": [
+          "alqadim:knowledge:ch4_4",
+          "alqadim:objective:ch4_4:hint"
+        ],
+        "sources": [
+          {
+            "file": "guides/js/AlQadim.js",
+            "locator": "DB.chapters[3].required[id=ch4_4]",
+            "review": "extracted",
+            "index": {
+              "file": "guides/data/assistant/knowledge/alqadim.json",
+              "locator": "facts[18]",
+              "review": "authored-index"
+            }
+          }
+        ],
+        "sourceLinks": [],
+        "actions": [],
+        "choices": [],
+        "stateChanges": [],
+        "level": "direct",
+        "knowledge": {
+          "factIds": [
+            "ch4_4"
+          ],
+          "focusEntityId": "alqadim:knowledge:rotting-ship-s-hold",
+          "context": {
+            "guideOnly": false,
+            "editions": []
+          },
+          "evidence": [
+            {
+              "factId": "ch4_4",
+              "sourceRecordId": "alqadim:objective:ch4_4:hint",
+              "source": {
+                "file": "guides/js/AlQadim.js",
+                "locator": "DB.chapters[3].required[id=ch4_4]",
+                "review": "extracted"
+              }
+            }
+          ],
+          "limited": true
+        },
+        "revision": 3,
+        "dialoguePacket": {
+          "originalText": "How do I clear the Rotting Ship's Hold?",
+          "intent": "hint",
+          "entityId": null,
+          "entityTitle": null,
+          "modelIntent": "hint",
+          "routeOrigin": "reviewed-knowledge",
+          "transition": "subject-missing",
+          "status": "clarify",
+          "confidence": {
+            "score": 0.1906450557536013,
+            "margin": 0.05418718647930598
+          },
+          "restrictions": {
+            "guideOnly": false,
+            "editions": [],
+            "negation": false,
+            "quantities": [],
+            "comparison": false,
+            "causal": false,
+            "progress": false,
+            "hypothetical": false,
+            "compound": false,
+            "material": [
+              "clear",
+              "rotting",
+              "ship"
+            ]
+          },
+          "reason": "Name one visible subject; no old subject was recovered."
+        },
+        "modelIntent": "hint",
+        "routeOrigin": "reviewed-knowledge"
+      },
+      "currentSources": [
+        {
+          "file": "guides/js/AlQadim.js",
+          "locator": "DB.chapters[3].required[id=ch4_4]",
+          "review": "extracted",
+          "index": {
+            "file": "guides/data/assistant/knowledge/alqadim.json",
+            "locator": "facts[18]",
+            "review": "authored-index"
+          }
+        }
+      ],
+      "strictProblems": [
+        "Expected answer; observed decline"
+      ],
+      "sourceWitness": {
+        "fileAndLocator": {
+          "file": "guides/js/AlQadim.js",
+          "locator": "DB.chapters[3].required[id=ch4_4]",
+          "review": "extracted"
+        },
+        "verbatimExcerpt": "Enter the Rotting Ship's Hold and clear all zombies."
+      },
+      "priorFullCorpusAdjudication": {
+        "artifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-ultima7-alqadim-20261025-02.json",
+        "rowIndex": 15,
+        "category": "justified-objective-only-decline"
+      },
+      "classification": "justified-objective-only-decline",
+      "finding": "Source says enter the Rotting Ship’s Hold and clear zombies but gives no route or combat procedure. Preserve the refusal."
+    },
+    {
+      "key": "alqadim/shibaz-library/1",
+      "surface": "alqadim",
+      "dialogueId": "shibaz-library",
+      "turn": 1,
+      "question": "How do I find Shibaz Hermit guidance?",
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Hermit's hut"
+        ],
+        "notContains": [],
+        "factIds": [
+          "ch8_2"
+        ],
+        "source": {
+          "file": "guides/js/AlQadim.js",
+          "locator": "DB.chapters[7].required[id=ch8_2]",
+          "review": "extracted"
+        }
+      },
+      "currentStatus": "failed",
+      "currentDecision": "decline",
+      "currentReply": {
+        "decision": "decline",
+        "text": "The guide records the objective, but does not describe the requested procedure: Locate the Hermit's hut and accept his guidance.",
+        "title": "Shibaz Hermit",
+        "recordIds": [
+          "alqadim:knowledge:ch8_2",
+          "alqadim:objective:ch8_2:hint"
+        ],
+        "sources": [
+          {
+            "file": "guides/js/AlQadim.js",
+            "locator": "DB.chapters[7].required[id=ch8_2]",
+            "review": "extracted",
+            "index": {
+              "file": "guides/data/assistant/knowledge/alqadim.json",
+              "locator": "facts[31]",
+              "review": "authored-index"
+            }
+          }
+        ],
+        "sourceLinks": [],
+        "actions": [],
+        "choices": [],
+        "stateChanges": [],
+        "level": "direct",
+        "knowledge": {
+          "factIds": [
+            "ch8_2"
+          ],
+          "focusEntityId": "alqadim:knowledge:shibaz-hermit",
+          "context": {
+            "guideOnly": false,
+            "editions": []
+          },
+          "evidence": [
+            {
+              "factId": "ch8_2",
+              "sourceRecordId": "alqadim:objective:ch8_2:hint",
+              "source": {
+                "file": "guides/js/AlQadim.js",
+                "locator": "DB.chapters[7].required[id=ch8_2]",
+                "review": "extracted"
+              }
+            }
+          ],
+          "limited": true
+        },
+        "revision": 2,
+        "dialoguePacket": {
+          "originalText": "How do I find Shibaz Hermit guidance?",
+          "intent": "location",
+          "entityId": null,
+          "entityTitle": null,
+          "modelIntent": "location",
+          "routeOrigin": "reviewed-knowledge",
+          "transition": "ambiguous-subject",
+          "status": "clarify",
+          "confidence": {
+            "score": 0.19101565299208112,
+            "margin": 0.015898252705755622
+          },
+          "restrictions": {
+            "guideOnly": false,
+            "editions": [],
+            "negation": false,
+            "quantities": [],
+            "comparison": false,
+            "causal": false,
+            "progress": false,
+            "hypothetical": false,
+            "compound": false,
+            "material": [
+              "shibaz",
+              "hermit",
+              "guidance"
+            ]
+          },
+          "reason": "Several visible subjects match; name one.",
+          "candidates": [
+            {
+              "entityId": "alqadim:chapter:8",
+              "title": "Chapter 8"
+            },
+            {
+              "entityId": "alqadim:npc:hermit",
+              "title": "Hermit"
+            }
+          ]
+        },
+        "modelIntent": "location",
+        "routeOrigin": "reviewed-knowledge"
+      },
+      "currentSources": [
+        {
+          "file": "guides/js/AlQadim.js",
+          "locator": "DB.chapters[7].required[id=ch8_2]",
+          "review": "extracted",
+          "index": {
+            "file": "guides/data/assistant/knowledge/alqadim.json",
+            "locator": "facts[31]",
+            "review": "authored-index"
+          }
+        }
+      ],
+      "strictProblems": [
+        "Expected answer; observed decline"
+      ],
+      "sourceWitness": {
+        "fileAndLocator": {
+          "file": "guides/js/AlQadim.js",
+          "locator": "DB.chapters[7].required[id=ch8_2]",
+          "review": "extracted"
+        },
+        "verbatimExcerpt": "Locate the Hermit's hut and accept his guidance."
+      },
+      "priorFullCorpusAdjudication": {
+        "artifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-ultima7-alqadim-20261025-02.json",
+        "rowIndex": 16,
+        "category": "justified-objective-only-decline"
+      },
+      "classification": "justified-objective-only-decline",
+      "finding": "Source only says locate the Hermit’s hut and accept guidance; it does not locate the hut or explain the requested way to find it. Preserve the refusal."
+    },
+    {
+      "key": "alqadim/shibaz-library/4",
+      "surface": "alqadim",
+      "dialogueId": "shibaz-library",
+      "turn": 4,
+      "question": "How do I open the Hags riddle Library path?",
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "hags' riddle"
+        ],
+        "notContains": [],
+        "factIds": [
+          "ch8_4"
+        ],
+        "source": {
+          "file": "guides/js/AlQadim.js",
+          "locator": "DB.chapters[7].required[id=ch8_4]",
+          "review": "extracted"
+        }
+      },
+      "currentStatus": "failed",
+      "currentDecision": "decline",
+      "currentReply": {
+        "decision": "decline",
+        "text": "The guide records the objective, but does not describe the requested procedure: Solve the hags' riddle to open the path to the Library.",
+        "title": "Hags riddle",
+        "recordIds": [
+          "alqadim:knowledge:ch8_4",
+          "alqadim:objective:ch8_4:hint"
+        ],
+        "sources": [
+          {
+            "file": "guides/js/AlQadim.js",
+            "locator": "DB.chapters[7].required[id=ch8_4]",
+            "review": "extracted",
+            "index": {
+              "file": "guides/data/assistant/knowledge/alqadim.json",
+              "locator": "facts[33]",
+              "review": "authored-index"
+            }
+          }
+        ],
+        "sourceLinks": [],
+        "actions": [],
+        "choices": [],
+        "stateChanges": [],
+        "level": "direct",
+        "knowledge": {
+          "factIds": [
+            "ch8_4"
+          ],
+          "focusEntityId": "alqadim:knowledge:hags-riddle",
+          "context": {
+            "guideOnly": false,
+            "editions": []
+          },
+          "evidence": [
+            {
+              "factId": "ch8_4",
+              "sourceRecordId": "alqadim:objective:ch8_4:hint",
+              "source": {
+                "file": "guides/js/AlQadim.js",
+                "locator": "DB.chapters[7].required[id=ch8_4]",
+                "review": "extracted"
+              }
+            }
+          ],
+          "limited": true
+        },
+        "revision": 5,
+        "dialoguePacket": {
+          "originalText": "How do I open the Hags riddle Library path?",
+          "intent": "location",
+          "entityId": null,
+          "entityTitle": null,
+          "modelIntent": "location",
+          "routeOrigin": "reviewed-knowledge",
+          "transition": "ambiguous-subject",
+          "status": "clarify",
+          "confidence": {
+            "score": 0.41249599974795764,
+            "margin": 0.31945905456148915
+          },
+          "restrictions": {
+            "guideOnly": false,
+            "editions": [],
+            "negation": false,
+            "quantities": [],
+            "comparison": false,
+            "causal": false,
+            "progress": false,
+            "hypothetical": false,
+            "compound": false,
+            "material": [
+              "hags",
+              "riddle",
+              "library"
+            ]
+          },
+          "reason": "Several visible subjects match; name one.",
+          "candidates": [
+            {
+              "entityId": "alqadim:chapter:8",
+              "title": "Chapter 8"
+            },
+            {
+              "entityId": "alqadim:chapter:9",
+              "title": "Chapter 9"
+            },
+            {
+              "entityId": "alqadim:bestiary:hag",
+              "title": "Hag"
+            }
+          ]
+        },
+        "modelIntent": "location",
+        "routeOrigin": "reviewed-knowledge"
+      },
+      "currentSources": [
+        {
+          "file": "guides/js/AlQadim.js",
+          "locator": "DB.chapters[7].required[id=ch8_4]",
+          "review": "extracted",
+          "index": {
+            "file": "guides/data/assistant/knowledge/alqadim.json",
+            "locator": "facts[33]",
+            "review": "authored-index"
+          }
+        }
+      ],
+      "strictProblems": [
+        "Expected answer; observed decline"
+      ],
+      "sourceWitness": {
+        "fileAndLocator": {
+          "file": "guides/js/AlQadim.js",
+          "locator": "DB.chapters[7].required[id=ch8_4]",
+          "review": "extracted"
+        },
+        "verbatimExcerpt": "Solve the hags' riddle to open the path to the Library."
+      },
+      "priorFullCorpusAdjudication": {
+        "artifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-ultima7-alqadim-20261025-02.json",
+        "rowIndex": 17,
+        "category": "justified-objective-only-decline"
+      },
+      "classification": "justified-objective-only-decline",
+      "finding": "Source identifies solving the hags’ riddle as an objective but gives no solution. Preserve refusal to infer the riddle answer."
+    },
+    {
+      "key": "alqadim/new-dungeon-and-journal/1",
+      "surface": "alqadim",
+      "dialogueId": "new-dungeon-and-journal",
+      "turn": 1,
+      "question": "How do I enter the New Dungeon?",
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Stealth Section",
+          "Do not get caught"
+        ],
+        "notContains": [],
+        "factIds": [
+          "ch13_1"
+        ],
+        "source": {
+          "file": "guides/js/AlQadim.js",
+          "locator": "DB.chapters[12].required[id=ch13_1]",
+          "review": "extracted"
+        }
+      },
+      "currentStatus": "failed",
+      "currentDecision": "decline",
+      "currentReply": {
+        "decision": "decline",
+        "text": "The guide records the objective, but does not describe the requested procedure: Enter the New Dungeon (Stealth Section - Do not get caught).",
+        "title": "New Dungeon",
+        "recordIds": [
+          "alqadim:knowledge:ch13_1",
+          "alqadim:objective:ch13_1:hint"
+        ],
+        "sources": [
+          {
+            "file": "guides/js/AlQadim.js",
+            "locator": "DB.chapters[12].required[id=ch13_1]",
+            "review": "extracted",
+            "index": {
+              "file": "guides/data/assistant/knowledge/alqadim.json",
+              "locator": "facts[46]",
+              "review": "authored-index"
+            }
+          }
+        ],
+        "sourceLinks": [],
+        "actions": [],
+        "choices": [],
+        "stateChanges": [],
+        "level": "direct",
+        "knowledge": {
+          "factIds": [
+            "ch13_1"
+          ],
+          "focusEntityId": "alqadim:knowledge:new-dungeon",
+          "context": {
+            "guideOnly": false,
+            "editions": []
+          },
+          "evidence": [
+            {
+              "factId": "ch13_1",
+              "sourceRecordId": "alqadim:objective:ch13_1:hint",
+              "source": {
+                "file": "guides/js/AlQadim.js",
+                "locator": "DB.chapters[12].required[id=ch13_1]",
+                "review": "extracted"
+              }
+            }
+          ],
+          "limited": true
+        },
+        "revision": 2,
+        "dialoguePacket": {
+          "originalText": "How do I enter the New Dungeon?",
+          "intent": "location",
+          "entityId": "alqadim:chapter:13",
+          "entityTitle": "Chapter 13",
+          "modelIntent": "location",
+          "routeOrigin": "reviewed-knowledge",
+          "transition": "subject-set",
+          "status": "protected",
+          "confidence": {
+            "score": 0.2949567125413681,
+            "margin": 0.13696105030836556
+          },
+          "restrictions": {
+            "guideOnly": false,
+            "editions": [],
+            "negation": false,
+            "quantities": [],
+            "comparison": false,
+            "causal": false,
+            "progress": false,
+            "hypothetical": false,
+            "compound": false,
+            "material": []
+          },
+          "reason": "This wording is outside the simple lossless rewrite shapes."
+        },
+        "modelIntent": "location",
+        "routeOrigin": "reviewed-knowledge"
+      },
+      "currentSources": [
+        {
+          "file": "guides/js/AlQadim.js",
+          "locator": "DB.chapters[12].required[id=ch13_1]",
+          "review": "extracted",
+          "index": {
+            "file": "guides/data/assistant/knowledge/alqadim.json",
+            "locator": "facts[46]",
+            "review": "authored-index"
+          }
+        }
+      ],
+      "strictProblems": [
+        "Expected answer; observed decline"
+      ],
+      "sourceWitness": {
+        "fileAndLocator": {
+          "file": "guides/js/AlQadim.js",
+          "locator": "DB.chapters[12].required[id=ch13_1]",
+          "review": "extracted"
+        },
+        "verbatimExcerpt": "Enter the New Dungeon (Stealth Section - Do not get caught)."
+      },
+      "priorFullCorpusAdjudication": {
+        "artifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-ultima7-alqadim-20261025-02.json",
+        "rowIndex": 18,
+        "category": "justified-objective-only-decline"
+      },
+      "classification": "justified-objective-only-decline",
+      "finding": "Source says enter the New Dungeon in the stealth section and do not get caught but supplies no route/entry procedure. Preserve the source-limited refusal."
+    },
+    {
+      "key": "alqadim/finale-boundaries/3",
+      "surface": "alqadim",
+      "dialogueId": "finale-boundaries",
+      "turn": 3,
+      "question": "How do I handle the Magical shield orbs?",
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "Destroy the magical shield orbs"
+        ],
+        "notContains": [],
+        "factIds": [
+          "ch19_3"
+        ],
+        "source": {
+          "file": "guides/js/AlQadim.js",
+          "locator": "DB.chapters[18].required[id=ch19_3]",
+          "review": "extracted"
+        }
+      },
+      "currentStatus": "failed",
+      "currentDecision": "decline",
+      "currentReply": {
+        "decision": "decline",
+        "text": "The guide records the objective, but does not describe the requested procedure: Destroy the magical shield orbs.",
+        "title": "Magical shield orbs",
+        "recordIds": [
+          "alqadim:knowledge:ch19_3",
+          "alqadim:objective:ch19_3:hint"
+        ],
+        "sources": [
+          {
+            "file": "guides/js/AlQadim.js",
+            "locator": "DB.chapters[18].required[id=ch19_3]",
+            "review": "extracted",
+            "index": {
+              "file": "guides/data/assistant/knowledge/alqadim.json",
+              "locator": "facts[64]",
+              "review": "authored-index"
+            }
+          }
+        ],
+        "sourceLinks": [],
+        "actions": [],
+        "choices": [],
+        "stateChanges": [],
+        "level": "direct",
+        "knowledge": {
+          "factIds": [
+            "ch19_3"
+          ],
+          "focusEntityId": "alqadim:knowledge:magical-shield-orbs",
+          "context": {
+            "guideOnly": false,
+            "editions": []
+          },
+          "evidence": [
+            {
+              "factId": "ch19_3",
+              "sourceRecordId": "alqadim:objective:ch19_3:hint",
+              "source": {
+                "file": "guides/js/AlQadim.js",
+                "locator": "DB.chapters[18].required[id=ch19_3]",
+                "review": "extracted"
+              }
+            }
+          ],
+          "limited": true
+        },
+        "revision": 4,
+        "dialoguePacket": {
+          "originalText": "How do I handle the Magical shield orbs?",
+          "intent": "combat",
+          "entityId": null,
+          "entityTitle": null,
+          "modelIntent": "combat",
+          "routeOrigin": "reviewed-knowledge",
+          "transition": "subject-missing",
+          "status": "clarify",
+          "confidence": {
+            "score": 0.29379819503981314,
+            "margin": 0.1757998958672764
+          },
+          "restrictions": {
+            "guideOnly": false,
+            "editions": [],
+            "negation": false,
+            "quantities": [],
+            "comparison": false,
+            "causal": false,
+            "progress": false,
+            "hypothetical": false,
+            "compound": false,
+            "material": [
+              "magical",
+              "shield",
+              "orbs"
+            ]
+          },
+          "reason": "Name one visible subject; no old subject was recovered."
+        },
+        "modelIntent": "combat",
+        "routeOrigin": "reviewed-knowledge"
+      },
+      "currentSources": [
+        {
+          "file": "guides/js/AlQadim.js",
+          "locator": "DB.chapters[18].required[id=ch19_3]",
+          "review": "extracted",
+          "index": {
+            "file": "guides/data/assistant/knowledge/alqadim.json",
+            "locator": "facts[64]",
+            "review": "authored-index"
+          }
+        }
+      ],
+      "strictProblems": [
+        "Expected answer; observed decline"
+      ],
+      "sourceWitness": {
+        "fileAndLocator": {
+          "file": "guides/js/AlQadim.js",
+          "locator": "DB.chapters[18].required[id=ch19_3]",
+          "review": "extracted"
+        },
+        "verbatimExcerpt": "Destroy the magical shield orbs."
+      },
+      "priorFullCorpusAdjudication": {
+        "artifact": "guides/tests/assistant/evidence/knowledge-full-corpus-review-ultima7-alqadim-20261025-02.json",
+        "rowIndex": 19,
+        "category": "justified-objective-only-decline"
+      },
+      "classification": "justified-objective-only-decline",
+      "finding": "Source says destroy magical shield orbs but provides no method. Preserve refusal to invent a tactic."
+    }
+  ],
+  "noRuntimeOrOracleChanges": "Read-only review only. No source, runtime, manifests, or frozen questions/expected answers were changed."
+}

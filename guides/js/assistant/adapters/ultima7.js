@@ -32,7 +32,11 @@ export function buildUltima7Records(data, overlay, questRoutes = {}, markers = [
             // Conflicting sources are not reconciled by guessing, and bug claims
             // without edition evidence never become diagnoses or hard rules.
             if (authored.conflict) direct = `${authored.balanced}\nSource limitation: ${authored.conflict}`;
-            records.push({ id: `${entityId}:hint`, entityId, title: safeTitle, aliases: [], kind: 'quest', relation: 'hint', answers: ['explanation', 'use'], scope: entityId, variants: { gentle: { text: authored.gentle, title: safeTitle, aliases: [], source: overlaySource(key) }, balanced: { text: authored.balanced, title: safeTitle, aliases: [], source: overlaySource(key) }, direct: { text: direct, title: key, aliases: [key, ...(authored.aliases || [])], source: source(locator), actions: questRoutes[slug(key)] ? [{ id: `quest-map:${slug(key)}`, label: 'Open quest map (full detail)', minSpoiler: 'direct' }] : [] } }, source: { ...source(locator), index: { file: 'guides/js/assistant/adapters/ultima7.js', locator: 'quest text answers what-is and how-do-I questions', review: 'authored-index' } }, requires: null });
+            // Preserve the frozen row locator and declare its actual whole
+            // walkthrough value as an additional exact citation witness.
+            const directSource = !authored.conflict && !quest.content && typeof quest.walkthrough === 'string'
+                ? {...source(locator),claims:[{text:direct,source:source(`${locator}.walkthrough`)}]} : source(locator);
+            records.push({ id: `${entityId}:hint`, entityId, title: safeTitle, aliases: [], kind: 'quest', relation: 'hint', answers: ['explanation', 'use'], scope: entityId, variants: { gentle: { text: authored.gentle, title: safeTitle, aliases: [], source: overlaySource(key) }, balanced: { text: authored.balanced, title: safeTitle, aliases: [], source: overlaySource(key) }, direct: { text: direct, title: key, aliases: [key, ...(authored.aliases || [])], source: directSource, actions: questRoutes[slug(key)] ? [{ id: `quest-map:${slug(key)}`, label: 'Open quest map (full detail)', minSpoiler: 'direct' }] : [] } }, source: { ...source(locator), index: { file: 'guides/js/assistant/adapters/ultima7.js', locator: 'quest text answers what-is and how-do-I questions', review: 'authored-index' } }, requires: null });
         });
     }
     const opening = data.mainQuest?.[0];

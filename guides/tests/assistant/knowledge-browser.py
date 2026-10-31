@@ -19,7 +19,6 @@ from pathlib import Path
 from threading import Thread
 from urllib.parse import urlparse
 
-from playwright.sync_api import sync_playwright
 from browser_consent_fixture import CONSENT_FIXTURE
 
 HERE = Path(__file__).resolve().parent
@@ -176,10 +175,13 @@ def send(page, surface, turn):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--tag', required=True)
+    parser.add_argument('--browser-executable', default='/usr/bin/google-chrome',
+                        help='Existing Chromium/Chrome executable; no browser is installed or downloaded.')
     parser.add_argument('--game', choices=GAMES, action='append', help='Repeat to select games; default all six.')
     parser.add_argument('--dialogue-id', action='append', help='Repeat to select fixed dialogue IDs; unmatched games are omitted.')
     parser.add_argument('--limit-dialogues', type=int, default=0, help='First N fixed dialogues per game; 0 runs all.')
     args = parser.parse_args()
+    from playwright.sync_api import sync_playwright
     if not args.tag.replace('-', '').replace('_', '').isalnum() or args.limit_dialogues < 0:
         parser.error('Invalid tag or dialogue limit')
     output = HERE / 'evidence' / ('knowledge-browser-' + args.tag + '.json')
@@ -221,7 +223,7 @@ def main():
     report['loopbackPort'] = server.server_port
     try:
         with sync_playwright() as p:
-            browser = p.chromium.launch(executable_path='/usr/bin/google-chrome', headless=True, args=['--no-sandbox'])
+            browser = p.chromium.launch(executable_path=args.browser_executable, headless=True, args=['--no-sandbox'])
             context = browser.new_context(service_workers='block', viewport={'width': 1280, 'height': 900})
             context.add_init_script(script=WORKER_OBSERVER + '\n' + CONSENT_FIXTURE + '\n' + helpers.STORAGE_OBSERVER)
             def route(r):

@@ -1,0 +1,514 @@
+{
+  "schemaVersion": 1,
+  "kind": "read-only-native-alqadim-whole-reply-audit",
+  "tag": "native-alqadim-whole-reply-audit-20261031-01",
+  "createdAt": "2026-10-31",
+  "inputs": {
+    "guides/tests/assistant/evidence/knowledge-cua-native-whole-goal-final-alqadim-all-20261031-01.json": "7b559218715cc223614a21ae823e7345df7d86fb755b853c54d55a06be18904a",
+    "guides/tests/assistant/intent-prototype/results/native-cua-final-alqadim-all-20261031-01.json": "54f4179cd2767778685b31955ebb59429afc859b3d8fcba066e571e05185d953",
+    "guides/tests/assistant/evidence/knowledge-browser-terra-20261029-frozen-source-01.json": "4813cd4dbb84d7fcd83ec90c09af4bf009b8ebc6e5b34c2857ade6a196c73bfb",
+    "guides/tests/assistant/evidence/knowledge-blind-browser-source-first-terra-frozen-source-20261029-01.json": "5ad1b493fb1a339d4b05b49528b35c6bcb797e0033bd241712f32aa25d915ec6",
+    "guides/tests/assistant/evidence/knowledge-full-corpus-review-ultima7-alqadim-20261025-02.json": "8db4c54c19374949db0fe1a3e5fa1bd3b616a37b48f4ad8da3af54aa8d3e6cfc"
+  },
+  "sourceSnapshot": {
+    "sourceStable": true,
+    "changedSourceHashPathsDuringNativeRun": [],
+    "beforeHashCount": 140,
+    "afterHashCount": 140,
+    "alqadimSourceHashes": {
+      "guides/js/AlQadim.js": "af9714f98c11dafc002550a6137dbec73fbc7c7baf8f0fca336e6ab248055718",
+      "guides/data/assistant/alqadim.json": "b51cc1d049fe69636be56ecef9dd1e8e183429f6a37601016208c52c9aecfadd",
+      "guides/data/assistant/knowledge/alqadim.json": "843ce2425f205464a6c1771f4f18864d712c8736f79203ef78dd234e7ec03b8c",
+      "guides/data/assistant/knowledge/alqadim-embeddings.json": "6e22652db6bdc74351ed00a3fef041b4d3e281c73824bb52947c7c9fbc0a8827"
+    }
+  },
+  "nativeBoundaries": {
+    "sourceStable": true,
+    "frozenInputsMatched": true,
+    "noStorageWrites": true,
+    "noPageErrors": true,
+    "nativeMiniLMEveryProbe": true,
+    "allAdditionalControlsHeld": true
+  },
+  "coverage": {
+    "alqadim:corpus": {
+      "matchedDialogues": 31,
+      "expectedDialogues": 31,
+      "complete": true,
+      "missingDialogueIds": []
+    },
+    "alqadim:source-first": {
+      "matchedDialogues": 4,
+      "expectedDialogues": 4,
+      "complete": true,
+      "missingDialogueIds": []
+    },
+    "alqadim:observed-native": {
+      "matchedDialogues": 4,
+      "expectedDialogues": 4,
+      "complete": true,
+      "missingDialogueIds": []
+    },
+    "alqadim:observed-fresh": {
+      "matchedDialogues": 3,
+      "expectedDialogues": 3,
+      "complete": true,
+      "missingDialogueIds": []
+    },
+    "alqadim:observed-independent": {
+      "matchedDialogues": 2,
+      "expectedDialogues": 2,
+      "complete": true,
+      "missingDialogueIds": []
+    },
+    "alqadim:semantic13": {
+      "matchedDialogues": 1,
+      "expectedDialogues": 1,
+      "complete": true,
+      "missingDialogueIds": []
+    }
+  },
+  "suiteSummary": {
+    "corpus": {
+      "passed": 148,
+      "failed": 6,
+      "total": 154
+    },
+    "source-first": {
+      "passed": 16,
+      "failed": 0,
+      "total": 16
+    },
+    "observed-native": {
+      "passed": 16,
+      "failed": 0,
+      "total": 16
+    },
+    "observed-fresh": {
+      "passed": 10,
+      "failed": 2,
+      "total": 12
+    },
+    "observed-independent": {
+      "passed": 8,
+      "failed": 0,
+      "total": 8
+    },
+    "semantic13": {
+      "passed": 2,
+      "failed": 0,
+      "total": 2
+    },
+    "controls": {
+      "passed": 0,
+      "failed": 0,
+      "total": 0
+    }
+  },
+  "incompleteConversations": [],
+  "comparisonTo2026-10-29-corpus": {
+    "scope": "AlQadim primary surface corpus rows only; compare exact text, decision, complete rendered reply, citations, links, and pass result.",
+    "currentRows": 154,
+    "priorRowsMatched": 154,
+    "priorRowsMissing": [],
+    "priorRowsUnexpected": [],
+    "changedRows": [],
+    "passLosses": 0,
+    "passGains": 0
+  },
+  "comparisonTo2026-10-29-source-first": {
+    "currentRows": 16,
+    "priorRowsMatched": 16,
+    "priorRowsMissing": [],
+    "changedRows": [],
+    "passLosses": 0,
+    "passGains": 0
+  },
+  "strictFailures": [
+    {
+      "suite": "corpus",
+      "dialogueId": "hold-and-dock",
+      "turn": 1,
+      "question": "How do I deal with the Dock dark mage?",
+      "decision": "decline",
+      "fullReply": "The guide records an objective for that named creature, but no supported combat method.",
+      "citations": [],
+      "strictProblems": [
+        "Expected answer; observed decline",
+        "Missing exact fixed source citation: guides/js/AlQadim.js — DB.chapters[3].required[id=ch4_3]",
+        "Missing fixed answer substring: Defeat the dark mage",
+        "Missing fixed answer substring: dock entrance"
+      ],
+      "reviewAssessment": "justified-objective-only-decline",
+      "reviewReason": "The full source only says Defeat the dark mage guarding the dock entrance. It locates the actor but provides no tactic or combat method. Declining the requested deal-with procedure is justified; the old oracle expects the objective itself as an answer. The response could preserve the objective citation more helpfully, but no missing tactic is established.",
+      "sourceWitnessRelevant": [
+        {
+          "id": "alqadim:objective:ch4_3:hint",
+          "entityId": "alqadim:objective:ch4_3",
+          "title": "Defeat the dark mage guarding the dock entrance.",
+          "aliases": [
+            "ch4_3"
+          ],
+          "kind": "objective",
+          "relation": "hint",
+          "scope": "alqadim:objective:ch4_3",
+          "answers": [],
+          "acquisitionMethods": [],
+          "text": "Defeat the dark mage guarding the dock entrance.",
+          "level": "direct",
+          "source": {
+            "file": "guides/js/AlQadim.js",
+            "locator": "DB.chapters[3].required[id=ch4_3]",
+            "review": "extracted"
+          },
+          "requires": null,
+          "completionFact": "alqadim:objective:ch4_3:completed",
+          "optional": false,
+          "editions": [],
+          "conflict": false,
+          "general": false,
+          "actions": [],
+          "diagnostics": []
+        }
+      ]
+    },
+    {
+      "suite": "corpus",
+      "dialogueId": "hold-and-dock",
+      "turn": 2,
+      "question": "How do I clear the Rotting Ship's Hold?",
+      "decision": "decline",
+      "fullReply": "The guide records the objective, but does not describe the requested procedure: Enter the Rotting Ship's Hold and clear all zombies.",
+      "citations": [
+        "Source: existing guide; extracted. guides/js/AlQadim.js — DB.chapters[3].required[id=ch4_4]"
+      ],
+      "strictProblems": [
+        "Expected answer; observed decline"
+      ],
+      "reviewAssessment": "justified-objective-only-decline",
+      "reviewReason": "The final -03 response correctly declines the requested zombie-clearing method and quotes/cites the entire source objective: Enter the Rotting Ship's Hold and clear all zombies. The full source provides no clearing tactic. The fixed oracle requires answer even though its accepted substrings and source contain only that objective. Optional barrel-smashing healing loot cannot supply the missing clearing method; that wrong-field -02 answer is retained as a historical fixed regression.",
+      "sourceWitnessRelevant": [
+        {
+          "id": "alqadim:objective:ch4_4:hint",
+          "entityId": "alqadim:objective:ch4_4",
+          "title": "Enter the Rotting Ship's Hold and clear all zombies.",
+          "aliases": [
+            "ch4_4"
+          ],
+          "kind": "objective",
+          "relation": "hint",
+          "scope": "alqadim:objective:ch4_4",
+          "answers": [],
+          "acquisitionMethods": [],
+          "text": "Enter the Rotting Ship's Hold and clear all zombies.",
+          "level": "direct",
+          "source": {
+            "file": "guides/js/AlQadim.js",
+            "locator": "DB.chapters[3].required[id=ch4_4]",
+            "review": "extracted"
+          },
+          "requires": null,
+          "completionFact": "alqadim:objective:ch4_4:completed",
+          "optional": false,
+          "editions": [],
+          "conflict": false,
+          "general": false,
+          "actions": [],
+          "diagnostics": []
+        }
+      ]
+    },
+    {
+      "suite": "corpus",
+      "dialogueId": "shibaz-library",
+      "turn": 1,
+      "question": "How do I find Shibaz Hermit guidance?",
+      "decision": "decline",
+      "fullReply": "The guide records the objective, but does not describe the requested procedure: Locate the Hermit's hut and accept his guidance.",
+      "citations": [
+        "Source: existing guide; extracted. guides/js/AlQadim.js — DB.chapters[7].required[id=ch8_2]"
+      ],
+      "strictProblems": [
+        "Expected answer; observed decline"
+      ],
+      "reviewAssessment": "justified-objective-only-decline",
+      "reviewReason": "The full source only says Locate the Hermit's hut and accept his guidance. It records the destination/objective, but no route, position or procedure for finding that hut. The response quotes the whole objective with its exact citation while declining the missing find method. The old oracle requires only Hermit's hut and thereby rewards an objective-only answer.",
+      "sourceWitnessRelevant": [
+        {
+          "id": "alqadim:objective:ch8_2:hint",
+          "entityId": "alqadim:objective:ch8_2",
+          "title": "Locate the Hermit's hut and accept his guidance.",
+          "aliases": [
+            "ch8_2"
+          ],
+          "kind": "objective",
+          "relation": "hint",
+          "scope": "alqadim:objective:ch8_2",
+          "answers": [],
+          "acquisitionMethods": [],
+          "text": "Locate the Hermit's hut and accept his guidance.",
+          "level": "direct",
+          "source": {
+            "file": "guides/js/AlQadim.js",
+            "locator": "DB.chapters[7].required[id=ch8_2]",
+            "review": "extracted"
+          },
+          "requires": null,
+          "completionFact": "alqadim:objective:ch8_2:completed",
+          "optional": false,
+          "editions": [],
+          "conflict": false,
+          "general": false,
+          "actions": [],
+          "diagnostics": []
+        }
+      ]
+    },
+    {
+      "suite": "corpus",
+      "dialogueId": "shibaz-library",
+      "turn": 4,
+      "question": "How do I open the Hags riddle Library path?",
+      "decision": "decline",
+      "fullReply": "The guide records the objective, but does not describe the requested procedure: Solve the hags' riddle to open the path to the Library.",
+      "citations": [
+        "Source: existing guide; extracted. guides/js/AlQadim.js — DB.chapters[7].required[id=ch8_4]"
+      ],
+      "strictProblems": [
+        "Expected answer; observed decline"
+      ],
+      "reviewAssessment": "justified-objective-only-decline",
+      "reviewReason": "The full source only instructs solving the hags' riddle to open the Library path. It does not give the riddle answer or an independent opening procedure. The response quotes and cites the whole prerequisite/outcome objective while declining the missing method. The next dialogue turn correctly declines the exact riddle answer as well.",
+      "sourceWitnessRelevant": [
+        {
+          "id": "alqadim:objective:ch8_4:hint",
+          "entityId": "alqadim:objective:ch8_4",
+          "title": "Solve the hags' riddle to open the path to the Library.",
+          "aliases": [
+            "ch8_4"
+          ],
+          "kind": "objective",
+          "relation": "hint",
+          "scope": "alqadim:objective:ch8_4",
+          "answers": [],
+          "acquisitionMethods": [],
+          "text": "Solve the hags' riddle to open the path to the Library.",
+          "level": "direct",
+          "source": {
+            "file": "guides/js/AlQadim.js",
+            "locator": "DB.chapters[7].required[id=ch8_4]",
+            "review": "extracted"
+          },
+          "requires": null,
+          "completionFact": "alqadim:objective:ch8_4:completed",
+          "optional": false,
+          "editions": [],
+          "conflict": false,
+          "general": false,
+          "actions": [],
+          "diagnostics": []
+        }
+      ]
+    },
+    {
+      "suite": "corpus",
+      "dialogueId": "new-dungeon-and-journal",
+      "turn": 1,
+      "question": "How do I enter the New Dungeon?",
+      "decision": "decline",
+      "fullReply": "The guide records the objective, but does not describe the requested procedure: Enter the New Dungeon (Stealth Section - Do not get caught).",
+      "citations": [
+        "Source: existing guide; extracted. guides/js/AlQadim.js — DB.chapters[12].required[id=ch13_1]"
+      ],
+      "strictProblems": [
+        "Expected answer; observed decline"
+      ],
+      "reviewAssessment": "justified-objective-only-decline",
+      "reviewReason": "The complete source says Enter the New Dungeon and adds the Stealth Section / Do not get caught constraint. It supplies no entrance route, location or method. The response preserves the entire constraint and exact citation while declining a procedure. The oracle expects that objective/constraint as if it answered how to enter.",
+      "sourceWitnessRelevant": [
+        {
+          "id": "alqadim:objective:ch13_1:hint",
+          "entityId": "alqadim:objective:ch13_1",
+          "title": "Enter the New Dungeon (Stealth Section - Do not get caught).",
+          "aliases": [
+            "ch13_1"
+          ],
+          "kind": "objective",
+          "relation": "hint",
+          "scope": "alqadim:objective:ch13_1",
+          "answers": [],
+          "acquisitionMethods": [],
+          "text": "Enter the New Dungeon (Stealth Section - Do not get caught).",
+          "level": "direct",
+          "source": {
+            "file": "guides/js/AlQadim.js",
+            "locator": "DB.chapters[12].required[id=ch13_1]",
+            "review": "extracted"
+          },
+          "requires": null,
+          "completionFact": "alqadim:objective:ch13_1:completed",
+          "optional": false,
+          "editions": [],
+          "conflict": false,
+          "general": false,
+          "actions": [],
+          "diagnostics": []
+        }
+      ]
+    },
+    {
+      "suite": "corpus",
+      "dialogueId": "finale-boundaries",
+      "turn": 3,
+      "question": "How do I handle the Magical shield orbs?",
+      "decision": "decline",
+      "fullReply": "The guide records the objective, but does not describe the requested procedure: Destroy the magical shield orbs.",
+      "citations": [
+        "Source: existing guide; extracted. guides/js/AlQadim.js — DB.chapters[18].required[id=ch19_3]"
+      ],
+      "strictProblems": [
+        "Expected answer; observed decline"
+      ],
+      "reviewAssessment": "justified-objective-only-decline",
+      "reviewReason": "The complete source only says Destroy the magical shield orbs. No destruction method, order, spell, or relation to attacking the Vizier is recorded. The response quotes/cites the entire objective and correctly declines the requested handle procedure. The old oracle accepts the objective alone as an answer.",
+      "sourceWitnessRelevant": [
+        {
+          "id": "alqadim:objective:ch19_3:hint",
+          "entityId": "alqadim:objective:ch19_3",
+          "title": "Destroy the magical shield orbs.",
+          "aliases": [
+            "ch19_3"
+          ],
+          "kind": "objective",
+          "relation": "hint",
+          "scope": "alqadim:objective:ch19_3",
+          "answers": [],
+          "acquisitionMethods": [],
+          "text": "Destroy the magical shield orbs.",
+          "level": "direct",
+          "source": {
+            "file": "guides/js/AlQadim.js",
+            "locator": "DB.chapters[18].required[id=ch19_3]",
+            "review": "extracted"
+          },
+          "requires": null,
+          "completionFact": "alqadim:objective:ch19_3:completed",
+          "optional": false,
+          "editions": [],
+          "conflict": false,
+          "general": false,
+          "actions": [],
+          "diagnostics": []
+        }
+      ]
+    },
+    {
+      "suite": "observed-fresh",
+      "dialogueId": "aq-sword-training",
+      "turn": 1,
+      "question": "How do I learn the Full-Circle Swing?",
+      "decision": "answer",
+      "fullReply": "The most powerful swing: a complete 360-degree cut that also catches monsters behind the Corsair. Release when the third action circle lights orange. Learn from Zubakon after later progression.",
+      "citations": [
+        "Source: existing guide; extracted. guides/js/AlQadim.js — DB.combatMoves[2]"
+      ],
+      "strictProblems": [
+        "Missing exact fixed source citation: guides/js/AlQadim.js — DB.combatMoves[2].training"
+      ],
+      "reviewAssessment": null,
+      "reviewReason": null,
+      "sourceWitnessRelevant": []
+    },
+    {
+      "suite": "observed-fresh",
+      "dialogueId": "aq-berries-and-family",
+      "turn": 3,
+      "question": "Before I leave the oasis, how should I deal with its giant boar?",
+      "decision": "answer",
+      "fullReply": "Giant Boar: Charges in straight lines. Dodge sideways, then strike from behind. Danger: Medium.\nGiant Boar: Oasis Outskirts.",
+      "citations": [
+        "Source: existing guide; extracted. guides/js/AlQadim.js — DB.bestiary[3].strategy/danger; guides/js/AlQadim.js — DB.bestiary[3].location"
+      ],
+      "strictProblems": [
+        "Missing exact fixed source citation: guides/js/AlQadim.js — DB.bestiary[3]"
+      ],
+      "reviewAssessment": null,
+      "reviewReason": null,
+      "sourceWitnessRelevant": []
+    }
+  ],
+  "failureClassification": {
+    "genuineSourceBackedAnswerGaps": 0,
+    "justifiedObjectiveOnlyDeclines": 6,
+    "locatorOnlyStrictMismatches": 2,
+    "details": "All six corpus declines are explicitly reviewed in the final source review as unsupported procedures. The two observed-fresh failures contain useful source-supported full answers; strict failure is exact locator mismatch, not content gap."
+  },
+  "locatorOnlyRows": [
+    {
+      "suite": "observed-fresh",
+      "dialogueId": "aq-sword-training",
+      "turn": 1,
+      "question": "How do I learn the Full-Circle Swing?",
+      "actualReply": "The most powerful swing: a complete 360-degree cut that also catches monsters behind the Corsair. Release when the third action circle lights orange. Learn from Zubakon after later progression.",
+      "actualCitation": [
+        "Source: existing guide; extracted. guides/js/AlQadim.js — DB.combatMoves[2]"
+      ],
+      "oracleLocator": "DB.combatMoves[2].training",
+      "sourceEvidence": "guides/js/AlQadim.js combatMoves[2] has effect, training, control; actual reply includes all three fields but source citation locator is DB.combatMoves[2]."
+    },
+    {
+      "suite": "observed-fresh",
+      "dialogueId": "aq-berries-and-family",
+      "turn": 3,
+      "question": "Before I leave the oasis, how should I deal with its giant boar?",
+      "actualReply": "Giant Boar: Charges in straight lines. Dodge sideways, then strike from behind. Danger: Medium.\nGiant Boar: Oasis Outskirts.",
+      "actualCitation": [
+        "Source: existing guide; extracted. guides/js/AlQadim.js — DB.bestiary[3].strategy/danger; guides/js/AlQadim.js — DB.bestiary[3].location"
+      ],
+      "oracleLocator": "DB.bestiary[3]",
+      "sourceEvidence": "guides/js/AlQadim.js bestiary[3] is the Giant Boar record with name/location/danger/strategy; answer includes strategy and danger plus location, cited as strategy/danger and location subfields."
+    }
+  ],
+  "semantic13": {
+    "result": {
+      "passed": 2,
+      "failed": 0,
+      "total": 2
+    },
+    "assertionCount": 13,
+    "coveredDialogs": {
+      "matchedDialogues": 1,
+      "expectedDialogues": 1,
+      "complete": true,
+      "missingDialogueIds": []
+    },
+    "status": "Both native semantic-smoke turns passed; this evidence does not assert all 13 assertions individually ran."
+  },
+  "controls": {
+    "nativeAcceptanceReport": {
+      "passed": 0,
+      "failed": 0,
+      "total": 0
+    },
+    "limitation": "This focused native report contains no separate control turns; unchanged negative-control status is not established by this run."
+  },
+  "model": {
+    "nativeMiniLMEveryProbe": true,
+    "workerCount": 1,
+    "workers": [
+      {
+        "url": "http://127.0.0.1:51651/guides/js/assistant/intent-worker.js",
+        "eventCount": 818,
+        "eventTypes": [
+          "classify",
+          "embedding",
+          "encode",
+          "load",
+          "ready",
+          "result"
+        ]
+      }
+    ]
+  },
+  "conclusion": "No AlQadim primary-corpus answer or pass regression against the 2026-10-29 frozen source baseline (154/154 rows exact). Six strict corpus misses are source-supported declines that avoid inventing procedures, and were pre-adjudicated as justified objective-only declines. Two observed-fresh strict misses are locator-granularity mismatches on complete useful answers. No incomplete conversations; all six focused suite boundaries pass. This is not a claim that full 1005-turn/browser network controls were rerun."
+}

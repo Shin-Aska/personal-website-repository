@@ -1,0 +1,500 @@
+{
+  "schemaVersion": 1,
+  "kind": "test-only-native-semantic-smoke",
+  "id": "semantic13",
+  "assertionCount": 13,
+  "oracleFixture": {
+    "path": "guides/tests/assistant/narrative-all-games-cases.json",
+    "sha256": "a8d8c86b71f875055e6321963c475e85926f168648c5f806bf0c9bd86173c203"
+  },
+  "sourceWitnessBasis": "Trusted source records selected by unchanged frozen recordIds; exact source text/citations are evidence only, not answer input to runtime.",
+  "coverage": {
+    "normalAnswers": 7,
+    "smallerHintFullAnswerRepeats": 6,
+    "alqadimBothSurfaces": true
+  },
+  "oracles": {
+    "albion": {
+      "gameId": "albion",
+      "question": "What is the method for the path to Toronto?",
+      "spoiler": "direct",
+      "recordId": "albion:narrative:toronto-route-method:method",
+      "contains": [
+        "pay Ohl a Jewel",
+        "coastline"
+      ],
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "pay Ohl a Jewel",
+          "coastline"
+        ],
+        "source": {
+          "file": "guides/js/Albion.js",
+          "locator": "QUEST_HINTS.umajo.find-path"
+        }
+      },
+      "authorization": {
+        "gentle": false,
+        "direct": true
+      },
+      "sourceWitness": {
+        "recordId": "albion:narrative:toronto-route-method:method",
+        "title": "The path to Toronto",
+        "text": "To reach Toronto: either pay Ohl a Jewel (meet via the Miner’s Guild schedule) or follow the “stones to coastline then south” route to the cave entrance.",
+        "source": {
+          "file": "guides/js/Albion.js",
+          "locator": "QUEST_HINTS.umajo.find-path",
+          "review": "extracted",
+          "index": {
+            "file": "guides/data/assistant/albion.json",
+            "locator": "narratives[id=toronto-route-method]",
+            "review": "authored-index"
+          },
+          "claims": [
+            {
+              "text": "To reach Toronto: either pay Ohl a Jewel (meet via the Miner’s Guild schedule) or follow the “stones to coastline then south” route to the cave entrance.",
+              "source": {
+                "file": "guides/js/Albion.js",
+                "locator": "QUEST_HINTS.umajo.find-path",
+                "review": "extracted"
+              }
+            }
+          ]
+        }
+      }
+    },
+    "ultima5": {
+      "gameId": "ultima5",
+      "question": "What is the method for the Sandalwood Box?",
+      "spoiler": "direct",
+      "recordId": "ultima5:narrative:sandalwood-method:method",
+      "contains": [
+        "play Stones",
+        "secret wall opens"
+      ],
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "play Stones",
+          "secret wall opens"
+        ],
+        "source": {
+          "file": "guides/js/Ultima5.js",
+          "locator": "ultima5GrandQuestChapters objective=opening-castle-raid.steps[4]"
+        }
+      },
+      "authorization": {
+        "gentle": false,
+        "direct": true
+      },
+      "sourceWitness": {
+        "recordId": "ultima5:narrative:sandalwood-method:method",
+        "title": "Raid Lord British’s third-floor chambers",
+        "text": "Stand at the harpsichord and play Stones as 6-7-8-9-8-7-8-7-6-7-6-5-3. The secret wall opens; enter and take the Sandalwood Box.",
+        "source": {
+          "file": "guides/js/Ultima5.js",
+          "locator": "ultima5GrandQuestChapters objective=opening-castle-raid.steps[4]",
+          "review": "extracted",
+          "index": {
+            "file": "guides/data/assistant/ultima5.json",
+            "locator": "narratives[id=sandalwood-method]",
+            "review": "authored-index"
+          },
+          "claims": [
+            {
+              "text": "Stand at the harpsichord and play Stones as 6-7-8-9-8-7-8-7-6-7-6-5-3. The secret wall opens; enter and take the Sandalwood Box.",
+              "source": {
+                "file": "guides/js/Ultima5.js",
+                "locator": "ultima5GrandQuestChapters objective=opening-castle-raid.steps[4]",
+                "review": "extracted"
+              }
+            }
+          ]
+        }
+      }
+    },
+    "ultima6": {
+      "gameId": "ultima6",
+      "question": "What is the next step in the Merchants' Circuit?",
+      "spoiler": "direct",
+      "recordId": "ultima6:narrative:merchants-sequence:sequence",
+      "contains": [
+        "In the guide's steps",
+        "then bring his flour back"
+      ],
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "In the guide's steps",
+          "then bring his flour back"
+        ],
+        "source": {
+          "file": "guides/js/Ultima6.js",
+          "locator": "gameData.sideQuests[0].steps[0]"
+        }
+      },
+      "authorization": {
+        "gentle": false,
+        "direct": true
+      },
+      "sourceWitness": {
+        "recordId": "ultima6:narrative:merchants-sequence:sequence",
+        "title": "The Merchants' Circuit",
+        "text": "Carry grain from Linda in Britain to Grison in Paws, then bring his flour back to Cullen in Britain.",
+        "source": {
+          "file": "guides/js/Ultima6.js",
+          "locator": "gameData.sideQuests[0].steps[0]",
+          "review": "extracted",
+          "index": {
+            "file": "guides/data/assistant/ultima6.json",
+            "locator": "narratives[id=merchants-sequence]",
+            "review": "authored-index"
+          },
+          "claims": [
+            {
+              "text": "Carry grain from Linda in Britain to Grison in Paws, then bring his flour back to Cullen in Britain.",
+              "source": {
+                "file": "guides/js/Ultima6.js",
+                "locator": "gameData.sideQuests[0].steps[0]",
+                "review": "extracted"
+              }
+            }
+          ]
+        }
+      }
+    },
+    "ultima7": {
+      "gameId": "ultima7",
+      "question": "Why was Inamo killed?",
+      "spoiler": "direct",
+      "recordId": "ultima7:narrative:inamo-motive:cause",
+      "contains": [
+        "different accounts",
+        "no single explanation"
+      ],
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "different accounts",
+          "no single explanation"
+        ],
+        "allSources": [
+          {
+            "file": "https://wiki.ultimacodex.com/index.php?title=Inamo&oldid=154876",
+            "locator": "Inamo — The Codex of Ultima Wisdom",
+            "review": "external-research"
+          },
+          {
+            "file": "https://wiki.ultimacodex.com/wiki/Christopher",
+            "locator": "Christopher — The Codex of Ultima Wisdom",
+            "review": "external-research"
+          },
+          {
+            "file": "https://wiki.ultimacodex.com/wiki/Klog",
+            "locator": "Klog — The Codex of Ultima Wisdom",
+            "review": "external-research"
+          }
+        ]
+      },
+      "authorization": {
+        "gentle": false,
+        "direct": true
+      },
+      "sourceWitness": {
+        "recordId": "ultima7:narrative:inamo-motive:cause",
+        "title": "Inamo",
+        "text": "The Ultima Codex's Inamo article says Inamo was likely an unexpected bystander when he was killed.\nThe Ultima Codex's Christopher article says Inamo was killed apparently so that he could not witness the crime.\nThe Ultima Codex's Klog article describes Inamo as a gargoyle killed to silence a witness.",
+        "source": {
+          "file": "https://wiki.ultimacodex.com/index.php?title=Inamo&oldid=154876, https://wiki.ultimacodex.com/wiki/Christopher, https://wiki.ultimacodex.com/wiki/Klog",
+          "locator": "Inamo — The Codex of Ultima Wisdom; Christopher — The Codex of Ultima Wisdom; Klog — The Codex of Ultima Wisdom",
+          "review": "external-research",
+          "index": {
+            "file": "guides/data/assistant/ultima7.json",
+            "locator": "narratives[id=inamo-motive]",
+            "review": "authored-index"
+          },
+          "claims": [
+            {
+              "text": "The Ultima Codex's Inamo article says Inamo was likely an unexpected bystander when he was killed.",
+              "source": {
+                "file": "https://wiki.ultimacodex.com/index.php?title=Inamo&oldid=154876",
+                "locator": "Inamo — The Codex of Ultima Wisdom",
+                "review": "external-research",
+                "references": [
+                  {
+                    "label": "Inamo — The Codex of Ultima Wisdom",
+                    "url": "https://wiki.ultimacodex.com/index.php?title=Inamo&oldid=154876",
+                    "checkedAt": "2026-10-21"
+                  }
+                ]
+              }
+            },
+            {
+              "text": "The Ultima Codex's Christopher article says Inamo was killed apparently so that he could not witness the crime.",
+              "source": {
+                "file": "https://wiki.ultimacodex.com/wiki/Christopher",
+                "locator": "Christopher — The Codex of Ultima Wisdom",
+                "review": "external-research",
+                "references": [
+                  {
+                    "label": "Christopher — The Codex of Ultima Wisdom",
+                    "url": "https://wiki.ultimacodex.com/wiki/Christopher",
+                    "checkedAt": "2026-10-21"
+                  }
+                ]
+              }
+            },
+            {
+              "text": "The Ultima Codex's Klog article describes Inamo as a gargoyle killed to silence a witness.",
+              "source": {
+                "file": "https://wiki.ultimacodex.com/wiki/Klog",
+                "locator": "Klog — The Codex of Ultima Wisdom",
+                "review": "external-research",
+                "references": [
+                  {
+                    "label": "Klog — The Codex of Ultima Wisdom",
+                    "url": "https://wiki.ultimacodex.com/wiki/Klog",
+                    "checkedAt": "2026-10-22"
+                  }
+                ]
+              }
+            }
+          ],
+          "references": [
+            {
+              "label": "Inamo — The Codex of Ultima Wisdom",
+              "url": "https://wiki.ultimacodex.com/index.php?title=Inamo&oldid=154876",
+              "checkedAt": "2026-10-21"
+            },
+            {
+              "label": "Christopher — The Codex of Ultima Wisdom",
+              "url": "https://wiki.ultimacodex.com/wiki/Christopher",
+              "checkedAt": "2026-10-21"
+            },
+            {
+              "label": "Klog — The Codex of Ultima Wisdom",
+              "url": "https://wiki.ultimacodex.com/wiki/Klog",
+              "checkedAt": "2026-10-22"
+            }
+          ]
+        }
+      }
+    },
+    "alqadim": {
+      "gameId": "alqadim",
+      "question": "What is the method for getting the Family Sword of Honor?",
+      "spoiler": "direct",
+      "recordId": "alqadim:narrative:ch2_1:method",
+      "contains": [
+        "speak with Zubin"
+      ],
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "speak with Zubin"
+        ],
+        "source": {
+          "file": "guides/js/AlQadim.js",
+          "locator": "DB.chapters[1].required[id=ch2_1]"
+        }
+      },
+      "authorization": {
+        "gentle": false,
+        "direct": true
+      },
+      "sourceWitness": {
+        "recordId": "alqadim:narrative:ch2_1:method",
+        "title": "Meet Aliya at the gates and speak with Zubin to get the Family Sword of Honor",
+        "text": "Meet Aliya at the gates and speak with Zubin to get the Family Sword of Honor.",
+        "source": {
+          "file": "guides/js/AlQadim.js",
+          "locator": "DB.chapters[1].required[id=ch2_1]",
+          "review": "extracted",
+          "index": {
+            "file": "guides/data/assistant/alqadim.json",
+            "locator": "narratives[id=ch2_1]",
+            "review": "authored-index"
+          },
+          "claims": [
+            {
+              "text": "Meet Aliya at the gates and speak with Zubin to get the Family Sword of Honor.",
+              "source": {
+                "file": "guides/js/AlQadim.js",
+                "locator": "DB.chapters[1].required[id=ch2_1]",
+                "review": "extracted"
+              }
+            }
+          ]
+        }
+      }
+    },
+    "starcraft": {
+      "gameId": "starcraft",
+      "question": "Summarize SCHNAIL",
+      "spoiler": "direct",
+      "recordId": "starcraft:narrative:schnail-summary:summary",
+      "contains": [
+        "More realistic AI behavior",
+        "includes its own version"
+      ],
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "More realistic AI behavior",
+          "includes its own version"
+        ],
+        "source": {
+          "file": "guides/StarcraftBWAPI.html",
+          "locator": "#getting-started .grid > div:first-child; #schnail-setup .text-blue-700"
+        }
+      },
+      "authorization": {
+        "gentle": false,
+        "direct": true
+      },
+      "sourceWitness": {
+        "recordId": "starcraft:narrative:schnail-summary:summary",
+        "title": "SCHNAIL",
+        "text": "SCHNAIL; Pros: More realistic AI behavior; Better micro and macro management; Seamless integration with the game; Active community and regular updates; Cons: Requires internet connection for initial login; AI plays over local network after login; View Setup Guide\nNote: SCHNAIL includes its own version of Starcraft: Brood War, so you don't need to install the game separately.",
+        "source": {
+          "file": "guides/StarcraftBWAPI.html",
+          "locator": "#getting-started .grid > div:first-child; #schnail-setup .text-blue-700",
+          "review": "extracted",
+          "index": {
+            "file": "guides/data/assistant/starcraft.json",
+            "locator": "narratives[id=schnail-summary]",
+            "review": "authored-index"
+          },
+          "claims": [
+            {
+              "text": "SCHNAIL; Pros: More realistic AI behavior; Better micro and macro management; Seamless integration with the game; Active community and regular updates; Cons: Requires internet connection for initial login; AI plays over local network after login; View Setup Guide",
+              "source": {
+                "file": "guides/StarcraftBWAPI.html",
+                "locator": "#getting-started .grid > div:first-child",
+                "review": "extracted"
+              }
+            },
+            {
+              "text": "Note: SCHNAIL includes its own version of Starcraft: Brood War, so you don't need to install the game separately.",
+              "source": {
+                "file": "guides/StarcraftBWAPI.html",
+                "locator": "#schnail-setup .text-blue-700",
+                "review": "extracted"
+              }
+            }
+          ]
+        }
+      }
+    }
+  },
+  "dialogues": [
+    {
+      "id": "semantic13-albion",
+      "gameId": "albion",
+      "surface": "albion",
+      "turns": [
+        {
+          "text": "What is the method for the path to Toronto?",
+          "oracleId": "albion"
+        },
+        {
+          "text": "smaller hint",
+          "oracleId": "albion",
+          "assertSameReplyAsPrevious": true
+        }
+      ]
+    },
+    {
+      "id": "semantic13-ultima5",
+      "gameId": "ultima5",
+      "surface": "ultima5",
+      "turns": [
+        {
+          "text": "What is the method for the Sandalwood Box?",
+          "oracleId": "ultima5"
+        },
+        {
+          "text": "smaller hint",
+          "oracleId": "ultima5",
+          "assertSameReplyAsPrevious": true
+        }
+      ]
+    },
+    {
+      "id": "semantic13-ultima6",
+      "gameId": "ultima6",
+      "surface": "ultima6",
+      "turns": [
+        {
+          "text": "What is the next step in the Merchants' Circuit?",
+          "oracleId": "ultima6"
+        },
+        {
+          "text": "smaller hint",
+          "oracleId": "ultima6",
+          "assertSameReplyAsPrevious": true
+        }
+      ]
+    },
+    {
+      "id": "semantic13-ultima7",
+      "gameId": "ultima7",
+      "surface": "ultima7",
+      "turns": [
+        {
+          "text": "Why was Inamo killed?",
+          "oracleId": "ultima7"
+        },
+        {
+          "text": "smaller hint",
+          "oracleId": "ultima7",
+          "assertSameReplyAsPrevious": true
+        }
+      ]
+    },
+    {
+      "id": "semantic13-alqadim",
+      "gameId": "alqadim",
+      "surface": "alqadim",
+      "turns": [
+        {
+          "text": "What is the method for getting the Family Sword of Honor?",
+          "oracleId": "alqadim"
+        },
+        {
+          "text": "smaller hint",
+          "oracleId": "alqadim",
+          "assertSameReplyAsPrevious": true
+        }
+      ]
+    },
+    {
+      "id": "semantic13-starcraft",
+      "gameId": "starcraft",
+      "surface": "starcraft",
+      "turns": [
+        {
+          "text": "Summarize SCHNAIL",
+          "oracleId": "starcraft"
+        },
+        {
+          "text": "smaller hint",
+          "oracleId": "starcraft",
+          "assertSameReplyAsPrevious": true
+        }
+      ]
+    },
+    {
+      "id": "semantic13-alqadim-walkthrough",
+      "gameId": "alqadim",
+      "surface": "alqadim-walkthrough",
+      "turns": [
+        {
+          "text": "What is the method for getting the Family Sword of Honor?",
+          "oracleId": "alqadim"
+        }
+      ]
+    }
+  ]
+}

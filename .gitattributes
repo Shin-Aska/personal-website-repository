@@ -1,3 +1,10 @@
 # Preserve the exact bytes required by the model profile's SHA-256 checks.
 guides/local-assistant/files/*.bin binary
 guides/local-assistant/intent/files/*.bin binary
+
+# Catalog digests and frozen head provenance use the canonical Git text bytes.
+guides/data/assistant/knowledge/*.json text eol=lf
+guides/local-assistant/intent/head.json text eol=lf
+guides/tests/assistant/intent-prototype/cases/training-v2.json text eol=lf
+guides/tests/assistant/intent-prototype/cases/validation-v2.json text eol=lf
+guides/tests/assistant/intent-prototype/classifier.mjs text eol=lf

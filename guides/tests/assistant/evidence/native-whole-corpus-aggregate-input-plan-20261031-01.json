@@ -1,0 +1,180 @@
+{
+  "schemaVersion": 1,
+  "kind": "pending-native-whole-corpus-aggregate-input-plan",
+  "tag": "native-whole-corpus-aggregate-input-plan-20261031-01",
+  "createdAt": "2026-10-31",
+  "status": "pending-final-StarCraft-and-Ultima7-native-reports",
+  "notAnAggregate": true,
+  "baseline": {
+    "path": "guides/tests/assistant/evidence/knowledge-browser-terra-20261029-frozen-source-01.json",
+    "sha256": "4813cd4dbb84d7fcd83ec90c09af4bf009b8ebc6e5b34c2857ade6a196c73bfb",
+    "source": "2026-10-29 frozen source/browser corpus report only; do not mix beta/exact-replay or other baseline tags",
+    "totalRows": 1005,
+    "surfaceRows": {
+      "albion": 116,
+      "ultima5": 146,
+      "ultima6": 133,
+      "ultima7": 159,
+      "alqadim": 154,
+      "alqadim-walkthrough": 154,
+      "starcraft": 143
+    },
+    "baselinePassedBySurface": {
+      "albion": 102,
+      "ultima5": 139,
+      "ultima6": 131,
+      "ultima7": 148,
+      "alqadim": 148,
+      "alqadim-walkthrough": 148,
+      "starcraft": 108
+    }
+  },
+  "inputMapping": [
+    {
+      "surface": "ultima5",
+      "reportPath": "guides/tests/assistant/evidence/knowledge-cua-native-whole-goal-final-u5-all-20261031-01.json",
+      "reportSha256": "74b1958d9607a0411b02068d69fb3835fe97ad44f017de00a31906d25c707484",
+      "corpusRows": 146,
+      "passed": 145,
+      "baselineRows": 146,
+      "matchedKeys": 146,
+      "missingKeys": 0,
+      "extraKeys": 0,
+      "boundaries": {
+        "sourceStable": true,
+        "frozenInputsMatched": true,
+        "noStorageWrites": true,
+        "noPageErrors": true,
+        "nativeMiniLMEveryProbe": true,
+        "allAdditionalControlsHeld": true
+      },
+      "role": "candidate current report"
+    },
+    {
+      "surface": "ultima6",
+      "reportPath": "guides/tests/assistant/evidence/knowledge-cua-native-whole-goal-final-u6-all-20261031-01.json",
+      "reportSha256": "ba40562924d8f27498899f113fa87c054cad453b947f1da881d09e9013ebf9fd",
+      "corpusRows": 133,
+      "passed": 132,
+      "baselineRows": 133,
+      "matchedKeys": 133,
+      "missingKeys": 0,
+      "extraKeys": 0,
+      "boundaries": {
+        "sourceStable": true,
+        "frozenInputsMatched": false,
+        "noStorageWrites": true,
+        "noPageErrors": true,
+        "nativeMiniLMEveryProbe": true,
+        "allAdditionalControlsHeld": true
+      },
+      "role": "candidate current report",
+      "supplementalBoundaryEvidence": "guides/tests/assistant/evidence/native-consent-provenance-u6-20261031-01.json; original frozenInputsMatched false remains unchanged and must be reported with this provenance limitation."
+    },
+    {
+      "surface": "ultima7",
+      "reportPath": "guides/tests/assistant/evidence/knowledge-cua-native-whole-goal-final-u7-20261031-02.json",
+      "reportSha256": "9df5cdd9b30516be92955d42e060492f8c9c494929117fa7861d9a6712f46ad0",
+      "corpusRows": 159,
+      "passed": 158,
+      "baselineRows": 159,
+      "matchedKeys": 159,
+      "missingKeys": 0,
+      "extraKeys": 0,
+      "boundaries": {
+        "sourceStable": true,
+        "frozenInputsMatched": false,
+        "noStorageWrites": true,
+        "noPageErrors": true,
+        "nativeMiniLMEveryProbe": true,
+        "allAdditionalControlsHeld": true
+      },
+      "role": "provisional; must be replaced",
+      "replacementNeeded": "Root is collecting remaining source-first/observed/semantic native suites; old corpus report boundary has frozenInputsMatched=false."
+    },
+    {
+      "surface": "starcraft",
+      "reportPath": "guides/tests/assistant/evidence/knowledge-cua-native-whole-goal-final-starcraft-all-20261031-01.json",
+      "reportSha256": "3756533b946cd9dc1a4acec67b52dceeaa1155e535a1353596aaf0a17d89b848",
+      "corpusRows": 143,
+      "passed": 108,
+      "baselineRows": 143,
+      "matchedKeys": 143,
+      "missingKeys": 0,
+      "extraKeys": 0,
+      "boundaries": {
+        "sourceStable": true,
+        "frozenInputsMatched": true,
+        "noStorageWrites": true,
+        "noPageErrors": true,
+        "nativeMiniLMEveryProbe": true,
+        "allAdditionalControlsHeld": true
+      },
+      "role": "provisional; must be replaced",
+      "replacementNeeded": "This report predates summary-repair full corpus replay and strict SCHNAIL fact-ID transition; use fresh full corpus plus all additional datasets report when ready."
+    },
+    {
+      "surface": "albion",
+      "reportPath": "guides/tests/assistant/evidence/knowledge-cua-native-whole-goal-final-albion-all-20261031-01.json",
+      "reportSha256": "3292df95f05dbd496d6729fc5d784a992c31c09949d17beb94db6812d6d874cd",
+      "corpusRows": 116,
+      "passed": 110,
+      "baselineRows": 116,
+      "matchedKeys": 116,
+      "missingKeys": 0,
+      "extraKeys": 0,
+      "boundaries": {
+        "sourceStable": true,
+        "frozenInputsMatched": true,
+        "noStorageWrites": true,
+        "noPageErrors": true,
+        "nativeMiniLMEveryProbe": true,
+        "allAdditionalControlsHeld": true
+      },
+      "role": "candidate current report"
+    },
+    {
+      "surface": "alqadim",
+      "reportPath": "guides/tests/assistant/evidence/knowledge-cua-native-whole-goal-final-alqadim-all-20261031-01.json",
+      "reportSha256": "7b559218715cc223614a21ae823e7345df7d86fb755b853c54d55a06be18904a",
+      "corpusRows": 154,
+      "passed": 148,
+      "baselineRows": 154,
+      "matchedKeys": 154,
+      "missingKeys": 0,
+      "extraKeys": 0,
+      "boundaries": {
+        "sourceStable": true,
+        "frozenInputsMatched": true,
+        "noStorageWrites": true,
+        "noPageErrors": true,
+        "nativeMiniLMEveryProbe": true,
+        "allAdditionalControlsHeld": true
+      },
+      "role": "candidate current report"
+    },
+    {
+      "surface": "alqadim-walkthrough",
+      "reportPath": "guides/tests/assistant/evidence/knowledge-cua-native-whole-goal-final-alqadim-walkthrough-20261031-01.json",
+      "reportSha256": "66e011c88c01a6dfbe5027bb32090ba2a8b5ba7ea6a6879d8fc0214a9aa4ba4d",
+      "corpusRows": 154,
+      "passed": 148,
+      "baselineRows": 154,
+      "matchedKeys": 154,
+      "missingKeys": 0,
+      "extraKeys": 0,
+      "boundaries": {
+        "sourceStable": true,
+        "frozenInputsMatched": true,
+        "noStorageWrites": true,
+        "noPageErrors": true,
+        "nativeMiniLMEveryProbe": true,
+        "allAdditionalControlsHeld": true
+      },
+      "role": "candidate current report"
+    }
+  ],
+  "aggregationRule": "Filter each adjudication report to suite=corpus and its one exact surface. Key by surface+dialogueId+turn. Compare full original user text, decision, rendered reply, citations, links, strict status, and problems against that exact surface in the frozen baseline. Verify source/boundary metadata separately. Require 1005 unique expected baseline keys, no duplicates, no missing or extra rows. Do not sum current pass counts into an aggregate until final replacement StarCraft and Ultima7 reports are available and reviewed.",
+  "expectedUniqueRows": 1005,
+  "surfaceCoverageExactlyMatchesBaseline": true
+}

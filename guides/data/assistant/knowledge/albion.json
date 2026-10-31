@@ -577,7 +577,49 @@
       ],
       "topicLabels": [
         "Herras assassination sequence"
-      ]
+      ],
+      "conflictQuotation": {
+        "schemaVersion": 1,
+        "conflictId": "albion:maini-names",
+        "mode": "unresolved-names",
+        "fields": [
+          {
+            "key": "sequence",
+            "selectors": []
+          }
+        ],
+        "unresolvedNames": [
+          [
+            "Kounos",
+            "Kontos"
+          ],
+          [
+            "Edjiir",
+            "Edjirr"
+          ]
+        ],
+        "disclosure": "The quest notes use Kounos and Edjiir, while the atlas uses Kontos and Edjirr. The complete sequence is quoted as written; those names are not established as equivalent.",
+        "disclosureWitnesses": [
+          {
+            "sourceRecordId": "albion:npc:edjirr:location",
+            "text": "Edjirr appears on: Edjirr (wanders nearby).",
+            "source": {
+              "file": "guides/js/AlbionAtlasData.js",
+              "locator": "ALBION_ATLAS_CONFIG.maps[*].npcs[id=npc:281:7]",
+              "review": "extracted"
+            }
+          },
+          {
+            "sourceRecordId": "albion:npc:kontos:location",
+            "text": "Kontos appears on: Kontos (wanders nearby).",
+            "source": {
+              "file": "guides/js/AlbionAtlasData.js",
+              "locator": "ALBION_ATLAS_CONFIG.maps[*].npcs[id=npc:213:0]",
+              "review": "extracted"
+            }
+          }
+        ]
+      }
     },
     {
       "id": "herras-key",
@@ -738,7 +780,8 @@
         {
           "key": "use",
           "selectors": [
-            "effect"
+            "effect",
+            "prevention"
           ],
           "witness": "Ask Merdger/Merger in the Equipment Maker’s Guild about Porenoil; it prevents dehydration in the desert."
         },
@@ -927,7 +970,12 @@
         {
           "key": "sequence",
           "selectors": [],
-          "witness": "Toronto Again: use 1001 (notebook), then 1712 (service level), then 4312 (code-notes reversed) to reach the reactor sequence."
+          "witness": "Toronto Again: use 1001 (notebook), then 1712 (service level), then 4312 (code-notes reversed) to reach the reactor sequence.",
+          "members": [
+            "1001",
+            "1712",
+            "4312"
+          ]
         },
         {
           "key": "method",
@@ -940,6 +988,51 @@
           "key": "acquisition",
           "selectors": [],
           "witness": "Toronto Again: use 1001 (notebook), then 1712 (service level), then 4312 (code-notes reversed) to reach the reactor sequence."
+        },
+        {
+          "key": "location",
+          "selectors": [
+            "origin"
+          ],
+          "witness": "Toronto Again: use 1001 (notebook), then 1712 (service level), then 4312 (code-notes reversed) to reach the reactor sequence.",
+          "arguments": [
+            {
+              "bindings": [
+                {
+                  "role": "object",
+                  "mention": "1001"
+                },
+                {
+                  "role": "content",
+                  "mention": "notebook"
+                }
+              ]
+            },
+            {
+              "bindings": [
+                {
+                  "role": "object",
+                  "mention": "1712"
+                },
+                {
+                  "role": "content",
+                  "mention": "service level"
+                }
+              ]
+            },
+            {
+              "bindings": [
+                {
+                  "role": "object",
+                  "mention": "4312"
+                },
+                {
+                  "role": "content",
+                  "mention": "code-notes reversed"
+                }
+              ]
+            }
+          ]
         }
       ]
     },
@@ -1261,7 +1354,30 @@
           ],
           "witness": "Optional XP: the blue floor plate summons 16 Animal 3; put party in back row and use Demon Exodus for fast clears."
         }
-      ]
+      ],
+      "conflictQuotation": {
+        "schemaVersion": 1,
+        "conflictId": "albion:xp-total",
+        "mode": "independent-field",
+        "fields": [
+          {
+            "key": "use",
+            "selectors": [
+              "effect"
+            ]
+          },
+          {
+            "key": "method",
+            "selectors": [
+              "step"
+            ]
+          }
+        ],
+        "excludedDisputedTerms": [
+          "5760"
+        ],
+        "disclosure": "The guide’s XP total for this plate is disputed. The complete quotation below gives the recorded tactic; it does not establish an XP total."
+      }
     },
     {
       "id": "bring-joe",
@@ -2471,6 +2587,15 @@
       ],
       "topicLabels": [
         "Harriet island teleportation"
+      ],
+      "sourceFields": [
+        {
+          "key": "use",
+          "selectors": [
+            "purpose"
+          ],
+          "witness": "Required for teleportation between islands."
+        }
       ]
     },
     {
@@ -2604,6 +2729,15 @@
       "topicLabels": [
         "Khunag combat strengths",
         "Khunag dismissal consequences"
+      ],
+      "sourceFields": [
+        {
+          "key": "limitations",
+          "selectors": [
+            "dismissal"
+          ],
+          "witness": "Strengths: Highest magic talent (99); Powerful offensive spells; Steal Magic sustains SP. Limits: Weak in physical combat; Leaves permanently if dismissed after his chapter."
+        }
       ]
     },
     {
@@ -3307,6 +3441,15 @@
       ],
       "topicLabels": [
         "Animal 3 dangers"
+      ],
+      "sourceFields": [
+        {
+          "key": "limitations",
+          "selectors": [
+            "danger"
+          ],
+          "witness": "Fast and critical-hit capable"
+        }
       ]
     },
     {

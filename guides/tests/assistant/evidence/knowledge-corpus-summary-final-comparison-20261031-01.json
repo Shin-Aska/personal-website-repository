@@ -1,0 +1,414 @@
+{
+  "schemaVersion": 1,
+  "kind": "cached-summary-repair-full-replay-comparison",
+  "tag": "knowledge-corpus-summary-final-comparison-20261031-01",
+  "createdAt": "2026-10-31",
+  "inputs": {
+    "guides/tests/assistant/intent-prototype/results/knowledge-corpus-replay-whole-goal-final-20261031-05/report.json": "22bb48b88f08fb60ddee34d759f7568a17fc457a1b11e0f8d7a8879ebe60aac2",
+    "guides/tests/assistant/intent-prototype/results/knowledge-corpus-replay-whole-goal-summary-final-20261031-01/report.json": "f4a89a4dc381b70348f497feb372dde1e984ff68c2d102e185a52e900a57f86e",
+    "guides/tests/assistant/evidence/knowledge-cua-native-whole-goal-summary-final-starcraft-sourcefirst-semantic-20261031-01.json": "848dea11217d62415875db16c81fb51494305568733b1bc49b75b47a70ac91d2",
+    "guides/tests/assistant/intent-prototype/results/native-cua-ui-final-starcraft-20261031-02.json": "699e2dd5f84f9e497fc1eba253983ed7adb5a0c4b9259c3529f217e3317749fe"
+  },
+  "comparison": {
+    "previousTag": "whole-goal-final-20261031-05",
+    "currentTag": "whole-goal-summary-final-20261031-01",
+    "previousTotals": {
+      "total": 851,
+      "passed": 826,
+      "failed": 25,
+      "incomplete": 0
+    },
+    "currentTotals": {
+      "total": 851,
+      "passed": 825,
+      "failed": 26,
+      "incomplete": 0
+    },
+    "rowCountPrevious": 851,
+    "rowCountCurrent": 851,
+    "matchedRows": 851,
+    "unmatchedPrevious": [],
+    "unmatchedCurrent": [],
+    "changedRows": [
+      {
+        "gameId": "starcraft",
+        "dialogueId": "starcraft-knowledge-first-launch",
+        "turn": 1,
+        "changedFields": [
+          "status",
+          "factIds",
+          "sources",
+          "problems",
+          "acceptedAnswerBranch",
+          "branchProblems",
+          "requestedInputs"
+        ],
+        "previous": {
+          "text": "Why does SCHNAIL take time on first launch?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "might take some time",
+              "downloads necessary game files"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:schnail-first-launch"
+            ],
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#getting-started > .bg-blue-50 .text-blue-700"
+            }
+          },
+          "status": "passed",
+          "decision": "answer",
+          "factIds": [
+            "starcraft:knowledge:schnail-first-launch"
+          ],
+          "sources": [
+            {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#getting-started > .bg-blue-50 .text-blue-700",
+              "review": "extracted",
+              "index": {
+                "file": "guides/data/assistant/knowledge/starcraft.json",
+                "locator": "facts[8]",
+                "review": "authored-index"
+              }
+            }
+          ],
+          "problems": [],
+          "acceptedAnswerBranch": 0,
+          "branchProblems": [
+            []
+          ],
+          "requestedInputs": [
+            {
+              "purpose": "classify",
+              "text": "Why does SCHNAIL take time on first launch?"
+            },
+            {
+              "purpose": "encode",
+              "text": "Why does SCHNAIL take time on first launch?"
+            }
+          ],
+          "missingInputs": [],
+          "contextIncomplete": false
+        },
+        "current": {
+          "text": "Why does SCHNAIL take time on first launch?",
+          "expected": {
+            "decision": "answer",
+            "contains": [
+              "might take some time",
+              "downloads necessary game files"
+            ],
+            "notContains": [],
+            "factIds": [
+              "starcraft:knowledge:schnail-first-launch"
+            ],
+            "source": {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#getting-started > .bg-blue-50 .text-blue-700"
+            }
+          },
+          "status": "failed",
+          "decision": "answer",
+          "factIds": [],
+          "sources": [
+            {
+              "file": "guides/StarcraftBWAPI.html",
+              "locator": "#getting-started > .bg-blue-50 .text-blue-700",
+              "review": "extracted",
+              "index": {
+                "file": "guides/data/assistant/starcraft.json",
+                "locator": "narratives[id=schnail-first-launch-cause]",
+                "review": "authored-index"
+              },
+              "claims": [
+                {
+                  "text": "Note: The first launch might take some time as it downloads necessary game files.",
+                  "source": {
+                    "file": "guides/StarcraftBWAPI.html",
+                    "locator": "#getting-started > .bg-blue-50 .text-blue-700",
+                    "review": "extracted"
+                  }
+                }
+              ]
+            }
+          ],
+          "problems": [
+            "Missing one-of factIds: starcraft:knowledge:schnail-first-launch"
+          ],
+          "acceptedAnswerBranch": null,
+          "branchProblems": [
+            [
+              "Missing one-of factIds: starcraft:knowledge:schnail-first-launch"
+            ]
+          ],
+          "requestedInputs": [],
+          "missingInputs": [],
+          "contextIncomplete": false
+        }
+      }
+    ],
+    "sourceStablePrevious": true,
+    "sourceStableCurrent": true,
+    "changedSourceHashPathsBetweenRuns": [
+      "guides/js/assistant/source-narrative-answer.js"
+    ],
+    "profileIdPrevious": "minilm-l6-v2-q8-751bff3-followup-v2",
+    "profileIdCurrent": "minilm-l6-v2-q8-751bff3-followup-v2",
+    "vectorsIdentical": true,
+    "vectorMetadataIdentical": true,
+    "requestedQueryCountPrevious": 946,
+    "requestedQueryCountCurrent": 945,
+    "missingQueryCountPrevious": 0,
+    "missingQueryCountCurrent": 0,
+    "perGame": {
+      "ultima6": {
+        "previous": {
+          "total": 133,
+          "passed": 132,
+          "failed": 1,
+          "incomplete": 0
+        },
+        "current": {
+          "total": 133,
+          "passed": 132,
+          "failed": 1,
+          "incomplete": 0
+        }
+      },
+      "ultima7": {
+        "previous": {
+          "total": 159,
+          "passed": 152,
+          "failed": 7,
+          "incomplete": 0
+        },
+        "current": {
+          "total": 159,
+          "passed": 152,
+          "failed": 7,
+          "incomplete": 0
+        }
+      },
+      "starcraft": {
+        "previous": {
+          "total": 143,
+          "passed": 142,
+          "failed": 1,
+          "incomplete": 0
+        },
+        "current": {
+          "total": 143,
+          "passed": 141,
+          "failed": 2,
+          "incomplete": 0
+        }
+      },
+      "ultima5": {
+        "previous": {
+          "total": 146,
+          "passed": 145,
+          "failed": 1,
+          "incomplete": 0
+        },
+        "current": {
+          "total": 146,
+          "passed": 145,
+          "failed": 1,
+          "incomplete": 0
+        }
+      },
+      "albion": {
+        "previous": {
+          "total": 116,
+          "passed": 107,
+          "failed": 9,
+          "incomplete": 0
+        },
+        "current": {
+          "total": 116,
+          "passed": 107,
+          "failed": 9,
+          "incomplete": 0
+        }
+      },
+      "alqadim": {
+        "previous": {
+          "total": 154,
+          "passed": 148,
+          "failed": 6,
+          "incomplete": 0
+        },
+        "current": {
+          "total": 154,
+          "passed": 148,
+          "failed": 6,
+          "incomplete": 0
+        }
+      }
+    }
+  },
+  "changedRowInterpretation": {
+    "count": 1,
+    "rowIds": [
+      {
+        "gameId": "starcraft",
+        "dialogueId": "starcraft-knowledge-first-launch",
+        "turn": 1
+      }
+    ],
+    "exactTextChangeObserved": false,
+    "previousStatus": "passed",
+    "currentStatus": "failed",
+    "currentDecision": "answer",
+    "currentProblems": [
+      "Missing one-of factIds: starcraft:knowledge:schnail-first-launch"
+    ],
+    "meaning": "The strict acceptance failure is an internal fact-ID/provenance mismatch: current sources point to the same original HTML cause note but the report indexes it as narrative [narratives[id=schnail-first-launch-cause]] instead of required starcraft:knowledge:schnail-first-launch. Cached replay report does not contain rendered reply text, so exact whole-reply equality is unproven. Native visible reports independently show same source sentence for source-first and observed-fresh questions; they are not a rerun of the changed corpus row."
+  },
+  "postRepairNativeEvidence": {
+    "reportPath": "guides/tests/assistant/evidence/knowledge-cua-native-whole-goal-summary-final-starcraft-sourcefirst-semantic-20261031-01.json",
+    "boundaries": {
+      "sourceStable": true,
+      "frozenInputsMatched": true,
+      "noStorageWrites": true,
+      "noPageErrors": true,
+      "nativeMiniLMEveryProbe": true,
+      "allAdditionalControlsHeld": true
+    },
+    "summary": {
+      "corpus": {
+        "passed": 0,
+        "failed": 0,
+        "total": 0
+      },
+      "source-first": {
+        "passed": 16,
+        "failed": 0,
+        "total": 16
+      },
+      "observed-native": {
+        "passed": 0,
+        "failed": 0,
+        "total": 0
+      },
+      "observed-fresh": {
+        "passed": 0,
+        "failed": 0,
+        "total": 0
+      },
+      "observed-independent": {
+        "passed": 0,
+        "failed": 0,
+        "total": 0
+      },
+      "semantic13": {
+        "passed": 2,
+        "failed": 0,
+        "total": 2
+      },
+      "controls": {
+        "passed": 0,
+        "failed": 0,
+        "total": 0
+      }
+    },
+    "coverage": {
+      "starcraft:source-first": {
+        "matchedDialogues": 4,
+        "expectedDialogues": 4,
+        "complete": true,
+        "missingDialogueIds": []
+      },
+      "starcraft:semantic13": {
+        "matchedDialogues": 1,
+        "expectedDialogues": 1,
+        "complete": true,
+        "missingDialogueIds": []
+      }
+    },
+    "schnaillRelatedRows": [
+      {
+        "surface": "starcraft",
+        "suite": "semantic13",
+        "dialogueId": "semantic13-starcraft",
+        "turn": 1,
+        "question": "Summarize SCHNAIL",
+        "reply": "SCHNAIL — Summary:\nSCHNAIL; Pros: More realistic AI behavior; Better micro and macro management; Seamless integration with the game; Active community and regular updates; Cons: Requires internet connection for initial login; AI plays over local network after login; View Setup Guide\nNote: SCHNAIL includes its own version of Starcraft: Brood War, so you don't need to install the game separately.",
+        "citations": [
+          "Source: existing guide; extracted. guides/StarcraftBWAPI.html — #getting-started .grid > div:first-child; #schnail-setup .text-blue-700"
+        ],
+        "passed": true,
+        "problems": []
+      },
+      {
+        "surface": "starcraft",
+        "suite": "semantic13",
+        "dialogueId": "semantic13-starcraft",
+        "turn": 2,
+        "question": "smaller hint",
+        "reply": "SCHNAIL — Summary:\nSCHNAIL; Pros: More realistic AI behavior; Better micro and macro management; Seamless integration with the game; Active community and regular updates; Cons: Requires internet connection for initial login; AI plays over local network after login; View Setup Guide\nNote: SCHNAIL includes its own version of Starcraft: Brood War, so you don't need to install the game separately.",
+        "citations": [
+          "Source: existing guide; extracted. guides/StarcraftBWAPI.html — #getting-started .grid > div:first-child; #schnail-setup .text-blue-700"
+        ],
+        "passed": true,
+        "problems": []
+      },
+      {
+        "surface": "starcraft",
+        "suite": "source-first",
+        "dialogueId": "fresh-sc-bwapi-load-diagnostics",
+        "turn": 4,
+        "question": "Which exact Windows registry value does the guide tell me to change for this loading problem?",
+        "reply": "Did you mean SCHNAIL website and account? Please confirm the subject.",
+        "citations": [],
+        "passed": true,
+        "problems": []
+      },
+      {
+        "surface": "starcraft",
+        "suite": "source-first",
+        "dialogueId": "fresh-sc-schnail-automation-scope",
+        "turn": 1,
+        "question": "For SCHNAIL, what does the guide say can make the first launch take some time?",
+        "reply": "Note: The first launch might take some time as it downloads necessary game files.",
+        "citations": [
+          "Source: existing guide; extracted. guides/StarcraftBWAPI.html — #getting-started > .bg-blue-50 .text-blue-700"
+        ],
+        "passed": true,
+        "problems": []
+      }
+    ]
+  },
+  "postRepairStarcraftUiProbe": {
+    "path": "guides/tests/assistant/intent-prototype/results/native-cua-ui-final-starcraft-20261031-02.json",
+    "checkedAt": "2026-10-31T06:37:38.111Z",
+    "turnCount": 39,
+    "storageWrites": [],
+    "pageErrors": [],
+    "beforeSourceHashCount": 140,
+    "afterSourceHashCount": 140,
+    "sourceHashKeyMismatchCount": 0,
+    "changedSourcePaths": [],
+    "workerCount": 1,
+    "limitations": "CUA focused probe with existing consent/generative fixture and native MiniLM; not the full Python acceptance harness."
+  },
+  "coverageCaveat": {
+    "cachedReplayControlsIncluded": false,
+    "postPatchNativeRerunRequired": [
+      "StarCraft corpus suite (143 rows) because changed strict row is in corpus",
+      "StarCraft observed-fresh suite (16 rows) because the first-launch cause is asked there in subject-carry form"
+    ],
+    "alreadyPostPatchRerun": [
+      "StarCraft source-first (16 rows)",
+      "StarCraft semantic13 (2 ordered turns)"
+    ],
+    "noOtherCachedRowsChanged": true,
+    "notClaimed": "The cached report proves the strict status change across 851 rows; it does not include complete rendered answer text or standalone negative-control results."
+  },
+  "conclusion": "Across all 851 cached rows, exactly one row changed and no other pass loss or new answer failure was found. Global totals shifted 826/851 to 825/851 solely due to the SCHNAIL first-launch internal fact ID check; requested vector count decreased by one with zero missing inputs, identical profile/vector metadata, and source hashes stable. Current strict failure must remain visible until provenance is reconciled or corpus/native coverage is rerun after a fix."
+}

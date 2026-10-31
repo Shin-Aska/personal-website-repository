@@ -1,0 +1,1424 @@
+{
+  "schemaVersion": 1,
+  "kind": "read-only-native-cua-u6-u7-whole-reply-audit",
+  "tag": "u6-u7-whole-reply-comparison-20261031-01",
+  "createdAt": "2026-10-31",
+  "method": {
+    "comparison": "Compared actual full reply rows keyed by (surface, dialogueId, turn) against frozen 2026-10-29 baseline. A pass loss means a baseline passed row is currently failed. Replies, decisions, citations, links, and pass states were compared; no original report/oracle was modified.",
+    "sources": {
+      "u6": {
+        "path": "knowledge-cua-native-whole-goal-final-u6-all-20261031-01.json",
+        "sha256": "ba40562924d8f27498899f113fa87c054cad453b947f1da881d09e9013ebf9fd"
+      },
+      "u7": {
+        "path": "knowledge-cua-native-whole-goal-final-u7-20261031-02.json",
+        "sha256": "9df5cdd9b30516be92955d42e060492f8c9c494929117fa7861d9a6712f46ad0"
+      },
+      "baseline": {
+        "path": "knowledge-browser-terra-20261029-frozen-source-01.json",
+        "sha256": "4813cd4dbb84d7fcd83ec90c09af4bf009b8ebc6e5b34c2857ade6a196c73bfb"
+      },
+      "hashScope": {
+        "path": "native-probe-hash-scope-20261031-01.json",
+        "sha256": "82135f10b70332d5580f17d771b5194b52055a2670d147a48fa852ec954dbd4c"
+      }
+    }
+  },
+  "coverage": {
+    "u6": {
+      "status": "failed",
+      "incomplete": false,
+      "summary": {
+        "corpus": {
+          "passed": 132,
+          "failed": 1,
+          "total": 133
+        },
+        "source-first": {
+          "passed": 16,
+          "failed": 0,
+          "total": 16
+        },
+        "observed-native": {
+          "passed": 16,
+          "failed": 0,
+          "total": 16
+        },
+        "observed-fresh": {
+          "passed": 10,
+          "failed": 2,
+          "total": 12
+        },
+        "observed-independent": {
+          "passed": 8,
+          "failed": 0,
+          "total": 8
+        },
+        "semantic13": {
+          "passed": 2,
+          "failed": 0,
+          "total": 2
+        },
+        "controls": {
+          "passed": 0,
+          "failed": 0,
+          "total": 0
+        }
+      },
+      "coverage": {
+        "ultima6:corpus": {
+          "matchedDialogues": 31,
+          "expectedDialogues": 31,
+          "complete": true,
+          "missingDialogueIds": []
+        },
+        "ultima6:source-first": {
+          "matchedDialogues": 4,
+          "expectedDialogues": 4,
+          "complete": true,
+          "missingDialogueIds": []
+        },
+        "ultima6:observed-native": {
+          "matchedDialogues": 4,
+          "expectedDialogues": 4,
+          "complete": true,
+          "missingDialogueIds": []
+        },
+        "ultima6:observed-fresh": {
+          "matchedDialogues": 3,
+          "expectedDialogues": 3,
+          "complete": true,
+          "missingDialogueIds": []
+        },
+        "ultima6:observed-independent": {
+          "matchedDialogues": 2,
+          "expectedDialogues": 2,
+          "complete": true,
+          "missingDialogueIds": []
+        },
+        "ultima6:semantic13": {
+          "matchedDialogues": 1,
+          "expectedDialogues": 1,
+          "complete": true,
+          "missingDialogueIds": []
+        }
+      },
+      "matchedToBaseline": {
+        "matchedBaselineRows": 133,
+        "baselinePassesLost": 0,
+        "baselineFailuresImproved": 1,
+        "baselinePassLossKeys": [],
+        "baselineFailureImprovementKeys": [
+          {
+            "surface": "ultima6",
+            "dialogueId": "pirate-cave",
+            "turn": 3
+          }
+        ]
+      }
+    },
+    "u7": {
+      "status": "failed",
+      "incomplete": false,
+      "summary": {
+        "corpus": {
+          "passed": 158,
+          "failed": 1,
+          "total": 159
+        },
+        "source-first": {
+          "passed": 0,
+          "failed": 0,
+          "total": 0
+        },
+        "observed-native": {
+          "passed": 0,
+          "failed": 0,
+          "total": 0
+        },
+        "observed-fresh": {
+          "passed": 0,
+          "failed": 0,
+          "total": 0
+        },
+        "observed-independent": {
+          "passed": 0,
+          "failed": 0,
+          "total": 0
+        },
+        "semantic13": {
+          "passed": 0,
+          "failed": 0,
+          "total": 0
+        },
+        "controls": {
+          "passed": 0,
+          "failed": 0,
+          "total": 0
+        }
+      },
+      "coverage": {
+        "ultima7:corpus": {
+          "matchedDialogues": 39,
+          "expectedDialogues": 39,
+          "complete": true,
+          "missingDialogueIds": []
+        }
+      },
+      "matchedToBaseline": {
+        "matchedBaselineRows": 159,
+        "baselinePassesLost": 0,
+        "baselineFailuresImproved": 10,
+        "baselinePassLossKeys": [],
+        "baselineFailureImprovementKeys": [
+          {
+            "surface": "ultima7",
+            "dialogueId": "arcadion-black-sword",
+            "turn": 4
+          },
+          {
+            "surface": "ultima7",
+            "dialogueId": "blorn-victim-property",
+            "turn": 3
+          },
+          {
+            "surface": "ultima7",
+            "dialogueId": "courage-ether-gem",
+            "turn": 3
+          },
+          {
+            "surface": "ultima7",
+            "dialogueId": "courage-ether-gem",
+            "turn": 4
+          },
+          {
+            "surface": "ultima7",
+            "dialogueId": "dark-core-stat-caveat",
+            "turn": 4
+          },
+          {
+            "surface": "ultima7",
+            "dialogueId": "honor-flag-alternatives",
+            "turn": 3
+          },
+          {
+            "surface": "ultima7",
+            "dialogueId": "sphere-hourglass-prerequisite",
+            "turn": 4
+          },
+          {
+            "surface": "ultima7",
+            "dialogueId": "truth-true-locket",
+            "turn": 4
+          },
+          {
+            "surface": "ultima7",
+            "dialogueId": "truth-true-locket",
+            "turn": 5
+          },
+          {
+            "surface": "ultima7",
+            "dialogueId": "wisp-honey-whistle",
+            "turn": 3
+          }
+        ]
+      }
+    }
+  },
+  "changedReplyRows": {
+    "u6": [
+      {
+        "suite": "corpus",
+        "surface": "ultima6",
+        "dialogueId": "pirate-cave",
+        "turn": 3,
+        "fields": [
+          "rendered",
+          "citations",
+          "passed"
+        ],
+        "before": {
+          "decision": "answer",
+          "rendered": "Maze: use WIZARD EYE or DISPEL FIELD.",
+          "citations": [
+            "Source: existing guide; extracted. guides/js/Ultima6.js — gameData.quests[1].sections[3].keywords[0].helper"
+          ],
+          "links": [],
+          "passed": false
+        },
+        "after": {
+          "decision": "answer",
+          "rendered": "Survive the Maze of Death by hugging the right wall, disarming traps, and conserving powder kegs.",
+          "citations": [
+            "Source: existing guide; extracted. guides/js/Ultima6.js — gameData.quests[1].sections[3].steps[2]"
+          ],
+          "links": [],
+          "passed": true
+        }
+      }
+    ],
+    "u7": [
+      {
+        "suite": "corpus",
+        "surface": "ultima7",
+        "dialogueId": "wisp-honey-whistle",
+        "turn": 3,
+        "fields": [
+          "rendered",
+          "citations",
+          "passed"
+        ],
+        "before": {
+          "decision": "answer",
+          "rendered": "Negotiate with the emps to get a wisp whistle.",
+          "citations": [
+            "Source: existing guide; extracted. guides/js/Ultima7.js — DB.mainQuest[2].content; DB.mainQuest[2].content"
+          ],
+          "links": [],
+          "passed": false
+        },
+        "after": {
+          "decision": "answer",
+          "rendered": "Get honey from the Bee Cave to bribe the emps.\nNegotiate with the emps to get a wisp whistle. Use the whistle to communicate with the wisp, who demands Alagner's notebook from New Magincia in exchange for information.",
+          "citations": [
+            "Source: existing guide; extracted. guides/js/Ultima7.js — DB.mainQuest[2].content; guides/js/Ultima7.js — DB.mainQuest[2].content; DB.mainQuest[2].content; guides/js/Ultima7.js — DB.mainQuest[2].content; DB.mainQuest[2].content"
+          ],
+          "links": [],
+          "passed": true
+        }
+      },
+      {
+        "suite": "corpus",
+        "surface": "ultima7",
+        "dialogueId": "sphere-hourglass-prerequisite",
+        "turn": 4,
+        "fields": [
+          "decision",
+          "rendered",
+          "citations",
+          "passed"
+        ],
+        "before": {
+          "decision": "clarify",
+          "rendered": "Which subject do you mean: The Tetrahedron generator or The Sphere generator?",
+          "citations": [],
+          "links": [],
+          "passed": false
+        },
+        "after": {
+          "decision": "answer",
+          "rendered": "Get the Hourglass of Nicodemus, have it enchanted (after the Tetrahedron is down)",
+          "citations": [
+            "Source: existing guide; extracted. guides/js/Ultima7.js — DB.mainQuest[4].content"
+          ],
+          "links": [],
+          "passed": true
+        }
+      },
+      {
+        "suite": "corpus",
+        "surface": "ultima7",
+        "dialogueId": "truth-true-locket",
+        "turn": 4,
+        "fields": [
+          "decision",
+          "rendered",
+          "citations",
+          "passed"
+        ],
+        "before": {
+          "decision": "decline",
+          "rendered": "The available sources do not establish that requested field under those restrictions.",
+          "citations": [],
+          "links": [],
+          "passed": false
+        },
+        "after": {
+          "decision": "answer",
+          "rendered": "The solution lies before the labyrinth: find the 'hood' and move north through a secret wall to reach the true locket.\nOptional puzzles offer dangerous but valuable loot.",
+          "citations": [
+            "Source: existing guide; extracted. guides/js/Ultima7.js — DB.virtueQuests[3]; guides/js/Ultima7.js — DB.virtueQuests[3]"
+          ],
+          "links": [],
+          "passed": true
+        }
+      },
+      {
+        "suite": "corpus",
+        "surface": "ultima7",
+        "dialogueId": "truth-true-locket",
+        "turn": 5,
+        "fields": [
+          "decision",
+          "rendered",
+          "citations",
+          "passed"
+        ],
+        "before": {
+          "decision": "clarify",
+          "rendered": "No guide subject has that name. These entries contain all of those words; choose one only if it is what you meant.",
+          "citations": [],
+          "links": [],
+          "passed": false
+        },
+        "after": {
+          "decision": "answer",
+          "rendered": "Optional puzzles offer dangerous but valuable loot.",
+          "citations": [
+            "Source: existing guide; extracted. guides/js/Ultima7.js — DB.virtueQuests[3]"
+          ],
+          "links": [],
+          "passed": true
+        }
+      },
+      {
+        "suite": "corpus",
+        "surface": "ultima7",
+        "dialogueId": "courage-ether-gem",
+        "turn": 3,
+        "fields": [
+          "rendered",
+          "citations",
+          "passed"
+        ],
+        "before": {
+          "decision": "answer",
+          "rendered": "Fight through mages, golems, and dragons. Use sleep potions on dragons, search bodies for magic armor, solve the helmet pedestal puzzle, defeat Dracothraxus for the Ether Gem, then return—this test continues later.",
+          "citations": [
+            "Source: existing guide; extracted. guides/js/Ultima7.js — DB.virtueQuests[5]"
+          ],
+          "links": [],
+          "passed": false
+        },
+        "after": {
+          "decision": "answer",
+          "rendered": "Return to Dracothraxus and invoke the Black Sword's power to finish the test.",
+          "citations": [
+            "Source: existing guide; extracted. guides/js/Ultima7.js — DB.virtueQuests[7]"
+          ],
+          "links": [],
+          "passed": true
+        }
+      },
+      {
+        "suite": "corpus",
+        "surface": "ultima7",
+        "dialogueId": "courage-ether-gem",
+        "turn": 4,
+        "fields": [
+          "decision",
+          "rendered",
+          "citations",
+          "passed"
+        ],
+        "before": {
+          "decision": "decline",
+          "rendered": "The guide does not support that additional detail or restriction for this subject.",
+          "citations": [],
+          "links": [],
+          "passed": false
+        },
+        "after": {
+          "decision": "answer",
+          "rendered": "Use sleep potions on dragons, search bodies for magic armor, solve the helmet pedestal puzzle, defeat Dracothraxus for the Ether Gem, then return—this test continues later.\nReturn to Dracothraxus and invoke the Black Sword's power to finish the test.",
+          "citations": [
+            "Source: existing guide; extracted. guides/js/Ultima7.js — DB.virtueQuests[5]; guides/js/Ultima7.js — DB.virtueQuests[7]"
+          ],
+          "links": [],
+          "passed": true
+        }
+      },
+      {
+        "suite": "corpus",
+        "surface": "ultima7",
+        "dialogueId": "arcadion-black-sword",
+        "turn": 4,
+        "fields": [
+          "decision",
+          "rendered",
+          "citations",
+          "passed"
+        ],
+        "before": {
+          "decision": "clarify",
+          "rendered": "Which subject do you mean: Blacksmith or Arcadion?",
+          "citations": [],
+          "links": [],
+          "passed": false
+        },
+        "after": {
+          "decision": "answer",
+          "rendered": "The guide identifies the subject as follows; it does not establish the other descriptions: Arcadion: The bound daemon of the Blackrock Sword—central to the Forge of Virtue.",
+          "citations": [
+            "Source: existing guide; extracted. guides/js/Ultima7Markers.js — ULTIMA7_MARKERS[491]"
+          ],
+          "links": [],
+          "passed": true
+        }
+      },
+      {
+        "suite": "corpus",
+        "surface": "ultima7",
+        "dialogueId": "dark-core-stat-caveat",
+        "turn": 4,
+        "fields": [
+          "decision",
+          "rendered",
+          "citations",
+          "passed"
+        ],
+        "before": {
+          "decision": "clarify",
+          "rendered": "I could not find that in this guide. Try naming the subject as it appears in the guide, or ask about another subject.",
+          "citations": [],
+          "links": [],
+          "passed": false
+        },
+        "after": {
+          "decision": "answer",
+          "rendered": "The guide does not establish that every edition gives that exact value. Lord British will reward you by raising your Strength, Dexterity, and Intelligence to 30 (or even 60 in some versions).",
+          "citations": [
+            "Source: existing guide; extracted. guides/Ultima7.html — #virtue-quest-content: The Reward"
+          ],
+          "links": [],
+          "passed": true
+        }
+      },
+      {
+        "suite": "corpus",
+        "surface": "ultima7",
+        "dialogueId": "weston-release",
+        "turn": 1,
+        "fields": [
+          "citations"
+        ],
+        "before": {
+          "decision": "answer",
+          "rendered": "Weston is jailed in Lord British's castle for stealing an apple. Plead his case to Lord British for his release.",
+          "citations": [
+            "Source: existing guide; extracted. guides/js/Ultima7.js — DB.sideQuests[0]"
+          ],
+          "links": [],
+          "passed": true
+        },
+        "after": {
+          "decision": "answer",
+          "rendered": "Weston is jailed in Lord British's castle for stealing an apple. Plead his case to Lord British for his release.",
+          "citations": [
+            "Source: existing guide; extracted. guides/js/Ultima7.js — DB.sideQuests[0]; guides/js/Ultima7.js — DB.sideQuests[0].walkthrough"
+          ],
+          "links": [],
+          "passed": true
+        }
+      },
+      {
+        "suite": "corpus",
+        "surface": "ultima7",
+        "dialogueId": "weston-release",
+        "turn": 2,
+        "fields": [
+          "citations"
+        ],
+        "before": {
+          "decision": "answer",
+          "rendered": "Weston is jailed in Lord British's castle for stealing an apple. Plead his case to Lord British for his release.",
+          "citations": [
+            "Source: existing guide; extracted. guides/js/Ultima7.js — DB.sideQuests[0]"
+          ],
+          "links": [],
+          "passed": true
+        },
+        "after": {
+          "decision": "answer",
+          "rendered": "Weston is jailed in Lord British's castle for stealing an apple. Plead his case to Lord British for his release.",
+          "citations": [
+            "Source: existing guide; extracted. guides/js/Ultima7.js — DB.sideQuests[0]; guides/js/Ultima7.js — DB.sideQuests[0].walkthrough"
+          ],
+          "links": [],
+          "passed": true
+        }
+      },
+      {
+        "suite": "corpus",
+        "surface": "ultima7",
+        "dialogueId": "patterson-and-miranda",
+        "turn": 1,
+        "fields": [
+          "citations"
+        ],
+        "before": {
+          "decision": "answer",
+          "rendered": "Follow Patterson after a Fellowship meeting to Candice's house. Confront him about his affair.",
+          "citations": [
+            "Source: existing guide; extracted. guides/js/Ultima7.js — DB.sideQuests[2]"
+          ],
+          "links": [],
+          "passed": true
+        },
+        "after": {
+          "decision": "answer",
+          "rendered": "Follow Patterson after a Fellowship meeting to Candice's house. Confront him about his affair.",
+          "citations": [
+            "Source: existing guide; extracted. guides/js/Ultima7.js — DB.sideQuests[2]; guides/js/Ultima7.js — DB.sideQuests[2].walkthrough"
+          ],
+          "links": [],
+          "passed": true
+        }
+      },
+      {
+        "suite": "corpus",
+        "surface": "ultima7",
+        "dialogueId": "patterson-and-miranda",
+        "turn": 2,
+        "fields": [
+          "citations"
+        ],
+        "before": {
+          "decision": "answer",
+          "rendered": "Take Miranda's bill to clean up Lock Lake to Lord Heather in Cove for a signature, then return it.",
+          "citations": [
+            "Source: existing guide; extracted. guides/js/Ultima7.js — DB.sideQuests[3]"
+          ],
+          "links": [],
+          "passed": true
+        },
+        "after": {
+          "decision": "answer",
+          "rendered": "Take Miranda's bill to clean up Lock Lake to Lord Heather in Cove for a signature, then return it.",
+          "citations": [
+            "Source: existing guide; extracted. guides/js/Ultima7.js — DB.sideQuests[3]; guides/js/Ultima7.js — DB.sideQuests[3].walkthrough"
+          ],
+          "links": [],
+          "passed": true
+        }
+      },
+      {
+        "suite": "corpus",
+        "surface": "ultima7",
+        "dialogueId": "patterson-and-miranda",
+        "turn": 3,
+        "fields": [
+          "citations"
+        ],
+        "before": {
+          "decision": "answer",
+          "rendered": "Take Miranda's bill to clean up Lock Lake to Lord Heather in Cove for a signature, then return it.",
+          "citations": [
+            "Source: existing guide; extracted. guides/js/Ultima7.js — DB.sideQuests[3]"
+          ],
+          "links": [],
+          "passed": true
+        },
+        "after": {
+          "decision": "answer",
+          "rendered": "Take Miranda's bill to clean up Lock Lake to Lord Heather in Cove for a signature, then return it.",
+          "citations": [
+            "Source: existing guide; extracted. guides/js/Ultima7.js — DB.sideQuests[3]; guides/js/Ultima7.js — DB.sideQuests[3].walkthrough"
+          ],
+          "links": [],
+          "passed": true
+        }
+      },
+      {
+        "suite": "corpus",
+        "surface": "ultima7",
+        "dialogueId": "nastassia-owen-evidence",
+        "turn": 1,
+        "fields": [
+          "citations"
+        ],
+        "before": {
+          "decision": "answer",
+          "rendered": "Ask the Emp Trellek in the Deep Forest about Julius. He will reveal Julius was a hero. Report this back to Nastassia.",
+          "citations": [
+            "Source: existing guide; extracted. guides/js/Ultima7.js — DB.sideQuests[4]"
+          ],
+          "links": [],
+          "passed": true
+        },
+        "after": {
+          "decision": "answer",
+          "rendered": "Ask the Emp Trellek in the Deep Forest about Julius. He will reveal Julius was a hero. Report this back to Nastassia.",
+          "citations": [
+            "Source: existing guide; extracted. guides/js/Ultima7.js — DB.sideQuests[4]; guides/js/Ultima7.js — DB.sideQuests[4].walkthrough"
+          ],
+          "links": [],
+          "passed": true
+        }
+      },
+      {
+        "suite": "corpus",
+        "surface": "ultima7",
+        "dialogueId": "nastassia-owen-evidence",
+        "turn": 2,
+        "fields": [
+          "citations"
+        ],
+        "before": {
+          "decision": "answer",
+          "rendered": "Get the original ship plans from the hermit Karl. Show them to Julia the tinker, who confirms the design is flawed. Present the evidence to Mayor Burnside.",
+          "citations": [
+            "Source: existing guide; extracted. guides/js/Ultima7.js — DB.sideQuests[5]"
+          ],
+          "links": [],
+          "passed": true
+        },
+        "after": {
+          "decision": "answer",
+          "rendered": "Get the original ship plans from the hermit Karl. Show them to Julia the tinker, who confirms the design is flawed. Present the evidence to Mayor Burnside.",
+          "citations": [
+            "Source: existing guide; extracted. guides/js/Ultima7.js — DB.sideQuests[5]; guides/js/Ultima7.js — DB.sideQuests[5].walkthrough"
+          ],
+          "links": [],
+          "passed": true
+        }
+      },
+      {
+        "suite": "corpus",
+        "surface": "ultima7",
+        "dialogueId": "nastassia-owen-evidence",
+        "turn": 3,
+        "fields": [
+          "citations"
+        ],
+        "before": {
+          "decision": "answer",
+          "rendered": "Get the original ship plans from the hermit Karl. Show them to Julia the tinker, who confirms the design is flawed. Present the evidence to Mayor Burnside.",
+          "citations": [
+            "Source: existing guide; extracted. guides/js/Ultima7.js — DB.sideQuests[5]"
+          ],
+          "links": [],
+          "passed": true
+        },
+        "after": {
+          "decision": "answer",
+          "rendered": "Get the original ship plans from the hermit Karl. Show them to Julia the tinker, who confirms the design is flawed. Present the evidence to Mayor Burnside.",
+          "citations": [
+            "Source: existing guide; extracted. guides/js/Ultima7.js — DB.sideQuests[5]; guides/js/Ultima7.js — DB.sideQuests[5].walkthrough"
+          ],
+          "links": [],
+          "passed": true
+        }
+      },
+      {
+        "suite": "corpus",
+        "surface": "ultima7",
+        "dialogueId": "honor-flag-alternatives",
+        "turn": 1,
+        "fields": [
+          "citations"
+        ],
+        "before": {
+          "decision": "answer",
+          "rendered": "Either fight three duels for Sprellic, or more cleverly, have the armorer Kliftin weave a replica of the stolen flag and give it to the fighters.",
+          "citations": [
+            "Source: existing guide; extracted. guides/js/Ultima7.js — DB.sideQuests[6]"
+          ],
+          "links": [],
+          "passed": true
+        },
+        "after": {
+          "decision": "answer",
+          "rendered": "Either fight three duels for Sprellic, or more cleverly, have the armorer Kliftin weave a replica of the stolen flag and give it to the fighters.",
+          "citations": [
+            "Source: existing guide; extracted. guides/js/Ultima7.js — DB.sideQuests[6]; guides/js/Ultima7.js — DB.sideQuests[6].walkthrough"
+          ],
+          "links": [],
+          "passed": true
+        }
+      },
+      {
+        "suite": "corpus",
+        "surface": "ultima7",
+        "dialogueId": "honor-flag-alternatives",
+        "turn": 2,
+        "fields": [
+          "citations"
+        ],
+        "before": {
+          "decision": "answer",
+          "rendered": "Either fight three duels for Sprellic, or more cleverly, have the armorer Kliftin weave a replica of the stolen flag and give it to the fighters.",
+          "citations": [
+            "Source: existing guide; extracted. guides/js/Ultima7.js — DB.sideQuests[6]"
+          ],
+          "links": [],
+          "passed": true
+        },
+        "after": {
+          "decision": "answer",
+          "rendered": "Either fight three duels for Sprellic, or more cleverly, have the armorer Kliftin weave a replica of the stolen flag and give it to the fighters.",
+          "citations": [
+            "Source: existing guide; extracted. guides/js/Ultima7.js — DB.sideQuests[6]; guides/js/Ultima7.js — DB.sideQuests[6].walkthrough"
+          ],
+          "links": [],
+          "passed": true
+        }
+      },
+      {
+        "suite": "corpus",
+        "surface": "ultima7",
+        "dialogueId": "honor-flag-alternatives",
+        "turn": 3,
+        "fields": [
+          "decision",
+          "rendered",
+          "citations",
+          "passed"
+        ],
+        "before": {
+          "decision": "decline",
+          "rendered": "The local guide has no supported remedy answer for this subject. It can tell you where it is, what it does, what it is or a hint.",
+          "citations": [],
+          "links": [],
+          "passed": false
+        },
+        "after": {
+          "decision": "answer",
+          "rendered": "This passage describes these alternatives; it does not say whether killing is necessary. Either fight three duels for Sprellic, or more cleverly, have the armorer Kliftin weave a replica of the stolen flag and give it to the fighters.",
+          "citations": [
+            "Source: existing guide; extracted. guides/js/Ultima7.js — DB.sideQuests[6]; guides/js/Ultima7.js — DB.sideQuests[6].walkthrough"
+          ],
+          "links": [],
+          "passed": true
+        }
+      },
+      {
+        "suite": "corpus",
+        "surface": "ultima7",
+        "dialogueId": "blorn-victim-property",
+        "turn": 1,
+        "fields": [
+          "citations"
+        ],
+        "before": {
+          "decision": "answer",
+          "rendered": "Speak to the accused gargoyle, Lap-Lem. He was the victim. Confront Blorn to get Lap-Lem's stolen amulet back and return it.",
+          "citations": [
+            "Source: existing guide; extracted. guides/js/Ultima7.js — DB.sideQuests[7]"
+          ],
+          "links": [],
+          "passed": true
+        },
+        "after": {
+          "decision": "answer",
+          "rendered": "Speak to the accused gargoyle, Lap-Lem. He was the victim. Confront Blorn to get Lap-Lem's stolen amulet back and return it.",
+          "citations": [
+            "Source: existing guide; extracted. guides/js/Ultima7.js — DB.sideQuests[7]; guides/js/Ultima7.js — DB.sideQuests[7].walkthrough"
+          ],
+          "links": [],
+          "passed": true
+        }
+      },
+      {
+        "suite": "corpus",
+        "surface": "ultima7",
+        "dialogueId": "blorn-victim-property",
+        "turn": 2,
+        "fields": [
+          "citations"
+        ],
+        "before": {
+          "decision": "answer",
+          "rendered": "Speak to the accused gargoyle, Lap-Lem. He was the victim. Confront Blorn to get Lap-Lem's stolen amulet back and return it.",
+          "citations": [
+            "Source: existing guide; extracted. guides/js/Ultima7.js — DB.sideQuests[7]"
+          ],
+          "links": [],
+          "passed": true
+        },
+        "after": {
+          "decision": "answer",
+          "rendered": "Speak to the accused gargoyle, Lap-Lem. He was the victim. Confront Blorn to get Lap-Lem's stolen amulet back and return it.",
+          "citations": [
+            "Source: existing guide; extracted. guides/js/Ultima7.js — DB.sideQuests[7]; guides/js/Ultima7.js — DB.sideQuests[7].walkthrough"
+          ],
+          "links": [],
+          "passed": true
+        }
+      },
+      {
+        "suite": "corpus",
+        "surface": "ultima7",
+        "dialogueId": "blorn-victim-property",
+        "turn": 3,
+        "fields": [
+          "decision",
+          "rendered",
+          "citations",
+          "passed"
+        ],
+        "before": {
+          "decision": "clarify",
+          "rendered": "Which subject do you mean: Blorn or Lap-Lem?",
+          "citations": [],
+          "links": [],
+          "passed": false
+        },
+        "after": {
+          "decision": "answer",
+          "rendered": "The passage identifies the accused person as the victim; it does not establish the proposed inference: Speak to the accused gargoyle, Lap-Lem. He was the victim. Confront Blorn to get Lap-Lem's stolen amulet back and return it.",
+          "citations": [
+            "Source: existing guide; extracted. guides/js/Ultima7.js — DB.sideQuests[7]; guides/js/Ultima7.js — DB.sideQuests[7].walkthrough"
+          ],
+          "links": [],
+          "passed": true
+        }
+      },
+      {
+        "suite": "corpus",
+        "surface": "ultima7",
+        "dialogueId": "catherine-peaceful-secret",
+        "turn": 1,
+        "fields": [
+          "citations"
+        ],
+        "before": {
+          "decision": "answer",
+          "rendered": "Follow Catherine to the gargoyle side of town. She listens to stories from an elder gargoyle. Keeping this secret is the peaceful option.",
+          "citations": [
+            "Source: existing guide; extracted. guides/js/Ultima7.js — DB.sideQuests[8]"
+          ],
+          "links": [],
+          "passed": true
+        },
+        "after": {
+          "decision": "answer",
+          "rendered": "Follow Catherine to the gargoyle side of town. She listens to stories from an elder gargoyle. Keeping this secret is the peaceful option.",
+          "citations": [
+            "Source: existing guide; extracted. guides/js/Ultima7.js — DB.sideQuests[8]; guides/js/Ultima7.js — DB.sideQuests[8].walkthrough"
+          ],
+          "links": [],
+          "passed": true
+        }
+      },
+      {
+        "suite": "corpus",
+        "surface": "ultima7",
+        "dialogueId": "catherine-peaceful-secret",
+        "turn": 2,
+        "fields": [
+          "citations"
+        ],
+        "before": {
+          "decision": "answer",
+          "rendered": "Follow Catherine to the gargoyle side of town. She listens to stories from an elder gargoyle. Keeping this secret is the peaceful option.",
+          "citations": [
+            "Source: existing guide; extracted. guides/js/Ultima7.js — DB.sideQuests[8]"
+          ],
+          "links": [],
+          "passed": true
+        },
+        "after": {
+          "decision": "answer",
+          "rendered": "Follow Catherine to the gargoyle side of town. She listens to stories from an elder gargoyle. Keeping this secret is the peaceful option.",
+          "citations": [
+            "Source: existing guide; extracted. guides/js/Ultima7.js — DB.sideQuests[8]; guides/js/Ultima7.js — DB.sideQuests[8].walkthrough"
+          ],
+          "links": [],
+          "passed": true
+        }
+      },
+      {
+        "suite": "corpus",
+        "surface": "ultima7",
+        "dialogueId": "orrery-crystal-price",
+        "turn": 1,
+        "fields": [
+          "citations"
+        ],
+        "before": {
+          "decision": "answer",
+          "rendered": "Buy a special crystal from the adventurer Addom for 20 gold and give it to Brion so he can power the observatory's orrery.",
+          "citations": [
+            "Source: existing guide; extracted. guides/js/Ultima7.js — DB.sideQuests[10]"
+          ],
+          "links": [],
+          "passed": true
+        },
+        "after": {
+          "decision": "answer",
+          "rendered": "Buy a special crystal from the adventurer Addom for 20 gold and give it to Brion so he can power the observatory's orrery.",
+          "citations": [
+            "Source: existing guide; extracted. guides/js/Ultima7.js — DB.sideQuests[10]; guides/js/Ultima7.js — DB.sideQuests[10].walkthrough"
+          ],
+          "links": [],
+          "passed": true
+        }
+      },
+      {
+        "suite": "corpus",
+        "surface": "ultima7",
+        "dialogueId": "orrery-crystal-price",
+        "turn": 2,
+        "fields": [
+          "citations"
+        ],
+        "before": {
+          "decision": "answer",
+          "rendered": "Buy a special crystal from the adventurer Addom for 20 gold and give it to Brion so he can power the observatory's orrery.",
+          "citations": [
+            "Source: existing guide; extracted. guides/js/Ultima7.js — DB.sideQuests[10]"
+          ],
+          "links": [],
+          "passed": true
+        },
+        "after": {
+          "decision": "answer",
+          "rendered": "Buy a special crystal from the adventurer Addom for 20 gold and give it to Brion so he can power the observatory's orrery.",
+          "citations": [
+            "Source: existing guide; extracted. guides/js/Ultima7.js — DB.sideQuests[10]; guides/js/Ultima7.js — DB.sideQuests[10].walkthrough"
+          ],
+          "links": [],
+          "passed": true
+        }
+      },
+      {
+        "suite": "corpus",
+        "surface": "ultima7",
+        "dialogueId": "runeb-note-directed-evidence",
+        "turn": 1,
+        "fields": [
+          "citations"
+        ],
+        "before": {
+          "decision": "answer",
+          "rendered": "Investigate Sarpling's home to find a note implicating Runeb in a plot against the Altars. Confront Runeb to resolve the threat.",
+          "citations": [
+            "Source: existing guide; extracted. guides/js/Ultima7.js — DB.sideQuests[11]"
+          ],
+          "links": [],
+          "passed": true
+        },
+        "after": {
+          "decision": "answer",
+          "rendered": "Investigate Sarpling's home to find a note implicating Runeb in a plot against the Altars. Confront Runeb to resolve the threat.",
+          "citations": [
+            "Source: existing guide; extracted. guides/js/Ultima7.js — DB.sideQuests[11]; guides/js/Ultima7.js — DB.sideQuests[11].walkthrough"
+          ],
+          "links": [],
+          "passed": true
+        }
+      },
+      {
+        "suite": "corpus",
+        "surface": "ultima7",
+        "dialogueId": "runeb-note-directed-evidence",
+        "turn": 2,
+        "fields": [
+          "citations"
+        ],
+        "before": {
+          "decision": "answer",
+          "rendered": "Investigate Sarpling's home to find a note implicating Runeb in a plot against the Altars. Confront Runeb to resolve the threat.",
+          "citations": [
+            "Source: existing guide; extracted. guides/js/Ultima7.js — DB.sideQuests[11]"
+          ],
+          "links": [],
+          "passed": true
+        },
+        "after": {
+          "decision": "answer",
+          "rendered": "Investigate Sarpling's home to find a note implicating Runeb in a plot against the Altars. Confront Runeb to resolve the threat.",
+          "citations": [
+            "Source: existing guide; extracted. guides/js/Ultima7.js — DB.sideQuests[11]; guides/js/Ultima7.js — DB.sideQuests[11].walkthrough"
+          ],
+          "links": [],
+          "passed": true
+        }
+      },
+      {
+        "suite": "corpus",
+        "surface": "ultima7",
+        "dialogueId": "kreg-records-confrontation",
+        "turn": 1,
+        "fields": [
+          "citations"
+        ],
+        "before": {
+          "decision": "answer",
+          "rendered": "Kreg is a criminal in hiding. Research court records to discover his identity and confront him, which will provoke an attack.",
+          "citations": [
+            "Source: existing guide; extracted. guides/js/Ultima7.js — DB.sideQuests[12]"
+          ],
+          "links": [],
+          "passed": true
+        },
+        "after": {
+          "decision": "answer",
+          "rendered": "Kreg is a criminal in hiding. Research court records to discover his identity and confront him, which will provoke an attack.",
+          "citations": [
+            "Source: existing guide; extracted. guides/js/Ultima7.js — DB.sideQuests[12]; guides/js/Ultima7.js — DB.sideQuests[12].walkthrough"
+          ],
+          "links": [],
+          "passed": true
+        }
+      },
+      {
+        "suite": "corpus",
+        "surface": "ultima7",
+        "dialogueId": "kreg-records-confrontation",
+        "turn": 2,
+        "fields": [
+          "citations"
+        ],
+        "before": {
+          "decision": "answer",
+          "rendered": "Kreg is a criminal in hiding. Research court records to discover his identity and confront him, which will provoke an attack.",
+          "citations": [
+            "Source: existing guide; extracted. guides/js/Ultima7.js — DB.sideQuests[12]"
+          ],
+          "links": [],
+          "passed": true
+        },
+        "after": {
+          "decision": "answer",
+          "rendered": "Kreg is a criminal in hiding. Research court records to discover his identity and confront him, which will provoke an attack.",
+          "citations": [
+            "Source: existing guide; extracted. guides/js/Ultima7.js — DB.sideQuests[12]; guides/js/Ultima7.js — DB.sideQuests[12].walkthrough"
+          ],
+          "links": [],
+          "passed": true
+        }
+      },
+      {
+        "suite": "corpus",
+        "surface": "ultima7",
+        "dialogueId": "statue-and-baby",
+        "turn": 1,
+        "fields": [
+          "citations"
+        ],
+        "before": {
+          "decision": "answer",
+          "rendered": "A lengthy investigation reveals the knight Pendaran is the vandal. Report this to Lord John-Paul for judgment.",
+          "citations": [
+            "Source: existing guide; extracted. guides/js/Ultima7.js — DB.sideQuests[13]"
+          ],
+          "links": [],
+          "passed": true
+        },
+        "after": {
+          "decision": "answer",
+          "rendered": "A lengthy investigation reveals the knight Pendaran is the vandal. Report this to Lord John-Paul for judgment.",
+          "citations": [
+            "Source: existing guide; extracted. guides/js/Ultima7.js — DB.sideQuests[13]; guides/js/Ultima7.js — DB.sideQuests[13].walkthrough"
+          ],
+          "links": [],
+          "passed": true
+        }
+      },
+      {
+        "suite": "corpus",
+        "surface": "ultima7",
+        "dialogueId": "statue-and-baby",
+        "turn": 2,
+        "fields": [
+          "citations"
+        ],
+        "before": {
+          "decision": "answer",
+          "rendered": "The baby, Riky, is at the Shrine of Honour (142S, 9W). Defeat the harpies and return him to his mother.",
+          "citations": [
+            "Source: existing guide; extracted. guides/js/Ultima7.js — DB.sideQuests[14]"
+          ],
+          "links": [],
+          "passed": true
+        },
+        "after": {
+          "decision": "answer",
+          "rendered": "The baby, Riky, is at the Shrine of Honour (142S, 9W). Defeat the harpies and return him to his mother.",
+          "citations": [
+            "Source: existing guide; extracted. guides/js/Ultima7.js — DB.sideQuests[14]; guides/js/Ultima7.js — DB.sideQuests[14].walkthrough"
+          ],
+          "links": [],
+          "passed": true
+        }
+      },
+      {
+        "suite": "corpus",
+        "surface": "ultima7",
+        "dialogueId": "statue-and-baby",
+        "turn": 3,
+        "fields": [
+          "citations"
+        ],
+        "before": {
+          "decision": "answer",
+          "rendered": "The baby, Riky, is at the Shrine of Honour (142S, 9W). Defeat the harpies and return him to his mother.",
+          "citations": [
+            "Source: existing guide; extracted. guides/js/Ultima7.js — DB.sideQuests[14]"
+          ],
+          "links": [],
+          "passed": true
+        },
+        "after": {
+          "decision": "answer",
+          "rendered": "The baby, Riky, is at the Shrine of Honour (142S, 9W). Defeat the harpies and return him to his mother.",
+          "citations": [
+            "Source: existing guide; extracted. guides/js/Ultima7.js — DB.sideQuests[14]; guides/js/Ultima7.js — DB.sideQuests[14].walkthrough"
+          ],
+          "links": [],
+          "passed": true
+        }
+      },
+      {
+        "suite": "corpus",
+        "surface": "ultima7",
+        "dialogueId": "pronoun-whistle",
+        "turn": 1,
+        "fields": [
+          "rendered",
+          "citations"
+        ],
+        "before": {
+          "decision": "answer",
+          "rendered": "Negotiate with the emps to get a wisp whistle.",
+          "citations": [
+            "Source: existing guide; extracted. guides/js/Ultima7.js — DB.mainQuest[2].content; DB.mainQuest[2].content"
+          ],
+          "links": [],
+          "passed": true
+        },
+        "after": {
+          "decision": "answer",
+          "rendered": "Get honey from the Bee Cave to bribe the emps.\nNegotiate with the emps to get a wisp whistle. Use the whistle to communicate with the wisp, who demands Alagner's notebook from New Magincia in exchange for information.",
+          "citations": [
+            "Source: existing guide; extracted. guides/js/Ultima7.js — DB.mainQuest[2].content; guides/js/Ultima7.js — DB.mainQuest[2].content; DB.mainQuest[2].content; guides/js/Ultima7.js — DB.mainQuest[2].content; DB.mainQuest[2].content"
+          ],
+          "links": [],
+          "passed": true
+        }
+      },
+      {
+        "suite": "corpus",
+        "surface": "ultima7",
+        "dialogueId": "pronoun-whistle",
+        "turn": 3,
+        "fields": [
+          "rendered",
+          "citations"
+        ],
+        "before": {
+          "decision": "answer",
+          "rendered": "Negotiate with the emps to get a wisp whistle.",
+          "citations": [
+            "Source: existing guide; extracted. guides/js/Ultima7.js — DB.mainQuest[2].content; DB.mainQuest[2].content"
+          ],
+          "links": [],
+          "passed": true
+        },
+        "after": {
+          "decision": "answer",
+          "rendered": "Get honey from the Bee Cave to bribe the emps.\nNegotiate with the emps to get a wisp whistle. Use the whistle to communicate with the wisp, who demands Alagner's notebook from New Magincia in exchange for information.",
+          "citations": [
+            "Source: existing guide; extracted. guides/js/Ultima7.js — DB.mainQuest[2].content; guides/js/Ultima7.js — DB.mainQuest[2].content; DB.mainQuest[2].content; guides/js/Ultima7.js — DB.mainQuest[2].content; DB.mainQuest[2].content"
+          ],
+          "links": [],
+          "passed": true
+        }
+      }
+    ],
+    "interpretation": "U6 has one compared reply change, a failed-to-passed full Maze of Death route answer. U7 has 35 compared reply changes: 10 failed-to-passed (including the phase/qualification fixes) and 25 rows that remain passed; direct comparison found zero pass losses. Full before/after replies and citations are retained in the referenced native reports."
+  },
+  "remainingStrictFailures": {
+    "u6": [
+      {
+        "suite": "corpus",
+        "surface": "ultima6",
+        "dialogueId": "tablet-leads",
+        "turn": 3,
+        "text": "How do I ask the gypsies about the tablet?",
+        "decision": "answer",
+        "rendered": "Zoltan: say TABLET for Homer lead.",
+        "citations": [
+          "Source: existing guide; extracted. guides/js/Ultima6.js — gameData.quests[1].sections[0].keywords[0].helper"
+        ],
+        "expected": {
+          "decision": "answer",
+          "contains": [
+            "Homer",
+            "Buccaneer"
+          ],
+          "factIds": [
+            "zoltan-homer"
+          ],
+          "source": {
+            "file": "guides/js/Ultima6.js",
+            "locator": "gameData.quests[1].sections[0].steps[2]",
+            "review": "extracted"
+          }
+        },
+        "problems": [
+          "Missing exact fixed source citation: guides/js/Ultima6.js — gameData.quests[1].sections[0].steps[2]",
+          "Missing fixed answer substring: Buccaneer"
+        ]
+      },
+      {
+        "suite": "observed-fresh",
+        "surface": "ultima6",
+        "dialogueId": "u6-family-permission",
+        "turn": 1,
+        "text": "How do I get permission to borrow the Compassion rune in Britain?",
+        "decision": "answer",
+        "rendered": "Meet Ariana at the Conservatory and ask for the RUNE. She needs her mother Anya's permission.\nVisit Anya at the Blue Boar Tavern, mention RUNE or PERMISSION, and answer YES when asked.\nReturn to Ariana, confirm permission, and receive the Rune of Compassion.",
+        "citations": [
+          "Source: existing guide; extracted. guides/js/Ultima6.js — gameData.quests[0].sections[0].steps[0]; guides/js/Ultima6.js — gameData.quests[0].sections[0].steps[1]; guides/js/Ultima6.js — gameData.quests[0].sections[0].steps[2]"
+        ],
+        "expected": {
+          "decision": "answer",
+          "source": {
+            "file": "guides/js/Ultima6.js",
+            "locator": "gameData.quests[0].sections[0]",
+            "review": "extracted"
+          },
+          "contains": [
+            "Anya",
+            "Blue Boar",
+            "YES",
+            "Ariana"
+          ],
+          "requiredUsefulClaim": "Ask Anya at the Blue Boar Tavern about RUNE/PERMISSION and answer YES, then return to Ariana.",
+          "sourceWitness": [
+            "Visit Anya at the Blue Boar Tavern, mention `RUNE` or `PERMISSION`, and answer `YES` when asked.",
+            "Return to Ariana, confirm permission, and receive the Rune of Compassion."
+          ]
+        },
+        "problems": [
+          "Missing exact fixed source citation: guides/js/Ultima6.js — gameData.quests[0].sections[0]"
+        ]
+      },
+      {
+        "suite": "observed-fresh",
+        "surface": "ultima6",
+        "dialogueId": "u6-making-music",
+        "turn": 3,
+        "text": "Whose song should I learn, and who hears the performance to award the rune?",
+        "decision": "answer",
+        "rendered": "Gwenno:\nAsk Gwenno about the song STONES to learn the numeric tune 6789878767653.\n\nSelganor:\nAsk Gwenno about the song STONES to learn the numeric tune 6789878767653.\nPerform the tune for Selganor inside the Artisan Guild to receive the rune.",
+        "citations": [
+          "Source: existing guide; extracted. guides/js/Ultima6.js — gameData.quests[0].sections[4].steps[1]; guides/js/Ultima6.js — gameData.quests[0].sections[4].steps[2]"
+        ],
+        "expected": {
+          "decision": "answer",
+          "source": {
+            "file": "guides/js/Ultima6.js",
+            "locator": "gameData.quests[0].sections[4]",
+            "review": "extracted"
+          },
+          "contains": [
+            "Gwenno",
+            "STONES",
+            "Selganor"
+          ],
+          "requiredUsefulClaim": "Learn STONES from Gwenno and perform it for Selganor to receive the rune.",
+          "sourceWitness": [
+            "Ask Gwenno about the song `STONES` to learn the numeric tune 6789878767653.",
+            "Perform the tune for Selganor inside the Artisan Guild to receive the rune."
+          ]
+        },
+        "problems": [
+          "Missing exact fixed source citation: guides/js/Ultima6.js — gameData.quests[0].sections[4]"
+        ]
+      }
+    ],
+    "u7": [
+      {
+        "suite": "corpus",
+        "surface": "ultima7",
+        "dialogueId": "trinsic-evidence-password",
+        "turn": 1,
+        "text": "How do I investigate the Trinsic crime scene?",
+        "decision": "answer",
+        "rendered": "Investigate the ritualistic murder in the stables. Examine the crime scene for a key.",
+        "citations": [
+          "Source: existing guide; extracted. guides/js/Ultima7.js — DB.mainQuest[0].content"
+        ],
+        "expected": {
+          "decision": "answer",
+          "contains": [
+            "stables",
+            "key"
+          ],
+          "factIds": [
+            "trinsic-crime-scene"
+          ],
+          "source": {
+            "file": "guides/js/Ultima7.js",
+            "locator": "DB.mainQuest[0]",
+            "review": "extracted"
+          },
+          "sourceRecordIds": [
+            "ultima7:quest:the-trinsic-murders:hint"
+          ]
+        },
+        "problems": [
+          "Missing exact fixed source citation: guides/js/Ultima7.js — DB.mainQuest[0]"
+        ]
+      }
+    ],
+    "audit": [
+      {
+        "surface": "ultima6",
+        "dialogueId": "tablet-leads",
+        "turn": 3,
+        "classification": "source-backed direct answer; remaining strict mismatch is narrower helper citation versus expected step locator and missing destination detail",
+        "sourceWitnesses": [
+          "guides/js/Ultima6.js :: gameData.quests[1].sections[0].keywords[0].helper (Zoltan says TABLET for Homer lead)",
+          "guides/js/Ultima6.js :: gameData.quests[1].sections[0].steps[2] (gypsy leader directs player to Homer in Buccaneer's Den)"
+        ],
+        "assessment": "The question asks which keyword to use; actual reply supplies TABLET and Homer lead. The expected route destination is available in adjacent step witness but is not included. This is an incomplete strict-oracle match, not evidence of a false answer."
+      },
+      {
+        "surface": "ultima6",
+        "dialogueId": "u6-family-permission",
+        "turn": 1,
+        "classification": "complete answer; exact parent-versus-child source locator mismatch",
+        "sourceWitnesses": [
+          "guides/js/Ultima6.js :: gameData.quests[0].sections[0].steps[0..2]"
+        ],
+        "assessment": "Reply includes Ariana, Anya, Blue Boar Tavern, RUNE/PERMISSION, YES, and return to Ariana for the Rune. Actual step-level citations are within the expected section-level source."
+      },
+      {
+        "surface": "ultima6",
+        "dialogueId": "u6-making-music",
+        "turn": 3,
+        "classification": "complete answer; exact parent-versus-child source locator mismatch",
+        "sourceWitnesses": [
+          "guides/js/Ultima6.js :: gameData.quests[0].sections[4].steps[1..2]"
+        ],
+        "assessment": "Reply identifies Gwenno, STONES, numeric tune 6789878767653, Selganor, Artisan Guild, and rune reward. Actual step-level citations are within the expected section-level source."
+      },
+      {
+        "surface": "ultima7",
+        "dialogueId": "trinsic-evidence-password",
+        "turn": 1,
+        "classification": "complete answer; exact parent-versus-child source locator mismatch",
+        "sourceWitnesses": [
+          "guides/js/Ultima7.js :: DB.mainQuest[0].content"
+        ],
+        "assessment": "Reply states the ritualistic murder is in the stables and to examine the crime scene for a key; actual child-content citation falls within expected DB.mainQuest[0]."
+      }
+    ]
+  },
+  "boundaryPreservation": {
+    "u6": {
+      "sourceStable": true,
+      "frozenInputsMatched": false,
+      "noStorageWrites": true,
+      "noPageErrors": true,
+      "nativeMiniLMEveryProbe": true,
+      "allAdditionalControlsHeld": true
+    },
+    "u7": {
+      "sourceStable": true,
+      "frozenInputsMatched": false,
+      "noStorageWrites": true,
+      "noPageErrors": true,
+      "nativeMiniLMEveryProbe": true,
+      "allAdditionalControlsHeld": true
+    },
+    "hashScopeEvidence": "native-probe-hash-scope-20261031-01.json",
+    "note": "Both original reports retain frozenInputsMatched=false. The separate hash-scope evidence says the refreshed endpoint adds exactly browser-consent-fixture.js and conversation-starcraft-source-records.json, with no changed common hashes. It does not rewrite or retroactively alter either report boundary."
+  },
+  "conclusion": "No current U6 or U7 passed row became a failure among rows matched to the 2026-10-29 baseline. U6 has 3 strict failures and U7 has 1; all four replies remain source-backed, with three exact locator mismatches and the U6 tablet answer omitting the downstream Buccaneer destination detail. Full replies, citations, expected predicates, and retained report boundaries are included by reference and in the failure records above."
+}

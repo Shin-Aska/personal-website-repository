@@ -1088,6 +1088,13 @@
         "Truth optional loot",
         "Truth optional puzzle requirement"
       ],
+      "sourceFields": [
+        {
+          "key": "outcome",
+          "selectors": ["offer"],
+          "witness": "Optional puzzles offer dangerous but valuable loot."
+        }
+      ],
       "entityId": "ultima7:quest:test-of-truth",
       "editions": [
         "Forge of Virtue"
@@ -3677,6 +3684,10 @@
       },
       "sourceRecordId": "ultima7:topic:wisp-whistle:hint",
       "entityId": "ultima7:knowledge-entity:wisp-whistle",
+      "support": {
+        "beforeacquisition": ["honey-emps"],
+        "acquisition": ["emp-whistle"]
+      },
       "answerRelations": [
         "acquisition",
         "method"

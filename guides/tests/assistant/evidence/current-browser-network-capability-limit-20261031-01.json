@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "kind": "current-cua-network-capability-limit",
+  "date": "2026-10-31",
+  "browser": "existing ChatGPT in-app browser, browser 2",
+  "ownerDecision": "Continue with the current browser tool",
+  "observation": {
+    "source": "root CUA tool result during fresh guide verification",
+    "Network.enable": { "supported": true, "result": {} },
+    "Target.setAutoAttach": {
+      "supported": false,
+      "parameters": { "autoAttach": false, "waitForDebuggerOnStart": false, "flatten": true },
+      "error": "This method is not supported through raw CDP."
+    },
+    "cleanup": "Network.disable completed before continuing ordinary guide navigation. No worker was paused."
+  },
+  "conclusion": "Page-only events cannot establish exhaustive page-plus-dedicated-worker request coverage. Neither earlier truncated captures nor this capability probe are accepted as a clean network result.",
+  "scope": "Local CUA conversation/layout verification continues with the approved generative fixture and actual pinned MiniLM. This does not establish real generative inference, exhaustive legacy network interception, or low-end-device performance.",
+  "alternateAutomation": "Prepared Node adapter remains ignored and unexecuted; owner selected the current browser tool. No installations or downloads."
+}

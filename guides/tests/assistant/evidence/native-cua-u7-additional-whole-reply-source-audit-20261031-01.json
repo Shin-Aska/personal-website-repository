@@ -1,0 +1,498 @@
+{
+  "schemaVersion": 1,
+  "kind": "read-only-ultima7-additional-native-source-audit",
+  "tag": "native-cua-u7-additional-whole-reply-source-audit-20261031-01",
+  "createdAt": "2026-10-31",
+  "inputs": {
+    "guides/tests/assistant/evidence/knowledge-cua-native-whole-goal-final-u7-additional-20261031-01.json": "10a0e47e8c0f2abea80357a14254607d45c45c8958ece24ec4c42e4feafc74d6",
+    "guides/tests/assistant/evidence/knowledge-cua-native-whole-goal-final-u7-20261031-02.json": "9df5cdd9b30516be92955d42e060492f8c9c494929117fa7861d9a6712f46ad0",
+    "guides/tests/assistant/evidence/knowledge-blind-browser-source-first-terra-frozen-source-20261029-01.json": "5ad1b493fb1a339d4b05b49528b35c6bcb797e0033bd241712f32aa25d915ec6",
+    "guides/tests/assistant/evidence/knowledge-browser-terra-20261029-frozen-source-01.json": "4813cd4dbb84d7fcd83ec90c09af4bf009b8ebc6e5b34c2857ade6a196c73bfb",
+    "guides/tests/assistant/evidence/knowledge-blind-browser-observed-fresh-next-20261027-02.json": "6428f7fe4afced9bf24a196fd2e9933b15f340d0369a6827e3217221b17538b3",
+    "guides/tests/assistant/evidence/knowledge-source-first96-arguments-review-ultima7-starcraft-20261025.json": "6bce1826a9114d6251e780364652e61d9c6f99a583c877dc493670078b63fee2",
+    "guides/tests/assistant/evidence/native-cua-u6-u7-whole-reply-comparison-20261031-01.json": "587c87823d38cac095544c67f9fc95a3a3e7fdaf8ab8c8bea8ddbf509060c866"
+  },
+  "scope": {
+    "additionalReportHasCorpusRows": 0,
+    "requestedDatasets": [
+      "source-first",
+      "observed-native",
+      "observed-fresh",
+      "observed-independent",
+      "semantic13"
+    ],
+    "purpose": "Audit the additional source-first/observed/semantic suites separately from the U7 corpus run. The additional rows must not be counted as replacement corpus rows."
+  },
+  "boundaries": {
+    "sourceStable": true,
+    "frozenInputsMatched": true,
+    "noStorageWrites": true,
+    "noPageErrors": true,
+    "nativeMiniLMEveryProbe": true,
+    "allAdditionalControlsHeld": true
+  },
+  "coverage": {
+    "ultima7:source-first": {
+      "matchedDialogues": 4,
+      "expectedDialogues": 4,
+      "complete": true,
+      "missingDialogueIds": []
+    },
+    "ultima7:observed-native": {
+      "matchedDialogues": 4,
+      "expectedDialogues": 4,
+      "complete": true,
+      "missingDialogueIds": []
+    },
+    "ultima7:observed-fresh": {
+      "matchedDialogues": 3,
+      "expectedDialogues": 3,
+      "complete": true,
+      "missingDialogueIds": []
+    },
+    "ultima7:observed-independent": {
+      "matchedDialogues": 2,
+      "expectedDialogues": 2,
+      "complete": true,
+      "missingDialogueIds": []
+    },
+    "ultima7:semantic13": {
+      "matchedDialogues": 1,
+      "expectedDialogues": 1,
+      "complete": true,
+      "missingDialogueIds": []
+    }
+  },
+  "summary": {
+    "corpus": {
+      "passed": 0,
+      "failed": 0,
+      "total": 0
+    },
+    "source-first": {
+      "passed": 16,
+      "failed": 0,
+      "total": 16
+    },
+    "observed-native": {
+      "passed": 16,
+      "failed": 0,
+      "total": 16
+    },
+    "observed-fresh": {
+      "passed": 11,
+      "failed": 1,
+      "total": 12
+    },
+    "observed-independent": {
+      "passed": 8,
+      "failed": 0,
+      "total": 8
+    },
+    "semantic13": {
+      "passed": 2,
+      "failed": 0,
+      "total": 2
+    },
+    "controls": {
+      "passed": 0,
+      "failed": 0,
+      "total": 0
+    }
+  },
+  "incompleteConversations": [],
+  "controls": {
+    "rows": [],
+    "scored": {
+      "passed": 0,
+      "failed": 0,
+      "total": 0
+    },
+    "limitation": "This additional dataset has no separate scored negative-control turns."
+  },
+  "sourcefirstComparisonTo2029-10-29": {
+    "baselinePath": "guides/tests/assistant/evidence/knowledge-blind-browser-source-first-terra-frozen-source-20261029-01.json",
+    "baselineU7Rows": 16,
+    "baselineU7Passed": 14,
+    "currentRows": 16,
+    "currentPassed": 16,
+    "matchedKeys": 16,
+    "missingKeys": [],
+    "changedWholeRows": [
+      {
+        "surface": "ultima7",
+        "dialogueId": "fresh-u7-brion-crystal-transaction",
+        "turn": 1,
+        "question": "In Brion's orrery quest, which adventurer sells the special crystal?",
+        "changedFields": [
+          "citations",
+          "passed",
+          "problems"
+        ],
+        "previous": {
+          "text": "In Brion's orrery quest, which adventurer sells the special crystal?",
+          "decision": "answer",
+          "rendered": "Buy a special crystal from the adventurer Addom for 20 gold and give it to Brion so he can power the observatory's orrery.",
+          "citations": [
+            "Source: existing guide; extracted. guides/js/Ultima7.js — DB.sideQuests[10]"
+          ],
+          "links": [],
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/js/Ultima7.js",
+              "locator": "DB.sideQuests[10].walkthrough",
+              "review": "extracted"
+            },
+            "contains": [
+              "Addom"
+            ],
+            "requiredUsefulClaim": "Identify the adventurer Addom as the seller of the special crystal for Brion.",
+            "sourceWitness": "Buy a special crystal from the adventurer Addom for 20 gold and give it to Brion so he can power the observatory's orrery.",
+            "fullFieldValues": {
+              "seller": "Addom",
+              "sellerRole": "adventurer",
+              "object": "special crystal"
+            }
+          },
+          "passed": false,
+          "problems": [
+            "Missing exact fixed source citation: guides/js/Ultima7.js — DB.sideQuests[10].walkthrough"
+          ]
+        },
+        "current": {
+          "text": "In Brion's orrery quest, which adventurer sells the special crystal?",
+          "decision": "answer",
+          "rendered": "Buy a special crystal from the adventurer Addom for 20 gold and give it to Brion so he can power the observatory's orrery.",
+          "citations": [
+            "Source: existing guide; extracted. guides/js/Ultima7.js — DB.sideQuests[10]; guides/js/Ultima7.js — DB.sideQuests[10].walkthrough"
+          ],
+          "links": [],
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/js/Ultima7.js",
+              "locator": "DB.sideQuests[10].walkthrough",
+              "review": "extracted"
+            },
+            "contains": [
+              "Addom"
+            ],
+            "requiredUsefulClaim": "Identify the adventurer Addom as the seller of the special crystal for Brion.",
+            "sourceWitness": "Buy a special crystal from the adventurer Addom for 20 gold and give it to Brion so he can power the observatory's orrery.",
+            "fullFieldValues": {
+              "seller": "Addom",
+              "sellerRole": "adventurer",
+              "object": "special crystal"
+            }
+          },
+          "passed": true,
+          "problems": []
+        }
+      },
+      {
+        "surface": "ultima7",
+        "dialogueId": "fresh-u7-brion-crystal-transaction",
+        "turn": 2,
+        "question": "What should I pay for the crystal, and who gets it afterward?",
+        "changedFields": [
+          "citations",
+          "passed",
+          "problems"
+        ],
+        "previous": {
+          "text": "What should I pay for the crystal, and who gets it afterward?",
+          "decision": "answer",
+          "rendered": "Buy a special crystal from the adventurer Addom for 20 gold and give it to Brion so he can power the observatory's orrery.",
+          "citations": [
+            "Source: existing guide; extracted. guides/js/Ultima7.js — DB.sideQuests[10]"
+          ],
+          "links": [],
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/js/Ultima7.js",
+              "locator": "DB.sideQuests[10].walkthrough",
+              "review": "extracted"
+            },
+            "contains": [
+              "20 gold",
+              "Brion"
+            ],
+            "requiredUsefulClaim": "Give the exact price, 20 gold, and tell the player to give the crystal to Brion to power the observatory's orrery.",
+            "sourceWitness": "Buy a special crystal from the adventurer Addom for 20 gold and give it to Brion so he can power the observatory's orrery.",
+            "fullFieldValues": {
+              "price": "20 gold",
+              "recipient": "Brion",
+              "purpose": "power the observatory's orrery"
+            }
+          },
+          "passed": false,
+          "problems": [
+            "Missing exact fixed source citation: guides/js/Ultima7.js — DB.sideQuests[10].walkthrough"
+          ]
+        },
+        "current": {
+          "text": "What should I pay for the crystal, and who gets it afterward?",
+          "decision": "answer",
+          "rendered": "Buy a special crystal from the adventurer Addom for 20 gold and give it to Brion so he can power the observatory's orrery.",
+          "citations": [
+            "Source: existing guide; extracted. guides/js/Ultima7.js — DB.sideQuests[10]; guides/js/Ultima7.js — DB.sideQuests[10].walkthrough"
+          ],
+          "links": [],
+          "expected": {
+            "decision": "answer",
+            "source": {
+              "file": "guides/js/Ultima7.js",
+              "locator": "DB.sideQuests[10].walkthrough",
+              "review": "extracted"
+            },
+            "contains": [
+              "20 gold",
+              "Brion"
+            ],
+            "requiredUsefulClaim": "Give the exact price, 20 gold, and tell the player to give the crystal to Brion to power the observatory's orrery.",
+            "sourceWitness": "Buy a special crystal from the adventurer Addom for 20 gold and give it to Brion so he can power the observatory's orrery.",
+            "fullFieldValues": {
+              "price": "20 gold",
+              "recipient": "Brion",
+              "purpose": "power the observatory's orrery"
+            }
+          },
+          "passed": true,
+          "problems": []
+        }
+      }
+    ],
+    "passGains": 2,
+    "passLosses": 0,
+    "interpretation": "The two Brion seller/price rows keep the same complete, useful walkthrough answer, and add the exact DB.sideQuests[10].walkthrough citation beside the parent citation; both turn from strict fail to pass. The child locator is supported by the original authored field."
+  },
+  "remainingFreshStrictMiss": {
+    "suite": "observed-fresh",
+    "surface": "ultima7",
+    "dialogueId": "u7-observatory-crystal",
+    "turn": 3,
+    "question": "What does the guide list as the reward for helping him?",
+    "expected": {
+      "decision": "answer",
+      "source": {
+        "file": "guides/js/Ultima7.js",
+        "locator": "DB.sideQuests[10]",
+        "review": "extracted"
+      },
+      "contains": [
+        "Brion activates the orrery"
+      ],
+      "requiredUsefulClaim": "The listed reward is that Brion activates the orrery.",
+      "sourceWitness": "reward: \"Brion activates the orrery\""
+    },
+    "actualDecision": "answer",
+    "actualFullReply": "Brion activates the orrery",
+    "actualCitations": [
+      "Source: existing guide; extracted. guides/js/Ultima7.js — DB.sideQuests[10].reward"
+    ],
+    "problems": [
+      "Missing exact fixed source citation: guides/js/Ultima7.js — DB.sideQuests[10]"
+    ],
+    "judgment": "No content gap. The complete reply exactly repeats the original `reward` field value; only the frozen oracle asks for the parent DB.sideQuests[10] locator while the response cites the more precise DB.sideQuests[10].reward child. This same query and identical source-child citation were already present in the 2026-10-27 observed-fresh run and failed only that parent-vs-child citation assertion. It is therefore a carried strict locator mismatch, not a new regression.",
+    "priorObservedFresh": {
+      "text": "What does the guide list as the reward for helping him?",
+      "decision": "answer",
+      "rendered": "Brion activates the orrery",
+      "citations": [
+        "Source: existing guide; extracted. guides/js/Ultima7.js — DB.sideQuests[10].reward"
+      ],
+      "expected": {
+        "decision": "answer",
+        "source": {
+          "file": "guides/js/Ultima7.js",
+          "locator": "DB.sideQuests[10]",
+          "review": "extracted"
+        },
+        "contains": [
+          "Brion activates the orrery"
+        ],
+        "requiredUsefulClaim": "The listed reward is that Brion activates the orrery.",
+        "sourceWitness": "reward: \"Brion activates the orrery\""
+      },
+      "passed": false,
+      "problems": [
+        "Missing exact fixed source citation: guides/js/Ultima7.js — DB.sideQuests[10]"
+      ]
+    },
+    "originalSource": {
+      "file": "guides/js/Ultima7.js",
+      "locator": "DB.sideQuests[10].reward",
+      "value": "Brion activates the orrery",
+      "parent": {
+        "name": "Brion's Orrery",
+        "location": "Moonglow",
+        "giver": "Brion",
+        "reward": "Brion activates the orrery",
+        "walkthrough": "Buy a special crystal from the adventurer Addom for 20 gold and give it to Brion so he can power the observatory's orrery."
+      },
+      "sourceSha256Before": "3c7ce3c82e775313d6de2afa22631a4fc537c31fe07693d90fa6e0a2c8e16949",
+      "sourceSha256After": "3c7ce3c82e775313d6de2afa22631a4fc537c31fe07693d90fa6e0a2c8e16949"
+    },
+    "sourceRefs": [
+      "guides/js/Ultima7.js:81",
+      "guides/tests/assistant/evidence/knowledge-blind-browser-observed-fresh-next-20261027-02.json",
+      "guides/tests/assistant/evidence/knowledge-fresh-adjudication-20261025.json"
+    ]
+  },
+  "sameLocatorPatternInFrozenCorpus": {
+    "baselinePath": "guides/tests/assistant/evidence/knowledge-browser-terra-20261029-frozen-source-01.json",
+    "row": {
+      "surface": "ultima7",
+      "dialogueId": "trinsic-evidence-password",
+      "turn": 1,
+      "text": "How do I investigate the Trinsic crime scene?",
+      "expected": {
+        "decision": "answer",
+        "contains": [
+          "stables",
+          "key"
+        ],
+        "factIds": [
+          "trinsic-crime-scene"
+        ],
+        "source": {
+          "file": "guides/js/Ultima7.js",
+          "locator": "DB.mainQuest[0]",
+          "review": "extracted"
+        },
+        "sourceRecordIds": [
+          "ultima7:quest:the-trinsic-murders:hint"
+        ]
+      },
+      "decision": "answer",
+      "rendered": "Investigate the ritualistic murder in the stables. Examine the crime scene for a key.",
+      "citations": [
+        "Source: existing guide; extracted. guides/js/Ultima7.js — DB.mainQuest[0].content"
+      ],
+      "passed": false,
+      "problems": [
+        "Missing exact fixed source citation: guides/js/Ultima7.js — DB.mainQuest[0]"
+      ]
+    },
+    "meaning": "The 29 Oct U7 corpus already contains the same parent-vs-narrow-child citation disagreement for the Trinsic objective; it is a distinct question but demonstrates this locator policy exists in the frozen baseline."
+  },
+  "corpusSeparateStatus": {
+    "reportPath": "guides/tests/assistant/evidence/knowledge-cua-native-whole-goal-final-u7-20261031-02.json",
+    "summary": {
+      "corpus": {
+        "passed": 158,
+        "failed": 1,
+        "total": 159
+      },
+      "source-first": {
+        "passed": 0,
+        "failed": 0,
+        "total": 0
+      },
+      "observed-native": {
+        "passed": 0,
+        "failed": 0,
+        "total": 0
+      },
+      "observed-fresh": {
+        "passed": 0,
+        "failed": 0,
+        "total": 0
+      },
+      "observed-independent": {
+        "passed": 0,
+        "failed": 0,
+        "total": 0
+      },
+      "semantic13": {
+        "passed": 0,
+        "failed": 0,
+        "total": 0
+      },
+      "controls": {
+        "passed": 0,
+        "failed": 0,
+        "total": 0
+      }
+    },
+    "coverage": {
+      "ultima7:corpus": {
+        "matchedDialogues": 39,
+        "expectedDialogues": 39,
+        "complete": true,
+        "missingDialogueIds": []
+      }
+    },
+    "boundary": {
+      "sourceStable": true,
+      "frozenInputsMatched": false,
+      "noStorageWrites": true,
+      "noPageErrors": true,
+      "nativeMiniLMEveryProbe": true,
+      "allAdditionalControlsHeld": true
+    },
+    "baselineAuditPath": "guides/tests/assistant/evidence/native-cua-u6-u7-whole-reply-comparison-20261031-01.json",
+    "baselineAuditSummary": {
+      "matchedBaselineRows": 159,
+      "baselinePassesLost": 0,
+      "baselineFailuresImproved": 10,
+      "baselinePassLossKeys": [],
+      "baselineFailureImprovementKeys": [
+        {
+          "surface": "ultima7",
+          "dialogueId": "arcadion-black-sword",
+          "turn": 4
+        },
+        {
+          "surface": "ultima7",
+          "dialogueId": "blorn-victim-property",
+          "turn": 3
+        },
+        {
+          "surface": "ultima7",
+          "dialogueId": "courage-ether-gem",
+          "turn": 3
+        },
+        {
+          "surface": "ultima7",
+          "dialogueId": "courage-ether-gem",
+          "turn": 4
+        },
+        {
+          "surface": "ultima7",
+          "dialogueId": "dark-core-stat-caveat",
+          "turn": 4
+        },
+        {
+          "surface": "ultima7",
+          "dialogueId": "honor-flag-alternatives",
+          "turn": 3
+        },
+        {
+          "surface": "ultima7",
+          "dialogueId": "sphere-hourglass-prerequisite",
+          "turn": 4
+        },
+        {
+          "surface": "ultima7",
+          "dialogueId": "truth-true-locket",
+          "turn": 4
+        },
+        {
+          "surface": "ultima7",
+          "dialogueId": "truth-true-locket",
+          "turn": 5
+        },
+        {
+          "surface": "ultima7",
+          "dialogueId": "wisp-honey-whistle",
+          "turn": 3
+        }
+      ]
+    },
+    "qualification": "Do not merge these corpus rows into the additional 54 rows. The current corpus report retains frozenInputsMatched=false; supplemental injected-consent attestation is in native-consent-provenance-u7-20261031-01.json. The other missing hash path is StarCraft source-record fixture metadata, not an observed native app dependency."
+  },
+  "conclusion": "All additional U7 suite rows ran; 53/54 strict checks passed, with the only miss being a precise-child vs expected-parent source locator mismatch whose content is exactly supported and whose same failure was recorded in an earlier observed-fresh run. Two source-first rows improved from 14/16 baseline to 16/16 with unchanged complete answer text and added direct walkthrough source citation. Native boundaries are all true for this additional run. Corpus remains a separate earlier 159-row 158/159 report with its own frozen-input metadata limitation."
+}

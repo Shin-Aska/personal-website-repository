@@ -7,7 +7,7 @@ const clean = value => typeof value === 'string' ? value.normalize('NFKC').repla
 const lower = value => clean(value).toLowerCase();
 const end = value => clean(value).replace(/[?!.]+$/, '').trim();
 const bare = value => clean(value).replace(/^(?:the|a|an)\s+/i, '');
-const WH = '(?:from when|what|which|where|who|whose|whom|why|when|how|am|is|are|does|do|can|could|should|would|will|has|have)';
+const WH = '(?:from when|what|which|where|who|whose|whom|why|when|how|am|is|are|does|do|can|could|should|would|will|must|has|have)';
 const IMPERATIVE = '(?:give|tell|show|describe|explain|quote|list|name|lay out|point me to)';
 const START = new RegExp(`^(?:${WH}|${IMPERATIVE})\\b`, 'i');
 const AUX = '(?:does|do|did|can|could|should|would|will|must|is|are|was|were|has|have)';
@@ -168,12 +168,20 @@ function governedField(action, clause) {
 }
 function actionField(action, clause) {
     const q = lower(action);
+    const prevention=/^prevents?(?:\s+(.+))?$/i.exec(clean(action));
+    if(prevention)return field('use','prevention',clause,{actionText:action,requiresExplicitField:true,qualifierTexts:prevention[1]?[prevention[1]]:[]});
+    const offered=/^offers?(?:\s+(.+))?$/i.exec(clean(action));
+    if(offered)return field('outcome','offer',clause,{actionText:action,qualifierTexts:offered[1]?[offered[1]]:[]});
     if (/^(?:fight|battle|attack|defeat|combat|counter)\b/.test(q)) return field('combat',null,clause,{actionText:action});
     if (/^download\b/.test(q)) return field('acquisition','download',clause,{actionText:action});
     if (/^(?:install|set up|configure)\b/.test(q)) return field('method',null,clause,{actionText:action});
+    if (/^navigate\b/.test(q)) return field('method','step',clause,{actionText:action,requiresExplicitField:true});
     if (/^(?:pay|cost|charge|spend)\b/.test(q)) return field('stats','price',clause,{actionText:action});
     if (/^(?:bring|collect|need|require|gather)\b/.test(q)) return field('prerequisites', 'materials', clause, {actionText:action});
     if (/^(?:say|ask|shout|mention|chant)\b/.test(q)) return field('method', /shout/.test(q)?'summon':'keyword',clause,{actionText:action});
+    // A journey to a recruit is still an approach procedure. Recruitment is
+    // a requested purpose, not proof of arrival or current party membership.
+    if (/^(?:reach|travel to)\b/.test(q)) return field('method', /\s+for recruitment$/i.test(q)?'recruitment':'step',clause,{actionText:action});
     // 'what do I do with the plans' asks for the use instruction itself; the
     // plans are that instruction's input, not necessarily its owner.
     const inputUse=/^do with\s+(.+)$/i.exec(clean(action));
@@ -201,7 +209,7 @@ function ownerIn(rest, qualifiers) {
     // reference: 'the running advice there tells me to time' asks about there.
     if((m=/^(.+?)\s+(?:tell|tells|ask|asks)\s+(?:me|us)\s+to\b/i.exec(r))&&documentActor(m[1]))return /\b(there|here)$/i.exec(clean(m[1]))?.[1] || null;
     if ((m=/^(?:listed|recorded|described|given|specified|documented|available|required|needed)\s+(?:for|of|on|about|in)\s+(.+)$/i.exec(r))) return m[1];
-    if ((m=/^(.+?)\s+(?:have|has|provide|provides|give|gives|do|does|require|requires|need|needs|accept|accepts|impose|imposes|open|opens|list|lists|say|says|contain|contains|perform|performs|grant|grants|add|adds|remain|remains|last|lasts|hide|hides|pay|pays)\b(.*)$/i.exec(r))) {
+    if ((m=/^(.+?)\s+(?:have|has|provide|provides|give|gives|do|does|require|requires|need|needs|accept|accepts|impose|imposes|open|opens|list|lists|use|uses|offer|offers|say|says|contain|contains|perform|performs|grant|grants|add|adds|remain|remains|last|lasts|hide|hides|pay|pays)\b(.*)$/i.exec(r))) {
         if(m[2].trim())qualifiers.push(m[2].trim());
         return documentActor(m[1])?null:m[1];
     }
@@ -256,15 +264,27 @@ function readClause(raw) {
         if(nested)return decorate({...nested,fields:nested.fields.map(value=>({...value,requestedText:clause,governorText:modalPassive[2]}))});
         return null;
     }
+    // This construction requests the recorded danger property; it does not
+    // license a causal explanation or other unrecorded property of the owner.
+    if((m=/^what\s+makes\s+(.+?)\s+dangerous$/i.exec(q)))
+        return decorate({subjectText:m[1],fields:[field('limitations','danger',clause,{subjectText:m[1],governorText:'makes',qualifierTexts:[],unknownQualifierTexts:[]})],qualifiers});
     if(/^where(?:\s*,?\s*(?:to|for)\b|$)/i.test(q))return decorate({subjectText:null,fields:[field('location',null,clause,{qualifierTexts:[q.slice(5).trim()].filter(Boolean)})],qualifiers});
     if ((m=/^(?:point me to|show me)\s+(?:the )?(?:location|whereabouts)(?: listed)?\s+(?:for|of)\s+(.+)$/i.exec(q)))
         return decorate({subjectText:m[1],fields:[field('location',null,clause)],qualifiers});
     if((m=/^(?:what|who)(?:\s+(?:is|are|was|were)|'s)\s+(.+)$/i.exec(q))){
         const rhs=m[1],own=possessiveOwner(rhs),of=/^(.+?)\s+(?:of|for)\s+(.+)$/i.exec(rhs);
+        const procedure=/^(.+?)\s+(sequence|procedure)$/i.exec(rhs);
         const governs=head=>/\b(?:checksum|coefficient|identifier|flag|code|number|age|material|composition|metal|colou?r|height|width|depth|weight|name|role|focus|type|status|property|statistic|price|cost|rate|percentage|value)\b/i.test(head)||nominalFields(head,clause).length;
         const propertyHead=of&&governs(of[1]),possessiveHead=own&&governs(own.head);
+        // Explicit property governors and established multiword field names
+        // (such as number sequence) retain their owner and selector first.
+        const specificProcedure=procedure&&nominalFields(rhs,clause).some(value=>lower(value.fieldText)!==lower(procedure[2]));
         if(propertyHead||possessiveHead){const head=propertyHead?of[1]:own.head;subjectText=propertyHead?of[2]:own.subjectText;
             fields=nominalFields(head,clause);if(!fields.length)fields=[field('unknown',lower(head),clause,{fieldText:head,fieldHead:head})];
+        }else if(procedure && !specificProcedure && /^what\b/i.test(q)){
+            subjectText=procedure[1];identityCandidateText=rhs;
+            fields=[field(lower(procedure[2])==='sequence'?'sequence':'method',lower(procedure[2])==='procedure'?'step':null,clause,
+                {fieldText:procedure[2],requiresExplicitField:true,identityCandidateText:rhs})];
         }else{
             identityCandidateText=rhs;fields=nominalFields(rhs,clause);
             if(!fields.length){subjectText=rhs;requiresExactIdentity=!reference(rhs);fields=[field('identity',null,clause,{identityCandidateText:rhs,requiresExactIdentity})];}
@@ -299,7 +319,18 @@ function readClause(raw) {
         if(!fields.length)fields=[field('unknown',lower(head),clause)];
     } else if ((m=/^where\s+(.+)$/i.exec(q))) {
         const r=m[1]; let target,recognized=false,requiredLocation=null,transportLocation=null;
-        if((target=/^(?:does|do|did)\s+(.+?)\s+(tell|tells)\s+(me|us)\s+to\s+(take|bring|return|deliver)\s+(.+)$/i.exec(r))){
+        if((target=/^(?:does|do|did)\s+(.+?)\s+(come|comes|originate|originates)\s+from\b(.*)$/i.exec(r))){
+            subjectText=target[1];recognized=true;
+            const ordinal=/^(?:(?:the|this|that)\s+)?(first|second|third|fourth|fifth|sixth|seventh|eighth|ninth|tenth|\d+(?:st|nd|rd|th))\s+(one|item)$/i.exec(subjectText);
+            const ordinals={first:1,second:2,third:3,fourth:4,fifth:5,sixth:6,seventh:7,eighth:8,ninth:9,tenth:10};
+            const position=ordinal&&(ordinals[lower(ordinal[1])] || Number.parseInt(ordinal[1],10));
+            const referenceText=subjectText;
+            if(Number.isSafeInteger(position)&&position>0)subjectText=ordinal[2];
+            transportLocation=field('location','origin',clause,{governorText:`${target[2]} from`,objectTexts:[subjectText],objectRole:'object',
+                ...(Number.isSafeInteger(position)&&position>0?{ordinal:position,referenceText}: {})});
+            if(target[3].trim())qualifiers.push(target[3].trim());
+        }
+        else if((target=/^(?:does|do|did)\s+(.+?)\s+(tell|tells)\s+(me|us)\s+to\s+(take|bring|return|deliver)\s+(.+)$/i.exec(r))){
             if(!documentActor(target[1])&&!/^(?:they|it|the notes|those notes|these notes)$/i.test(target[1])&&!/\b(?:character notes|profile|table row)$/i.test(target[1]))return null;
             const fullObject=target[5],tail=/\s+((?:to|into|for|with|without|via|through|in|on|at)\s+.+)$/i.exec(fullObject);
             subjectText=tail?fullObject.slice(0,tail.index):fullObject;recognized=true;
@@ -369,6 +400,9 @@ function readClause(raw) {
         }
         if(argumentsRead.outputText)subjectText=argumentsRead.outputText;
         if(/^(?:is|are)\s+/i.test(action)){fields=[field('identity',null,clause)];subjectText=action.replace(/^(?:is|are)\s+/i,'');}
+    } else if ((m=/^why\s+(?:is|are)\s+(.+?)\s+(important|useful|essential|necessary)\b(.*)$/i.exec(q))) {
+        subjectText=m[1];fields=[field('use','purpose',clause,{governorText:m[2],requiresExplicitField:true,
+            qualifierTexts:m[3].trim()?[m[3].trim()]:[]})];
     } else if ((m=/^why\s+(?:does|do|did|should|would|can)?\s*(.+)$/i.exec(q))) {
         subjectText=ownerIn(m[1].replace(/^(?:i|we)\s+/i,''),qualifiers);fields=[field('cause',null,clause,{actionText:m[1]})];
     } else if ((m=/^(?:when|from when)\s+(.*)$/i.exec(q))) {
@@ -391,7 +425,13 @@ function readClause(raw) {
         const purpose=/\s+(to\s+(?:pick up|pick (?:it|them) up|collect|retrieve|reach|obtain|acquire|recover|find|enter|leave|escape|activate|repair|build|make|use)\b.*)$/i.exec(fullAction);
         const action=purpose?fullAction.slice(0,purpose.index):fullAction,operation=actionField(action,clause);if(!operation)return null;fields=[operation];
         if(purpose){operation.purposeTexts=[purpose[1]];operation.qualifierTexts=[purpose[1]];operation.actionText=fullAction;}
-        subjectText=action.replace(/^(?:get to|get out of|set up|install|configure|download|get|fight|battle|attack|defeat|combat|counter|cross|traverse|reach|travel to|escape(?: from)?|return to|start|begin|finish|complete|prepare for|summon|launch|run|repair|craft|forge|make|build|assemble|use|collect|obtain|acquire|recruit|find|open|unlock|hide|store|deliver|follow)\s+/i,'');
+        subjectText=action.replace(/^(?:get to|get out of|set up|install|configure|download|get|fight|battle|attack|defeat|combat|counter|cross|traverse|navigate|reach|travel to|escape(?: from)?|return to|start|begin|finish|complete|prepare for|summon|launch|run|repair|craft|forge|make|build|assemble|use|collect|obtain|acquire|recruit|find|open|unlock|hide|store|deliver|follow)\s+/i,'');
+        const recruitmentApproach=/^(?:reach|travel to)\s+(.+?)\s+(for recruitment)$/i.exec(action);
+        if(recruitmentApproach){
+            subjectText=recruitmentApproach[1];
+            operation.purposeTexts=[...(operation.purposeTexts || []),recruitmentApproach[2]];
+            operation.qualifierTexts=[...(operation.qualifierTexts || []),recruitmentApproach[2]];
+        }
         if(/^(?:cross|traverse)\s+/i.test(action)){operation.objectTexts=[subjectText];operation.objectRole='object';operation.governorText=action.split(/\s+/)[0];}
     } else if ((m=/^how\s+(?:is|are|was|were)\s+(.+)$/i.exec(q))) {
         const r=m[1];
@@ -431,7 +471,7 @@ function readClause(raw) {
                 const operation=actionField(action,clause);if(!operation)return null;fields=[operation];
                 subjectText=/\b(?:with|for|about)\s+(.+)$/i.exec(action)?.[1] || null;
             }else{
-                const act=/^(.+?)\s+(do|provide|give|cost|need|require|open|unlock|say|ask|demand|produce|contain|shout|mention|chant|accept|make)\b(.*)$/i.exec(rest);
+                const act=/^(.+?)\s+(do|provide|give|cost|need|require|open|unlock|say|ask|demand|produce|contain|shout|mention|chant|accept|make|prevent|prevents|offer|offers)\b(.*)$/i.exec(rest);
                 if(act){subjectText=act[1];fields=[actionField(act[2]+act[3],clause)];
                     if(/\bneeded|required|necessary\b/i.test(act[3]))fields=[field('prerequisites',/\bto (?:build|compile|package|run|install)\b/i.test(act[3])?'condition':'materials',clause,{actionText:act[3]})];
                     if(act[2].toLowerCase()==='produce')fields=[field('outcome','artifact',clause,{actionText:act[3]})];
@@ -478,6 +518,23 @@ function readClause(raw) {
             }
         }else{head=r;fields=nominalFields(head,clause);const own=possessiveOwner(head);if(own)subjectText=own.subjectText;}
         if(!fields.length)fields=[field('unknown',lower(head || r),clause)];
+    } else if ((m=/^(?:must|should)\s+(?:i|we)\s+(leave|depart)\s+from\s+(.+)$/i.exec(q))) {
+        let place=m[2];const premise=/\s+(because\s+.+)$/i.exec(place);
+        // A UI selection is a proposed reason for the request, never an
+        // observed gameplay condition. Other reasons remain unhandled.
+        if(premise && !/^because\s+(?:i|we)\s+(?:selected|clicked|chose)\s+(?:its|that|this|the)\s+(?:atlas|map)\s+marker$/i.test(premise[1]))return null;
+        if(premise)place=place.slice(0,premise.index);
+        fields=[field('limitations','departure',clause,{subjectMode:'topic',requiresGroundedTopic:true,
+            governorText:`${m[1]} from`,objectTexts:[place],objectRole:'object',qualifierTexts:[place],
+            ...(premise?{premiseTexts:[premise[1]]}:{})})];
+    } else if ((m=/^(?:can|could|should|would)\s+(?:i|we)\s+dismiss\s+(.+)$/i.exec(q))) {
+        // A dismissal question requests the recorded consequence for this
+        // person; the modal is not evidence of current party membership.
+        subjectText=m[1];fields=[field('limitations','dismissal',clause,{governorText:'dismiss'})];
+    } else if ((m=/^(?:can|could)\s+(.+?)\s+(cross|traverse)\s+(.+)$/i.exec(q))) {
+        if(/^(?:i|we)$/i.test(m[1]))return null;
+        subjectText=m[1];fields=[field('use','travel',clause,{governorText:m[2],actionText:`${m[2]} ${m[3]}`,
+            objectTexts:[m[3]],objectRole:'object',qualifierTexts:[m[3]]})];
     } else if ((m=/^(?:is|are|does|do|can|could|should|would|will|has|have)\s+(.+)$/i.exec(q))) {
         const r=m[1];fields=nominalFields(r,clause);subjectText=ownerIn(r,qualifiers);
         if(/\bmade (?:from|of)\b/i.test(r)||/\b(?:metal|material|composition)\b/i.test(r))fields=[field('composition','material',clause)];
