@@ -11,13 +11,14 @@
 	width: min(740px, 100%);
 	height: auto;
 	padding: 0;
-	overflow: hidden;
+	background-clip: padding-box;
 	filter: drop-shadow(0 16px 28px var(--gallery-shadow));
 }
 
 #slideContainer {
 	position: relative;
 	width: 100%;
+	overflow: hidden;
 	background: var(--gallery-stage);
 }
 
@@ -128,6 +129,7 @@
 	transform: translateY(-3px) rotate(0);
 }
 
+#content .demo,
 .demo {
 	display: block;
 	width: 100%;
@@ -198,11 +200,12 @@
 		--gallery-shadow: rgba(0, 0, 0, 0.42);
 		--gallery-control: #f8fafc;
 		--gallery-control-shadow: 0 2px 8px #000, 0 0 2px #000;
+		border-image: url("../images/hr-frame-inverted.png") 38 / 24px / 14px stretch;
 	}
 }
 
 @media (max-width: 600px) {
-	.pictureContainer { border-width: 7px; }
+	.pictureContainer { border-width: 1px; border-image-width: 18px; border-image-outset: 11px; }
 	.gallery-stage > a { aspect-ratio: 4 / 3; }
 	.prev, .next { top: min(40%, 150px); width: 42px; height: 52px; font-size: 27px; }
 	.thumbnailButton { flex-basis: 84px; width: 84px; height: 58px; padding: 3px; }
