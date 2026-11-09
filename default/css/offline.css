@@ -1,32 +1,42 @@
-/* Quiet, theme-aware reading status styled as an editorial margin note. */
+/* Quiet, theme-aware reading status with a bespoke calligraphic coda swash. */
 #offline-reading-status {
     position: fixed;
-    left: max(12px, env(safe-area-inset-left));
+    left: max(14px, env(safe-area-inset-left));
     bottom: max(12px, env(safe-area-inset-bottom));
     z-index: 1000;
     display: inline-flex;
     align-items: center;
-    gap: .45rem;
     box-sizing: border-box;
     max-width: calc(100vw - 24px);
-    padding: .3rem .65rem;
+    padding: .12rem .35rem .72rem;
     border: 0;
-    border-bottom: 1px dashed color-mix(in srgb, currentColor 35%, transparent);
     border-radius: 999px;
     color: var(--text-color, #122a3e);
-    background: color-mix(in srgb, var(--bg-color, #d9efff) 52%, transparent);
+    background: color-mix(in srgb, var(--bg-color, #d9efff) 1%, transparent);
     box-shadow: none;
     backdrop-filter: none;
-    font: italic 400 .8rem/1.35 "Philosopher", Georgia, serif;
-    letter-spacing: .02em;
-    opacity: .72;
+    font: 400 1.08rem/1.2 "CFJackStory", "Philosopher", Georgia, serif;
+    letter-spacing: .03em;
+    text-shadow: 0 1px 8px color-mix(in srgb, var(--bg-color, #0a192f) 75%, transparent);
+    opacity: .88;
     pointer-events: none;
 }
 .offline-status-label { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.offline-status-mark { position: relative; width: .6rem; height: .6rem; flex: 0 0 .6rem; border: 1.2px solid currentColor; border-radius: 1px; transform: rotate(45deg); opacity: .75; }
-#offline-reading-status[data-state="ready"] .offline-status-mark { background: currentColor; }
-#offline-reading-status[data-state="saving"] .offline-status-mark { border-right-color: transparent; animation: offline-status-turn 1.2s linear infinite; }
-#offline-reading-status[data-state="partial"] .offline-status-mark { background: transparent; }
-@keyframes offline-status-turn { to { transform: rotate(405deg); } }
+.offline-status-mark {
+    position: absolute;
+    left: -2px;
+    right: -8px;
+    bottom: -3px;
+    height: 22px;
+    background-color: currentColor;
+    opacity: .88;
+    -webkit-mask: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAoYAAAAcCAYAAAD86H51AAAFBklEQVR4nO3dfVcaRxTH8R+CGlPTmrZp+/5fXZu2aaOxDSjQP3bmcL3ceVjUIvj9nHPPzM66Bgi4dx52kQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPpM9v0AAABPbirpnaRLSd+keCvpIsWbFOcpziSdmpil3zGVdJIiny8mktapvpa0MrFMcW/izpQLU+aYu/q8UF+k3wPgGZEYAsBhuJL03sSVpO9SfJvinR4mhNKQvOVYVbZXjTZbX2qT8OXISeHK/byNiE0qfd2Wc0n/pvhqyrkpbTJ5l46LlB4L8OqRGALAfp1K+knShxQ/pvghxfcp3msYufPJVk8sJF1LupH0xcStpH9STNJjsaOHs6A+C+p5hNHXp5U4CUofk6AshYIysg5KX+9NkH3Y5HjZGfeu9G29dZ+kR+2P2Z/bSKqP3GzfDwAAjsyZNlO1Nq4k/SLpZw2JoI3LdGwpSfH7pCFRytPAdkr4zNRPnvi5oSxKOEvl2H09yWxrf8+xftsuA7Blq620PSZayXApmY6S7lbCnpN96P9JDEs9uahn53t5jxnR9B+UXK99mAAcl6m2E7SLoK13f+tYH8zK4JDlUd9zxcsCetp69tXCHxctUWiFH/3tGWkdm4xGiWlvlEabS0ssWpGf507GJoYfNPxhzL1SO8VQmkLwi5jHTCOUphWiqYXWNENtumHMH+/enlnPlISfjvDb/k0QrbvxPaBSj8i/aUvTFrUPA9MIGGum7VEsP8pVizdB3Za+Hm3nYIYEwESbnGOm9rm65xxeO7f3LEEoRWndbekcby/yspHX5P7e8wKN/UM5T08s/+N2nYlPEHPb0rXZ/5ScOPYkhaXEsLQOpbY+padeSzZ7k9DaMdrhd7SOi/b1tEXbUv/amDHJZ6uX1dru7XXt2vOKPsS1nqpcXSonz1GHpPV+8e/1HFNX9x0v3zErrQHzn1u/rqwUZ0FZCjvFyQja62HPFT3TiqVOas8IS+9oSnQC7/lsl2ag/PONXoOs9N6PZs18W21Qo1bv/blWfUzp69F2j9LrG/0f9EyPjx2BLF2otUtCuEtSOGaAyH8uonWiC/8Cl4xNDK9H/nzEn+RKo4e1Rcu1k549+dXCJ7S9J8TXYqLNcx7zBydqa+2vtfXsi0rgNYmuzC2FvxWMv2VMLewtZ3zdx72r520AL9g+plbW2mS3hyBKNP2Veb1JZW2kpTbqEi0qPxdTY8BLs9KQoNnbqXxttLViXqnPtX3LFpZ7ANgZiUVbTmLn+34gSU5AbeLot88r26V1Xn7NV+8aMN5DeMnutJ1kScNI15+KE7FWQuf3l/YxOgbg4DDthl3MtJ1glpLOMfuipLbUFiXEdiR2+mzPHi1LPZxqjL7tIvrmi3k69krDPfsuFS8nkOKlA7b+l6SPkn4z8auLm0c+TwA4OiSGOBa16Xs/5V+6WCq6sr52k96nuEGvtJ30RHpu99BzdXu0eL90hfpa2+t97Wvpk3d7S5cLDV/Blr+Grffip6hu224lfdIw2pfjDw1X2+X4mIIpVQAYicQQeHnOtEmq3urhd92Wyhw9V+3XrtTf5Sr9saFULjQkevlbOG40XOB2Lelzir81jP7l+KRhmhYA8AxIDIHjcKr45svRulA/7Z5HAe0IqR/1tOyIZOseWn4tXv76tVttkkIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAchP8ATum4JUkmvBIAAAAASUVORK5CYII=") no-repeat center / 100% 100%;
+    mask: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAoYAAAAcCAYAAAD86H51AAAFBklEQVR4nO3dfVcaRxTH8R+CGlPTmrZp+/5fXZu2aaOxDSjQP3bmcL3ceVjUIvj9nHPPzM66Bgi4dx52kQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPpM9v0AAABPbirpnaRLSd+keCvpIsWbFOcpziSdmpil3zGVdJIiny8mktapvpa0MrFMcW/izpQLU+aYu/q8UF+k3wPgGZEYAsBhuJL03sSVpO9SfJvinR4mhNKQvOVYVbZXjTZbX2qT8OXISeHK/byNiE0qfd2Wc0n/pvhqyrkpbTJ5l46LlB4L8OqRGALAfp1K+knShxQ/pvghxfcp3msYufPJVk8sJF1LupH0xcStpH9STNJjsaOHs6A+C+p5hNHXp5U4CUofk6AshYIysg5KX+9NkH3Y5HjZGfeu9G29dZ+kR+2P2Z/bSKqP3GzfDwAAjsyZNlO1Nq4k/SLpZw2JoI3LdGwpSfH7pCFRytPAdkr4zNRPnvi5oSxKOEvl2H09yWxrf8+xftsuA7Blq620PSZayXApmY6S7lbCnpN96P9JDEs9uahn53t5jxnR9B+UXK99mAAcl6m2E7SLoK13f+tYH8zK4JDlUd9zxcsCetp69tXCHxctUWiFH/3tGWkdm4xGiWlvlEabS0ssWpGf507GJoYfNPxhzL1SO8VQmkLwi5jHTCOUphWiqYXWNENtumHMH+/enlnPlISfjvDb/k0QrbvxPaBSj8i/aUvTFrUPA9MIGGum7VEsP8pVizdB3Za+Hm3nYIYEwESbnGOm9rm65xxeO7f3LEEoRWndbekcby/yspHX5P7e8wKN/UM5T08s/+N2nYlPEHPb0rXZ/5ScOPYkhaXEsLQOpbY+padeSzZ7k9DaMdrhd7SOi/b1tEXbUv/amDHJZ6uX1dru7XXt2vOKPsS1nqpcXSonz1GHpPV+8e/1HFNX9x0v3zErrQHzn1u/rqwUZ0FZCjvFyQja62HPFT3TiqVOas8IS+9oSnQC7/lsl2ag/PONXoOs9N6PZs18W21Qo1bv/blWfUzp69F2j9LrG/0f9EyPjx2BLF2otUtCuEtSOGaAyH8uonWiC/8Cl4xNDK9H/nzEn+RKo4e1Rcu1k549+dXCJ7S9J8TXYqLNcx7zBydqa+2vtfXsi0rgNYmuzC2FvxWMv2VMLewtZ3zdx72r520AL9g+plbW2mS3hyBKNP2Veb1JZW2kpTbqEi0qPxdTY8BLs9KQoNnbqXxttLViXqnPtX3LFpZ7ANgZiUVbTmLn+34gSU5AbeLot88r26V1Xn7NV+8aMN5DeMnutJ1kScNI15+KE7FWQuf3l/YxOgbg4DDthl3MtJ1glpLOMfuipLbUFiXEdiR2+mzPHi1LPZxqjL7tIvrmi3k69krDPfsuFS8nkOKlA7b+l6SPkn4z8auLm0c+TwA4OiSGOBa16Xs/5V+6WCq6sr52k96nuEGvtJ30RHpu99BzdXu0eL90hfpa2+t97Wvpk3d7S5cLDV/Blr+Grffip6hu224lfdIw2pfjDw1X2+X4mIIpVQAYicQQeHnOtEmq3urhd92Wyhw9V+3XrtTf5Sr9saFULjQkevlbOG40XOB2Lelzir81jP7l+KRhmhYA8AxIDIHjcKr45svRulA/7Z5HAe0IqR/1tOyIZOseWn4tXv76tVttkkIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAchP8ATum4JUkmvBIAAAAASUVORK5CYII=") no-repeat center / 100% 100%;
+    pointer-events: none;
+}
+#offline-reading-status[data-state="ready"] .offline-status-mark { opacity: .9; }
+#offline-reading-status[data-state="saving"] .offline-status-mark { animation: offline-status-pulse 1.3s ease-in-out infinite; }
+#offline-reading-status[data-state="partial"] .offline-status-mark { opacity: .55; }
+@keyframes offline-status-pulse { 0%, 100% { opacity: .35; } 50% { opacity: .9; } }
 @media (prefers-reduced-motion: reduce) { #offline-reading-status[data-state="saving"] .offline-status-mark { animation: none; } }
 @media print { #offline-reading-status { display: none; } }
