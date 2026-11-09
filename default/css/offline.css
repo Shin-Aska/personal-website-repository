@@ -38,5 +38,30 @@
 #offline-reading-status[data-state="saving"] .offline-status-mark { animation: offline-status-pulse 1.3s ease-in-out infinite; }
 #offline-reading-status[data-state="partial"] .offline-status-mark { opacity: .55; }
 @keyframes offline-status-pulse { 0%, 100% { opacity: .35; } 50% { opacity: .95; } }
-@media (prefers-reduced-motion: reduce) { #offline-reading-status[data-state="saving"] .offline-status-mark { animation: none; } }
+@keyframes offline-status-autohide { to { opacity: 0; transform: translateY(4px); } }
+@media (max-width: 1120px) {
+    #offline-reading-status {
+        left: max(10px, env(safe-area-inset-left));
+        bottom: max(10px, env(safe-area-inset-bottom));
+        padding: .18rem .55rem .68rem;
+        background: color-mix(in srgb, var(--bg-color, #0a192f) 76%, transparent);
+        backdrop-filter: blur(6px);
+        font-size: .96rem;
+    }
+    #offline-reading-status:not([data-state="saving"]) {
+        animation: offline-status-autohide .55s ease 2.4s forwards;
+    }
+    .offline-status-mark {
+        left: 2px;
+        right: -4px;
+        bottom: -2px;
+        height: 19px;
+    }
+}
+@media (prefers-reduced-motion: reduce) {
+    #offline-reading-status[data-state="saving"] .offline-status-mark { animation: none; }
+    @media (max-width: 1120px) {
+        #offline-reading-status:not([data-state="saving"]) { animation-duration: .01s; }
+    }
+}
 @media print { #offline-reading-status { display: none; } }
